@@ -1,0 +1,172 @@
+\hypertarget{Makefile_8inc_source}{\section{Makefile.\-inc}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{# Makefile setup file for MTK.}
+00002 \textcolor{preprocessor}{}
+00003 SHELL := /bin/bash
+00004 
+00005 \textcolor{preprocessor}{# Please set the following variables up:}
+00006 \textcolor{preprocessor}{}
+00007 \textcolor{preprocessor}{#   1. Absolute path to base directory.}
+00008 \textcolor{preprocessor}{}\textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+00009 \textcolor{preprocessor}{}
+00010 BASE = $(HOME)/Dropbox/MTK
+00011 
+00012 #   2. The machine (platform) identifier and required precision.
+00013 #   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+00014 
+00015 \textcolor{preprocessor}{# Options are:}
+00016 \textcolor{preprocessor}{}\textcolor{preprocessor}{# - LINUX: A LINUX box installation.}
+00017 \textcolor{preprocessor}{}\textcolor{preprocessor}{# - OSX: Soon!}
+00018 \textcolor{preprocessor}{}
+00019 PLAT = LINUX
+00020 
+00021 \textcolor{preprocessor}{# Options are:}
+00022 \textcolor{preprocessor}{}\textcolor{preprocessor}{# - SINGLE: Use 4 B floating point numbers.}
+00023 \textcolor{preprocessor}{}\textcolor{preprocessor}{# - DOUBLE: Use 8 B floating point numbers.}
+00024 \textcolor{preprocessor}{}
+00025 PRECISION = DOUBLE
+00026 
+00027 \textcolor{preprocessor}{#   3. Optimized solvers and operations by means of ATLAS in Linux?}
+00028 \textcolor{preprocessor}{}\textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+00029 \textcolor{preprocessor}{}
+00030 \textcolor{preprocessor}{# Options are ON xor OFF:}
+00031 \textcolor{preprocessor}{}
+00032 ATL\_OPT = OFF
+00033 
+00034 \textcolor{preprocessor}{#   4. Paths to dependencies (header files for compiling).}
+00035 \textcolor{preprocessor}{}\textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+00036 \textcolor{preprocessor}{}
+00037 \textcolor{preprocessor}{# GLPK include path (soon to go):}
+00038 \textcolor{preprocessor}{}
+00039 GLPK\_INC = $(HOME)/Libraries/glpk-4.55/include
+00040 
+00041 # If ATLAS optimization is ON, users should only provide the path to ATLAS:
+00042 
+00043 ATLAS\_INC = $(HOME)/Libraries/ATLAS\_3.8.4-CORE/include
+00044 
+00045 \textcolor{preprocessor}{#   5. Paths to dependencies (archive files for (static) linking).}
+00046 \textcolor{preprocessor}{}\textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+00047 \textcolor{preprocessor}{}
+00048 \textcolor{preprocessor}{# GLPK linking path (soon to go):}
+00049 \textcolor{preprocessor}{}
+00050 GLPK\_LIB = $(HOME)/Libraries/glpk-4.55/lib/libglpk.a
+00051 
+00052 # If optimization is OFF, then provide the paths \textcolor{keywordflow}{for}:
+00053 
+00054 BLAS\_LIB = $(HOME)/Libraries/BLAS/libblas.a
+00055 LAPACK\_LIB = $(HOME)/Libraries/lapack-3.4.1/liblapack.a
+00056 
+00057 # WARNING: Vendor libraries should be used whenever they are available.
+00058 
+00059 # However, \textcolor{keywordflow}{if} optimization is ON, please provide the path the ATLAS\textcolor{stringliteral}{' archive:}
+00060 \textcolor{stringliteral}{}
+00061 \textcolor{stringliteral}{ATLAS\_LIB   = $(HOME)/Libraries/ATLAS\_3.8.4-CORE/ATLAS\_3.8.4-BUILD-Citadel/lib}
+00062 \textcolor{stringliteral}{}
+00063 \textcolor{stringliteral}{#   6. Compiler and its flags.}
+00064 \textcolor{stringliteral}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+00065 \textcolor{stringliteral}{}
+00066 \textcolor{stringliteral}{CC = colorgcc}
+00067 \textcolor{stringliteral}{}
+00068 \textcolor{stringliteral}{# Debug Level. Options are:}
+00069 \textcolor{stringliteral}{# 0. NO debug at all NOR any run-time checks... be cautious!}
+00070 \textcolor{stringliteral}{# 1. Verbose (execution messages) AND run-time checks.}
+00071 \textcolor{stringliteral}{# 2. Level 1 plus intermediate scalar-valued results.}
+00072 \textcolor{stringliteral}{# 3. Level 2 plus intermediate array-valued results.}
+00073 \textcolor{stringliteral}{}
+00074 \textcolor{stringliteral}{DEBUG\_LEVEL = 3}
+00075 \textcolor{stringliteral}{}
+00076 \textcolor{stringliteral}{# Flags recommended for release code:}
+00077 \textcolor{stringliteral}{}
+00078 \textcolor{stringliteral}{CCFLAGS = -Wall -O2}
+00079 \textcolor{stringliteral}{}
+00080 \textcolor{stringliteral}{# Flags recommended for debugging code:}
+00081 \textcolor{stringliteral}{}
+00082 \textcolor{stringliteral}{CCFLAGS = -Wall -g}
+00083 \textcolor{stringliteral}{}
+00084 \textcolor{stringliteral}{#   7. Archiver, its flags, and ranlib:}
+00085 \textcolor{stringliteral}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+00086 \textcolor{stringliteral}{}
+00087 \textcolor{stringliteral}{ARCH      = ar}
+00088 \textcolor{stringliteral}{ARCHFLAGS = cr}
+00089 \textcolor{stringliteral}{}
+00090 \textcolor{stringliteral}{# If your system does not have "ranlib" then set: "RANLIB = echo":}
+00091 \textcolor{stringliteral}{}
+00092 \textcolor{stringliteral}{RANLIB = echo}
+00093 \textcolor{stringliteral}{}
+00094 \textcolor{stringliteral}{# But, if possible:}
+00095 \textcolor{stringliteral}{}
+00096 \textcolor{stringliteral}{RANLIB = ranlib}
+00097 \textcolor{stringliteral}{}
+00098 \textcolor{stringliteral}{#   8. Valgrind'}s memcheck options:
+00099 #   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+00100 
+00101 MEMCHECK\_OPTS = -v --tool=memcheck --leak-check=full --show-leak-kinds=all \(\backslash\)
+00102 --track-origins=yes --freelist-vol=20000000
+00103 
+00104 # Done!
+00105 
+00106 #   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+00107 #   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+00108 #   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+00109 
+00110 #   MTK-related.
+00111 #   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+00112 
+00113 SRC       = $(BASE)/src
+00114 INCLUDE   = $(BASE)/include
+00115 LIB       = $(BASE)/lib
+00116 MTK\_LIB   = $(LIB)/libmtk.a
+00117 TESTS     = $(BASE)/tests
+00118 EXAMPLES  = $(BASE)/examples
+00119 
+00120 #   Compiling-related.
+00121 #   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+00122 
+00123 CCFLAGS += -std=c++11 -fPIC -DMTK\_DEBUG\_LEVEL=$(DEBUG\_LEVEL) -I$(INCLUDE)  -c
+00124 
+00125 ifeq ($(PRECISION),DOUBLE)
+00126   CCFLAGS += -DMTK\_PRECISION\_DOUBLE
+00127 \textcolor{keywordflow}{else}
+00128   CCFLAGS += -DMTK\_PRECISION\_SINGLE
+00129 endif
+00130 
+00131 # Only the GLPK is included because the other dependencies are coded in Fortran.
+00132 
+00133 ifeq ($(ATL\_OPT),ON)
+00134   CCFLAGS  += -I$(GLPK\_INC) $(ATLAS\_INC)
+00135 else
+00136   CCFLAGS  += -I$(GLPK\_INC)
+00137 endif
+00138 
+00139 \textcolor{preprocessor}{#   Linking-related.}
+00140 \textcolor{preprocessor}{}\textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+00141 \textcolor{preprocessor}{}
+00142 NOOPT\_LIBS  = $(LAPACK\_LIB) $(BLAS\_LIB) -lm $(GLPK\_LIB) -lstdc++
+00143 
+00144 OPT\_LIBS    = -L$(ATLAS\_LIB) -latlas -llapack -lblas -lm -latlas -lstdc++
+00145 
+00146 ifeq ($(PLAT),MACOS)
+00147   LINKER  = g++
+00148   LINKER  += -framework Accelerate $(GLPK\_LIB) $(MTK\_LIB)
+00149 else
+00150   ifeq ($(ATL\_OPT),ON)
+00151     LINKER  = g++
+00152     LIBS = $(MTK\_LIB)
+00153     LIBS += $(OPT\_LIBS)
+00154   else
+00155     LINKER  = gfortran
+00156     LIBS = $(MTK\_LIB)
+00157     LIBS += $(NOOPT\_LIBS)
+00158   endif
+00159 endif
+00160 
+00161 \textcolor{preprocessor}{#   Documentation-related.}
+00162 \textcolor{preprocessor}{}\textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+00163 \textcolor{preprocessor}{}
+00164 DOCGEN      = doxygen
+00165 DOCFILENAME = doc\_config.dxcf
+00166 DOC         = $(BASE)/doc
+00167 DOCFILE     = $(BASE)/$(DOCFILENAME)
+\end{DoxyCode}

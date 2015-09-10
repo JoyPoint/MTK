@@ -1,0 +1,190 @@
+\hypertarget{mtk__grad__1d__test_8cc}{\section{mtk\-\_\-grad\-\_\-1d\-\_\-test.\-cc}
+\label{mtk__grad__1d__test_8cc}\index{tests/mtk\-\_\-grad\-\_\-1d\-\_\-test.\-cc@{tests/mtk\-\_\-grad\-\_\-1d\-\_\-test.\-cc}}
+}
+
+\begin{DoxyCode}
+00001 
+00008 \textcolor{comment}{/*}
+00009 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00010 \textcolor{comment}{University. All rights reserved.}
+00011 \textcolor{comment}{}
+00012 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00013 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00014 \textcolor{comment}{}
+00015 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00016 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00017 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
+00018 \textcolor{comment}{}
+00019 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00020 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00021 \textcolor{comment}{}
+00022 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
+00023 \textcolor{comment}{list of conditions and the following disclaimer.}
+00024 \textcolor{comment}{}
+00025 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
+00026 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00027 \textcolor{comment}{other materials provided with the distribution.}
+00028 \textcolor{comment}{}
+00029 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
+00030 \textcolor{comment}{prior written permission from the the copyright holders.}
+00031 \textcolor{comment}{}
+00032 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00033 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00034 \textcolor{comment}{specific prior written permission.}
+00035 \textcolor{comment}{}
+00036 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00037 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00038 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00039 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00040 \textcolor{comment}{parties intellectual property rights.}
+00041 \textcolor{comment}{}
+00042 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00043 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00044 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00045 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00046 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00047 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00048 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00049 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00050 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00051 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00052 \textcolor{comment}{*/}
+00053 
+00054 \textcolor{preprocessor}{#if \_\_cplusplus == 201103L}
+00055 \textcolor{preprocessor}{}
+00056 \textcolor{preprocessor}{#include <iostream>}
+00057 
+00058 \textcolor{preprocessor}{#include "\hyperlink{mtk_8h}{mtk.h}"}
+00059 
+00060 \textcolor{keywordtype}{void} Test1() \{
+00061 
+00062   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(1);
+00063 
+00064   \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} grad2;
+00065 
+00066   \textcolor{keywordtype}{bool} info = grad2.\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{ConstructGrad1D}();
+00067 
+00068   \textcolor{keywordflow}{if} (!info) \{
+00069     std::cerr << \textcolor{stringliteral}{"Mimetic grad (2nd order) could not be built."} << std::endl;
+00070   \}
+00071 
+00072   std::cout << grad2 << std::endl;
+00073 
+00074   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(1);
+00075 \}
+00076 
+00077 \textcolor{keywordtype}{void} Test2() \{
+00078 
+00079   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(2);
+00080 
+00081   \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} grad4;
+00082 
+00083   \textcolor{keywordtype}{bool} info = grad4.\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{ConstructGrad1D}(4);
+00084 
+00085   \textcolor{keywordflow}{if} (!info) \{
+00086     std::cerr << \textcolor{stringliteral}{"Mimetic grad (4th order) could not be built."} << std::endl;
+00087   \}
+00088 
+00089   std::cout << grad4 << std::endl;
+00090 
+00091   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(2);
+00092 \}
+00093 
+00094 \textcolor{keywordtype}{void} Test3() \{
+00095 
+00096   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(3);
+00097 
+00098   \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} grad6;
+00099 
+00100   \textcolor{keywordtype}{bool} info = grad6.\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{ConstructGrad1D}(6);
+00101 
+00102   \textcolor{keywordflow}{if} (!info) \{
+00103     std::cerr << \textcolor{stringliteral}{"Mimetic grad (6th order) could not be built."} << std::endl;
+00104   \}
+00105 
+00106   std::cout << grad6 << std::endl;
+00107 
+00108   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(3);
+00109 \}
+00110 
+00111 \textcolor{keywordtype}{void} Test4() \{
+00112 
+00113   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(4);
+00114 
+00115   \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} grad8;
+00116 
+00117   \textcolor{keywordtype}{bool} info = grad8.\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{ConstructGrad1D}(8);
+00118 
+00119   \textcolor{keywordflow}{if} (!info) \{
+00120     std::cerr << \textcolor{stringliteral}{"Mimetic grad (8th order) could not be built."} << std::endl;
+00121   \}
+00122 
+00123   std::cout << grad8 << std::endl;
+00124 
+00125   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(4);
+00126 \}
+00127 
+00128 \textcolor{keywordtype}{void} Test5() \{
+00129 
+00130   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(5);
+00131 
+00132   \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} grad10;
+00133 
+00134   \textcolor{keywordtype}{bool} info = grad10.\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{ConstructGrad1D}(10);
+00135 
+00136   \textcolor{keywordflow}{if} (!info) \{
+00137     std::cerr << \textcolor{stringliteral}{"Mimetic grad (10th order) could not be built."} << std::endl;
+00138   \}
+00139 
+00140   std::cout << grad10 << std::endl;
+00141 
+00142   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(5);
+00143 \}
+00144 
+00145 \textcolor{keywordtype}{void} Test6() \{
+00146 
+00147   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(6);
+00148 
+00149   \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} grad2;
+00150 
+00151   \textcolor{keywordtype}{bool} info = grad2.\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{ConstructGrad1D}();
+00152 
+00153   \textcolor{keywordflow}{if} (!info) \{
+00154     std::cerr << \textcolor{stringliteral}{"Mimetic grad (2nd order) could not be built."} << std::endl;
+00155   \}
+00156 
+00157   std::cout << grad2 << std::endl;
+00158 
+00159   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid(0.0, 1.0, 5);
+00160 
+00161   std::cout << grid << std::endl;
+00162 
+00163   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} grad2m(grad2.\hyperlink{classmtk_1_1Grad1D_a75781c4455569a7934d4e0dff7e06064}{ReturnAsDenseMatrix}(grid));
+00164 
+00165   std::cout << grad2m << std::endl;
+00166 
+00167   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(6);
+00168 \}
+00169 
+00170 \textcolor{keywordtype}{int} \hyperlink{mtk__grad__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00171 
+00172   std::cout << \textcolor{stringliteral}{"Testing mtk::Grad1D class."} << std::endl;
+00173 
+00174   Test1();
+00175   Test2();
+00176   Test3();
+00177   Test4();
+00178   Test5();
+00179   Test6();
+00180 \}
+00181 
+00182 \textcolor{preprocessor}{#else}
+00183 \textcolor{preprocessor}{}\textcolor{preprocessor}{#include <iostream>}
+00184 \textcolor{keyword}{using} std::cout;
+00185 \textcolor{keyword}{using} std::endl;
+\hypertarget{mtk__grad__1d__test_8cc_source_l00186}{}\hyperlink{mtk__grad__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00186} \textcolor{keywordtype}{int} \hyperlink{mtk__grad__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00187   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
+00188   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
+00189 \}
+00190 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

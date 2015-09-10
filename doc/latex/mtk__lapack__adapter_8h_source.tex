@@ -1,0 +1,79 @@
+\hypertarget{mtk__lapack__adapter_8h}{\section{mtk\-\_\-lapack\-\_\-adapter.\-h}
+\label{mtk__lapack__adapter_8h}\index{include/mtk\-\_\-lapack\-\_\-adapter.\-h@{include/mtk\-\_\-lapack\-\_\-adapter.\-h}}
+}
+
+\begin{DoxyCode}
+00001 
+00018 \textcolor{comment}{/*}
+00019 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00020 \textcolor{comment}{University. All rights reserved.}
+00021 \textcolor{comment}{}
+00022 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00023 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00024 \textcolor{comment}{}
+00025 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00026 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00027 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
+00028 \textcolor{comment}{}
+00029 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00030 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00031 \textcolor{comment}{}
+00032 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
+00033 \textcolor{comment}{list of conditions and the following disclaimer.}
+00034 \textcolor{comment}{}
+00035 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
+00036 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00037 \textcolor{comment}{other materials provided with the distribution.}
+00038 \textcolor{comment}{}
+00039 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
+00040 \textcolor{comment}{prior written permission from the the copyright holders.}
+00041 \textcolor{comment}{}
+00042 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00043 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00044 \textcolor{comment}{specific prior written permission.}
+00045 \textcolor{comment}{}
+00046 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00047 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00048 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00049 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00050 \textcolor{comment}{parties intellectual property rights.}
+00051 \textcolor{comment}{}
+00052 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00053 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00054 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00055 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00056 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00057 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00058 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00059 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00060 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00061 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00062 \textcolor{comment}{*/}
+00063 
+00064 \textcolor{preprocessor}{#ifndef MTK\_INCLUDE\_LAPACK\_ADAPTER\_H\_}
+00065 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define MTK\_INCLUDE\_LAPACK\_ADAPTER\_H\_}
+00066 \textcolor{preprocessor}{}
+00067 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
+00068 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
+00069 
+00070 \textcolor{keyword}{namespace }mtk \{
+00071 
+\hypertarget{mtk__lapack__adapter_8h_source_l00089}{}\hyperlink{classmtk_1_1LAPACKAdapter}{00089} \textcolor{keyword}{class }\hyperlink{classmtk_1_1LAPACKAdapter}{LAPACKAdapter} \{
+00090  \textcolor{keyword}{public}:
+00101   \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{SolveDenseSystem}(\hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &mm,
+00102                               \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *rhs);
+00103 
+00114   \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{SolveDenseSystem}(\hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &mm,
+00115                               \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &rr);
+00116 
+00128   \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a380f148ffdf96bae2f79ae28f1a6560c}{SolveRectangularDenseSystem}(\textcolor{keyword}{const} 
+      \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &aa,
+00129                                          \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *ob\_,
+00130                                          \textcolor{keywordtype}{int} ob\_ld\_);
+00131 
+00143   \textcolor{keyword}{static} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1LAPACKAdapter_ae5c6e78c9c819c9ac7a6f31bfd011d7a}{QRFactorDenseMatrix}(
+      \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &matrix);
+00144 \};
+00145 \}
+00146 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_LAPACK\_ADAPTER\_H\_}
+\end{DoxyCode}

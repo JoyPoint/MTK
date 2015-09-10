@@ -1,0 +1,189 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="classmtk_1_1Tools" kind="class" prot="public">
+    <compoundname>mtk::Tools</compoundname>
+    <includes refid="mtk__tools_8h" local="no">mtk_tools.h</includes>
+      <sectiondef kind="private-static-attrib">
+      <memberdef kind="variable" id="classmtk_1_1Tools_1a04a60458594336ee1badff79b8a9a77f" prot="private" static="yes" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Tools::test_number_</definition>
+        <argsstring></argsstring>
+        <name>test_number_</name>
+        <briefdescription>
+<para>Current test being executed. </para>        </briefdescription>
+        <detaileddescription>
+<para><xrefsect id="todo_1_todo000020"><xreftitle>Todo</xreftitle><xrefdescription><para>Check usage of static methods and private members. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" line="104" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" bodystart="104" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Tools_1a4bd58d08397db42271ed9e2d3ecc9963" prot="private" static="yes" mutable="no">
+        <type>clock_t</type>
+        <definition>clock_t mtk::Tools::begin_time_</definition>
+        <argsstring></argsstring>
+        <name>begin_time_</name>
+        <briefdescription>
+<para>Elapsed time on current test. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" line="106" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" bodystart="106" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::Tools::Prevent</definition>
+        <argsstring>(const bool condition, const char *fname, int lineno, const char *fxname)</argsstring>
+        <name>Prevent</name>
+        <param>
+          <type>const bool</type>
+          <declname>condition</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>fname</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>lineno</declname>
+        </param>
+        <param>
+          <type>const char *</type>
+          <declname>fxname</declname>
+        </param>
+        <briefdescription>
+<para>Enforces pre-conditions by preventing their complements from occur. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ulink url="http://stackoverflow.com/questions/8884335/print-the-file-name-line-number-and-function-name-of-a-calling-function-c-pro">http://stackoverflow.com/questions/8884335/print-the-file-name-line-number-and-function-name-of-a-calling-function-c-pro</ulink></para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">condition</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Complement of desired pre-condition. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fname</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the file being checked. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">lineno</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of the line where the check is executed. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">fxname</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the module containing the check. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="todo_1_todo000019"><xreftitle>Todo</xreftitle><xrefdescription><para>Check if this is the best way of stalling execution. </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" line="84" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_tools.cc" bodystart="61" bodyend="81"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="318" endline="372">mtk::BLASAdapter::RealDenseMM</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1abe26c623467fc1b293cf4f22a3a47cc8" compoundref="mtk__dense__matrix_8cc" startline="177" endline="197">mtk::DenseMatrix::DenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1aacae136ae446cad8f0d81476e83efb39" compoundref="mtk__dense__matrix_8cc" startline="296" endline="304">mtk::DenseMatrix::SetOrdering</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a87fb785713c04b13767947cc3325ce7c" compoundref="mtk__dense__matrix_8cc" startline="321" endline="331">mtk::DenseMatrix::GetValue</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" compoundref="mtk__dense__matrix_8cc" startline="333" endline="344">mtk::DenseMatrix::SetValue</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a52fcd1542f11e606e36bd188e48bfdf7" compoundref="mtk__div__1d_8cc" startline="176" endline="313">mtk::Div1D::ConstructDiv1D</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1afdbb1e11f05dd77b882f36426229acf7" compoundref="mtk__div__1d_8cc" startline="325" endline="385">mtk::Div1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a74ef5245cfae6fd158bd7f563a0c2e52" compoundref="mtk__grad__1d_8cc" startline="182" endline="323">mtk::Grad1D::ConstructGrad1D</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a75781c4455569a7934d4e0dff7e06064" compoundref="mtk__grad__1d_8cc" startline="335" endline="399">mtk::Grad1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="119" endline="263">mtk::Lap1D::ConstructLap1D</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1a28672c735fa0d13e6204795b63aec4e2" compoundref="mtk__lap__1d_8cc" startline="265" endline="330">mtk::Lap1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1a7428bccf74fd4a4af68fb7233846da22" compoundref="mtk__lapack__adapter_8cc" startline="427" endline="461">mtk::LAPACKAdapter::SolveDenseSystem</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1ac0edd0ee07853d0ef6dea9b08d15e132" compoundref="mtk__matrix_8cc" startline="192" endline="202">mtk::Matrix::set_storage</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1aa390fa8883e58e8f1df9416e5b5b7a83" compoundref="mtk__matrix_8cc" startline="204" endline="215">mtk::Matrix::set_ordering</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a242fedf2da10a3e5c14f63c2bc60beae" compoundref="mtk__matrix_8cc" startline="217" endline="227">mtk::Matrix::set_num_rows</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a312883d34f2e0daf5db7432ee2c4ed51" compoundref="mtk__matrix_8cc" startline="229" endline="239">mtk::Matrix::set_num_cols</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1ae529100c5c280088e9acf8e8f7994f73" compoundref="mtk__matrix_8cc" startline="241" endline="253">mtk::Matrix::set_num_zero</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a66c2c1c127f4efefc4a407e9552e928d" compoundref="mtk__matrix_8cc" startline="255" endline="267">mtk::Matrix::set_num_null</referencedby>
+        <referencedby refid="classmtk_1_1Tools_1a35cefa938105619b731ea4fedb86becf" compoundref="mtk__tools_8cc" startline="89" endline="99">BeginTestNo</referencedby>
+        <referencedby refid="classmtk_1_1Tools_1a5d3f78d17228fb36a73567c191f0f4ee" compoundref="mtk__tools_8cc" startline="101" endline="110">EndTestNo</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid1D_1ae19250f0cddef7a05c4a73a90991a26a" compoundref="mtk__uni__stg__grid__1d_8cc" startline="122" endline="140">mtk::UniStgGrid1D::UniStgGrid1D</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid1D_1a438cda229830d0e2f35c615e70b59a76" compoundref="mtk__uni__stg__grid__1d_8cc" startline="164" endline="198">mtk::UniStgGrid1D::BindScalarField</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid1D_1a5703f1f875f52f6de8f7db5a6250fafa" compoundref="mtk__uni__stg__grid__1d_8cc" startline="200" endline="226">mtk::UniStgGrid1D::BindVectorField</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Tools_1a35cefa938105619b731ea4fedb86becf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::Tools::BeginTestNo</definition>
+        <argsstring>(const int &amp;nn)</argsstring>
+        <name>BeginTestNo</name>
+        <param>
+          <type>const int &amp;</type>
+          <declname>nn</declname>
+        </param>
+        <briefdescription>
+<para>Begins the execution of a test. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">nn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of the test. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" line="94" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_tools.cc" bodystart="89" bodyend="99"/>
+        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">Prevent</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Tools_1a5d3f78d17228fb36a73567c191f0f4ee" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::Tools::EndTestNo</definition>
+        <argsstring>(const int &amp;nn)</argsstring>
+        <name>EndTestNo</name>
+        <param>
+          <type>const int &amp;</type>
+          <declname>nn</declname>
+        </param>
+        <briefdescription>
+<para>Ends the execution of a test. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">nn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of the test. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" line="101" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_tools.cc" bodystart="101" bodyend="110"/>
+        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">Prevent</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Tool manager class. </para>    </briefdescription>
+    <detaileddescription>
+<para>Basic tools to ensure execution correctness. </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="60">
+        <label>mtk::Tools</label>
+        <link refid="classmtk_1_1Tools"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" line="72" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" bodystart="72" bodyend="107"/>
+    <listofallmembers>
+      <member refid="classmtk_1_1Tools_1a4bd58d08397db42271ed9e2d3ecc9963" prot="private" virt="non-virtual"><scope>mtk::Tools</scope><name>begin_time_</name></member>
+      <member refid="classmtk_1_1Tools_1a35cefa938105619b731ea4fedb86becf" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>BeginTestNo</name></member>
+      <member refid="classmtk_1_1Tools_1a5d3f78d17228fb36a73567c191f0f4ee" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>EndTestNo</name></member>
+      <member refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>Prevent</name></member>
+      <member refid="classmtk_1_1Tools_1a04a60458594336ee1badff79b8a9a77f" prot="private" virt="non-virtual"><scope>mtk::Tools</scope><name>test_number_</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

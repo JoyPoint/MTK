@@ -1,0 +1,283 @@
+\hypertarget{mtk__matrix_8cc}{\section{mtk\-\_\-matrix.\-cc}
+\label{mtk__matrix_8cc}\index{src/mtk\-\_\-matrix.\-cc@{src/mtk\-\_\-matrix.\-cc}}
+}
+
+\begin{DoxyCode}
+00001 
+00010 \textcolor{comment}{/*}
+00011 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00012 \textcolor{comment}{University. All rights reserved.}
+00013 \textcolor{comment}{}
+00014 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00015 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00016 \textcolor{comment}{}
+00017 \textcolor{comment}{1. Modifications to the source code should be reported to:}
+00018 \textcolor{comment}{}
+00019 \textcolor{comment}{esanchez at mail dot sdsu dot edu}
+00020 \textcolor{comment}{}
+00021 \textcolor{comment}{A copy of the modified files should be reported once modifications are}
+00022 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
+00023 \textcolor{comment}{}
+00024 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00025 \textcolor{comment}{downloads from the project's GitHub page:}
+00026 \textcolor{comment}{}
+00027 \textcolor{comment}{http://www.csrc.sdsu.edu/mtk}
+00028 \textcolor{comment}{}
+00029 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
+00030 \textcolor{comment}{list of conditions and the following disclaimer.}
+00031 \textcolor{comment}{}
+00032 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
+00033 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00034 \textcolor{comment}{other materials provided with the distribution.}
+00035 \textcolor{comment}{}
+00036 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
+00037 \textcolor{comment}{prior written permission from the the copyright holders.}
+00038 \textcolor{comment}{}
+00039 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00040 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00041 \textcolor{comment}{specific prior written permission.}
+00042 \textcolor{comment}{}
+00043 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00044 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00045 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00046 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00047 \textcolor{comment}{parties intellectual property rights.}
+00048 \textcolor{comment}{}
+00049 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00050 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00051 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00052 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00053 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00054 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00055 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00056 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00057 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00058 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00059 \textcolor{comment}{*/}
+00060 
+00061 \textcolor{preprocessor}{#include <cstdlib>}
+00062 \textcolor{preprocessor}{#include <cstdio>}
+00063 \textcolor{preprocessor}{#include <cstring>}
+00064 \textcolor{preprocessor}{#include <cmath>}
+00065 
+00066 \textcolor{preprocessor}{#include <iomanip>}
+00067 \textcolor{preprocessor}{#include <iostream>}
+00068 
+00069 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
+00070 \textcolor{preprocessor}{#include "\hyperlink{mtk__matrix_8h}{mtk\_matrix.h}"}
+00071 
+\hypertarget{mtk__matrix_8cc_source_l00072}{}\hyperlink{classmtk_1_1Matrix_a04b8575764d3a649f21950c794f4cc02}{00072} \hyperlink{classmtk_1_1Matrix_a04b8575764d3a649f21950c794f4cc02}{mtk::Matrix::Matrix}():
+00073   storage\_(mtk::\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{DENSE}),
+00074   ordering\_(mtk::\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{ROW\_MAJOR}),
+00075   num\_rows\_(),
+00076   num\_cols\_(),
+00077   num\_values\_(),
+00078   ld\_(),
+00079   num\_zero\_(),
+00080   num\_non\_zero\_(),
+00081   num\_null\_(),
+00082   num\_non\_null\_(),
+00083   kl\_(),
+00084   ku\_(),
+00085   bandwidth\_(),
+00086   abs\_density\_(),
+00087   rel\_density\_(),
+00088   abs\_sparsity\_(),
+00089   rel\_sparsity\_() \{\}
+00090 
+\hypertarget{mtk__matrix_8cc_source_l00091}{}\hyperlink{classmtk_1_1Matrix_ae532878cf9b34114f12a1f06701482aa}{00091} \hyperlink{classmtk_1_1Matrix_a04b8575764d3a649f21950c794f4cc02}{mtk::Matrix::Matrix}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Matrix}{Matrix} &in):
+00092   storage\_(in.storage\_),
+00093   ordering\_(in.ordering\_),
+00094   num\_rows\_(in.num\_rows\_),
+00095   num\_cols\_(in.num\_cols\_),
+00096   num\_values\_(in.num\_values\_),
+00097   ld\_(in.ld\_),
+00098   num\_zero\_(in.num\_zero\_),
+00099   num\_non\_zero\_(in.num\_non\_zero\_),
+00100   num\_null\_(in.num\_null\_),
+00101   num\_non\_null\_(in.num\_non\_null\_),
+00102   kl\_(in.kl\_),
+00103   ku\_(in.ku\_),
+00104   bandwidth\_(in.bandwidth\_),
+00105   abs\_density\_(in.abs\_density\_),
+00106   rel\_density\_(in.rel\_density\_),
+00107   abs\_sparsity\_(in.abs\_sparsity\_),
+00108   rel\_sparsity\_(in.rel\_sparsity\_) \{\}
+00109 
+\hypertarget{mtk__matrix_8cc_source_l00110}{}\hyperlink{classmtk_1_1Matrix_a7dcc92fcf67904eaf17bb7b9d809f274}{00110} \hyperlink{classmtk_1_1Matrix_a7dcc92fcf67904eaf17bb7b9d809f274}{mtk::Matrix::~Matrix}() \{\}
+00111 
+\hypertarget{mtk__matrix_8cc_source_l00112}{}\hyperlink{classmtk_1_1Matrix_a21893fc643eebadd9757c8995cf44dd3}{00112} \hyperlink{group__c02-enums_ga25b67ec6a2afeee69f9bb196a9c66619}{mtk::MatrixStorage} \hyperlink{classmtk_1_1Matrix_a21893fc643eebadd9757c8995cf44dd3}{mtk::Matrix::storage}()\textcolor{keyword}{ const }\{
+00113 
+00114   \textcolor{keywordflow}{return} storage\_;
+00115 \}
+00116 
+\hypertarget{mtk__matrix_8cc_source_l00117}{}\hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{00117} \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{mtk::MatrixOrdering} \hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{mtk::Matrix::ordering}()\textcolor{keyword}{ const }\{
+00118 
+00119   \textcolor{keywordflow}{return} ordering\_;
+00120 \}
+00121 
+\hypertarget{mtk__matrix_8cc_source_l00122}{}\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{00122} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{mtk::Matrix::num\_rows}()\textcolor{keyword}{ const }\{
+00123 
+00124   \textcolor{keywordflow}{return} num\_rows\_;
+00125 \}
+00126 
+\hypertarget{mtk__matrix_8cc_source_l00127}{}\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{00127} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{mtk::Matrix::num\_cols}()\textcolor{keyword}{ const }\{
+00128 
+00129   \textcolor{keywordflow}{return} num\_cols\_;
+00130 \}
+00131 
+\hypertarget{mtk__matrix_8cc_source_l00132}{}\hyperlink{classmtk_1_1Matrix_adbe04990142e2fe76789fa53cfa3d465}{00132} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_adbe04990142e2fe76789fa53cfa3d465}{mtk::Matrix::num\_values}()\textcolor{keyword}{ const }\{
+00133 
+00134   \textcolor{keywordflow}{return} num\_values\_;
+00135 \}
+00136 
+\hypertarget{mtk__matrix_8cc_source_l00137}{}\hyperlink{classmtk_1_1Matrix_acdaa5281bd8f86ea4abf20292d9fd20f}{00137} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_acdaa5281bd8f86ea4abf20292d9fd20f}{mtk::Matrix::ld}()\textcolor{keyword}{ const }\{
+00138 
+00139   \textcolor{keywordflow}{return} ld\_;
+00140 \}
+00141 
+\hypertarget{mtk__matrix_8cc_source_l00142}{}\hyperlink{classmtk_1_1Matrix_a78e1f8449a21db53750e083c6802a993}{00142} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a78e1f8449a21db53750e083c6802a993}{mtk::Matrix::num\_zero}()\textcolor{keyword}{ const }\{
+00143 
+00144   \textcolor{keywordflow}{return} num\_zero\_;
+00145 \}
+00146 
+\hypertarget{mtk__matrix_8cc_source_l00147}{}\hyperlink{classmtk_1_1Matrix_a221ba0082ef5191175db743d13388521}{00147} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a221ba0082ef5191175db743d13388521}{mtk::Matrix::num\_non\_zero}()\textcolor{keyword}{ const }\{
+00148 
+00149   \textcolor{keywordflow}{return} num\_non\_zero\_;
+00150 \}
+00151 
+\hypertarget{mtk__matrix_8cc_source_l00152}{}\hyperlink{classmtk_1_1Matrix_a5bf58512ee91d6ab80eb94541072a9cf}{00152} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a5bf58512ee91d6ab80eb94541072a9cf}{mtk::Matrix::num\_null}()\textcolor{keyword}{ const }\{
+00153 
+00154   \textcolor{keywordflow}{return} num\_null\_;
+00155 \}
+00156 
+\hypertarget{mtk__matrix_8cc_source_l00157}{}\hyperlink{classmtk_1_1Matrix_ae81eaf61b6633ccd054c96344aa82a48}{00157} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_ae81eaf61b6633ccd054c96344aa82a48}{mtk::Matrix::num\_non\_null}()\textcolor{keyword}{ const }\{
+00158 
+00159   \textcolor{keywordflow}{return} num\_non\_null\_;
+00160 \}
+00161 
+\hypertarget{mtk__matrix_8cc_source_l00162}{}\hyperlink{classmtk_1_1Matrix_ae271cb0b61c1ef04d57319d46db90ebf}{00162} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_ae271cb0b61c1ef04d57319d46db90ebf}{mtk::Matrix::kl}()\textcolor{keyword}{ const }\{
+00163 
+00164   \textcolor{keywordflow}{return} kl\_;
+00165 \}
+00166 
+\hypertarget{mtk__matrix_8cc_source_l00167}{}\hyperlink{classmtk_1_1Matrix_ab12a5b97320ca40fbfab970c005ce916}{00167} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_ab12a5b97320ca40fbfab970c005ce916}{mtk::Matrix::ku}()\textcolor{keyword}{ const }\{
+00168 
+00169   \textcolor{keywordflow}{return} ku\_;
+00170 \}
+00171 
+\hypertarget{mtk__matrix_8cc_source_l00172}{}\hyperlink{classmtk_1_1Matrix_a27d963e9cb68fa8f04989ad89a9b3f0a}{00172} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a27d963e9cb68fa8f04989ad89a9b3f0a}{mtk::Matrix::bandwidth}()\textcolor{keyword}{ const }\{
+00173 
+00174   \textcolor{keywordflow}{return} bandwidth\_;
+00175 \}
+00176 
+\hypertarget{mtk__matrix_8cc_source_l00177}{}\hyperlink{classmtk_1_1Matrix_a98591f1f394ec84599fb15d9ff53db1a}{00177} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1Matrix_a98591f1f394ec84599fb15d9ff53db1a}{mtk::Matrix::rel\_density}()\textcolor{keyword}{ const }\{
+00178 
+00179   \textcolor{keywordflow}{return} rel\_density\_;
+00180 \}
+00181 
+\hypertarget{mtk__matrix_8cc_source_l00182}{}\hyperlink{classmtk_1_1Matrix_a20463698d90ddf3ae7d211a2cc441a62}{00182} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1Matrix_a20463698d90ddf3ae7d211a2cc441a62}{mtk::Matrix::abs\_sparsity}()\textcolor{keyword}{ const }\{
+00183 
+00184   \textcolor{keywordflow}{return} abs\_sparsity\_;
+00185 \}
+00186 
+\hypertarget{mtk__matrix_8cc_source_l00187}{}\hyperlink{classmtk_1_1Matrix_ad7e4650598ce4d99a130f64892fc33b9}{00187} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1Matrix_ad7e4650598ce4d99a130f64892fc33b9}{mtk::Matrix::rel\_sparsity}()\textcolor{keyword}{ const }\{
+00188 
+00189   \textcolor{keywordflow}{return} rel\_sparsity\_;
+00190 \}
+00191 
+\hypertarget{mtk__matrix_8cc_source_l00192}{}\hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{00192} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{mtk::Matrix::set\_storage}(\textcolor{keyword}{const} \hyperlink{group__c02-enums_ga25b67ec6a2afeee69f9bb196a9c66619}{mtk::MatrixStorage} &ss) \{
+00193 
+00194 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00195 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(!(ss == \hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE} ||
+00196                         ss == \hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619aef1d4271d5005282978a3a40a8a52c9b}{mtk::BANDED} ||
+00197                         ss == \hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a87619d374775e937bca967402b988b8b}{mtk::CRS}),
+00198                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00199 \textcolor{preprocessor}{  #endif}
+00200 \textcolor{preprocessor}{}
+00201   storage\_ = ss;
+00202 \}
+00203 
+\hypertarget{mtk__matrix_8cc_source_l00204}{}\hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{00204} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{mtk::Matrix::set\_ordering}(\textcolor{keyword}{const} 
+      \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{mtk::MatrixOrdering} &oo) \{
+00205 
+00206 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00207 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(!(oo == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR} || oo == 
+      \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}),
+00208                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00209 \textcolor{preprocessor}{  #endif}
+00210 \textcolor{preprocessor}{}
+00211   ordering\_ = oo;
+00212 
+00213   ld\_ = (ordering\_ == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR})?
+00214     std::max(1,num\_cols\_): std::max(1,num\_rows\_);
+00215 \}
+00216 
+\hypertarget{mtk__matrix_8cc_source_l00217}{}\hyperlink{classmtk_1_1Matrix_a242fedf2da10a3e5c14f63c2bc60beae}{00217} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a242fedf2da10a3e5c14f63c2bc60beae}{mtk::Matrix::set\_num\_rows}(\textcolor{keywordtype}{int} in) \{
+00218 
+00219 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00220 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(in < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00221 \textcolor{preprocessor}{  #endif}
+00222 \textcolor{preprocessor}{}
+00223   num\_rows\_ = in;
+00224   num\_values\_ = num\_rows\_*num\_cols\_;
+00225   ld\_ = (ordering\_ == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR})?
+00226     std::max(1,num\_cols\_): std::max(1,num\_rows\_);
+00227 \}
+00228 
+\hypertarget{mtk__matrix_8cc_source_l00229}{}\hyperlink{classmtk_1_1Matrix_a312883d34f2e0daf5db7432ee2c4ed51}{00229} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a312883d34f2e0daf5db7432ee2c4ed51}{mtk::Matrix::set\_num\_cols}(\textcolor{keywordtype}{int} in) \{
+00230 
+00231 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00232 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(in < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00233 \textcolor{preprocessor}{  #endif}
+00234 \textcolor{preprocessor}{}
+00235   num\_cols\_ = in;
+00236   num\_values\_ = num\_rows\_*num\_cols\_;
+00237   ld\_ = (ordering\_ == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR})?
+00238     std::max(1,num\_cols\_): std::max(1,num\_rows\_);
+00239 \}
+00240 
+\hypertarget{mtk__matrix_8cc_source_l00241}{}\hyperlink{classmtk_1_1Matrix_ae529100c5c280088e9acf8e8f7994f73}{00241} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_ae529100c5c280088e9acf8e8f7994f73}{mtk::Matrix::set\_num\_zero}(\textcolor{keywordtype}{int} in) \{
+00242 
+00243 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00244 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(in < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00245 \textcolor{preprocessor}{  #endif}
+00246 \textcolor{preprocessor}{}
+00247   num\_zero\_ = in;
+00248   num\_non\_zero\_ = num\_values\_ - num\_zero\_;
+00249 
+00251   rel\_density\_ = (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_non\_zero\_/num\_values\_;
+00252   rel\_sparsity\_ = 1.0 - rel\_density\_;
+00253 \}
+00254 
+\hypertarget{mtk__matrix_8cc_source_l00255}{}\hyperlink{classmtk_1_1Matrix_a66c2c1c127f4efefc4a407e9552e928d}{00255} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a66c2c1c127f4efefc4a407e9552e928d}{mtk::Matrix::set\_num\_null}(\textcolor{keywordtype}{int} in) \{
+00256 
+00257 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00258 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(in < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00259 \textcolor{preprocessor}{  #endif}
+00260 \textcolor{preprocessor}{}
+00261   num\_null\_ = in;
+00262   num\_non\_null\_ = num\_values\_ - num\_null\_;
+00263 
+00265   abs\_density\_ = (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_non\_null\_/num\_values\_;
+00266   abs\_sparsity\_ = 1.0 - abs\_density\_;
+00267 \}
+00268 
+\hypertarget{mtk__matrix_8cc_source_l00269}{}\hyperlink{classmtk_1_1Matrix_a2e7c4b84d0cbf9b0122b5dc906ad1eae}{00269} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a2e7c4b84d0cbf9b0122b5dc906ad1eae}{mtk::Matrix::IncreaseNumZero}() \{
+00270 
+00272 
+00273   num\_zero\_++;
+00274   num\_non\_zero\_ = num\_values\_ - num\_zero\_;
+00275   rel\_density\_ = (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_non\_zero\_/num\_values\_;
+00276   rel\_sparsity\_ = 1.0 - rel\_density\_;
+00277 \}
+00278 
+\hypertarget{mtk__matrix_8cc_source_l00279}{}\hyperlink{classmtk_1_1Matrix_ac96dd5f31ebcd4388352577487cd6f11}{00279} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_ac96dd5f31ebcd4388352577487cd6f11}{mtk::Matrix::IncreaseNumNull}() \{
+00280 
+00282 
+00283   num\_null\_++;
+00284   num\_non\_null\_ = num\_values\_ - num\_null\_;
+00285   abs\_density\_ = (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_non\_null\_/num\_values\_;
+00286   abs\_sparsity\_ = 1.0 - abs\_density\_;
+00287 \}
+\end{DoxyCode}

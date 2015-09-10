@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="classmtk_1_1GLPKAdapter" kind="class" prot="public">
+    <compoundname>mtk::GLPKAdapter</compoundname>
+    <includes refid="mtk__glpk__adapter_8h" local="no">mtk_glpk_adapter.h</includes>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classmtk_1_1GLPKAdapter_1a834480aca83e3c0d09fdab7fdb7e8a3f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref></type>
+        <definition>mtk::Real mtk::GLPKAdapter::SolveSimplexAndCompare</definition>
+        <argsstring>(mtk::Real *A, int nrows, int ncols, int kk, mtk::Real *hh, mtk::Real *qq, int robjective, mtk::Real mimetic_tol, int copy)</argsstring>
+        <name>SolveSimplexAndCompare</name>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref> *</type>
+          <declname>A</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>nrows</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>ncols</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>kk</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref> *</type>
+          <declname>hh</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref> *</type>
+          <declname>qq</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>robjective</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref></type>
+          <declname>mimetic_tol</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>copy</declname>
+        </param>
+        <briefdescription>
+<para>Solves a CLO problem and compares the solution to a reference solution. </para>        </briefdescription>
+        <detaileddescription>
+<para>This routine is the pivot of the CBSA. It solves a Constrained Linear Optimization (CLO) problem, and it compares the attained solution to a given reference solution. This comparison is done computing the norm-2 relative error.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">alpha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First scalar. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">AA</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Given matrix. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">xx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First vector. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">beta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second scalar. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">beta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second scalar. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">yy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second vector (output). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">xx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First vector. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">beta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second scalar. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">beta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second scalar. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para><simplesect kind="warning"><para>GLPK indexes in [1,n], so we must get the extra space needed.</para></simplesect>
+<orderedlist>
+<listitem><para>Memory allocation.</para></listitem><listitem><para>Fill the problem.</para></listitem><listitem><para>Copy the row to the vector objective.</para></listitem><listitem><para>Forming the RHS.</para></listitem><listitem><para>Setting up the objective function.</para></listitem><listitem><para>Setting up constraints.</para></listitem><listitem><para>Copy the matrix minus the row objective to the glpk problem.</para></listitem><listitem><para>Solve problem. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_glpk_adapter.h" line="121" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_glpk_adapter.cc" bodystart="78" bodyend="331"/>
+        <references refid="group__c01-roots_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__roots_8h" startline="107">mtk::kZero</references>
+        <references refid="classmtk_1_1BLASAdapter_1ab92440888b730863244c5d9479c11aca" compoundref="mtk__blas__adapter_8cc" startline="276" endline="285">mtk::BLASAdapter::RealNRM2</references>
+        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="882" endline="1205">mtk::Div1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="900" endline="1236">mtk::Grad1D::ComputeWeights</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Adapter class for the GLPK API. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class contains a collection of static classes, that posses direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the GLPK.</para><para>The <bold>GLPK (GNU Linear Programming Kit)</bold> package is intended for solving large-scale linear programming (LP), mixed integer programming (MIP), and other related problems. It is a set of routines written in ANSI C and organized in the form of a callable library.</para><para><simplesect kind="warning"><para>We use the GLPK temporarily in order to test the CBSA, but it will be removed due to licensing issues.</para></simplesect>
+<simplesect kind="see"><para><ulink url="http://www.gnu.org/software/glpk/">http://www.gnu.org/software/glpk/</ulink></para></simplesect>
+<xrefsect id="todo_1_todo000004"><xreftitle>Todo</xreftitle><xrefdescription><para>Rescind from the GLPK as the numerical core for CLO problems. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="43">
+        <label>mtk::GLPKAdapter</label>
+        <link refid="classmtk_1_1GLPKAdapter"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_glpk_adapter.h" line="101" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_glpk_adapter.h" bodystart="101" bodyend="130"/>
+    <listofallmembers>
+      <member refid="classmtk_1_1GLPKAdapter_1a834480aca83e3c0d09fdab7fdb7e8a3f" prot="public" virt="non-virtual"><scope>mtk::GLPKAdapter</scope><name>SolveSimplexAndCompare</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

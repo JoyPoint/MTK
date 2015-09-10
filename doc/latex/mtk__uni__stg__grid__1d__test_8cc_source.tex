@@ -1,0 +1,168 @@
+\hypertarget{mtk__uni__stg__grid__1d__test_8cc}{\section{mtk\-\_\-uni\-\_\-stg\-\_\-grid\-\_\-1d\-\_\-test.\-cc}
+\label{mtk__uni__stg__grid__1d__test_8cc}\index{tests/mtk\-\_\-uni\-\_\-stg\-\_\-grid\-\_\-1d\-\_\-test.\-cc@{tests/mtk\-\_\-uni\-\_\-stg\-\_\-grid\-\_\-1d\-\_\-test.\-cc}}
+}
+
+\begin{DoxyCode}
+00001 
+00008 \textcolor{comment}{/*}
+00009 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00010 \textcolor{comment}{University. All rights reserved.}
+00011 \textcolor{comment}{}
+00012 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00013 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00014 \textcolor{comment}{}
+00015 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00016 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00017 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
+00018 \textcolor{comment}{}
+00019 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00020 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00021 \textcolor{comment}{}
+00022 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
+00023 \textcolor{comment}{list of conditions and the following disclaimer.}
+00024 \textcolor{comment}{}
+00025 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
+00026 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00027 \textcolor{comment}{other materials provided with the distribution.}
+00028 \textcolor{comment}{}
+00029 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
+00030 \textcolor{comment}{prior written permission from the the copyright holders.}
+00031 \textcolor{comment}{}
+00032 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00033 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00034 \textcolor{comment}{specific prior written permission.}
+00035 \textcolor{comment}{}
+00036 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00037 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00038 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00039 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00040 \textcolor{comment}{parties intellectual property rights.}
+00041 \textcolor{comment}{}
+00042 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00043 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00044 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00045 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00046 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00047 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00048 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00049 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00050 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00051 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00052 \textcolor{comment}{*/}
+00053 
+00054 \textcolor{preprocessor}{#if \_\_cplusplus == 201103L}
+00055 \textcolor{preprocessor}{}
+00056 \textcolor{preprocessor}{#include <iostream>}
+00057 \textcolor{preprocessor}{#include <ctime>}
+00058 
+00059 \textcolor{preprocessor}{#include "\hyperlink{mtk_8h}{mtk.h}"}
+00060 
+00061 \textcolor{keywordtype}{void} Test1() \{
+00062 
+00063   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(1);
+00064 
+00065   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} gg;
+00066 
+00067   std::cout << gg << std::endl;
+00068 
+00069   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(1);
+00070 \}
+00071 
+00072 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} ScalarFieldOne(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx) \{
+00073 
+00074   \textcolor{keywordflow}{return} 2.0*xx;
+00075 \}
+00076 
+00077 \textcolor{keywordtype}{void} Test2() \{
+00078 
+00079   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(2);
+00080 
+00081   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aa = 0.0;
+00082   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} bb = 1.0;
+00083 
+00084   \textcolor{keywordtype}{int} nn = 5;
+00085 
+00086   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} gg(aa, bb, nn);
+00087 
+00088   std::cout << gg << std::endl;
+00089 
+00090   gg.BindScalarField(ScalarFieldOne);
+00091 
+00092   std::cout << gg << std::endl;
+00093 
+00094   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(2);
+00095 \}
+00096 
+00097 \textcolor{keywordtype}{void} Test3() \{
+00098 
+00099   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(3);
+00100 
+00101   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aa = 0.0;
+00102   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} bb = 1.0;
+00103 
+00104   \textcolor{keywordtype}{int} nn = 5;
+00105 
+00106   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} gg(aa, bb, nn);
+00107 
+00108   std::cout << gg << std::endl;
+00109 
+00110   gg.BindScalarField(ScalarFieldOne);
+00111 
+00112   std::cout << gg << std::endl;
+00113 
+00114   \textcolor{keywordflow}{if}(!gg.WriteToFile(\textcolor{stringliteral}{"mtk\_uni\_stg\_grid\_1d\_test\_03.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"u(x)"})) \{
+00115     std::cerr << \textcolor{stringliteral}{"Error writing to file."} << std::cerr;
+00116   \}
+00117 
+00118   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(3);
+00119 \}
+00120 
+00121 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} VectorFieldXComponentOne(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx) \{
+00122 
+00123   \textcolor{keywordflow}{return} xx*xx;
+00124 \}
+00125 
+00126 \textcolor{keywordtype}{void} Test4() \{
+00127 
+00128   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(4);
+00129 
+00130   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aa = 0.0;
+00131   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} bb = 1.0;
+00132 
+00133   \textcolor{keywordtype}{int} nn = 20;
+00134 
+00135   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} gg(aa, bb, nn, \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a3d8cb27a993651a74d67fb8c98ae91b2}{mtk::VECTOR});
+00136 
+00137   std::cout << gg << std::endl;
+00138 
+00139   gg.BindVectorField(VectorFieldXComponentOne);
+00140 
+00141   std::cout << gg << std::endl;
+00142 
+00143   \textcolor{keywordflow}{if}(!gg.WriteToFile(\textcolor{stringliteral}{"mtk\_uni\_stg\_grid\_1d\_test\_04.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"v(x)"})) \{
+00144     std::cerr << \textcolor{stringliteral}{"Error writing to file."} << std::cerr;
+00145   \}
+00146 
+00147   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(4);
+00148 \}
+00149 
+00150 \textcolor{keywordtype}{int} \hyperlink{mtk__uni__stg__grid__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00151 
+00152   std::cout << \textcolor{stringliteral}{"Testing mtk::UniStgGrid1D class."} << std::endl;
+00153 
+00154   Test1();
+00155   Test2();
+00156   Test3();
+00157   Test4();
+00158 \}
+00159 
+00160 \textcolor{preprocessor}{#else}
+00161 \textcolor{preprocessor}{}\textcolor{preprocessor}{#include <iostream>}
+00162 \textcolor{keyword}{using} std::cout;
+00163 \textcolor{keyword}{using} std::endl;
+\hypertarget{mtk__uni__stg__grid__1d__test_8cc_source_l00164}{}\hyperlink{mtk__uni__stg__grid__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00164} \textcolor{keywordtype}{int} \hyperlink{mtk__uni__stg__grid__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00165   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
+00166   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
+00167 \}
+00168 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

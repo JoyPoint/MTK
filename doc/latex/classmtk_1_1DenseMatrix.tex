@@ -1,0 +1,681 @@
+\hypertarget{classmtk_1_1DenseMatrix}{\section{mtk\-:\-:Dense\-Matrix Class Reference}
+\label{classmtk_1_1DenseMatrix}\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}}
+}
+
+
+Defines a common dense matrix, using a 1\-D array.  
+
+
+
+
+{\ttfamily \#include $<$mtk\-\_\-dense\-\_\-matrix.\-h$>$}
+
+
+
+Collaboration diagram for mtk\-:\-:Dense\-Matrix\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classmtk_1_1DenseMatrix__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmtk_1_1DenseMatrix}{Dense\-Matrix} \& \hyperlink{classmtk_1_1DenseMatrix_a0d27dc7c4d2c49f391017e392345ced0}{operator=} (const \hyperlink{classmtk_1_1DenseMatrix}{Dense\-Matrix} \&in)
+\begin{DoxyCompactList}\small\item\em Overloaded assignment operator. \end{DoxyCompactList}\item 
+\hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{Dense\-Matrix} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{classmtk_1_1DenseMatrix_a90102d605a668bf7ecf0d766cc4c10db}{Dense\-Matrix} (const \hyperlink{classmtk_1_1DenseMatrix}{Dense\-Matrix} \&in)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\hyperlink{classmtk_1_1DenseMatrix_abe26c623467fc1b293cf4f22a3a47cc8}{Dense\-Matrix} (const int \&\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\-\_\-rows}, const int \&\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\-\_\-cols})
+\begin{DoxyCompactList}\small\item\em Construct a dense matrix based on the given dimensions. \end{DoxyCompactList}\item 
+\hyperlink{classmtk_1_1DenseMatrix_a4ef0dec1b5558fcf00719bfac059ec68}{Dense\-Matrix} (const int \&rank, const bool \&padded, const bool \&transpose)
+\begin{DoxyCompactList}\small\item\em Construct a zero-\/rows-\/padded identity matrix. \end{DoxyCompactList}\item 
+\hyperlink{classmtk_1_1DenseMatrix_a4a85c10adb8a1d695c992eb5fd3e3dac}{Dense\-Matrix} (const \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$gen, const int \&gen\-\_\-length, const int \&pro\-\_\-length, const bool \&transpose)
+\begin{DoxyCompactList}\small\item\em Construct a dense Vandermonde matrix. \end{DoxyCompactList}\item 
+\hyperlink{classmtk_1_1DenseMatrix_a8d4a0df33bd4e4edf5d2fe5539885b85}{$\sim$\-Dense\-Matrix} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\hyperlink{classmtk_1_1Matrix}{Matrix} \hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\-\_\-properties} () const 
+\begin{DoxyCompactList}\small\item\em Provides access to the matrix data. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\-\_\-rows} () const 
+\begin{DoxyCompactList}\small\item\em Gets the number of rows. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\-\_\-cols} () const 
+\begin{DoxyCompactList}\small\item\em Gets the number of columns. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$ \hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data} () const 
+\begin{DoxyCompactList}\small\item\em Provides access to the matrix value array. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1DenseMatrix_aacae136ae446cad8f0d81476e83efb39}{Set\-Ordering} (\hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{mtk\-::\-Matrix\-Ordering} oo)
+\begin{DoxyCompactList}\small\item\em Sets the ordering of the matrix. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1DenseMatrix_a87fb785713c04b13767947cc3325ce7c}{Get\-Value} (const int \&row\-\_\-coord, const int \&col\-\_\-coord) const 
+\begin{DoxyCompactList}\small\item\em Gets a value on the given coordinates. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{Set\-Value} (const int \&row\-\_\-coord, const int \&col\-\_\-coord, const \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&val)
+\begin{DoxyCompactList}\small\item\em Sets a value on the given coordinates. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1DenseMatrix_a71d9c07ca66e88d97d1fd5012f43138b}{Transpose} ()
+\begin{DoxyCompactList}\small\item\em Transpose this matrix. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{Order\-Row\-Major} ()
+\begin{DoxyCompactList}\small\item\em Make the matrix row-\/wise ordered. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1DenseMatrix_a59b9bea24acf39dca64e8549b3527463}{Order\-Col\-Major} ()
+\begin{DoxyCompactList}\small\item\em Make the matrix column-\/wise ordered. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{classmtk_1_1DenseMatrix}{Dense\-Matrix} \hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{Kron} (const \hyperlink{classmtk_1_1DenseMatrix}{Dense\-Matrix} \&aa, const \hyperlink{classmtk_1_1DenseMatrix}{Dense\-Matrix} \&bb)
+\begin{DoxyCompactList}\small\item\em Construct a dense matrix based on the Kronecker product of arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmtk_1_1Matrix}{Matrix} \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\-\_\-properties\-\_\-}
+\begin{DoxyCompactList}\small\item\em Data related to the matrix nature. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$ \hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\-\_\-}
+\begin{DoxyCompactList}\small\item\em Array holding the data in contiguouos position in memory. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+std\-::ostream \& \hyperlink{classmtk_1_1DenseMatrix_adbcc850ef373550f634f563573a31d28}{operator$<$$<$} (std\-::ostream \&stream, \hyperlink{classmtk_1_1DenseMatrix}{Dense\-Matrix} \&in)
+\begin{DoxyCompactList}\small\item\em Prints the matrix as a block of numbers (standard way). \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+For developing purposes, it is better to have a not-\/so-\/intrincated data structure implementing matrices. This is the purpose of this class\-: to be used for prototypes of new code for small test cases. In every other instance, this should be replaced by the most appropriate sparse matrix. 
+
+Definition at line \hyperlink{mtk__dense__matrix_8h_source_l00098}{98} of file \hyperlink{mtk__dense__matrix_8h_source}{mtk\-\_\-dense\-\_\-matrix.\-h}.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!Dense\-Matrix@{Dense\-Matrix}}
+\index{Dense\-Matrix@{Dense\-Matrix}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{Dense\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}mtk\-::\-Dense\-Matrix\-::\-Dense\-Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00138}{138} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_a90102d605a668bf7ecf0d766cc4c10db}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!Dense\-Matrix@{Dense\-Matrix}}
+\index{Dense\-Matrix@{Dense\-Matrix}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{Dense\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}mtk\-::\-Dense\-Matrix\-::\-Dense\-Matrix (
+\begin{DoxyParamCaption}
+\item[{const {\bf Dense\-Matrix} \&}]{in}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1DenseMatrix_a90102d605a668bf7ecf0d766cc4c10db}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em in} & Given matrix. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00144}{144} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_a90102d605a668bf7ecf0d766cc4c10db_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_abe26c623467fc1b293cf4f22a3a47cc8}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!Dense\-Matrix@{Dense\-Matrix}}
+\index{Dense\-Matrix@{Dense\-Matrix}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{Dense\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}mtk\-::\-Dense\-Matrix\-::\-Dense\-Matrix (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{num\-\_\-rows, }
+\item[{const int \&}]{num\-\_\-cols}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1DenseMatrix_abe26c623467fc1b293cf4f22a3a47cc8}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em num\-\_\-rows} & Number of rows of the required matrix. \\
+\hline
+\mbox{\tt in}  & {\em num\-\_\-cols} & Number of rows of the required matrix.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::bad\-\_\-alloc} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00177}{177} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_abe26c623467fc1b293cf4f22a3a47cc8_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_a4ef0dec1b5558fcf00719bfac059ec68}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!Dense\-Matrix@{Dense\-Matrix}}
+\index{Dense\-Matrix@{Dense\-Matrix}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{Dense\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}mtk\-::\-Dense\-Matrix\-::\-Dense\-Matrix (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{rank, }
+\item[{const bool \&}]{padded, }
+\item[{const bool \&}]{transpose}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1DenseMatrix_a4ef0dec1b5558fcf00719bfac059ec68}
+Used in the construction of the mimetic operators.
+
+Def$\ast$$\ast$. A {\bfseries padded matrix} is a matrix with its first and last rows initialized to only zero values\-:
+
+\[ \bar{\mathbf{I}} = \left(\begin{array}{ccccc} 0 & 0 & 0 & \dots & 0 \\ 1 & 0 & 0 & \dots & 0 \\ 0 & 1 & 0 & \dots & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & 0 & \dots & 1 \\ 0 & 0 & 0 & \dots & 0 \end{array}\right) \]
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em rank} & Rank or number of rows/cols in square matrix. \\
+\hline
+\mbox{\tt in}  & {\em padded} & Should it be padded? \\
+\hline
+\mbox{\tt in}  & {\em transpose} & Should I return the transpose of the requested matrix?\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::bad\-\_\-alloc} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00199}{199} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_a4ef0dec1b5558fcf00719bfac059ec68_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_a4a85c10adb8a1d695c992eb5fd3e3dac}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!Dense\-Matrix@{Dense\-Matrix}}
+\index{Dense\-Matrix@{Dense\-Matrix}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{Dense\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}mtk\-::\-Dense\-Matrix\-::\-Dense\-Matrix (
+\begin{DoxyParamCaption}
+\item[{const {\bf Real} $\ast$}]{gen, }
+\item[{const int \&}]{gen\-\_\-length, }
+\item[{const int \&}]{pro\-\_\-length, }
+\item[{const bool \&}]{transpose}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1DenseMatrix_a4a85c10adb8a1d695c992eb5fd3e3dac}
+Def$\ast$$\ast$. In linear algebra, a {\bfseries Vandermonde matrix} is a matrix with terms of a geometric progression in each row. This progression uses the terms of a given {\bfseries generator vector}\-:
+
+\[ \mathbf{V} = \left(\begin{array}{ccccc} 1 & \alpha_1 & \alpha_1^2 & \dots & \alpha_1^{n-1}\\ 1 & \alpha_2 & \alpha_2^2 & \dots & \alpha_2^{n-1}\\ 1 & \alpha_3 & \alpha_3^2 & \dots & \alpha_3^{n-1}\\ \vdots & \vdots & \vdots & \ddots &\vdots \\ 1 & \alpha_m & \alpha_m^2 & \dots & \alpha_m^{n-1} \end{array}\right) \]
+
+This constructor generates a Vandermonde matrix, as defined above.
+
+Obs$\ast$$\ast$. It in important to understand that the generator vectors to be used are nothing but a very particular instance of a grid. These are little chunks, little samples, if you will, of a grid which is rectangular and uniform. So the selected samples, on the \hyperlink{classmtk_1_1Div1D}{mtk\-::\-Div1\-D} and \hyperlink{classmtk_1_1Grad1D}{mtk\-::\-Grad1\-D}, basically represent the entire space, the entire grid. This is why nor the C\-R\-S nor the C\-B\-S algorithms may work for irregular geometries, such as curvilinear grids.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em gen} & Given generator vector. \\
+\hline
+\mbox{\tt in}  & {\em gen\-\_\-length} & Length generator vector. \\
+\hline
+\mbox{\tt in}  & {\em pro\-\_\-length} & Length the progression. \\
+\hline
+\mbox{\tt in}  & {\em transpose} & Should the transpose be created instead?\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::bad\-\_\-alloc} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00237}{237} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_a4a85c10adb8a1d695c992eb5fd3e3dac_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_a8d4a0df33bd4e4edf5d2fe5539885b85}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!$\sim$\-Dense\-Matrix@{$\sim$\-Dense\-Matrix}}
+\index{$\sim$\-Dense\-Matrix@{$\sim$\-Dense\-Matrix}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{$\sim$\-Dense\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}mtk\-::\-Dense\-Matrix\-::$\sim$\-Dense\-Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1DenseMatrix_a8d4a0df33bd4e4edf5d2fe5539885b85}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00285}{285} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!data@{data}}
+\index{data@{data}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\-::\-Real} $\ast$ mtk\-::\-Dense\-Matrix\-::data (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}
+\begin{DoxyReturn}{Returns}
+Pointer to an array of \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\-::\-Real}. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00316}{316} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_a87fb785713c04b13767947cc3325ce7c}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!Get\-Value@{Get\-Value}}
+\index{Get\-Value@{Get\-Value}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{Get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\-::\-Real} mtk\-::\-Dense\-Matrix\-::\-Get\-Value (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{row\-\_\-coord, }
+\item[{const int \&}]{col\-\_\-coord}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1DenseMatrix_a87fb785713c04b13767947cc3325ce7c}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em row\-\_\-coord} & Row coordinate. \\
+\hline
+\mbox{\tt in}  & {\em col\-\_\-coord} & Column coordinate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The required value at the specified coordinates. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00321}{321} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_a87fb785713c04b13767947cc3325ce7c_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_a87fb785713c04b13767947cc3325ce7c_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!Kron@{Kron}}
+\index{Kron@{Kron}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{Kron}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\-::\-Dense\-Matrix} mtk\-::\-Dense\-Matrix\-::\-Kron (
+\begin{DoxyParamCaption}
+\item[{const {\bf Dense\-Matrix} \&}]{aa, }
+\item[{const {\bf Dense\-Matrix} \&}]{bb}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em aa} & First matrix. \\
+\hline
+\mbox{\tt in}  & {\em bb} & Second matrix.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\-::bad\-\_\-alloc} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00463}{463} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!matrix\-\_\-properties@{matrix\-\_\-properties}}
+\index{matrix\-\_\-properties@{matrix\-\_\-properties}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{matrix\-\_\-properties}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\-::\-Matrix} mtk\-::\-Dense\-Matrix\-::matrix\-\_\-properties (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}
+\begin{DoxyReturn}{Returns}
+Pointer to a \hyperlink{classmtk_1_1Matrix}{Matrix}. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00291}{291} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!num\-\_\-cols@{num\-\_\-cols}}
+\index{num\-\_\-cols@{num\-\_\-cols}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{num\-\_\-cols}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Dense\-Matrix\-::num\-\_\-cols (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}
+\begin{DoxyReturn}{Returns}
+Number of columns of the matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00311}{311} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!num\-\_\-rows@{num\-\_\-rows}}
+\index{num\-\_\-rows@{num\-\_\-rows}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{num\-\_\-rows}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Dense\-Matrix\-::num\-\_\-rows (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}
+\begin{DoxyReturn}{Returns}
+Number of rows of the matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00306}{306} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_a0d27dc7c4d2c49f391017e392345ced0}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!operator=@{operator=}}
+\index{operator=@{operator=}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\-::\-Dense\-Matrix} \& mtk\-::\-Dense\-Matrix\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Dense\-Matrix} \&}]{in}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1DenseMatrix_a0d27dc7c4d2c49f391017e392345ced0}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00097}{97} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_a0d27dc7c4d2c49f391017e392345ced0_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_a59b9bea24acf39dca64e8549b3527463}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!Order\-Col\-Major@{Order\-Col\-Major}}
+\index{Order\-Col\-Major@{Order\-Col\-Major}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{Order\-Col\-Major}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Dense\-Matrix\-::\-Order\-Col\-Major (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1DenseMatrix_a59b9bea24acf39dca64e8549b3527463}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000011}{Todo}]Improve this so that no new arrays have to be created. \end{DoxyRefDesc}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00424}{424} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+\hypertarget{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!Order\-Row\-Major@{Order\-Row\-Major}}
+\index{Order\-Row\-Major@{Order\-Row\-Major}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{Order\-Row\-Major}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Dense\-Matrix\-::\-Order\-Row\-Major (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000010}{Todo}]Improve this so that no new arrays have to be created. \end{DoxyRefDesc}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00383}{383} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_aacae136ae446cad8f0d81476e83efb39}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!Set\-Ordering@{Set\-Ordering}}
+\index{Set\-Ordering@{Set\-Ordering}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{Set\-Ordering}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Dense\-Matrix\-::\-Set\-Ordering (
+\begin{DoxyParamCaption}
+\item[{{\bf mtk\-::\-Matrix\-Ordering}}]{oo}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1DenseMatrix_aacae136ae446cad8f0d81476e83efb39}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em oo} & Ordering.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The required value at the specified coordinates. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00296}{296} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_aacae136ae446cad8f0d81476e83efb39_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_aacae136ae446cad8f0d81476e83efb39_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!Set\-Value@{Set\-Value}}
+\index{Set\-Value@{Set\-Value}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{Set\-Value}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Dense\-Matrix\-::\-Set\-Value (
+\begin{DoxyParamCaption}
+\item[{const int \&}]{row\-\_\-coord, }
+\item[{const int \&}]{col\-\_\-coord, }
+\item[{const {\bf Real} \&}]{val}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em row\-\_\-coord} & Row coordinate. \\
+\hline
+\mbox{\tt in}  & {\em col\-\_\-coord} & Column coordinate. \\
+\hline
+\mbox{\tt in}  & {\em val} & Row Actual value to be inserted. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00333}{333} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_a71d9c07ca66e88d97d1fd5012f43138b}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!Transpose@{Transpose}}
+\index{Transpose@{Transpose}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{Transpose}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Dense\-Matrix\-::\-Transpose (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1DenseMatrix_a71d9c07ca66e88d97d1fd5012f43138b}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000009}{Todo}]Improve this so that no extra arrays have to be created. \end{DoxyRefDesc}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00346}{346} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_a71d9c07ca66e88d97d1fd5012f43138b_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Friends And Related Function Documentation}
+\hypertarget{classmtk_1_1DenseMatrix_adbcc850ef373550f634f563573a31d28}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{{\bf mtk\-::\-Dense\-Matrix} \&}]{in}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [friend]}}}\label{classmtk_1_1DenseMatrix_adbcc850ef373550f634f563573a31d28}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00075}{75} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\-\_\-dense\-\_\-matrix.\-cc}.
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!data\-\_\-@{data\-\_\-}}
+\index{data\-\_\-@{data\-\_\-}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{data\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}$\ast$ mtk\-::\-Dense\-Matrix\-::data\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8h_source_l00274}{274} of file \hyperlink{mtk__dense__matrix_8h_source}{mtk\-\_\-dense\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{\index{mtk\-::\-Dense\-Matrix@{mtk\-::\-Dense\-Matrix}!matrix\-\_\-properties\-\_\-@{matrix\-\_\-properties\-\_\-}}
+\index{matrix\-\_\-properties\-\_\-@{matrix\-\_\-properties\-\_\-}!mtk::DenseMatrix@{mtk\-::\-Dense\-Matrix}}
+\subsubsection[{matrix\-\_\-properties\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} mtk\-::\-Dense\-Matrix\-::matrix\-\_\-properties\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8h_source_l00272}{272} of file \hyperlink{mtk__dense__matrix_8h_source}{mtk\-\_\-dense\-\_\-matrix.\-h}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{mtk__dense__matrix_8h}{mtk\-\_\-dense\-\_\-matrix.\-h}\item 
+src/\hyperlink{mtk__dense__matrix_8cc}{mtk\-\_\-dense\-\_\-matrix.\-cc}\end{DoxyCompactItemize}

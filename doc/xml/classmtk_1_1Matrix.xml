@@ -1,0 +1,803 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="classmtk_1_1Matrix" kind="class" prot="public">
+    <compoundname>mtk::Matrix</compoundname>
+    <includes refid="mtk__matrix_8h" local="no">mtk_matrix.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1ae343697531e0849f20bed4a9760b9a54" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c02-enums_1ga25b67ec6a2afeee69f9bb196a9c66619" kindref="member">MatrixStorage</ref></type>
+        <definition>MatrixStorage mtk::Matrix::storage_</definition>
+        <argsstring></argsstring>
+        <name>storage_</name>
+        <briefdescription>
+<para>What type of matrix is this? </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="270" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="270" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1a8b66e0d130cc8ad19c426acd42edaf55" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c02-enums_1ga622801bd9f912d0f976c3e383f5f581c" kindref="member">MatrixOrdering</ref></type>
+        <definition>MatrixOrdering mtk::Matrix::ordering_</definition>
+        <argsstring></argsstring>
+        <name>ordering_</name>
+        <briefdescription>
+<para>What kind of ordering is it following? </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="272" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="272" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1ab635ce1dd96c26ee99a75b564f03f091" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Matrix::num_rows_</definition>
+        <argsstring></argsstring>
+        <name>num_rows_</name>
+        <briefdescription>
+<para>Number of rows. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="274" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="274" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1a3d11a942d6dda7ca16e162c12e854b74" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Matrix::num_cols_</definition>
+        <argsstring></argsstring>
+        <name>num_cols_</name>
+        <briefdescription>
+<para>Number of columns. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="275" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="275" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1ac3f64429ee2509c502ce7f0d75341da0" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Matrix::num_values_</definition>
+        <argsstring></argsstring>
+        <name>num_values_</name>
+        <briefdescription>
+<para>Number of total values in matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="276" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="276" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1a8cb46a0aa1d665a9f92f14e66a307bd5" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Matrix::ld_</definition>
+        <argsstring></argsstring>
+        <name>ld_</name>
+        <briefdescription>
+<para>Elements between successive rows when row-major. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="277" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="277" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1a6daac2b61bed10026785c1eb0328eef9" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Matrix::num_zero_</definition>
+        <argsstring></argsstring>
+        <name>num_zero_</name>
+        <briefdescription>
+<para>Number of zeros. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="279" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="279" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1a064d611ebb949858441180d6ff2acaee" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Matrix::num_non_zero_</definition>
+        <argsstring></argsstring>
+        <name>num_non_zero_</name>
+        <briefdescription>
+<para>Number of non-zero values. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="280" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="280" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1aec5bf3cd2e62d7a38412e1dca35cf822" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Matrix::num_null_</definition>
+        <argsstring></argsstring>
+        <name>num_null_</name>
+        <briefdescription>
+<para>Number of null (insignificant) values. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="281" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="281" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1a32d782bd784bea3bb3e5fd55a583b4b7" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Matrix::num_non_null_</definition>
+        <argsstring></argsstring>
+        <name>num_non_null_</name>
+        <briefdescription>
+<para>Number of null (significant) values. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="282" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="282" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1a45c2498d0b6d515c72c2e631508acd7d" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Matrix::kl_</definition>
+        <argsstring></argsstring>
+        <name>kl_</name>
+        <briefdescription>
+<para>Number of lower diagonals on a banded matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="284" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="284" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1afdb4436c4c4c6deaed608a06026179c9" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Matrix::ku_</definition>
+        <argsstring></argsstring>
+        <name>ku_</name>
+        <briefdescription>
+<para>Number of upper diagonals on a banded matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="285" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="285" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1a892449ddacb81d089818967e65979786" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Matrix::bandwidth_</definition>
+        <argsstring></argsstring>
+        <name>bandwidth_</name>
+        <briefdescription>
+<para>Bandwidth of the matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="286" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="286" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1abdf2ac1bbb6c4432cb7caf06e4ca0f26" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>Real mtk::Matrix::abs_density_</definition>
+        <argsstring></argsstring>
+        <name>abs_density_</name>
+        <briefdescription>
+<para>Absolute density of matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="288" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="288" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1adae5d1f3016d891e67a10d6db658d5a7" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>Real mtk::Matrix::rel_density_</definition>
+        <argsstring></argsstring>
+        <name>rel_density_</name>
+        <briefdescription>
+<para>Relative density of matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="289" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="289" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1ab86f8bfe3cb5874d47cc957b5a7cd965" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>Real mtk::Matrix::abs_sparsity_</definition>
+        <argsstring></argsstring>
+        <name>abs_sparsity_</name>
+        <briefdescription>
+<para>Absolute sparsity of matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="290" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="290" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Matrix_1aab48952c7df158b6ee06d8c2c901aa7e" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>Real mtk::Matrix::rel_sparsity_</definition>
+        <argsstring></argsstring>
+        <name>rel_sparsity_</name>
+        <briefdescription>
+<para>Relative sparsity of matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="291" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="291" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a04b8575764d3a649f21950c794f4cc02" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::Matrix::Matrix</definition>
+        <argsstring>()</argsstring>
+        <name>Matrix</name>
+        <briefdescription>
+<para>Default constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="78" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="72" bodyend="89"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1ae532878cf9b34114f12a1f06701482aa" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::Matrix::Matrix</definition>
+        <argsstring>(const Matrix &amp;in)</argsstring>
+        <name>Matrix</name>
+        <param>
+          <type>const <ref refid="classmtk_1_1Matrix" kindref="compound">Matrix</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Given matrix. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="85" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="91" bodyend="108"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a7dcc92fcf67904eaf17bb7b9d809f274" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::Matrix::~Matrix</definition>
+        <argsstring>()</argsstring>
+        <name>~Matrix</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="88" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="110" bodyend="110"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a21893fc643eebadd9757c8995cf44dd3" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c02-enums_1ga25b67ec6a2afeee69f9bb196a9c66619" kindref="member">MatrixStorage</ref></type>
+        <definition>mtk::MatrixStorage mtk::Matrix::storage</definition>
+        <argsstring>() const </argsstring>
+        <name>storage</name>
+        <briefdescription>
+<para>Gets the type of storage of this matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="91" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="112" bodyend="115"/>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="97" endline="136">mtk::DenseMatrix::operator=</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a90102d605a668bf7ecf0d766cc4c10db" compoundref="mtk__dense__matrix_8cc" startline="144" endline="175">mtk::DenseMatrix::DenseMatrix</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1af675e480c7b94f194aadad316e53b002" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c02-enums_1ga622801bd9f912d0f976c3e383f5f581c" kindref="member">MatrixOrdering</ref></type>
+        <definition>mtk::MatrixOrdering mtk::Matrix::ordering</definition>
+        <argsstring>() const </argsstring>
+        <name>ordering</name>
+        <briefdescription>
+<para>Gets the ordering of this matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="94" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="117" bodyend="120"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1afdcac059a4294287cb55638221220646" compoundref="mtk__blas__adapter_8cc" startline="287" endline="316">mtk::BLASAdapter::RealDenseMV</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="318" endline="372">mtk::BLASAdapter::RealDenseMM</referencedby>
+        <referencedby refid="namespacemtk_1ad3bcf52cda59ddb5fc7b4bdce76c46dc" compoundref="mtk__dense__matrix_8cc" startline="75" endline="94">mtk::operator&lt;&lt;</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="97" endline="136">mtk::DenseMatrix::operator=</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a90102d605a668bf7ecf0d766cc4c10db" compoundref="mtk__dense__matrix_8cc" startline="144" endline="175">mtk::DenseMatrix::DenseMatrix</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a69feb30fc0018faee65fe9f7cb43e0ed" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::Matrix::num_rows</definition>
+        <argsstring>() const </argsstring>
+        <name>num_rows</name>
+        <briefdescription>
+<para>Gets the number of rows. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of rows of the matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="101" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="122" bodyend="125"/>
+        <referencedby refid="namespacemtk_1ad3bcf52cda59ddb5fc7b4bdce76c46dc" compoundref="mtk__dense__matrix_8cc" startline="75" endline="94">mtk::operator&lt;&lt;</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="97" endline="136">mtk::DenseMatrix::operator=</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a90102d605a668bf7ecf0d766cc4c10db" compoundref="mtk__dense__matrix_8cc" startline="144" endline="175">mtk::DenseMatrix::DenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a01d3d8bd502870f93bf3a88a0cc5fb49" compoundref="mtk__dense__matrix_8cc" startline="463" endline="501">mtk::DenseMatrix::Kron</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a1e52243fa290de6ee4bcc48cd1776a9a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::Matrix::num_cols</definition>
+        <argsstring>() const </argsstring>
+        <name>num_cols</name>
+        <briefdescription>
+<para>Gets the number of rows. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of rows of the matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="108" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="127" bodyend="130"/>
+        <referencedby refid="namespacemtk_1ad3bcf52cda59ddb5fc7b4bdce76c46dc" compoundref="mtk__dense__matrix_8cc" startline="75" endline="94">mtk::operator&lt;&lt;</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="97" endline="136">mtk::DenseMatrix::operator=</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a90102d605a668bf7ecf0d766cc4c10db" compoundref="mtk__dense__matrix_8cc" startline="144" endline="175">mtk::DenseMatrix::DenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a01d3d8bd502870f93bf3a88a0cc5fb49" compoundref="mtk__dense__matrix_8cc" startline="463" endline="501">mtk::DenseMatrix::Kron</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1adbe04990142e2fe76789fa53cfa3d465" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::Matrix::num_values</definition>
+        <argsstring>() const </argsstring>
+        <name>num_values</name>
+        <briefdescription>
+<para>Gets the number of values. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of values of the matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="115" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="132" bodyend="135"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1acdaa5281bd8f86ea4abf20292d9fd20f" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::Matrix::ld</definition>
+        <argsstring>() const </argsstring>
+        <name>ld</name>
+        <briefdescription>
+<para>Gets the matrix&apos; leading dimension. </para>        </briefdescription>
+        <detaileddescription>
+<para>Leading dimension of the data array is the number of elements between successive rows (for row major storage) in memory. Most of the cases, the leading dimension is the same as the number of columns.</para><para><simplesect kind="return"><para>Leading dimension of the matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="126" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="137" bodyend="140"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a78e1f8449a21db53750e083c6802a993" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::Matrix::num_zero</definition>
+        <argsstring>() const </argsstring>
+        <name>num_zero</name>
+        <briefdescription>
+<para>Gets the number of zeros. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of zeros of the matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="133" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="142" bodyend="145"/>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="97" endline="136">mtk::DenseMatrix::operator=</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a90102d605a668bf7ecf0d766cc4c10db" compoundref="mtk__dense__matrix_8cc" startline="144" endline="175">mtk::DenseMatrix::DenseMatrix</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a221ba0082ef5191175db743d13388521" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::Matrix::num_non_zero</definition>
+        <argsstring>() const </argsstring>
+        <name>num_non_zero</name>
+        <briefdescription>
+<para>Gets the number of non-zero values. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of non-zero values of the matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="140" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="147" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a5bf58512ee91d6ab80eb94541072a9cf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::Matrix::num_null</definition>
+        <argsstring>() const </argsstring>
+        <name>num_null</name>
+        <briefdescription>
+<para>Gets the number of null values. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ulink url="http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf">http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf</ulink></para></simplesect>
+<simplesect kind="return"><para>Number of null values of the matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="149" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="152" bodyend="155"/>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="97" endline="136">mtk::DenseMatrix::operator=</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a90102d605a668bf7ecf0d766cc4c10db" compoundref="mtk__dense__matrix_8cc" startline="144" endline="175">mtk::DenseMatrix::DenseMatrix</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1ae81eaf61b6633ccd054c96344aa82a48" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::Matrix::num_non_null</definition>
+        <argsstring>() const </argsstring>
+        <name>num_non_null</name>
+        <briefdescription>
+<para>Gets the number of non-null values. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ulink url="http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf">http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf</ulink></para></simplesect>
+<simplesect kind="return"><para>Number of non-null values of the matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="158" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="157" bodyend="160"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1ae271cb0b61c1ef04d57319d46db90ebf" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::Matrix::kl</definition>
+        <argsstring>() const </argsstring>
+        <name>kl</name>
+        <briefdescription>
+<para>Gets the number of lower diagonals. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of lower diagonals. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="165" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="162" bodyend="165"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1ab12a5b97320ca40fbfab970c005ce916" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::Matrix::ku</definition>
+        <argsstring>() const </argsstring>
+        <name>ku</name>
+        <briefdescription>
+<para>Gets the number of upper diagonals. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of upper diagonals. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="172" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="167" bodyend="170"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a27d963e9cb68fa8f04989ad89a9b3f0a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::Matrix::bandwidth</definition>
+        <argsstring>() const </argsstring>
+        <name>bandwidth</name>
+        <briefdescription>
+<para>Gets the bandwidth. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Bandwidth of the matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="179" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="172" bodyend="175"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a4734aaab88e2fe344231b899ab5a8f56" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>Real mtk::Matrix::abs_density</definition>
+        <argsstring>() const </argsstring>
+        <name>abs_density</name>
+        <briefdescription>
+<para>Gets the absolute density. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ulink url="http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf">http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf</ulink></para></simplesect>
+<simplesect kind="return"><para>Absolute density of the matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="188" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a98591f1f394ec84599fb15d9ff53db1a" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>mtk::Real mtk::Matrix::rel_density</definition>
+        <argsstring>() const </argsstring>
+        <name>rel_density</name>
+        <briefdescription>
+<para>Gets the relative density. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ulink url="http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf">http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf</ulink></para></simplesect>
+<simplesect kind="return"><para>Relative density of the matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="197" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="177" bodyend="180"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a20463698d90ddf3ae7d211a2cc441a62" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>mtk::Real mtk::Matrix::abs_sparsity</definition>
+        <argsstring>() const </argsstring>
+        <name>abs_sparsity</name>
+        <briefdescription>
+<para>Gets the Absolute sparsity. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ulink url="http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf">http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf</ulink></para></simplesect>
+<simplesect kind="return"><para>Absolute sparsity of the matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="206" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="182" bodyend="185"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1ad7e4650598ce4d99a130f64892fc33b9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>mtk::Real mtk::Matrix::rel_sparsity</definition>
+        <argsstring>() const </argsstring>
+        <name>rel_sparsity</name>
+        <briefdescription>
+<para>Gets the Relative sparsity. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ulink url="http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf">http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf</ulink></para></simplesect>
+<simplesect kind="return"><para>Relative sparsity of the matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="215" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="187" bodyend="190"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1ac0edd0ee07853d0ef6dea9b08d15e132" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::Matrix::set_storage</definition>
+        <argsstring>(const MatrixStorage &amp;tt)</argsstring>
+        <name>set_storage</name>
+        <param>
+          <type>const <ref refid="group__c02-enums_1ga25b67ec6a2afeee69f9bb196a9c66619" kindref="member">MatrixStorage</ref> &amp;</type>
+          <declname>tt</declname>
+        </param>
+        <briefdescription>
+<para>Sets the storage type of the matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="group__c02-enums_1ga25b67ec6a2afeee69f9bb196a9c66619" kindref="member">MatrixStorage</ref></para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">tt</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Type of the matrix storage. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="224" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="192" bodyend="202"/>
+        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
+        <references refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87" compoundref="mtk__enums_8h" startline="78">mtk::DENSE</references>
+        <references refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619aef1d4271d5005282978a3a40a8a52c9b" compoundref="mtk__enums_8h" startline="79">mtk::BANDED</references>
+        <references refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a87619d374775e937bca967402b988b8b" compoundref="mtk__enums_8h" startline="80">mtk::CRS</references>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="97" endline="136">mtk::DenseMatrix::operator=</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0c75ee704707983f935b02835eab0933" compoundref="mtk__dense__matrix_8cc" startline="138" endline="142">mtk::DenseMatrix::DenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a01d3d8bd502870f93bf3a88a0cc5fb49" compoundref="mtk__dense__matrix_8cc" startline="463" endline="501">mtk::DenseMatrix::Kron</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1aa390fa8883e58e8f1df9416e5b5b7a83" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::Matrix::set_ordering</definition>
+        <argsstring>(const MatrixOrdering &amp;oo)</argsstring>
+        <name>set_ordering</name>
+        <param>
+          <type>const <ref refid="group__c02-enums_1ga622801bd9f912d0f976c3e383f5f581c" kindref="member">MatrixOrdering</ref> &amp;</type>
+          <declname>oo</declname>
+        </param>
+        <briefdescription>
+<para>Sets the ordering of the matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="see"><para><ref refid="group__c02-enums_1ga622801bd9f912d0f976c3e383f5f581c" kindref="member">MatrixOrdering</ref></para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">oo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ordering of the matrix. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="233" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="204" bodyend="215"/>
+        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3" compoundref="mtk__enums_8h" startline="96">mtk::ROW_MAJOR</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13" compoundref="mtk__enums_8h" startline="97">mtk::COL_MAJOR</references>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="97" endline="136">mtk::DenseMatrix::operator=</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0c75ee704707983f935b02835eab0933" compoundref="mtk__dense__matrix_8cc" startline="138" endline="142">mtk::DenseMatrix::DenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a01d3d8bd502870f93bf3a88a0cc5fb49" compoundref="mtk__dense__matrix_8cc" startline="463" endline="501">mtk::DenseMatrix::Kron</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a242fedf2da10a3e5c14f63c2bc60beae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::Matrix::set_num_rows</definition>
+        <argsstring>(int num_rows)</argsstring>
+        <name>set_num_rows</name>
+        <param>
+          <type>int</type>
+          <declname>num_rows</declname>
+        </param>
+        <briefdescription>
+<para>Sets the number of rows of the matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">num_rows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of rows. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="240" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="217" bodyend="227"/>
+        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3" compoundref="mtk__enums_8h" startline="96">mtk::ROW_MAJOR</references>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="97" endline="136">mtk::DenseMatrix::operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a312883d34f2e0daf5db7432ee2c4ed51" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::Matrix::set_num_cols</definition>
+        <argsstring>(int num_cols)</argsstring>
+        <name>set_num_cols</name>
+        <param>
+          <type>int</type>
+          <declname>num_cols</declname>
+        </param>
+        <briefdescription>
+<para>Sets the number of columns of the matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">num_cols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of columns. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="247" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="229" bodyend="239"/>
+        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3" compoundref="mtk__enums_8h" startline="96">mtk::ROW_MAJOR</references>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="97" endline="136">mtk::DenseMatrix::operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1ae529100c5c280088e9acf8e8f7994f73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::Matrix::set_num_zero</definition>
+        <argsstring>(int in)</argsstring>
+        <name>set_num_zero</name>
+        <param>
+          <type>int</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+<para>Sets the number of zero values of the matrix that matter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of zero values. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="bug_1_bug000001"><xreftitle>Bug</xreftitle><xrefdescription><para>-nan assigned on construction time due to num_values_ being 0. </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="254" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="241" bodyend="253"/>
+        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="97" endline="136">mtk::DenseMatrix::operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a66c2c1c127f4efefc4a407e9552e928d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::Matrix::set_num_null</definition>
+        <argsstring>(int in)</argsstring>
+        <name>set_num_null</name>
+        <param>
+          <type>int</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+<para>Sets the number of zero values of the matrix that DO NOT matter. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of zero values. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="bug_1_bug000002"><xreftitle>Bug</xreftitle><xrefdescription><para>-nan assigned on construction time due to num_values_ being 0. </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="261" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="255" bodyend="267"/>
+        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="97" endline="136">mtk::DenseMatrix::operator=</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1a2e7c4b84d0cbf9b0122b5dc906ad1eae" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::Matrix::IncreaseNumZero</definition>
+        <argsstring>()</argsstring>
+        <name>IncreaseNumZero</name>
+        <briefdescription>
+<para>Increases the number of values that equal zero but with meaning. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="todo_1_todo000017"><xreftitle>Todo</xreftitle><xrefdescription><para>Review the definition of sparse matrices properties. </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="264" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="269" bodyend="277"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Matrix_1ac96dd5f31ebcd4388352577487cd6f11" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::Matrix::IncreaseNumNull</definition>
+        <argsstring>()</argsstring>
+        <name>IncreaseNumNull</name>
+        <briefdescription>
+<para>Increases the number of values that equal zero but with no meaning. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="todo_1_todo000018"><xreftitle>Todo</xreftitle><xrefdescription><para>Review the definition of sparse matrices properties. </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="267" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_matrix.cc" bodystart="279" bodyend="287"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Definition of the representation of a matrix in the MTK. </para>    </briefdescription>
+    <detaileddescription>
+<para>Definition of the representation for the matrices implemented in the MTK. </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="53">
+        <label>mtk::Matrix</label>
+        <link refid="classmtk_1_1Matrix"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" line="75" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_matrix.h" bodystart="75" bodyend="292"/>
+    <listofallmembers>
+      <member refid="classmtk_1_1Matrix_1a4734aaab88e2fe344231b899ab5a8f56" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>abs_density</name></member>
+      <member refid="classmtk_1_1Matrix_1abdf2ac1bbb6c4432cb7caf06e4ca0f26" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>abs_density_</name></member>
+      <member refid="classmtk_1_1Matrix_1a20463698d90ddf3ae7d211a2cc441a62" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>abs_sparsity</name></member>
+      <member refid="classmtk_1_1Matrix_1ab86f8bfe3cb5874d47cc957b5a7cd965" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>abs_sparsity_</name></member>
+      <member refid="classmtk_1_1Matrix_1a27d963e9cb68fa8f04989ad89a9b3f0a" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>bandwidth</name></member>
+      <member refid="classmtk_1_1Matrix_1a892449ddacb81d089818967e65979786" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>bandwidth_</name></member>
+      <member refid="classmtk_1_1Matrix_1ac96dd5f31ebcd4388352577487cd6f11" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>IncreaseNumNull</name></member>
+      <member refid="classmtk_1_1Matrix_1a2e7c4b84d0cbf9b0122b5dc906ad1eae" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>IncreaseNumZero</name></member>
+      <member refid="classmtk_1_1Matrix_1ae271cb0b61c1ef04d57319d46db90ebf" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>kl</name></member>
+      <member refid="classmtk_1_1Matrix_1a45c2498d0b6d515c72c2e631508acd7d" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>kl_</name></member>
+      <member refid="classmtk_1_1Matrix_1ab12a5b97320ca40fbfab970c005ce916" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>ku</name></member>
+      <member refid="classmtk_1_1Matrix_1afdb4436c4c4c6deaed608a06026179c9" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>ku_</name></member>
+      <member refid="classmtk_1_1Matrix_1acdaa5281bd8f86ea4abf20292d9fd20f" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>ld</name></member>
+      <member refid="classmtk_1_1Matrix_1a8cb46a0aa1d665a9f92f14e66a307bd5" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>ld_</name></member>
+      <member refid="classmtk_1_1Matrix_1a04b8575764d3a649f21950c794f4cc02" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>Matrix</name></member>
+      <member refid="classmtk_1_1Matrix_1ae532878cf9b34114f12a1f06701482aa" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>Matrix</name></member>
+      <member refid="classmtk_1_1Matrix_1a1e52243fa290de6ee4bcc48cd1776a9a" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>num_cols</name></member>
+      <member refid="classmtk_1_1Matrix_1a3d11a942d6dda7ca16e162c12e854b74" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>num_cols_</name></member>
+      <member refid="classmtk_1_1Matrix_1ae81eaf61b6633ccd054c96344aa82a48" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>num_non_null</name></member>
+      <member refid="classmtk_1_1Matrix_1a32d782bd784bea3bb3e5fd55a583b4b7" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>num_non_null_</name></member>
+      <member refid="classmtk_1_1Matrix_1a221ba0082ef5191175db743d13388521" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>num_non_zero</name></member>
+      <member refid="classmtk_1_1Matrix_1a064d611ebb949858441180d6ff2acaee" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>num_non_zero_</name></member>
+      <member refid="classmtk_1_1Matrix_1a5bf58512ee91d6ab80eb94541072a9cf" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>num_null</name></member>
+      <member refid="classmtk_1_1Matrix_1aec5bf3cd2e62d7a38412e1dca35cf822" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>num_null_</name></member>
+      <member refid="classmtk_1_1Matrix_1a69feb30fc0018faee65fe9f7cb43e0ed" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>num_rows</name></member>
+      <member refid="classmtk_1_1Matrix_1ab635ce1dd96c26ee99a75b564f03f091" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>num_rows_</name></member>
+      <member refid="classmtk_1_1Matrix_1adbe04990142e2fe76789fa53cfa3d465" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>num_values</name></member>
+      <member refid="classmtk_1_1Matrix_1ac3f64429ee2509c502ce7f0d75341da0" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>num_values_</name></member>
+      <member refid="classmtk_1_1Matrix_1a78e1f8449a21db53750e083c6802a993" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>num_zero</name></member>
+      <member refid="classmtk_1_1Matrix_1a6daac2b61bed10026785c1eb0328eef9" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>num_zero_</name></member>
+      <member refid="classmtk_1_1Matrix_1af675e480c7b94f194aadad316e53b002" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>ordering</name></member>
+      <member refid="classmtk_1_1Matrix_1a8b66e0d130cc8ad19c426acd42edaf55" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>ordering_</name></member>
+      <member refid="classmtk_1_1Matrix_1a98591f1f394ec84599fb15d9ff53db1a" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>rel_density</name></member>
+      <member refid="classmtk_1_1Matrix_1adae5d1f3016d891e67a10d6db658d5a7" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>rel_density_</name></member>
+      <member refid="classmtk_1_1Matrix_1ad7e4650598ce4d99a130f64892fc33b9" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>rel_sparsity</name></member>
+      <member refid="classmtk_1_1Matrix_1aab48952c7df158b6ee06d8c2c901aa7e" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>rel_sparsity_</name></member>
+      <member refid="classmtk_1_1Matrix_1a312883d34f2e0daf5db7432ee2c4ed51" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>set_num_cols</name></member>
+      <member refid="classmtk_1_1Matrix_1a66c2c1c127f4efefc4a407e9552e928d" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>set_num_null</name></member>
+      <member refid="classmtk_1_1Matrix_1a242fedf2da10a3e5c14f63c2bc60beae" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>set_num_rows</name></member>
+      <member refid="classmtk_1_1Matrix_1ae529100c5c280088e9acf8e8f7994f73" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>set_num_zero</name></member>
+      <member refid="classmtk_1_1Matrix_1aa390fa8883e58e8f1df9416e5b5b7a83" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>set_ordering</name></member>
+      <member refid="classmtk_1_1Matrix_1ac0edd0ee07853d0ef6dea9b08d15e132" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>set_storage</name></member>
+      <member refid="classmtk_1_1Matrix_1a21893fc643eebadd9757c8995cf44dd3" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>storage</name></member>
+      <member refid="classmtk_1_1Matrix_1ae343697531e0849f20bed4a9760b9a54" prot="private" virt="non-virtual"><scope>mtk::Matrix</scope><name>storage_</name></member>
+      <member refid="classmtk_1_1Matrix_1a7dcc92fcf67904eaf17bb7b9d809f274" prot="public" virt="non-virtual"><scope>mtk::Matrix</scope><name>~Matrix</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

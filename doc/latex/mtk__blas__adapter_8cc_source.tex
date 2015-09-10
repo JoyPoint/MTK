@@ -1,0 +1,238 @@
+\hypertarget{mtk__blas__adapter_8cc}{\section{mtk\-\_\-blas\-\_\-adapter.\-cc}
+\label{mtk__blas__adapter_8cc}\index{src/mtk\-\_\-blas\-\_\-adapter.\-cc@{src/mtk\-\_\-blas\-\_\-adapter.\-cc}}
+}
+
+\begin{DoxyCode}
+00001 
+00024 \textcolor{comment}{/*}
+00025 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00026 \textcolor{comment}{University. All rights reserved.}
+00027 \textcolor{comment}{}
+00028 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00029 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00030 \textcolor{comment}{}
+00031 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00032 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00033 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
+00034 \textcolor{comment}{}
+00035 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00036 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00037 \textcolor{comment}{}
+00038 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
+00039 \textcolor{comment}{list of conditions and the following disclaimer.}
+00040 \textcolor{comment}{}
+00041 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
+00042 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00043 \textcolor{comment}{other materials provided with the distribution.}
+00044 \textcolor{comment}{}
+00045 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
+00046 \textcolor{comment}{prior written permission from the the copyright holders.}
+00047 \textcolor{comment}{}
+00048 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00049 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00050 \textcolor{comment}{specific prior written permission.}
+00051 \textcolor{comment}{}
+00052 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00053 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00054 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00055 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00056 \textcolor{comment}{parties intellectual property rights.}
+00057 \textcolor{comment}{}
+00058 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00059 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00060 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00061 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00062 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00063 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00064 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00065 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00066 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00067 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00068 \textcolor{comment}{*/}
+00069 
+00070 \textcolor{preprocessor}{#include <iostream>}
+00071 \textcolor{preprocessor}{#include <iomanip>}
+00072 
+00073 \textcolor{preprocessor}{#include <vector>}
+00074 
+00075 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
+00076 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
+00077 \textcolor{preprocessor}{#include "\hyperlink{mtk__blas__adapter_8h}{mtk\_blas\_adapter.h}"}
+00078 
+00079 \textcolor{keyword}{namespace }mtk \{
+00080 
+00081 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00082 
+00083 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
+00084 \textcolor{preprocessor}{}
+00095 \textcolor{keywordtype}{double} dnrm2\_(\textcolor{keywordtype}{int} *n, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *x, \textcolor{keywordtype}{int} *incx);
+00096 \textcolor{preprocessor}{#else}
+00097 \textcolor{preprocessor}{}
+00108 \textcolor{keywordtype}{float} \hyperlink{namespacemtk_af817d9da07e2c0b4c49ee02fdb09471c}{snrm2\_}(\textcolor{keywordtype}{int} *n, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *x, \textcolor{keywordtype}{int} *incx);
+00109 \textcolor{preprocessor}{#endif}
+00110 \textcolor{preprocessor}{}
+00111 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
+00112 \textcolor{preprocessor}{}
+00140 \textcolor{keywordtype}{void} dgemv\_(\textcolor{keywordtype}{char} *trans,
+00141             \textcolor{keywordtype}{int} *m,
+00142             \textcolor{keywordtype}{int} *n,
+00143             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *alpha,
+00144             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *a,
+00145             \textcolor{keywordtype}{int} *lda,
+00146             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *x,
+00147             \textcolor{keywordtype}{int} *incx,
+00148             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *beta,
+00149             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *y,
+00150             \textcolor{keywordtype}{int} *incy);
+00151 \textcolor{preprocessor}{#else}
+00152 \textcolor{preprocessor}{}
+00180 \textcolor{keywordtype}{void} \hyperlink{namespacemtk_aafa6617e6f999afa44dfb2573f5d847e}{sgemv\_}(\textcolor{keywordtype}{char} *trans,
+00181             \textcolor{keywordtype}{int} *m,
+00182             \textcolor{keywordtype}{int} *n,
+00183             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *alpha,
+00184             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *a,
+00185             \textcolor{keywordtype}{int} *lda,
+00186             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *x,
+00187             \textcolor{keywordtype}{int} *incx,
+00188             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *beta,
+00189             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *y,
+00190             \textcolor{keywordtype}{int} *incy);
+00191 \textcolor{preprocessor}{#endif}
+00192 \textcolor{preprocessor}{}
+00193 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
+00194 \textcolor{preprocessor}{}
+00219 \textcolor{keywordtype}{void} dgemm\_(\textcolor{keywordtype}{char} *transa,
+00220             \textcolor{keywordtype}{char}* transb,
+00221             \textcolor{keywordtype}{int} *m,
+00222             \textcolor{keywordtype}{int} *n,
+00223             \textcolor{keywordtype}{int} *k,
+00224             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *alpha,
+00225             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *a,
+00226             \textcolor{keywordtype}{int} *lda,
+00227             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *b,
+00228             \textcolor{keywordtype}{int} *ldb,
+00229             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *beta,
+00230             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *c,
+00231             \textcolor{keywordtype}{int} *ldc);
+00232 \}
+00233 \textcolor{preprocessor}{#else}
+00234 \textcolor{preprocessor}{}
+00259 \textcolor{keywordtype}{void} \hyperlink{namespacemtk_aec80332e88a0a7cdce8798a18559e961}{sgemm\_}(\textcolor{keywordtype}{char} *transa,
+00260             \textcolor{keywordtype}{char}* transb,
+00261             \textcolor{keywordtype}{int} *m,
+00262             \textcolor{keywordtype}{int} *n,
+00263             \textcolor{keywordtype}{int} *k,
+00264             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *alpha,
+00265             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *a,
+00266             \textcolor{keywordtype}{int} *lda,
+00267             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *b,aamm
+00268             \textcolor{keywordtype}{int} *ldb,
+00269             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *beta,
+00270             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *c,
+00271             \textcolor{keywordtype}{int} *ldc);
+00272 \}
+00273 \textcolor{preprocessor}{#endif}
+00274 \textcolor{preprocessor}{}\}
+00275 
+\hypertarget{mtk__blas__adapter_8cc_source_l00276}{}\hyperlink{classmtk_1_1BLASAdapter_ab92440888b730863244c5d9479c11aca}{00276} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1BLASAdapter_ab92440888b730863244c5d9479c11aca}{mtk::BLASAdapter::RealNRM2}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *in, \textcolor{keywordtype}{int} &in\_length) \{
+00277 
+00278   \textcolor{keywordtype}{int} ix\{1\};  \textcolor{comment}{// Increment for the elements of xx. ix >= 0.}
+00279 
+00280 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00281 \textcolor{preprocessor}{}  \textcolor{keywordflow}{return} dnrm2\_(&in\_length, in, &ix);
+00282 \textcolor{preprocessor}{  #else}
+00283 \textcolor{preprocessor}{}  \textcolor{keywordflow}{return} \hyperlink{namespacemtk_af817d9da07e2c0b4c49ee02fdb09471c}{snrm2\_}(&in\_length, in, &ix);
+00284 \textcolor{preprocessor}{  #endif}
+00285 \textcolor{preprocessor}{}\}
+00286 
+\hypertarget{mtk__blas__adapter_8cc_source_l00287}{}\hyperlink{classmtk_1_1BLASAdapter_afdcac059a4294287cb55638221220646}{00287} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BLASAdapter_afdcac059a4294287cb55638221220646}{mtk::BLASAdapter::RealDenseMV}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &alpha,
+00288                                    \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &aa,
+00289                                    \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *xx,
+00290                                    \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &beta,
+00291                                    \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *yy) \{
+00292 
+00293   \textcolor{comment}{// Make sure input matrices are row-major ordered.}
+00294 
+00295   \textcolor{keywordflow}{if} (aa.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}() == 
+      \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}) \{
+00296     aa.\hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{OrderRowMajor}();
+00297   \}
+00298 
+00299   \textcolor{keywordtype}{char} transa\{\textcolor{charliteral}{'T'}\}; \textcolor{comment}{// State that now, the input WILL be in row-major ordering.}
+00300 
+00301   \textcolor{keywordtype}{int} mm\{aa.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}()\};                  \textcolor{comment}{// Rows of aa.}
+00302   \textcolor{keywordtype}{int} nn\{aa.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}()\};                  \textcolor{comment}{// Columns of aa.}
+00303   \textcolor{keywordtype}{int} lda\{(aa.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}()).ld()\}; \textcolor{comment}{// Leading dimension.}
+00304   \textcolor{keywordtype}{int} incx\{1\};                            \textcolor{comment}{// Increment of values in x.}
+00305   \textcolor{keywordtype}{int} incy\{1\};                            \textcolor{comment}{// Increment of values in y.}
+00306 
+00307   std::swap(mm,nn);
+00308 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00309 \textcolor{preprocessor}{}  dgemv\_(&transa, &mm, &nn, &alpha, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &lda,
+00310          xx, &incx, &beta, yy, &incy);
+00311 \textcolor{preprocessor}{  #else}
+00312 \textcolor{preprocessor}{}  \hyperlink{namespacemtk_aafa6617e6f999afa44dfb2573f5d847e}{sgemv\_}(&transa, &mm, &nn, &alpha, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &lda,
+00313         xx, &incx, &beta, yy, &incy);
+00314 \textcolor{preprocessor}{  #endif}
+00315 \textcolor{preprocessor}{}  std::swap(mm,nn);
+00316 \}
+00317 
+\hypertarget{mtk__blas__adapter_8cc_source_l00318}{}\hyperlink{classmtk_1_1BLASAdapter_acebd0e9bfe0bdd609c7fbea98ccfd3b5}{00318} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1BLASAdapter_acebd0e9bfe0bdd609c7fbea98ccfd3b5}{mtk::BLASAdapter::RealDenseMM}(
+      \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &aa,
+00319                                                \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &bb) \{
+00320 
+00321 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00322 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(aa.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}() != bb.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}(),
+00323                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00324 \textcolor{preprocessor}{  #endif}
+00325 \textcolor{preprocessor}{}
+00326   \textcolor{comment}{// Make sure input matrices are row-major ordered.}
+00327 
+00328   \textcolor{keywordflow}{if} (aa.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}() == 
+      \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}) \{
+00329     aa.\hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{OrderRowMajor}();
+00330   \}
+00331   \textcolor{keywordflow}{if} (bb.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}() == 
+      \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}) \{
+00332     bb.\hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{OrderRowMajor}();
+00333   \}
+00334 
+00335   \textcolor{keywordtype}{char} ta\{\textcolor{charliteral}{'T'}\}; \textcolor{comment}{// State that input matrix aa is in row-wise ordering.}
+00336   \textcolor{keywordtype}{char} tb\{\textcolor{charliteral}{'T'}\}; \textcolor{comment}{// State that input matrix bb is in row-wise ordering.}
+00337 
+00338   \textcolor{keywordtype}{int} mm\{aa.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}()\};  \textcolor{comment}{// Rows of aa and rows of cc.}
+00339   \textcolor{keywordtype}{int} nn\{bb.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}()\};  \textcolor{comment}{// Cols of bb and cols of cc.}
+00340   \textcolor{keywordtype}{int} kk\{aa.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}()\};  \textcolor{comment}{// Cols of aa and rows of bb.}
+00341 
+00342   \textcolor{keywordtype}{int} cc\_num\_rows\{mm\};  \textcolor{comment}{// Rows of cc.}
+00343   \textcolor{keywordtype}{int} cc\_num\_cols\{nn\};  \textcolor{comment}{// Columns of cc.}
+00344 
+00345   \textcolor{keywordtype}{int} lda\{std::max(1,kk)\};  \textcolor{comment}{// Leading dimension of the aa matrix.}
+00346   \textcolor{keywordtype}{int} ldb\{std::max(1,nn)\};  \textcolor{comment}{// Leading dimension of the bb matrix.}
+00347   \textcolor{keywordtype}{int} ldc\{std::max(1,mm)\};  \textcolor{comment}{// Leading dimension of the cc matrix.}
+00348 
+00349   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} alpha\{1.0\}; \textcolor{comment}{// First scalar coefficient.}
+00350   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} beta\{0.0\};  \textcolor{comment}{// Second scalar coefficient.}
+00351 
+00352   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} cc\_col\_maj\_ord(cc\_num\_rows,cc\_num\_cols); \textcolor{comment}{// Output matrix.}
+00353 
+00354   cc\_col\_maj\_ord.\hyperlink{classmtk_1_1DenseMatrix_aacae136ae446cad8f0d81476e83efb39}{SetOrdering}(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR});
+00355 
+00356 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00357 \textcolor{preprocessor}{}  dgemm\_(&ta, &tb, &mm, &nn, &kk, &alpha, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &lda,
+00358          bb.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &ldb, &beta, cc\_col\_maj\_ord.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &ldc);
+00359 \textcolor{preprocessor}{  #else}
+00360 \textcolor{preprocessor}{}  \hyperlink{namespacemtk_aec80332e88a0a7cdce8798a18559e961}{sgemm\_}(&ta, &tb, &mm, &nn, &kk, &alpha, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &lda,
+00361          bb.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &ldb, &beta, cc\_col\_maj\_ord.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &ldc);
+00362 \textcolor{preprocessor}{  #endif}
+00363 \textcolor{preprocessor}{}
+00364 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00365 \textcolor{preprocessor}{}  std::cout << \textcolor{stringliteral}{"cc\_col\_maj\_ord ="} << std::endl;
+00366   std::cout << cc\_col\_maj\_ord << std::endl;
+00367 \textcolor{preprocessor}{  #endif}
+00368 \textcolor{preprocessor}{}
+00369   cc\_col\_maj\_ord.\hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{OrderRowMajor}();
+00370 
+00371   \textcolor{keywordflow}{return} cc\_col\_maj\_ord;
+00372 \}
+\end{DoxyCode}

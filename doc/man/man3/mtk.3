@@ -1,0 +1,385 @@
+.TH "mtk" 3 "Thu Sep 10 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk \- 
+.PP
+Mimetic Methods Toolkit namespace\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBBLASAdapter\fP"
+.br
+.RI "\fIAdapter class for the BLAS API\&. \fP"
+.ti -1c
+.RI "class \fBDenseMatrix\fP"
+.br
+.RI "\fIDefines a common dense matrix, using a 1D array\&. \fP"
+.ti -1c
+.RI "class \fBDiv1D\fP"
+.br
+.RI "\fIImplements a 1D mimetic divergence operator\&. \fP"
+.ti -1c
+.RI "class \fBGLPKAdapter\fP"
+.br
+.RI "\fIAdapter class for the GLPK API\&. \fP"
+.ti -1c
+.RI "class \fBGrad1D\fP"
+.br
+.RI "\fIImplements a 1D mimetic gradient operator\&. \fP"
+.ti -1c
+.RI "class \fBLap1D\fP"
+.br
+.RI "\fIImplements a 1D mimetic Laplacian operator\&. \fP"
+.ti -1c
+.RI "class \fBLAPACKAdapter\fP"
+.br
+.RI "\fIAdapter class for the LAPACK API\&. \fP"
+.ti -1c
+.RI "class \fBMatrix\fP"
+.br
+.RI "\fIDefinition of the representation of a matrix in the MTK\&. \fP"
+.ti -1c
+.RI "class \fBQuad1D\fP"
+.br
+.RI "\fIImplements a 1D mimetic quadrature\&. \fP"
+.ti -1c
+.RI "class \fBTools\fP"
+.br
+.RI "\fITool manager class\&. \fP"
+.ti -1c
+.RI "class \fBUniStgGrid1D\fP"
+.br
+.RI "\fIUniform 1D Staggered Grid\&. \fP"
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef float \fBReal\fP"
+.br
+.RI "\fIUsers can simply change this to build a double- or single-precision MTK\&. \fP"
+.in -1c
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBMatrixStorage\fP { \fBDENSE\fP, \fBBANDED\fP, \fBCRS\fP }"
+.br
+.RI "\fIConsidered matrix storage schemes to implement sparse matrices\&. \fP"
+.ti -1c
+.RI "enum \fBMatrixOrdering\fP { \fBROW_MAJOR\fP, \fBCOL_MAJOR\fP }"
+.br
+.RI "\fIConsidered matrix ordering (for Fortran purposes)\&. \fP"
+.ti -1c
+.RI "enum \fBFieldNature\fP { \fBSCALAR\fP, \fBVECTOR\fP }"
+.br
+.RI "\fINature of the field discretized in a given grid\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "float \fBsnrm2_\fP (int *n, \fBReal\fP *x, int *incx)"
+.br
+.ti -1c
+.RI "void \fBsgemv_\fP (char *trans, int *m, int *n, \fBReal\fP *alpha, \fBReal\fP *a, int *lda, \fBReal\fP *x, int *incx, \fBReal\fP *beta, \fBReal\fP *y, int *incy)"
+.br
+.ti -1c
+.RI "void \fBsgemm_\fP (char *transa, char *transb, int *m, int *n, int *k, \fBReal\fP *alpha, \fBReal\fP *a, int *lda, \fBReal\fP *b, aamm int *ldb, \fBReal\fP *beta, \fBReal\fP *c, int *ldc)"
+.br
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBmtk::DenseMatrix\fP &in)"
+.br
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBmtk::Div1D\fP &in)"
+.br
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBmtk::Grad1D\fP &in)"
+.br
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBmtk::Lap1D\fP &in)"
+.br
+.ti -1c
+.RI "void \fBsgesv_\fP (int *n, int *nrhs, \fBReal\fP *a, int *lda, int *ipiv, \fBReal\fP *b, int *ldb, int *info)"
+.br
+.ti -1c
+.RI "void \fBsgels_\fP (char *trans, int *m, int *n, int *nrhs, \fBReal\fP *a, int *lda, \fBReal\fP *b, int *ldb, \fBReal\fP *work, int *lwork, int *info)"
+.br
+.RI "\fISingle-precision GEneral matrix Least Squares solver\&. \fP"
+.ti -1c
+.RI "void \fBsgeqrf_\fP (int *m, int *n, \fBReal\fP *a, int *lda, \fBReal\fP *tau, \fBReal\fP *work, int *lwork, int *info)"
+.br
+.RI "\fISingle-precision GEneral matrix QR Factorization\&. \fP"
+.ti -1c
+.RI "void \fBsormqr_\fP (char *side, char *trans, int *m, int *n, int *k, \fBReal\fP *a, int *lda, \fBReal\fP *tau, \fBReal\fP *c, int *ldc, \fBReal\fP *work, int *lwork, int *info)"
+.br
+.RI "\fISingle-precision Orthogonal \fBMatrix\fP from QR factorization\&. \fP"
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBmtk::UniStgGrid1D\fP &in)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "const float \fBkZero\fP {0\&.0f}"
+.br
+.RI "\fIMTK's zero defined according to selective compilation\&. \fP"
+.ti -1c
+.RI "const float \fBkOne\fP {1\&.0f}"
+.br
+.RI "\fIMTK's one defined according to selective compilation\&. \fP"
+.ti -1c
+.RI "const float \fBkDefaultTolerance\fP {1e-7f}"
+.br
+.RI "\fIConsidered tolerance for comparisons in numerical methods\&. \fP"
+.ti -1c
+.RI "const int \fBkDefaultOrderAccuracy\fP {2}"
+.br
+.RI "\fIDefault order of accuracy for mimetic operators\&. \fP"
+.ti -1c
+.RI "const float \fBkDefaultMimeticThreshold\fP {1\&.e-6f}"
+.br
+.RI "\fIDefault tolerance for higher-order mimetic operators\&. \fP"
+.ti -1c
+.RI "const int \fBkCriticalOrderAccuracyDiv\fP {8}"
+.br
+.RI "\fIAt this order (and higher) we must use the CBSA to construct\&. \fP"
+.ti -1c
+.RI "const int \fBkCriticalOrderAccuracyGrad\fP {10}"
+.br
+.RI "\fIAt this order (and higher) we must use the CBSA to construct\&. \fP"
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::UniStgGrid1D\fP &in)"
+
+.IP "1." 4
+Print spatial coordinates\&. 
+.PP
+
+.PP
+Definition at line 68 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::Lap1D\fP &in)"
+
+.IP "1." 4
+Print order of accuracy\&.
+.IP "2." 4
+Print approximating coefficients for the interior\&.
+.IP "3." 4
+No weights, thus print the mimetic boundary coefficients\&. 
+.PP
+
+.PP
+Definition at line 73 of file mtk_lap_1d\&.cc\&.
+.SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::DenseMatrix\fP &in)"
+
+.PP
+Definition at line 75 of file mtk_dense_matrix\&.cc\&.
+.SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::Div1D\fP &in)"
+
+.IP "1." 4
+Print order of accuracy\&.
+.IP "2." 4
+Print approximating coefficients for the interior\&.
+.IP "3." 4
+Print mimetic weights\&.
+.IP "4." 4
+Print mimetic approximations at the boundary\&. 
+.PP
+
+.PP
+Definition at line 79 of file mtk_div_1d\&.cc\&.
+.SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::Grad1D\fP &in)"
+
+.IP "1." 4
+Print order of accuracy\&.
+.IP "2." 4
+Print approximating coefficients for the interior\&.
+.IP "3." 4
+Print mimetic weights\&.
+.IP "4." 4
+Print mimetic approximations at the boundary\&. 
+.PP
+
+.PP
+Definition at line 79 of file mtk_grad_1d\&.cc\&.
+.SS "void mtk::sgels_ (char *trans, int *m, int *n, int *nrhs, Real *a, int *lda, Real *b, int *ldb, Real *work, int *lwork, int *info)"
+SGELS solves overdetermined or underdetermined real linear systems involving an M-by-N matrix A, or its transpose, using a QR or LQ factorization of A\&. It is assumed that A has full rank\&.
+.PP
+The following options are provided:
+.PP
+.IP "1." 4
+If TRANS = 'N' and m >= n: find the least squares solution of an overdetermined system, i\&.e\&., solve the least squares problem 
+.PP
+.nf
+            minimize || B - A*X ||.
+
+.fi
+.PP
+
+.IP "2." 4
+If TRANS = 'N' and m < n: find the minimum norm solution of an underdetermined system A * X = B\&.
+.IP "3." 4
+If TRANS = 'T' and m >= n: find the minimum norm solution of an undetermined system A**T * X = B\&.
+.IP "4." 4
+If TRANS = 'T' and m < n: find the least squares solution of an overdetermined system, i\&.e\&., solve the least squares problem 
+.PP
+.nf
+            minimize || B - A**T * X ||.
+
+.fi
+.PP
+
+.PP
+.PP
+Several right hand side vectors b and solution vectors x can be handled in a single call; they are stored as the columns of the M-by-NRHS right hand side matrix B and the N-by-NRHS solution matrix X\&.
+.PP
+\fBSee Also:\fP
+.RS 4
+http://www.math.utah.edu/software/lapack/lapack-s/sgels.html
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fItrans\fP Am I giving the transpose of the matrix? 
+.br
+\fIm\fP The number of rows of the matrix a\&. m >= 0\&. 
+.br
+\fIn\fP The number of columns of the matrix a\&. n >= 0\&. 
+.br
+\fInrhs\fP The number of right-hand sides\&. 
+.br
+\fIa\fP On entry, the m-by-n matrix a\&. 
+.br
+\fIlda\fP The leading dimension of a\&. lda >= max(1,m)\&. 
+.br
+\fIb\fP On entry, matrix b of right-hand side vectors\&. 
+.br
+\fIldb\fP The leading dimension of b\&. ldb >= max(1,m,n)\&. 
+.br
+\fIwork\fP On exit, if info = 0, work(1) is optimal lwork\&. 
+.br
+\fIlwork\fP The dimension of the array work\&. 
+.br
+\fIinfo\fP If info = 0, then successful exit\&. 
+.RE
+.PP
+
+.SS "void mtk::sgemm_ (char *transa, char *transb, int *m, int *n, int *k, Real *alpha, Real *a, int *lda, Real *b, aamm int *ldb, Real *beta, Real *c, int *ldc)"
+
+.SS "void mtk::sgemv_ (char *trans, int *m, int *n, Real *alpha, Real *a, int *lda, Real *x, int *incx, Real *beta, Real *y, int *incy)"
+
+.SS "void mtk::sgeqrf_ (int *m, int *n, Real *a, int *lda, Real *tau, Real *work, int *lwork, int *info)"
+Single-Precision Orthogonal Make Q from QR: dormqr_ overwrites the general real M-by-N matrix C with (Table 1): 
+.PP
+.nf
+            SIDE = 'L'     SIDE = 'R'
+
+.fi
+.PP
+ TRANS = 'N': Q * C C * Q TRANS = 'T': Q**T * C C * Q**T
+.PP
+where Q is a real orthogonal matrix defined as the product of k elementary reflectors 
+.PP
+.nf
+  Q = H(1) H(2) . . . H(k)
+
+.fi
+.PP
+.PP
+as returned by SGEQRF\&. Q is of order M if SIDE = 'L' and of order N if SIDE = 'R'\&.
+.PP
+\fBSee Also:\fP
+.RS 4
+http://www.netlib.org/lapack/explore-html/df/d97/sgeqrf_8f.html
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIm\fP The number of columns of the matrix a\&. n >= 0\&. 
+.br
+\fIn\fP The number of columns of the matrix a\&. n >= 0\&. 
+.br
+\fIa\fP On entry, the n-by-n matrix a\&. 
+.br
+\fIlda\fP Leading dimension matrix\&. LDA >= max(1,M)\&. 
+.br
+\fItau\fP Scalars from elementary reflectors\&. min(M,N)\&. 
+.br
+\fIwork\fP Workspace\&. info = 0, work(1) is optimal lwork\&. 
+.br
+\fIlwork\fP The dimension of work\&. lwork >= max(1,n)\&. 
+.br
+\fIinfo\fP info = 0: successful exit\&. 
+.RE
+.PP
+
+.SS "void mtk::sgesv_ (int *n, int *nrhs, Real *a, int *lda, int *ipiv, Real *b, int *ldb, int *info)"
+
+.SS "float mtk::snrm2_ (int *n, Real *x, int *incx)"
+
+.SS "void mtk::sormqr_ (char *side, char *trans, int *m, int *n, int *k, Real *a, int *lda, Real *tau, Real *c, int *ldc, Real *work, int *lwork, int *info)"
+Single-Precision Orthogonal Make Q from QR: sormqr_ overwrites the general real M-by-N matrix C with (Table 1): 
+.PP
+.nf
+            SIDE = 'L'     SIDE = 'R'
+
+.fi
+.PP
+ TRANS = 'N': Q * C C * Q TRANS = 'T': Q**T * C C * Q**T
+.PP
+where Q is a real orthogonal matrix defined as the product of k elementary reflectors 
+.PP
+.nf
+  Q = H(1) H(2) . . . H(k)
+
+.fi
+.PP
+.PP
+as returned by SGEQRF\&. Q is of order M if SIDE = 'L' and of order N if SIDE = 'R'\&.
+.PP
+\fBSee Also:\fP
+.RS 4
+http://www.netlib.org/lapack/explore-html/d0/d98/sormqr_8f_source.html
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIside\fP See Table 1 above\&. 
+.br
+\fItrans\fP See Table 1 above\&. 
+.br
+\fIm\fP Number of rows of the C matrix\&. 
+.br
+\fIn\fP Number of columns of the C matrix\&. 
+.br
+\fIk\fP Number of reflectors\&. 
+.br
+\fIa\fP The matrix containing the reflectors\&. 
+.br
+\fIlda\fP The dimension of work\&. lwork >= max(1,n)\&. 
+.br
+\fItau\fP Scalar factors of the elementary reflectors\&. 
+.br
+\fIc\fP Output matrix\&. 
+.br
+\fIldc\fP Leading dimension of the output matrix\&. 
+.br
+\fIwork\fP Workspace\&. info = 0, work(1) optimal lwork\&. 
+.br
+\fIlwork\fP The dimension of work\&. 
+.br
+\fIinfo\fP info = 0: successful exit\&. 
+.RE
+.PP
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

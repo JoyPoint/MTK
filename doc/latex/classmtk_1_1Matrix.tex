@@ -1,0 +1,893 @@
+\hypertarget{classmtk_1_1Matrix}{\section{mtk\-:\-:Matrix Class Reference}
+\label{classmtk_1_1Matrix}\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}}
+}
+
+
+Definition of the representation of a matrix in the M\-T\-K.  
+
+
+
+
+{\ttfamily \#include $<$mtk\-\_\-matrix.\-h$>$}
+
+
+
+Collaboration diagram for mtk\-:\-:Matrix\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=180pt]{classmtk_1_1Matrix__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmtk_1_1Matrix_a04b8575764d3a649f21950c794f4cc02}{Matrix} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{classmtk_1_1Matrix_ae532878cf9b34114f12a1f06701482aa}{Matrix} (const \hyperlink{classmtk_1_1Matrix}{Matrix} \&in)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\hyperlink{classmtk_1_1Matrix_a7dcc92fcf67904eaf17bb7b9d809f274}{$\sim$\-Matrix} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\hyperlink{group__c02-enums_ga25b67ec6a2afeee69f9bb196a9c66619}{Matrix\-Storage} \hyperlink{classmtk_1_1Matrix_a21893fc643eebadd9757c8995cf44dd3}{storage} () const 
+\begin{DoxyCompactList}\small\item\em Gets the type of storage of this matrix. \end{DoxyCompactList}\item 
+\hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{Matrix\-Ordering} \hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering} () const 
+\begin{DoxyCompactList}\small\item\em Gets the ordering of this matrix. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\-\_\-rows} () const 
+\begin{DoxyCompactList}\small\item\em Gets the number of rows. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\-\_\-cols} () const 
+\begin{DoxyCompactList}\small\item\em Gets the number of rows. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_adbe04990142e2fe76789fa53cfa3d465}{num\-\_\-values} () const 
+\begin{DoxyCompactList}\small\item\em Gets the number of values. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_acdaa5281bd8f86ea4abf20292d9fd20f}{ld} () const 
+\begin{DoxyCompactList}\small\item\em Gets the matrix' leading dimension. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_a78e1f8449a21db53750e083c6802a993}{num\-\_\-zero} () const 
+\begin{DoxyCompactList}\small\item\em Gets the number of zeros. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_a221ba0082ef5191175db743d13388521}{num\-\_\-non\-\_\-zero} () const 
+\begin{DoxyCompactList}\small\item\em Gets the number of non-\/zero values. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_a5bf58512ee91d6ab80eb94541072a9cf}{num\-\_\-null} () const 
+\begin{DoxyCompactList}\small\item\em Gets the number of null values. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_ae81eaf61b6633ccd054c96344aa82a48}{num\-\_\-non\-\_\-null} () const 
+\begin{DoxyCompactList}\small\item\em Gets the number of non-\/null values. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_ae271cb0b61c1ef04d57319d46db90ebf}{kl} () const 
+\begin{DoxyCompactList}\small\item\em Gets the number of lower diagonals. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_ab12a5b97320ca40fbfab970c005ce916}{ku} () const 
+\begin{DoxyCompactList}\small\item\em Gets the number of upper diagonals. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_a27d963e9cb68fa8f04989ad89a9b3f0a}{bandwidth} () const 
+\begin{DoxyCompactList}\small\item\em Gets the bandwidth. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_a4734aaab88e2fe344231b899ab5a8f56}{abs\-\_\-density} () const 
+\begin{DoxyCompactList}\small\item\em Gets the absolute density. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_a98591f1f394ec84599fb15d9ff53db1a}{rel\-\_\-density} () const 
+\begin{DoxyCompactList}\small\item\em Gets the relative density. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_a20463698d90ddf3ae7d211a2cc441a62}{abs\-\_\-sparsity} () const 
+\begin{DoxyCompactList}\small\item\em Gets the Absolute sparsity. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_ad7e4650598ce4d99a130f64892fc33b9}{rel\-\_\-sparsity} () const 
+\begin{DoxyCompactList}\small\item\em Gets the Relative sparsity. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{set\-\_\-storage} (const \hyperlink{group__c02-enums_ga25b67ec6a2afeee69f9bb196a9c66619}{Matrix\-Storage} \&tt)
+\begin{DoxyCompactList}\small\item\em Sets the storage type of the matrix. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{set\-\_\-ordering} (const \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{Matrix\-Ordering} \&oo)
+\begin{DoxyCompactList}\small\item\em Sets the ordering of the matrix. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1Matrix_a242fedf2da10a3e5c14f63c2bc60beae}{set\-\_\-num\-\_\-rows} (int \hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\-\_\-rows})
+\begin{DoxyCompactList}\small\item\em Sets the number of rows of the matrix. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1Matrix_a312883d34f2e0daf5db7432ee2c4ed51}{set\-\_\-num\-\_\-cols} (int \hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\-\_\-cols})
+\begin{DoxyCompactList}\small\item\em Sets the number of columns of the matrix. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1Matrix_ae529100c5c280088e9acf8e8f7994f73}{set\-\_\-num\-\_\-zero} (int in)
+\begin{DoxyCompactList}\small\item\em Sets the number of zero values of the matrix that matter. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1Matrix_a66c2c1c127f4efefc4a407e9552e928d}{set\-\_\-num\-\_\-null} (int in)
+\begin{DoxyCompactList}\small\item\em Sets the number of zero values of the matrix that D\-O N\-O\-T matter. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1Matrix_a2e7c4b84d0cbf9b0122b5dc906ad1eae}{Increase\-Num\-Zero} ()
+\begin{DoxyCompactList}\small\item\em Increases the number of values that equal zero but with meaning. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1Matrix_ac96dd5f31ebcd4388352577487cd6f11}{Increase\-Num\-Null} ()
+\begin{DoxyCompactList}\small\item\em Increases the number of values that equal zero but with no meaning. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{group__c02-enums_ga25b67ec6a2afeee69f9bb196a9c66619}{Matrix\-Storage} \hyperlink{classmtk_1_1Matrix_ae343697531e0849f20bed4a9760b9a54}{storage\-\_\-}
+\begin{DoxyCompactList}\small\item\em What type of matrix is this? \end{DoxyCompactList}\item 
+\hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{Matrix\-Ordering} \hyperlink{classmtk_1_1Matrix_a8b66e0d130cc8ad19c426acd42edaf55}{ordering\-\_\-}
+\begin{DoxyCompactList}\small\item\em What kind of ordering is it following? \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_ab635ce1dd96c26ee99a75b564f03f091}{num\-\_\-rows\-\_\-}
+\begin{DoxyCompactList}\small\item\em Number of rows. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_a3d11a942d6dda7ca16e162c12e854b74}{num\-\_\-cols\-\_\-}
+\begin{DoxyCompactList}\small\item\em Number of columns. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_ac3f64429ee2509c502ce7f0d75341da0}{num\-\_\-values\-\_\-}
+\begin{DoxyCompactList}\small\item\em Number of total values in matrix. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_a8cb46a0aa1d665a9f92f14e66a307bd5}{ld\-\_\-}
+\begin{DoxyCompactList}\small\item\em Elements between successive rows when row-\/major. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_a6daac2b61bed10026785c1eb0328eef9}{num\-\_\-zero\-\_\-}
+\begin{DoxyCompactList}\small\item\em Number of zeros. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_a064d611ebb949858441180d6ff2acaee}{num\-\_\-non\-\_\-zero\-\_\-}
+\begin{DoxyCompactList}\small\item\em Number of non-\/zero values. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_aec5bf3cd2e62d7a38412e1dca35cf822}{num\-\_\-null\-\_\-}
+\begin{DoxyCompactList}\small\item\em Number of null (insignificant) values. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_a32d782bd784bea3bb3e5fd55a583b4b7}{num\-\_\-non\-\_\-null\-\_\-}
+\begin{DoxyCompactList}\small\item\em Number of null (significant) values. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_a45c2498d0b6d515c72c2e631508acd7d}{kl\-\_\-}
+\begin{DoxyCompactList}\small\item\em Number of lower diagonals on a banded matrix. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_afdb4436c4c4c6deaed608a06026179c9}{ku\-\_\-}
+\begin{DoxyCompactList}\small\item\em Number of upper diagonals on a banded matrix. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Matrix_a892449ddacb81d089818967e65979786}{bandwidth\-\_\-}
+\begin{DoxyCompactList}\small\item\em Bandwidth of the matrix. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_abdf2ac1bbb6c4432cb7caf06e4ca0f26}{abs\-\_\-density\-\_\-}
+\begin{DoxyCompactList}\small\item\em Absolute density of matrix. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_adae5d1f3016d891e67a10d6db658d5a7}{rel\-\_\-density\-\_\-}
+\begin{DoxyCompactList}\small\item\em Relative density of matrix. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_ab86f8bfe3cb5874d47cc957b5a7cd965}{abs\-\_\-sparsity\-\_\-}
+\begin{DoxyCompactList}\small\item\em Absolute sparsity of matrix. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_aab48952c7df158b6ee06d8c2c901aa7e}{rel\-\_\-sparsity\-\_\-}
+\begin{DoxyCompactList}\small\item\em Relative sparsity of matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Definition of the representation for the matrices implemented in the M\-T\-K. 
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00075}{75} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmtk_1_1Matrix_a04b8575764d3a649f21950c794f4cc02}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}mtk\-::\-Matrix\-::\-Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1Matrix_a04b8575764d3a649f21950c794f4cc02}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00072}{72} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+\hypertarget{classmtk_1_1Matrix_ae532878cf9b34114f12a1f06701482aa}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!Matrix@{Matrix}}
+\index{Matrix@{Matrix}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{Matrix}]{\setlength{\rightskip}{0pt plus 5cm}mtk\-::\-Matrix\-::\-Matrix (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix} \&}]{in}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1Matrix_ae532878cf9b34114f12a1f06701482aa}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em in} & Given matrix. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00091}{91} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+\hypertarget{classmtk_1_1Matrix_a7dcc92fcf67904eaf17bb7b9d809f274}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!$\sim$\-Matrix@{$\sim$\-Matrix}}
+\index{$\sim$\-Matrix@{$\sim$\-Matrix}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{$\sim$\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}mtk\-::\-Matrix\-::$\sim$\-Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1Matrix_a7dcc92fcf67904eaf17bb7b9d809f274}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00110}{110} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmtk_1_1Matrix_a4734aaab88e2fe344231b899ab5a8f56}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!abs\-\_\-density@{abs\-\_\-density}}
+\index{abs\-\_\-density@{abs\-\_\-density}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{abs\-\_\-density}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real} mtk\-::\-Matrix\-::abs\-\_\-density (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_a4734aaab88e2fe344231b899ab5a8f56}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf}{\tt http\-://www.\-csrc.\-sdsu.\-edu/research\-\_\-reports/\-C\-S\-R\-C\-R2013-\/01.\-pdf}
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+Absolute density of the matrix. 
+\end{DoxyReturn}
+\hypertarget{classmtk_1_1Matrix_a20463698d90ddf3ae7d211a2cc441a62}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!abs\-\_\-sparsity@{abs\-\_\-sparsity}}
+\index{abs\-\_\-sparsity@{abs\-\_\-sparsity}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{abs\-\_\-sparsity}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\-::\-Real} mtk\-::\-Matrix\-::abs\-\_\-sparsity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_a20463698d90ddf3ae7d211a2cc441a62}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf}{\tt http\-://www.\-csrc.\-sdsu.\-edu/research\-\_\-reports/\-C\-S\-R\-C\-R2013-\/01.\-pdf}
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+Absolute sparsity of the matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00182}{182} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+\hypertarget{classmtk_1_1Matrix_a27d963e9cb68fa8f04989ad89a9b3f0a}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!bandwidth@{bandwidth}}
+\index{bandwidth@{bandwidth}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{bandwidth}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::bandwidth (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_a27d963e9cb68fa8f04989ad89a9b3f0a}
+\begin{DoxyReturn}{Returns}
+Bandwidth of the matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00172}{172} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+\hypertarget{classmtk_1_1Matrix_ac96dd5f31ebcd4388352577487cd6f11}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!Increase\-Num\-Null@{Increase\-Num\-Null}}
+\index{Increase\-Num\-Null@{Increase\-Num\-Null}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{Increase\-Num\-Null}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Matrix\-::\-Increase\-Num\-Null (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1Matrix_ac96dd5f31ebcd4388352577487cd6f11}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000018}{Todo}]Review the definition of sparse matrices properties. \end{DoxyRefDesc}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00279}{279} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+\hypertarget{classmtk_1_1Matrix_a2e7c4b84d0cbf9b0122b5dc906ad1eae}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!Increase\-Num\-Zero@{Increase\-Num\-Zero}}
+\index{Increase\-Num\-Zero@{Increase\-Num\-Zero}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{Increase\-Num\-Zero}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Matrix\-::\-Increase\-Num\-Zero (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1Matrix_a2e7c4b84d0cbf9b0122b5dc906ad1eae}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000017}{Todo}]Review the definition of sparse matrices properties. \end{DoxyRefDesc}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00269}{269} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+\hypertarget{classmtk_1_1Matrix_ae271cb0b61c1ef04d57319d46db90ebf}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!kl@{kl}}
+\index{kl@{kl}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{kl}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::kl (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_ae271cb0b61c1ef04d57319d46db90ebf}
+\begin{DoxyReturn}{Returns}
+Number of lower diagonals. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00162}{162} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+\hypertarget{classmtk_1_1Matrix_ab12a5b97320ca40fbfab970c005ce916}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!ku@{ku}}
+\index{ku@{ku}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{ku}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::ku (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_ab12a5b97320ca40fbfab970c005ce916}
+\begin{DoxyReturn}{Returns}
+Number of upper diagonals. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00167}{167} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+\hypertarget{classmtk_1_1Matrix_acdaa5281bd8f86ea4abf20292d9fd20f}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!ld@{ld}}
+\index{ld@{ld}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{ld}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::ld (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_acdaa5281bd8f86ea4abf20292d9fd20f}
+Leading dimension of the data array is the number of elements between successive rows (for row major storage) in memory. Most of the cases, the leading dimension is the same as the number of columns.
+
+\begin{DoxyReturn}{Returns}
+Leading dimension of the matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00137}{137} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+\hypertarget{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!num\-\_\-cols@{num\-\_\-cols}}
+\index{num\-\_\-cols@{num\-\_\-cols}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{num\-\_\-cols}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::num\-\_\-cols (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}
+\begin{DoxyReturn}{Returns}
+Number of rows of the matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00127}{127} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1Matrix_ae81eaf61b6633ccd054c96344aa82a48}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!num\-\_\-non\-\_\-null@{num\-\_\-non\-\_\-null}}
+\index{num\-\_\-non\-\_\-null@{num\-\_\-non\-\_\-null}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{num\-\_\-non\-\_\-null}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::num\-\_\-non\-\_\-null (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_ae81eaf61b6633ccd054c96344aa82a48}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf}{\tt http\-://www.\-csrc.\-sdsu.\-edu/research\-\_\-reports/\-C\-S\-R\-C\-R2013-\/01.\-pdf}
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+Number of non-\/null values of the matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00157}{157} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+\hypertarget{classmtk_1_1Matrix_a221ba0082ef5191175db743d13388521}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!num\-\_\-non\-\_\-zero@{num\-\_\-non\-\_\-zero}}
+\index{num\-\_\-non\-\_\-zero@{num\-\_\-non\-\_\-zero}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{num\-\_\-non\-\_\-zero}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::num\-\_\-non\-\_\-zero (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_a221ba0082ef5191175db743d13388521}
+\begin{DoxyReturn}{Returns}
+Number of non-\/zero values of the matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00147}{147} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+\hypertarget{classmtk_1_1Matrix_a5bf58512ee91d6ab80eb94541072a9cf}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!num\-\_\-null@{num\-\_\-null}}
+\index{num\-\_\-null@{num\-\_\-null}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{num\-\_\-null}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::num\-\_\-null (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_a5bf58512ee91d6ab80eb94541072a9cf}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf}{\tt http\-://www.\-csrc.\-sdsu.\-edu/research\-\_\-reports/\-C\-S\-R\-C\-R2013-\/01.\-pdf}
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+Number of null values of the matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00152}{152} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_a5bf58512ee91d6ab80eb94541072a9cf_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!num\-\_\-rows@{num\-\_\-rows}}
+\index{num\-\_\-rows@{num\-\_\-rows}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{num\-\_\-rows}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::num\-\_\-rows (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}
+\begin{DoxyReturn}{Returns}
+Number of rows of the matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00122}{122} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1Matrix_adbe04990142e2fe76789fa53cfa3d465}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!num\-\_\-values@{num\-\_\-values}}
+\index{num\-\_\-values@{num\-\_\-values}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{num\-\_\-values}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::num\-\_\-values (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_adbe04990142e2fe76789fa53cfa3d465}
+\begin{DoxyReturn}{Returns}
+Number of values of the matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00132}{132} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+\hypertarget{classmtk_1_1Matrix_a78e1f8449a21db53750e083c6802a993}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!num\-\_\-zero@{num\-\_\-zero}}
+\index{num\-\_\-zero@{num\-\_\-zero}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{num\-\_\-zero}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::num\-\_\-zero (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_a78e1f8449a21db53750e083c6802a993}
+\begin{DoxyReturn}{Returns}
+Number of zeros of the matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00142}{142} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_a78e1f8449a21db53750e083c6802a993_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!ordering@{ordering}}
+\index{ordering@{ordering}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{ordering}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\-::\-Matrix\-Ordering} mtk\-::\-Matrix\-::ordering (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00117}{117} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1Matrix_a98591f1f394ec84599fb15d9ff53db1a}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!rel\-\_\-density@{rel\-\_\-density}}
+\index{rel\-\_\-density@{rel\-\_\-density}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{rel\-\_\-density}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\-::\-Real} mtk\-::\-Matrix\-::rel\-\_\-density (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_a98591f1f394ec84599fb15d9ff53db1a}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf}{\tt http\-://www.\-csrc.\-sdsu.\-edu/research\-\_\-reports/\-C\-S\-R\-C\-R2013-\/01.\-pdf}
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+Relative density of the matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00177}{177} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+\hypertarget{classmtk_1_1Matrix_ad7e4650598ce4d99a130f64892fc33b9}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!rel\-\_\-sparsity@{rel\-\_\-sparsity}}
+\index{rel\-\_\-sparsity@{rel\-\_\-sparsity}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{rel\-\_\-sparsity}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\-::\-Real} mtk\-::\-Matrix\-::rel\-\_\-sparsity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_ad7e4650598ce4d99a130f64892fc33b9}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf}{\tt http\-://www.\-csrc.\-sdsu.\-edu/research\-\_\-reports/\-C\-S\-R\-C\-R2013-\/01.\-pdf}
+\end{DoxySeeAlso}
+\begin{DoxyReturn}{Returns}
+Relative sparsity of the matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00187}{187} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+\hypertarget{classmtk_1_1Matrix_a312883d34f2e0daf5db7432ee2c4ed51}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!set\-\_\-num\-\_\-cols@{set\-\_\-num\-\_\-cols}}
+\index{set\-\_\-num\-\_\-cols@{set\-\_\-num\-\_\-cols}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{set\-\_\-num\-\_\-cols}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Matrix\-::set\-\_\-num\-\_\-cols (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-\_\-cols}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1Matrix_a312883d34f2e0daf5db7432ee2c4ed51}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em num\-\_\-cols} & Number of columns. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00229}{229} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_a312883d34f2e0daf5db7432ee2c4ed51_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_a312883d34f2e0daf5db7432ee2c4ed51_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1Matrix_a66c2c1c127f4efefc4a407e9552e928d}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!set\-\_\-num\-\_\-null@{set\-\_\-num\-\_\-null}}
+\index{set\-\_\-num\-\_\-null@{set\-\_\-num\-\_\-null}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{set\-\_\-num\-\_\-null}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Matrix\-::set\-\_\-num\-\_\-null (
+\begin{DoxyParamCaption}
+\item[{int}]{in}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1Matrix_a66c2c1c127f4efefc4a407e9552e928d}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em in} & Number of zero values. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000002}{Bug}]-\/nan assigned on construction time due to num\-\_\-values\-\_\- being 0. \end{DoxyRefDesc}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00255}{255} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_a66c2c1c127f4efefc4a407e9552e928d_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_a66c2c1c127f4efefc4a407e9552e928d_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1Matrix_a242fedf2da10a3e5c14f63c2bc60beae}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!set\-\_\-num\-\_\-rows@{set\-\_\-num\-\_\-rows}}
+\index{set\-\_\-num\-\_\-rows@{set\-\_\-num\-\_\-rows}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{set\-\_\-num\-\_\-rows}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Matrix\-::set\-\_\-num\-\_\-rows (
+\begin{DoxyParamCaption}
+\item[{int}]{num\-\_\-rows}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1Matrix_a242fedf2da10a3e5c14f63c2bc60beae}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em num\-\_\-rows} & Number of rows. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00217}{217} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_a242fedf2da10a3e5c14f63c2bc60beae_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_a242fedf2da10a3e5c14f63c2bc60beae_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1Matrix_ae529100c5c280088e9acf8e8f7994f73}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!set\-\_\-num\-\_\-zero@{set\-\_\-num\-\_\-zero}}
+\index{set\-\_\-num\-\_\-zero@{set\-\_\-num\-\_\-zero}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{set\-\_\-num\-\_\-zero}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Matrix\-::set\-\_\-num\-\_\-zero (
+\begin{DoxyParamCaption}
+\item[{int}]{in}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1Matrix_ae529100c5c280088e9acf8e8f7994f73}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em in} & Number of zero values. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyRefDesc}{Bug}
+\item[\hyperlink{bug__bug000001}{Bug}]-\/nan assigned on construction time due to num\-\_\-values\-\_\- being 0. \end{DoxyRefDesc}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00241}{241} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_ae529100c5c280088e9acf8e8f7994f73_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_ae529100c5c280088e9acf8e8f7994f73_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!set\-\_\-ordering@{set\-\_\-ordering}}
+\index{set\-\_\-ordering@{set\-\_\-ordering}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{set\-\_\-ordering}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Matrix\-::set\-\_\-ordering (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix\-Ordering} \&}]{oo}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{Matrix\-Ordering}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em oo} & Ordering of the matrix. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00204}{204} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!set\-\_\-storage@{set\-\_\-storage}}
+\index{set\-\_\-storage@{set\-\_\-storage}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{set\-\_\-storage}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Matrix\-::set\-\_\-storage (
+\begin{DoxyParamCaption}
+\item[{const {\bf Matrix\-Storage} \&}]{tt}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}
+\begin{DoxySeeAlso}{See Also}
+\hyperlink{group__c02-enums_ga25b67ec6a2afeee69f9bb196a9c66619}{Matrix\-Storage}
+\end{DoxySeeAlso}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em tt} & Type of the matrix storage. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00192}{192} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1Matrix_a21893fc643eebadd9757c8995cf44dd3}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!storage@{storage}}
+\index{storage@{storage}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{storage}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\-::\-Matrix\-Storage} mtk\-::\-Matrix\-::storage (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Matrix_a21893fc643eebadd9757c8995cf44dd3}
+
+
+Definition at line \hyperlink{mtk__matrix_8cc_source_l00112}{112} of file \hyperlink{mtk__matrix_8cc_source}{mtk\-\_\-matrix.\-cc}.
+
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Matrix_a21893fc643eebadd9757c8995cf44dd3_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmtk_1_1Matrix_abdf2ac1bbb6c4432cb7caf06e4ca0f26}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!abs\-\_\-density\-\_\-@{abs\-\_\-density\-\_\-}}
+\index{abs\-\_\-density\-\_\-@{abs\-\_\-density\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{abs\-\_\-density\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real} mtk\-::\-Matrix\-::abs\-\_\-density\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_abdf2ac1bbb6c4432cb7caf06e4ca0f26}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00288}{288} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_ab86f8bfe3cb5874d47cc957b5a7cd965}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!abs\-\_\-sparsity\-\_\-@{abs\-\_\-sparsity\-\_\-}}
+\index{abs\-\_\-sparsity\-\_\-@{abs\-\_\-sparsity\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{abs\-\_\-sparsity\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real} mtk\-::\-Matrix\-::abs\-\_\-sparsity\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_ab86f8bfe3cb5874d47cc957b5a7cd965}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00290}{290} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_a892449ddacb81d089818967e65979786}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!bandwidth\-\_\-@{bandwidth\-\_\-}}
+\index{bandwidth\-\_\-@{bandwidth\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{bandwidth\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::bandwidth\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_a892449ddacb81d089818967e65979786}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00286}{286} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_a45c2498d0b6d515c72c2e631508acd7d}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!kl\-\_\-@{kl\-\_\-}}
+\index{kl\-\_\-@{kl\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{kl\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::kl\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_a45c2498d0b6d515c72c2e631508acd7d}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00284}{284} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_afdb4436c4c4c6deaed608a06026179c9}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!ku\-\_\-@{ku\-\_\-}}
+\index{ku\-\_\-@{ku\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{ku\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::ku\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_afdb4436c4c4c6deaed608a06026179c9}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00285}{285} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_a8cb46a0aa1d665a9f92f14e66a307bd5}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!ld\-\_\-@{ld\-\_\-}}
+\index{ld\-\_\-@{ld\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{ld\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::ld\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_a8cb46a0aa1d665a9f92f14e66a307bd5}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00277}{277} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_a3d11a942d6dda7ca16e162c12e854b74}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!num\-\_\-cols\-\_\-@{num\-\_\-cols\-\_\-}}
+\index{num\-\_\-cols\-\_\-@{num\-\_\-cols\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{num\-\_\-cols\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::num\-\_\-cols\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_a3d11a942d6dda7ca16e162c12e854b74}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00275}{275} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_a32d782bd784bea3bb3e5fd55a583b4b7}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!num\-\_\-non\-\_\-null\-\_\-@{num\-\_\-non\-\_\-null\-\_\-}}
+\index{num\-\_\-non\-\_\-null\-\_\-@{num\-\_\-non\-\_\-null\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{num\-\_\-non\-\_\-null\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::num\-\_\-non\-\_\-null\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_a32d782bd784bea3bb3e5fd55a583b4b7}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00282}{282} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_a064d611ebb949858441180d6ff2acaee}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!num\-\_\-non\-\_\-zero\-\_\-@{num\-\_\-non\-\_\-zero\-\_\-}}
+\index{num\-\_\-non\-\_\-zero\-\_\-@{num\-\_\-non\-\_\-zero\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{num\-\_\-non\-\_\-zero\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::num\-\_\-non\-\_\-zero\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_a064d611ebb949858441180d6ff2acaee}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00280}{280} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_aec5bf3cd2e62d7a38412e1dca35cf822}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!num\-\_\-null\-\_\-@{num\-\_\-null\-\_\-}}
+\index{num\-\_\-null\-\_\-@{num\-\_\-null\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{num\-\_\-null\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::num\-\_\-null\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_aec5bf3cd2e62d7a38412e1dca35cf822}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00281}{281} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_ab635ce1dd96c26ee99a75b564f03f091}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!num\-\_\-rows\-\_\-@{num\-\_\-rows\-\_\-}}
+\index{num\-\_\-rows\-\_\-@{num\-\_\-rows\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{num\-\_\-rows\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::num\-\_\-rows\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_ab635ce1dd96c26ee99a75b564f03f091}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00274}{274} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_ac3f64429ee2509c502ce7f0d75341da0}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!num\-\_\-values\-\_\-@{num\-\_\-values\-\_\-}}
+\index{num\-\_\-values\-\_\-@{num\-\_\-values\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{num\-\_\-values\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::num\-\_\-values\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_ac3f64429ee2509c502ce7f0d75341da0}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00276}{276} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_a6daac2b61bed10026785c1eb0328eef9}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!num\-\_\-zero\-\_\-@{num\-\_\-zero\-\_\-}}
+\index{num\-\_\-zero\-\_\-@{num\-\_\-zero\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{num\-\_\-zero\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Matrix\-::num\-\_\-zero\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_a6daac2b61bed10026785c1eb0328eef9}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00279}{279} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_a8b66e0d130cc8ad19c426acd42edaf55}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!ordering\-\_\-@{ordering\-\_\-}}
+\index{ordering\-\_\-@{ordering\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{ordering\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix\-Ordering} mtk\-::\-Matrix\-::ordering\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_a8b66e0d130cc8ad19c426acd42edaf55}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00272}{272} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_adae5d1f3016d891e67a10d6db658d5a7}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!rel\-\_\-density\-\_\-@{rel\-\_\-density\-\_\-}}
+\index{rel\-\_\-density\-\_\-@{rel\-\_\-density\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{rel\-\_\-density\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real} mtk\-::\-Matrix\-::rel\-\_\-density\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_adae5d1f3016d891e67a10d6db658d5a7}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00289}{289} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_aab48952c7df158b6ee06d8c2c901aa7e}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!rel\-\_\-sparsity\-\_\-@{rel\-\_\-sparsity\-\_\-}}
+\index{rel\-\_\-sparsity\-\_\-@{rel\-\_\-sparsity\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{rel\-\_\-sparsity\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real} mtk\-::\-Matrix\-::rel\-\_\-sparsity\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_aab48952c7df158b6ee06d8c2c901aa7e}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00291}{291} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+\hypertarget{classmtk_1_1Matrix_ae343697531e0849f20bed4a9760b9a54}{\index{mtk\-::\-Matrix@{mtk\-::\-Matrix}!storage\-\_\-@{storage\-\_\-}}
+\index{storage\-\_\-@{storage\-\_\-}!mtk::Matrix@{mtk\-::\-Matrix}}
+\subsubsection[{storage\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix\-Storage} mtk\-::\-Matrix\-::storage\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Matrix_ae343697531e0849f20bed4a9760b9a54}
+
+
+Definition at line \hyperlink{mtk__matrix_8h_source_l00270}{270} of file \hyperlink{mtk__matrix_8h_source}{mtk\-\_\-matrix.\-h}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{mtk__matrix_8h}{mtk\-\_\-matrix.\-h}\item 
+src/\hyperlink{mtk__matrix_8cc}{mtk\-\_\-matrix.\-cc}\end{DoxyCompactItemize}
