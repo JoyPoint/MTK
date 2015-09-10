@@ -36,8 +36,6 @@ memcheck:
 	@( cd $(TESTS); $(MAKE) memcheck)
 	@( cd $(EXAMPLES); $(MAKE) memcheck)
 
-bye: clean gendoc
-
 help:
 	@echo '-----'
 	@echo 'Makefile for the MTK.'

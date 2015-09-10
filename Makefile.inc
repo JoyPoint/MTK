@@ -4,7 +4,7 @@ SHELL := /bin/bash
 
 # Please set the following variables up:
 
-#   1. Absolute path to base directory.
+#   2. Absolute path to base directory of the MTK... where is the MTK?
 #   __________________________________________________________________
 
 BASE = /home/ejspeiro/Dropbox/MTK
