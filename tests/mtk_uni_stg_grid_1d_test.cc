@@ -112,7 +112,7 @@ void Test3() {
   std::cout << gg << std::endl;
 
   if(!gg.WriteToFile("mtk_uni_stg_grid_1d_test_03.dat", "x", "u(x)")) {
-    std::cerr << "Error writing to file." << std::cerr;
+    std::cerr << "Error writing to file." << std::endl;
   }
 
   mtk::Tools::EndTestNo(3);
@@ -141,7 +141,7 @@ void Test4() {
   std::cout << gg << std::endl;
 
   if(!gg.WriteToFile("mtk_uni_stg_grid_1d_test_04.dat", "x", "v(x)")) {
-    std::cerr << "Error writing to file." << std::cerr;
+    std::cerr << "Error writing to file." << std::endl;
   }
 
   mtk::Tools::EndTestNo(4);
