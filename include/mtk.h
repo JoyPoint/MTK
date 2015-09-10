@@ -405,7 +405,7 @@ Fundamental data structures.
 Adapter classes and auxiliary numerical methods.
 */
 #include "mtk_blas_adapter.h"
-// #include "mtk_lapack_adapter.h"
+#include "mtk_lapack_adapter.h"
 // #include "mtk_glpk_adapter.h"
 
 /*!

@@ -14,8 +14,8 @@ DATASTRUCTS  = \
 	mtk_dense_matrix.o
 
 NUMMETHODS = \
-	mtk_blas_adapter.o
-# 	mtk_lapack_adapter.o \
+	mtk_blas_adapter.o \
+	mtk_lapack_adapter.o
 # 	mtk_glpk_adapter.o
 #
 # GRIDS = \
