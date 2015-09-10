@@ -15,8 +15,8 @@ DATASTRUCTS  = \
 
 NUMMETHODS = \
 	mtk_blas_adapter.o \
-	mtk_lapack_adapter.o
-# 	mtk_glpk_adapter.o
+	mtk_lapack_adapter.o \
+	mtk_glpk_adapter.o
 #
 # GRIDS = \
 # 	mtk_uni_stg_grid_1d.o
