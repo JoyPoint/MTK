@@ -463,9 +463,10 @@ void mtk::DenseMatrix::OrderColMajor() {
 mtk::DenseMatrix mtk::DenseMatrix::Kron(const mtk::DenseMatrix &aa,
                                         const mtk::DenseMatrix &bb) {
 
-  register double aa_factor{};  // Used in computation.
-  register int row_offset{};    // Offset for rows.
-  register int col_offset{};    // Offset for rows.
+  int row_offset{};	// Offset for rows.
+  int col_offset{};	// Offset for rows.
+  
+  mtk::Real aa_factor{};	// Used in computation.
 
   // Auxiliary variables:
   auto aux1 = aa.matrix_properties_.num_rows()*bb.matrix_properties_.num_rows();
@@ -473,7 +474,7 @@ mtk::DenseMatrix mtk::DenseMatrix::Kron(const mtk::DenseMatrix &aa,
 
   mtk::DenseMatrix output(aux1,aux2); // Output matrix.
 
-  register int kk_num_cols{output.matrix_properties_.num_cols()}; // Aux.
+  int kk_num_cols{output.matrix_properties_.num_cols()}; // Aux.
 
   auto mm = aa.matrix_properties_.num_rows(); // Rows of aa.
   auto nn = aa.matrix_properties_.num_cols(); // Cols of aa.
