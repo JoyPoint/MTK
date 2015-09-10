@@ -7,7 +7,7 @@ SHELL := /bin/bash
 #   1. Absolute path to base directory.
 #   __________________________________________________________________
 
-BASE = /Users/ejspeiro/Programming/MTK
+BASE = /home/ejspeiro/Dropbox/MTK
 
 #   2. The machine (platform) identifier and required precision.
 #   __________________________________________________________________
@@ -16,7 +16,7 @@ BASE = /Users/ejspeiro/Programming/MTK
 # - LINUX: A LINUX box installation.
 # - OSX: Uses OS X optimized solvers.
 
-PLAT = OSX
+PLAT = LINUX
 
 # Options are:
 # - SINGLE: Use 4 B floating point numbers.
@@ -38,7 +38,7 @@ ATL_OPT = OFF
 
 # GLPK include path (soon to go):
 
-GLPK_INC = /Users/ejspeiro/Libraries/glpk-4.55-install/include
+GLPK_INC = $(HOME)/Libraries/glpk-4.55/include
 
 # Linux: If ATLAS optimization is ON, users should only provide the path to
 # ATLAS:
@@ -52,7 +52,7 @@ ATLAS_INC = $(HOME)/Libraries/ATLAS_3.8.4-CORE/include
 
 # GLPK linking path (soon to go):
 
-GLPK_LIB = /Users/ejspeiro/Libraries/glpk-4.55-install/lib/libglpk.a
+GLPK_LIB = $(HOME)/Libraries/glpk-4.55/lib/libglpk.a
 
 # If optimization is OFF, then provide the paths for:
 
