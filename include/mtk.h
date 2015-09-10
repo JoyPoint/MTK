@@ -416,7 +416,6 @@ Adapter classes and auxiliary numerical methods.
 Uniform rectangular staggered grids.
 */
 #include "mtk_uni_stg_grid_1d.h"
-// #include "mtk_uni_stg_grid_2d.h"
 
 /*!
 \defgroup c07-mim_ops Mimetic operators.
@@ -425,7 +424,7 @@ Uniform rectangular staggered grids.
 
 Mimetic operators.
 */
-// #include "mtk_grad_1d.h"
+#include "mtk_grad_1d.h"
 // #include "mtk_div_1d.h"
 // #include "mtk_lap_1d.h"
 
