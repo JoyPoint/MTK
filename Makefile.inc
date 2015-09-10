@@ -152,7 +152,7 @@ else
     LIBS = $(MTK_LIB)
     LIBS += $(OPT_LIBS)
   else
-    LINKER  = g++
+    LINKER  = gfortran
     LIBS = $(MTK_LIB)
     LIBS += $(NOOPT_LIBS)
   endif

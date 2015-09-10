@@ -2,13 +2,13 @@
 
 include ../Makefile.inc
 
-# all: mtk_dense_matrix_test mtk_blas_adapter_test mtk_lapack_adapter_test mtk_glpk_adapter_test mtk_uni_stg_grid_1d_test mtk_grad_1d_test mtk_div_1d_test mtk_lap_1d_test
+# all:  mtk_lapack_adapter_test mtk_glpk_adapter_test mtk_uni_stg_grid_1d_test mtk_grad_1d_test mtk_div_1d_test mtk_lap_1d_test
 
-all: mtk_dense_matrix_test
+all: mtk_dense_matrix_test mtk_blas_adapter_test
 
 EXE = \
-	mtk_dense_matrix_test.exe
-# 	mtk_blas_adapter_test.exe \
+	mtk_dense_matrix_test.exe \
+	mtk_blas_adapter_test.exe
 # 	mtk_lapack_adapter_test.exe \
 # 	mtk_glpk_adapter_test.exe \
 # 	mtk_uni_stg_grid_1d_test.exe \
@@ -29,9 +29,9 @@ mtk_dense_matrix_test: mtk_dense_matrix_test.o mtk_dense_matrix_test.cc
 	$(LINKER) mtk_dense_matrix_test.o $(LIBS) -o mtk_dense_matrix_test.exe
 	@echo ' '
 
-# mtk_blas_adapter_test: mtk_blas_adapter_test.o mtk_blas_adapter_test.cc
-# 	$(LINKER) mtk_blas_adapter_test.o $(LIBS) -o mtk_blas_adapter_test.exe
-# 	@echo ' '
+mtk_blas_adapter_test: mtk_blas_adapter_test.o mtk_blas_adapter_test.cc
+	$(LINKER) mtk_blas_adapter_test.o $(LIBS) -o mtk_blas_adapter_test.exe
+	@echo ' '
 #
 # mtk_lapack_adapter_test: mtk_lapack_adapter_test.o mtk_lapack_adapter_test.cc
 # 	$(LINKER) mtk_lapack_adapter_test.o $(LIBS) -o mtk_lapack_adapter_test.exe
@@ -63,8 +63,8 @@ mtk_dense_matrix_test: mtk_dense_matrix_test.o mtk_dense_matrix_test.cc
 memcheck:
 	valgrind $(MEMCHECK_OPTS) \
 	./mtk_dense_matrix_test.exe >& mtk_dense_matrix_test.memcheck
-# 	valgrind $(MEMCHECK_OPTS) \
-# 	./mtk_blas_adapter_test.exe >& mtk_blas_adapter_test.memcheck
+	valgrind $(MEMCHECK_OPTS) \
+	./mtk_blas_adapter_test.exe >& mtk_blas_adapter_test.memcheck
 # 	valgrind $(MEMCHECK_OPTS) \
 # 	./mtk_lapack_adapter_test.exe >& mtk_lapack_adapter_test.memcheck
 # 	valgrind $(MEMCHECK_OPTS) \
