@@ -7,16 +7,16 @@ SHELL := /bin/bash
 #   1. Absolute path to base directory.
 #   __________________________________________________________________
 
-BASE = $(HOME)/Dropbox/MTK
+BASE = /Users/ejspeiro/Programming/MTK
 
 #   2. The machine (platform) identifier and required precision.
 #   __________________________________________________________________
 
 # Options are:
 # - LINUX: A LINUX box installation.
-# - OSX: Soon!
+# - OSX: Uses OS X optimized solvers.
 
-PLAT = LINUX
+PLAT = OSX
 
 # Options are:
 # - SINGLE: Use 4 B floating point numbers.
@@ -27,6 +27,8 @@ PRECISION = DOUBLE
 #   3. Optimized solvers and operations by means of ATLAS in Linux?
 #   __________________________________________________________________
 
+# If you have selected OSX in step 1, then you don't need to worry about this.
+
 # Options are ON xor OFF:
 
 ATL_OPT = OFF
@@ -36,18 +38,21 @@ ATL_OPT = OFF
 
 # GLPK include path (soon to go):
 
-GLPK_INC = $(HOME)/Libraries/glpk-4.55/include
+GLPK_INC = /Users/ejspeiro/Libraries/glpk-4.55-install/include
 
-# If ATLAS optimization is ON, users should only provide the path to ATLAS:
+# Linux: If ATLAS optimization is ON, users should only provide the path to
+# ATLAS:
 
 ATLAS_INC = $(HOME)/Libraries/ATLAS_3.8.4-CORE/include
+
+# OS X: Do nothing.
 
 #   5. Paths to dependencies (archive files for (static) linking).
 #   __________________________________________________________________
 
 # GLPK linking path (soon to go):
 
-GLPK_LIB = $(HOME)/Libraries/glpk-4.55/lib/libglpk.a
+GLPK_LIB = /Users/ejspeiro/Libraries/glpk-4.55-install/lib/libglpk.a
 
 # If optimization is OFF, then provide the paths for:
 
@@ -63,7 +68,7 @@ ATLAS_LIB   = $(HOME)/Libraries/ATLAS_3.8.4-CORE/ATLAS_3.8.4-BUILD-Citadel/lib
 #   6. Compiler and its flags.
 #   __________________________________________________________________
 
-CC = colorgcc
+CC = g++
 
 # Debug Level. Options are:
 # 0. NO debug at all NOR any run-time checks... be cautious!
@@ -143,7 +148,7 @@ NOOPT_LIBS  = $(LAPACK_LIB) $(BLAS_LIB) -lm $(GLPK_LIB) -lstdc++
 
 OPT_LIBS    = -L$(ATLAS_LIB) -latlas -llapack -lblas -lm -latlas -lstdc++
 
-ifeq ($(PLAT),MACOS)
+ifeq ($(PLAT),OSX)
   LINKER  = g++
   LINKER  += -framework Accelerate $(GLPK_LIB) $(MTK_LIB)
 else
