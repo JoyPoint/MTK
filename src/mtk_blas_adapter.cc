@@ -16,6 +16,7 @@ operations.
 The BLAS can be installed from links given in the See Also section of this page.
 
 \sa http://www.netlib.org/blas/
+
 \sa https://software.intel.com/en-us/non-commercial-software-development
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
