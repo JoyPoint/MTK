@@ -19,7 +19,9 @@ gendoc:
 	@( $(DOCGEN) $(DOCFILE) )
 	@( cd $(DOC)/latex; $(MAKE) )
 
-clean: cleanroot cleanlib cleantest cleanexample
+# clean: cleanroot cleanlib cleantest cleanexample
+
+clean: cleanroot cleanlib
 
 cleanroot:
 	@(rm -f *~)
@@ -27,7 +29,6 @@ cleanroot:
 cleanlib:
 	@( cd $(SRC); $(MAKE) clean )
 	@( cd $(LIB); $(MAKE) clean )
-	@( cd $(LIBDIR); rm -f libmtk.a )
 
 cleantest:
 	@( cd $(TESTS); $(MAKE) clean )
