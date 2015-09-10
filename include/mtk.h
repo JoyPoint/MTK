@@ -404,9 +404,9 @@ Fundamental data structures.
 
 Adapter classes and auxiliary numerical methods.
 */
-#include "mtk_blas_adapter.h"
-#include "mtk_lapack_adapter.h"
-#include "mtk_glpk_adapter.h"
+// #include "mtk_blas_adapter.h"
+// #include "mtk_lapack_adapter.h"
+// #include "mtk_glpk_adapter.h"
 
 /*!
 \defgroup c06-grids Grids.
@@ -415,8 +415,8 @@ Adapter classes and auxiliary numerical methods.
 
 Uniform rectangular staggered grids.
 */
-#include "mtk_uni_stg_grid_1d.h"
-#include "mtk_uni_stg_grid_2d.h"
+// #include "mtk_uni_stg_grid_1d.h"
+// #include "mtk_uni_stg_grid_2d.h"
 
 /*!
 \defgroup c07-mim_ops Mimetic operators.
@@ -425,8 +425,8 @@ Uniform rectangular staggered grids.
 
 Mimetic operators.
 */
-#include "mtk_grad_1d.h"
-#include "mtk_div_1d.h"
-#include "mtk_lap_1d.h"
+// #include "mtk_grad_1d.h"
+// #include "mtk_div_1d.h"
+// #include "mtk_lap_1d.h"
 
 #endif // End of: MTK_INCLUDE_MTK_H_
