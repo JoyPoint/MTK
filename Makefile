@@ -2,7 +2,9 @@
 
 include Makefile.inc
 
-all: mtklib test example
+# all: mtklib test example
+
+all: mtklib
 
 mtklib:
 	@( cd $(SRC); $(MAKE) )
