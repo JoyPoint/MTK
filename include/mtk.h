@@ -415,7 +415,7 @@ Adapter classes and auxiliary numerical methods.
 
 Uniform rectangular staggered grids.
 */
-// #include "mtk_uni_stg_grid_1d.h"
+#include "mtk_uni_stg_grid_1d.h"
 // #include "mtk_uni_stg_grid_2d.h"
 
 /*!

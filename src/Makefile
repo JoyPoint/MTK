@@ -2,9 +2,9 @@
 
 include ../Makefile.inc
 
-# all: exetools   grids mimops archive
+# all: exetools    mimops archive
 
-all: exetools datastructs nummethods archive
+all: exetools datastructs nummethods grids archive
 
 EXETOOLS = \
 	mtk_tools.o
@@ -17,9 +17,9 @@ NUMMETHODS = \
 	mtk_blas_adapter.o \
 	mtk_lapack_adapter.o \
 	mtk_glpk_adapter.o
-#
-# GRIDS = \
-# 	mtk_uni_stg_grid_1d.o
+
+GRIDS = \
+	mtk_uni_stg_grid_1d.o
 #
 # MIMOPS = \
 # 	mtk_grad_1d.o \
@@ -47,7 +47,7 @@ mimops: $(MIMOPS)
 
 # Create the building directory with "-p" so no prob if it exists:
 
-# archive: $(EXETOOLS)   $(GRIDS) $(MIMOPS)
+# archive: $(EXETOOLS)   $(MIMOPS)
 # 	$(ARCH) $(ARCHFLAGS) $(MTK_LIB) \
 # 	  $(EXETOOLS) $(DATASTRUCTS) $(NUMMETHODS) $(GRIDS) $(MIMOPS)
 # 	$(RANLIB) $(MTK_LIB)
@@ -55,9 +55,9 @@ mimops: $(MIMOPS)
 # 	@echo '----- Library created! Check for ' $(MTK_LIB)
 # 	@echo ' '
 
-archive: $(EXETOOLS) $(DATASTRUCTS) $(NUMMETHODS)
+archive: $(EXETOOLS) $(DATASTRUCTS) $(NUMMETHODS) $(GRIDS)
 	$(ARCH) $(ARCHFLAGS) $(MTK_LIB) \
-	  $(EXETOOLS) $(DATASTRUCTS) $(NUMMETHODS)
+	  $(EXETOOLS) $(DATASTRUCTS) $(NUMMETHODS) $(GRIDS)
 	$(RANLIB) $(MTK_LIB)
 	@echo ' '
 	@echo '----- Library created! Check for ' $(MTK_LIB)
