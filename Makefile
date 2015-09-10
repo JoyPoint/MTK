@@ -2,9 +2,7 @@
 
 include Makefile.inc
 
-# all: mtklib  example
-
-all: mtklib test
+all: mtklib test example
 
 mtklib:
 	@( cd $(SRC); $(MAKE) )
@@ -19,9 +17,7 @@ gendoc:
 	@( $(DOCGEN) $(DOCFILE) )
 	@( cd $(DOC)/latex; $(MAKE) )
 
-# clean: cleanroot cleanlib  cleanexample
-
-clean: cleanroot cleanlib cleantest
+clean: cleanroot cleanlib cleantest cleanexample
 
 cleanroot:
 	@(rm -f *~)
