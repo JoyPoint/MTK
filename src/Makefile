@@ -10,8 +10,8 @@ EXETOOLS = \
 	mtk_tools.o
 
 DATASTRUCTS  = \
-	mtk_matrix.o
-# 	mtk_dense_matrix.o
+	mtk_matrix.o \
+	mtk_dense_matrix.o
 #
 # NUMMETHODS = \
 # 	mtk_blas_adapter.o \
