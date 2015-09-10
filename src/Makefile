@@ -20,9 +20,9 @@ GRIDS = \
 	mtk_uni_stg_grid_1d.o
 
 MIMOPS = \
-	mtk_grad_1d.o
-# 	mtk_div_1d.o \
-# 	mtk_lap_1d.o
+	mtk_grad_1d.o \
+	mtk_div_1d.o \
+	mtk_lap_1d.o
 
 exetools: $(EXETOOLS)
 
