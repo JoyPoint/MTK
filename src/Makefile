@@ -2,15 +2,15 @@
 
 include ../Makefile.inc
 
-# all: exetools datastructs nummethods grids mimops archive
+# all: exetools  nummethods grids mimops archive
 
-all: exetools archive
+all: exetools datastructs archive
 
 EXETOOLS = \
 	mtk_tools.o
 
-# DATASTRUCTS  = \
-# 	mtk_matrix.o \
+DATASTRUCTS  = \
+	mtk_matrix.o
 # 	mtk_dense_matrix.o
 #
 # NUMMETHODS = \
@@ -47,7 +47,7 @@ mimops: $(MIMOPS)
 
 # Create the building directory with "-p" so no prob if it exists:
 
-# archive: $(EXETOOLS) $(DATASTRUCTS) $(NUMMETHODS) $(GRIDS) $(MIMOPS)
+# archive: $(EXETOOLS)  $(NUMMETHODS) $(GRIDS) $(MIMOPS)
 # 	$(ARCH) $(ARCHFLAGS) $(MTK_LIB) \
 # 	  $(EXETOOLS) $(DATASTRUCTS) $(NUMMETHODS) $(GRIDS) $(MIMOPS)
 # 	$(RANLIB) $(MTK_LIB)
@@ -55,9 +55,9 @@ mimops: $(MIMOPS)
 # 	@echo '----- Library created! Check for ' $(MTK_LIB)
 # 	@echo ' '
 
-archive: $(EXETOOLS)
+archive: $(EXETOOLS) $(DATASTRUCTS)
 	$(ARCH) $(ARCHFLAGS) $(MTK_LIB) \
-	  $(EXETOOLS)
+	  $(EXETOOLS) $(DATASTRUCTS)
 	$(RANLIB) $(MTK_LIB)
 	@echo ' '
 	@echo '----- Library created! Check for ' $(MTK_LIB)
