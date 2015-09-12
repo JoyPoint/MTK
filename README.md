@@ -1,4 +1,4 @@
-# README File for the Mimetic Methods Toolkit (MTK)
+# The Mimetic Methods Toolkit (MTK)
 
 By: **Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu**
     __________________________________________________________________

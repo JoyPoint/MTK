@@ -465,43 +465,44 @@
       \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &aa,
 00464                                         \textcolor{keyword}{const} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &bb) \{
 00465 
-00466   \textcolor{keyword}{register} \textcolor{keywordtype}{double} aa\_factor\{\};  \textcolor{comment}{// Used in computation.}
-00467   \textcolor{keyword}{register} \textcolor{keywordtype}{int} row\_offset\{\};    \textcolor{comment}{// Offset for rows.}
-00468   \textcolor{keyword}{register} \textcolor{keywordtype}{int} col\_offset\{\};    \textcolor{comment}{// Offset for rows.}
-00469 
-00470   \textcolor{comment}{// Auxiliary variables:}
-00471   \textcolor{keyword}{auto} aux1 = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}()*bb.
+00466   \textcolor{keywordtype}{int} row\_offset\{\}; \textcolor{comment}{// Offset for rows.}
+00467   \textcolor{keywordtype}{int} col\_offset\{\}; \textcolor{comment}{// Offset for rows.}
+00468   
+00469   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aa\_factor\{\}; \textcolor{comment}{// Used in computation.}
+00470 
+00471   \textcolor{comment}{// Auxiliary variables:}
+00472   \textcolor{keyword}{auto} aux1 = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}()*bb.
       \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
-00472   \textcolor{keyword}{auto} aux2 = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}()*bb.
+00473   \textcolor{keyword}{auto} aux2 = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}()*bb.
       \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
-00473 
-00474   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} output(aux1,aux2); \textcolor{comment}{// Output matrix.}
-00475 
-00476   \textcolor{keyword}{register} \textcolor{keywordtype}{int} kk\_num\_cols\{output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}()\}; \textcolor{comment}{// Aux.}
-00477 
-00478   \textcolor{keyword}{auto} mm = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}(); \textcolor{comment}{// Rows of aa.}
-00479   \textcolor{keyword}{auto} nn = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}(); \textcolor{comment}{// Cols of aa.}
-00480   \textcolor{keyword}{auto} pp = bb.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}(); \textcolor{comment}{// Rows of bb.}
-00481   \textcolor{keyword}{auto} qq = bb.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}(); \textcolor{comment}{// Cols of bb.}
-00482 
-00483   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < mm; ++ii) \{
-00484     row\_offset = ii*pp;
-00485     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < nn; ++jj) \{
-00486       col\_offset = jj*qq;
-00487       aa\_factor = aa.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[ii*nn + jj];
-00488       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ll = 0; ll < pp; ++ll) \{
-00489         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} oo = 0; oo < qq; ++oo) \{
-00490           \textcolor{keyword}{auto} index = (ll + row\_offset)*kk\_num\_cols + (oo + col\_offset);
-00491           output.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[index] = aa\_factor*bb.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[ll*qq + oo];
-00492         \}
-00493       \}
-00494     \}
-00495   \}
-00496 
-00497   output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{set\_storage}(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
-00498   output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{set\_ordering}(
+00474 
+00475   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} output(aux1,aux2); \textcolor{comment}{// Output matrix.}
+00476 
+00477   \textcolor{keywordtype}{int} kk\_num\_cols\{output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}()\}; \textcolor{comment}{// Aux.}
+00478 
+00479   \textcolor{keyword}{auto} mm = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}(); \textcolor{comment}{// Rows of aa.}
+00480   \textcolor{keyword}{auto} nn = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}(); \textcolor{comment}{// Cols of aa.}
+00481   \textcolor{keyword}{auto} pp = bb.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}(); \textcolor{comment}{// Rows of bb.}
+00482   \textcolor{keyword}{auto} qq = bb.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}(); \textcolor{comment}{// Cols of bb.}
+00483 
+00484   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < mm; ++ii) \{
+00485     row\_offset = ii*pp;
+00486     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < nn; ++jj) \{
+00487       col\_offset = jj*qq;
+00488       aa\_factor = aa.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[ii*nn + jj];
+00489       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ll = 0; ll < pp; ++ll) \{
+00490         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} oo = 0; oo < qq; ++oo) \{
+00491           \textcolor{keyword}{auto} index = (ll + row\_offset)*kk\_num\_cols + (oo + col\_offset);
+00492           output.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[index] = aa\_factor*bb.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[ll*qq + oo];
+00493         \}
+00494       \}
+00495     \}
+00496   \}
+00497 
+00498   output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{set\_storage}(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
+00499   output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{set\_ordering}(
       \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
-00499 
-00500   \textcolor{keywordflow}{return} output;
-00501 \}
+00500 
+00501   \textcolor{keywordflow}{return} output;
+00502 \}
 \end{DoxyCode}
