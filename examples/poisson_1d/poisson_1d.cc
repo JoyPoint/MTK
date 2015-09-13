@@ -91,7 +91,63 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <fstream>
 #include <cmath>
 
+#include <vector>
+
 #include "mtk.h"
+
+namespace mtk {
+
+class BCDesc1D {
+ public:
+  static void ImposeOnOperator(DenseMatrix &matrix,
+                               const std::vector<Real> &west,
+                               const std::vector<Real> &east);
+
+  static void ImposeOnGrid(UniStgGrid1D &grid,
+                           const Real &west_bndy_value,
+                           const Real &east_bndy_value);
+};
+}
+
+void mtk::BCDesc1D::ImposeOnOperator(mtk::DenseMatrix &matrix,
+                                     const std::vector<mtk::Real> &west,
+                                     const std::vector<mtk::Real> &east) {
+
+  mtk::Tools::Prevent(matrix.num_rows() == 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(west.size() > (unsigned int) matrix.num_cols(),
+                      __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(east.size() > (unsigned int) matrix.num_cols(),
+                      __FILE__, __LINE__, __func__);
+
+  /// 1. Assign the west array.
+
+  for (unsigned int ii = 0; ii < west.size(); ++ii) {
+    matrix.SetValue(0, ii, west[ii]);
+  }
+
+  /// 2. Assign the east array.
+
+  for (unsigned int ii = 0; ii < east.size(); ++ii) {
+    matrix.SetValue(matrix.num_rows() - 1,
+                    matrix.num_cols() - east.size() + ii,
+                    east[ii]);
+  }
+}
+
+void mtk::BCDesc1D::ImposeOnGrid(mtk::UniStgGrid1D &grid,
+                                 const mtk::Real &west_bndy_value,
+                                 const mtk::Real &east_bndy_value) {
+
+  mtk::Tools::Prevent(grid.num_cells_x() == 0, __FILE__, __LINE__, __func__);
+
+  /// 1. Assign the west condition.
+
+  grid.discrete_field_u()[0] = west_bndy_value;
+
+  /// 2. Assign the east condition.
+
+  grid.discrete_field_u()[grid.num_cells_x() - 1] = east_bndy_value;
+}
 
 mtk::Real Source(mtk::Real xx) {
 
@@ -170,7 +226,63 @@ int main () {
 
   /// 5. Apply Boundary Conditions to both operator and source term.
 
+  // Since we need to approximate the first derivative times beta, we must use
+  // the approximation of the gradient at the boundary. We could extract them
+  // from the gradient operator as packed in the grad object. BUT, since we have
+  // generated at matrix containing this operator, we can extract these from the
+  // matrix.
+
+  // Array containing the coefficients for the west boundary condition.
+  std::vector<mtk::Real> west_coeffs;
+
+  for (auto ii = 0; ii < grad.num_bndy_coeffs(); ++ii) {
+    west_coeffs.push_back(beta*gradm.GetValue(0, ii));
+  }
+
+  // Array containing the coefficients for the east boundary condition.
+  std::vector<mtk::Real> east_coeffs;
+
+  for (auto ii = 0; ii < grad.num_bndy_coeffs(); ++ii) {
+    east_coeffs.push_back(beta*gradm.GetValue(gradm.num_rows() - 1,
+                                              gradm.num_cols() - 1 - ii));
+  }
+
+  // To impose the Dirichlet condition, we simple add its coefficient to the
+  // first entry of the west, and the last entry of the east array.
+
+  west_coeffs[0] *= alpha;
+
+  east_coeffs[east_coeffs.size() - 1] *= alpha;
+
+  // Now that we have the coefficients that should be in the operator, we create
+  // a boundary condition descriptor object, which will encapsulate the
+  // complexity of assigning them in the matrix, to complete the construction of
+  // the mimetic operator.
+
+  mtk::BCDesc1D::ImposeOnOperator(lapm, west_coeffs, east_coeffs);
+
+  std::cout << "Mimetic differential operator created:" << std::endl;
+  std::cout << lapm << std::endl;
+
+  mtk::BCDesc1D::ImposeOnGrid(source, west_bndy_value, east_bndy_value);
+
+  std::cout << "Source term with imposed BCs:" << std::endl;
+  std::cout << source << std::endl;
+
   /// 6. Solve the problem.
+
+  int info{mtk::LAPACKAdapter::SolveDenseSystem(lapm,
+                                                source.discrete_field_u())};
+
+  if (!info) {
+    std::cout << "System solved! Problem solved!" << std::endl;
+    std::cout << std::endl;
+  }
+  else {
+    std::cerr << "Something wrong solving system! info = " << info << std::endl;
+    std::cerr << "Exiting..." << std::endl;
+    return EXIT_FAILURE;
+  }
 
   /// 7. Compare computed solution against known solution.
 
@@ -178,6 +290,7 @@ int main () {
 
   known_sol.BindScalarField(KnownSolution);
 
+  std::cout << "known_sol =" << std::endl;
   std::cout << known_sol << std::endl;
 
   known_sol.WriteToFile("poisson_1d_known_sol.dat", "x", "u(x)");

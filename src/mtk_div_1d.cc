@@ -312,6 +312,11 @@ bool mtk::Div1D::ConstructDiv1D(int order_accuracy,
   return true;
 }
 
+int mtk::Div1D::num_bndy_coeffs() {
+
+  return num_bndy_coeffs_;
+}
+
 mtk::Real *mtk::Div1D::weights_crs() {
 
   return weights_crs_;

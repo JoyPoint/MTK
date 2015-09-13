@@ -105,6 +105,13 @@ class Div1D {
                       Real mimetic_threshold = kDefaultMimeticThreshold);
 
   /*!
+  \brief Returns how many coefficients are approximating at the boundary.
+
+  \return How many coefficients are approximating at the boundary.
+  */
+  int num_bndy_coeffs();
+
+  /*!
   \brief Return collection of weights as computed by the CRSA.
 
   \return Collection of weights as computed by the CRSA.

@@ -322,6 +322,11 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
   return true;
 }
 
+int mtk::Grad1D::num_bndy_coeffs() {
+
+  return num_bndy_coeffs_;
+}
+
 mtk::Real *mtk::Grad1D::weights_crs() {
 
   return weights_crs_;

@@ -105,21 +105,28 @@ class Grad1D {
                        Real mimetic_threshold = kDefaultMimeticThreshold);
 
   /*!
-  \brief Return collection of weights as computed by the CRSA.
+  \brief Returns how many coefficients are approximating at the boundary.
+
+  \return How many coefficients are approximating at the boundary.
+  */
+  int num_bndy_coeffs();
+
+  /*!
+  \brief Returns collection of weights as computed by the CRSA.
 
   \return Success of the solution.
   */
-  Real* weights_crs(void);
+  Real *weights_crs(void);
 
   /*!
-  \brief Return collection of weights as computed by the CBSA.
+  \brief Returns collection of weights as computed by the CBSA.
 
   \return Collection of weights as computed by the CBSA.
   */
-  Real* weights_cbs(void);
+  Real *weights_cbs(void);
 
   /*!
-  \brief Return the operator as a dense matrix.
+  \brief Returns the operator as a dense matrix.
 
   \return The operator as a dense matrix.
   */
