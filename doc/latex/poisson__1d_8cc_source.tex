@@ -56,99 +56,210 @@
 00091 \textcolor{preprocessor}{#include <fstream>}
 00092 \textcolor{preprocessor}{#include <cmath>}
 00093 
-00094 \textcolor{preprocessor}{#include "\hyperlink{mtk_8h}{mtk.h}"}
+00094 \textcolor{preprocessor}{#include <vector>}
 00095 
-00096 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Source(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx) \{
+00096 \textcolor{preprocessor}{#include "\hyperlink{mtk_8h}{mtk.h}"}
 00097 
-00098   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda = -1.0;
+00098 \textcolor{keyword}{namespace }mtk \{
 00099 
-00100   \textcolor{keywordflow}{return} -lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
-00101 \}
-00102 
-00103 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} KnownSolution(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx) \{
-00104 
-00105   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda = -1.0;
-00106 
-00107   \textcolor{keywordflow}{return} (exp(lambda*xx) - 1.0)/(exp(lambda) - 1.0);
-00108 \}
-00109 
-00110 \textcolor{keywordtype}{int} \hyperlink{poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00100 \textcolor{keyword}{class }BCDesc1D \{
+00101  \textcolor{keyword}{public}:
+00102   \textcolor{keyword}{static} \textcolor{keywordtype}{void} ImposeOnOperator(DenseMatrix &matrix,
+00103                                \textcolor{keyword}{const} std::vector<Real> &west,
+00104                                \textcolor{keyword}{const} std::vector<Real> &east);
+00105 
+00106   \textcolor{keyword}{static} \textcolor{keywordtype}{void} ImposeOnGrid(UniStgGrid1D &grid,
+00107                            \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &west\_bndy\_value,
+00108                            \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &east\_bndy\_value);
+00109 \};
+00110 \}
 00111 
-00112   std::cout << \textcolor{stringliteral}{"Example: Poisson Equation on a 1D Uniform Staggered Grid "};
-00113   std::cout << \textcolor{stringliteral}{"with Robin BCs."} << std::endl;
-00114 
-00116 
-00117   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda = -1.0;
-00118   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} alpha = -exp(lambda);
-00119   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} beta = (exp(lambda) - 1.0)/lambda;
-00120   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} west\_bndy\_value = -1.0;
-00121   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} east\_bndy\_value = 0.0;
-00122 
-00124 
-00125   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} west\_bndy\_x = 0.0;
-00126   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} east\_bndy\_x = 1.0;
-00127   \textcolor{keywordtype}{int} num\_cells\_x = 5;
-00128 
-00129   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} comp\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
-00130 
-00132 
-00133   \textcolor{keywordtype}{int} order\_of\_accuracy = 2;
-00134 
-00135   \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} grad; \textcolor{comment}{// Mimetic gradient operator.}
+00112 \textcolor{keywordtype}{void} mtk::BCDesc1D::ImposeOnOperator(\hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &matrix,
+00113                                      \textcolor{keyword}{const} std::vector<mtk::Real> &west,
+00114                                      \textcolor{keyword}{const} std::vector<mtk::Real> &east) \{
+00115 
+00116   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(matrix.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00117   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(west.size() > (\textcolor{keywordtype}{unsigned} int) matrix.
+      \hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}(),
+00118                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00119   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(east.size() > (\textcolor{keywordtype}{unsigned} int) matrix.
+      \hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}(),
+00120                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00121 
+00123 
+00124   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < west.size(); ++ii) \{
+00125     matrix.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(0, ii, west[ii]);
+00126   \}
+00127 
+00129 
+00130   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < east.size(); ++ii) \{
+00131     matrix.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(matrix.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}() - 1,
+00132                     matrix.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}() - east.size() + ii,
+00133                     east[ii]);
+00134   \}
+00135 \}
 00136 
-00137   \hyperlink{classmtk_1_1Lap1D}{mtk::Lap1D} lap; \textcolor{comment}{// Mimetic gradient operator.}
-00138 
-00139   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} mimetic\_threshold = 1e-6;
+00137 \textcolor{keywordtype}{void} mtk::BCDesc1D::ImposeOnGrid(\hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} &grid,
+00138                                  \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &west\_bndy\_value,
+00139                                  \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &east\_bndy\_value) \{
 00140 
-00141   \textcolor{keywordflow}{if} (!lap.\hyperlink{classmtk_1_1Lap1D_a685dcba88c08cf5b7b6c2aa4669a472c}{ConstructLap1D}(order\_of\_accuracy, mimetic\_threshold)) \{
-00142     std::cerr << \textcolor{stringliteral}{"Mimetic lap could not be built."} << std::endl;
-00143     \textcolor{keywordflow}{return} EXIT\_FAILURE;
-00144   \}
-00145 
-00146   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} lapm(lap.\hyperlink{classmtk_1_1Lap1D_a28672c735fa0d13e6204795b63aec4e2}{ReturnAsDenseMatrix}(comp\_sol));
-00147 
-00148   std::cout << \textcolor{stringliteral}{"Mimetic Laplacian operator: "} << std::endl;
-00149   std::cout << lapm << std::endl;
-00150 
-00151   \textcolor{keywordflow}{if} (!grad.\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{ConstructGrad1D}(order\_of\_accuracy, mimetic\_threshold)) \{
-00152     std::cerr << \textcolor{stringliteral}{"Mimetic grad could not be built."} << std::endl;
-00153     \textcolor{keywordflow}{return} EXIT\_FAILURE;
-00154   \}
+00141   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00142 
+00144 
+00145   grid.\hyperlink{classmtk_1_1UniStgGrid1D_acf28d702f6e702599986afcb253bbfc1}{discrete\_field\_u}()[0] = west\_bndy\_value;
+00146 
+00148 
+00149   grid.\hyperlink{classmtk_1_1UniStgGrid1D_acf28d702f6e702599986afcb253bbfc1}{discrete\_field\_u}()[grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}() - 1] = east\_bndy\_value;
+00150 \}
+00151 
+00152 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Source(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx) \{
+00153 
+00154   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda = -1.0;
 00155 
-00156   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} gradm(grad.\hyperlink{classmtk_1_1Grad1D_a75781c4455569a7934d4e0dff7e06064}{ReturnAsDenseMatrix}(comp\_sol));
-00157 
-00158   std::cout << \textcolor{stringliteral}{"Mimetic gradient operator: "} << std::endl;
-00159   std::cout << gradm << std::endl;
+00156   \textcolor{keywordflow}{return} -lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
+00157 \}
+00158 
+00159 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} KnownSolution(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx) \{
 00160 
+00161   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda = -1.0;
 00162 
-00163   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} source(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
-00164 
-00165   source.BindScalarField(Source);
-00166 
-00167   std::cout << source << std::endl;
-00168 
-00169   source.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_source.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"s(x)"});
+00163   \textcolor{keywordflow}{return} (exp(lambda*xx) - 1.0)/(exp(lambda) - 1.0);
+00164 \}
+00165 
+00166 \textcolor{keywordtype}{int} \hyperlink{poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00167 
+00168   std::cout << \textcolor{stringliteral}{"Example: Poisson Equation on a 1D Uniform Staggered Grid "};
+00169   std::cout << \textcolor{stringliteral}{"with Robin BCs."} << std::endl;
 00170 
 00172 
-00174 
-00176 
-00177   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} known\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00173   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda = -1.0;
+00174   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} alpha = -exp(lambda);
+00175   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} beta = (exp(lambda) - 1.0)/lambda;
+00176   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} west\_bndy\_value = -1.0;
+00177   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} east\_bndy\_value = 0.0;
 00178 
-00179   known\_sol.BindScalarField(KnownSolution);
 00180 
-00181   std::cout << known\_sol << std::endl;
-00182 
-00183   known\_sol.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_known\_sol.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"u(x)"});
-00184 \}
-00185 
-00186 \textcolor{preprocessor}{#else}
-00187 \textcolor{preprocessor}{}\textcolor{preprocessor}{#include <iostream>}
-00188 \textcolor{keyword}{using} std::cout;
-00189 \textcolor{keyword}{using} std::endl;
-\hypertarget{poisson__1d_8cc_source_l00190}{}\hyperlink{poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00190} \textcolor{keywordtype}{int} \hyperlink{poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
-00191   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
-00192   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
-00193   \textcolor{keywordflow}{return} EXIT\_SUCCESS;
-00194 \}
-00195 \textcolor{preprocessor}{#endif}
+00181   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} west\_bndy\_x = 0.0;
+00182   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} east\_bndy\_x = 1.0;
+00183   \textcolor{keywordtype}{int} num\_cells\_x = 5;
+00184 
+00185   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} comp\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00186 
+00188 
+00189   \textcolor{keywordtype}{int} order\_of\_accuracy = 2;
+00190 
+00191   \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} grad; \textcolor{comment}{// Mimetic gradient operator.}
+00192 
+00193   \hyperlink{classmtk_1_1Lap1D}{mtk::Lap1D} lap; \textcolor{comment}{// Mimetic gradient operator.}
+00194 
+00195   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} mimetic\_threshold = 1e-6;
+00196 
+00197   \textcolor{keywordflow}{if} (!lap.\hyperlink{classmtk_1_1Lap1D_a685dcba88c08cf5b7b6c2aa4669a472c}{ConstructLap1D}(order\_of\_accuracy, mimetic\_threshold)) \{
+00198     std::cerr << \textcolor{stringliteral}{"Mimetic lap could not be built."} << std::endl;
+00199     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00200   \}
+00201 
+00202   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} lapm(lap.\hyperlink{classmtk_1_1Lap1D_a28672c735fa0d13e6204795b63aec4e2}{ReturnAsDenseMatrix}(comp\_sol));
+00203 
+00204   std::cout << \textcolor{stringliteral}{"Mimetic Laplacian operator: "} << std::endl;
+00205   std::cout << lapm << std::endl;
+00206 
+00207   \textcolor{keywordflow}{if} (!grad.\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{ConstructGrad1D}(order\_of\_accuracy, mimetic\_threshold)) \{
+00208     std::cerr << \textcolor{stringliteral}{"Mimetic grad could not be built."} << std::endl;
+00209     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00210   \}
+00211 
+00212   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} gradm(grad.\hyperlink{classmtk_1_1Grad1D_a75781c4455569a7934d4e0dff7e06064}{ReturnAsDenseMatrix}(comp\_sol));
+00213 
+00214   std::cout << \textcolor{stringliteral}{"Mimetic gradient operator: "} << std::endl;
+00215   std::cout << gradm << std::endl;
+00216 
+00218 
+00219   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} source(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00220 
+00221   source.BindScalarField(Source);
+00222 
+00223   std::cout << source << std::endl;
+00224 
+00225   source.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_source.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"s(x)"});
+00226 
+00228 
+00229   \textcolor{comment}{// Since we need to approximate the first derivative times beta, we must use}
+00230   \textcolor{comment}{// the approximation of the gradient at the boundary. We could extract them}
+00231   \textcolor{comment}{// from the gradient operator as packed in the grad object. BUT, since we have}
+00232   \textcolor{comment}{// generated at matrix containing this operator, we can extract these from the}
+00233   \textcolor{comment}{// matrix.}
+00234 
+00235   \textcolor{comment}{// Array containing the coefficients for the west boundary condition.}
+00236   std::vector<mtk::Real> west\_coeffs;
+00237 
+00238   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < grad.\hyperlink{classmtk_1_1Grad1D_aa1448d7b389d451e03836d2ed0f197f3}{num\_bndy\_coeffs}(); ++ii) \{
+00239     west\_coeffs.push\_back(beta*gradm.GetValue(0, ii));
+00240   \}
+00241 
+00242   \textcolor{comment}{// Array containing the coefficients for the east boundary condition.}
+00243   std::vector<mtk::Real> east\_coeffs;
+00244 
+00245   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < grad.\hyperlink{classmtk_1_1Grad1D_aa1448d7b389d451e03836d2ed0f197f3}{num\_bndy\_coeffs}(); ++ii) \{
+00246     east\_coeffs.push\_back(beta*gradm.GetValue(gradm.num\_rows() - 1,
+00247                                               gradm.num\_cols() - 1 - ii));
+00248   \}
+00249 
+00250   \textcolor{comment}{// To impose the Dirichlet condition, we simple add its coefficient to the}
+00251   \textcolor{comment}{// first entry of the west, and the last entry of the east array.}
+00252 
+00253   west\_coeffs[0] *= alpha;
+00254 
+00255   east\_coeffs[east\_coeffs.size() - 1] *= alpha;
+00256 
+00257   \textcolor{comment}{// Now that we have the coefficients that should be in the operator, we create}
+00258   \textcolor{comment}{// a boundary condition descriptor object, which will encapsulate the}
+00259   \textcolor{comment}{// complexity of assigning them in the matrix, to complete the construction of}
+00260   \textcolor{comment}{// the mimetic operator.}
+00261 
+00262   mtk::BCDesc1D::ImposeOnOperator(lapm, west\_coeffs, east\_coeffs);
+00263 
+00264   std::cout << \textcolor{stringliteral}{"Mimetic differential operator created:"} << std::endl;
+00265   std::cout << lapm << std::endl;
+00266 
+00267   mtk::BCDesc1D::ImposeOnGrid(source, west\_bndy\_value, east\_bndy\_value);
+00268 
+00269   std::cout << \textcolor{stringliteral}{"Source term with imposed BCs:"} << std::endl;
+00270   std::cout << source << std::endl;
+00271 
+00273 
+00274   \textcolor{keywordtype}{int} info\{\hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{mtk::LAPACKAdapter::SolveDenseSystem}(lapm,
+00275                                                 source.discrete\_field\_u())\};
+00276 
+00277   \textcolor{keywordflow}{if} (!info) \{
+00278     std::cout << \textcolor{stringliteral}{"System solved! Problem solved!"} << std::endl;
+00279     std::cout << std::endl;
+00280   \}
+00281   \textcolor{keywordflow}{else} \{
+00282     std::cerr << \textcolor{stringliteral}{"Something wrong solving system! info = "} << info << std::endl;
+00283     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
+00284     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00285   \}
+00286 
+00288 
+00289   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} known\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00290 
+00291   known\_sol.BindScalarField(KnownSolution);
+00292 
+00293   std::cout << \textcolor{stringliteral}{"known\_sol ="} << std::endl;
+00294   std::cout << known\_sol << std::endl;
+00295 
+00296   known\_sol.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_known\_sol.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"u(x)"});
+00297 \}
+00298 
+00299 \textcolor{preprocessor}{#else}
+00300 \textcolor{preprocessor}{}\textcolor{preprocessor}{#include <iostream>}
+00301 \textcolor{keyword}{using} std::cout;
+00302 \textcolor{keyword}{using} std::endl;
+\hypertarget{poisson__1d_8cc_source_l00303}{}\hyperlink{poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00303} \textcolor{keywordtype}{int} \hyperlink{poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00304   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
+00305   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
+00306   \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+00307 \}
+00308 \textcolor{preprocessor}{#endif}
 \end{DoxyCode}

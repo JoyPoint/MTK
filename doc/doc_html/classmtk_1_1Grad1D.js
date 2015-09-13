@@ -10,6 +10,7 @@ var classmtk_1_1Grad1D =
     [ "ComputeStencilInteriorGrid", "classmtk_1_1Grad1D.html#ad6df25cc9dfc85ff8562ae3605486976", null ],
     [ "ComputeWeights", "classmtk_1_1Grad1D.html#a224082617751864bffca9bfe494c36d5", null ],
     [ "ConstructGrad1D", "classmtk_1_1Grad1D.html#a74ef5245cfae6fd158bd7f563a0c2e52", null ],
+    [ "num_bndy_coeffs", "classmtk_1_1Grad1D.html#aa1448d7b389d451e03836d2ed0f197f3", null ],
     [ "ReturnAsDenseMatrix", "classmtk_1_1Grad1D.html#a75781c4455569a7934d4e0dff7e06064", null ],
     [ "weights_cbs", "classmtk_1_1Grad1D.html#adde70cb7e4fd930f84121a4bcd7f2e37", null ],
     [ "weights_crs", "classmtk_1_1Grad1D.html#a50ea44bda43d32b8741e050af52b961d", null ],

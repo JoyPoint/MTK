@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['num_5fbndy_5fcoeffs',['num_bndy_coeffs',['../classmtk_1_1Div1D.html#a3739d9659cf6c31fd2f21bc9fcaaef98',1,'mtk::Div1D::num_bndy_coeffs()'],['../classmtk_1_1Grad1D.html#aa1448d7b389d451e03836d2ed0f197f3',1,'mtk::Grad1D::num_bndy_coeffs()']]],
   ['num_5fcells_5fx',['num_cells_x',['../classmtk_1_1UniStgGrid1D.html#af1b3729d8afa07be5b2775ed68015b80',1,'mtk::UniStgGrid1D']]],
   ['num_5fcols',['num_cols',['../classmtk_1_1DenseMatrix.html#af6f78373aaf2136f0c78974d7c8de0a8',1,'mtk::DenseMatrix::num_cols()'],['../classmtk_1_1Matrix.html#a1e52243fa290de6ee4bcc48cd1776a9a',1,'mtk::Matrix::num_cols()']]],
   ['num_5fnon_5fnull',['num_non_null',['../classmtk_1_1Matrix.html#ae81eaf61b6633ccd054c96344aa82a48',1,'mtk::Matrix']]],

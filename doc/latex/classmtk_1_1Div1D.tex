@@ -12,7 +12,8 @@ Implements a 1\-D mimetic divergence operator.
 
 
 
-Collaboration diagram for mtk\-:\-:Div1\-D\-:\nopagebreak
+Collaboration diagram for mtk\-:\-:Div1\-D\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -30,6 +31,8 @@ Collaboration diagram for mtk\-:\-:Div1\-D\-:\nopagebreak
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 bool \hyperlink{classmtk_1_1Div1D_a52fcd1542f11e606e36bd188e48bfdf7}{Construct\-Div1\-D} (int order\-\_\-accuracy=\hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{k\-Default\-Order\-Accuracy}, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} mimetic\-\_\-threshold=\hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{k\-Default\-Mimetic\-Threshold})
 \begin{DoxyCompactList}\small\item\em Factory method implementing the C\-B\-S Algorithm to build operator. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1Div1D_a3739d9659cf6c31fd2f21bc9fcaaef98}{num\-\_\-bndy\-\_\-coeffs} ()
+\begin{DoxyCompactList}\small\item\em Returns how many coefficients are approximating at the boundary. \end{DoxyCompactList}\item 
 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$ \hyperlink{classmtk_1_1Div1D_a77e27cac7b7a105311d882e5d126d1bf}{weights\-\_\-crs} (void)
 \begin{DoxyCompactList}\small\item\em Return collection of weights as computed by the C\-R\-S\-A. \end{DoxyCompactList}\item 
 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$ \hyperlink{classmtk_1_1Div1D_a163bf1575222651c84ee83092d6734e5}{weights\-\_\-cbs} (void)
@@ -153,7 +156,7 @@ Construct the output array with the operator and its weights.
 \item I\-F order\-\_\-accuracy\-\_\- $>$ 2, next dim\-\_\-null\-\_\- entries is approximating coefficients for the west boundary of the grid. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__div__1d_8cc_source_l01306}{1306} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
+Definition at line \hyperlink{mtk__div__1d_8cc_source_l01311}{1311} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
 
 \hypertarget{classmtk_1_1Div1D_a4be0534a4e22d44a7aedde326cc3f3b6}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!Compute\-Preliminary\-Approximations@{Compute\-Preliminary\-Approximations}}
 \index{Compute\-Preliminary\-Approximations@{Compute\-Preliminary\-Approximations}!mtk::Div1D@{mtk\-::\-Div1\-D}}
@@ -174,7 +177,7 @@ Compute the set of preliminary approximations on the boundary neighborhood.
 \item Once we posses the bottom elements, we proceed with the scaling. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__div__1d_8cc_source_l00662}{662} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
+Definition at line \hyperlink{mtk__div__1d_8cc_source_l00667}{667} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
 
 
 
@@ -203,7 +206,7 @@ Compute a rational basis for the null-\/space of the Vandermonde matrix approxim
 \item Scale null-\/space to make it rational. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__div__1d_8cc_source_l00486}{486} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
+Definition at line \hyperlink{mtk__div__1d_8cc_source_l00491}{491} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
 
 
 
@@ -230,7 +233,7 @@ Compute mimetic stencil approximating at boundary.
 \item Compute the mimetic boundary approximations. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__div__1d_8cc_source_l01207}{1207} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
+Definition at line \hyperlink{mtk__div__1d_8cc_source_l01212}{1212} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
 
 \hypertarget{classmtk_1_1Div1D_a3eb3a32862a6b066cd583cbbd00a6509}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!Compute\-Stencil\-Interior\-Grid@{Compute\-Stencil\-Interior\-Grid}}
 \index{Compute\-Stencil\-Interior\-Grid@{Compute\-Stencil\-Interior\-Grid}!mtk::Div1D@{mtk\-::\-Div1\-D}}
@@ -247,7 +250,7 @@ Compute the stencil approximating the interior of the staggered grid.
 \item Solve dense Vandermonde system to attain the interior coefficients. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__div__1d_8cc_source_l00387}{387} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
+Definition at line \hyperlink{mtk__div__1d_8cc_source_l00392}{392} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
 
 
 
@@ -279,7 +282,7 @@ Compute the set of mimetic weights to impose the mimetic condition.
 \item Apply solution found from brute force search. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__div__1d_8cc_source_l00882}{882} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
+Definition at line \hyperlink{mtk__div__1d_8cc_source_l00887}{887} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
 
 
 
@@ -337,6 +340,20 @@ Here is the caller graph for this function\-:\nopagebreak
 \end{figure}
 
 
+\hypertarget{classmtk_1_1Div1D_a3739d9659cf6c31fd2f21bc9fcaaef98}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!num\-\_\-bndy\-\_\-coeffs@{num\-\_\-bndy\-\_\-coeffs}}
+\index{num\-\_\-bndy\-\_\-coeffs@{num\-\_\-bndy\-\_\-coeffs}!mtk::Div1D@{mtk\-::\-Div1\-D}}
+\subsubsection[{num\-\_\-bndy\-\_\-coeffs}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Div1\-D\-::num\-\_\-bndy\-\_\-coeffs (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1Div1D_a3739d9659cf6c31fd2f21bc9fcaaef98}
+\begin{DoxyReturn}{Returns}
+How many coefficients are approximating at the boundary. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__div__1d_8cc_source_l00315}{315} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
+
 \hypertarget{classmtk_1_1Div1D_afdbb1e11f05dd77b882f36426229acf7}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!Return\-As\-Dense\-Matrix@{Return\-As\-Dense\-Matrix}}
 \index{Return\-As\-Dense\-Matrix@{Return\-As\-Dense\-Matrix}!mtk::Div1D@{mtk\-::\-Div1\-D}}
 \subsubsection[{Return\-As\-Dense\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\-::\-Dense\-Matrix} mtk\-::\-Div1\-D\-::\-Return\-As\-Dense\-Matrix (
@@ -354,7 +371,7 @@ The operator as a dense matrix.
 \item Impose center-\/skew symmetry by permuting the mimetic boundaries. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__div__1d_8cc_source_l00325}{325} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
+Definition at line \hyperlink{mtk__div__1d_8cc_source_l00330}{330} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
 
 
 
@@ -390,7 +407,7 @@ Collection of weights as computed by the C\-B\-S\-A.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__div__1d_8cc_source_l00320}{320} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
+Definition at line \hyperlink{mtk__div__1d_8cc_source_l00325}{325} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
 
 \hypertarget{classmtk_1_1Div1D_a77e27cac7b7a105311d882e5d126d1bf}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!weights\-\_\-crs@{weights\-\_\-crs}}
 \index{weights\-\_\-crs@{weights\-\_\-crs}!mtk::Div1D@{mtk\-::\-Div1\-D}}
@@ -404,7 +421,7 @@ Collection of weights as computed by the C\-R\-S\-A.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__div__1d_8cc_source_l00315}{315} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
+Definition at line \hyperlink{mtk__div__1d_8cc_source_l00320}{320} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
 
 
 
@@ -435,98 +452,98 @@ Definition at line \hyperlink{mtk__div__1d_8cc_source_l00079}{79} of file \hyper
 \subsubsection[{coeffs\-\_\-interior\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}$\ast$ mtk\-::\-Div1\-D\-::coeffs\-\_\-interior\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Div1D_a7c7688d8ac25120587353ece4e93a13a}
 
 
-Definition at line \hyperlink{mtk__div__1d_8h_source_l00182}{182} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
+Definition at line \hyperlink{mtk__div__1d_8h_source_l00189}{189} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
 
 \hypertarget{classmtk_1_1Div1D_a264027144def76d802778391f55381a0}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!dim\-\_\-null\-\_\-@{dim\-\_\-null\-\_\-}}
 \index{dim\-\_\-null\-\_\-@{dim\-\_\-null\-\_\-}!mtk::Div1D@{mtk\-::\-Div1\-D}}
 \subsubsection[{dim\-\_\-null\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Div1\-D\-::dim\-\_\-null\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Div1D_a264027144def76d802778391f55381a0}
 
 
-Definition at line \hyperlink{mtk__div__1d_8h_source_l00173}{173} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
+Definition at line \hyperlink{mtk__div__1d_8h_source_l00180}{180} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
 
 \hypertarget{classmtk_1_1Div1D_a0f96410051ba1fa6d91dfa7b7eacead9}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!divergence\-\_\-@{divergence\-\_\-}}
 \index{divergence\-\_\-@{divergence\-\_\-}!mtk::Div1D@{mtk\-::\-Div1\-D}}
 \subsubsection[{divergence\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}$\ast$ mtk\-::\-Div1\-D\-::divergence\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Div1D_a0f96410051ba1fa6d91dfa7b7eacead9}
 
 
-Definition at line \hyperlink{mtk__div__1d_8h_source_l00187}{187} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
+Definition at line \hyperlink{mtk__div__1d_8h_source_l00194}{194} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
 
 \hypertarget{classmtk_1_1Div1D_ac0f152190cd2fbff62deb07f96284f86}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!divergence\-\_\-length\-\_\-@{divergence\-\_\-length\-\_\-}}
 \index{divergence\-\_\-length\-\_\-@{divergence\-\_\-length\-\_\-}!mtk::Div1D@{mtk\-::\-Div1\-D}}
 \subsubsection[{divergence\-\_\-length\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Div1\-D\-::divergence\-\_\-length\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Div1D_ac0f152190cd2fbff62deb07f96284f86}
 
 
-Definition at line \hyperlink{mtk__div__1d_8h_source_l00175}{175} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
+Definition at line \hyperlink{mtk__div__1d_8h_source_l00182}{182} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
 
 \hypertarget{classmtk_1_1Div1D_a6d6c600117fdb583f061da0c9d5f28f7}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!mim\-\_\-bndy\-\_\-@{mim\-\_\-bndy\-\_\-}}
 \index{mim\-\_\-bndy\-\_\-@{mim\-\_\-bndy\-\_\-}!mtk::Div1D@{mtk\-::\-Div1\-D}}
 \subsubsection[{mim\-\_\-bndy\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}$\ast$ mtk\-::\-Div1\-D\-::mim\-\_\-bndy\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Div1D_a6d6c600117fdb583f061da0c9d5f28f7}
 
 
-Definition at line \hyperlink{mtk__div__1d_8h_source_l00186}{186} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
+Definition at line \hyperlink{mtk__div__1d_8h_source_l00193}{193} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
 
 \hypertarget{classmtk_1_1Div1D_a40ed629199b38133f5652b71e8b1cd06}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!mimetic\-\_\-threshold\-\_\-@{mimetic\-\_\-threshold\-\_\-}}
 \index{mimetic\-\_\-threshold\-\_\-@{mimetic\-\_\-threshold\-\_\-}!mtk::Div1D@{mtk\-::\-Div1\-D}}
 \subsubsection[{mimetic\-\_\-threshold\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real} mtk\-::\-Div1\-D\-::mimetic\-\_\-threshold\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Div1D_a40ed629199b38133f5652b71e8b1cd06}
 
 
-Definition at line \hyperlink{mtk__div__1d_8h_source_l00189}{189} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
+Definition at line \hyperlink{mtk__div__1d_8h_source_l00196}{196} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
 
 \hypertarget{classmtk_1_1Div1D_a0ba7a75cca6cf3646deb7a030cbbf3f3}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!minrow\-\_\-@{minrow\-\_\-}}
 \index{minrow\-\_\-@{minrow\-\_\-}!mtk::Div1D@{mtk\-::\-Div1\-D}}
 \subsubsection[{minrow\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Div1\-D\-::minrow\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Div1D_a0ba7a75cca6cf3646deb7a030cbbf3f3}
 
 
-Definition at line \hyperlink{mtk__div__1d_8h_source_l00177}{177} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
+Definition at line \hyperlink{mtk__div__1d_8h_source_l00184}{184} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
 
 \hypertarget{classmtk_1_1Div1D_a717240b41eaa2adde858630b9e3d3042}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!num\-\_\-bndy\-\_\-coeffs\-\_\-@{num\-\_\-bndy\-\_\-coeffs\-\_\-}}
 \index{num\-\_\-bndy\-\_\-coeffs\-\_\-@{num\-\_\-bndy\-\_\-coeffs\-\_\-}!mtk::Div1D@{mtk\-::\-Div1\-D}}
 \subsubsection[{num\-\_\-bndy\-\_\-coeffs\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Div1\-D\-::num\-\_\-bndy\-\_\-coeffs\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Div1D_a717240b41eaa2adde858630b9e3d3042}
 
 
-Definition at line \hyperlink{mtk__div__1d_8h_source_l00174}{174} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
+Definition at line \hyperlink{mtk__div__1d_8h_source_l00181}{181} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
 
 \hypertarget{classmtk_1_1Div1D_a9c8a8d7cd08a72dbd1daa8deee06f9c6}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!order\-\_\-accuracy\-\_\-@{order\-\_\-accuracy\-\_\-}}
 \index{order\-\_\-accuracy\-\_\-@{order\-\_\-accuracy\-\_\-}!mtk::Div1D@{mtk\-::\-Div1\-D}}
 \subsubsection[{order\-\_\-accuracy\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Div1\-D\-::order\-\_\-accuracy\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Div1D_a9c8a8d7cd08a72dbd1daa8deee06f9c6}
 
 
-Definition at line \hyperlink{mtk__div__1d_8h_source_l00172}{172} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
+Definition at line \hyperlink{mtk__div__1d_8h_source_l00179}{179} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
 
 \hypertarget{classmtk_1_1Div1D_ab51ff3db86a874604d6c756ab6770950}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!prem\-\_\-apps\-\_\-@{prem\-\_\-apps\-\_\-}}
 \index{prem\-\_\-apps\-\_\-@{prem\-\_\-apps\-\_\-}!mtk::Div1D@{mtk\-::\-Div1\-D}}
 \subsubsection[{prem\-\_\-apps\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}$\ast$ mtk\-::\-Div1\-D\-::prem\-\_\-apps\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Div1D_ab51ff3db86a874604d6c756ab6770950}
 
 
-Definition at line \hyperlink{mtk__div__1d_8h_source_l00183}{183} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
+Definition at line \hyperlink{mtk__div__1d_8h_source_l00190}{190} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
 
 \hypertarget{classmtk_1_1Div1D_a262b15fcb272c934395a1f744aef669d}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!rat\-\_\-basis\-\_\-null\-\_\-space\-\_\-@{rat\-\_\-basis\-\_\-null\-\_\-space\-\_\-}}
 \index{rat\-\_\-basis\-\_\-null\-\_\-space\-\_\-@{rat\-\_\-basis\-\_\-null\-\_\-space\-\_\-}!mtk::Div1D@{mtk\-::\-Div1\-D}}
 \subsubsection[{rat\-\_\-basis\-\_\-null\-\_\-space\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\-::\-Dense\-Matrix} mtk\-::\-Div1\-D\-::rat\-\_\-basis\-\_\-null\-\_\-space\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Div1D_a262b15fcb272c934395a1f744aef669d}
 
 
-Definition at line \hyperlink{mtk__div__1d_8h_source_l00180}{180} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
+Definition at line \hyperlink{mtk__div__1d_8h_source_l00187}{187} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
 
 \hypertarget{classmtk_1_1Div1D_a86d99df0e9b1e5d2943a2dcf58975556}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!row\-\_\-@{row\-\_\-}}
 \index{row\-\_\-@{row\-\_\-}!mtk::Div1D@{mtk\-::\-Div1\-D}}
 \subsubsection[{row\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Div1\-D\-::row\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Div1D_a86d99df0e9b1e5d2943a2dcf58975556}
 
 
-Definition at line \hyperlink{mtk__div__1d_8h_source_l00178}{178} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
+Definition at line \hyperlink{mtk__div__1d_8h_source_l00185}{185} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
 
 \hypertarget{classmtk_1_1Div1D_a631dad42a0ec0f5d5ac767abdfd8949c}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!weights\-\_\-cbs\-\_\-@{weights\-\_\-cbs\-\_\-}}
 \index{weights\-\_\-cbs\-\_\-@{weights\-\_\-cbs\-\_\-}!mtk::Div1D@{mtk\-::\-Div1\-D}}
 \subsubsection[{weights\-\_\-cbs\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}$\ast$ mtk\-::\-Div1\-D\-::weights\-\_\-cbs\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Div1D_a631dad42a0ec0f5d5ac767abdfd8949c}
 
 
-Definition at line \hyperlink{mtk__div__1d_8h_source_l00185}{185} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
+Definition at line \hyperlink{mtk__div__1d_8h_source_l00192}{192} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
 
 \hypertarget{classmtk_1_1Div1D_ad36dcfade921f0488fe3edaecc17bd75}{\index{mtk\-::\-Div1\-D@{mtk\-::\-Div1\-D}!weights\-\_\-crs\-\_\-@{weights\-\_\-crs\-\_\-}}
 \index{weights\-\_\-crs\-\_\-@{weights\-\_\-crs\-\_\-}!mtk::Div1D@{mtk\-::\-Div1\-D}}
 \subsubsection[{weights\-\_\-crs\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}$\ast$ mtk\-::\-Div1\-D\-::weights\-\_\-crs\-\_\-\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Div1D_ad36dcfade921f0488fe3edaecc17bd75}
 
 
-Definition at line \hyperlink{mtk__div__1d_8h_source_l00184}{184} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
+Definition at line \hyperlink{mtk__div__1d_8h_source_l00191}{191} of file \hyperlink{mtk__div__1d_8h_source}{mtk\-\_\-div\-\_\-1d.\-h}.
 
 
 

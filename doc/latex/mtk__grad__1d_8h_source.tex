@@ -77,46 +77,48 @@
 00104   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{ConstructGrad1D}(\textcolor{keywordtype}{int} order\_accuracy = \hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{kDefaultOrderAccuracy},
 00105                        \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} mimetic\_threshold = \hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{kDefaultMimeticThreshold});
 00106 
-00112   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* \hyperlink{classmtk_1_1Grad1D_a50ea44bda43d32b8741e050af52b961d}{weights\_crs}(\textcolor{keywordtype}{void});
+00112   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_aa1448d7b389d451e03836d2ed0f197f3}{num\_bndy\_coeffs}();
 00113 
-00119   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* \hyperlink{classmtk_1_1Grad1D_adde70cb7e4fd930f84121a4bcd7f2e37}{weights\_cbs}(\textcolor{keywordtype}{void});
+00119   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Grad1D_a50ea44bda43d32b8741e050af52b961d}{weights\_crs}(\textcolor{keywordtype}{void});
 00120 
-00126   \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} \hyperlink{classmtk_1_1Grad1D_a75781c4455569a7934d4e0dff7e06064}{ReturnAsDenseMatrix}(\textcolor{keyword}{const} 
-      \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid);
+00126   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Grad1D_adde70cb7e4fd930f84121a4bcd7f2e37}{weights\_cbs}(\textcolor{keywordtype}{void});
 00127 
-00128  \textcolor{keyword}{private}:
-00134   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_ad6df25cc9dfc85ff8562ae3605486976}{ComputeStencilInteriorGrid}(\textcolor{keywordtype}{void});
-00135 
-00142   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a2d03e6a3961bee558f575ec4099782a9}{ComputeRationalBasisNullSpace}(\textcolor{keywordtype}{void});
-00143 
-00149   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_add4c68a6e78d8b9c2b800b3f96f4757d}{ComputePreliminaryApproximations}(\textcolor{keywordtype}{void});
+00133   \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} \hyperlink{classmtk_1_1Grad1D_a75781c4455569a7934d4e0dff7e06064}{ReturnAsDenseMatrix}(\textcolor{keyword}{const} 
+      \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid);
+00134 
+00135  \textcolor{keyword}{private}:
+00141   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_ad6df25cc9dfc85ff8562ae3605486976}{ComputeStencilInteriorGrid}(\textcolor{keywordtype}{void});
+00142 
+00149   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a2d03e6a3961bee558f575ec4099782a9}{ComputeRationalBasisNullSpace}(\textcolor{keywordtype}{void});
 00150 
-00156   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a224082617751864bffca9bfe494c36d5}{ComputeWeights}(\textcolor{keywordtype}{void});
+00156   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_add4c68a6e78d8b9c2b800b3f96f4757d}{ComputePreliminaryApproximations}(\textcolor{keywordtype}{void});
 00157 
-00163   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a7ad1cecf6b52647263208ffaea0ee1e5}{ComputeStencilBoundaryGrid}(\textcolor{keywordtype}{void});
+00163   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a224082617751864bffca9bfe494c36d5}{ComputeWeights}(\textcolor{keywordtype}{void});
 00164 
-00170   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a4eb4d363506b8c64b2bb18a318bbd259}{AssembleOperator}(\textcolor{keywordtype}{void});
+00170   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a7ad1cecf6b52647263208ffaea0ee1e5}{ComputeStencilBoundaryGrid}(\textcolor{keywordtype}{void});
 00171 
-\hypertarget{mtk__grad__1d_8h_source_l00172}{}\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{00172}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_};    
-\hypertarget{mtk__grad__1d_8h_source_l00173}{}\hyperlink{classmtk_1_1Grad1D_abe8eaf4f5c451f82c062daaef31e9e6a}{00173}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_abe8eaf4f5c451f82c062daaef31e9e6a}{dim\_null\_};          
-\hypertarget{mtk__grad__1d_8h_source_l00174}{}\hyperlink{classmtk_1_1Grad1D_abe15c1ffd9dfaba1a65f4f0e096287ce}{00174}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_abe15c1ffd9dfaba1a65f4f0e096287ce}{num\_bndy\_approxs\_};  
-\hypertarget{mtk__grad__1d_8h_source_l00175}{}\hyperlink{classmtk_1_1Grad1D_a60c560882bc601f9ab1d4cd5331e55ef}{00175}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_a60c560882bc601f9ab1d4cd5331e55ef}{num\_bndy\_coeffs\_};   
-\hypertarget{mtk__grad__1d_8h_source_l00176}{}\hyperlink{classmtk_1_1Grad1D_a98a444d0833fec92fb9908e3ea71a511}{00176}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_a98a444d0833fec92fb9908e3ea71a511}{gradient\_length\_};   
-00177 
-\hypertarget{mtk__grad__1d_8h_source_l00178}{}\hyperlink{classmtk_1_1Grad1D_a27b8a20e163ad803546592cc3736c12a}{00178}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_a27b8a20e163ad803546592cc3736c12a}{minrow\_};            
-\hypertarget{mtk__grad__1d_8h_source_l00179}{}\hyperlink{classmtk_1_1Grad1D_a7947235d61d0dd27c5b81a81ca78d9a8}{00179}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_a7947235d61d0dd27c5b81a81ca78d9a8}{row\_};               
-00180 
-\hypertarget{mtk__grad__1d_8h_source_l00181}{}\hyperlink{classmtk_1_1Grad1D_adf93314923eb672af8056789170fe683}{00181}   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Grad1D_adf93314923eb672af8056789170fe683}{rat\_basis\_null\_space\_};  
-00182 
-\hypertarget{mtk__grad__1d_8h_source_l00183}{}\hyperlink{classmtk_1_1Grad1D_a2395861161c26f237e892aacebcc1909}{00183}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Grad1D_a2395861161c26f237e892aacebcc1909}{coeffs\_interior\_}; 
-\hypertarget{mtk__grad__1d_8h_source_l00184}{}\hyperlink{classmtk_1_1Grad1D_aee092221dd2a496e0d51883168035551}{00184}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Grad1D_aee092221dd2a496e0d51883168035551}{prem\_apps\_};       
-\hypertarget{mtk__grad__1d_8h_source_l00185}{}\hyperlink{classmtk_1_1Grad1D_a96914abea78528b32499963ce9bbe4a6}{00185}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Grad1D_a96914abea78528b32499963ce9bbe4a6}{weights\_crs\_};     
-\hypertarget{mtk__grad__1d_8h_source_l00186}{}\hyperlink{classmtk_1_1Grad1D_ae6b0a908748923b2acd97e5bf7acc000}{00186}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Grad1D_ae6b0a908748923b2acd97e5bf7acc000}{weights\_cbs\_};     
-\hypertarget{mtk__grad__1d_8h_source_l00187}{}\hyperlink{classmtk_1_1Grad1D_afcd61d362ba7b0f588645ab09c773432}{00187}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Grad1D_afcd61d362ba7b0f588645ab09c773432}{mim\_bndy\_};        
-\hypertarget{mtk__grad__1d_8h_source_l00188}{}\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{00188}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_};        
+00177   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a4eb4d363506b8c64b2bb18a318bbd259}{AssembleOperator}(\textcolor{keywordtype}{void});
+00178 
+\hypertarget{mtk__grad__1d_8h_source_l00179}{}\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{00179}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_};    
+\hypertarget{mtk__grad__1d_8h_source_l00180}{}\hyperlink{classmtk_1_1Grad1D_abe8eaf4f5c451f82c062daaef31e9e6a}{00180}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_abe8eaf4f5c451f82c062daaef31e9e6a}{dim\_null\_};          
+\hypertarget{mtk__grad__1d_8h_source_l00181}{}\hyperlink{classmtk_1_1Grad1D_abe15c1ffd9dfaba1a65f4f0e096287ce}{00181}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_abe15c1ffd9dfaba1a65f4f0e096287ce}{num\_bndy\_approxs\_};  
+\hypertarget{mtk__grad__1d_8h_source_l00182}{}\hyperlink{classmtk_1_1Grad1D_a60c560882bc601f9ab1d4cd5331e55ef}{00182}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_a60c560882bc601f9ab1d4cd5331e55ef}{num\_bndy\_coeffs\_};   
+\hypertarget{mtk__grad__1d_8h_source_l00183}{}\hyperlink{classmtk_1_1Grad1D_a98a444d0833fec92fb9908e3ea71a511}{00183}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_a98a444d0833fec92fb9908e3ea71a511}{gradient\_length\_};   
+00184 
+\hypertarget{mtk__grad__1d_8h_source_l00185}{}\hyperlink{classmtk_1_1Grad1D_a27b8a20e163ad803546592cc3736c12a}{00185}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_a27b8a20e163ad803546592cc3736c12a}{minrow\_};            
+\hypertarget{mtk__grad__1d_8h_source_l00186}{}\hyperlink{classmtk_1_1Grad1D_a7947235d61d0dd27c5b81a81ca78d9a8}{00186}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_a7947235d61d0dd27c5b81a81ca78d9a8}{row\_};               
+00187 
+\hypertarget{mtk__grad__1d_8h_source_l00188}{}\hyperlink{classmtk_1_1Grad1D_adf93314923eb672af8056789170fe683}{00188}   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Grad1D_adf93314923eb672af8056789170fe683}{rat\_basis\_null\_space\_};  
 00189 
-\hypertarget{mtk__grad__1d_8h_source_l00190}{}\hyperlink{classmtk_1_1Grad1D_aa944a99bcd2daab1af11da4c3c6b5504}{00190}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Grad1D_aa944a99bcd2daab1af11da4c3c6b5504}{mimetic\_threshold\_};  
-00191 \};
-00192 \}
-00193 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_GRAD\_1D\_H\_}
+\hypertarget{mtk__grad__1d_8h_source_l00190}{}\hyperlink{classmtk_1_1Grad1D_a2395861161c26f237e892aacebcc1909}{00190}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Grad1D_a2395861161c26f237e892aacebcc1909}{coeffs\_interior\_}; 
+\hypertarget{mtk__grad__1d_8h_source_l00191}{}\hyperlink{classmtk_1_1Grad1D_aee092221dd2a496e0d51883168035551}{00191}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Grad1D_aee092221dd2a496e0d51883168035551}{prem\_apps\_};       
+\hypertarget{mtk__grad__1d_8h_source_l00192}{}\hyperlink{classmtk_1_1Grad1D_a96914abea78528b32499963ce9bbe4a6}{00192}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Grad1D_a96914abea78528b32499963ce9bbe4a6}{weights\_crs\_};     
+\hypertarget{mtk__grad__1d_8h_source_l00193}{}\hyperlink{classmtk_1_1Grad1D_ae6b0a908748923b2acd97e5bf7acc000}{00193}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Grad1D_ae6b0a908748923b2acd97e5bf7acc000}{weights\_cbs\_};     
+\hypertarget{mtk__grad__1d_8h_source_l00194}{}\hyperlink{classmtk_1_1Grad1D_afcd61d362ba7b0f588645ab09c773432}{00194}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Grad1D_afcd61d362ba7b0f588645ab09c773432}{mim\_bndy\_};        
+\hypertarget{mtk__grad__1d_8h_source_l00195}{}\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{00195}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_};        
+00196 
+\hypertarget{mtk__grad__1d_8h_source_l00197}{}\hyperlink{classmtk_1_1Grad1D_aa944a99bcd2daab1af11da4c3c6b5504}{00197}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Grad1D_aa944a99bcd2daab1af11da4c3c6b5504}{mimetic\_threshold\_};  
+00198 \};
+00199 \}
+00200 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_GRAD\_1D\_H\_}
 \end{DoxyCode}

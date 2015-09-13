@@ -3,6 +3,7 @@ var searchData=
   ['numerical_20methods_2e',['Numerical methods.',['../group__c05-num__methods.html',1,'']]],
   ['nature_5f',['nature_',['../classmtk_1_1UniStgGrid1D.html#a061b66c92532b1498ce0e15418754911',1,'mtk::UniStgGrid1D']]],
   ['num_5fbndy_5fapproxs_5f',['num_bndy_approxs_',['../classmtk_1_1Grad1D.html#abe15c1ffd9dfaba1a65f4f0e096287ce',1,'mtk::Grad1D']]],
+  ['num_5fbndy_5fcoeffs',['num_bndy_coeffs',['../classmtk_1_1Div1D.html#a3739d9659cf6c31fd2f21bc9fcaaef98',1,'mtk::Div1D::num_bndy_coeffs()'],['../classmtk_1_1Grad1D.html#aa1448d7b389d451e03836d2ed0f197f3',1,'mtk::Grad1D::num_bndy_coeffs()']]],
   ['num_5fbndy_5fcoeffs_5f',['num_bndy_coeffs_',['../classmtk_1_1Div1D.html#a717240b41eaa2adde858630b9e3d3042',1,'mtk::Div1D::num_bndy_coeffs_()'],['../classmtk_1_1Grad1D.html#a60c560882bc601f9ab1d4cd5331e55ef',1,'mtk::Grad1D::num_bndy_coeffs_()']]],
   ['num_5fcells_5fx',['num_cells_x',['../classmtk_1_1UniStgGrid1D.html#af1b3729d8afa07be5b2775ed68015b80',1,'mtk::UniStgGrid1D']]],
   ['num_5fcells_5fx_5f',['num_cells_x_',['../classmtk_1_1UniStgGrid1D.html#afa43750db0029b7454aef343759e7097',1,'mtk::UniStgGrid1D']]],

@@ -1,4 +1,4 @@
-.TH "mtk::Grad1D" 3 "Thu Sep 10 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::Grad1D" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -31,17 +31,21 @@ Implements a 1D mimetic gradient operator\&.
 .br
 .RI "\fIFactory method implementing the CBS Algorithm to build operator\&. \fP"
 .ti -1c
+.RI "int \fBnum_bndy_coeffs\fP ()"
+.br
+.RI "\fIReturns how many coefficients are approximating at the boundary\&. \fP"
+.ti -1c
 .RI "\fBReal\fP * \fBweights_crs\fP (void)"
 .br
-.RI "\fIReturn collection of weights as computed by the CRSA\&. \fP"
+.RI "\fIReturns collection of weights as computed by the CRSA\&. \fP"
 .ti -1c
 .RI "\fBReal\fP * \fBweights_cbs\fP (void)"
 .br
-.RI "\fIReturn collection of weights as computed by the CBSA\&. \fP"
+.RI "\fIReturns collection of weights as computed by the CBSA\&. \fP"
 .ti -1c
 .RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP (const \fBUniStgGrid1D\fP &grid)"
 .br
-.RI "\fIReturn the operator as a dense matrix\&. \fP"
+.RI "\fIReturns the operator as a dense matrix\&. \fP"
 .in -1c
 .SS "Private Member Functions"
 
@@ -184,7 +188,7 @@ The next dim_null + 1 entries will contain the collections of approximating coef
 .PP
 
 .PP
-Definition at line 1344 of file mtk_grad_1d\&.cc\&.
+Definition at line 1349 of file mtk_grad_1d\&.cc\&.
 .SS "bool mtk::Grad1D::ComputePreliminaryApproximations (void)\fC [private]\fP"
 Compute the set of preliminary approximations on the boundary neighborhood\&. 
 .IP "1." 4
@@ -206,7 +210,7 @@ Once we posses the bottom elements, we proceed with the scaling\&.
 .PP
 
 .PP
-Definition at line 680 of file mtk_grad_1d\&.cc\&.
+Definition at line 685 of file mtk_grad_1d\&.cc\&.
 .SS "bool mtk::Grad1D::ComputeRationalBasisNullSpace (void)\fC [private]\fP"
 Compute a rational basis for the null-space of the Vandermonde matrix approximating at the west boundary\&. 
 .IP "1." 4
@@ -222,7 +226,7 @@ Scale null-space to make it rational\&.
 .PP
 
 .PP
-Definition at line 497 of file mtk_grad_1d\&.cc\&.
+Definition at line 502 of file mtk_grad_1d\&.cc\&.
 .SS "bool mtk::Grad1D::ComputeStencilBoundaryGrid (void)\fC [private]\fP"
 Compute mimetic stencil approximating at boundary\&. 
 .IP "1." 4
@@ -234,7 +238,7 @@ Compute the mimetic boundary approximations\&.
 .PP
 
 .PP
-Definition at line 1238 of file mtk_grad_1d\&.cc\&.
+Definition at line 1243 of file mtk_grad_1d\&.cc\&.
 .SS "bool mtk::Grad1D::ComputeStencilInteriorGrid (void)\fC [private]\fP"
 Compute the stencil approximating the interior of the staggered grid\&. 
 .IP "1." 4
@@ -248,7 +252,7 @@ Solve dense Vandermonde system to attain the interior coefficients\&.
 .PP
 
 .PP
-Definition at line 401 of file mtk_grad_1d\&.cc\&.
+Definition at line 406 of file mtk_grad_1d\&.cc\&.
 .SS "bool mtk::Grad1D::ComputeWeights (void)\fC [private]\fP"
 Compute the set of mimetic weights to impose the mimetic condition\&. 
 .IP "1." 4
@@ -270,7 +274,7 @@ Apply solution found from brute force search\&.
 .PP
 
 .PP
-Definition at line 900 of file mtk_grad_1d\&.cc\&.
+Definition at line 905 of file mtk_grad_1d\&.cc\&.
 .SS "bool mtk::Grad1D::ConstructGrad1D (intorder_accuracy = \fC\fBkDefaultOrderAccuracy\fP\fP, \fBReal\fPmimetic_threshold = \fC\fBkDefaultMimeticThreshold\fP\fP)"
 
 .PP
@@ -296,6 +300,17 @@ Assemble operator\&.
 
 .PP
 Definition at line 182 of file mtk_grad_1d\&.cc\&.
+.SS "int mtk::Grad1D::num_bndy_coeffs ()"
+
+.PP
+\fBReturns:\fP
+.RS 4
+How many coefficients are approximating at the boundary\&. 
+.RE
+.PP
+
+.PP
+Definition at line 325 of file mtk_grad_1d\&.cc\&.
 .SS "\fBmtk::DenseMatrix\fP mtk::Grad1D::ReturnAsDenseMatrix (const \fBUniStgGrid1D\fP &grid)"
 
 .PP
@@ -314,7 +329,7 @@ Impose center-skew symmetry by permuting the mimetic boundaries\&.
 .PP
 
 .PP
-Definition at line 335 of file mtk_grad_1d\&.cc\&.
+Definition at line 340 of file mtk_grad_1d\&.cc\&.
 .SS "\fBmtk::Real\fP * mtk::Grad1D::weights_cbs (void)"
 
 .PP
@@ -325,7 +340,7 @@ Collection of weights as computed by the CBSA\&.
 .PP
 
 .PP
-Definition at line 330 of file mtk_grad_1d\&.cc\&.
+Definition at line 335 of file mtk_grad_1d\&.cc\&.
 .SS "\fBmtk::Real\fP * mtk::Grad1D::weights_crs (void)"
 
 .PP
@@ -336,7 +351,7 @@ Success of the solution\&.
 .PP
 
 .PP
-Definition at line 325 of file mtk_grad_1d\&.cc\&.
+Definition at line 330 of file mtk_grad_1d\&.cc\&.
 .SH "Friends And Related Function Documentation"
 .PP 
 .SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::Grad1D\fP &in)\fC [friend]\fP"
@@ -358,63 +373,63 @@ Definition at line 79 of file mtk_grad_1d\&.cc\&.
 .SS "\fBReal\fP* mtk::Grad1D::coeffs_interior_\fC [private]\fP"
 
 .PP
-Definition at line 183 of file mtk_grad_1d\&.h\&.
+Definition at line 190 of file mtk_grad_1d\&.h\&.
 .SS "int mtk::Grad1D::dim_null_\fC [private]\fP"
 
 .PP
-Definition at line 173 of file mtk_grad_1d\&.h\&.
+Definition at line 180 of file mtk_grad_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Grad1D::gradient_\fC [private]\fP"
 
 .PP
-Definition at line 188 of file mtk_grad_1d\&.h\&.
+Definition at line 195 of file mtk_grad_1d\&.h\&.
 .SS "int mtk::Grad1D::gradient_length_\fC [private]\fP"
 
 .PP
-Definition at line 176 of file mtk_grad_1d\&.h\&.
+Definition at line 183 of file mtk_grad_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Grad1D::mim_bndy_\fC [private]\fP"
 
 .PP
-Definition at line 187 of file mtk_grad_1d\&.h\&.
+Definition at line 194 of file mtk_grad_1d\&.h\&.
 .SS "\fBReal\fP mtk::Grad1D::mimetic_threshold_\fC [private]\fP"
 
 .PP
-Definition at line 190 of file mtk_grad_1d\&.h\&.
+Definition at line 197 of file mtk_grad_1d\&.h\&.
 .SS "int mtk::Grad1D::minrow_\fC [private]\fP"
 
 .PP
-Definition at line 178 of file mtk_grad_1d\&.h\&.
+Definition at line 185 of file mtk_grad_1d\&.h\&.
 .SS "int mtk::Grad1D::num_bndy_approxs_\fC [private]\fP"
 
 .PP
-Definition at line 174 of file mtk_grad_1d\&.h\&.
+Definition at line 181 of file mtk_grad_1d\&.h\&.
 .SS "int mtk::Grad1D::num_bndy_coeffs_\fC [private]\fP"
 
 .PP
-Definition at line 175 of file mtk_grad_1d\&.h\&.
+Definition at line 182 of file mtk_grad_1d\&.h\&.
 .SS "int mtk::Grad1D::order_accuracy_\fC [private]\fP"
 
 .PP
-Definition at line 172 of file mtk_grad_1d\&.h\&.
+Definition at line 179 of file mtk_grad_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Grad1D::prem_apps_\fC [private]\fP"
 
 .PP
-Definition at line 184 of file mtk_grad_1d\&.h\&.
+Definition at line 191 of file mtk_grad_1d\&.h\&.
 .SS "\fBmtk::DenseMatrix\fP mtk::Grad1D::rat_basis_null_space_\fC [private]\fP"
 
 .PP
-Definition at line 181 of file mtk_grad_1d\&.h\&.
+Definition at line 188 of file mtk_grad_1d\&.h\&.
 .SS "int mtk::Grad1D::row_\fC [private]\fP"
 
 .PP
-Definition at line 179 of file mtk_grad_1d\&.h\&.
+Definition at line 186 of file mtk_grad_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Grad1D::weights_cbs_\fC [private]\fP"
 
 .PP
-Definition at line 186 of file mtk_grad_1d\&.h\&.
+Definition at line 193 of file mtk_grad_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Grad1D::weights_crs_\fC [private]\fP"
 
 .PP
-Definition at line 185 of file mtk_grad_1d\&.h\&.
+Definition at line 192 of file mtk_grad_1d\&.h\&.
 
 .SH "Author"
 .PP 

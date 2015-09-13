@@ -10,6 +10,7 @@ var classmtk_1_1Div1D =
     [ "ComputeStencilInteriorGrid", "classmtk_1_1Div1D.html#a3eb3a32862a6b066cd583cbbd00a6509", null ],
     [ "ComputeWeights", "classmtk_1_1Div1D.html#aaadd6a6e6836bb94841c4c35dffab828", null ],
     [ "ConstructDiv1D", "classmtk_1_1Div1D.html#a52fcd1542f11e606e36bd188e48bfdf7", null ],
+    [ "num_bndy_coeffs", "classmtk_1_1Div1D.html#a3739d9659cf6c31fd2f21bc9fcaaef98", null ],
     [ "ReturnAsDenseMatrix", "classmtk_1_1Div1D.html#afdbb1e11f05dd77b882f36426229acf7", null ],
     [ "weights_cbs", "classmtk_1_1Div1D.html#a163bf1575222651c84ee83092d6734e5", null ],
     [ "weights_crs", "classmtk_1_1Div1D.html#a77e27cac7b7a105311d882e5d126d1bf", null ],

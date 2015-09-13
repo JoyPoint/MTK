@@ -26,7 +26,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ejspeiro/Dropbox/MTK/examples/poisson_1d/poisson_1d.cc" line="190" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/examples/poisson_1d/poisson_1d.cc" bodystart="190" bodyend="194"/>
+        <location file="/home/ejspeiro/Dropbox/MTK/examples/poisson_1d/poisson_1d.cc" line="303" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/examples/poisson_1d/poisson_1d.cc" bodystart="303" bodyend="307"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -88,101 +88,210 @@
 <codeline lineno="91"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;fstream&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cmath&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
-<codeline lineno="94"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk_8h" kindref="compound">mtk.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;vector&gt;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight></codeline>
-<codeline lineno="96"><highlight class="normal"><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>Source(<ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>xx)<sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk_8h" kindref="compound">mtk.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="97"><highlight class="normal"></highlight></codeline>
-<codeline lineno="98"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>lambda<sp/>=<sp/>-1.0;</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal">mtk<sp/>{</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-lambda*lambda*exp(lambda*xx)/(exp(lambda)<sp/>-<sp/>1.0);</highlight></codeline>
-<codeline lineno="101"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="102"><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>KnownSolution(<ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>xx)<sp/>{</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>lambda<sp/>=<sp/>-1.0;</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(exp(lambda*xx)<sp/>-<sp/>1.0)/(exp(lambda)<sp/>-<sp/>1.0);</highlight></codeline>
-<codeline lineno="108"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="109"><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>()<sp/>{</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight><highlight class="keyword">class<sp/></highlight><highlight class="normal">BCDesc1D<sp/>{</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ImposeOnOperator(DenseMatrix<sp/>&amp;matrix,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;Real&gt;<sp/>&amp;west,</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;Real&gt;<sp/>&amp;east);</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>ImposeOnGrid(UniStgGrid1D<sp/>&amp;grid,</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>&amp;west_bndy_value,</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>&amp;east_bndy_value);</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="110"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Example:<sp/>Poisson<sp/>Equation<sp/>on<sp/>a<sp/>1D<sp/>Uniform<sp/>Staggered<sp/>Grid<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;with<sp/>Robin<sp/>BCs.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>lambda<sp/>=<sp/>-1.0;</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>alpha<sp/>=<sp/>-exp(lambda);</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>beta<sp/>=<sp/>(exp(lambda)<sp/>-<sp/>1.0)/lambda;</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>west_bndy_value<sp/>=<sp/>-1.0;</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>east_bndy_value<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"></highlight></codeline>
-<codeline lineno="124"><highlight class="normal"></highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>west_bndy_x<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>east_bndy_x<sp/>=<sp/>1.0;</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_cells_x<sp/>=<sp/>5;</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>comp_sol(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"></highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>order_of_accuracy<sp/>=<sp/>2;</highlight></codeline>
-<codeline lineno="134"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Grad1D" kindref="compound">mtk::Grad1D</ref><sp/>grad;<sp/></highlight><highlight class="comment">//<sp/>Mimetic<sp/>gradient<sp/>operator.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>mtk::BCDesc1D::ImposeOnOperator(<ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>&amp;matrix,</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;mtk::Real&gt;<sp/>&amp;west,</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::vector&lt;mtk::Real&gt;<sp/>&amp;east)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"></highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" kindref="member">mtk::Tools::Prevent</ref>(matrix.<ref refid="classmtk_1_1DenseMatrix_1a17d8d3b9cc0926044b6972dd190a5c21" kindref="member">num_rows</ref>()<sp/>==<sp/>0,<sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" kindref="member">mtk::Tools::Prevent</ref>(west.size()<sp/>&gt;<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>int)<sp/>matrix.<ref refid="classmtk_1_1DenseMatrix_1af6f78373aaf2136f0c78974d7c8de0a8" kindref="member">num_cols</ref>(),</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" kindref="member">mtk::Tools::Prevent</ref>(east.size()<sp/>&gt;<sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/>int)<sp/>matrix.<ref refid="classmtk_1_1DenseMatrix_1af6f78373aaf2136f0c78974d7c8de0a8" kindref="member">num_cols</ref>(),</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"></highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>0;<sp/>ii<sp/>&lt;<sp/>west.size();<sp/>++ii)<sp/>{</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/><sp/><sp/>matrix.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(0,<sp/>ii,<sp/>west[ii]);</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="127"><highlight class="normal"></highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">unsigned</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>0;<sp/>ii<sp/>&lt;<sp/>east.size();<sp/>++ii)<sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/>matrix.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(matrix.<ref refid="classmtk_1_1DenseMatrix_1a17d8d3b9cc0926044b6972dd190a5c21" kindref="member">num_rows</ref>()<sp/>-<sp/>1,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>matrix.<ref refid="classmtk_1_1DenseMatrix_1af6f78373aaf2136f0c78974d7c8de0a8" kindref="member">num_cols</ref>()<sp/>-<sp/>east.size()<sp/>+<sp/>ii,</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>east[ii]);</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Lap1D" kindref="compound">mtk::Lap1D</ref><sp/>lap;<sp/></highlight><highlight class="comment">//<sp/>Mimetic<sp/>gradient<sp/>operator.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>mimetic_threshold<sp/>=<sp/>1e-6;</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>mtk::BCDesc1D::ImposeOnGrid(<ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>&amp;grid,</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>&amp;west_bndy_value,</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>&amp;east_bndy_value)<sp/>{</highlight></codeline>
 <codeline lineno="140"><highlight class="normal"></highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!lap.<ref refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" kindref="member">ConstructLap1D</ref>(order_of_accuracy,<sp/>mimetic_threshold))<sp/>{</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mimetic<sp/>lap<sp/>could<sp/>not<sp/>be<sp/>built.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"></highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>lapm(lap.<ref refid="classmtk_1_1Lap1D_1a28672c735fa0d13e6204795b63aec4e2" kindref="member">ReturnAsDenseMatrix</ref>(comp_sol));</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"></highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mimetic<sp/>Laplacian<sp/>operator:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>lapm<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"></highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!grad.<ref refid="classmtk_1_1Grad1D_1a74ef5245cfae6fd158bd7f563a0c2e52" kindref="member">ConstructGrad1D</ref>(order_of_accuracy,<sp/>mimetic_threshold))<sp/>{</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mimetic<sp/>grad<sp/>could<sp/>not<sp/>be<sp/>built.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" kindref="member">mtk::Tools::Prevent</ref>(grid.<ref refid="classmtk_1_1UniStgGrid1D_1af1b3729d8afa07be5b2775ed68015b80" kindref="member">num_cells_x</ref>()<sp/>==<sp/>0,<sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/>grid.<ref refid="classmtk_1_1UniStgGrid1D_1acf28d702f6e702599986afcb253bbfc1" kindref="member">discrete_field_u</ref>()[0]<sp/>=<sp/>west_bndy_value;</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/>grid.<ref refid="classmtk_1_1UniStgGrid1D_1acf28d702f6e702599986afcb253bbfc1" kindref="member">discrete_field_u</ref>()[grid.<ref refid="classmtk_1_1UniStgGrid1D_1af1b3729d8afa07be5b2775ed68015b80" kindref="member">num_cells_x</ref>()<sp/>-<sp/>1]<sp/>=<sp/>east_bndy_value;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>Source(<ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>xx)<sp/>{</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>lambda<sp/>=<sp/>-1.0;</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>gradm(grad.<ref refid="classmtk_1_1Grad1D_1a75781c4455569a7934d4e0dff7e06064" kindref="member">ReturnAsDenseMatrix</ref>(comp_sol));</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"></highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mimetic<sp/>gradient<sp/>operator:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>gradm<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-lambda*lambda*exp(lambda*xx)/(exp(lambda)<sp/>-<sp/>1.0);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>KnownSolution(<ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>xx)<sp/>{</highlight></codeline>
 <codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>lambda<sp/>=<sp/>-1.0;</highlight></codeline>
 <codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>source(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
-<codeline lineno="164"><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/>source.BindScalarField(Source);</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>source<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"></highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/>source.WriteToFile(</highlight><highlight class="stringliteral">&quot;poisson_1d_source.dat&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;s(x)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(exp(lambda*xx)<sp/>-<sp/>1.0)/(exp(lambda)<sp/>-<sp/>1.0);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>()<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"></highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Example:<sp/>Poisson<sp/>Equation<sp/>on<sp/>a<sp/>1D<sp/>Uniform<sp/>Staggered<sp/>Grid<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;with<sp/>Robin<sp/>BCs.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
 <codeline lineno="170"><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"></codeline>
-<codeline lineno="174"></codeline>
-<codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="177"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>known_sol(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>lambda<sp/>=<sp/>-1.0;</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>alpha<sp/>=<sp/>-exp(lambda);</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>beta<sp/>=<sp/>(exp(lambda)<sp/>-<sp/>1.0)/lambda;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>west_bndy_value<sp/>=<sp/>-1.0;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>east_bndy_value<sp/>=<sp/>0.0;</highlight></codeline>
 <codeline lineno="178"><highlight class="normal"></highlight></codeline>
-<codeline lineno="179"><highlight class="normal"><sp/><sp/>known_sol.BindScalarField(KnownSolution);</highlight></codeline>
 <codeline lineno="180"><highlight class="normal"></highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>known_sol<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="182"><highlight class="normal"></highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/>known_sol.WriteToFile(</highlight><highlight class="stringliteral">&quot;poisson_1d_known_sol.dat&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;u(x)&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="184"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="185"><highlight class="normal"></highlight></codeline>
-<codeline lineno="186"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
-<codeline lineno="187"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="188"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::cout;</highlight></codeline>
-<codeline lineno="189"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::endl;</highlight></codeline>
-<codeline lineno="190" refid="poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>()<sp/>{</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;This<sp/>code<sp/>HAS<sp/>to<sp/>be<sp/>compiled<sp/>with<sp/>support<sp/>for<sp/>C++11.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Exiting...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_SUCCESS;</highlight></codeline>
-<codeline lineno="194"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>west_bndy_x<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>east_bndy_x<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_cells_x<sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>comp_sol(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="188"><highlight class="normal"></highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>order_of_accuracy<sp/>=<sp/>2;</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"></highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Grad1D" kindref="compound">mtk::Grad1D</ref><sp/>grad;<sp/></highlight><highlight class="comment">//<sp/>Mimetic<sp/>gradient<sp/>operator.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"></highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Lap1D" kindref="compound">mtk::Lap1D</ref><sp/>lap;<sp/></highlight><highlight class="comment">//<sp/>Mimetic<sp/>gradient<sp/>operator.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="194"><highlight class="normal"></highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>mimetic_threshold<sp/>=<sp/>1e-6;</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"></highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!lap.<ref refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" kindref="member">ConstructLap1D</ref>(order_of_accuracy,<sp/>mimetic_threshold))<sp/>{</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mimetic<sp/>lap<sp/>could<sp/>not<sp/>be<sp/>built.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>lapm(lap.<ref refid="classmtk_1_1Lap1D_1a28672c735fa0d13e6204795b63aec4e2" kindref="member">ReturnAsDenseMatrix</ref>(comp_sol));</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"></highlight></codeline>
+<codeline lineno="204"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mimetic<sp/>Laplacian<sp/>operator:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>lapm<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="207"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!grad.<ref refid="classmtk_1_1Grad1D_1a74ef5245cfae6fd158bd7f563a0c2e52" kindref="member">ConstructGrad1D</ref>(order_of_accuracy,<sp/>mimetic_threshold))<sp/>{</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mimetic<sp/>grad<sp/>could<sp/>not<sp/>be<sp/>built.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="211"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>gradm(grad.<ref refid="classmtk_1_1Grad1D_1a75781c4455569a7934d4e0dff7e06064" kindref="member">ReturnAsDenseMatrix</ref>(comp_sol));</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mimetic<sp/>gradient<sp/>operator:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="215"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>gradm<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="216"><highlight class="normal"></highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>source(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/>source.BindScalarField(Source);</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"></highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>source<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"></highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/>source.WriteToFile(</highlight><highlight class="stringliteral">&quot;poisson_1d_source.dat&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;s(x)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"></highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Since<sp/>we<sp/>need<sp/>to<sp/>approximate<sp/>the<sp/>first<sp/>derivative<sp/>times<sp/>beta,<sp/>we<sp/>must<sp/>use</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="230"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>approximation<sp/>of<sp/>the<sp/>gradient<sp/>at<sp/>the<sp/>boundary.<sp/>We<sp/>could<sp/>extract<sp/>them</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>from<sp/>the<sp/>gradient<sp/>operator<sp/>as<sp/>packed<sp/>in<sp/>the<sp/>grad<sp/>object.<sp/>BUT,<sp/>since<sp/>we<sp/>have</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>generated<sp/>at<sp/>matrix<sp/>containing<sp/>this<sp/>operator,<sp/>we<sp/>can<sp/>extract<sp/>these<sp/>from<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>matrix.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="235"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Array<sp/>containing<sp/>the<sp/>coefficients<sp/>for<sp/>the<sp/>west<sp/>boundary<sp/>condition.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/>std::vector&lt;mtk::Real&gt;<sp/>west_coeffs;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"></highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>0;<sp/>ii<sp/>&lt;<sp/>grad.<ref refid="classmtk_1_1Grad1D_1aa1448d7b389d451e03836d2ed0f197f3" kindref="member">num_bndy_coeffs</ref>();<sp/>++ii)<sp/>{</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/><sp/><sp/>west_coeffs.push_back(beta*gradm.GetValue(0,<sp/>ii));</highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Array<sp/>containing<sp/>the<sp/>coefficients<sp/>for<sp/>the<sp/>east<sp/>boundary<sp/>condition.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="243"><highlight class="normal"><sp/><sp/>std::vector&lt;mtk::Real&gt;<sp/>east_coeffs;</highlight></codeline>
+<codeline lineno="244"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>0;<sp/>ii<sp/>&lt;<sp/>grad.<ref refid="classmtk_1_1Grad1D_1aa1448d7b389d451e03836d2ed0f197f3" kindref="member">num_bndy_coeffs</ref>();<sp/>++ii)<sp/>{</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/>east_coeffs.push_back(beta*gradm.GetValue(gradm.num_rows()<sp/>-<sp/>1,</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gradm.num_cols()<sp/>-<sp/>1<sp/>-<sp/>ii));</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="249"><highlight class="normal"></highlight></codeline>
+<codeline lineno="250"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>To<sp/>impose<sp/>the<sp/>Dirichlet<sp/>condition,<sp/>we<sp/>simple<sp/>add<sp/>its<sp/>coefficient<sp/>to<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>first<sp/>entry<sp/>of<sp/>the<sp/>west,<sp/>and<sp/>the<sp/>last<sp/>entry<sp/>of<sp/>the<sp/>east<sp/>array.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="252"><highlight class="normal"></highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/>west_coeffs[0]<sp/>*=<sp/>alpha;</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"></highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/>east_coeffs[east_coeffs.size()<sp/>-<sp/>1]<sp/>*=<sp/>alpha;</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"></highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Now<sp/>that<sp/>we<sp/>have<sp/>the<sp/>coefficients<sp/>that<sp/>should<sp/>be<sp/>in<sp/>the<sp/>operator,<sp/>we<sp/>create</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="258"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>a<sp/>boundary<sp/>condition<sp/>descriptor<sp/>object,<sp/>which<sp/>will<sp/>encapsulate<sp/>the</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>complexity<sp/>of<sp/>assigning<sp/>them<sp/>in<sp/>the<sp/>matrix,<sp/>to<sp/>complete<sp/>the<sp/>construction<sp/>of</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>the<sp/>mimetic<sp/>operator.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight></codeline>
+<codeline lineno="262"><highlight class="normal"><sp/><sp/>mtk::BCDesc1D::ImposeOnOperator(lapm,<sp/>west_coeffs,<sp/>east_coeffs);</highlight></codeline>
+<codeline lineno="263"><highlight class="normal"></highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mimetic<sp/>differential<sp/>operator<sp/>created:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>lapm<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"></highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/>mtk::BCDesc1D::ImposeOnGrid(source,<sp/>west_bndy_value,<sp/>east_bndy_value);</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Source<sp/>term<sp/>with<sp/>imposed<sp/>BCs:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>source<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>info{<ref refid="classmtk_1_1LAPACKAdapter_1a7428bccf74fd4a4af68fb7233846da22" kindref="member">mtk::LAPACKAdapter::SolveDenseSystem</ref>(lapm,</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>source.discrete_field_u())};</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!info)<sp/>{</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;System<sp/>solved!<sp/>Problem<sp/>solved!&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Something<sp/>wrong<sp/>solving<sp/>system!<sp/>info<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>info<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Exiting...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"></highlight></codeline>
+<codeline lineno="288"><highlight class="normal"></highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>known_sol(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/>known_sol.BindScalarField(KnownSolution);</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;known_sol<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>known_sol<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/>known_sol.WriteToFile(</highlight><highlight class="stringliteral">&quot;poisson_1d_known_sol.dat&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;u(x)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"></highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight></codeline>
+<codeline lineno="300"><highlight class="preprocessor"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::cout;</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::endl;</highlight></codeline>
+<codeline lineno="303" refid="poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>()<sp/>{</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;This<sp/>code<sp/>HAS<sp/>to<sp/>be<sp/>compiled<sp/>with<sp/>support<sp/>for<sp/>C++11.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Exiting...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_SUCCESS;</highlight></codeline>
+<codeline lineno="307"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="/home/ejspeiro/Dropbox/MTK/examples/poisson_1d/poisson_1d.cc"/>
   </compounddef>
