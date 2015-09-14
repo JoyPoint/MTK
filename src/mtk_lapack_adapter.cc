@@ -512,6 +512,44 @@ int mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &mm,
   return info;
 }
 
+int mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &mm,
+                                         mtk::UniStgGrid1D &rhs) {
+
+  int nrhs{1};  // Number of right-hand sides.
+
+  int *ipiv{};                // Array for pivoting information.
+  int info{};                 // Status of the solution.
+  int mm_rank{mm.num_rows()}; // Rank of the matrix.
+
+  try {
+    ipiv = new int[mm_rank];
+  } catch (std::bad_alloc &memory_allocation_exception) {
+    std::cerr << "Memory allocation exception on line " << __LINE__ - 3 <<
+      std::endl;
+    std::cerr << memory_allocation_exception.what() << std::endl;
+  }
+  memset(ipiv, 0, sizeof(ipiv[0])*mm_rank);
+
+  int ldbb = mm_rank;
+  int mm_ld = mm_rank;
+
+  mm.OrderColMajor();
+
+  #ifdef MTK_PRECISION_DOUBLE
+  dgesv_(&mm_rank, &nrhs, mm.data(), &mm_ld, ipiv,
+         rhs.discrete_field_u(), &ldbb, &info);
+  #else
+  fgesv_(&mm_rank, &nrhs, mm.data(), &mm_ld, ipiv,
+         rhs.discrete_field_u(), &ldbb, &info);
+  #endif
+
+  mm.OrderRowMajor();
+
+  delete [] ipiv;
+
+  return info;
+}
+
 mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
 
   mtk::Real *work{}; // Working array.

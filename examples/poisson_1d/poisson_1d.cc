@@ -6,15 +6,15 @@
 We solve:
 
 \f[
--\nabla^2u(x) = s(x),
+\nabla^2p(x) = -s(x),
 \f]
 
-for \f$ x \in \Omega = [0,1] \f$.
+for \f$ x \in \Omega = [a,b] = [0,1] \f$.
 
 The source term function is defined as
 
 \f[
-s(x) = \frac{-\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1}
+s(x) = \frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1}
 \f]
 
 where \f$ \lambda = -1 \f$ is a parameter.
@@ -22,17 +22,17 @@ where \f$ \lambda = -1 \f$ is a parameter.
 We consider Robin's boundary conditions of the form:
 
 \f[
-\alpha u(a) - \beta u'(a) = \textrm{west\_bndy\_cond\_val},
+\alpha p(a) - \beta p'(a) = \omega,
 \f]
 
 \f[
-\alpha u(b) + \beta u'(b) = \textrm{east\_bndy\_cond\_val}.
+\alpha p(b) + \beta p'(b) = \epsilon.
 \f]
 
 The analytical solution for this problem is given by
 
 \f[
-u(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}.
+p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}.
 \f]
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
@@ -95,65 +95,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk.h"
 
-namespace mtk {
-
-class BCDesc1D {
- public:
-  static void ImposeOnOperator(DenseMatrix &matrix,
-                               const std::vector<Real> &west,
-                               const std::vector<Real> &east);
-
-  static void ImposeOnGrid(UniStgGrid1D &grid,
-                           const Real &west_bndy_value,
-                           const Real &east_bndy_value);
-};
-}
-
-void mtk::BCDesc1D::ImposeOnOperator(mtk::DenseMatrix &matrix,
-                                     const std::vector<mtk::Real> &west,
-                                     const std::vector<mtk::Real> &east) {
-
-  mtk::Tools::Prevent(matrix.num_rows() == 0, __FILE__, __LINE__, __func__);
-  mtk::Tools::Prevent(west.size() > (unsigned int) matrix.num_cols(),
-                      __FILE__, __LINE__, __func__);
-  mtk::Tools::Prevent(east.size() > (unsigned int) matrix.num_cols(),
-                      __FILE__, __LINE__, __func__);
-
-  /// 1. Assign the west array.
-
-  for (unsigned int ii = 0; ii < west.size(); ++ii) {
-    matrix.SetValue(0, ii, west[ii]);
-  }
-
-  /// 2. Assign the east array.
-
-  for (unsigned int ii = 0; ii < east.size(); ++ii) {
-    matrix.SetValue(matrix.num_rows() - 1,
-                    matrix.num_cols() - east.size() + ii,
-                    east[ii]);
-  }
-}
-
-void mtk::BCDesc1D::ImposeOnGrid(mtk::UniStgGrid1D &grid,
-                                 const mtk::Real &west_bndy_value,
-                                 const mtk::Real &east_bndy_value) {
-
-  mtk::Tools::Prevent(grid.num_cells_x() == 0, __FILE__, __LINE__, __func__);
-
-  /// 1. Assign the west condition.
-
-  grid.discrete_field_u()[0] = west_bndy_value;
-
-  /// 2. Assign the east condition.
-
-  grid.discrete_field_u()[grid.num_cells_x() - 1] = east_bndy_value;
-}
-
 mtk::Real Source(mtk::Real xx) {
 
   mtk::Real lambda = -1.0;
 
-  return -lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
+  return lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
 }
 
 mtk::Real KnownSolution(mtk::Real xx) {
@@ -168,15 +114,15 @@ int main () {
   std::cout << "Example: Poisson Equation on a 1D Uniform Staggered Grid ";
   std::cout << "with Robin BCs." << std::endl;
 
-  /// 1. Problem description.
+  /// 1. Describe the problem of interest.
 
   mtk::Real lambda = -1.0;
   mtk::Real alpha = -exp(lambda);
   mtk::Real beta = (exp(lambda) - 1.0)/lambda;
-  mtk::Real west_bndy_value = -1.0;
-  mtk::Real east_bndy_value = 0.0;
+  mtk::Real omega = -1.0;
+  mtk::Real epsilon = 0.0;
 
-  /// 2. Spatial discretization.
+  /// 2. Discretize space.
 
   mtk::Real west_bndy_x = 0.0;
   mtk::Real east_bndy_x = 1.0;
@@ -184,17 +130,15 @@ int main () {
 
   mtk::UniStgGrid1D comp_sol(west_bndy_x, east_bndy_x, num_cells_x);
 
-  /// 3. Mimetic Operators.
+  /// 3. Create mimetic operators.
 
-  int order_of_accuracy = 2;
+  int order_of_accuracy{2};  // Desired order of accuracy for approximation.
 
-  mtk::Grad1D grad; // Mimetic gradient operator.
+  mtk::Grad1D grad;  // Mimetic gradient operator.
 
-  mtk::Lap1D lap; // Mimetic gradient operator.
+  mtk::Lap1D lap;  // Mimetic Laplacian operator.
 
-  mtk::Real mimetic_threshold = 1e-6;
-
-  if (!lap.ConstructLap1D(order_of_accuracy, mimetic_threshold)) {
+  if (!lap.ConstructLap1D(order_of_accuracy)) {
     std::cerr << "Mimetic lap could not be built." << std::endl;
     return EXIT_FAILURE;
   }
@@ -204,7 +148,7 @@ int main () {
   std::cout << "Mimetic Laplacian operator: " << std::endl;
   std::cout << lapm << std::endl;
 
-  if (!grad.ConstructGrad1D(order_of_accuracy, mimetic_threshold)) {
+  if (!grad.ConstructGrad1D(order_of_accuracy)) {
     std::cerr << "Mimetic grad could not be built." << std::endl;
     return EXIT_FAILURE;
   }
@@ -222,8 +166,6 @@ int main () {
 
   std::cout << source << std::endl;
 
-  source.WriteToFile("poisson_1d_source.dat", "x", "s(x)");
-
   /// 5. Apply Boundary Conditions to both operator and source term.
 
   // Since we need to approximate the first derivative times beta, we must use
@@ -236,7 +178,7 @@ int main () {
   std::vector<mtk::Real> west_coeffs;
 
   for (auto ii = 0; ii < grad.num_bndy_coeffs(); ++ii) {
-    west_coeffs.push_back(beta*gradm.GetValue(0, ii));
+    west_coeffs.push_back(-beta*gradm.GetValue(0, ii));
   }
 
   // Array containing the coefficients for the east boundary condition.
@@ -250,9 +192,9 @@ int main () {
   // To impose the Dirichlet condition, we simple add its coefficient to the
   // first entry of the west, and the last entry of the east array.
 
-  west_coeffs[0] *= alpha;
+  west_coeffs[0] += alpha;
 
-  east_coeffs[east_coeffs.size() - 1] *= alpha;
+  east_coeffs[0] += alpha;
 
   // Now that we have the coefficients that should be in the operator, we create
   // a boundary condition descriptor object, which will encapsulate the
@@ -261,18 +203,19 @@ int main () {
 
   mtk::BCDesc1D::ImposeOnOperator(lapm, west_coeffs, east_coeffs);
 
-  std::cout << "Mimetic differential operator created:" << std::endl;
+  std::cout << "Mimetic Laplacian with Robin conditions:" << std::endl;
   std::cout << lapm << std::endl;
 
-  mtk::BCDesc1D::ImposeOnGrid(source, west_bndy_value, east_bndy_value);
+  mtk::BCDesc1D::ImposeOnGrid(source, omega, epsilon);
 
   std::cout << "Source term with imposed BCs:" << std::endl;
   std::cout << source << std::endl;
 
+  source.WriteToFile("poisson_1d_source.dat", "x", "s(x)");
+
   /// 6. Solve the problem.
 
-  int info{mtk::LAPACKAdapter::SolveDenseSystem(lapm,
-                                                source.discrete_field_u())};
+  int info{mtk::LAPACKAdapter::SolveDenseSystem(lapm, source)};
 
   if (!info) {
     std::cout << "System solved! Problem solved!" << std::endl;
@@ -284,6 +227,11 @@ int main () {
     return EXIT_FAILURE;
   }
 
+  std::cout << "Computed solution:" << std::endl;
+  std::cout << source << std::endl;
+
+  source.WriteToFile("poisson_1d_comp_sol.dat", "x", "~u(x)");
+
   /// 7. Compare computed solution against known solution.
 
   mtk::UniStgGrid1D known_sol(west_bndy_x, east_bndy_x, num_cells_x);
@@ -294,6 +242,16 @@ int main () {
   std::cout << known_sol << std::endl;
 
   known_sol.WriteToFile("poisson_1d_known_sol.dat", "x", "u(x)");
+
+  mtk::Real relative_norm_2_error{};  // Relative norm 2 of the error.
+
+  relative_norm_2_error =
+    mtk::BLASAdapter::RelNorm2Error(source.discrete_field_u(),
+                                    known_sol.discrete_field_u(),
+                                    known_sol.num_cells_x());
+
+  std::cout << "relative_norm_2_error = ";
+  std::cout << relative_norm_2_error << std::endl;
 }
 
 #else

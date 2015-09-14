@@ -22,7 +22,8 @@ GRIDS = \
 MIMOPS = \
 	mtk_grad_1d.o \
 	mtk_div_1d.o \
-	mtk_lap_1d.o
+	mtk_lap_1d.o \
+	mtk_bc_desc_1d.o
 
 exetools: $(EXETOOLS)
 

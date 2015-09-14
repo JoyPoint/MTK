@@ -500,3 +500,4 @@ mtk::DenseMatrix mtk::DenseMatrix::Kron(const mtk::DenseMatrix &aa,
 
   return output;
 }
+

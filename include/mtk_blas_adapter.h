@@ -96,12 +96,48 @@ matrix-matrix operations.
 class BLASAdapter {
  public:
   /*!
-  \brief Compute the \f$ |\mathbf{x}|_2 \f$ of given array \f$ \mathbf{x} \f$.
+  \brief Compute the \f$ ||\mathbf{x}||_2 \f$ of given array \f$ \mathbf{x} \f$.
 
   \param[in] in         Input array.
   \param[in] in_length  Length of the array.
+
+  \return Norm-2 of the given array.
   */
   static Real RealNRM2(Real *in, int &in_length);
+
+  /*!
+  \brief Real-Arithmetic Scalar-Vector plus a Vector.
+
+  Performs
+
+  \f[
+    \mathbf{y} := \alpha\mathbf{A}mathbf{x} + \mathbf{y}
+  \f]
+
+  \param[in] alpha Scalar of the first array.
+  \param[in] xx  First array.
+  \param[in] yy  Second array.
+  \param[in] in_length  Lengths of the given arrays.
+
+  \return Norm-2 of the given array.
+  */
+  static void RealAXPY(Real alpha, Real *xx, Real *yy, int &in_length);
+
+  /*!
+  \brief Computes the relative norm-2 of the error.
+
+  We compute
+
+  \f[
+    \frac{||\mathbf{\tilde{x}} - \mathbf{x}||_2}{||\mathbf{x}||_2}.
+  \f]
+
+  \param[in] known Array containing the computed solution.
+  \param[in] computed Array containing the known solution (ref. solution).
+
+  \return Relative norm-2 of the error, aka, the difference between the arrays.
+  */
+  static Real RelNorm2Error(Real *computed, Real *known, int length);
 
   /*!
   \brief Real-Arithmetic General (Dense matrices) Matrix-Vector Multiplier.

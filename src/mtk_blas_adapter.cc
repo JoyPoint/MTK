@@ -91,8 +91,10 @@ extern "C" {
 \param[in] n    Length of the input array.
 \param[in] x    Given array.
 \param[in] incx Increment of the values in the given array.
+
+\return Double-precision computation of the norm 2.
 */
-double dnrm2_(int *n, Real *x, int *incx);
+double dnrm2_(int *n, double *x, int *incx);
 #else
 /*!
 \fn snrm2_
@@ -104,8 +106,54 @@ double dnrm2_(int *n, Real *x, int *incx);
 \param[in] n    Length of the input array.
 \param[in] x    Given array.
 \param[in] incx Increment of the values in the given array.
+
+\return Single-precision computation of the norm 2.
 */
-float snrm2_(int *n, Real *x, int *incx);
+float snrm2_(int *n, float *x, int *incx);
+#endif
+
+#ifdef MTK_PRECISION_DOUBLE
+/*!
+\fn daxpy_
+
+\brief DAXPY constant times a vector plus a vector.
+
+DAXPY constant times a vector plus a vector. Uses unrolled loops for increments
+equal to one.
+
+\sa http://www.netlib.org/lapack/explore-html/d9/dcd/daxpy_8f.html
+
+\param[in] n    Length of the input array.
+\param[in] da   Scalar for the first array.
+\param[in] dx   First array.
+\param[in] incx Increment of the values in the given first array.
+\param[in] dy   Second array.
+\param[in] incy Increment of the values in the given second array.
+
+\return DAXPY constant times a vector plus a vector.
+*/
+void daxpy_(int *n, double *da, double *dx, int *incx, double *dy, int *incy);
+#else
+/*!
+\fn saxpy_
+
+\brief SAXPY constant times a vector plus a vector.
+
+SAXPY constant times a vector plus a vector. Uses unrolled loops for increments
+equal to one.
+
+\sa http://www.netlib.org/lapack/explore-html/d8/daf/saxpy_8f.html
+
+\param[in] n    Length of the input array.
+\param[in] sa   Scalar for the first array.
+\param[in] sx   First array.
+\param[in] incx Increment of the values in the given first array.
+\param[in] sy   Second array.
+\param[in] incy Increment of the values in the given second array.
+
+\return SAXPY constant times a vector plus a vector.
+*/
+void saxpy_(int *n, float *sa, float *sx, int *incx, float *sy, int *incy);
 #endif
 
 #ifdef MTK_PRECISION_DOUBLE
@@ -140,13 +188,13 @@ y := alpha*a'*x + beta*y.
 void dgemv_(char *trans,
             int *m,
             int *n,
-            Real *alpha,
-            Real *a,
+            double *alpha,
+            double *a,
             int *lda,
-            Real *x,
+            double *x,
             int *incx,
-            Real *beta,
-            Real *y,
+            double *beta,
+            double *y,
             int *incy);
 #else
 /*!
@@ -180,13 +228,13 @@ y := alpha*a'*x + beta*y.
 void sgemv_(char *trans,
             int *m,
             int *n,
-            Real *alpha,
-            Real *a,
+            float *alpha,
+            float *a,
             int *lda,
-            Real *x,
+            float *x,
             int *incx,
-            Real *beta,
-            Real *y,
+            float *beta,
+            float *y,
             int *incy);
 #endif
 
@@ -221,13 +269,13 @@ void dgemm_(char *transa,
             int *m,
             int *n,
             int *k,
-            Real *alpha,
-            Real *a,
+            double *alpha,
+            double *a,
             int *lda,
-            Real *b,
+            double *b,
             int *ldb,
-            Real *beta,
-            Real *c,
+            double *beta,
+            double *c,
             int *ldc);
 }
 #else
@@ -261,13 +309,13 @@ void sgemm_(char *transa,
             int *m,
             int *n,
             int *k,
-            Real *alpha,
-            Real *a,
+            double *alpha,
+            double *a,
             int *lda,
-            Real *b,aamm
+            double *b,aamm
             int *ldb,
-            Real *beta,
-            Real *c,
+            double *beta,
+            double *c,
             int *ldc);
 }
 #endif
@@ -275,13 +323,56 @@ void sgemm_(char *transa,
 
 mtk::Real mtk::BLASAdapter::RealNRM2(Real *in, int &in_length) {
 
-  int ix{1};  // Increment for the elements of xx. ix >= 0.
+  #if MTK_DEBUG_LEVEL > 0
+  mtk::Tools::Prevent(in_length <= 0, __FILE__, __LINE__, __func__);
+  #endif
+
+  int incx{1};  // Increment for the elements of xx. ix >= 0.
 
   #ifdef MTK_PRECISION_DOUBLE
-  return dnrm2_(&in_length, in, &ix);
+  return dnrm2_(&in_length, in, &incx);
   #else
-  return snrm2_(&in_length, in, &ix);
+  return snrm2_(&in_length, in, &incx);
   #endif
+}
+
+void mtk::BLASAdapter::RealAXPY(mtk::Real alpha,
+                                     mtk::Real *xx,
+                                     mtk::Real *yy,
+                                     int &in_length) {
+
+  #if MTK_DEBUG_LEVEL > 0
+  mtk::Tools::Prevent(xx == nullptr, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(yy == nullptr, __FILE__, __LINE__, __func__);
+  #endif
+
+  int incx{1};  // Increment for the elements of xx. ix >= 0.
+
+  #ifdef MTK_PRECISION_DOUBLE
+  daxpy_(&in_length, &alpha, xx, &incx, yy, &incx);
+  #else
+  saxpy_(&in_length, &alpha, xx, &incx, yy, &incx);
+  #endif
+}
+
+mtk::Real mtk::BLASAdapter::RelNorm2Error(mtk::Real *computed,
+                                          mtk::Real *known,
+                                          int length) {
+
+  #if MTK_DEBUG_LEVEL > 0
+  mtk::Tools::Prevent(computed == nullptr, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(known == nullptr, __FILE__, __LINE__, __func__);
+  #endif
+
+  mtk::Real norm_2_computed{mtk::BLASAdapter::RealNRM2(known, length)};
+
+  mtk::Real alpha{-mtk::kOne};
+
+  mtk::BLASAdapter::RealAXPY(alpha, known, computed, length);
+
+  mtk::Real norm_2_difference{mtk::BLASAdapter::RealNRM2(computed, length)};
+
+  return norm_2_difference/norm_2_computed;
 }
 
 void mtk::BLASAdapter::RealDenseMV(mtk::Real &alpha,

@@ -14,7 +14,6 @@ poisson_1d.exe: poisson_1d.cc poisson_1d.o
 
 poisson_1d.o: poisson_1d.cc $(MTK_LIB)
 	$(CC) poisson_1d.cc $(CCFLAGS) -o poisson_1d.o
-	@echo ' '
 
 #   Utilities.
 #   __________________________________________________________________

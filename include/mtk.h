@@ -429,4 +429,6 @@ Mimetic operators.
 #include "mtk_lap_1d.h"
 #include "mtk_quad_1d.h"
 
+#include "mtk_bc_desc_1d.h"
+
 #endif // End of: MTK_INCLUDE_MTK_H_
