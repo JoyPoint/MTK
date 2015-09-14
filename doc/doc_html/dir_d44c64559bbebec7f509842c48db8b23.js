@@ -1,6 +1,9 @@
 var dir_d44c64559bbebec7f509842c48db8b23 =
 [
     [ "mtk.h", "mtk_8h.html", null ],
+    [ "mtk_bc_desc_1d.h", "mtk__bc__desc__1d_8h.html", [
+      [ "BCDesc1D", "classmtk_1_1BCDesc1D.html", "classmtk_1_1BCDesc1D" ]
+    ] ],
     [ "mtk_blas_adapter.h", "mtk__blas__adapter_8h.html", null ],
     [ "mtk_dense_matrix.h", "mtk__dense__matrix_8h.html", null ],
     [ "mtk_div_1d.h", "mtk__div__1d_8h.html", null ],

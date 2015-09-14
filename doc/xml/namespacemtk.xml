@@ -2,6 +2,7 @@
 <doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
   <compounddef id="namespacemtk" kind="namespace">
     <compoundname>mtk</compoundname>
+    <innerclass refid="classmtk_1_1BCDesc1D" prot="public">mtk::BCDesc1D</innerclass>
     <innerclass refid="classmtk_1_1BLASAdapter" prot="public">mtk::BLASAdapter</innerclass>
     <innerclass refid="classmtk_1_1DenseMatrix" prot="public">mtk::DenseMatrix</innerclass>
     <innerclass refid="classmtk_1_1Div1D" prot="public">mtk::Div1D</innerclass>
@@ -149,8 +150,8 @@
         <referencedby refid="classmtk_1_1Grad1D_1a7ad1cecf6b52647263208ffaea0ee1e5" compoundref="mtk__grad__1d_8cc" startline="1243" endline="1347">mtk::Grad1D::ComputeStencilBoundaryGrid</referencedby>
         <referencedby refid="classmtk_1_1Grad1D_1a4eb4d363506b8c64b2bb18a318bbd259" compoundref="mtk__grad__1d_8cc" startline="1349" endline="1418">mtk::Grad1D::AssembleOperator</referencedby>
         <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="119" endline="263">mtk::Lap1D::ConstructLap1D</referencedby>
-        <referencedby refid="classmtk_1_1LAPACKAdapter_1ae5c6e78c9c819c9ac7a6f31bfd011d7a" compoundref="mtk__lapack__adapter_8cc" startline="515" endline="714">mtk::LAPACKAdapter::QRFactorDenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1LAPACKAdapter_1a380f148ffdf96bae2f79ae28f1a6560c" compoundref="mtk__lapack__adapter_8cc" startline="716" endline="799">mtk::LAPACKAdapter::SolveRectangularDenseSystem</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1ae5c6e78c9c819c9ac7a6f31bfd011d7a" compoundref="mtk__lapack__adapter_8cc" startline="553" endline="752">mtk::LAPACKAdapter::QRFactorDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1a380f148ffdf96bae2f79ae28f1a6560c" compoundref="mtk__lapack__adapter_8cc" startline="754" endline="837">mtk::LAPACKAdapter::SolveRectangularDenseSystem</referencedby>
         <referencedby refid="classmtk_1_1UniStgGrid1D_1ae19250f0cddef7a05c4a73a90991a26a" compoundref="mtk__uni__stg__grid__1d_8cc" startline="122" endline="140">mtk::UniStgGrid1D::UniStgGrid1D</referencedby>
       </memberdef>
       <memberdef kind="variable" id="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" prot="public" static="no" mutable="no">
@@ -167,6 +168,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" line="108" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" bodystart="108" bodyend="-1"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1af2ac5691f45e67d6e26186b071119ec4" compoundref="mtk__blas__adapter_8cc" startline="358" endline="376">mtk::BLASAdapter::RelNorm2Error</referencedby>
         <referencedby refid="classmtk_1_1DenseMatrix_1a4ef0dec1b5558fcf00719bfac059ec68" compoundref="mtk__dense__matrix_8cc" startline="199" endline="235">mtk::DenseMatrix::DenseMatrix</referencedby>
         <referencedby refid="classmtk_1_1Div1D_1afdbb1e11f05dd77b882f36426229acf7" compoundref="mtk__div__1d_8cc" startline="330" endline="390">mtk::Div1D::ReturnAsDenseMatrix</referencedby>
         <referencedby refid="classmtk_1_1Div1D_1a3eb3a32862a6b066cd583cbbd00a6509" compoundref="mtk__div__1d_8cc" startline="392" endline="489">mtk::Div1D::ComputeStencilInteriorGrid</referencedby>
@@ -262,17 +264,17 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
-      <memberdef kind="function" id="namespacemtk_1af817d9da07e2c0b4c49ee02fdb09471c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacemtk_1a508e99fcb14d526bc43aa0a80aa4b658" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>float</type>
         <definition>float mtk::snrm2_</definition>
-        <argsstring>(int *n, Real *x, int *incx)</argsstring>
+        <argsstring>(int *n, float *x, int *incx)</argsstring>
         <name>snrm2_</name>
         <param>
           <type>int *</type>
           <declname>n</declname>
         </param>
         <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <type>float *</type>
           <declname>x</declname>
         </param>
         <param>
@@ -285,13 +287,51 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" line="108" column="1"/>
-        <referencedby refid="classmtk_1_1BLASAdapter_1ab92440888b730863244c5d9479c11aca" compoundref="mtk__blas__adapter_8cc" startline="276" endline="285">mtk::BLASAdapter::RealNRM2</referencedby>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" line="112" column="1"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1ab92440888b730863244c5d9479c11aca" compoundref="mtk__blas__adapter_8cc" startline="324" endline="337">mtk::BLASAdapter::RealNRM2</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespacemtk_1aafa6617e6f999afa44dfb2573f5d847e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacemtk_1a81a2d7d1ea9eff65ae13646c93dad5e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::saxpy_</definition>
+        <argsstring>(int *n, float *sa, float *sx, int *incx, float *sy, int *incy)</argsstring>
+        <name>saxpy_</name>
+        <param>
+          <type>int *</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>sa</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>sx</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>incx</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>sy</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>incy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" line="156" column="1"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1a081cd092ae65e730f44eae8643edd539" compoundref="mtk__blas__adapter_8cc" startline="339" endline="356">mtk::BLASAdapter::RealAXPY</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespacemtk_1a88daff7ad6f251a58b94aa2d0c94d069" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void mtk::sgemv_</definition>
-        <argsstring>(char *trans, int *m, int *n, Real *alpha, Real *a, int *lda, Real *x, int *incx, Real *beta, Real *y, int *incy)</argsstring>
+        <argsstring>(char *trans, int *m, int *n, float *alpha, float *a, int *lda, float *x, int *incx, float *beta, float *y, int *incy)</argsstring>
         <name>sgemv_</name>
         <param>
           <type>char *</type>
@@ -306,11 +346,11 @@
           <declname>n</declname>
         </param>
         <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <type>float *</type>
           <declname>alpha</declname>
         </param>
         <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <type>float *</type>
           <declname>a</declname>
         </param>
         <param>
@@ -318,7 +358,7 @@
           <declname>lda</declname>
         </param>
         <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <type>float *</type>
           <declname>x</declname>
         </param>
         <param>
@@ -326,11 +366,11 @@
           <declname>incx</declname>
         </param>
         <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <type>float *</type>
           <declname>beta</declname>
         </param>
         <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <type>float *</type>
           <declname>y</declname>
         </param>
         <param>
@@ -343,13 +383,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" line="180" column="1"/>
-        <referencedby refid="classmtk_1_1BLASAdapter_1afdcac059a4294287cb55638221220646" compoundref="mtk__blas__adapter_8cc" startline="287" endline="316">mtk::BLASAdapter::RealDenseMV</referencedby>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" line="228" column="1"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1afdcac059a4294287cb55638221220646" compoundref="mtk__blas__adapter_8cc" startline="378" endline="407">mtk::BLASAdapter::RealDenseMV</referencedby>
       </memberdef>
-      <memberdef kind="function" id="namespacemtk_1aec80332e88a0a7cdce8798a18559e961" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="namespacemtk_1adb7c0560326b8e57f255e58b87ec76b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void mtk::sgemm_</definition>
-        <argsstring>(char *transa, char *transb, int *m, int *n, int *k, Real *alpha, Real *a, int *lda, Real *b, aamm int *ldb, Real *beta, Real *c, int *ldc)</argsstring>
+        <argsstring>(char *transa, char *transb, int *m, int *n, int *k, double *alpha, double *a, int *lda, double *b, aamm int *ldb, double *beta, double *c, int *ldc)</argsstring>
         <name>sgemm_</name>
         <param>
           <type>char *</type>
@@ -372,11 +412,11 @@
           <declname>k</declname>
         </param>
         <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <type>double *</type>
           <declname>alpha</declname>
         </param>
         <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <type>double *</type>
           <declname>a</declname>
         </param>
         <param>
@@ -384,7 +424,7 @@
           <declname>lda</declname>
         </param>
         <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <type>double *</type>
           <declname>b</declname>
         </param>
         <param>
@@ -392,11 +432,11 @@
           <declname>ldb</declname>
         </param>
         <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <type>double *</type>
           <declname>beta</declname>
         </param>
         <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <type>double *</type>
           <declname>c</declname>
         </param>
         <param>
@@ -409,8 +449,8 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" line="259" column="1"/>
-        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="318" endline="372">mtk::BLASAdapter::RealDenseMM</referencedby>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" line="307" column="1"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="409" endline="463">mtk::BLASAdapter::RealDenseMM</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacemtk_1ad3bcf52cda59ddb5fc7b4bdce76c46dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -703,7 +743,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_lapack_adapter.cc" line="236" column="1"/>
-        <referencedby refid="classmtk_1_1LAPACKAdapter_1a380f148ffdf96bae2f79ae28f1a6560c" compoundref="mtk__lapack__adapter_8cc" startline="716" endline="799">mtk::LAPACKAdapter::SolveRectangularDenseSystem</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1a380f148ffdf96bae2f79ae28f1a6560c" compoundref="mtk__lapack__adapter_8cc" startline="754" endline="837">mtk::LAPACKAdapter::SolveRectangularDenseSystem</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacemtk_1aece7419193d8ab43e186c97ad6d529fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -1005,6 +1045,6 @@
 <para>Mimetic Methods Toolkit namespace. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_blas_adapter.h" line="75" column="1"/>
+    <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_bc_desc_1d.h" line="7" column="1"/>
   </compounddef>
 </doxygen>

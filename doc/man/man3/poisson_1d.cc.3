@@ -22,21 +22,21 @@ Poisson Equation on a 1D Uniform Staggered Grid with Robin BCs\&.
 .PP 
 We solve:
 .PP
-\[ -\nabla^2u(x) = s(x), \].PP
-for $ x \in \Omega = [0,1] $\&.
+\[ \nabla^2p(x) = -s(x), \].PP
+for $ x \in \Omega = [a,b] = [0,1] $\&.
 .PP
 The source term function is defined as
 .PP
-\[ s(x) = \frac{-\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1} \].PP
+\[ s(x) = \frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1} \].PP
 where $ \lambda = -1 $ is a parameter\&.
 .PP
 We consider Robin's boundary conditions of the form:
 .PP
-\[ \alpha u(a) - \beta u'(a) = \textrm{west\_bndy\_cond\_val}, \].PP
-\[ \alpha u(b) + \beta u'(b) = \textrm{east\_bndy\_cond\_val}. \].PP
+\[ \alpha p(a) - \beta p'(a) = \omega, \].PP
+\[ \alpha p(b) + \beta p'(b) = \epsilon. \].PP
 The analytical solution for this problem is given by
 .PP
-\[ u(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \].PP
+\[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \].PP
 \fBAuthor:\fP
 .RS 4
 : Eduardo J\&. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
@@ -52,7 +52,7 @@ Definition in file \fBpoisson_1d\&.cc\fP\&.
 .SS "int main ()"
 
 .PP
-Definition at line 303 of file poisson_1d\&.cc\&.
+Definition at line 261 of file poisson_1d\&.cc\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

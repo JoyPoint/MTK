@@ -13,6 +13,9 @@ Mimetic Methods Toolkit namespace\&.
 
 .in +1c
 .ti -1c
+.RI "class \fBBCDesc1D\fP"
+.br
+.ti -1c
 .RI "class \fBBLASAdapter\fP"
 .br
 .RI "\fIAdapter class for the BLAS API\&. \fP"
@@ -85,13 +88,16 @@ Mimetic Methods Toolkit namespace\&.
 
 .in +1c
 .ti -1c
-.RI "float \fBsnrm2_\fP (int *n, \fBReal\fP *x, int *incx)"
+.RI "float \fBsnrm2_\fP (int *n, float *x, int *incx)"
 .br
 .ti -1c
-.RI "void \fBsgemv_\fP (char *trans, int *m, int *n, \fBReal\fP *alpha, \fBReal\fP *a, int *lda, \fBReal\fP *x, int *incx, \fBReal\fP *beta, \fBReal\fP *y, int *incy)"
+.RI "void \fBsaxpy_\fP (int *n, float *sa, float *sx, int *incx, float *sy, int *incy)"
 .br
 .ti -1c
-.RI "void \fBsgemm_\fP (char *transa, char *transb, int *m, int *n, int *k, \fBReal\fP *alpha, \fBReal\fP *a, int *lda, \fBReal\fP *b, aamm int *ldb, \fBReal\fP *beta, \fBReal\fP *c, int *ldc)"
+.RI "void \fBsgemv_\fP (char *trans, int *m, int *n, float *alpha, float *a, int *lda, float *x, int *incx, float *beta, float *y, int *incy)"
+.br
+.ti -1c
+.RI "void \fBsgemm_\fP (char *transa, char *transb, int *m, int *n, int *k, double *alpha, double *a, int *lda, double *b, aamm int *ldb, double *beta, double *c, int *ldc)"
 .br
 .ti -1c
 .RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBmtk::DenseMatrix\fP &in)"
@@ -210,6 +216,8 @@ Print mimetic approximations at the boundary\&.
 
 .PP
 Definition at line 79 of file mtk_grad_1d\&.cc\&.
+.SS "void mtk::saxpy_ (int *n, float *sa, float *sx, int *incx, float *sy, int *incy)"
+
 .SS "void mtk::sgels_ (char *trans, int *m, int *n, int *nrhs, Real *a, int *lda, Real *b, int *ldb, Real *work, int *lwork, int *info)"
 SGELS solves overdetermined or underdetermined real linear systems involving an M-by-N matrix A, or its transpose, using a QR or LQ factorization of A\&. It is assumed that A has full rank\&.
 .PP
@@ -272,9 +280,9 @@ http://www.math.utah.edu/software/lapack/lapack-s/sgels.html
 .RE
 .PP
 
-.SS "void mtk::sgemm_ (char *transa, char *transb, int *m, int *n, int *k, Real *alpha, Real *a, int *lda, Real *b, aamm int *ldb, Real *beta, Real *c, int *ldc)"
+.SS "void mtk::sgemm_ (char *transa, char *transb, int *m, int *n, int *k, double *alpha, double *a, int *lda, double *b, aamm int *ldb, double *beta, double *c, int *ldc)"
 
-.SS "void mtk::sgemv_ (char *trans, int *m, int *n, Real *alpha, Real *a, int *lda, Real *x, int *incx, Real *beta, Real *y, int *incy)"
+.SS "void mtk::sgemv_ (char *trans, int *m, int *n, float *alpha, float *a, int *lda, float *x, int *incx, float *beta, float *y, int *incy)"
 
 .SS "void mtk::sgeqrf_ (int *m, int *n, Real *a, int *lda, Real *tau, Real *work, int *lwork, int *info)"
 Single-Precision Orthogonal Make Q from QR: dormqr_ overwrites the general real M-by-N matrix C with (Table 1): 
@@ -323,7 +331,7 @@ http://www.netlib.org/lapack/explore-html/df/d97/sgeqrf_8f.html
 
 .SS "void mtk::sgesv_ (int *n, int *nrhs, Real *a, int *lda, int *ipiv, Real *b, int *ldb, int *info)"
 
-.SS "float mtk::snrm2_ (int *n, Real *x, int *incx)"
+.SS "float mtk::snrm2_ (int *n, float *x, int *incx)"
 
 .SS "void mtk::sormqr_ (char *side, char *trans, int *m, int *n, int *k, Real *a, int *lda, Real *tau, Real *c, int *ldc, Real *work, int *lwork, int *info)"
 Single-Precision Orthogonal Make Q from QR: sormqr_ overwrites the general real M-by-N matrix C with (Table 1): 

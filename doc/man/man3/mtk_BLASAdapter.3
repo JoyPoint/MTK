@@ -17,7 +17,15 @@ Adapter class for the BLAS API\&.
 .ti -1c
 .RI "static \fBReal\fP \fBRealNRM2\fP (\fBReal\fP *in, int &in_length)"
 .br
-.RI "\fICompute the $ |\mathbf{x}|_2 $ of given array $ \mathbf{x} $\&. \fP"
+.RI "\fICompute the $ ||\mathbf{x}||_2 $ of given array $ \mathbf{x} $\&. \fP"
+.ti -1c
+.RI "static void \fBRealAXPY\fP (\fBReal\fP alpha, \fBReal\fP *xx, \fBReal\fP *yy, int &in_length)"
+.br
+.RI "\fIReal-Arithmetic Scalar-Vector plus a Vector\&. \fP"
+.ti -1c
+.RI "static \fBReal\fP \fBRelNorm2Error\fP (\fBReal\fP *computed, \fBReal\fP *known, int length)"
+.br
+.RI "\fIComputes the relative norm-2 of the error\&. \fP"
 .ti -1c
 .RI "static void \fBRealDenseMV\fP (\fBReal\fP &alpha, \fBDenseMatrix\fP &aa, \fBReal\fP *xx, \fBReal\fP &beta, \fBReal\fP *yy)"
 .br
@@ -43,6 +51,29 @@ http://www.netlib.org/blas/
 Definition at line 96 of file mtk_blas_adapter\&.h\&.
 .SH "Member Function Documentation"
 .PP 
+.SS "void mtk::BLASAdapter::RealAXPY (\fBmtk::Real\fPalpha, \fBmtk::Real\fP *xx, \fBmtk::Real\fP *yy, int &in_length)\fC [static]\fP"
+Performs
+.PP
+\[ \mathbf{y} := \alpha\mathbf{A}mathbf{x} + \mathbf{y} \].PP
+\fBParameters:\fP
+.RS 4
+\fIalpha\fP Scalar of the first array\&. 
+.br
+\fIxx\fP First array\&. 
+.br
+\fIyy\fP Second array\&. 
+.br
+\fIin_length\fP Lengths of the given arrays\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Norm-2 of the given array\&. 
+.RE
+.PP
+
+.PP
+Definition at line 339 of file mtk_blas_adapter\&.cc\&.
 .SS "\fBmtk::DenseMatrix\fP mtk::BLASAdapter::RealDenseMM (\fBmtk::DenseMatrix\fP &aa, \fBmtk::DenseMatrix\fP &bb)\fC [static]\fP"
 Performs:
 .PP
@@ -61,7 +92,7 @@ http://ejspeiro.github.io/Netlib-and-CPP/
 .PP
 
 .PP
-Definition at line 318 of file mtk_blas_adapter\&.cc\&.
+Definition at line 409 of file mtk_blas_adapter\&.cc\&.
 .SS "void mtk::BLASAdapter::RealDenseMV (\fBmtk::Real\fP &alpha, \fBmtk::DenseMatrix\fP &aa, \fBmtk::Real\fP *xx, \fBmtk::Real\fP &beta, \fBmtk::Real\fP *yy)\fC [static]\fP"
 Performs
 .PP
@@ -86,7 +117,7 @@ http://ejspeiro.github.io/Netlib-and-CPP/
 .PP
 
 .PP
-Definition at line 287 of file mtk_blas_adapter\&.cc\&.
+Definition at line 378 of file mtk_blas_adapter\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::BLASAdapter::RealNRM2 (\fBReal\fP *in, int &in_length)\fC [static]\fP"
 
 .PP
@@ -94,12 +125,36 @@ Definition at line 287 of file mtk_blas_adapter\&.cc\&.
 .RS 4
 \fIin\fP Input array\&. 
 .br
-\fIin_length\fP Length of the array\&. 
+\fIin_length\fP Length of the array\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Norm-2 of the given array\&. 
 .RE
 .PP
 
 .PP
-Definition at line 276 of file mtk_blas_adapter\&.cc\&.
+Definition at line 324 of file mtk_blas_adapter\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::BLASAdapter::RelNorm2Error (\fBmtk::Real\fP *computed, \fBmtk::Real\fP *known, intlength)\fC [static]\fP"
+We compute
+.PP
+\[ \frac{||\mathbf{\tilde{x}} - \mathbf{x}||_2}{||\mathbf{x}||_2}. \].PP
+\fBParameters:\fP
+.RS 4
+\fIknown\fP Array containing the computed solution\&. 
+.br
+\fIcomputed\fP Array containing the known solution (ref\&. solution)\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Relative norm-2 of the error, aka, the difference between the arrays\&. 
+.RE
+.PP
+
+.PP
+Definition at line 358 of file mtk_blas_adapter\&.cc\&.
 
 .SH "Author"
 .PP 

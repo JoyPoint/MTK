@@ -9,6 +9,8 @@ Mimetic Methods Toolkit namespace.
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
+class \hyperlink{classmtk_1_1BCDesc1D}{B\-C\-Desc1\-D}
+\item 
 class \hyperlink{classmtk_1_1BLASAdapter}{B\-L\-A\-S\-Adapter}
 \begin{DoxyCompactList}\small\item\em Adapter class for the B\-L\-A\-S A\-P\-I. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1DenseMatrix}{Dense\-Matrix}
@@ -55,11 +57,13 @@ enum \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{Field\-Natu
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-float \hyperlink{namespacemtk_af817d9da07e2c0b4c49ee02fdb09471c}{snrm2\-\_\-} (int $\ast$n, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$x, int $\ast$incx)
+float \hyperlink{namespacemtk_a508e99fcb14d526bc43aa0a80aa4b658}{snrm2\-\_\-} (int $\ast$n, float $\ast$x, int $\ast$incx)
 \item 
-void \hyperlink{namespacemtk_aafa6617e6f999afa44dfb2573f5d847e}{sgemv\-\_\-} (char $\ast$trans, int $\ast$m, int $\ast$n, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$alpha, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$a, int $\ast$lda, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$x, int $\ast$incx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$beta, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$y, int $\ast$incy)
+void \hyperlink{namespacemtk_a81a2d7d1ea9eff65ae13646c93dad5e9}{saxpy\-\_\-} (int $\ast$n, float $\ast$sa, float $\ast$sx, int $\ast$incx, float $\ast$sy, int $\ast$incy)
 \item 
-void \hyperlink{namespacemtk_aec80332e88a0a7cdce8798a18559e961}{sgemm\-\_\-} (char $\ast$transa, char $\ast$transb, int $\ast$m, int $\ast$n, int $\ast$k, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$alpha, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$a, int $\ast$lda, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$b, aamm int $\ast$ldb, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$beta, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$c, int $\ast$ldc)
+void \hyperlink{namespacemtk_a88daff7ad6f251a58b94aa2d0c94d069}{sgemv\-\_\-} (char $\ast$trans, int $\ast$m, int $\ast$n, float $\ast$alpha, float $\ast$a, int $\ast$lda, float $\ast$x, int $\ast$incx, float $\ast$beta, float $\ast$y, int $\ast$incy)
+\item 
+void \hyperlink{namespacemtk_adb7c0560326b8e57f255e58b87ec76b0}{sgemm\-\_\-} (char $\ast$transa, char $\ast$transb, int $\ast$m, int $\ast$n, int $\ast$k, double $\ast$alpha, double $\ast$a, int $\ast$lda, double $\ast$b, aamm int $\ast$ldb, double $\ast$beta, double $\ast$c, int $\ast$ldc)
 \item 
 std\-::ostream \& \hyperlink{namespacemtk_ad3bcf52cda59ddb5fc7b4bdce76c46dc}{operator$<$$<$} (std\-::ostream \&stream, \hyperlink{classmtk_1_1DenseMatrix}{mtk\-::\-Dense\-Matrix} \&in)
 \item 
@@ -190,6 +194,30 @@ Definition at line \hyperlink{mtk__div__1d_8cc_source_l00079}{79} of file \hyper
 
 Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00079}{79} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\-\_\-grad\-\_\-1d.\-cc}.
 
+\hypertarget{namespacemtk_a81a2d7d1ea9eff65ae13646c93dad5e9}{\index{mtk@{mtk}!saxpy\-\_\-@{saxpy\-\_\-}}
+\index{saxpy\-\_\-@{saxpy\-\_\-}!mtk@{mtk}}
+\subsubsection[{saxpy\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::saxpy\-\_\- (
+\begin{DoxyParamCaption}
+\item[{int $\ast$}]{n, }
+\item[{float $\ast$}]{sa, }
+\item[{float $\ast$}]{sx, }
+\item[{int $\ast$}]{incx, }
+\item[{float $\ast$}]{sy, }
+\item[{int $\ast$}]{incy}
+\end{DoxyParamCaption}
+)}}\label{namespacemtk_a81a2d7d1ea9eff65ae13646c93dad5e9}
+
+
+Here is the caller graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{namespacemtk_a81a2d7d1ea9eff65ae13646c93dad5e9_icgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{namespacemtk_ada6df1b733204aa7ff0b1ec7556288f9}{\index{mtk@{mtk}!sgels\-\_\-@{sgels\-\_\-}}
 \index{sgels\-\_\-@{sgels\-\_\-}!mtk@{mtk}}
 \subsubsection[{sgels\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::sgels\-\_\- (
@@ -264,7 +292,7 @@ Here is the caller graph for this function\-:\nopagebreak
 \end{figure}
 
 
-\hypertarget{namespacemtk_aec80332e88a0a7cdce8798a18559e961}{\index{mtk@{mtk}!sgemm\-\_\-@{sgemm\-\_\-}}
+\hypertarget{namespacemtk_adb7c0560326b8e57f255e58b87ec76b0}{\index{mtk@{mtk}!sgemm\-\_\-@{sgemm\-\_\-}}
 \index{sgemm\-\_\-@{sgemm\-\_\-}!mtk@{mtk}}
 \subsubsection[{sgemm\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::sgemm\-\_\- (
 \begin{DoxyParamCaption}
@@ -273,51 +301,53 @@ Here is the caller graph for this function\-:\nopagebreak
 \item[{int $\ast$}]{m, }
 \item[{int $\ast$}]{n, }
 \item[{int $\ast$}]{k, }
-\item[{Real $\ast$}]{alpha, }
-\item[{Real $\ast$}]{a, }
+\item[{double $\ast$}]{alpha, }
+\item[{double $\ast$}]{a, }
 \item[{int $\ast$}]{lda, }
-\item[{Real $\ast$}]{b, }
+\item[{double $\ast$}]{b, }
 \item[{aamm int $\ast$}]{ldb, }
-\item[{Real $\ast$}]{beta, }
-\item[{Real $\ast$}]{c, }
+\item[{double $\ast$}]{beta, }
+\item[{double $\ast$}]{c, }
 \item[{int $\ast$}]{ldc}
 \end{DoxyParamCaption}
-)}}\label{namespacemtk_aec80332e88a0a7cdce8798a18559e961}
+)}}\label{namespacemtk_adb7c0560326b8e57f255e58b87ec76b0}
 
 
-Here is the caller graph for this function\-:\nopagebreak
+Here is the caller graph for this function\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{namespacemtk_aec80332e88a0a7cdce8798a18559e961_icgraph}
+\includegraphics[width=350pt]{namespacemtk_adb7c0560326b8e57f255e58b87ec76b0_icgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{namespacemtk_aafa6617e6f999afa44dfb2573f5d847e}{\index{mtk@{mtk}!sgemv\-\_\-@{sgemv\-\_\-}}
+\hypertarget{namespacemtk_a88daff7ad6f251a58b94aa2d0c94d069}{\index{mtk@{mtk}!sgemv\-\_\-@{sgemv\-\_\-}}
 \index{sgemv\-\_\-@{sgemv\-\_\-}!mtk@{mtk}}
 \subsubsection[{sgemv\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::sgemv\-\_\- (
 \begin{DoxyParamCaption}
 \item[{char $\ast$}]{trans, }
 \item[{int $\ast$}]{m, }
 \item[{int $\ast$}]{n, }
-\item[{Real $\ast$}]{alpha, }
-\item[{Real $\ast$}]{a, }
+\item[{float $\ast$}]{alpha, }
+\item[{float $\ast$}]{a, }
 \item[{int $\ast$}]{lda, }
-\item[{Real $\ast$}]{x, }
+\item[{float $\ast$}]{x, }
 \item[{int $\ast$}]{incx, }
-\item[{Real $\ast$}]{beta, }
-\item[{Real $\ast$}]{y, }
+\item[{float $\ast$}]{beta, }
+\item[{float $\ast$}]{y, }
 \item[{int $\ast$}]{incy}
 \end{DoxyParamCaption}
-)}}\label{namespacemtk_aafa6617e6f999afa44dfb2573f5d847e}
+)}}\label{namespacemtk_a88daff7ad6f251a58b94aa2d0c94d069}
 
 
-Here is the caller graph for this function\-:\nopagebreak
+Here is the caller graph for this function\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{namespacemtk_aafa6617e6f999afa44dfb2573f5d847e_icgraph}
+\includegraphics[width=350pt]{namespacemtk_a88daff7ad6f251a58b94aa2d0c94d069_icgraph}
 \end{center}
 \end{figure}
 
@@ -382,22 +412,23 @@ as returned by S\-G\-E\-Q\-R\-F. Q is of order M if S\-I\-D\-E = 'L' and of orde
 \item[{int $\ast$}]{info}
 \end{DoxyParamCaption}
 )}}\label{namespacemtk_ae1d63c7ae73b3c48e0dca81eb19039f3}
-\hypertarget{namespacemtk_af817d9da07e2c0b4c49ee02fdb09471c}{\index{mtk@{mtk}!snrm2\-\_\-@{snrm2\-\_\-}}
+\hypertarget{namespacemtk_a508e99fcb14d526bc43aa0a80aa4b658}{\index{mtk@{mtk}!snrm2\-\_\-@{snrm2\-\_\-}}
 \index{snrm2\-\_\-@{snrm2\-\_\-}!mtk@{mtk}}
 \subsubsection[{snrm2\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}float mtk\-::snrm2\-\_\- (
 \begin{DoxyParamCaption}
 \item[{int $\ast$}]{n, }
-\item[{Real $\ast$}]{x, }
+\item[{float $\ast$}]{x, }
 \item[{int $\ast$}]{incx}
 \end{DoxyParamCaption}
-)}}\label{namespacemtk_af817d9da07e2c0b4c49ee02fdb09471c}
+)}}\label{namespacemtk_a508e99fcb14d526bc43aa0a80aa4b658}
 
 
-Here is the caller graph for this function\-:\nopagebreak
+Here is the caller graph for this function\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{namespacemtk_af817d9da07e2c0b4c49ee02fdb09471c_icgraph}
+\includegraphics[width=350pt]{namespacemtk_a508e99fcb14d526bc43aa0a80aa4b658_icgraph}
 \end{center}
 \end{figure}
 
