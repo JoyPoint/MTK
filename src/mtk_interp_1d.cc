@@ -1,11 +1,9 @@
 /*!
-\file mtk_enums.h
+\file mtk_interp_1d.cc
 
-\brief Considered enumeration types in the MTK.
+\brief Includes the implementation of the class Interp1D.
 
-Enumeration types are used throughout the MTK to differentiate instances of
-derived classes, as well as for mnemonic purposes. In this file, the enumeration
-types are listed alphabetically.
+This class implements a 1D interpolation operator.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -55,74 +53,10 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef MTK_INCLUDE_ENUMS_H_
-#define MTK_INCLUDE_ENUMS_H_
+#include "interp_1d.h"
 
-namespace mtk {
+mtk::Interp1D::Interp1D():
+  dir_interp_(mtk::SCALAR_TO_VECTOR),
+  order_accuracy_(mtk::kDefaultOrderAccuracy),
+  coeffs_interior_(nullptr) {}
 
-/*!
-\enum MatrixStorage
-
-\ingroup c02-enums
-
-\brief Considered matrix storage schemes to implement sparse matrices.
-
-The considered sparse storage schemes are selected so that these are compatible
-with some of the most used mathematical APIs, as follows: DENSE and BANDED for
-<a href="http://www.netlib.org/blas/">BLAS</a>,
-<a href="http://www.netlib.org/lapack/">LAPACK</a>, and
-<a href="http://www.netlib.org/scalapack/">ScaLAPACK</a>. Finally, CRS for
-<a href="http://crd.lbl.gov/~xiaoye/SuperLU/">SuperLU</a>.
-*/
-enum MatrixStorage {
-  DENSE,    ///< Dense matrices, implemented as a 1D array: DenseMatrix.
-  BANDED,   ///< Banded matrices ala LAPACK and ScaLAPACK: Must be implemented.
-  CRS       ///< Compressed-Rows Storage: Must be implemented.
-};
-
-/*!
-\enum MatrixOrdering
-
-\ingroup c02-enums
-
-\brief Considered matrix ordering (for Fortran purposes).
-
-Row-major ordering is used for most application in C/C++. For Fortran purposes,
-the matrices must be listed in a column-major ordering.
-
-\sa https://en.wikipedia.org/wiki/Row-major_order
-*/
-enum MatrixOrdering {
-  ROW_MAJOR,  ///< Row-major ordering (C/C++).
-  COL_MAJOR   ///< Column-major ordering (Fortran).
-};
-
-/*!
-\enum FieldNature
-
-\ingroup c02-enums
-
-\brief Nature of the field discretized in a given grid.
-
-Fields can be **scalar** or **vector** in nature.
-
-\sa https://en.wikipedia.org/wiki/Scalar_field
-
-\sa https://en.wikipedia.org/wiki/Vector_field
-*/
-enum FieldNature {
-  SCALAR,  ///< Scalar-valued field.
-  VECTOR   ///< Vector-valued field.
-};
-
-/*!
-\enum DirInterp
-
-\ingroup c02-enums
-*/
-enum DirInterp {
-  SCALAR_TO_VECTOR,
-  VECTOR_TO_SCALAR
-};
-}
-#endif  // End of: MTK_INCLUDE_ENUMS_H_

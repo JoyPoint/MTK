@@ -1,11 +1,9 @@
 /*!
-\file mtk_enums.h
+\file mtk_interp_1d.h
 
-\brief Considered enumeration types in the MTK.
+\brief Includes the definition of the class Interp1D.
 
-Enumeration types are used throughout the MTK to differentiate instances of
-derived classes, as well as for mnemonic purposes. In this file, the enumeration
-types are listed alphabetically.
+This class implements a 1D interpolation operator.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -55,74 +53,74 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef MTK_INCLUDE_ENUMS_H_
-#define MTK_INCLUDE_ENUMS_H_
+#ifndef MTK_INCLUDE_INTERP_1D_H_
+#define MTK_INCLUDE_INTERP_1D_H_
+
+#include <iostream>
+#include <iomanip>
+
+#include "glpk.h"
+
+#include "mtk_roots.h"
+#include "mtk_dense_matrix.h"
+#include "mtk_uni_stg_grid_1d.h"
 
 namespace mtk {
 
 /*!
-\enum MatrixStorage
+\class Interp1D
 
-\ingroup c02-enums
+\ingroup c07-mim_ops
 
-\brief Considered matrix storage schemes to implement sparse matrices.
+\brief Implements a 1D interpolation operator.
 
-The considered sparse storage schemes are selected so that these are compatible
-with some of the most used mathematical APIs, as follows: DENSE and BANDED for
-<a href="http://www.netlib.org/blas/">BLAS</a>,
-<a href="http://www.netlib.org/lapack/">LAPACK</a>, and
-<a href="http://www.netlib.org/scalapack/">ScaLAPACK</a>. Finally, CRS for
-<a href="http://crd.lbl.gov/~xiaoye/SuperLU/">SuperLU</a>.
+This class implements a 1D interpolation operator.
 */
-enum MatrixStorage {
-  DENSE,    ///< Dense matrices, implemented as a 1D array: DenseMatrix.
-  BANDED,   ///< Banded matrices ala LAPACK and ScaLAPACK: Must be implemented.
-  CRS       ///< Compressed-Rows Storage: Must be implemented.
-};
+class Interp1D {
+ public:
+  /// \brief Output stream operator for printing.
+  friend std::ostream& operator <<(std::ostream& stream, Grad1D &in);
 
-/*!
-\enum MatrixOrdering
+  /// \brief Default constructor.
+  Interp1D();
 
-\ingroup c02-enums
+  /*!
+  \brief Copy constructor.
 
-\brief Considered matrix ordering (for Fortran purposes).
+  \param [in] interp Given interpolation operator.
+  */
+  Interp1D(const Interp1D &interp);
 
-Row-major ordering is used for most application in C/C++. For Fortran purposes,
-the matrices must be listed in a column-major ordering.
+  /// \brief Destructor.
+  ~Interp1D();
 
-\sa https://en.wikipedia.org/wiki/Row-major_order
-*/
-enum MatrixOrdering {
-  ROW_MAJOR,  ///< Row-major ordering (C/C++).
-  COL_MAJOR   ///< Column-major ordering (Fortran).
-};
+  /*!
+  \brief Factory method to build operator.
 
-/*!
-\enum FieldNature
+  \return Success of the solution.
+  */
+  bool ConstructInterp1D(int order_accuracy = kDefaultOrderAccuracy);
 
-\ingroup c02-enums
+  /*!
+  \brief Returns coefficients for the interior of the grid.
 
-\brief Nature of the field discretized in a given grid.
+  \return Coefficients for the interior of the grid.
+  */
+  Real *coeffs_interior() const;
 
-Fields can be **scalar** or **vector** in nature.
+  /*!
+  \brief Returns the operator as a dense matrix.
 
-\sa https://en.wikipedia.org/wiki/Scalar_field
+  \return The operator as a dense matrix.
+  */
+  DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid);
 
-\sa https://en.wikipedia.org/wiki/Vector_field
-*/
-enum FieldNature {
-  SCALAR,  ///< Scalar-valued field.
-  VECTOR   ///< Vector-valued field.
-};
+ private:
+  DirInterp dir_interp_;  ///< Direction of interpolation.
 
-/*!
-\enum DirInterp
+  int order_accuracy_;    ///< Order of numerical accuracy of the operator.
 
-\ingroup c02-enums
-*/
-enum DirInterp {
-  SCALAR_TO_VECTOR,
-  VECTOR_TO_SCALAR
+  Real *coeffs_interior_; ///< Interior stencil.
 };
 }
-#endif  // End of: MTK_INCLUDE_ENUMS_H_
+#endif  // End of: MTK_INCLUDE_INTERP_1D_H_

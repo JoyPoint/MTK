@@ -4,7 +4,7 @@ SHELL := /bin/bash
 
 # Please set the following variables up:
 
-#   2. Absolute path to base directory of the MTK... where is the MTK?
+#   1. Absolute path to base directory of the MTK... where is the MTK?
 #   __________________________________________________________________
 
 BASE = /home/ejspeiro/Dropbox/MTK
@@ -68,7 +68,7 @@ ATLAS_LIB   = $(HOME)/Libraries/ATLAS_3.8.4-CORE/ATLAS_3.8.4-BUILD-Citadel/lib
 #   6. Compiler and its flags.
 #   __________________________________________________________________
 
-CC = g++
+CC = colorgcc
 
 # Debug Level. Options are:
 # 0. NO debug at all NOR any run-time checks... be cautious!

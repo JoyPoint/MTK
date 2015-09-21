@@ -312,19 +312,40 @@ bool mtk::Div1D::ConstructDiv1D(int order_accuracy,
   return true;
 }
 
-int mtk::Div1D::num_bndy_coeffs() {
+int mtk::Div1D::num_bndy_coeffs() const {
 
   return num_bndy_coeffs_;
 }
 
-mtk::Real *mtk::Div1D::weights_crs() {
+mtk::Real *mtk::Div1D::coeffs_interior() const {
+
+  return coeffs_interior_;
+}
+
+mtk::Real *mtk::Div1D::weights_crs() const {
 
   return weights_crs_;
 }
 
-mtk::Real *mtk::Div1D::weights_cbs() {
+mtk::Real *mtk::Div1D::weights_cbs() const {
+
 
   return weights_cbs_;
+}
+
+mtk::DenseMatrix mtk::Div1D::mim_bndy() const {
+
+  mtk::DenseMatrix xx(dim_null_, 3*order_accuracy_/2);
+
+  auto counter = 0;
+  for (auto ii = 0; ii < dim_null_; ++ii) {
+    for(auto jj = 0; jj < 3*order_accuracy_/2; ++jj) {
+      xx.SetValue(ii,jj, divergence_[2*order_accuracy_ + 1 + counter]);
+      counter++;
+    }
+  }
+
+  return xx;
 }
 
 mtk::DenseMatrix mtk::Div1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {

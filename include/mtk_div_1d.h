@@ -109,21 +109,35 @@ class Div1D {
 
   \return How many coefficients are approximating at the boundary.
   */
-  int num_bndy_coeffs();
+  int num_bndy_coeffs() const;
+
+  /*!
+  \brief Returns coefficients for the interior of the grid.
+
+  \return Coefficients for the interior of the grid.
+  */
+  Real *coeffs_interior() const;
 
   /*!
   \brief Return collection of weights as computed by the CRSA.
 
   \return Collection of weights as computed by the CRSA.
   */
-  Real* weights_crs(void);
+  Real *weights_crs(void) const;
 
   /*!
   \brief Return collection of weights as computed by the CBSA.
 
   \return Collection of weights as computed by the CBSA.
   */
-  Real* weights_cbs(void);
+  Real *weights_cbs(void) const;
+
+  /*!
+  \brief Return collection of mimetic approximations at the boundary.
+
+  \return Collection of mimetic approximations at the boundary.
+  */
+  DenseMatrix mim_bndy() const;
 
   /*!
   \brief Return the operator as a dense matrix.
