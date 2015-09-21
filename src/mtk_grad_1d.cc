@@ -188,11 +188,11 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
                       __FILE__, __LINE__, __func__);
 
   if (order_accuracy >= mtk::kCriticalOrderAccuracyGrad) {
-    std::cout << "WARNING: Numerical accuracy is high." << std::endl;;
+    std::cout << "WARNING: Numerical accuracy is high." << std::endl;
   }
 
-  std::cout << "order_accuracy_ = " << order_accuracy << std::endl;;
-  std::cout << "mimetic_threshold_ = " << mimetic_threshold << std::endl;;
+  std::cout << "order_accuracy_ = " << order_accuracy << std::endl;
+  std::cout << "mimetic_threshold_ = " << mimetic_threshold << std::endl;
   #endif
 
   order_accuracy_ = order_accuracy;
@@ -204,8 +204,8 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
 
   #if MTK_DEBUG_LEVEL > 0
   if (!abort_construction) {
-    std::cerr << "Could NOT complete stage 1." << std::endl;;
-    std::cerr << "Exiting..." << std::endl;;
+    std::cerr << "Could NOT complete stage 1." << std::endl;
+    std::cerr << "Exiting..." << std::endl;
     return false;
   }
   #endif
@@ -255,8 +255,8 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
 
     #if MTK_DEBUG_LEVEL > 0
     if (!abort_construction) {
-      std::cerr << "Could NOT complete stage 2.1." << std::endl;;
-      std::cerr << "Exiting..." << std::endl;;
+      std::cerr << "Could NOT complete stage 2.1." << std::endl;
+      std::cerr << "Exiting..." << std::endl;
       return false;
     }
     #endif
@@ -268,8 +268,8 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
 
   #if MTK_DEBUG_LEVEL > 0
   if (!abort_construction) {
-    std::cerr << "Could NOT complete stage 2.2." << std::endl;;
-    std::cerr << "Exiting..." << std::endl;;
+    std::cerr << "Could NOT complete stage 2.2." << std::endl;
+    std::cerr << "Exiting..." << std::endl;
     return false;
   }
   #endif
@@ -280,8 +280,8 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
 
   #if MTK_DEBUG_LEVEL > 0
   if (!abort_construction) {
-    std::cerr << "Could NOT complete stage 2.3." << std::endl;;
-    std::cerr << "Exiting..." << std::endl;;
+    std::cerr << "Could NOT complete stage 2.3." << std::endl;
+    std::cerr << "Exiting..." << std::endl;
     return false;
   }
   #endif
@@ -294,8 +294,8 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
 
     #if MTK_DEBUG_LEVEL > 0
     if (!abort_construction) {
-      std::cerr << "Could NOT complete stage 2.4." << std::endl;;
-      std::cerr << "Exiting..." << std::endl;;
+      std::cerr << "Could NOT complete stage 2.4." << std::endl;
+      std::cerr << "Exiting..." << std::endl;
       return false;
     }
     #endif
@@ -313,8 +313,8 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
 
   #if MTK_DEBUG_LEVEL > 0
   if (!abort_construction) {
-    std::cerr << "Could NOT complete stage 3." << std::endl;;
-    std::cerr << "Exiting..." << std::endl;;
+    std::cerr << "Could NOT complete stage 3." << std::endl;
+    std::cerr << "Exiting..." << std::endl;
     return false;
   }
   #endif
@@ -362,7 +362,7 @@ mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
   int nn{grid.num_cells_x()}; // Number of cells on the grid.
 
   #if MTK_DEBUG_LEVEL > 0
-  mtk::Tools::Prevent(order_accuracy_ <= 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
 
   /// \todo Verify minimum number of cells required for the gradient.
 

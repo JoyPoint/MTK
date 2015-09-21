@@ -353,7 +353,7 @@ mtk::DenseMatrix mtk::Div1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
   int nn{grid.num_cells_x()}; // Number of cells on the grid.
 
   #if MTK_DEBUG_LEVEL > 0
-  mtk::Tools::Prevent(order_accuracy_ <= 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(nn < 3*order_accuracy_ - 1, __FILE__, __LINE__, __func__);
   #endif
 
