@@ -114,5 +114,19 @@ enum FieldNature {
   SCALAR,  ///< Scalar-valued field.
   VECTOR   ///< Vector-valued field.
 };
+
+/*!
+\enum DirInterp
+
+\ingroup c02-enums
+
+\brief 1D interpolation operator.
+
+Implements an arithmetic average.
+*/
+enum DirInterp {
+  SCALAR_TO_VECTOR,
+  VECTOR_TO_SCALAR
+};
 }
 #endif  // End of: MTK_INCLUDE_ENUMS_H_

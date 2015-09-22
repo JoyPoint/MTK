@@ -1,0 +1,132 @@
+\hypertarget{classmtk_1_1GLPKAdapter}{\section{mtk\-:\-:G\-L\-P\-K\-Adapter Class Reference}
+\label{classmtk_1_1GLPKAdapter}\index{mtk\-::\-G\-L\-P\-K\-Adapter@{mtk\-::\-G\-L\-P\-K\-Adapter}}
+}
+
+
+Adapter class for the G\-L\-P\-K A\-P\-I.  
+
+
+
+
+{\ttfamily \#include $<$mtk\-\_\-glpk\-\_\-adapter.\-h$>$}
+
+
+
+Collaboration diagram for mtk\-:\-:G\-L\-P\-K\-Adapter\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=242pt]{classmtk_1_1GLPKAdapter__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\-::\-Real} \hyperlink{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f}{Solve\-Simplex\-And\-Compare} (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\-::\-Real} $\ast$A, int nrows, int ncols, int kk, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\-::\-Real} $\ast$hh, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\-::\-Real} $\ast$qq, int robjective, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\-::\-Real} mimetic\-\_\-tol, int copy)
+\begin{DoxyCompactList}\small\item\em Solves a C\-L\-O problem and compares the solution to a reference solution. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class contains a collection of static classes, that posses direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the G\-L\-P\-K.
+
+The {\bfseries G\-L\-P\-K (G\-N\-U Linear Programming Kit)} package is intended for solving large-\/scale linear programming (L\-P), mixed integer programming (M\-I\-P), and other related problems. It is a set of routines written in A\-N\-S\-I C and organized in the form of a callable library.
+
+\begin{DoxyWarning}{Warning}
+We use the G\-L\-P\-K temporarily in order to test the C\-B\-S\-A, but it will be removed due to licensing issues.
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See Also}
+\href{http://www.gnu.org/software/glpk/}{\tt http\-://www.\-gnu.\-org/software/glpk/}
+\end{DoxySeeAlso}
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000004}{Todo}]Rescind from the G\-L\-P\-K as the numerical core for C\-L\-O problems. \end{DoxyRefDesc}
+
+
+Definition at line \hyperlink{mtk__glpk__adapter_8h_source_l00101}{101} of file \hyperlink{mtk__glpk__adapter_8h_source}{mtk\-\_\-glpk\-\_\-adapter.\-h}.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f}{\index{mtk\-::\-G\-L\-P\-K\-Adapter@{mtk\-::\-G\-L\-P\-K\-Adapter}!Solve\-Simplex\-And\-Compare@{Solve\-Simplex\-And\-Compare}}
+\index{Solve\-Simplex\-And\-Compare@{Solve\-Simplex\-And\-Compare}!mtk::GLPKAdapter@{mtk\-::\-G\-L\-P\-K\-Adapter}}
+\subsubsection[{Solve\-Simplex\-And\-Compare}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\-::\-Real} mtk\-::\-G\-L\-P\-K\-Adapter\-::\-Solve\-Simplex\-And\-Compare (
+\begin{DoxyParamCaption}
+\item[{{\bf mtk\-::\-Real} $\ast$}]{A, }
+\item[{int}]{nrows, }
+\item[{int}]{ncols, }
+\item[{int}]{kk, }
+\item[{{\bf mtk\-::\-Real} $\ast$}]{hh, }
+\item[{{\bf mtk\-::\-Real} $\ast$}]{qq, }
+\item[{int}]{robjective, }
+\item[{{\bf mtk\-::\-Real}}]{mimetic\-\_\-tol, }
+\item[{int}]{copy}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f}
+This routine is the pivot of the C\-B\-S\-A. It solves a Constrained Linear Optimization (C\-L\-O) problem, and it compares the attained solution to a given reference solution. This comparison is done computing the norm-\/2 relative error.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em alpha} & First scalar. \\
+\hline
+\mbox{\tt in}  & {\em A\-A} & Given matrix. \\
+\hline
+\mbox{\tt in}  & {\em xx} & First vector. \\
+\hline
+\mbox{\tt in}  & {\em beta} & Second scalar. \\
+\hline
+\mbox{\tt in}  & {\em beta} & Second scalar. \\
+\hline
+\mbox{\tt in,out}  & {\em yy} & Second vector (output). \\
+\hline
+\mbox{\tt in}  & {\em xx} & First vector. \\
+\hline
+\mbox{\tt in}  & {\em beta} & Second scalar. \\
+\hline
+\mbox{\tt in}  & {\em beta} & Second scalar. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyWarning}{Warning}
+G\-L\-P\-K indexes in \mbox{[}1,n\mbox{]}, so we must get the extra space needed.
+\end{DoxyWarning}
+
+\begin{DoxyEnumerate}
+\item Memory allocation.
+\item Fill the problem.
+\item Copy the row to the vector objective.
+\item Forming the R\-H\-S.
+\item Setting up the objective function.
+\item Setting up constraints.
+\item Copy the matrix minus the row objective to the glpk problem.
+\item Solve problem. 
+\end{DoxyEnumerate}
+
+Definition at line \hyperlink{mtk__glpk__adapter_8cc_source_l00078}{78} of file \hyperlink{mtk__glpk__adapter_8cc_source}{mtk\-\_\-glpk\-\_\-adapter.\-cc}.
+
+
+
+Here is the call graph for this function\-:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f_icgraph}
+\end{center}
+\end{figure}
+
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{mtk__glpk__adapter_8h}{mtk\-\_\-glpk\-\_\-adapter.\-h}\item 
+src/\hyperlink{mtk__glpk__adapter_8cc}{mtk\-\_\-glpk\-\_\-adapter.\-cc}\end{DoxyCompactItemize}

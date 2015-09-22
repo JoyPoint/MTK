@@ -1,0 +1,436 @@
+.TH "mtk::Grad1D" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk::Grad1D \- 
+.PP
+Implements a 1D mimetic gradient operator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mtk_grad_1d\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGrad1D\fP ()"
+.br
+.RI "\fIDefault constructor\&. \fP"
+.ti -1c
+.RI "\fBGrad1D\fP (const \fBGrad1D\fP &grad)"
+.br
+.RI "\fICopy constructor\&. \fP"
+.ti -1c
+.RI "\fB~Grad1D\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "bool \fBConstructGrad1D\fP (int order_accuracy=\fBkDefaultOrderAccuracy\fP, \fBReal\fP mimetic_threshold=\fBkDefaultMimeticThreshold\fP)"
+.br
+.RI "\fIFactory method implementing the CBS Algorithm to build operator\&. \fP"
+.ti -1c
+.RI "int \fBnum_bndy_coeffs\fP ()"
+.br
+.RI "\fIReturns how many coefficients are approximating at the boundary\&. \fP"
+.ti -1c
+.RI "\fBReal\fP * \fBweights_crs\fP (void)"
+.br
+.RI "\fIReturns collection of weights as computed by the CRSA\&. \fP"
+.ti -1c
+.RI "\fBReal\fP * \fBweights_cbs\fP (void)"
+.br
+.RI "\fIReturns collection of weights as computed by the CBSA\&. \fP"
+.ti -1c
+.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP (const \fBUniStgGrid1D\fP &grid)"
+.br
+.RI "\fIReturns the operator as a dense matrix\&. \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBComputeStencilInteriorGrid\fP (void)"
+.br
+.RI "\fIStage 1 of the CBS Algorithm\&. \fP"
+.ti -1c
+.RI "bool \fBComputeRationalBasisNullSpace\fP (void)"
+.br
+.RI "\fIStage 2\&.1 of the CBS Algorithm\&. \fP"
+.ti -1c
+.RI "bool \fBComputePreliminaryApproximations\fP (void)"
+.br
+.RI "\fIStage 2\&.2 of the CBS Algorithm\&. \fP"
+.ti -1c
+.RI "bool \fBComputeWeights\fP (void)"
+.br
+.RI "\fIStage 2\&.3 of the CBS Algorithm\&. \fP"
+.ti -1c
+.RI "bool \fBComputeStencilBoundaryGrid\fP (void)"
+.br
+.RI "\fIStage 2\&.4 of the CBS Algorithm\&. \fP"
+.ti -1c
+.RI "bool \fBAssembleOperator\fP (void)"
+.br
+.RI "\fIStage 3 of the CBS Algorithm\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBorder_accuracy_\fP"
+.br
+.RI "\fIOrder of numerical accuracy of the operator\&. \fP"
+.ti -1c
+.RI "int \fBdim_null_\fP"
+.br
+.RI "\fIDim\&. null-space for boundary approximations\&. \fP"
+.ti -1c
+.RI "int \fBnum_bndy_approxs_\fP"
+.br
+.RI "\fIReq\&. approximations at and near the boundary\&. \fP"
+.ti -1c
+.RI "int \fBnum_bndy_coeffs_\fP"
+.br
+.RI "\fIReq\&. coeffs\&. per bndy pt\&. uni\&. order accuracy\&. \fP"
+.ti -1c
+.RI "int \fBgradient_length_\fP"
+.br
+.RI "\fILength of the output array\&. \fP"
+.ti -1c
+.RI "int \fBminrow_\fP"
+.br
+.RI "\fIRow from the optimizer with the minimum rel\&. nor\&. \fP"
+.ti -1c
+.RI "int \fBrow_\fP"
+.br
+.RI "\fIRow currently processed by the optimizer\&. \fP"
+.ti -1c
+.RI "\fBmtk::DenseMatrix\fP \fBrat_basis_null_space_\fP"
+.br
+.RI "\fIRational b\&. null-space w\&. bndy\&. \fP"
+.ti -1c
+.RI "\fBReal\fP * \fBcoeffs_interior_\fP"
+.br
+.RI "\fIInterior stencil\&. \fP"
+.ti -1c
+.RI "\fBReal\fP * \fBprem_apps_\fP"
+.br
+.RI "\fI2D array of boundary preliminary approximations\&. \fP"
+.ti -1c
+.RI "\fBReal\fP * \fBweights_crs_\fP"
+.br
+.RI "\fIArray containing weights from CRSA\&. \fP"
+.ti -1c
+.RI "\fBReal\fP * \fBweights_cbs_\fP"
+.br
+.RI "\fIArray containing weights from CBSA\&. \fP"
+.ti -1c
+.RI "\fBReal\fP * \fBmim_bndy_\fP"
+.br
+.RI "\fIArray containing mimetic boundary approximations\&. \fP"
+.ti -1c
+.RI "\fBReal\fP * \fBgradient_\fP"
+.br
+.RI "\fIOutput array containing the operator and weights\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBmimetic_threshold_\fP"
+.br
+.RI "\fI< Mimetic threshold\&. \fP"
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBGrad1D\fP &in)"
+.br
+.RI "\fIOutput stream operator for printing\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class implements a 1D gradient operator, constructed using the Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA)\&. 
+.PP
+Definition at line 81 of file mtk_grad_1d\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mtk::Grad1D::Grad1D ()"
+
+.PP
+Definition at line 129 of file mtk_grad_1d\&.cc\&.
+.SS "mtk::Grad1D::Grad1D (const \fBGrad1D\fP &grad)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdiv\fP Given divergence\&. 
+.RE
+.PP
+
+.PP
+Definition at line 145 of file mtk_grad_1d\&.cc\&.
+.SS "mtk::Grad1D::~Grad1D ()"
+
+.PP
+Definition at line 161 of file mtk_grad_1d\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool mtk::Grad1D::AssembleOperator (void)\fC [private]\fP"
+Construct the output array with the operator and its weights\&. 
+.IP "1." 4
+The first entry of the array will contain the order of accuracy\&.
+.IP "2." 4
+The second entry of the array will contain the collection of approximating coefficients for the interior of the grid\&.
+.IP "3." 4
+The third entry will contain the collection of weights\&.
+.IP "4." 4
+The next dim_null + 1 entries will contain the collections of approximating coefficients for the west boundary of the grid\&. 
+.PP
+
+.PP
+Definition at line 1349 of file mtk_grad_1d\&.cc\&.
+.SS "bool mtk::Grad1D::ComputePreliminaryApproximations (void)\fC [private]\fP"
+Compute the set of preliminary approximations on the boundary neighborhood\&. 
+.IP "1." 4
+Create generator vector for the first approximation\&.
+.IP "2." 4
+Compute the dim_null near-the-boundary columns of the pi matrix\&.
+.IP "3." 4
+Create the Vandermonde matrix for this iteration\&.
+.IP "4." 4
+New order-selector vector (gets re-written with LAPACK solutions)\&.
+.IP "5." 4
+Solving TT*rr = ob yields the columns rr of the kk matrix\&.
+.IP "6." 4
+Scale the kk matrix to make it a rational basis for null-space\&.
+.IP "7." 4
+Extract the last dim_null values of the pre-scaled ob\&.
+.IP "8." 4
+Once we posses the bottom elements, we proceed with the scaling\&. 
+.PP
+
+.PP
+Definition at line 685 of file mtk_grad_1d\&.cc\&.
+.SS "bool mtk::Grad1D::ComputeRationalBasisNullSpace (void)\fC [private]\fP"
+Compute a rational basis for the null-space of the Vandermonde matrix approximating at the west boundary\&. 
+.IP "1." 4
+Create generator vector for the first approximation\&.
+.IP "2." 4
+Create Vandermonde matrix\&.
+.IP "3." 4
+QR-factorize the Vandermonde matrix\&.
+.IP "4." 4
+Extract the basis for the null-space from Q matrix\&.
+.IP "5." 4
+Scale null-space to make it rational\&. 
+.PP
+
+.PP
+Definition at line 502 of file mtk_grad_1d\&.cc\&.
+.SS "bool mtk::Grad1D::ComputeStencilBoundaryGrid (void)\fC [private]\fP"
+Compute mimetic stencil approximating at boundary\&. 
+.IP "1." 4
+Collect lambda values\&.
+.IP "2." 4
+Compute alpha values\&.
+.IP "3." 4
+Compute the mimetic boundary approximations\&. 
+.PP
+
+.PP
+Definition at line 1243 of file mtk_grad_1d\&.cc\&.
+.SS "bool mtk::Grad1D::ComputeStencilInteriorGrid (void)\fC [private]\fP"
+Compute the stencil approximating the interior of the staggered grid\&. 
+.IP "1." 4
+Create vector for interior spatial coordinates\&.
+.IP "2." 4
+Create Vandermonde matrix (using interior coordinates as generator)\&.
+.IP "3." 4
+Create order-selector vector\&.
+.IP "4." 4
+Solve dense Vandermonde system to attain the interior coefficients\&. 
+.PP
+
+.PP
+Definition at line 406 of file mtk_grad_1d\&.cc\&.
+.SS "bool mtk::Grad1D::ComputeWeights (void)\fC [private]\fP"
+Compute the set of mimetic weights to impose the mimetic condition\&. 
+.IP "1." 4
+Construct the $ \mathbf{\Pi}$ matrix\&.
+.IP "2." 4
+Use interior stencil to build proper RHS vector $ \mathbf{h} $\&.
+.IP "3." 4
+Get weights (as \fBCRSA\fP): $ \mathbf{\Pi}\mathbf{q} = \mathbf{h} $\&.
+.IP "5." 4
+If required order is greater than critical order, start the \fBCBSA\fP\&.
+.IP "6." 4
+Create $ \mathbf{\Phi} $ matrix from $ \mathbf{\Pi} $\&.
+.IP "7." 4
+Prepare constraint vector as in the CBSA: $ \mathbf{\Lambda}$\&.
+.IP "8." 4
+Brute force search through all the rows of the $\Phi$ matrix\&.
+.IP "9." 4
+Apply solution found from brute force search\&. 
+.PP
+
+.PP
+Definition at line 905 of file mtk_grad_1d\&.cc\&.
+.SS "bool mtk::Grad1D::ConstructGrad1D (intorder_accuracy = \fC\fBkDefaultOrderAccuracy\fP\fP, \fBReal\fPmimetic_threshold = \fC\fBkDefaultMimeticThreshold\fP\fP)"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Success of the solution\&. 
+.RE
+.PP
+
+.IP "1." 4
+Compute stencil for the interior cells\&.
+.IP "2." 4
+Compute a rational null-space from the first matrix transposed\&.
+.IP "3." 4
+Compute preliminary approximation (non-mimetic) on the boundaries\&.
+.IP "4." 4
+Compute quadrature weights to impose the mimetic conditions\&.
+.IP "5." 4
+Compute real approximation (mimetic) on the boundaries\&.
+.IP "6." 4
+Assemble operator\&. 
+.PP
+
+.PP
+Definition at line 182 of file mtk_grad_1d\&.cc\&.
+.SS "int mtk::Grad1D::num_bndy_coeffs ()"
+
+.PP
+\fBReturns:\fP
+.RS 4
+How many coefficients are approximating at the boundary\&. 
+.RE
+.PP
+
+.PP
+Definition at line 325 of file mtk_grad_1d\&.cc\&.
+.SS "\fBmtk::DenseMatrix\fP mtk::Grad1D::ReturnAsDenseMatrix (const \fBUniStgGrid1D\fP &grid)"
+
+.PP
+\fBReturns:\fP
+.RS 4
+The operator as a dense matrix\&. 
+.RE
+.PP
+
+.IP "1." 4
+Insert mimetic boundary at the west\&.
+.IP "2." 4
+Insert coefficients for the interior of the grid\&.
+.IP "3." 4
+Impose center-skew symmetry by permuting the mimetic boundaries\&. 
+.PP
+
+.PP
+Definition at line 340 of file mtk_grad_1d\&.cc\&.
+.SS "\fBmtk::Real\fP * mtk::Grad1D::weights_cbs (void)"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Collection of weights as computed by the CBSA\&. 
+.RE
+.PP
+
+.PP
+Definition at line 335 of file mtk_grad_1d\&.cc\&.
+.SS "\fBmtk::Real\fP * mtk::Grad1D::weights_crs (void)"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Success of the solution\&. 
+.RE
+.PP
+
+.PP
+Definition at line 330 of file mtk_grad_1d\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::Grad1D\fP &in)\fC [friend]\fP"
+
+.IP "1." 4
+Print order of accuracy\&.
+.IP "2." 4
+Print approximating coefficients for the interior\&.
+.IP "3." 4
+Print mimetic weights\&.
+.IP "4." 4
+Print mimetic approximations at the boundary\&. 
+.PP
+
+.PP
+Definition at line 79 of file mtk_grad_1d\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBReal\fP* mtk::Grad1D::coeffs_interior_\fC [private]\fP"
+
+.PP
+Definition at line 190 of file mtk_grad_1d\&.h\&.
+.SS "int mtk::Grad1D::dim_null_\fC [private]\fP"
+
+.PP
+Definition at line 180 of file mtk_grad_1d\&.h\&.
+.SS "\fBReal\fP* mtk::Grad1D::gradient_\fC [private]\fP"
+
+.PP
+Definition at line 195 of file mtk_grad_1d\&.h\&.
+.SS "int mtk::Grad1D::gradient_length_\fC [private]\fP"
+
+.PP
+Definition at line 183 of file mtk_grad_1d\&.h\&.
+.SS "\fBReal\fP* mtk::Grad1D::mim_bndy_\fC [private]\fP"
+
+.PP
+Definition at line 194 of file mtk_grad_1d\&.h\&.
+.SS "\fBReal\fP mtk::Grad1D::mimetic_threshold_\fC [private]\fP"
+
+.PP
+Definition at line 197 of file mtk_grad_1d\&.h\&.
+.SS "int mtk::Grad1D::minrow_\fC [private]\fP"
+
+.PP
+Definition at line 185 of file mtk_grad_1d\&.h\&.
+.SS "int mtk::Grad1D::num_bndy_approxs_\fC [private]\fP"
+
+.PP
+Definition at line 181 of file mtk_grad_1d\&.h\&.
+.SS "int mtk::Grad1D::num_bndy_coeffs_\fC [private]\fP"
+
+.PP
+Definition at line 182 of file mtk_grad_1d\&.h\&.
+.SS "int mtk::Grad1D::order_accuracy_\fC [private]\fP"
+
+.PP
+Definition at line 179 of file mtk_grad_1d\&.h\&.
+.SS "\fBReal\fP* mtk::Grad1D::prem_apps_\fC [private]\fP"
+
+.PP
+Definition at line 191 of file mtk_grad_1d\&.h\&.
+.SS "\fBmtk::DenseMatrix\fP mtk::Grad1D::rat_basis_null_space_\fC [private]\fP"
+
+.PP
+Definition at line 188 of file mtk_grad_1d\&.h\&.
+.SS "int mtk::Grad1D::row_\fC [private]\fP"
+
+.PP
+Definition at line 186 of file mtk_grad_1d\&.h\&.
+.SS "\fBReal\fP* mtk::Grad1D::weights_cbs_\fC [private]\fP"
+
+.PP
+Definition at line 193 of file mtk_grad_1d\&.h\&.
+.SS "\fBReal\fP* mtk::Grad1D::weights_crs_\fC [private]\fP"
+
+.PP
+Definition at line 192 of file mtk_grad_1d\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

@@ -4,17 +4,17 @@ SHELL := /bin/bash
 
 # Please set the following variables up:
 
-#   1. Absolute path to base directory.
+#   1. Absolute path to base directory of the MTK... where is the MTK?
 #   __________________________________________________________________
 
-BASE = $(HOME)/Dropbox/MTK
+BASE = /home/ejspeiro/Dropbox/MTK
 
 #   2. The machine (platform) identifier and required precision.
 #   __________________________________________________________________
 
 # Options are:
 # - LINUX: A LINUX box installation.
-# - OSX: Soon!
+# - OSX: Uses OS X optimized solvers.
 
 PLAT = LINUX
 
@@ -27,6 +27,8 @@ PRECISION = DOUBLE
 #   3. Optimized solvers and operations by means of ATLAS in Linux?
 #   __________________________________________________________________
 
+# If you have selected OSX in step 1, then you don't need to worry about this.
+
 # Options are ON xor OFF:
 
 ATL_OPT = OFF
@@ -38,9 +40,12 @@ ATL_OPT = OFF
 
 GLPK_INC = $(HOME)/Libraries/glpk-4.55/include
 
-# If ATLAS optimization is ON, users should only provide the path to ATLAS:
+# Linux: If ATLAS optimization is ON, users should only provide the path to
+# ATLAS:
 
 ATLAS_INC = $(HOME)/Libraries/ATLAS_3.8.4-CORE/include
+
+# OS X: Do nothing.
 
 #   5. Paths to dependencies (archive files for (static) linking).
 #   __________________________________________________________________
@@ -143,7 +148,7 @@ NOOPT_LIBS  = $(LAPACK_LIB) $(BLAS_LIB) -lm $(GLPK_LIB) -lstdc++
 
 OPT_LIBS    = -L$(ATLAS_LIB) -latlas -llapack -lblas -lm -latlas -lstdc++
 
-ifeq ($(PLAT),MACOS)
+ifeq ($(PLAT),OSX)
   LINKER  = g++
   LINKER  += -framework Accelerate $(GLPK_LIB) $(MTK_LIB)
 else
@@ -152,7 +157,7 @@ else
     LIBS = $(MTK_LIB)
     LIBS += $(OPT_LIBS)
   else
-    LINKER  = g++
+    LINKER  = gfortran
     LIBS = $(MTK_LIB)
     LIBS += $(NOOPT_LIBS)
   endif

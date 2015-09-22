@@ -1,0 +1,79 @@
+\hypertarget{mtk__blas__adapter_8h}{\section{mtk\-\_\-blas\-\_\-adapter.\-h}
+\label{mtk__blas__adapter_8h}\index{include/mtk\-\_\-blas\-\_\-adapter.\-h@{include/mtk\-\_\-blas\-\_\-adapter.\-h}}
+}
+
+\begin{DoxyCode}
+00001 
+00024 \textcolor{comment}{/*}
+00025 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00026 \textcolor{comment}{University. All rights reserved.}
+00027 \textcolor{comment}{}
+00028 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00029 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00030 \textcolor{comment}{}
+00031 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00032 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00033 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
+00034 \textcolor{comment}{}
+00035 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00036 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00037 \textcolor{comment}{}
+00038 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
+00039 \textcolor{comment}{list of conditions and the following disclaimer.}
+00040 \textcolor{comment}{}
+00041 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
+00042 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00043 \textcolor{comment}{other materials provided with the distribution.}
+00044 \textcolor{comment}{}
+00045 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
+00046 \textcolor{comment}{prior written permission from the the copyright holders.}
+00047 \textcolor{comment}{}
+00048 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00049 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00050 \textcolor{comment}{specific prior written permission.}
+00051 \textcolor{comment}{}
+00052 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00053 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00054 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00055 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00056 \textcolor{comment}{parties intellectual property rights.}
+00057 \textcolor{comment}{}
+00058 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00059 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00060 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00061 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00062 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00063 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00064 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00065 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00066 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00067 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00068 \textcolor{comment}{*/}
+00069 
+00070 \textcolor{preprocessor}{#ifndef MTK\_INCLUDE\_BLAS\_ADAPTER\_H\_}
+00071 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define MTK\_INCLUDE\_BLAS\_ADAPTER\_H\_}
+00072 \textcolor{preprocessor}{}
+00073 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
+00074 
+00075 \textcolor{keyword}{namespace }mtk \{
+00076 
+\hypertarget{mtk__blas__adapter_8h_source_l00096}{}\hyperlink{classmtk_1_1BLASAdapter}{00096} \textcolor{keyword}{class }\hyperlink{classmtk_1_1BLASAdapter}{BLASAdapter} \{
+00097  \textcolor{keyword}{public}:
+00106   \textcolor{keyword}{static} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1BLASAdapter_ab92440888b730863244c5d9479c11aca}{RealNRM2}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *in, \textcolor{keywordtype}{int} &in\_length);
+00107 
+00124   \textcolor{keyword}{static} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BLASAdapter_a081cd092ae65e730f44eae8643edd539}{RealAXPY}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} alpha, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *yy, \textcolor{keywordtype}{int} &in\_length);
+00125 
+00140   \textcolor{keyword}{static} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1BLASAdapter_af2ac5691f45e67d6e26186b071119ec4}{RelNorm2Error}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *computed, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *known, \textcolor{keywordtype}{int} length);
+00141 
+00159   \textcolor{keyword}{static} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BLASAdapter_afdcac059a4294287cb55638221220646}{RealDenseMV}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &alpha,
+00160                           \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &aa,
+00161                           \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *xx,
+00162                           \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &beta,
+00163                           \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *yy);
+00164 
+00179   \textcolor{keyword}{static} \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} \hyperlink{classmtk_1_1BLASAdapter_acebd0e9bfe0bdd609c7fbea98ccfd3b5}{RealDenseMM}(\hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &aa, 
+      \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &bb);
+00180 \};
+00181 \}
+00182 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_BLAS\_ADAPTER\_H\_}
+\end{DoxyCode}

@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="group__c02-enums" kind="group">
+    <compoundname>c02-enums</compoundname>
+    <title>Enumerations.</title>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__c02-enums_1ga25b67ec6a2afeee69f9bb196a9c66619" prot="public" static="no">
+        <name>MatrixStorage</name>
+        <enumvalue id="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87" prot="public">
+          <name>DENSE</name>
+          <briefdescription>
+<para>Dense matrices, implemented as a 1D array: <ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref>. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619aef1d4271d5005282978a3a40a8a52c9b" prot="public">
+          <name>BANDED</name>
+          <briefdescription>
+<para>Banded matrices ala LAPACK and ScaLAPACK: Must be implemented. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a87619d374775e937bca967402b988b8b" prot="public">
+          <name>CRS</name>
+          <briefdescription>
+<para>Compressed-Rows Storage: Must be implemented. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Considered matrix storage schemes to implement sparse matrices. </para>        </briefdescription>
+        <detaileddescription>
+<para>The considered sparse storage schemes are selected so that these are compatible with some of the most used mathematical APIs, as follows: DENSE and BANDED for <ulink url="http://www.netlib.org/blas/">BLAS</ulink>, <ulink url="http://www.netlib.org/lapack/">LAPACK</ulink>, and <ulink url="http://www.netlib.org/scalapack/">ScaLAPACK</ulink>. Finally, CRS for <ulink url="http://crd.lbl.gov/~xiaoye/SuperLU/">SuperLU</ulink>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_enums.h" line="77" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_enums.h" bodystart="77" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__c02-enums_1ga622801bd9f912d0f976c3e383f5f581c" prot="public" static="no">
+        <name>MatrixOrdering</name>
+        <enumvalue id="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3" prot="public">
+          <name>ROW_MAJOR</name>
+          <briefdescription>
+<para>Row-major ordering (C/C++). </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13" prot="public">
+          <name>COL_MAJOR</name>
+          <briefdescription>
+<para>Column-major ordering (Fortran). </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Considered matrix ordering (for Fortran purposes). </para>        </briefdescription>
+        <detaileddescription>
+<para>Row-major ordering is used for most application in C/C++. For Fortran purposes, the matrices must be listed in a column-major ordering.</para><para><simplesect kind="see"><para><ulink url="https://en.wikipedia.org/wiki/Row-major_order">https://en.wikipedia.org/wiki/Row-major_order</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_enums.h" line="95" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_enums.h" bodystart="95" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__c02-enums_1ga4c54f2a329cfb4e56213b02a259d19e2" prot="public" static="no">
+        <name>FieldNature</name>
+        <enumvalue id="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205" prot="public">
+          <name>SCALAR</name>
+          <briefdescription>
+<para>Scalar-valued field. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a3d8cb27a993651a74d67fb8c98ae91b2" prot="public">
+          <name>VECTOR</name>
+          <briefdescription>
+<para>Vector-valued field. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Nature of the field discretized in a given grid. </para>        </briefdescription>
+        <detaileddescription>
+<para>Fields can be <bold>scalar</bold> or <bold>vector</bold> in nature.</para><para><simplesect kind="see"><para><ulink url="https://en.wikipedia.org/wiki/Scalar_field">https://en.wikipedia.org/wiki/Scalar_field</ulink></para><simplesectsep/><para><ulink url="https://en.wikipedia.org/wiki/Vector_field">https://en.wikipedia.org/wiki/Vector_field</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_enums.h" line="113" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_enums.h" bodystart="113" bodyend="116"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Enumerations. </para>    </briefdescription>
+    <detaileddescription>
+<para>Enumerations. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

@@ -1,0 +1,153 @@
+.TH "mtk::LAPACKAdapter" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk::LAPACKAdapter \- 
+.PP
+Adapter class for the LAPACK API\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mtk_lapack_adapter\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static int \fBSolveDenseSystem\fP (\fBmtk::DenseMatrix\fP &mm, \fBmtk::Real\fP *rhs)"
+.br
+.RI "\fISolves a dense system of linear equations\&. \fP"
+.ti -1c
+.RI "static int \fBSolveDenseSystem\fP (\fBmtk::DenseMatrix\fP &mm, \fBmtk::DenseMatrix\fP &rr)"
+.br
+.RI "\fISolves a dense system of linear equations\&. \fP"
+.ti -1c
+.RI "static int \fBSolveDenseSystem\fP (\fBmtk::DenseMatrix\fP &mm, \fBmtk::UniStgGrid1D\fP &rhs)"
+.br
+.RI "\fISolves a dense system of linear equations\&. \fP"
+.ti -1c
+.RI "static int \fBSolveRectangularDenseSystem\fP (const \fBmtk::DenseMatrix\fP &aa, \fBmtk::Real\fP *ob_, int ob_ld_)"
+.br
+.RI "\fISolves overdetermined or underdetermined real linear systems\&. \fP"
+.ti -1c
+.RI "static \fBmtk::DenseMatrix\fP \fBQRFactorDenseMatrix\fP (\fBDenseMatrix\fP &matrix)"
+.br
+.RI "\fIPerforms a QR factorization on a dense matrix\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class contains a collection of static classes, that posses direct access to the underlying structure of the matrices, thus allowing programmers to exploit the numerical methods implemented in the LAPACK\&.
+.PP
+The \fBLAPACK\fP is written in Fortran 90 and provides routines for solving systems of simultaneous linear equations, least-squares solutions of linear systems of equations, eigenvalue problems, and singular value problems\&.
+.PP
+\fBSee Also:\fP
+.RS 4
+http://www.netlib.org/lapack/ 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file mtk_lapack_adapter\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBmtk::DenseMatrix\fP mtk::LAPACKAdapter::QRFactorDenseMatrix (\fBmtk::DenseMatrix\fP &aa)\fC [static]\fP"
+Adapts the MTK to LAPACK's routine\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrix\fP Input matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+\fBMatrix\fP $ \mathbf{Q}$\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::bad_alloc\fP 
+.RE
+.PP
+
+.PP
+Definition at line 553 of file mtk_lapack_adapter\&.cc\&.
+.SS "int mtk::LAPACKAdapter::SolveDenseSystem (\fBmtk::DenseMatrix\fP &mm, \fBmtk::Real\fP *rhs)\fC [static]\fP"
+Adapts the MTK to LAPACK's dgesv_ routine\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrix\fP Input matrix\&. 
+.br
+\fIrhs\fP Input right-hand sides vector\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::bad_alloc\fP 
+.RE
+.PP
+
+.PP
+Definition at line 427 of file mtk_lapack_adapter\&.cc\&.
+.SS "int mtk::LAPACKAdapter::SolveDenseSystem (\fBmtk::DenseMatrix\fP &mm, \fBmtk::DenseMatrix\fP &rr)\fC [static]\fP"
+Adapts the MTK to LAPACK's dgesv_ routine\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrix\fP Input matrix\&. 
+.br
+\fIrr\fP Input right-hand sides matrix\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::bad_alloc\fP 
+.RE
+.PP
+
+.PP
+Definition at line 463 of file mtk_lapack_adapter\&.cc\&.
+.SS "int mtk::LAPACKAdapter::SolveDenseSystem (\fBmtk::DenseMatrix\fP &mm, \fBmtk::UniStgGrid1D\fP &rhs)\fC [static]\fP"
+Adapts the MTK to LAPACK's dgesv_ routine\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrix\fP Input matrix\&. 
+.br
+\fIrr\fP Input right-hand side from info on a grid\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::bad_alloc\fP 
+.RE
+.PP
+
+.PP
+Definition at line 515 of file mtk_lapack_adapter\&.cc\&.
+.SS "int mtk::LAPACKAdapter::SolveRectangularDenseSystem (const \fBmtk::DenseMatrix\fP &aa, \fBmtk::Real\fP *ob_, intob_ld_)\fC [static]\fP"
+Adapts the MTK to LAPACK's routine\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrix\fP Input matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Success of the solution\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::bad_alloc\fP 
+.RE
+.PP
+
+.PP
+Definition at line 754 of file mtk_lapack_adapter\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

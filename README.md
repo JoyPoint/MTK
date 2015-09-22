@@ -1,4 +1,4 @@
-# README File for the Mimetic Methods Toolkit (MTK)
+# The Mimetic Methods Toolkit (MTK)
 
 By: **Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu**
     __________________________________________________________________
@@ -51,7 +51,7 @@ There are no dependences for OS X.
 ### PART 1. CONFIGURATION OF THE MAKEFILE.
 
 The following steps are required the build and test the MTK. Please use the
-accompanying `makefile_inc` file, which should provide a solid template to
+accompanying `Makefile.inc` file, which should provide a solid template to
 start with. The following command provides help on the options for make:
 
 ```

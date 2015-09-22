@@ -1,0 +1,48 @@
+\hypertarget{mtk__bc__desc__1d_8cc}{\section{mtk\-\_\-bc\-\_\-desc\-\_\-1d.\-cc}
+\label{mtk__bc__desc__1d_8cc}\index{src/mtk\-\_\-bc\-\_\-desc\-\_\-1d.\-cc@{src/mtk\-\_\-bc\-\_\-desc\-\_\-1d.\-cc}}
+}
+
+\begin{DoxyCode}
+00001 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
+00002 
+00003 \textcolor{preprocessor}{#include "\hyperlink{mtk__bc__desc__1d_8h}{mtk\_bc\_desc\_1d.h}"}
+00004 
+\hypertarget{mtk__bc__desc__1d_8cc_source_l00005}{}\hyperlink{classmtk_1_1BCDesc1D_a4dcf1ac4198402113591fde97dfa3260}{00005} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDesc1D_a4dcf1ac4198402113591fde97dfa3260}{mtk::BCDesc1D::ImposeOnOperator}(
+      \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &matrix,
+00006                                      \textcolor{keyword}{const} std::vector<mtk::Real> &west,
+00007                                      \textcolor{keyword}{const} std::vector<mtk::Real> &east) \{
+00008 
+00009   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(matrix.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00010   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(west.size() > (\textcolor{keywordtype}{unsigned} int) matrix.
+      \hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}(),
+00011                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00012   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(east.size() > (\textcolor{keywordtype}{unsigned} int) matrix.
+      \hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}(),
+00013                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00014 
+00016 
+00017   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < west.size(); ++ii) \{
+00018     matrix.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(0, ii, west[ii]);
+00019   \}
+00020 
+00022 
+00023   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < east.size(); ++ii) \{
+00024     matrix.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(matrix.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}() - 1,
+00025                     matrix.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}() - 1 - ii,
+00026                     east[ii]);
+00027   \}
+00028 \}
+00029 
+\hypertarget{mtk__bc__desc__1d_8cc_source_l00030}{}\hyperlink{classmtk_1_1BCDesc1D_a79a659c6a6333af8e51c463cf1ecb0b7}{00030} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDesc1D_a79a659c6a6333af8e51c463cf1ecb0b7}{mtk::BCDesc1D::ImposeOnGrid}(\hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} &grid,
+00031                                  \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &omega,
+00032                                  \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &epsilon) \{
+00033 
+00034   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00035 
+00037 
+00038   grid.\hyperlink{classmtk_1_1UniStgGrid1D_acf28d702f6e702599986afcb253bbfc1}{discrete\_field\_u}()[0] = omega;
+00039 
+00041 
+00042   grid.\hyperlink{classmtk_1_1UniStgGrid1D_acf28d702f6e702599986afcb253bbfc1}{discrete\_field\_u}()[grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}() + 2 - 1] = epsilon;
+00043 \}
+\end{DoxyCode}

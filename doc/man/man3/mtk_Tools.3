@@ -1,0 +1,120 @@
+.TH "mtk::Tools" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk::Tools \- 
+.PP
+Tool manager class\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mtk_tools\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBPrevent\fP (const bool condition, const char *fname, int lineno, const char *fxname)"
+.br
+.RI "\fIEnforces pre-conditions by preventing their complements from occur\&. \fP"
+.ti -1c
+.RI "static void \fBBeginTestNo\fP (const int &nn)"
+.br
+.RI "\fIBegins the execution of a test\&. \fP"
+.ti -1c
+.RI "static void \fBEndTestNo\fP (const int &nn)"
+.br
+.RI "\fIEnds the execution of a test\&. \fP"
+.in -1c
+.SS "Static Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "static int \fBtest_number_\fP"
+.br
+.RI "\fICurrent test being executed\&. \fP"
+.ti -1c
+.RI "static clock_t \fBbegin_time_\fP"
+.br
+.RI "\fIElapsed time on current test\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Basic tools to ensure execution correctness\&. 
+.PP
+Definition at line 72 of file mtk_tools\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void mtk::Tools::BeginTestNo (const int &nn)\fC [static]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInn\fP Number of the test\&. 
+.RE
+.PP
+
+.PP
+Definition at line 89 of file mtk_tools\&.cc\&.
+.SS "void mtk::Tools::EndTestNo (const int &nn)\fC [static]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInn\fP Number of the test\&. 
+.RE
+.PP
+
+.PP
+Definition at line 101 of file mtk_tools\&.cc\&.
+.SS "void mtk::Tools::Prevent (const boolcondition, const char *fname, intlineno, const char *fxname)\fC [static]\fP"
+
+.PP
+\fBSee Also:\fP
+.RS 4
+http://stackoverflow.com/questions/8884335/print-the-file-name-line-number-and-function-name-of-a-calling-function-c-pro
+.RE
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcondition\fP Complement of desired pre-condition\&. 
+.br
+\fIfname\fP Name of the file being checked\&. 
+.br
+\fIlineno\fP Number of the line where the check is executed\&. 
+.br
+\fIfxname\fP Name of the module containing the check\&. 
+.RE
+.PP
+
+.PP
+\fBTodo\fP
+.RS 4
+Check if this is the best way of stalling execution\&. 
+.RE
+.PP
+
+.PP
+Definition at line 61 of file mtk_tools\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "clock_t mtk::Tools::begin_time_\fC [static]\fP, \fC [private]\fP"
+
+.PP
+Definition at line 106 of file mtk_tools\&.h\&.
+.SS "int mtk::Tools::test_number_\fC [static]\fP, \fC [private]\fP"
+
+.PP
+\fBTodo\fP
+.RS 4
+Check usage of static methods and private members\&. 
+.RE
+.PP
+
+.PP
+Definition at line 104 of file mtk_tools\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

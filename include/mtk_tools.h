@@ -93,7 +93,7 @@ class Tools {
   */
   static void BeginTestNo(const int &nn);
 
-   /*!
+  /*!
   \brief Ends the execution of a test.
 
   \param[in] nn Number of the test.

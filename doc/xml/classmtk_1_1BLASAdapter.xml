@@ -1,0 +1,308 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="classmtk_1_1BLASAdapter" kind="class" prot="public">
+    <compoundname>mtk::BLASAdapter</compoundname>
+    <includes refid="mtk__blas__adapter_8h" local="no">mtk_blas_adapter.h</includes>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classmtk_1_1BLASAdapter_1ab92440888b730863244c5d9479c11aca" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>mtk::Real mtk::BLASAdapter::RealNRM2</definition>
+        <argsstring>(Real *in, int &amp;in_length)</argsstring>
+        <name>RealNRM2</name>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>in</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>in_length</declname>
+        </param>
+        <briefdescription>
+<para>Compute the <formula id="30">$ ||\mathbf{x}||_2 $</formula> of given array <formula id="1">$ \mathbf{x} $</formula>. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input array. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">in_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Length of the array.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Norm-2 of the given array. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_blas_adapter.h" line="106" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" bodystart="324" bodyend="337"/>
+        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
+        <references refid="namespacemtk_1a508e99fcb14d526bc43aa0a80aa4b658">mtk::snrm2_</references>
+        <referencedby refid="classmtk_1_1BLASAdapter_1af2ac5691f45e67d6e26186b071119ec4" compoundref="mtk__blas__adapter_8cc" startline="358" endline="376">RelNorm2Error</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="887" endline="1210">mtk::Div1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1GLPKAdapter_1a834480aca83e3c0d09fdab7fdb7e8a3f" compoundref="mtk__glpk__adapter_8cc" startline="78" endline="331">mtk::GLPKAdapter::SolveSimplexAndCompare</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="905" endline="1241">mtk::Grad1D::ComputeWeights</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1BLASAdapter_1a081cd092ae65e730f44eae8643edd539" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::BLASAdapter::RealAXPY</definition>
+        <argsstring>(Real alpha, Real *xx, Real *yy, int &amp;in_length)</argsstring>
+        <name>RealAXPY</name>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>xx</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>yy</declname>
+        </param>
+        <param>
+          <type>int &amp;</type>
+          <declname>in_length</declname>
+        </param>
+        <briefdescription>
+<para>Real-Arithmetic Scalar-Vector plus a Vector. </para>        </briefdescription>
+        <detaileddescription>
+<para>Performs</para><para><formula id="31">\[ \mathbf{y} := \alpha\mathbf{A}mathbf{x} + \mathbf{y} \]</formula></para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">alpha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scalar of the first array. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">xx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First array. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">yy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second array. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">in_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Lengths of the given arrays.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Norm-2 of the given array. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_blas_adapter.h" line="124" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" bodystart="339" bodyend="356"/>
+        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
+        <references refid="namespacemtk_1a81a2d7d1ea9eff65ae13646c93dad5e9">mtk::saxpy_</references>
+        <referencedby refid="classmtk_1_1BLASAdapter_1af2ac5691f45e67d6e26186b071119ec4" compoundref="mtk__blas__adapter_8cc" startline="358" endline="376">RelNorm2Error</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1BLASAdapter_1af2ac5691f45e67d6e26186b071119ec4" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>mtk::Real mtk::BLASAdapter::RelNorm2Error</definition>
+        <argsstring>(Real *computed, Real *known, int length)</argsstring>
+        <name>RelNorm2Error</name>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>computed</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>known</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>length</declname>
+        </param>
+        <briefdescription>
+<para>Computes the relative norm-2 of the error. </para>        </briefdescription>
+        <detaileddescription>
+<para>We compute</para><para><formula id="32">\[ \frac{||\mathbf{\tilde{x}} - \mathbf{x}||_2}{||\mathbf{x}||_2}. \]</formula></para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">known</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array containing the computed solution. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">computed</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array containing the known solution (ref. solution).</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Relative norm-2 of the error, aka, the difference between the arrays. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_blas_adapter.h" line="140" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" bodystart="358" bodyend="376"/>
+        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
+        <references refid="classmtk_1_1BLASAdapter_1ab92440888b730863244c5d9479c11aca" compoundref="mtk__blas__adapter_8cc" startline="324" endline="337">RealNRM2</references>
+        <references refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" compoundref="mtk__roots_8h" startline="108">mtk::kOne</references>
+        <references refid="classmtk_1_1BLASAdapter_1a081cd092ae65e730f44eae8643edd539" compoundref="mtk__blas__adapter_8cc" startline="339" endline="356">RealAXPY</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1BLASAdapter_1afdcac059a4294287cb55638221220646" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::BLASAdapter::RealDenseMV</definition>
+        <argsstring>(Real &amp;alpha, DenseMatrix &amp;aa, Real *xx, Real &amp;beta, Real *yy)</argsstring>
+        <name>RealDenseMV</name>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> &amp;</type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref> &amp;</type>
+          <declname>aa</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>xx</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> &amp;</type>
+          <declname>beta</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>yy</declname>
+        </param>
+        <briefdescription>
+<para>Real-Arithmetic General (Dense matrices) Matrix-Vector Multiplier. </para>        </briefdescription>
+        <detaileddescription>
+<para>Performs</para><para><formula id="2">\[ \mathbf{y} := \alpha\mathbf{A}\mathbf{x} + \beta\mathbf{y} \]</formula></para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">alpha</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First scalar. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">aa</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Given matrix. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">xx</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First vector. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">beta</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second scalar. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">yy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second vector (output).</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ulink url="http://ejspeiro.github.io/Netlib-and-CPP/">http://ejspeiro.github.io/Netlib-and-CPP/</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_blas_adapter.h" line="159" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" bodystart="378" bodyend="407"/>
+        <references refid="classmtk_1_1DenseMatrix_1abb5e4db5688743c6f9fd9ec6e38ed4ca" compoundref="mtk__dense__matrix_8cc" startline="291" endline="294">mtk::DenseMatrix::matrix_properties</references>
+        <references refid="classmtk_1_1Matrix_1af675e480c7b94f194aadad316e53b002" compoundref="mtk__matrix_8cc" startline="117" endline="120">mtk::Matrix::ordering</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13" compoundref="mtk__enums_8h" startline="97">mtk::COL_MAJOR</references>
+        <references refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" compoundref="mtk__dense__matrix_8cc" startline="383" endline="422">mtk::DenseMatrix::OrderRowMajor</references>
+        <references refid="classmtk_1_1DenseMatrix_1a17d8d3b9cc0926044b6972dd190a5c21" compoundref="mtk__dense__matrix_8cc" startline="306" endline="309">mtk::DenseMatrix::num_rows</references>
+        <references refid="classmtk_1_1DenseMatrix_1af6f78373aaf2136f0c78974d7c8de0a8" compoundref="mtk__dense__matrix_8cc" startline="311" endline="314">mtk::DenseMatrix::num_cols</references>
+        <references refid="classmtk_1_1DenseMatrix_1a16b3ff56feb2658b9fc7147d1de4d8e7" compoundref="mtk__dense__matrix_8cc" startline="316" endline="319">mtk::DenseMatrix::data</references>
+        <references refid="namespacemtk_1a88daff7ad6f251a58b94aa2d0c94d069">mtk::sgemv_</references>
+        <referencedby refid="classmtk_1_1Div1D_1a4be0534a4e22d44a7aedde326cc3f3b6" compoundref="mtk__div__1d_8cc" startline="667" endline="885">mtk::Div1D::ComputePreliminaryApproximations</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1add4c68a6e78d8b9c2b800b3f96f4757d" compoundref="mtk__grad__1d_8cc" startline="685" endline="903">mtk::Grad1D::ComputePreliminaryApproximations</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref></type>
+        <definition>mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM</definition>
+        <argsstring>(DenseMatrix &amp;aa, DenseMatrix &amp;bb)</argsstring>
+        <name>RealDenseMM</name>
+        <param>
+          <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref> &amp;</type>
+          <declname>aa</declname>
+        </param>
+        <param>
+          <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref> &amp;</type>
+          <declname>bb</declname>
+        </param>
+        <briefdescription>
+<para>Real-Arithmetic General (Dense matrices) Matrix-Matrix multiplier. </para>        </briefdescription>
+        <detaileddescription>
+<para>Performs:</para><para><formula id="3">\[ \mathbf{C} := \mathbf{A}\mathbf{B} \]</formula></para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aa</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First matrix. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">bb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second matrix.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="see"><para><ulink url="http://ejspeiro.github.io/Netlib-and-CPP/">http://ejspeiro.github.io/Netlib-and-CPP/</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_blas_adapter.h" line="179" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" bodystart="409" bodyend="463"/>
+        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
+        <references refid="classmtk_1_1DenseMatrix_1af6f78373aaf2136f0c78974d7c8de0a8" compoundref="mtk__dense__matrix_8cc" startline="311" endline="314">mtk::DenseMatrix::num_cols</references>
+        <references refid="classmtk_1_1DenseMatrix_1a17d8d3b9cc0926044b6972dd190a5c21" compoundref="mtk__dense__matrix_8cc" startline="306" endline="309">mtk::DenseMatrix::num_rows</references>
+        <references refid="classmtk_1_1DenseMatrix_1abb5e4db5688743c6f9fd9ec6e38ed4ca" compoundref="mtk__dense__matrix_8cc" startline="291" endline="294">mtk::DenseMatrix::matrix_properties</references>
+        <references refid="classmtk_1_1Matrix_1af675e480c7b94f194aadad316e53b002" compoundref="mtk__matrix_8cc" startline="117" endline="120">mtk::Matrix::ordering</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13" compoundref="mtk__enums_8h" startline="97">mtk::COL_MAJOR</references>
+        <references refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" compoundref="mtk__dense__matrix_8cc" startline="383" endline="422">mtk::DenseMatrix::OrderRowMajor</references>
+        <references refid="classmtk_1_1DenseMatrix_1aacae136ae446cad8f0d81476e83efb39" compoundref="mtk__dense__matrix_8cc" startline="296" endline="304">mtk::DenseMatrix::SetOrdering</references>
+        <references refid="classmtk_1_1DenseMatrix_1a16b3ff56feb2658b9fc7147d1de4d8e7" compoundref="mtk__dense__matrix_8cc" startline="316" endline="319">mtk::DenseMatrix::data</references>
+        <references refid="namespacemtk_1adb7c0560326b8e57f255e58b87ec76b0">mtk::sgemm_</references>
+        <referencedby refid="classmtk_1_1Div1D_1aa0c0c278b2c00a29c1ceaa70d31aebab" compoundref="mtk__div__1d_8cc" startline="491" endline="665">mtk::Div1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a2d03e6a3961bee558f575ec4099782a9" compoundref="mtk__grad__1d_8cc" startline="502" endline="683">mtk::Grad1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="119" endline="263">mtk::Lap1D::ConstructLap1D</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Adapter class for the BLAS API. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class contains a collection of static classes, that posses direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the BLAS.</para><para>The <bold>BLAS (Basic Linear Algebra Subprograms)</bold> are routines that provide standard building blocks for performing basic vector and matrix operations. The Level 1 BLAS perform scalar, vector and vector-vector operations, the Level 2 BLAS perform matrix-vector operations, and the Level 3 BLAS perform matrix-matrix operations.</para><para><simplesect kind="see"><para><ulink url="http://www.netlib.org/blas/">http://www.netlib.org/blas/</ulink> </para></simplesect>
+</para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="38">
+        <label>mtk::BLASAdapter</label>
+        <link refid="classmtk_1_1BLASAdapter"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_blas_adapter.h" line="96" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_blas_adapter.h" bodystart="96" bodyend="180"/>
+    <listofallmembers>
+      <member refid="classmtk_1_1BLASAdapter_1a081cd092ae65e730f44eae8643edd539" prot="public" virt="non-virtual"><scope>mtk::BLASAdapter</scope><name>RealAXPY</name></member>
+      <member refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" prot="public" virt="non-virtual"><scope>mtk::BLASAdapter</scope><name>RealDenseMM</name></member>
+      <member refid="classmtk_1_1BLASAdapter_1afdcac059a4294287cb55638221220646" prot="public" virt="non-virtual"><scope>mtk::BLASAdapter</scope><name>RealDenseMV</name></member>
+      <member refid="classmtk_1_1BLASAdapter_1ab92440888b730863244c5d9479c11aca" prot="public" virt="non-virtual"><scope>mtk::BLASAdapter</scope><name>RealNRM2</name></member>
+      <member refid="classmtk_1_1BLASAdapter_1af2ac5691f45e67d6e26186b071119ec4" prot="public" virt="non-virtual"><scope>mtk::BLASAdapter</scope><name>RelNorm2Error</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

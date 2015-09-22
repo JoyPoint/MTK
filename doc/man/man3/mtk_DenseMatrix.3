@@ -1,0 +1,377 @@
+.TH "mtk::DenseMatrix" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk::DenseMatrix \- 
+.PP
+Defines a common dense matrix, using a 1D array\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mtk_dense_matrix\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBDenseMatrix\fP & \fBoperator=\fP (const \fBDenseMatrix\fP &in)"
+.br
+.RI "\fIOverloaded assignment operator\&. \fP"
+.ti -1c
+.RI "\fBDenseMatrix\fP ()"
+.br
+.RI "\fIDefault constructor\&. \fP"
+.ti -1c
+.RI "\fBDenseMatrix\fP (const \fBDenseMatrix\fP &in)"
+.br
+.RI "\fICopy constructor\&. \fP"
+.ti -1c
+.RI "\fBDenseMatrix\fP (const int &\fBnum_rows\fP, const int &\fBnum_cols\fP)"
+.br
+.RI "\fIConstruct a dense matrix based on the given dimensions\&. \fP"
+.ti -1c
+.RI "\fBDenseMatrix\fP (const int &rank, const bool &padded, const bool &transpose)"
+.br
+.RI "\fIConstruct a zero-rows-padded identity matrix\&. \fP"
+.ti -1c
+.RI "\fBDenseMatrix\fP (const \fBReal\fP *gen, const int &gen_length, const int &pro_length, const bool &transpose)"
+.br
+.RI "\fIConstruct a dense Vandermonde matrix\&. \fP"
+.ti -1c
+.RI "\fB~DenseMatrix\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP \fBmatrix_properties\fP () const "
+.br
+.RI "\fIProvides access to the matrix data\&. \fP"
+.ti -1c
+.RI "int \fBnum_rows\fP () const "
+.br
+.RI "\fIGets the number of rows\&. \fP"
+.ti -1c
+.RI "int \fBnum_cols\fP () const "
+.br
+.RI "\fIGets the number of columns\&. \fP"
+.ti -1c
+.RI "\fBReal\fP * \fBdata\fP () const "
+.br
+.RI "\fIProvides access to the matrix value array\&. \fP"
+.ti -1c
+.RI "void \fBSetOrdering\fP (\fBmtk::MatrixOrdering\fP oo)"
+.br
+.RI "\fISets the ordering of the matrix\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBGetValue\fP (const int &row_coord, const int &col_coord) const "
+.br
+.RI "\fIGets a value on the given coordinates\&. \fP"
+.ti -1c
+.RI "void \fBSetValue\fP (const int &row_coord, const int &col_coord, const \fBReal\fP &val)"
+.br
+.RI "\fISets a value on the given coordinates\&. \fP"
+.ti -1c
+.RI "void \fBTranspose\fP ()"
+.br
+.RI "\fITranspose this matrix\&. \fP"
+.ti -1c
+.RI "void \fBOrderRowMajor\fP ()"
+.br
+.RI "\fIMake the matrix row-wise ordered\&. \fP"
+.ti -1c
+.RI "void \fBOrderColMajor\fP ()"
+.br
+.RI "\fIMake the matrix column-wise ordered\&. \fP"
+.in -1c
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBDenseMatrix\fP \fBKron\fP (const \fBDenseMatrix\fP &aa, const \fBDenseMatrix\fP &bb)"
+.br
+.RI "\fIConstruct a dense matrix based on the Kronecker product of arguments\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBMatrix\fP \fBmatrix_properties_\fP"
+.br
+.RI "\fIData related to the matrix nature\&. \fP"
+.ti -1c
+.RI "\fBReal\fP * \fBdata_\fP"
+.br
+.RI "\fIArray holding the data in contiguouos position in memory\&. \fP"
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBDenseMatrix\fP &in)"
+.br
+.RI "\fIPrints the matrix as a block of numbers (standard way)\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+For developing purposes, it is better to have a not-so-intrincated data structure implementing matrices\&. This is the purpose of this class: to be used for prototypes of new code for small test cases\&. In every other instance, this should be replaced by the most appropriate sparse matrix\&. 
+.PP
+Definition at line 98 of file mtk_dense_matrix\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mtk::DenseMatrix::DenseMatrix ()"
+
+.PP
+Definition at line 138 of file mtk_dense_matrix\&.cc\&.
+.SS "mtk::DenseMatrix::DenseMatrix (const \fBDenseMatrix\fP &in)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIin\fP Given matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 144 of file mtk_dense_matrix\&.cc\&.
+.SS "mtk::DenseMatrix::DenseMatrix (const int &num_rows, const int &num_cols)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum_rows\fP Number of rows of the required matrix\&. 
+.br
+\fInum_cols\fP Number of rows of the required matrix\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::bad_alloc\fP 
+.RE
+.PP
+
+.PP
+Definition at line 177 of file mtk_dense_matrix\&.cc\&.
+.SS "mtk::DenseMatrix::DenseMatrix (const int &rank, const bool &padded, const bool &transpose)"
+Used in the construction of the mimetic operators\&.
+.PP
+Def**\&. A \fBpadded matrix\fP is a matrix with its first and last rows initialized to only zero values:
+.PP
+\[ \bar{\mathbf{I}} = \left(\begin{array}{ccccc} 0 & 0 & 0 & \dots & 0 \\ 1 & 0 & 0 & \dots & 0 \\ 0 & 1 & 0 & \dots & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & 0 & \dots & 1 \\ 0 & 0 & 0 & \dots & 0 \end{array}\right) \].PP
+\fBParameters:\fP
+.RS 4
+\fIrank\fP Rank or number of rows/cols in square matrix\&. 
+.br
+\fIpadded\fP Should it be padded? 
+.br
+\fItranspose\fP Should I return the transpose of the requested matrix?
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::bad_alloc\fP 
+.RE
+.PP
+
+.PP
+Definition at line 199 of file mtk_dense_matrix\&.cc\&.
+.SS "mtk::DenseMatrix::DenseMatrix (const \fBReal\fP *gen, const int &gen_length, const int &pro_length, const bool &transpose)"
+Def**\&. In linear algebra, a \fBVandermonde matrix\fP is a matrix with terms of a geometric progression in each row\&. This progression uses the terms of a given \fBgenerator vector\fP:
+.PP
+\[ \mathbf{V} = \left(\begin{array}{ccccc} 1 & \alpha_1 & \alpha_1^2 & \dots & \alpha_1^{n-1}\\ 1 & \alpha_2 & \alpha_2^2 & \dots & \alpha_2^{n-1}\\ 1 & \alpha_3 & \alpha_3^2 & \dots & \alpha_3^{n-1}\\ \vdots & \vdots & \vdots & \ddots &\vdots \\ 1 & \alpha_m & \alpha_m^2 & \dots & \alpha_m^{n-1} \end{array}\right) \].PP
+This constructor generates a Vandermonde matrix, as defined above\&.
+.PP
+Obs**\&. It in important to understand that the generator vectors to be used are nothing but a very particular instance of a grid\&. These are little chunks, little samples, if you will, of a grid which is rectangular and uniform\&. So the selected samples, on the \fBmtk::Div1D\fP and \fBmtk::Grad1D\fP, basically represent the entire space, the entire grid\&. This is why nor the CRS nor the CBS algorithms may work for irregular geometries, such as curvilinear grids\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgen\fP Given generator vector\&. 
+.br
+\fIgen_length\fP Length generator vector\&. 
+.br
+\fIpro_length\fP Length the progression\&. 
+.br
+\fItranspose\fP Should the transpose be created instead?
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::bad_alloc\fP 
+.RE
+.PP
+
+.PP
+Definition at line 237 of file mtk_dense_matrix\&.cc\&.
+.SS "mtk::DenseMatrix::~DenseMatrix ()"
+
+.PP
+Definition at line 285 of file mtk_dense_matrix\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBmtk::Real\fP * mtk::DenseMatrix::data () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to an array of \fBmtk::Real\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 316 of file mtk_dense_matrix\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::DenseMatrix::GetValue (const int &row_coord, const int &col_coord) const"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrow_coord\fP Row coordinate\&. 
+.br
+\fIcol_coord\fP Column coordinate\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The required value at the specified coordinates\&. 
+.RE
+.PP
+
+.PP
+Definition at line 321 of file mtk_dense_matrix\&.cc\&.
+.SS "\fBmtk::DenseMatrix\fP mtk::DenseMatrix::Kron (const \fBDenseMatrix\fP &aa, const \fBDenseMatrix\fP &bb)\fC [static]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIaa\fP First matrix\&. 
+.br
+\fIbb\fP Second matrix\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::bad_alloc\fP 
+.RE
+.PP
+
+.PP
+Definition at line 463 of file mtk_dense_matrix\&.cc\&.
+.SS "\fBmtk::Matrix\fP mtk::DenseMatrix::matrix_properties () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to a \fBMatrix\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 291 of file mtk_dense_matrix\&.cc\&.
+.SS "int mtk::DenseMatrix::num_cols () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Number of columns of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 311 of file mtk_dense_matrix\&.cc\&.
+.SS "int mtk::DenseMatrix::num_rows () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Number of rows of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 306 of file mtk_dense_matrix\&.cc\&.
+.SS "\fBmtk::DenseMatrix\fP & mtk::DenseMatrix::operator= (const \fBDenseMatrix\fP &in)"
+
+.PP
+Definition at line 97 of file mtk_dense_matrix\&.cc\&.
+.SS "void mtk::DenseMatrix::OrderColMajor ()"
+
+.PP
+\fBTodo\fP
+.RS 4
+Improve this so that no new arrays have to be created\&. 
+.RE
+.PP
+
+.PP
+Definition at line 424 of file mtk_dense_matrix\&.cc\&.
+.SS "void mtk::DenseMatrix::OrderRowMajor ()"
+
+.PP
+\fBTodo\fP
+.RS 4
+Improve this so that no new arrays have to be created\&. 
+.RE
+.PP
+
+.PP
+Definition at line 383 of file mtk_dense_matrix\&.cc\&.
+.SS "void mtk::DenseMatrix::SetOrdering (\fBmtk::MatrixOrdering\fPoo)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoo\fP Ordering\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+The required value at the specified coordinates\&. 
+.RE
+.PP
+
+.PP
+Definition at line 296 of file mtk_dense_matrix\&.cc\&.
+.SS "void mtk::DenseMatrix::SetValue (const int &row_coord, const int &col_coord, const \fBReal\fP &val)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrow_coord\fP Row coordinate\&. 
+.br
+\fIcol_coord\fP Column coordinate\&. 
+.br
+\fIval\fP Row Actual value to be inserted\&. 
+.RE
+.PP
+
+.PP
+Definition at line 333 of file mtk_dense_matrix\&.cc\&.
+.SS "void mtk::DenseMatrix::Transpose ()"
+
+.PP
+\fBTodo\fP
+.RS 4
+Improve this so that no extra arrays have to be created\&. 
+.RE
+.PP
+
+.PP
+Definition at line 346 of file mtk_dense_matrix\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::DenseMatrix\fP &in)\fC [friend]\fP"
+
+.PP
+Definition at line 75 of file mtk_dense_matrix\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBReal\fP* mtk::DenseMatrix::data_\fC [private]\fP"
+
+.PP
+Definition at line 274 of file mtk_dense_matrix\&.h\&.
+.SS "\fBMatrix\fP mtk::DenseMatrix::matrix_properties_\fC [private]\fP"
+
+.PP
+Definition at line 272 of file mtk_dense_matrix\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

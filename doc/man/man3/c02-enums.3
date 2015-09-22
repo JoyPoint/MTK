@@ -1,0 +1,90 @@
+.TH "Enumerations." 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Enumerations. \- 
+.PP
+Enumerations\&.  
+
+.SS "Enumerations"
+
+.in +1c
+.ti -1c
+.RI "enum \fBmtk::MatrixStorage\fP { \fBmtk::DENSE\fP, \fBmtk::BANDED\fP, \fBmtk::CRS\fP }"
+.br
+.RI "\fIConsidered matrix storage schemes to implement sparse matrices\&. \fP"
+.ti -1c
+.RI "enum \fBmtk::MatrixOrdering\fP { \fBmtk::ROW_MAJOR\fP, \fBmtk::COL_MAJOR\fP }"
+.br
+.RI "\fIConsidered matrix ordering (for Fortran purposes)\&. \fP"
+.ti -1c
+.RI "enum \fBmtk::FieldNature\fP { \fBmtk::SCALAR\fP, \fBmtk::VECTOR\fP }"
+.br
+.RI "\fINature of the field discretized in a given grid\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Enumerations\&. 
+.SH "Enumeration Type Documentation"
+.PP 
+.SS "enum \fBmtk::FieldNature\fP"
+Fields can be \fBscalar\fP or \fBvector\fP in nature\&.
+.PP
+\fBSee Also:\fP
+.RS 4
+https://en.wikipedia.org/wiki/Scalar_field
+.PP
+https://en.wikipedia.org/wiki/Vector_field 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISCALAR \fP\fP
+Scalar-valued field\&. 
+.TP
+\fB\fIVECTOR \fP\fP
+Vector-valued field\&. 
+.PP
+Definition at line 113 of file mtk_enums\&.h\&.
+.SS "enum \fBmtk::MatrixOrdering\fP"
+Row-major ordering is used for most application in C/C++\&. For Fortran purposes, the matrices must be listed in a column-major ordering\&.
+.PP
+\fBSee Also:\fP
+.RS 4
+https://en.wikipedia.org/wiki/Row-major_order 
+.RE
+.PP
+
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIROW_MAJOR \fP\fP
+Row-major ordering (C/C++)\&. 
+.TP
+\fB\fICOL_MAJOR \fP\fP
+Column-major ordering (Fortran)\&. 
+.PP
+Definition at line 95 of file mtk_enums\&.h\&.
+.SS "enum \fBmtk::MatrixStorage\fP"
+The considered sparse storage schemes are selected so that these are compatible with some of the most used mathematical APIs, as follows: DENSE and BANDED for \fCBLAS\fP, \fCLAPACK\fP, and \fCScaLAPACK\fP\&. Finally, CRS for \fCSuperLU\fP\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fIDENSE \fP\fP
+Dense matrices, implemented as a 1D array: \fBDenseMatrix\fP\&. 
+.TP
+\fB\fIBANDED \fP\fP
+Banded matrices ala LAPACK and ScaLAPACK: Must be implemented\&. 
+.TP
+\fB\fICRS \fP\fP
+Compressed-Rows Storage: Must be implemented\&. 
+.PP
+Definition at line 77 of file mtk_enums\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

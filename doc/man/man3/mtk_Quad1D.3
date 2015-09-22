@@ -1,0 +1,135 @@
+.TH "mtk::Quad1D" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk::Quad1D \- 
+.PP
+Implements a 1D mimetic quadrature\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mtk_quad_1d\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBQuad1D\fP ()"
+.br
+.RI "\fIDefault constructor\&. \fP"
+.ti -1c
+.RI "\fBQuad1D\fP (const \fBQuad1D\fP &quad)"
+.br
+.RI "\fICopy constructor\&. \fP"
+.ti -1c
+.RI "\fB~Quad1D\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "int \fBdegree_approximation\fP () const "
+.br
+.RI "\fIGet the degree of interpolating polynomial per sub-interval of domain\&. \fP"
+.ti -1c
+.RI "\fBReal\fP * \fBweights\fP () const "
+.br
+.RI "\fIReturn collection of weights\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBIntegrate\fP (\fBReal\fP(*Integrand)(\fBReal\fP xx), \fBUniStgGrid1D\fP grid)"
+.br
+.RI "\fIMimetic integration routine\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBdegree_approximation_\fP"
+.br
+.RI "\fIDegree of the interpolating polynomial\&. \fP"
+.ti -1c
+.RI "std::vector< \fBReal\fP > \fBweights_\fP"
+.br
+.RI "\fICollection of weights\&. \fP"
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBQuad1D\fP &in)"
+.br
+.RI "\fIOutput stream operator for printing\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class implements a 1D quadrature solver based on the mimetic discretization of the gradient operator\&. 
+.PP
+Definition at line 81 of file mtk_quad_1d\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mtk::Quad1D::Quad1D ()"
+
+.SS "mtk::Quad1D::Quad1D (const \fBQuad1D\fP &quad)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdiv\fP Given quadrature\&. 
+.RE
+.PP
+
+.SS "mtk::Quad1D::~Quad1D ()"
+
+.SH "Member Function Documentation"
+.PP 
+.SS "int mtk::Quad1D::degree_approximation () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Degree of the interpolating polynomial per sub-interval of the domain\&. 
+.RE
+.PP
+
+.SS "\fBReal\fP mtk::Quad1D::Integrate (\fBReal\fP(*)(\fBReal\fP xx)Integrand, \fBUniStgGrid1D\fPgrid)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIIntegrand\fP Real-valued function to integrate\&. 
+.br
+\fIgrid\fP Given integration domain\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Result of the integration\&. 
+.RE
+.PP
+
+.SS "\fBReal\fP* mtk::Quad1D::weights () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Collection of weights\&. 
+.RE
+.PP
+
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "std::ostream& operator<< (std::ostream &stream, \fBQuad1D\fP &in)\fC [friend]\fP"
+
+.SH "Member Data Documentation"
+.PP 
+.SS "int mtk::Quad1D::degree_approximation_\fC [private]\fP"
+
+.PP
+Definition at line 124 of file mtk_quad_1d\&.h\&.
+.SS "std::vector<\fBReal\fP> mtk::Quad1D::weights_\fC [private]\fP"
+
+.PP
+Definition at line 126 of file mtk_quad_1d\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

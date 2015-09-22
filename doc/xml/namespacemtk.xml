@@ -1,0 +1,1050 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="namespacemtk" kind="namespace">
+    <compoundname>mtk</compoundname>
+    <innerclass refid="classmtk_1_1BCDesc1D" prot="public">mtk::BCDesc1D</innerclass>
+    <innerclass refid="classmtk_1_1BLASAdapter" prot="public">mtk::BLASAdapter</innerclass>
+    <innerclass refid="classmtk_1_1DenseMatrix" prot="public">mtk::DenseMatrix</innerclass>
+    <innerclass refid="classmtk_1_1Div1D" prot="public">mtk::Div1D</innerclass>
+    <innerclass refid="classmtk_1_1GLPKAdapter" prot="public">mtk::GLPKAdapter</innerclass>
+    <innerclass refid="classmtk_1_1Grad1D" prot="public">mtk::Grad1D</innerclass>
+    <innerclass refid="classmtk_1_1Lap1D" prot="public">mtk::Lap1D</innerclass>
+    <innerclass refid="classmtk_1_1LAPACKAdapter" prot="public">mtk::LAPACKAdapter</innerclass>
+    <innerclass refid="classmtk_1_1Matrix" prot="public">mtk::Matrix</innerclass>
+    <innerclass refid="classmtk_1_1Quad1D" prot="public">mtk::Quad1D</innerclass>
+    <innerclass refid="classmtk_1_1Tools" prot="public">mtk::Tools</innerclass>
+    <innerclass refid="classmtk_1_1UniStgGrid1D" prot="public">mtk::UniStgGrid1D</innerclass>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__c02-enums_1ga25b67ec6a2afeee69f9bb196a9c66619" prot="public" static="no">
+        <name>MatrixStorage</name>
+        <enumvalue id="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87" prot="public">
+          <name>DENSE</name>
+          <briefdescription>
+<para>Dense matrices, implemented as a 1D array: <ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref>. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619aef1d4271d5005282978a3a40a8a52c9b" prot="public">
+          <name>BANDED</name>
+          <briefdescription>
+<para>Banded matrices ala LAPACK and ScaLAPACK: Must be implemented. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a87619d374775e937bca967402b988b8b" prot="public">
+          <name>CRS</name>
+          <briefdescription>
+<para>Compressed-Rows Storage: Must be implemented. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Considered matrix storage schemes to implement sparse matrices. </para>        </briefdescription>
+        <detaileddescription>
+<para>The considered sparse storage schemes are selected so that these are compatible with some of the most used mathematical APIs, as follows: DENSE and BANDED for <ulink url="http://www.netlib.org/blas/">BLAS</ulink>, <ulink url="http://www.netlib.org/lapack/">LAPACK</ulink>, and <ulink url="http://www.netlib.org/scalapack/">ScaLAPACK</ulink>. Finally, CRS for <ulink url="http://crd.lbl.gov/~xiaoye/SuperLU/">SuperLU</ulink>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_enums.h" line="77" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_enums.h" bodystart="77" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__c02-enums_1ga622801bd9f912d0f976c3e383f5f581c" prot="public" static="no">
+        <name>MatrixOrdering</name>
+        <enumvalue id="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3" prot="public">
+          <name>ROW_MAJOR</name>
+          <briefdescription>
+<para>Row-major ordering (C/C++). </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13" prot="public">
+          <name>COL_MAJOR</name>
+          <briefdescription>
+<para>Column-major ordering (Fortran). </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Considered matrix ordering (for Fortran purposes). </para>        </briefdescription>
+        <detaileddescription>
+<para>Row-major ordering is used for most application in C/C++. For Fortran purposes, the matrices must be listed in a column-major ordering.</para><para><simplesect kind="see"><para><ulink url="https://en.wikipedia.org/wiki/Row-major_order">https://en.wikipedia.org/wiki/Row-major_order</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_enums.h" line="95" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_enums.h" bodystart="95" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__c02-enums_1ga4c54f2a329cfb4e56213b02a259d19e2" prot="public" static="no">
+        <name>FieldNature</name>
+        <enumvalue id="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205" prot="public">
+          <name>SCALAR</name>
+          <briefdescription>
+<para>Scalar-valued field. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a3d8cb27a993651a74d67fb8c98ae91b2" prot="public">
+          <name>VECTOR</name>
+          <briefdescription>
+<para>Vector-valued field. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Nature of the field discretized in a given grid. </para>        </briefdescription>
+        <detaileddescription>
+<para>Fields can be <bold>scalar</bold> or <bold>vector</bold> in nature.</para><para><simplesect kind="see"><para><ulink url="https://en.wikipedia.org/wiki/Scalar_field">https://en.wikipedia.org/wiki/Scalar_field</ulink></para><simplesectsep/><para><ulink url="https://en.wikipedia.org/wiki/Vector_field">https://en.wikipedia.org/wiki/Vector_field</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_enums.h" line="113" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_enums.h" bodystart="113" bodyend="116"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="typedef">
+      <memberdef kind="typedef" id="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" prot="public" static="no">
+        <type>float</type>
+        <definition>mtk::Real</definition>
+        <argsstring></argsstring>
+        <name>Real</name>
+        <briefdescription>
+<para>Users can simply change this to build a double- or single-precision MTK. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" line="83" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" bodystart="83" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="var">
+      <memberdef kind="variable" id="group__c01-roots_1ga59a451a5fae30d59649bcda274fea271" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>mtk::kZero</definition>
+        <argsstring></argsstring>
+        <name>kZero</name>
+        <initializer>{0.0f}</initializer>
+        <briefdescription>
+<para>MTK&apos;s zero defined according to selective compilation. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>Declared as double if MTK_PRECISION_DOUBLE is defined. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" line="107" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" bodystart="107" bodyend="-1"/>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="97" endline="136">mtk::DenseMatrix::operator=</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a90102d605a668bf7ecf0d766cc4c10db" compoundref="mtk__dense__matrix_8cc" startline="144" endline="175">mtk::DenseMatrix::DenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a71d9c07ca66e88d97d1fd5012f43138b" compoundref="mtk__dense__matrix_8cc" startline="346" endline="381">mtk::DenseMatrix::Transpose</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" compoundref="mtk__dense__matrix_8cc" startline="383" endline="422">mtk::DenseMatrix::OrderRowMajor</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a59b9bea24acf39dca64e8549b3527463" compoundref="mtk__dense__matrix_8cc" startline="424" endline="461">mtk::DenseMatrix::OrderColMajor</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a52fcd1542f11e606e36bd188e48bfdf7" compoundref="mtk__div__1d_8cc" startline="176" endline="313">mtk::Div1D::ConstructDiv1D</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1afdbb1e11f05dd77b882f36426229acf7" compoundref="mtk__div__1d_8cc" startline="330" endline="390">mtk::Div1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a3eb3a32862a6b066cd583cbbd00a6509" compoundref="mtk__div__1d_8cc" startline="392" endline="489">mtk::Div1D::ComputeStencilInteriorGrid</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aa0c0c278b2c00a29c1ceaa70d31aebab" compoundref="mtk__div__1d_8cc" startline="491" endline="665">mtk::Div1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a4be0534a4e22d44a7aedde326cc3f3b6" compoundref="mtk__div__1d_8cc" startline="667" endline="885">mtk::Div1D::ComputePreliminaryApproximations</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="887" endline="1210">mtk::Div1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a29bb417c76286414dce9258a0bcb5aab" compoundref="mtk__div__1d_8cc" startline="1212" endline="1309">mtk::Div1D::ComputeStencilBoundaryGrid</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a5a12482e1ceac232339dd8f647af886b" compoundref="mtk__div__1d_8cc" startline="1311" endline="1379">mtk::Div1D::AssembleOperator</referencedby>
+        <referencedby refid="classmtk_1_1GLPKAdapter_1a834480aca83e3c0d09fdab7fdb7e8a3f" compoundref="mtk__glpk__adapter_8cc" startline="78" endline="331">mtk::GLPKAdapter::SolveSimplexAndCompare</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a74ef5245cfae6fd158bd7f563a0c2e52" compoundref="mtk__grad__1d_8cc" startline="182" endline="323">mtk::Grad1D::ConstructGrad1D</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a75781c4455569a7934d4e0dff7e06064" compoundref="mtk__grad__1d_8cc" startline="340" endline="404">mtk::Grad1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1ad6df25cc9dfc85ff8562ae3605486976" compoundref="mtk__grad__1d_8cc" startline="406" endline="500">mtk::Grad1D::ComputeStencilInteriorGrid</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a2d03e6a3961bee558f575ec4099782a9" compoundref="mtk__grad__1d_8cc" startline="502" endline="683">mtk::Grad1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1add4c68a6e78d8b9c2b800b3f96f4757d" compoundref="mtk__grad__1d_8cc" startline="685" endline="903">mtk::Grad1D::ComputePreliminaryApproximations</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="905" endline="1241">mtk::Grad1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a7ad1cecf6b52647263208ffaea0ee1e5" compoundref="mtk__grad__1d_8cc" startline="1243" endline="1347">mtk::Grad1D::ComputeStencilBoundaryGrid</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a4eb4d363506b8c64b2bb18a318bbd259" compoundref="mtk__grad__1d_8cc" startline="1349" endline="1418">mtk::Grad1D::AssembleOperator</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="119" endline="263">mtk::Lap1D::ConstructLap1D</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1ae5c6e78c9c819c9ac7a6f31bfd011d7a" compoundref="mtk__lapack__adapter_8cc" startline="553" endline="752">mtk::LAPACKAdapter::QRFactorDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1a380f148ffdf96bae2f79ae28f1a6560c" compoundref="mtk__lapack__adapter_8cc" startline="754" endline="837">mtk::LAPACKAdapter::SolveRectangularDenseSystem</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid1D_1ae19250f0cddef7a05c4a73a90991a26a" compoundref="mtk__uni__stg__grid__1d_8cc" startline="122" endline="140">mtk::UniStgGrid1D::UniStgGrid1D</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>mtk::kOne</definition>
+        <argsstring></argsstring>
+        <name>kOne</name>
+        <initializer>{1.0f}</initializer>
+        <briefdescription>
+<para>MTK&apos;s one defined according to selective compilation. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>Declared as double if MTK_PRECISION_DOUBLE is defined. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" line="108" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" bodystart="108" bodyend="-1"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1af2ac5691f45e67d6e26186b071119ec4" compoundref="mtk__blas__adapter_8cc" startline="358" endline="376">mtk::BLASAdapter::RelNorm2Error</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a4ef0dec1b5558fcf00719bfac059ec68" compoundref="mtk__dense__matrix_8cc" startline="199" endline="235">mtk::DenseMatrix::DenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1afdbb1e11f05dd77b882f36426229acf7" compoundref="mtk__div__1d_8cc" startline="330" endline="390">mtk::Div1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a3eb3a32862a6b066cd583cbbd00a6509" compoundref="mtk__div__1d_8cc" startline="392" endline="489">mtk::Div1D::ComputeStencilInteriorGrid</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aa0c0c278b2c00a29c1ceaa70d31aebab" compoundref="mtk__div__1d_8cc" startline="491" endline="665">mtk::Div1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a4be0534a4e22d44a7aedde326cc3f3b6" compoundref="mtk__div__1d_8cc" startline="667" endline="885">mtk::Div1D::ComputePreliminaryApproximations</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="887" endline="1210">mtk::Div1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a75781c4455569a7934d4e0dff7e06064" compoundref="mtk__grad__1d_8cc" startline="340" endline="404">mtk::Grad1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1ad6df25cc9dfc85ff8562ae3605486976" compoundref="mtk__grad__1d_8cc" startline="406" endline="500">mtk::Grad1D::ComputeStencilInteriorGrid</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a2d03e6a3961bee558f575ec4099782a9" compoundref="mtk__grad__1d_8cc" startline="502" endline="683">mtk::Grad1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1add4c68a6e78d8b9c2b800b3f96f4757d" compoundref="mtk__grad__1d_8cc" startline="685" endline="903">mtk::Grad1D::ComputePreliminaryApproximations</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="905" endline="1241">mtk::Grad1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1a28672c735fa0d13e6204795b63aec4e2" compoundref="mtk__lap__1d_8cc" startline="265" endline="330">mtk::Lap1D::ReturnAsDenseMatrix</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="group__c01-roots_1gae914b125d81d1b97e0aee7bbc7739786" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>mtk::kDefaultTolerance</definition>
+        <argsstring></argsstring>
+        <name>kDefaultTolerance</name>
+        <initializer>{1e-7f}</initializer>
+        <briefdescription>
+<para>Considered tolerance for comparisons in numerical methods. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" line="121" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" bodystart="121" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__c01-roots_1ga0d95560098eb36420511103637b6952f" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>mtk::kDefaultOrderAccuracy</definition>
+        <argsstring></argsstring>
+        <name>kDefaultOrderAccuracy</name>
+        <initializer>{2}</initializer>
+        <briefdescription>
+<para>Default order of accuracy for mimetic operators. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>Declared as double if MTK_PRECISION_DOUBLE is defined. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" line="133" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" bodystart="133" bodyend="-1"/>
+        <referencedby refid="classmtk_1_1Div1D_1a5a12482e1ceac232339dd8f647af886b" compoundref="mtk__div__1d_8cc" startline="1311" endline="1379">mtk::Div1D::AssembleOperator</referencedby>
+        <referencedby refid="namespacemtk_1a3f546b8a3743b8719db17e33f2d7ef7f" compoundref="mtk__grad__1d_8cc" startline="79" endline="126">operator&lt;&lt;</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a4eb4d363506b8c64b2bb18a318bbd259" compoundref="mtk__grad__1d_8cc" startline="1349" endline="1418">mtk::Grad1D::AssembleOperator</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="group__c01-roots_1ga35718d949bdc81a08a9cc8ebbe3478a2" prot="public" static="no" mutable="no">
+        <type>const float</type>
+        <definition>mtk::kDefaultMimeticThreshold</definition>
+        <argsstring></argsstring>
+        <name>kDefaultMimeticThreshold</name>
+        <initializer>{1.e-6f}</initializer>
+        <briefdescription>
+<para>Default tolerance for higher-order mimetic operators. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>Declared as double if MTK_PRECISION_DOUBLE is defined. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" line="147" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" bodystart="147" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="group__c01-roots_1ga0898eef2108473e44a5223932d571c31" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>mtk::kCriticalOrderAccuracyDiv</definition>
+        <argsstring></argsstring>
+        <name>kCriticalOrderAccuracyDiv</name>
+        <initializer>{8}</initializer>
+        <briefdescription>
+<para>At this order (and higher) we must use the CBSA to construct. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" line="157" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" bodystart="157" bodyend="-1"/>
+        <referencedby refid="classmtk_1_1Div1D_1a52fcd1542f11e606e36bd188e48bfdf7" compoundref="mtk__div__1d_8cc" startline="176" endline="313">mtk::Div1D::ConstructDiv1D</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="887" endline="1210">mtk::Div1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="119" endline="263">mtk::Lap1D::ConstructLap1D</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="group__c01-roots_1ga295dd2f403c775ecd942c22b5a777496" prot="public" static="no" mutable="no">
+        <type>const int</type>
+        <definition>mtk::kCriticalOrderAccuracyGrad</definition>
+        <argsstring></argsstring>
+        <name>kCriticalOrderAccuracyGrad</name>
+        <initializer>{10}</initializer>
+        <briefdescription>
+<para>At this order (and higher) we must use the CBSA to construct. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" line="166" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_roots.h" bodystart="166" bodyend="-1"/>
+        <referencedby refid="classmtk_1_1Grad1D_1a74ef5245cfae6fd158bd7f563a0c2e52" compoundref="mtk__grad__1d_8cc" startline="182" endline="323">mtk::Grad1D::ConstructGrad1D</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="905" endline="1241">mtk::Grad1D::ComputeWeights</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="func">
+      <memberdef kind="function" id="namespacemtk_1a508e99fcb14d526bc43aa0a80aa4b658" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>float</type>
+        <definition>float mtk::snrm2_</definition>
+        <argsstring>(int *n, float *x, int *incx)</argsstring>
+        <name>snrm2_</name>
+        <param>
+          <type>int *</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>incx</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" line="112" column="1"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1ab92440888b730863244c5d9479c11aca" compoundref="mtk__blas__adapter_8cc" startline="324" endline="337">mtk::BLASAdapter::RealNRM2</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespacemtk_1a81a2d7d1ea9eff65ae13646c93dad5e9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::saxpy_</definition>
+        <argsstring>(int *n, float *sa, float *sx, int *incx, float *sy, int *incy)</argsstring>
+        <name>saxpy_</name>
+        <param>
+          <type>int *</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>sa</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>sx</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>incx</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>sy</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>incy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" line="156" column="1"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1a081cd092ae65e730f44eae8643edd539" compoundref="mtk__blas__adapter_8cc" startline="339" endline="356">mtk::BLASAdapter::RealAXPY</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespacemtk_1a88daff7ad6f251a58b94aa2d0c94d069" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::sgemv_</definition>
+        <argsstring>(char *trans, int *m, int *n, float *alpha, float *a, int *lda, float *x, int *incx, float *beta, float *y, int *incy)</argsstring>
+        <name>sgemv_</name>
+        <param>
+          <type>char *</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>lda</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>x</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>incx</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>beta</declname>
+        </param>
+        <param>
+          <type>float *</type>
+          <declname>y</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>incy</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" line="228" column="1"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1afdcac059a4294287cb55638221220646" compoundref="mtk__blas__adapter_8cc" startline="378" endline="407">mtk::BLASAdapter::RealDenseMV</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespacemtk_1adb7c0560326b8e57f255e58b87ec76b0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::sgemm_</definition>
+        <argsstring>(char *transa, char *transb, int *m, int *n, int *k, double *alpha, double *a, int *lda, double *b, aamm int *ldb, double *beta, double *c, int *ldc)</argsstring>
+        <name>sgemm_</name>
+        <param>
+          <type>char *</type>
+          <declname>transa</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>transb</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>alpha</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>lda</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>aamm int *</type>
+          <declname>ldb</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>beta</declname>
+        </param>
+        <param>
+          <type>double *</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>ldc</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_blas_adapter.cc" line="307" column="1"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="409" endline="463">mtk::BLASAdapter::RealDenseMM</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespacemtk_1ad3bcf52cda59ddb5fc7b4bdce76c46dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; mtk::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;stream, mtk::DenseMatrix &amp;in)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_dense_matrix.cc" line="75" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_dense_matrix.cc" bodystart="75" bodyend="94"/>
+        <references refid="classmtk_1_1DenseMatrix_1a481c8d09af685a5ba67acefdcaa810cc" compoundref="mtk__dense__matrix_8h" startline="272">mtk::DenseMatrix::matrix_properties_</references>
+        <references refid="classmtk_1_1Matrix_1a69feb30fc0018faee65fe9f7cb43e0ed" compoundref="mtk__matrix_8cc" startline="122" endline="125">mtk::Matrix::num_rows</references>
+        <references refid="classmtk_1_1Matrix_1a1e52243fa290de6ee4bcc48cd1776a9a" compoundref="mtk__matrix_8cc" startline="127" endline="130">mtk::Matrix::num_cols</references>
+        <references refid="classmtk_1_1Matrix_1af675e480c7b94f194aadad316e53b002" compoundref="mtk__matrix_8cc" startline="117" endline="120">mtk::Matrix::ordering</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13" compoundref="mtk__enums_8h" startline="97">COL_MAJOR</references>
+        <references refid="classmtk_1_1DenseMatrix_1a7893e4e5c8d2e2de32b156177e78cb6f" compoundref="mtk__dense__matrix_8h" startline="274">mtk::DenseMatrix::data_</references>
+      </memberdef>
+      <memberdef kind="function" id="namespacemtk_1a12db5e6fff3788f728819a60d5c28d01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; mtk::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;stream, mtk::Div1D &amp;in)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type><ref refid="classmtk_1_1Div1D" kindref="compound">mtk::Div1D</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>Print order of accuracy.</para></listitem><listitem><para>Print approximating coefficients for the interior.</para></listitem><listitem><para>Print mimetic weights.</para></listitem><listitem><para>Print mimetic approximations at the boundary. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_div_1d.cc" line="79" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_div_1d.cc" bodystart="79" bodyend="122"/>
+        <references refid="classmtk_1_1Div1D_1a0f96410051ba1fa6d91dfa7b7eacead9" compoundref="mtk__div__1d_8h" startline="194">mtk::Div1D::divergence_</references>
+        <references refid="classmtk_1_1Div1D_1a9c8a8d7cd08a72dbd1daa8deee06f9c6" compoundref="mtk__div__1d_8h" startline="179">mtk::Div1D::order_accuracy_</references>
+        <references refid="classmtk_1_1Div1D_1a264027144def76d802778391f55381a0" compoundref="mtk__div__1d_8h" startline="180">mtk::Div1D::dim_null_</references>
+        <references refid="classmtk_1_1Div1D_1a717240b41eaa2adde858630b9e3d3042" compoundref="mtk__div__1d_8h" startline="181">mtk::Div1D::num_bndy_coeffs_</references>
+      </memberdef>
+      <memberdef kind="function" id="namespacemtk_1a3f546b8a3743b8719db17e33f2d7ef7f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; mtk::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;stream, mtk::Grad1D &amp;in)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type><ref refid="classmtk_1_1Grad1D" kindref="compound">mtk::Grad1D</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>Print order of accuracy.</para></listitem><listitem><para>Print approximating coefficients for the interior.</para></listitem><listitem><para>Print mimetic weights.</para></listitem><listitem><para>Print mimetic approximations at the boundary. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_grad_1d.cc" line="79" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_grad_1d.cc" bodystart="79" bodyend="126"/>
+        <references refid="classmtk_1_1Grad1D_1a024b84b1ea285c0c590eb42d40ff4469" compoundref="mtk__grad__1d_8h" startline="195">mtk::Grad1D::gradient_</references>
+        <references refid="classmtk_1_1Grad1D_1a545e9c865e5d4716f2684a64f744c78c" compoundref="mtk__grad__1d_8h" startline="179">mtk::Grad1D::order_accuracy_</references>
+        <references refid="classmtk_1_1Grad1D_1a60c560882bc601f9ab1d4cd5331e55ef" compoundref="mtk__grad__1d_8h" startline="182">mtk::Grad1D::num_bndy_coeffs_</references>
+        <references refid="group__c01-roots_1ga0d95560098eb36420511103637b6952f" compoundref="mtk__roots_8h" startline="133">kDefaultOrderAccuracy</references>
+        <references refid="classmtk_1_1Grad1D_1abe15c1ffd9dfaba1a65f4f0e096287ce" compoundref="mtk__grad__1d_8h" startline="181">mtk::Grad1D::num_bndy_approxs_</references>
+      </memberdef>
+      <memberdef kind="function" id="namespacemtk_1af667c01a388ef1815d549b09b2d76bcc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; mtk::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;stream, mtk::Lap1D &amp;in)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type><ref refid="classmtk_1_1Lap1D" kindref="compound">mtk::Lap1D</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>Print order of accuracy.</para></listitem><listitem><para>Print approximating coefficients for the interior.</para></listitem><listitem><para>No weights, thus print the mimetic boundary coefficients. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_lap_1d.cc" line="73" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_lap_1d.cc" bodystart="73" bodyend="105"/>
+        <references refid="classmtk_1_1Lap1D_1a64a3977527c00b4ef994d1bd549f82fd" compoundref="mtk__lap__1d_8h" startline="120">mtk::Lap1D::laplacian_</references>
+        <references refid="classmtk_1_1Lap1D_1a35d34c085b9cf6f9961a699dfb02fea6" compoundref="mtk__lap__1d_8h" startline="117">mtk::Lap1D::order_accuracy_</references>
+      </memberdef>
+      <memberdef kind="function" id="namespacemtk_1ae1d63c7ae73b3c48e0dca81eb19039f3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::sgesv_</definition>
+        <argsstring>(int *n, int *nrhs, Real *a, int *lda, int *ipiv, Real *b, int *ldb, int *info)</argsstring>
+        <name>sgesv_</name>
+        <param>
+          <type>int *</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>nrhs</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>lda</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>ipiv</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>ldb</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>info</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_lapack_adapter.cc" line="127" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacemtk_1ada6df1b733204aa7ff0b1ec7556288f9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::sgels_</definition>
+        <argsstring>(char *trans, int *m, int *n, int *nrhs, Real *a, int *lda, Real *b, int *ldb, Real *work, int *lwork, int *info)</argsstring>
+        <name>sgels_</name>
+        <param>
+          <type>char *</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>nrhs</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>lda</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>b</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>ldb</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>work</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>lwork</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>info</declname>
+        </param>
+        <briefdescription>
+<para>Single-precision GEneral matrix Least Squares solver. </para>        </briefdescription>
+        <detaileddescription>
+<para>SGELS solves overdetermined or underdetermined real linear systems involving an M-by-N matrix A, or its transpose, using a QR or LQ factorization of A. It is assumed that A has full rank.</para><para>The following options are provided:</para><para><orderedlist>
+<listitem><para>If TRANS = &apos;N&apos; and m &gt;= n: find the least squares solution of an overdetermined system, i.e., solve the least squares problem <verbatim>            minimize || B - A*X ||.
+</verbatim></para></listitem><listitem><para>If TRANS = &apos;N&apos; and m &lt; n: find the minimum norm solution of an underdetermined system A * X = B.</para></listitem><listitem><para>If TRANS = &apos;T&apos; and m &gt;= n: find the minimum norm solution of an undetermined system A**T * X = B.</para></listitem><listitem><para>If TRANS = &apos;T&apos; and m &lt; n: find the least squares solution of an overdetermined system, i.e., solve the least squares problem <verbatim>            minimize || B - A**T * X ||.
+</verbatim></para></listitem></orderedlist>
+</para><para>Several right hand side vectors b and solution vectors x can be handled in a single call; they are stored as the columns of the M-by-NRHS right hand side matrix B and the N-by-NRHS solution matrix X.</para><para><simplesect kind="see"><para><ulink url="http://www.math.utah.edu/software/lapack/lapack-s/sgels.html">http://www.math.utah.edu/software/lapack/lapack-s/sgels.html</ulink></para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Am I giving the transpose of the matrix? </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">m</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of rows of the matrix a. m &gt;= 0. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns of the matrix a. n &gt;= 0. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">nrhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of right-hand sides. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On entry, the m-by-n matrix a. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">lda</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The leading dimension of a. lda &gt;= max(1,m). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">b</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On entry, matrix b of right-hand side vectors. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ldb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The leading dimension of b. ldb &gt;= max(1,m,n). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">work</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On exit, if info = 0, work(1) is optimal lwork. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">lwork</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The dimension of the array work. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>If info = 0, then successful exit. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_lapack_adapter.cc" line="236" column="1"/>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1a380f148ffdf96bae2f79ae28f1a6560c" compoundref="mtk__lapack__adapter_8cc" startline="754" endline="837">mtk::LAPACKAdapter::SolveRectangularDenseSystem</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="namespacemtk_1aece7419193d8ab43e186c97ad6d529fb" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::sgeqrf_</definition>
+        <argsstring>(int *m, int *n, Real *a, int *lda, Real *tau, Real *work, int *lwork, int *info)</argsstring>
+        <name>sgeqrf_</name>
+        <param>
+          <type>int *</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>lda</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>tau</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>work</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>lwork</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>info</declname>
+        </param>
+        <briefdescription>
+<para>Single-precision GEneral matrix QR Factorization. </para>        </briefdescription>
+        <detaileddescription>
+<para>Single-Precision Orthogonal Make Q from QR: dormqr_ overwrites the general real M-by-N matrix C with (Table 1): <verbatim>            SIDE = &apos;L&apos;     SIDE = &apos;R&apos;
+</verbatim> TRANS = &apos;N&apos;: Q * C C * Q TRANS = &apos;T&apos;: Q**T * C C * Q**T</para><para>where Q is a real orthogonal matrix defined as the product of k elementary reflectors <verbatim>  Q = H(1) H(2) . . . H(k)
+</verbatim></para><para>as returned by SGEQRF. Q is of order M if SIDE = &apos;L&apos; and of order N if SIDE = &apos;R&apos;.</para><para><simplesect kind="see"><para><ulink url="http://www.netlib.org/lapack/explore-html/df/d97/sgeqrf_8f.html">http://www.netlib.org/lapack/explore-html/df/d97/sgeqrf_8f.html</ulink></para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">m</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns of the matrix a. n &gt;= 0. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The number of columns of the matrix a. n &gt;= 0. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>On entry, the n-by-n matrix a. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">lda</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Leading dimension matrix. LDA &gt;= max(1,M). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">tau</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scalars from elementary reflectors. min(M,N). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">work</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Workspace. info = 0, work(1) is optimal lwork. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">lwork</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The dimension of work. lwork &gt;= max(1,n). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>info = 0: successful exit. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_lapack_adapter.cc" line="317" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacemtk_1a59c58408e1c0a9837b67a417be986b82" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::sormqr_</definition>
+        <argsstring>(char *side, char *trans, int *m, int *n, int *k, Real *a, int *lda, Real *tau, Real *c, int *ldc, Real *work, int *lwork, int *info)</argsstring>
+        <name>sormqr_</name>
+        <param>
+          <type>char *</type>
+          <declname>side</declname>
+        </param>
+        <param>
+          <type>char *</type>
+          <declname>trans</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>m</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>n</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>k</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>a</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>lda</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>tau</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>c</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>ldc</declname>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+          <declname>work</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>lwork</declname>
+        </param>
+        <param>
+          <type>int *</type>
+          <declname>info</declname>
+        </param>
+        <briefdescription>
+<para>Single-precision Orthogonal <ref refid="classmtk_1_1Matrix" kindref="compound">Matrix</ref> from QR factorization. </para>        </briefdescription>
+        <detaileddescription>
+<para>Single-Precision Orthogonal Make Q from QR: sormqr_ overwrites the general real M-by-N matrix C with (Table 1): <verbatim>            SIDE = &apos;L&apos;     SIDE = &apos;R&apos;
+</verbatim> TRANS = &apos;N&apos;: Q * C C * Q TRANS = &apos;T&apos;: Q**T * C C * Q**T</para><para>where Q is a real orthogonal matrix defined as the product of k elementary reflectors <verbatim>  Q = H(1) H(2) . . . H(k)
+</verbatim></para><para>as returned by SGEQRF. Q is of order M if SIDE = &apos;L&apos; and of order N if SIDE = &apos;R&apos;.</para><para><simplesect kind="see"><para><ulink url="http://www.netlib.org/lapack/explore-html/d0/d98/sormqr_8f_source.html">http://www.netlib.org/lapack/explore-html/d0/d98/sormqr_8f_source.html</ulink></para></simplesect>
+<parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">side</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>See Table 1 above. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">trans</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>See Table 1 above. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">m</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of rows of the C matrix. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">n</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of columns of the C matrix. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">k</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of reflectors. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">a</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The matrix containing the reflectors. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">lda</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The dimension of work. lwork &gt;= max(1,n). </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">tau</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Scalar factors of the elementary reflectors. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">c</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Output matrix. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">ldc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Leading dimension of the output matrix. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">work</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Workspace. info = 0, work(1) optimal lwork. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">lwork</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>The dimension of work. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">info</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>info = 0: successful exit. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_lapack_adapter.cc" line="410" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="namespacemtk_1a97f79d150b3b5c7b76d4fcc2271f972b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; mtk::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;stream, mtk::UniStgGrid1D &amp;in)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>Print spatial coordinates. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/src/mtk_uni_stg_grid_1d.cc" line="68" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_uni_stg_grid_1d.cc" bodystart="68" bodyend="94"/>
+        <references refid="classmtk_1_1UniStgGrid1D_1a6910438d3396d0b9a130d11d16979c46" compoundref="mtk__uni__stg__grid__1d_8h" startline="179">mtk::UniStgGrid1D::west_bndy_x_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1afa43750db0029b7454aef343759e7097" compoundref="mtk__uni__stg__grid__1d_8h" startline="181">mtk::UniStgGrid1D::num_cells_x_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a69a7d6be3171e53177e476348d04f4ae" compoundref="mtk__uni__stg__grid__1d_8h" startline="180">mtk::UniStgGrid1D::east_bndy_x_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a0a1f9c00e21659e05f414dd97e2a52e3" compoundref="mtk__uni__stg__grid__1d_8h" startline="176">mtk::UniStgGrid1D::discrete_domain_x_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a061b66c92532b1498ce0e15418754911" compoundref="mtk__uni__stg__grid__1d_8h" startline="174">mtk::UniStgGrid1D::nature_</references>
+        <references refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205" compoundref="mtk__enums_8h" startline="114">SCALAR</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a9a1e7c4ff7f83787a1844d8b24af8045" compoundref="mtk__uni__stg__grid__1d_8h" startline="177">mtk::UniStgGrid1D::discrete_field_u_</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Mimetic Methods Toolkit namespace. </para>    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_bc_desc_1d.h" line="7" column="1"/>
+  </compounddef>
+</doxygen>
