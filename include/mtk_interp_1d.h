@@ -6,6 +6,8 @@
 This class implements a 1D interpolation operator.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
+
+\author: Johnny Corbino - jcorbino at mail dot sdsu dot edu
 */
 /*
 Copyright (C) 2015, Computational Science Research Center, San Diego State
@@ -62,6 +64,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "glpk.h"
 
 #include "mtk_roots.h"
+#include "mtk_enums.h"
 #include "mtk_dense_matrix.h"
 #include "mtk_uni_stg_grid_1d.h"
 
@@ -79,7 +82,7 @@ This class implements a 1D interpolation operator.
 class Interp1D {
  public:
   /// \brief Output stream operator for printing.
-  friend std::ostream& operator <<(std::ostream& stream, Grad1D &in);
+  friend std::ostream& operator <<(std::ostream& stream, Interp1D &in);
 
   /// \brief Default constructor.
   Interp1D();
@@ -99,7 +102,8 @@ class Interp1D {
 
   \return Success of the solution.
   */
-  bool ConstructInterp1D(int order_accuracy = kDefaultOrderAccuracy);
+  bool ConstructInterp1D(int order_accuracy = kDefaultOrderAccuracy,
+                         mtk::DirInterp dir = SCALAR_TO_VECTOR);
 
   /*!
   \brief Returns coefficients for the interior of the grid.

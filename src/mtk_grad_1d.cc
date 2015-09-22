@@ -364,8 +364,6 @@ mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
 
-  /// \todo Verify minimum number of cells required for the gradient.
-
   mtk::Tools::Prevent(nn < 3*order_accuracy_ - 2, __FILE__, __LINE__, __func__);
   #endif
 

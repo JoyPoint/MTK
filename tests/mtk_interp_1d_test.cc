@@ -1,13 +1,11 @@
 /*!
-\file mtk_enums.h
+\file mtk_interp_1d_test.cc
 
-\brief Considered enumeration types in the MTK.
-
-Enumeration types are used throughout the MTK to differentiate instances of
-derived classes, as well as for mnemonic purposes. In this file, the enumeration
-types are listed alphabetically.
+\brief Testing the 1D interpolation.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
+
+\author: Johnny Corbino - jcorbino at mail dot sdsu dot edu
 */
 /*
 Copyright (C) 2015, Computational Science Research Center, San Diego State
@@ -55,78 +53,68 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef MTK_INCLUDE_ENUMS_H_
-#define MTK_INCLUDE_ENUMS_H_
+#if __cplusplus == 201103L
 
-namespace mtk {
+#include <iostream>
 
-/*!
-\enum MatrixStorage
+#include "mtk.h"
 
-\ingroup c02-enums
+void Test1() {
 
-\brief Considered matrix storage schemes to implement sparse matrices.
+  mtk::Tools::BeginTestNo(1);
 
-The considered sparse storage schemes are selected so that these are compatible
-with some of the most used mathematical APIs, as follows: DENSE and BANDED for
-<a href="http://www.netlib.org/blas/">BLAS</a>,
-<a href="http://www.netlib.org/lapack/">LAPACK</a>, and
-<a href="http://www.netlib.org/scalapack/">ScaLAPACK</a>. Finally, CRS for
-<a href="http://crd.lbl.gov/~xiaoye/SuperLU/">SuperLU</a>.
-*/
-enum MatrixStorage {
-  DENSE,    ///< Dense matrices, implemented as a 1D array: DenseMatrix.
-  BANDED,   ///< Banded matrices ala LAPACK and ScaLAPACK: Must be implemented.
-  CRS       ///< Compressed-Rows Storage: Must be implemented.
-};
+  mtk::Interp1D inter;
 
-/*!
-\enum MatrixOrdering
+  bool info = inter.ConstructInterp1D();
 
-\ingroup c02-enums
+  if (!info) {
+    std::cerr << "Mimetic grad (2nd order) could not be built." << std::endl;
+  }
 
-\brief Considered matrix ordering (for Fortran purposes).
+  std::cout << inter << std::endl;
 
-Row-major ordering is used for most application in C/C++. For Fortran purposes,
-the matrices must be listed in a column-major ordering.
-
-\sa https://en.wikipedia.org/wiki/Row-major_order
-*/
-enum MatrixOrdering {
-  ROW_MAJOR,  ///< Row-major ordering (C/C++).
-  COL_MAJOR   ///< Column-major ordering (Fortran).
-};
-
-/*!
-\enum FieldNature
-
-\ingroup c02-enums
-
-\brief Nature of the field discretized in a given grid.
-
-Fields can be **scalar** or **vector** in nature.
-
-\sa https://en.wikipedia.org/wiki/Scalar_field
-
-\sa https://en.wikipedia.org/wiki/Vector_field
-*/
-enum FieldNature {
-  SCALAR,  ///< Scalar-valued field.
-  VECTOR   ///< Vector-valued field.
-};
-
-/*!
-\enum DirInterp
-
-\ingroup c02-enums
-
-\brief 1D interpolation operator.
-
-Implements an arithmetic average.
-*/
-enum DirInterp {
-  SCALAR_TO_VECTOR,
-  VECTOR_TO_SCALAR
-};
+  mtk::Tools::EndTestNo(1);
 }
-#endif  // End of: MTK_INCLUDE_ENUMS_H_
+
+void Test2() {
+
+  mtk::Tools::BeginTestNo(2);
+
+  mtk::Interp1D inter;
+
+  bool info = inter.ConstructInterp1D();
+
+  if (!info) {
+    std::cerr << "Mimetic grad (2nd order) could not be built." << std::endl;
+  }
+
+  std::cout << inter << std::endl;
+
+  mtk::UniStgGrid1D grid(0.0, 1.0, 5);
+
+  std::cout << grid << std::endl;
+
+  mtk::DenseMatrix interpm(inter.ReturnAsDenseMatrix(grid));
+
+  std::cout << interpm << std::endl;
+
+  mtk::Tools::EndTestNo(2);
+}
+
+int main () {
+
+  std::cout << "Testing mtk::Interp1D class." << std::endl;
+
+  Test1();
+  Test2();
+}
+
+#else
+#include <iostream>
+using std::cout;
+using std::endl;
+int main () {
+  cout << "This code HAS to be compiled with support for C++11." << endl;
+  cout << "Exiting..." << endl;
+}
+#endif

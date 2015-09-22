@@ -6,6 +6,8 @@
 This class implements a 1D interpolation operator.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
+
+\author: Johnny Corbino - jcorbino at mail dot sdsu dot edu
 */
 /*
 Copyright (C) 2015, Computational Science Research Center, San Diego State
@@ -53,7 +55,27 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "interp_1d.h"
+#include <cstring>
+
+#include "mtk_tools.h"
+
+#include "mtk_interp_1d.h"
+
+namespace mtk {
+
+std::ostream& operator <<(std::ostream &stream, mtk::Interp1D &in) {
+
+  /// 1. Print approximating coefficients for the interior.
+
+  stream << "coeffs_interior_[1:" << in.order_accuracy_ << "] = ";
+  for (auto ii = 0; ii < in.order_accuracy_; ++ii) {
+    stream << std::setw(9) << in.coeffs_interior_[ii] << " ";
+  }
+  stream << std::endl;
+
+  return stream;
+}
+}
 
 mtk::Interp1D::Interp1D():
   dir_interp_(mtk::SCALAR_TO_VECTOR),
@@ -94,14 +116,12 @@ bool mtk::Interp1D::ConstructInterp1D(int order_accuracy, mtk::DirInterp dir) {
       std::endl;
     std::cerr << memory_allocation_exception.what() << std::endl;
   }
-  memset(coeffs_interior_, mtk::kZero, sizeof(pp[0])*order_accuracy_);
+  memset(coeffs_interior_,
+         mtk::kZero,
+         sizeof(coeffs_interior_[0])*order_accuracy_);
 
-  if (dir == mtk::SCALAR_TO_VECTOR) {
-    for (int ii = 0; ii < order_accuracy_; ++ii) {
-      coeffs_interior_[ii] = mtk::kOne;
-    }
-  } else {
-    /// \todo Complete the opposite interpolation direction.
+  for (int ii = 0; ii < order_accuracy_; ++ii) {
+    coeffs_interior_[ii] = mtk::kOne;
   }
 
   return true;
@@ -118,62 +138,37 @@ mtk::DenseMatrix mtk::Interp1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
-
-  /// \todo Verify minimum number of cells required for the gradient.
-
-  mtk::Tools::Prevent(nn < 3*order_accuracy_ - 2, __FILE__, __LINE__, __func__);
   #endif
 
-  mtk::Real inv_delta_x{mtk::kOne/grid.delta_x()};
+  int gg_num_rows{};  // Number of rows.
+  int gg_num_cols{};  // Number of columns.
 
-  int gg_num_rows = nn + 1;
-  int gg_num_cols = nn + 2;
-  int elements_per_row = num_bndy_coeffs_;
-  int num_extra_rows = order_accuracy_/2;
+  if (dir_interp_ == mtk::SCALAR_TO_VECTOR) {
+    gg_num_rows = nn + 1;
+    gg_num_cols = nn + 2;
+  } else {
+    gg_num_rows = nn + 2;
+    gg_num_cols = nn + 1;
+  }
 
   // Output matrix featuring sizes for gradient operators.
   mtk::DenseMatrix out(gg_num_rows, gg_num_cols);
 
-  /// 1. Insert mimetic boundary at the west.
+  /// 1. Preserve values at the boundary.
 
-  auto ee_index = 0;
-  for (auto ii = 0; ii < num_extra_rows; ii++) {
-    auto cc = 0;
-    for(auto jj = 0 ; jj < gg_num_cols; jj++) {
-      if(cc >= elements_per_row) {
-        out.SetValue(ii, jj, mtk::kZero);
-      } else {
-        out.SetValue(ii,jj,
-                     gradient_[2*order_accuracy_ + 1 + ee_index++]*inv_delta_x);
-        cc++;
-      }
-    }
-  }
+  out.SetValue(0, 0, mtk::kOne);
 
   /// 2. Insert coefficients for the interior of the grid.
 
-  for (auto ii = num_extra_rows; ii < gg_num_rows - num_extra_rows; ii++) {
-    auto jj = ii - num_extra_rows + 1;
-    for (auto cc = 0; cc < order_accuracy_; cc++, jj++) {
-      out.SetValue(ii, jj, coeffs_interior_[cc]*inv_delta_x);
+  for (auto ii = 1; ii < gg_num_rows - 1; ++ii) {
+    for(auto jj = ii ; jj < order_accuracy_ + ii; ++jj) {
+      out.SetValue(ii, jj, 1.0/order_accuracy_);
     }
   }
 
-  /// 3. Impose center-skew symmetry by permuting the mimetic boundaries.
+  /// 3. Impose center-skew symmetry by permuting the boundaries.
 
-  ee_index = 0;
-  for (auto ii = gg_num_rows - 1; ii >= gg_num_rows - num_extra_rows; ii--) {
-    auto cc = 0;
-    for (auto jj = gg_num_cols - 1; jj >= 0; jj--) {
-      if(cc >= elements_per_row) {
-        out.SetValue(ii,jj,mtk::kZero);
-      } else {
-        out.SetValue(ii,jj,
-                     -gradient_[2*order_accuracy_ + 1 + ee_index++]*inv_delta_x);
-        cc++;
-      }
-     }
-  }
+  out.SetValue(gg_num_rows - 1, gg_num_cols - 1, mtk::kOne);
 
   return out;
 }

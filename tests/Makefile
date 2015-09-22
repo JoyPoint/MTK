@@ -7,7 +7,7 @@ include ../Makefile.inc
 all: mtk_dense_matrix_test \
 	mtk_blas_adapter_test mtk_lapack_adapter_test mtk_glpk_adapter_test \
 	mtk_uni_stg_grid_1d_test \
-	mtk_grad_1d_test mtk_div_1d_test mtk_lap_1d_test
+	mtk_grad_1d_test mtk_div_1d_test mtk_lap_1d_test mtk_interp_1d_test
 
 EXE = \
 	mtk_dense_matrix_test.exe \
@@ -17,7 +17,8 @@ EXE = \
 	mtk_uni_stg_grid_1d_test.exe \
 	mtk_grad_1d_test.exe \
 	mtk_div_1d_test.exe \
-	mtk_lap_1d_test.exe
+	mtk_lap_1d_test.exe \
+	mtk_interp_1d_test.exe
 
 #   Compiling statements.
 #   __________________________________________________________________
@@ -60,6 +61,10 @@ mtk_lap_1d_test: mtk_lap_1d_test.o mtk_lap_1d_test.cc
 	$(LINKER) mtk_lap_1d_test.o $(LIBS) -o mtk_lap_1d_test.exe
 	@echo ' '
 
+mtk_interp_1d_test: mtk_interp_1d_test.o mtk_interp_1d_test.cc
+	$(LINKER) mtk_interp_1d_test.o $(LIBS) -o mtk_interp_1d_test.exe
+	@echo ' '
+
 #   Utilities.
 #   __________________________________________________________________
 
@@ -79,7 +84,9 @@ memcheck:
 	valgrind $(MEMCHECK_OPTS) \
 	./mtk_div_1d_test.exe >& mtk_div_1d_test.memcheck
 	valgrind $(MEMCHECK_OPTS) \
-	./mtk_lap_1d_test >& mtk_lap_1d_test.memcheck
+	./mtk_lap_1d_test.exe >& mtk_lap_1d_test.memcheck
+	valgrind $(MEMCHECK_OPTS) \
+	./mtk_interp_1d_test.exe >& mtk_interp_1d_test.memcheck
 
 clean:
 	rm -f *~ *.o *.mps *.dat *.png *.memcheck $(EXE)

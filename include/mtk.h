@@ -427,6 +427,7 @@ Mimetic operators.
 #include "mtk_grad_1d.h"
 #include "mtk_div_1d.h"
 #include "mtk_lap_1d.h"
+#include "mtk_interp_1d.h"
 #include "mtk_quad_1d.h"
 
 #include "mtk_bc_desc_1d.h"
