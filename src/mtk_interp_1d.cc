@@ -162,7 +162,7 @@ mtk::DenseMatrix mtk::Interp1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
 
   for (auto ii = 1; ii < gg_num_rows - 1; ++ii) {
     for(auto jj = ii ; jj < order_accuracy_ + ii; ++jj) {
-      out.SetValue(ii, jj, 1.0/order_accuracy_);
+      out.SetValue(ii, jj, mtk::kOne/order_accuracy_);
     }
   }
 
