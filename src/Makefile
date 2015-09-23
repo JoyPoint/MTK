@@ -17,7 +17,8 @@ NUMMETHODS = \
 	mtk_glpk_adapter.o
 
 GRIDS = \
-	mtk_uni_stg_grid_1d.o
+	mtk_uni_stg_grid_1d.o \
+	mtk_uni_stg_grid_2d.o
 
 MIMOPS = \
 	mtk_grad_1d.o \

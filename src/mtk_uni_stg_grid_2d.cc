@@ -1,9 +1,9 @@
 /*!
-\file mtk_uni_stg_grid_1d.cc
+\file mtk_uni_stg_grid_2d.cc
 
-\brief Implementation of an 1D uniform staggered grid.
+\brief Implementation of an 2D uniform staggered grid.
 
-Implementation of an 1D uniform staggered grid.
+Implementation of an 2D uniform staggered grid.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -55,17 +55,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <iostream>
 #include <iomanip>
-#include <fstream>
 
-#include "mtk_roots.h"
-#include "mtk_enums.h"
+#include <algorithm>
+
 #include "mtk_tools.h"
 
-#include "mtk_uni_stg_grid_1d.h"
+#include "mtk_uni_stg_grid_2d.h"
 
 namespace mtk {
 
-std::ostream& operator <<(std::ostream &stream, mtk::UniStgGrid1D &in) {
+std::ostream& operator <<(std::ostream &stream, mtk::UniStgGrid2D &in) {
 
   stream << '[' << in.west_bndy_x_ << ':' << in.num_cells_x_ << ':' <<
   in.east_bndy_x_ << "] = " << std::endl << std::endl;
@@ -78,6 +77,12 @@ std::ostream& operator <<(std::ostream &stream, mtk::UniStgGrid1D &in) {
   }
   stream << std::endl;
 
+  stream << "y:";
+  for (unsigned int ii = 0; ii < in.discrete_domain_y_.size(); ++ii) {
+    stream << std::setw(10) << in.discrete_domain_y_[ii];
+  }
+  stream << std::endl;
+
   /// 2. Print scalar field.
 
   if (in.nature_ == mtk::SCALAR) {
@@ -86,8 +91,11 @@ std::ostream& operator <<(std::ostream &stream, mtk::UniStgGrid1D &in) {
   else {
     stream << "v:";
   }
-  for (unsigned int ii = 0; ii < in.discrete_field_u_.size(); ++ii) {
-    stream << std::setw(10) << in.discrete_field_u_[ii];
+  for (unsigned int ii = 0; ii < in.num_cells_x_ + 2; ++ii) {
+    for (unsigned int jj = 0; jj < in.num_cells_y_ + 2; ++jj) {
+      stream << std::setw(10) << in.discrete_field_u_[ii*in.num_cells_y_ + jj];
+    }
+    stream << std::endl;
   }
 
   stream << std::endl;
@@ -96,34 +104,50 @@ std::ostream& operator <<(std::ostream &stream, mtk::UniStgGrid1D &in) {
 }
 }
 
-mtk::UniStgGrid1D::UniStgGrid1D():
+mtk::UniStgGrid2D::UniStgGrid2D():
     nature_(),
     discrete_domain_x_(),
+    discrete_domain_y_(),
     discrete_field_u_(),
     west_bndy_x_(),
     east_bndy_x_(),
     num_cells_x_(),
-    delta_x_() {}
+    delta_x_(),
+    south_bndy_y_(),
+    north_bndy_y_(),
+    num_cells_y_(),
+    delta_y_() {}
 
-mtk::UniStgGrid1D::UniStgGrid1D(const UniStgGrid1D &grid):
+mtk::UniStgGrid2D::UniStgGrid2D(const UniStgGrid2D &grid):
     nature_(grid.nature_),
     west_bndy_x_(grid.west_bndy_x_),
     east_bndy_x_(grid.east_bndy_x_),
     num_cells_x_(grid.num_cells_x_),
-    delta_x_(grid.delta_x_) {
+    delta_x_(grid.delta_x_),
+    south_bndy_y_(grid.south_bndy_y_),
+    north_bndy_y_(grid.north_bndy_y_),
+    num_cells_y_(grid.num_cells_y_),
+    delta_y_(grid.delta_y_) {
 
     std::copy(grid.discrete_domain_x_.begin(),
               grid.discrete_domain_x_.begin() + grid.discrete_domain_x_.size(),
               discrete_domain_x_.begin());
+
+    std::copy(grid.discrete_domain_y_.begin(),
+              grid.discrete_domain_y_.begin() + grid.discrete_domain_y_.size(),
+              discrete_domain_y_.begin());
 
     std::copy(grid.discrete_field_u_.begin(),
               grid.discrete_field_u_.begin() + grid.discrete_field_u_.size(),
               discrete_field_u_.begin());
 }
 
-mtk::UniStgGrid1D::UniStgGrid1D(const Real &west_bndy_x,
+mtk::UniStgGrid2D::UniStgGrid2D(const Real &west_bndy_x,
                                 const Real &east_bndy_x,
                                 const int &num_cells_x,
+                                const Real &south_bndy_y,
+                                const Real &north_bndy_y,
+                                const int &num_cells_y,
                                 const mtk::FieldNature &nature) {
 
   #if MTK_DEBUG_LEVEL > 0
@@ -131,121 +155,25 @@ mtk::UniStgGrid1D::UniStgGrid1D(const Real &west_bndy_x,
   mtk::Tools::Prevent(east_bndy_x < mtk::kZero, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(east_bndy_x <= west_bndy_x, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(num_cells_x < 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(south_bndy_y < mtk::kZero, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(north_bndy_y < mtk::kZero, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(south_bndy_y <= north_bndy_y,
+                      __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(num_cells_y < 0, __FILE__, __LINE__, __func__);
   #endif
 
   nature_ = nature;
+
   west_bndy_x_ = west_bndy_x;
   east_bndy_x_ = east_bndy_x;
   num_cells_x_ = num_cells_x;
 
+  south_bndy_y_ = south_bndy_y;
+  north_bndy_y_ = north_bndy_y;
+  num_cells_y_ = num_cells_y;
+
   delta_x_ = (east_bndy_x - west_bndy_x)/((mtk::Real) num_cells_x);
+  delta_y_ = (north_bndy_y - south_bndy_y)/((mtk::Real) num_cells_y);
 }
 
-mtk::UniStgGrid1D::~UniStgGrid1D() {}
-
-mtk::Real mtk::UniStgGrid1D::delta_x() const {
-
-  return delta_x_;
-}
-
-mtk::Real *mtk::UniStgGrid1D::discrete_domain_x() {
-
-  return discrete_domain_x_.data();
-}
-
-mtk::Real *mtk::UniStgGrid1D::discrete_field_u() {
-
-  return discrete_field_u_.data();
-}
-
-int mtk::UniStgGrid1D::num_cells_x() const {
-
-  return num_cells_x_;
-}
-
-void mtk::UniStgGrid1D::BindScalarField(
-    mtk::Real (*ScalarField)(mtk::Real xx)) {
-
-  #if MTK_DEBUG_LEVEL > 0
-  mtk::Tools::Prevent(nature_ == mtk::VECTOR, __FILE__, __LINE__, __func__);
-  #endif
-
-  /// 1. Create collection of spatial coordinates.
-
-  discrete_domain_x_.reserve(num_cells_x_ + 2);
-
-  discrete_domain_x_.push_back(west_bndy_x_);
-  #ifdef MTK_PRECISION_DOUBLE
-  auto first_center = west_bndy_x_ + delta_x_/2.0;
-  #else
-  auto first_center = west_bndy_x_ + delta_x_/2.0f;
-  #endif
-  discrete_domain_x_.push_back(first_center);
-  for (auto ii = 1; ii < num_cells_x_; ++ii) {
-    discrete_domain_x_.push_back(first_center + ii*delta_x_);
-  }
-  discrete_domain_x_.push_back(east_bndy_x_);
-
-  /// 2. Create collection of field samples.
-
-  discrete_field_u_.reserve(num_cells_x_ + 2);
-
-  discrete_field_u_.push_back(ScalarField(west_bndy_x_));
-
-  discrete_field_u_.push_back(ScalarField(first_center));
-  for (auto ii = 1; ii < num_cells_x_; ++ii) {
-    discrete_field_u_.push_back(ScalarField(first_center + ii*delta_x_));
-  }
-  discrete_field_u_.push_back(ScalarField(east_bndy_x_));
-}
-
-void mtk::UniStgGrid1D::BindVectorField(
-    mtk::Real (*VectorField)(mtk::Real xx)) {
-
-  #if MTK_DEBUG_LEVEL > 0
-  mtk::Tools::Prevent(nature_ == mtk::SCALAR, __FILE__, __LINE__, __func__);
-  #endif
-
-  /// 1. Create collection of spatial coordinates.
-
-  discrete_domain_x_.reserve(num_cells_x_ + 1);
-
-  discrete_domain_x_.push_back(west_bndy_x_);
-  for (auto ii = 1; ii < num_cells_x_; ++ii) {
-    discrete_domain_x_.push_back(west_bndy_x_ + ii*delta_x_);
-  }
-  discrete_domain_x_.push_back(east_bndy_x_);
-
-  /// 2. Create collection of field samples.
-
-  discrete_field_u_.reserve(num_cells_x_ + 1);
-
-  discrete_field_u_.push_back(VectorField(west_bndy_x_));
-  for (auto ii = 1; ii < num_cells_x_; ++ii) {
-    discrete_field_u_.push_back(VectorField(west_bndy_x_ + ii*delta_x_));
-  }
-  discrete_field_u_.push_back(VectorField(east_bndy_x_));
-}
-
-bool mtk::UniStgGrid1D::WriteToFile(std::string filename,
-                                    std::string space_name,
-                                    std::string field_name) {
-
-  std::ofstream output_dat_file;  // Output file.
-
-  output_dat_file.open(filename);
-
-  if (!output_dat_file.is_open()) {
-    return false;
-  }
-
-  output_dat_file << "# " << space_name <<  ' ' << field_name << std::endl;
-  for (unsigned int ii = 0; ii < discrete_domain_x_.size(); ++ii) {
-    output_dat_file << discrete_domain_x_[ii] << ' ' << discrete_field_u_[ii] <<
-      std::endl;
-  }
-
-  output_dat_file.close();
-
-  return true;
-}
+mtk::UniStgGrid2D::~UniStgGrid2D() {}
