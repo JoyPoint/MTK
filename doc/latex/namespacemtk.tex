@@ -17,12 +17,22 @@ class \hyperlink{classmtk_1_1DenseMatrix}{Dense\-Matrix}
 \begin{DoxyCompactList}\small\item\em Defines a common dense matrix, using a 1\-D array. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Div1D}{Div1\-D}
 \begin{DoxyCompactList}\small\item\em Implements a 1\-D mimetic divergence operator. \end{DoxyCompactList}\item 
+class \hyperlink{classmtk_1_1Div2D}{Div2\-D}
+\item 
 class \hyperlink{classmtk_1_1GLPKAdapter}{G\-L\-P\-K\-Adapter}
 \begin{DoxyCompactList}\small\item\em Adapter class for the G\-L\-P\-K A\-P\-I. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Grad1D}{Grad1\-D}
 \begin{DoxyCompactList}\small\item\em Implements a 1\-D mimetic gradient operator. \end{DoxyCompactList}\item 
+class \hyperlink{classmtk_1_1Grad2D}{Grad2\-D}
+\item 
+class \hyperlink{classmtk_1_1Interp1D}{Interp1\-D}
+\begin{DoxyCompactList}\small\item\em Implements a 1\-D interpolation operator. \end{DoxyCompactList}\item 
+class \hyperlink{classmtk_1_1Interp2D}{Interp2\-D}
+\item 
 class \hyperlink{classmtk_1_1Lap1D}{Lap1\-D}
 \begin{DoxyCompactList}\small\item\em Implements a 1\-D mimetic Laplacian operator. \end{DoxyCompactList}\item 
+class \hyperlink{classmtk_1_1Lap2D}{Lap2\-D}
+\item 
 class \hyperlink{classmtk_1_1LAPACKAdapter}{L\-A\-P\-A\-C\-K\-Adapter}
 \begin{DoxyCompactList}\small\item\em Adapter class for the L\-A\-P\-A\-C\-K A\-P\-I. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Matrix}{Matrix}
@@ -32,7 +42,9 @@ class \hyperlink{classmtk_1_1Quad1D}{Quad1\-D}
 class \hyperlink{classmtk_1_1Tools}{Tools}
 \begin{DoxyCompactList}\small\item\em Tool manager class. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1UniStgGrid1D}{Uni\-Stg\-Grid1\-D}
-\begin{DoxyCompactList}\small\item\em Uniform 1\-D Staggered Grid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Uniform 1\-D Staggered Grid. \end{DoxyCompactList}\item 
+class \hyperlink{classmtk_1_1UniStgGrid2D}{Uni\-Stg\-Grid2\-D}
+\begin{DoxyCompactList}\small\item\em Uniform 2\-D Staggered Grid. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -53,7 +65,11 @@ enum \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{Matrix\-Ord
 enum \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{Field\-Nature} \{ \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{S\-C\-A\-L\-A\-R}, 
 \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2a3d8cb27a993651a74d67fb8c98ae91b2}{V\-E\-C\-T\-O\-R}
  \}
-\begin{DoxyCompactList}\small\item\em Nature of the field discretized in a given grid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Nature of the field discretized in a given grid. \end{DoxyCompactList}\item 
+enum \hyperlink{group__c02-enums_ga674ec67bd1baa04e5dc06c2bcc351972}{Dir\-Interp} \{ \hyperlink{group__c02-enums_ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139}{S\-C\-A\-L\-A\-R\-\_\-\-T\-O\-\_\-\-V\-E\-C\-T\-O\-R}, 
+\hyperlink{group__c02-enums_ga674ec67bd1baa04e5dc06c2bcc351972a122cf2e24aef105e9214698206af6904}{V\-E\-C\-T\-O\-R\-\_\-\-T\-O\-\_\-\-S\-C\-A\-L\-A\-R}
+ \}
+\begin{DoxyCompactList}\small\item\em 1\-D interpolation operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -71,6 +87,8 @@ std\-::ostream \& \hyperlink{namespacemtk_a12db5e6fff3788f728819a60d5c28d01}{ope
 \item 
 std\-::ostream \& \hyperlink{namespacemtk_a3f546b8a3743b8719db17e33f2d7ef7f}{operator$<$$<$} (std\-::ostream \&stream, \hyperlink{classmtk_1_1Grad1D}{mtk\-::\-Grad1\-D} \&in)
 \item 
+std\-::ostream \& \hyperlink{namespacemtk_a1defe4e644a8c7d89bcceb0b1bc2372f}{operator$<$$<$} (std\-::ostream \&stream, \hyperlink{classmtk_1_1Interp1D}{mtk\-::\-Interp1\-D} \&in)
+\item 
 std\-::ostream \& \hyperlink{namespacemtk_af667c01a388ef1815d549b09b2d76bcc}{operator$<$$<$} (std\-::ostream \&stream, \hyperlink{classmtk_1_1Lap1D}{mtk\-::\-Lap1\-D} \&in)
 \item 
 void \hyperlink{namespacemtk_ae1d63c7ae73b3c48e0dca81eb19039f3}{sgesv\-\_\-} (int $\ast$n, int $\ast$nrhs, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$a, int $\ast$lda, int $\ast$ipiv, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$b, int $\ast$ldb, int $\ast$info)
@@ -82,6 +100,8 @@ void \hyperlink{namespacemtk_aece7419193d8ab43e186c97ad6d529fb}{sgeqrf\-\_\-} (i
 void \hyperlink{namespacemtk_a59c58408e1c0a9837b67a417be986b82}{sormqr\-\_\-} (char $\ast$side, char $\ast$trans, int $\ast$m, int $\ast$n, int $\ast$k, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$a, int $\ast$lda, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$tau, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$c, int $\ast$ldc, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$work, int $\ast$lwork, int $\ast$info)
 \begin{DoxyCompactList}\small\item\em Single-\/precision Orthogonal \hyperlink{classmtk_1_1Matrix}{Matrix} from Q\-R factorization. \end{DoxyCompactList}\item 
 std\-::ostream \& \hyperlink{namespacemtk_a97f79d150b3b5c7b76d4fcc2271f972b}{operator$<$$<$} (std\-::ostream \&stream, \hyperlink{classmtk_1_1UniStgGrid1D}{mtk\-::\-Uni\-Stg\-Grid1\-D} \&in)
+\item 
+std\-::ostream \& \hyperlink{namespacemtk_a82cd99c0c7e695e4eccfbe7380525959}{operator$<$$<$} (std\-::ostream \&stream, \hyperlink{classmtk_1_1UniStgGrid2D}{mtk\-::\-Uni\-Stg\-Grid2\-D} \&in)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -94,7 +114,7 @@ const float \hyperlink{group__c01-roots_gae914b125d81d1b97e0aee7bbc7739786}{k\-D
 \begin{DoxyCompactList}\small\item\em Considered tolerance for comparisons in numerical methods. \end{DoxyCompactList}\item 
 const int \hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{k\-Default\-Order\-Accuracy} \{2\}
 \begin{DoxyCompactList}\small\item\em Default order of accuracy for mimetic operators. \end{DoxyCompactList}\item 
-const float \hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{k\-Default\-Mimetic\-Threshold} \{1.e-\/6f\}
+const float \hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{k\-Default\-Mimetic\-Threshold} \{1e-\/6f\}
 \begin{DoxyCompactList}\small\item\em Default tolerance for higher-\/order mimetic operators. \end{DoxyCompactList}\item 
 const int \hyperlink{group__c01-roots_ga0898eef2108473e44a5223932d571c31}{k\-Critical\-Order\-Accuracy\-Div} \{8\}
 \begin{DoxyCompactList}\small\item\em At this order (and higher) we must use the C\-B\-S\-A to construct. \end{DoxyCompactList}\item 
@@ -103,6 +123,37 @@ const int \hyperlink{group__c01-roots_ga295dd2f403c775ecd942c22b5a777496}{k\-Cri
 
 
 \subsection{Function Documentation}
+\hypertarget{namespacemtk_a1defe4e644a8c7d89bcceb0b1bc2372f}{\index{mtk@{mtk}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!mtk@{mtk}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& mtk\-::operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{{\bf mtk\-::\-Interp1\-D} \&}]{in}
+\end{DoxyParamCaption}
+)}}\label{namespacemtk_a1defe4e644a8c7d89bcceb0b1bc2372f}
+
+\begin{DoxyEnumerate}
+\item Print approximating coefficients for the interior. 
+\end{DoxyEnumerate}
+
+Definition at line \hyperlink{mtk__interp__1d_8cc_source_l00066}{66} of file \hyperlink{mtk__interp__1d_8cc_source}{mtk\-\_\-interp\-\_\-1d.\-cc}.
+
+\hypertarget{namespacemtk_a82cd99c0c7e695e4eccfbe7380525959}{\index{mtk@{mtk}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!mtk@{mtk}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& mtk\-::operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{{\bf mtk\-::\-Uni\-Stg\-Grid2\-D} \&}]{in}
+\end{DoxyParamCaption}
+)}}\label{namespacemtk_a82cd99c0c7e695e4eccfbe7380525959}
+
+\begin{DoxyEnumerate}
+\item Print spatial coordinates.
+\item Print scalar field. 
+\end{DoxyEnumerate}
+
+Definition at line \hyperlink{mtk__uni__stg__grid__2d_8cc_source_l00066}{66} of file \hyperlink{mtk__uni__stg__grid__2d_8cc_source}{mtk\-\_\-uni\-\_\-stg\-\_\-grid\-\_\-2d.\-cc}.
+
 \hypertarget{namespacemtk_a97f79d150b3b5c7b76d4fcc2271f972b}{\index{mtk@{mtk}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!mtk@{mtk}}
 \subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& mtk\-::operator$<$$<$ (
@@ -113,7 +164,8 @@ const int \hyperlink{group__c01-roots_ga295dd2f403c775ecd942c22b5a777496}{k\-Cri
 )}}\label{namespacemtk_a97f79d150b3b5c7b76d4fcc2271f972b}
 
 \begin{DoxyEnumerate}
-\item Print spatial coordinates. 
+\item Print spatial coordinates.
+\item Print scalar field. 
 \end{DoxyEnumerate}
 
 Definition at line \hyperlink{mtk__uni__stg__grid__1d_8cc_source_l00068}{68} of file \hyperlink{mtk__uni__stg__grid__1d_8cc_source}{mtk\-\_\-uni\-\_\-stg\-\_\-grid\-\_\-1d.\-cc}.
@@ -149,7 +201,8 @@ Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00075}{75} of file 
 
 
 
-Here is the call graph for this function\-:\nopagebreak
+Here is the call graph for this function\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -157,24 +210,6 @@ Here is the call graph for this function\-:\nopagebreak
 \end{center}
 \end{figure}
 
-
-\hypertarget{namespacemtk_a12db5e6fff3788f728819a60d5c28d01}{\index{mtk@{mtk}!operator$<$$<$@{operator$<$$<$}}
-\index{operator$<$$<$@{operator$<$$<$}!mtk@{mtk}}
-\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& mtk\-::operator$<$$<$ (
-\begin{DoxyParamCaption}
-\item[{std\-::ostream \&}]{stream, }
-\item[{{\bf mtk\-::\-Div1\-D} \&}]{in}
-\end{DoxyParamCaption}
-)}}\label{namespacemtk_a12db5e6fff3788f728819a60d5c28d01}
-
-\begin{DoxyEnumerate}
-\item Print order of accuracy.
-\item Print approximating coefficients for the interior.
-\item Print mimetic weights.
-\item Print mimetic approximations at the boundary. 
-\end{DoxyEnumerate}
-
-Definition at line \hyperlink{mtk__div__1d_8cc_source_l00079}{79} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
 
 \hypertarget{namespacemtk_a3f546b8a3743b8719db17e33f2d7ef7f}{\index{mtk@{mtk}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!mtk@{mtk}}
@@ -194,6 +229,24 @@ Definition at line \hyperlink{mtk__div__1d_8cc_source_l00079}{79} of file \hyper
 
 Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00079}{79} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\-\_\-grad\-\_\-1d.\-cc}.
 
+\hypertarget{namespacemtk_a12db5e6fff3788f728819a60d5c28d01}{\index{mtk@{mtk}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!mtk@{mtk}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\-::ostream\& mtk\-::operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\-::ostream \&}]{stream, }
+\item[{{\bf mtk\-::\-Div1\-D} \&}]{in}
+\end{DoxyParamCaption}
+)}}\label{namespacemtk_a12db5e6fff3788f728819a60d5c28d01}
+
+\begin{DoxyEnumerate}
+\item Print order of accuracy.
+\item Print approximating coefficients for the interior.
+\item Print mimetic weights.
+\item Print mimetic approximations at the boundary. 
+\end{DoxyEnumerate}
+
+Definition at line \hyperlink{mtk__div__1d_8cc_source_l00079}{79} of file \hyperlink{mtk__div__1d_8cc_source}{mtk\-\_\-div\-\_\-1d.\-cc}.
+
 \hypertarget{namespacemtk_a81a2d7d1ea9eff65ae13646c93dad5e9}{\index{mtk@{mtk}!saxpy\-\_\-@{saxpy\-\_\-}}
 \index{saxpy\-\_\-@{saxpy\-\_\-}!mtk@{mtk}}
 \subsubsection[{saxpy\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::saxpy\-\_\- (
@@ -208,8 +261,7 @@ Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00079}{79} of file \hype
 )}}\label{namespacemtk_a81a2d7d1ea9eff65ae13646c93dad5e9}
 
 
-Here is the caller graph for this function\-:
-\nopagebreak
+Here is the caller graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -313,8 +365,7 @@ Here is the caller graph for this function\-:\nopagebreak
 )}}\label{namespacemtk_adb7c0560326b8e57f255e58b87ec76b0}
 
 
-Here is the caller graph for this function\-:
-\nopagebreak
+Here is the caller graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -342,8 +393,7 @@ Here is the caller graph for this function\-:
 )}}\label{namespacemtk_a88daff7ad6f251a58b94aa2d0c94d069}
 
 
-Here is the caller graph for this function\-:
-\nopagebreak
+Here is the caller graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -423,8 +473,7 @@ as returned by S\-G\-E\-Q\-R\-F. Q is of order M if S\-I\-D\-E = 'L' and of orde
 )}}\label{namespacemtk_a508e99fcb14d526bc43aa0a80aa4b658}
 
 
-Here is the caller graph for this function\-:
-\nopagebreak
+Here is the caller graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

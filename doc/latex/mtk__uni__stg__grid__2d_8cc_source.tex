@@ -1,0 +1,206 @@
+\hypertarget{mtk__uni__stg__grid__2d_8cc}{\section{mtk\-\_\-uni\-\_\-stg\-\_\-grid\-\_\-2d.\-cc}
+\label{mtk__uni__stg__grid__2d_8cc}\index{src/mtk\-\_\-uni\-\_\-stg\-\_\-grid\-\_\-2d.\-cc@{src/mtk\-\_\-uni\-\_\-stg\-\_\-grid\-\_\-2d.\-cc}}
+}
+
+\begin{DoxyCode}
+00001 
+00010 \textcolor{comment}{/*}
+00011 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00012 \textcolor{comment}{University. All rights reserved.}
+00013 \textcolor{comment}{}
+00014 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00015 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00016 \textcolor{comment}{}
+00017 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00018 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00019 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
+00020 \textcolor{comment}{}
+00021 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00022 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00023 \textcolor{comment}{}
+00024 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
+00025 \textcolor{comment}{list of conditions and the following disclaimer.}
+00026 \textcolor{comment}{}
+00027 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
+00028 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00029 \textcolor{comment}{other materials provided with the distribution.}
+00030 \textcolor{comment}{}
+00031 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
+00032 \textcolor{comment}{prior written permission from the the copyright holders.}
+00033 \textcolor{comment}{}
+00034 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00035 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00036 \textcolor{comment}{specific prior written permission.}
+00037 \textcolor{comment}{}
+00038 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00039 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00040 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00041 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00042 \textcolor{comment}{parties intellectual property rights.}
+00043 \textcolor{comment}{}
+00044 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00045 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00046 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00047 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00048 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00049 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00050 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00051 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00052 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00053 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00054 \textcolor{comment}{*/}
+00055 
+00056 \textcolor{preprocessor}{#include <iostream>}
+00057 \textcolor{preprocessor}{#include <iomanip>}
+00058 
+00059 \textcolor{preprocessor}{#include <algorithm>}
+00060 
+00061 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
+00062 \textcolor{preprocessor}{#include "\hyperlink{mtk__uni__stg__grid__2d_8h}{mtk\_uni\_stg\_grid\_2d.h}"}
+00063 
+00064 \textcolor{keyword}{namespace }mtk \{
+00065 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00066}{}\hyperlink{namespacemtk_a82cd99c0c7e695e4eccfbe7380525959}{00066} std::ostream& \hyperlink{namespacemtk_ad3bcf52cda59ddb5fc7b4bdce76c46dc}{operator <<}(std::ostream &stream, \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &in) \{
+00067 
+00068   stream << \textcolor{charliteral}{'['} << in.\hyperlink{classmtk_1_1UniStgGrid2D_ae2c61a101e6c2c9b69cef2a245512434}{west\_bndy\_x\_} << \textcolor{charliteral}{':'} << in.\hyperlink{classmtk_1_1UniStgGrid2D_ab2ba026208a175c150e3f4fd3bed3f20}{num\_cells\_x\_} << \textcolor{charliteral}{':'} <<
+00069   in.\hyperlink{classmtk_1_1UniStgGrid2D_ab3877c2f4542b7f7486bf24a04f8a806}{east\_bndy\_x\_} << \textcolor{stringliteral}{"] x "};
+00070 
+00071   stream << \textcolor{charliteral}{'['} << in.\hyperlink{classmtk_1_1UniStgGrid2D_aa36037d53f3d00433f5eaa0a05b712bc}{south\_bndy\_y\_} << \textcolor{charliteral}{':'} << in.\hyperlink{classmtk_1_1UniStgGrid2D_ab6532883e1a10a0113f3a7681e53612c}{num\_cells\_y\_} << \textcolor{charliteral}{':'} <<
+00072   in.\hyperlink{classmtk_1_1UniStgGrid2D_aef711eec2a4382a2f8e094f0bec6b879}{north\_bndy\_y\_} << \textcolor{stringliteral}{"] = "} << std::endl << std::endl;
+00073 
+00075 
+00076   stream << \textcolor{stringliteral}{"x:"};
+00077   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < in.\hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}.size(); ++ii) \{
+00078     stream << std::setw(10) << in.\hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}[ii];
+00079   \}
+00080   stream << std::endl;
+00081 
+00082   stream << \textcolor{stringliteral}{"y:"};
+00083   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < in.\hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}.size(); ++ii) \{
+00084     stream << std::setw(10) << in.\hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}[ii];
+00085   \}
+00086   stream << std::endl;
+00087 
+00089 
+00090   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1UniStgGrid2D_ac8b66740d328803f7fbabd1c42c775b2}{nature\_} == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{mtk::SCALAR}) \{
+00091     stream << \textcolor{stringliteral}{"u:"};
+00092   \}
+00093   \textcolor{keywordflow}{else} \{
+00094     stream << \textcolor{stringliteral}{"v:"};
+00095   \}
+00096   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1UniStgGrid2D_a4cc4df94c1049db1eb0831f8eb72b3c0}{discrete\_field\_u\_}.size() > 0) \{
+00097     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < in.\hyperlink{classmtk_1_1UniStgGrid2D_ab2ba026208a175c150e3f4fd3bed3f20}{num\_cells\_x\_} + 2; ++ii) \{
+00098       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} jj = 0; jj < in.\hyperlink{classmtk_1_1UniStgGrid2D_ab6532883e1a10a0113f3a7681e53612c}{num\_cells\_y\_} + 2; ++jj) \{
+00099         stream << std::setw(10) << in.\hyperlink{classmtk_1_1UniStgGrid2D_a4cc4df94c1049db1eb0831f8eb72b3c0}{discrete\_field\_u\_}[ii*in.
+      \hyperlink{classmtk_1_1UniStgGrid2D_ab6532883e1a10a0113f3a7681e53612c}{num\_cells\_y\_} + jj];
+00100       \}
+00101       stream << std::endl;
+00102     \}
+00103   \}
+00104 
+00105   stream << std::endl;
+00106 
+00107   \textcolor{keywordflow}{return} stream;
+00108 \}
+00109 \}
+00110 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00111}{}\hyperlink{classmtk_1_1UniStgGrid2D_a40db9a6d21e0f4cf70c478fcc3b94531}{00111} \hyperlink{classmtk_1_1UniStgGrid2D_a40db9a6d21e0f4cf70c478fcc3b94531}{mtk::UniStgGrid2D::UniStgGrid2D}():
+00112     nature\_(),
+00113     discrete\_domain\_x\_(),
+00114     discrete\_domain\_y\_(),
+00115     discrete\_field\_u\_(),
+00116     west\_bndy\_x\_(),
+00117     east\_bndy\_x\_(),
+00118     num\_cells\_x\_(),
+00119     delta\_x\_(),
+00120     south\_bndy\_y\_(),
+00121     north\_bndy\_y\_(),
+00122     num\_cells\_y\_(),
+00123     delta\_y\_() \{\}
+00124 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00125}{}\hyperlink{classmtk_1_1UniStgGrid2D_aab6e54b48c3f32de808460ef46f598d4}{00125} \hyperlink{classmtk_1_1UniStgGrid2D_a40db9a6d21e0f4cf70c478fcc3b94531}{mtk::UniStgGrid2D::UniStgGrid2D}(\textcolor{keyword}{const} 
+      \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid):
+00126     nature\_(grid.nature\_),
+00127     west\_bndy\_x\_(grid.west\_bndy\_x\_),
+00128     east\_bndy\_x\_(grid.east\_bndy\_x\_),
+00129     num\_cells\_x\_(grid.num\_cells\_x\_),
+00130     delta\_x\_(grid.delta\_x\_),
+00131     south\_bndy\_y\_(grid.south\_bndy\_y\_),
+00132     north\_bndy\_y\_(grid.north\_bndy\_y\_),
+00133     num\_cells\_y\_(grid.num\_cells\_y\_),
+00134     delta\_y\_(grid.delta\_y\_) \{
+00135 
+00136     std::copy(grid.\hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}.begin(),
+00137               grid.\hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}.begin() + grid.
+      \hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}.size(),
+00138               \hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}.begin());
+00139 
+00140     std::copy(grid.\hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}.begin(),
+00141               grid.\hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}.begin() + grid.
+      \hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}.size(),
+00142               \hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}.begin());
+00143 
+00144     std::copy(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a4cc4df94c1049db1eb0831f8eb72b3c0}{discrete\_field\_u\_}.begin(),
+00145               grid.\hyperlink{classmtk_1_1UniStgGrid2D_a4cc4df94c1049db1eb0831f8eb72b3c0}{discrete\_field\_u\_}.begin() + grid.
+      \hyperlink{classmtk_1_1UniStgGrid2D_a4cc4df94c1049db1eb0831f8eb72b3c0}{discrete\_field\_u\_}.size(),
+00146               \hyperlink{classmtk_1_1UniStgGrid2D_a4cc4df94c1049db1eb0831f8eb72b3c0}{discrete\_field\_u\_}.begin());
+00147 \}
+00148 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00149}{}\hyperlink{classmtk_1_1UniStgGrid2D_ad8813b1ffcf23bb759f59f8524702e80}{00149} \hyperlink{classmtk_1_1UniStgGrid2D_a40db9a6d21e0f4cf70c478fcc3b94531}{mtk::UniStgGrid2D::UniStgGrid2D}(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &west\_bndy\_x,
+00150                                 \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &east\_bndy\_x,
+00151                                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_cells\_x,
+00152                                 \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &south\_bndy\_y,
+00153                                 \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &north\_bndy\_y,
+00154                                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_cells\_y,
+00155                                 \textcolor{keyword}{const} \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{mtk::FieldNature} &nature) \{
+00156 
+00157 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00158 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(west\_bndy\_x < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00159   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(east\_bndy\_x < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00160   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(east\_bndy\_x <= west\_bndy\_x, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00161   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(num\_cells\_x < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00162   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(south\_bndy\_y < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_)
+      ;
+00163   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(north\_bndy\_y < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_)
+      ;
+00164   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(north\_bndy\_y <= south\_bndy\_y,
+00165                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00166   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(num\_cells\_y < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00167 \textcolor{preprocessor}{  #endif}
+00168 \textcolor{preprocessor}{}
+00169   nature\_ = nature;
+00170 
+00171   west\_bndy\_x\_ = west\_bndy\_x;
+00172   east\_bndy\_x\_ = east\_bndy\_x;
+00173   num\_cells\_x\_ = num\_cells\_x;
+00174 
+00175   south\_bndy\_y\_ = south\_bndy\_y;
+00176   north\_bndy\_y\_ = north\_bndy\_y;
+00177   num\_cells\_y\_ = num\_cells\_y;
+00178 
+00179   delta\_x\_ = (east\_bndy\_x - west\_bndy\_x)/((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_cells\_x);
+00180   delta\_y\_ = (north\_bndy\_y - south\_bndy\_y)/((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_cells\_y);
+00181 \}
+00182 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00183}{}\hyperlink{classmtk_1_1UniStgGrid2D_a55615fed9674be8d8a48a1105e5a1476}{00183} \hyperlink{classmtk_1_1UniStgGrid2D_a55615fed9674be8d8a48a1105e5a1476}{mtk::UniStgGrid2D::~UniStgGrid2D}() \{\}
+00184 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00185}{}\hyperlink{classmtk_1_1UniStgGrid2D_a95b1041558be5bbb087f508d2efbac96}{00185} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid2D_a95b1041558be5bbb087f508d2efbac96}{mtk::UniStgGrid2D::west\_bndy\_x}()\textcolor{keyword}{ const }\{
+00186 
+00187   \textcolor{keywordflow}{return} west\_bndy\_x\_;
+00188 \}
+00189 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00190}{}\hyperlink{classmtk_1_1UniStgGrid2D_aa626e15a5c494d8de0bf4882bc62a756}{00190} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid2D_aa626e15a5c494d8de0bf4882bc62a756}{mtk::UniStgGrid2D::east\_bndy\_x}()\textcolor{keyword}{ const }\{
+00191 
+00192   \textcolor{keywordflow}{return} east\_bndy\_x\_;
+00193 \}
+00194 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00195}{}\hyperlink{classmtk_1_1UniStgGrid2D_abf94d51c0dfee07840e1603dfdc49643}{00195} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid2D_abf94d51c0dfee07840e1603dfdc49643}{mtk::UniStgGrid2D::south\_bndy\_y}()\textcolor{keyword}{ const }\{
+00196 
+00197   \textcolor{keywordflow}{return} south\_bndy\_y\_;
+00198 \}
+00199 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00200}{}\hyperlink{classmtk_1_1UniStgGrid2D_aecdc70b590cff2fef54c60f9f7afc0b6}{00200} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid2D_aecdc70b590cff2fef54c60f9f7afc0b6}{mtk::UniStgGrid2D::north\_bndy\_y}()\textcolor{keyword}{ const }\{
+00201 
+00202   \textcolor{keywordflow}{return} north\_bndy\_y\_;
+00203 \}
+\end{DoxyCode}

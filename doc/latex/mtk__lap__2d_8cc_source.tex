@@ -1,0 +1,79 @@
+\hypertarget{mtk__lap__2d_8cc}{\section{mtk\-\_\-lap\-\_\-2d.\-cc}
+\label{mtk__lap__2d_8cc}\index{src/mtk\-\_\-lap\-\_\-2d.\-cc@{src/mtk\-\_\-lap\-\_\-2d.\-cc}}
+}
+
+\begin{DoxyCode}
+00001 
+00011 \textcolor{comment}{/*}
+00012 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00013 \textcolor{comment}{University. All rights reserved.}
+00014 \textcolor{comment}{}
+00015 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00016 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00017 \textcolor{comment}{}
+00018 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00019 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00020 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
+00021 \textcolor{comment}{}
+00022 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00023 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00024 \textcolor{comment}{}
+00025 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
+00026 \textcolor{comment}{list of conditions and the following disclaimer.}
+00027 \textcolor{comment}{}
+00028 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
+00029 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00030 \textcolor{comment}{other materials provided with the distribution.}
+00031 \textcolor{comment}{}
+00032 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
+00033 \textcolor{comment}{prior written permission from the the copyright holders.}
+00034 \textcolor{comment}{}
+00035 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00036 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00037 \textcolor{comment}{specific prior written permission.}
+00038 \textcolor{comment}{}
+00039 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00040 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00041 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00042 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00043 \textcolor{comment}{parties intellectual property rights.}
+00044 \textcolor{comment}{}
+00045 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00046 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00047 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00048 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00049 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00050 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00051 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00052 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00053 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00054 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00055 \textcolor{comment}{*/}
+00056 
+00057 \textcolor{preprocessor}{#include <cstdlib>}
+00058 \textcolor{preprocessor}{#include <cstdio>}
+00059 
+00060 \textcolor{preprocessor}{#include <iostream>}
+00061 \textcolor{preprocessor}{#include <iomanip>}
+00062 
+00063 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
+00064 \textcolor{preprocessor}{#include "\hyperlink{mtk__lap__2d_8h}{mtk\_lap\_2d.h}"}
+00065 
+\hypertarget{mtk__lap__2d_8cc_source_l00066}{}\hyperlink{classmtk_1_1Lap2D_ada4370fb8d7726e70a3257e3841c6d1f}{00066} \hyperlink{classmtk_1_1Lap2D_ada4370fb8d7726e70a3257e3841c6d1f}{mtk::Lap2D::Lap2D}():
+00067   order\_accuracy\_(),
+00068   mimetic\_threshold\_() \{\}
+00069 
+\hypertarget{mtk__lap__2d_8cc_source_l00070}{}\hyperlink{classmtk_1_1Lap2D_acf62bf6a1c041e4b02f06346054d7af2}{00070} \hyperlink{classmtk_1_1Lap2D_ada4370fb8d7726e70a3257e3841c6d1f}{mtk::Lap2D::Lap2D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Lap2D}{Lap2D} &lap):
+00071   order\_accuracy\_(lap.order\_accuracy\_),
+00072   mimetic\_threshold\_(lap.mimetic\_threshold\_) \{\}
+00073 
+\hypertarget{mtk__lap__2d_8cc_source_l00074}{}\hyperlink{classmtk_1_1Lap2D_a8ca8447a4da7a5ddcf826486992374a5}{00074} \hyperlink{classmtk_1_1Lap2D_a8ca8447a4da7a5ddcf826486992374a5}{mtk::Lap2D::~Lap2D}() \{\}
+00075 
+\hypertarget{mtk__lap__2d_8cc_source_l00076}{}\hyperlink{classmtk_1_1Lap2D_a70b0cb8c1e803bf368dc3a1f6c50eda6}{00076} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Lap2D_a70b0cb8c1e803bf368dc3a1f6c50eda6}{mtk::Lap2D::ConstructLap2D}(\textcolor{keyword}{const} 
+      \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &grid,
+00077                                               \textcolor{keywordtype}{int} order\_accuracy,
+00078                                               \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} mimetic\_threshold) \{
+00079 
+00080   \textcolor{keywordflow}{return} laplacian\_;
+00081 \}
+\end{DoxyCode}

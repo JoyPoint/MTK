@@ -1,4 +1,4 @@
-.TH "mtk::Div1D" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::Div1D" 3 "Thu Oct 15 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -31,17 +31,25 @@ Implements a 1D mimetic divergence operator\&.
 .br
 .RI "\fIFactory method implementing the CBS Algorithm to build operator\&. \fP"
 .ti -1c
-.RI "int \fBnum_bndy_coeffs\fP ()"
+.RI "int \fBnum_bndy_coeffs\fP () const "
 .br
 .RI "\fIReturns how many coefficients are approximating at the boundary\&. \fP"
 .ti -1c
-.RI "\fBReal\fP * \fBweights_crs\fP (void)"
+.RI "\fBReal\fP * \fBcoeffs_interior\fP () const "
+.br
+.RI "\fIReturns coefficients for the interior of the grid\&. \fP"
+.ti -1c
+.RI "\fBReal\fP * \fBweights_crs\fP (void) const "
 .br
 .RI "\fIReturn collection of weights as computed by the CRSA\&. \fP"
 .ti -1c
-.RI "\fBReal\fP * \fBweights_cbs\fP (void)"
+.RI "\fBReal\fP * \fBweights_cbs\fP (void) const "
 .br
 .RI "\fIReturn collection of weights as computed by the CBSA\&. \fP"
+.ti -1c
+.RI "\fBDenseMatrix\fP \fBmim_bndy\fP () const "
+.br
+.RI "\fIReturn collection of mimetic approximations at the boundary\&. \fP"
 .ti -1c
 .RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP (const \fBUniStgGrid1D\fP &grid)"
 .br
@@ -103,7 +111,7 @@ Implements a 1D mimetic divergence operator\&.
 .br
 .RI "\fIRow currently processed by the optimizer\&. \fP"
 .ti -1c
-.RI "\fBmtk::DenseMatrix\fP \fBrat_basis_null_space_\fP"
+.RI "\fBDenseMatrix\fP \fBrat_basis_null_space_\fP"
 .br
 .RI "\fIRational b\&. null-space w\&. bndy\&. \fP"
 .ti -1c
@@ -184,7 +192,18 @@ IF order_accuracy_ > 2, next dim_null_ entries is approximating coefficients for
 .PP
 
 .PP
-Definition at line 1311 of file mtk_div_1d\&.cc\&.
+Definition at line 1333 of file mtk_div_1d\&.cc\&.
+.SS "\fBmtk::Real\fP * mtk::Div1D::coeffs_interior () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Coefficients for the interior of the grid\&. 
+.RE
+.PP
+
+.PP
+Definition at line 320 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ComputePreliminaryApproximations (void)\fC [private]\fP"
 Compute the set of preliminary approximations on the boundary neighborhood\&. 
 .IP "1." 4
@@ -206,7 +225,7 @@ Once we posses the bottom elements, we proceed with the scaling\&.
 .PP
 
 .PP
-Definition at line 667 of file mtk_div_1d\&.cc\&.
+Definition at line 688 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ComputeRationalBasisNullSpace (void)\fC [private]\fP"
 Compute a rational basis for the null-space of the Vandermonde matrix approximating at the west boundary\&. 
 .IP "1." 4
@@ -222,7 +241,7 @@ Scale null-space to make it rational\&.
 .PP
 
 .PP
-Definition at line 491 of file mtk_div_1d\&.cc\&.
+Definition at line 512 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ComputeStencilBoundaryGrid (void)\fC [private]\fP"
 Compute mimetic stencil approximating at boundary\&. 
 .IP "1." 4
@@ -234,7 +253,7 @@ Compute the mimetic boundary approximations\&.
 .PP
 
 .PP
-Definition at line 1212 of file mtk_div_1d\&.cc\&.
+Definition at line 1234 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ComputeStencilInteriorGrid (void)\fC [private]\fP"
 Compute the stencil approximating the interior of the staggered grid\&. 
 .IP "1." 4
@@ -248,7 +267,7 @@ Solve dense Vandermonde system to attain the interior coefficients\&.
 .PP
 
 .PP
-Definition at line 392 of file mtk_div_1d\&.cc\&.
+Definition at line 413 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ComputeWeights (void)\fC [private]\fP"
 Compute the set of mimetic weights to impose the mimetic condition\&. 
 .IP "1." 4
@@ -270,7 +289,7 @@ Apply solution found from brute force search\&.
 .PP
 
 .PP
-Definition at line 887 of file mtk_div_1d\&.cc\&.
+Definition at line 908 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ConstructDiv1D (intorder_accuracy = \fC\fBkDefaultOrderAccuracy\fP\fP, \fBmtk::Real\fPmimetic_threshold = \fC\fBkDefaultMimeticThreshold\fP\fP)"
 
 .PP
@@ -296,7 +315,18 @@ Assemble operator\&.
 
 .PP
 Definition at line 176 of file mtk_div_1d\&.cc\&.
-.SS "int mtk::Div1D::num_bndy_coeffs ()"
+.SS "\fBmtk::DenseMatrix\fP mtk::Div1D::mim_bndy () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Collection of mimetic approximations at the boundary\&. 
+.RE
+.PP
+
+.PP
+Definition at line 336 of file mtk_div_1d\&.cc\&.
+.SS "int mtk::Div1D::num_bndy_coeffs () const"
 
 .PP
 \fBReturns:\fP
@@ -325,8 +355,8 @@ Impose center-skew symmetry by permuting the mimetic boundaries\&.
 .PP
 
 .PP
-Definition at line 330 of file mtk_div_1d\&.cc\&.
-.SS "\fBmtk::Real\fP * mtk::Div1D::weights_cbs (void)"
+Definition at line 351 of file mtk_div_1d\&.cc\&.
+.SS "\fBmtk::Real\fP * mtk::Div1D::weights_cbs (void) const"
 
 .PP
 \fBReturns:\fP
@@ -336,8 +366,8 @@ Collection of weights as computed by the CBSA\&.
 .PP
 
 .PP
-Definition at line 325 of file mtk_div_1d\&.cc\&.
-.SS "\fBmtk::Real\fP * mtk::Div1D::weights_crs (void)"
+Definition at line 330 of file mtk_div_1d\&.cc\&.
+.SS "\fBmtk::Real\fP * mtk::Div1D::weights_crs (void) const"
 
 .PP
 \fBReturns:\fP
@@ -347,7 +377,7 @@ Collection of weights as computed by the CRSA\&.
 .PP
 
 .PP
-Definition at line 320 of file mtk_div_1d\&.cc\&.
+Definition at line 325 of file mtk_div_1d\&.cc\&.
 .SH "Friends And Related Function Documentation"
 .PP 
 .SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::Div1D\fP &in)\fC [friend]\fP"
@@ -369,59 +399,59 @@ Definition at line 79 of file mtk_div_1d\&.cc\&.
 .SS "\fBReal\fP* mtk::Div1D::coeffs_interior_\fC [private]\fP"
 
 .PP
-Definition at line 189 of file mtk_div_1d\&.h\&.
+Definition at line 202 of file mtk_div_1d\&.h\&.
 .SS "int mtk::Div1D::dim_null_\fC [private]\fP"
 
 .PP
-Definition at line 180 of file mtk_div_1d\&.h\&.
+Definition at line 194 of file mtk_div_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Div1D::divergence_\fC [private]\fP"
 
 .PP
-Definition at line 194 of file mtk_div_1d\&.h\&.
+Definition at line 207 of file mtk_div_1d\&.h\&.
 .SS "int mtk::Div1D::divergence_length_\fC [private]\fP"
 
 .PP
-Definition at line 182 of file mtk_div_1d\&.h\&.
+Definition at line 196 of file mtk_div_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Div1D::mim_bndy_\fC [private]\fP"
 
 .PP
-Definition at line 193 of file mtk_div_1d\&.h\&.
+Definition at line 206 of file mtk_div_1d\&.h\&.
 .SS "\fBReal\fP mtk::Div1D::mimetic_threshold_\fC [private]\fP"
 
 .PP
-Definition at line 196 of file mtk_div_1d\&.h\&.
+Definition at line 209 of file mtk_div_1d\&.h\&.
 .SS "int mtk::Div1D::minrow_\fC [private]\fP"
 
 .PP
-Definition at line 184 of file mtk_div_1d\&.h\&.
+Definition at line 197 of file mtk_div_1d\&.h\&.
 .SS "int mtk::Div1D::num_bndy_coeffs_\fC [private]\fP"
 
 .PP
-Definition at line 181 of file mtk_div_1d\&.h\&.
+Definition at line 195 of file mtk_div_1d\&.h\&.
 .SS "int mtk::Div1D::order_accuracy_\fC [private]\fP"
 
 .PP
-Definition at line 179 of file mtk_div_1d\&.h\&.
+Definition at line 193 of file mtk_div_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Div1D::prem_apps_\fC [private]\fP"
 
 .PP
-Definition at line 190 of file mtk_div_1d\&.h\&.
-.SS "\fBmtk::DenseMatrix\fP mtk::Div1D::rat_basis_null_space_\fC [private]\fP"
+Definition at line 203 of file mtk_div_1d\&.h\&.
+.SS "\fBDenseMatrix\fP mtk::Div1D::rat_basis_null_space_\fC [private]\fP"
 
 .PP
-Definition at line 187 of file mtk_div_1d\&.h\&.
+Definition at line 200 of file mtk_div_1d\&.h\&.
 .SS "int mtk::Div1D::row_\fC [private]\fP"
 
 .PP
-Definition at line 185 of file mtk_div_1d\&.h\&.
+Definition at line 198 of file mtk_div_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Div1D::weights_cbs_\fC [private]\fP"
 
 .PP
-Definition at line 192 of file mtk_div_1d\&.h\&.
+Definition at line 205 of file mtk_div_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Div1D::weights_crs_\fC [private]\fP"
 
 .PP
-Definition at line 191 of file mtk_div_1d\&.h\&.
+Definition at line 204 of file mtk_div_1d\&.h\&.
 
 .SH "Author"
 .PP 

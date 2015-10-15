@@ -4,177 +4,176 @@
 
 \begin{DoxyCode}
 00001 
-00018 \textcolor{comment}{/*}
-00019 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
-00020 \textcolor{comment}{University. All rights reserved.}
-00021 \textcolor{comment}{}
-00022 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
-00023 \textcolor{comment}{are permitted provided that the following conditions are met:}
-00024 \textcolor{comment}{}
-00025 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
-00026 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
-00027 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
-00028 \textcolor{comment}{}
-00029 \textcolor{comment}{2. Redistributions of source code must be done through direct}
-00030 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
-00031 \textcolor{comment}{}
-00032 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
-00033 \textcolor{comment}{list of conditions and the following disclaimer.}
-00034 \textcolor{comment}{}
-00035 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
-00036 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
-00037 \textcolor{comment}{other materials provided with the distribution.}
-00038 \textcolor{comment}{}
-00039 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
-00040 \textcolor{comment}{prior written permission from the the copyright holders.}
-00041 \textcolor{comment}{}
-00042 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
-00043 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
-00044 \textcolor{comment}{specific prior written permission.}
-00045 \textcolor{comment}{}
-00046 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
-00047 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
-00048 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
-00049 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
-00050 \textcolor{comment}{parties intellectual property rights.}
-00051 \textcolor{comment}{}
-00052 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
-00053 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
-00054 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
-00055 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
-00056 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
-00057 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
-00058 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
-00059 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
-00060 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
-00061 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
-00062 \textcolor{comment}{*/}
-00063 
-00064 \textcolor{preprocessor}{#include <cstring>}
-00065 
-00066 \textcolor{preprocessor}{#include <iostream>}
-00067 \textcolor{preprocessor}{#include <iomanip>}
-00068 
-00069 \textcolor{preprocessor}{#include <algorithm>}
-00070 
-00071 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
-00072 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
-00073 \textcolor{preprocessor}{#include "\hyperlink{mtk__lapack__adapter_8h}{mtk\_lapack\_adapter.h}"}
-00074 
-00075 \textcolor{keyword}{namespace }mtk \{
-00076 
-00077 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
-00078 
-00079 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
-00080 \textcolor{preprocessor}{}
-00099 \textcolor{keywordtype}{void} dgesv\_(\textcolor{keywordtype}{int}* n,
-00100             \textcolor{keywordtype}{int}* nrhs,
-00101             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* a,
-00102             \textcolor{keywordtype}{int}* lda,
-00103             \textcolor{keywordtype}{int}* ipiv,
-00104             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* b,
-00105             \textcolor{keywordtype}{int}* ldb,
-00106             \textcolor{keywordtype}{int}* info);
-00107 \textcolor{preprocessor}{#else}
-00108 \textcolor{preprocessor}{}
-00127 \textcolor{keywordtype}{void} \hyperlink{namespacemtk_ae1d63c7ae73b3c48e0dca81eb19039f3}{sgesv\_}(\textcolor{keywordtype}{int}* n,
-00128             \textcolor{keywordtype}{int}* nrhs,
-00129             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* a,
-00130             \textcolor{keywordtype}{int}* lda,
-00131             \textcolor{keywordtype}{int}* ipiv,
-00132             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* b,
-00133             \textcolor{keywordtype}{int}* ldb,
-00134             \textcolor{keywordtype}{int}* info);
-00135 \textcolor{preprocessor}{#endif}
-00136 \textcolor{preprocessor}{}
-00137 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
-00138 \textcolor{preprocessor}{}
-00181 \textcolor{keywordtype}{void} dgels\_(\textcolor{keywordtype}{char}* trans,
-00182             \textcolor{keywordtype}{int}* m,
-00183             \textcolor{keywordtype}{int}* n,
-00184             \textcolor{keywordtype}{int}* nrhs,
-00185             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* a,
-00186             \textcolor{keywordtype}{int}* lda,
-00187             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* b,
-00188             \textcolor{keywordtype}{int}* ldb,
-00189             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* work,
-00190             \textcolor{keywordtype}{int}* lwork,
-00191             \textcolor{keywordtype}{int}* info);
-00192 \textcolor{preprocessor}{#else}
-00193 \textcolor{preprocessor}{}
-00236 \textcolor{keywordtype}{void} \hyperlink{namespacemtk_ada6df1b733204aa7ff0b1ec7556288f9}{sgels\_}(\textcolor{keywordtype}{char}* trans,
-00237             \textcolor{keywordtype}{int}* m,
-00238             \textcolor{keywordtype}{int}* n,
-00239             \textcolor{keywordtype}{int}* nrhs,
-00240             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* a,
-00241             \textcolor{keywordtype}{int}* lda,
-00242             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* b,
-00243             \textcolor{keywordtype}{int}* ldb,
-00244             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* work,
-00245             \textcolor{keywordtype}{int}* lwork,
-00246             \textcolor{keywordtype}{int}* info);
-00247 \textcolor{preprocessor}{#endif}
-00248 \textcolor{preprocessor}{}
-00249 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
-00250 \textcolor{preprocessor}{}
-00279 \textcolor{keywordtype}{void} dgeqrf\_(\textcolor{keywordtype}{int} *m,
-00280              \textcolor{keywordtype}{int} *n,
-00281              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *a,
-00282              \textcolor{keywordtype}{int} *lda,
-00283              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *tau,
-00284              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *work,
-00285              \textcolor{keywordtype}{int} *lwork,
-00286              \textcolor{keywordtype}{int} *info);
-00287 \textcolor{preprocessor}{#else}
-00288 \textcolor{preprocessor}{}
-00317 \textcolor{keywordtype}{void} \hyperlink{namespacemtk_aece7419193d8ab43e186c97ad6d529fb}{sgeqrf\_}(\textcolor{keywordtype}{int} *m,
-00318              \textcolor{keywordtype}{int} *n,
-00319              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *a,
-00320              \textcolor{keywordtype}{int} *lda,
-00321              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *tau,
-00322              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *work,
-00323              \textcolor{keywordtype}{int} *lwork,
-00324              \textcolor{keywordtype}{int} *info);
-00325 \textcolor{preprocessor}{#endif}
-00326 \textcolor{preprocessor}{}
-00327 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
-00328 \textcolor{preprocessor}{}
-00362 \textcolor{keywordtype}{void} dormqr\_(\textcolor{keywordtype}{char} *side,
-00363              \textcolor{keywordtype}{char} *trans,
-00364              \textcolor{keywordtype}{int} *m,
-00365              \textcolor{keywordtype}{int} *n,
-00366              \textcolor{keywordtype}{int} *k,
-00367              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *a,
-00368              \textcolor{keywordtype}{int} *lda,
-00369              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *tau,
-00370              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *c,
-00371              \textcolor{keywordtype}{int} *ldc,
-00372              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *work,
-00373              \textcolor{keywordtype}{int} *lwork,
-00374              \textcolor{keywordtype}{int} *info);
-00375 \textcolor{preprocessor}{#else}
-00376 \textcolor{preprocessor}{}
-00410 \textcolor{keywordtype}{void} \hyperlink{namespacemtk_a59c58408e1c0a9837b67a417be986b82}{sormqr\_}(\textcolor{keywordtype}{char} *side,
-00411              \textcolor{keywordtype}{char} *trans,
-00412              \textcolor{keywordtype}{int} *m,
-00413              \textcolor{keywordtype}{int} *n,
-00414              \textcolor{keywordtype}{int} *k,
-00415              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *a,
-00416              \textcolor{keywordtype}{int} *lda,
-00417              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *tau,
-00418              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *c,
-00419              \textcolor{keywordtype}{int} *ldc,
-00420              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *work,
-00421              \textcolor{keywordtype}{int} *lwork,
-00422              \textcolor{keywordtype}{int} *info);
-00423 \textcolor{preprocessor}{#endif}
-00424 \textcolor{preprocessor}{}\}
-00425 \}
-00426 
-\hypertarget{mtk__lapack__adapter_8cc_source_l00427}{}\hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{00427} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{mtk::LAPACKAdapter::SolveDenseSystem}(
+00019 \textcolor{comment}{/*}
+00020 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00021 \textcolor{comment}{University. All rights reserved.}
+00022 \textcolor{comment}{}
+00023 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00024 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00025 \textcolor{comment}{}
+00026 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00027 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00028 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
+00029 \textcolor{comment}{}
+00030 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00031 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00032 \textcolor{comment}{}
+00033 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
+00034 \textcolor{comment}{list of conditions and the following disclaimer.}
+00035 \textcolor{comment}{}
+00036 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
+00037 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00038 \textcolor{comment}{other materials provided with the distribution.}
+00039 \textcolor{comment}{}
+00040 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
+00041 \textcolor{comment}{prior written permission from the the copyright holders.}
+00042 \textcolor{comment}{}
+00043 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00044 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00045 \textcolor{comment}{specific prior written permission.}
+00046 \textcolor{comment}{}
+00047 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00048 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00049 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00050 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00051 \textcolor{comment}{parties intellectual property rights.}
+00052 \textcolor{comment}{}
+00053 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00054 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00055 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00056 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00057 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00058 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00059 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00060 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00061 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00062 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00063 \textcolor{comment}{*/}
+00064 
+00065 \textcolor{preprocessor}{#include <cstring>}
+00066 
+00067 \textcolor{preprocessor}{#include <iostream>}
+00068 \textcolor{preprocessor}{#include <iomanip>}
+00069 
+00070 \textcolor{preprocessor}{#include <algorithm>}
+00071 
+00072 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
+00073 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
+00074 \textcolor{preprocessor}{#include "\hyperlink{mtk__lapack__adapter_8h}{mtk\_lapack\_adapter.h}"}
+00075 
+00076 \textcolor{keyword}{namespace }mtk \{
+00077 
+00078 \textcolor{keyword}{extern} \textcolor{stringliteral}{"C"} \{
+00079 
+00080 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
+00081 \textcolor{preprocessor}{}
+00100 \textcolor{keywordtype}{void} dgesv\_(\textcolor{keywordtype}{int}* n,
+00101             \textcolor{keywordtype}{int}* nrhs,
+00102             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* a,
+00103             \textcolor{keywordtype}{int}* lda,
+00104             \textcolor{keywordtype}{int}* ipiv,
+00105             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* b,
+00106             \textcolor{keywordtype}{int}* ldb,
+00107             \textcolor{keywordtype}{int}* info);
+00108 \textcolor{preprocessor}{#else}
+00109 \textcolor{preprocessor}{}
+00128 \textcolor{keywordtype}{void} \hyperlink{namespacemtk_ae1d63c7ae73b3c48e0dca81eb19039f3}{sgesv\_}(\textcolor{keywordtype}{int}* n,
+00129             \textcolor{keywordtype}{int}* nrhs,
+00130             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* a,
+00131             \textcolor{keywordtype}{int}* lda,
+00132             \textcolor{keywordtype}{int}* ipiv,
+00133             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* b,
+00134             \textcolor{keywordtype}{int}* ldb,
+00135             \textcolor{keywordtype}{int}* info);
+00136 \textcolor{preprocessor}{#endif}
+00137 \textcolor{preprocessor}{}
+00138 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
+00139 \textcolor{preprocessor}{}
+00182 \textcolor{keywordtype}{void} dgels\_(\textcolor{keywordtype}{char}* trans,
+00183             \textcolor{keywordtype}{int}* m,
+00184             \textcolor{keywordtype}{int}* n,
+00185             \textcolor{keywordtype}{int}* nrhs,
+00186             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* a,
+00187             \textcolor{keywordtype}{int}* lda,
+00188             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* b,
+00189             \textcolor{keywordtype}{int}* ldb,
+00190             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* work,
+00191             \textcolor{keywordtype}{int}* lwork,
+00192             \textcolor{keywordtype}{int}* info);
+00193 \textcolor{preprocessor}{#else}
+00194 \textcolor{preprocessor}{}
+00237 \textcolor{keywordtype}{void} \hyperlink{namespacemtk_ada6df1b733204aa7ff0b1ec7556288f9}{sgels\_}(\textcolor{keywordtype}{char}* trans,
+00238             \textcolor{keywordtype}{int}* m,
+00239             \textcolor{keywordtype}{int}* n,
+00240             \textcolor{keywordtype}{int}* nrhs,
+00241             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* a,
+00242             \textcolor{keywordtype}{int}* lda,
+00243             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* b,
+00244             \textcolor{keywordtype}{int}* ldb,
+00245             \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}* work,
+00246             \textcolor{keywordtype}{int}* lwork,
+00247             \textcolor{keywordtype}{int}* info);
+00248 \textcolor{preprocessor}{#endif}
+00249 \textcolor{preprocessor}{}
+00250 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
+00251 \textcolor{preprocessor}{}
+00280 \textcolor{keywordtype}{void} dgeqrf\_(\textcolor{keywordtype}{int} *m,
+00281              \textcolor{keywordtype}{int} *n,
+00282              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *a,
+00283              \textcolor{keywordtype}{int} *lda,
+00284              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *tau,
+00285              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *work,
+00286              \textcolor{keywordtype}{int} *lwork,
+00287              \textcolor{keywordtype}{int} *info);
+00288 \textcolor{preprocessor}{#else}
+00289 \textcolor{preprocessor}{}
+00318 \textcolor{keywordtype}{void} \hyperlink{namespacemtk_aece7419193d8ab43e186c97ad6d529fb}{sgeqrf\_}(\textcolor{keywordtype}{int} *m,
+00319              \textcolor{keywordtype}{int} *n,
+00320              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *a,
+00321              \textcolor{keywordtype}{int} *lda,
+00322              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *tau,
+00323              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *work,
+00324              \textcolor{keywordtype}{int} *lwork,
+00325              \textcolor{keywordtype}{int} *info);
+00326 \textcolor{preprocessor}{#endif}
+00327 \textcolor{preprocessor}{}
+00328 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
+00329 \textcolor{preprocessor}{}
+00363 \textcolor{keywordtype}{void} dormqr\_(\textcolor{keywordtype}{char} *side,
+00364              \textcolor{keywordtype}{char} *trans,
+00365              \textcolor{keywordtype}{int} *m,
+00366              \textcolor{keywordtype}{int} *n,
+00367              \textcolor{keywordtype}{int} *k,
+00368              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *a,
+00369              \textcolor{keywordtype}{int} *lda,
+00370              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *tau,
+00371              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *c,
+00372              \textcolor{keywordtype}{int} *ldc,
+00373              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *work,
+00374              \textcolor{keywordtype}{int} *lwork,
+00375              \textcolor{keywordtype}{int} *info);
+00376 \textcolor{preprocessor}{#else}
+00377 \textcolor{preprocessor}{}
+00411 \textcolor{keywordtype}{void} \hyperlink{namespacemtk_a59c58408e1c0a9837b67a417be986b82}{sormqr\_}(\textcolor{keywordtype}{char} *side,
+00412              \textcolor{keywordtype}{char} *trans,
+00413              \textcolor{keywordtype}{int} *m,
+00414              \textcolor{keywordtype}{int} *n,
+00415              \textcolor{keywordtype}{int} *k,
+00416              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *a,
+00417              \textcolor{keywordtype}{int} *lda,
+00418              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *tau,
+00419              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *c,
+00420              \textcolor{keywordtype}{int} *ldc,
+00421              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *work,
+00422              \textcolor{keywordtype}{int} *lwork,
+00423              \textcolor{keywordtype}{int} *info);
+00424 \textcolor{preprocessor}{#endif}
+00425 \textcolor{preprocessor}{}\}
+00426 \}
+00427 
+\hypertarget{mtk__lapack__adapter_8cc_source_l00428}{}\hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{00428} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{mtk::LAPACKAdapter::SolveDenseSystem}(
       \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &mm,
-00428                                          \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *rhs) \{
-00429 
+00429                                          \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *rhs) \{
 00430 
 00431 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
 00432 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(rhs == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);

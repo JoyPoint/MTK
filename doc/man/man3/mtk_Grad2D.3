@@ -1,0 +1,116 @@
+.TH "mtk::Grad2D" 3 "Thu Oct 15 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk::Grad2D \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mtk_grad_2d\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGrad2D\fP ()"
+.br
+.RI "\fIDefault constructor\&. \fP"
+.ti -1c
+.RI "\fBGrad2D\fP (const \fBGrad2D\fP &grad)"
+.br
+.RI "\fICopy constructor\&. \fP"
+.ti -1c
+.RI "\fB~Grad2D\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "\fBDenseMatrix\fP \fBConstructGrad2D\fP (const \fBUniStgGrid2D\fP &grid, int order_accuracy=\fBkDefaultOrderAccuracy\fP, \fBReal\fP mimetic_threshold=\fBkDefaultMimeticThreshold\fP)"
+.br
+.RI "\fIFactory method implementing the CBS Algorithm to build operator\&. \fP"
+.ti -1c
+.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP ()"
+.br
+.RI "\fIReturn the operator as a dense matrix\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBDenseMatrix\fP \fBgradient_\fP"
+.br
+.RI "\fIActual operator\&. \fP"
+.ti -1c
+.RI "int \fBorder_accuracy_\fP"
+.br
+.RI "\fIOrder of accuracy\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBmimetic_threshold_\fP"
+.br
+.RI "\fIMimetic Threshold\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 66 of file mtk_grad_2d\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mtk::Grad2D::Grad2D ()"
+
+.PP
+Definition at line 67 of file mtk_grad_2d\&.cc\&.
+.SS "mtk::Grad2D::Grad2D (const \fBGrad2D\fP &grad)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdiv\fP Given divergence\&. 
+.RE
+.PP
+
+.PP
+Definition at line 71 of file mtk_grad_2d\&.cc\&.
+.SS "mtk::Grad2D::~Grad2D ()"
+
+.PP
+Definition at line 75 of file mtk_grad_2d\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBmtk::DenseMatrix\fP mtk::Grad2D::ConstructGrad2D (const \fBUniStgGrid2D\fP &grid, intorder_accuracy = \fC\fBkDefaultOrderAccuracy\fP\fP, \fBmtk::Real\fPmimetic_threshold = \fC\fBkDefaultMimeticThreshold\fP\fP)"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Success of the construction\&. 
+.RE
+.PP
+
+.PP
+Definition at line 77 of file mtk_grad_2d\&.cc\&.
+.SS "\fBmtk::DenseMatrix\fP mtk::Grad2D::ReturnAsDenseMatrix ()"
+
+.PP
+\fBReturns:\fP
+.RS 4
+The operator as a dense matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 142 of file mtk_grad_2d\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBDenseMatrix\fP mtk::Grad2D::gradient_\fC [private]\fP"
+
+.PP
+Definition at line 98 of file mtk_grad_2d\&.h\&.
+.SS "\fBReal\fP mtk::Grad2D::mimetic_threshold_\fC [private]\fP"
+
+.PP
+Definition at line 100 of file mtk_grad_2d\&.h\&.
+.SS "int mtk::Grad2D::order_accuracy_\fC [private]\fP"
+
+.PP
+Definition at line 99 of file mtk_grad_2d\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

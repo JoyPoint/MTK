@@ -109,35 +109,36 @@
 <parametername direction="in">beta</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Second scalar. </para></parameterdescription>
+<para>Second scalar.</para></parameterdescription>
 </parameteritem>
 </parameterlist>
+<simplesect kind="return"><para>Relative error computed between attained solution and provided ref. </para></simplesect>
 </para>        </detaileddescription>
         <inbodydescription>
 <para><simplesect kind="warning"><para>GLPK indexes in [1,n], so we must get the extra space needed.</para></simplesect>
 <orderedlist>
 <listitem><para>Memory allocation.</para></listitem><listitem><para>Fill the problem.</para></listitem><listitem><para>Copy the row to the vector objective.</para></listitem><listitem><para>Forming the RHS.</para></listitem><listitem><para>Setting up the objective function.</para></listitem><listitem><para>Setting up constraints.</para></listitem><listitem><para>Copy the matrix minus the row objective to the glpk problem.</para></listitem><listitem><para>Solve problem. </para></listitem></orderedlist>
 </para>        </inbodydescription>
-        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_glpk_adapter.h" line="121" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_glpk_adapter.cc" bodystart="78" bodyend="331"/>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_glpk_adapter.h" line="123" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_glpk_adapter.cc" bodystart="76" bodyend="330"/>
         <references refid="group__c01-roots_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__roots_8h" startline="107">mtk::kZero</references>
         <references refid="classmtk_1_1BLASAdapter_1ab92440888b730863244c5d9479c11aca" compoundref="mtk__blas__adapter_8cc" startline="324" endline="337">mtk::BLASAdapter::RealNRM2</references>
-        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="887" endline="1210">mtk::Div1D::ComputeWeights</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="905" endline="1241">mtk::Grad1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="908" endline="1232">mtk::Div1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="991" endline="1329">mtk::Grad1D::ComputeWeights</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Adapter class for the GLPK API. </para>    </briefdescription>
     <detaileddescription>
-<para>This class contains a collection of static classes, that posses direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the GLPK.</para><para>The <bold>GLPK (GNU Linear Programming Kit)</bold> package is intended for solving large-scale linear programming (LP), mixed integer programming (MIP), and other related problems. It is a set of routines written in ANSI C and organized in the form of a callable library.</para><para><simplesect kind="warning"><para>We use the GLPK temporarily in order to test the CBSA, but it will be removed due to licensing issues.</para></simplesect>
+<para>This class contains a collection of static classes, that posses direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the GLPK.</para><para>The <bold>GLPK (GNU Linear Programming Kit)</bold> package is intended for solving large-scale linear programming (LP), mixed integer programming (MIP), and other related problems. It is a set of routines written in ANSI C and organized in the form of a callable library.</para><para><simplesect kind="warning"><para>We use the GLPK temporarily in order to test the CBSA, but it will be removed due to potential licensing issues.</para></simplesect>
 <simplesect kind="see"><para><ulink url="http://www.gnu.org/software/glpk/">http://www.gnu.org/software/glpk/</ulink></para></simplesect>
-<xrefsect id="todo_1_todo000004"><xreftitle>Todo</xreftitle><xrefdescription><para>Rescind from the GLPK as the numerical core for CLO problems. </para></xrefdescription></xrefsect></para>    </detaileddescription>
+<xrefsect id="todo_1_todo000002"><xreftitle>Todo</xreftitle><xrefdescription><para>Rescind from the GLPK as the numerical core for CLO problems. </para></xrefdescription></xrefsect></para>    </detaileddescription>
     <collaborationgraph>
-      <node id="47">
+      <node id="74">
         <label>mtk::GLPKAdapter</label>
         <link refid="classmtk_1_1GLPKAdapter"/>
       </node>
     </collaborationgraph>
-    <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_glpk_adapter.h" line="101" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_glpk_adapter.h" bodystart="101" bodyend="130"/>
+    <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_glpk_adapter.h" line="101" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_glpk_adapter.h" bodystart="101" bodyend="132"/>
     <listofallmembers>
       <member refid="classmtk_1_1GLPKAdapter_1a834480aca83e3c0d09fdab7fdb7e8a3f" prot="public" virt="non-virtual"><scope>mtk::GLPKAdapter</scope><name>SolveSimplexAndCompare</name></member>
     </listofallmembers>

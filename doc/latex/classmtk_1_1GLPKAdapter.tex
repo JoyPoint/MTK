@@ -32,13 +32,13 @@ This class contains a collection of static classes, that posses direct access to
 The {\bfseries G\-L\-P\-K (G\-N\-U Linear Programming Kit)} package is intended for solving large-\/scale linear programming (L\-P), mixed integer programming (M\-I\-P), and other related problems. It is a set of routines written in A\-N\-S\-I C and organized in the form of a callable library.
 
 \begin{DoxyWarning}{Warning}
-We use the G\-L\-P\-K temporarily in order to test the C\-B\-S\-A, but it will be removed due to licensing issues.
+We use the G\-L\-P\-K temporarily in order to test the C\-B\-S\-A, but it will be removed due to potential licensing issues.
 \end{DoxyWarning}
 \begin{DoxySeeAlso}{See Also}
 \href{http://www.gnu.org/software/glpk/}{\tt http\-://www.\-gnu.\-org/software/glpk/}
 \end{DoxySeeAlso}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000004}{Todo}]Rescind from the G\-L\-P\-K as the numerical core for C\-L\-O problems. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000002}{Todo}]Rescind from the G\-L\-P\-K as the numerical core for C\-L\-O problems. \end{DoxyRefDesc}
 
 
 Definition at line \hyperlink{mtk__glpk__adapter_8h_source_l00101}{101} of file \hyperlink{mtk__glpk__adapter_8h_source}{mtk\-\_\-glpk\-\_\-adapter.\-h}.
@@ -81,9 +81,12 @@ This routine is the pivot of the C\-B\-S\-A. It solves a Constrained Linear Opti
 \hline
 \mbox{\tt in}  & {\em beta} & Second scalar. \\
 \hline
-\mbox{\tt in}  & {\em beta} & Second scalar. \\
+\mbox{\tt in}  & {\em beta} & Second scalar.\\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Relative error computed between attained solution and provided ref. 
+\end{DoxyReturn}
 \begin{DoxyWarning}{Warning}
 G\-L\-P\-K indexes in \mbox{[}1,n\mbox{]}, so we must get the extra space needed.
 \end{DoxyWarning}
@@ -99,12 +102,11 @@ G\-L\-P\-K indexes in \mbox{[}1,n\mbox{]}, so we must get the extra space needed
 \item Solve problem. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__glpk__adapter_8cc_source_l00078}{78} of file \hyperlink{mtk__glpk__adapter_8cc_source}{mtk\-\_\-glpk\-\_\-adapter.\-cc}.
+Definition at line \hyperlink{mtk__glpk__adapter_8cc_source_l00076}{76} of file \hyperlink{mtk__glpk__adapter_8cc_source}{mtk\-\_\-glpk\-\_\-adapter.\-cc}.
 
 
 
-Here is the call graph for this function\-:
-\nopagebreak
+Here is the call graph for this function\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

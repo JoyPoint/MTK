@@ -1,0 +1,136 @@
+\hypertarget{mtk__uni__stg__grid__2d_8h}{\section{mtk\-\_\-uni\-\_\-stg\-\_\-grid\-\_\-2d.\-h}
+\label{mtk__uni__stg__grid__2d_8h}\index{include/mtk\-\_\-uni\-\_\-stg\-\_\-grid\-\_\-2d.\-h@{include/mtk\-\_\-uni\-\_\-stg\-\_\-grid\-\_\-2d.\-h}}
+}
+
+\begin{DoxyCode}
+00001 
+00012 \textcolor{comment}{/*}
+00013 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00014 \textcolor{comment}{University. All rights reserved.}
+00015 \textcolor{comment}{}
+00016 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00017 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00018 \textcolor{comment}{}
+00019 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00020 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00021 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
+00022 \textcolor{comment}{}
+00023 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00024 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00025 \textcolor{comment}{}
+00026 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
+00027 \textcolor{comment}{list of conditions and the following disclaimer.}
+00028 \textcolor{comment}{}
+00029 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
+00030 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00031 \textcolor{comment}{other materials provided with the distribution.}
+00032 \textcolor{comment}{}
+00033 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
+00034 \textcolor{comment}{prior written permission from the the copyright holders.}
+00035 \textcolor{comment}{}
+00036 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00037 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00038 \textcolor{comment}{specific prior written permission.}
+00039 \textcolor{comment}{}
+00040 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00041 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00042 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00043 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00044 \textcolor{comment}{parties intellectual property rights.}
+00045 \textcolor{comment}{}
+00046 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00047 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00048 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00049 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00050 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00051 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00052 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00053 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00054 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00055 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00056 \textcolor{comment}{*/}
+00057 
+00058 \textcolor{preprocessor}{#ifndef MTK\_INCLUDE\_UNI\_STG\_GRID\_2D\_H\_}
+00059 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define MTK\_INCLUDE\_UNI\_STG\_GRID\_2D\_H\_}
+00060 \textcolor{preprocessor}{}
+00061 \textcolor{preprocessor}{#include <vector>}
+00062 \textcolor{preprocessor}{#include <string>}
+00063 
+00064 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
+00065 \textcolor{preprocessor}{#include "\hyperlink{mtk__enums_8h}{mtk\_enums.h}"}
+00066 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
+00067 
+00068 \textcolor{keyword}{namespace }mtk \{
+00069 
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00079}{}\hyperlink{classmtk_1_1UniStgGrid2D}{00079} \textcolor{keyword}{class }\hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} \{
+00080  \textcolor{keyword}{public}:
+00082   \textcolor{keyword}{friend} std::ostream& \hyperlink{classmtk_1_1UniStgGrid2D_a7ede04686da0941288d2078a0c3bab70}{operator <<}(std::ostream& stream, \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &in);
+00083 
+00085   \hyperlink{classmtk_1_1UniStgGrid2D_a40db9a6d21e0f4cf70c478fcc3b94531}{UniStgGrid2D}();
+00086 
+00092   \hyperlink{classmtk_1_1UniStgGrid2D_a40db9a6d21e0f4cf70c478fcc3b94531}{UniStgGrid2D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid);
+00093 
+00107   \hyperlink{classmtk_1_1UniStgGrid2D_a40db9a6d21e0f4cf70c478fcc3b94531}{UniStgGrid2D}(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &\hyperlink{classmtk_1_1UniStgGrid2D_a95b1041558be5bbb087f508d2efbac96}{west\_bndy\_x},
+00108                \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &\hyperlink{classmtk_1_1UniStgGrid2D_aa626e15a5c494d8de0bf4882bc62a756}{east\_bndy\_x},
+00109                \textcolor{keyword}{const} \textcolor{keywordtype}{int} &\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x},
+00110                \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &\hyperlink{classmtk_1_1UniStgGrid2D_abf94d51c0dfee07840e1603dfdc49643}{south\_bndy\_y},
+00111                \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &\hyperlink{classmtk_1_1UniStgGrid2D_aecdc70b590cff2fef54c60f9f7afc0b6}{north\_bndy\_y},
+00112                \textcolor{keyword}{const} \textcolor{keywordtype}{int} &\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y},
+00113                \textcolor{keyword}{const} \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{mtk::FieldNature} &nature = \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{mtk::SCALAR});
+00114 
+00116   \hyperlink{classmtk_1_1UniStgGrid2D_a55615fed9674be8d8a48a1105e5a1476}{~UniStgGrid2D}();
+00117 
+00123   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_a95b1041558be5bbb087f508d2efbac96}{west\_bndy\_x}() \textcolor{keyword}{const};
+00124 
+00130   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_aa626e15a5c494d8de0bf4882bc62a756}{east\_bndy\_x}() \textcolor{keyword}{const};
+00131 
+00137   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_abf94d51c0dfee07840e1603dfdc49643}{south\_bndy\_y}() \textcolor{keyword}{const};
+00138 
+00144   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_aecdc70b590cff2fef54c60f9f7afc0b6}{north\_bndy\_y}() \textcolor{keyword}{const};
+00145 
+00151   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_ac56877b3c19cfd8cc426f6187f18f5b1}{delta\_x}() \textcolor{keyword}{const};
+00152 
+00158   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_a568db235ac03728269b551749b106620}{delta\_y}() \textcolor{keyword}{const};
+00159 
+00165   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1UniStgGrid2D_ad5dcac20a90f77a96fb7e843f791eba0}{discrete\_domain\_x}();
+00166 
+00172   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1UniStgGrid2D_abea1624fd9db856806966151df0ca969}{discrete\_domain\_y}();
+00173 
+00179   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1UniStgGrid2D_a2549284216031dacc97028bf5d27162f}{discrete\_field\_u}();
+00180 
+00186   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() \textcolor{keyword}{const};
+00187 
+00193   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}() \textcolor{keyword}{const};
+00194 
+00200   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_ab6aff36e9f89fba1c1ff4f9914508211}{BindScalarField}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*ScalarField)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy));
+00201 
+00213   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a479a14fa150b4048d4bdb9cfe11d34c1}{BindVectorFieldPComponent}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorField)(
+      \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy));
+00214 
+00226   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_ab27b1875adb0ddba74561365fc8c3ef5}{BindVectorFieldQComponent}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorField)(
+      \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy));
+00227 
+00239   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1UniStgGrid2D_a7c037d6b155a975ccfdee550144f4543}{WriteToFile}(std::string filename,
+00240                    std::string space\_name,
+00241                    std::string field\_name);
+00242 
+00243  \textcolor{keyword}{private}:
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00244}{}\hyperlink{classmtk_1_1UniStgGrid2D_ac8b66740d328803f7fbabd1c42c775b2}{00244}   \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{FieldNature} \hyperlink{classmtk_1_1UniStgGrid2D_ac8b66740d328803f7fbabd1c42c775b2}{nature\_};  
+00245 
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00246}{}\hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{00246}   std::vector<Real> \hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}; 
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00247}{}\hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{00247}   std::vector<Real> \hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}; 
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00248}{}\hyperlink{classmtk_1_1UniStgGrid2D_a4cc4df94c1049db1eb0831f8eb72b3c0}{00248}   std::vector<Real> \hyperlink{classmtk_1_1UniStgGrid2D_a4cc4df94c1049db1eb0831f8eb72b3c0}{discrete\_field\_u\_};  
+00249 
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00250}{}\hyperlink{classmtk_1_1UniStgGrid2D_ae2c61a101e6c2c9b69cef2a245512434}{00250}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_ae2c61a101e6c2c9b69cef2a245512434}{west\_bndy\_x\_};  
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00251}{}\hyperlink{classmtk_1_1UniStgGrid2D_ab3877c2f4542b7f7486bf24a04f8a806}{00251}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_ab3877c2f4542b7f7486bf24a04f8a806}{east\_bndy\_x\_};  
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00252}{}\hyperlink{classmtk_1_1UniStgGrid2D_ab2ba026208a175c150e3f4fd3bed3f20}{00252}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_ab2ba026208a175c150e3f4fd3bed3f20}{num\_cells\_x\_};  
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00253}{}\hyperlink{classmtk_1_1UniStgGrid2D_ab1fbb3cf685c51f434488e378564bd2a}{00253}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_ab1fbb3cf685c51f434488e378564bd2a}{delta\_x\_};      
+00254 
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00255}{}\hyperlink{classmtk_1_1UniStgGrid2D_aa36037d53f3d00433f5eaa0a05b712bc}{00255}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_aa36037d53f3d00433f5eaa0a05b712bc}{south\_bndy\_y\_};  
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00256}{}\hyperlink{classmtk_1_1UniStgGrid2D_aef711eec2a4382a2f8e094f0bec6b879}{00256}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_aef711eec2a4382a2f8e094f0bec6b879}{north\_bndy\_y\_};  
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00257}{}\hyperlink{classmtk_1_1UniStgGrid2D_ab6532883e1a10a0113f3a7681e53612c}{00257}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_ab6532883e1a10a0113f3a7681e53612c}{num\_cells\_y\_};  
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00258}{}\hyperlink{classmtk_1_1UniStgGrid2D_ace5af3c991f241a895318b9761db73eb}{00258}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_ace5af3c991f241a895318b9761db73eb}{delta\_y\_};      
+00259 \};
+00260 \}
+00261 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_UNI\_STG\_GRID\_2D\_H\_}
+\end{DoxyCode}

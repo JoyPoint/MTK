@@ -1,0 +1,84 @@
+\hypertarget{mtk__grad__2d_8h}{\section{mtk\-\_\-grad\-\_\-2d.\-h}
+\label{mtk__grad__2d_8h}\index{include/mtk\-\_\-grad\-\_\-2d.\-h@{include/mtk\-\_\-grad\-\_\-2d.\-h}}
+}
+
+\begin{DoxyCode}
+00001 
+00011 \textcolor{comment}{/*}
+00012 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00013 \textcolor{comment}{University. All rights reserved.}
+00014 \textcolor{comment}{}
+00015 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00016 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00017 \textcolor{comment}{}
+00018 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00019 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00020 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
+00021 \textcolor{comment}{}
+00022 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00023 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00024 \textcolor{comment}{}
+00025 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
+00026 \textcolor{comment}{list of conditions and the following disclaimer.}
+00027 \textcolor{comment}{}
+00028 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
+00029 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00030 \textcolor{comment}{other materials provided with the distribution.}
+00031 \textcolor{comment}{}
+00032 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
+00033 \textcolor{comment}{prior written permission from the the copyright holders.}
+00034 \textcolor{comment}{}
+00035 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00036 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00037 \textcolor{comment}{specific prior written permission.}
+00038 \textcolor{comment}{}
+00039 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00040 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00041 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00042 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00043 \textcolor{comment}{parties intellectual property rights.}
+00044 \textcolor{comment}{}
+00045 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00046 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00047 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00048 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00049 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00050 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00051 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00052 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00053 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00054 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00055 \textcolor{comment}{*/}
+00056 
+00057 \textcolor{preprocessor}{#ifndef MTK\_INCLUDE\_MTK\_GRAD\_2D\_H\_}
+00058 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define MTK\_INCLUDE\_MTK\_GRAD\_2D\_H\_}
+00059 \textcolor{preprocessor}{}
+00060 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
+00061 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
+00062 \textcolor{preprocessor}{#include "\hyperlink{mtk__uni__stg__grid__2d_8h}{mtk\_uni\_stg\_grid\_2d.h}"}
+00063 
+00064 \textcolor{keyword}{namespace }mtk\{
+00065 
+\hypertarget{mtk__grad__2d_8h_source_l00066}{}\hyperlink{classmtk_1_1Grad2D}{00066} \textcolor{keyword}{class }\hyperlink{classmtk_1_1Grad2D}{Grad2D} \{
+00067  \textcolor{keyword}{public}:
+00069   \hyperlink{classmtk_1_1Grad2D_a15bdca254b7bf662913b34c7afb8d4c9}{Grad2D}();
+00070 
+00076   \hyperlink{classmtk_1_1Grad2D_a15bdca254b7bf662913b34c7afb8d4c9}{Grad2D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Grad2D}{Grad2D} &grad);
+00077 
+00079   \hyperlink{classmtk_1_1Grad2D_ae6a071b24422d057c41346e80be96cb3}{~Grad2D}();
+00080 
+00086   \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} \hyperlink{classmtk_1_1Grad2D_a54968910cecdd7d313a5b87356d2799f}{ConstructGrad2D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid,
+00087                               \textcolor{keywordtype}{int} order\_accuracy = \hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{kDefaultOrderAccuracy},
+00088                              \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} mimetic\_threshold = 
+      \hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{kDefaultMimeticThreshold});
+00089 
+00095   \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} \hyperlink{classmtk_1_1Grad2D_afa14fa1b84f05752027c1cef66381de8}{ReturnAsDenseMatrix}();
+00096 
+00097  \textcolor{keyword}{private}:
+\hypertarget{mtk__grad__2d_8h_source_l00098}{}\hyperlink{classmtk_1_1Grad2D_a22b5ad8454b013e365257dcae04d87a4}{00098}   \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} \hyperlink{classmtk_1_1Grad2D_a22b5ad8454b013e365257dcae04d87a4}{gradient\_};    
+\hypertarget{mtk__grad__2d_8h_source_l00099}{}\hyperlink{classmtk_1_1Grad2D_ab028aa2889a2f5d59f52e01691b1b9eb}{00099}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad2D_ab028aa2889a2f5d59f52e01691b1b9eb}{order\_accuracy\_};      
+\hypertarget{mtk__grad__2d_8h_source_l00100}{}\hyperlink{classmtk_1_1Grad2D_a2bc4debde55eb2c2bc50cef7ceb60cfd}{00100}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Grad2D_a2bc4debde55eb2c2bc50cef7ceb60cfd}{mimetic\_threshold\_};  
+00101 \};
+00102 \}
+00103 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_MTK\_GRAD\_2D\_H\_}
+\end{DoxyCode}

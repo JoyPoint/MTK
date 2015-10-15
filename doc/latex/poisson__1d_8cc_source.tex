@@ -115,7 +115,7 @@
 00153     \textcolor{keywordflow}{return} EXIT\_FAILURE;
 00154   \}
 00155 
-00156   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} gradm(grad.\hyperlink{classmtk_1_1Grad1D_a75781c4455569a7934d4e0dff7e06064}{ReturnAsDenseMatrix}(comp\_sol));
+00156   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} gradm(grad.\hyperlink{classmtk_1_1Grad1D_a4218516bfb43f683559322ea97058c78}{ReturnAsDenseMatrix}(comp\_sol));
 00157 
 00158   std::cout << \textcolor{stringliteral}{"Mimetic gradient operator: "} << std::endl;
 00159   std::cout << gradm << std::endl;
@@ -137,14 +137,14 @@
 00177   \textcolor{comment}{// Array containing the coefficients for the west boundary condition.}
 00178   std::vector<mtk::Real> west\_coeffs;
 00179 
-00180   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < grad.\hyperlink{classmtk_1_1Grad1D_aa1448d7b389d451e03836d2ed0f197f3}{num\_bndy\_coeffs}(); ++ii) \{
+00180   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < grad.\hyperlink{classmtk_1_1Grad1D_a7168205c21ba00012558f8bba069c119}{num\_bndy\_coeffs}(); ++ii) \{
 00181     west\_coeffs.push\_back(-beta*gradm.GetValue(0, ii));
 00182   \}
 00183 
 00184   \textcolor{comment}{// Array containing the coefficients for the east boundary condition.}
 00185   std::vector<mtk::Real> east\_coeffs;
 00186 
-00187   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < grad.\hyperlink{classmtk_1_1Grad1D_aa1448d7b389d451e03836d2ed0f197f3}{num\_bndy\_coeffs}(); ++ii) \{
+00187   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < grad.\hyperlink{classmtk_1_1Grad1D_a7168205c21ba00012558f8bba069c119}{num\_bndy\_coeffs}(); ++ii) \{
 00188     east\_coeffs.push\_back(beta*gradm.GetValue(gradm.num\_rows() - 1,
 00189                                               gradm.num\_cols() - 1 - ii));
 00190   \}

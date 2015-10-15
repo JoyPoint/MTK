@@ -108,115 +108,115 @@ $(document).ready(function(){initNavTree('mtk__dense__matrix_8h_source.html','')
 </div><!--header-->
 <div class="contents">
 <a href="mtk__dense__matrix_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">Copyright (C) 2015, Computational Science Research Center, San Diego State</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">University. All rights reserved.</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">Redistribution and use in source and binary forms, with or without modification,</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">are permitted provided that the following conditions are met:</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">and a copy of the modified files should be reported once modifications are</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">completed. Documentation related to said modifications should be included.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">Copyright (C) 2015, Computational Science Research Center, San Diego State</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">University. All rights reserved.</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">Redistribution and use in source and binary forms, with or without modification,</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">are permitted provided that the following conditions are met:</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">and a copy of the modified files should be reported once modifications are</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">completed. Documentation related to said modifications should be included.</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">2. Redistributions of source code must be done through direct</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">downloads from the project&#39;s GitHub page: http://www.csrc.sdsu.edu/mtk</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">3. Redistributions of source code must retain the above copyright notice, this</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">list of conditions and the following disclaimer.</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">2. Redistributions of source code must be done through direct</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">downloads from the project&#39;s GitHub page: http://www.csrc.sdsu.edu/mtk</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">3. Redistributions of source code must retain the above copyright notice, this</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">list of conditions and the following disclaimer.</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">4. Redistributions in binary form must reproduce the above copyright notice,</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">this list of conditions and the following disclaimer in the documentation and/or</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">other materials provided with the distribution.</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">5. Usage of the binary form on proprietary applications shall require explicit</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">prior written permission from the the copyright holders.</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">6. Neither the name of the copyright holder nor the names of its contributors</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">may be used to endorse or promote products derived from this software without</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">specific prior written permission.</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">4. Redistributions in binary form must reproduce the above copyright notice,</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">this list of conditions and the following disclaimer in the documentation and/or</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">other materials provided with the distribution.</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">5. Usage of the binary form on proprietary applications shall require explicit</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">prior written permission from the the copyright holders.</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">6. Neither the name of the copyright holder nor the names of its contributors</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">may be used to endorse or promote products derived from this software without</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">specific prior written permission.</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">The copyright holders provide no reassurances that the source code provided does</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">not infringe any patent, copyright, or any other intellectual property rights of</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">third parties. The copyright holders disclaim any liability to any recipient for</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">claims brought against recipient by any third party for infringement of that</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">parties intellectual property rights.</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">The copyright holders provide no reassurances that the source code provided does</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">not infringe any patent, copyright, or any other intellectual property rights of</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">third parties. The copyright holders disclaim any liability to any recipient for</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">claims brought against recipient by any third party for infringement of that</span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">parties intellectual property rights.</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span></div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="comment">(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="comment">LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment">(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="comment">SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#ifndef MTK_INCLUDE_DENSE_MATRIX_H_</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MTK_INCLUDE_DENSE_MATRIX_H_</span></div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment">THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment">ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment">WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment">DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment">(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="comment">LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="comment">ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="comment">(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="comment">SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#ifndef MTK_INCLUDE_DENSE_MATRIX_H_</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define MTK_INCLUDE_DENSE_MATRIX_H_</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__roots_8h.html">mtk_roots.h</a>&quot;</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__enums_8h.html">mtk_enums.h</a>&quot;</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__matrix_8h.html">mtk_matrix.h</a>&quot;</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">namespace </span>mtk {</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__roots_8h.html">mtk_roots.h</a>&quot;</span></div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__enums_8h.html">mtk_enums.h</a>&quot;</span></div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__matrix_8h.html">mtk_matrix.h</a>&quot;</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<span class="keyword">namespace </span>mtk {</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="classmtk_1_1DenseMatrix.html">   98</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> {</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="classmtk_1_1DenseMatrix.html#adbcc850ef373550f634f563573a31d28">operator &lt;&lt;</a>(std::ostream &amp;stream, <a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> &amp;in);</div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="line" href="classmtk_1_1DenseMatrix.html">   92</a></span>&#160;<span class="keyword">class </span><a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="classmtk_1_1DenseMatrix.html#adbcc850ef373550f634f563573a31d28">operator &lt;&lt;</a>(std::ostream &amp;stream, <a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> &amp;in);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a>&amp; <a class="code" href="classmtk_1_1DenseMatrix.html#a0d27dc7c4d2c49f391017e392345ced0">operator =</a>(<span class="keyword">const</span> <a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> &amp;in);</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html#a0c75ee704707983f935b02835eab0933">DenseMatrix</a>();</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a>&amp; <a class="code" href="classmtk_1_1DenseMatrix.html#a0d27dc7c4d2c49f391017e392345ced0">operator =</a>(<span class="keyword">const</span> <a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> &amp;in);</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html#a0c75ee704707983f935b02835eab0933">DenseMatrix</a>();</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html#a0c75ee704707983f935b02835eab0933">DenseMatrix</a>(<span class="keyword">const</span> <a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> &amp;in);</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html#a0c75ee704707983f935b02835eab0933">DenseMatrix</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;<a class="code" href="classmtk_1_1DenseMatrix.html#a17d8d3b9cc0926044b6972dd190a5c21">num_rows</a>, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;<a class="code" href="classmtk_1_1DenseMatrix.html#af6f78373aaf2136f0c78974d7c8de0a8">num_cols</a>);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html#a0c75ee704707983f935b02835eab0933">DenseMatrix</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;rank, <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp;padded, <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp;transpose);</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html#a0c75ee704707983f935b02835eab0933">DenseMatrix</a>(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> *gen,</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;              <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;gen_length,</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;              <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;pro_length,</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;              <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp;transpose);</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html#a8d4a0df33bd4e4edf5d2fe5539885b85">~DenseMatrix</a>();</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <a class="code" href="classmtk_1_1Matrix.html">Matrix</a> <a class="code" href="classmtk_1_1DenseMatrix.html#abb5e4db5688743c6f9fd9ec6e38ed4ca">matrix_properties</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classmtk_1_1DenseMatrix.html#a17d8d3b9cc0926044b6972dd190a5c21">num_rows</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classmtk_1_1DenseMatrix.html#af6f78373aaf2136f0c78974d7c8de0a8">num_cols</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a>* <a class="code" href="classmtk_1_1DenseMatrix.html#a16b3ff56feb2658b9fc7147d1de4d8e7">data</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classmtk_1_1DenseMatrix.html#aacae136ae446cad8f0d81476e83efb39">SetOrdering</a>(<a class="code" href="group__c02-enums.html#ga622801bd9f912d0f976c3e383f5f581c">mtk::MatrixOrdering</a> oo);</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> <a class="code" href="classmtk_1_1DenseMatrix.html#a87fb785713c04b13767947cc3325ce7c">GetValue</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;row_coord, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;col_coord) <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classmtk_1_1DenseMatrix.html#ae0f873a6d3a734da467cafb817da64ae">SetValue</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;row_coord,</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;col_coord,</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;val);</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html#a0c75ee704707983f935b02835eab0933">DenseMatrix</a>(<span class="keyword">const</span> <a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> &amp;in);</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html#a0c75ee704707983f935b02835eab0933">DenseMatrix</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;<a class="code" href="classmtk_1_1DenseMatrix.html#a17d8d3b9cc0926044b6972dd190a5c21">num_rows</a>, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;<a class="code" href="classmtk_1_1DenseMatrix.html#af6f78373aaf2136f0c78974d7c8de0a8">num_cols</a>);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html#a0c75ee704707983f935b02835eab0933">DenseMatrix</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;rank, <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp;padded, <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp;transpose);</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html#a0c75ee704707983f935b02835eab0933">DenseMatrix</a>(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> *gen,</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;              <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;gen_length,</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;              <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;pro_length,</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;              <span class="keyword">const</span> <span class="keywordtype">bool</span> &amp;transpose);</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html#a8d4a0df33bd4e4edf5d2fe5539885b85">~DenseMatrix</a>();</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <a class="code" href="classmtk_1_1Matrix.html">Matrix</a> <a class="code" href="classmtk_1_1DenseMatrix.html#abb5e4db5688743c6f9fd9ec6e38ed4ca">matrix_properties</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classmtk_1_1DenseMatrix.html#a17d8d3b9cc0926044b6972dd190a5c21">num_rows</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  <span class="keywordtype">int</span> <a class="code" href="classmtk_1_1DenseMatrix.html#af6f78373aaf2136f0c78974d7c8de0a8">num_cols</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a>* <a class="code" href="classmtk_1_1DenseMatrix.html#a16b3ff56feb2658b9fc7147d1de4d8e7">data</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classmtk_1_1DenseMatrix.html#aacae136ae446cad8f0d81476e83efb39">SetOrdering</a>(<a class="code" href="group__c02-enums.html#ga622801bd9f912d0f976c3e383f5f581c">mtk::MatrixOrdering</a> oo);</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> <a class="code" href="classmtk_1_1DenseMatrix.html#a87fb785713c04b13767947cc3325ce7c">GetValue</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;row_coord, <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;col_coord) <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classmtk_1_1DenseMatrix.html#ae0f873a6d3a734da467cafb817da64ae">SetValue</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;row_coord,</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;                <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;col_coord,</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;                <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;val);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classmtk_1_1DenseMatrix.html#a71d9c07ca66e88d97d1fd5012f43138b">Transpose</a>();</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classmtk_1_1DenseMatrix.html#ac2949efba3e8278335d45418c85433e4">OrderRowMajor</a>();</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classmtk_1_1DenseMatrix.html#a71d9c07ca66e88d97d1fd5012f43138b">Transpose</a>();</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classmtk_1_1DenseMatrix.html#a59b9bea24acf39dca64e8549b3527463">OrderColMajor</a>();</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classmtk_1_1DenseMatrix.html#ac2949efba3e8278335d45418c85433e4">OrderRowMajor</a>();</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="classmtk_1_1DenseMatrix.html#a59b9bea24acf39dca64e8549b3527463">OrderColMajor</a>();</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  <span class="keyword">static</span> <a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> <a class="code" href="classmtk_1_1DenseMatrix.html#a01d3d8bd502870f93bf3a88a0cc5fb49">Kron</a>(<span class="keyword">const</span> <a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> &amp;aa, <span class="keyword">const</span> <a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> &amp;bb);</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160; <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00272"></a><span class="lineno"><a class="line" href="classmtk_1_1DenseMatrix.html#a481c8d09af685a5ba67acefdcaa810cc">  272</a></span>&#160;  <a class="code" href="classmtk_1_1Matrix.html">Matrix</a> <a class="code" href="classmtk_1_1DenseMatrix.html#a481c8d09af685a5ba67acefdcaa810cc">matrix_properties_</a>;  </div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
-<div class="line"><a name="l00274"></a><span class="lineno"><a class="line" href="classmtk_1_1DenseMatrix.html#a7893e4e5c8d2e2de32b156177e78cb6f">  274</a></span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> *<a class="code" href="classmtk_1_1DenseMatrix.html#a7893e4e5c8d2e2de32b156177e78cb6f">data_</a>; </div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;};</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;}</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;<span class="preprocessor">#endif  // End of: MTK_INCLUDE_MTK_DENSE_MATRIX_H_</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  <span class="keyword">static</span> <a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> <a class="code" href="classmtk_1_1DenseMatrix.html#a01d3d8bd502870f93bf3a88a0cc5fb49">Kron</a>(<span class="keyword">const</span> <a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> &amp;aa, <span class="keyword">const</span> <a class="code" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> &amp;bb);</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160; <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00268"></a><span class="lineno"><a class="line" href="classmtk_1_1DenseMatrix.html#a481c8d09af685a5ba67acefdcaa810cc">  268</a></span>&#160;  <a class="code" href="classmtk_1_1Matrix.html">Matrix</a> <a class="code" href="classmtk_1_1DenseMatrix.html#a481c8d09af685a5ba67acefdcaa810cc">matrix_properties_</a>;  </div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;</div>
+<div class="line"><a name="l00270"></a><span class="lineno"><a class="line" href="classmtk_1_1DenseMatrix.html#a7893e4e5c8d2e2de32b156177e78cb6f">  270</a></span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> *<a class="code" href="classmtk_1_1DenseMatrix.html#a7893e4e5c8d2e2de32b156177e78cb6f">data_</a>; </div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;};</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;}</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="preprocessor">#endif  // End of: MTK_INCLUDE_MTK_DENSE_MATRIX_H_</span></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_a0d27dc7c4d2c49f391017e392345ced0"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#a0d27dc7c4d2c49f391017e392345ced0">mtk::DenseMatrix::operator=</a></div><div class="ttdeci">DenseMatrix &amp; operator=(const DenseMatrix &amp;in)</div><div class="ttdoc">Overloaded assignment operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00097">mtk_dense_matrix.cc:97</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_af6f78373aaf2136f0c78974d7c8de0a8"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#af6f78373aaf2136f0c78974d7c8de0a8">mtk::DenseMatrix::num_cols</a></div><div class="ttdeci">int num_cols() const </div><div class="ttdoc">Gets the number of columns. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00311">mtk_dense_matrix.cc:311</a></div></div>
 <div class="ttc" id="group__c01-roots_html_gac080bbbf5cbb5502c9f00405f894857d"><div class="ttname"><a href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a></div><div class="ttdeci">float Real</div><div class="ttdoc">Users can simply change this to build a double- or single-precision MTK. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00083">mtk_roots.h:83</a></div></div>
@@ -229,25 +229,25 @@ $(document).ready(function(){initNavTree('mtk__dense__matrix_8h_source.html','')
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_adbcc850ef373550f634f563573a31d28"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#adbcc850ef373550f634f563573a31d28">mtk::DenseMatrix::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;stream, DenseMatrix &amp;in)</div><div class="ttdoc">Prints the matrix as a block of numbers (standard way). </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00075">mtk_dense_matrix.cc:75</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_ae0f873a6d3a734da467cafb817da64ae"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#ae0f873a6d3a734da467cafb817da64ae">mtk::DenseMatrix::SetValue</a></div><div class="ttdeci">void SetValue(const int &amp;row_coord, const int &amp;col_coord, const Real &amp;val)</div><div class="ttdoc">Sets a value on the given coordinates. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00333">mtk_dense_matrix.cc:333</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_abb5e4db5688743c6f9fd9ec6e38ed4ca"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#abb5e4db5688743c6f9fd9ec6e38ed4ca">mtk::DenseMatrix::matrix_properties</a></div><div class="ttdeci">Matrix matrix_properties() const </div><div class="ttdoc">Provides access to the matrix data. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00291">mtk_dense_matrix.cc:291</a></div></div>
-<div class="ttc" id="classmtk_1_1DenseMatrix_html"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a></div><div class="ttdoc">Defines a common dense matrix, using a 1D array. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8h_source.html#l00098">mtk_dense_matrix.h:98</a></div></div>
+<div class="ttc" id="classmtk_1_1DenseMatrix_html"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a></div><div class="ttdoc">Defines a common dense matrix, using a 1D array. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8h_source.html#l00092">mtk_dense_matrix.h:92</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_a0c75ee704707983f935b02835eab0933"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#a0c75ee704707983f935b02835eab0933">mtk::DenseMatrix::DenseMatrix</a></div><div class="ttdeci">DenseMatrix()</div><div class="ttdoc">Default constructor. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00138">mtk_dense_matrix.cc:138</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_a8d4a0df33bd4e4edf5d2fe5539885b85"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#a8d4a0df33bd4e4edf5d2fe5539885b85">mtk::DenseMatrix::~DenseMatrix</a></div><div class="ttdeci">~DenseMatrix()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00285">mtk_dense_matrix.cc:285</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_a87fb785713c04b13767947cc3325ce7c"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#a87fb785713c04b13767947cc3325ce7c">mtk::DenseMatrix::GetValue</a></div><div class="ttdeci">Real GetValue(const int &amp;row_coord, const int &amp;col_coord) const </div><div class="ttdoc">Gets a value on the given coordinates. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00321">mtk_dense_matrix.cc:321</a></div></div>
 <div class="ttc" id="mtk__matrix_8h_html"><div class="ttname"><a href="mtk__matrix_8h.html">mtk_matrix.h</a></div><div class="ttdoc">Definition of the representation of a matrix in the MTK. </div></div>
-<div class="ttc" id="classmtk_1_1DenseMatrix_html_a7893e4e5c8d2e2de32b156177e78cb6f"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#a7893e4e5c8d2e2de32b156177e78cb6f">mtk::DenseMatrix::data_</a></div><div class="ttdeci">Real * data_</div><div class="ttdoc">Array holding the data in contiguouos position in memory. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8h_source.html#l00274">mtk_dense_matrix.h:274</a></div></div>
+<div class="ttc" id="classmtk_1_1DenseMatrix_html_a7893e4e5c8d2e2de32b156177e78cb6f"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#a7893e4e5c8d2e2de32b156177e78cb6f">mtk::DenseMatrix::data_</a></div><div class="ttdeci">Real * data_</div><div class="ttdoc">Array holding the data in contiguouos position in memory. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8h_source.html#l00270">mtk_dense_matrix.h:270</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_ac2949efba3e8278335d45418c85433e4"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#ac2949efba3e8278335d45418c85433e4">mtk::DenseMatrix::OrderRowMajor</a></div><div class="ttdeci">void OrderRowMajor()</div><div class="ttdoc">Make the matrix row-wise ordered. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00383">mtk_dense_matrix.cc:383</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_a71d9c07ca66e88d97d1fd5012f43138b"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#a71d9c07ca66e88d97d1fd5012f43138b">mtk::DenseMatrix::Transpose</a></div><div class="ttdeci">void Transpose()</div><div class="ttdoc">Transpose this matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00346">mtk_dense_matrix.cc:346</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_a17d8d3b9cc0926044b6972dd190a5c21"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#a17d8d3b9cc0926044b6972dd190a5c21">mtk::DenseMatrix::num_rows</a></div><div class="ttdeci">int num_rows() const </div><div class="ttdoc">Gets the number of rows. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00306">mtk_dense_matrix.cc:306</a></div></div>
 <div class="ttc" id="mtk__roots_8h_html"><div class="ttname"><a href="mtk__roots_8h.html">mtk_roots.h</a></div><div class="ttdoc">Fundamental definitions to be used across all classes of the MTK. </div></div>
 <div class="ttc" id="classmtk_1_1Matrix_html"><div class="ttname"><a href="classmtk_1_1Matrix.html">mtk::Matrix</a></div><div class="ttdoc">Definition of the representation of a matrix in the MTK. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__matrix_8h_source.html#l00075">mtk_matrix.h:75</a></div></div>
-<div class="ttc" id="classmtk_1_1DenseMatrix_html_a481c8d09af685a5ba67acefdcaa810cc"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#a481c8d09af685a5ba67acefdcaa810cc">mtk::DenseMatrix::matrix_properties_</a></div><div class="ttdeci">Matrix matrix_properties_</div><div class="ttdoc">Data related to the matrix nature. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8h_source.html#l00272">mtk_dense_matrix.h:272</a></div></div>
+<div class="ttc" id="classmtk_1_1DenseMatrix_html_a481c8d09af685a5ba67acefdcaa810cc"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#a481c8d09af685a5ba67acefdcaa810cc">mtk::DenseMatrix::matrix_properties_</a></div><div class="ttdeci">Matrix matrix_properties_</div><div class="ttdoc">Data related to the matrix nature. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8h_source.html#l00268">mtk_dense_matrix.h:268</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="mtk__dense__matrix_8h.html">mtk_dense_matrix.h</a></li>
-    <li class="footer">Generated on Sun Sep 13 2015 22:12:42 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Thu Oct 15 2015 13:15:19 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>

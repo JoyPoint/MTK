@@ -1,0 +1,58 @@
+.TH "examples/minimalistic_poisson_1d/minimalistic_poisson_1d.cc" 3 "Thu Oct 15 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+examples/minimalistic_poisson_1d/minimalistic_poisson_1d.cc \- 
+Poisson Equation on a 1D Uniform Staggered Grid with Robin BCs\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <iostream>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBmain\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+We solve:
+.PP
+\[ \nabla^2 p(x) = -s(x), \].PP
+for $ x \in \Omega = [a,b] = [0,1] $\&.
+.PP
+The source term function is defined as
+.PP
+\[ s(x) = \frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1} \].PP
+where $ \lambda = -1 $ is a parameter\&.
+.PP
+We consider Robin's boundary conditions of the form:
+.PP
+\[ \alpha p(a) - \beta p'(a) = \omega, \].PP
+\[ \alpha p(b) + \beta p'(b) = \epsilon. \].PP
+The analytical solution for this problem is given by
+.PP
+\[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \].PP
+\fBAuthor:\fP
+.RS 4
+: Eduardo J\&. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
+.PP
+: Raul Vargas--Navarro - vargasna at rohan dot sdsu dot edu 
+.RE
+.PP
+
+.PP
+Definition in file \fBminimalistic_poisson_1d\&.cc\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "int main ()"
+
+.PP
+Definition at line 183 of file minimalistic_poisson_1d\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

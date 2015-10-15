@@ -1,0 +1,143 @@
+\hypertarget{mtk__grad__2d_8cc}{\section{mtk\-\_\-grad\-\_\-2d.\-cc}
+\label{mtk__grad__2d_8cc}\index{src/mtk\-\_\-grad\-\_\-2d.\-cc@{src/mtk\-\_\-grad\-\_\-2d.\-cc}}
+}
+
+\begin{DoxyCode}
+00001 
+00011 \textcolor{comment}{/*}
+00012 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00013 \textcolor{comment}{University. All rights reserved.}
+00014 \textcolor{comment}{}
+00015 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00016 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00017 \textcolor{comment}{}
+00018 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00019 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00020 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
+00021 \textcolor{comment}{}
+00022 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00023 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00024 \textcolor{comment}{}
+00025 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
+00026 \textcolor{comment}{list of conditions and the following disclaimer.}
+00027 \textcolor{comment}{}
+00028 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
+00029 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00030 \textcolor{comment}{other materials provided with the distribution.}
+00031 \textcolor{comment}{}
+00032 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
+00033 \textcolor{comment}{prior written permission from the the copyright holders.}
+00034 \textcolor{comment}{}
+00035 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00036 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00037 \textcolor{comment}{specific prior written permission.}
+00038 \textcolor{comment}{}
+00039 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00040 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00041 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00042 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00043 \textcolor{comment}{parties intellectual property rights.}
+00044 \textcolor{comment}{}
+00045 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00046 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00047 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00048 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00049 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00050 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00051 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00052 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00053 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00054 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00055 \textcolor{comment}{*/}
+00056 
+00057 \textcolor{preprocessor}{#include <cstdlib>}
+00058 \textcolor{preprocessor}{#include <cstdio>}
+00059 
+00060 \textcolor{preprocessor}{#include <iostream>}
+00061 \textcolor{preprocessor}{#include <iomanip>}
+00062 
+00063 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
+00064 \textcolor{preprocessor}{#include "\hyperlink{mtk__grad__1d_8h}{mtk\_grad\_1d.h}"}
+00065 \textcolor{preprocessor}{#include "\hyperlink{mtk__grad__2d_8h}{mtk\_grad\_2d.h}"}
+00066 
+\hypertarget{mtk__grad__2d_8cc_source_l00067}{}\hyperlink{classmtk_1_1Grad2D_a15bdca254b7bf662913b34c7afb8d4c9}{00067} \hyperlink{classmtk_1_1Grad2D_a15bdca254b7bf662913b34c7afb8d4c9}{mtk::Grad2D::Grad2D}():
+00068   order\_accuracy\_(),
+00069   mimetic\_threshold\_() \{\}
+00070 
+\hypertarget{mtk__grad__2d_8cc_source_l00071}{}\hyperlink{classmtk_1_1Grad2D_a31ccf118edb128c85f28b579bd9394a8}{00071} \hyperlink{classmtk_1_1Grad2D_a15bdca254b7bf662913b34c7afb8d4c9}{mtk::Grad2D::Grad2D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Grad2D}{Grad2D} &grad):
+00072   order\_accuracy\_(grad.order\_accuracy\_),
+00073   mimetic\_threshold\_(grad.mimetic\_threshold\_) \{\}
+00074 
+\hypertarget{mtk__grad__2d_8cc_source_l00075}{}\hyperlink{classmtk_1_1Grad2D_ae6a071b24422d057c41346e80be96cb3}{00075} \hyperlink{classmtk_1_1Grad2D_ae6a071b24422d057c41346e80be96cb3}{mtk::Grad2D::~Grad2D}() \{\}
+00076 
+\hypertarget{mtk__grad__2d_8cc_source_l00077}{}\hyperlink{classmtk_1_1Grad2D_a54968910cecdd7d313a5b87356d2799f}{00077} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Grad2D_a54968910cecdd7d313a5b87356d2799f}{mtk::Grad2D::ConstructGrad2D}(\textcolor{keyword}{const} 
+      \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &grid,
+00078                                               \textcolor{keywordtype}{int} order\_accuracy,
+00079                                               \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} mimetic\_threshold) \{
+00080 
+00081   \textcolor{keywordtype}{int} NumCellsX = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}();
+00082   \textcolor{keywordtype}{int} NumCellsY = grid.\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}();
+00083 
+00084   \textcolor{keywordtype}{int} mx = NumCellsX + 1;  \textcolor{comment}{// Gx vertical dimension}
+00085   \textcolor{keywordtype}{int} nx = NumCellsX + 2;  \textcolor{comment}{// Gx horizontal dimension}
+00086   \textcolor{keywordtype}{int} my = NumCellsY + 1;  \textcolor{comment}{// Gy vertical dimension}
+00087   \textcolor{keywordtype}{int} ny = NumCellsY + 2;  \textcolor{comment}{// Gy horizontal dimension}
+00088 
+00089   \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} grad;
+00090 
+00091   \textcolor{keywordtype}{bool} info = grad.\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{ConstructGrad1D}(order\_accuracy, mimetic\_threshold);
+00092 
+00093   \textcolor{keywordflow}{if} (!info) \{
+00094     std::cerr << \textcolor{stringliteral}{"Mimetic grad could not be built."} << std::endl;
+00095   \}
+00096 
+00097   \textcolor{keyword}{auto} West = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a95b1041558be5bbb087f508d2efbac96}{west\_bndy\_x}();
+00098   \textcolor{keyword}{auto} East = grid.\hyperlink{classmtk_1_1UniStgGrid2D_aa626e15a5c494d8de0bf4882bc62a756}{east\_bndy\_x}();
+00099   \textcolor{keyword}{auto} South = grid.\hyperlink{classmtk_1_1UniStgGrid2D_abf94d51c0dfee07840e1603dfdc49643}{south\_bndy\_y}();
+00100   \textcolor{keyword}{auto} North = grid.\hyperlink{classmtk_1_1UniStgGrid2D_aa626e15a5c494d8de0bf4882bc62a756}{east\_bndy\_x}();
+00101 
+00102   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid\_x(West, East, NumCellsX);
+00103   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid\_y(South, North, NumCellsY);
+00104 
+00105   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} Gx(grad.\hyperlink{classmtk_1_1Grad1D_a4218516bfb43f683559322ea97058c78}{ReturnAsDenseMatrix}(grid\_x));
+00106   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} Gy(grad.\hyperlink{classmtk_1_1Grad1D_a4218516bfb43f683559322ea97058c78}{ReturnAsDenseMatrix}(grid\_y));
+00107 
+00108   \textcolor{keywordtype}{bool} padded\{\textcolor{keyword}{true}\};
+00109   \textcolor{keywordtype}{bool} transpose\{\textcolor{keyword}{true}\};
+00110 
+00111   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} TIx(NumCellsX, padded, transpose);
+00112   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} TIy(NumCellsY, padded, transpose);
+00113 
+00114   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} Gxy(\hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{mtk::DenseMatrix::Kron}(TIy, Gx));
+00115   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} Gyx(\hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{mtk::DenseMatrix::Kron}(Gy, TIx));
+00116 
+00117 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00118 \textcolor{preprocessor}{}  std::cout << \textcolor{stringliteral}{"Gx :"} << mx << \textcolor{stringliteral}{"by "} << nx << std::endl;
+00119   std::cout << \textcolor{stringliteral}{"Transpose Iy : "} << NumCellsY<< \textcolor{stringliteral}{" by "} << ny  << std::endl;
+00120   std::cout << \textcolor{stringliteral}{"Gy :"} << my << \textcolor{stringliteral}{"by "} << ny << std::endl;
+00121   std::cout << \textcolor{stringliteral}{"Transpose Ix : "} << NumCellsX<< \textcolor{stringliteral}{" by "} << nx  << std::endl;
+00122   std::cout << \textcolor{stringliteral}{"Kronecker dimensions Grad 2D"} <<
+00123   mx*NumCellsY + my*NumCellsX << \textcolor{stringliteral}{" by "} <<  nx*ny <<std::endl;
+00124 \textcolor{preprocessor}{  #endif}
+00125 \textcolor{preprocessor}{}
+00126   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} G2D(mx*NumCellsY + my*NumCellsX, nx*ny);
+00127 
+00128   \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} ii = 0; ii < nx*ny; ii++) \{
+00129     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = 0; jj < mx*NumCellsY; jj++) \{
+00130       G2D.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(jj,ii, Gxy.\hyperlink{classmtk_1_1DenseMatrix_a87fb785713c04b13767947cc3325ce7c}{GetValue}(jj,ii));
+00131     \}
+00132     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} kk = 0; kk < my*NumCellsX; kk++) \{
+00133       G2D.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(kk + mx*NumCellsY, ii, Gyx.\hyperlink{classmtk_1_1DenseMatrix_a87fb785713c04b13767947cc3325ce7c}{GetValue}(kk,ii));
+00134     \}
+00135   \}
+00136 
+00137   gradient\_ = G2D;
+00138 
+00139   \textcolor{keywordflow}{return} gradient\_;
+00140 \}
+00141 
+\hypertarget{mtk__grad__2d_8cc_source_l00142}{}\hyperlink{classmtk_1_1Grad2D_afa14fa1b84f05752027c1cef66381de8}{00142} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Grad2D_afa14fa1b84f05752027c1cef66381de8}{mtk::Grad2D::ReturnAsDenseMatrix}() \{
+00143 
+00144   \textcolor{keywordflow}{return} gradient\_;
+00145 \}
+\end{DoxyCode}

@@ -1,0 +1,168 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+  <compounddef id="classmtk_1_1Interp2D" kind="class" prot="public">
+    <compoundname>mtk::Interp2D</compoundname>
+    <includes refid="mtk__interp__2d_8h" local="no">mtk_interp_2d.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmtk_1_1Interp2D_1aa30fa30d96c8b0a37adac36c4e344329" prot="private" static="no" mutable="no">
+        <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref></type>
+        <definition>DenseMatrix mtk::Interp2D::interpolator_</definition>
+        <argsstring></argsstring>
+        <name>interpolator_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_interp_2d.h" line="78" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_interp_2d.h" bodystart="78" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Interp2D_1ad83cea724e0eff1d8b14bcba3575612e" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Interp2D::order_accuracy_</definition>
+        <argsstring></argsstring>
+        <name>order_accuracy_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_interp_2d.h" line="79" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_interp_2d.h" bodystart="79" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Interp2D_1a842cfa59a56be76a240dd5de68007134" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>Real mtk::Interp2D::mimetic_threshold_</definition>
+        <argsstring></argsstring>
+        <name>mimetic_threshold_</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_interp_2d.h" line="80" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_interp_2d.h" bodystart="80" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmtk_1_1Interp2D_1a1ced84c0dbafdbe1cd3732d5a4848e10" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::Interp2D::Interp2D</definition>
+        <argsstring>()</argsstring>
+        <name>Interp2D</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_interp_2d.h" line="69" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Interp2D_1a86af209e6045050e4ebc205dd43b8279" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::Interp2D::Interp2D</definition>
+        <argsstring>(const Interp2D &amp;interp)</argsstring>
+        <name>Interp2D</name>
+        <param>
+          <type>const <ref refid="classmtk_1_1Interp2D" kindref="compound">Interp2D</ref> &amp;</type>
+          <declname>interp</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_interp_2d.h" line="70" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Interp2D_1a037ed312b0baa2137a31984108e6907d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::Interp2D::~Interp2D</definition>
+        <argsstring>()</argsstring>
+        <name>~Interp2D</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_interp_2d.h" line="71" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Interp2D_1ae9a83433caa1fd62956cce0872a02fb8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref></type>
+        <definition>DenseMatrix mtk::Interp2D::ConstructInterp2D</definition>
+        <argsstring>(const UniStgGrid2D &amp;grid, int order_accuracy=kDefaultOrderAccuracy, Real mimetic_threshold=kDefaultMimeticThreshold)</argsstring>
+        <name>ConstructInterp2D</name>
+        <param>
+          <type>const <ref refid="classmtk_1_1UniStgGrid2D" kindref="compound">UniStgGrid2D</ref> &amp;</type>
+          <declname>grid</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>order_accuracy</declname>
+          <defval><ref refid="group__c01-roots_1ga0d95560098eb36420511103637b6952f" kindref="member">kDefaultOrderAccuracy</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+          <declname>mimetic_threshold</declname>
+          <defval><ref refid="group__c01-roots_1ga35718d949bdc81a08a9cc8ebbe3478a2" kindref="member">kDefaultMimeticThreshold</ref></defval>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_interp_2d.h" line="72" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Interp2D_1a8ec771bc030c11d0a806b642387d3b32" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref></type>
+        <definition>DenseMatrix mtk::Interp2D::ReturnAsDenseMatrix</definition>
+        <argsstring>()</argsstring>
+        <name>ReturnAsDenseMatrix</name>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_interp_2d.h" line="75" column="1"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="86">
+        <label>mtk::Interp2D</label>
+        <link refid="classmtk_1_1Interp2D"/>
+        <childnode refid="87" relation="usage">
+          <edgelabel>-interpolator_</edgelabel>
+        </childnode>
+      </node>
+      <node id="87">
+        <label>mtk::DenseMatrix</label>
+        <link refid="classmtk_1_1DenseMatrix"/>
+        <childnode refid="88" relation="usage">
+          <edgelabel>-matrix_properties_</edgelabel>
+        </childnode>
+      </node>
+      <node id="88">
+        <label>mtk::Matrix</label>
+        <link refid="classmtk_1_1Matrix"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_interp_2d.h" line="67" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_interp_2d.h" bodystart="67" bodyend="81"/>
+    <listofallmembers>
+      <member refid="classmtk_1_1Interp2D_1ae9a83433caa1fd62956cce0872a02fb8" prot="public" virt="non-virtual"><scope>mtk::Interp2D</scope><name>ConstructInterp2D</name></member>
+      <member refid="classmtk_1_1Interp2D_1a1ced84c0dbafdbe1cd3732d5a4848e10" prot="public" virt="non-virtual"><scope>mtk::Interp2D</scope><name>Interp2D</name></member>
+      <member refid="classmtk_1_1Interp2D_1a86af209e6045050e4ebc205dd43b8279" prot="public" virt="non-virtual"><scope>mtk::Interp2D</scope><name>Interp2D</name></member>
+      <member refid="classmtk_1_1Interp2D_1aa30fa30d96c8b0a37adac36c4e344329" prot="private" virt="non-virtual"><scope>mtk::Interp2D</scope><name>interpolator_</name></member>
+      <member refid="classmtk_1_1Interp2D_1a842cfa59a56be76a240dd5de68007134" prot="private" virt="non-virtual"><scope>mtk::Interp2D</scope><name>mimetic_threshold_</name></member>
+      <member refid="classmtk_1_1Interp2D_1ad83cea724e0eff1d8b14bcba3575612e" prot="private" virt="non-virtual"><scope>mtk::Interp2D</scope><name>order_accuracy_</name></member>
+      <member refid="classmtk_1_1Interp2D_1a8ec771bc030c11d0a806b642387d3b32" prot="public" virt="non-virtual"><scope>mtk::Interp2D</scope><name>ReturnAsDenseMatrix</name></member>
+      <member refid="classmtk_1_1Interp2D_1a037ed312b0baa2137a31984108e6907d" prot="public" virt="non-virtual"><scope>mtk::Interp2D</scope><name>~Interp2D</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

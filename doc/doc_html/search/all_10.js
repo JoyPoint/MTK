@@ -2,6 +2,7 @@ var searchData=
 [
   ['saxpy_5f',['saxpy_',['../namespacemtk.html#a81a2d7d1ea9eff65ae13646c93dad5e9',1,'mtk']]],
   ['scalar',['SCALAR',['../namespacemtk.html#ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205',1,'mtk']]],
+  ['scalar_5fto_5fvector',['SCALAR_TO_VECTOR',['../namespacemtk.html#ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139',1,'mtk']]],
   ['set_5fnum_5fcols',['set_num_cols',['../classmtk_1_1Matrix.html#a312883d34f2e0daf5db7432ee2c4ed51',1,'mtk::Matrix']]],
   ['set_5fnum_5fnull',['set_num_null',['../classmtk_1_1Matrix.html#a66c2c1c127f4efefc4a407e9552e928d',1,'mtk::Matrix']]],
   ['set_5fnum_5frows',['set_num_rows',['../classmtk_1_1Matrix.html#a242fedf2da10a3e5c14f63c2bc60beae',1,'mtk::Matrix']]],
@@ -20,6 +21,8 @@ var searchData=
   ['solverectangulardensesystem',['SolveRectangularDenseSystem',['../classmtk_1_1LAPACKAdapter.html#a380f148ffdf96bae2f79ae28f1a6560c',1,'mtk::LAPACKAdapter']]],
   ['solvesimplexandcompare',['SolveSimplexAndCompare',['../classmtk_1_1GLPKAdapter.html#a834480aca83e3c0d09fdab7fdb7e8a3f',1,'mtk::GLPKAdapter']]],
   ['sormqr_5f',['sormqr_',['../namespacemtk.html#a59c58408e1c0a9837b67a417be986b82',1,'mtk']]],
+  ['south_5fbndy_5fy',['south_bndy_y',['../classmtk_1_1UniStgGrid2D.html#abf94d51c0dfee07840e1603dfdc49643',1,'mtk::UniStgGrid2D']]],
+  ['south_5fbndy_5fy_5f',['south_bndy_y_',['../classmtk_1_1UniStgGrid2D.html#aa36037d53f3d00433f5eaa0a05b712bc',1,'mtk::UniStgGrid2D']]],
   ['storage',['storage',['../classmtk_1_1Matrix.html#a21893fc643eebadd9757c8995cf44dd3',1,'mtk::Matrix']]],
   ['storage_5f',['storage_',['../classmtk_1_1Matrix.html#ae343697531e0849f20bed4a9760b9a54',1,'mtk::Matrix']]]
 ];

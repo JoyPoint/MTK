@@ -131,9 +131,9 @@ Static Public Member Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class contains a collection of static classes, that posses direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the GLPK.</p>
 <p>The <b>GLPK (GNU Linear Programming Kit)</b> package is intended for solving large-scale linear programming (LP), mixed integer programming (MIP), and other related problems. It is a set of routines written in ANSI C and organized in the form of a callable library.</p>
-<dl class="section warning"><dt>Warning</dt><dd>We use the GLPK temporarily in order to test the CBSA, but it will be removed due to licensing issues.</dd></dl>
+<dl class="section warning"><dt>Warning</dt><dd>We use the GLPK temporarily in order to test the CBSA, but it will be removed due to potential licensing issues.</dd></dl>
 <dl class="section see"><dt>See Also</dt><dd><a href="http://www.gnu.org/software/glpk/">http://www.gnu.org/software/glpk/</a></dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Rescind from the GLPK as the numerical core for CLO problems. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Rescind from the GLPK as the numerical core for CLO problems. </dd></dl>
 
 <p>Definition at line <a class="el" href="mtk__glpk__adapter_8h_source.html#l00101">101</a> of file <a class="el" href="mtk__glpk__adapter_8h_source.html">mtk_glpk_adapter.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
@@ -221,10 +221,11 @@ Static Public Member Functions</h2></td></tr>
     <tr><td class="paramdir">[in,out]</td><td class="paramname">yy</td><td>Second vector (output). </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">xx</td><td>First vector. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">beta</td><td>Second scalar. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">beta</td><td>Second scalar. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">beta</td><td>Second scalar.</td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd>Relative error computed between attained solution and provided ref. </dd></dl>
 <dl class="section warning"><dt>Warning</dt><dd>GLPK indexes in [1,n], so we must get the extra space needed.</dd></dl>
 <ol type="1">
 <li>Memory allocation.</li>
@@ -237,7 +238,7 @@ Static Public Member Functions</h2></td></tr>
 <li>Solve problem. </li>
 </ol>
 
-<p>Definition at line <a class="el" href="mtk__glpk__adapter_8cc_source.html#l00078">78</a> of file <a class="el" href="mtk__glpk__adapter_8cc_source.html">mtk_glpk_adapter.cc</a>.</p>
+<p>Definition at line <a class="el" href="mtk__glpk__adapter_8cc_source.html#l00076">76</a> of file <a class="el" href="mtk__glpk__adapter_8cc_source.html">mtk_glpk_adapter.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -269,7 +270,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemtk.html">mtk</a></li><li class="navelem"><a class="el" href="classmtk_1_1GLPKAdapter.html">GLPKAdapter</a></li>
-    <li class="footer">Generated on Sun Sep 13 2015 22:12:43 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Thu Oct 15 2015 13:15:24 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.6 </li>
   </ul>
