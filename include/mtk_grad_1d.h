@@ -144,6 +144,13 @@ class Grad1D {
 
   \return The operator as a dense matrix.
   */
+  DenseMatrix ReturnAsDenseMatrix(Real west, Real east, int num_cells_x);
+
+  /*!
+  \brief Returns the operator as a dense matrix.
+
+  \return The operator as a dense matrix.
+  */
   DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid);
 
  private:
@@ -195,11 +202,10 @@ class Grad1D {
   int num_bndy_approxs_;  ///< Req. approximations at and near the boundary.
   int num_bndy_coeffs_;   ///< Req. coeffs. per bndy pt. uni. order accuracy.
   int gradient_length_;   ///< Length of the output array.
-
   int minrow_;            ///< Row from the optimizer with the minimum rel. nor.
   int row_;               ///< Row currently processed by the optimizer.
 
-  mtk::DenseMatrix rat_basis_null_space_;  ///< Rational b. null-space w. bndy.
+  DenseMatrix rat_basis_null_space_;  ///< Rational b. null-space w. bndy.
 
   Real *coeffs_interior_; ///< Interior stencil.
   Real *prem_apps_;       ///< 2D array of boundary preliminary approximations.

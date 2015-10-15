@@ -142,9 +142,9 @@ const int kDefaultOrderAccuracy{2};
 \warning Declared as double if MTK_PRECISION_DOUBLE is defined.
 */
 #ifdef MTK_PRECISION_DOUBLE
-const double kDefaultMimeticThreshold{1.e-6};
+const double kDefaultMimeticThreshold{1e-6};
 #else
-const float kDefaultMimeticThreshold{1.e-6f};
+const float kDefaultMimeticThreshold{1e-6f};
 #endif
 
 /*!

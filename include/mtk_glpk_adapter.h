@@ -92,7 +92,7 @@ related problems. It is a set of routines written in ANSI C and organized in the
 form of a callable library.
 
 \warning We use the GLPK temporarily in order to test the CBSA, but it will be
-removed due to licensing issues.
+removed due to potential licensing issues.
 
 \sa http://www.gnu.org/software/glpk/
 
@@ -117,6 +117,8 @@ class GLPKAdapter {
   \param[in] xx First vector.
   \param[in] beta Second scalar.
   \param[in] beta Second scalar.
+
+  \return Relative error computed between attained solution and provided ref.
   */
   static mtk::Real SolveSimplexAndCompare(mtk::Real *A,
                                           int nrows,

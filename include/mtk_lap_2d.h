@@ -1,9 +1,9 @@
 /*!
-\file mtk_grad_2d.h
+\file mtk_lap_2d.h
 
-\brief Includes the definition of the class Grad2D.
+\brief Includes the implementation of the class Lap2D.
 
-This class implements a 2D gradient operator, constructed using the
+This class implements a 2D Laplacian operator, constructed using the
 Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
@@ -54,8 +54,8 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef MTK_INCLUDE_MTK_GRAD_2D_H_
-#define MTK_INCLUDE_MTK_GRAD_2D_H_
+#ifndef MTK_INCLUDE_MTK_LAP_2D_H_
+#define MTK_INCLUDE_MTK_LAP_2D_H_
 
 #include "mtk_roots.h"
 #include "mtk_dense_matrix.h"
@@ -63,41 +63,20 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace mtk{
 
-class Grad2D {
+class Lap2D {
  public:
-  /// \brief Default constructor.
-  Grad2D();
-
-  /*!
-  \brief Copy constructor.
-
-  \param [in] div Given divergence.
-  */
-  Grad2D(const Grad2D &grad);
-
-  /// \brief Destructor.
-  ~Grad2D();
-
-  /*!
-  \brief Factory method implementing the CBS Algorithm to build operator.
-
-  \return Success of the construction.
-  */
-  DenseMatrix ConstructGrad2D(const UniStgGrid2D &grid,
+  Lap2D();
+  Lap2D(const Lap2D &lap);
+  ~Lap2D();
+  DenseMatrix ConstructLap2D(const UniStgGrid2D &grid,
                               int order_accuracy = kDefaultOrderAccuracy,
                              Real mimetic_threshold = kDefaultMimeticThreshold);
-
-  /*!
-  \brief Return the operator as a dense matrix.
-
-  \return The operator as a dense matrix.
-  */
   DenseMatrix ReturnAsDenseMatrix();
 
  private:
-  DenseMatrix gradient_;    ///< Actual operator.
-  int order_accuracy_;      ///< Order of accuracy.
-  Real mimetic_threshold_;  ///< Mimetic Threshold.
+  DenseMatrix laplacian_;
+  int order_accuracy_;
+  Real mimetic_threshold_;
 };
 }
-#endif  // End of: MTK_INCLUDE_MTK_GRAD_2D_H_
+#endif  // End of: MTK_INCLUDE_MTK_LAP_2D_H_

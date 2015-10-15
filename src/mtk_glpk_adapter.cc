@@ -15,8 +15,6 @@ form of a callable library.
 \sa http://www.gnu.org/software/glpk/
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
-
-\todo Document better this file.
 */
 /*
 Copyright (C) 2015, Computational Science Research Center, San Diego State
@@ -86,32 +84,33 @@ mtk::Real mtk::GLPKAdapter::SolveSimplexAndCompare(mtk::Real *A,
                                                    int copy) {
 
   #if MTK_DEBUG_LEVEL > 0
-  char mps_file_name[18]; //  File name for the MPS files.
+  char mps_file_name[18]; // File name for the MPS files.
   #endif
-  char rname[5];          //
-  char cname[5];          //
+  char rname[5];          // Row name.
+  char cname[5];          // Column name.
 
   glp_prob *lp; // Linear programming problem.
 
-  int *ia;  //
-  int *ja;  //
+  int *ia;  // Array for the problem.
+  int *ja;  // Array for the problem.
 
   int problem_size; // Size of the problem.
   int lp_nrows;     // Number of rows.
   int lp_ncols;     // Number of columns.
-  int matsize;      //
-  int glp_index{1};    // Index of the objective function.
-  int ii;           //
-  int jj;           //
+  int matsize;      // Size of the matrix.
+  int glp_index{1}; // Index of the objective function.
+  int ii;           // Iterator.
+  int jj;           // Iterator.
 
-  mtk::Real *ar;            //
-  mtk::Real *objective;     //
-  mtk::Real *rhs;           //
-  mtk::Real *err;           //
-  mtk::Real x1;             //
+  mtk::Real *ar;            // Array for the problem.
+  mtk::Real *objective;     // Array containing the objective function.
+  mtk::Real *rhs;           // Array containing the rhs.
+  mtk::Real *err;           // Array of errors.
+
+  mtk::Real x1;             // Norm-2 of the error.
 
   #if MTK_DEBUG_LEVEL > 0
-  mtk::Real obj_value;      //
+  mtk::Real obj_value;      // Value of the objective function.
   #endif
 
   lp_nrows = kk;

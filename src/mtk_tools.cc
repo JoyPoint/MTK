@@ -82,7 +82,7 @@ void mtk::Tools::Prevent(const bool condition,
 
 /// \todo Check usage of static methods and private members.
 
-int mtk::Tools::test_number_; // Used to control the correctness of the test.
+int mtk::Tools::test_number_;  // Used to control the correctness of the test.
 
 clock_t mtk::Tools::begin_time_;  // Used to time tests.
 

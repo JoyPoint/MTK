@@ -1,9 +1,9 @@
 /*!
-\file mtk_grad_2d.h
+\file mtk_lap_2d.h
 
-\brief Includes the definition of the class Grad2D.
+\brief Includes the implementation of the class Lap2D.
 
-This class implements a 2D gradient operator, constructed using the
+This class implements a 2D Laplacian operator, constructed using the
 Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
@@ -54,50 +54,28 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef MTK_INCLUDE_MTK_GRAD_2D_H_
-#define MTK_INCLUDE_MTK_GRAD_2D_H_
+#include <cstdlib>
+#include <cstdio>
+
+#include <iostream>
+#include <iomanip>
 
 #include "mtk_roots.h"
-#include "mtk_dense_matrix.h"
-#include "mtk_uni_stg_grid_2d.h"
+#include "mtk_lap_2d.h"
 
-namespace mtk{
+mtk::Lap2D::Lap2D():
+  order_accuracy_(),
+  mimetic_threshold_() {}
 
-class Grad2D {
- public:
-  /// \brief Default constructor.
-  Grad2D();
+mtk::Lap2D::Lap2D(const Lap2D &lap):
+  order_accuracy_(lap.order_accuracy_),
+  mimetic_threshold_(lap.mimetic_threshold_) {}
 
-  /*!
-  \brief Copy constructor.
+mtk::Lap2D::~Lap2D() {}
 
-  \param [in] div Given divergence.
-  */
-  Grad2D(const Grad2D &grad);
+mtk::DenseMatrix mtk::Lap2D::ConstructLap2D(const mtk::UniStgGrid2D &grid,
+                                              int order_accuracy,
+                                              mtk::Real mimetic_threshold) {
 
-  /// \brief Destructor.
-  ~Grad2D();
-
-  /*!
-  \brief Factory method implementing the CBS Algorithm to build operator.
-
-  \return Success of the construction.
-  */
-  DenseMatrix ConstructGrad2D(const UniStgGrid2D &grid,
-                              int order_accuracy = kDefaultOrderAccuracy,
-                             Real mimetic_threshold = kDefaultMimeticThreshold);
-
-  /*!
-  \brief Return the operator as a dense matrix.
-
-  \return The operator as a dense matrix.
-  */
-  DenseMatrix ReturnAsDenseMatrix();
-
- private:
-  DenseMatrix gradient_;    ///< Actual operator.
-  int order_accuracy_;      ///< Order of accuracy.
-  Real mimetic_threshold_;  ///< Mimetic Threshold.
-};
+  return laplacian_;
 }
-#endif  // End of: MTK_INCLUDE_MTK_GRAD_2D_H_

@@ -7,11 +7,11 @@ This class contains a collection of static classes, that posses direct access
 to the underlying structure of the matrices, thus allowing programmers to
 exploit some of the numerical methods implemented in the BLAS.
 
-The BLAS (Basic Linear Algebra Subprograms) are routines that provide standard
-building blocks for performing basic vector and matrix operations. The Level 1
-BLAS perform scalar, vector and vector-vector operations, the Level 2 BLAS
-perform matrix-vector operations, and the Level 3 BLAS perform matrix-matrix
-operations.
+The **BLAS (Basic Linear Algebra Subprograms)** are routines that provide
+standard building blocks for performing basic vector and matrix operations. The
+Level 1 BLAS perform scalar, vector and vector-vector operations, the Level 2
+BLAS perform matrix-vector operations, and the Level 3 BLAS perform
+matrix-matrix operations.
 
 The BLAS can be installed from links given in the See Also section of this page.
 

@@ -10,12 +10,6 @@ should be replaced by the most appropriate sparse matrix.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 
-\todo Add sparse matrices support: BANDED and CRS.
-
-\todo Contemplate manipulation of sparse metrics.
-
-\todo Implement Kronecker product using the BLAS.
-
 \note We prefer composition to inheritance [Reedy, 2011]. The main reason for
 this preference is that inheritance produces a more tightly coupled design. When
 a class inherits from another type be it public, protected, or private
@@ -265,6 +259,8 @@ class DenseMatrix {
   \param[in] bb Second matrix.
 
   \exception std::bad_alloc
+
+  \todo Implement Kronecker product using the BLAS.
   */
   static DenseMatrix Kron(const DenseMatrix &aa, const DenseMatrix &bb);
 

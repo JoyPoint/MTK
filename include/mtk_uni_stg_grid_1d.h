@@ -108,6 +108,20 @@ class UniStgGrid1D {
   ~UniStgGrid1D();
 
   /*!
+  \brief Provides access to west boundary spatial coordinate.
+
+  \return West boundary spatial coordinate.
+  */
+  Real west_bndy_x() const;
+
+  /*!
+  \brief Provides access to east boundary spatial coordinate.
+
+  \return East boundary spatial coordinate.
+  */
+  Real east_bndy_x() const;
+
+  /*!
   \brief Provides access to the computed \$ \Delta x \$.
 
   \return Computed \$ \Delta x \$.

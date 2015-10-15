@@ -1060,6 +1060,7 @@ bool mtk::Div1D::ComputeWeights(void) {
   #endif
 
   /// 5. If required order is greater than critical order, start the **CBSA**.
+
   if (order_accuracy_ >= mtk::kCriticalOrderAccuracyDiv) {
 
     int minrow_{std::numeric_limits<int>::infinity()};

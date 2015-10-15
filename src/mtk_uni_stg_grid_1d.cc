@@ -143,6 +143,16 @@ mtk::UniStgGrid1D::UniStgGrid1D(const Real &west_bndy_x,
 
 mtk::UniStgGrid1D::~UniStgGrid1D() {}
 
+mtk::Real mtk::UniStgGrid1D::west_bndy_x() const {
+
+  return west_bndy_x_;
+}
+
+mtk::Real mtk::UniStgGrid1D::east_bndy_x() const {
+
+  return east_bndy_x_;
+}
+
 mtk::Real mtk::UniStgGrid1D::delta_x() const {
 
   return delta_x_;

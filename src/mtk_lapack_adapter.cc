@@ -7,9 +7,10 @@ This class contains a collection of static classes, that posses direct access
 to the underlying structure of the matrices, thus allowing programmers to
 exploit some of the numerical methods implemented in the LAPACK.
 
-The **LAPACK** is written in Fortran 90 and provides routines for solving
-systems of simultaneous linear equations, least-squares solutions of linear
-systems of equations, eigenvalue problems, and singular value problems.
+The **LAPACK (Linear Algebra PACKage)** is written in Fortran 90 and provides
+routines for solving systems of simultaneous linear equations, least-squares
+solutions of linear systems of equations, eigenvalue problems, and singular
+value problems.
 
 \sa http://www.netlib.org/lapack/
 
@@ -426,7 +427,6 @@ void sormqr_(char *side,
 
 int mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &mm,
                                          mtk::Real *rhs) {
-
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(rhs == nullptr, __FILE__, __LINE__, __func__);

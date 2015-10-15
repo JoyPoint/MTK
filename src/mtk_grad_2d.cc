@@ -1,7 +1,7 @@
 /*!
-\file mtk_grad_2d.h
+\file mtk_grad_2d.cc
 
-\brief Includes the definition of the class Grad2D.
+\brief Implements the class Grad2D.
 
 This class implements a 2D gradient operator, constructed using the
 Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
@@ -54,50 +54,92 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef MTK_INCLUDE_MTK_GRAD_2D_H_
-#define MTK_INCLUDE_MTK_GRAD_2D_H_
+#include <cstdlib>
+#include <cstdio>
+
+#include <iostream>
+#include <iomanip>
 
 #include "mtk_roots.h"
-#include "mtk_dense_matrix.h"
-#include "mtk_uni_stg_grid_2d.h"
+#include "mtk_grad_1d.h"
+#include "mtk_grad_2d.h"
 
-namespace mtk{
+mtk::Grad2D::Grad2D():
+  order_accuracy_(),
+  mimetic_threshold_() {}
 
-class Grad2D {
- public:
-  /// \brief Default constructor.
-  Grad2D();
+mtk::Grad2D::Grad2D(const Grad2D &grad):
+  order_accuracy_(grad.order_accuracy_),
+  mimetic_threshold_(grad.mimetic_threshold_) {}
 
-  /*!
-  \brief Copy constructor.
+mtk::Grad2D::~Grad2D() {}
 
-  \param [in] div Given divergence.
-  */
-  Grad2D(const Grad2D &grad);
+mtk::DenseMatrix mtk::Grad2D::ConstructGrad2D(const mtk::UniStgGrid2D &grid,
+                                              int order_accuracy,
+                                              mtk::Real mimetic_threshold) {
 
-  /// \brief Destructor.
-  ~Grad2D();
+  int NumCellsX = grid.num_cells_x();
+  int NumCellsY = grid.num_cells_y();
 
-  /*!
-  \brief Factory method implementing the CBS Algorithm to build operator.
+  int mx = NumCellsX + 1;  // Gx vertical dimension
+  int nx = NumCellsX + 2;  // Gx horizontal dimension
+  int my = NumCellsY + 1;  // Gy vertical dimension
+  int ny = NumCellsY + 2;  // Gy horizontal dimension
 
-  \return Success of the construction.
-  */
-  DenseMatrix ConstructGrad2D(const UniStgGrid2D &grid,
-                              int order_accuracy = kDefaultOrderAccuracy,
-                             Real mimetic_threshold = kDefaultMimeticThreshold);
+  mtk::Grad1D grad;
 
-  /*!
-  \brief Return the operator as a dense matrix.
+  bool info = grad.ConstructGrad1D(order_accuracy, mimetic_threshold);
 
-  \return The operator as a dense matrix.
-  */
-  DenseMatrix ReturnAsDenseMatrix();
+  if (!info) {
+    std::cerr << "Mimetic grad could not be built." << std::endl;
+  }
 
- private:
-  DenseMatrix gradient_;    ///< Actual operator.
-  int order_accuracy_;      ///< Order of accuracy.
-  Real mimetic_threshold_;  ///< Mimetic Threshold.
-};
+  auto West = grid.west_bndy_x();
+  auto East = grid.east_bndy_x();
+  auto South = grid.south_bndy_y();
+  auto North = grid.east_bndy_x();
+
+  mtk::UniStgGrid1D grid_x(West, East, NumCellsX);
+  mtk::UniStgGrid1D grid_y(South, North, NumCellsY);
+
+  mtk::DenseMatrix Gx(grad.ReturnAsDenseMatrix(grid_x));
+  mtk::DenseMatrix Gy(grad.ReturnAsDenseMatrix(grid_y));
+
+  bool padded{true};
+  bool transpose{true};
+
+  mtk::DenseMatrix TIx(NumCellsX, padded, transpose);
+  mtk::DenseMatrix TIy(NumCellsY, padded, transpose);
+
+  mtk::DenseMatrix Gxy(mtk::DenseMatrix::Kron(TIy, Gx));
+  mtk::DenseMatrix Gyx(mtk::DenseMatrix::Kron(Gy, TIx));
+
+  #if MTK_DEBUG_LEVEL > 0
+  std::cout << "Gx :" << mx << "by " << nx << std::endl;
+  std::cout << "Transpose Iy : " << NumCellsY<< " by " << ny  << std::endl;
+  std::cout << "Gy :" << my << "by " << ny << std::endl;
+  std::cout << "Transpose Ix : " << NumCellsX<< " by " << nx  << std::endl;
+  std::cout << "Kronecker dimensions Grad 2D" <<
+  mx*NumCellsY + my*NumCellsX << " by " <<  nx*ny <<std::endl;
+  #endif
+
+  mtk::DenseMatrix G2D(mx*NumCellsY + my*NumCellsX, nx*ny);
+
+  for(auto ii = 0; ii < nx*ny; ii++) {
+    for(auto jj = 0; jj < mx*NumCellsY; jj++) {
+      G2D.SetValue(jj,ii, Gxy.GetValue(jj,ii));
+    }
+    for(auto kk = 0; kk < my*NumCellsX; kk++) {
+      G2D.SetValue(kk + mx*NumCellsY, ii, Gyx.GetValue(kk,ii));
+    }
+  }
+
+  gradient_ = G2D;
+
+  return gradient_;
 }
-#endif  // End of: MTK_INCLUDE_MTK_GRAD_2D_H_
+
+mtk::DenseMatrix mtk::Grad2D::ReturnAsDenseMatrix() {
+
+  return gradient_;
+}

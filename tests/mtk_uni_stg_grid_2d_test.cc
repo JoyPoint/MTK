@@ -1,10 +1,7 @@
 /*!
-\file mtk_grad_2d.h
+\file mtk_uni_stg_grid_2d_test.cc
 
-\brief Includes the definition of the class Grad2D.
-
-This class implements a 2D gradient operator, constructed using the
-Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
+\brief Test file for the mtk::UniStgGrid2D class.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -54,50 +51,56 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef MTK_INCLUDE_MTK_GRAD_2D_H_
-#define MTK_INCLUDE_MTK_GRAD_2D_H_
+#if __cplusplus == 201103L
 
-#include "mtk_roots.h"
-#include "mtk_dense_matrix.h"
-#include "mtk_uni_stg_grid_2d.h"
+#include <iostream>
+#include <ctime>
 
-namespace mtk{
+#include "mtk.h"
 
-class Grad2D {
- public:
-  /// \brief Default constructor.
-  Grad2D();
+void Test1() {
 
-  /*!
-  \brief Copy constructor.
+  mtk::Tools::BeginTestNo(1);
 
-  \param [in] div Given divergence.
-  */
-  Grad2D(const Grad2D &grad);
+  mtk::UniStgGrid2D gg;
 
-  /// \brief Destructor.
-  ~Grad2D();
+  std::cout << gg << std::endl;
 
-  /*!
-  \brief Factory method implementing the CBS Algorithm to build operator.
-
-  \return Success of the construction.
-  */
-  DenseMatrix ConstructGrad2D(const UniStgGrid2D &grid,
-                              int order_accuracy = kDefaultOrderAccuracy,
-                             Real mimetic_threshold = kDefaultMimeticThreshold);
-
-  /*!
-  \brief Return the operator as a dense matrix.
-
-  \return The operator as a dense matrix.
-  */
-  DenseMatrix ReturnAsDenseMatrix();
-
- private:
-  DenseMatrix gradient_;    ///< Actual operator.
-  int order_accuracy_;      ///< Order of accuracy.
-  Real mimetic_threshold_;  ///< Mimetic Threshold.
-};
+  mtk::Tools::EndTestNo(1);
 }
-#endif  // End of: MTK_INCLUDE_MTK_GRAD_2D_H_
+
+void Test2() {
+
+  mtk::Tools::BeginTestNo(2);
+
+  mtk::Real aa = 0.0;
+  mtk::Real bb = 1.0;
+  mtk::Real cc = 0.0;
+  mtk::Real dd = 1.0;
+
+  int nn = 5;
+  int mm = 7;
+
+  mtk::UniStgGrid2D gg(aa, bb, nn, cc, dd, mm);
+
+  std::cout << gg << std::endl;
+
+  mtk::Tools::EndTestNo(2);
+}
+int main () {
+
+  std::cout << "Testing mtk::UniStgGrid2D class." << std::endl;
+
+  Test1();
+  Test2();
+}
+
+#else
+#include <iostream>
+using std::cout;
+using std::endl;
+int main () {
+  cout << "This code HAS to be compiled with support for C++11." << endl;
+  cout << "Exiting..." << endl;
+}
+#endif

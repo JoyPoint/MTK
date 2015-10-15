@@ -119,7 +119,7 @@ Currently the developers are:
 
 -# Angel Boada.
 -# Johnny Corbino.
--# Raul Vargas-Navarro.
+-# Raul Vargas--Navarro.
 
 \section subsection_acknowledgements Acknowledgements and Contributions
 
@@ -227,17 +227,19 @@ Therefore, the following dependencies tree arises:
 1. LAPACK - Available from: http://www.netlib.org/lapack/
   1. BLAS - Available from: http://www.netlib.org/blas/
 
-2. (Optional) ATLAS - Available from: http://math-atlas.sourceforge.net/
+2. GLPK - Available from: https://www.gnu.org/software/glpk/
+
+3. (Optional) ATLAS - Available from: http://math-atlas.sourceforge.net/
   1. BLAS - Available from: http://www.netlib.org/blas/
   2. LAPACK - Available from: http://www.netlib.org/lapack/
 
-3. (Optional) Valgrind - Available from: http://valgrind.org/
+4. (Optional) Valgrind - Available from: http://valgrind.org/
 
-4. (Optional) Doxygen - Available from http://www.stack.nl/~dimitri/doxygen/
+5. (Optional) Doxygen - Available from http://www.stack.nl/~dimitri/doxygen/
 
 ### For OS X:
 
-There are no dependences for OS X.
+1. GLPK - Available from: https://www.gnu.org/software/glpk/
     __________________________________________________________________
 
 ## 3. Installation
@@ -430,7 +432,8 @@ Mimetic operators.
 #include "mtk_lap_1d.h"
 #include "mtk_interp_1d.h"
 #include "mtk_quad_1d.h"
-
 #include "mtk_bc_desc_1d.h"
+
+#include "mtk_grad_2d.h"
 
 #endif // End of: MTK_INCLUDE_MTK_H_

@@ -1,9 +1,9 @@
 /*!
 \file mtk_uni_stg_grid_2d.cc
 
-\brief Implementation of an 2D uniform staggered grid.
+\brief Implementation of a 2D uniform staggered grid.
 
-Implementation of an 2D uniform staggered grid.
+Implementation of a 2D uniform staggered grid.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -59,7 +59,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <algorithm>
 
 #include "mtk_tools.h"
-
 #include "mtk_uni_stg_grid_2d.h"
 
 namespace mtk {
@@ -67,7 +66,10 @@ namespace mtk {
 std::ostream& operator <<(std::ostream &stream, mtk::UniStgGrid2D &in) {
 
   stream << '[' << in.west_bndy_x_ << ':' << in.num_cells_x_ << ':' <<
-  in.east_bndy_x_ << "] = " << std::endl << std::endl;
+  in.east_bndy_x_ << "] x ";
+
+  stream << '[' << in.south_bndy_y_ << ':' << in.num_cells_y_ << ':' <<
+  in.north_bndy_y_ << "] = " << std::endl << std::endl;
 
   /// 1. Print spatial coordinates.
 
@@ -91,11 +93,13 @@ std::ostream& operator <<(std::ostream &stream, mtk::UniStgGrid2D &in) {
   else {
     stream << "v:";
   }
-  for (unsigned int ii = 0; ii < in.num_cells_x_ + 2; ++ii) {
-    for (unsigned int jj = 0; jj < in.num_cells_y_ + 2; ++jj) {
-      stream << std::setw(10) << in.discrete_field_u_[ii*in.num_cells_y_ + jj];
+  if (in.discrete_field_u_.size() > 0) {
+    for (unsigned int ii = 0; ii < in.num_cells_x_ + 2; ++ii) {
+      for (unsigned int jj = 0; jj < in.num_cells_y_ + 2; ++jj) {
+        stream << std::setw(10) << in.discrete_field_u_[ii*in.num_cells_y_ + jj];
+      }
+      stream << std::endl;
     }
-    stream << std::endl;
   }
 
   stream << std::endl;
@@ -157,7 +161,7 @@ mtk::UniStgGrid2D::UniStgGrid2D(const Real &west_bndy_x,
   mtk::Tools::Prevent(num_cells_x < 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(south_bndy_y < mtk::kZero, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(north_bndy_y < mtk::kZero, __FILE__, __LINE__, __func__);
-  mtk::Tools::Prevent(south_bndy_y <= north_bndy_y,
+  mtk::Tools::Prevent(north_bndy_y <= south_bndy_y,
                       __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(num_cells_y < 0, __FILE__, __LINE__, __func__);
   #endif
@@ -177,3 +181,23 @@ mtk::UniStgGrid2D::UniStgGrid2D(const Real &west_bndy_x,
 }
 
 mtk::UniStgGrid2D::~UniStgGrid2D() {}
+
+mtk::Real mtk::UniStgGrid2D::west_bndy_x() const {
+
+  return west_bndy_x_;
+}
+
+mtk::Real mtk::UniStgGrid2D::east_bndy_x() const {
+
+  return east_bndy_x_;
+}
+
+mtk::Real mtk::UniStgGrid2D::south_bndy_y() const {
+
+  return south_bndy_y_;
+}
+
+mtk::Real mtk::UniStgGrid2D::north_bndy_y() const {
+
+  return north_bndy_y_;
+}

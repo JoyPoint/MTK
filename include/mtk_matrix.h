@@ -87,10 +87,18 @@ class Matrix {
   /// \brief Destructor.
   ~Matrix();
 
-  /// \brief Gets the type of storage of this matrix.
+  /*!
+  \brief Gets the type of storage of this matrix.
+
+  \return Type of storage of this matrix.
+  */
   MatrixStorage storage() const;
 
-  /// \brief Gets the ordering of this matrix.
+  /*!
+  \brief Gets the type of ordering of this matrix.
+
+  \return Type of ordering of this matrix.
+  */
   MatrixOrdering ordering() const;
 
   /*!
