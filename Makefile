@@ -48,7 +48,7 @@ help:
 	@echo ' '
 	@echo '- gendoc: generates the documentation for the library.'
 	@echo ' '
-	@echo '- clean: cleans ALL the generated files.'
+	@echo '- clean: cleans all the generated files.'
 	@echo '- cleanlib: cleans the generated archive and object files.'
 	@echo '- cleantest: cleans the generated tests executables.'
 	@echo '- cleanexample: cleans the generated examples executables.'
