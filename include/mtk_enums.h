@@ -122,7 +122,7 @@ enum FieldNature {
 
 \brief 1D interpolation operator.
 
-Implements an arithmetic average.
+For now, it implements an arithmetic average.
 */
 enum DirInterp {
   SCALAR_TO_VECTOR,
