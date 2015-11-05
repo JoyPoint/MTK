@@ -4,12 +4,12 @@ SHELL := /bin/bash
 
 # Please set the following variables up:
 
-#   1. Absolute path to base directory of the MTK... where is the MTK?
+#   1. Absolute path to base directory of the MTK.
 #   __________________________________________________________________
 
 BASE = /home/ejspeiro/Dropbox/MTK
 
-#   2. The machine (platform) identifier and required precision.
+#   2. The machine (platform) identifier and required machine precision.
 #   __________________________________________________________________
 
 # Options are:
@@ -100,13 +100,13 @@ RANLIB = echo
 
 RANLIB = ranlib
 
-#   8. Valgrind's memcheck options:
+#   8. Valgrind's memcheck options (optional):
 #   __________________________________________________________________
 
 MEMCHECK_OPTS = -v --tool=memcheck --leak-check=full --show-leak-kinds=all \
 --track-origins=yes --freelist-vol=20000000
 
-# Done!
+# Done! User, please, do not mess with the definitions from this point on.
 
 #   __________________________________________________________________
 #   __________________________________________________________________
