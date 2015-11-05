@@ -64,9 +64,12 @@ We define numerical methods that are based on discretizations preserving the
 properties of their continuum counterparts to be **mimetic**.
 
 The **Mimetic Methods Toolkit (MTK)** is a C++ library for mimetic numerical
-methods. It is a set of classes for **mimetic quadratures**, **mimetic
-interpolation**, and **mimetic discretization methods** for the numerical
-solution of ordinary and partial differential equations.
+methods. It is arranged as a set of classes for **mimetic quadratures**,
+**mimetic interpolation**, and **mimetic finite differences** methods for the
+numerical solution of ordinary and partial differential equations.
+
+An older version of this library is available outside of GitHub... just email me
+about it, and you can have it... it is ugly, yet functional and more complete.
 
 \section section_mtk_concerns MTK Concerns
 
@@ -204,8 +207,11 @@ properties of their continuum counterparts to be **mimetic**.
 
 The **Mimetic Methods Toolkit (MTK)** is a C++ library for mimetic numerical
 methods. It is arranged as a set of classes for **mimetic quadratures**,
-**mimetic interpolation**, and **mimetic discretization** methods for the
+**mimetic interpolation**, and **mimetic finite differences** methods for the
 numerical solution of ordinary and partial differential equations.
+
+An older version of this library is available outside of GitHub... just email me
+about it, and you can have it... it is ugly, yet functional and more complete.
     __________________________________________________________________
 
 ## 2. Dependencies
@@ -230,8 +236,8 @@ Therefore, the following dependencies tree arises:
 2. GLPK - Available from: https://www.gnu.org/software/glpk/
 
 3. (Optional) ATLAS - Available from: http://math-atlas.sourceforge.net/
-  1. BLAS - Available from: http://www.netlib.org/blas/
-  2. LAPACK - Available from: http://www.netlib.org/lapack/
+  1. LAPACK - Available from: http://www.netlib.org/lapack/
+    1. BLAS - Available from: http://www.netlib.org/blas
 
 4. (Optional) Valgrind - Available from: http://valgrind.org/
 

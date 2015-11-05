@@ -10,7 +10,7 @@ properties of their continuum counterparts to be **mimetic**.
 
 The **Mimetic Methods Toolkit (MTK)** is a C++ library for mimetic numerical
 methods. It is arranged as a set of classes for **mimetic quadratures**,
-**mimetic interpolation**, and **mimetic discretization** methods for the
+**mimetic interpolation**, and **mimetic finite differences** methods for the
 numerical solution of ordinary and partial differential equations.
 
 An older version of this library is available outside of GitHub... just email me
@@ -39,8 +39,8 @@ Therefore, the following dependencies tree arises:
 2. GLPK - Available from: https://www.gnu.org/software/glpk/
 
 3. (Optional) ATLAS - Available from: http://math-atlas.sourceforge.net/
-  1. BLAS - Available from: http://www.netlib.org/blas/
-  2. LAPACK - Available from: http://www.netlib.org/lapack/
+  1. LAPACK - Available from: http://www.netlib.org/lapack/
+    1. BLAS - Available from: http://www.netlib.org/blas
 
 4. (Optional) Valgrind - Available from: http://valgrind.org/
 
@@ -73,7 +73,7 @@ Options are:
 - gendoc: generates the documentation for the library.
 - checkheaders: checks syntax of the header files.
 
-- clean: cleans ALL the generated files.
+- clean: cleans all the generated files.
 - cleanlib: cleans the generated archive and object files.
 - cleantests: cleans the generated tests executables.
 - cleanexamples: cleans the generated examples executables.
