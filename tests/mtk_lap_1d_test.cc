@@ -6,7 +6,7 @@
 
 void Test1() {
 
-  mtk::Tools::BeginTestNo(1);
+  mtk::Tools::BeginUnitTestNo(1);
 
   mtk::Lap1D lap2;
 
@@ -16,12 +16,12 @@ void Test1() {
     std::cerr << "Mimetic lap (2nd order) could not be built." << std::endl;
   }
 
-  mtk::Tools::EndTestNo(1);
+  mtk::Tools::EndUnitTestNo(1);
 }
 
 void Test2() {
 
-  mtk::Tools::BeginTestNo(2);
+  mtk::Tools::BeginUnitTestNo(2);
 
   mtk::Lap1D lap4;
 
@@ -31,12 +31,12 @@ void Test2() {
     std::cerr << "Mimetic lap (4th order) could not be built." << std::endl;
   }
 
-  mtk::Tools::EndTestNo(2);
+  mtk::Tools::EndUnitTestNo(2);
 }
 
 void Test3() {
 
-  mtk::Tools::BeginTestNo(3);
+  mtk::Tools::BeginUnitTestNo(3);
 
   mtk::Lap1D lap6;
 
@@ -46,12 +46,12 @@ void Test3() {
     std::cerr << "Mimetic lap (6th order) could not be built." << std::endl;
   }
 
-  mtk::Tools::EndTestNo(3);
+  mtk::Tools::EndUnitTestNo(3);
 }
 
 void Test4() {
 
-  mtk::Tools::BeginTestNo(4);
+  mtk::Tools::BeginUnitTestNo(4);
 
   mtk::Lap1D lap8;
 
@@ -61,12 +61,12 @@ void Test4() {
     std::cerr << "Mimetic lap (8th order) could not be built." << std::endl;
   }
 
-  mtk::Tools::EndTestNo(4);
+  mtk::Tools::EndUnitTestNo(4);
 }
 
 void Test5() {
 
-  mtk::Tools::BeginTestNo(5);
+  mtk::Tools::BeginUnitTestNo(5);
 
   mtk::Lap1D lap10;
 
@@ -76,12 +76,12 @@ void Test5() {
     std::cerr << "Mimetic lap (10th order) could not be built." << std::endl;
   }
 
-  mtk::Tools::EndTestNo(5);
+  mtk::Tools::EndUnitTestNo(5);
 }
 
 void Test6() {
 
-  mtk::Tools::BeginTestNo(6);
+  mtk::Tools::BeginUnitTestNo(6);
 
   mtk::Lap1D lap12;
 
@@ -91,12 +91,12 @@ void Test6() {
     std::cerr << "Mimetic lap (12th order) could not be built." << std::endl;
   }
 
-  mtk::Tools::EndTestNo(6);
+  mtk::Tools::EndUnitTestNo(6);
 }
 
 void Test7() {
 
-  mtk::Tools::BeginTestNo(7);
+  mtk::Tools::BeginUnitTestNo(7);
 
   mtk::Lap1D lap4;
 
@@ -109,12 +109,12 @@ void Test7() {
   std::cout << lap4 << std::endl;
   std::cout << std::endl;
 
-  mtk::Tools::EndTestNo(7);
+  mtk::Tools::EndUnitTestNo(7);
 }
 
 void Test8() {
 
-  mtk::Tools::BeginTestNo(8);
+  mtk::Tools::BeginUnitTestNo(8);
 
   mtk::Lap1D lap4;
 
@@ -134,7 +134,7 @@ void Test8() {
   std::cout << lap4_m << std::endl;
   std::cout << std::endl;
 
-  mtk::Tools::EndTestNo(8);
+  mtk::Tools::EndUnitTestNo(8);
 }
 
 int main () {

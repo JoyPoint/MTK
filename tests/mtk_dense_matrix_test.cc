@@ -60,18 +60,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 void Test1() {
 
-  mtk::Tools::BeginTestNo(1);
+  mtk::Tools::BeginUnitTestNo(1);
 
   mtk::DenseMatrix m1;
 
   std::cout << m1 << std::endl;
 
-  mtk::Tools::EndTestNo(1);
+  mtk::Tools::EndUnitTestNo(1);
 }
 
 void Test2() {
 
-  mtk::Tools::BeginTestNo(2);
+  mtk::Tools::BeginUnitTestNo(2);
 
   int rr = 4;
   int cc = 7;
@@ -80,12 +80,12 @@ void Test2() {
 
   std::cout << m2 << std::endl;
 
-  mtk::Tools::EndTestNo(2);
+  mtk::Tools::EndUnitTestNo(2);
 }
 
 void Test3() {
 
-  mtk::Tools::BeginTestNo(3);
+  mtk::Tools::BeginUnitTestNo(3);
 
   int rank = 5;
   bool padded = true;
@@ -95,12 +95,12 @@ void Test3() {
 
   std::cout << m3 << std::endl;
 
-  mtk::Tools::EndTestNo(3);
+  mtk::Tools::EndUnitTestNo(3);
 }
 
 void Test4() {
 
-  mtk::Tools::BeginTestNo(4);
+  mtk::Tools::BeginUnitTestNo(4);
 
   int rank = 5;
   bool padded = false;
@@ -110,12 +110,12 @@ void Test4() {
 
   std::cout << m4 << std::endl;
 
-  mtk::Tools::EndTestNo(4);
+  mtk::Tools::EndUnitTestNo(4);
 }
 
 void Test5() {
 
-  mtk::Tools::BeginTestNo(5);
+  mtk::Tools::BeginUnitTestNo(5);
 
   int rr = 4;
   int cc = 7;
@@ -148,12 +148,12 @@ void Test5() {
   }
   std::cout << std::endl;
 
-  mtk::Tools::EndTestNo(5);
+  mtk::Tools::EndUnitTestNo(5);
 }
 
 void Test6() {
 
-  mtk::Tools::BeginTestNo(6);
+  mtk::Tools::BeginUnitTestNo(6);
 
   bool transpose = false;
   int generator_length = 3;
@@ -172,12 +172,12 @@ void Test6() {
   std::cout << m7 << std::endl;
 
 
-  mtk::Tools::EndTestNo(6);
+  mtk::Tools::EndUnitTestNo(6);
 }
 
 void Test7() {
 
-  mtk::Tools::BeginTestNo(7);
+  mtk::Tools::BeginUnitTestNo(7);
 
   bool padded = false;
   bool transpose = false;
@@ -201,12 +201,12 @@ void Test7() {
 
   std::cout << m10 << std::endl;
 
-  mtk::Tools::EndTestNo(7);
+  mtk::Tools::EndUnitTestNo(7);
 }
 
 void Test8() {
 
-  mtk::Tools::BeginTestNo(8);
+  mtk::Tools::BeginUnitTestNo(8);
 
   int lots_of_rows = 4;
   int lots_of_cols = 3;
@@ -230,12 +230,12 @@ void Test8() {
 
   std::cout << m12 << std::endl;
 
-  mtk::Tools::EndTestNo(8);
+  mtk::Tools::EndUnitTestNo(8);
 }
 
 void Test9() {
 
-  mtk::Tools::BeginTestNo(9);
+  mtk::Tools::BeginUnitTestNo(9);
 
   bool transpose = false;
   int gg_l = 3;
@@ -260,7 +260,7 @@ void Test9() {
 
   std::cout << m14 << std::endl;
 
-  mtk::Tools::EndTestNo(9);
+  mtk::Tools::EndUnitTestNo(9);
 }
 
 int main () {

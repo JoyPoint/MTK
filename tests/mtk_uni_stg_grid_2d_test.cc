@@ -60,18 +60,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 void Test1() {
 
-  mtk::Tools::BeginTestNo(1);
+  mtk::Tools::BeginUnitTestNo(1);
 
   mtk::UniStgGrid2D gg;
 
   std::cout << gg << std::endl;
 
-  mtk::Tools::EndTestNo(1);
+  mtk::Tools::EndUnitTestNo(1);
 }
 
 void Test2() {
 
-  mtk::Tools::BeginTestNo(2);
+  mtk::Tools::BeginUnitTestNo(2);
 
   mtk::Real aa = 0.0;
   mtk::Real bb = 1.0;
@@ -85,7 +85,7 @@ void Test2() {
 
   std::cout << gg << std::endl;
 
-  mtk::Tools::EndTestNo(2);
+  mtk::Tools::EndUnitTestNo(2);
 }
 int main () {
 

@@ -3,7 +3,7 @@
 
 \brief Tool manager class.
 
-Basic tools to ensure execution correctness.
+Basic utilities.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -58,6 +58,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <ctime>
 
+#include "mtk_roots.h"
+
 namespace mtk {
 
 /*!
@@ -72,36 +74,45 @@ Basic tools to ensure execution correctness.
 class Tools {
  public:
   /*!
-  \brief Enforces pre-conditions by preventing their complements from occur.
+  \brief Enforces preconditions by preventing their complements from occur.
 
   \sa http://stackoverflow.com/questions/8884335/print-the-file-name-line-number-and-function-name-of-a-calling-function-c-pro
 
-  \param[in] condition Complement of desired pre-condition.
+  \param[in] complement Complement of desired pre-condition.
   \param[in] fname Name of the file being checked.
   \param[in] lineno Number of the line where the check is executed.
   \param[in] fxname Name of the module containing the check.
   */
-  static void Prevent(const bool condition,
+  static void Prevent(const bool complement,
                       const char *fname,
                       int lineno,
                       const char *fxname);
 
   /*!
-  \brief Begins the execution of a test.
+  \brief Begins the execution of a unit test. Starts a timer.
 
   \param[in] nn Number of the test.
   */
-  static void BeginTestNo(const int &nn);
+  static void BeginUnitTestNo(const int &nn);
 
   /*!
-  \brief Ends the execution of a test.
+  \brief Ends the execution of a unit test. Stops and reports wall-clock time.
 
   \param[in] nn Number of the test.
   */
-  static void EndTestNo(const int &nn);
+  static void EndUnitTestNo(const int &nn);
+
+  /*!
+  \brief Asserts if the condition required to pass the unit test occurs.
+
+  \param[in] condition Condition to be asserted.
+  */
+  static void Assert(const bool condition);
 
  private:
   static int test_number_;  ///< Current test being executed.
+
+  static Real duration_;  ///< Duration of the current test.
 
   static clock_t begin_time_; ///< Elapsed time on current test.
 };

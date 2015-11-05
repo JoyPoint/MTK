@@ -62,9 +62,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 void Test1() {
 
-  mtk::Tools::BeginTestNo(1);
+  mtk::Tools::BeginUnitTestNo(1);
 
-  mtk::Tools::EndTestNo(1);
+  mtk::Tools::EndUnitTestNo(1);
 }
 
 int main () {

@@ -59,7 +59,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 void Test1() {
 
-  mtk::Tools::BeginTestNo(1);
+  mtk::Tools::BeginUnitTestNo(1);
 
   mtk::Grad1D grad2;
 
@@ -71,12 +71,12 @@ void Test1() {
 
   std::cout << grad2 << std::endl;
 
-  mtk::Tools::EndTestNo(1);
+  mtk::Tools::EndUnitTestNo(1);
 }
 
 void Test2() {
 
-  mtk::Tools::BeginTestNo(2);
+  mtk::Tools::BeginUnitTestNo(2);
 
   mtk::Grad1D grad4;
 
@@ -88,12 +88,12 @@ void Test2() {
 
   std::cout << grad4 << std::endl;
 
-  mtk::Tools::EndTestNo(2);
+  mtk::Tools::EndUnitTestNo(2);
 }
 
 void Test3() {
 
-  mtk::Tools::BeginTestNo(3);
+  mtk::Tools::BeginUnitTestNo(3);
 
   mtk::Grad1D grad6;
 
@@ -105,12 +105,12 @@ void Test3() {
 
   std::cout << grad6 << std::endl;
 
-  mtk::Tools::EndTestNo(3);
+  mtk::Tools::EndUnitTestNo(3);
 }
 
 void Test4() {
 
-  mtk::Tools::BeginTestNo(4);
+  mtk::Tools::BeginUnitTestNo(4);
 
   mtk::Grad1D grad8;
 
@@ -122,12 +122,12 @@ void Test4() {
 
   std::cout << grad8 << std::endl;
 
-  mtk::Tools::EndTestNo(4);
+  mtk::Tools::EndUnitTestNo(4);
 }
 
 void Test5() {
 
-  mtk::Tools::BeginTestNo(5);
+  mtk::Tools::BeginUnitTestNo(5);
 
   mtk::Grad1D grad10;
 
@@ -139,12 +139,12 @@ void Test5() {
 
   std::cout << grad10 << std::endl;
 
-  mtk::Tools::EndTestNo(5);
+  mtk::Tools::EndUnitTestNo(5);
 }
 
 void Test6() {
 
-  mtk::Tools::BeginTestNo(6);
+  mtk::Tools::BeginUnitTestNo(6);
 
   mtk::Grad1D grad2;
 
@@ -164,7 +164,7 @@ void Test6() {
 
   std::cout << grad2m << std::endl;
 
-  mtk::Tools::EndTestNo(6);
+  mtk::Tools::EndUnitTestNo(6);
 }
 
 int main () {

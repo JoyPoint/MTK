@@ -59,7 +59,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 void Test1() {
 
-  mtk::Tools::BeginTestNo(1);
+  mtk::Tools::BeginUnitTestNo(1);
 
   mtk::Div1D div2;
 
@@ -71,12 +71,12 @@ void Test1() {
 
   std::cout << div2 << std::endl;
 
-  mtk::Tools::EndTestNo(1);
+  mtk::Tools::EndUnitTestNo(1);
 }
 
 void Test2() {
 
-  mtk::Tools::BeginTestNo(2);
+  mtk::Tools::BeginUnitTestNo(2);
 
   mtk::Div1D div4;
 
@@ -88,12 +88,12 @@ void Test2() {
 
   std::cout << div4 << std::endl;
 
-  mtk::Tools::EndTestNo(2);
+  mtk::Tools::EndUnitTestNo(2);
 }
 
 void Test3() {
 
-  mtk::Tools::BeginTestNo(3);
+  mtk::Tools::BeginUnitTestNo(3);
 
   mtk::Div1D div6;
 
@@ -105,12 +105,12 @@ void Test3() {
 
   std::cout << div6 << std::endl;
 
-  mtk::Tools::EndTestNo(3);
+  mtk::Tools::EndUnitTestNo(3);
 }
 
 void Test4() {
 
-  mtk::Tools::BeginTestNo(4);
+  mtk::Tools::BeginUnitTestNo(4);
 
   mtk::Div1D div8;
 
@@ -122,12 +122,12 @@ void Test4() {
 
   std::cout << div8 << std::endl;
 
-  mtk::Tools::EndTestNo(4);
+  mtk::Tools::EndUnitTestNo(4);
 }
 
 void Test5() {
 
-  mtk::Tools::BeginTestNo(5);
+  mtk::Tools::BeginUnitTestNo(5);
 
   mtk::Div1D div10;
 
@@ -139,12 +139,12 @@ void Test5() {
 
   std::cout << div10 << std::endl;
 
-  mtk::Tools::EndTestNo(5);
+  mtk::Tools::EndUnitTestNo(5);
 }
 
 void Test6() {
 
-  mtk::Tools::BeginTestNo(6);
+  mtk::Tools::BeginUnitTestNo(6);
 
   mtk::Div1D div12;
 
@@ -156,12 +156,12 @@ void Test6() {
 
   std::cout << div12 << std::endl;
 
-  mtk::Tools::EndTestNo(6);
+  mtk::Tools::EndUnitTestNo(6);
 }
 
 void Test7() {
 
-  mtk::Tools::BeginTestNo(7);
+  mtk::Tools::BeginUnitTestNo(7);
 
   mtk::Div1D div14;
 
@@ -173,12 +173,12 @@ void Test7() {
 
   std::cout << div14 << std::endl;
 
-  mtk::Tools::EndTestNo(7);
+  mtk::Tools::EndUnitTestNo(7);
 }
 
 void Test8() {
 
-  mtk::Tools::BeginTestNo(8);
+  mtk::Tools::BeginUnitTestNo(8);
 
   mtk::Div1D div2;
 
@@ -198,12 +198,12 @@ void Test8() {
 
   std::cout << div2m << std::endl;
 
-  mtk::Tools::EndTestNo(8);
+  mtk::Tools::EndUnitTestNo(8);
 }
 
 void Test9() {
 
-  mtk::Tools::BeginTestNo(9);
+  mtk::Tools::BeginUnitTestNo(9);
 
   mtk::Div1D div4;
 
@@ -223,7 +223,7 @@ void Test9() {
 
   std::cout << div4m << std::endl;
 
-  mtk::Tools::EndTestNo(9);
+  mtk::Tools::EndUnitTestNo(9);
 }
 
 int main () {

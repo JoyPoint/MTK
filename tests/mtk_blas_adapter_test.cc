@@ -59,7 +59,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 void Test1() {
 
-  mtk::Tools::BeginTestNo(1);
+  mtk::Tools::BeginUnitTestNo(1);
 
   int rr = 2;
   int cc = 3;
@@ -90,7 +90,17 @@ void Test1() {
 
   std::cout << pp << std::endl;
 
-  mtk::Tools::EndTestNo(1);
+  mtk::DenseMatrix ff(rr,rr);
+
+  ff.SetValue(0,0,58.0);
+  ff.SetValue(0,1,64.00);
+  ff.SetValue(1,0,139.0);
+  ff.SetValue(1,1,154.0);
+
+  std::cout << ff << std::endl;
+
+  mtk::Tools::EndUnitTestNo(1);
+  mtk::Tools::Assert(pp == ff);
 }
 
 int main () {

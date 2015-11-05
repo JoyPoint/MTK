@@ -60,13 +60,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 void Test1() {
 
-  mtk::Tools::BeginTestNo(1);
+  mtk::Tools::BeginUnitTestNo(1);
 
   mtk::UniStgGrid1D gg;
 
   std::cout << gg << std::endl;
 
-  mtk::Tools::EndTestNo(1);
+  mtk::Tools::EndUnitTestNo(1);
 }
 
 mtk::Real ScalarFieldOne(mtk::Real xx) {
@@ -76,7 +76,7 @@ mtk::Real ScalarFieldOne(mtk::Real xx) {
 
 void Test2() {
 
-  mtk::Tools::BeginTestNo(2);
+  mtk::Tools::BeginUnitTestNo(2);
 
   mtk::Real aa = 0.0;
   mtk::Real bb = 1.0;
@@ -91,12 +91,12 @@ void Test2() {
 
   std::cout << gg << std::endl;
 
-  mtk::Tools::EndTestNo(2);
+  mtk::Tools::EndUnitTestNo(2);
 }
 
 void Test3() {
 
-  mtk::Tools::BeginTestNo(3);
+  mtk::Tools::BeginUnitTestNo(3);
 
   mtk::Real aa = 0.0;
   mtk::Real bb = 1.0;
@@ -115,7 +115,7 @@ void Test3() {
     std::cerr << "Error writing to file." << std::endl;
   }
 
-  mtk::Tools::EndTestNo(3);
+  mtk::Tools::EndUnitTestNo(3);
 }
 
 mtk::Real VectorFieldXComponentOne(mtk::Real xx) {
@@ -125,7 +125,7 @@ mtk::Real VectorFieldXComponentOne(mtk::Real xx) {
 
 void Test4() {
 
-  mtk::Tools::BeginTestNo(4);
+  mtk::Tools::BeginUnitTestNo(4);
 
   mtk::Real aa = 0.0;
   mtk::Real bb = 1.0;
@@ -144,7 +144,7 @@ void Test4() {
     std::cerr << "Error writing to file." << std::endl;
   }
 
-  mtk::Tools::EndTestNo(4);
+  mtk::Tools::EndUnitTestNo(4);
 }
 
 int main () {

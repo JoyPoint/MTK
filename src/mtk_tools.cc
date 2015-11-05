@@ -84,9 +84,11 @@ void mtk::Tools::Prevent(const bool condition,
 
 int mtk::Tools::test_number_;  // Used to control the correctness of the test.
 
+mtk::Real mtk::Tools::duration_;  ///< Duration of the current test.
+
 clock_t mtk::Tools::begin_time_;  // Used to time tests.
 
-void mtk::Tools::BeginTestNo(const int &nn) {
+void mtk::Tools::BeginUnitTestNo(const int &nn) {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
@@ -94,17 +96,26 @@ void mtk::Tools::BeginTestNo(const int &nn) {
 
   test_number_ = nn;
 
-  std::cout << "Test " << nn << "..." << std::endl << std::endl;
+  std::cout << "Beginning test " << nn << "." << std::endl << std::endl;
   begin_time_ = clock();
 }
 
-void mtk::Tools::EndTestNo(const int &nn) {
+void mtk::Tools::EndUnitTestNo(const int &nn) {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(test_number_ != nn, __FILE__, __LINE__, __func__);
   #endif
 
-  auto duration = mtk::Real(clock() - begin_time_)/CLOCKS_PER_SEC;
-  std::cout << "Test " << test_number_ << " complete! ";
-  std::cout << "Elapsed: " << duration << " seconds." << std::endl;
+  duration_ = mtk::Real(clock() - begin_time_)/CLOCKS_PER_SEC;
+}
+
+void mtk::Tools::Assert(const bool condition) {
+
+  if (condition) {
+    std::cout << "Test " << test_number_ << ": PASSED in " << duration_ <<
+      " s." << std::endl;
+  } else {
+    std::cout << "Test " << test_number_ << ": FAILED in " << duration_ <<
+      " s." << std::endl;
+  }
 }
