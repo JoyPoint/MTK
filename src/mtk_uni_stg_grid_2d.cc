@@ -201,3 +201,13 @@ mtk::Real mtk::UniStgGrid2D::north_bndy_y() const {
 
   return north_bndy_y_;
 }
+
+mtk::Real mtk::UniStgGrid2D::delta_x() const {
+
+  return delta_x_;
+}
+
+mtk::Real mtk::UniStgGrid2D::delta_y() const {
+
+  return delta_y_;
+}

@@ -58,18 +58,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk.h"
 
-void Test1() {
+void TestDefaultConstructor() {
 
   mtk::Tools::BeginUnitTestNo(1);
 
   mtk::UniStgGrid2D gg;
 
-  std::cout << gg << std::endl;
-
   mtk::Tools::EndUnitTestNo(1);
+  mtk::Tools::Assert(gg.delta_x() == mtk::kZero && gg.delta_y() == mtk::kZero);
 }
 
-void Test2() {
+void
+TestConstructWithWestEastNumCellsXSouthNorthBndysNumCellsYOStreamOperator() {
 
   mtk::Tools::BeginUnitTestNo(2);
 
@@ -86,13 +86,16 @@ void Test2() {
   std::cout << gg << std::endl;
 
   mtk::Tools::EndUnitTestNo(2);
+  mtk::Tools::Assert(gg.delta_x() == 0.2 &&
+                     abs(gg.delta_y() - 0.142857) < mtk::kDefaultTolerance);
 }
+
 int main () {
 
   std::cout << "Testing mtk::UniStgGrid2D class." << std::endl;
 
-  Test1();
-  Test2();
+  TestDefaultConstructor();
+  TestConstructWithWestEastNumCellsXSouthNorthBndysNumCellsYOStreamOperator();
 }
 
 #else
