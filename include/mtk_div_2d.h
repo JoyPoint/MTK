@@ -96,7 +96,9 @@ class Div2D {
 
  private:
   DenseMatrix divergence_;  ///< Actual operator.
-  int order_accuracy_;      ///< Order of accuracy.
+
+  int order_accuracy_;  ///< Order of accuracy.
+
   Real mimetic_threshold_;  ///< Mimetic Threshold.
 };
 }

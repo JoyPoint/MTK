@@ -77,5 +77,5 @@ mtk::DenseMatrix mtk::Lap2D::ConstructLap2D(const mtk::UniStgGrid2D &grid,
                                               int order_accuracy,
                                               mtk::Real mimetic_threshold) {
 
-  return laplacian_;
+  
 }

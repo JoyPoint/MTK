@@ -95,8 +95,10 @@ class Grad2D {
   DenseMatrix ReturnAsDenseMatrix();
 
  private:
-  DenseMatrix gradient_;    ///< Actual operator.
-  int order_accuracy_;      ///< Order of accuracy.
+  DenseMatrix gradient_;  ///< Actual operator.
+
+  int order_accuracy_;  ///< Order of accuracy.
+
   Real mimetic_threshold_;  ///< Mimetic Threshold.
 };
 }
