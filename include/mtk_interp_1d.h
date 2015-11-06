@@ -122,7 +122,7 @@ class Interp1D {
  private:
   DirInterp dir_interp_;  ///< Direction of interpolation.
 
-  int order_accuracy_;    ///< Order of numerical accuracy of the operator.
+  int order_accuracy_;  ///< Order of numerical accuracy of the operator.
 
   Real *coeffs_interior_; ///< Interior stencil.
 };

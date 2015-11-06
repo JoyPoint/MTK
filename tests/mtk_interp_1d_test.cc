@@ -59,54 +59,51 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk.h"
 
-void Test1() {
+void TestDefaultConstructorFactoryMethodDefault() {
 
   mtk::Tools::BeginUnitTestNo(1);
 
   mtk::Interp1D inter;
 
-  bool info = inter.ConstructInterp1D();
+  bool assertion = inter.ConstructInterp1D();
 
-  if (!info) {
-    std::cerr << "Mimetic grad (2nd order) could not be built." << std::endl;
+  if (!assertion) {
+    std::cerr << "Mimetic interp could not be built." << std::endl;
   }
 
-  std::cout << inter << std::endl;
-
   mtk::Tools::EndUnitTestNo(1);
+  mtk::Tools::Assert(assertion);
 }
 
-void Test2() {
+void TestReturnAsDenseMatrixWithGrid() {
 
   mtk::Tools::BeginUnitTestNo(2);
 
   mtk::Interp1D inter;
 
-  bool info = inter.ConstructInterp1D();
+  bool assertion = inter.ConstructInterp1D();
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic grad (2nd order) could not be built." << std::endl;
   }
 
-  std::cout << inter << std::endl;
-
   mtk::UniStgGrid1D grid(0.0, 1.0, 5);
-
-  std::cout << grid << std::endl;
 
   mtk::DenseMatrix interpm(inter.ReturnAsDenseMatrix(grid));
 
-  std::cout << interpm << std::endl;
+  assertion =
+    assertion && interpm.GetValue(0,0) == 1.0 && interpm.GetValue(5,6) == 1.0;
 
   mtk::Tools::EndUnitTestNo(2);
+  mtk::Tools::Assert(assertion);
 }
 
 int main () {
 
   std::cout << "Testing mtk::Interp1D class." << std::endl;
 
-  Test1();
-  Test2();
+  TestDefaultConstructorFactoryMethodDefault();
+  TestReturnAsDenseMatrixWithGrid();
 }
 
 #else

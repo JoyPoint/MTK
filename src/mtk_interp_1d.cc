@@ -152,6 +152,7 @@ mtk::DenseMatrix mtk::Interp1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
   }
 
   // Output matrix featuring sizes for gradient operators.
+  
   mtk::DenseMatrix out(gg_num_rows, gg_num_cols);
 
   /// 1. Preserve values at the boundary.
