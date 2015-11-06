@@ -96,7 +96,9 @@ void mtk::Tools::BeginUnitTestNo(const int &nn) {
 
   test_number_ = nn;
 
-  std::cout << "Beginning test " << nn << "." << std::endl << std::endl;
+  #if MTK_DEBUG_LEVEL > 0
+  std::cout << "Beginning test " << nn << "." << std::endl;
+  #endif
   begin_time_ = clock();
 }
 

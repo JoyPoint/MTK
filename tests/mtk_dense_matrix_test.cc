@@ -64,9 +64,8 @@ void Test1() {
 
   mtk::DenseMatrix m1;
 
-  std::cout << m1 << std::endl;
-
   mtk::Tools::EndUnitTestNo(1);
+  mtk::Tools::Assert(m1.data() == nullptr);
 }
 
 void Test2() {
@@ -78,9 +77,12 @@ void Test2() {
 
   mtk::DenseMatrix m2(rr,cc);
 
-  std::cout << m2 << std::endl;
-
   mtk::Tools::EndUnitTestNo(2);
+
+  bool assertion =
+    m2.data() != nullptr && m2.num_rows() == rr && m2.num_cols() == cc;
+
+  mtk::Tools::Assert(assertion);
 }
 
 void Test3() {
@@ -93,9 +95,14 @@ void Test3() {
 
   mtk::DenseMatrix m3(rank,padded,transpose);
 
-  std::cout << m3 << std::endl;
+  mtk::DenseMatrix rr(rank + 2,rank);
+
+  for (int ii = 0; ii < rank; ++ii) {
+    rr.SetValue(ii + 1, ii, mtk::kOne);
+  }
 
   mtk::Tools::EndUnitTestNo(3);
+  mtk::Tools::Assert(m3 == rr);
 }
 
 void Test4() {
@@ -108,9 +115,14 @@ void Test4() {
 
   mtk::DenseMatrix m4(rank,padded,transpose);
 
-  std::cout << m4 << std::endl;
+  mtk::DenseMatrix rr(rank,rank);
+
+  for (int ii = 0; ii < rank; ++ii) {
+    rr.SetValue(ii, ii, mtk::kOne);
+  }
 
   mtk::Tools::EndUnitTestNo(4);
+  mtk::Tools::Assert(m4 == rr);
 }
 
 void Test5() {
@@ -128,27 +140,18 @@ void Test5() {
     }
   }
 
-  std::cout << m5 << std::endl;
-
   mtk::Real *vals = m5.data();
 
-  for (auto ii = 0; ii < rr; ++ii) {
-    for (auto jj = 0; jj < cc; ++jj) {
-      std::cout << " " << vals[ii*cc + jj];
-    }
-    std::cout << std::endl;
-  }
-  std::cout << std::endl;
+  bool assertion{true};
 
-  for (auto ii = 0; ii < rr; ++ii) {
-    for (auto jj = 0; jj < cc; ++jj) {
-      std::cout << " " << m5.GetValue(ii,jj);
+  for (auto ii = 0; ii < rr && assertion; ++ii) {
+    for (auto jj = 0; jj < cc  && assertion; ++jj) {
+      assertion = assertion && m5.GetValue(ii,jj) == vals[ii*cc + jj];
     }
-    std::cout << std::endl;
   }
-  std::cout << std::endl;
 
   mtk::Tools::EndUnitTestNo(5);
+  mtk::Tools::Assert(assertion);
 }
 
 void Test6() {
@@ -163,16 +166,29 @@ void Test6() {
 
   mtk::DenseMatrix m6(generator,generator_length,progression_length,transpose);
 
-  std::cout << m6 << std::endl;
-
   transpose = true;
 
   mtk::DenseMatrix m7(generator,generator_length,progression_length,transpose);
+  mtk::DenseMatrix rr(progression_length, generator_length);
 
-  std::cout << m7 << std::endl;
+  rr.SetValue(0, 0, 1.0);
+  rr.SetValue(0, 1, 1.0);
+  rr.SetValue(0, 2, 1.0);
 
+  rr.SetValue(1, 0, -0.5);
+  rr.SetValue(1, 1, 0.5);
+  rr.SetValue(1, 2, 1.5);
+
+  rr.SetValue(2, 0, 0.25);
+  rr.SetValue(2, 1, 0.25);
+  rr.SetValue(2, 2, 2.25);
+
+  rr.SetValue(3, 0, -0.125);
+  rr.SetValue(3, 1, 0.125);
+  rr.SetValue(3, 2, 3.375);
 
   mtk::Tools::EndUnitTestNo(6);
+  mtk::Tools::Assert(m7 == rr);
 }
 
 void Test7() {
@@ -185,8 +201,6 @@ void Test7() {
   int lots_of_cols = 5;
   mtk::DenseMatrix m8(lots_of_rows,padded,transpose);
 
-  std::cout << m8 << std::endl;
-
   mtk::DenseMatrix m9(lots_of_rows,lots_of_cols);
 
   for (auto ii = 0; ii < lots_of_rows; ++ii) {
@@ -195,13 +209,56 @@ void Test7() {
     }
   }
 
-  std::cout << m9 << std::endl;
-
   mtk::DenseMatrix m10 = mtk::DenseMatrix::Kron(m8,m9);
 
-  std::cout << m10 << std::endl;
+  mtk::DenseMatrix rr(lots_of_rows*lots_of_rows, lots_of_rows*lots_of_cols);
+
+  rr.SetValue(0,0,1.0);
+  rr.SetValue(0,1,2.0);
+  rr.SetValue(0,2,3.0);
+  rr.SetValue(0,3,4.0);
+  rr.SetValue(0,4,5.0);
+  rr.SetValue(0,5,0.0);
+  rr.SetValue(0,6,0.0);
+  rr.SetValue(0,7,0.0);
+  rr.SetValue(0,8,0.0);
+  rr.SetValue(0,9,0.0);
+
+  rr.SetValue(1,0,6.0);
+  rr.SetValue(1,1,7.0);
+  rr.SetValue(1,2,8.0);
+  rr.SetValue(1,3,9.0);
+  rr.SetValue(1,4,10.0);
+  rr.SetValue(1,5,0.0);
+  rr.SetValue(1,6,0.0);
+  rr.SetValue(1,7,0.0);
+  rr.SetValue(1,8,0.0);
+  rr.SetValue(1,9,0.0);
+
+  rr.SetValue(2,0,0.0);
+  rr.SetValue(2,1,0.0);
+  rr.SetValue(2,2,0.0);
+  rr.SetValue(2,3,0.0);
+  rr.SetValue(2,4,0.0);
+  rr.SetValue(2,5,1.0);
+  rr.SetValue(2,6,2.0);
+  rr.SetValue(2,7,3.0);
+  rr.SetValue(2,8,4.0);
+  rr.SetValue(2,9,5.0);
+
+  rr.SetValue(3,0,0.0);
+  rr.SetValue(3,1,0.0);
+  rr.SetValue(3,2,0.0);
+  rr.SetValue(3,3,0.0);
+  rr.SetValue(3,4,0.0);
+  rr.SetValue(3,5,6.0);
+  rr.SetValue(3,6,7.0);
+  rr.SetValue(3,7,8.0);
+  rr.SetValue(3,8,9.0);
+  rr.SetValue(3,9,10.0);
 
   mtk::Tools::EndUnitTestNo(7);
+  mtk::Tools::Assert(m10 == rr);
 }
 
 void Test8() {
@@ -218,19 +275,14 @@ void Test8() {
     }
   }
 
-  std::cout << m11 << std::endl;
-
   m11.Transpose();
-
-  std::cout << m11 << std::endl;
 
   mtk::DenseMatrix m12;
 
   m12 = m11;
 
-  std::cout << m12 << std::endl;
-
   mtk::Tools::EndUnitTestNo(8);
+  mtk::Tools::Assert(m11 == m12);
 }
 
 void Test9() {
@@ -244,23 +296,16 @@ void Test9() {
 
   mtk::DenseMatrix m13(gg, gg_l ,progression_length, transpose);
 
-  std::cout << m13 << std::endl;
-
   mtk::DenseMatrix m14;
 
   m14 = m13;
 
-  std::cout << m14 << std::endl;
-
   m13.Transpose();
-
-  std::cout << m13 << std::endl;
 
   m14 = m13;
 
-  std::cout << m14 << std::endl;
-
   mtk::Tools::EndUnitTestNo(9);
+  mtk::Tools::Assert(m13 == m14);
 }
 
 int main () {

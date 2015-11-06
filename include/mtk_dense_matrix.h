@@ -94,11 +94,11 @@ class DenseMatrix {
   /// \brief Prints the matrix as a block of numbers (standard way).
   friend std::ostream& operator <<(std::ostream &stream, DenseMatrix &in);
 
-  /// \brief Compares two matrices.
-  bool operator ==(const DenseMatrix &in);
-
   /// \brief Overloaded assignment operator.
   DenseMatrix& operator =(const DenseMatrix &in);
+
+  /// \brief Compares two matrices.
+  bool operator ==(const DenseMatrix &in);
 
   /// \brief Default constructor.
   DenseMatrix();

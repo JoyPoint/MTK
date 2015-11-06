@@ -94,26 +94,6 @@ std::ostream& operator <<(std::ostream &stream, mtk::DenseMatrix &in) {
 }
 }
 
-bool mtk::DenseMatrix::operator==(const DenseMatrix &in) {
-
-  bool ans{true};
-
-  auto rr = in.num_rows();
-  auto cc = in.num_cols();
-
-  if (rr != matrix_properties_.num_rows() ||
-      cc != matrix_properties_.num_cols()) {
-    return false;
-  }
-
-  for (int ii = 0; ii < rr && ans; ++ii) {
-    for (int jj = 0; jj < cc && ans; ++jj) {
-      ans = ans && data_[ii*cc + jj] == in.data()[ii*cc + jj];
-    }
-  }
-  return ans;
-}
-
 mtk::DenseMatrix& mtk::DenseMatrix::operator =(const mtk::DenseMatrix &in) {
 
   if(this == &in) {
@@ -153,6 +133,26 @@ mtk::DenseMatrix& mtk::DenseMatrix::operator =(const mtk::DenseMatrix &in) {
   std::copy(in.data_, in.data_ + num_rows*num_cols, data_);
 
   return *this;
+}
+
+bool mtk::DenseMatrix::operator ==(const DenseMatrix &in) {
+
+  bool ans{true};
+
+  auto rr = in.num_rows();
+  auto cc = in.num_cols();
+
+  if (rr != matrix_properties_.num_rows() ||
+      cc != matrix_properties_.num_cols()) {
+    return false;
+  }
+
+  for (int ii = 0; ii < rr && ans; ++ii) {
+    for (int jj = 0; jj < cc && ans; ++jj) {
+      ans = ans && data_[ii*cc + jj] == in.data()[ii*cc + jj];
+    }
+  }
+  return ans;
 }
 
 mtk::DenseMatrix::DenseMatrix(): data_(nullptr) {
