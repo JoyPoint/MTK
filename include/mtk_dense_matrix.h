@@ -97,7 +97,7 @@ class DenseMatrix {
   /// \brief Overloaded assignment operator.
   DenseMatrix& operator =(const DenseMatrix &in);
 
-  /// \brief Compares two matrices.
+  /// \brief Am I equal to the in matrix?
   bool operator ==(const DenseMatrix &in);
 
   /// \brief Default constructor.

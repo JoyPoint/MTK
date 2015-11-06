@@ -149,7 +149,8 @@ bool mtk::DenseMatrix::operator ==(const DenseMatrix &in) {
 
   for (int ii = 0; ii < rr && ans; ++ii) {
     for (int jj = 0; jj < cc && ans; ++jj) {
-      ans = ans && data_[ii*cc + jj] == in.data()[ii*cc + jj];
+      ans = ans &&
+        abs(data_[ii*cc + jj] - in.data()[ii*cc + jj]) < mtk::kDefaultTolerance;
     }
   }
   return ans;

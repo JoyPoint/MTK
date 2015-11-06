@@ -153,6 +153,13 @@ class Grad1D {
   */
   DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid);
 
+  /*!
+  \brief Returns the operator as a dimensionless dense matrix.
+
+  \return The operator as a dimensionless dense matrix.
+  */
+  DenseMatrix ReturnAsDimensionlessDenseMatrix(int num_cells_x);
+
  private:
   /*!
   \brief Stage 1 of the CBS Algorithm.
