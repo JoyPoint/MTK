@@ -90,22 +90,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iostream>
 #include <fstream>
 #include <cmath>
-
 #include <vector>
 
 #include "mtk.h"
 
 mtk::Real Source(mtk::Real xx) {
-
   mtk::Real lambda = -1.0;
-
   return lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
 }
 
 mtk::Real KnownSolution(mtk::Real xx) {
-
   mtk::Real lambda = -1.0;
-
   return (exp(lambda*xx) - 1.0)/(exp(lambda) - 1.0);
 }
 
@@ -127,14 +122,11 @@ int main () {
     std::cerr << "Mimetic lap could not be built." << std::endl;
     return EXIT_FAILURE;
   }
-
   mtk::DenseMatrix lapm(lap.ReturnAsDenseMatrix(comp_sol));
-
   if (!grad.ConstructGrad1D()) {
     std::cerr << "Mimetic grad could not be built." << std::endl;
     return EXIT_FAILURE;
   }
-
   mtk::DenseMatrix gradm(grad.ReturnAsDenseMatrix(comp_sol));
 
   source.BindScalarField(Source);
@@ -142,36 +134,27 @@ int main () {
   for (auto ii = 0; ii < grad.num_bndy_coeffs(); ++ii) {
     west_coeffs.push_back(-((exp(-1.0) - 1.0)/-1.0)*gradm.GetValue(0, ii));
   }
-
   for (auto ii = 0; ii < grad.num_bndy_coeffs(); ++ii) {
-    east_coeffs.push_back(((exp(-1.0) - 1.0)/-1.0)*gradm.GetValue(gradm.num_rows() - 1,
+    east_coeffs.push_back(
+      ((exp(-1.0) - 1.0)/-1.0)*gradm.GetValue(gradm.num_rows() - 1,
                                               gradm.num_cols() - 1 - ii));
   }
-
   west_coeffs[0] += -exp(-1.0);
-
   east_coeffs[0] += -exp(-1.0);
-
   mtk::BCDesc1D::ImposeOnOperator(lapm, west_coeffs, east_coeffs);
-
   mtk::BCDesc1D::ImposeOnGrid(source, -1.0, 0.0);
 
-  int info{mtk::LAPACKAdapter::SolveDenseSystem(lapm, source)};
-
-  if (info != 0) {
+  if (mtk::LAPACKAdapter::SolveDenseSystem(lapm, source) != 0) {
     std::cerr << "Something wrong solving system! info = " << info << std::endl;
     return EXIT_FAILURE;
   }
 
   source.WriteToFile("minimalistic_poisson_1d_comp_sol.dat", "x", "~u(x)");
-
   known_sol.BindScalarField(KnownSolution);
-
   relative_norm_2_error =
     mtk::BLASAdapter::RelNorm2Error(source.discrete_field_u(),
                                     known_sol.discrete_field_u(),
                                     known_sol.num_cells_x());
-
   std::cout << "relative_norm_2_error = ";
   std::cout << relative_norm_2_error << std::endl;
 }

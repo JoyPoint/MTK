@@ -145,6 +145,7 @@ Development Platform 4.13.3 (C) 2000-2005 The Kate Authors.
 2013 Free Software Foundation, Inc.
 -# Debugger: GNU gdb (Ubuntu 7.7.1-0ubuntu5~14.04.2) 7.7.1. Copyright (C) 2014
 Free Software Foundation, Inc.
+-# Memory Profiler: valgrind-3.10.0.SVN.
 
 \page section_license_mod Licensing and Modifications
 

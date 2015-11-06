@@ -1,3 +1,5 @@
+# gnuplot script for example: minimalistic_poisson_1d.cc
+
 #!/usr/bin/gnuplot
 
 set terminal png

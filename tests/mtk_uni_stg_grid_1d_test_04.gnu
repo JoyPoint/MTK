@@ -1,3 +1,7 @@
+# gnuplot script for test suite: mtk_uni_stg_grid_1d.cc
+
+#!/usr/bin/gnuplot
+
 set terminal png
 set output "mtk_uni_stg_grid_1d_test_04.png"
 set title "Vector Field on a Uniform Staggered 1D grid"
