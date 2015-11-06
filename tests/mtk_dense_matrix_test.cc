@@ -58,7 +58,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk.h"
 
-void Test1() {
+void TestDefaultConstructor() {
 
   mtk::Tools::BeginUnitTestNo(1);
 
@@ -68,7 +68,7 @@ void Test1() {
   mtk::Tools::Assert(m1.data() == nullptr);
 }
 
-void Test2() {
+void TestConstructorWithNumRowsNumCols() {
 
   mtk::Tools::BeginUnitTestNo(2);
 
@@ -85,7 +85,7 @@ void Test2() {
   mtk::Tools::Assert(assertion);
 }
 
-void Test3() {
+void TestConstructAsIdentity() {
 
   mtk::Tools::BeginUnitTestNo(3);
 
@@ -105,7 +105,7 @@ void Test3() {
   mtk::Tools::Assert(m3 == rr);
 }
 
-  void Test4() {
+  void TestConstructAsVandermonde() {
 
   mtk::Tools::BeginUnitTestNo(4);
 
@@ -125,7 +125,7 @@ void Test3() {
   mtk::Tools::Assert(m4 == rr);
 }
 
-void Test5() {
+void TestSetValueGetValue() {
 
   mtk::Tools::BeginUnitTestNo(5);
 
@@ -154,7 +154,7 @@ void Test5() {
   mtk::Tools::Assert(assertion);
 }
 
-void Test6() {
+void TestConstructAsVandermondeTranspose() {
 
   mtk::Tools::BeginUnitTestNo(6);
 
@@ -191,7 +191,7 @@ void Test6() {
   mtk::Tools::Assert(m7 == rr);
 }
 
-void Test7() {
+void TestKron() {
 
   mtk::Tools::BeginUnitTestNo(7);
 
@@ -261,7 +261,7 @@ void Test7() {
   mtk::Tools::Assert(m10 == rr);
 }
 
-void Test8() {
+void TestConstructWithNumRowsNumColsAssignmentOperator() {
 
   mtk::Tools::BeginUnitTestNo(8);
 
@@ -285,7 +285,7 @@ void Test8() {
   mtk::Tools::Assert(m11 == m12);
 }
 
-void Test9() {
+void TestConstructAsVandermondeTransposeAssignmentOperator() {
 
   mtk::Tools::BeginUnitTestNo(9);
 
@@ -312,15 +312,15 @@ int main () {
 
   std::cout << "Testing mtk::DenseMatrix class." << std::endl;
 
-  Test1();
-  Test2();
-  Test3();
-  Test4();
-  Test5();
-  Test6();
-  Test7();
-  Test8();
-  Test9();
+  TestDefaultConstructor();
+  TestConstructorWithNumRowsNumCols();
+  TestConstructAsIdentity();
+  TestConstructAsVandermonde();
+  TestSetValueGetValue();
+  TestConstructAsVandermondeTranspose();
+  TestKron();
+  TestConstructWithNumRowsNumColsAssignmentOperator();
+  TestConstructAsVandermondeTransposeAssignmentOperator();
 }
 
 #else
