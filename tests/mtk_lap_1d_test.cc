@@ -4,151 +4,133 @@
 
 #include "mtk.h"
 
-void Test1() {
+void TestDefaultConstructorFactoryMethodDefault() {
 
   mtk::Tools::BeginUnitTestNo(1);
 
   mtk::Lap1D lap2;
 
-  bool info = lap2.ConstructLap1D();
+  bool assertion = lap2.ConstructLap1D();
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic lap (2nd order) could not be built." << std::endl;
   }
 
   mtk::Tools::EndUnitTestNo(1);
+  mtk::Tools::Assert(assertion);
 }
 
-void Test2() {
+void TestDefaultConstructorFactoryMethodFourthOrder() {
 
   mtk::Tools::BeginUnitTestNo(2);
 
   mtk::Lap1D lap4;
 
-  bool info = lap4.ConstructLap1D(4);
+  bool assertion = lap4.ConstructLap1D(4);
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic lap (4th order) could not be built." << std::endl;
   }
 
   mtk::Tools::EndUnitTestNo(2);
+  mtk::Tools::Assert(assertion);
 }
 
-void Test3() {
+void TestDefaultConstructorFactoryMethodSixthOrder() {
 
   mtk::Tools::BeginUnitTestNo(3);
 
   mtk::Lap1D lap6;
 
-  bool info = lap6.ConstructLap1D(6);
+  bool assertion = lap6.ConstructLap1D(6);
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic lap (6th order) could not be built." << std::endl;
   }
 
   mtk::Tools::EndUnitTestNo(3);
+  mtk::Tools::Assert(assertion);
 }
 
-void Test4() {
+void TestDefaultConstructorFactoryMethodEightOrderDefThreshold() {
 
   mtk::Tools::BeginUnitTestNo(4);
 
   mtk::Lap1D lap8;
 
-  bool info = lap8.ConstructLap1D(8);
+  bool assertion = lap8.ConstructLap1D(8);
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic lap (8th order) could not be built." << std::endl;
   }
 
   mtk::Tools::EndUnitTestNo(4);
 }
 
-void Test5() {
+void TestDefaultConstructorFactoryMethodTenthOrderDefThreshold() {
 
   mtk::Tools::BeginUnitTestNo(5);
 
   mtk::Lap1D lap10;
 
-  bool info = lap10.ConstructLap1D(10);
+  bool assertion = lap10.ConstructLap1D(10);
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic lap (10th order) could not be built." << std::endl;
   }
 
   mtk::Tools::EndUnitTestNo(5);
 }
 
-void Test6() {
+void TestDefaultConstructorFactoryMethodTwelfthOrderDefThreshold() {
 
   mtk::Tools::BeginUnitTestNo(6);
 
   mtk::Lap1D lap12;
 
-  bool info = lap12.ConstructLap1D(12);
+  bool assertion = lap12.ConstructLap1D(12);
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic lap (12th order) could not be built." << std::endl;
   }
 
   mtk::Tools::EndUnitTestNo(6);
 }
 
-void Test7() {
-
-  mtk::Tools::BeginUnitTestNo(7);
-
-  mtk::Lap1D lap4;
-
-  bool info = lap4.ConstructLap1D(4);
-
-  if (!info) {
-    std::cerr << "Mimetic lap (4th order) could not be built." << std::endl;
-  }
-
-  std::cout << lap4 << std::endl;
-  std::cout << std::endl;
-
-  mtk::Tools::EndUnitTestNo(7);
-}
-
-void Test8() {
+void TestReturnAsDenseMatrix() {
 
   mtk::Tools::BeginUnitTestNo(8);
 
   mtk::Lap1D lap4;
 
-  bool info = lap4.ConstructLap1D(4);
+  bool assertion = lap4.ConstructLap1D(4);
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic lap (4th order) could not be built." << std::endl;
   }
-
-  std::cout << lap4 << std::endl;
-  std::cout << std::endl;
 
   mtk::UniStgGrid1D aux(0.0, 1.0, 11);
 
   mtk::DenseMatrix lap4_m(lap4.ReturnAsDenseMatrix(aux));
 
-  std::cout << lap4_m << std::endl;
-  std::cout << std::endl;
-
+  assertion = assertion &&
+      abs(lap4_m.GetValue(1, 0) - 385.133) < mtk::kDefaultTolerance &&
+      abs(lap4_m.GetValue(11, 12) - 385.133) < mtk::kDefaultTolerance;
   mtk::Tools::EndUnitTestNo(8);
+  mtk::Tools::Assert(assertion);
 }
 
 int main () {
 
   std::cout << "Testing MTK 1D Laplacian" << std::endl;
   
-  Test1();
-  Test2();
-  Test3();
-  Test4();
-  Test5();
-  Test6();
-  Test7();
-  Test8();
+  TestDefaultConstructorFactoryMethodDefault();
+  TestDefaultConstructorFactoryMethodFourthOrder();
+  TestDefaultConstructorFactoryMethodSixthOrder();
+  TestDefaultConstructorFactoryMethodEightOrderDefThreshold();
+  TestDefaultConstructorFactoryMethodTenthOrderDefThreshold();
+  TestDefaultConstructorFactoryMethodTwelfthOrderDefThreshold();
+  TestReturnAsDenseMatrix();
 }
 
 #else
