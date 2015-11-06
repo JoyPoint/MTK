@@ -58,15 +58,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk.h"
 
-void Test1() {
+void TestDefaultConstructor() {
 
   mtk::Tools::BeginUnitTestNo(1);
 
   mtk::UniStgGrid1D gg;
 
-  std::cout << gg << std::endl;
-
   mtk::Tools::EndUnitTestNo(1);
+  mtk::Tools::Assert(gg.delta_x() == mtk::kZero);
 }
 
 mtk::Real ScalarFieldOne(mtk::Real xx) {
@@ -74,7 +73,7 @@ mtk::Real ScalarFieldOne(mtk::Real xx) {
   return 2.0*xx;
 }
 
-void Test2() {
+void TestConstructWithWestBndyEastBndyNumCellsOStreamOperatorBindScalarField() {
 
   mtk::Tools::BeginUnitTestNo(2);
 
@@ -85,16 +84,15 @@ void Test2() {
 
   mtk::UniStgGrid1D gg(aa, bb, nn);
 
-  std::cout << gg << std::endl;
-
   gg.BindScalarField(ScalarFieldOne);
 
   std::cout << gg << std::endl;
 
   mtk::Tools::EndUnitTestNo(2);
+  mtk::Tools::Assert(gg.delta_x() == 0.2 && gg.num_cells_x() == 5);
 }
 
-void Test3() {
+void TestBindScalarFieldWriteToFile() {
 
   mtk::Tools::BeginUnitTestNo(3);
 
@@ -105,17 +103,22 @@ void Test3() {
 
   mtk::UniStgGrid1D gg(aa, bb, nn);
 
-  std::cout << gg << std::endl;
+  bool assertion{true};
 
   gg.BindScalarField(ScalarFieldOne);
 
-  std::cout << gg << std::endl;
+  assertion =
+    assertion &&
+    gg.discrete_field_u()[0] == 0.0 &&
+    gg.discrete_field_u()[gg.num_cells_x() + 2 - 1] == 2.0;
 
   if(!gg.WriteToFile("mtk_uni_stg_grid_1d_test_03.dat", "x", "u(x)")) {
     std::cerr << "Error writing to file." << std::endl;
+    assertion = false;
   }
 
   mtk::Tools::EndUnitTestNo(3);
+  mtk::Tools::Assert(assertion);
 }
 
 mtk::Real VectorFieldXComponentOne(mtk::Real xx) {
@@ -123,7 +126,7 @@ mtk::Real VectorFieldXComponentOne(mtk::Real xx) {
   return xx*xx;
 }
 
-void Test4() {
+void TestBindVectorField() {
 
   mtk::Tools::BeginUnitTestNo(4);
 
@@ -134,27 +137,32 @@ void Test4() {
 
   mtk::UniStgGrid1D gg(aa, bb, nn, mtk::VECTOR);
 
-  std::cout << gg << std::endl;
+  bool assertion{true};
 
   gg.BindVectorField(VectorFieldXComponentOne);
 
-  std::cout << gg << std::endl;
+  assertion =
+    assertion &&
+    gg.discrete_field_u()[0] == 0.0 &&
+    gg.discrete_field_u()[gg.num_cells_x() + 1 - 1] == 1.0;
 
   if(!gg.WriteToFile("mtk_uni_stg_grid_1d_test_04.dat", "x", "v(x)")) {
     std::cerr << "Error writing to file." << std::endl;
+    assertion = false;
   }
 
   mtk::Tools::EndUnitTestNo(4);
+  mtk::Tools::Assert(assertion);
 }
 
 int main () {
 
   std::cout << "Testing mtk::UniStgGrid1D class." << std::endl;
 
-  Test1();
-  Test2();
-  Test3();
-  Test4();
+  TestDefaultConstructor();
+  TestConstructWithWestBndyEastBndyNumCellsOStreamOperatorBindScalarField();
+  TestBindScalarFieldWriteToFile();
+  TestBindVectorField();
 }
 
 #else
