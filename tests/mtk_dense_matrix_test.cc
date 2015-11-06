@@ -105,7 +105,7 @@ void Test3() {
   mtk::Tools::Assert(m3 == rr);
 }
 
-void Test4() {
+  void Test4() {
 
   mtk::Tools::BeginUnitTestNo(4);
 

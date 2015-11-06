@@ -57,7 +57,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk.h"
 
-void Test1() {
+void TestRealDenseMM() {
 
   mtk::Tools::BeginUnitTestNo(1);
 
@@ -73,8 +73,6 @@ void Test1() {
   aa.SetValue(1,1,5.0);
   aa.SetValue(1,2,6.0);
 
-  std::cout << aa << std::endl;
-
   mtk::DenseMatrix bb(cc,rr);
 
   bb.SetValue(0,0,7.0);
@@ -84,11 +82,7 @@ void Test1() {
   bb.SetValue(2,0,11.0);
   bb.SetValue(2,1,12.0);
 
-  std::cout << bb << std::endl;
-
   mtk::DenseMatrix pp = mtk::BLASAdapter::RealDenseMM(aa,bb);
-
-  std::cout << pp << std::endl;
 
   mtk::DenseMatrix ff(rr,rr);
 
@@ -96,8 +90,6 @@ void Test1() {
   ff.SetValue(0,1,64.00);
   ff.SetValue(1,0,139.0);
   ff.SetValue(1,1,154.0);
-
-  std::cout << ff << std::endl;
 
   mtk::Tools::EndUnitTestNo(1);
   mtk::Tools::Assert(pp == ff);
@@ -107,7 +99,7 @@ int main () {
 
   std::cout << "Testing mtk::BLASAdapter class." << std::endl;
 
-  Test1();
+  TestRealDenseMM();
 }
 
 #else
