@@ -116,48 +116,6 @@ class UniStgGrid2D {
   ~UniStgGrid2D();
 
   /*!
-  \brief Provides access to west boundary spatial coordinate.
-
-  \return West boundary spatial coordinate.
-  */
-  Real west_bndy_x() const;
-
-  /*!
-  \brief Provides access to east boundary spatial coordinate.
-
-  \return East boundary spatial coordinate.
-  */
-  Real east_bndy_x() const;
-
-  /*!
-  \brief Provides access to south boundary spatial coordinate.
-
-  \return South boundary spatial coordinate.
-  */
-  Real south_bndy_y() const;
-
-  /*!
-  \brief Provides access to north boundary spatial coordinate.
-
-  \return North boundary spatial coordinate.
-  */
-  Real north_bndy_y() const;
-
-  /*!
-  \brief Provides access to the computed \$ \Delta x \$.
-
-  \return Computed \$ \Delta x \$.
-  */
-  Real delta_x() const;
-
-  /*!
-  \brief Provides access to the computed \$ \Delta y \$.
-
-  \return Computed \$ \Delta y \$.
-  */
-  Real delta_y() const;
-
-  /*!
   \brief Provides access to the grid spatial data.
 
   \return Pointer to the spatial data.
@@ -176,7 +134,30 @@ class UniStgGrid2D {
 
   \return Pointer to the field data.
   */
-  Real *discrete_field_u();
+  Real *discrete_field();
+
+  /*!
+  \brief Physical nature of the data bound to the grid.
+
+  \return Value of an enumeration.
+
+  \sa mtk::FieldNature
+  */
+  FieldNature nature() const;
+
+  /*!
+  \brief Provides access to west boundary spatial coordinate.
+
+  \return West boundary spatial coordinate.
+  */
+  Real west_bndy() const;
+
+  /*!
+  \brief Provides access to east boundary spatial coordinate.
+
+  \return East boundary spatial coordinate.
+  */
+  Real east_bndy() const;
 
   /*!
   \brief Provides access to the number of cells of the grid.
@@ -186,11 +167,39 @@ class UniStgGrid2D {
   int num_cells_x() const;
 
   /*!
+  \brief Provides access to the computed \$ \Delta x \$.
+
+  \return Computed \$ \Delta x \$.
+  */
+  Real delta_x() const;
+
+  /*!
+  \brief Provides access to south boundary spatial coordinate.
+
+  \return South boundary spatial coordinate.
+  */
+  Real south_bndy() const;
+
+  /*!
+  \brief Provides access to north boundary spatial coordinate.
+
+  \return North boundary spatial coordinate.
+  */
+  Real north_bndy() const;
+
+  /*!
   \brief Provides access to the number of cells of the grid.
 
   \return Number of cells of the grid.
   */
   int num_cells_y() const;
+
+  /*!
+  \brief Provides access to the computed \$ \Delta y \$.
+
+  \return Computed \$ \Delta y \$.
+  */
+  Real delta_y() const;
 
   /*!
   \brief Binds a given scalar field to the grid.
@@ -229,33 +238,35 @@ class UniStgGrid2D {
   \brief Writes grid to a file compatible with Gnuplot 4.6.
 
   \param[in] filename Name of the output file.
-  \param[in] space_name Name for the first column of the data.
-  \param[in] field_name Name for the second column of the data.
+  \param[in] space_name_x Name for the first column of the (spatial) data.
+  \param[in] space_name_y Name for the second column of the (spatial) data.
+  \param[in] field_name Name for the second column of the (physical field) data.
 
   \return Success of the file writing process.
 
   \sa http://www.gnuplot.info/
   */
   bool WriteToFile(std::string filename,
-                   std::string space_name,
+                   std::string space_name_x,
+                   std::string space_name_y,
                    std::string field_name);
 
  private:
-  FieldNature nature_;  ///< Nature of the discrete field.
-
   std::vector<Real> discrete_domain_x_; ///< Array of spatial data.
   std::vector<Real> discrete_domain_y_; ///< Array of spatial data.
-  std::vector<Real> discrete_field_u_;  ///< Array of field's data.
+  std::vector<Real> discrete_field_;    ///< Array of field's data.
 
-  Real west_bndy_x_;  ///< West boundary spatial coordinate.
-  Real east_bndy_x_;  ///< East boundary spatial coordinate.
-  Real num_cells_x_;  ///< Number of cells discretizing the domain.
-  Real delta_x_;      ///< Produced \f$ \Delta x\f$.
+  FieldNature nature_;  ///< Nature of the discrete field.
 
-  Real south_bndy_y_;  ///< West boundary spatial coordinate.
-  Real north_bndy_y_;  ///< East boundary spatial coordinate.
-  Real num_cells_y_;  ///< Number of cells discretizing the domain.
-  Real delta_y_;      ///< Produced \f$ \Delta y\f$.
+  Real west_bndy_;   ///< West boundary spatial coordinate.
+  Real east_bndy_;   ///< East boundary spatial coordinate.
+  int num_cells_x_;  ///< Number of cells discretizing the domain.
+  Real delta_x_;     ///< Computed \f$ \Delta x \f$.
+
+  Real south_bndy_;  ///< West boundary spatial coordinate.
+  Real north_bndy_;  ///< East boundary spatial coordinate.
+  int num_cells_y_;  ///< Number of cells discretizing the domain.
+  Real delta_y_;     ///< Computed \f$ \Delta y \f$.
 };
 }
 #endif  // End of: MTK_INCLUDE_UNI_STG_GRID_2D_H_

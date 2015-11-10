@@ -144,7 +144,8 @@ int main () {
   mtk::BCDesc1D::ImposeOnOperator(lapm, west_coeffs, east_coeffs);
   mtk::BCDesc1D::ImposeOnGrid(source, -1.0, 0.0);
 
-  if (mtk::LAPACKAdapter::SolveDenseSystem(lapm, source) != 0) {
+  int info{mtk::LAPACKAdapter::SolveDenseSystem(lapm, source)};
+  if (info != 0) {
     std::cerr << "Something wrong solving system! info = " << info << std::endl;
     return EXIT_FAILURE;
   }

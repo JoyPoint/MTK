@@ -53,8 +53,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if __cplusplus == 201103L
 
-#include <iostream>
+#include <cmath>
 #include <ctime>
+
+#include <iostream>
 
 #include "mtk.h"
 
@@ -90,12 +92,71 @@ TestConstructWithWestEastNumCellsXSouthNorthBndysNumCellsYOStreamOperator() {
                      abs(gg.delta_y() - 0.142857) < mtk::kDefaultTolerance);
 }
 
+void TestGetters() {
+
+  mtk::Tools::BeginUnitTestNo(3);
+
+  mtk::Real aa = 0.0;
+  mtk::Real bb = 1.0;
+  mtk::Real cc = 0.0;
+  mtk::Real dd = 1.0;
+
+  int nn = 5;
+  int mm = 7;
+
+  mtk::UniStgGrid2D gg(aa, bb, nn, cc, dd, mm);
+
+  bool assertion{true};
+
+  assertion = assertion && (gg.west_bndy() == aa);
+  assertion = assertion && (gg.east_bndy() == bb);
+  assertion = assertion && (gg.num_cells_x() == nn);
+  assertion = assertion && (gg.south_bndy() == cc);
+  assertion = assertion && (gg.north_bndy() == dd);
+  assertion = assertion && (gg.num_cells_y() == mm);
+
+  mtk::Tools::EndUnitTestNo(3);
+  mtk::Tools::Assert(assertion);
+}
+
+mtk::Real ScalarFieldOne(mtk::Real xx, mtk::Real yy) {
+
+  mtk::Real aux{-(1.0/2.0)*xx*xx - (1.0/2.0)*yy*yy};
+
+  return xx*yy*exp(aux);
+}
+
+void TestBindScalarFieldWriteToFile() {
+
+  mtk::Tools::BeginUnitTestNo(4);
+
+  mtk::Real aa = 0.0;
+  mtk::Real bb = 1.0;
+  mtk::Real cc = 0.0;
+  mtk::Real dd = 1.0;
+
+  int nn = 5;
+  int mm = 5;
+
+  mtk::UniStgGrid2D gg(aa, bb, nn, cc, dd, mm);
+
+  gg.BindScalarField(ScalarFieldOne);
+
+  if(!gg.WriteToFile("mtk_uni_stg_grid_2d_test_04.dat", "x", "y", "u(x,y)")) {
+    std::cerr << "Error writing to file." << std::endl;
+  }
+
+  mtk::Tools::EndUnitTestNo(4);
+}
+
 int main () {
 
   std::cout << "Testing mtk::UniStgGrid2D class." << std::endl;
 
   TestDefaultConstructor();
   TestConstructWithWestEastNumCellsXSouthNorthBndysNumCellsYOStreamOperator();
+  TestGetters();
+  TestBindScalarFieldWriteToFile();
 }
 
 #else

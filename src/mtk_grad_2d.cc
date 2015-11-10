@@ -94,10 +94,10 @@ mtk::DenseMatrix mtk::Grad2D::ConstructGrad2D(const mtk::UniStgGrid2D &grid,
     std::cerr << "Mimetic grad could not be built." << std::endl;
   }
 
-  auto West = grid.west_bndy_x();
-  auto East = grid.east_bndy_x();
-  auto South = grid.south_bndy_y();
-  auto North = grid.east_bndy_x();
+  auto West = grid.west_bndy();
+  auto East = grid.east_bndy();
+  auto South = grid.south_bndy();
+  auto North = grid.east_bndy();
 
   mtk::UniStgGrid1D grid_x(West, East, NumCellsX);
   mtk::UniStgGrid1D grid_y(South, North, NumCellsY);
