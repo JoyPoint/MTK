@@ -1,0 +1,97 @@
+==24931== Memcheck, a memory error detector
+==24931== Copyright (C) 2002-2013, and GNU GPL'd, by Julian Seward et al.
+==24931== Using Valgrind-3.10.0 and LibVEX; rerun with -h for copyright info
+==24931== Command: ./mtk_blas_adapter_test.exe
+==24931== 
+--24931-- Valgrind options:
+--24931--    -v
+--24931--    --tool=memcheck
+--24931--    --leak-check=full
+--24931--    --show-leak-kinds=all
+--24931--    --track-origins=yes
+--24931--    --freelist-vol=20000000
+--24931-- Contents of /proc/version:
+--24931--   Linux version 3.16.7-29-desktop (geeko@buildhost) (gcc version 4.8.3 20140627 [gcc-4_8-branch revision 212064] (SUSE Linux) ) #1 SMP PREEMPT Fri Oct 23 00:46:04 UTC 2015 (6be6a97)
+--24931-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-avx-avx2-bmi
+--24931-- Page sizes: currently 4096, max supported 4096
+--24931-- Valgrind library directory: /usr/lib64/valgrind
+--24931-- Reading syms from /home/esanchez/Dropbox/MTK/tests/mtk_blas_adapter_test.exe
+--24931-- Reading syms from /lib64/ld-2.19.so
+--24931-- Reading syms from /usr/lib64/valgrind/memcheck-amd64-linux
+--24931--    object doesn't have a symbol table
+--24931--    object doesn't have a dynamic symbol table
+--24931-- Scheduler: using generic scheduler lock implementation.
+--24931-- Reading suppressions file: /usr/lib64/valgrind/default.supp
+==24931== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-24931-by-esanchez-on-linux-h8lk.site
+==24931== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-24931-by-esanchez-on-linux-h8lk.site
+==24931== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-24931-by-esanchez-on-linux-h8lk.site
+==24931== 
+==24931== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==24931== don't want to do, unless you know exactly what you're doing,
+==24931== or are doing some strange experiment):
+==24931==   /usr/lib64/valgrind/../../bin/vgdb --pid=24931 ...command...
+==24931== 
+==24931== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==24931==   /path/to/gdb ./mtk_blas_adapter_test.exe
+==24931== and then give GDB the following command
+==24931==   target remote | /usr/lib64/valgrind/../../bin/vgdb --pid=24931
+==24931== --pid is optional if only one valgrind process is running
+==24931== 
+--24931-- REDIR: 0x4017810 (ld-linux-x86-64.so.2:strlen) redirected to 0x3806bd01 (???)
+--24931-- Reading syms from /usr/lib64/valgrind/vgpreload_core-amd64-linux.so
+--24931--    object doesn't have a symbol table
+--24931-- Reading syms from /usr/lib64/valgrind/vgpreload_memcheck-amd64-linux.so
+--24931--    object doesn't have a symbol table
+==24931== WARNING: new redirection conflicts with existing -- ignoring it
+--24931--     old: 0x04017810 (strlen              ) R-> (0000.0) 0x3806bd01 ???
+--24931--     new: 0x04017810 (strlen              ) R-> (2007.0) 0x04c2c730 strlen
+--24931-- REDIR: 0x40175c0 (ld-linux-x86-64.so.2:index) redirected to 0x4c2c2e0 (index)
+--24931-- REDIR: 0x40177e0 (ld-linux-x86-64.so.2:strcmp) redirected to 0x4c2d880 (strcmp)
+--24931-- REDIR: 0x4018510 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4c30330 (mempcpy)
+--24931-- Reading syms from /usr/lib64/libgfortran.so.3.0.0
+--24931--    object doesn't have a symbol table
+--24931-- Reading syms from /lib64/libm-2.19.so
+--24931-- Reading syms from /usr/lib64/libstdc++.so.6.0.19
+--24931--    object doesn't have a symbol table
+--24931-- Reading syms from /lib64/libgcc_s.so.1
+--24931--    object doesn't have a symbol table
+--24931-- Reading syms from /usr/lib64/libquadmath.so.0.0.0
+--24931--    object doesn't have a symbol table
+--24931-- Reading syms from /lib64/libc-2.19.so
+--24931-- REDIR: 0x5c30530 (libc.so.6:strcasecmp) redirected to 0x4a23770 (_vgnU_ifunc_wrapper)
+--24931-- REDIR: 0x5c32820 (libc.so.6:strncasecmp) redirected to 0x4a23770 (_vgnU_ifunc_wrapper)
+--24931-- REDIR: 0x5c2fcb0 (libc.so.6:memcpy@GLIBC_2.2.5) redirected to 0x4a23770 (_vgnU_ifunc_wrapper)
+--24931-- REDIR: 0x5c2e030 (libc.so.6:rindex) redirected to 0x4c2bfc0 (rindex)
+--24931-- REDIR: 0x5c27050 (libc.so.6:calloc) redirected to 0x4c2b180 (calloc)
+--24931-- REDIR: 0x5c266e0 (libc.so.6:malloc) redirected to 0x4c290a0 (malloc)
+--24931-- REDIR: 0x5c34f50 (libc.so.6:__GI_memcpy) redirected to 0x4c2e220 (__GI_memcpy)
+--24931-- REDIR: 0x5c2c330 (libc.so.6:strlen) redirected to 0x4c2c670 (strlen)
+--24931-- REDIR: 0x5c34f00 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x4a23770 (_vgnU_ifunc_wrapper)
+--24931-- REDIR: 0x5c3ae20 (libc.so.6:__memcpy_sse2_unaligned) redirected to 0x4c2dc40 (memcpy@@GLIBC_2.14)
+--24931-- REDIR: 0x5c2f710 (libc.so.6:__GI_memcmp) redirected to 0x4c2f110 (__GI_memcmp)
+--24931-- REDIR: 0x5c2a8e0 (libc.so.6:strcmp) redirected to 0x4a23770 (_vgnU_ifunc_wrapper)
+--24931-- REDIR: 0x5ccefd0 (libc.so.6:__strcmp_ssse3) redirected to 0x4c2d740 (strcmp)
+--24931-- REDIR: 0x5c2f6d0 (libc.so.6:bcmp) redirected to 0x4a23770 (_vgnU_ifunc_wrapper)
+--24931-- REDIR: 0x5ceee30 (libc.so.6:__memcmp_sse4_1) redirected to 0x4c2f190 (__memcmp_sse4_1)
+Testing mtk::BLASAdapter class.
+Beginning test 1.
+--24931-- REDIR: 0x54b3ab0 (libstdc++.so.6:operator new[](unsigned long)) redirected to 0x4c29d20 (operator new[](unsigned long))
+--24931-- REDIR: 0x5c2fd40 (libc.so.6:memset) redirected to 0x4c2f8e0 (memset)
+cc_col_maj_ord =
+--24931-- REDIR: 0x5c36ec0 (libc.so.6:strchrnul) redirected to 0x4c2ff40 (strchrnul)
+--24931-- REDIR: 0x5c2f380 (libc.so.6:memchr) redirected to 0x4c2d920 (memchr)
+           58          139
+           64          154
+
+--24931-- REDIR: 0x54b1d40 (libstdc++.so.6:operator delete[](void*)) redirected to 0x4c2ad60 (operator delete[](void*))
+Test 1: PASSED in 0.085893 s.
+--24931-- REDIR: 0x5c26d20 (libc.so.6:free) redirected to 0x4c2a310 (free)
+==24931== 
+==24931== HEAP SUMMARY:
+==24931==     in use at exit: 0 bytes in 0 blocks
+==24931==   total heap usage: 26 allocs, 26 frees, 28,341 bytes allocated
+==24931== 
+==24931== All heap blocks were freed -- no leaks are possible
+==24931== 
+==24931== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)
+==24931== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 0 from 0)

@@ -89,19 +89,38 @@ std::ostream& operator <<(std::ostream &stream, mtk::UniStgGrid2D &in) {
   /// 2. Print scalar field.
 
   if (in.nature_ == mtk::SCALAR) {
-    stream << "u:";
-  }
-  else {
-    stream << "v:";
-  }
-  stream << std::endl;
-  if (in.discrete_field_.size() > 0) {
-    for (int ii = 0; ii < in.num_cells_x_ + 2; ++ii) {
-      for (int jj = 0; jj < in.num_cells_y_ + 2; ++jj) {
-        stream << std::setw(10) << in.discrete_field_[ii*in.num_cells_y_ + jj];
+    stream << "u:" << std::endl;
+    if (in.discrete_field_.size() > 0) {
+      for (int ii = 0; ii < in.num_cells_x_ + 2; ++ii) {
+        for (int jj = 0; jj < in.num_cells_y_ + 2; ++jj) {
+          stream << std::setw(10) << in.discrete_field_[ii*in.num_cells_y_ + jj];
+        }
+        stream << std::endl;
+      }
+    }
+  } else {
+
+    int mm{in.num_cells_x_};
+    int nn{in.num_cells_y_};
+
+    stream << "p(x,y):" << std::endl;
+    for (int ii = 0; ii < mm + 1; ++ii) {
+      for (int jj = 0; jj < nn + 2; ++jj) {
+        stream << std::setw(10) << in.discrete_field_[ii*(nn + 2) + jj];
       }
       stream << std::endl;
     }
+    stream << std::endl;
+
+    stream << "q(x,y):" << std::endl;
+    for (int ii = 0; ii < mm + 2; ++ii) {
+      for (int jj = 0; jj < nn + 1; ++jj) {
+        stream << std::setw(10) <<
+          in.discrete_field_[(2*mm + 1) + ii*(nn + 1) + jj];
+      }
+      stream << std::endl;
+    }
+    stream << std::endl;
   }
 
   return stream;
@@ -112,6 +131,7 @@ mtk::UniStgGrid2D::UniStgGrid2D():
     discrete_domain_x_(),
     discrete_domain_y_(),
     discrete_field_(),
+    has_mem_been_alloc_(false),
     nature_(),
     west_bndy_(),
     east_bndy_(),
@@ -123,6 +143,7 @@ mtk::UniStgGrid2D::UniStgGrid2D():
     delta_y_() {}
 
 mtk::UniStgGrid2D::UniStgGrid2D(const UniStgGrid2D &grid):
+    has_mem_been_alloc_(grid.has_mem_been_alloc_),
     nature_(grid.nature_),
     west_bndy_(grid.west_bndy_),
     east_bndy_(grid.east_bndy_),
@@ -165,6 +186,8 @@ mtk::UniStgGrid2D::UniStgGrid2D(const Real &west_bndy,
                       __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(num_cells_y < 0, __FILE__, __LINE__, __func__);
   #endif
+
+  has_mem_been_alloc_ = false;
 
   nature_ = nature;
 
@@ -275,6 +298,117 @@ void mtk::UniStgGrid2D::BindScalarField(Real (*ScalarField)(Real xx, Real yy)) {
                                             discrete_domain_y_[jj]));
     }
   }
+
+  has_mem_been_alloc_ = true;
+}
+
+void mtk::UniStgGrid2D::BindVectorFieldPComponent(
+  mtk::Real (*VectorField)(mtk::Real xx, mtk::Real yy)) {
+
+  #if MTK_DEBUG_LEVEL > 0
+  mtk::Tools::Prevent(nature_ != mtk::VECTOR, __FILE__, __LINE__, __func__);
+  #endif
+
+  int mm{num_cells_x_};
+  int nn{num_cells_y_};
+
+  int total{(2*mm + 1) + (2*nn + 1)};
+
+  if (!has_mem_been_alloc_) {
+
+    #ifdef MTK_PRECISION_DOUBLE
+    double half_delta_x{delta_x_/2.0};
+    double half_delta_y{delta_y_/2.0};
+    #else
+    float half_delta_x{delta_x_/2.0f};
+    float half_delta_y{delta_y_/2.0f};
+    #endif
+
+    /// 1. Create collection of spatial coordinates for \f$ x \f$.
+
+    discrete_domain_x_.reserve(2*mm + 1);
+
+    discrete_domain_x_.push_back(west_bndy_);
+    for (int ii = 1; ii < (2*mm + 1); ++ii) {
+      discrete_domain_x_.push_back(west_bndy_ + ii*half_delta_x);
+    }
+
+    /// 2. Create collection of spatial coordinates for \f$ y \f$.
+
+    discrete_domain_y_.reserve(2*nn + 1);
+
+    discrete_domain_y_.push_back(south_bndy_);
+    for (int ii = 1; ii < (2*nn + 1); ++ii) {
+      discrete_domain_y_.push_back(south_bndy_ + ii*half_delta_y);
+    }
+
+    /// 3. Allocate space for the discrete vector field.
+
+    discrete_field_.reserve(total);
+
+    has_mem_been_alloc_ = true;
+  }
+
+  for (int ii = 0; ii < (2*mm + 1); ii += 2) {
+    discrete_field_.push_back(VectorField(discrete_domain_x_[ii],
+                                          discrete_domain_y_[0]));
+    for (int jj = 1; jj < (2*nn); jj += 2) {
+      discrete_field_.push_back(VectorField(discrete_domain_x_[ii],
+                                            discrete_domain_y_[jj]));
+    }
+    discrete_field_.push_back(VectorField(discrete_domain_x_[ii],
+                                          discrete_domain_y_[2*nn]));
+  }
+}
+
+void mtk::UniStgGrid2D::BindVectorFieldQComponent(
+  mtk::Real (*VectorField)(mtk::Real xx, mtk::Real yy)) {
+
+  #if MTK_DEBUG_LEVEL > 0
+  mtk::Tools::Prevent(nature_ != mtk::VECTOR, __FILE__, __LINE__, __func__);
+  #endif
+
+  int mm{num_cells_x_};
+  int nn{num_cells_y_};
+
+  int total{(2*mm + 1) + (2*nn + 1)};
+
+  if (!has_mem_been_alloc_) {
+
+    #ifdef MTK_PRECISION_DOUBLE
+    double half_delta_x{delta_x_/2.0};
+    double half_delta_y{delta_y_/2.0};
+    #else
+    float half_delta_x{delta_x_/2.0f};
+    float half_delta_y{delta_y_/2.0f};
+    #endif
+
+    /// 1. Create collection of spatial coordinates for \f$ x \f$.
+
+    discrete_domain_x_.reserve(2*mm + 1);
+
+    discrete_domain_x_.push_back(west_bndy_);
+    for (int ii = 1; ii < (2*mm + 1); ++ii) {
+      discrete_domain_x_.push_back(west_bndy_ + ii*half_delta_x);
+    }
+
+    /// 2. Create collection of spatial coordinates for \f$ y \f$.
+
+    discrete_domain_y_.reserve(2*nn + 1);
+
+    discrete_domain_y_.push_back(south_bndy_);
+    for (int ii = 1; ii < (2*nn + 1); ++ii) {
+      discrete_domain_y_.push_back(south_bndy_ + ii*half_delta_y);
+    }
+
+    /// 3. Allocate space for the discrete vector field.
+
+    discrete_field_.reserve(total);
+
+    has_mem_been_alloc_ = true;
+  }
+
+
 }
 
 bool mtk::UniStgGrid2D::WriteToFile(std::string filename,
@@ -290,17 +424,23 @@ bool mtk::UniStgGrid2D::WriteToFile(std::string filename,
     return false;
   }
 
-  output_dat_file << "# " << space_name_x <<  ' ' << space_name_y << ' ' <<
-    field_name << std::endl;
+  if (nature_ == mtk::SCALAR) {
+    output_dat_file << "# " << space_name_x <<  ' ' << space_name_y << ' ' <<
+      field_name << std::endl;
 
-  for (unsigned int ii = 0; ii < discrete_domain_x_.size(); ++ii) {
-    for (unsigned int jj = 0; jj < discrete_domain_y_.size(); ++jj) {
-      output_dat_file << discrete_domain_x_[ii] << ' ' <<
-                         discrete_domain_y_[jj] << ' ' <<
-                         discrete_field_[ii*discrete_domain_y_.size() + jj] <<
-                        std::endl;
+    for (unsigned int ii = 0; ii < discrete_domain_x_.size(); ++ii) {
+      for (unsigned int jj = 0; jj < discrete_domain_y_.size(); ++jj) {
+        output_dat_file << discrete_domain_x_[ii] << ' ' <<
+                           discrete_domain_y_[jj] << ' ' <<
+                           discrete_field_[ii*discrete_domain_y_.size() + jj] <<
+                          std::endl;
+      }
+      output_dat_file << std::endl;
     }
-    output_dat_file << std::endl;
+  } else {
+    output_dat_file << "# " << space_name_x <<  ' ' << space_name_y << ' ' <<
+      field_name << std::endl;
+
   }
 
   output_dat_file.close();

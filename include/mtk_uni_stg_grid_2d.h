@@ -256,6 +256,8 @@ class UniStgGrid2D {
   std::vector<Real> discrete_domain_y_; ///< Array of spatial data.
   std::vector<Real> discrete_field_;    ///< Array of field's data.
 
+  bool has_mem_been_alloc_;  ///< Has memory been allocated?
+
   FieldNature nature_;  ///< Nature of the discrete field.
 
   Real west_bndy_;   ///< West boundary spatial coordinate.

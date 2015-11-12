@@ -68,7 +68,7 @@ void TestDefaultConstructor() {
   mtk::Tools::Assert(gg.delta_x() == mtk::kZero);
 }
 
-mtk::Real ScalarFieldOne(mtk::Real xx) {
+mtk::Real ScalarField(mtk::Real xx) {
 
   return 2.0*xx;
 }
@@ -84,7 +84,7 @@ void TestConstructWithWestBndyEastBndyNumCellsOStreamOperatorBindScalarField() {
 
   mtk::UniStgGrid1D gg(aa, bb, nn);
 
-  gg.BindScalarField(ScalarFieldOne);
+  gg.BindScalarField(ScalarField);
 
   std::cout << gg << std::endl;
 
@@ -105,7 +105,7 @@ void TestBindScalarFieldWriteToFile() {
 
   bool assertion{true};
 
-  gg.BindScalarField(ScalarFieldOne);
+  gg.BindScalarField(ScalarField);
 
   assertion =
     assertion &&
@@ -121,7 +121,7 @@ void TestBindScalarFieldWriteToFile() {
   mtk::Tools::Assert(assertion);
 }
 
-mtk::Real VectorFieldXComponentOne(mtk::Real xx) {
+mtk::Real VectorFieldPComponent(mtk::Real xx) {
 
   return xx*xx;
 }
@@ -139,7 +139,7 @@ void TestBindVectorField() {
 
   bool assertion{true};
 
-  gg.BindVectorField(VectorFieldXComponentOne);
+  gg.BindVectorField(VectorFieldPComponent);
 
   assertion =
     assertion &&

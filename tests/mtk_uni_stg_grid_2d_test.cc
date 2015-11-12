@@ -119,7 +119,7 @@ void TestGetters() {
   mtk::Tools::Assert(assertion);
 }
 
-mtk::Real ScalarFieldOne(mtk::Real xx, mtk::Real yy) {
+mtk::Real ScalarField(mtk::Real xx, mtk::Real yy) {
 
   mtk::Real aux{-(1.0/2.0)*xx*xx - (1.0/2.0)*yy*yy};
 
@@ -140,13 +140,49 @@ void TestBindScalarFieldWriteToFile() {
 
   mtk::UniStgGrid2D gg(aa, bb, nn, cc, dd, mm);
 
-  gg.BindScalarField(ScalarFieldOne);
+  gg.BindScalarField(ScalarField);
 
   if(!gg.WriteToFile("mtk_uni_stg_grid_2d_test_04.dat", "x", "y", "u(x,y)")) {
     std::cerr << "Error writing to file." << std::endl;
   }
 
   mtk::Tools::EndUnitTestNo(4);
+}
+
+mtk::Real VectorFieldPComponent(mtk::Real xx, mtk::Real yy) {
+
+  return -yy;
+}
+
+mtk::Real VectorFieldQComponent(mtk::Real xx, mtk::Real yy) {
+
+  return xx;
+}
+
+void TestBindVectorField() {
+
+  mtk::Tools::BeginUnitTestNo(5);
+
+  mtk::Real aa = 0.0;
+  mtk::Real bb = 1.0;
+  mtk::Real cc = 0.0;
+  mtk::Real dd = 1.0;
+
+  int nn = 5;
+  int mm = 5;
+
+  mtk::UniStgGrid2D gg(aa, bb, nn, cc, dd, mm, mtk::VECTOR);
+
+  gg.BindVectorFieldPComponent(VectorFieldPComponent);
+  gg.BindVectorFieldQComponent(VectorFieldQComponent);
+
+  std::cout << gg << std::endl;
+
+  if(!gg.WriteToFile("mtk_uni_stg_grid_2d_test_05.dat", "x", "y", "v(x,y)")) {
+    std::cerr << "Error writing to file." << std::endl;
+  }
+
+  mtk::Tools::EndUnitTestNo(5);
 }
 
 int main () {
@@ -157,6 +193,7 @@ int main () {
   TestConstructWithWestEastNumCellsXSouthNorthBndysNumCellsYOStreamOperator();
   TestGetters();
   TestBindScalarFieldWriteToFile();
+  TestBindVectorField();
 }
 
 #else

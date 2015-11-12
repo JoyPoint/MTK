@@ -7,7 +7,7 @@ SHELL := /bin/bash
 #   1. Absolute path to base directory of the MTK.
 #   __________________________________________________________________
 
-BASE = /home/ejspeiro/Dropbox/MTK
+BASE = /home/esanchez/Dropbox/MTK
 
 #   2. The machine (platform) identifier and required machine precision.
 #   __________________________________________________________________
@@ -38,7 +38,7 @@ ATL_OPT = OFF
 
 # GLPK include path (soon to go):
 
-GLPK_INC = $(HOME)/Libraries/glpk-4.55/include
+GLPK_INC = $(HOME)/Libraries/glpk-4.35/include
 
 # Linux: If ATLAS optimization is ON, users should only provide the path to
 # ATLAS:
@@ -52,12 +52,12 @@ ATLAS_INC = $(HOME)/Libraries/ATLAS_3.8.4-CORE/include
 
 # GLPK linking path (soon to go):
 
-GLPK_LIB = $(HOME)/Libraries/glpk-4.55/lib/libglpk.a
+GLPK_LIB = $(HOME)/Libraries/glpk-4.35/lib/lib64/libglpk.a
 
 # If optimization is OFF, then provide the paths for:
 
-BLAS_LIB = $(HOME)/Libraries/BLAS/libblas.a
-LAPACK_LIB = $(HOME)/Libraries/lapack-3.4.1/liblapack.a
+BLAS_LIB = $(HOME)/Libraries/BLAS-3.5.0/libblas.a
+LAPACK_LIB = $(HOME)/Libraries/lapack-3.5.0/liblapack.a
 
 # WARNING: Vendor libraries should be used whenever they are available.
 
@@ -68,7 +68,7 @@ ATLAS_LIB   = $(HOME)/Libraries/ATLAS_3.8.4-CORE/ATLAS_3.8.4-BUILD-Citadel/lib
 #   6. Compiler and its flags.
 #   __________________________________________________________________
 
-CC = colorgcc
+CC = g++
 
 # Debug Level. Options are:
 # 0. NO debug at all NOR any run-time checks... be cautious!
@@ -80,7 +80,7 @@ DEBUG_LEVEL = 3
 
 # Flags recommended for release code:
 
-CCFLAGS = -Wall -O2
+CCFLAGS = -Wall -O3
 
 # Flags recommended for debugging code:
 
