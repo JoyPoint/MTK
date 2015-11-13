@@ -2,8 +2,6 @@
 
 include ../Makefile.inc
 
-# all:
-
 all: mtk_dense_matrix_test \
 	mtk_blas_adapter_test mtk_lapack_adapter_test mtk_glpk_adapter_test \
 	mtk_uni_stg_grid_1d_test mtk_uni_stg_grid_2d_test \

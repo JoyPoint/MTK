@@ -21,22 +21,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -157,22 +157,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -263,14 +263,16 @@ $ make help
 Makefile for the MTK.
 
 Options are:
-- make: builds only the library and the examples.
-- all: builds the library, the examples and the documentation.
-- mtklib: builds the library, i.e. generates the archive files.
-- test: generates the tests.
-- example: generates the examples.
+- all: builds the library, the tests, and examples.
+- mtklib: builds the library.
+- test: builds the test files.
+- example: builds the examples.
+
+- testall: runs all the tests.
+
 - gendoc: generates the documentation for the library.
 
-- clean: cleans ALL the generated files.
+- clean: cleans all the generated files.
 - cleanlib: cleans the generated archive and object files.
 - cleantest: cleans the generated tests executables.
 - cleanexample: cleans the generated examples executables.
@@ -344,9 +346,17 @@ throughout architectures. The following architectures have provided flawless
 installations of the API and correct execution of the examples:
 
 <pre>
-1. Linux 3.2.0-23-generic-pae #36-Ubuntu SMP i386 GNU/Linux
-   Intel(R) Pentium(R) M processor 1.73GHz 2048 KB of cache and stepping of 8
-   gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5)
+1. Linux 3.2.0-23-generic-pae #36-Ubuntu SMP i386 GNU/Linux.
+   Intel(R) Pentium(R) M CPU 1.73 GHz 2048 KB of cache and stepping of 8.
+   gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5).
+
+2. Linux 3.13.0-67-generic #110-Ubuntu SMP x86_64 GNU/Linux.
+   Intel(R) Core(TM) i7-4700MQ CPU 2.40 GHz 6144 KB of cache and stepping of 3.
+   gcc version 4.8.4 (Ubuntu 4.4.4-2ubuntu1~14.04).
+
+3. Linux 3.16.7-29-desktop #1 SMP PREEMPT (6be6a97) x86_64 GNU/Linux
+   Intel(R) Core(TM) i7-4600U CPU 2.10 GHz 4096 KB of cache and a stepping of 1.
+   gcc (SUSE Linux) 4.8.3 20140627 [gcc-4_8-branch revision 212064].
 </pre>
 
 Further architectures will be tested!
