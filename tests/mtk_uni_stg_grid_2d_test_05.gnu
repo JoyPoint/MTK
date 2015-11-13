@@ -4,10 +4,8 @@
 
 reset
 
-# set terminal png
-# set output "mtk_uni_stg_grid_2d_test_05.png"
-
-set terminal wxt size 800,600 enhanced font 'Verdana,10' persist
+set terminal png
+set output "mtk_uni_stg_grid_2d_test_05.png"
 
 set title "Vector Field v(x,y) on a Uniform Staggered 2D Grid"
 set key bmargin center horizontal
