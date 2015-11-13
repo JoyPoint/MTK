@@ -151,12 +151,12 @@ void TestBindScalarFieldWriteToFile() {
 
 mtk::Real VectorFieldPComponent(mtk::Real xx, mtk::Real yy) {
 
-  return -yy;
+  return xx + 0.01;
 }
 
 mtk::Real VectorFieldQComponent(mtk::Real xx, mtk::Real yy) {
 
-  return xx;
+  return yy + 0.01;
 }
 
 void TestBindVectorField() {
@@ -173,8 +173,7 @@ void TestBindVectorField() {
 
   mtk::UniStgGrid2D gg(aa, bb, nn, cc, dd, mm, mtk::VECTOR);
 
-  gg.BindVectorFieldPComponent(VectorFieldPComponent);
-  gg.BindVectorFieldQComponent(VectorFieldQComponent);
+  gg.BindVectorField(VectorFieldPComponent, VectorFieldQComponent);
 
   std::cout << gg << std::endl;
 

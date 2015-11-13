@@ -102,21 +102,22 @@ std::ostream& operator <<(std::ostream &stream, mtk::UniStgGrid2D &in) {
 
     int mm{in.num_cells_x_};
     int nn{in.num_cells_y_};
+    int p_offset{nn*(mm + 1) - 1};
 
     stream << "p(x,y):" << std::endl;
-    for (int ii = 0; ii < mm + 1; ++ii) {
-      for (int jj = 0; jj < nn + 2; ++jj) {
-        stream << std::setw(10) << in.discrete_field_[ii*(nn + 2) + jj];
+    for (int ii = 0; ii < nn; ++ii) {
+      for (int jj = 0; jj < mm + 1; ++jj) {
+        stream << std::setw(10) << in.discrete_field_[ii*(mm + 1) + jj];
       }
       stream << std::endl;
     }
     stream << std::endl;
 
     stream << "q(x,y):" << std::endl;
-    for (int ii = 0; ii < mm + 2; ++ii) {
-      for (int jj = 0; jj < nn + 1; ++jj) {
+    for (int ii = 0; ii < nn + 1; ++ii) {
+      for (int jj = 0; jj < mm; ++jj) {
         stream << std::setw(10) <<
-          in.discrete_field_[(2*mm + 1) + ii*(nn + 1) + jj];
+          in.discrete_field_[p_offset + ii*mm + jj];
       }
       stream << std::endl;
     }
@@ -131,7 +132,6 @@ mtk::UniStgGrid2D::UniStgGrid2D():
     discrete_domain_x_(),
     discrete_domain_y_(),
     discrete_field_(),
-    has_mem_been_alloc_(false),
     nature_(),
     west_bndy_(),
     east_bndy_(),
@@ -143,7 +143,6 @@ mtk::UniStgGrid2D::UniStgGrid2D():
     delta_y_() {}
 
 mtk::UniStgGrid2D::UniStgGrid2D(const UniStgGrid2D &grid):
-    has_mem_been_alloc_(grid.has_mem_been_alloc_),
     nature_(grid.nature_),
     west_bndy_(grid.west_bndy_),
     east_bndy_(grid.east_bndy_),
@@ -186,8 +185,6 @@ mtk::UniStgGrid2D::UniStgGrid2D(const Real &west_bndy,
                       __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(num_cells_y < 0, __FILE__, __LINE__, __func__);
   #endif
-
-  has_mem_been_alloc_ = false;
 
   nature_ = nature;
 
@@ -298,117 +295,111 @@ void mtk::UniStgGrid2D::BindScalarField(Real (*ScalarField)(Real xx, Real yy)) {
                                             discrete_domain_y_[jj]));
     }
   }
-
-  has_mem_been_alloc_ = true;
 }
 
 void mtk::UniStgGrid2D::BindVectorFieldPComponent(
   mtk::Real (*VectorField)(mtk::Real xx, mtk::Real yy)) {
 
-  #if MTK_DEBUG_LEVEL > 0
-  mtk::Tools::Prevent(nature_ != mtk::VECTOR, __FILE__, __LINE__, __func__);
-  #endif
-
   int mm{num_cells_x_};
   int nn{num_cells_y_};
 
-  int total{(2*mm + 1) + (2*nn + 1)};
+  int total{nn*(mm + 1) + mm*(nn + 1)};
 
-  if (!has_mem_been_alloc_) {
+  #ifdef MTK_PRECISION_DOUBLE
+  double half_delta_x{delta_x_/2.0};
+  double half_delta_y{delta_y_/2.0};
+  #else
+  float half_delta_x{delta_x_/2.0f};
+  float half_delta_y{delta_y_/2.0f};
+  #endif
 
-    #ifdef MTK_PRECISION_DOUBLE
-    double half_delta_x{delta_x_/2.0};
-    double half_delta_y{delta_y_/2.0};
-    #else
-    float half_delta_x{delta_x_/2.0f};
-    float half_delta_y{delta_y_/2.0f};
-    #endif
+  /// 1. Create collection of spatial coordinates for \f$ x \f$.
 
-    /// 1. Create collection of spatial coordinates for \f$ x \f$.
+  // We need every data point of the discrete domain; i.e. we need all the
+  // nodes and all the centers. There are mm centers for the x direction, and
+  // nn centers for the y direction. Since there is one node per center, that
+  // amounts to 2*mm. If we finally consider the final boundary node, it
+  // amounts to a total of 2*mm + 1 for the x direction. Analogously, for the
+  // y direction, this amounts to 2*nn + 1.
 
-    discrete_domain_x_.reserve(2*mm + 1);
+  discrete_domain_x_.reserve(2*mm + 1);
 
-    discrete_domain_x_.push_back(west_bndy_);
-    for (int ii = 1; ii < (2*mm + 1); ++ii) {
-      discrete_domain_x_.push_back(west_bndy_ + ii*half_delta_x);
-    }
-
-    /// 2. Create collection of spatial coordinates for \f$ y \f$.
-
-    discrete_domain_y_.reserve(2*nn + 1);
-
-    discrete_domain_y_.push_back(south_bndy_);
-    for (int ii = 1; ii < (2*nn + 1); ++ii) {
-      discrete_domain_y_.push_back(south_bndy_ + ii*half_delta_y);
-    }
-
-    /// 3. Allocate space for the discrete vector field.
-
-    discrete_field_.reserve(total);
-
-    has_mem_been_alloc_ = true;
+  discrete_domain_x_.push_back(west_bndy_);
+  for (int ii = 1; ii < (2*mm + 1); ++ii) {
+    discrete_domain_x_.push_back(west_bndy_ + ii*half_delta_x);
   }
 
-  for (int ii = 0; ii < (2*mm + 1); ii += 2) {
-    discrete_field_.push_back(VectorField(discrete_domain_x_[ii],
-                                          discrete_domain_y_[0]));
-    for (int jj = 1; jj < (2*nn); jj += 2) {
-      discrete_field_.push_back(VectorField(discrete_domain_x_[ii],
-                                            discrete_domain_y_[jj]));
-    }
-    discrete_field_.push_back(VectorField(discrete_domain_x_[ii],
-                                          discrete_domain_y_[2*nn]));
+  /// 2. Create collection of spatial coordinates for \f$ y \f$.
+
+  discrete_domain_y_.reserve(2*nn + 1);
+
+  discrete_domain_y_.push_back(south_bndy_);
+  for (int ii = 1; ii < (2*nn + 1); ++ii) {
+    discrete_domain_y_.push_back(south_bndy_ + ii*half_delta_y);
   }
+
+  /// 3. Allocate space for discrete vector field and bind \$ p \$ component.
+
+  discrete_field_.reserve(total);
+
+  // For each y-center.
+  for (int ii = 1; ii < 2*nn + 1; ii += 2) {
+
+    // Bind all of the x-nodes for this y-center.
+    for (int jj = 0; jj < 2*mm + 1; jj += 2) {
+      discrete_field_.push_back(VectorField(discrete_domain_x_[jj],
+                                            discrete_domain_y_[ii]));
+
+      #if MTK_DEBUG_LEVEL > 0
+      std::cout << "Binding v at x = " << discrete_domain_x_[jj] << " y = " <<
+        discrete_domain_y_[ii] << " = " <<
+        VectorField(discrete_domain_x_[jj],discrete_domain_y_[ii]) << std::endl;
+      #endif
+    }
+  }
+  #if MTK_DEBUG_LEVEL > 0
+  std::cout << std::endl;
+  #endif
 }
 
 void mtk::UniStgGrid2D::BindVectorFieldQComponent(
   mtk::Real (*VectorField)(mtk::Real xx, mtk::Real yy)) {
 
+  int mm{num_cells_x_};
+  int nn{num_cells_y_};
+
+  /// 3. Bind \$ q \$ component, since \$ p \$ component has already been bound.
+
+  // For each y-node.
+  for (int ii = 0; ii < 2*nn + 1; ii += 2) {
+
+    // Bind all of the x-center for this y-node.
+    for (int jj = 1; jj < 2*mm + 1; jj += 2) {
+      discrete_field_.push_back(VectorField(discrete_domain_x_[jj],
+                                            discrete_domain_y_[ii]));
+
+      #if MTK_DEBUG_LEVEL > 0
+      std::cout << "Binding v at x = " << discrete_domain_x_[jj] << " y = " <<
+        discrete_domain_y_[ii] << " = " <<
+        VectorField(discrete_domain_x_[jj],discrete_domain_y_[ii]) << std::endl;
+      #endif
+    }
+  }
+  #if MTK_DEBUG_LEVEL > 0
+  std::cout << std::endl;
+  #endif
+}
+
+void mtk::UniStgGrid2D::BindVectorField(
+  Real (*VectorFieldPComponent)(Real xx,Real yy),
+  Real (*VectorFieldQComponent)(Real xx,Real yy)) {
+
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(nature_ != mtk::VECTOR, __FILE__, __LINE__, __func__);
   #endif
 
-  int mm{num_cells_x_};
-  int nn{num_cells_y_};
-
-  int total{(2*mm + 1) + (2*nn + 1)};
-
-  if (!has_mem_been_alloc_) {
-
-    #ifdef MTK_PRECISION_DOUBLE
-    double half_delta_x{delta_x_/2.0};
-    double half_delta_y{delta_y_/2.0};
-    #else
-    float half_delta_x{delta_x_/2.0f};
-    float half_delta_y{delta_y_/2.0f};
-    #endif
-
-    /// 1. Create collection of spatial coordinates for \f$ x \f$.
-
-    discrete_domain_x_.reserve(2*mm + 1);
-
-    discrete_domain_x_.push_back(west_bndy_);
-    for (int ii = 1; ii < (2*mm + 1); ++ii) {
-      discrete_domain_x_.push_back(west_bndy_ + ii*half_delta_x);
-    }
-
-    /// 2. Create collection of spatial coordinates for \f$ y \f$.
-
-    discrete_domain_y_.reserve(2*nn + 1);
-
-    discrete_domain_y_.push_back(south_bndy_);
-    for (int ii = 1; ii < (2*nn + 1); ++ii) {
-      discrete_domain_y_.push_back(south_bndy_ + ii*half_delta_y);
-    }
-
-    /// 3. Allocate space for the discrete vector field.
-
-    discrete_field_.reserve(total);
-
-    has_mem_been_alloc_ = true;
-  }
-
-
+  BindVectorFieldPComponent(VectorFieldPComponent);
+  BindVectorFieldQComponent(VectorFieldQComponent);
 }
 
 bool mtk::UniStgGrid2D::WriteToFile(std::string filename,
@@ -441,6 +432,43 @@ bool mtk::UniStgGrid2D::WriteToFile(std::string filename,
     output_dat_file << "# " << space_name_x <<  ' ' << space_name_y << ' ' <<
       field_name << std::endl;
 
+    output_dat_file << "# Horizontal component:" << std::endl;
+
+    int mm{num_cells_x_};
+    int nn{num_cells_y_};
+
+    /// Write the values of the p component, with a null q component.
+
+    // For each y-center.
+    int idx{};
+    for (int ii = 1; ii < 2*nn + 1; ii += 2) {
+      // Bind all of the x-nodes for this y-center.
+      for (int jj = 0; jj < 2*mm + 1; jj += 2) {
+
+        output_dat_file << discrete_domain_x_[jj] << ' ' <<
+          discrete_domain_y_[ii] << ' ' << discrete_field_[idx] << ' ' <<
+          mtk::kZero << std::endl;
+
+        ++idx;
+      }
+    }
+
+    /// Write the values of the q component, with a null p component.
+    int p_offset{nn*(mm + 1) - 1};
+    idx = 0;
+    output_dat_file << "# Vertical component:" << std::endl;
+    // For each y-node.
+    for (int ii = 0; ii < 2*nn + 1; ii += 2) {
+      // Bind all of the x-center for this y-node.
+      for (int jj = 1; jj < 2*mm + 1; jj += 2) {
+
+        output_dat_file << discrete_domain_x_[jj] << ' ' <<
+          discrete_domain_y_[ii] << ' ' << mtk::kZero << ' ' <<
+          discrete_field_[p_offset + idx] << std::endl;
+
+        ++idx;
+      }
+    }
   }
 
   output_dat_file.close();

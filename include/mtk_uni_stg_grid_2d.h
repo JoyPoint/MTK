@@ -217,22 +217,13 @@ class UniStgGrid2D {
     \mathbf{v}(x) = p(x, y)\hat{\mathbf{i}} + q(x, y)\hat{\mathbf{j}}
   \f]
 
-  \param[in] VectorField Pointer to the function implementing the vector field.
+  \param[in] VectorFieldPComponent Pointer to the function implementing the \$
+  p \$ component of the vector field.
+  \param[in] VectorFieldPComponent Pointer to the function implementing the \$
+  q \$ component of the vector field.
   */
-  void BindVectorFieldPComponent(Real (*VectorField)(Real xx, Real yy));
-
-  /*!
-  \brief Binds a given vector field to the grid.
-
-  We assume the field to be of the form:
-
-  \f[
-    \mathbf{v}(x) = p(x, y)\hat{\mathbf{i}} + q(x, y)\hat{\mathbf{j}}
-  \f]
-
-  \param[in] VectorField Pointer to the function implementing the vector field.
-  */
-  void BindVectorFieldQComponent(Real (*VectorField)(Real xx, Real yy));
+  void BindVectorField(Real (*VectorFieldPComponent)(Real xx,Real yy),
+                       Real (*VectorFieldQComponent)(Real xx,Real yy));
 
   /*!
   \brief Writes grid to a file compatible with Gnuplot 4.6.
@@ -252,11 +243,40 @@ class UniStgGrid2D {
                    std::string field_name);
 
  private:
+  /*!
+  \brief Binds a given component of a vector field to the grid.
+
+  We assume the field to be of the form:
+
+  \f[
+    \mathbf{v}(x) = p(x, y)\hat{\mathbf{i}} + q(x, y)\hat{\mathbf{j}}
+  \f]
+
+  \param[in] BindVectorFieldPComponent Pointer to the function implementing the
+  \$ p \$ component of the vector field.
+  */
+  void BindVectorFieldPComponent(
+    Real (*VectorFieldPComponent)(Real xx, Real yy));
+
+  /*!
+  \brief Binds a given component of a vector field to the grid.
+
+  We assume the field to be of the form:
+
+  \f[
+    \mathbf{v}(x) = p(x, y)\hat{\mathbf{i}} + q(x, y)\hat{\mathbf{j}}
+  \f]
+
+  \param[in] BindVectorFieldQComponent Pointer to the function implementing the
+  \$ q \$ component of the vector field.
+  */
+  void BindVectorFieldQComponent(
+    Real (*VectorFieldQComponent)(Real xx, Real yy));
+
+
   std::vector<Real> discrete_domain_x_; ///< Array of spatial data.
   std::vector<Real> discrete_domain_y_; ///< Array of spatial data.
   std::vector<Real> discrete_field_;    ///< Array of field's data.
-
-  bool has_mem_been_alloc_;  ///< Has memory been allocated?
 
   FieldNature nature_;  ///< Nature of the discrete field.
 
