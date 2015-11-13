@@ -2,6 +2,8 @@
 
 #!/usr/bin/gnuplot
 
+reset
+
 set terminal png
 set output "minimalistic_poisson_1d_comp_sol.png"
 set title "Computed Solution"

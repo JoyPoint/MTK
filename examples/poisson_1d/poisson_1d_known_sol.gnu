@@ -2,6 +2,8 @@
 
 #!/usr/bin/gnuplot
 
+reset
+
 set terminal png
 set output "poisson_1d_known_sol.png"
 set title "Know Solution"

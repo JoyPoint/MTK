@@ -2,6 +2,8 @@
 
 #!/usr/bin/gnuplot
 
+reset
+
 set terminal png
 set output "mtk_uni_stg_grid_2d_test_04.png"
 
