@@ -85,8 +85,10 @@ bool mtk::Lap2D::ConstructLap2D(const mtk::UniStgGrid2D &grid,
 
    mtk::mtk::2DDiv *div = new mtk::mtk::2DDiv(kk_,mimetic_tol_);
    mtk::mtk::2DGrad *grad = new mtk::mtk::2DGrad(kk_,mimetic_tol_);
-   number_of_cells_X_=NumCellsX;
-   number_of_cells_Y_=NumCellsY;
+
+  
+
+
         East_ = East;
        West_=West;
       South_=South;
