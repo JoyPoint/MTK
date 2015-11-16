@@ -17,22 +17,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -118,7 +118,7 @@ mtk::Lap1D::~Lap1D() {
 
 bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
                                 mtk::Real mimetic_threshold) {
-  
+
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(order_accuracy < 2, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent((order_accuracy%2) != 0, __FILE__, __LINE__, __func__);
@@ -263,7 +263,7 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
 }
 
 mtk::DenseMatrix mtk::Lap1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
-  
+
   int nn{grid.num_cells_x()};  // Number of cells on the grid.
 
   #if MTK_DEBUG_LEVEL > 0
@@ -329,7 +329,7 @@ mtk::DenseMatrix mtk::Lap1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
   return lap;
 }
 
-mtk::Real* mtk::Lap1D::Data(const UniStgGrid1D &grid) {
+mtk::Real* mtk::Lap1D::data(const UniStgGrid1D &grid) {
 
   mtk::DenseMatrix tmp;
 
