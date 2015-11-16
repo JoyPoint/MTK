@@ -99,7 +99,7 @@ class Lap2D {
 
   \return The operator as a dense array.
   */
-  mtk::Real* data(const UniStgGrid2D &grid);
+  mtk::Real* data();
 
  private:
   DenseMatrix laplacian_;  ///< Actual operator.

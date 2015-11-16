@@ -83,9 +83,9 @@ class Grad2D {
 
   \return Success of the construction.
   */
-  DenseMatrix ConstructGrad2D(const UniStgGrid2D &grid,
-                              int order_accuracy = kDefaultOrderAccuracy,
-                             Real mimetic_threshold = kDefaultMimeticThreshold);
+  bool ConstructGrad2D(const UniStgGrid2D &grid,
+                       int order_accuracy = kDefaultOrderAccuracy,
+                       Real mimetic_threshold = kDefaultMimeticThreshold);
 
   /*!
   \brief Return the operator as a dense matrix.

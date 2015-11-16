@@ -61,6 +61,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iomanip>
 
 #include "mtk_roots.h"
+#include "mtk_blas_adapter.h"
+#include "mtk_grad_2d.h"
+#include "mtk_div_2d.h"
 #include "mtk_lap_2d.h"
 
 mtk::Lap2D::Lap2D(): order_accuracy_(), mimetic_threshold_() {}
@@ -75,56 +78,33 @@ bool mtk::Lap2D::ConstructLap2D(const mtk::UniStgGrid2D &grid,
                                 int order_accuracy,
                                 mtk::Real mimetic_threshold) {
 
-  int NumCellsX{grid.num_cells_x()};
-  int NumCellsY{grid.num_cells_y()};
-  int aux{(NumCellsX + 2)*(NumCellsY + 2)};
+  int num_cells_x{grid.num_cells_x()};
+  int num_cells_y{grid.num_cells_y()};
+  int aux{(num_cells_x + 2)*(num_cells_y + 2)};
 
-  mtk::DenseMatrix gg;
-  mtk::DenseMatrix dd;
-  mtk::DenseMatrix lap;
+  mtk::Grad2D gg;
+  mtk::Div2D dd;
 
-   mtk::mtk::2DDiv *div = new mtk::mtk::2DDiv(kk_,mimetic_tol_);
-   mtk::mtk::2DGrad *grad = new mtk::mtk::2DGrad(kk_,mimetic_tol_);
+  bool info{gg.ConstructGrad2D(grid, order_accuracy, mimetic_threshold)};
 
-  
-
-
-        East_ = East;
-       West_=West;
-      South_=South;
-      North_=North;
-
-
-   div = div->Construct2DDiv();
-     if (div == nullptr) {
-    return nullptr;
+  if (!info) {
+    std::cerr << "Mimetic lap could not be built." << std::endl;
+    return info;
   }
 
-  grad = grad->Construct2DGrad();
-  if (grad == nullptr) {
-    return nullptr;
+  info = dd.ConstructDiv2D(grid, order_accuracy, mimetic_threshold);
+
+  if (!info) {
+    std::cerr << "Mimetic div could not be built." << std::endl;
+    return info;
   }
 
+  mtk::DenseMatrix ggm(gg.ReturnAsDenseMatrix());
+  mtk::DenseMatrix ddm(dd.ReturnAsDenseMatrix());
 
-   gg=grad->ReturnAsMatrix(NumCellsX, West, East,NumCellsY, South, North);
-   dd=div->ReturnAsMatrix(NumCellsX, West, East,NumCellsY, South, North);
+  laplacian_ = mtk::BLASAdapter::RealDenseMM(ddm, ggm);
 
-   lap=new mtk::DenseMatrix(m,m);
-
-
-  if (lap==nullptr)
-   {
-      cout << "Problem allocating memory for mtk::DenseMatrix"<<endl;
-     return lap;
-   }
-
-
-
-   lap=lap->MatrixMultiplication(*dd,*gg);
-
-  return lap;
-
-
+  return info;
 }
 
 mtk::DenseMatrix mtk::Lap2D::ReturnAsDenseMatrix() {

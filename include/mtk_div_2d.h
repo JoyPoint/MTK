@@ -83,9 +83,9 @@ class Div2D {
 
   \return Success of the construction.
   */
-  DenseMatrix ConstructDiv2D(const UniStgGrid2D &grid,
-                             int order_accuracy = kDefaultOrderAccuracy,
-                             Real mimetic_threshold = kDefaultMimeticThreshold);
+  bool ConstructDiv2D(const UniStgGrid2D &grid,
+                      int order_accuracy = kDefaultOrderAccuracy,
+                      Real mimetic_threshold = kDefaultMimeticThreshold);
 
   /*!
   \brief Return the operator as a dense matrix.

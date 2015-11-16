@@ -76,17 +76,17 @@ mtk::Div2D::Div2D(const Div2D &div):
 
 mtk::Div2D::~Div2D() {}
 
-mtk::DenseMatrix mtk::Div2D::ConstructDiv2D(const mtk::UniStgGrid2D &grid,
-                                            int order_accuracy,
-                                            mtk::Real mimetic_threshold) {
+bool mtk::Div2D::ConstructDiv2D(const mtk::UniStgGrid2D &grid,
+                                int order_accuracy,
+                                mtk::Real mimetic_threshold) {
 
-  int NumCellsX = grid.num_cells_x();
-  int NumCellsY = grid.num_cells_y();
+  int num_cells_x = grid.num_cells_x();
+  int num_cells_y = grid.num_cells_y();
 
-  int mx = NumCellsX + 2;  // Gx vertical dimension
-  int nx = NumCellsX + 1;  // Gx horizontal dimension
-  int my = NumCellsY + 2;  // Gy vertical dimension
-  int ny = NumCellsY + 1;  // Gy horizontal dimension
+  int mx = num_cells_x + 2;  // Gx vertical dimension
+  int nx = num_cells_x + 1;  // Gx horizontal dimension
+  int my = num_cells_y + 2;  // Gy vertical dimension
+  int ny = num_cells_y + 1;  // Gy horizontal dimension
 
   mtk::Div1D div;
 
@@ -94,51 +94,52 @@ mtk::DenseMatrix mtk::Div2D::ConstructDiv2D(const mtk::UniStgGrid2D &grid,
 
   if (!info) {
     std::cerr << "Mimetic div could not be built." << std::endl;
+    return info;
   }
 
-  auto West = grid.west_bndy();
-  auto East = grid.east_bndy();
-  auto South = grid.south_bndy();
-  auto North = grid.east_bndy();
+  auto west = grid.west_bndy();
+  auto east = grid.east_bndy();
+  auto south = grid.south_bndy();
+  auto north = grid.east_bndy();
 
-  mtk::UniStgGrid1D grid_x(West, East, NumCellsX);
-  mtk::UniStgGrid1D grid_y(South, North, NumCellsY);
+  mtk::UniStgGrid1D grid_x(west, east, num_cells_x);
+  mtk::UniStgGrid1D grid_y(south, north, num_cells_y);
 
-  mtk::DenseMatrix Dx(div.ReturnAsDenseMatrix(grid_x));
-  mtk::DenseMatrix Dy(div.ReturnAsDenseMatrix(grid_y));
+  mtk::DenseMatrix dx(div.ReturnAsDenseMatrix(grid_x));
+  mtk::DenseMatrix dy(div.ReturnAsDenseMatrix(grid_y));
 
   bool padded{true};
   bool transpose{false};
 
-  mtk::DenseMatrix Ix(NumCellsX, padded, transpose);
-  mtk::DenseMatrix Iy(NumCellsY, padded, transpose);
+  mtk::DenseMatrix ix(num_cells_x, padded, transpose);
+  mtk::DenseMatrix iy(num_cells_y, padded, transpose);
 
-  mtk::DenseMatrix Dxy(mtk::DenseMatrix::Kron(Iy, Dx));
-  mtk::DenseMatrix Dyx(mtk::DenseMatrix::Kron(Dy, Ix));
+  mtk::DenseMatrix dxy(mtk::DenseMatrix::Kron(iy, dx));
+  mtk::DenseMatrix dyx(mtk::DenseMatrix::Kron(dy, ix));
 
-#if MTK_DEBUG_LEVEL > 0
+  #if MTK_DEBUG_LEVEL > 0
   std::cout << "Gx :" << mx << "by " << nx << std::endl;
-  std::cout << "Transpose Iy : " << NumCellsY<< " by " << ny  << std::endl;
+  std::cout << "Transpose iy : " << num_cells_y<< " by " << ny  << std::endl;
   std::cout << "Gy :" << my << "by " << ny << std::endl;
-  std::cout << "Transpose Ix : " << NumCellsX<< " by " << nx  << std::endl;
+  std::cout << "Transpose ix : " << num_cells_x<< " by " << nx  << std::endl;
   std::cout << "Kronecker dimensions Grad 2D" <<
-  mx*NumCellsY + my*NumCellsX << " by " <<  nx*ny <<std::endl;
-#endif
+  mx*num_cells_y + my*num_cells_x << " by " <<  nx*ny <<std::endl;
+  #endif
 
-  mtk::DenseMatrix D2D(mx*my,nx*NumCellsY + ny*NumCellsX);
+  mtk::DenseMatrix d2d(mx*my,nx*num_cells_y + ny*num_cells_x);
 
   for (auto ii = 0; ii < mx*my; ii++) {
-    for (auto jj = 0; jj < nx*NumCellsY; jj++) {
-      D2D.SetValue(ii, jj, Dxy.GetValue(ii,jj));
+    for (auto jj = 0; jj < nx*num_cells_y; jj++) {
+      d2d.SetValue(ii, jj, dxy.GetValue(ii,jj));
     }
-    for(auto kk=0; kk<ny*NumCellsX; kk++) {
-      D2D.SetValue(ii, kk + nx*NumCellsY, Dyx.GetValue(ii, kk));
+    for(auto kk=0; kk<ny*num_cells_x; kk++) {
+      d2d.SetValue(ii, kk + nx*num_cells_y, dyx.GetValue(ii, kk));
     }
   }
 
-  divergence_ = D2D;
+  divergence_ = d2d;
 
-  return divergence_;
+  return info;
 }
 
 mtk::DenseMatrix mtk::Div2D::ReturnAsDenseMatrix() {

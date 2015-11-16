@@ -74,17 +74,17 @@ mtk::Grad2D::Grad2D(const Grad2D &grad):
 
 mtk::Grad2D::~Grad2D() {}
 
-mtk::DenseMatrix mtk::Grad2D::ConstructGrad2D(const mtk::UniStgGrid2D &grid,
-                                              int order_accuracy,
-                                              mtk::Real mimetic_threshold) {
+bool mtk::Grad2D::ConstructGrad2D(const mtk::UniStgGrid2D &grid,
+                                  int order_accuracy,
+                                  mtk::Real mimetic_threshold) {
 
-  int NumCellsX = grid.num_cells_x();
-  int NumCellsY = grid.num_cells_y();
+  int num_cells_x = grid.num_cells_x();
+  int num_cells_y = grid.num_cells_y();
 
-  int mx = NumCellsX + 1;  // Gx vertical dimension
-  int nx = NumCellsX + 2;  // Gx horizontal dimension
-  int my = NumCellsY + 1;  // Gy vertical dimension
-  int ny = NumCellsY + 2;  // Gy horizontal dimension
+  int mx = num_cells_x + 1;  // Gx vertical dimension
+  int nx = num_cells_x + 2;  // Gx horizontal dimension
+  int my = num_cells_y + 1;  // Gy vertical dimension
+  int ny = num_cells_y + 2;  // Gy horizontal dimension
 
   mtk::Grad1D grad;
 
@@ -92,15 +92,16 @@ mtk::DenseMatrix mtk::Grad2D::ConstructGrad2D(const mtk::UniStgGrid2D &grid,
 
   if (!info) {
     std::cerr << "Mimetic grad could not be built." << std::endl;
+    return info;
   }
 
-  auto West = grid.west_bndy();
-  auto East = grid.east_bndy();
-  auto South = grid.south_bndy();
-  auto North = grid.east_bndy();
+  auto west = grid.west_bndy();
+  auto east = grid.east_bndy();
+  auto south = grid.south_bndy();
+  auto north = grid.east_bndy();
 
-  mtk::UniStgGrid1D grid_x(West, East, NumCellsX);
-  mtk::UniStgGrid1D grid_y(South, North, NumCellsY);
+  mtk::UniStgGrid1D grid_x(west, east, num_cells_x);
+  mtk::UniStgGrid1D grid_y(south, north, num_cells_y);
 
   mtk::DenseMatrix Gx(grad.ReturnAsDenseMatrix(grid_x));
   mtk::DenseMatrix Gy(grad.ReturnAsDenseMatrix(grid_y));
@@ -108,35 +109,35 @@ mtk::DenseMatrix mtk::Grad2D::ConstructGrad2D(const mtk::UniStgGrid2D &grid,
   bool padded{true};
   bool transpose{true};
 
-  mtk::DenseMatrix TIx(NumCellsX, padded, transpose);
-  mtk::DenseMatrix TIy(NumCellsY, padded, transpose);
+  mtk::DenseMatrix tix(num_cells_x, padded, transpose);
+  mtk::DenseMatrix tiy(num_cells_y, padded, transpose);
 
-  mtk::DenseMatrix Gxy(mtk::DenseMatrix::Kron(TIy, Gx));
-  mtk::DenseMatrix Gyx(mtk::DenseMatrix::Kron(Gy, TIx));
+  mtk::DenseMatrix gxy(mtk::DenseMatrix::Kron(tiy, Gx));
+  mtk::DenseMatrix gyx(mtk::DenseMatrix::Kron(Gy, tix));
 
   #if MTK_DEBUG_LEVEL > 0
   std::cout << "Gx :" << mx << "by " << nx << std::endl;
-  std::cout << "Transpose Iy : " << NumCellsY<< " by " << ny  << std::endl;
+  std::cout << "Transpose Iy : " << num_cells_y<< " by " << ny  << std::endl;
   std::cout << "Gy :" << my << "by " << ny << std::endl;
-  std::cout << "Transpose Ix : " << NumCellsX<< " by " << nx  << std::endl;
+  std::cout << "Transpose Ix : " << num_cells_x<< " by " << nx  << std::endl;
   std::cout << "Kronecker dimensions Grad 2D" <<
-  mx*NumCellsY + my*NumCellsX << " by " <<  nx*ny <<std::endl;
+    mx*num_cells_y + my*num_cells_x << " by " <<  nx*ny <<std::endl;
   #endif
 
-  mtk::DenseMatrix G2D(mx*NumCellsY + my*NumCellsX, nx*ny);
+  mtk::DenseMatrix g2d(mx*num_cells_y + my*num_cells_x, nx*ny);
 
   for(auto ii = 0; ii < nx*ny; ii++) {
-    for(auto jj = 0; jj < mx*NumCellsY; jj++) {
-      G2D.SetValue(jj,ii, Gxy.GetValue(jj,ii));
+    for(auto jj = 0; jj < mx*num_cells_y; jj++) {
+      g2d.SetValue(jj,ii, gxy.GetValue(jj,ii));
     }
-    for(auto kk = 0; kk < my*NumCellsX; kk++) {
-      G2D.SetValue(kk + mx*NumCellsY, ii, Gyx.GetValue(kk,ii));
+    for(auto kk = 0; kk < my*num_cells_x; kk++) {
+      g2d.SetValue(kk + mx*num_cells_y, ii, gyx.GetValue(kk,ii));
     }
   }
 
-  gradient_ = G2D;
+  gradient_ = g2d;
 
-  return gradient_;
+  return info;
 }
 
 mtk::DenseMatrix mtk::Grad2D::ReturnAsDenseMatrix() {
