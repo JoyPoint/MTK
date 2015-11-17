@@ -1,48 +1,99 @@
-\hypertarget{mtk__bc__desc__1d_8cc}{\section{mtk\-\_\-bc\-\_\-desc\-\_\-1d.\-cc}
-\label{mtk__bc__desc__1d_8cc}\index{src/mtk\-\_\-bc\-\_\-desc\-\_\-1d.\-cc@{src/mtk\-\_\-bc\-\_\-desc\-\_\-1d.\-cc}}
+\hypertarget{mtk__bc__desc__1d_8cc_source}{\section{mtk\+\_\+bc\+\_\+desc\+\_\+1d.\+cc}
+\label{mtk__bc__desc__1d_8cc_source}\index{src/mtk\+\_\+bc\+\_\+desc\+\_\+1d.\+cc@{src/mtk\+\_\+bc\+\_\+desc\+\_\+1d.\+cc}}
 }
 
 \begin{DoxyCode}
-00001 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
-00002 
-00003 \textcolor{preprocessor}{#include "\hyperlink{mtk__bc__desc__1d_8h}{mtk\_bc\_desc\_1d.h}"}
-00004 
-\hypertarget{mtk__bc__desc__1d_8cc_source_l00005}{}\hyperlink{classmtk_1_1BCDesc1D_a4dcf1ac4198402113591fde97dfa3260}{00005} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDesc1D_a4dcf1ac4198402113591fde97dfa3260}{mtk::BCDesc1D::ImposeOnOperator}(
+00001 
+00011 \textcolor{comment}{/*}
+00012 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00013 \textcolor{comment}{University. All rights reserved.}
+00014 \textcolor{comment}{}
+00015 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00016 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00017 \textcolor{comment}{}
+00018 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00019 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00020 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
+00021 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
+00022 \textcolor{comment}{should be developed and included in any deliverable.}
+00023 \textcolor{comment}{}
+00024 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00025 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00026 \textcolor{comment}{}
+00027 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
+00028 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00029 \textcolor{comment}{other materials provided with the distribution.}
+00030 \textcolor{comment}{}
+00031 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
+00032 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
+00033 \textcolor{comment}{be given to the copyright holders.}
+00034 \textcolor{comment}{}
+00035 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
+00036 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00037 \textcolor{comment}{specific prior written permission.}
+00038 \textcolor{comment}{}
+00039 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00040 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00041 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00042 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00043 \textcolor{comment}{parties intellectual property rights.}
+00044 \textcolor{comment}{}
+00045 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00046 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00047 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00048 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00049 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00050 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00051 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00052 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00053 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00054 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00055 \textcolor{comment}{*/}
+00056 
+00057 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
+00058 
+00059 \textcolor{preprocessor}{#include "\hyperlink{mtk__bc__desc__1d_8h}{mtk\_bc\_desc\_1d.h}"}
+00060 
+\hypertarget{mtk__bc__desc__1d_8cc_source_l00061}{}\hyperlink{classmtk_1_1BCDesc1D_a5e5dcda1780b9aa404e836c4c27ac08f}{00061} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDesc1D_a5e5dcda1780b9aa404e836c4c27ac08f}{mtk::BCDesc1D::ImposeOnOperatorMatrix}(
       \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &matrix,
-00006                                      \textcolor{keyword}{const} std::vector<mtk::Real> &west,
-00007                                      \textcolor{keyword}{const} std::vector<mtk::Real> &east) \{
-00008 
-00009   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(matrix.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00010   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(west.size() > (\textcolor{keywordtype}{unsigned} int) matrix.
+00062     \textcolor{keyword}{const} std::vector<mtk::Real> &west,
+00063     \textcolor{keyword}{const} std::vector<mtk::Real> &east) \{
+00064 
+00065 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00066   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(matrix.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00067   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(west.size() > (\textcolor{keywordtype}{unsigned} int) matrix.
       \hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}(),
-00011                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00012   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(east.size() > (\textcolor{keywordtype}{unsigned} int) matrix.
+00068                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00069   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(east.size() > (\textcolor{keywordtype}{unsigned} int) matrix.
       \hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}(),
-00013                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00014 
-00016 
-00017   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < west.size(); ++ii) \{
-00018     matrix.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(0, ii, west[ii]);
-00019   \}
-00020 
-00022 
-00023   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < east.size(); ++ii) \{
-00024     matrix.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(matrix.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}() - 1,
-00025                     matrix.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}() - 1 - ii,
-00026                     east[ii]);
-00027   \}
-00028 \}
-00029 
-\hypertarget{mtk__bc__desc__1d_8cc_source_l00030}{}\hyperlink{classmtk_1_1BCDesc1D_a79a659c6a6333af8e51c463cf1ecb0b7}{00030} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDesc1D_a79a659c6a6333af8e51c463cf1ecb0b7}{mtk::BCDesc1D::ImposeOnGrid}(\hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} &grid,
-00031                                  \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &omega,
-00032                                  \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &epsilon) \{
-00033 
-00034   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00035 
-00037 
-00038   grid.\hyperlink{classmtk_1_1UniStgGrid1D_acf28d702f6e702599986afcb253bbfc1}{discrete\_field\_u}()[0] = omega;
-00039 
-00041 
-00042   grid.\hyperlink{classmtk_1_1UniStgGrid1D_acf28d702f6e702599986afcb253bbfc1}{discrete\_field\_u}()[grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}() + 2 - 1] = epsilon;
-00043 \}
+00070                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00071 \textcolor{preprocessor}{  #endif}
+00072 
+00074 
+00075   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < west.size(); ++ii) \{
+00076     matrix.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(0, ii, west[ii]);
+00077   \}
+00078 
+00080 
+00081   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < east.size(); ++ii) \{
+00082     matrix.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(matrix.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}() - 1,
+00083                     matrix.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}() - 1 - ii,
+00084                     east[ii]);
+00085   \}
+00086 \}
+00087 
+\hypertarget{mtk__bc__desc__1d_8cc_source_l00088}{}\hyperlink{classmtk_1_1BCDesc1D_a79a659c6a6333af8e51c463cf1ecb0b7}{00088} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDesc1D_a79a659c6a6333af8e51c463cf1ecb0b7}{mtk::BCDesc1D::ImposeOnGrid}(\hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} &grid,
+00089                                  \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &omega,
+00090                                  \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &epsilon) \{
+00091 
+00092 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00093   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00094 \textcolor{preprocessor}{  #endif}
+00095 
+00097 
+00098   grid.\hyperlink{classmtk_1_1UniStgGrid1D_acf28d702f6e702599986afcb253bbfc1}{discrete\_field\_u}()[0] = omega;
+00099 
+00101 
+00102   grid.\hyperlink{classmtk_1_1UniStgGrid1D_acf28d702f6e702599986afcb253bbfc1}{discrete\_field\_u}()[grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}() + 2 - 1] = epsilon;
+00103 \}
 \end{DoxyCode}

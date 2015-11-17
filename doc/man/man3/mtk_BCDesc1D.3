@@ -1,4 +1,4 @@
-.TH "mtk::BCDesc1D" 3 "Thu Oct 15 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::BCDesc1D" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,18 +12,31 @@ mtk::BCDesc1D \-
 
 .in +1c
 .ti -1c
-.RI "static void \fBImposeOnOperator\fP (\fBDenseMatrix\fP &matrix, const std::vector< \fBReal\fP > &west, const std::vector< \fBReal\fP > &east)"
+.RI "static void \fBImposeOnOperatorMatrix\fP (\fBDenseMatrix\fP &matrix, const std::vector< \fBReal\fP > &west, const std::vector< \fBReal\fP > &east)"
 .br
+.RI "\fIEnforces the condition on the operator represented as matrix\&. \fP"
 .ti -1c
 .RI "static void \fBImposeOnGrid\fP (\fBUniStgGrid1D\fP &grid, const \fBReal\fP &omega, const \fBReal\fP &epsilon)"
 .br
+.RI "\fIEnforces the condition on the grid\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
-Definition at line 9 of file mtk_bc_desc_1d\&.h\&.
+Definition at line 68 of file mtk_bc_desc_1d\&.h\&.
 .SH "Member Function Documentation"
 .PP 
 .SS "void mtk::BCDesc1D::ImposeOnGrid (\fBmtk::UniStgGrid1D\fP &grid, const \fBReal\fP &omega, const \fBReal\fP &epsilon)\fC [static]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrid\fP Input grid\&. 
+.br
+\fIwest\fP Array of values for the west boundary\&. 
+.br
+\fIeast\fP Array of values for the east boundary\&. 
+.RE
+.PP
 
 .IP "1." 4
 Assign the west condition\&.
@@ -32,8 +45,19 @@ Assign the east condition\&.
 .PP
 
 .PP
-Definition at line 30 of file mtk_bc_desc_1d\&.cc\&.
-.SS "void mtk::BCDesc1D::ImposeOnOperator (\fBmtk::DenseMatrix\fP &matrix, const std::vector< \fBReal\fP > &west, const std::vector< \fBReal\fP > &east)\fC [static]\fP"
+Definition at line 88 of file mtk_bc_desc_1d\&.cc\&.
+.SS "void mtk::BCDesc1D::ImposeOnOperatorMatrix (\fBmtk::DenseMatrix\fP &matrix, const std::vector< \fBReal\fP > &west, const std::vector< \fBReal\fP > &east)\fC [static]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrix\fP Input operator\&. 
+.br
+\fIwest\fP Array of values for the west boundary\&. 
+.br
+\fIeast\fP Array of values for the east boundary\&. 
+.RE
+.PP
 
 .IP "1." 4
 Assign the west array\&.
@@ -42,7 +66,7 @@ Assign the east array\&.
 .PP
 
 .PP
-Definition at line 5 of file mtk_bc_desc_1d\&.cc\&.
+Definition at line 61 of file mtk_bc_desc_1d\&.cc\&.
 
 .SH "Author"
 .PP 

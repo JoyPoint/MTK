@@ -1,5 +1,5 @@
-\hypertarget{mtk__uni__stg__grid__2d_8cc}{\section{mtk\-\_\-uni\-\_\-stg\-\_\-grid\-\_\-2d.\-cc}
-\label{mtk__uni__stg__grid__2d_8cc}\index{src/mtk\-\_\-uni\-\_\-stg\-\_\-grid\-\_\-2d.\-cc@{src/mtk\-\_\-uni\-\_\-stg\-\_\-grid\-\_\-2d.\-cc}}
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source}{\section{mtk\+\_\+uni\+\_\+stg\+\_\+grid\+\_\+2d.\+cc}
+\label{mtk__uni__stg__grid__2d_8cc_source}\index{src/mtk\+\_\+uni\+\_\+stg\+\_\+grid\+\_\+2d.\+cc@{src/mtk\+\_\+uni\+\_\+stg\+\_\+grid\+\_\+2d.\+cc}}
 }
 
 \begin{DoxyCode}
@@ -13,22 +13,22 @@
 00016 \textcolor{comment}{}
 00017 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
 00018 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
-00019 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
-00020 \textcolor{comment}{}
-00021 \textcolor{comment}{2. Redistributions of source code must be done through direct}
-00022 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
-00023 \textcolor{comment}{}
-00024 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
-00025 \textcolor{comment}{list of conditions and the following disclaimer.}
-00026 \textcolor{comment}{}
-00027 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
-00028 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
-00029 \textcolor{comment}{other materials provided with the distribution.}
-00030 \textcolor{comment}{}
-00031 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
-00032 \textcolor{comment}{prior written permission from the the copyright holders.}
+00019 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
+00020 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
+00021 \textcolor{comment}{should be developed and included in any deliverable.}
+00022 \textcolor{comment}{}
+00023 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00024 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00025 \textcolor{comment}{}
+00026 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
+00027 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00028 \textcolor{comment}{other materials provided with the distribution.}
+00029 \textcolor{comment}{}
+00030 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
+00031 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
+00032 \textcolor{comment}{be given to the copyright holders.}
 00033 \textcolor{comment}{}
-00034 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00034 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
 00035 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
 00036 \textcolor{comment}{specific prior written permission.}
 00037 \textcolor{comment}{}
@@ -52,155 +52,418 @@
 00055 
 00056 \textcolor{preprocessor}{#include <iostream>}
 00057 \textcolor{preprocessor}{#include <iomanip>}
-00058 
-00059 \textcolor{preprocessor}{#include <algorithm>}
-00060 
-00061 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
-00062 \textcolor{preprocessor}{#include "\hyperlink{mtk__uni__stg__grid__2d_8h}{mtk\_uni\_stg\_grid\_2d.h}"}
-00063 
-00064 \textcolor{keyword}{namespace }mtk \{
-00065 
-\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00066}{}\hyperlink{namespacemtk_a82cd99c0c7e695e4eccfbe7380525959}{00066} std::ostream& \hyperlink{namespacemtk_ad3bcf52cda59ddb5fc7b4bdce76c46dc}{operator <<}(std::ostream &stream, \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &in) \{
-00067 
-00068   stream << \textcolor{charliteral}{'['} << in.\hyperlink{classmtk_1_1UniStgGrid2D_ae2c61a101e6c2c9b69cef2a245512434}{west\_bndy\_x\_} << \textcolor{charliteral}{':'} << in.\hyperlink{classmtk_1_1UniStgGrid2D_ab2ba026208a175c150e3f4fd3bed3f20}{num\_cells\_x\_} << \textcolor{charliteral}{':'} <<
-00069   in.\hyperlink{classmtk_1_1UniStgGrid2D_ab3877c2f4542b7f7486bf24a04f8a806}{east\_bndy\_x\_} << \textcolor{stringliteral}{"] x "};
-00070 
-00071   stream << \textcolor{charliteral}{'['} << in.\hyperlink{classmtk_1_1UniStgGrid2D_aa36037d53f3d00433f5eaa0a05b712bc}{south\_bndy\_y\_} << \textcolor{charliteral}{':'} << in.\hyperlink{classmtk_1_1UniStgGrid2D_ab6532883e1a10a0113f3a7681e53612c}{num\_cells\_y\_} << \textcolor{charliteral}{':'} <<
-00072   in.\hyperlink{classmtk_1_1UniStgGrid2D_aef711eec2a4382a2f8e094f0bec6b879}{north\_bndy\_y\_} << \textcolor{stringliteral}{"] = "} << std::endl << std::endl;
-00073 
-00075 
-00076   stream << \textcolor{stringliteral}{"x:"};
-00077   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < in.\hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}.size(); ++ii) \{
-00078     stream << std::setw(10) << in.\hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}[ii];
-00079   \}
-00080   stream << std::endl;
-00081 
-00082   stream << \textcolor{stringliteral}{"y:"};
-00083   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < in.\hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}.size(); ++ii) \{
-00084     stream << std::setw(10) << in.\hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}[ii];
-00085   \}
-00086   stream << std::endl;
-00087 
-00089 
-00090   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1UniStgGrid2D_ac8b66740d328803f7fbabd1c42c775b2}{nature\_} == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{mtk::SCALAR}) \{
-00091     stream << \textcolor{stringliteral}{"u:"};
-00092   \}
-00093   \textcolor{keywordflow}{else} \{
-00094     stream << \textcolor{stringliteral}{"v:"};
-00095   \}
-00096   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1UniStgGrid2D_a4cc4df94c1049db1eb0831f8eb72b3c0}{discrete\_field\_u\_}.size() > 0) \{
-00097     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < in.\hyperlink{classmtk_1_1UniStgGrid2D_ab2ba026208a175c150e3f4fd3bed3f20}{num\_cells\_x\_} + 2; ++ii) \{
-00098       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} jj = 0; jj < in.\hyperlink{classmtk_1_1UniStgGrid2D_ab6532883e1a10a0113f3a7681e53612c}{num\_cells\_y\_} + 2; ++jj) \{
-00099         stream << std::setw(10) << in.\hyperlink{classmtk_1_1UniStgGrid2D_a4cc4df94c1049db1eb0831f8eb72b3c0}{discrete\_field\_u\_}[ii*in.
-      \hyperlink{classmtk_1_1UniStgGrid2D_ab6532883e1a10a0113f3a7681e53612c}{num\_cells\_y\_} + jj];
-00100       \}
-00101       stream << std::endl;
-00102     \}
-00103   \}
-00104 
-00105   stream << std::endl;
+00058 \textcolor{preprocessor}{#include <fstream>}
+00059 
+00060 \textcolor{preprocessor}{#include <algorithm>}
+00061 
+00062 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
+00063 \textcolor{preprocessor}{#include "\hyperlink{mtk__uni__stg__grid__2d_8h}{mtk\_uni\_stg\_grid\_2d.h}"}
+00064 
+00065 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk} \{
+00066 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00067}{}\hyperlink{namespacemtk_a82cd99c0c7e695e4eccfbe7380525959}{00067} std::ostream& \hyperlink{namespacemtk_ad3bcf52cda59ddb5fc7b4bdce76c46dc}{operator <<}(std::ostream &stream, \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &in) \{
+00068 
+00069   stream << \textcolor{charliteral}{'['} << in.\hyperlink{classmtk_1_1UniStgGrid2D_a59c42d8099a017bc8a082fddc1e5606c}{west\_bndy\_} << \textcolor{charliteral}{':'} << in.\hyperlink{classmtk_1_1UniStgGrid2D_ac03a0f4840ee6ae1bc853e5d9c0df8d1}{num\_cells\_x\_} << \textcolor{charliteral}{':'} <<
+00070   in.\hyperlink{classmtk_1_1UniStgGrid2D_ae24f3d5bf5ed3a6d066cdf48aa1fb307}{east\_bndy\_} << \textcolor{stringliteral}{"] x "};
+00071 
+00072   stream << \textcolor{charliteral}{'['} << in.\hyperlink{classmtk_1_1UniStgGrid2D_ac228c81fad7f4feeae93fb3c09d7e175}{south\_bndy\_} << \textcolor{charliteral}{':'} << in.\hyperlink{classmtk_1_1UniStgGrid2D_a3e4f61d781212ad57c34e9446c4074b6}{num\_cells\_y\_} << \textcolor{charliteral}{':'} <<
+00073   in.\hyperlink{classmtk_1_1UniStgGrid2D_a3f904091b6e74aa78d8543e5cba26afb}{north\_bndy\_} << \textcolor{stringliteral}{"] = "} << std::endl << std::endl;
+00074 
+00076 
+00077   stream << \textcolor{stringliteral}{"x:"};
+00078   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < in.\hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}.size(); ++ii) \{
+00079     stream << std::setw(10) << in.\hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}[ii];
+00080   \}
+00081   stream << std::endl;
+00082 
+00083   stream << \textcolor{stringliteral}{"y:"};
+00084   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < in.\hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}.size(); ++ii) \{
+00085     stream << std::setw(10) << in.\hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}[ii];
+00086   \}
+00087   stream << std::endl;
+00088 
+00090 
+00091   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1UniStgGrid2D_ac8b66740d328803f7fbabd1c42c775b2}{nature\_} == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{mtk::SCALAR}) \{
+00092     stream << \textcolor{stringliteral}{"u:"} << std::endl;
+00093     \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1UniStgGrid2D_ad7474b2669ee988b84aed20b7f5dc7be}{discrete\_field\_}.size() > 0) \{
+00094       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < in.\hyperlink{classmtk_1_1UniStgGrid2D_ac03a0f4840ee6ae1bc853e5d9c0df8d1}{num\_cells\_x\_} + 2; ++ii) \{
+00095         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < in.\hyperlink{classmtk_1_1UniStgGrid2D_a3e4f61d781212ad57c34e9446c4074b6}{num\_cells\_y\_} + 2; ++jj) \{
+00096           stream << std::setw(10) << in.\hyperlink{classmtk_1_1UniStgGrid2D_ad7474b2669ee988b84aed20b7f5dc7be}{discrete\_field\_}[ii*in.
+      \hyperlink{classmtk_1_1UniStgGrid2D_a3e4f61d781212ad57c34e9446c4074b6}{num\_cells\_y\_} + jj];
+00097         \}
+00098         stream << std::endl;
+00099       \}
+00100     \}
+00101   \} \textcolor{keywordflow}{else} \{
+00102 
+00103     \textcolor{keywordtype}{int} mm\{in.\hyperlink{classmtk_1_1UniStgGrid2D_ac03a0f4840ee6ae1bc853e5d9c0df8d1}{num\_cells\_x\_}\};
+00104     \textcolor{keywordtype}{int} nn\{in.\hyperlink{classmtk_1_1UniStgGrid2D_a3e4f61d781212ad57c34e9446c4074b6}{num\_cells\_y\_}\};
+00105     \textcolor{keywordtype}{int} p\_offset\{nn*(mm + 1) - 1\};
 00106 
-00107   \textcolor{keywordflow}{return} stream;
-00108 \}
-00109 \}
-00110 
-\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00111}{}\hyperlink{classmtk_1_1UniStgGrid2D_a40db9a6d21e0f4cf70c478fcc3b94531}{00111} \hyperlink{classmtk_1_1UniStgGrid2D_a40db9a6d21e0f4cf70c478fcc3b94531}{mtk::UniStgGrid2D::UniStgGrid2D}():
-00112     nature\_(),
-00113     discrete\_domain\_x\_(),
-00114     discrete\_domain\_y\_(),
-00115     discrete\_field\_u\_(),
-00116     west\_bndy\_x\_(),
-00117     east\_bndy\_x\_(),
-00118     num\_cells\_x\_(),
-00119     delta\_x\_(),
-00120     south\_bndy\_y\_(),
-00121     north\_bndy\_y\_(),
-00122     num\_cells\_y\_(),
-00123     delta\_y\_() \{\}
-00124 
-\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00125}{}\hyperlink{classmtk_1_1UniStgGrid2D_aab6e54b48c3f32de808460ef46f598d4}{00125} \hyperlink{classmtk_1_1UniStgGrid2D_a40db9a6d21e0f4cf70c478fcc3b94531}{mtk::UniStgGrid2D::UniStgGrid2D}(\textcolor{keyword}{const} 
+00107     stream << \textcolor{stringliteral}{"p(x,y):"} << std::endl;
+00108     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < nn; ++ii) \{
+00109       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < mm + 1; ++jj) \{
+00110         stream << std::setw(10) << in.\hyperlink{classmtk_1_1UniStgGrid2D_ad7474b2669ee988b84aed20b7f5dc7be}{discrete\_field\_}[ii*(mm + 1) + jj];
+00111       \}
+00112       stream << std::endl;
+00113     \}
+00114     stream << std::endl;
+00115 
+00116     stream << \textcolor{stringliteral}{"q(x,y):"} << std::endl;
+00117     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < nn + 1; ++ii) \{
+00118       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < mm; ++jj) \{
+00119         stream << std::setw(10) <<
+00120           in.\hyperlink{classmtk_1_1UniStgGrid2D_ad7474b2669ee988b84aed20b7f5dc7be}{discrete\_field\_}[p\_offset + ii*mm + jj];
+00121       \}
+00122       stream << std::endl;
+00123     \}
+00124     stream << std::endl;
+00125   \}
+00126 
+00127   \textcolor{keywordflow}{return} stream;
+00128 \}
+00129 \}
+00130 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00131}{}\hyperlink{classmtk_1_1UniStgGrid2D_a40db9a6d21e0f4cf70c478fcc3b94531}{00131} \hyperlink{classmtk_1_1UniStgGrid2D_a40db9a6d21e0f4cf70c478fcc3b94531}{mtk::UniStgGrid2D::UniStgGrid2D}():
+00132     discrete\_domain\_x\_(),
+00133     discrete\_domain\_y\_(),
+00134     discrete\_field\_(),
+00135     nature\_(),
+00136     west\_bndy\_(),
+00137     east\_bndy\_(),
+00138     num\_cells\_x\_(),
+00139     delta\_x\_(),
+00140     south\_bndy\_(),
+00141     north\_bndy\_(),
+00142     num\_cells\_y\_(),
+00143     delta\_y\_() \{\}
+00144 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00145}{}\hyperlink{classmtk_1_1UniStgGrid2D_aab6e54b48c3f32de808460ef46f598d4}{00145} \hyperlink{classmtk_1_1UniStgGrid2D_a40db9a6d21e0f4cf70c478fcc3b94531}{mtk::UniStgGrid2D::UniStgGrid2D}(\textcolor{keyword}{const} 
       \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid):
-00126     nature\_(grid.nature\_),
-00127     west\_bndy\_x\_(grid.west\_bndy\_x\_),
-00128     east\_bndy\_x\_(grid.east\_bndy\_x\_),
-00129     num\_cells\_x\_(grid.num\_cells\_x\_),
-00130     delta\_x\_(grid.delta\_x\_),
-00131     south\_bndy\_y\_(grid.south\_bndy\_y\_),
-00132     north\_bndy\_y\_(grid.north\_bndy\_y\_),
-00133     num\_cells\_y\_(grid.num\_cells\_y\_),
-00134     delta\_y\_(grid.delta\_y\_) \{
-00135 
-00136     std::copy(grid.\hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}.begin(),
-00137               grid.\hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}.begin() + grid.
+00146     nature\_(grid.nature\_),
+00147     west\_bndy\_(grid.west\_bndy\_),
+00148     east\_bndy\_(grid.east\_bndy\_),
+00149     num\_cells\_x\_(grid.num\_cells\_x\_),
+00150     delta\_x\_(grid.delta\_x\_),
+00151     south\_bndy\_(grid.south\_bndy\_),
+00152     north\_bndy\_(grid.north\_bndy\_),
+00153     num\_cells\_y\_(grid.num\_cells\_y\_),
+00154     delta\_y\_(grid.delta\_y\_) \{
+00155 
+00156     std::copy(grid.\hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}.begin(),
+00157               grid.\hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}.begin() + grid.
       \hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}.size(),
-00138               \hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}.begin());
-00139 
-00140     std::copy(grid.\hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}.begin(),
-00141               grid.\hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}.begin() + grid.
+00158               \hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}.begin());
+00159 
+00160     std::copy(grid.\hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}.begin(),
+00161               grid.\hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}.begin() + grid.
       \hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}.size(),
-00142               \hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}.begin());
-00143 
-00144     std::copy(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a4cc4df94c1049db1eb0831f8eb72b3c0}{discrete\_field\_u\_}.begin(),
-00145               grid.\hyperlink{classmtk_1_1UniStgGrid2D_a4cc4df94c1049db1eb0831f8eb72b3c0}{discrete\_field\_u\_}.begin() + grid.
-      \hyperlink{classmtk_1_1UniStgGrid2D_a4cc4df94c1049db1eb0831f8eb72b3c0}{discrete\_field\_u\_}.size(),
-00146               \hyperlink{classmtk_1_1UniStgGrid2D_a4cc4df94c1049db1eb0831f8eb72b3c0}{discrete\_field\_u\_}.begin());
-00147 \}
-00148 
-\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00149}{}\hyperlink{classmtk_1_1UniStgGrid2D_ad8813b1ffcf23bb759f59f8524702e80}{00149} \hyperlink{classmtk_1_1UniStgGrid2D_a40db9a6d21e0f4cf70c478fcc3b94531}{mtk::UniStgGrid2D::UniStgGrid2D}(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &west\_bndy\_x,
-00150                                 \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &east\_bndy\_x,
-00151                                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_cells\_x,
-00152                                 \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &south\_bndy\_y,
-00153                                 \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &north\_bndy\_y,
-00154                                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_cells\_y,
-00155                                 \textcolor{keyword}{const} \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{mtk::FieldNature} &nature) \{
-00156 
-00157 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00158 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(west\_bndy\_x < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00159   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(east\_bndy\_x < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00160   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(east\_bndy\_x <= west\_bndy\_x, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00161   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(num\_cells\_x < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00162   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(south\_bndy\_y < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_)
-      ;
-00163   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(north\_bndy\_y < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_)
-      ;
-00164   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(north\_bndy\_y <= south\_bndy\_y,
-00165                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00166   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(num\_cells\_y < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00167 \textcolor{preprocessor}{  #endif}
-00168 \textcolor{preprocessor}{}
-00169   nature\_ = nature;
-00170 
-00171   west\_bndy\_x\_ = west\_bndy\_x;
-00172   east\_bndy\_x\_ = east\_bndy\_x;
-00173   num\_cells\_x\_ = num\_cells\_x;
-00174 
-00175   south\_bndy\_y\_ = south\_bndy\_y;
-00176   north\_bndy\_y\_ = north\_bndy\_y;
-00177   num\_cells\_y\_ = num\_cells\_y;
-00178 
-00179   delta\_x\_ = (east\_bndy\_x - west\_bndy\_x)/((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_cells\_x);
-00180   delta\_y\_ = (north\_bndy\_y - south\_bndy\_y)/((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_cells\_y);
-00181 \}
-00182 
-\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00183}{}\hyperlink{classmtk_1_1UniStgGrid2D_a55615fed9674be8d8a48a1105e5a1476}{00183} \hyperlink{classmtk_1_1UniStgGrid2D_a55615fed9674be8d8a48a1105e5a1476}{mtk::UniStgGrid2D::~UniStgGrid2D}() \{\}
-00184 
-\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00185}{}\hyperlink{classmtk_1_1UniStgGrid2D_a95b1041558be5bbb087f508d2efbac96}{00185} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid2D_a95b1041558be5bbb087f508d2efbac96}{mtk::UniStgGrid2D::west\_bndy\_x}()\textcolor{keyword}{ const }\{
-00186 
-00187   \textcolor{keywordflow}{return} west\_bndy\_x\_;
-00188 \}
-00189 
-\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00190}{}\hyperlink{classmtk_1_1UniStgGrid2D_aa626e15a5c494d8de0bf4882bc62a756}{00190} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid2D_aa626e15a5c494d8de0bf4882bc62a756}{mtk::UniStgGrid2D::east\_bndy\_x}()\textcolor{keyword}{ const }\{
-00191 
-00192   \textcolor{keywordflow}{return} east\_bndy\_x\_;
-00193 \}
+00162               \hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}.begin());
+00163 
+00164     std::copy(grid.\hyperlink{classmtk_1_1UniStgGrid2D_ad7474b2669ee988b84aed20b7f5dc7be}{discrete\_field\_}.begin(),
+00165               grid.\hyperlink{classmtk_1_1UniStgGrid2D_ad7474b2669ee988b84aed20b7f5dc7be}{discrete\_field\_}.begin() + grid.\hyperlink{classmtk_1_1UniStgGrid2D_ad7474b2669ee988b84aed20b7f5dc7be}{discrete\_field\_}.size(),
+00166               \hyperlink{classmtk_1_1UniStgGrid2D_ad7474b2669ee988b84aed20b7f5dc7be}{discrete\_field\_}.begin());
+00167 \}
+00168 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00169}{}\hyperlink{classmtk_1_1UniStgGrid2D_ad8813b1ffcf23bb759f59f8524702e80}{00169} \hyperlink{classmtk_1_1UniStgGrid2D_a40db9a6d21e0f4cf70c478fcc3b94531}{mtk::UniStgGrid2D::UniStgGrid2D}(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &west\_bndy,
+00170                                 \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &east\_bndy,
+00171                                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_cells\_x,
+00172                                 \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &south\_bndy,
+00173                                 \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &north\_bndy,
+00174                                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_cells\_y,
+00175                                 \textcolor{keyword}{const} \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{mtk::FieldNature} &nature) \{
+00176 
+00177 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00178   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(west\_bndy < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00179   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(east\_bndy < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00180   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(east\_bndy <= west\_bndy, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00181   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(num\_cells\_x < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00182   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(south\_bndy < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00183   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(north\_bndy < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00184   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(north\_bndy <= south\_bndy,
+00185                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00186   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(num\_cells\_y < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00187 \textcolor{preprocessor}{  #endif}
+00188 
+00189   nature\_ = nature;
+00190 
+00191   west\_bndy\_ = west\_bndy;
+00192   east\_bndy\_ = east\_bndy;
+00193   num\_cells\_x\_ = num\_cells\_x;
 00194 
-\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00195}{}\hyperlink{classmtk_1_1UniStgGrid2D_abf94d51c0dfee07840e1603dfdc49643}{00195} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid2D_abf94d51c0dfee07840e1603dfdc49643}{mtk::UniStgGrid2D::south\_bndy\_y}()\textcolor{keyword}{ const }\{
-00196 
-00197   \textcolor{keywordflow}{return} south\_bndy\_y\_;
-00198 \}
-00199 
-\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00200}{}\hyperlink{classmtk_1_1UniStgGrid2D_aecdc70b590cff2fef54c60f9f7afc0b6}{00200} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid2D_aecdc70b590cff2fef54c60f9f7afc0b6}{mtk::UniStgGrid2D::north\_bndy\_y}()\textcolor{keyword}{ const }\{
-00201 
-00202   \textcolor{keywordflow}{return} north\_bndy\_y\_;
-00203 \}
+00195   south\_bndy\_ = south\_bndy;
+00196   north\_bndy\_ = north\_bndy;
+00197   num\_cells\_y\_ = num\_cells\_y;
+00198 
+00199   delta\_x\_ = (east\_bndy\_ - west\_bndy\_)/((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_cells\_x);
+00200   delta\_y\_ = (north\_bndy\_ - south\_bndy\_)/((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_cells\_y);
+00201 \}
+00202 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00203}{}\hyperlink{classmtk_1_1UniStgGrid2D_a55615fed9674be8d8a48a1105e5a1476}{00203} \hyperlink{classmtk_1_1UniStgGrid2D_a55615fed9674be8d8a48a1105e5a1476}{mtk::UniStgGrid2D::~UniStgGrid2D}() \{\}
+00204 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00205}{}\hyperlink{classmtk_1_1UniStgGrid2D_a99a3a9cdb05b7306be99bde935509e30}{00205} \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{mtk::FieldNature} \hyperlink{classmtk_1_1UniStgGrid2D_a99a3a9cdb05b7306be99bde935509e30}{mtk::UniStgGrid2D::nature}()\textcolor{keyword}{ const }\{
+00206 
+00207   \textcolor{keywordflow}{return} nature\_;
+00208 \}
+00209 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00210}{}\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{00210} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{mtk::UniStgGrid2D::west\_bndy}()\textcolor{keyword}{ const }\{
+00211 
+00212   \textcolor{keywordflow}{return} west\_bndy\_;
+00213 \}
+00214 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00215}{}\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{00215} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{mtk::UniStgGrid2D::east\_bndy}()\textcolor{keyword}{ const }\{
+00216 
+00217   \textcolor{keywordflow}{return} east\_bndy\_;
+00218 \}
+00219 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00220}{}\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{00220} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{mtk::UniStgGrid2D::num\_cells\_x}()\textcolor{keyword}{ const }\{
+00221 
+00222   \textcolor{keywordflow}{return} num\_cells\_x\_;
+00223 \}
+00224 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00225}{}\hyperlink{classmtk_1_1UniStgGrid2D_aca4710004c4a7da6a9e8fd6ab32a691f}{00225} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid2D_aca4710004c4a7da6a9e8fd6ab32a691f}{mtk::UniStgGrid2D::delta\_x}()\textcolor{keyword}{ const }\{
+00226 
+00227   \textcolor{keywordflow}{return} delta\_x\_;
+00228 \}
+00229 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00230}{}\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{00230} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{mtk::UniStgGrid2D::south\_bndy}()\textcolor{keyword}{ const }\{
+00231 
+00232   \textcolor{keywordflow}{return} south\_bndy\_;
+00233 \}
+00234 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00235}{}\hyperlink{classmtk_1_1UniStgGrid2D_afe1ead253cdeb5503e0489eba8fd84e2}{00235} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid2D_afe1ead253cdeb5503e0489eba8fd84e2}{mtk::UniStgGrid2D::north\_bndy}()\textcolor{keyword}{ const }\{
+00236 
+00237   \textcolor{keywordflow}{return} north\_bndy\_;
+00238 \}
+00239 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00240}{}\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{00240} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{mtk::UniStgGrid2D::num\_cells\_y}()\textcolor{keyword}{ const }\{
+00241 
+00242   \textcolor{keywordflow}{return} num\_cells\_y\_;
+00243 \}
+00244 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00245}{}\hyperlink{classmtk_1_1UniStgGrid2D_a65a78cfc80ffdbeb282ed57af4dc5cb4}{00245} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid2D_a65a78cfc80ffdbeb282ed57af4dc5cb4}{mtk::UniStgGrid2D::delta\_y}()\textcolor{keyword}{ const }\{
+00246 
+00247   \textcolor{keywordflow}{return} delta\_y\_;
+00248 \}
+00249 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00250}{}\hyperlink{classmtk_1_1UniStgGrid2D_ab6aff36e9f89fba1c1ff4f9914508211}{00250} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_ab6aff36e9f89fba1c1ff4f9914508211}{mtk::UniStgGrid2D::BindScalarField}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*ScalarField)(
+      \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy)) \{
+00251 
+00252 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00253   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(nature\_ != \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{mtk::SCALAR}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00254 \textcolor{preprocessor}{  #endif}
+00255 
+00257 
+00258   discrete\_domain\_x\_.reserve(num\_cells\_x\_ + 2);
+00259 
+00260   discrete\_domain\_x\_.push\_back(west\_bndy\_);
+00261 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00262   \textcolor{keyword}{auto} first\_center = west\_bndy\_ + delta\_x\_/2.0;
+00263 \textcolor{preprocessor}{  #else}
+00264   \textcolor{keyword}{auto} first\_center = west\_bndy\_ + delta\_x\_/2.0f;
+00265 \textcolor{preprocessor}{  #endif}
+00266   discrete\_domain\_x\_.push\_back(first\_center);
+00267   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < num\_cells\_x\_; ++ii) \{
+00268     discrete\_domain\_x\_.push\_back(first\_center + ii*delta\_x\_);
+00269   \}
+00270   discrete\_domain\_x\_.push\_back(east\_bndy\_);
+00271 
+00273 
+00274   discrete\_domain\_y\_.reserve(num\_cells\_y\_ + 2);
+00275 
+00276   discrete\_domain\_y\_.push\_back(south\_bndy\_);
+00277 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00278   first\_center = south\_bndy\_ + delta\_x\_/2.0;
+00279 \textcolor{preprocessor}{  #else}
+00280   first\_center = south\_bndy\_ + delta\_x\_/2.0f;
+00281 \textcolor{preprocessor}{  #endif}
+00282   discrete\_domain\_y\_.push\_back(first\_center);
+00283   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < num\_cells\_y\_; ++ii) \{
+00284     discrete\_domain\_y\_.push\_back(first\_center + ii*delta\_y\_);
+00285   \}
+00286   discrete\_domain\_y\_.push\_back(north\_bndy\_);
+00287 
+00289 
+00290   discrete\_field\_.reserve((num\_cells\_x\_ + 2)*(num\_cells\_y\_ + 2));
+00291 
+00292   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < num\_cells\_x\_ + 2; ++ii) \{
+00293     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < num\_cells\_y\_ + 2; ++jj) \{
+00294       discrete\_field\_.push\_back(ScalarField(discrete\_domain\_x\_[ii],
+00295                                             discrete\_domain\_y\_[jj]));
+00296     \}
+00297   \}
+00298 \}
+00299 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00300}{}\hyperlink{classmtk_1_1UniStgGrid2D_a5ff685fde27134437dd0b372fb6b9958}{00300} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a5ff685fde27134437dd0b372fb6b9958}{mtk::UniStgGrid2D::BindVectorFieldPComponent}(
+00301   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*VectorField)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy)) \{
+00302 
+00303   \textcolor{keywordtype}{int} mm\{num\_cells\_x\_\};
+00304   \textcolor{keywordtype}{int} nn\{num\_cells\_y\_\};
+00305 
+00306   \textcolor{keywordtype}{int} total\{nn*(mm + 1) + mm*(nn + 1)\};
+00307 
+00308 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00309   \textcolor{keywordtype}{double} half\_delta\_x\{delta\_x\_/2.0\};
+00310   \textcolor{keywordtype}{double} half\_delta\_y\{delta\_y\_/2.0\};
+00311 \textcolor{preprocessor}{  #else}
+00312   \textcolor{keywordtype}{float} half\_delta\_x\{delta\_x\_/2.0f\};
+00313   \textcolor{keywordtype}{float} half\_delta\_y\{delta\_y\_/2.0f\};
+00314 \textcolor{preprocessor}{  #endif}
+00315 
+00317 
+00318   \textcolor{comment}{// We need every data point of the discrete domain; i.e. we need all the}
+00319   \textcolor{comment}{// nodes and all the centers. There are mm centers for the x direction, and}
+00320   \textcolor{comment}{// nn centers for the y direction. Since there is one node per center, that}
+00321   \textcolor{comment}{// amounts to 2*mm. If we finally consider the final boundary node, it}
+00322   \textcolor{comment}{// amounts to a total of 2*mm + 1 for the x direction. Analogously, for the}
+00323   \textcolor{comment}{// y direction, this amounts to 2*nn + 1.}
+00324 
+00325   discrete\_domain\_x\_.reserve(2*mm + 1);
+00326 
+00327   discrete\_domain\_x\_.push\_back(west\_bndy\_);
+00328   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii < (2*mm + 1); ++ii) \{
+00329     discrete\_domain\_x\_.push\_back(west\_bndy\_ + ii*half\_delta\_x);
+00330   \}
+00331 
+00333 
+00334   discrete\_domain\_y\_.reserve(2*nn + 1);
+00335 
+00336   discrete\_domain\_y\_.push\_back(south\_bndy\_);
+00337   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii < (2*nn + 1); ++ii) \{
+00338     discrete\_domain\_y\_.push\_back(south\_bndy\_ + ii*half\_delta\_y);
+00339   \}
+00340 
+00342 
+00343   discrete\_field\_.reserve(total);
+00344 
+00345   \textcolor{comment}{// For each y-center.}
+00346   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii < 2*nn + 1; ii += 2) \{
+00347 
+00348     \textcolor{comment}{// Bind all of the x-nodes for this y-center.}
+00349     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < 2*mm + 1; jj += 2) \{
+00350       discrete\_field\_.push\_back(VectorField(discrete\_domain\_x\_[jj],
+00351                                             discrete\_domain\_y\_[ii]));
+00352 
+00353 \textcolor{preprocessor}{      #if MTK\_DEBUG\_LEVEL > 0}
+00354       std::cout << \textcolor{stringliteral}{"Binding v at x = "} << discrete\_domain\_x\_[jj] << \textcolor{stringliteral}{" y = "} <<
+00355         discrete\_domain\_y\_[ii] << \textcolor{stringliteral}{" = "} <<
+00356         VectorField(discrete\_domain\_x\_[jj],discrete\_domain\_y\_[ii]) << std::endl;
+00357 \textcolor{preprocessor}{      #endif}
+00358     \}
+00359   \}
+00360 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00361   std::cout << std::endl;
+00362 \textcolor{preprocessor}{  #endif}
+00363 \}
+00364 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00365}{}\hyperlink{classmtk_1_1UniStgGrid2D_a8b7ae23231a4a694073b6c22715a4375}{00365} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a8b7ae23231a4a694073b6c22715a4375}{mtk::UniStgGrid2D::BindVectorFieldQComponent}(
+00366   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*VectorField)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy)) \{
+00367 
+00368   \textcolor{keywordtype}{int} mm\{num\_cells\_x\_\};
+00369   \textcolor{keywordtype}{int} nn\{num\_cells\_y\_\};
+00370 
+00372 
+00373   \textcolor{comment}{// For each y-node.}
+00374   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < 2*nn + 1; ii += 2) \{
+00375 
+00376     \textcolor{comment}{// Bind all of the x-center for this y-node.}
+00377     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 1; jj < 2*mm + 1; jj += 2) \{
+00378       discrete\_field\_.push\_back(VectorField(discrete\_domain\_x\_[jj],
+00379                                             discrete\_domain\_y\_[ii]));
+00380 
+00381 \textcolor{preprocessor}{      #if MTK\_DEBUG\_LEVEL > 0}
+00382       std::cout << \textcolor{stringliteral}{"Binding v at x = "} << discrete\_domain\_x\_[jj] << \textcolor{stringliteral}{" y = "} <<
+00383         discrete\_domain\_y\_[ii] << \textcolor{stringliteral}{" = "} <<
+00384         VectorField(discrete\_domain\_x\_[jj],discrete\_domain\_y\_[ii]) << std::endl;
+00385 \textcolor{preprocessor}{      #endif}
+00386     \}
+00387   \}
+00388 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00389   std::cout << std::endl;
+00390 \textcolor{preprocessor}{  #endif}
+00391 \}
+00392 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00393}{}\hyperlink{classmtk_1_1UniStgGrid2D_a1cba89c285973514c1351760d598c52b}{00393} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a1cba89c285973514c1351760d598c52b}{mtk::UniStgGrid2D::BindVectorField}(
+00394   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldPComponent)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx,\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy),
+00395   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldQComponent)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx,\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy)) \{
+00396 
+00397 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00398   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(nature\_ != \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a3d8cb27a993651a74d67fb8c98ae91b2}{mtk::VECTOR}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00399 \textcolor{preprocessor}{  #endif}
+00400 
+00401   BindVectorFieldPComponent(VectorFieldPComponent);
+00402   BindVectorFieldQComponent(VectorFieldQComponent);
+00403 \}
+00404 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00405}{}\hyperlink{classmtk_1_1UniStgGrid2D_a3507e3cf41631e5a5801af8ee6e233b0}{00405} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1UniStgGrid2D_a3507e3cf41631e5a5801af8ee6e233b0}{mtk::UniStgGrid2D::WriteToFile}(std::string filename,
+00406                                     std::string space\_name\_x,
+00407                                     std::string space\_name\_y,
+00408                                     std::string field\_name) \{
+00409 
+00410   std::ofstream output\_dat\_file;  \textcolor{comment}{// Output file.}
+00411 
+00412   output\_dat\_file.open(filename);
+00413 
+00414   \textcolor{keywordflow}{if} (!output\_dat\_file.is\_open()) \{
+00415     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00416   \}
+00417 
+00418   \textcolor{keywordflow}{if} (nature\_ == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{mtk::SCALAR}) \{
+00419     output\_dat\_file << \textcolor{stringliteral}{"# "} << space\_name\_x <<  \textcolor{charliteral}{' '} << space\_name\_y << \textcolor{charliteral}{' '} <<
+00420       field\_name << std::endl;
+00421 
+00422     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < discrete\_domain\_x\_.size(); ++ii) \{
+00423       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} jj = 0; jj < discrete\_domain\_y\_.size(); ++jj) \{
+00424         output\_dat\_file << discrete\_domain\_x\_[ii] << \textcolor{charliteral}{' '} <<
+00425                            discrete\_domain\_y\_[jj] << \textcolor{charliteral}{' '} <<
+00426                            discrete\_field\_[ii*discrete\_domain\_y\_.size() + jj] <<
+00427                           std::endl;
+00428       \}
+00429       output\_dat\_file << std::endl;
+00430     \}
+00431   \} \textcolor{keywordflow}{else} \{
+00432     output\_dat\_file << \textcolor{stringliteral}{"# "} << space\_name\_x <<  \textcolor{charliteral}{' '} << space\_name\_y << \textcolor{charliteral}{' '} <<
+00433       field\_name << std::endl;
+00434 
+00435     output\_dat\_file << \textcolor{stringliteral}{"# Horizontal component:"} << std::endl;
+00436 
+00437     \textcolor{keywordtype}{int} mm\{num\_cells\_x\_\};
+00438     \textcolor{keywordtype}{int} nn\{num\_cells\_y\_\};
+00439 
+00441 
+00442     \textcolor{comment}{// For each y-center.}
+00443     \textcolor{keywordtype}{int} idx\{\};
+00444     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii < 2*nn + 1; ii += 2) \{
+00445       \textcolor{comment}{// Bind all of the x-nodes for this y-center.}
+00446       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < 2*mm + 1; jj += 2) \{
+00447 
+00448         output\_dat\_file << discrete\_domain\_x\_[jj] << \textcolor{charliteral}{' '} <<
+00449           discrete\_domain\_y\_[ii] << \textcolor{charliteral}{' '} << discrete\_field\_[idx] << \textcolor{charliteral}{' '} <<
+00450           \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero} << std::endl;
+00451 
+00452         ++idx;
+00453       \}
+00454     \}
+00455 
+00457     \textcolor{keywordtype}{int} p\_offset\{nn*(mm + 1) - 1\};
+00458     idx = 0;
+00459     output\_dat\_file << \textcolor{stringliteral}{"# Vertical component:"} << std::endl;
+00460     \textcolor{comment}{// For each y-node.}
+00461     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < 2*nn + 1; ii += 2) \{
+00462       \textcolor{comment}{// Bind all of the x-center for this y-node.}
+00463       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 1; jj < 2*mm + 1; jj += 2) \{
+00464 
+00465         output\_dat\_file << discrete\_domain\_x\_[jj] << \textcolor{charliteral}{' '} <<
+00466           discrete\_domain\_y\_[ii] << \textcolor{charliteral}{' '} << \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero} << \textcolor{charliteral}{' '} <<
+00467           discrete\_field\_[p\_offset + idx] << std::endl;
+00468 
+00469         ++idx;
+00470       \}
+00471     \}
+00472   \}
+00473 
+00474   output\_dat\_file.close();
+00475 
+00476   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00477 \}
 \end{DoxyCode}

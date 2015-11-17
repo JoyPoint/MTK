@@ -1,4 +1,4 @@
-.TH "mtk::Interp2D" 3 "Thu Oct 15 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::Interp2D" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -14,18 +14,23 @@ mtk::Interp2D \-
 .ti -1c
 .RI "\fBInterp2D\fP ()"
 .br
+.RI "\fIDefault constructor\&. \fP"
 .ti -1c
 .RI "\fBInterp2D\fP (const \fBInterp2D\fP &interp)"
 .br
+.RI "\fICopy constructor\&. \fP"
 .ti -1c
 .RI "\fB~Interp2D\fP ()"
 .br
+.RI "\fIDestructor\&. \fP"
 .ti -1c
 .RI "\fBDenseMatrix\fP \fBConstructInterp2D\fP (const \fBUniStgGrid2D\fP &grid, int order_accuracy=\fBkDefaultOrderAccuracy\fP, \fBReal\fP mimetic_threshold=\fBkDefaultMimeticThreshold\fP)"
 .br
+.RI "\fIFactory method implementing the CBS Algorithm to build operator\&. \fP"
 .ti -1c
 .RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP ()"
 .br
+.RI "\fIReturn the operator as a dense matrix\&. \fP"
 .in -1c
 .SS "Private Attributes"
 
@@ -33,12 +38,15 @@ mtk::Interp2D \-
 .ti -1c
 .RI "\fBDenseMatrix\fP \fBinterpolator_\fP"
 .br
+.RI "\fIActual operator\&. \fP"
 .ti -1c
 .RI "int \fBorder_accuracy_\fP"
 .br
+.RI "\fIOrder of accuracy\&. \fP"
 .ti -1c
 .RI "\fBReal\fP \fBmimetic_threshold_\fP"
 .br
+.RI "\fIMimetic Threshold\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -49,28 +57,49 @@ Definition at line 67 of file mtk_interp_2d\&.h\&.
 
 .SS "mtk::Interp2D::Interp2D (const \fBInterp2D\fP &interp)"
 
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlap\fP Given Laplacian\&. 
+.RE
+.PP
+
 .SS "mtk::Interp2D::~Interp2D ()"
 
 .SH "Member Function Documentation"
 .PP 
 .SS "\fBDenseMatrix\fP mtk::Interp2D::ConstructInterp2D (const \fBUniStgGrid2D\fP &grid, intorder_accuracy = \fC\fBkDefaultOrderAccuracy\fP\fP, \fBReal\fPmimetic_threshold = \fC\fBkDefaultMimeticThreshold\fP\fP)"
 
+.PP
+\fBReturns:\fP
+.RS 4
+Success of the construction\&. 
+.RE
+.PP
+
 .SS "\fBDenseMatrix\fP mtk::Interp2D::ReturnAsDenseMatrix ()"
+
+.PP
+\fBReturns:\fP
+.RS 4
+The operator as a dense matrix\&. 
+.RE
+.PP
 
 .SH "Member Data Documentation"
 .PP 
 .SS "\fBDenseMatrix\fP mtk::Interp2D::interpolator_\fC [private]\fP"
 
 .PP
-Definition at line 78 of file mtk_interp_2d\&.h\&.
+Definition at line 99 of file mtk_interp_2d\&.h\&.
 .SS "\fBReal\fP mtk::Interp2D::mimetic_threshold_\fC [private]\fP"
 
 .PP
-Definition at line 80 of file mtk_interp_2d\&.h\&.
+Definition at line 103 of file mtk_interp_2d\&.h\&.
 .SS "int mtk::Interp2D::order_accuracy_\fC [private]\fP"
 
 .PP
-Definition at line 79 of file mtk_interp_2d\&.h\&.
+Definition at line 101 of file mtk_interp_2d\&.h\&.
 
 .SH "Author"
 .PP 

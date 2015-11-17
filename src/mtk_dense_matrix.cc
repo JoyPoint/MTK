@@ -256,6 +256,9 @@ mtk::DenseMatrix::DenseMatrix(const int &rank,
         (ii == jj + aux)? mtk::kOne: mtk::kZero;
     }
   }
+  if (transpose) {
+    Transpose();
+  }
 }
 
 mtk::DenseMatrix::DenseMatrix(const mtk::Real *gen,
@@ -369,7 +372,7 @@ void  mtk::DenseMatrix::SetValue(
 
 void mtk::DenseMatrix::Transpose() {
 
-  /// \todo Improve this so that no extra ammays have to be created.
+  /// \todo Improve this so that no extra arrays have to be created.
 
   mtk::Real *data_transposed{}; // Buffer.
 

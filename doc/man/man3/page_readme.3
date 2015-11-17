@@ -1,4 +1,4 @@
-.TH "page_readme" 3 "Thu Oct 15 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "page_readme" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -46,8 +46,15 @@ properties of their continuum counterparts to be \fBmimetic\fP\&.
 .nf
 The \fBMimetic Methods Toolkit (MTK)\fP is a C++ library for mimetic numerical
 methods\&. It is arranged as a set of classes for \fBmimetic quadratures\fP,
-\fBmimetic interpolation\fP, and \fBmimetic discretization\fP methods for the
+\fBmimetic interpolation\fP, and \fBmimetic finite differences\fP methods for the
 numerical solution of ordinary and partial differential equations\&.
+.fi
+.PP
+.PP
+.PP
+.nf
+An older version of this library is available outside of GitHub\&.\&.\&. just email me
+about it, and you can have it\&.\&.\&. it is ugly, yet functional and more complete\&.
 .PP
 .fi
 .PP
@@ -116,8 +123,8 @@ Therefore, the following dependencies tree arises:
 .PP
 .nf
 3\&. (Optional) ATLAS - Available from: http://math-atlas.sourceforge.net/
-  1\&. BLAS - Available from: http://www.netlib.org/blas/
-  2\&. LAPACK - Available from: http://www.netlib.org/lapack/
+  1\&. LAPACK - Available from: http://www.netlib.org/lapack/
+    1\&. BLAS - Available from: http://www.netlib.org/blas
 .fi
 .PP
 .PP
@@ -190,14 +197,16 @@ $ make help
 Makefile for the MTK.
 
 Options are:
-- make: builds only the library and the examples.
-- all: builds the library, the examples and the documentation.
-- mtklib: builds the library, i.e. generates the archive files.
-- test: generates the tests.
-- example: generates the examples.
+- all: builds the library, the tests, and examples.
+- mtklib: builds the library.
+- test: builds the test files.
+- example: builds the examples.
+
+- testall: runs all the tests.
+
 - gendoc: generates the documentation for the library.
 
-- clean: cleans ALL the generated files.
+- clean: cleans all the generated files.
 - cleanlib: cleans the generated archive and object files.
 - cleantest: cleans the generated tests executables.
 - cleanexample: cleans the generated examples executables.

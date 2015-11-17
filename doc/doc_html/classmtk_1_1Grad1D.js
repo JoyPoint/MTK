@@ -15,6 +15,7 @@ var classmtk_1_1Grad1D =
     [ "num_bndy_coeffs", "classmtk_1_1Grad1D.html#a7168205c21ba00012558f8bba069c119", null ],
     [ "ReturnAsDenseMatrix", "classmtk_1_1Grad1D.html#a4218516bfb43f683559322ea97058c78", null ],
     [ "ReturnAsDenseMatrix", "classmtk_1_1Grad1D.html#a75781c4455569a7934d4e0dff7e06064", null ],
+    [ "ReturnAsDimensionlessDenseMatrix", "classmtk_1_1Grad1D.html#af857ae809aac7021116ffe2d22e4c4a5", null ],
     [ "weights_cbs", "classmtk_1_1Grad1D.html#ad11927d8f9f1ca0089aaa2be7094f7f3", null ],
     [ "weights_crs", "classmtk_1_1Grad1D.html#ae5f15d8986a5680b6a1c120283c6cc5e", null ],
     [ "operator<<", "classmtk_1_1Grad1D.html#aeba97883d95c0b4546a98bebe8ef3106", null ],

@@ -110,14 +110,18 @@ void TestReturnAsDenseMatrixWriteToFile() {
 
   mtk::DenseMatrix ggm(gg.ReturnAsDenseMatrix());
 
+  assertion = assertion && (ggm.num_rows() != mtk::kZero);
+
   std::cout << ggm << std::endl;
 
-  if(!ggm.WriteToFile("mtk_grad_2d_test_02.dat")) {
+  assertion = assertion && ggm.WriteToFile("mtk_grad_2d_test_02.dat");
+
+  if(!assertion) {
     std::cerr << "Error writing to file." << std::endl;
   }
 
   mtk::Tools::EndUnitTestNo(2);
-  mtk::Tools::Assert(ggm.num_rows() != mtk::kZero);
+  mtk::Tools::Assert(assertion);
 }
 
 int main () {

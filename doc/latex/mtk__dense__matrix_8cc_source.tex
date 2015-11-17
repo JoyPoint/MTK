@@ -1,5 +1,5 @@
-\hypertarget{mtk__dense__matrix_8cc}{\section{mtk\-\_\-dense\-\_\-matrix.\-cc}
-\label{mtk__dense__matrix_8cc}\index{src/mtk\-\_\-dense\-\_\-matrix.\-cc@{src/mtk\-\_\-dense\-\_\-matrix.\-cc}}
+\hypertarget{mtk__dense__matrix_8cc_source}{\section{mtk\+\_\+dense\+\_\+matrix.\+cc}
+\label{mtk__dense__matrix_8cc_source}\index{src/mtk\+\_\+dense\+\_\+matrix.\+cc@{src/mtk\+\_\+dense\+\_\+matrix.\+cc}}
 }
 
 \begin{DoxyCode}
@@ -13,22 +13,22 @@
 00019 \textcolor{comment}{}
 00020 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
 00021 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
-00022 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
-00023 \textcolor{comment}{}
-00024 \textcolor{comment}{2. Redistributions of source code must be done through direct}
-00025 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
-00026 \textcolor{comment}{}
-00027 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
-00028 \textcolor{comment}{list of conditions and the following disclaimer.}
-00029 \textcolor{comment}{}
-00030 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
-00031 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
-00032 \textcolor{comment}{other materials provided with the distribution.}
-00033 \textcolor{comment}{}
-00034 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
-00035 \textcolor{comment}{prior written permission from the the copyright holders.}
+00022 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
+00023 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
+00024 \textcolor{comment}{should be developed and included in any deliverable.}
+00025 \textcolor{comment}{}
+00026 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00027 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00028 \textcolor{comment}{}
+00029 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
+00030 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00031 \textcolor{comment}{other materials provided with the distribution.}
+00032 \textcolor{comment}{}
+00033 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
+00034 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
+00035 \textcolor{comment}{be given to the copyright holders.}
 00036 \textcolor{comment}{}
-00037 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00037 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
 00038 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
 00039 \textcolor{comment}{specific prior written permission.}
 00040 \textcolor{comment}{}
@@ -56,137 +56,139 @@
 00062 
 00063 \textcolor{preprocessor}{#include <iostream>}
 00064 \textcolor{preprocessor}{#include <iomanip>}
-00065 \textcolor{preprocessor}{#include <typeinfo>}
+00065 \textcolor{preprocessor}{#include <fstream>}
 00066 
-00067 \textcolor{preprocessor}{#include <algorithm>}
+00067 \textcolor{preprocessor}{#include <typeinfo>}
 00068 
-00069 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
-00070 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
-00071 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
-00072 
-00073 \textcolor{keyword}{namespace }mtk \{
+00069 \textcolor{preprocessor}{#include <algorithm>}
+00070 
+00071 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
+00072 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
+00073 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
 00074 
-\hypertarget{mtk__dense__matrix_8cc_source_l00075}{}\hyperlink{namespacemtk_ad3bcf52cda59ddb5fc7b4bdce76c46dc}{00075} std::ostream& \hyperlink{namespacemtk_ad3bcf52cda59ddb5fc7b4bdce76c46dc}{operator <<}(std::ostream &stream, \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &in) \{
+00075 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk} \{
 00076 
-00077   \textcolor{keywordtype}{int} mm\{in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}()\};  \textcolor{comment}{// Auxiliary.}
-00078   \textcolor{keywordtype}{int} nn\{in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}()\};  \textcolor{comment}{// Auxiliary.}
-00079 
-00080   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}() == 
+\hypertarget{mtk__dense__matrix_8cc_source_l00077}{}\hyperlink{namespacemtk_ad3bcf52cda59ddb5fc7b4bdce76c46dc}{00077} std::ostream& \hyperlink{namespacemtk_ad3bcf52cda59ddb5fc7b4bdce76c46dc}{operator <<}(std::ostream &stream, \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &in) \{
+00078 
+00079   \textcolor{keywordtype}{int} mm\{in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}()\};  \textcolor{comment}{// Auxiliary.}
+00080   \textcolor{keywordtype}{int} nn\{in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}()\};  \textcolor{comment}{// Auxiliary.}
+00081 
+00082   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}() == 
       \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}) \{
-00081     std::swap(mm, nn);
-00082   \}
-00083   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < mm; ii++) \{
-00084     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < nn; jj++) \{
-00085       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} value = in.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[ii*nn + jj];
-00086       stream << std::setw(13) << value;
-00087     \}
-00088     stream << std::endl;
-00089   \}
-00090   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}() == 
-      \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}) \{
-00091     std::swap(mm, nn);
+00083     std::swap(mm, nn);
+00084   \}
+00085   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < mm; ii++) \{
+00086     \textcolor{keywordtype}{int} offset\{ii*nn\};
+00087     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < nn; jj++) \{
+00088       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} value = in.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[offset + jj];
+00089       stream << std::setw(9) << value;
+00090     \}
+00091     stream << std::endl;
 00092   \}
-00093   \textcolor{keywordflow}{return} stream;
-00094 \}
-00095 \}
-00096 
-\hypertarget{mtk__dense__matrix_8cc_source_l00097}{}\hyperlink{classmtk_1_1DenseMatrix_a0d27dc7c4d2c49f391017e392345ced0}{00097} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix}& \hyperlink{classmtk_1_1DenseMatrix_a0d27dc7c4d2c49f391017e392345ced0}{mtk::DenseMatrix::operator =}(\textcolor{keyword}{const} 
+00093   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}() == 
+      \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}) \{
+00094     std::swap(mm, nn);
+00095   \}
+00096   \textcolor{keywordflow}{return} stream;
+00097 \}
+00098 \}
+00099 
+\hypertarget{mtk__dense__matrix_8cc_source_l00100}{}\hyperlink{classmtk_1_1DenseMatrix_a0d27dc7c4d2c49f391017e392345ced0}{00100} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix}& \hyperlink{classmtk_1_1DenseMatrix_a0d27dc7c4d2c49f391017e392345ced0}{mtk::DenseMatrix::operator =}(\textcolor{keyword}{const} 
       \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &in) \{
-00098 
-00099   \textcolor{keywordflow}{if}(\textcolor{keyword}{this} == &in) \{
-00100     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
-00101   \}
-00102 
-00103   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{set\_storage}(in.
+00101 
+00102   \textcolor{keywordflow}{if}(\textcolor{keyword}{this} == &in) \{
+00103     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+00104   \}
+00105 
+00106   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{set\_storage}(in.
       \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a21893fc643eebadd9757c8995cf44dd3}{storage}());
-00104 
-00105   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{set\_ordering}(in.
+00107 
+00108   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{set\_ordering}(in.
       \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}());
-00106 
-00107   \textcolor{keyword}{auto} aux = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
-00108   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a242fedf2da10a3e5c14f63c2bc60beae}{set\_num\_rows}(aux);
 00109 
-00110   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
-00111   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a312883d34f2e0daf5db7432ee2c4ed51}{set\_num\_cols}(aux);
+00110   \textcolor{keyword}{auto} aux = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
+00111   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a242fedf2da10a3e5c14f63c2bc60beae}{set\_num\_rows}(aux);
 00112 
-00113   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a78e1f8449a21db53750e083c6802a993}{num\_zero}();
-00114   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ae529100c5c280088e9acf8e8f7994f73}{set\_num\_zero}(aux);
+00113   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
+00114   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a312883d34f2e0daf5db7432ee2c4ed51}{set\_num\_cols}(aux);
 00115 
-00116   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a5bf58512ee91d6ab80eb94541072a9cf}{num\_null}();
-00117   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a66c2c1c127f4efefc4a407e9552e928d}{set\_num\_null}(aux);
+00116   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a78e1f8449a21db53750e083c6802a993}{num\_zero}();
+00117   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ae529100c5c280088e9acf8e8f7994f73}{set\_num\_zero}(aux);
 00118 
-00119   \textcolor{keyword}{auto} \hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows} = \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
-00120   \textcolor{keyword}{auto} \hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols} = \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
+00119   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a5bf58512ee91d6ab80eb94541072a9cf}{num\_null}();
+00120   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a66c2c1c127f4efefc4a407e9552e928d}{set\_num\_null}(aux);
 00121 
-00122   \textcolor{keyword}{delete} [] \hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_};
-00123 
-00124   \textcolor{keywordflow}{try} \{
-00125     \hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_} = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}*\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}];
-00126   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00127     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00128       std::endl;
-00129     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00130   \}
-00131   memset(\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[0])*\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}*
+00122   \textcolor{keyword}{auto} \hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows} = \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
+00123   \textcolor{keyword}{auto} \hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols} = \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
+00124 
+00125   \textcolor{keyword}{delete} [] \hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_};
+00126 
+00127   \textcolor{keywordflow}{try} \{
+00128     \hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_} = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}*\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}];
+00129   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00130     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00131       std::endl;
+00132     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00133   \}
+00134   memset(\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[0])*\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}*
       \hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols});
-00132 
-00133   std::copy(in.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}, in.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_} + \hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}*num\_cols, \hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_});
-00134 
-00135   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
-00136 \}
+00135 
+00136   std::copy(in.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}, in.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_} + \hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}*num\_cols, \hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_});
 00137 
-\hypertarget{mtk__dense__matrix_8cc_source_l00138}{}\hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{00138} \hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{mtk::DenseMatrix::DenseMatrix}(): data\_(nullptr) \{
-00139 
-00140   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{set\_storage}(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
-00141   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{set\_ordering}(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
-00142 \}
-00143 
-\hypertarget{mtk__dense__matrix_8cc_source_l00144}{}\hyperlink{classmtk_1_1DenseMatrix_a90102d605a668bf7ecf0d766cc4c10db}{00144} \hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{mtk::DenseMatrix::DenseMatrix}(\textcolor{keyword}{const} 
-      \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &in) \{
-00145 
-00146   matrix\_properties\_.set\_storage(in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a21893fc643eebadd9757c8995cf44dd3}{storage}());
+00138   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+00139 \}
+00140 
+\hypertarget{mtk__dense__matrix_8cc_source_l00141}{}\hyperlink{classmtk_1_1DenseMatrix_a94ab5a02d9cf81c17b6f68f4c41cb797}{00141} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1DenseMatrix_a94ab5a02d9cf81c17b6f68f4c41cb797}{mtk::DenseMatrix::operator ==}(\textcolor{keyword}{const} 
+      \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &in) \{
+00142 
+00143   \textcolor{keywordtype}{bool} ans\{\textcolor{keyword}{true}\};
+00144 
+00145   \textcolor{keyword}{auto} mm = in.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}();
+00146   \textcolor{keyword}{auto} nn = in.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}();
 00147 
-00148   matrix\_properties\_.set\_ordering(in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.
-      \hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}());
-00149 
-00150   \textcolor{keyword}{auto} aux = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
-00151   matrix\_properties\_.set\_num\_rows(aux);
+00148   \textcolor{keywordflow}{if} (mm != matrix\_properties\_.num\_rows() ||
+00149       nn != matrix\_properties\_.num\_cols()) \{
+00150     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00151   \}
 00152 
-00153   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
-00154   matrix\_properties\_.set\_num\_cols(aux);
-00155 
-00156   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a78e1f8449a21db53750e083c6802a993}{num\_zero}();
-00157   matrix\_properties\_.set\_num\_zero(aux);
-00158 
-00159   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a5bf58512ee91d6ab80eb94541072a9cf}{num\_null}();
-00160   matrix\_properties\_.set\_num\_null(aux);
+00153   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < mm && ans; ++ii) \{
+00154     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < nn && ans; ++jj) \{
+00155       ans = ans &&
+00156         abs(data\_[ii*nn + jj] - in.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[ii*nn + jj]) < 
+      \hyperlink{group__c01-roots_gae914b125d81d1b97e0aee7bbc7739786}{mtk::kDefaultTolerance};
+00157     \}
+00158   \}
+00159   \textcolor{keywordflow}{return} ans;
+00160 \}
 00161 
-00162   \textcolor{keyword}{auto} num\_rows = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
-00163   \textcolor{keyword}{auto} num\_cols = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
-00164 
-00165   \textcolor{keywordflow}{try} \{
-00166     data\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_rows*num\_cols];
-00167   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00168     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00169       std::endl;
-00170     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00171   \}
-00172   memset(data\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(data\_[0])*num\_rows*num\_cols);
+\hypertarget{mtk__dense__matrix_8cc_source_l00162}{}\hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{00162} \hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{mtk::DenseMatrix::DenseMatrix}(): data\_(nullptr) \{
+00163 
+00164   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{set\_storage}(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
+00165   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{set\_ordering}(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
+00166 \}
+00167 
+\hypertarget{mtk__dense__matrix_8cc_source_l00168}{}\hyperlink{classmtk_1_1DenseMatrix_a90102d605a668bf7ecf0d766cc4c10db}{00168} \hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{mtk::DenseMatrix::DenseMatrix}(\textcolor{keyword}{const} 
+      \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &in) \{
+00169 
+00170   matrix\_properties\_.set\_storage(in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a21893fc643eebadd9757c8995cf44dd3}{storage}());
+00171 
+00172   matrix\_properties\_.set\_ordering(in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.
+      \hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}());
 00173 
-00174   std::copy(in.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_},in.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_} + num\_rows*num\_cols,data\_);
-00175 \}
+00174   \textcolor{keyword}{auto} aux = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
+00175   matrix\_properties\_.set\_num\_rows(aux);
 00176 
-\hypertarget{mtk__dense__matrix_8cc_source_l00177}{}\hyperlink{classmtk_1_1DenseMatrix_abe26c623467fc1b293cf4f22a3a47cc8}{00177} \hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{mtk::DenseMatrix::DenseMatrix}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_rows, \textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_cols) \{
-00178 
-00179 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00180 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(num\_rows < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00181   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(num\_cols < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00182 \textcolor{preprocessor}{  #endif}
-00183 \textcolor{preprocessor}{}
-00184   matrix\_properties\_.set\_storage(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
-00185   matrix\_properties\_.set\_ordering(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
-00186   matrix\_properties\_.set\_num\_rows(num\_rows);
-00187   matrix\_properties\_.set\_num\_cols(num\_cols);
+00177   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
+00178   matrix\_properties\_.set\_num\_cols(aux);
+00179 
+00180   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a78e1f8449a21db53750e083c6802a993}{num\_zero}();
+00181   matrix\_properties\_.set\_num\_zero(aux);
+00182 
+00183   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a5bf58512ee91d6ab80eb94541072a9cf}{num\_null}();
+00184   matrix\_properties\_.set\_num\_null(aux);
+00185 
+00186   \textcolor{keyword}{auto} num\_rows = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
+00187   \textcolor{keyword}{auto} num\_cols = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
 00188 
 00189   \textcolor{keywordflow}{try} \{
 00190     data\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_rows*num\_cols];
@@ -196,314 +198,366 @@
 00194     std::cerr << memory\_allocation\_exception.what() << std::endl;
 00195   \}
 00196   memset(data\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(data\_[0])*num\_rows*num\_cols);
-00197 \}
-00198 
-\hypertarget{mtk__dense__matrix_8cc_source_l00199}{}\hyperlink{classmtk_1_1DenseMatrix_a4ef0dec1b5558fcf00719bfac059ec68}{00199} \hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{mtk::DenseMatrix::DenseMatrix}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &rank,
-00200                               \textcolor{keyword}{const} \textcolor{keywordtype}{bool} &padded,
-00201                               \textcolor{keyword}{const} \textcolor{keywordtype}{bool} &transpose) \{
+00197 
+00198   std::copy(in.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_},in.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_} + num\_rows*num\_cols,data\_);
+00199 \}
+00200 
+\hypertarget{mtk__dense__matrix_8cc_source_l00201}{}\hyperlink{classmtk_1_1DenseMatrix_abe26c623467fc1b293cf4f22a3a47cc8}{00201} \hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{mtk::DenseMatrix::DenseMatrix}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_rows, \textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_cols) \{
 00202 
 00203 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00204 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(rank < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00205 \textcolor{preprocessor}{  #endif}
-00206 \textcolor{preprocessor}{}
-00207   \textcolor{keywordtype}{int} aux\{\};  \textcolor{comment}{// Used to control the padding.}
-00208 
-00209   \textcolor{keywordflow}{if} (padded) \{
-00210     aux = 1;
-00211   \}
+00204   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(num\_rows < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00205   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(num\_cols < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00206 \textcolor{preprocessor}{  #endif}
+00207 
+00208   matrix\_properties\_.set\_storage(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
+00209   matrix\_properties\_.set\_ordering(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
+00210   matrix\_properties\_.set\_num\_rows(num\_rows);
+00211   matrix\_properties\_.set\_num\_cols(num\_cols);
 00212 
-00213   matrix\_properties\_.set\_storage(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
-00214   matrix\_properties\_.set\_ordering(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
-00215   matrix\_properties\_.set\_num\_rows(aux + rank + aux);
-00216   matrix\_properties\_.set\_num\_cols(rank);
-00217 
-00218   \textcolor{keywordflow}{try} \{
-00219     data\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[matrix\_properties\_.num\_values()];
-00220   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00221     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00222       std::endl;
-00223     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00224   \}
-00225   memset(data\_,
-00226          \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
-00227          \textcolor{keyword}{sizeof}(data\_[0])*(matrix\_properties\_.num\_values()));
-00228 
-00229   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii =0 ; ii < matrix\_properties\_.num\_rows(); ++ii) \{
-00230     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < matrix\_properties\_.num\_cols(); ++jj) \{
-00231       data\_[ii*matrix\_properties\_.num\_cols() + jj] =
-00232         (ii == jj + aux)? \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}: \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero};
-00233     \}
-00234   \}
-00235 \}
+00213   \textcolor{keywordflow}{try} \{
+00214     data\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_rows*num\_cols];
+00215   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00216     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00217       std::endl;
+00218     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00219   \}
+00220   memset(data\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(data\_[0])*num\_rows*num\_cols);
+00221 \}
+00222 
+\hypertarget{mtk__dense__matrix_8cc_source_l00223}{}\hyperlink{classmtk_1_1DenseMatrix_a4ef0dec1b5558fcf00719bfac059ec68}{00223} \hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{mtk::DenseMatrix::DenseMatrix}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &rank,
+00224                               \textcolor{keyword}{const} \textcolor{keywordtype}{bool} &padded,
+00225                               \textcolor{keyword}{const} \textcolor{keywordtype}{bool} &transpose) \{
+00226 
+00227 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00228   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(rank < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00229 \textcolor{preprocessor}{  #endif}
+00230 
+00231   \textcolor{keywordtype}{int} aux\{\};  \textcolor{comment}{// Used to control the padding.}
+00232 
+00233   \textcolor{keywordflow}{if} (padded) \{
+00234     aux = 1;
+00235   \}
 00236 
-\hypertarget{mtk__dense__matrix_8cc_source_l00237}{}\hyperlink{classmtk_1_1DenseMatrix_a4a85c10adb8a1d695c992eb5fd3e3dac}{00237} \hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{mtk::DenseMatrix::DenseMatrix}(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *gen,
-00238                               \textcolor{keyword}{const} \textcolor{keywordtype}{int} &gen\_length,
-00239                               \textcolor{keyword}{const} \textcolor{keywordtype}{int} &pro\_length,
-00240                               \textcolor{keyword}{const} \textcolor{keywordtype}{bool} &transpose) \{
+00237   matrix\_properties\_.set\_storage(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
+00238   matrix\_properties\_.set\_ordering(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
+00239   matrix\_properties\_.set\_num\_rows(aux + rank + aux);
+00240   matrix\_properties\_.set\_num\_cols(rank);
 00241 
-00242 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00243 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(gen == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00244   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(gen\_length < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00245   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(pro\_length < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00246 \textcolor{preprocessor}{  #endif}
-00247 \textcolor{preprocessor}{}
-00248   matrix\_properties\_.set\_storage(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
-00249   matrix\_properties\_.set\_ordering(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
-00250   \textcolor{keywordflow}{if} (!transpose) \{
-00251     matrix\_properties\_.set\_num\_rows(gen\_length);
-00252     matrix\_properties\_.set\_num\_cols(pro\_length);
-00253   \} \textcolor{keywordflow}{else} \{
-00254     matrix\_properties\_.set\_num\_rows(pro\_length);
-00255     matrix\_properties\_.set\_num\_cols(gen\_length);
-00256   \}
-00257 
-00258   \textcolor{keywordtype}{int} rr = matrix\_properties\_.num\_rows(); \textcolor{comment}{// Used to construct this matrix.}
-00259   \textcolor{keywordtype}{int} cc = matrix\_properties\_.num\_cols(); \textcolor{comment}{// Used to construct this matrix.}
-00260 
-00261   \textcolor{keywordflow}{try} \{
-00262     data\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[rr*cc];
-00263   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00264     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00265       std::endl;
-00266     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00267   \}
-00268   memset(data\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(data\_[0])*rr*cc);
-00269 
-00270   \textcolor{keywordflow}{if} (!transpose) \{
-00271     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < rr; ii++) \{
-00272       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < cc; jj++) \{
-00273         data\_[ii*cc + jj] = pow(gen[ii], (\textcolor{keywordtype}{double}) jj);
-00274       \}
-00275     \}
-00276   \} \textcolor{keywordflow}{else} \{
-00277     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < rr; ii++) \{
-00278       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < cc; jj++) \{
-00279         data\_[ii*cc + jj] = pow(gen[jj], (\textcolor{keywordtype}{double}) ii);
-00280       \}
-00281     \}
-00282   \}
-00283 \}
+00242   \textcolor{keywordflow}{try} \{
+00243     data\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[matrix\_properties\_.num\_values()];
+00244   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00245     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00246       std::endl;
+00247     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00248   \}
+00249   memset(data\_,
+00250          \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
+00251          \textcolor{keyword}{sizeof}(data\_[0])*(matrix\_properties\_.num\_values()));
+00252 
+00253   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii =0 ; ii < matrix\_properties\_.num\_rows(); ++ii) \{
+00254     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < matrix\_properties\_.num\_cols(); ++jj) \{
+00255       data\_[ii*matrix\_properties\_.num\_cols() + jj] =
+00256         (ii == jj + aux)? \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}: \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero};
+00257     \}
+00258   \}
+00259   \textcolor{keywordflow}{if} (transpose) \{
+00260     Transpose();
+00261   \}
+00262 \}
+00263 
+\hypertarget{mtk__dense__matrix_8cc_source_l00264}{}\hyperlink{classmtk_1_1DenseMatrix_a4a85c10adb8a1d695c992eb5fd3e3dac}{00264} \hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{mtk::DenseMatrix::DenseMatrix}(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *gen,
+00265                               \textcolor{keyword}{const} \textcolor{keywordtype}{int} &gen\_length,
+00266                               \textcolor{keyword}{const} \textcolor{keywordtype}{int} &pro\_length,
+00267                               \textcolor{keyword}{const} \textcolor{keywordtype}{bool} &transpose) \{
+00268 
+00269 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00270   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(gen == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00271   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(gen\_length < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00272   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(pro\_length < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00273 \textcolor{preprocessor}{  #endif}
+00274 
+00275   matrix\_properties\_.set\_storage(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
+00276   matrix\_properties\_.set\_ordering(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
+00277   \textcolor{keywordflow}{if} (!transpose) \{
+00278     matrix\_properties\_.set\_num\_rows(gen\_length);
+00279     matrix\_properties\_.set\_num\_cols(pro\_length);
+00280   \} \textcolor{keywordflow}{else} \{
+00281     matrix\_properties\_.set\_num\_rows(pro\_length);
+00282     matrix\_properties\_.set\_num\_cols(gen\_length);
+00283   \}
 00284 
-\hypertarget{mtk__dense__matrix_8cc_source_l00285}{}\hyperlink{classmtk_1_1DenseMatrix_a8d4a0df33bd4e4edf5d2fe5539885b85}{00285} \hyperlink{classmtk_1_1DenseMatrix_a8d4a0df33bd4e4edf5d2fe5539885b85}{mtk::DenseMatrix::~DenseMatrix}() \{
-00286 
-00287   \textcolor{keyword}{delete}[] data\_;
-00288   data\_ = \textcolor{keyword}{nullptr};
-00289 \}
-00290 
-\hypertarget{mtk__dense__matrix_8cc_source_l00291}{}\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{00291} \hyperlink{classmtk_1_1Matrix}{mtk::Matrix} \hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{mtk::DenseMatrix::matrix\_properties}()\textcolor{keyword}{ const }\{
-00292 
-00293   \textcolor{keywordflow}{return} matrix\_properties\_;
-00294 \}
-00295 
-\hypertarget{mtk__dense__matrix_8cc_source_l00296}{}\hyperlink{classmtk_1_1DenseMatrix_aacae136ae446cad8f0d81476e83efb39}{00296} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1DenseMatrix_aacae136ae446cad8f0d81476e83efb39}{mtk::DenseMatrix::SetOrdering}(
-      \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{mtk::MatrixOrdering} oo) \{
-00297 
-00298 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00299 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(!(oo == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR} || oo == 
-      \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}),
-00300                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00301 \textcolor{preprocessor}{  #endif}
-00302 \textcolor{preprocessor}{}
-00303   matrix\_properties\_.set\_ordering(oo);
-00304 \}
-00305 
-\hypertarget{mtk__dense__matrix_8cc_source_l00306}{}\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{00306} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{mtk::DenseMatrix::num\_rows}()\textcolor{keyword}{ const }\{
-00307 
-00308   \textcolor{keywordflow}{return} matrix\_properties\_.num\_rows();
-00309 \}
-00310 
-\hypertarget{mtk__dense__matrix_8cc_source_l00311}{}\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{00311} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{mtk::DenseMatrix::num\_cols}()\textcolor{keyword}{ const }\{
-00312 
-00313   \textcolor{keywordflow}{return} matrix\_properties\_.num\_cols();
-00314 \}
-00315 
-\hypertarget{mtk__dense__matrix_8cc_source_l00316}{}\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{00316} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}* \hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{mtk::DenseMatrix::data}()\textcolor{keyword}{ const }\{
+00285   \textcolor{keywordtype}{int} mm = matrix\_properties\_.num\_rows(); \textcolor{comment}{// Used to construct this matrix.}
+00286   \textcolor{keywordtype}{int} nn = matrix\_properties\_.num\_cols(); \textcolor{comment}{// Used to construct this matrix.}
+00287 
+00288   \textcolor{keywordflow}{try} \{
+00289     data\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[mm*nn];
+00290   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00291     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00292       std::endl;
+00293     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00294   \}
+00295   memset(data\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(data\_[0])*mm*nn);
+00296 
+00297   \textcolor{keywordflow}{if} (!transpose) \{
+00298     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < mm; ii++) \{
+00299       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < nn; jj++) \{
+00300         data\_[ii*nn + jj] = pow(gen[ii], (\textcolor{keywordtype}{double}) jj);
+00301       \}
+00302     \}
+00303   \} \textcolor{keywordflow}{else} \{
+00304     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < mm; ii++) \{
+00305       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < nn; jj++) \{
+00306         data\_[ii*nn + jj] = pow(gen[jj], (\textcolor{keywordtype}{double}) ii);
+00307       \}
+00308     \}
+00309   \}
+00310 \}
+00311 
+\hypertarget{mtk__dense__matrix_8cc_source_l00312}{}\hyperlink{classmtk_1_1DenseMatrix_a8d4a0df33bd4e4edf5d2fe5539885b85}{00312} \hyperlink{classmtk_1_1DenseMatrix_a8d4a0df33bd4e4edf5d2fe5539885b85}{mtk::DenseMatrix::~DenseMatrix}() \{
+00313 
+00314   \textcolor{keyword}{delete}[] data\_;
+00315   data\_ = \textcolor{keyword}{nullptr};
+00316 \}
 00317 
-00318   \textcolor{keywordflow}{return} data\_;
-00319 \}
-00320 
-\hypertarget{mtk__dense__matrix_8cc_source_l00321}{}\hyperlink{classmtk_1_1DenseMatrix_a87fb785713c04b13767947cc3325ce7c}{00321} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1DenseMatrix_a87fb785713c04b13767947cc3325ce7c}{mtk::DenseMatrix::GetValue}(
-00322     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &rr,
-00323     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &cc)\textcolor{keyword}{ const }\{
+\hypertarget{mtk__dense__matrix_8cc_source_l00318}{}\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{00318} \hyperlink{classmtk_1_1Matrix}{mtk::Matrix} \hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{mtk::DenseMatrix::matrix\_properties}()\textcolor{keyword}{ const }\{
+00319 
+00320   \textcolor{keywordflow}{return} matrix\_properties\_;
+00321 \}
+00322 
+\hypertarget{mtk__dense__matrix_8cc_source_l00323}{}\hyperlink{classmtk_1_1DenseMatrix_aacae136ae446cad8f0d81476e83efb39}{00323} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1DenseMatrix_aacae136ae446cad8f0d81476e83efb39}{mtk::DenseMatrix::SetOrdering}(
+      \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{mtk::MatrixOrdering} oo) \{
 00324 
 00325 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00326 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(rr < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00327   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(cc < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00326   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(!(oo == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR} || oo == 
+      \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}),
+00327                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00328 \textcolor{preprocessor}{  #endif}
-00329 \textcolor{preprocessor}{}
-00330   \textcolor{keywordflow}{return} data\_[rr*matrix\_properties\_.num\_cols() + cc];
+00329 
+00330   matrix\_properties\_.set\_ordering(oo);
 00331 \}
 00332 
-\hypertarget{mtk__dense__matrix_8cc_source_l00333}{}\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{00333} \textcolor{keywordtype}{void}  \hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{mtk::DenseMatrix::SetValue}(
-00334     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &rr,
-00335     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &cc,
-00336     \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &val) \{
+\hypertarget{mtk__dense__matrix_8cc_source_l00333}{}\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{00333} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{mtk::DenseMatrix::num\_rows}()\textcolor{keyword}{ const }\{
+00334 
+00335   \textcolor{keywordflow}{return} matrix\_properties\_.num\_rows();
+00336 \}
 00337 
-00338 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00339 \textcolor{preprocessor}{}  \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(rr < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00340   \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{mtk::Tools::Prevent}(cc < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00341 \textcolor{preprocessor}{  #endif}
-00342 \textcolor{preprocessor}{}
-00343   data\_[rr*matrix\_properties\_.num\_cols() + cc] = val;
-00344 \}
-00345 
-\hypertarget{mtk__dense__matrix_8cc_source_l00346}{}\hyperlink{classmtk_1_1DenseMatrix_a71d9c07ca66e88d97d1fd5012f43138b}{00346} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1DenseMatrix_a71d9c07ca66e88d97d1fd5012f43138b}{mtk::DenseMatrix::Transpose}() \{
+\hypertarget{mtk__dense__matrix_8cc_source_l00338}{}\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{00338} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{mtk::DenseMatrix::num\_cols}()\textcolor{keyword}{ const }\{
+00339 
+00340   \textcolor{keywordflow}{return} matrix\_properties\_.num\_cols();
+00341 \}
+00342 
+\hypertarget{mtk__dense__matrix_8cc_source_l00343}{}\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{00343} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}* \hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{mtk::DenseMatrix::data}()\textcolor{keyword}{ const }\{
+00344 
+00345   \textcolor{keywordflow}{return} data\_;
+00346 \}
 00347 
-00349 
-00350   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *data\_transposed\{\}; \textcolor{comment}{// Buffer.}
+\hypertarget{mtk__dense__matrix_8cc_source_l00348}{}\hyperlink{classmtk_1_1DenseMatrix_a87fb785713c04b13767947cc3325ce7c}{00348} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1DenseMatrix_a87fb785713c04b13767947cc3325ce7c}{mtk::DenseMatrix::GetValue}(
+00349     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &mm,
+00350     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &nn)\textcolor{keyword}{ const }\{
 00351 
-00352   \textcolor{keywordtype}{int} rr = matrix\_properties\_.num\_rows(); \textcolor{comment}{// Used to construct this matrix.}
-00353   \textcolor{keywordtype}{int} cc = matrix\_properties\_.num\_cols(); \textcolor{comment}{// Used to construct this matrix.}
-00354 
-00355   \textcolor{keywordflow}{try} \{
-00356     data\_transposed = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[rr*cc];
-00357   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00358     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00359       std::endl;
-00360     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00361   \}
-00362   memset(data\_transposed,
-00363          \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
-00364          \textcolor{keyword}{sizeof}(data\_transposed[0])*rr*cc);
-00365 
-00366   \textcolor{comment}{// Assign the values to their transposed position.}
-00367   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < rr; ++ii) \{
-00368     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < cc; ++jj) \{
-00369       data\_transposed[jj*rr + ii] = data\_[ii*cc + jj];
-00370     \}
-00371   \}
+00352 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00353   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(mm < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00354   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(nn < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00355 \textcolor{preprocessor}{  #endif}
+00356 
+00357   \textcolor{keywordflow}{return} data\_[mm*matrix\_properties\_.num\_cols() + nn];
+00358 \}
+00359 
+\hypertarget{mtk__dense__matrix_8cc_source_l00360}{}\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{00360} \textcolor{keywordtype}{void}  \hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{mtk::DenseMatrix::SetValue}(
+00361     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &mm,
+00362     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &nn,
+00363     \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &val) \{
+00364 
+00365 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00366   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(mm < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00367   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(nn < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00368 \textcolor{preprocessor}{  #endif}
+00369 
+00370   data\_[mm*matrix\_properties\_.num\_cols() + nn] = val;
+00371 \}
 00372 
-00373   \textcolor{comment}{// Swap pointers.}
-00374   \textcolor{keyword}{auto} tmp = data\_; \textcolor{comment}{// Temporal holder.}
-00375   data\_ = data\_transposed;
-00376   \textcolor{keyword}{delete} [] tmp;
-00377   tmp = \textcolor{keyword}{nullptr};
+\hypertarget{mtk__dense__matrix_8cc_source_l00373}{}\hyperlink{classmtk_1_1DenseMatrix_a71d9c07ca66e88d97d1fd5012f43138b}{00373} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1DenseMatrix_a71d9c07ca66e88d97d1fd5012f43138b}{mtk::DenseMatrix::Transpose}() \{
+00374 
+00376 
+00377   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *data\_transposed\{\}; \textcolor{comment}{// Buffer.}
 00378 
-00379   matrix\_properties\_.set\_num\_rows(cc);
-00380   matrix\_properties\_.set\_num\_cols(rr);
-00381 \}
-00382 
-\hypertarget{mtk__dense__matrix_8cc_source_l00383}{}\hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{00383} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{mtk::DenseMatrix::OrderRowMajor}() \{
-00384 
-00385   \textcolor{keywordflow}{if} (matrix\_properties\_.ordering() == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}) \{
-00386 
-00388 
-00389     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *data\_transposed\{\}; \textcolor{comment}{// Buffer.}
-00390 
-00391     \textcolor{keywordtype}{int} rr = matrix\_properties\_.num\_rows(); \textcolor{comment}{// Used to construct this matrix.}
-00392     \textcolor{keywordtype}{int} cc = matrix\_properties\_.num\_cols(); \textcolor{comment}{// Used to construct this matrix.}
-00393 
-00394     \textcolor{keywordflow}{try} \{
-00395       data\_transposed = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[rr*cc];
-00396     \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00397       std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00398         std::endl;
-00399       std::cerr << memory\_allocation\_exception.what() << std::endl;
-00400     \}
-00401     memset(data\_transposed,
-00402           \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
-00403           \textcolor{keyword}{sizeof}(data\_transposed[0])*rr*cc);
-00404 
-00405     \textcolor{comment}{// Assign the values to their transposed position.}
-00406     std::swap(rr, cc);
-00407     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < rr; ++ii) \{
-00408       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < cc; ++jj) \{
-00409         data\_transposed[jj*rr + ii] = data\_[ii*cc + jj];
-00410       \}
-00411     \}
-00412     std::swap(rr, cc);
+00379   \textcolor{keywordtype}{int} mm = matrix\_properties\_.num\_rows(); \textcolor{comment}{// Used to construct this matrix.}
+00380   \textcolor{keywordtype}{int} nn = matrix\_properties\_.num\_cols(); \textcolor{comment}{// Used to construct this matrix.}
+00381 
+00382   \textcolor{keywordflow}{try} \{
+00383     data\_transposed = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[mm*nn];
+00384   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00385     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00386       std::endl;
+00387     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00388   \}
+00389   memset(data\_transposed,
+00390          \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
+00391          \textcolor{keyword}{sizeof}(data\_transposed[0])*mm*nn);
+00392 
+00393   \textcolor{comment}{// Assign the values to their transposed position.}
+00394   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < mm; ++ii) \{
+00395     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < nn; ++jj) \{
+00396       data\_transposed[jj*mm + ii] = data\_[ii*nn + jj];
+00397     \}
+00398   \}
+00399 
+00400   \textcolor{comment}{// Swap pointers.}
+00401   \textcolor{keyword}{auto} tmp = data\_; \textcolor{comment}{// Temporal holder.}
+00402   data\_ = data\_transposed;
+00403   \textcolor{keyword}{delete} [] tmp;
+00404   tmp = \textcolor{keyword}{nullptr};
+00405 
+00406   matrix\_properties\_.set\_num\_rows(nn);
+00407   matrix\_properties\_.set\_num\_cols(mm);
+00408 \}
+00409 
+\hypertarget{mtk__dense__matrix_8cc_source_l00410}{}\hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{00410} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{mtk::DenseMatrix::OrderRowMajor}() \{
+00411 
+00412   \textcolor{keywordflow}{if} (matrix\_properties\_.ordering() == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}) \{
 00413 
-00414     \textcolor{comment}{// Swap pointers.}
-00415     \textcolor{keyword}{auto} tmp = data\_; \textcolor{comment}{// Temporal holder.}
-00416     data\_ = data\_transposed;
-00417     \textcolor{keyword}{delete} [] tmp;
-00418     tmp = \textcolor{keyword}{nullptr};
-00419 
-00420     matrix\_properties\_.set\_ordering(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
-00421   \}
-00422 \}
-00423 
-\hypertarget{mtk__dense__matrix_8cc_source_l00424}{}\hyperlink{classmtk_1_1DenseMatrix_a59b9bea24acf39dca64e8549b3527463}{00424} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1DenseMatrix_a59b9bea24acf39dca64e8549b3527463}{mtk::DenseMatrix::OrderColMajor}() \{
-00425 
-00426   \textcolor{keywordflow}{if} (matrix\_properties\_.ordering() == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{ROW\_MAJOR}) \{
-00427 
-00429 
-00430     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *data\_transposed\{\}; \textcolor{comment}{// Buffer.}
+00415 
+00416     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *data\_transposed\{\}; \textcolor{comment}{// Buffer.}
+00417 
+00418     \textcolor{keywordtype}{int} mm = matrix\_properties\_.num\_rows(); \textcolor{comment}{// Used to construct this matrix.}
+00419     \textcolor{keywordtype}{int} nn = matrix\_properties\_.num\_cols(); \textcolor{comment}{// Used to construct this matrix.}
+00420 
+00421     \textcolor{keywordflow}{try} \{
+00422       data\_transposed = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[mm*nn];
+00423     \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00424       std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00425         std::endl;
+00426       std::cerr << memory\_allocation\_exception.what() << std::endl;
+00427     \}
+00428     memset(data\_transposed,
+00429           \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
+00430           \textcolor{keyword}{sizeof}(data\_transposed[0])*mm*nn);
 00431 
-00432     \textcolor{keywordtype}{int} rr = matrix\_properties\_.num\_rows(); \textcolor{comment}{// Used to construct this matrix.}
-00433     \textcolor{keywordtype}{int} cc = matrix\_properties\_.num\_cols(); \textcolor{comment}{// Used to construct this matrix.}
-00434 
-00435     \textcolor{keywordflow}{try} \{
-00436       data\_transposed = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[rr*cc];
-00437     \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00438       std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00439         std::endl;
-00440       std::cerr << memory\_allocation\_exception.what() << std::endl;
-00441     \}
-00442     memset(data\_transposed,
-00443           \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
-00444           \textcolor{keyword}{sizeof}(data\_transposed[0])*rr*cc);
-00445 
-00446     \textcolor{comment}{// Assign the values to their transposed position.}
-00447     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < rr; ++ii) \{
-00448       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < cc; ++jj) \{
-00449         data\_transposed[jj*rr + ii] = data\_[ii*cc + jj];
-00450       \}
-00451     \}
+00432     \textcolor{comment}{// Assign the values to their transposed position.}
+00433     std::swap(mm, nn);
+00434     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < mm; ++ii) \{
+00435       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < nn; ++jj) \{
+00436         data\_transposed[jj*mm + ii] = data\_[ii*nn + jj];
+00437       \}
+00438     \}
+00439     std::swap(mm, nn);
+00440 
+00441     \textcolor{comment}{// Swap pointers.}
+00442     \textcolor{keyword}{auto} tmp = data\_; \textcolor{comment}{// Temporal holder.}
+00443     data\_ = data\_transposed;
+00444     \textcolor{keyword}{delete} [] tmp;
+00445     tmp = \textcolor{keyword}{nullptr};
+00446 
+00447     matrix\_properties\_.set\_ordering(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
+00448   \}
+00449 \}
+00450 
+\hypertarget{mtk__dense__matrix_8cc_source_l00451}{}\hyperlink{classmtk_1_1DenseMatrix_a59b9bea24acf39dca64e8549b3527463}{00451} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1DenseMatrix_a59b9bea24acf39dca64e8549b3527463}{mtk::DenseMatrix::OrderColMajor}() \{
 00452 
-00453     \textcolor{comment}{// Swap pointers.}
-00454     \textcolor{keyword}{auto} tmp = data\_; \textcolor{comment}{// Temporal holder.}
-00455     data\_ = data\_transposed;
-00456     \textcolor{keyword}{delete} [] tmp;
-00457     tmp = \textcolor{keyword}{nullptr};
+00453   \textcolor{keywordflow}{if} (matrix\_properties\_.ordering() == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{ROW\_MAJOR}) \{
+00454 
+00456 
+00457     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *data\_transposed\{\}; \textcolor{comment}{// Buffer.}
 00458 
-00459     matrix\_properties\_.set\_ordering(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR});
-00460   \}
-00461 \}
-00462 
-\hypertarget{mtk__dense__matrix_8cc_source_l00463}{}\hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{00463} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{mtk::DenseMatrix::Kron}(\textcolor{keyword}{const} 
+00459     \textcolor{keywordtype}{int} mm = matrix\_properties\_.num\_rows(); \textcolor{comment}{// Used to construct this matrix.}
+00460     \textcolor{keywordtype}{int} nn = matrix\_properties\_.num\_cols(); \textcolor{comment}{// Used to construct this matrix.}
+00461 
+00462     \textcolor{keywordflow}{try} \{
+00463       data\_transposed = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[mm*nn];
+00464     \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00465       std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00466         std::endl;
+00467       std::cerr << memory\_allocation\_exception.what() << std::endl;
+00468     \}
+00469     memset(data\_transposed,
+00470           \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
+00471           \textcolor{keyword}{sizeof}(data\_transposed[0])*mm*nn);
+00472 
+00473     \textcolor{comment}{// Assign the values to their transposed position.}
+00474     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < mm; ++ii) \{
+00475       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < nn; ++jj) \{
+00476         data\_transposed[jj*mm + ii] = data\_[ii*nn + jj];
+00477       \}
+00478     \}
+00479 
+00480     \textcolor{comment}{// Swap pointers.}
+00481     \textcolor{keyword}{auto} tmp = data\_; \textcolor{comment}{// Temporal holder.}
+00482     data\_ = data\_transposed;
+00483     \textcolor{keyword}{delete} [] tmp;
+00484     tmp = \textcolor{keyword}{nullptr};
+00485 
+00486     matrix\_properties\_.set\_ordering(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR});
+00487   \}
+00488 \}
+00489 
+\hypertarget{mtk__dense__matrix_8cc_source_l00490}{}\hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{00490} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{mtk::DenseMatrix::Kron}(\textcolor{keyword}{const} 
       \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &aa,
-00464                                         \textcolor{keyword}{const} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &bb) \{
-00465 
-00466   \textcolor{keywordtype}{int} row\_offset\{\}; \textcolor{comment}{// Offset for rows.}
-00467   \textcolor{keywordtype}{int} col\_offset\{\}; \textcolor{comment}{// Offset for rows.}
-00468   
-00469   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aa\_factor\{\}; \textcolor{comment}{// Used in computation.}
-00470 
-00471   \textcolor{comment}{// Auxiliary variables:}
-00472   \textcolor{keyword}{auto} aux1 = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}()*bb.
-      \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
-00473   \textcolor{keyword}{auto} aux2 = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}()*bb.
-      \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
-00474 
-00475   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} output(aux1,aux2); \textcolor{comment}{// Output matrix.}
-00476 
-00477   \textcolor{keywordtype}{int} kk\_num\_cols\{output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}()\}; \textcolor{comment}{// Aux.}
-00478 
-00479   \textcolor{keyword}{auto} mm = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}(); \textcolor{comment}{// Rows of aa.}
-00480   \textcolor{keyword}{auto} nn = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}(); \textcolor{comment}{// Cols of aa.}
-00481   \textcolor{keyword}{auto} pp = bb.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}(); \textcolor{comment}{// Rows of bb.}
-00482   \textcolor{keyword}{auto} qq = bb.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}(); \textcolor{comment}{// Cols of bb.}
-00483 
-00484   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < mm; ++ii) \{
-00485     row\_offset = ii*pp;
-00486     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < nn; ++jj) \{
-00487       col\_offset = jj*qq;
-00488       aa\_factor = aa.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[ii*nn + jj];
-00489       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ll = 0; ll < pp; ++ll) \{
-00490         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} oo = 0; oo < qq; ++oo) \{
-00491           \textcolor{keyword}{auto} index = (ll + row\_offset)*kk\_num\_cols + (oo + col\_offset);
-00492           output.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[index] = aa\_factor*bb.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[ll*qq + oo];
-00493         \}
-00494       \}
-00495     \}
-00496   \}
+00491                                         \textcolor{keyword}{const} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &bb) \{
+00492 
+00493   \textcolor{keywordtype}{int} row\_offset\{\}; \textcolor{comment}{// Offset for rows.}
+00494   \textcolor{keywordtype}{int} col\_offset\{\}; \textcolor{comment}{// Offset for rows.}
+00495 
+00496   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aa\_factor\{\}; \textcolor{comment}{// Used in computation.}
 00497 
-00498   output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{set\_storage}(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
-00499   output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{set\_ordering}(
-      \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
-00500 
-00501   \textcolor{keywordflow}{return} output;
-00502 \}
+00498   \textcolor{comment}{// Auxiliary variables:}
+00499   \textcolor{keyword}{auto} aux1 = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}()*bb.
+      \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
+00500   \textcolor{keyword}{auto} aux2 = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}()*bb.
+      \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
+00501 
+00502   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} output(aux1,aux2); \textcolor{comment}{// Output matrix.}
 00503 
+00504   \textcolor{keywordtype}{int} kk\_num\_cols\{output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}()\}; \textcolor{comment}{// Aux.}
+00505 
+00506   \textcolor{keyword}{auto} mm = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}(); \textcolor{comment}{// Rows of aa.}
+00507   \textcolor{keyword}{auto} nn = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}(); \textcolor{comment}{// Cols of aa.}
+00508   \textcolor{keyword}{auto} pp = bb.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}(); \textcolor{comment}{// Rows of bb.}
+00509   \textcolor{keyword}{auto} qq = bb.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}(); \textcolor{comment}{// Cols of bb.}
+00510 
+00511   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < mm; ++ii) \{
+00512     row\_offset = ii*pp;
+00513     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < nn; ++jj) \{
+00514       col\_offset = jj*qq;
+00515       aa\_factor = aa.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[ii*nn + jj];
+00516       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ll = 0; ll < pp; ++ll) \{
+00517         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} oo = 0; oo < qq; ++oo) \{
+00518           \textcolor{keyword}{auto} index = (ll + row\_offset)*kk\_num\_cols + (oo + col\_offset);
+00519           output.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[index] = aa\_factor*bb.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[ll*qq + oo];
+00520         \}
+00521       \}
+00522     \}
+00523   \}
+00524 
+00525   output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{set\_storage}(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
+00526   output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{set\_ordering}(
+      \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
+00527 
+00528   \textcolor{keywordflow}{return} output;
+00529 \}
+00530 
+\hypertarget{mtk__dense__matrix_8cc_source_l00531}{}\hyperlink{classmtk_1_1DenseMatrix_aedead04ae21c5d66428b84da3dac943a}{00531} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1DenseMatrix_aedead04ae21c5d66428b84da3dac943a}{mtk::DenseMatrix::WriteToFile}(std::string filename) \{
+00532 
+00533   std::ofstream output\_dat\_file;  \textcolor{comment}{// Output file.}
+00534 
+00535   output\_dat\_file.open(filename);
+00536 
+00537   \textcolor{keywordflow}{if} (!output\_dat\_file.is\_open()) \{
+00538     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00539   \}
+00540 
+00541   \textcolor{keywordtype}{int} mm\{matrix\_properties\_.num\_rows()\};
+00542   \textcolor{keywordtype}{int} nn\{matrix\_properties\_.num\_cols()\};
+00543 
+00544   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < mm; ++ii) \{
+00545     \textcolor{keywordtype}{int} offset\{ii*nn\};
+00546     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < nn; ++jj) \{
+00547       output\_dat\_file << ii << \textcolor{charliteral}{' '} << jj << \textcolor{charliteral}{' '} << data\_[offset + jj] <<
+00548         std::endl;
+00549     \}
+00550   \}
+00551 
+00552   output\_dat\_file.close();
+00553 
+00554   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00555 \}
 \end{DoxyCode}

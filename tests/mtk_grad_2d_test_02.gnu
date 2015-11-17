@@ -64,8 +64,8 @@ name = "mtk_grad_2d_test_02"
 set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
 
 # png terminal for disk storage.
-# set terminal png
-# set output name.".png"
+set terminal png
+set output name.".png"
 
 # Data manipulation.
 tol = 0.0000001
@@ -79,8 +79,12 @@ set palette defined (0 '#000000', \
                      4 '#000000')
 
 # Axes.
+set xlabel "Column"
 set x2tics
+
+set ylabel "Row"
 set yrange [] reverse
+
 set autoscale fix
 set grid
 
@@ -89,4 +93,4 @@ set title "Matrix Encoding a 2D Mimetic Gradient"
 
 set key bmargin center horizontal
 
-plot name.".dat" u 2:1:(f($3)) w p pt 5 palette
+plot name.".dat" u 2:1:(f($3)) title "Magnitude of entry" w p pt 5 palette

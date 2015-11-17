@@ -1,6 +1,7 @@
 var namespacemtk =
 [
     [ "BCDesc1D", "classmtk_1_1BCDesc1D.html", "classmtk_1_1BCDesc1D" ],
+    [ "BCDesc2D", "classmtk_1_1BCDesc2D.html", "classmtk_1_1BCDesc2D" ],
     [ "BLASAdapter", "classmtk_1_1BLASAdapter.html", "classmtk_1_1BLASAdapter" ],
     [ "DenseMatrix", "classmtk_1_1DenseMatrix.html", "classmtk_1_1DenseMatrix" ],
     [ "Div1D", "classmtk_1_1Div1D.html", "classmtk_1_1Div1D" ],

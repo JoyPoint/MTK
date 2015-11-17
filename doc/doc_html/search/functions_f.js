@@ -19,6 +19,6 @@ var searchData=
   ['solverectangulardensesystem',['SolveRectangularDenseSystem',['../classmtk_1_1LAPACKAdapter.html#a380f148ffdf96bae2f79ae28f1a6560c',1,'mtk::LAPACKAdapter']]],
   ['solvesimplexandcompare',['SolveSimplexAndCompare',['../classmtk_1_1GLPKAdapter.html#a834480aca83e3c0d09fdab7fdb7e8a3f',1,'mtk::GLPKAdapter']]],
   ['sormqr_5f',['sormqr_',['../namespacemtk.html#a59c58408e1c0a9837b67a417be986b82',1,'mtk']]],
-  ['south_5fbndy_5fy',['south_bndy_y',['../classmtk_1_1UniStgGrid2D.html#abf94d51c0dfee07840e1603dfdc49643',1,'mtk::UniStgGrid2D']]],
+  ['south_5fbndy',['south_bndy',['../classmtk_1_1UniStgGrid2D.html#a1442eaf219f099d0ebf46a170fdebf92',1,'mtk::UniStgGrid2D']]],
   ['storage',['storage',['../classmtk_1_1Matrix.html#a21893fc643eebadd9757c8995cf44dd3',1,'mtk::Matrix']]]
 ];
