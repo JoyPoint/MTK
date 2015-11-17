@@ -120,13 +120,13 @@ enum FieldNature {
 
 \ingroup c02-enums
 
-\brief 1D interpolation operator.
+\brief Interpolation operator.
 
-For now, it implements an arithmetic average.
+Used to tag different directions of interpolation supported.
 */
 enum DirInterp {
-  SCALAR_TO_VECTOR,
-  VECTOR_TO_SCALAR
+  SCALAR_TO_VECTOR, ///< Interpolations places scalar on vectors' location.
+  VECTOR_TO_SCALAR  ///< Interpolations places vectors on scalars' location.
 };
 }
 #endif  // End of: MTK_INCLUDE_ENUMS_H_

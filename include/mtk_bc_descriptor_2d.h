@@ -74,11 +74,11 @@ class BCDescriptor2D {
   \param[in] south Pointer to function returning south coefficient at (ii,jj).
   \param[in] north Pointer to function returning north coefficient at (ii,jj).
   */
-  static void ImposeOnOperatorMatrix(const DenseMatrix &matrix,
-                                     Real (*west)(int ii, int jj),
-                                     Real (*east)(int ii, int jj),
-                                     Real (*south)(int ii, int jj),
-                                     Real (*north)(int ii, int jj));
+  static void ImposeOnLaplacianMatrix(DenseMatrix &matrix,
+                                      Real (*west)(int ii, int jj),
+                                      Real (*east)(int ii, int jj),
+                                      Real (*south)(int ii, int jj),
+                                      Real (*north)(int ii, int jj));
 
 /*!
   \brief Enforces the condition on the grid.
@@ -89,7 +89,7 @@ class BCDescriptor2D {
   \param[in] south Pointer to function returning south coefficient at (xx,yy).
   \param[in] north Pointer to function returning north coefficient at (xx,yy).
   */
-  static void ImposeOnGrid(const UniStgGrid2D &grid,
+  static void ImposeOnGrid(UniStgGrid2D &grid,
                            Real (*west)(Real xx, Real yy),
                            Real (*east)(Real xx, Real yy),
                            Real (*south)(Real xx, Real yy),

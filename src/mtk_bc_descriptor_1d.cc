@@ -58,7 +58,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk_bc_descriptor_1d.h"
 
-void mtk::BCDescriptor1D::ImposeOnOperatorMatrix(mtk::DenseMatrix &matrix,
+void mtk::BCDescriptor1D::ImposeOnLaplacianMatrix(
+    mtk::DenseMatrix &matrix,
     const std::vector<mtk::Real> &west,
     const std::vector<mtk::Real> &east) {
 
@@ -86,8 +87,8 @@ void mtk::BCDescriptor1D::ImposeOnOperatorMatrix(mtk::DenseMatrix &matrix,
 }
 
 void mtk::BCDescriptor1D::ImposeOnGrid(mtk::UniStgGrid1D &grid,
-                                 const mtk::Real &omega,
-                                 const mtk::Real &epsilon) {
+                                       const mtk::Real &omega,
+                                       const mtk::Real &epsilon) {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(grid.num_cells_x() == 0, __FILE__, __LINE__, __func__);

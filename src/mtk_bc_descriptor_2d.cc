@@ -58,11 +58,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk_bc_descriptor_2d.h"
 
-void mtk::BCDescriptor2D::ImposeOnOperatorMatrix(const mtk::DenseMatrix &matrix,
-                                           mtk::Real (*west)(int ii, int jj),
-                                           mtk::Real (*east)(int ii, int jj),
-                                           mtk::Real (*south)(int ii, int jj),
-                                           mtk::Real (*north)(int ii, int jj)) {
+void mtk::BCDescriptor2D::ImposeOnLaplacianMatrix(
+    mtk::DenseMatrix &matrix,
+    mtk::Real (*west)(int ii, int jj),
+    mtk::Real (*east)(int ii, int jj),
+    mtk::Real (*south)(int ii, int jj),
+    mtk::Real (*north)(int ii, int jj)) {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(matrix.num_rows() == 0, __FILE__, __LINE__, __func__);
@@ -72,8 +73,8 @@ void mtk::BCDescriptor2D::ImposeOnOperatorMatrix(const mtk::DenseMatrix &matrix,
   mtk::Tools::Prevent(north == nullptr, __FILE__, __LINE__, __func__);
   #endif
 
-}
 
+}
 
 void mtk::BCDescriptor2D::ImposeOnGrid(const mtk::UniStgGrid2D &grid,
     mtk::Real (*west)(mtk::Real xx, mtk::Real yy),
@@ -89,5 +90,6 @@ void mtk::BCDescriptor2D::ImposeOnGrid(const mtk::UniStgGrid2D &grid,
   mtk::Tools::Prevent(south == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(north == nullptr, __FILE__, __LINE__, __func__);
   #endif
+
 
 }

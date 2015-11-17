@@ -68,15 +68,15 @@ namespace mtk {
 class BCDescriptor1D {
  public:
   /*!
-  \brief Enforces the condition on the operator represented as matrix.
+  \brief Enforces the condition on the Laplacian represented as matrix.
 
   \param[in,out] matrix Input operator.
   \param[in] west Array of values for the west boundary.
   \param[in] east Array of values for the east boundary.
   */
-  static void ImposeOnOperatorMatrix(DenseMatrix &matrix,
-                                     const std::vector<Real> &west,
-                                     const std::vector<Real> &east);
+  static void ImposeOnLaplacianMatrix(DenseMatrix &matrix,
+                                      const std::vector<Real> &west,
+                                      const std::vector<Real> &east);
 
   /*!
   \brief Enforces the condition on the grid.
@@ -86,8 +86,8 @@ class BCDescriptor1D {
   \param[in] east Array of values for the east boundary.
   */
   static void ImposeOnGrid(UniStgGrid1D &grid,
-                           const Real &omega,
-                           const Real &epsilon);
+                           const Real &epsilon,
+                           const Real &omega);
 };
 }
 #endif  // End of: MTK_INCLUDE_BC_DESCRIPTOR_1D_H_
