@@ -1,14 +1,14 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
   <compounddef id="classmtk_1_1BCDesc1D" kind="class" prot="public">
     <compoundname>mtk::BCDesc1D</compoundname>
     <includes refid="mtk__bc__desc__1d_8h" local="no">mtk_bc_desc_1d.h</includes>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classmtk_1_1BCDesc1D_1a4dcf1ac4198402113591fde97dfa3260" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classmtk_1_1BCDesc1D_1a5e5dcda1780b9aa404e836c4c27ac08f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void mtk::BCDesc1D::ImposeOnOperator</definition>
+        <definition>void mtk::BCDesc1D::ImposeOnOperatorMatrix</definition>
         <argsstring>(DenseMatrix &amp;matrix, const std::vector&lt; Real &gt; &amp;west, const std::vector&lt; Real &gt; &amp;east)</argsstring>
-        <name>ImposeOnOperator</name>
+        <name>ImposeOnOperatorMatrix</name>
         <param>
           <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref> &amp;</type>
           <declname>matrix</declname>
@@ -22,18 +22,40 @@
           <declname>east</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Enforces the condition on the operator represented as matrix. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">matrix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input operator. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">west</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of values for the west boundary. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">east</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of values for the east boundary. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
 <para><orderedlist>
 <listitem><para>Assign the west array.</para></listitem><listitem><para>Assign the east array. </para></listitem></orderedlist>
 </para>        </inbodydescription>
-        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_bc_desc_1d.h" line="11" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_bc_desc_1d.cc" bodystart="5" bodyend="28"/>
-        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
-        <references refid="classmtk_1_1DenseMatrix_1a17d8d3b9cc0926044b6972dd190a5c21" compoundref="mtk__dense__matrix_8cc" startline="306" endline="309">mtk::DenseMatrix::num_rows</references>
-        <references refid="classmtk_1_1DenseMatrix_1af6f78373aaf2136f0c78974d7c8de0a8" compoundref="mtk__dense__matrix_8cc" startline="311" endline="314">mtk::DenseMatrix::num_cols</references>
-        <references refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" compoundref="mtk__dense__matrix_8cc" startline="333" endline="344">mtk::DenseMatrix::SetValue</references>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_desc_1d.h" line="77" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_bc_desc_1d.cc" bodystart="61" bodyend="86"/>
+        <references refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
+        <references refid="classmtk_1_1DenseMatrix_1a17d8d3b9cc0926044b6972dd190a5c21" compoundref="mtk__dense__matrix_8cc" startline="333" endline="336">mtk::DenseMatrix::num_rows</references>
+        <references refid="classmtk_1_1DenseMatrix_1af6f78373aaf2136f0c78974d7c8de0a8" compoundref="mtk__dense__matrix_8cc" startline="338" endline="341">mtk::DenseMatrix::num_cols</references>
+        <references refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" compoundref="mtk__dense__matrix_8cc" startline="360" endline="371">mtk::DenseMatrix::SetValue</references>
       </memberdef>
       <memberdef kind="function" id="classmtk_1_1BCDesc1D_1a79a659c6a6333af8e51c463cf1ecb0b7" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
@@ -53,17 +75,39 @@
           <declname>epsilon</declname>
         </param>
         <briefdescription>
-        </briefdescription>
+<para>Enforces the condition on the grid. </para>        </briefdescription>
         <detaileddescription>
-        </detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="inout">grid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input grid. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">west</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of values for the west boundary. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">east</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Array of values for the east boundary. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
         <inbodydescription>
 <para><orderedlist>
 <listitem><para>Assign the west condition.</para></listitem><listitem><para>Assign the east condition. </para></listitem></orderedlist>
 </para>        </inbodydescription>
-        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_bc_desc_1d.h" line="15" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_bc_desc_1d.cc" bodystart="30" bodyend="43"/>
-        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
-        <references refid="classmtk_1_1UniStgGrid1D_1af1b3729d8afa07be5b2775ed68015b80" compoundref="mtk__uni__stg__grid__1d_8cc" startline="159" endline="162">mtk::UniStgGrid1D::num_cells_x</references>
-        <references refid="classmtk_1_1UniStgGrid1D_1acf28d702f6e702599986afcb253bbfc1" compoundref="mtk__uni__stg__grid__1d_8cc" startline="154" endline="157">mtk::UniStgGrid1D::discrete_field_u</references>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_desc_1d.h" line="88" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_bc_desc_1d.cc" bodystart="88" bodyend="103"/>
+        <references refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1af1b3729d8afa07be5b2775ed68015b80" compoundref="mtk__uni__stg__grid__1d_8cc" startline="171" endline="174">mtk::UniStgGrid1D::num_cells_x</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1acf28d702f6e702599986afcb253bbfc1" compoundref="mtk__uni__stg__grid__1d_8cc" startline="166" endline="169">mtk::UniStgGrid1D::discrete_field_u</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -71,15 +115,15 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="36">
+      <node id="61">
         <label>mtk::BCDesc1D</label>
         <link refid="classmtk_1_1BCDesc1D"/>
       </node>
     </collaborationgraph>
-    <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_bc_desc_1d.h" line="9" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_bc_desc_1d.h" bodystart="9" bodyend="18"/>
+    <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_desc_1d.h" line="68" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_bc_desc_1d.h" bodystart="68" bodyend="91"/>
     <listofallmembers>
       <member refid="classmtk_1_1BCDesc1D_1a79a659c6a6333af8e51c463cf1ecb0b7" prot="public" virt="non-virtual"><scope>mtk::BCDesc1D</scope><name>ImposeOnGrid</name></member>
-      <member refid="classmtk_1_1BCDesc1D_1a4dcf1ac4198402113591fde97dfa3260" prot="public" virt="non-virtual"><scope>mtk::BCDesc1D</scope><name>ImposeOnOperator</name></member>
+      <member refid="classmtk_1_1BCDesc1D_1a5e5dcda1780b9aa404e836c4c27ac08f" prot="public" virt="non-virtual"><scope>mtk::BCDesc1D</scope><name>ImposeOnOperatorMatrix</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

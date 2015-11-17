@@ -30,8 +30,13 @@ properties of their continuum counterparts to be {\bfseries mimetic}.\end{DoxyPr
 
 \begin{DoxyPre}The {\bfseries Mimetic Methods Toolkit (MTK)} is a C++ library for mimetic numerical
 methods. It is arranged as a set of classes for {\bfseries mimetic quadratures},
-{\bfseries mimetic interpolation}, and {\bfseries mimetic discretization} methods for the
-numerical solution of ordinary and partial differential equations.
+{\bfseries mimetic interpolation}, and {\bfseries mimetic finite differences} methods for the
+numerical solution of ordinary and partial differential equations.\end{DoxyPre}
+
+
+
+\begin{DoxyPre}An older version of this library is available outside of GitHub... just email me
+about it, and you can have it... it is ugly, yet functional and more complete.
 
 
 \end{DoxyPre}
@@ -77,17 +82,21 @@ Therefore, the following dependencies tree arises:\end{DoxyPre}
 
 
 
-\begin{DoxyPre}2. (Optional) ATLAS - Available from: \href{http://math-atlas.sourceforge.net/}{\tt http://math-atlas.sourceforge.net/}
-  1. BLAS - Available from: \href{http://www.netlib.org/blas/}{\tt http://www.netlib.org/blas/}
-  2. LAPACK - Available from: \href{http://www.netlib.org/lapack/}{\tt http://www.netlib.org/lapack/}\end{DoxyPre}
+\begin{DoxyPre}2. GLPK - Available from: \href{https://www.gnu.org/software/glpk/}{\tt https://www.gnu.org/software/glpk/}\end{DoxyPre}
 
 
 
-\begin{DoxyPre}3. (Optional) Valgrind - Available from: \href{http://valgrind.org/}{\tt http://valgrind.org/}\end{DoxyPre}
+\begin{DoxyPre}3. (Optional) ATLAS - Available from: \href{http://math-atlas.sourceforge.net/}{\tt http://math-atlas.sourceforge.net/}
+  1. LAPACK - Available from: \href{http://www.netlib.org/lapack/}{\tt http://www.netlib.org/lapack/}
+    1. BLAS - Available from: \href{http://www.netlib.org/blas}{\tt http://www.netlib.org/blas}\end{DoxyPre}
 
 
 
-\begin{DoxyPre}4. (Optional) Doxygen - Available from \href{http://www.stack.nl/~dimitri/doxygen/}{\tt http://www.stack.nl/~dimitri/doxygen/}\end{DoxyPre}
+\begin{DoxyPre}4. (Optional) Valgrind - Available from: \href{http://valgrind.org/}{\tt http://valgrind.org/}\end{DoxyPre}
+
+
+
+\begin{DoxyPre}5. (Optional) Doxygen - Available from \href{http://www.stack.nl/~dimitri/doxygen/}{\tt http://www.stack.nl/~dimitri/doxygen/}\end{DoxyPre}
 
 
 
@@ -99,7 +108,7 @@ Therefore, the following dependencies tree arises:\end{DoxyPre}
 
 
 
-\begin{DoxyPre}There are no dependences for OS X.
+\begin{DoxyPre}1. GLPK - Available from: \href{https://www.gnu.org/software/glpk/}{\tt https://www.gnu.org/software/glpk/}
 
 
 \end{DoxyPre}
@@ -133,14 +142,16 @@ with. The following command provides help on the options for make:\end{DoxyPre}
 Makefile for the MTK.
 
 Options are:
-- make: builds only the library and the examples.
-- all: builds the library, the examples and the documentation.
-- mtklib: builds the library, i.e. generates the archive files.
-- test: generates the tests.
-- example: generates the examples.
+- all: builds the library, the tests, and examples.
+- mtklib: builds the library.
+- test: builds the test files.
+- example: builds the examples.
+
+- testall: runs all the tests.
+
 - gendoc: generates the documentation for the library.
 
-- clean: cleans ALL the generated files.
+- clean: cleans all the generated files.
 - cleanlib: cleans the generated archive and object files.
 - cleantest: cleans the generated tests executables.
 - cleanexample: cleans the generated examples executables.

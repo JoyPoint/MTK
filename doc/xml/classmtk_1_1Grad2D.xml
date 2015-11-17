@@ -1,0 +1,190 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classmtk_1_1Grad2D" kind="class" prot="public">
+    <compoundname>mtk::Grad2D</compoundname>
+    <includes refid="mtk__grad__2d_8h" local="no">mtk_grad_2d.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmtk_1_1Grad2D_1a22b5ad8454b013e365257dcae04d87a4" prot="private" static="no" mutable="no">
+        <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref></type>
+        <definition>DenseMatrix mtk::Grad2D::gradient_</definition>
+        <argsstring></argsstring>
+        <name>gradient_</name>
+        <briefdescription>
+<para>Actual operator. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_2d.h" line="98" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_grad_2d.h" bodystart="98" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Grad2D_1ab028aa2889a2f5d59f52e01691b1b9eb" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Grad2D::order_accuracy_</definition>
+        <argsstring></argsstring>
+        <name>order_accuracy_</name>
+        <briefdescription>
+<para>Order of accuracy. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_2d.h" line="100" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_grad_2d.h" bodystart="100" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Grad2D_1a2bc4debde55eb2c2bc50cef7ceb60cfd" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>Real mtk::Grad2D::mimetic_threshold_</definition>
+        <argsstring></argsstring>
+        <name>mimetic_threshold_</name>
+        <briefdescription>
+<para>Mimetic Threshold. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_2d.h" line="102" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_grad_2d.h" bodystart="102" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmtk_1_1Grad2D_1a15bdca254b7bf662913b34c7afb8d4c9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::Grad2D::Grad2D</definition>
+        <argsstring>()</argsstring>
+        <name>Grad2D</name>
+        <briefdescription>
+<para>Default constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_2d.h" line="69" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_grad_2d.cc" bodystart="67" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Grad2D_1a31ccf118edb128c85f28b579bd9394a8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::Grad2D::Grad2D</definition>
+        <argsstring>(const Grad2D &amp;grad)</argsstring>
+        <name>Grad2D</name>
+        <param>
+          <type>const <ref refid="classmtk_1_1Grad2D" kindref="compound">Grad2D</ref> &amp;</type>
+          <declname>grad</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">div</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Given divergence. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_2d.h" line="76" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_grad_2d.cc" bodystart="71" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Grad2D_1ae6a071b24422d057c41346e80be96cb3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::Grad2D::~Grad2D</definition>
+        <argsstring>()</argsstring>
+        <name>~Grad2D</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_2d.h" line="79" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_grad_2d.cc" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Grad2D_1a9771be954c59880e3d83f4d645378c00" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mtk::Grad2D::ConstructGrad2D</definition>
+        <argsstring>(const UniStgGrid2D &amp;grid, int order_accuracy=kDefaultOrderAccuracy, Real mimetic_threshold=kDefaultMimeticThreshold)</argsstring>
+        <name>ConstructGrad2D</name>
+        <param>
+          <type>const <ref refid="classmtk_1_1UniStgGrid2D" kindref="compound">UniStgGrid2D</ref> &amp;</type>
+          <declname>grid</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>order_accuracy</declname>
+          <defval><ref refid="group__c01-roots_1ga0d95560098eb36420511103637b6952f" kindref="member">kDefaultOrderAccuracy</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+          <declname>mimetic_threshold</declname>
+          <defval><ref refid="group__c01-roots_1ga35718d949bdc81a08a9cc8ebbe3478a2" kindref="member">kDefaultMimeticThreshold</ref></defval>
+        </param>
+        <briefdescription>
+<para>Factory method implementing the CBS Algorithm to build operator. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Success of the construction. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_2d.h" line="86" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_grad_2d.cc" bodystart="77" bodyend="141"/>
+        <references refid="classmtk_1_1UniStgGrid2D_1a2d182866a398aba8e4829590e85bf939" compoundref="mtk__uni__stg__grid__2d_8cc" startline="220" endline="223">mtk::UniStgGrid2D::num_cells_x</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1aed05a801cc9a76dba0ff203cea58a61a" compoundref="mtk__uni__stg__grid__2d_8cc" startline="240" endline="243">mtk::UniStgGrid2D::num_cells_y</references>
+        <references refid="classmtk_1_1Grad1D_1a74ef5245cfae6fd158bd7f563a0c2e52" compoundref="mtk__grad__1d_8cc" startline="182" endline="323">mtk::Grad1D::ConstructGrad1D</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1af2b1712387ded85edaf2b64617d3fc13" compoundref="mtk__uni__stg__grid__2d_8cc" startline="210" endline="213">mtk::UniStgGrid2D::west_bndy</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1a03f689eb29a6369b82ce1207c655d5ff" compoundref="mtk__uni__stg__grid__2d_8cc" startline="215" endline="218">mtk::UniStgGrid2D::east_bndy</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1a1442eaf219f099d0ebf46a170fdebf92" compoundref="mtk__uni__stg__grid__2d_8cc" startline="230" endline="233">mtk::UniStgGrid2D::south_bndy</references>
+        <references refid="classmtk_1_1Grad1D_1a4218516bfb43f683559322ea97058c78" compoundref="mtk__grad__1d_8cc" startline="360" endline="426">mtk::Grad1D::ReturnAsDenseMatrix</references>
+        <references refid="classmtk_1_1DenseMatrix_1a01d3d8bd502870f93bf3a88a0cc5fb49" compoundref="mtk__dense__matrix_8cc" startline="490" endline="529">mtk::DenseMatrix::Kron</references>
+        <references refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" compoundref="mtk__dense__matrix_8cc" startline="360" endline="371">mtk::DenseMatrix::SetValue</references>
+        <references refid="classmtk_1_1DenseMatrix_1a87fb785713c04b13767947cc3325ce7c" compoundref="mtk__dense__matrix_8cc" startline="348" endline="358">mtk::DenseMatrix::GetValue</references>
+        <referencedby refid="classmtk_1_1Lap2D_1a188ee8fee643463affca7de2884711b1" compoundref="mtk__lap__2d_8cc" startline="77" endline="108">mtk::Lap2D::ConstructLap2D</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Grad2D_1afa14fa1b84f05752027c1cef66381de8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref></type>
+        <definition>mtk::DenseMatrix mtk::Grad2D::ReturnAsDenseMatrix</definition>
+        <argsstring>()</argsstring>
+        <name>ReturnAsDenseMatrix</name>
+        <briefdescription>
+<para>Return the operator as a dense matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The operator as a dense matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_2d.h" line="95" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_grad_2d.cc" bodystart="143" bodyend="146"/>
+        <referencedby refid="classmtk_1_1Lap2D_1a188ee8fee643463affca7de2884711b1" compoundref="mtk__lap__2d_8cc" startline="77" endline="108">mtk::Lap2D::ConstructLap2D</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+    </briefdescription>
+    <detaileddescription>
+    </detaileddescription>
+    <collaborationgraph>
+      <node id="85">
+        <label>mtk::DenseMatrix</label>
+        <link refid="classmtk_1_1DenseMatrix"/>
+        <childnode refid="86" relation="usage">
+          <edgelabel>-matrix_properties_</edgelabel>
+        </childnode>
+      </node>
+      <node id="84">
+        <label>mtk::Grad2D</label>
+        <link refid="classmtk_1_1Grad2D"/>
+        <childnode refid="85" relation="usage">
+          <edgelabel>-gradient_</edgelabel>
+        </childnode>
+      </node>
+      <node id="86">
+        <label>mtk::Matrix</label>
+        <link refid="classmtk_1_1Matrix"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_2d.h" line="66" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_grad_2d.h" bodystart="66" bodyend="103"/>
+    <listofallmembers>
+      <member refid="classmtk_1_1Grad2D_1a9771be954c59880e3d83f4d645378c00" prot="public" virt="non-virtual"><scope>mtk::Grad2D</scope><name>ConstructGrad2D</name></member>
+      <member refid="classmtk_1_1Grad2D_1a15bdca254b7bf662913b34c7afb8d4c9" prot="public" virt="non-virtual"><scope>mtk::Grad2D</scope><name>Grad2D</name></member>
+      <member refid="classmtk_1_1Grad2D_1a31ccf118edb128c85f28b579bd9394a8" prot="public" virt="non-virtual"><scope>mtk::Grad2D</scope><name>Grad2D</name></member>
+      <member refid="classmtk_1_1Grad2D_1a22b5ad8454b013e365257dcae04d87a4" prot="private" virt="non-virtual"><scope>mtk::Grad2D</scope><name>gradient_</name></member>
+      <member refid="classmtk_1_1Grad2D_1a2bc4debde55eb2c2bc50cef7ceb60cfd" prot="private" virt="non-virtual"><scope>mtk::Grad2D</scope><name>mimetic_threshold_</name></member>
+      <member refid="classmtk_1_1Grad2D_1ab028aa2889a2f5d59f52e01691b1b9eb" prot="private" virt="non-virtual"><scope>mtk::Grad2D</scope><name>order_accuracy_</name></member>
+      <member refid="classmtk_1_1Grad2D_1afa14fa1b84f05752027c1cef66381de8" prot="public" virt="non-virtual"><scope>mtk::Grad2D</scope><name>ReturnAsDenseMatrix</name></member>
+      <member refid="classmtk_1_1Grad2D_1ae6a071b24422d057c41346e80be96cb3" prot="public" virt="non-virtual"><scope>mtk::Grad2D</scope><name>~Grad2D</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

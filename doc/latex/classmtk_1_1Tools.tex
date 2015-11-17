@@ -1,5 +1,5 @@
-\hypertarget{classmtk_1_1Tools}{\section{mtk\-:\-:Tools Class Reference}
-\label{classmtk_1_1Tools}\index{mtk\-::\-Tools@{mtk\-::\-Tools}}
+\hypertarget{classmtk_1_1Tools}{\section{mtk\+:\+:Tools Class Reference}
+\label{classmtk_1_1Tools}\index{mtk\+::\+Tools@{mtk\+::\+Tools}}
 }
 
 
@@ -8,50 +8,70 @@ Tool manager class.
 
 
 
-{\ttfamily \#include $<$mtk\-\_\-tools.\-h$>$}
+{\ttfamily \#include $<$mtk\+\_\+tools.\+h$>$}
 
 
 
-Collaboration diagram for mtk\-:\-:Tools\-:\nopagebreak
+Collaboration diagram for mtk\+:\+:Tools\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=174pt]{classmtk_1_1Tools__coll__graph}
+\includegraphics[width=194pt]{classmtk_1_1Tools__coll__graph}
 \end{center}
 \end{figure}
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static void \hyperlink{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{Prevent} (const bool condition, const char $\ast$fname, int lineno, const char $\ast$fxname)
-\begin{DoxyCompactList}\small\item\em Enforces pre-\/conditions by preventing their complements from occur. \end{DoxyCompactList}\item 
-static void \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{Begin\-Test\-No} (const int \&nn)
-\begin{DoxyCompactList}\small\item\em Begins the execution of a test. \end{DoxyCompactList}\item 
-static void \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{End\-Test\-No} (const int \&nn)
-\begin{DoxyCompactList}\small\item\em Ends the execution of a test. \end{DoxyCompactList}\end{DoxyCompactItemize}
+static void \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{Prevent} (const bool complement, const char $\ast$fname, int lineno, const char $\ast$fxname)
+\begin{DoxyCompactList}\small\item\em Enforces preconditions by preventing their complements from occur. \end{DoxyCompactList}\item 
+static void \hyperlink{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}{Begin\+Unit\+Test\+No} (const int \&nn)
+\begin{DoxyCompactList}\small\item\em Begins the execution of a unit test. Starts a timer. \end{DoxyCompactList}\item 
+static void \hyperlink{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}{End\+Unit\+Test\+No} (const int \&nn)
+\begin{DoxyCompactList}\small\item\em Ends the execution of a unit test. Stops and reports wall-\/clock time. \end{DoxyCompactList}\item 
+static void \hyperlink{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}{Assert} (const bool condition)
+\begin{DoxyCompactList}\small\item\em Asserts if the condition required to pass the unit test occurs. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Static Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-static int \hyperlink{classmtk_1_1Tools_a04a60458594336ee1badff79b8a9a77f}{test\-\_\-number\-\_\-}
+static int \hyperlink{classmtk_1_1Tools_a04a60458594336ee1badff79b8a9a77f}{test\+\_\+number\+\_\+}
 \begin{DoxyCompactList}\small\item\em Current test being executed. \end{DoxyCompactList}\item 
-static clock\-\_\-t \hyperlink{classmtk_1_1Tools_a4bd58d08397db42271ed9e2d3ecc9963}{begin\-\_\-time\-\_\-}
+static \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Tools_aba9d3d2952a3de9e7b46faa86d28d692}{duration\+\_\+}
+\begin{DoxyCompactList}\small\item\em Duration of the current test. \end{DoxyCompactList}\item 
+static clock\+\_\+t \hyperlink{classmtk_1_1Tools_a4bd58d08397db42271ed9e2d3ecc9963}{begin\+\_\+time\+\_\+}
 \begin{DoxyCompactList}\small\item\em Elapsed time on current test. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 Basic tools to ensure execution correctness. 
 
-Definition at line \hyperlink{mtk__tools_8h_source_l00072}{72} of file \hyperlink{mtk__tools_8h_source}{mtk\-\_\-tools.\-h}.
+Definition at line \hyperlink{mtk__tools_8h_source_l00074}{74} of file \hyperlink{mtk__tools_8h_source}{mtk\+\_\+tools.\+h}.
 
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{\index{mtk\-::\-Tools@{mtk\-::\-Tools}!Begin\-Test\-No@{Begin\-Test\-No}}
-\index{Begin\-Test\-No@{Begin\-Test\-No}!mtk::Tools@{mtk\-::\-Tools}}
-\subsubsection[{Begin\-Test\-No}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Tools\-::\-Begin\-Test\-No (
+\hypertarget{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}{\index{mtk\+::\+Tools@{mtk\+::\+Tools}!Assert@{Assert}}
+\index{Assert@{Assert}!mtk\+::\+Tools@{mtk\+::\+Tools}}
+\subsubsection[{Assert}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+Tools\+::\+Assert (
+\begin{DoxyParamCaption}
+\item[{const bool}]{condition}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em condition} & Condition to be asserted. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__tools_8cc_source_l00114}{114} of file \hyperlink{mtk__tools_8cc_source}{mtk\+\_\+tools.\+cc}.
+
+\hypertarget{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}{\index{mtk\+::\+Tools@{mtk\+::\+Tools}!Begin\+Unit\+Test\+No@{Begin\+Unit\+Test\+No}}
+\index{Begin\+Unit\+Test\+No@{Begin\+Unit\+Test\+No}!mtk\+::\+Tools@{mtk\+::\+Tools}}
+\subsubsection[{Begin\+Unit\+Test\+No}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+Tools\+::\+Begin\+Unit\+Test\+No (
 \begin{DoxyParamCaption}
 \item[{const int \&}]{nn}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em nn} & Number of the test. \\
@@ -59,26 +79,26 @@ Definition at line \hyperlink{mtk__tools_8h_source_l00072}{72} of file \hyperlin
 \end{DoxyParams}
 
 
-Definition at line \hyperlink{mtk__tools_8cc_source_l00089}{89} of file \hyperlink{mtk__tools_8cc_source}{mtk\-\_\-tools.\-cc}.
+Definition at line \hyperlink{mtk__tools_8cc_source_l00091}{91} of file \hyperlink{mtk__tools_8cc_source}{mtk\+\_\+tools.\+cc}.
 
 
 
-Here is the call graph for this function\-:\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf_cgraph}
+\includegraphics[width=350pt]{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{\index{mtk\-::\-Tools@{mtk\-::\-Tools}!End\-Test\-No@{End\-Test\-No}}
-\index{End\-Test\-No@{End\-Test\-No}!mtk::Tools@{mtk\-::\-Tools}}
-\subsubsection[{End\-Test\-No}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Tools\-::\-End\-Test\-No (
+\hypertarget{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}{\index{mtk\+::\+Tools@{mtk\+::\+Tools}!End\+Unit\+Test\+No@{End\+Unit\+Test\+No}}
+\index{End\+Unit\+Test\+No@{End\+Unit\+Test\+No}!mtk\+::\+Tools@{mtk\+::\+Tools}}
+\subsubsection[{End\+Unit\+Test\+No}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+Tools\+::\+End\+Unit\+Test\+No (
 \begin{DoxyParamCaption}
 \item[{const int \&}]{nn}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}
 
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em nn} & Number of the test. \\
@@ -86,35 +106,35 @@ Here is the call graph for this function\-:\nopagebreak
 \end{DoxyParams}
 
 
-Definition at line \hyperlink{mtk__tools_8cc_source_l00101}{101} of file \hyperlink{mtk__tools_8cc_source}{mtk\-\_\-tools.\-cc}.
+Definition at line \hyperlink{mtk__tools_8cc_source_l00105}{105} of file \hyperlink{mtk__tools_8cc_source}{mtk\+\_\+tools.\+cc}.
 
 
 
-Here is the call graph for this function\-:\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=346pt]{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee_cgraph}
+\includegraphics[width=350pt]{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}{\index{mtk\-::\-Tools@{mtk\-::\-Tools}!Prevent@{Prevent}}
-\index{Prevent@{Prevent}!mtk::Tools@{mtk\-::\-Tools}}
-\subsubsection[{Prevent}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\-::\-Tools\-::\-Prevent (
+\hypertarget{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{\index{mtk\+::\+Tools@{mtk\+::\+Tools}!Prevent@{Prevent}}
+\index{Prevent@{Prevent}!mtk\+::\+Tools@{mtk\+::\+Tools}}
+\subsubsection[{Prevent}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+Tools\+::\+Prevent (
 \begin{DoxyParamCaption}
-\item[{const bool}]{condition, }
+\item[{const bool}]{complement, }
 \item[{const char $\ast$}]{fname, }
 \item[{int}]{lineno, }
 \item[{const char $\ast$}]{fxname}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5}
-\begin{DoxySeeAlso}{See Also}
-\href{http://stackoverflow.com/questions/8884335/print-the-file-name-line-number-and-function-name-of-a-calling-function-c-pro}{\tt http\-://stackoverflow.\-com/questions/8884335/print-\/the-\/file-\/name-\/line-\/number-\/and-\/function-\/name-\/of-\/a-\/calling-\/function-\/c-\/pro}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}
+\begin{DoxySeeAlso}{See also}
+\href{http://stackoverflow.com/questions/8884335/print-the-file-name-line-number-and-function-name-of-a-calling-function-c-pro}{\tt http\+://stackoverflow.\+com/questions/8884335/print-\/the-\/file-\/name-\/line-\/number-\/and-\/function-\/name-\/of-\/a-\/calling-\/function-\/c-\/pro}
 \end{DoxySeeAlso}
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em condition} & Complement of desired pre-\/condition. \\
+\mbox{\tt in}  & {\em complement} & Complement of desired pre-\/condition. \\
 \hline
 \mbox{\tt in}  & {\em fname} & Name of the file being checked. \\
 \hline
@@ -124,19 +144,18 @@ Here is the call graph for this function\-:\nopagebreak
 \hline
 \end{DoxyParams}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000019}{Todo}]Check if this is the best way of stalling execution. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000018}{Todo}]Check if this is the best way of stalling execution. \end{DoxyRefDesc}
 
 
-Definition at line \hyperlink{mtk__tools_8cc_source_l00061}{61} of file \hyperlink{mtk__tools_8cc_source}{mtk\-\_\-tools.\-cc}.
+Definition at line \hyperlink{mtk__tools_8cc_source_l00061}{61} of file \hyperlink{mtk__tools_8cc_source}{mtk\+\_\+tools.\+cc}.
 
 
 
-Here is the caller graph for this function\-:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classmtk_1_1Tools_acbcff02946d3db565d53ecbcc459f0b5_icgraph}
+\includegraphics[width=350pt]{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0_icgraph}
 \end{center}
 \end{figure}
 
@@ -144,25 +163,32 @@ Here is the caller graph for this function\-:
 
 
 \subsection{Member Data Documentation}
-\hypertarget{classmtk_1_1Tools_a4bd58d08397db42271ed9e2d3ecc9963}{\index{mtk\-::\-Tools@{mtk\-::\-Tools}!begin\-\_\-time\-\_\-@{begin\-\_\-time\-\_\-}}
-\index{begin\-\_\-time\-\_\-@{begin\-\_\-time\-\_\-}!mtk::Tools@{mtk\-::\-Tools}}
-\subsubsection[{begin\-\_\-time\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}clock\-\_\-t mtk\-::\-Tools\-::begin\-\_\-time\-\_\-\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{classmtk_1_1Tools_a4bd58d08397db42271ed9e2d3ecc9963}
+\hypertarget{classmtk_1_1Tools_a4bd58d08397db42271ed9e2d3ecc9963}{\index{mtk\+::\+Tools@{mtk\+::\+Tools}!begin\+\_\+time\+\_\+@{begin\+\_\+time\+\_\+}}
+\index{begin\+\_\+time\+\_\+@{begin\+\_\+time\+\_\+}!mtk\+::\+Tools@{mtk\+::\+Tools}}
+\subsubsection[{begin\+\_\+time\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}clock\+\_\+t mtk\+::\+Tools\+::begin\+\_\+time\+\_\+\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{classmtk_1_1Tools_a4bd58d08397db42271ed9e2d3ecc9963}
 
 
-Definition at line \hyperlink{mtk__tools_8h_source_l00106}{106} of file \hyperlink{mtk__tools_8h_source}{mtk\-\_\-tools.\-h}.
+Definition at line \hyperlink{mtk__tools_8h_source_l00117}{117} of file \hyperlink{mtk__tools_8h_source}{mtk\+\_\+tools.\+h}.
 
-\hypertarget{classmtk_1_1Tools_a04a60458594336ee1badff79b8a9a77f}{\index{mtk\-::\-Tools@{mtk\-::\-Tools}!test\-\_\-number\-\_\-@{test\-\_\-number\-\_\-}}
-\index{test\-\_\-number\-\_\-@{test\-\_\-number\-\_\-}!mtk::Tools@{mtk\-::\-Tools}}
-\subsubsection[{test\-\_\-number\-\_\-}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\-::\-Tools\-::test\-\_\-number\-\_\-\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{classmtk_1_1Tools_a04a60458594336ee1badff79b8a9a77f}
+\hypertarget{classmtk_1_1Tools_aba9d3d2952a3de9e7b46faa86d28d692}{\index{mtk\+::\+Tools@{mtk\+::\+Tools}!duration\+\_\+@{duration\+\_\+}}
+\index{duration\+\_\+@{duration\+\_\+}!mtk\+::\+Tools@{mtk\+::\+Tools}}
+\subsubsection[{duration\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\+::\+Real} mtk\+::\+Tools\+::duration\+\_\+\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{classmtk_1_1Tools_aba9d3d2952a3de9e7b46faa86d28d692}
+
+
+Definition at line \hyperlink{mtk__tools_8h_source_l00115}{115} of file \hyperlink{mtk__tools_8h_source}{mtk\+\_\+tools.\+h}.
+
+\hypertarget{classmtk_1_1Tools_a04a60458594336ee1badff79b8a9a77f}{\index{mtk\+::\+Tools@{mtk\+::\+Tools}!test\+\_\+number\+\_\+@{test\+\_\+number\+\_\+}}
+\index{test\+\_\+number\+\_\+@{test\+\_\+number\+\_\+}!mtk\+::\+Tools@{mtk\+::\+Tools}}
+\subsubsection[{test\+\_\+number\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+Tools\+::test\+\_\+number\+\_\+\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}}\label{classmtk_1_1Tools_a04a60458594336ee1badff79b8a9a77f}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000020}{Todo}]Check usage of static methods and private members. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000019}{Todo}]Check usage of static methods and private members. \end{DoxyRefDesc}
 
 
-Definition at line \hyperlink{mtk__tools_8h_source_l00104}{104} of file \hyperlink{mtk__tools_8h_source}{mtk\-\_\-tools.\-h}.
+Definition at line \hyperlink{mtk__tools_8h_source_l00113}{113} of file \hyperlink{mtk__tools_8h_source}{mtk\+\_\+tools.\+h}.
 
 
 
-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/\hyperlink{mtk__tools_8h}{mtk\-\_\-tools.\-h}\item 
-src/\hyperlink{mtk__tools_8cc}{mtk\-\_\-tools.\-cc}\end{DoxyCompactItemize}
+include/\hyperlink{mtk__tools_8h}{mtk\+\_\+tools.\+h}\item 
+src/\hyperlink{mtk__tools_8cc}{mtk\+\_\+tools.\+cc}\end{DoxyCompactItemize}

@@ -1,13 +1,18 @@
-\hypertarget{mtk__blas__adapter_8cc}{\section{src/mtk\-\_\-blas\-\_\-adapter.cc File Reference}
-\label{mtk__blas__adapter_8cc}\index{src/mtk\-\_\-blas\-\_\-adapter.\-cc@{src/mtk\-\_\-blas\-\_\-adapter.\-cc}}
+\hypertarget{mtk__blas__adapter_8cc}{\section{src/mtk\+\_\+blas\+\_\+adapter.cc File Reference}
+\label{mtk__blas__adapter_8cc}\index{src/mtk\+\_\+blas\+\_\+adapter.\+cc@{src/mtk\+\_\+blas\+\_\+adapter.\+cc}}
 }
+
+
+Adapter class for the B\+L\+A\+S A\+P\+I.  
+
+
 {\ttfamily \#include $<$iostream$>$}\\*
 {\ttfamily \#include $<$iomanip$>$}\\*
 {\ttfamily \#include $<$vector$>$}\\*
-{\ttfamily \#include \char`\"{}mtk\-\_\-roots.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}mtk\-\_\-tools.\-h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}mtk\-\_\-blas\-\_\-adapter.\-h\char`\"{}}\\*
-Include dependency graph for mtk\-\_\-blas\-\_\-adapter.\-cc\-:\nopagebreak
+{\ttfamily \#include \char`\"{}mtk\+\_\+roots.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mtk\+\_\+tools.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mtk\+\_\+blas\+\_\+adapter.\+h\char`\"{}}\\*
+Include dependency graph for mtk\+\_\+blas\+\_\+adapter.\+cc\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -17,16 +22,37 @@ Include dependency graph for mtk\-\_\-blas\-\_\-adapter.\-cc\-:\nopagebreak
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{namespacemtk}{mtk}
+ \hyperlink{namespacemtk}{mtk}
 \begin{DoxyCompactList}\small\item\em Mimetic Methods Toolkit namespace. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-float \hyperlink{namespacemtk_a508e99fcb14d526bc43aa0a80aa4b658}{mtk\-::snrm2\-\_\-} (int $\ast$n, float $\ast$x, int $\ast$incx)
+float \hyperlink{namespacemtk_a508e99fcb14d526bc43aa0a80aa4b658}{mtk\+::snrm2\+\_\+} (int $\ast$n, float $\ast$x, int $\ast$incx)
 \item 
-void \hyperlink{namespacemtk_a81a2d7d1ea9eff65ae13646c93dad5e9}{mtk\-::saxpy\-\_\-} (int $\ast$n, float $\ast$sa, float $\ast$sx, int $\ast$incx, float $\ast$sy, int $\ast$incy)
+void \hyperlink{namespacemtk_a81a2d7d1ea9eff65ae13646c93dad5e9}{mtk\+::saxpy\+\_\+} (int $\ast$n, float $\ast$sa, float $\ast$sx, int $\ast$incx, float $\ast$sy, int $\ast$incy)
 \item 
-void \hyperlink{namespacemtk_a88daff7ad6f251a58b94aa2d0c94d069}{mtk\-::sgemv\-\_\-} (char $\ast$trans, int $\ast$m, int $\ast$n, float $\ast$alpha, float $\ast$a, int $\ast$lda, float $\ast$x, int $\ast$incx, float $\ast$beta, float $\ast$y, int $\ast$incy)
+void \hyperlink{namespacemtk_a88daff7ad6f251a58b94aa2d0c94d069}{mtk\+::sgemv\+\_\+} (char $\ast$trans, int $\ast$m, int $\ast$n, float $\ast$alpha, float $\ast$a, int $\ast$lda, float $\ast$x, int $\ast$incx, float $\ast$beta, float $\ast$y, int $\ast$incy)
 \item 
-void \hyperlink{namespacemtk_adb7c0560326b8e57f255e58b87ec76b0}{mtk\-::sgemm\-\_\-} (char $\ast$transa, char $\ast$transb, int $\ast$m, int $\ast$n, int $\ast$k, double $\ast$alpha, double $\ast$a, int $\ast$lda, double $\ast$b, aamm int $\ast$ldb, double $\ast$beta, double $\ast$c, int $\ast$ldc)
+void \hyperlink{namespacemtk_adb7c0560326b8e57f255e58b87ec76b0}{mtk\+::sgemm\+\_\+} (char $\ast$transa, char $\ast$transb, int $\ast$m, int $\ast$n, int $\ast$k, double $\ast$alpha, double $\ast$a, int $\ast$lda, double $\ast$b, aamm int $\ast$ldb, double $\ast$beta, double $\ast$c, int $\ast$ldc)
 \end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class contains a collection of static classes, that posses direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the B\+L\+A\+S.
+
+The {\bfseries B\+L\+A\+S (Basic Linear Algebra Subprograms)} are routines that provide standard building blocks for performing basic vector and matrix operations. The Level 1 B\+L\+A\+S perform scalar, vector and vector-\/vector operations, the Level 2 B\+L\+A\+S perform matrix-\/vector operations, and the Level 3 B\+L\+A\+S perform matrix-\/matrix operations.
+
+The B\+L\+A\+S can be installed from links given in the See Also section of this page.
+
+\begin{DoxySeeAlso}{See also}
+\href{http://www.netlib.org/blas/}{\tt http\+://www.\+netlib.\+org/blas/}
+
+\href{https://software.intel.com/en-us/non-commercial-software-development}{\tt https\+://software.\+intel.\+com/en-\/us/non-\/commercial-\/software-\/development}
+\end{DoxySeeAlso}
+\begin{DoxyAuthor}{Author}
+\+: Eduardo J. Sanchez (ejspeiro) -\/ esanchez at mail dot sdsu dot edu 
+\end{DoxyAuthor}
+
+
+Definition in file \hyperlink{mtk__blas__adapter_8cc_source}{mtk\+\_\+blas\+\_\+adapter.\+cc}.
+

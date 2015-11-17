@@ -1,5 +1,5 @@
-\hypertarget{mtk__matrix_8h}{\section{mtk\-\_\-matrix.\-h}
-\label{mtk__matrix_8h}\index{include/mtk\-\_\-matrix.\-h@{include/mtk\-\_\-matrix.\-h}}
+\hypertarget{mtk__matrix_8h_source}{\section{mtk\+\_\+matrix.\+h}
+\label{mtk__matrix_8h_source}\index{include/mtk\+\_\+matrix.\+h@{include/mtk\+\_\+matrix.\+h}}
 }
 
 \begin{DoxyCode}
@@ -13,22 +13,22 @@
 00016 \textcolor{comment}{}
 00017 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
 00018 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
-00019 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
-00020 \textcolor{comment}{}
-00021 \textcolor{comment}{2. Redistributions of source code must be done through direct}
-00022 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
-00023 \textcolor{comment}{}
-00024 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
-00025 \textcolor{comment}{list of conditions and the following disclaimer.}
-00026 \textcolor{comment}{}
-00027 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
-00028 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
-00029 \textcolor{comment}{other materials provided with the distribution.}
-00030 \textcolor{comment}{}
-00031 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
-00032 \textcolor{comment}{prior written permission from the the copyright holders.}
+00019 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
+00020 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
+00021 \textcolor{comment}{should be developed and included in any deliverable.}
+00022 \textcolor{comment}{}
+00023 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00024 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00025 \textcolor{comment}{}
+00026 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
+00027 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00028 \textcolor{comment}{other materials provided with the distribution.}
+00029 \textcolor{comment}{}
+00030 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
+00031 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
+00032 \textcolor{comment}{be given to the copyright holders.}
 00033 \textcolor{comment}{}
-00034 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00034 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
 00035 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
 00036 \textcolor{comment}{specific prior written permission.}
 00037 \textcolor{comment}{}
@@ -51,14 +51,14 @@
 00054 \textcolor{comment}{*/}
 00055 
 00056 \textcolor{preprocessor}{#ifndef MTK\_INCLUDE\_MATRIX\_H\_}
-00057 \textcolor{preprocessor}{}\textcolor{preprocessor}{#define MTK\_INCLUDE\_MATRIX\_H\_}
-00058 \textcolor{preprocessor}{}
+00057 \textcolor{preprocessor}{#define MTK\_INCLUDE\_MATRIX\_H\_}
+00058 
 00059 \textcolor{preprocessor}{#include <iostream>}
 00060 
 00061 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
 00062 \textcolor{preprocessor}{#include "\hyperlink{mtk__enums_8h}{mtk\_enums.h}"}
 00063 
-00064 \textcolor{keyword}{namespace }mtk \{
+00064 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk} \{
 00065 
 \hypertarget{mtk__matrix_8h_source_l00075}{}\hyperlink{classmtk_1_1Matrix}{00075} \textcolor{keyword}{class }\hyperlink{classmtk_1_1Matrix}{Matrix} \{
 00076  \textcolor{keyword}{public}:
@@ -68,80 +68,80 @@
 00086 
 00088   \hyperlink{classmtk_1_1Matrix_a7dcc92fcf67904eaf17bb7b9d809f274}{~Matrix}();
 00089 
-00091   \hyperlink{group__c02-enums_ga25b67ec6a2afeee69f9bb196a9c66619}{MatrixStorage} \hyperlink{classmtk_1_1Matrix_a21893fc643eebadd9757c8995cf44dd3}{storage}() \textcolor{keyword}{const};
-00092 
-00094   \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{MatrixOrdering} \hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}() \textcolor{keyword}{const};
-00095 
-00101   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}() \textcolor{keyword}{const};
-00102 
-00108   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}() \textcolor{keyword}{const};
-00109 
-00115   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_adbe04990142e2fe76789fa53cfa3d465}{num\_values}() \textcolor{keyword}{const};
-00116 
-00126   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_acdaa5281bd8f86ea4abf20292d9fd20f}{ld}() \textcolor{keyword}{const};
-00127 
-00133   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a78e1f8449a21db53750e083c6802a993}{num\_zero}() \textcolor{keyword}{const};
-00134 
-00140   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a221ba0082ef5191175db743d13388521}{num\_non\_zero}() \textcolor{keyword}{const};
-00141 
-00149   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a5bf58512ee91d6ab80eb94541072a9cf}{num\_null}() \textcolor{keyword}{const};
-00150 
-00158   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_ae81eaf61b6633ccd054c96344aa82a48}{num\_non\_null}() \textcolor{keyword}{const};
-00159   
-00165   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_ae271cb0b61c1ef04d57319d46db90ebf}{kl}() \textcolor{keyword}{const};
-00166 
-00172   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_ab12a5b97320ca40fbfab970c005ce916}{ku}() \textcolor{keyword}{const};
-00173 
-00179   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a27d963e9cb68fa8f04989ad89a9b3f0a}{bandwidth}() \textcolor{keyword}{const};
-00180 
-00188   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_a4734aaab88e2fe344231b899ab5a8f56}{abs\_density}() \textcolor{keyword}{const};
-00189 
-00197   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_a98591f1f394ec84599fb15d9ff53db1a}{rel\_density}() \textcolor{keyword}{const};
-00198 
-00206   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_a20463698d90ddf3ae7d211a2cc441a62}{abs\_sparsity}() \textcolor{keyword}{const};
-00207 
-00215   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_ad7e4650598ce4d99a130f64892fc33b9}{rel\_sparsity}() \textcolor{keyword}{const};
-00216 
-00224   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{set\_storage}(\textcolor{keyword}{const} \hyperlink{group__c02-enums_ga25b67ec6a2afeee69f9bb196a9c66619}{MatrixStorage} &tt);
-00225 
-00233   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{set\_ordering}(\textcolor{keyword}{const} \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{MatrixOrdering} &oo);
-00234 
-00240   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a242fedf2da10a3e5c14f63c2bc60beae}{set\_num\_rows}(\textcolor{keywordtype}{int} num\_rows);
-00241 
-00247   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a312883d34f2e0daf5db7432ee2c4ed51}{set\_num\_cols}(\textcolor{keywordtype}{int} num\_cols);
-00248 
-00254   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_ae529100c5c280088e9acf8e8f7994f73}{set\_num\_zero}(\textcolor{keywordtype}{int} in);
-00255 
-00261   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a66c2c1c127f4efefc4a407e9552e928d}{set\_num\_null}(\textcolor{keywordtype}{int} in);
-00262 
-00264   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a2e7c4b84d0cbf9b0122b5dc906ad1eae}{IncreaseNumZero}();
-00265 
-00267   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_ac96dd5f31ebcd4388352577487cd6f11}{IncreaseNumNull}();
-00268 
-00269  \textcolor{keyword}{private}:
-\hypertarget{mtk__matrix_8h_source_l00270}{}\hyperlink{classmtk_1_1Matrix_ae343697531e0849f20bed4a9760b9a54}{00270}   \hyperlink{group__c02-enums_ga25b67ec6a2afeee69f9bb196a9c66619}{MatrixStorage} \hyperlink{classmtk_1_1Matrix_ae343697531e0849f20bed4a9760b9a54}{storage\_}; 
-00271 
-\hypertarget{mtk__matrix_8h_source_l00272}{}\hyperlink{classmtk_1_1Matrix_a8b66e0d130cc8ad19c426acd42edaf55}{00272}   \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{MatrixOrdering} \hyperlink{classmtk_1_1Matrix_a8b66e0d130cc8ad19c426acd42edaf55}{ordering\_}; 
+00095   \hyperlink{group__c02-enums_ga25b67ec6a2afeee69f9bb196a9c66619}{MatrixStorage} \hyperlink{classmtk_1_1Matrix_a21893fc643eebadd9757c8995cf44dd3}{storage}() \textcolor{keyword}{const};
+00096 
+00102   \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{MatrixOrdering} \hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}() \textcolor{keyword}{const};
+00103 
+00109   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}() \textcolor{keyword}{const};
+00110 
+00116   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}() \textcolor{keyword}{const};
+00117 
+00123   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_adbe04990142e2fe76789fa53cfa3d465}{num\_values}() \textcolor{keyword}{const};
+00124 
+00134   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_acdaa5281bd8f86ea4abf20292d9fd20f}{ld}() \textcolor{keyword}{const};
+00135 
+00141   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a78e1f8449a21db53750e083c6802a993}{num\_zero}() \textcolor{keyword}{const};
+00142 
+00148   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a221ba0082ef5191175db743d13388521}{num\_non\_zero}() \textcolor{keyword}{const};
+00149 
+00157   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a5bf58512ee91d6ab80eb94541072a9cf}{num\_null}() \textcolor{keyword}{const};
+00158 
+00166   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_ae81eaf61b6633ccd054c96344aa82a48}{num\_non\_null}() \textcolor{keyword}{const};
+00167 
+00173   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_ae271cb0b61c1ef04d57319d46db90ebf}{kl}() \textcolor{keyword}{const};
+00174 
+00180   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_ab12a5b97320ca40fbfab970c005ce916}{ku}() \textcolor{keyword}{const};
+00181 
+00187   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a27d963e9cb68fa8f04989ad89a9b3f0a}{bandwidth}() \textcolor{keyword}{const};
+00188 
+00196   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_a4734aaab88e2fe344231b899ab5a8f56}{abs\_density}() \textcolor{keyword}{const};
+00197 
+00205   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_a98591f1f394ec84599fb15d9ff53db1a}{rel\_density}() \textcolor{keyword}{const};
+00206 
+00214   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_a20463698d90ddf3ae7d211a2cc441a62}{abs\_sparsity}() \textcolor{keyword}{const};
+00215 
+00223   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_ad7e4650598ce4d99a130f64892fc33b9}{rel\_sparsity}() \textcolor{keyword}{const};
+00224 
+00232   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{set\_storage}(\textcolor{keyword}{const} \hyperlink{group__c02-enums_ga25b67ec6a2afeee69f9bb196a9c66619}{MatrixStorage} &tt);
+00233 
+00241   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{set\_ordering}(\textcolor{keyword}{const} \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{MatrixOrdering} &oo);
+00242 
+00248   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a242fedf2da10a3e5c14f63c2bc60beae}{set\_num\_rows}(\textcolor{keywordtype}{int} num\_rows);
+00249 
+00255   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a312883d34f2e0daf5db7432ee2c4ed51}{set\_num\_cols}(\textcolor{keywordtype}{int} num\_cols);
+00256 
+00262   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_ae529100c5c280088e9acf8e8f7994f73}{set\_num\_zero}(\textcolor{keywordtype}{int} in);
+00263 
+00269   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a66c2c1c127f4efefc4a407e9552e928d}{set\_num\_null}(\textcolor{keywordtype}{int} in);
+00270 
+00272   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a2e7c4b84d0cbf9b0122b5dc906ad1eae}{IncreaseNumZero}();
 00273 
-\hypertarget{mtk__matrix_8h_source_l00274}{}\hyperlink{classmtk_1_1Matrix_ab635ce1dd96c26ee99a75b564f03f091}{00274}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_ab635ce1dd96c26ee99a75b564f03f091}{num\_rows\_};        
-\hypertarget{mtk__matrix_8h_source_l00275}{}\hyperlink{classmtk_1_1Matrix_a3d11a942d6dda7ca16e162c12e854b74}{00275}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a3d11a942d6dda7ca16e162c12e854b74}{num\_cols\_};        
-\hypertarget{mtk__matrix_8h_source_l00276}{}\hyperlink{classmtk_1_1Matrix_ac3f64429ee2509c502ce7f0d75341da0}{00276}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_ac3f64429ee2509c502ce7f0d75341da0}{num\_values\_};      
-\hypertarget{mtk__matrix_8h_source_l00277}{}\hyperlink{classmtk_1_1Matrix_a8cb46a0aa1d665a9f92f14e66a307bd5}{00277}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a8cb46a0aa1d665a9f92f14e66a307bd5}{ld\_};              
-00278 
-\hypertarget{mtk__matrix_8h_source_l00279}{}\hyperlink{classmtk_1_1Matrix_a6daac2b61bed10026785c1eb0328eef9}{00279}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a6daac2b61bed10026785c1eb0328eef9}{num\_zero\_};        
-\hypertarget{mtk__matrix_8h_source_l00280}{}\hyperlink{classmtk_1_1Matrix_a064d611ebb949858441180d6ff2acaee}{00280}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a064d611ebb949858441180d6ff2acaee}{num\_non\_zero\_};    
-\hypertarget{mtk__matrix_8h_source_l00281}{}\hyperlink{classmtk_1_1Matrix_aec5bf3cd2e62d7a38412e1dca35cf822}{00281}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_aec5bf3cd2e62d7a38412e1dca35cf822}{num\_null\_};        
-\hypertarget{mtk__matrix_8h_source_l00282}{}\hyperlink{classmtk_1_1Matrix_a32d782bd784bea3bb3e5fd55a583b4b7}{00282}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a32d782bd784bea3bb3e5fd55a583b4b7}{num\_non\_null\_};    
-00283 
-\hypertarget{mtk__matrix_8h_source_l00284}{}\hyperlink{classmtk_1_1Matrix_a45c2498d0b6d515c72c2e631508acd7d}{00284}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a45c2498d0b6d515c72c2e631508acd7d}{kl\_};              
-\hypertarget{mtk__matrix_8h_source_l00285}{}\hyperlink{classmtk_1_1Matrix_afdb4436c4c4c6deaed608a06026179c9}{00285}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_afdb4436c4c4c6deaed608a06026179c9}{ku\_};              
-\hypertarget{mtk__matrix_8h_source_l00286}{}\hyperlink{classmtk_1_1Matrix_a892449ddacb81d089818967e65979786}{00286}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a892449ddacb81d089818967e65979786}{bandwidth\_};       
-00287 
-\hypertarget{mtk__matrix_8h_source_l00288}{}\hyperlink{classmtk_1_1Matrix_abdf2ac1bbb6c4432cb7caf06e4ca0f26}{00288}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_abdf2ac1bbb6c4432cb7caf06e4ca0f26}{abs\_density\_};    
-\hypertarget{mtk__matrix_8h_source_l00289}{}\hyperlink{classmtk_1_1Matrix_adae5d1f3016d891e67a10d6db658d5a7}{00289}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_adae5d1f3016d891e67a10d6db658d5a7}{rel\_density\_};    
-\hypertarget{mtk__matrix_8h_source_l00290}{}\hyperlink{classmtk_1_1Matrix_ab86f8bfe3cb5874d47cc957b5a7cd965}{00290}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_ab86f8bfe3cb5874d47cc957b5a7cd965}{abs\_sparsity\_};   
-\hypertarget{mtk__matrix_8h_source_l00291}{}\hyperlink{classmtk_1_1Matrix_aab48952c7df158b6ee06d8c2c901aa7e}{00291}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_aab48952c7df158b6ee06d8c2c901aa7e}{rel\_sparsity\_};   
-00292 \};
-00293 \}
-00294 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_MATRIX\_H\_}
+00275   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_ac96dd5f31ebcd4388352577487cd6f11}{IncreaseNumNull}();
+00276 
+00277  \textcolor{keyword}{private}:
+\hypertarget{mtk__matrix_8h_source_l00278}{}\hyperlink{classmtk_1_1Matrix_ae343697531e0849f20bed4a9760b9a54}{00278}   \hyperlink{group__c02-enums_ga25b67ec6a2afeee69f9bb196a9c66619}{MatrixStorage} \hyperlink{classmtk_1_1Matrix_ae343697531e0849f20bed4a9760b9a54}{storage\_}; 
+00279 
+\hypertarget{mtk__matrix_8h_source_l00280}{}\hyperlink{classmtk_1_1Matrix_a8b66e0d130cc8ad19c426acd42edaf55}{00280}   \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{MatrixOrdering} \hyperlink{classmtk_1_1Matrix_a8b66e0d130cc8ad19c426acd42edaf55}{ordering\_}; 
+00281 
+\hypertarget{mtk__matrix_8h_source_l00282}{}\hyperlink{classmtk_1_1Matrix_ab635ce1dd96c26ee99a75b564f03f091}{00282}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_ab635ce1dd96c26ee99a75b564f03f091}{num\_rows\_};        
+\hypertarget{mtk__matrix_8h_source_l00283}{}\hyperlink{classmtk_1_1Matrix_a3d11a942d6dda7ca16e162c12e854b74}{00283}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a3d11a942d6dda7ca16e162c12e854b74}{num\_cols\_};        
+\hypertarget{mtk__matrix_8h_source_l00284}{}\hyperlink{classmtk_1_1Matrix_ac3f64429ee2509c502ce7f0d75341da0}{00284}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_ac3f64429ee2509c502ce7f0d75341da0}{num\_values\_};      
+\hypertarget{mtk__matrix_8h_source_l00285}{}\hyperlink{classmtk_1_1Matrix_a8cb46a0aa1d665a9f92f14e66a307bd5}{00285}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a8cb46a0aa1d665a9f92f14e66a307bd5}{ld\_};              
+00286 
+\hypertarget{mtk__matrix_8h_source_l00287}{}\hyperlink{classmtk_1_1Matrix_a6daac2b61bed10026785c1eb0328eef9}{00287}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a6daac2b61bed10026785c1eb0328eef9}{num\_zero\_};        
+\hypertarget{mtk__matrix_8h_source_l00288}{}\hyperlink{classmtk_1_1Matrix_a064d611ebb949858441180d6ff2acaee}{00288}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a064d611ebb949858441180d6ff2acaee}{num\_non\_zero\_};    
+\hypertarget{mtk__matrix_8h_source_l00289}{}\hyperlink{classmtk_1_1Matrix_aec5bf3cd2e62d7a38412e1dca35cf822}{00289}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_aec5bf3cd2e62d7a38412e1dca35cf822}{num\_null\_};        
+\hypertarget{mtk__matrix_8h_source_l00290}{}\hyperlink{classmtk_1_1Matrix_a32d782bd784bea3bb3e5fd55a583b4b7}{00290}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a32d782bd784bea3bb3e5fd55a583b4b7}{num\_non\_null\_};    
+00291 
+\hypertarget{mtk__matrix_8h_source_l00292}{}\hyperlink{classmtk_1_1Matrix_a45c2498d0b6d515c72c2e631508acd7d}{00292}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a45c2498d0b6d515c72c2e631508acd7d}{kl\_};              
+\hypertarget{mtk__matrix_8h_source_l00293}{}\hyperlink{classmtk_1_1Matrix_afdb4436c4c4c6deaed608a06026179c9}{00293}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_afdb4436c4c4c6deaed608a06026179c9}{ku\_};              
+\hypertarget{mtk__matrix_8h_source_l00294}{}\hyperlink{classmtk_1_1Matrix_a892449ddacb81d089818967e65979786}{00294}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Matrix_a892449ddacb81d089818967e65979786}{bandwidth\_};       
+00295 
+\hypertarget{mtk__matrix_8h_source_l00296}{}\hyperlink{classmtk_1_1Matrix_abdf2ac1bbb6c4432cb7caf06e4ca0f26}{00296}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_abdf2ac1bbb6c4432cb7caf06e4ca0f26}{abs\_density\_};    
+\hypertarget{mtk__matrix_8h_source_l00297}{}\hyperlink{classmtk_1_1Matrix_adae5d1f3016d891e67a10d6db658d5a7}{00297}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_adae5d1f3016d891e67a10d6db658d5a7}{rel\_density\_};    
+\hypertarget{mtk__matrix_8h_source_l00298}{}\hyperlink{classmtk_1_1Matrix_ab86f8bfe3cb5874d47cc957b5a7cd965}{00298}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_ab86f8bfe3cb5874d47cc957b5a7cd965}{abs\_sparsity\_};   
+\hypertarget{mtk__matrix_8h_source_l00299}{}\hyperlink{classmtk_1_1Matrix_aab48952c7df158b6ee06d8c2c901aa7e}{00299}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Matrix_aab48952c7df158b6ee06d8c2c901aa7e}{rel\_sparsity\_};   
+00300 \};
+00301 \}
+00302 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_MATRIX\_H\_}
 \end{DoxyCode}

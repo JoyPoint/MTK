@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
   <compounddef id="README_8md" kind="file">
     <compoundname>README.md</compoundname>
     <briefdescription>
@@ -7,141 +7,145 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="preprocessor">#<sp/>The<sp/>Mimetic<sp/>Methods<sp/>Toolkit<sp/>(MTK)</highlight></codeline>
-<codeline lineno="2"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="3"><highlight class="normal">By:<sp/>**Eduardo<sp/>J.<sp/>Sanchez,<sp/>Ph.D.<sp/>-<sp/>esanchez<sp/>at<sp/>mail<sp/>dot<sp/>sdsu<sp/>dot<sp/>edu**</highlight></codeline>
-<codeline lineno="4"><highlight class="normal"><sp/><sp/><sp/><sp/>__________________________________________________________________</highlight></codeline>
-<codeline lineno="5"><highlight class="normal"></highlight></codeline>
-<codeline lineno="6"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>1.<sp/>Description</highlight></codeline>
-<codeline lineno="7"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="8"><highlight class="normal">We<sp/>define<sp/>numerical<sp/>methods<sp/>that<sp/>are<sp/>based<sp/>on<sp/>discretizations<sp/>preserving<sp/>the</highlight></codeline>
-<codeline lineno="9"><highlight class="normal">properties<sp/>of<sp/>their<sp/>continuum<sp/>counterparts<sp/>to<sp/>be<sp/>**mimetic**.</highlight></codeline>
-<codeline lineno="10"><highlight class="normal"></highlight></codeline>
-<codeline lineno="11"><highlight class="normal">The<sp/>**Mimetic<sp/>Methods<sp/>Toolkit<sp/>(MTK)**<sp/>is<sp/>a<sp/>C++<sp/>library<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>mimetic<sp/>numerical</highlight></codeline>
-<codeline lineno="12"><highlight class="normal">methods.<sp/>It<sp/>is<sp/>arranged<sp/>as<sp/>a<sp/>set<sp/>of<sp/>classes<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>**mimetic<sp/>quadratures**,</highlight></codeline>
-<codeline lineno="13"><highlight class="normal">**mimetic<sp/>interpolation**,<sp/>and<sp/>**mimetic<sp/>discretization**<sp/>methods<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>the</highlight></codeline>
-<codeline lineno="14"><highlight class="normal">numerical<sp/>solution<sp/>of<sp/>ordinary<sp/>and<sp/>partial<sp/>differential<sp/>equations.</highlight></codeline>
-<codeline lineno="15"><highlight class="normal"><sp/><sp/><sp/><sp/>__________________________________________________________________</highlight></codeline>
-<codeline lineno="16"><highlight class="normal"></highlight></codeline>
-<codeline lineno="17"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>2.<sp/>Dependencies</highlight></codeline>
-<codeline lineno="18"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="19"><highlight class="normal">This<sp/>README<sp/>assumes<sp/>all<sp/>of<sp/>these<sp/>dependencies<sp/>are<sp/>installed<sp/>in<sp/>the<sp/>following</highlight></codeline>
-<codeline lineno="20"><highlight class="normal">folder:</highlight></codeline>
-<codeline lineno="21"><highlight class="normal"></highlight></codeline>
-<codeline lineno="22"><highlight class="normal">```</highlight></codeline>
-<codeline lineno="23"><highlight class="normal">$(HOME)/Libraries/</highlight></codeline>
-<codeline lineno="24"><highlight class="normal">```</highlight></codeline>
-<codeline lineno="25"><highlight class="normal"></highlight></codeline>
-<codeline lineno="26"><highlight class="normal">In<sp/></highlight><highlight class="keyword">this</highlight><highlight class="normal"><sp/>version,<sp/>the<sp/>MTK<sp/>optionally<sp/>uses<sp/>ATLAS-optimized<sp/>BLAS<sp/>and<sp/>LAPACK</highlight></codeline>
-<codeline lineno="27"><highlight class="normal">routines<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>the<sp/></highlight><highlight class="keyword">internal</highlight><highlight class="normal"><sp/>computation<sp/>on<sp/>some<sp/>of<sp/>the<sp/>layers.<sp/>However,<sp/>ATLAS</highlight></codeline>
-<codeline lineno="28"><highlight class="normal">requires<sp/>both<sp/>BLAS<sp/>and<sp/>LAPACK<sp/>in<sp/>order<sp/>to<sp/>create<sp/>their<sp/>optimized<sp/>distributions.</highlight></codeline>
-<codeline lineno="29"><highlight class="normal">Therefore,<sp/>the<sp/>following<sp/>dependencies<sp/>tree<sp/>arises:</highlight></codeline>
-<codeline lineno="30"><highlight class="normal"></highlight></codeline>
-<codeline lineno="31"><highlight class="normal">###<sp/>For<sp/>Linux:</highlight></codeline>
-<codeline lineno="32"><highlight class="normal"></highlight></codeline>
-<codeline lineno="33"><highlight class="normal">1.<sp/>LAPACK<sp/>-<sp/>Available<sp/>from:<sp/>http:</highlight><highlight class="comment">//www.netlib.org/lapack/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="34"><highlight class="normal"><sp/><sp/>1.<sp/>BLAS<sp/>-<sp/>Available<sp/>from:<sp/>http:</highlight><highlight class="comment">//www.netlib.org/blas/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="35"><highlight class="normal"></highlight></codeline>
-<codeline lineno="36"><highlight class="normal">2.<sp/>(Optional)<sp/>ATLAS<sp/>-<sp/>Available<sp/>from:<sp/>http:</highlight><highlight class="comment">//math-atlas.sourceforge.net/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="37"><highlight class="normal"><sp/><sp/>1.<sp/>BLAS<sp/>-<sp/>Available<sp/>from:<sp/>http:</highlight><highlight class="comment">//www.netlib.org/blas/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="38"><highlight class="normal"><sp/><sp/>2.<sp/>LAPACK<sp/>-<sp/>Available<sp/>from:<sp/>http:</highlight><highlight class="comment">//www.netlib.org/lapack/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="39"><highlight class="normal"></highlight></codeline>
-<codeline lineno="40"><highlight class="normal">3.<sp/>(Optional)<sp/>Valgrind<sp/>-<sp/>Available<sp/>from:<sp/>http:</highlight><highlight class="comment">//valgrind.org/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="41"><highlight class="normal"></highlight></codeline>
-<codeline lineno="42"><highlight class="normal">4.<sp/>(Optional)<sp/>Doxygen<sp/>-<sp/>Available<sp/>from<sp/>http:</highlight><highlight class="comment">//www.stack.nl/~dimitri/doxygen/</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="43"><highlight class="normal"></highlight></codeline>
-<codeline lineno="44"><highlight class="normal"></highlight><highlight class="preprocessor">###<sp/>For<sp/>OS<sp/>X:</highlight></codeline>
-<codeline lineno="45"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="46"><highlight class="normal">There<sp/>are<sp/>no<sp/>dependences<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>OS<sp/>X.</highlight></codeline>
-<codeline lineno="47"><highlight class="normal"><sp/><sp/><sp/><sp/>__________________________________________________________________</highlight></codeline>
-<codeline lineno="48"><highlight class="normal"></highlight></codeline>
-<codeline lineno="49"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>3.<sp/>Installation</highlight></codeline>
-<codeline lineno="50"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="51"><highlight class="normal"></highlight><highlight class="preprocessor">###<sp/>PART<sp/>1.<sp/>CONFIGURATION<sp/>OF<sp/>THE<sp/>MAKEFILE.</highlight></codeline>
-<codeline lineno="52"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="53"><highlight class="normal">The<sp/>following<sp/>steps<sp/>are<sp/>required<sp/>the<sp/>build<sp/>and<sp/>test<sp/>the<sp/>MTK.<sp/>Please<sp/>use<sp/>the</highlight></codeline>
-<codeline lineno="54"><highlight class="normal">accompanying<sp/>`Makefile.inc`<sp/>file,<sp/>which<sp/>should<sp/>provide<sp/>a<sp/>solid<sp/></highlight><highlight class="keyword">template</highlight><highlight class="normal"><sp/>to</highlight></codeline>
-<codeline lineno="55"><highlight class="normal">start<sp/>with.<sp/>The<sp/>following<sp/>command<sp/>provides<sp/>help<sp/>on<sp/>the<sp/>options<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>make:</highlight></codeline>
-<codeline lineno="56"><highlight class="normal"></highlight></codeline>
-<codeline lineno="57"><highlight class="normal">```</highlight></codeline>
-<codeline lineno="58"><highlight class="normal">$<sp/>make<sp/>help</highlight></codeline>
-<codeline lineno="59"><highlight class="normal">-----</highlight></codeline>
-<codeline lineno="60"><highlight class="normal">Makefile<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>the<sp/>MTK.</highlight></codeline>
-<codeline lineno="61"><highlight class="normal"></highlight></codeline>
-<codeline lineno="62"><highlight class="normal">Options<sp/>are:</highlight></codeline>
-<codeline lineno="63"><highlight class="normal">-<sp/>make:<sp/>builds<sp/>only<sp/>the<sp/>library<sp/>and<sp/>the<sp/>examples.</highlight></codeline>
-<codeline lineno="64"><highlight class="normal">-<sp/>all:<sp/>builds<sp/>the<sp/>library,<sp/>the<sp/>examples<sp/>and<sp/>the<sp/>documentation.</highlight></codeline>
-<codeline lineno="65"><highlight class="normal">-<sp/>mtklib:<sp/>builds<sp/>the<sp/>library,<sp/>i.e.<sp/>generates<sp/>the<sp/>archive<sp/>files.</highlight></codeline>
-<codeline lineno="66"><highlight class="normal">-<sp/>tests:<sp/>generates<sp/>the<sp/>tests.</highlight></codeline>
-<codeline lineno="67"><highlight class="normal">-<sp/>examples:<sp/>generates<sp/>the<sp/>examples.</highlight></codeline>
-<codeline lineno="68"><highlight class="normal">-<sp/>gendoc:<sp/>generates<sp/>the<sp/>documentation<sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>the<sp/>library.</highlight></codeline>
-<codeline lineno="69"><highlight class="normal">-<sp/>checkheaders:<sp/>checks<sp/>syntax<sp/>of<sp/>the<sp/>header<sp/>files.</highlight></codeline>
-<codeline lineno="70"><highlight class="normal"></highlight></codeline>
-<codeline lineno="71"><highlight class="normal">-<sp/>clean:<sp/>cleans<sp/>ALL<sp/>the<sp/>generated<sp/>files.</highlight></codeline>
-<codeline lineno="72"><highlight class="normal">-<sp/>cleanlib:<sp/>cleans<sp/>the<sp/>generated<sp/>archive<sp/>and<sp/></highlight><highlight class="keywordtype">object</highlight><highlight class="normal"><sp/>files.</highlight></codeline>
-<codeline lineno="73"><highlight class="normal">-<sp/>cleantests:<sp/>cleans<sp/>the<sp/>generated<sp/>tests<sp/>executables.</highlight></codeline>
-<codeline lineno="74"><highlight class="normal">-<sp/>cleanexamples:<sp/>cleans<sp/>the<sp/>generated<sp/>examples<sp/>executables.</highlight></codeline>
-<codeline lineno="75"><highlight class="normal">-----</highlight></codeline>
-<codeline lineno="76"><highlight class="normal">```</highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">###<sp/>PART<sp/>2.<sp/>BUILD<sp/>THE<sp/>LIBRARY.</highlight></codeline>
-<codeline lineno="79"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="80"><highlight class="normal">```</highlight></codeline>
-<codeline lineno="81"><highlight class="normal">$<sp/>make</highlight></codeline>
-<codeline lineno="82"><highlight class="normal">```</highlight></codeline>
-<codeline lineno="83"><highlight class="normal"></highlight></codeline>
-<codeline lineno="84"><highlight class="normal">If<sp/>successful<sp/>you</highlight><highlight class="stringliteral">&apos;ll<sp/>read<sp/>(before<sp/>building<sp/>the<sp/>tests<sp/>and<sp/>examples):</highlight></codeline>
-<codeline lineno="85"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="86"><highlight class="stringliteral">```</highlight></codeline>
-<codeline lineno="87"><highlight class="stringliteral">-----<sp/>Library<sp/>created!<sp/>Check<sp/>in<sp/>/home/ejspeiro/Dropbox/MTK/lib</highlight></codeline>
-<codeline lineno="88"><highlight class="stringliteral">```</highlight></codeline>
-<codeline lineno="89"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="90"><highlight class="stringliteral">Examples<sp/>and<sp/>tests<sp/>will<sp/>also<sp/>be<sp/>built.</highlight></codeline>
-<codeline lineno="91"><highlight class="stringliteral"><sp/><sp/><sp/><sp/>__________________________________________________________________</highlight></codeline>
-<codeline lineno="92"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="93"><highlight class="stringliteral">##<sp/>4.<sp/>Frequently<sp/>Asked<sp/>Questions</highlight></codeline>
-<codeline lineno="94"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="95"><highlight class="stringliteral">Q:<sp/>Why<sp/>haven&apos;</highlight><highlight class="normal">t<sp/>you<sp/>guys<sp/>implemented<sp/>GBS<sp/>to<sp/>build<sp/>the<sp/>library?</highlight></codeline>
-<codeline lineno="96"><highlight class="normal">A:<sp/>I</highlight><highlight class="stringliteral">&apos;m<sp/>on<sp/>it<sp/>as<sp/>we<sp/>speak!<sp/>;)</highlight></codeline>
-<codeline lineno="97"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="98"><highlight class="stringliteral">Q:<sp/>When<sp/>will<sp/>the<sp/>other<sp/>flavors<sp/>be<sp/>ready?</highlight></codeline>
-<codeline lineno="99"><highlight class="stringliteral">A:<sp/>Soon!<sp/>I&apos;</highlight><highlight class="normal">m<sp/>working<sp/>on<sp/>getting<sp/>help<sp/>on<sp/>developing<sp/>those.</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"></highlight></codeline>
-<codeline lineno="101"><highlight class="normal">Q:<sp/>Is<sp/>there<sp/>any<sp/><ref refid="poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>reference<sp/>when<sp/>it<sp/>comes<sp/>to<sp/>the<sp/>theory<sp/>on<sp/>Mimetic<sp/>Methods?</highlight></codeline>
-<codeline lineno="102"><highlight class="normal">A:<sp/>Yes!<sp/>Check:<sp/>http:</highlight><highlight class="comment">//www.csrc.sdsu.edu/mimetic-book</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="103"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal">Q:<sp/>Do<sp/>I<sp/>need<sp/>to<sp/>generate<sp/>the<sp/>documentation<sp/>myself?</highlight></codeline>
-<codeline lineno="105"><highlight class="normal">A:<sp/>You<sp/>can<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>you<sp/>want<sp/>to...<sp/>but<sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>you<sp/>DO<sp/>NOT<sp/>want<sp/>to,<sp/>just<sp/>go<sp/>to<sp/>our<sp/>website.</highlight></codeline>
-<codeline lineno="106"><highlight class="normal"><sp/><sp/><sp/><sp/>__________________________________________________________________</highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight><highlight class="preprocessor">##<sp/>5.<sp/>Contact,<sp/>Support,<sp/>and<sp/>Credits</highlight></codeline>
-<codeline lineno="109"><highlight class="preprocessor"></highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal">The<sp/>MTK<sp/>is<sp/>developed<sp/>by<sp/>researchers<sp/>and<sp/>adjuncts<sp/>to<sp/>the</highlight></codeline>
-<codeline lineno="111"><highlight class="normal">[Computational<sp/>Science<sp/>Research<sp/>Center<sp/>(CSRC)](http:</highlight><highlight class="comment">//www.csrc.sdsu.edu/)</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal">at<sp/>[San<sp/>Diego<sp/>State<sp/>University<sp/>(SDSU)](http:</highlight><highlight class="comment">//www.sdsu.edu/).</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal">Developers<sp/>are<sp/>members<sp/>of:</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal">1.<sp/>Mimetic<sp/>Numerical<sp/>Methods<sp/>Research<sp/>and<sp/>Development<sp/>Group.</highlight></codeline>
-<codeline lineno="117"><highlight class="normal">2.<sp/>Computational<sp/>Geoscience<sp/>Research<sp/>and<sp/>Development<sp/>Group.</highlight></codeline>
-<codeline lineno="118"><highlight class="normal">3.<sp/>Ocean<sp/>Modeling<sp/>Research<sp/>and<sp/>Development<sp/>Group.</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="120"><highlight class="normal">Currently<sp/>the<sp/>developers<sp/>are:</highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122"><highlight class="normal">-<sp/>**Eduardo<sp/>J.<sp/>Sanchez,<sp/>Ph.D.<sp/>-<sp/>esanchez<sp/>at<sp/>mail<sp/>dot<sp/>sdsu<sp/>dot<sp/>edu**<sp/>-<sp/>@ejspeiro</highlight></codeline>
-<codeline lineno="123"><highlight class="normal">-<sp/>Jose<sp/>E.<sp/>Castillo,<sp/>Ph.D.<sp/>-<sp/>jcastillo<sp/>at<sp/>mail<sp/>dot<sp/>sdsu<sp/>dot<sp/>edu</highlight></codeline>
-<codeline lineno="124"><highlight class="normal">-<sp/>Guillermo<sp/>F.<sp/>Miranda,<sp/>Ph.D.<sp/>-<sp/>unigrav<sp/>at<sp/>hotmail<sp/>dot<sp/>com</highlight></codeline>
-<codeline lineno="125"><highlight class="normal">-<sp/>Christopher<sp/>P.<sp/>Paolini,<sp/>Ph.D.<sp/>-<sp/>paolini<sp/>at<sp/>engineering<sp/>dot<sp/>sdsu<sp/>dot<sp/>edu</highlight></codeline>
-<codeline lineno="126"><highlight class="normal">-<sp/>Angel<sp/>Boada.</highlight></codeline>
-<codeline lineno="127"><highlight class="normal">-<sp/>Johnny<sp/>Corbino.</highlight></codeline>
-<codeline lineno="128"><highlight class="normal">-<sp/>Raul<sp/>Vargas-Navarro.</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal">Finally,<sp/>please<sp/>feel<sp/>free<sp/>to<sp/>contact<sp/>me<sp/>with<sp/>suggestions<sp/>or<sp/>corrections:</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal">**Eduardo<sp/>J.<sp/>Sanchez,<sp/>Ph.D.<sp/>-<sp/>esanchez<sp/>at<sp/>mail<sp/>dot<sp/>sdsu<sp/>dot<sp/>edu**<sp/>-<sp/>@ejspeiro</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal">Thanks<sp/>and<sp/>happy<sp/>coding!</highlight></codeline>
+<codeline><highlight class="normal">#<sp/>The<sp/>Mimetic<sp/>Methods<sp/>Toolkit<sp/>(MTK)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">By:<sp/>**Eduardo<sp/>J.<sp/>Sanchez,<sp/>Ph.D.<sp/>-<sp/>esanchez<sp/>at<sp/>mail<sp/>dot<sp/>sdsu<sp/>dot<sp/>edu**</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__________________________________________________________________</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>1.<sp/>Description</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">We<sp/>define<sp/>numerical<sp/>methods<sp/>that<sp/>are<sp/>based<sp/>on<sp/>discretizations<sp/>preserving<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">properties<sp/>of<sp/>their<sp/>continuum<sp/>counterparts<sp/>to<sp/>be<sp/>**mimetic**.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>**Mimetic<sp/>Methods<sp/>Toolkit<sp/>(MTK)**<sp/>is<sp/>a<sp/>C++<sp/>library<sp/>for<sp/>mimetic<sp/>numerical</highlight></codeline>
+<codeline><highlight class="normal">methods.<sp/>It<sp/>is<sp/>arranged<sp/>as<sp/>a<sp/>set<sp/>of<sp/>classes<sp/>for<sp/>**mimetic<sp/>quadratures**,</highlight></codeline>
+<codeline><highlight class="normal">**mimetic<sp/>interpolation**,<sp/>and<sp/>**mimetic<sp/>finite<sp/>differences**<sp/>methods<sp/>for<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">numerical<sp/>solution<sp/>of<sp/>ordinary<sp/>and<sp/>partial<sp/>differential<sp/>equations.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">An<sp/>older<sp/>version<sp/>of<sp/>this<sp/>library<sp/>is<sp/>available<sp/>outside<sp/>of<sp/>GitHub...<sp/>just<sp/>email<sp/>me</highlight></codeline>
+<codeline><highlight class="normal">about<sp/>it,<sp/>and<sp/>you<sp/>can<sp/>have<sp/>it...<sp/>it<sp/>is<sp/>ugly,<sp/>yet<sp/>it<sp/>is<sp/>functional<sp/>and<sp/>more</highlight></codeline>
+<codeline><highlight class="normal">complete.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__________________________________________________________________</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>2.<sp/>Dependencies</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">This<sp/>README<sp/>assumes<sp/>all<sp/>of<sp/>these<sp/>dependencies<sp/>are<sp/>installed<sp/>in<sp/>the<sp/>following</highlight></codeline>
+<codeline><highlight class="normal">folder:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">$(HOME)/Libraries/</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">In<sp/>this<sp/>version,<sp/>the<sp/>MTK<sp/>optionally<sp/>uses<sp/>ATLAS-optimized<sp/>BLAS<sp/>and<sp/>LAPACK</highlight></codeline>
+<codeline><highlight class="normal">routines<sp/>for<sp/>the<sp/>internal<sp/>computation<sp/>on<sp/>some<sp/>of<sp/>the<sp/>layers.<sp/>However,<sp/>ATLAS</highlight></codeline>
+<codeline><highlight class="normal">requires<sp/>both<sp/>BLAS<sp/>and<sp/>LAPACK<sp/>in<sp/>order<sp/>to<sp/>create<sp/>their<sp/>optimized<sp/>distributions.</highlight></codeline>
+<codeline><highlight class="normal">Therefore,<sp/>the<sp/>following<sp/>dependencies<sp/>tree<sp/>arises:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>For<sp/>Linux:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>LAPACK<sp/>-<sp/>Available<sp/>from:<sp/>http://www.netlib.org/lapack/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>1.<sp/>BLAS<sp/>-<sp/>Available<sp/>from:<sp/>http://www.netlib.org/blas/</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">2.<sp/>GLPK<sp/>-<sp/>Available<sp/>from:<sp/>https://www.gnu.org/software/glpk/</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">3.<sp/>(Optional)<sp/>ATLAS<sp/>-<sp/>Available<sp/>from:<sp/>http://math-atlas.sourceforge.net/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/>1.<sp/>LAPACK<sp/>-<sp/>Available<sp/>from:<sp/>http://www.netlib.org/lapack/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>1.<sp/>BLAS<sp/>-<sp/>Available<sp/>from:<sp/>http://www.netlib.org/blas</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">4.<sp/>(Optional)<sp/>Valgrind<sp/>-<sp/>Available<sp/>from:<sp/>http://valgrind.org/</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">5.<sp/>(Optional)<sp/>Doxygen<sp/>-<sp/>Available<sp/>from<sp/>http://www.stack.nl/~dimitri/doxygen/</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>For<sp/>OS<sp/>X:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>GLPK<sp/>-<sp/>Available<sp/>from:<sp/>https://www.gnu.org/software/glpk/</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__________________________________________________________________</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>3.<sp/>Installation</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>PART<sp/>1.<sp/>CONFIGURATION<sp/>OF<sp/>THE<sp/>MAKEFILE.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>following<sp/>steps<sp/>are<sp/>required<sp/>to<sp/>build<sp/>and<sp/>test<sp/>the<sp/>MTK.<sp/>Please<sp/>use<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">accompanying<sp/>`Makefile.inc`<sp/>file,<sp/>which<sp/>should<sp/>provide<sp/>a<sp/>solid<sp/>template<sp/>to</highlight></codeline>
+<codeline><highlight class="normal">start<sp/>with.<sp/>The<sp/>following<sp/>command<sp/>provides<sp/>help<sp/>on<sp/>the<sp/>options<sp/>for<sp/>make:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">$<sp/>make<sp/>help</highlight></codeline>
+<codeline><highlight class="normal">-----</highlight></codeline>
+<codeline><highlight class="normal">Makefile<sp/>for<sp/>the<sp/>MTK.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Options<sp/>are:</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>all:<sp/>builds<sp/>the<sp/>library,<sp/>the<sp/>tests,<sp/>and<sp/>examples.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>mtklib:<sp/>builds<sp/>the<sp/>library.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>test:<sp/>builds<sp/>the<sp/>test<sp/>files.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>example:<sp/>builds<sp/>the<sp/>examples.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>testall:<sp/>runs<sp/>all<sp/>the<sp/>tests.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>gendoc:<sp/>generates<sp/>the<sp/>documentation<sp/>for<sp/>the<sp/>library.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>clean:<sp/>cleans<sp/>all<sp/>the<sp/>generated<sp/>files.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>cleanlib:<sp/>cleans<sp/>the<sp/>generated<sp/>archive<sp/>and<sp/>object<sp/>files.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>cleantest:<sp/>cleans<sp/>the<sp/>generated<sp/>tests<sp/>executables.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>cleanexample:<sp/>cleans<sp/>the<sp/>generated<sp/>examples<sp/>executables.</highlight></codeline>
+<codeline><highlight class="normal">-----</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">###<sp/>PART<sp/>2.<sp/>BUILD<sp/>THE<sp/>LIBRARY.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">$<sp/>make</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">If<sp/>successful<sp/>you&apos;ll<sp/>read<sp/>(before<sp/>building<sp/>the<sp/>tests<sp/>and<sp/>examples):</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline><highlight class="normal">-----<sp/>Library<sp/>created!<sp/>Check<sp/>in<sp/>/home/ejspeiro/Dropbox/MTK/lib</highlight></codeline>
+<codeline><highlight class="normal">```</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Examples<sp/>and<sp/>tests<sp/>will<sp/>also<sp/>be<sp/>built.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__________________________________________________________________</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>4.<sp/>Frequently<sp/>Asked<sp/>Questions</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Q:<sp/>Why<sp/>haven&apos;t<sp/>you<sp/>guys<sp/>implemented<sp/>GBS<sp/>to<sp/>build<sp/>the<sp/>library?</highlight></codeline>
+<codeline><highlight class="normal">A:<sp/>I&apos;m<sp/>on<sp/>it<sp/>as<sp/>we<sp/>speak!<sp/>;)</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Q:<sp/>Is<sp/>there<sp/>any<sp/>main<sp/>reference<sp/>when<sp/>it<sp/>comes<sp/>to<sp/>the<sp/>theory<sp/>on<sp/>Mimetic<sp/>Methods?</highlight></codeline>
+<codeline><highlight class="normal">A:<sp/>Yes!<sp/>Check:<sp/>http://www.csrc.sdsu.edu/mimetic-book</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Q:<sp/>Do<sp/>I<sp/>need<sp/>to<sp/>generate<sp/>the<sp/>documentation<sp/>myself?</highlight></codeline>
+<codeline><highlight class="normal">A:<sp/>You<sp/>can<sp/>if<sp/>you<sp/>want<sp/>to...<sp/>but<sp/>if<sp/>you<sp/>DO<sp/>NOT<sp/>want<sp/>to,<sp/>just<sp/>go<sp/>to<sp/>our<sp/>website.</highlight></codeline>
+<codeline><highlight class="normal"><sp/><sp/><sp/><sp/>__________________________________________________________________</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">##<sp/>5.<sp/>Contact,<sp/>Support,<sp/>and<sp/>Credits</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">The<sp/>MTK<sp/>is<sp/>developed<sp/>by<sp/>researchers<sp/>and<sp/>adjuncts<sp/>to<sp/>the</highlight></codeline>
+<codeline><highlight class="normal">[Computational<sp/>Science<sp/>Research<sp/>Center<sp/>(CSRC)](http://www.csrc.sdsu.edu/)</highlight></codeline>
+<codeline><highlight class="normal">at<sp/>[San<sp/>Diego<sp/>State<sp/>University<sp/>(SDSU)](http://www.sdsu.edu/).</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Developers<sp/>are<sp/>members<sp/>of:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">1.<sp/>Mimetic<sp/>Numerical<sp/>Methods<sp/>Research<sp/>and<sp/>Development<sp/>Group.</highlight></codeline>
+<codeline><highlight class="normal">2.<sp/>Computational<sp/>Geoscience<sp/>Research<sp/>and<sp/>Development<sp/>Group.</highlight></codeline>
+<codeline><highlight class="normal">3.<sp/>Ocean<sp/>Modeling<sp/>Research<sp/>and<sp/>Development<sp/>Group.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Currently<sp/>the<sp/>developers<sp/>are:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">-<sp/>**Eduardo<sp/>J.<sp/>Sanchez,<sp/>Ph.D.<sp/>-<sp/>esanchez<sp/>at<sp/>mail<sp/>dot<sp/>sdsu<sp/>dot<sp/>edu**<sp/>-<sp/>@ejspeiro</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Jose<sp/>E.<sp/>Castillo,<sp/>Ph.D.<sp/>-<sp/>jcastillo<sp/>at<sp/>mail<sp/>dot<sp/>sdsu<sp/>dot<sp/>edu</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Guillermo<sp/>F.<sp/>Miranda,<sp/>Ph.D.<sp/>-<sp/>unigrav<sp/>at<sp/>hotmail<sp/>dot<sp/>com</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Christopher<sp/>P.<sp/>Paolini,<sp/>Ph.D.<sp/>-<sp/>paolini<sp/>at<sp/>engineering<sp/>dot<sp/>sdsu<sp/>dot<sp/>edu</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Angel<sp/>Boada.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Johnny<sp/>Corbino.</highlight></codeline>
+<codeline><highlight class="normal">-<sp/>Raul<sp/>Vargas-Navarro.</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Finally,<sp/>please<sp/>feel<sp/>free<sp/>to<sp/>contact<sp/>me<sp/>with<sp/>suggestions<sp/>or<sp/>corrections:</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">**Eduardo<sp/>J.<sp/>Sanchez,<sp/>Ph.D.<sp/>-<sp/>esanchez<sp/>at<sp/>mail<sp/>dot<sp/>sdsu<sp/>dot<sp/>edu**<sp/>-<sp/>@ejspeiro</highlight></codeline>
+<codeline></codeline>
+<codeline><highlight class="normal">Thanks<sp/>and<sp/>happy<sp/>coding!</highlight></codeline>
     </programlisting>
-    <location file="/home/ejspeiro/Dropbox/MTK/README.md"/>
+    <location file="/home/esanchez/Dropbox/MTK/README.md"/>
   </compounddef>
 </doxygen>

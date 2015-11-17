@@ -1,4 +1,4 @@
-.TH "mtk" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -16,6 +16,9 @@ Mimetic Methods Toolkit namespace\&.
 .RI "class \fBBCDesc1D\fP"
 .br
 .ti -1c
+.RI "class \fBBCDesc2D\fP"
+.br
+.ti -1c
 .RI "class \fBBLASAdapter\fP"
 .br
 .RI "\fIAdapter class for the BLAS API\&. \fP"
@@ -28,6 +31,9 @@ Mimetic Methods Toolkit namespace\&.
 .br
 .RI "\fIImplements a 1D mimetic divergence operator\&. \fP"
 .ti -1c
+.RI "class \fBDiv2D\fP"
+.br
+.ti -1c
 .RI "class \fBGLPKAdapter\fP"
 .br
 .RI "\fIAdapter class for the GLPK API\&. \fP"
@@ -36,9 +42,22 @@ Mimetic Methods Toolkit namespace\&.
 .br
 .RI "\fIImplements a 1D mimetic gradient operator\&. \fP"
 .ti -1c
+.RI "class \fBGrad2D\fP"
+.br
+.ti -1c
+.RI "class \fBInterp1D\fP"
+.br
+.RI "\fIImplements a 1D interpolation operator\&. \fP"
+.ti -1c
+.RI "class \fBInterp2D\fP"
+.br
+.ti -1c
 .RI "class \fBLap1D\fP"
 .br
 .RI "\fIImplements a 1D mimetic Laplacian operator\&. \fP"
+.ti -1c
+.RI "class \fBLap2D\fP"
+.br
 .ti -1c
 .RI "class \fBLAPACKAdapter\fP"
 .br
@@ -59,6 +78,10 @@ Mimetic Methods Toolkit namespace\&.
 .RI "class \fBUniStgGrid1D\fP"
 .br
 .RI "\fIUniform 1D Staggered Grid\&. \fP"
+.ti -1c
+.RI "class \fBUniStgGrid2D\fP"
+.br
+.RI "\fIUniform 2D Staggered Grid\&. \fP"
 .in -1c
 .SS "Typedefs"
 
@@ -83,6 +106,10 @@ Mimetic Methods Toolkit namespace\&.
 .RI "enum \fBFieldNature\fP { \fBSCALAR\fP, \fBVECTOR\fP }"
 .br
 .RI "\fINature of the field discretized in a given grid\&. \fP"
+.ti -1c
+.RI "enum \fBDirInterp\fP { \fBSCALAR_TO_VECTOR\fP, \fBVECTOR_TO_SCALAR\fP }"
+.br
+.RI "\fI1D interpolation operator\&. \fP"
 .in -1c
 .SS "Functions"
 
@@ -109,6 +136,9 @@ Mimetic Methods Toolkit namespace\&.
 .RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBmtk::Grad1D\fP &in)"
 .br
 .ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBmtk::Interp1D\fP &in)"
+.br
+.ti -1c
 .RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBmtk::Lap1D\fP &in)"
 .br
 .ti -1c
@@ -128,6 +158,9 @@ Mimetic Methods Toolkit namespace\&.
 .RI "\fISingle-precision Orthogonal \fBMatrix\fP from QR factorization\&. \fP"
 .ti -1c
 .RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBmtk::UniStgGrid1D\fP &in)"
+.br
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBmtk::UniStgGrid2D\fP &in)"
 .br
 .in -1c
 .SS "Variables"
@@ -150,7 +183,7 @@ Mimetic Methods Toolkit namespace\&.
 .br
 .RI "\fIDefault order of accuracy for mimetic operators\&. \fP"
 .ti -1c
-.RI "const float \fBkDefaultMimeticThreshold\fP {1\&.e-6f}"
+.RI "const float \fBkDefaultMimeticThreshold\fP {1e-6f}"
 .br
 .RI "\fIDefault tolerance for higher-order mimetic operators\&. \fP"
 .ti -1c
@@ -164,10 +197,30 @@ Mimetic Methods Toolkit namespace\&.
 .in -1c
 .SH "Function Documentation"
 .PP 
+.SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::Interp1D\fP &in)"
+
+.IP "1." 4
+Print approximating coefficients for the interior\&. 
+.PP
+
+.PP
+Definition at line 66 of file mtk_interp_1d\&.cc\&.
+.SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::UniStgGrid2D\fP &in)"
+
+.IP "1." 4
+Print spatial coordinates\&.
+.IP "2." 4
+Print scalar field\&. 
+.PP
+
+.PP
+Definition at line 67 of file mtk_uni_stg_grid_2d\&.cc\&.
 .SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::UniStgGrid1D\fP &in)"
 
 .IP "1." 4
-Print spatial coordinates\&. 
+Print spatial coordinates\&.
+.IP "2." 4
+Print scalar field\&. 
 .PP
 
 .PP
@@ -187,21 +240,7 @@ Definition at line 73 of file mtk_lap_1d\&.cc\&.
 .SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::DenseMatrix\fP &in)"
 
 .PP
-Definition at line 75 of file mtk_dense_matrix\&.cc\&.
-.SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::Div1D\fP &in)"
-
-.IP "1." 4
-Print order of accuracy\&.
-.IP "2." 4
-Print approximating coefficients for the interior\&.
-.IP "3." 4
-Print mimetic weights\&.
-.IP "4." 4
-Print mimetic approximations at the boundary\&. 
-.PP
-
-.PP
-Definition at line 79 of file mtk_div_1d\&.cc\&.
+Definition at line 77 of file mtk_dense_matrix\&.cc\&.
 .SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::Grad1D\fP &in)"
 
 .IP "1." 4
@@ -216,6 +255,20 @@ Print mimetic approximations at the boundary\&.
 
 .PP
 Definition at line 79 of file mtk_grad_1d\&.cc\&.
+.SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::Div1D\fP &in)"
+
+.IP "1." 4
+Print order of accuracy\&.
+.IP "2." 4
+Print approximating coefficients for the interior\&.
+.IP "3." 4
+Print mimetic weights\&.
+.IP "4." 4
+Print mimetic approximations at the boundary\&. 
+.PP
+
+.PP
+Definition at line 79 of file mtk_div_1d\&.cc\&.
 .SS "void mtk::saxpy_ (int *n, float *sa, float *sx, int *incx, float *sy, int *incy)"
 
 .SS "void mtk::sgels_ (char *trans, int *m, int *n, int *nrhs, Real *a, int *lda, Real *b, int *ldb, Real *work, int *lwork, int *info)"
@@ -249,7 +302,7 @@ If TRANS = 'T' and m < n: find the least squares solution of an overdetermined s
 .PP
 Several right hand side vectors b and solution vectors x can be handled in a single call; they are stored as the columns of the M-by-NRHS right hand side matrix B and the N-by-NRHS solution matrix X\&.
 .PP
-\fBSee Also:\fP
+\fBSee also:\fP
 .RS 4
 http://www.math.utah.edu/software/lapack/lapack-s/sgels.html
 .RE
@@ -304,7 +357,7 @@ where Q is a real orthogonal matrix defined as the product of k elementary refle
 .PP
 as returned by SGEQRF\&. Q is of order M if SIDE = 'L' and of order N if SIDE = 'R'\&.
 .PP
-\fBSee Also:\fP
+\fBSee also:\fP
 .RS 4
 http://www.netlib.org/lapack/explore-html/df/d97/sgeqrf_8f.html
 .RE
@@ -353,7 +406,7 @@ where Q is a real orthogonal matrix defined as the product of k elementary refle
 .PP
 as returned by SGEQRF\&. Q is of order M if SIDE = 'L' and of order N if SIDE = 'R'\&.
 .PP
-\fBSee Also:\fP
+\fBSee also:\fP
 .RS 4
 http://www.netlib.org/lapack/explore-html/d0/d98/sormqr_8f_source.html
 .RE

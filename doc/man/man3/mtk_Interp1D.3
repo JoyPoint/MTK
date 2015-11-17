@@ -1,0 +1,166 @@
+.TH "mtk::Interp1D" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk::Interp1D \- 
+.PP
+Implements a 1D interpolation operator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mtk_interp_1d\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBInterp1D\fP ()"
+.br
+.RI "\fIDefault constructor\&. \fP"
+.ti -1c
+.RI "\fBInterp1D\fP (const \fBInterp1D\fP &interp)"
+.br
+.RI "\fICopy constructor\&. \fP"
+.ti -1c
+.RI "\fB~Interp1D\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "bool \fBConstructInterp1D\fP (int order_accuracy=\fBkDefaultOrderAccuracy\fP, \fBmtk::DirInterp\fP dir=\fBSCALAR_TO_VECTOR\fP)"
+.br
+.RI "\fIFactory method to build operator\&. \fP"
+.ti -1c
+.RI "\fBReal\fP * \fBcoeffs_interior\fP () const "
+.br
+.RI "\fIReturns coefficients for the interior of the grid\&. \fP"
+.ti -1c
+.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP (const \fBUniStgGrid1D\fP &grid)"
+.br
+.RI "\fIReturns the operator as a dense matrix\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBDirInterp\fP \fBdir_interp_\fP"
+.br
+.RI "\fIDirection of interpolation\&. \fP"
+.ti -1c
+.RI "int \fBorder_accuracy_\fP"
+.br
+.RI "\fIOrder of numerical accuracy of the operator\&. \fP"
+.ti -1c
+.RI "\fBReal\fP * \fBcoeffs_interior_\fP"
+.br
+.RI "\fIInterior stencil\&. \fP"
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBInterp1D\fP &in)"
+.br
+.RI "\fIOutput stream operator for printing\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class implements a 1D interpolation operator\&. 
+.PP
+Definition at line 82 of file mtk_interp_1d\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mtk::Interp1D::Interp1D ()"
+
+.PP
+Definition at line 80 of file mtk_interp_1d\&.cc\&.
+.SS "mtk::Interp1D::Interp1D (const \fBInterp1D\fP &interp)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIinterp\fP Given interpolation operator\&. 
+.RE
+.PP
+
+.PP
+Definition at line 85 of file mtk_interp_1d\&.cc\&.
+.SS "mtk::Interp1D::~Interp1D ()"
+
+.PP
+Definition at line 90 of file mtk_interp_1d\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBmtk::Real\fP * mtk::Interp1D::coeffs_interior () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Coefficients for the interior of the grid\&. 
+.RE
+.PP
+
+.PP
+Definition at line 130 of file mtk_interp_1d\&.cc\&.
+.SS "bool mtk::Interp1D::ConstructInterp1D (intorder_accuracy = \fC\fBkDefaultOrderAccuracy\fP\fP, \fBmtk::DirInterp\fPdir = \fC\fBSCALAR_TO_VECTOR\fP\fP)"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Success of the solution\&. 
+.RE
+.PP
+
+.IP "1." 4
+Compute stencil for the interior cells\&. 
+.PP
+
+.PP
+Definition at line 96 of file mtk_interp_1d\&.cc\&.
+.SS "\fBmtk::DenseMatrix\fP mtk::Interp1D::ReturnAsDenseMatrix (const \fBUniStgGrid1D\fP &grid)"
+
+.PP
+\fBReturns:\fP
+.RS 4
+The operator as a dense matrix\&. 
+.RE
+.PP
+
+.IP "1." 4
+Preserve values at the boundary\&.
+.IP "2." 4
+Insert coefficients for the interior of the grid\&.
+.IP "3." 4
+Impose center-skew symmetry by permuting the boundaries\&. 
+.PP
+
+.PP
+Definition at line 135 of file mtk_interp_1d\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::Interp1D\fP &in)\fC [friend]\fP"
+
+.IP "1." 4
+Print approximating coefficients for the interior\&. 
+.PP
+
+.PP
+Definition at line 66 of file mtk_interp_1d\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBReal\fP* mtk::Interp1D::coeffs_interior_\fC [private]\fP"
+
+.PP
+Definition at line 127 of file mtk_interp_1d\&.h\&.
+.SS "\fBDirInterp\fP mtk::Interp1D::dir_interp_\fC [private]\fP"
+
+.PP
+Definition at line 123 of file mtk_interp_1d\&.h\&.
+.SS "int mtk::Interp1D::order_accuracy_\fC [private]\fP"
+
+.PP
+Definition at line 125 of file mtk_interp_1d\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

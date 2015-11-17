@@ -1,0 +1,168 @@
+\hypertarget{mtk__interp__1d_8cc_source}{\section{mtk\+\_\+interp\+\_\+1d.\+cc}
+\label{mtk__interp__1d_8cc_source}\index{src/mtk\+\_\+interp\+\_\+1d.\+cc@{src/mtk\+\_\+interp\+\_\+1d.\+cc}}
+}
+
+\begin{DoxyCode}
+00001 
+00012 \textcolor{comment}{/*}
+00013 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00014 \textcolor{comment}{University. All rights reserved.}
+00015 \textcolor{comment}{}
+00016 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00017 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00018 \textcolor{comment}{}
+00019 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00020 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00021 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
+00022 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
+00023 \textcolor{comment}{should be developed and included in any deliverable.}
+00024 \textcolor{comment}{}
+00025 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00026 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00027 \textcolor{comment}{}
+00028 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
+00029 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00030 \textcolor{comment}{other materials provided with the distribution.}
+00031 \textcolor{comment}{}
+00032 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
+00033 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
+00034 \textcolor{comment}{be given to the copyright holders.}
+00035 \textcolor{comment}{}
+00036 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
+00037 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00038 \textcolor{comment}{specific prior written permission.}
+00039 \textcolor{comment}{}
+00040 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00041 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00042 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00043 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00044 \textcolor{comment}{parties intellectual property rights.}
+00045 \textcolor{comment}{}
+00046 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00047 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00048 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00049 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00050 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00051 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00052 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00053 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00054 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00055 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00056 \textcolor{comment}{*/}
+00057 
+00058 \textcolor{preprocessor}{#include <cstring>}
+00059 
+00060 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
+00061 
+00062 \textcolor{preprocessor}{#include "\hyperlink{mtk__interp__1d_8h}{mtk\_interp\_1d.h}"}
+00063 
+00064 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk} \{
+00065 
+\hypertarget{mtk__interp__1d_8cc_source_l00066}{}\hyperlink{namespacemtk_a1defe4e644a8c7d89bcceb0b1bc2372f}{00066} std::ostream& \hyperlink{namespacemtk_ad3bcf52cda59ddb5fc7b4bdce76c46dc}{operator <<}(std::ostream &stream, \hyperlink{classmtk_1_1Interp1D}{mtk::Interp1D} &in) \{
+00067 
+00069 
+00070   stream << \textcolor{stringliteral}{"coeffs\_interior\_[1:"} << in.\hyperlink{classmtk_1_1Interp1D_a1ee8467d93536dc04240cd76f0d95c9c}{order\_accuracy\_} << \textcolor{stringliteral}{"] = "};
+00071   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < in.\hyperlink{classmtk_1_1Interp1D_a1ee8467d93536dc04240cd76f0d95c9c}{order\_accuracy\_}; ++ii) \{
+00072     stream << std::setw(9) << in.\hyperlink{classmtk_1_1Interp1D_abae01ab84103d8b11903357cfdeb94d5}{coeffs\_interior\_}[ii] << \textcolor{stringliteral}{" "};
+00073   \}
+00074   stream << std::endl;
+00075 
+00076   \textcolor{keywordflow}{return} stream;
+00077 \}
+00078 \}
+00079 
+\hypertarget{mtk__interp__1d_8cc_source_l00080}{}\hyperlink{classmtk_1_1Interp1D_ae56f90c53579c91c1dbe715f7e7361be}{00080} \hyperlink{classmtk_1_1Interp1D_ae56f90c53579c91c1dbe715f7e7361be}{mtk::Interp1D::Interp1D}():
+00081   dir\_interp\_(\hyperlink{namespacemtk}{mtk}::\hyperlink{namespacemtk_ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139}{SCALAR\_TO\_VECTOR}),
+00082   order\_accuracy\_(\hyperlink{namespacemtk}{mtk}::\hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{kDefaultOrderAccuracy}),
+00083   coeffs\_interior\_(nullptr) \{\}
+00084 
+\hypertarget{mtk__interp__1d_8cc_source_l00085}{}\hyperlink{classmtk_1_1Interp1D_a92a5ed77144b3824d201a586f4072fd0}{00085} \hyperlink{classmtk_1_1Interp1D_ae56f90c53579c91c1dbe715f7e7361be}{mtk::Interp1D::Interp1D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Interp1D}{Interp1D} &interp):
+00086   dir\_interp\_(interp.dir\_interp\_),
+00087   order\_accuracy\_(interp.order\_accuracy\_),
+00088   coeffs\_interior\_(interp.coeffs\_interior\_) \{\}
+00089 
+\hypertarget{mtk__interp__1d_8cc_source_l00090}{}\hyperlink{classmtk_1_1Interp1D_a52ea06b5e3d7082eb06ade256f4e30fb}{00090} \hyperlink{classmtk_1_1Interp1D_a52ea06b5e3d7082eb06ade256f4e30fb}{mtk::Interp1D::~Interp1D}() \{
+00091 
+00092   \textcolor{keyword}{delete}[] coeffs\_interior\_;
+00093   coeffs\_interior\_ = \textcolor{keyword}{nullptr};
+00094 \}
+00095 
+\hypertarget{mtk__interp__1d_8cc_source_l00096}{}\hyperlink{classmtk_1_1Interp1D_ab1c8e12534886aa185b24be474d1056e}{00096} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Interp1D_ab1c8e12534886aa185b24be474d1056e}{mtk::Interp1D::ConstructInterp1D}(\textcolor{keywordtype}{int} order\_accuracy, 
+      \hyperlink{group__c02-enums_ga674ec67bd1baa04e5dc06c2bcc351972}{mtk::DirInterp} dir) \{
+00097 
+00098 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00099   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(order\_accuracy < 2, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00100   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}((order\_accuracy%2) != 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00101   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(dir < \hyperlink{namespacemtk_ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139}{mtk::SCALAR\_TO\_VECTOR} &&
+00102                       dir > \hyperlink{namespacemtk_ga674ec67bd1baa04e5dc06c2bcc351972a122cf2e24aef105e9214698206af6904}{mtk::VECTOR\_TO\_SCALAR},
+00103                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00104 
+00105   std::cout << \textcolor{stringliteral}{"order\_accuracy\_ = "} << order\_accuracy << std::endl;
+00106 \textcolor{preprocessor}{  #endif}
+00107 
+00108   order\_accuracy\_ = order\_accuracy;
+00109 
+00111 
+00112   \textcolor{keywordflow}{try} \{
+00113     coeffs\_interior\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[order\_accuracy\_];
+00114   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00115     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00116       std::endl;
+00117     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00118   \}
+00119   memset(coeffs\_interior\_,
+00120          \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
+00121          \textcolor{keyword}{sizeof}(coeffs\_interior\_[0])*order\_accuracy\_);
+00122 
+00123   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < order\_accuracy\_; ++ii) \{
+00124     coeffs\_interior\_[ii] = \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne};
+00125   \}
+00126 
+00127   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00128 \}
+00129 
+\hypertarget{mtk__interp__1d_8cc_source_l00130}{}\hyperlink{classmtk_1_1Interp1D_a652289cbb0000d3f4e5e8d632aaf4b03}{00130} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *\hyperlink{classmtk_1_1Interp1D_a652289cbb0000d3f4e5e8d632aaf4b03}{mtk::Interp1D::coeffs\_interior}()\textcolor{keyword}{ const }\{
+00131 
+00132   \textcolor{keywordflow}{return} coeffs\_interior\_;
+00133 \}
+00134 
+\hypertarget{mtk__interp__1d_8cc_source_l00135}{}\hyperlink{classmtk_1_1Interp1D_a62b241a3db626e92e9e57c7da772a36b}{00135} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Interp1D_a62b241a3db626e92e9e57c7da772a36b}{mtk::Interp1D::ReturnAsDenseMatrix}(\textcolor{keyword}{const}
+       \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid) \{
+00136 
+00137   \textcolor{keywordtype}{int} nn\{grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}()\}; \textcolor{comment}{// Number of cells on the grid.}
+00138 
+00139 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00140   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00141 \textcolor{preprocessor}{  #endif}
+00142 
+00143   \textcolor{keywordtype}{int} gg\_num\_rows\{\};  \textcolor{comment}{// Number of rows.}
+00144   \textcolor{keywordtype}{int} gg\_num\_cols\{\};  \textcolor{comment}{// Number of columns.}
+00145 
+00146   \textcolor{keywordflow}{if} (dir\_interp\_ == \hyperlink{namespacemtk_ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139}{mtk::SCALAR\_TO\_VECTOR}) \{
+00147     gg\_num\_rows = nn + 1;
+00148     gg\_num\_cols = nn + 2;
+00149   \} \textcolor{keywordflow}{else} \{
+00150     gg\_num\_rows = nn + 2;
+00151     gg\_num\_cols = nn + 1;
+00152   \}
+00153 
+00154   \textcolor{comment}{// Output matrix featuring sizes for gradient operators.}
+00155 
+00156   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} out(gg\_num\_rows, gg\_num\_cols);
+00157 
+00159 
+00160   out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(0, 0, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
+00161 
+00163 
+00164   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < gg\_num\_rows - 1; ++ii) \{
+00165     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = ii ; jj < order\_accuracy\_ + ii; ++jj) \{
+00166       out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(ii, jj, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/order\_accuracy\_);
+00167     \}
+00168   \}
+00169 
+00171 
+00172   out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(gg\_num\_rows - 1, gg\_num\_cols - 1, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
+00173 
+00174   \textcolor{keywordflow}{return} out;
+00175 \}
+\end{DoxyCode}

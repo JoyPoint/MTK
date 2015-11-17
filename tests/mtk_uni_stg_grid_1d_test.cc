@@ -14,22 +14,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -58,25 +58,24 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk.h"
 
-void Test1() {
+void TestDefaultConstructor() {
 
-  mtk::Tools::BeginTestNo(1);
+  mtk::Tools::BeginUnitTestNo(1);
 
   mtk::UniStgGrid1D gg;
 
-  std::cout << gg << std::endl;
-
-  mtk::Tools::EndTestNo(1);
+  mtk::Tools::EndUnitTestNo(1);
+  mtk::Tools::Assert(gg.delta_x() == mtk::kZero);
 }
 
-mtk::Real ScalarFieldOne(mtk::Real xx) {
+mtk::Real ScalarField(mtk::Real xx) {
 
   return 2.0*xx;
 }
 
-void Test2() {
+void TestConstructWithWestBndyEastBndyNumCellsOStreamOperatorBindScalarField() {
 
-  mtk::Tools::BeginTestNo(2);
+  mtk::Tools::BeginUnitTestNo(2);
 
   mtk::Real aa = 0.0;
   mtk::Real bb = 1.0;
@@ -85,18 +84,17 @@ void Test2() {
 
   mtk::UniStgGrid1D gg(aa, bb, nn);
 
-  std::cout << gg << std::endl;
-
-  gg.BindScalarField(ScalarFieldOne);
+  gg.BindScalarField(ScalarField);
 
   std::cout << gg << std::endl;
 
-  mtk::Tools::EndTestNo(2);
+  mtk::Tools::EndUnitTestNo(2);
+  mtk::Tools::Assert(gg.delta_x() == 0.2 && gg.num_cells_x() == 5);
 }
 
-void Test3() {
+void TestBindScalarFieldWriteToFile() {
 
-  mtk::Tools::BeginTestNo(3);
+  mtk::Tools::BeginUnitTestNo(3);
 
   mtk::Real aa = 0.0;
   mtk::Real bb = 1.0;
@@ -105,27 +103,32 @@ void Test3() {
 
   mtk::UniStgGrid1D gg(aa, bb, nn);
 
-  std::cout << gg << std::endl;
+  bool assertion{true};
 
-  gg.BindScalarField(ScalarFieldOne);
+  gg.BindScalarField(ScalarField);
 
-  std::cout << gg << std::endl;
+  assertion =
+    assertion &&
+    gg.discrete_field_u()[0] == 0.0 &&
+    gg.discrete_field_u()[gg.num_cells_x() + 2 - 1] == 2.0;
 
   if(!gg.WriteToFile("mtk_uni_stg_grid_1d_test_03.dat", "x", "u(x)")) {
     std::cerr << "Error writing to file." << std::endl;
+    assertion = false;
   }
 
-  mtk::Tools::EndTestNo(3);
+  mtk::Tools::EndUnitTestNo(3);
+  mtk::Tools::Assert(assertion);
 }
 
-mtk::Real VectorFieldXComponentOne(mtk::Real xx) {
+mtk::Real VectorFieldPComponent(mtk::Real xx) {
 
   return xx*xx;
 }
 
-void Test4() {
+void TestBindVectorField() {
 
-  mtk::Tools::BeginTestNo(4);
+  mtk::Tools::BeginUnitTestNo(4);
 
   mtk::Real aa = 0.0;
   mtk::Real bb = 1.0;
@@ -134,27 +137,32 @@ void Test4() {
 
   mtk::UniStgGrid1D gg(aa, bb, nn, mtk::VECTOR);
 
-  std::cout << gg << std::endl;
+  bool assertion{true};
 
-  gg.BindVectorField(VectorFieldXComponentOne);
+  gg.BindVectorField(VectorFieldPComponent);
 
-  std::cout << gg << std::endl;
+  assertion =
+    assertion &&
+    gg.discrete_field_u()[0] == 0.0 &&
+    gg.discrete_field_u()[gg.num_cells_x() + 1 - 1] == 1.0;
 
   if(!gg.WriteToFile("mtk_uni_stg_grid_1d_test_04.dat", "x", "v(x)")) {
     std::cerr << "Error writing to file." << std::endl;
+    assertion = false;
   }
 
-  mtk::Tools::EndTestNo(4);
+  mtk::Tools::EndUnitTestNo(4);
+  mtk::Tools::Assert(assertion);
 }
 
 int main () {
 
   std::cout << "Testing mtk::UniStgGrid1D class." << std::endl;
 
-  Test1();
-  Test2();
-  Test3();
-  Test4();
+  TestDefaultConstructor();
+  TestConstructWithWestBndyEastBndyNumCellsOStreamOperatorBindScalarField();
+  TestBindScalarFieldWriteToFile();
+  TestBindVectorField();
 }
 
 #else

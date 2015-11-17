@@ -1,5 +1,5 @@
-\hypertarget{mtk__dense__matrix__test_8cc}{\section{mtk\-\_\-dense\-\_\-matrix\-\_\-test.\-cc}
-\label{mtk__dense__matrix__test_8cc}\index{tests/mtk\-\_\-dense\-\_\-matrix\-\_\-test.\-cc@{tests/mtk\-\_\-dense\-\_\-matrix\-\_\-test.\-cc}}
+\hypertarget{mtk__dense__matrix__test_8cc_source}{\section{mtk\+\_\+dense\+\_\+matrix\+\_\+test.\+cc}
+\label{mtk__dense__matrix__test_8cc_source}\index{tests/mtk\+\_\+dense\+\_\+matrix\+\_\+test.\+cc@{tests/mtk\+\_\+dense\+\_\+matrix\+\_\+test.\+cc}}
 }
 
 \begin{DoxyCode}
@@ -13,22 +13,22 @@
 00014 \textcolor{comment}{}
 00015 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
 00016 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
-00017 \textcolor{comment}{completed. Documentation related to said modifications should be included.}
-00018 \textcolor{comment}{}
-00019 \textcolor{comment}{2. Redistributions of source code must be done through direct}
-00020 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
-00021 \textcolor{comment}{}
-00022 \textcolor{comment}{3. Redistributions of source code must retain the above copyright notice, this}
-00023 \textcolor{comment}{list of conditions and the following disclaimer.}
-00024 \textcolor{comment}{}
-00025 \textcolor{comment}{4. Redistributions in binary form must reproduce the above copyright notice,}
-00026 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
-00027 \textcolor{comment}{other materials provided with the distribution.}
-00028 \textcolor{comment}{}
-00029 \textcolor{comment}{5. Usage of the binary form on proprietary applications shall require explicit}
-00030 \textcolor{comment}{prior written permission from the the copyright holders.}
+00017 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
+00018 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
+00019 \textcolor{comment}{should be developed and included in any deliverable.}
+00020 \textcolor{comment}{}
+00021 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00022 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00023 \textcolor{comment}{}
+00024 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
+00025 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00026 \textcolor{comment}{other materials provided with the distribution.}
+00027 \textcolor{comment}{}
+00028 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
+00029 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
+00030 \textcolor{comment}{be given to the copyright holders.}
 00031 \textcolor{comment}{}
-00032 \textcolor{comment}{6. Neither the name of the copyright holder nor the names of its contributors}
+00032 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
 00033 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
 00034 \textcolor{comment}{specific prior written permission.}
 00035 \textcolor{comment}{}
@@ -51,239 +51,284 @@
 00052 \textcolor{comment}{*/}
 00053 
 00054 \textcolor{preprocessor}{#if \_\_cplusplus == 201103L}
-00055 \textcolor{preprocessor}{}
+00055 
 00056 \textcolor{preprocessor}{#include <iostream>}
 00057 \textcolor{preprocessor}{#include <ctime>}
 00058 
 00059 \textcolor{preprocessor}{#include "\hyperlink{mtk_8h}{mtk.h}"}
 00060 
-00061 \textcolor{keywordtype}{void} Test1() \{
+00061 \textcolor{keywordtype}{void} TestDefaultConstructor() \{
 00062 
-00063   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(1);
+00063   \hyperlink{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}{mtk::Tools::BeginUnitTestNo}(1);
 00064 
 00065   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m1;
 00066 
-00067   std::cout << m1 << std::endl;
-00068 
-00069   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(1);
-00070 \}
-00071 
-00072 \textcolor{keywordtype}{void} Test2() \{
-00073 
-00074   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(2);
-00075 
-00076   \textcolor{keywordtype}{int} rr = 4;
-00077   \textcolor{keywordtype}{int} cc = 7;
-00078 
-00079   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m2(rr,cc);
-00080 
-00081   std::cout << m2 << std::endl;
-00082 
-00083   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(2);
-00084 \}
-00085 
-00086 \textcolor{keywordtype}{void} Test3() \{
+00067   \hyperlink{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}{mtk::Tools::EndUnitTestNo}(1);
+00068   \hyperlink{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}{mtk::Tools::Assert}(m1.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}() == \textcolor{keyword}{nullptr});
+00069 \}
+00070 
+00071 \textcolor{keywordtype}{void} TestConstructorWithNumRowsNumCols() \{
+00072 
+00073   \hyperlink{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}{mtk::Tools::BeginUnitTestNo}(2);
+00074 
+00075   \textcolor{keywordtype}{int} rr = 4;
+00076   \textcolor{keywordtype}{int} cc = 7;
+00077 
+00078   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m2(rr,cc);
+00079 
+00080   \hyperlink{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}{mtk::Tools::EndUnitTestNo}(2);
+00081 
+00082   \textcolor{keywordtype}{bool} assertion =
+00083     m2.data() != \textcolor{keyword}{nullptr} && m2.num\_rows() == rr && m2.num\_cols() == cc;
+00084 
+00085   \hyperlink{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}{mtk::Tools::Assert}(assertion);
+00086 \}
 00087 
-00088   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(3);
+00088 \textcolor{keywordtype}{void} TestConstructAsIdentity() \{
 00089 
-00090   \textcolor{keywordtype}{int} rank = 5;
-00091   \textcolor{keywordtype}{bool} padded = \textcolor{keyword}{true};
-00092   \textcolor{keywordtype}{bool} transpose = \textcolor{keyword}{false};
-00093 
-00094   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m3(rank,padded,transpose);
+00090   \hyperlink{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}{mtk::Tools::BeginUnitTestNo}(3);
+00091 
+00092   \textcolor{keywordtype}{int} rank = 5;
+00093   \textcolor{keywordtype}{bool} padded = \textcolor{keyword}{true};
+00094   \textcolor{keywordtype}{bool} transpose = \textcolor{keyword}{false};
 00095 
-00096   std::cout << m3 << std::endl;
+00096   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m3(rank,padded,transpose);
 00097 
-00098   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(3);
-00099 \}
-00100 
-00101 \textcolor{keywordtype}{void} Test4() \{
-00102 
-00103   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(4);
-00104 
-00105   \textcolor{keywordtype}{int} rank = 5;
-00106   \textcolor{keywordtype}{bool} padded = \textcolor{keyword}{false};
-00107   \textcolor{keywordtype}{bool} transpose = \textcolor{keyword}{false};
-00108 
-00109   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m4(rank,padded,transpose);
-00110 
-00111   std::cout << m4 << std::endl;
-00112 
-00113   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(4);
-00114 \}
+00098   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} rr(rank + 2,rank);
+00099 
+00100   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < rank; ++ii) \{
+00101     rr.SetValue(ii + 1, ii, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
+00102   \}
+00103 
+00104   \hyperlink{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}{mtk::Tools::EndUnitTestNo}(3);
+00105   \hyperlink{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}{mtk::Tools::Assert}(m3 == rr);
+00106 \}
+00107 
+00108   \textcolor{keywordtype}{void} TestConstructAsVandermonde() \{
+00109 
+00110   \hyperlink{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}{mtk::Tools::BeginUnitTestNo}(4);
+00111 
+00112   \textcolor{keywordtype}{int} rank = 5;
+00113   \textcolor{keywordtype}{bool} padded = \textcolor{keyword}{false};
+00114   \textcolor{keywordtype}{bool} transpose = \textcolor{keyword}{false};
 00115 
-00116 \textcolor{keywordtype}{void} Test5() \{
+00116   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m4(rank,padded,transpose);
 00117 
-00118   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(5);
+00118   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} rr(rank,rank);
 00119 
-00120   \textcolor{keywordtype}{int} rr = 4;
-00121   \textcolor{keywordtype}{int} cc = 7;
-00122 
-00123   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m5(rr,cc);
-00124 
-00125   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < rr; ++ii) \{
-00126     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < cc; ++jj) \{
-00127       m5.SetValue(ii,jj,(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) ii + jj);
-00128     \}
-00129   \}
-00130 
-00131   std::cout << m5 << std::endl;
-00132 
-00133   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *vals = m5.data();
+00120   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < rank; ++ii) \{
+00121     rr.SetValue(ii, ii, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
+00122   \}
+00123 
+00124   \hyperlink{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}{mtk::Tools::EndUnitTestNo}(4);
+00125   \hyperlink{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}{mtk::Tools::Assert}(m4 == rr);
+00126 \}
+00127 
+00128 \textcolor{keywordtype}{void} TestSetValueGetValue() \{
+00129 
+00130   \hyperlink{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}{mtk::Tools::BeginUnitTestNo}(5);
+00131 
+00132   \textcolor{keywordtype}{int} rr = 4;
+00133   \textcolor{keywordtype}{int} cc = 7;
 00134 
-00135   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < rr; ++ii) \{
-00136     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < cc; ++jj) \{
-00137       std::cout << \textcolor{stringliteral}{" "} << vals[ii*cc + jj];
-00138     \}
-00139     std::cout << std::endl;
-00140   \}
-00141   std::cout << std::endl;
+00135   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m5(rr,cc);
+00136 
+00137   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < rr; ++ii) \{
+00138     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < cc; ++jj) \{
+00139       m5.SetValue(ii,jj,(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) ii + jj);
+00140     \}
+00141   \}
 00142 
-00143   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < rr; ++ii) \{
-00144     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < cc; ++jj) \{
-00145       std::cout << \textcolor{stringliteral}{" "} << m5.GetValue(ii,jj);
-00146     \}
-00147     std::cout << std::endl;
-00148   \}
-00149   std::cout << std::endl;
-00150 
-00151   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(5);
-00152 \}
-00153 
-00154 \textcolor{keywordtype}{void} Test6() \{
-00155 
-00156   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(6);
-00157 
-00158   \textcolor{keywordtype}{bool} transpose = \textcolor{keyword}{false};
-00159   \textcolor{keywordtype}{int} generator\_length = 3;
-00160   \textcolor{keywordtype}{int} progression\_length = 4;
-00161 
-00162   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} generator[] = \{-0.5, 0.5, 1.5\};
-00163 
-00164   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m6(generator,generator\_length,progression\_length,transpose);
-00165 
-00166   std::cout << m6 << std::endl;
-00167 
-00168   transpose = \textcolor{keyword}{true};
-00169 
-00170   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m7(generator,generator\_length,progression\_length,transpose);
-00171 
-00172   std::cout << m7 << std::endl;
+00143   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *vals = m5.data();
+00144 
+00145   \textcolor{keywordtype}{bool} assertion\{\textcolor{keyword}{true}\};
+00146 
+00147   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < rr && assertion; ++ii) \{
+00148     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < cc  && assertion; ++jj) \{
+00149       assertion = assertion && m5.GetValue(ii,jj) == vals[ii*cc + jj];
+00150     \}
+00151   \}
+00152 
+00153   \hyperlink{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}{mtk::Tools::EndUnitTestNo}(5);
+00154   \hyperlink{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}{mtk::Tools::Assert}(assertion);
+00155 \}
+00156 
+00157 \textcolor{keywordtype}{void} TestConstructAsVandermondeTranspose() \{
+00158 
+00159   \hyperlink{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}{mtk::Tools::BeginUnitTestNo}(6);
+00160 
+00161   \textcolor{keywordtype}{bool} transpose = \textcolor{keyword}{false};
+00162   \textcolor{keywordtype}{int} generator\_length = 3;
+00163   \textcolor{keywordtype}{int} progression\_length = 4;
+00164 
+00165   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} generator[] = \{-0.5, 0.5, 1.5\};
+00166 
+00167   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m6(generator,generator\_length,progression\_length,transpose);
+00168 
+00169   transpose = \textcolor{keyword}{true};
+00170 
+00171   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m7(generator,generator\_length,progression\_length,transpose);
+00172   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} rr(progression\_length, generator\_length);
 00173 
-00174 
-00175   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(6);
-00176 \}
+00174   rr.SetValue(0, 0, 1.0);
+00175   rr.SetValue(0, 1, 1.0);
+00176   rr.SetValue(0, 2, 1.0);
 00177 
-00178 \textcolor{keywordtype}{void} Test7() \{
-00179 
-00180   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(7);
+00178   rr.SetValue(1, 0, -0.5);
+00179   rr.SetValue(1, 1, 0.5);
+00180   rr.SetValue(1, 2, 1.5);
 00181 
-00182   \textcolor{keywordtype}{bool} padded = \textcolor{keyword}{false};
-00183   \textcolor{keywordtype}{bool} transpose = \textcolor{keyword}{false};
-00184   \textcolor{keywordtype}{int} lots\_of\_rows = 2;
-00185   \textcolor{keywordtype}{int} lots\_of\_cols = 5;
-00186   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m8(lots\_of\_rows,padded,transpose);
-00187 
-00188   std::cout << m8 << std::endl;
+00182   rr.SetValue(2, 0, 0.25);
+00183   rr.SetValue(2, 1, 0.25);
+00184   rr.SetValue(2, 2, 2.25);
+00185 
+00186   rr.SetValue(3, 0, -0.125);
+00187   rr.SetValue(3, 1, 0.125);
+00188   rr.SetValue(3, 2, 3.375);
 00189 
-00190   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m9(lots\_of\_rows,lots\_of\_cols);
-00191 
-00192   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < lots\_of\_rows; ++ii) \{
-00193     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < lots\_of\_cols; ++jj) \{
-00194       m9.SetValue(ii,jj,(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) ii*lots\_of\_cols + jj + 1);
-00195     \}
-00196   \}
+00190   \hyperlink{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}{mtk::Tools::EndUnitTestNo}(6);
+00191   \hyperlink{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}{mtk::Tools::Assert}(m7 == rr);
+00192 \}
+00193 
+00194 \textcolor{keywordtype}{void} TestKron() \{
+00195 
+00196   \hyperlink{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}{mtk::Tools::BeginUnitTestNo}(7);
 00197 
-00198   std::cout << m9 << std::endl;
-00199 
-00200   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m10 = \hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{mtk::DenseMatrix::Kron}(m8,m9);
-00201 
-00202   std::cout << m10 << std::endl;
+00198   \textcolor{keywordtype}{bool} padded = \textcolor{keyword}{false};
+00199   \textcolor{keywordtype}{bool} transpose = \textcolor{keyword}{false};
+00200   \textcolor{keywordtype}{int} lots\_of\_rows = 2;
+00201   \textcolor{keywordtype}{int} lots\_of\_cols = 5;
+00202   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m8(lots\_of\_rows,padded,transpose);
 00203 
-00204   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(7);
-00205 \}
-00206 
-00207 \textcolor{keywordtype}{void} Test8() \{
-00208 
-00209   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(8);
-00210 
-00211   \textcolor{keywordtype}{int} lots\_of\_rows = 4;
-00212   \textcolor{keywordtype}{int} lots\_of\_cols = 3;
-00213   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m11(lots\_of\_rows,lots\_of\_cols);
-00214 
-00215   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < lots\_of\_rows; ++ii) \{
-00216     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < lots\_of\_cols; ++jj) \{
-00217       m11.SetValue(ii,jj,(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) ii*lots\_of\_cols + jj + 1);
-00218     \}
-00219   \}
-00220 
-00221   std::cout << m11 << std::endl;
-00222 
-00223   m11.Transpose();
-00224 
-00225   std::cout << m11 << std::endl;
+00204   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m9(lots\_of\_rows,lots\_of\_cols);
+00205 
+00206   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < lots\_of\_rows; ++ii) \{
+00207     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < lots\_of\_cols; ++jj) \{
+00208       m9.SetValue(ii,jj,(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) ii*lots\_of\_cols + jj + 1);
+00209     \}
+00210   \}
+00211 
+00212   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m10 = \hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{mtk::DenseMatrix::Kron}(m8,m9);
+00213 
+00214   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} rr(lots\_of\_rows*lots\_of\_rows, lots\_of\_rows*lots\_of\_cols);
+00215 
+00216   rr.SetValue(0,0,1.0);
+00217   rr.SetValue(0,1,2.0);
+00218   rr.SetValue(0,2,3.0);
+00219   rr.SetValue(0,3,4.0);
+00220   rr.SetValue(0,4,5.0);
+00221   rr.SetValue(0,5,0.0);
+00222   rr.SetValue(0,6,0.0);
+00223   rr.SetValue(0,7,0.0);
+00224   rr.SetValue(0,8,0.0);
+00225   rr.SetValue(0,9,0.0);
 00226 
-00227   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m12;
-00228 
-00229   m12 = m11;
-00230 
-00231   std::cout << m12 << std::endl;
-00232 
-00233   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(8);
-00234 \}
-00235 
-00236 \textcolor{keywordtype}{void} Test9() \{
+00227   rr.SetValue(1,0,6.0);
+00228   rr.SetValue(1,1,7.0);
+00229   rr.SetValue(1,2,8.0);
+00230   rr.SetValue(1,3,9.0);
+00231   rr.SetValue(1,4,10.0);
+00232   rr.SetValue(1,5,0.0);
+00233   rr.SetValue(1,6,0.0);
+00234   rr.SetValue(1,7,0.0);
+00235   rr.SetValue(1,8,0.0);
+00236   rr.SetValue(1,9,0.0);
 00237 
-00238   \hyperlink{classmtk_1_1Tools_a35cefa938105619b731ea4fedb86becf}{mtk::Tools::BeginTestNo}(9);
-00239 
-00240   \textcolor{keywordtype}{bool} transpose = \textcolor{keyword}{false};
-00241   \textcolor{keywordtype}{int} gg\_l = 3;
-00242   \textcolor{keywordtype}{int} progression\_length = 4;
-00243   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} gg[] = \{-0.5, 0.5, 1.5\};
-00244 
-00245   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m13(gg, gg\_l ,progression\_length, transpose);
-00246 
-00247   std::cout << m13 << std::endl;
+00238   rr.SetValue(2,0,0.0);
+00239   rr.SetValue(2,1,0.0);
+00240   rr.SetValue(2,2,0.0);
+00241   rr.SetValue(2,3,0.0);
+00242   rr.SetValue(2,4,0.0);
+00243   rr.SetValue(2,5,1.0);
+00244   rr.SetValue(2,6,2.0);
+00245   rr.SetValue(2,7,3.0);
+00246   rr.SetValue(2,8,4.0);
+00247   rr.SetValue(2,9,5.0);
 00248 
-00249   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m14;
-00250 
-00251   m14 = m13;
-00252 
-00253   std::cout << m14 << std::endl;
-00254 
-00255   m13.\hyperlink{classmtk_1_1DenseMatrix_a71d9c07ca66e88d97d1fd5012f43138b}{Transpose}();
-00256 
-00257   std::cout << m13 << std::endl;
-00258 
-00259   m14 = m13;
-00260 
-00261   std::cout << m14 << std::endl;
-00262 
-00263   \hyperlink{classmtk_1_1Tools_a5d3f78d17228fb36a73567c191f0f4ee}{mtk::Tools::EndTestNo}(9);
-00264 \}
+00249   rr.SetValue(3,0,0.0);
+00250   rr.SetValue(3,1,0.0);
+00251   rr.SetValue(3,2,0.0);
+00252   rr.SetValue(3,3,0.0);
+00253   rr.SetValue(3,4,0.0);
+00254   rr.SetValue(3,5,6.0);
+00255   rr.SetValue(3,6,7.0);
+00256   rr.SetValue(3,7,8.0);
+00257   rr.SetValue(3,8,9.0);
+00258   rr.SetValue(3,9,10.0);
+00259 
+00260   \hyperlink{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}{mtk::Tools::EndUnitTestNo}(7);
+00261   \hyperlink{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}{mtk::Tools::Assert}(m10 == rr);
+00262 \}
+00263 
+00264 \textcolor{keywordtype}{void} TestConstructWithNumRowsNumColsAssignmentOperator() \{
 00265 
-00266 \textcolor{keywordtype}{int} \hyperlink{mtk__dense__matrix__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00266   \hyperlink{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}{mtk::Tools::BeginUnitTestNo}(8);
 00267 
-00268   std::cout << \textcolor{stringliteral}{"Testing mtk::DenseMatrix class."} << std::endl;
-00269 
-00270   Test1();
-00271   Test2();
-00272   Test3();
-00273   Test4();
-00274   Test5();
-00275   Test6();
-00276   Test7();
-00277   Test8();
-00278   Test9();
-00279 \}
-00280 
-00281 \textcolor{preprocessor}{#else}
-00282 \textcolor{preprocessor}{}\textcolor{preprocessor}{#include <iostream>}
-00283 \textcolor{keyword}{using} std::cout;
-00284 \textcolor{keyword}{using} std::endl;
-\hypertarget{mtk__dense__matrix__test_8cc_source_l00285}{}\hyperlink{mtk__dense__matrix__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00285} \textcolor{keywordtype}{int} \hyperlink{mtk__dense__matrix__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
-00286   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
-00287   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
-00288 \}
-00289 \textcolor{preprocessor}{#endif}
+00268   \textcolor{keywordtype}{int} lots\_of\_rows = 4;
+00269   \textcolor{keywordtype}{int} lots\_of\_cols = 3;
+00270   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m11(lots\_of\_rows,lots\_of\_cols);
+00271 
+00272   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < lots\_of\_rows; ++ii) \{
+00273     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < lots\_of\_cols; ++jj) \{
+00274       m11.SetValue(ii,jj,(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) ii*lots\_of\_cols + jj + 1);
+00275     \}
+00276   \}
+00277 
+00278   m11.Transpose();
+00279 
+00280   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m12;
+00281 
+00282   m12 = m11;
+00283 
+00284   \hyperlink{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}{mtk::Tools::EndUnitTestNo}(8);
+00285   \hyperlink{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}{mtk::Tools::Assert}(m11 == m12);
+00286 \}
+00287 
+00288 \textcolor{keywordtype}{void} TestConstructAsVandermondeTransposeAssignmentOperator() \{
+00289 
+00290   \hyperlink{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}{mtk::Tools::BeginUnitTestNo}(9);
+00291 
+00292   \textcolor{keywordtype}{bool} transpose = \textcolor{keyword}{false};
+00293   \textcolor{keywordtype}{int} gg\_l = 3;
+00294   \textcolor{keywordtype}{int} progression\_length = 4;
+00295   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} gg[] = \{-0.5, 0.5, 1.5\};
+00296 
+00297   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m13(gg, gg\_l ,progression\_length, transpose);
+00298 
+00299   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} m14;
+00300 
+00301   m14 = m13;
+00302 
+00303   m13.\hyperlink{classmtk_1_1DenseMatrix_a71d9c07ca66e88d97d1fd5012f43138b}{Transpose}();
+00304 
+00305   m14 = m13;
+00306 
+00307   \hyperlink{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}{mtk::Tools::EndUnitTestNo}(9);
+00308   \hyperlink{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}{mtk::Tools::Assert}(m13 == m14);
+00309 \}
+00310 
+00311 \textcolor{keywordtype}{int} \hyperlink{mtk__dense__matrix__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00312 
+00313   std::cout << \textcolor{stringliteral}{"Testing mtk::DenseMatrix class."} << std::endl;
+00314 
+00315   TestDefaultConstructor();
+00316   TestConstructorWithNumRowsNumCols();
+00317   TestConstructAsIdentity();
+00318   TestConstructAsVandermonde();
+00319   TestSetValueGetValue();
+00320   TestConstructAsVandermondeTranspose();
+00321   TestKron();
+00322   TestConstructWithNumRowsNumColsAssignmentOperator();
+00323   TestConstructAsVandermondeTransposeAssignmentOperator();
+00324 \}
+00325 
+00326 \textcolor{preprocessor}{#else}
+00327 \textcolor{preprocessor}{#include <iostream>}
+00328 \textcolor{keyword}{using} std::cout;
+00329 \textcolor{keyword}{using} std::endl;
+\hypertarget{mtk__dense__matrix__test_8cc_source_l00330}{}\hyperlink{mtk__dense__matrix__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00330} \textcolor{keywordtype}{int} \hyperlink{mtk__dense__matrix__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00331   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
+00332   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
+00333 \}
+00334 \textcolor{preprocessor}{#endif}
 \end{DoxyCode}

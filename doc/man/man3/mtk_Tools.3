@@ -1,4 +1,4 @@
-.TH "mtk::Tools" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::Tools" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -15,17 +15,21 @@ Tool manager class\&.
 
 .in +1c
 .ti -1c
-.RI "static void \fBPrevent\fP (const bool condition, const char *fname, int lineno, const char *fxname)"
+.RI "static void \fBPrevent\fP (const bool complement, const char *fname, int lineno, const char *fxname)"
 .br
-.RI "\fIEnforces pre-conditions by preventing their complements from occur\&. \fP"
+.RI "\fIEnforces preconditions by preventing their complements from occur\&. \fP"
 .ti -1c
-.RI "static void \fBBeginTestNo\fP (const int &nn)"
+.RI "static void \fBBeginUnitTestNo\fP (const int &nn)"
 .br
-.RI "\fIBegins the execution of a test\&. \fP"
+.RI "\fIBegins the execution of a unit test\&. Starts a timer\&. \fP"
 .ti -1c
-.RI "static void \fBEndTestNo\fP (const int &nn)"
+.RI "static void \fBEndUnitTestNo\fP (const int &nn)"
 .br
-.RI "\fIEnds the execution of a test\&. \fP"
+.RI "\fIEnds the execution of a unit test\&. Stops and reports wall-clock time\&. \fP"
+.ti -1c
+.RI "static void \fBAssert\fP (const bool condition)"
+.br
+.RI "\fIAsserts if the condition required to pass the unit test occurs\&. \fP"
 .in -1c
 .SS "Static Private Attributes"
 
@@ -35,6 +39,10 @@ Tool manager class\&.
 .br
 .RI "\fICurrent test being executed\&. \fP"
 .ti -1c
+.RI "static \fBReal\fP \fBduration_\fP"
+.br
+.RI "\fIDuration of the current test\&. \fP"
+.ti -1c
 .RI "static clock_t \fBbegin_time_\fP"
 .br
 .RI "\fIElapsed time on current test\&. \fP"
@@ -43,10 +51,21 @@ Tool manager class\&.
 .PP 
 Basic tools to ensure execution correctness\&. 
 .PP
-Definition at line 72 of file mtk_tools\&.h\&.
+Definition at line 74 of file mtk_tools\&.h\&.
 .SH "Member Function Documentation"
 .PP 
-.SS "void mtk::Tools::BeginTestNo (const int &nn)\fC [static]\fP"
+.SS "void mtk::Tools::Assert (const boolcondition)\fC [static]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcondition\fP Condition to be asserted\&. 
+.RE
+.PP
+
+.PP
+Definition at line 114 of file mtk_tools\&.cc\&.
+.SS "void mtk::Tools::BeginUnitTestNo (const int &nn)\fC [static]\fP"
 
 .PP
 \fBParameters:\fP
@@ -56,8 +75,8 @@ Definition at line 72 of file mtk_tools\&.h\&.
 .PP
 
 .PP
-Definition at line 89 of file mtk_tools\&.cc\&.
-.SS "void mtk::Tools::EndTestNo (const int &nn)\fC [static]\fP"
+Definition at line 91 of file mtk_tools\&.cc\&.
+.SS "void mtk::Tools::EndUnitTestNo (const int &nn)\fC [static]\fP"
 
 .PP
 \fBParameters:\fP
@@ -67,18 +86,18 @@ Definition at line 89 of file mtk_tools\&.cc\&.
 .PP
 
 .PP
-Definition at line 101 of file mtk_tools\&.cc\&.
-.SS "void mtk::Tools::Prevent (const boolcondition, const char *fname, intlineno, const char *fxname)\fC [static]\fP"
+Definition at line 105 of file mtk_tools\&.cc\&.
+.SS "void mtk::Tools::Prevent (const boolcomplement, const char *fname, intlineno, const char *fxname)\fC [static]\fP"
 
 .PP
-\fBSee Also:\fP
+\fBSee also:\fP
 .RS 4
 http://stackoverflow.com/questions/8884335/print-the-file-name-line-number-and-function-name-of-a-calling-function-c-pro
 .RE
 .PP
 \fBParameters:\fP
 .RS 4
-\fIcondition\fP Complement of desired pre-condition\&. 
+\fIcomplement\fP Complement of desired pre-condition\&. 
 .br
 \fIfname\fP Name of the file being checked\&. 
 .br
@@ -102,7 +121,11 @@ Definition at line 61 of file mtk_tools\&.cc\&.
 .SS "clock_t mtk::Tools::begin_time_\fC [static]\fP, \fC [private]\fP"
 
 .PP
-Definition at line 106 of file mtk_tools\&.h\&.
+Definition at line 117 of file mtk_tools\&.h\&.
+.SS "\fBmtk::Real\fP mtk::Tools::duration_\fC [static]\fP, \fC [private]\fP"
+
+.PP
+Definition at line 115 of file mtk_tools\&.h\&.
 .SS "int mtk::Tools::test_number_\fC [static]\fP, \fC [private]\fP"
 
 .PP
@@ -113,7 +136,7 @@ Check usage of static methods and private members\&.
 .PP
 
 .PP
-Definition at line 104 of file mtk_tools\&.h\&.
+Definition at line 113 of file mtk_tools\&.h\&.
 
 .SH "Author"
 .PP 

@@ -1,0 +1,278 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="mtk__interp__1d_8cc" kind="file">
+    <compoundname>mtk_interp_1d.cc</compoundname>
+    <includes local="no">cstring</includes>
+    <includes refid="mtk__tools_8h" local="yes">mtk_tools.h</includes>
+    <includes refid="mtk__interp__1d_8h" local="yes">mtk_interp_1d.h</includes>
+    <incdepgraph>
+      <node id="1272">
+        <label>iomanip</label>
+      </node>
+      <node id="1275">
+        <label>mtk_dense_matrix.h</label>
+        <link refid="mtk__dense__matrix_8h"/>
+        <childnode refid="1271" relation="include">
+        </childnode>
+        <childnode refid="1269" relation="include">
+        </childnode>
+        <childnode refid="1274" relation="include">
+        </childnode>
+        <childnode refid="1276" relation="include">
+        </childnode>
+      </node>
+      <node id="1276">
+        <label>mtk_matrix.h</label>
+        <link refid="mtk__matrix_8h"/>
+        <childnode refid="1271" relation="include">
+        </childnode>
+        <childnode refid="1269" relation="include">
+        </childnode>
+        <childnode refid="1274" relation="include">
+        </childnode>
+      </node>
+      <node id="1269">
+        <label>mtk_roots.h</label>
+        <link refid="mtk__roots_8h"/>
+      </node>
+      <node id="1279">
+        <label>string</label>
+      </node>
+      <node id="1273">
+        <label>glpk.h</label>
+      </node>
+      <node id="1265">
+        <label>src/mtk_interp_1d.cc</label>
+        <link refid="mtk_interp_1d.cc"/>
+        <childnode refid="1266" relation="include">
+        </childnode>
+        <childnode refid="1267" relation="include">
+        </childnode>
+        <childnode refid="1270" relation="include">
+        </childnode>
+      </node>
+      <node id="1267">
+        <label>mtk_tools.h</label>
+        <link refid="mtk__tools_8h"/>
+        <childnode refid="1268" relation="include">
+        </childnode>
+        <childnode refid="1269" relation="include">
+        </childnode>
+      </node>
+      <node id="1268">
+        <label>ctime</label>
+      </node>
+      <node id="1278">
+        <label>vector</label>
+      </node>
+      <node id="1271">
+        <label>iostream</label>
+      </node>
+      <node id="1270">
+        <label>mtk_interp_1d.h</label>
+        <link refid="mtk__interp__1d_8h"/>
+        <childnode refid="1271" relation="include">
+        </childnode>
+        <childnode refid="1272" relation="include">
+        </childnode>
+        <childnode refid="1273" relation="include">
+        </childnode>
+        <childnode refid="1269" relation="include">
+        </childnode>
+        <childnode refid="1274" relation="include">
+        </childnode>
+        <childnode refid="1275" relation="include">
+        </childnode>
+        <childnode refid="1277" relation="include">
+        </childnode>
+      </node>
+      <node id="1266">
+        <label>cstring</label>
+      </node>
+      <node id="1274">
+        <label>mtk_enums.h</label>
+        <link refid="mtk__enums_8h"/>
+      </node>
+      <node id="1277">
+        <label>mtk_uni_stg_grid_1d.h</label>
+        <link refid="mtk__uni__stg__grid__1d_8h"/>
+        <childnode refid="1278" relation="include">
+        </childnode>
+        <childnode refid="1279" relation="include">
+        </childnode>
+        <childnode refid="1269" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <innernamespace refid="namespacemtk">mtk</innernamespace>
+    <briefdescription>
+<para>Includes the implementation of the class Interp1D. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class implements a 1D interpolation operator.</para><para><simplesect kind="author"><para>: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu</para></simplesect>
+<simplesect kind="author"><para>: Johnny Corbino - jcorbino at mail dot sdsu dot edu </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="12"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">Copyright<sp/>(C)<sp/>2015,<sp/>Computational<sp/>Science<sp/>Research<sp/>Center,<sp/>San<sp/>Diego<sp/>State</highlight></codeline>
+<codeline lineno="14"><highlight class="comment">University.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="15"><highlight class="comment"></highlight></codeline>
+<codeline lineno="16"><highlight class="comment">Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="18"><highlight class="comment"></highlight></codeline>
+<codeline lineno="19"><highlight class="comment">1.<sp/>Modifications<sp/>to<sp/>source<sp/>code<sp/>should<sp/>be<sp/>reported<sp/>to:<sp/>esanchez@mail.sdsu.edu</highlight></codeline>
+<codeline lineno="20"><highlight class="comment">and<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>modified<sp/>files<sp/>should<sp/>be<sp/>reported<sp/>once<sp/>modifications<sp/>are</highlight></codeline>
+<codeline lineno="21"><highlight class="comment">completed,<sp/>unless<sp/>these<sp/>modifications<sp/>are<sp/>made<sp/>through<sp/>the<sp/>project&apos;s<sp/>GitHub</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">page:<sp/>http://www.csrc.sdsu.edu/mtk.<sp/>Documentation<sp/>related<sp/>to<sp/>said<sp/>modifications</highlight></codeline>
+<codeline lineno="23"><highlight class="comment">should<sp/>be<sp/>developed<sp/>and<sp/>included<sp/>in<sp/>any<sp/>deliverable.</highlight></codeline>
+<codeline lineno="24"><highlight class="comment"></highlight></codeline>
+<codeline lineno="25"><highlight class="comment">2.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>be<sp/>done<sp/>through<sp/>direct</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">downloads<sp/>from<sp/>the<sp/>project&apos;s<sp/>GitHub<sp/>page:<sp/>http://www.csrc.sdsu.edu/mtk</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"></highlight></codeline>
+<codeline lineno="28"><highlight class="comment">3.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"></highlight></codeline>
+<codeline lineno="32"><highlight class="comment">4.<sp/>Usage<sp/>of<sp/>the<sp/>binary<sp/>form<sp/>on<sp/>proprietary<sp/>applications<sp/>shall<sp/>require<sp/>explicit</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">prior<sp/>written<sp/>permission<sp/>from<sp/>the<sp/>the<sp/>copyright<sp/>holders,<sp/>and<sp/>due<sp/>credit<sp/>should</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">be<sp/>given<sp/>to<sp/>the<sp/>copyright<sp/>holders.</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"></highlight></codeline>
+<codeline lineno="36"><highlight class="comment">5.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"></highlight></codeline>
+<codeline lineno="40"><highlight class="comment">The<sp/>copyright<sp/>holders<sp/>provide<sp/>no<sp/>reassurances<sp/>that<sp/>the<sp/>source<sp/>code<sp/>provided<sp/>does</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">not<sp/>infringe<sp/>any<sp/>patent,<sp/>copyright,<sp/>or<sp/>any<sp/>other<sp/>intellectual<sp/>property<sp/>rights<sp/>of</highlight></codeline>
+<codeline lineno="42"><highlight class="comment">third<sp/>parties.<sp/>The<sp/>copyright<sp/>holders<sp/>disclaim<sp/>any<sp/>liability<sp/>to<sp/>any<sp/>recipient<sp/>for</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">claims<sp/>brought<sp/>against<sp/>recipient<sp/>by<sp/>any<sp/>third<sp/>party<sp/>for<sp/>infringement<sp/>of<sp/>that</highlight></codeline>
+<codeline lineno="44"><highlight class="comment">parties<sp/>intellectual<sp/>property<sp/>rights.</highlight></codeline>
+<codeline lineno="45"><highlight class="comment"></highlight></codeline>
+<codeline lineno="46"><highlight class="comment">THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND</highlight></codeline>
+<codeline lineno="47"><highlight class="comment">ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED</highlight></codeline>
+<codeline lineno="48"><highlight class="comment">WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE</highlight></codeline>
+<codeline lineno="49"><highlight class="comment">DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR</highlight></codeline>
+<codeline lineno="50"><highlight class="comment">ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES</highlight></codeline>
+<codeline lineno="51"><highlight class="comment">(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;</highlight></codeline>
+<codeline lineno="52"><highlight class="comment">LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON</highlight></codeline>
+<codeline lineno="53"><highlight class="comment">ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT</highlight></codeline>
+<codeline lineno="54"><highlight class="comment">(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="55"><highlight class="comment">SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="56"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstring&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk__tools_8h" kindref="compound">mtk_tools.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk__interp__1d_8h" kindref="compound">mtk_interp_1d.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacemtk" kindref="compound">mtk</ref><sp/>{</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"></highlight></codeline>
+<codeline lineno="66" refid="namespacemtk_1a1defe4e644a8c7d89bcceb0b1bc2372f" refkind="member"><highlight class="normal">std::ostream&amp;<sp/><ref refid="namespacemtk_1ad3bcf52cda59ddb5fc7b4bdce76c46dc" kindref="member">operator &lt;&lt;</ref>(std::ostream<sp/>&amp;stream,<sp/><ref refid="classmtk_1_1Interp1D" kindref="compound">mtk::Interp1D</ref><sp/>&amp;in)<sp/>{</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/>stream<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;coeffs_interior_[1:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>in.<ref refid="classmtk_1_1Interp1D_1a1ee8467d93536dc04240cd76f0d95c9c" kindref="member">order_accuracy_</ref><sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;]<sp/>=<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>0;<sp/>ii<sp/>&lt;<sp/>in.<ref refid="classmtk_1_1Interp1D_1a1ee8467d93536dc04240cd76f0d95c9c" kindref="member">order_accuracy_</ref>;<sp/>++ii)<sp/>{</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><sp/><sp/>stream<sp/>&lt;&lt;<sp/>std::setw(9)<sp/>&lt;&lt;<sp/>in.<ref refid="classmtk_1_1Interp1D_1abae01ab84103d8b11903357cfdeb94d5" kindref="member">coeffs_interior_</ref>[ii]<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/>stream<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"></highlight></codeline>
+<codeline lineno="76"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>stream;</highlight></codeline>
+<codeline lineno="77"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="78"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight></codeline>
+<codeline lineno="80" refid="classmtk_1_1Interp1D_1ae56f90c53579c91c1dbe715f7e7361be" refkind="member"><highlight class="normal"><ref refid="classmtk_1_1Interp1D_1ae56f90c53579c91c1dbe715f7e7361be" kindref="member">mtk::Interp1D::Interp1D</ref>():</highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/>dir_interp_(<ref refid="namespacemtk" kindref="compound">mtk</ref>::<ref refid="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139" kindref="member">SCALAR_TO_VECTOR</ref>),</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/>order_accuracy_(<ref refid="namespacemtk" kindref="compound">mtk</ref>::<ref refid="group__c01-roots_1ga0d95560098eb36420511103637b6952f" kindref="member">kDefaultOrderAccuracy</ref>),</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/>coeffs_interior_(nullptr)<sp/>{}</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85" refid="classmtk_1_1Interp1D_1a92a5ed77144b3824d201a586f4072fd0" refkind="member"><highlight class="normal"><ref refid="classmtk_1_1Interp1D_1ae56f90c53579c91c1dbe715f7e7361be" kindref="member">mtk::Interp1D::Interp1D</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1Interp1D" kindref="compound">Interp1D</ref><sp/>&amp;interp):</highlight></codeline>
+<codeline lineno="86"><highlight class="normal"><sp/><sp/>dir_interp_(interp.dir_interp_),</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"><sp/><sp/>order_accuracy_(interp.order_accuracy_),</highlight></codeline>
+<codeline lineno="88"><highlight class="normal"><sp/><sp/>coeffs_interior_(interp.coeffs_interior_)<sp/>{}</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"></highlight></codeline>
+<codeline lineno="90" refid="classmtk_1_1Interp1D_1a52ea06b5e3d7082eb06ade256f4e30fb" refkind="member"><highlight class="normal"><ref refid="classmtk_1_1Interp1D_1a52ea06b5e3d7082eb06ade256f4e30fb" kindref="member">mtk::Interp1D::~Interp1D</ref>()<sp/>{</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"></highlight></codeline>
+<codeline lineno="92"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">delete</highlight><highlight class="normal">[]<sp/>coeffs_interior_;</highlight></codeline>
+<codeline lineno="93"><highlight class="normal"><sp/><sp/>coeffs_interior_<sp/>=<sp/></highlight><highlight class="keyword">nullptr</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="94"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"></highlight></codeline>
+<codeline lineno="96" refid="classmtk_1_1Interp1D_1ab1c8e12534886aa185b24be474d1056e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1Interp1D_1ab1c8e12534886aa185b24be474d1056e" kindref="member">mtk::Interp1D::ConstructInterp1D</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>order_accuracy,<sp/><ref refid="group__c02-enums_1ga674ec67bd1baa04e5dc06c2bcc351972" kindref="member">mtk::DirInterp</ref><sp/>dir)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#if<sp/>MTK_DEBUG_LEVEL<sp/>&gt;<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" kindref="member">mtk::Tools::Prevent</ref>(order_accuracy<sp/>&lt;<sp/>2,<sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" kindref="member">mtk::Tools::Prevent</ref>((order_accuracy%2)<sp/>!=<sp/>0,<sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" kindref="member">mtk::Tools::Prevent</ref>(dir<sp/>&lt;<sp/><ref refid="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139" kindref="member">mtk::SCALAR_TO_VECTOR</ref><sp/>&amp;&amp;</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>dir<sp/>&gt;<sp/><ref refid="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972a122cf2e24aef105e9214698206af6904" kindref="member">mtk::VECTOR_TO_SCALAR</ref>,</highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"></highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;order_accuracy_<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>order_accuracy<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="106"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/>order_accuracy_<sp/>=<sp/>order_accuracy;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"></highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">try</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><sp/><sp/>coeffs_interior_<sp/>=<sp/></highlight><highlight class="keyword">new</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref>[order_accuracy_];</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">catch</highlight><highlight class="normal"><sp/>(std::bad_alloc<sp/>&amp;memory_allocation_exception)<sp/>{</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Memory<sp/>allocation<sp/>exception<sp/>on<sp/>line<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>__LINE__<sp/>-<sp/>3<sp/>&lt;&lt;</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>std::endl;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/>memory_allocation_exception.what()<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="118"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/>memset(coeffs_interior_,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c01-roots_1ga59a451a5fae30d59649bcda274fea271" kindref="member">mtk::kZero</ref>,</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">sizeof</highlight><highlight class="normal">(coeffs_interior_[0])*order_accuracy_);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>0;<sp/>ii<sp/>&lt;<sp/>order_accuracy_;<sp/>++ii)<sp/>{</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/>coeffs_interior_[ii]<sp/>=<sp/><ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>;</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="classmtk_1_1Interp1D_1a652289cbb0000d3f4e5e8d632aaf4b03" refkind="member"><highlight class="normal"><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>*<ref refid="classmtk_1_1Interp1D_1a652289cbb0000d3f4e5e8d632aaf4b03" kindref="member">mtk::Interp1D::coeffs_interior</ref>()</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>coeffs_interior_;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135" refid="classmtk_1_1Interp1D_1a62b241a3db626e92e9e57c7da772a36b" refkind="member"><highlight class="normal"><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/><ref refid="classmtk_1_1Interp1D_1a62b241a3db626e92e9e57c7da772a36b" kindref="member">mtk::Interp1D::ReturnAsDenseMatrix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;grid)<sp/>{</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nn{grid.<ref refid="classmtk_1_1UniStgGrid1D_1af1b3729d8afa07be5b2775ed68015b80" kindref="member">num_cells_x</ref>()};<sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>cells<sp/>on<sp/>the<sp/>grid.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#if<sp/>MTK_DEBUG_LEVEL<sp/>&gt;<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" kindref="member">mtk::Tools::Prevent</ref>(nn<sp/>&lt;=<sp/>0,<sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>gg_num_rows{};<sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>rows.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>gg_num_cols{};<sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>columns.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir_interp_<sp/>==<sp/><ref refid="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139" kindref="member">mtk::SCALAR_TO_VECTOR</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>gg_num_rows<sp/>=<sp/>nn<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>gg_num_cols<sp/>=<sp/>nn<sp/>+<sp/>2;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>gg_num_rows<sp/>=<sp/>nn<sp/>+<sp/>2;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>gg_num_cols<sp/>=<sp/>nn<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Output<sp/>matrix<sp/>featuring<sp/>sizes<sp/>for<sp/>gradient<sp/>operators.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>out(gg_num_rows,<sp/>gg_num_cols);</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"></highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/>out.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(0,<sp/>0,<sp/><ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>);</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="163"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>1;<sp/>ii<sp/>&lt;<sp/>gg_num_rows<sp/>-<sp/>1;<sp/>++ii)<sp/>{</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>jj<sp/>=<sp/>ii<sp/>;<sp/>jj<sp/>&lt;<sp/>order_accuracy_<sp/>+<sp/>ii;<sp/>++jj)<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>out.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(ii,<sp/>jj,<sp/><ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>/order_accuracy_);</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"><sp/><sp/>out.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(gg_num_rows<sp/>-<sp/>1,<sp/>gg_num_cols<sp/>-<sp/>1,<sp/><ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>);</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>out;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/esanchez/Dropbox/MTK/src/mtk_interp_1d.cc"/>
+  </compounddef>
+</doxygen>

@@ -48,22 +48,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -90,22 +90,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iostream>
 #include <fstream>
 #include <cmath>
-
 #include <vector>
 
 #include "mtk.h"
 
 mtk::Real Source(mtk::Real xx) {
-
   mtk::Real lambda = -1.0;
-
   return lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
 }
 
 mtk::Real KnownSolution(mtk::Real xx) {
-
   mtk::Real lambda = -1.0;
-
   return (exp(lambda*xx) - 1.0)/(exp(lambda) - 1.0);
 }
 
@@ -127,14 +122,11 @@ int main () {
     std::cerr << "Mimetic lap could not be built." << std::endl;
     return EXIT_FAILURE;
   }
-
   mtk::DenseMatrix lapm(lap.ReturnAsDenseMatrix(comp_sol));
-
   if (!grad.ConstructGrad1D()) {
     std::cerr << "Mimetic grad could not be built." << std::endl;
     return EXIT_FAILURE;
   }
-
   mtk::DenseMatrix gradm(grad.ReturnAsDenseMatrix(comp_sol));
 
   source.BindScalarField(Source);
@@ -142,36 +134,28 @@ int main () {
   for (auto ii = 0; ii < grad.num_bndy_coeffs(); ++ii) {
     west_coeffs.push_back(-((exp(-1.0) - 1.0)/-1.0)*gradm.GetValue(0, ii));
   }
-
   for (auto ii = 0; ii < grad.num_bndy_coeffs(); ++ii) {
-    east_coeffs.push_back(((exp(-1.0) - 1.0)/-1.0)*gradm.GetValue(gradm.num_rows() - 1,
+    east_coeffs.push_back(
+      ((exp(-1.0) - 1.0)/-1.0)*gradm.GetValue(gradm.num_rows() - 1,
                                               gradm.num_cols() - 1 - ii));
   }
-
   west_coeffs[0] += -exp(-1.0);
-
   east_coeffs[0] += -exp(-1.0);
-
-  mtk::BCDesc1D::ImposeOnOperator(lapm, west_coeffs, east_coeffs);
-
+  mtk::BCDesc1D::ImposeOnOperatorMatrix(lapm, west_coeffs, east_coeffs);
   mtk::BCDesc1D::ImposeOnGrid(source, -1.0, 0.0);
 
   int info{mtk::LAPACKAdapter::SolveDenseSystem(lapm, source)};
-
   if (info != 0) {
     std::cerr << "Something wrong solving system! info = " << info << std::endl;
     return EXIT_FAILURE;
   }
 
   source.WriteToFile("minimalistic_poisson_1d_comp_sol.dat", "x", "~u(x)");
-
   known_sol.BindScalarField(KnownSolution);
-
   relative_norm_2_error =
     mtk::BLASAdapter::RelNorm2Error(source.discrete_field_u(),
                                     known_sol.discrete_field_u(),
                                     known_sol.num_cells_x());
-
   std::cout << "relative_norm_2_error = ";
   std::cout << relative_norm_2_error << std::endl;
 }

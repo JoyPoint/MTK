@@ -21,22 +21,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -357,13 +357,80 @@ mtk::DenseMatrix mtk::Grad1D::mim_bndy() const {
   return xx;
 }
 
+mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(mtk::Real west,
+                                                  mtk::Real east,
+                                                  int num_cells_x) {
+
+  int nn{num_cells_x}; // Number of cells on the grid.
+
+  #if MTK_DEBUG_LEVEL > 0
+  mtk::Tools::Prevent(east < west, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nn < 3*order_accuracy_ - 2, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
+  #endif
+
+  mtk::Real delta_x = (east - west)/((mtk::Real) num_cells_x);
+
+  mtk::Real inv_delta_x{mtk::kOne/delta_x};
+
+  int gg_num_rows = nn + 1;
+  int gg_num_cols = nn + 2;
+  int elements_per_row = num_bndy_coeffs_;
+  int num_extra_rows = order_accuracy_/2;
+
+  // Output matrix featuring sizes for gradient operators.
+  mtk::DenseMatrix out(gg_num_rows, gg_num_cols);
+
+  /// 1. Insert mimetic boundary at the west.
+
+  auto ee_index = 0;
+  for (auto ii = 0; ii < num_extra_rows; ii++) {
+    auto cc = 0;
+    for(auto jj = 0 ; jj < gg_num_cols; jj++) {
+      if(cc >= elements_per_row) {
+        out.SetValue(ii, jj, mtk::kZero);
+      } else {
+        out.SetValue(ii,jj,
+                     gradient_[2*order_accuracy_ + 1 + ee_index++]*inv_delta_x);
+        cc++;
+      }
+    }
+  }
+
+  /// 2. Insert coefficients for the interior of the grid.
+
+  for (auto ii = num_extra_rows; ii < gg_num_rows - num_extra_rows; ii++) {
+    auto jj = ii - num_extra_rows + 1;
+    for (auto cc = 0; cc < order_accuracy_; cc++, jj++) {
+      out.SetValue(ii, jj, coeffs_interior_[cc]*inv_delta_x);
+    }
+  }
+
+  /// 3. Impose center-skew symmetry by permuting the mimetic boundaries.
+
+  ee_index = 0;
+  for (auto ii = gg_num_rows - 1; ii >= gg_num_rows - num_extra_rows; ii--) {
+    auto cc = 0;
+    for (auto jj = gg_num_cols - 1; jj >= 0; jj--) {
+      if(cc >= elements_per_row) {
+        out.SetValue(ii,jj,mtk::kZero);
+      } else {
+        out.SetValue(ii,jj,
+                     -gradient_[2*order_accuracy_ + 1 + ee_index++]*inv_delta_x);
+        cc++;
+      }
+     }
+  }
+
+  return out;
+}
+
 mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
 
   int nn{grid.num_cells_x()}; // Number of cells on the grid.
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
-
   mtk::Tools::Prevent(nn < 3*order_accuracy_ - 2, __FILE__, __LINE__, __func__);
   #endif
 
@@ -413,6 +480,67 @@ mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
       } else {
         out.SetValue(ii,jj,
                      -gradient_[2*order_accuracy_ + 1 + ee_index++]*inv_delta_x);
+        cc++;
+      }
+     }
+  }
+
+  return out;
+}
+
+mtk::DenseMatrix mtk::Grad1D::ReturnAsDimensionlessDenseMatrix(int num_cells_x) {
+
+  int nn{num_cells_x}; // Number of cells on the grid.
+
+  #if MTK_DEBUG_LEVEL > 0
+  mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nn < 3*order_accuracy_ - 2, __FILE__, __LINE__, __func__);
+  #endif
+
+  int gg_num_rows = nn + 1;
+  int gg_num_cols = nn + 2;
+  int elements_per_row = num_bndy_coeffs_;
+  int num_extra_rows = order_accuracy_/2;
+
+  // Output matrix featuring sizes for gradient operators.
+  mtk::DenseMatrix out(gg_num_rows, gg_num_cols);
+
+  /// 1. Insert mimetic boundary at the west.
+
+  auto ee_index = 0;
+  for (auto ii = 0; ii < num_extra_rows; ii++) {
+    auto cc = 0;
+    for(auto jj = 0 ; jj < gg_num_cols; jj++) {
+      if(cc >= elements_per_row) {
+        out.SetValue(ii, jj, mtk::kZero);
+      } else {
+        out.SetValue(ii,jj,
+                     gradient_[2*order_accuracy_ + 1 + ee_index++]);
+        cc++;
+      }
+    }
+  }
+
+  /// 2. Insert coefficients for the interior of the grid.
+
+  for (auto ii = num_extra_rows; ii < gg_num_rows - num_extra_rows; ii++) {
+    auto jj = ii - num_extra_rows + 1;
+    for (auto cc = 0; cc < order_accuracy_; cc++, jj++) {
+      out.SetValue(ii, jj, coeffs_interior_[cc]);
+    }
+  }
+
+  /// 3. Impose center-skew symmetry by permuting the mimetic boundaries.
+
+  ee_index = 0;
+  for (auto ii = gg_num_rows - 1; ii >= gg_num_rows - num_extra_rows; ii--) {
+    auto cc = 0;
+    for (auto jj = gg_num_cols - 1; jj >= 0; jj--) {
+      if(cc >= elements_per_row) {
+        out.SetValue(ii,jj,mtk::kZero);
+      } else {
+        out.SetValue(ii,jj,
+                     -gradient_[2*order_accuracy_ + 1 + ee_index++]);
         cc++;
       }
      }
@@ -965,6 +1093,7 @@ bool mtk::Grad1D::ComputeWeights() {
   #endif
 
   // 1.3. Add final set of columns: rational basis for null-space.
+
   for (auto jj = dim_null_ + (order_accuracy_/2 + 1);
        jj < num_bndy_coeffs_ - 1; ++jj) {
     for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
@@ -1080,6 +1209,7 @@ bool mtk::Grad1D::ComputeWeights() {
   #endif
 
   /// 5. If required order is greater than critical order, start the **CBSA**.
+
   if (order_accuracy_ >= mtk::kCriticalOrderAccuracyGrad) {
 
     int minrow_{std::numeric_limits<int>::infinity()};

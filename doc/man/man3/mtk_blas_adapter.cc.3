@@ -1,8 +1,11 @@
-.TH "src/mtk_blas_adapter.cc" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "src/mtk_blas_adapter.cc" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 src/mtk_blas_adapter.cc \- 
+.PP
+Adapter class for the BLAS API\&.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -23,7 +26,7 @@ src/mtk_blas_adapter.cc \-
 
 .in +1c
 .ti -1c
-.RI "\fBmtk\fP"
+.RI " \fBmtk\fP"
 .br
 .RI "\fIMimetic Methods Toolkit namespace\&. \fP"
 .in -1c
@@ -43,6 +46,29 @@ src/mtk_blas_adapter.cc \-
 .RI "void \fBmtk::sgemm_\fP (char *transa, char *transb, int *m, int *n, int *k, double *alpha, double *a, int *lda, double *b, aamm int *ldb, double *beta, double *c, int *ldc)"
 .br
 .in -1c
+.SH "Detailed Description"
+.PP 
+This class contains a collection of static classes, that posses direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the BLAS\&.
+.PP
+The \fBBLAS (Basic Linear Algebra Subprograms)\fP are routines that provide standard building blocks for performing basic vector and matrix operations\&. The Level 1 BLAS perform scalar, vector and vector-vector operations, the Level 2 BLAS perform matrix-vector operations, and the Level 3 BLAS perform matrix-matrix operations\&.
+.PP
+The BLAS can be installed from links given in the See Also section of this page\&.
+.PP
+\fBSee also:\fP
+.RS 4
+http://www.netlib.org/blas/
+.PP
+https://software.intel.com/en-us/non-commercial-software-development
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+: Eduardo J\&. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu 
+.RE
+.PP
+
+.PP
+Definition in file \fBmtk_blas_adapter\&.cc\fP\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

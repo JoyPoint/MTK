@@ -1,4 +1,4 @@
-.TH "mtk::DenseMatrix" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::DenseMatrix" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -18,6 +18,10 @@ Defines a common dense matrix, using a 1D array\&.
 .RI "\fBDenseMatrix\fP & \fBoperator=\fP (const \fBDenseMatrix\fP &in)"
 .br
 .RI "\fIOverloaded assignment operator\&. \fP"
+.ti -1c
+.RI "bool \fBoperator==\fP (const \fBDenseMatrix\fP &in)"
+.br
+.RI "\fIAm I equal to the in matrix? \fP"
 .ti -1c
 .RI "\fBDenseMatrix\fP ()"
 .br
@@ -82,6 +86,10 @@ Defines a common dense matrix, using a 1D array\&.
 .RI "void \fBOrderColMajor\fP ()"
 .br
 .RI "\fIMake the matrix column-wise ordered\&. \fP"
+.ti -1c
+.RI "bool \fBWriteToFile\fP (std::string filename)"
+.br
+.RI "\fIWrites matrix to a file compatible with Gnuplot 4\&.6\&. \fP"
 .in -1c
 .SS "Static Public Member Functions"
 
@@ -101,7 +109,7 @@ Defines a common dense matrix, using a 1D array\&.
 .ti -1c
 .RI "\fBReal\fP * \fBdata_\fP"
 .br
-.RI "\fIArray holding the data in contiguouos position in memory\&. \fP"
+.RI "\fIArray holding the data in contiguous position in memory\&. \fP"
 .in -1c
 .SS "Friends"
 
@@ -115,13 +123,13 @@ Defines a common dense matrix, using a 1D array\&.
 .PP 
 For developing purposes, it is better to have a not-so-intrincated data structure implementing matrices\&. This is the purpose of this class: to be used for prototypes of new code for small test cases\&. In every other instance, this should be replaced by the most appropriate sparse matrix\&. 
 .PP
-Definition at line 98 of file mtk_dense_matrix\&.h\&.
+Definition at line 92 of file mtk_dense_matrix\&.h\&.
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "mtk::DenseMatrix::DenseMatrix ()"
 
 .PP
-Definition at line 138 of file mtk_dense_matrix\&.cc\&.
+Definition at line 162 of file mtk_dense_matrix\&.cc\&.
 .SS "mtk::DenseMatrix::DenseMatrix (const \fBDenseMatrix\fP &in)"
 
 .PP
@@ -132,7 +140,7 @@ Definition at line 138 of file mtk_dense_matrix\&.cc\&.
 .PP
 
 .PP
-Definition at line 144 of file mtk_dense_matrix\&.cc\&.
+Definition at line 168 of file mtk_dense_matrix\&.cc\&.
 .SS "mtk::DenseMatrix::DenseMatrix (const int &num_rows, const int &num_cols)"
 
 .PP
@@ -150,7 +158,7 @@ Definition at line 144 of file mtk_dense_matrix\&.cc\&.
 .PP
 
 .PP
-Definition at line 177 of file mtk_dense_matrix\&.cc\&.
+Definition at line 201 of file mtk_dense_matrix\&.cc\&.
 .SS "mtk::DenseMatrix::DenseMatrix (const int &rank, const bool &padded, const bool &transpose)"
 Used in the construction of the mimetic operators\&.
 .PP
@@ -173,7 +181,7 @@ Def**\&. A \fBpadded matrix\fP is a matrix with its first and last rows initiali
 .PP
 
 .PP
-Definition at line 199 of file mtk_dense_matrix\&.cc\&.
+Definition at line 223 of file mtk_dense_matrix\&.cc\&.
 .SS "mtk::DenseMatrix::DenseMatrix (const \fBReal\fP *gen, const int &gen_length, const int &pro_length, const bool &transpose)"
 Def**\&. In linear algebra, a \fBVandermonde matrix\fP is a matrix with terms of a geometric progression in each row\&. This progression uses the terms of a given \fBgenerator vector\fP:
 .PP
@@ -200,11 +208,11 @@ Obs**\&. It in important to understand that the generator vectors to be used are
 .PP
 
 .PP
-Definition at line 237 of file mtk_dense_matrix\&.cc\&.
+Definition at line 264 of file mtk_dense_matrix\&.cc\&.
 .SS "mtk::DenseMatrix::~DenseMatrix ()"
 
 .PP
-Definition at line 285 of file mtk_dense_matrix\&.cc\&.
+Definition at line 312 of file mtk_dense_matrix\&.cc\&.
 .SH "Member Function Documentation"
 .PP 
 .SS "\fBmtk::Real\fP * mtk::DenseMatrix::data () const"
@@ -217,7 +225,7 @@ Pointer to an array of \fBmtk::Real\fP\&.
 .PP
 
 .PP
-Definition at line 316 of file mtk_dense_matrix\&.cc\&.
+Definition at line 343 of file mtk_dense_matrix\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::DenseMatrix::GetValue (const int &row_coord, const int &col_coord) const"
 
 .PP
@@ -235,7 +243,7 @@ The required value at the specified coordinates\&.
 .PP
 
 .PP
-Definition at line 321 of file mtk_dense_matrix\&.cc\&.
+Definition at line 348 of file mtk_dense_matrix\&.cc\&.
 .SS "\fBmtk::DenseMatrix\fP mtk::DenseMatrix::Kron (const \fBDenseMatrix\fP &aa, const \fBDenseMatrix\fP &bb)\fC [static]\fP"
 
 .PP
@@ -251,9 +259,14 @@ Definition at line 321 of file mtk_dense_matrix\&.cc\&.
 \fIstd::bad_alloc\fP 
 .RE
 .PP
+\fBTodo\fP
+.RS 4
+Implement Kronecker product using the BLAS\&. 
+.RE
+.PP
 
 .PP
-Definition at line 463 of file mtk_dense_matrix\&.cc\&.
+Definition at line 490 of file mtk_dense_matrix\&.cc\&.
 .SS "\fBmtk::Matrix\fP mtk::DenseMatrix::matrix_properties () const"
 
 .PP
@@ -264,7 +277,7 @@ Pointer to a \fBMatrix\fP\&.
 .PP
 
 .PP
-Definition at line 291 of file mtk_dense_matrix\&.cc\&.
+Definition at line 318 of file mtk_dense_matrix\&.cc\&.
 .SS "int mtk::DenseMatrix::num_cols () const"
 
 .PP
@@ -275,7 +288,7 @@ Number of columns of the matrix\&.
 .PP
 
 .PP
-Definition at line 311 of file mtk_dense_matrix\&.cc\&.
+Definition at line 338 of file mtk_dense_matrix\&.cc\&.
 .SS "int mtk::DenseMatrix::num_rows () const"
 
 .PP
@@ -286,33 +299,37 @@ Number of rows of the matrix\&.
 .PP
 
 .PP
-Definition at line 306 of file mtk_dense_matrix\&.cc\&.
+Definition at line 333 of file mtk_dense_matrix\&.cc\&.
 .SS "\fBmtk::DenseMatrix\fP & mtk::DenseMatrix::operator= (const \fBDenseMatrix\fP &in)"
 
 .PP
-Definition at line 97 of file mtk_dense_matrix\&.cc\&.
+Definition at line 100 of file mtk_dense_matrix\&.cc\&.
+.SS "bool mtk::DenseMatrix::operator== (const \fBDenseMatrix\fP &in)"
+
+.PP
+Definition at line 141 of file mtk_dense_matrix\&.cc\&.
 .SS "void mtk::DenseMatrix::OrderColMajor ()"
 
 .PP
 \fBTodo\fP
 .RS 4
-Improve this so that no new arrays have to be created\&. 
+Improve this so that no new ammays have to be created\&. 
 .RE
 .PP
 
 .PP
-Definition at line 424 of file mtk_dense_matrix\&.cc\&.
+Definition at line 451 of file mtk_dense_matrix\&.cc\&.
 .SS "void mtk::DenseMatrix::OrderRowMajor ()"
 
 .PP
 \fBTodo\fP
 .RS 4
-Improve this so that no new arrays have to be created\&. 
+Improve this so that no new ammays have to be created\&. 
 .RE
 .PP
 
 .PP
-Definition at line 383 of file mtk_dense_matrix\&.cc\&.
+Definition at line 410 of file mtk_dense_matrix\&.cc\&.
 .SS "void mtk::DenseMatrix::SetOrdering (\fBmtk::MatrixOrdering\fPoo)"
 
 .PP
@@ -328,7 +345,7 @@ The required value at the specified coordinates\&.
 .PP
 
 .PP
-Definition at line 296 of file mtk_dense_matrix\&.cc\&.
+Definition at line 323 of file mtk_dense_matrix\&.cc\&.
 .SS "void mtk::DenseMatrix::SetValue (const int &row_coord, const int &col_coord, const \fBReal\fP &val)"
 
 .PP
@@ -343,7 +360,7 @@ Definition at line 296 of file mtk_dense_matrix\&.cc\&.
 .PP
 
 .PP
-Definition at line 333 of file mtk_dense_matrix\&.cc\&.
+Definition at line 360 of file mtk_dense_matrix\&.cc\&.
 .SS "void mtk::DenseMatrix::Transpose ()"
 
 .PP
@@ -354,23 +371,44 @@ Improve this so that no extra arrays have to be created\&.
 .PP
 
 .PP
-Definition at line 346 of file mtk_dense_matrix\&.cc\&.
+Definition at line 373 of file mtk_dense_matrix\&.cc\&.
+.SS "bool mtk::DenseMatrix::WriteToFile (std::stringfilename)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP Name of the output file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Success of the file writing process\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+http://www.gnuplot.info/ 
+.RE
+.PP
+
+.PP
+Definition at line 531 of file mtk_dense_matrix\&.cc\&.
 .SH "Friends And Related Function Documentation"
 .PP 
 .SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::DenseMatrix\fP &in)\fC [friend]\fP"
 
 .PP
-Definition at line 75 of file mtk_dense_matrix\&.cc\&.
+Definition at line 77 of file mtk_dense_matrix\&.cc\&.
 .SH "Member Data Documentation"
 .PP 
 .SS "\fBReal\fP* mtk::DenseMatrix::data_\fC [private]\fP"
 
 .PP
-Definition at line 274 of file mtk_dense_matrix\&.h\&.
+Definition at line 284 of file mtk_dense_matrix\&.h\&.
 .SS "\fBMatrix\fP mtk::DenseMatrix::matrix_properties_\fC [private]\fP"
 
 .PP
-Definition at line 272 of file mtk_dense_matrix\&.h\&.
+Definition at line 282 of file mtk_dense_matrix\&.h\&.
 
 .SH "Author"
 .PP 

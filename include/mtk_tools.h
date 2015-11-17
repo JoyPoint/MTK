@@ -3,7 +3,7 @@
 
 \brief Tool manager class.
 
-Basic tools to ensure execution correctness.
+Basic utilities.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -16,22 +16,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -58,6 +58,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <ctime>
 
+#include "mtk_roots.h"
+
 namespace mtk {
 
 /*!
@@ -72,36 +74,45 @@ Basic tools to ensure execution correctness.
 class Tools {
  public:
   /*!
-  \brief Enforces pre-conditions by preventing their complements from occur.
+  \brief Enforces preconditions by preventing their complements from occur.
 
   \sa http://stackoverflow.com/questions/8884335/print-the-file-name-line-number-and-function-name-of-a-calling-function-c-pro
 
-  \param[in] condition Complement of desired pre-condition.
+  \param[in] complement Complement of desired pre-condition.
   \param[in] fname Name of the file being checked.
   \param[in] lineno Number of the line where the check is executed.
   \param[in] fxname Name of the module containing the check.
   */
-  static void Prevent(const bool condition,
+  static void Prevent(const bool complement,
                       const char *fname,
                       int lineno,
                       const char *fxname);
 
   /*!
-  \brief Begins the execution of a test.
+  \brief Begins the execution of a unit test. Starts a timer.
 
   \param[in] nn Number of the test.
   */
-  static void BeginTestNo(const int &nn);
+  static void BeginUnitTestNo(const int &nn);
 
   /*!
-  \brief Ends the execution of a test.
+  \brief Ends the execution of a unit test. Stops and reports wall-clock time.
 
   \param[in] nn Number of the test.
   */
-  static void EndTestNo(const int &nn);
+  static void EndUnitTestNo(const int &nn);
+
+  /*!
+  \brief Asserts if the condition required to pass the unit test occurs.
+
+  \param[in] condition Condition to be asserted.
+  */
+  static void Assert(const bool condition);
 
  private:
   static int test_number_;  ///< Current test being executed.
+
+  static Real duration_;  ///< Duration of the current test.
 
   static clock_t begin_time_; ///< Elapsed time on current test.
 };

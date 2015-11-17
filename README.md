@@ -10,8 +10,12 @@ properties of their continuum counterparts to be **mimetic**.
 
 The **Mimetic Methods Toolkit (MTK)** is a C++ library for mimetic numerical
 methods. It is arranged as a set of classes for **mimetic quadratures**,
-**mimetic interpolation**, and **mimetic discretization** methods for the
+**mimetic interpolation**, and **mimetic finite differences** methods for the
 numerical solution of ordinary and partial differential equations.
+
+An older version of this library is available outside of GitHub... just email me
+about it, and you can have it... it is ugly, yet it is functional and more
+complete.
     __________________________________________________________________
 
 ## 2. Dependencies
@@ -33,24 +37,26 @@ Therefore, the following dependencies tree arises:
 1. LAPACK - Available from: http://www.netlib.org/lapack/
   1. BLAS - Available from: http://www.netlib.org/blas/
 
-2. (Optional) ATLAS - Available from: http://math-atlas.sourceforge.net/
-  1. BLAS - Available from: http://www.netlib.org/blas/
-  2. LAPACK - Available from: http://www.netlib.org/lapack/
+2. GLPK - Available from: https://www.gnu.org/software/glpk/
 
-3. (Optional) Valgrind - Available from: http://valgrind.org/
+3. (Optional) ATLAS - Available from: http://math-atlas.sourceforge.net/
+  1. LAPACK - Available from: http://www.netlib.org/lapack/
+    1. BLAS - Available from: http://www.netlib.org/blas
 
-4. (Optional) Doxygen - Available from http://www.stack.nl/~dimitri/doxygen/
+4. (Optional) Valgrind - Available from: http://valgrind.org/
+
+5. (Optional) Doxygen - Available from http://www.stack.nl/~dimitri/doxygen/
 
 ### For OS X:
 
-There are no dependences for OS X.
+1. GLPK - Available from: https://www.gnu.org/software/glpk/
     __________________________________________________________________
 
 ## 3. Installation
 
 ### PART 1. CONFIGURATION OF THE MAKEFILE.
 
-The following steps are required the build and test the MTK. Please use the
+The following steps are required to build and test the MTK. Please use the
 accompanying `Makefile.inc` file, which should provide a solid template to
 start with. The following command provides help on the options for make:
 
@@ -60,18 +66,19 @@ $ make help
 Makefile for the MTK.
 
 Options are:
-- make: builds only the library and the examples.
-- all: builds the library, the examples and the documentation.
-- mtklib: builds the library, i.e. generates the archive files.
-- tests: generates the tests.
-- examples: generates the examples.
-- gendoc: generates the documentation for the library.
-- checkheaders: checks syntax of the header files.
+- all: builds the library, the tests, and examples.
+- mtklib: builds the library.
+- test: builds the test files.
+- example: builds the examples.
 
-- clean: cleans ALL the generated files.
+- testall: runs all the tests.
+
+- gendoc: generates the documentation for the library.
+
+- clean: cleans all the generated files.
 - cleanlib: cleans the generated archive and object files.
-- cleantests: cleans the generated tests executables.
-- cleanexamples: cleans the generated examples executables.
+- cleantest: cleans the generated tests executables.
+- cleanexample: cleans the generated examples executables.
 -----
 ```
 
@@ -94,9 +101,6 @@ Examples and tests will also be built.
 
 Q: Why haven't you guys implemented GBS to build the library?
 A: I'm on it as we speak! ;)
-
-Q: When will the other flavors be ready?
-A: Soon! I'm working on getting help on developing those.
 
 Q: Is there any main reference when it comes to the theory on Mimetic Methods?
 A: Yes! Check: http://www.csrc.sdsu.edu/mimetic-book

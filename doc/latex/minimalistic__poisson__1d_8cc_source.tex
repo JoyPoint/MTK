@@ -1,0 +1,139 @@
+\hypertarget{minimalistic__poisson__1d_8cc_source}{\section{minimalistic\+\_\+poisson\+\_\+1d.\+cc}
+\label{minimalistic__poisson__1d_8cc_source}\index{examples/minimalistic\+\_\+poisson\+\_\+1d/minimalistic\+\_\+poisson\+\_\+1d.\+cc@{examples/minimalistic\+\_\+poisson\+\_\+1d/minimalistic\+\_\+poisson\+\_\+1d.\+cc}}
+}
+
+\begin{DoxyCode}
+00001 
+00042 \textcolor{comment}{/*}
+00043 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00044 \textcolor{comment}{University. All rights reserved.}
+00045 \textcolor{comment}{}
+00046 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00047 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00048 \textcolor{comment}{}
+00049 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00050 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00051 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
+00052 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
+00053 \textcolor{comment}{should be developed and included in any deliverable.}
+00054 \textcolor{comment}{}
+00055 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00056 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00057 \textcolor{comment}{}
+00058 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
+00059 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00060 \textcolor{comment}{other materials provided with the distribution.}
+00061 \textcolor{comment}{}
+00062 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
+00063 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
+00064 \textcolor{comment}{be given to the copyright holders.}
+00065 \textcolor{comment}{}
+00066 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
+00067 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00068 \textcolor{comment}{specific prior written permission.}
+00069 \textcolor{comment}{}
+00070 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00071 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00072 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00073 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00074 \textcolor{comment}{parties intellectual property rights.}
+00075 \textcolor{comment}{}
+00076 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00077 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00078 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00079 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00080 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00081 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00082 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00083 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00084 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00085 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00086 \textcolor{comment}{*/}
+00087 
+00088 \textcolor{preprocessor}{#if \_\_cplusplus == 201103L}
+00089 
+00090 \textcolor{preprocessor}{#include <iostream>}
+00091 \textcolor{preprocessor}{#include <fstream>}
+00092 \textcolor{preprocessor}{#include <cmath>}
+00093 \textcolor{preprocessor}{#include <vector>}
+00094 
+00095 \textcolor{preprocessor}{#include "\hyperlink{mtk_8h}{mtk.h}"}
+00096 
+00097 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Source(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx) \{
+00098   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda = -1.0;
+00099   \textcolor{keywordflow}{return} lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
+00100 \}
+00101 
+00102 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} KnownSolution(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx) \{
+00103   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda = -1.0;
+00104   \textcolor{keywordflow}{return} (exp(lambda*xx) - 1.0)/(exp(lambda) - 1.0);
+00105 \}
+00106 
+00107 \textcolor{keywordtype}{int} \hyperlink{minimalistic__poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00108 
+00109   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} west\_bndy\_x = 0.0;
+00110   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} east\_bndy\_x = 1.0;
+00111   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} relative\_norm\_2\_error\{\};
+00112   \textcolor{keywordtype}{int} num\_cells\_x = 5;
+00113   \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} grad;
+00114   \hyperlink{classmtk_1_1Lap1D}{mtk::Lap1D} lap;
+00115   std::vector<mtk::Real> west\_coeffs;
+00116   std::vector<mtk::Real> east\_coeffs;
+00117   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} source(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00118   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} comp\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00119   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} known\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00120 
+00121   \textcolor{keywordflow}{if} (!lap.\hyperlink{classmtk_1_1Lap1D_a685dcba88c08cf5b7b6c2aa4669a472c}{ConstructLap1D}()) \{
+00122     std::cerr << \textcolor{stringliteral}{"Mimetic lap could not be built."} << std::endl;
+00123     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00124   \}
+00125   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} lapm(lap.\hyperlink{classmtk_1_1Lap1D_a28672c735fa0d13e6204795b63aec4e2}{ReturnAsDenseMatrix}(comp\_sol));
+00126   \textcolor{keywordflow}{if} (!grad.\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{ConstructGrad1D}()) \{
+00127     std::cerr << \textcolor{stringliteral}{"Mimetic grad could not be built."} << std::endl;
+00128     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00129   \}
+00130   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} gradm(grad.\hyperlink{classmtk_1_1Grad1D_a4218516bfb43f683559322ea97058c78}{ReturnAsDenseMatrix}(comp\_sol));
+00131 
+00132   source.BindScalarField(Source);
+00133 
+00134   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < grad.\hyperlink{classmtk_1_1Grad1D_a7168205c21ba00012558f8bba069c119}{num\_bndy\_coeffs}(); ++ii) \{
+00135     west\_coeffs.push\_back(-((exp(-1.0) - 1.0)/-1.0)*gradm.GetValue(0, ii));
+00136   \}
+00137   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < grad.\hyperlink{classmtk_1_1Grad1D_a7168205c21ba00012558f8bba069c119}{num\_bndy\_coeffs}(); ++ii) \{
+00138     east\_coeffs.push\_back(
+00139       ((exp(-1.0) - 1.0)/-1.0)*gradm.GetValue(gradm.num\_rows() - 1,
+00140                                               gradm.num\_cols() - 1 - ii));
+00141   \}
+00142   west\_coeffs[0] += -exp(-1.0);
+00143   east\_coeffs[0] += -exp(-1.0);
+00144   \hyperlink{classmtk_1_1BCDesc1D_a5e5dcda1780b9aa404e836c4c27ac08f}{mtk::BCDesc1D::ImposeOnOperatorMatrix}(lapm, west\_coeffs, east\_coeffs
+      );
+00145   \hyperlink{classmtk_1_1BCDesc1D_a79a659c6a6333af8e51c463cf1ecb0b7}{mtk::BCDesc1D::ImposeOnGrid}(source, -1.0, 0.0);
+00146 
+00147   \textcolor{keywordtype}{int} info\{\hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{mtk::LAPACKAdapter::SolveDenseSystem}(lapm, source)\};
+00148   \textcolor{keywordflow}{if} (info != 0) \{
+00149     std::cerr << \textcolor{stringliteral}{"Something wrong solving system! info = "} << info << std::endl;
+00150     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00151   \}
+00152 
+00153   source.WriteToFile(\textcolor{stringliteral}{"minimalistic\_poisson\_1d\_comp\_sol.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"~u(x)"});
+00154   known\_sol.BindScalarField(KnownSolution);
+00155   relative\_norm\_2\_error =
+00156     \hyperlink{classmtk_1_1BLASAdapter_af2ac5691f45e67d6e26186b071119ec4}{mtk::BLASAdapter::RelNorm2Error}(source.discrete\_field\_u(),
+00157                                     known\_sol.discrete\_field\_u(),
+00158                                     known\_sol.num\_cells\_x());
+00159   std::cout << \textcolor{stringliteral}{"relative\_norm\_2\_error = "};
+00160   std::cout << relative\_norm\_2\_error << std::endl;
+00161 \}
+00162 
+00163 \textcolor{preprocessor}{#else}
+00164 \textcolor{preprocessor}{#include <iostream>}
+00165 \textcolor{keyword}{using} std::cout;
+00166 \textcolor{keyword}{using} std::endl;
+\hypertarget{minimalistic__poisson__1d_8cc_source_l00167}{}\hyperlink{minimalistic__poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00167} \textcolor{keywordtype}{int} \hyperlink{minimalistic__poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00168   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
+00169   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
+00170   \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+00171 \}
+00172 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

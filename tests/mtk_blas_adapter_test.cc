@@ -14,22 +14,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -57,9 +57,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk.h"
 
-void Test1() {
+void TestRealDenseMM() {
 
-  mtk::Tools::BeginTestNo(1);
+  mtk::Tools::BeginUnitTestNo(1);
 
   int rr = 2;
   int cc = 3;
@@ -73,8 +73,6 @@ void Test1() {
   aa.SetValue(1,1,5.0);
   aa.SetValue(1,2,6.0);
 
-  std::cout << aa << std::endl;
-
   mtk::DenseMatrix bb(cc,rr);
 
   bb.SetValue(0,0,7.0);
@@ -84,20 +82,24 @@ void Test1() {
   bb.SetValue(2,0,11.0);
   bb.SetValue(2,1,12.0);
 
-  std::cout << bb << std::endl;
-
   mtk::DenseMatrix pp = mtk::BLASAdapter::RealDenseMM(aa,bb);
 
-  std::cout << pp << std::endl;
+  mtk::DenseMatrix ff(rr,rr);
 
-  mtk::Tools::EndTestNo(1);
+  ff.SetValue(0,0,58.0);
+  ff.SetValue(0,1,64.00);
+  ff.SetValue(1,0,139.0);
+  ff.SetValue(1,1,154.0);
+
+  mtk::Tools::EndUnitTestNo(1);
+  mtk::Tools::Assert(pp == ff);
 }
 
 int main () {
 
   std::cout << "Testing mtk::BLASAdapter class." << std::endl;
 
-  Test1();
+  TestRealDenseMM();
 }
 
 #else

@@ -16,22 +16,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -59,54 +59,51 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk.h"
 
-void Test1() {
+void TestDefaultConstructorFactoryMethodDefault() {
 
-  mtk::Tools::BeginTestNo(1);
+  mtk::Tools::BeginUnitTestNo(1);
 
   mtk::Interp1D inter;
 
-  bool info = inter.ConstructInterp1D();
+  bool assertion = inter.ConstructInterp1D();
 
-  if (!info) {
-    std::cerr << "Mimetic grad (2nd order) could not be built." << std::endl;
+  if (!assertion) {
+    std::cerr << "Mimetic interp could not be built." << std::endl;
   }
 
-  std::cout << inter << std::endl;
-
-  mtk::Tools::EndTestNo(1);
+  mtk::Tools::EndUnitTestNo(1);
+  mtk::Tools::Assert(assertion);
 }
 
-void Test2() {
+void TestReturnAsDenseMatrixWithGrid() {
 
-  mtk::Tools::BeginTestNo(2);
+  mtk::Tools::BeginUnitTestNo(2);
 
   mtk::Interp1D inter;
 
-  bool info = inter.ConstructInterp1D();
+  bool assertion = inter.ConstructInterp1D();
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic grad (2nd order) could not be built." << std::endl;
   }
-
-  std::cout << inter << std::endl;
 
   mtk::UniStgGrid1D grid(0.0, 1.0, 5);
 
-  std::cout << grid << std::endl;
-
   mtk::DenseMatrix interpm(inter.ReturnAsDenseMatrix(grid));
 
-  std::cout << interpm << std::endl;
+  assertion =
+    assertion && interpm.GetValue(0,0) == 1.0 && interpm.GetValue(5,6) == 1.0;
 
-  mtk::Tools::EndTestNo(2);
+  mtk::Tools::EndUnitTestNo(2);
+  mtk::Tools::Assert(assertion);
 }
 
 int main () {
 
   std::cout << "Testing mtk::Interp1D class." << std::endl;
 
-  Test1();
-  Test2();
+  TestDefaultConstructorFactoryMethodDefault();
+  TestReturnAsDenseMatrixWithGrid();
 }
 
 #else

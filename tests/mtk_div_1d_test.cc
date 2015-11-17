@@ -14,22 +14,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -57,159 +57,199 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk.h"
 
-void Test1() {
+void TestDefaultConstructorFactoryMethodDefault() {
 
-  mtk::Tools::BeginTestNo(1);
+  mtk::Tools::BeginUnitTestNo(1);
 
   mtk::Div1D div2;
 
-  bool info = div2.ConstructDiv1D();
+  bool assertion = div2.ConstructDiv1D();
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic div (2nd order) could not be built." << std::endl;
   }
 
-  std::cout << div2 << std::endl;
-
-  mtk::Tools::EndTestNo(1);
+  mtk::Tools::EndUnitTestNo(1);
+  mtk::Tools::Assert(assertion);
 }
 
-void Test2() {
+void TestDefaultConstructorFactoryMethodFourthOrder() {
 
-  mtk::Tools::BeginTestNo(2);
+  mtk::Tools::BeginUnitTestNo(2);
 
   mtk::Div1D div4;
 
-  bool info = div4.ConstructDiv1D(4);
+  bool assertion = div4.ConstructDiv1D(4);
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic div (4th order) could not be built." << std::endl;
   }
 
-  std::cout << div4 << std::endl;
-
-  mtk::Tools::EndTestNo(2);
+  mtk::Tools::EndUnitTestNo(2);
+  mtk::Tools::Assert(assertion);
 }
 
-void Test3() {
+void TestDefaultConstructorFactoryMethodSixthOrder() {
 
-  mtk::Tools::BeginTestNo(3);
+  mtk::Tools::BeginUnitTestNo(3);
 
   mtk::Div1D div6;
 
-  bool info = div6.ConstructDiv1D(6);
+  bool assertion = div6.ConstructDiv1D(6);
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic div (6th order) could not be built." << std::endl;
   }
 
-  std::cout << div6 << std::endl;
-
-  mtk::Tools::EndTestNo(3);
+  mtk::Tools::EndUnitTestNo(3);
+  mtk::Tools::Assert(assertion);
 }
 
-void Test4() {
+void TestDefaultConstructorFactoryMethodEightOrderDefThreshold() {
 
-  mtk::Tools::BeginTestNo(4);
+  mtk::Tools::BeginUnitTestNo(4);
 
   mtk::Div1D div8;
 
-  bool info = div8.ConstructDiv1D(8);
+  bool assertion = div8.ConstructDiv1D(8);
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic div (8th order) could not be built." << std::endl;
   }
 
-  std::cout << div8 << std::endl;
-
-  mtk::Tools::EndTestNo(4);
+  mtk::Tools::EndUnitTestNo(4);
+  mtk::Tools::Assert(assertion);
 }
 
-void Test5() {
+void TestDefaultConstructorFactoryMethodTenthOrderDefThreshold() {
 
-  mtk::Tools::BeginTestNo(5);
+  mtk::Tools::BeginUnitTestNo(5);
 
   mtk::Div1D div10;
 
-  bool info = div10.ConstructDiv1D(10);
+  bool assertion = div10.ConstructDiv1D(10);
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic div (10th order) could not be built." << std::endl;
   }
 
-  std::cout << div10 << std::endl;
-
-  mtk::Tools::EndTestNo(5);
+  mtk::Tools::EndUnitTestNo(5);
+  mtk::Tools::Assert(assertion);
 }
 
-void Test6() {
+void TestDefaultConstructorFactoryMethodTwelfthOrderDefThreshold() {
 
-  mtk::Tools::BeginTestNo(6);
+  mtk::Tools::BeginUnitTestNo(6);
 
   mtk::Div1D div12;
 
-  bool info = div12.ConstructDiv1D(12);
+  bool assertion = div12.ConstructDiv1D(12);
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic div (12th order) could not be built." << std::endl;
   }
 
-  std::cout << div12 << std::endl;
-
-  mtk::Tools::EndTestNo(6);
+  mtk::Tools::EndUnitTestNo(6);
+  mtk::Tools::Assert(assertion);
 }
 
-void Test7() {
+void TestDefaultConstructorFactoryMethodFourteenthOrderDefThreshold() {
 
-  mtk::Tools::BeginTestNo(7);
+  mtk::Tools::BeginUnitTestNo(7);
 
   mtk::Div1D div14;
 
-  bool info = div14.ConstructDiv1D(14);
+  bool assertion = div14.ConstructDiv1D(14);
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic div (14th order) could not be built." << std::endl;
   }
 
-  std::cout << div14 << std::endl;
-
-  mtk::Tools::EndTestNo(7);
+  mtk::Tools::EndUnitTestNo(7);
+  mtk::Tools::Assert(assertion);
 }
 
-void Test8() {
+void TestSecondOrderReturnAsDenseMatrixWithGrid() {
 
-  mtk::Tools::BeginTestNo(8);
+  mtk::Tools::BeginUnitTestNo(8);
 
   mtk::Div1D div2;
 
-  bool info = div2.ConstructDiv1D();
+  bool assertion = div2.ConstructDiv1D();
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic div (2nd order) could not be built." << std::endl;
   }
 
-  std::cout << div2 << std::endl;
-
   mtk::UniStgGrid1D grid(0.0, 1.0, 5);
-
-  std::cout << grid << std::endl;
 
   mtk::DenseMatrix div2m(div2.ReturnAsDenseMatrix(grid));
 
-  std::cout << div2m << std::endl;
+  int rr{7};
+  int cc{6};
 
-  mtk::Tools::EndTestNo(8);
+  mtk::DenseMatrix ref(rr, cc);
+
+  // Row 2.
+  ref.SetValue(1,0,-5.0);
+  ref.SetValue(1,1,5.0);
+  ref.SetValue(1,2,0.0);
+  ref.SetValue(1,3,0.0);
+  ref.SetValue(1,4,0.0);
+  ref.SetValue(1,5,0.0);
+  ref.SetValue(1,6,0.0);
+
+  // Row 3.
+  ref.SetValue(2,0,0.0);
+  ref.SetValue(2,1,-5.0);
+  ref.SetValue(2,2,5.0);
+  ref.SetValue(2,3,0.0);
+  ref.SetValue(2,4,0.0);
+  ref.SetValue(2,5,0.0);
+  ref.SetValue(2,6,0.0);
+
+  // Row 4.
+  ref.SetValue(3,0,0.0);
+  ref.SetValue(3,1,0.0);
+  ref.SetValue(3,2,-5.0);
+  ref.SetValue(3,3,5.0);
+  ref.SetValue(3,4,0.0);
+  ref.SetValue(3,5,0.0);
+  ref.SetValue(3,6,0.0);
+
+  // Row 5.
+  ref.SetValue(4,0,0.0);
+  ref.SetValue(4,1,0.0);
+  ref.SetValue(4,2,0.0);
+  ref.SetValue(4,3,-5.0);
+  ref.SetValue(4,4,5.0);
+  ref.SetValue(4,5,0.0);
+  ref.SetValue(4,6,0.0);
+
+  // Row 6.
+  ref.SetValue(5,0,0.0);
+  ref.SetValue(5,1,0.0);
+  ref.SetValue(5,2,0.0);
+  ref.SetValue(5,3,0.0);
+  ref.SetValue(5,4,-5.0);
+  ref.SetValue(5,5,5.0);
+  ref.SetValue(5,6,0.0);
+
+  assertion = assertion && (div2m == ref);
+
+  mtk::Tools::EndUnitTestNo(8);
+  mtk::Tools::Assert(assertion);
 }
 
-void Test9() {
+void TestFourthOrderReturnAsDenseMatrixWithGrid() {
 
-  mtk::Tools::BeginTestNo(9);
+  mtk::Tools::BeginUnitTestNo(9);
 
   mtk::Div1D div4;
 
-  bool info = div4.ConstructDiv1D(4);
+  bool assertion = div4.ConstructDiv1D(4);
 
-  if (!info) {
+  if (!assertion) {
     std::cerr << "Mimetic div (4th order) could not be built." << std::endl;
   }
 
@@ -223,22 +263,22 @@ void Test9() {
 
   std::cout << div4m << std::endl;
 
-  mtk::Tools::EndTestNo(9);
+  mtk::Tools::EndUnitTestNo(9);
 }
 
 int main () {
 
   std::cout << "Testing mtk::Div1D class." << std::endl;
 
-  Test1();
-  Test2();
-  Test3();
-  Test4();
-  Test5();
-  Test6();
-  Test7();
-  Test8();
-  Test9();
+  TestDefaultConstructorFactoryMethodDefault();
+  TestDefaultConstructorFactoryMethodFourthOrder();
+  TestDefaultConstructorFactoryMethodSixthOrder();
+  TestDefaultConstructorFactoryMethodEightOrderDefThreshold();
+  TestDefaultConstructorFactoryMethodTenthOrderDefThreshold();
+  TestDefaultConstructorFactoryMethodTwelfthOrderDefThreshold();
+  TestDefaultConstructorFactoryMethodFourteenthOrderDefThreshold();
+  TestSecondOrderReturnAsDenseMatrixWithGrid();
+  TestFourthOrderReturnAsDenseMatrixWithGrid();
 }
 
 #else

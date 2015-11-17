@@ -10,12 +10,6 @@ should be replaced by the most appropriate sparse matrix.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 
-\todo Add sparse matrices support: BANDED and CRS.
-
-\todo Contemplate manipulation of sparse metrics.
-
-\todo Implement Kronecker product using the BLAS.
-
 \note We prefer composition to inheritance [Reedy, 2011]. The main reason for
 this preference is that inheritance produces a more tightly coupled design. When
 a class inherits from another type be it public, protected, or private
@@ -35,22 +29,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -102,6 +96,9 @@ class DenseMatrix {
 
   /// \brief Overloaded assignment operator.
   DenseMatrix& operator =(const DenseMatrix &in);
+
+  /// \brief Am I equal to the in matrix?
+  bool operator ==(const DenseMatrix &in);
 
   /// \brief Default constructor.
   DenseMatrix();
@@ -265,13 +262,26 @@ class DenseMatrix {
   \param[in] bb Second matrix.
 
   \exception std::bad_alloc
+
+  \todo Implement Kronecker product using the BLAS.
   */
   static DenseMatrix Kron(const DenseMatrix &aa, const DenseMatrix &bb);
+
+  /*!
+  \brief Writes matrix to a file compatible with Gnuplot 4.6.
+
+  \param[in] filename Name of the output file.
+
+  \return Success of the file writing process.
+
+  \sa http://www.gnuplot.info/
+  */
+  bool WriteToFile(std::string filename);
 
  private:
   Matrix matrix_properties_;  ///< Data related to the matrix nature.
 
-  Real *data_; ///< Array holding the data in contiguouos position in memory.
+  Real *data_; ///< Array holding the data in contiguous position in memory.
 };
 }
 #endif  // End of: MTK_INCLUDE_MTK_DENSE_MATRIX_H_

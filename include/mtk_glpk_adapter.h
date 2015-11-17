@@ -25,22 +25,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -92,7 +92,7 @@ related problems. It is a set of routines written in ANSI C and organized in the
 form of a callable library.
 
 \warning We use the GLPK temporarily in order to test the CBSA, but it will be
-removed due to licensing issues.
+removed due to potential licensing issues.
 
 \sa http://www.gnu.org/software/glpk/
 
@@ -117,6 +117,8 @@ class GLPKAdapter {
   \param[in] xx First vector.
   \param[in] beta Second scalar.
   \param[in] beta Second scalar.
+
+  \return Relative error computed between attained solution and provided ref.
   */
   static mtk::Real SolveSimplexAndCompare(mtk::Real *A,
                                           int nrows,
