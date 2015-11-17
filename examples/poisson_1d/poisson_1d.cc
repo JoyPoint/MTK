@@ -201,12 +201,12 @@ int main () {
   // complexity of assigning them in the matrix, to complete the construction of
   // the mimetic operator.
 
-  mtk::BCDesc1D::ImposeOnOperatorMatrix(lapm, west_coeffs, east_coeffs);
+  mtk::BCDescriptor1D::ImposeOnOperatorMatrix(lapm, west_coeffs, east_coeffs);
 
   std::cout << "Mimetic Laplacian with Robin conditions:" << std::endl;
   std::cout << lapm << std::endl;
 
-  mtk::BCDesc1D::ImposeOnGrid(source, omega, epsilon);
+  mtk::BCDescriptor1D::ImposeOnGrid(source, omega, epsilon);
 
   std::cout << "Source term with imposed BCs:" << std::endl;
   std::cout << source << std::endl;

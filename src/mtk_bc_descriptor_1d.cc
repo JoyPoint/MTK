@@ -1,10 +1,10 @@
 /*!
-\file mtk_bc_desc_2d.h
+\file mtk_bc_descriptor_1d.cc
 
 \brief Enforces boundary conditions in either the operator or the grid.
 
 This class presents an interface for the user to specify boundary conditions
-on 2D mimetic operators and the grids they are acting on.
+on 1D mimetic operators and the grids they are acting on.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -54,46 +54,50 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef MTK_INCLUDE_BC_DESC_2D_H_
-#define MTK_INCLUDE_BC_DESC_2D_H_
+#include "mtk_tools.h"
 
-#include "mtk_roots.h"
-#include "mtk_dense_matrix.h"
-#include "mtk_uni_stg_grid_2d.h"
+#include "mtk_bc_descriptor_1d.h"
 
-namespace mtk{
+void mtk::BCDescriptor1D::ImposeOnOperatorMatrix(mtk::DenseMatrix &matrix,
+    const std::vector<mtk::Real> &west,
+    const std::vector<mtk::Real> &east) {
 
-class BCDesc2D {
- public:
-  /*!
-  \brief Enforces the condition on the operator represented as matrix.
+  #if MTK_DEBUG_LEVEL > 0
+  mtk::Tools::Prevent(matrix.num_rows() == 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(west.size() > (unsigned int) matrix.num_cols(),
+                      __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(east.size() > (unsigned int) matrix.num_cols(),
+                      __FILE__, __LINE__, __func__);
+  #endif
 
-  \param[in,out] matrix Input operator.
-  \param[in] west Pointer to function returning west coefficient at (ii,jj).
-  \param[in] east Pointer to function returning east coefficient at (ii,jj).
-  \param[in] south Pointer to function returning south coefficient at (ii,jj).
-  \param[in] north Pointer to function returning north coefficient at (ii,jj).
-  */
-  static void ImposeOnOperatorMatrix(const DenseMatrix &matrix,
-                                     Real (*west)(int ii, int jj),
-                                     Real (*east)(int ii, int jj),
-                                     Real (*south)(int ii, int jj),
-                                     Real (*north)(int ii, int jj));
+  /// 1. Assign the west array.
 
-/*!
-  \brief Enforces the condition on the grid.
+  for (unsigned int ii = 0; ii < west.size(); ++ii) {
+    matrix.SetValue(0, ii, west[ii]);
+  }
 
-  \param[in,out] matrix Input operator.
-  \param[in] west Pointer to function returning west coefficient at (xx,yy).
-  \param[in] east Pointer to function returning east coefficient at (xx,yy).
-  \param[in] south Pointer to function returning south coefficient at (xx,yy).
-  \param[in] north Pointer to function returning north coefficient at (xx,yy).
-  */
-  static void ImposeOnGrid(const UniStgGrid2D &grid,
-                           Real (*west)(Real xx, Real yy),
-                           Real (*east)(Real xx, Real yy),
-                           Real (*south)(Real xx, Real yy),
-                           Real (*north)(Real xx, Real yy));
-};
+  /// 2. Assign the east array.
+
+  for (unsigned int ii = 0; ii < east.size(); ++ii) {
+    matrix.SetValue(matrix.num_rows() - 1,
+                    matrix.num_cols() - 1 - ii,
+                    east[ii]);
+  }
 }
-#endif  // End of: MTK_INCLUDE_BC_DESC_2D_H_
+
+void mtk::BCDescriptor1D::ImposeOnGrid(mtk::UniStgGrid1D &grid,
+                                 const mtk::Real &omega,
+                                 const mtk::Real &epsilon) {
+
+  #if MTK_DEBUG_LEVEL > 0
+  mtk::Tools::Prevent(grid.num_cells_x() == 0, __FILE__, __LINE__, __func__);
+  #endif
+
+  /// 1. Assign the west condition.
+
+  grid.discrete_field_u()[0] = omega;
+
+  /// 2. Assign the east condition.
+
+  grid.discrete_field_u()[grid.num_cells_x() + 2 - 1] = epsilon;
+}

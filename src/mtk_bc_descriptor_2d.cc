@@ -1,5 +1,5 @@
 /*!
-\file mtk_bc_desc_2d.cc
+\file mtk_bc_descriptor_2d.cc
 
 \brief Enforces boundary conditions in either the operator or the grid.
 
@@ -56,9 +56,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk_tools.h"
 
-#include "mtk_bc_desc_2d.h"
+#include "mtk_bc_descriptor_2d.h"
 
-void mtk::BCDesc2D::ImposeOnOperatorMatrix(const mtk::DenseMatrix &matrix,
+void mtk::BCDescriptor2D::ImposeOnOperatorMatrix(const mtk::DenseMatrix &matrix,
                                            mtk::Real (*west)(int ii, int jj),
                                            mtk::Real (*east)(int ii, int jj),
                                            mtk::Real (*south)(int ii, int jj),
@@ -75,7 +75,7 @@ void mtk::BCDesc2D::ImposeOnOperatorMatrix(const mtk::DenseMatrix &matrix,
 }
 
 
-void mtk::BCDesc2D::ImposeOnGrid(const mtk::UniStgGrid2D &grid,
+void mtk::BCDescriptor2D::ImposeOnGrid(const mtk::UniStgGrid2D &grid,
     mtk::Real (*west)(mtk::Real xx, mtk::Real yy),
     mtk::Real (*east)(mtk::Real xx, mtk::Real yy),
     mtk::Real (*south)(mtk::Real xx, mtk::Real yy),

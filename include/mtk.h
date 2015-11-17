@@ -447,12 +447,13 @@ Mimetic operators.
 #include "mtk_grad_1d.h"
 #include "mtk_div_1d.h"
 #include "mtk_lap_1d.h"
-#include "mtk_bc_desc_1d.h"
+#include "mtk_bc_descriptor_1d.h"
 #include "mtk_quad_1d.h"
 #include "mtk_interp_1d.h"
 
 #include "mtk_grad_2d.h"
 #include "mtk_div_2d.h"
 #include "mtk_lap_2d.h"
+#include "mtk_bc_descriptor_2d.h"
 
 #endif // End of: MTK_INCLUDE_MTK_H_

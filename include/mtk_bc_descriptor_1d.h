@@ -1,5 +1,5 @@
 /*!
-\file mtk_bc_desc_1d.cc
+\file mtk_bc_descriptor_1d.h
 
 \brief Enforces boundary conditions in either the operator or the grid.
 
@@ -54,50 +54,40 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "mtk_tools.h"
+#include <vector>
 
-#include "mtk_bc_desc_1d.h"
+#include "mtk_roots.h"
+#include "mtk_dense_matrix.h"
+#include "mtk_uni_stg_grid_1d.h"
 
-void mtk::BCDesc1D::ImposeOnOperatorMatrix(mtk::DenseMatrix &matrix,
-    const std::vector<mtk::Real> &west,
-    const std::vector<mtk::Real> &east) {
+#ifndef MTK_INCLUDE_BC_DESCRIPTOR_1D_H_
+#define MTK_INCLUDE_BC_DESCRIPTOR_1D_H_
 
-  #if MTK_DEBUG_LEVEL > 0
-  mtk::Tools::Prevent(matrix.num_rows() == 0, __FILE__, __LINE__, __func__);
-  mtk::Tools::Prevent(west.size() > (unsigned int) matrix.num_cols(),
-                      __FILE__, __LINE__, __func__);
-  mtk::Tools::Prevent(east.size() > (unsigned int) matrix.num_cols(),
-                      __FILE__, __LINE__, __func__);
-  #endif
+namespace mtk {
 
-  /// 1. Assign the west array.
+class BCDescriptor1D {
+ public:
+  /*!
+  \brief Enforces the condition on the operator represented as matrix.
 
-  for (unsigned int ii = 0; ii < west.size(); ++ii) {
-    matrix.SetValue(0, ii, west[ii]);
-  }
+  \param[in,out] matrix Input operator.
+  \param[in] west Array of values for the west boundary.
+  \param[in] east Array of values for the east boundary.
+  */
+  static void ImposeOnOperatorMatrix(DenseMatrix &matrix,
+                                     const std::vector<Real> &west,
+                                     const std::vector<Real> &east);
 
-  /// 2. Assign the east array.
+  /*!
+  \brief Enforces the condition on the grid.
 
-  for (unsigned int ii = 0; ii < east.size(); ++ii) {
-    matrix.SetValue(matrix.num_rows() - 1,
-                    matrix.num_cols() - 1 - ii,
-                    east[ii]);
-  }
+  \param[in,out] grid Input grid.
+  \param[in] west Array of values for the west boundary.
+  \param[in] east Array of values for the east boundary.
+  */
+  static void ImposeOnGrid(UniStgGrid1D &grid,
+                           const Real &omega,
+                           const Real &epsilon);
+};
 }
-
-void mtk::BCDesc1D::ImposeOnGrid(mtk::UniStgGrid1D &grid,
-                                 const mtk::Real &omega,
-                                 const mtk::Real &epsilon) {
-
-  #if MTK_DEBUG_LEVEL > 0
-  mtk::Tools::Prevent(grid.num_cells_x() == 0, __FILE__, __LINE__, __func__);
-  #endif
-
-  /// 1. Assign the west condition.
-
-  grid.discrete_field_u()[0] = omega;
-
-  /// 2. Assign the east condition.
-
-  grid.discrete_field_u()[grid.num_cells_x() + 2 - 1] = epsilon;
-}
+#endif  // End of: MTK_INCLUDE_BC_DESCRIPTOR_1D_H_

@@ -24,8 +24,8 @@ MIMOPS = \
 	mtk_grad_1d.o \
 	mtk_div_1d.o \
 	mtk_lap_1d.o \
-	mtk_bc_desc_1d.o \
-	mtk_bc_desc_2d.o \
+	mtk_bc_descriptor_1d.o \
+	mtk_bc_descriptor_2d.o \
 	mtk_interp_1d.o \
 	mtk_grad_2d.o \
 	mtk_div_2d.o \

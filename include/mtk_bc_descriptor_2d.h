@@ -1,10 +1,10 @@
 /*!
-\file mtk_bc_desc_1d.h
+\file mtk_bc_descriptor_2d.h
 
 \brief Enforces boundary conditions in either the operator or the grid.
 
 This class presents an interface for the user to specify boundary conditions
-on 1D mimetic operators and the grids they are acting on.
+on 2D mimetic operators and the grids they are acting on.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -54,40 +54,46 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <vector>
+#ifndef MTK_INCLUDE_BC_DESCRIPTOR_2D_H_
+#define MTK_INCLUDE_BC_DESCRIPTOR_2D_H_
 
 #include "mtk_roots.h"
 #include "mtk_dense_matrix.h"
-#include "mtk_uni_stg_grid_1d.h"
+#include "mtk_uni_stg_grid_2d.h"
 
-#ifndef MTK_INCLUDE_BC_DESC_1D_H_
-#define MTK_INCLUDE_BC_DESC_1D_H_
+namespace mtk{
 
-namespace mtk {
-
-class BCDesc1D {
+class BCDescriptor2D {
  public:
   /*!
   \brief Enforces the condition on the operator represented as matrix.
 
   \param[in,out] matrix Input operator.
-  \param[in] west Array of values for the west boundary.
-  \param[in] east Array of values for the east boundary.
+  \param[in] west Pointer to function returning west coefficient at (ii,jj).
+  \param[in] east Pointer to function returning east coefficient at (ii,jj).
+  \param[in] south Pointer to function returning south coefficient at (ii,jj).
+  \param[in] north Pointer to function returning north coefficient at (ii,jj).
   */
-  static void ImposeOnOperatorMatrix(DenseMatrix &matrix,
-                                     const std::vector<Real> &west,
-                                     const std::vector<Real> &east);
+  static void ImposeOnOperatorMatrix(const DenseMatrix &matrix,
+                                     Real (*west)(int ii, int jj),
+                                     Real (*east)(int ii, int jj),
+                                     Real (*south)(int ii, int jj),
+                                     Real (*north)(int ii, int jj));
 
-  /*!
+/*!
   \brief Enforces the condition on the grid.
 
-  \param[in,out] grid Input grid.
-  \param[in] west Array of values for the west boundary.
-  \param[in] east Array of values for the east boundary.
+  \param[in,out] matrix Input operator.
+  \param[in] west Pointer to function returning west coefficient at (xx,yy).
+  \param[in] east Pointer to function returning east coefficient at (xx,yy).
+  \param[in] south Pointer to function returning south coefficient at (xx,yy).
+  \param[in] north Pointer to function returning north coefficient at (xx,yy).
   */
-  static void ImposeOnGrid(UniStgGrid1D &grid,
-                           const Real &omega,
-                           const Real &epsilon);
+  static void ImposeOnGrid(const UniStgGrid2D &grid,
+                           Real (*west)(Real xx, Real yy),
+                           Real (*east)(Real xx, Real yy),
+                           Real (*south)(Real xx, Real yy),
+                           Real (*north)(Real xx, Real yy));
 };
 }
-#endif  // End of: MTK_INCLUDE_BC_DESC_1D_H_
+#endif  // End of: MTK_INCLUDE_BC_DESCRIPTOR_2D_H_

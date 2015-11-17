@@ -141,8 +141,8 @@ int main () {
   }
   west_coeffs[0] += -exp(-1.0);
   east_coeffs[0] += -exp(-1.0);
-  mtk::BCDesc1D::ImposeOnOperatorMatrix(lapm, west_coeffs, east_coeffs);
-  mtk::BCDesc1D::ImposeOnGrid(source, -1.0, 0.0);
+  mtk::BCDescriptor1D::ImposeOnOperatorMatrix(lapm, west_coeffs, east_coeffs);
+  mtk::BCDescriptor1D::ImposeOnGrid(source, -1.0, 0.0);
 
   int info{mtk::LAPACKAdapter::SolveDenseSystem(lapm, source)};
   if (info != 0) {
