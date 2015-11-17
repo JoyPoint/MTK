@@ -267,6 +267,17 @@ class DenseMatrix {
   */
   static DenseMatrix Kron(const DenseMatrix &aa, const DenseMatrix &bb);
 
+  /*!
+  \brief Writes matrix to a file compatible with Gnuplot 4.6.
+
+  \param[in] filename Name of the output file.
+
+  \return Success of the file writing process.
+
+  \sa http://www.gnuplot.info/
+  */
+  bool WriteToFile(std::string filename);
+
  private:
   Matrix matrix_properties_;  ///< Data related to the matrix nature.
 

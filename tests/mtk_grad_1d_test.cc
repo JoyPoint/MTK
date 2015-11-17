@@ -247,6 +247,34 @@ void TestReturnAsDimensionlessDenseMatrix() {
   mtk::Tools::Assert(assertion);
 }
 
+void TestWriteToFile() {
+
+  mtk::Tools::BeginUnitTestNo(8);
+
+  mtk::Grad1D grad2;
+
+  bool assertion = grad2.ConstructGrad1D();
+
+  if (!assertion) {
+    std::cerr << "Mimetic grad (2nd order) could not be built." << std::endl;
+  }
+
+  mtk::UniStgGrid1D grid(0.0, 1.0, 50);
+
+  mtk::DenseMatrix grad2m(grad2.ReturnAsDenseMatrix(grid));
+
+  std::cout << grad2m << std::endl;
+
+  assertion = assertion && grad2m.WriteToFile("mtk_grad_1d_test_08.dat");
+
+  if(!assertion) {
+    std::cerr << "Error writing to file." << std::endl;
+  }
+
+  mtk::Tools::EndUnitTestNo(8);
+  mtk::Tools::Assert(assertion);
+}
+
 int main () {
 
   std::cout << "Testing mtk::Grad1D class." << std::endl;
@@ -258,6 +286,7 @@ int main () {
   TestDefaultConstructorFactoryMethodTenthOrderDefThreshold();
   TestReturnAsDenseMatrixWithGrid();
   TestReturnAsDimensionlessDenseMatrix();
+  TestWriteToFile();
 }
 
 #else

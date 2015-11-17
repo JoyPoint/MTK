@@ -1,10 +1,10 @@
-# \file mtk_uni_stg_grid_2d_test_04.gnu
+# \file mtk_grad_1d_test_08.gnu
 #
-# \brief gnuplot script for test suite mtk_uni_stg_grid_2d_test.cc
+# \brief gnuplot script for test suite mtk_grad_1d_test.cc
 #
 # Minimally-complete gnuplot script to visualize data files created by the
-# mtk::UniStgGrid2D::WriteToFile method in the TestBindScalarFieldWriteToFile
-# test implemented in the mtk_uni_stg_grid_2d_test.cc test suite.
+# mtk::DenseMatrix::WriteToFile method in the TestWriteToFile test implemented
+# in the mtk_grad_1d_test.cc test suite.
 #
 # \warning Not intended to be a general solution gut a minimal guidance.
 #
@@ -58,7 +58,7 @@
 
 reset
 
-name = "mtk_uni_stg_grid_2d_test_04"
+name = "mtk_grad_1d_test_08"
 
 # wxt terminal (wxWidgets library) for live rendering.
 set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
@@ -67,18 +67,26 @@ set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
 # set terminal png
 # set output name.".png"
 
+# Data manipulation.
+tol = 0.0000001
+f(x) = abs(x - 0.0) > tol? x: 0.0
+
 # Data visualization.
-set view map
-set dgrid3d
+set palette defined (0 '#000000', \
+                     1 '#0000ff', \
+                     2 '#ffffff', \
+                     3 '#0000ff', \
+                     4 '#000000')
 
 # Axes.
-set xlabel "x"
-set ylabel "y"
+set x2tics
+set yrange [] reverse
+set autoscale fix
+set grid
 
 # Title and legend.
-set title "Scalar Field on a Uniform Staggered 2D Grid"
+set title "Matrix Encoding a 1D Mimetic Gradient"
 
 set key bmargin center horizontal
 
-splot "mtk_uni_stg_grid_2d_test_04.dat" u 1:2:3:xticlabels(1):yticlabels(2) \
-  w pm3d title "u(x,y)"
+plot name.".dat" u 2:1:(f($3)) w p pt 5 palette

@@ -1,10 +1,10 @@
 /*!
-\file mtk_bc_desc_1d.h
+\file mtk_bc_desc_2d.cc
 
 \brief Enforces boundary conditions in either the operator or the grid.
 
-This class presents an interface for the user to specify boundary conditions
-on 1D mimetic operators and the grids they are acting on.
+This class implements an interface for the user to specify boundary conditions
+on 2D mimetic operators and the grids they are acting on.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -54,40 +54,40 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <vector>
+#include "mtk_tools.h"
 
-#include "mtk_roots.h"
-#include "mtk_dense_matrix.h"
-#include "mtk_uni_stg_grid_1d.h"
+#include "mtk_bc_desc_2d.h"
 
-#ifndef MTK_INCLUDE_BC_DESC_1D_H_
-#define MTK_INCLUDE_BC_DESC_1D_H_
+void mtk::BCDesc2D::ImposeOnOperatorMatrix(const mtk::DenseMatrix &matrix,
+                                           mtk::Real (*west)(int ii, int jj),
+                                           mtk::Real (*east)(int ii, int jj),
+                                           mtk::Real (*south)(int ii, int jj),
+                                           mtk::Real (*north)(int ii, int jj)) {
 
-namespace mtk {
+  #if MTK_DEBUG_LEVEL > 0
+  mtk::Tools::Prevent(matrix.num_rows() == 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(west == nullptr, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(east == nullptr, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(south == nullptr, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(north == nullptr, __FILE__, __LINE__, __func__);
+  #endif
 
-class BCDesc1D {
- public:
-  /*!
-  \brief Enforces the condition on the operator represented as matrix.
-
-  \param[in,out] matrix Input operator.
-  \param[in] west Array of values for the west boundary.
-  \param[in] east Array of values for the east boundary.
-  */
-  static void ImposeOnOperatorMatrix(DenseMatrix &matrix,
-                                     const std::vector<Real> &west,
-                                     const std::vector<Real> &east);
-
-  /*!
-  \brief Enforces the condition on the grid.
-
-  \param[in,out] grid Input grid.
-  \param[in] west Array of values for the west boundary.
-  \param[in] east Array of values for the east boundary.
-  */
-  static void ImposeOnGrid(UniStgGrid1D &grid,
-                           const Real &omega,
-                           const Real &epsilon);
-};
 }
-#endif  // End of: MTK_INCLUDE_BC_DESC_1D_H_
+
+
+void mtk::BCDesc2D::ImposeOnGrid(const mtk::UniStgGrid2D &grid,
+    mtk::Real (*west)(mtk::Real xx, mtk::Real yy),
+    mtk::Real (*east)(mtk::Real xx, mtk::Real yy),
+    mtk::Real (*south)(mtk::Real xx, mtk::Real yy),
+    mtk::Real (*north)(mtk::Real xx, mtk::Real yy)) {
+
+  #if MTK_DEBUG_LEVEL > 0
+  mtk::Tools::Prevent(grid.num_cells_x() == 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(grid.num_cells_y() == 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(west == nullptr, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(east == nullptr, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(south == nullptr, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(north == nullptr, __FILE__, __LINE__, __func__);
+  #endif
+
+}

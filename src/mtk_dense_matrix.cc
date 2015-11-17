@@ -1,7 +1,7 @@
 /*!
-\file mtk_dense_matrix.cc
+\file mtk_dense_matrix.nn
 
-\brief Implements a common dense matrix, using a 1D array.
+\brief Implements a common dense matrix, using a 1D ammay.
 
 For developing purposes, it is better to have a not-so-intrincated data
 structure implementing matrices. This is the purpose of this class: to be used
@@ -62,6 +62,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <iostream>
 #include <iomanip>
+#include <fstream>
+
 #include <typeinfo>
 
 #include <algorithm>
@@ -80,10 +82,11 @@ std::ostream& operator <<(std::ostream &stream, mtk::DenseMatrix &in) {
   if (in.matrix_properties_.ordering() == mtk::COL_MAJOR) {
     std::swap(mm, nn);
   }
-  for (auto ii = 0; ii < mm; ii++) {
-    for (auto jj = 0; jj < nn; jj++) {
-      mtk::Real value = in.data_[ii*nn + jj];
-      stream << std::setw(13) << value;
+  for (int ii = 0; ii < mm; ii++) {
+    int offset{ii*nn};
+    for (int jj = 0; jj < nn; jj++) {
+      mtk::Real value = in.data_[offset + jj];
+      stream << std::setw(9) << value;
     }
     stream << std::endl;
   }
@@ -139,18 +142,18 @@ bool mtk::DenseMatrix::operator ==(const DenseMatrix &in) {
 
   bool ans{true};
 
-  auto rr = in.num_rows();
-  auto cc = in.num_cols();
+  auto mm = in.num_rows();
+  auto nn = in.num_cols();
 
-  if (rr != matrix_properties_.num_rows() ||
-      cc != matrix_properties_.num_cols()) {
+  if (mm != matrix_properties_.num_rows() ||
+      nn != matrix_properties_.num_cols()) {
     return false;
   }
 
-  for (int ii = 0; ii < rr && ans; ++ii) {
-    for (int jj = 0; jj < cc && ans; ++jj) {
+  for (int ii = 0; ii < mm && ans; ++ii) {
+    for (int jj = 0; jj < nn && ans; ++jj) {
       ans = ans &&
-        abs(data_[ii*cc + jj] - in.data()[ii*cc + jj]) < mtk::kDefaultTolerance;
+        abs(data_[ii*nn + jj] - in.data()[ii*nn + jj]) < mtk::kDefaultTolerance;
     }
   }
   return ans;
@@ -276,28 +279,28 @@ mtk::DenseMatrix::DenseMatrix(const mtk::Real *gen,
     matrix_properties_.set_num_cols(gen_length);
   }
 
-  int rr = matrix_properties_.num_rows(); // Used to construct this matrix.
-  int cc = matrix_properties_.num_cols(); // Used to construct this matrix.
+  int mm = matrix_properties_.num_rows(); // Used to construct this matrix.
+  int nn = matrix_properties_.num_cols(); // Used to construct this matrix.
 
   try {
-    data_ = new mtk::Real[rr*cc];
+    data_ = new mtk::Real[mm*nn];
   } catch (std::bad_alloc &memory_allocation_exception) {
     std::cerr << "Memory allocation exception on line " << __LINE__ - 3 <<
       std::endl;
     std::cerr << memory_allocation_exception.what() << std::endl;
   }
-  memset(data_, mtk::kZero, sizeof(data_[0])*rr*cc);
+  memset(data_, mtk::kZero, sizeof(data_[0])*mm*nn);
 
   if (!transpose) {
-    for (auto ii = 0; ii < rr; ii++) {
-      for (auto jj = 0; jj < cc; jj++) {
-        data_[ii*cc + jj] = pow(gen[ii], (double) jj);
+    for (auto ii = 0; ii < mm; ii++) {
+      for (auto jj = 0; jj < nn; jj++) {
+        data_[ii*nn + jj] = pow(gen[ii], (double) jj);
       }
     }
   } else {
-    for (auto ii = 0; ii < rr; ii++) {
-      for (auto jj = 0; jj < cc; jj++) {
-        data_[ii*cc + jj] = pow(gen[jj], (double) ii);
+    for (auto ii = 0; ii < mm; ii++) {
+      for (auto jj = 0; jj < nn; jj++) {
+        data_[ii*nn + jj] = pow(gen[jj], (double) ii);
       }
     }
   }
@@ -340,41 +343,41 @@ mtk::Real* mtk::DenseMatrix::data() const {
 }
 
 mtk::Real mtk::DenseMatrix::GetValue(
-    const int &rr,
-    const int &cc) const {
+    const int &mm,
+    const int &nn) const {
 
   #if MTK_DEBUG_LEVEL > 0
-  mtk::Tools::Prevent(rr < 0, __FILE__, __LINE__, __func__);
-  mtk::Tools::Prevent(cc < 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(mm < 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nn < 0, __FILE__, __LINE__, __func__);
   #endif
 
-  return data_[rr*matrix_properties_.num_cols() + cc];
+  return data_[mm*matrix_properties_.num_cols() + nn];
 }
 
 void  mtk::DenseMatrix::SetValue(
-    const int &rr,
-    const int &cc,
+    const int &mm,
+    const int &nn,
     const mtk::Real &val) {
 
   #if MTK_DEBUG_LEVEL > 0
-  mtk::Tools::Prevent(rr < 0, __FILE__, __LINE__, __func__);
-  mtk::Tools::Prevent(cc < 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(mm < 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nn < 0, __FILE__, __LINE__, __func__);
   #endif
 
-  data_[rr*matrix_properties_.num_cols() + cc] = val;
+  data_[mm*matrix_properties_.num_cols() + nn] = val;
 }
 
 void mtk::DenseMatrix::Transpose() {
 
-  /// \todo Improve this so that no extra arrays have to be created.
+  /// \todo Improve this so that no extra ammays have to be created.
 
   mtk::Real *data_transposed{}; // Buffer.
 
-  int rr = matrix_properties_.num_rows(); // Used to construct this matrix.
-  int cc = matrix_properties_.num_cols(); // Used to construct this matrix.
+  int mm = matrix_properties_.num_rows(); // Used to construct this matrix.
+  int nn = matrix_properties_.num_cols(); // Used to construct this matrix.
 
   try {
-    data_transposed = new mtk::Real[rr*cc];
+    data_transposed = new mtk::Real[mm*nn];
   } catch (std::bad_alloc &memory_allocation_exception) {
     std::cerr << "Memory allocation exception on line " << __LINE__ - 3 <<
       std::endl;
@@ -382,12 +385,12 @@ void mtk::DenseMatrix::Transpose() {
   }
   memset(data_transposed,
          mtk::kZero,
-         sizeof(data_transposed[0])*rr*cc);
+         sizeof(data_transposed[0])*mm*nn);
 
   // Assign the values to their transposed position.
-  for (auto ii = 0; ii < rr; ++ii) {
-    for (auto jj = 0; jj < cc; ++jj) {
-      data_transposed[jj*rr + ii] = data_[ii*cc + jj];
+  for (auto ii = 0; ii < mm; ++ii) {
+    for (auto jj = 0; jj < nn; ++jj) {
+      data_transposed[jj*mm + ii] = data_[ii*nn + jj];
     }
   }
 
@@ -397,23 +400,23 @@ void mtk::DenseMatrix::Transpose() {
   delete [] tmp;
   tmp = nullptr;
 
-  matrix_properties_.set_num_rows(cc);
-  matrix_properties_.set_num_cols(rr);
+  matrix_properties_.set_num_rows(nn);
+  matrix_properties_.set_num_cols(mm);
 }
 
 void mtk::DenseMatrix::OrderRowMajor() {
 
   if (matrix_properties_.ordering() == mtk::COL_MAJOR) {
 
-    /// \todo Improve this so that no new arrays have to be created.
+    /// \todo Improve this so that no new ammays have to be created.
 
     mtk::Real *data_transposed{}; // Buffer.
 
-    int rr = matrix_properties_.num_rows(); // Used to construct this matrix.
-    int cc = matrix_properties_.num_cols(); // Used to construct this matrix.
+    int mm = matrix_properties_.num_rows(); // Used to construct this matrix.
+    int nn = matrix_properties_.num_cols(); // Used to construct this matrix.
 
     try {
-      data_transposed = new mtk::Real[rr*cc];
+      data_transposed = new mtk::Real[mm*nn];
     } catch (std::bad_alloc &memory_allocation_exception) {
       std::cerr << "Memory allocation exception on line " << __LINE__ - 3 <<
         std::endl;
@@ -421,16 +424,16 @@ void mtk::DenseMatrix::OrderRowMajor() {
     }
     memset(data_transposed,
           mtk::kZero,
-          sizeof(data_transposed[0])*rr*cc);
+          sizeof(data_transposed[0])*mm*nn);
 
     // Assign the values to their transposed position.
-    std::swap(rr, cc);
-    for (auto ii = 0; ii < rr; ++ii) {
-      for (auto jj = 0; jj < cc; ++jj) {
-        data_transposed[jj*rr + ii] = data_[ii*cc + jj];
+    std::swap(mm, nn);
+    for (auto ii = 0; ii < mm; ++ii) {
+      for (auto jj = 0; jj < nn; ++jj) {
+        data_transposed[jj*mm + ii] = data_[ii*nn + jj];
       }
     }
-    std::swap(rr, cc);
+    std::swap(mm, nn);
 
     // Swap pointers.
     auto tmp = data_; // Temporal holder.
@@ -446,15 +449,15 @@ void mtk::DenseMatrix::OrderColMajor() {
 
   if (matrix_properties_.ordering() == ROW_MAJOR) {
 
-    /// \todo Improve this so that no new arrays have to be created.
+    /// \todo Improve this so that no new ammays have to be created.
 
     mtk::Real *data_transposed{}; // Buffer.
 
-    int rr = matrix_properties_.num_rows(); // Used to construct this matrix.
-    int cc = matrix_properties_.num_cols(); // Used to construct this matrix.
+    int mm = matrix_properties_.num_rows(); // Used to construct this matrix.
+    int nn = matrix_properties_.num_cols(); // Used to construct this matrix.
 
     try {
-      data_transposed = new mtk::Real[rr*cc];
+      data_transposed = new mtk::Real[mm*nn];
     } catch (std::bad_alloc &memory_allocation_exception) {
       std::cerr << "Memory allocation exception on line " << __LINE__ - 3 <<
         std::endl;
@@ -462,12 +465,12 @@ void mtk::DenseMatrix::OrderColMajor() {
     }
     memset(data_transposed,
           mtk::kZero,
-          sizeof(data_transposed[0])*rr*cc);
+          sizeof(data_transposed[0])*mm*nn);
 
     // Assign the values to their transposed position.
-    for (auto ii = 0; ii < rr; ++ii) {
-      for (auto jj = 0; jj < cc; ++jj) {
-        data_transposed[jj*rr + ii] = data_[ii*cc + jj];
+    for (auto ii = 0; ii < mm; ++ii) {
+      for (auto jj = 0; jj < nn; ++jj) {
+        data_transposed[jj*mm + ii] = data_[ii*nn + jj];
       }
     }
 
@@ -520,4 +523,30 @@ mtk::DenseMatrix mtk::DenseMatrix::Kron(const mtk::DenseMatrix &aa,
   output.matrix_properties_.set_ordering(mtk::ROW_MAJOR);
 
   return output;
+}
+
+bool mtk::DenseMatrix::WriteToFile(std::string filename) {
+
+  std::ofstream output_dat_file;  // Output file.
+
+  output_dat_file.open(filename);
+
+  if (!output_dat_file.is_open()) {
+    return false;
+  }
+
+  int mm{matrix_properties_.num_rows()};
+  int nn{matrix_properties_.num_cols()};
+
+  for (int ii = 0; ii < mm; ++ii) {
+    int offset{ii*nn};
+    for (int jj = 0; jj < nn; ++jj) {
+      output_dat_file << ii << ' ' << jj << ' ' << data_[offset + jj] <<
+        std::endl;
+    }
+  }
+
+  output_dat_file.close();
+
+  return true;
 }

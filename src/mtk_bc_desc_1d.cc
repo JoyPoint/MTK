@@ -58,15 +58,17 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk_bc_desc_1d.h"
 
-void mtk::BCDesc1D::ImposeOnOperator(mtk::DenseMatrix &matrix,
-                                     const std::vector<mtk::Real> &west,
-                                     const std::vector<mtk::Real> &east) {
+void mtk::BCDesc1D::ImposeOnOperatorMatrix(mtk::DenseMatrix &matrix,
+    const std::vector<mtk::Real> &west,
+    const std::vector<mtk::Real> &east) {
 
+  #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(matrix.num_rows() == 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(west.size() > (unsigned int) matrix.num_cols(),
                       __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(east.size() > (unsigned int) matrix.num_cols(),
                       __FILE__, __LINE__, __func__);
+  #endif
 
   /// 1. Assign the west array.
 
@@ -87,7 +89,9 @@ void mtk::BCDesc1D::ImposeOnGrid(mtk::UniStgGrid1D &grid,
                                  const mtk::Real &omega,
                                  const mtk::Real &epsilon) {
 
+  #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(grid.num_cells_x() == 0, __FILE__, __LINE__, __func__);
+  #endif
 
   /// 1. Assign the west condition.
 

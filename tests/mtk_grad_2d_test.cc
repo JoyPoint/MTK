@@ -1,10 +1,7 @@
 /*!
-\file mtk_bc_desc_1d.h
+\file mtk_grad_2d_test.cc
 
-\brief Enforces boundary conditions in either the operator or the grid.
-
-This class presents an interface for the user to specify boundary conditions
-on 1D mimetic operators and the grids they are acting on.
+\brief Test file for the mtk::Grad2D class.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -54,40 +51,89 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include <vector>
+#if __cplusplus == 201103L
 
-#include "mtk_roots.h"
-#include "mtk_dense_matrix.h"
-#include "mtk_uni_stg_grid_1d.h"
+#include <cmath>
+#include <ctime>
 
-#ifndef MTK_INCLUDE_BC_DESC_1D_H_
-#define MTK_INCLUDE_BC_DESC_1D_H_
+#include <iostream>
 
-namespace mtk {
+#include "mtk.h"
 
-class BCDesc1D {
- public:
-  /*!
-  \brief Enforces the condition on the operator represented as matrix.
+void TestDefaultConstructorFactory() {
 
-  \param[in,out] matrix Input operator.
-  \param[in] west Array of values for the west boundary.
-  \param[in] east Array of values for the east boundary.
-  */
-  static void ImposeOnOperatorMatrix(DenseMatrix &matrix,
-                                     const std::vector<Real> &west,
-                                     const std::vector<Real> &east);
+  mtk::Tools::BeginUnitTestNo(1);
 
-  /*!
-  \brief Enforces the condition on the grid.
+  mtk::Grad2D gg;
 
-  \param[in,out] grid Input grid.
-  \param[in] west Array of values for the west boundary.
-  \param[in] east Array of values for the east boundary.
-  */
-  static void ImposeOnGrid(UniStgGrid1D &grid,
-                           const Real &omega,
-                           const Real &epsilon);
-};
+  mtk::Real aa = 0.0;
+  mtk::Real bb = 1.0;
+  mtk::Real cc = 0.0;
+  mtk::Real dd = 1.0;
+
+  int nn = 5;
+  int mm = 5;
+
+  mtk::UniStgGrid2D ggg(aa, bb, nn, cc, dd, mm, mtk::VECTOR);
+
+  bool assertion = gg.ConstructGrad2D(ggg);
+
+  if (!assertion) {
+    std::cerr << "Mimetic grad (2nd order) could not be built." << std::endl;
+  }
+
+  mtk::Tools::EndUnitTestNo(1);
+  mtk::Tools::Assert(assertion);
 }
-#endif  // End of: MTK_INCLUDE_BC_DESC_1D_H_
+
+void TestReturnAsDenseMatrixWriteToFile() {
+
+  mtk::Tools::BeginUnitTestNo(2);
+
+  mtk::Grad2D gg;
+
+  mtk::Real aa = 0.0;
+  mtk::Real bb = 1.0;
+  mtk::Real cc = 0.0;
+  mtk::Real dd = 1.0;
+
+  int nn = 5;
+  int mm = 5;
+
+  mtk::UniStgGrid2D ggg(aa, bb, nn, cc, dd, mm, mtk::VECTOR);
+
+  bool assertion = gg.ConstructGrad2D(ggg);
+
+  if (!assertion) {
+    std::cerr << "Mimetic grad (2nd order) could not be built." << std::endl;
+  }
+
+  mtk::DenseMatrix ggm(gg.ReturnAsDenseMatrix());
+
+  std::cout << ggm << std::endl;
+
+  if(!ggm.WriteToFile("mtk_grad_2d_test_02.dat")) {
+    std::cerr << "Error writing to file." << std::endl;
+  }
+
+  mtk::Tools::EndUnitTestNo(2);
+  mtk::Tools::Assert(ggm.num_rows() != mtk::kZero);
+}
+
+int main () {
+
+  std::cout << "Testing mtk::Grad2D class." << std::endl;
+
+  TestDefaultConstructorFactory();
+  TestReturnAsDenseMatrixWriteToFile();
+}
+
+#else
+#include <iostream>
+using std::cout;
+using std::endl;
+int main () {
+  cout << "This code HAS to be compiled with support for C++11." << endl;
+  cout << "Exiting..." << endl;
+}
+#endif
