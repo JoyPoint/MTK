@@ -213,6 +213,8 @@ class DenseMatrix {
   \brief Provides access to the matrix value array.
 
   \return Pointer to an array of mtk::Real.
+
+  \todo Test the const-correctness of the returned pointer.
   */
   Real* data() const;
 
@@ -276,7 +278,7 @@ class DenseMatrix {
 
   \sa http://www.gnuplot.info/
   */
-  bool WriteToFile(std::string filename);
+  bool WriteToFile(std::string filename) const;
 
  private:
   Matrix matrix_properties_;  ///< Data related to the matrix nature.

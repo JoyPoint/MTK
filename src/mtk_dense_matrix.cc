@@ -528,7 +528,7 @@ mtk::DenseMatrix mtk::DenseMatrix::Kron(const mtk::DenseMatrix &aa,
   return output;
 }
 
-bool mtk::DenseMatrix::WriteToFile(std::string filename) {
+bool mtk::DenseMatrix::WriteToFile(std::string filename) const {
 
   std::ofstream output_dat_file;  // Output file.
 

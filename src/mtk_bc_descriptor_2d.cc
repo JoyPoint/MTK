@@ -55,7 +55,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
 #include "mtk_tools.h"
-
 #include "mtk_bc_descriptor_2d.h"
 
 void mtk::BCDescriptor2D::ImposeOnLaplacianMatrix(
@@ -76,7 +75,8 @@ void mtk::BCDescriptor2D::ImposeOnLaplacianMatrix(
 
 }
 
-void mtk::BCDescriptor2D::ImposeOnGrid(const mtk::UniStgGrid2D &grid,
+void mtk::BCDescriptor2D::ImposeOnGrid(
+    mtk::UniStgGrid2D &grid,
     mtk::Real (*west)(mtk::Real xx, mtk::Real yy),
     mtk::Real (*east)(mtk::Real xx, mtk::Real yy),
     mtk::Real (*south)(mtk::Real xx, mtk::Real yy),
