@@ -1,0 +1,73 @@
+.TH "mtk::BCDescriptor1D" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk::BCDescriptor1D \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mtk_bc_descriptor_1d\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBImposeOnLaplacianMatrix\fP (\fBDenseMatrix\fP &matrix, const std::vector< \fBReal\fP > &west, const std::vector< \fBReal\fP > &east)"
+.br
+.RI "\fIEnforces the condition on the Laplacian represented as matrix\&. \fP"
+.ti -1c
+.RI "static void \fBImposeOnGrid\fP (\fBUniStgGrid1D\fP &grid, const \fBReal\fP &epsilon, const \fBReal\fP &omega)"
+.br
+.RI "\fIEnforces the condition on the grid\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition at line 68 of file mtk_bc_descriptor_1d\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void mtk::BCDescriptor1D::ImposeOnGrid (\fBmtk::UniStgGrid1D\fP &grid, const \fBReal\fP &epsilon, const \fBReal\fP &omega)\fC [static]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrid\fP Input grid\&. 
+.br
+\fIwest\fP Array of values for the west boundary\&. 
+.br
+\fIeast\fP Array of values for the east boundary\&. 
+.RE
+.PP
+
+.IP "1." 4
+Assign the west condition\&.
+.IP "2." 4
+Assign the east condition\&. 
+.PP
+
+.PP
+Definition at line 89 of file mtk_bc_descriptor_1d\&.cc\&.
+.SS "void mtk::BCDescriptor1D::ImposeOnLaplacianMatrix (\fBmtk::DenseMatrix\fP &matrix, const std::vector< \fBReal\fP > &west, const std::vector< \fBReal\fP > &east)\fC [static]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrix\fP Input operator\&. 
+.br
+\fIwest\fP Array of values for the west boundary\&. 
+.br
+\fIeast\fP Array of values for the east boundary\&. 
+.RE
+.PP
+
+.IP "1." 4
+Assign the west array\&.
+.IP "2." 4
+Assign the east array\&. 
+.PP
+
+.PP
+Definition at line 61 of file mtk_bc_descriptor_1d\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

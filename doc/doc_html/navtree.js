@@ -51,7 +51,7 @@ var NAVTREEINDEX =
 [
 "Makefile_8inc.html",
 "classmtk_1_1UniStgGrid1D.html#a69a7d6be3171e53177e476348d04f4ae",
-"mtk__uni__stg__grid__2d_8cc_source.html"
+"mtk__uni__stg__grid__1d_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
