@@ -4,75 +4,109 @@
 
 \begin{DoxyCode}
 00001 
-00011 \textcolor{comment}{/*}
-00012 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
-00013 \textcolor{comment}{University. All rights reserved.}
-00014 \textcolor{comment}{}
-00015 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
-00016 \textcolor{comment}{are permitted provided that the following conditions are met:}
-00017 \textcolor{comment}{}
-00018 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
-00019 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
-00020 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
-00021 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
-00022 \textcolor{comment}{should be developed and included in any deliverable.}
-00023 \textcolor{comment}{}
-00024 \textcolor{comment}{2. Redistributions of source code must be done through direct}
-00025 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
-00026 \textcolor{comment}{}
-00027 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
-00028 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
-00029 \textcolor{comment}{other materials provided with the distribution.}
-00030 \textcolor{comment}{}
-00031 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
-00032 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
-00033 \textcolor{comment}{be given to the copyright holders.}
-00034 \textcolor{comment}{}
-00035 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
-00036 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
-00037 \textcolor{comment}{specific prior written permission.}
-00038 \textcolor{comment}{}
-00039 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
-00040 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
-00041 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
-00042 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
-00043 \textcolor{comment}{parties intellectual property rights.}
+00029 \textcolor{comment}{/*}
+00030 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00031 \textcolor{comment}{University. All rights reserved.}
+00032 \textcolor{comment}{}
+00033 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00034 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00035 \textcolor{comment}{}
+00036 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00037 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00038 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
+00039 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
+00040 \textcolor{comment}{should be developed and included in any deliverable.}
+00041 \textcolor{comment}{}
+00042 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00043 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
 00044 \textcolor{comment}{}
-00045 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
-00046 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
-00047 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
-00048 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
-00049 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
-00050 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
-00051 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
-00052 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
-00053 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
-00054 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
-00055 \textcolor{comment}{*/}
-00056 
-00057 \textcolor{preprocessor}{#ifndef MTK\_INCLUDE\_BC\_DESCRIPTOR\_2D\_H\_}
-00058 \textcolor{preprocessor}{#define MTK\_INCLUDE\_BC\_DESCRIPTOR\_2D\_H\_}
-00059 
-00060 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
-00061 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
-00062 \textcolor{preprocessor}{#include "\hyperlink{mtk__uni__stg__grid__2d_8h}{mtk\_uni\_stg\_grid\_2d.h}"}
-00063 
-00064 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk}\{
-00065 
-\hypertarget{mtk__bc__descriptor__2d_8h_source_l00066}{}\hyperlink{classmtk_1_1BCDescriptor2D}{00066} \textcolor{keyword}{class }\hyperlink{classmtk_1_1BCDescriptor2D}{BCDescriptor2D} \{
-00067  \textcolor{keyword}{public}:
-00077   \textcolor{keyword}{static} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a55617743d19ee506f768089716a1c381}{ImposeOnLaplacianMatrix}(\hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &matrix,
-00078                                       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*west)(\textcolor{keywordtype}{int} ii, \textcolor{keywordtype}{int} jj),
-00079                                       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*east)(\textcolor{keywordtype}{int} ii, \textcolor{keywordtype}{int} jj),
-00080                                       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*south)(\textcolor{keywordtype}{int} ii, \textcolor{keywordtype}{int} jj),
-00081                                       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*north)(\textcolor{keywordtype}{int} ii, \textcolor{keywordtype}{int} jj));
-00082 
-00092   \textcolor{keyword}{static} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_aedf1523832776e0fd0224919b2e36fb0}{ImposeOnGrid}(\hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid,
-00093                            \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*west)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy),
-00094                            \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*east)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy),
-00095                            \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*south)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy),
-00096                            \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*north)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy));
-00097 \};
-00098 \}
-00099 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_BC\_DESCRIPTOR\_2D\_H\_}
+00045 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
+00046 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00047 \textcolor{comment}{other materials provided with the distribution.}
+00048 \textcolor{comment}{}
+00049 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
+00050 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
+00051 \textcolor{comment}{be given to the copyright holders.}
+00052 \textcolor{comment}{}
+00053 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
+00054 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00055 \textcolor{comment}{specific prior written permission.}
+00056 \textcolor{comment}{}
+00057 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00058 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00059 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00060 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00061 \textcolor{comment}{parties intellectual property rights.}
+00062 \textcolor{comment}{}
+00063 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00064 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00065 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00066 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00067 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00068 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00069 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00070 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00071 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00072 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00073 \textcolor{comment}{*/}
+00074 
+00075 \textcolor{preprocessor}{#ifndef MTK\_INCLUDE\_BC\_DESCRIPTOR\_2D\_H\_}
+00076 \textcolor{preprocessor}{#define MTK\_INCLUDE\_BC\_DESCRIPTOR\_2D\_H\_}
+00077 
+00078 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
+00079 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
+00080 \textcolor{preprocessor}{#include "\hyperlink{mtk__uni__stg__grid__2d_8h}{mtk\_uni\_stg\_grid\_2d.h}"}
+00081 
+00082 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk}\{
+00083 
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00091}{}\hyperlink{group__c07-mim__ops_ga0322dd5a158c1864242833ec224ee4c1}{00091} \textcolor{keyword}{typedef} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*\hyperlink{group__c07-mim__ops_ga0322dd5a158c1864242833ec224ee4c1}{CoefficientFunction2D})(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real});
+00092 
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00093}{}\hyperlink{classmtk_1_1BCDescriptor2D}{00093} \textcolor{keyword}{class }\hyperlink{classmtk_1_1BCDescriptor2D}{BCDescriptor2D} \{
+00094  \textcolor{keyword}{public}:
+00096   \hyperlink{classmtk_1_1BCDescriptor2D_abbc3af29202dbfef203f4cafd9566fd0}{BCDescriptor2D}();
+00097 
+00099   \hyperlink{classmtk_1_1BCDescriptor2D_a8ca0aa779cf17f26f75e8b3cc98b6e30}{~BCDescriptor2D}();
+00100 
+00106   \hyperlink{classmtk_1_1BCDescriptor2D_abbc3af29202dbfef203f4cafd9566fd0}{BCDescriptor2D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1BCDescriptor2D}{BCDescriptor2D} &desc);
+00107 
+00113   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a3da32ba89cfb15032bb1156394bad98c}{PushBackWestCoeff}(\hyperlink{group__c07-mim__ops_ga0322dd5a158c1864242833ec224ee4c1}{CoefficientFunction2D} cw);
+00114 
+00120   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a27635428a6c36d1e305cafdc68271063}{PushBackEastCoeff}(\hyperlink{group__c07-mim__ops_ga0322dd5a158c1864242833ec224ee4c1}{CoefficientFunction2D} ce);
+00121 
+00127   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a9eb891f14c68968a0113632fa5fea630}{PushBackSouthCoeff}(\hyperlink{group__c07-mim__ops_ga0322dd5a158c1864242833ec224ee4c1}{CoefficientFunction2D} cs);
+00128 
+00134   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a0fed58bd058d699a572888fe4b9934a4}{PushBackNorthCoeff}(\hyperlink{group__c07-mim__ops_ga0322dd5a158c1864242833ec224ee4c1}{CoefficientFunction2D} cn);
+00135 
+00141   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_aa68984b82fa748dc51c0b448104f015f}{set\_west\_condition\_}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*
+      \hyperlink{classmtk_1_1BCDescriptor2D_a98bfe7ea4256d0777a6b19d1701645db}{west\_condition\_})(Real xx, Real yy));
+00142 
+00148   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a2e555f1c7058522afdae45c372f36a33}{set\_east\_condition\_}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*
+      \hyperlink{classmtk_1_1BCDescriptor2D_ad63ffb74a62474e753e135324e6462d0}{east\_condition\_})(Real xx, Real yy));
+00149 
+00155   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_ae7aaa690a6e0d972ea9380cc77bf7a73}{set\_south\_condition\_}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*
+      \hyperlink{classmtk_1_1BCDescriptor2D_ae4e7cdb5e7007c5ab09b6c0efb329943}{south\_condition\_})(Real xx, Real yy));
+00156 
+00162   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_ab9d25f5b0ca0826b9802874bcd741a9d}{set\_north\_condition\_}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*
+      \hyperlink{classmtk_1_1BCDescriptor2D_af3ecae6fedd3f3422e62b247ef5fea42}{north\_condition\_})(Real xx, Real yy));
+00163 
+00170   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_abade249fa28783a5383a7c2aaf570ea9}{ImposeOnLaplacianMatrix}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid,
+00171                                \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &matrix) \textcolor{keyword}{const};
+00172 
+00178   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a5f0ff1fda1b5266dcd77ba2301c8ba2c}{ImposeOnGrid}(\hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid) \textcolor{keyword}{const};
+00179 
+00180 \textcolor{keyword}{private}:
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00181}{}\hyperlink{classmtk_1_1BCDescriptor2D_af6dad4b8fe09597f25a710b1aec40a48}{00181}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1BCDescriptor2D_af6dad4b8fe09597f25a710b1aec40a48}{highest\_order\_differentiation\_}; 
+00182 
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00183}{}\hyperlink{classmtk_1_1BCDescriptor2D_a7df71b43acc25c468683075cc7790bb2}{00183}   std::vector<CoefficientFunction2D> \hyperlink{classmtk_1_1BCDescriptor2D_a7df71b43acc25c468683075cc7790bb2}{west\_coefficients\_};  
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00184}{}\hyperlink{classmtk_1_1BCDescriptor2D_a1f90fc303984bf18c136a34896bbb7c9}{00184}   std::vector<CoefficientFunction2D> \hyperlink{classmtk_1_1BCDescriptor2D_a1f90fc303984bf18c136a34896bbb7c9}{east\_coefficients\_};  
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00185}{}\hyperlink{classmtk_1_1BCDescriptor2D_a263309b9ad288dc89826d818d9378d07}{00185}   std::vector<CoefficientFunction2D> \hyperlink{classmtk_1_1BCDescriptor2D_a263309b9ad288dc89826d818d9378d07}{south\_coefficients\_}; 
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00186}{}\hyperlink{classmtk_1_1BCDescriptor2D_a5429c040c034303dd92dcff554f9efad}{00186}   std::vector<CoefficientFunction2D> \hyperlink{classmtk_1_1BCDescriptor2D_a5429c040c034303dd92dcff554f9efad}{north\_coefficients\_}; 
+00187 
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00188}{}\hyperlink{classmtk_1_1BCDescriptor2D_a98bfe7ea4256d0777a6b19d1701645db}{00188}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*\hyperlink{classmtk_1_1BCDescriptor2D_a98bfe7ea4256d0777a6b19d1701645db}{west\_condition\_})(Real xx, Real yy);   
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00189}{}\hyperlink{classmtk_1_1BCDescriptor2D_ad63ffb74a62474e753e135324e6462d0}{00189}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*\hyperlink{classmtk_1_1BCDescriptor2D_ad63ffb74a62474e753e135324e6462d0}{east\_condition\_})(Real xx, Real yy);   
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00190}{}\hyperlink{classmtk_1_1BCDescriptor2D_ae4e7cdb5e7007c5ab09b6c0efb329943}{00190}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*\hyperlink{classmtk_1_1BCDescriptor2D_ae4e7cdb5e7007c5ab09b6c0efb329943}{south\_condition\_})(Real xx, Real yy);  
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00191}{}\hyperlink{classmtk_1_1BCDescriptor2D_af3ecae6fedd3f3422e62b247ef5fea42}{00191}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*\hyperlink{classmtk_1_1BCDescriptor2D_af3ecae6fedd3f3422e62b247ef5fea42}{north\_condition\_})(Real xx, Real yy);  
+00192 \};
+00193 \}
+00194 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_BC\_DESCRIPTOR\_2D\_H\_}
 \end{DoxyCode}

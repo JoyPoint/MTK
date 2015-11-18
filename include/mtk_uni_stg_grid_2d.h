@@ -3,7 +3,7 @@
 
 \brief Definition of an 2D uniform staggered grid.
 
-Definition of an 1D uniform staggered grid.
+Definition of an 2D uniform staggered grid.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 
@@ -119,22 +119,26 @@ class UniStgGrid2D {
   \brief Provides access to the grid spatial data.
 
   \return Pointer to the spatial data.
+
+  \todo Review const-correctness of the pointer we return.
   */
-  Real *discrete_domain_x();
+  const Real *discrete_domain_x() const;
 
   /*!
   \brief Provides access to the grid spatial data.
 
   \return Pointer to the spatial data.
+
+  \todo Review const-correctness of the pointer we return.
   */
-  Real *discrete_domain_y();
+  const Real *discrete_domain_y() const;
 
   /*!
   \brief Provides access to the grid field data.
 
   \return Pointer to the field data.
   */
-  Real *discrete_field();
+  const Real *discrete_field() const;
 
   /*!
   \brief Physical nature of the data bound to the grid.
@@ -240,7 +244,7 @@ class UniStgGrid2D {
   bool WriteToFile(std::string filename,
                    std::string space_name_x,
                    std::string space_name_y,
-                   std::string field_name);
+                   std::string field_name) const;
 
  private:
   /*!

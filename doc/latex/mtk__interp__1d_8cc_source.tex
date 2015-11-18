@@ -126,43 +126,43 @@
 00132   \textcolor{keywordflow}{return} coeffs\_interior\_;
 00133 \}
 00134 
-\hypertarget{mtk__interp__1d_8cc_source_l00135}{}\hyperlink{classmtk_1_1Interp1D_a62b241a3db626e92e9e57c7da772a36b}{00135} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Interp1D_a62b241a3db626e92e9e57c7da772a36b}{mtk::Interp1D::ReturnAsDenseMatrix}(\textcolor{keyword}{const}
-       \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid) \{
-00136 
-00137   \textcolor{keywordtype}{int} nn\{grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}()\}; \textcolor{comment}{// Number of cells on the grid.}
-00138 
-00139 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00140   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00141 \textcolor{preprocessor}{  #endif}
-00142 
-00143   \textcolor{keywordtype}{int} gg\_num\_rows\{\};  \textcolor{comment}{// Number of rows.}
-00144   \textcolor{keywordtype}{int} gg\_num\_cols\{\};  \textcolor{comment}{// Number of columns.}
-00145 
-00146   \textcolor{keywordflow}{if} (dir\_interp\_ == \hyperlink{namespacemtk_ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139}{mtk::SCALAR\_TO\_VECTOR}) \{
-00147     gg\_num\_rows = nn + 1;
-00148     gg\_num\_cols = nn + 2;
-00149   \} \textcolor{keywordflow}{else} \{
-00150     gg\_num\_rows = nn + 2;
-00151     gg\_num\_cols = nn + 1;
-00152   \}
-00153 
-00154   \textcolor{comment}{// Output matrix featuring sizes for gradient operators.}
-00155 
-00156   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} out(gg\_num\_rows, gg\_num\_cols);
-00157 
-00159 
-00160   out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(0, 0, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
-00161 
-00163 
-00164   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < gg\_num\_rows - 1; ++ii) \{
-00165     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = ii ; jj < order\_accuracy\_ + ii; ++jj) \{
-00166       out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(ii, jj, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/order\_accuracy\_);
-00167     \}
-00168   \}
-00169 
-00171 
-00172   out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(gg\_num\_rows - 1, gg\_num\_cols - 1, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
-00173 
-00174   \textcolor{keywordflow}{return} out;
-00175 \}
+\hypertarget{mtk__interp__1d_8cc_source_l00135}{}\hyperlink{classmtk_1_1Interp1D_aee8126b8a4be378a30be4d95b43b384b}{00135} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Interp1D_aee8126b8a4be378a30be4d95b43b384b}{mtk::Interp1D::ReturnAsDenseMatrix}(
+00136   \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid)\textcolor{keyword}{ const }\{
+00137 
+00138   \textcolor{keywordtype}{int} nn\{grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}()\}; \textcolor{comment}{// Number of cells on the grid.}
+00139 
+00140 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00141   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00142 \textcolor{preprocessor}{  #endif}
+00143 
+00144   \textcolor{keywordtype}{int} gg\_num\_rows\{\};  \textcolor{comment}{// Number of rows.}
+00145   \textcolor{keywordtype}{int} gg\_num\_cols\{\};  \textcolor{comment}{// Number of columns.}
+00146 
+00147   \textcolor{keywordflow}{if} (dir\_interp\_ == \hyperlink{namespacemtk_ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139}{mtk::SCALAR\_TO\_VECTOR}) \{
+00148     gg\_num\_rows = nn + 1;
+00149     gg\_num\_cols = nn + 2;
+00150   \} \textcolor{keywordflow}{else} \{
+00151     gg\_num\_rows = nn + 2;
+00152     gg\_num\_cols = nn + 1;
+00153   \}
+00154 
+00155   \textcolor{comment}{// Output matrix featuring sizes for gradient operators.}
+00156 
+00157   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} out(gg\_num\_rows, gg\_num\_cols);
+00158 
+00160 
+00161   out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(0, 0, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
+00162 
+00164 
+00165   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < gg\_num\_rows - 1; ++ii) \{
+00166     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = ii ; jj < order\_accuracy\_ + ii; ++jj) \{
+00167       out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(ii, jj, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/order\_accuracy\_);
+00168     \}
+00169   \}
+00170 
+00172 
+00173   out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(gg\_num\_rows - 1, gg\_num\_cols - 1, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
+00174 
+00175   \textcolor{keywordflow}{return} out;
+00176 \}
 \end{DoxyCode}

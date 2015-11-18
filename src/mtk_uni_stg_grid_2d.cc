@@ -227,6 +227,11 @@ mtk::Real mtk::UniStgGrid2D::delta_x() const {
   return delta_x_;
 }
 
+const mtk::Real* mtk::UniStgGrid2D::discrete_domain_x() const {
+
+  return discrete_domain_x_.data();
+}
+
 mtk::Real mtk::UniStgGrid2D::south_bndy() const {
 
   return south_bndy_;
@@ -245,6 +250,16 @@ int mtk::UniStgGrid2D::num_cells_y() const {
 mtk::Real mtk::UniStgGrid2D::delta_y() const {
 
   return delta_y_;
+}
+
+const mtk::Real* mtk::UniStgGrid2D::discrete_domain_y() const {
+
+  return discrete_domain_y_.data();
+}
+
+const mtk::Real* mtk::UniStgGrid2D::discrete_field() const {
+
+  return discrete_field_.data();
 }
 
 void mtk::UniStgGrid2D::BindScalarField(Real (*ScalarField)(Real xx, Real yy)) {
@@ -405,7 +420,7 @@ void mtk::UniStgGrid2D::BindVectorField(
 bool mtk::UniStgGrid2D::WriteToFile(std::string filename,
                                     std::string space_name_x,
                                     std::string space_name_y,
-                                    std::string field_name) {
+                                    std::string field_name) const {
 
   std::ofstream output_dat_file;  // Output file.
 

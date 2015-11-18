@@ -51,7 +51,7 @@
 <para><orderedlist>
 <listitem><para>Assign the west array.</para></listitem><listitem><para>Assign the east array. </para></listitem></orderedlist>
 </para>        </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_1d.h" line="77" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_bc_descriptor_1d.cc" bodystart="61" bodyend="87"/>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_1d.h" line="87" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_bc_descriptor_1d.cc" bodystart="61" bodyend="87"/>
         <references refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
         <references refid="classmtk_1_1DenseMatrix_1a17d8d3b9cc0926044b6972dd190a5c21" compoundref="mtk__dense__matrix_8cc" startline="333" endline="336">mtk::DenseMatrix::num_rows</references>
         <references refid="classmtk_1_1DenseMatrix_1af6f78373aaf2136f0c78974d7c8de0a8" compoundref="mtk__dense__matrix_8cc" startline="338" endline="341">mtk::DenseMatrix::num_cols</references>
@@ -86,17 +86,17 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">west</parametername>
+<parametername direction="in">epsilon</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Array of values for the west boundary. </para></parameterdescription>
+<para>Actual BC for the east. </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">east</parametername>
+<parametername direction="in">omega</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Array of values for the east boundary. </para></parameterdescription>
+<para>Actual BC for the west. </para></parameterdescription>
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
@@ -104,23 +104,23 @@
 <para><orderedlist>
 <listitem><para>Assign the west condition.</para></listitem><listitem><para>Assign the east condition. </para></listitem></orderedlist>
 </para>        </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_1d.h" line="88" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_bc_descriptor_1d.cc" bodystart="89" bodyend="104"/>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_1d.h" line="98" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_bc_descriptor_1d.cc" bodystart="89" bodyend="104"/>
         <references refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
         <references refid="classmtk_1_1UniStgGrid1D_1af1b3729d8afa07be5b2775ed68015b80" compoundref="mtk__uni__stg__grid__1d_8cc" startline="171" endline="174">mtk::UniStgGrid1D::num_cells_x</references>
         <references refid="classmtk_1_1UniStgGrid1D_1acf28d702f6e702599986afcb253bbfc1" compoundref="mtk__uni__stg__grid__1d_8cc" startline="166" endline="169">mtk::UniStgGrid1D::discrete_field_u</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
-    </briefdescription>
+<para>Enforces boundary conditions in either the operator or the grid. </para>    </briefdescription>
     <detaileddescription>
-    </detaileddescription>
+<para>This class presents an interface for the user to specify boundary conditions on 1D mimetic operators and the grids they are acting on. </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="61">
+      <node id="64">
         <label>mtk::BCDescriptor1D</label>
         <link refid="classmtk_1_1BCDescriptor1D"/>
       </node>
     </collaborationgraph>
-    <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_1d.h" line="68" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_1d.h" bodystart="68" bodyend="91"/>
+    <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_1d.h" line="78" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_1d.h" bodystart="78" bodyend="101"/>
     <listofallmembers>
       <member refid="classmtk_1_1BCDescriptor1D_1adfb101c1a12b452f83dacd207febea0a" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor1D</scope><name>ImposeOnGrid</name></member>
       <member refid="classmtk_1_1BCDescriptor1D_1a33e51235eaa930e4470f027001a023cf" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor1D</scope><name>ImposeOnLaplacianMatrix</name></member>

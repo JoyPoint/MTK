@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['coefficientfunction2d',['CoefficientFunction2D',['../group__c07-mim__ops.html#ga0322dd5a158c1864242833ec224ee4c1',1,'mtk']]],
   ['coeffs_5finterior',['coeffs_interior',['../classmtk_1_1Div1D.html#a0916b5e84b019b4b6a33d0a45d829513',1,'mtk::Div1D::coeffs_interior()'],['../classmtk_1_1Grad1D.html#a88735f8d2a6ed986370dc3caeb84959b',1,'mtk::Grad1D::coeffs_interior()'],['../classmtk_1_1Interp1D.html#a652289cbb0000d3f4e5e8d632aaf4b03',1,'mtk::Interp1D::coeffs_interior()']]],
   ['coeffs_5finterior_5f',['coeffs_interior_',['../classmtk_1_1Div1D.html#a7c7688d8ac25120587353ece4e93a13a',1,'mtk::Div1D::coeffs_interior_()'],['../classmtk_1_1Grad1D.html#a2395861161c26f237e892aacebcc1909',1,'mtk::Grad1D::coeffs_interior_()'],['../classmtk_1_1Interp1D.html#abae01ab84103d8b11903357cfdeb94d5',1,'mtk::Interp1D::coeffs_interior_()']]],
   ['col_5fmajor',['COL_MAJOR',['../namespacemtk.html#ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13',1,'mtk']]],

@@ -1,10 +1,28 @@
 /*!
 \file mtk_bc_descriptor_2d.h
 
-\brief Enforces boundary conditions in either the operator or the grid.
+\brief Imposes boundary conditions in either the operator or the grid.
 
 This class presents an interface for the user to specify boundary conditions
 on 2D mimetic operators and the grids they are acting on.
+
+<b>Def.</b> Let \f$ f \f$ be any scalar or vector field defined over a domain
+\f$ \Omega \f$. We can specify any linear combination of \f$ f \f$ and its \f$
+n \f$ derivatives to fulfill a condition, which we define as a **boundary
+condition**:
+
+\f[
+\forall \mathbf{x} \in \partial\Omega:
+  \sum_{i = 0}^{n}
+    c_i(\mathbf{x})\frac{\partial^i f}{\partial x^i}(\mathbf{x}) =
+      \beta(\mathbf{x}).
+\f]
+
+This class receives information about the highest-order of differentiation,
+\f$ n \f$, all possible coefficient functions, \f$ c_i(\mathbf{x}) \f$
+for any subset of the boundary (south, north, west and east), and each condition
+for any subset of the boundary, and takes care of assigning them to both, the
+differentiation matrices and the grids.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -63,37 +81,114 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace mtk{
 
+/*!
+\typedef CoefficientFunction2D
+
+\ingroup c07-mim_ops
+
+\brief A function of a BC coefficient evaluated on a 2D domain.
+*/
+typedef Real (*CoefficientFunction2D)(Real, Real);
+
 class BCDescriptor2D {
  public:
+  /// \brief Default constructor.
+  BCDescriptor2D();
+
+  /// \brief Destructor.
+  ~BCDescriptor2D();
+
   /*!
-  \brief Enforces the condition on the operator represented as matrix.
+  \brief Copy constructor.
 
-  \param[in,out] matrix Input operator.
-  \param[in] west Pointer to function returning west coefficient at (ii,jj).
-  \param[in] east Pointer to function returning east coefficient at (ii,jj).
-  \param[in] south Pointer to function returning south coefficient at (ii,jj).
-  \param[in] north Pointer to function returning north coefficient at (ii,jj).
+  \param [in] desc Given 2D descriptor.
   */
-  static void ImposeOnLaplacianMatrix(DenseMatrix &matrix,
-                                      Real (*west)(int ii, int jj),
-                                      Real (*east)(int ii, int jj),
-                                      Real (*south)(int ii, int jj),
-                                      Real (*north)(int ii, int jj));
+  BCDescriptor2D(const BCDescriptor2D &desc);
 
-/*!
-  \brief Enforces the condition on the grid.
+  /*!
+  \brief Push back coefficient function at west of lowest order diff. available.
 
-  \param[in,out] matrix Input operator.
-  \param[in] west Pointer to function returning west coefficient at (xx,yy).
-  \param[in] east Pointer to function returning east coefficient at (xx,yy).
-  \param[in] south Pointer to function returning south coefficient at (xx,yy).
-  \param[in] north Pointer to function returning north coefficient at (xx,yy).
+  \param [in] cw Function \f$ c_w(x,y):\Omega\mapsto\mathbb{R} \f$.
   */
-  static void ImposeOnGrid(UniStgGrid2D &grid,
-                           Real (*west)(Real xx, Real yy),
-                           Real (*east)(Real xx, Real yy),
-                           Real (*south)(Real xx, Real yy),
-                           Real (*north)(Real xx, Real yy));
+  void PushBackWestCoeff(CoefficientFunction2D cw);
+
+  /*!
+  \brief Push back coefficient function at east of lowest order diff. available.
+
+  \param [in] ce Function \f$ c_e(x,y):\Omega\mapsto\mathbb{R} \f$.
+  */
+  void PushBackEastCoeff(CoefficientFunction2D ce);
+
+  /*!
+  \brief Push back coefficient function south of lowest order diff. available.
+
+  \param [in] cs Function \f$ c_s(x,y):\Omega\mapsto\mathbb{R} \f$.
+  */
+  void PushBackSouthCoeff(CoefficientFunction2D cs);
+
+  /*!
+  \brief Push back coefficient function north of lowest order diff. available.
+
+  \param [in] cn Function \f$ c_n(x,y):\Omega\mapsto\mathbb{R} \f$.
+  */
+  void PushBackNorthCoeff(CoefficientFunction2D cn);
+
+  /*!
+  \brief Set boundary condition at west.
+
+  \param [in] west_condition_ \f$ \beta_w(x,y):\Omega\mapsto\mathbb{R} \f$.
+  */
+  void set_west_condition_(mtk::Real (*west_condition_)(Real xx, Real yy));
+
+  /*!
+  \brief Set boundary condition at east.
+
+  \param [in] east_condition_ \f$ \beta_e(x,y):\Omega\mapsto\mathbb{R} \f$.
+  */
+  void set_east_condition_(mtk::Real (*east_condition_)(Real xx, Real yy));
+
+  /*!
+  \brief Set boundary condition at south.
+
+  \param [in] south_condition_ \f$ \beta_s(x,y):\Omega\mapsto\mathbb{R} \f$.
+  */
+  void set_south_condition_(mtk::Real (*south_condition_)(Real xx, Real yy));
+
+  /*!
+  \brief Set boundary condition at north.
+
+  \param [in] north_condition_ \f$ \beta_n(x,y):\Omega\mapsto\mathbb{R} \f$.
+  */
+  void set_north_condition_(mtk::Real (*north_condition_)(Real xx, Real yy));
+
+  /*!
+  \brief Imposes the condition on the operator represented as matrix.
+
+  \param[in] grid Grid upon which impose the desired boundary condition.
+  \param[in,out] matrix Input Laplacian operator.
+  */
+  void ImposeOnLaplacianMatrix(const UniStgGrid2D &grid,
+                               DenseMatrix &matrix) const;
+
+  /*!
+  \brief Imposes the condition on the grid.
+
+  \param[in,out] grid Grid upon which impose the desired boundary condition.
+  */
+  void ImposeOnGrid(UniStgGrid2D &grid) const;
+
+private:
+  int highest_order_differentiation_; ///< Highest order of differentiation.
+
+  std::vector<CoefficientFunction2D> west_coefficients_;  ///< Coeffs. west.
+  std::vector<CoefficientFunction2D> east_coefficients_;  ///< Coeffs. east.
+  std::vector<CoefficientFunction2D> south_coefficients_; ///< Coeffs. south.
+  std::vector<CoefficientFunction2D> north_coefficients_; ///< Coeffs. south.
+
+  mtk::Real (*west_condition_)(Real xx, Real yy);   ///< Condition for west.
+  mtk::Real (*east_condition_)(Real xx, Real yy);   ///< Condition for east.
+  mtk::Real (*south_condition_)(Real xx, Real yy);  ///< Condition for south.
+  mtk::Real (*north_condition_)(Real xx, Real yy);  ///< Condition for north.
 };
 }
 #endif  // End of: MTK_INCLUDE_BC_DESCRIPTOR_2D_H_

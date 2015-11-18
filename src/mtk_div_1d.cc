@@ -348,7 +348,8 @@ mtk::DenseMatrix mtk::Div1D::mim_bndy() const {
   return xx;
 }
 
-mtk::DenseMatrix mtk::Div1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
+mtk::DenseMatrix mtk::Div1D::ReturnAsDenseMatrix(
+  const UniStgGrid1D &grid) const {
 
   int nn{grid.num_cells_x()}; // Number of cells on the grid.
 

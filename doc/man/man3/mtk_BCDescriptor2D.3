@@ -1,4 +1,4 @@
-.TH "mtk::BCDescriptor2D" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::BCDescriptor2D" 3 "Wed Nov 18 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -8,61 +8,260 @@ mtk::BCDescriptor2D \-
 .PP
 .PP
 \fC#include <mtk_bc_descriptor_2d\&.h>\fP
-.SS "Static Public Member Functions"
+.SS "Public Member Functions"
 
 .in +1c
 .ti -1c
-.RI "static void \fBImposeOnLaplacianMatrix\fP (\fBDenseMatrix\fP &matrix, \fBReal\fP(*west)(int ii, int jj), \fBReal\fP(*east)(int ii, int jj), \fBReal\fP(*south)(int ii, int jj), \fBReal\fP(*north)(int ii, int jj))"
+.RI "\fBBCDescriptor2D\fP ()"
 .br
-.RI "\fIEnforces the condition on the operator represented as matrix\&. \fP"
+.RI "\fIDefault constructor\&. \fP"
 .ti -1c
-.RI "static void \fBImposeOnGrid\fP (\fBUniStgGrid2D\fP &grid, \fBReal\fP(*west)(\fBReal\fP xx, \fBReal\fP yy), \fBReal\fP(*east)(\fBReal\fP xx, \fBReal\fP yy), \fBReal\fP(*south)(\fBReal\fP xx, \fBReal\fP yy), \fBReal\fP(*north)(\fBReal\fP xx, \fBReal\fP yy))"
+.RI "\fB~BCDescriptor2D\fP ()"
 .br
-.RI "\fIEnforces the condition on the grid\&. \fP"
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "\fBBCDescriptor2D\fP (const \fBBCDescriptor2D\fP &desc)"
+.br
+.RI "\fICopy constructor\&. \fP"
+.ti -1c
+.RI "void \fBPushBackWestCoeff\fP (\fBCoefficientFunction2D\fP cw)"
+.br
+.RI "\fIPush back coefficient function at west of lowest order diff\&. available\&. \fP"
+.ti -1c
+.RI "void \fBPushBackEastCoeff\fP (\fBCoefficientFunction2D\fP ce)"
+.br
+.RI "\fIPush back coefficient function at east of lowest order diff\&. available\&. \fP"
+.ti -1c
+.RI "void \fBPushBackSouthCoeff\fP (\fBCoefficientFunction2D\fP cs)"
+.br
+.RI "\fIPush back coefficient function south of lowest order diff\&. available\&. \fP"
+.ti -1c
+.RI "void \fBPushBackNorthCoeff\fP (\fBCoefficientFunction2D\fP cn)"
+.br
+.RI "\fIPush back coefficient function north of lowest order diff\&. available\&. \fP"
+.ti -1c
+.RI "void \fBset_west_condition_\fP (\fBmtk::Real\fP(*\fBwest_condition_\fP)(\fBReal\fP xx, \fBReal\fP yy))"
+.br
+.RI "\fISet boundary condition at west\&. \fP"
+.ti -1c
+.RI "void \fBset_east_condition_\fP (\fBmtk::Real\fP(*\fBeast_condition_\fP)(\fBReal\fP xx, \fBReal\fP yy))"
+.br
+.RI "\fISet boundary condition at east\&. \fP"
+.ti -1c
+.RI "void \fBset_south_condition_\fP (\fBmtk::Real\fP(*\fBsouth_condition_\fP)(\fBReal\fP xx, \fBReal\fP yy))"
+.br
+.RI "\fISet boundary condition at south\&. \fP"
+.ti -1c
+.RI "void \fBset_north_condition_\fP (\fBmtk::Real\fP(*\fBnorth_condition_\fP)(\fBReal\fP xx, \fBReal\fP yy))"
+.br
+.RI "\fISet boundary condition at north\&. \fP"
+.ti -1c
+.RI "void \fBImposeOnLaplacianMatrix\fP (const \fBUniStgGrid2D\fP &grid, \fBDenseMatrix\fP &matrix) const "
+.br
+.RI "\fIImposes the condition on the operator represented as matrix\&. \fP"
+.ti -1c
+.RI "void \fBImposeOnGrid\fP (\fBUniStgGrid2D\fP &grid) const "
+.br
+.RI "\fIImposes the condition on the grid\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBhighest_order_differentiation_\fP"
+.br
+.RI "\fIHighest order of differentiation\&. \fP"
+.ti -1c
+.RI "std::vector
+.br
+< \fBCoefficientFunction2D\fP > \fBwest_coefficients_\fP"
+.br
+.RI "\fICoeffs\&. west\&. \fP"
+.ti -1c
+.RI "std::vector
+.br
+< \fBCoefficientFunction2D\fP > \fBeast_coefficients_\fP"
+.br
+.RI "\fICoeffs\&. east\&. \fP"
+.ti -1c
+.RI "std::vector
+.br
+< \fBCoefficientFunction2D\fP > \fBsouth_coefficients_\fP"
+.br
+.RI "\fICoeffs\&. south\&. \fP"
+.ti -1c
+.RI "std::vector
+.br
+< \fBCoefficientFunction2D\fP > \fBnorth_coefficients_\fP"
+.br
+.RI "\fICoeffs\&. south\&. \fP"
+.ti -1c
+.RI "\fBmtk::Real\fP(* \fBwest_condition_\fP )(\fBReal\fP xx, \fBReal\fP yy)"
+.br
+.RI "\fICondition for west\&. \fP"
+.ti -1c
+.RI "\fBmtk::Real\fP(* \fBeast_condition_\fP )(\fBReal\fP xx, \fBReal\fP yy)"
+.br
+.RI "\fICondition for east\&. \fP"
+.ti -1c
+.RI "\fBmtk::Real\fP(* \fBsouth_condition_\fP )(\fBReal\fP xx, \fBReal\fP yy)"
+.br
+.RI "\fICondition for south\&. \fP"
+.ti -1c
+.RI "\fBmtk::Real\fP(* \fBnorth_condition_\fP )(\fBReal\fP xx, \fBReal\fP yy)"
+.br
+.RI "\fICondition for north\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
-Definition at line 66 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 93 of file mtk_bc_descriptor_2d\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mtk::BCDescriptor2D::BCDescriptor2D ()"
+
+.SS "mtk::BCDescriptor2D::~BCDescriptor2D ()"
+
+.SS "mtk::BCDescriptor2D::BCDescriptor2D (const \fBBCDescriptor2D\fP &desc)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdesc\fP Given 2D descriptor\&. 
+.RE
+.PP
+
 .SH "Member Function Documentation"
 .PP 
-.SS "void mtk::BCDescriptor2D::ImposeOnGrid (\fBUniStgGrid2D\fP &grid, \fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)west, \fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)east, \fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)south, \fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)north)\fC [static]\fP"
+.SS "void mtk::BCDescriptor2D::ImposeOnGrid (\fBUniStgGrid2D\fP &grid) const"
 
 .PP
 \fBParameters:\fP
 .RS 4
-\fImatrix\fP Input operator\&. 
-.br
-\fIwest\fP Pointer to function returning west coefficient at (xx,yy)\&. 
-.br
-\fIeast\fP Pointer to function returning east coefficient at (xx,yy)\&. 
-.br
-\fIsouth\fP Pointer to function returning south coefficient at (xx,yy)\&. 
-.br
-\fInorth\fP Pointer to function returning north coefficient at (xx,yy)\&. 
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
 .RE
 .PP
 
-.PP
-Definition at line 79 of file mtk_bc_descriptor_2d\&.cc\&.
-.SS "void mtk::BCDescriptor2D::ImposeOnLaplacianMatrix (\fBmtk::DenseMatrix\fP &matrix, \fBmtk::Real\fP(*)(int ii, int jj)west, \fBmtk::Real\fP(*)(int ii, int jj)east, \fBmtk::Real\fP(*)(int ii, int jj)south, \fBmtk::Real\fP(*)(int ii, int jj)north)\fC [static]\fP"
+.SS "void mtk::BCDescriptor2D::ImposeOnLaplacianMatrix (const \fBUniStgGrid2D\fP &grid, \fBDenseMatrix\fP &matrix) const"
 
 .PP
 \fBParameters:\fP
 .RS 4
-\fImatrix\fP Input operator\&. 
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
 .br
-\fIwest\fP Pointer to function returning west coefficient at (ii,jj)\&. 
-.br
-\fIeast\fP Pointer to function returning east coefficient at (ii,jj)\&. 
-.br
-\fIsouth\fP Pointer to function returning south coefficient at (ii,jj)\&. 
-.br
-\fInorth\fP Pointer to function returning north coefficient at (ii,jj)\&. 
+\fImatrix\fP Input Laplacian operator\&. 
 .RE
 .PP
 
+.SS "void mtk::BCDescriptor2D::PushBackEastCoeff (\fBCoefficientFunction2D\fPce)"
+
 .PP
-Definition at line 61 of file mtk_bc_descriptor_2d\&.cc\&.
+\fBParameters:\fP
+.RS 4
+\fIce\fP Function $ c_e(x,y):\Omega\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.SS "void mtk::BCDescriptor2D::PushBackNorthCoeff (\fBCoefficientFunction2D\fPcn)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcn\fP Function $ c_w(x,y):\Omega\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.SS "void mtk::BCDescriptor2D::PushBackSouthCoeff (\fBCoefficientFunction2D\fPcs)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcs\fP Function $ c_s(x,y):\Omega\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.SS "void mtk::BCDescriptor2D::PushBackWestCoeff (\fBCoefficientFunction2D\fPcw)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcw\fP Function $ c_w(x,y):\Omega\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.SS "void mtk::BCDescriptor2D::set_east_condition_ (\fBmtk::Real\fP(*)(\fBReal\fP xx, \fBReal\fP yy)east_condition_)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIeast_condition_\fP $ \beta_e(x,y):\Omega\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.SS "void mtk::BCDescriptor2D::set_north_condition_ (\fBmtk::Real\fP(*)(\fBReal\fP xx, \fBReal\fP yy)north_condition_)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInorth_condition_\fP $ \beta_n(x,y):\Omega\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.SS "void mtk::BCDescriptor2D::set_south_condition_ (\fBmtk::Real\fP(*)(\fBReal\fP xx, \fBReal\fP yy)south_condition_)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsouth_condition_\fP $ \beta_s(x,y):\Omega\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.SS "void mtk::BCDescriptor2D::set_west_condition_ (\fBmtk::Real\fP(*)(\fBReal\fP xx, \fBReal\fP yy)west_condition_)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwest_condition_\fP $ \beta_w(x,y):\Omega\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::east_coefficients_\fC [private]\fP"
+
+.PP
+Definition at line 184 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "\fBmtk::Real\fP(* mtk::BCDescriptor2D::east_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
+
+.PP
+Definition at line 189 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "int mtk::BCDescriptor2D::highest_order_differentiation_\fC [private]\fP"
+
+.PP
+Definition at line 181 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::north_coefficients_\fC [private]\fP"
+
+.PP
+Definition at line 186 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "\fBmtk::Real\fP(* mtk::BCDescriptor2D::north_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
+
+.PP
+Definition at line 191 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::south_coefficients_\fC [private]\fP"
+
+.PP
+Definition at line 185 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "\fBmtk::Real\fP(* mtk::BCDescriptor2D::south_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
+
+.PP
+Definition at line 190 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::west_coefficients_\fC [private]\fP"
+
+.PP
+Definition at line 183 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "\fBmtk::Real\fP(* mtk::BCDescriptor2D::west_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
+
+.PP
+Definition at line 188 of file mtk_bc_descriptor_2d\&.h\&.
 
 .SH "Author"
 .PP 

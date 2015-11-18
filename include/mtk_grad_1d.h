@@ -144,21 +144,21 @@ class Grad1D {
 
   \return The operator as a dense matrix.
   */
-  DenseMatrix ReturnAsDenseMatrix(Real west, Real east, int num_cells_x);
+  DenseMatrix ReturnAsDenseMatrix(Real west, Real east, int num_cells_x) const;
 
   /*!
   \brief Returns the operator as a dense matrix.
 
   \return The operator as a dense matrix.
   */
-  DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid);
+  DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid) const;
 
   /*!
   \brief Returns the operator as a dimensionless dense matrix.
 
   \return The operator as a dimensionless dense matrix.
   */
-  DenseMatrix ReturnAsDimensionlessDenseMatrix(int num_cells_x);
+  DenseMatrix ReturnAsDimensionlessDenseMatrix(int num_cells_x) const;
 
  private:
   /*!

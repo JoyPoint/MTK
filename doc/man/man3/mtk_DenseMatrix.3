@@ -1,4 +1,4 @@
-.TH "mtk::DenseMatrix" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::DenseMatrix" 3 "Wed Nov 18 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -87,7 +87,7 @@ Defines a common dense matrix, using a 1D array\&.
 .br
 .RI "\fIMake the matrix column-wise ordered\&. \fP"
 .ti -1c
-.RI "bool \fBWriteToFile\fP (std::string filename)"
+.RI "bool \fBWriteToFile\fP (std::string filename) const "
 .br
 .RI "\fIWrites matrix to a file compatible with Gnuplot 4\&.6\&. \fP"
 .in -1c
@@ -220,7 +220,12 @@ Definition at line 312 of file mtk_dense_matrix\&.cc\&.
 .PP
 \fBReturns:\fP
 .RS 4
-Pointer to an array of \fBmtk::Real\fP\&. 
+Pointer to an array of \fBmtk::Real\fP\&.
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+Test the const-correctness of the returned pointer\&. 
 .RE
 .PP
 
@@ -372,7 +377,7 @@ Improve this so that no extra arrays have to be created\&.
 
 .PP
 Definition at line 373 of file mtk_dense_matrix\&.cc\&.
-.SS "bool mtk::DenseMatrix::WriteToFile (std::stringfilename)"
+.SS "bool mtk::DenseMatrix::WriteToFile (std::stringfilename) const"
 
 .PP
 \fBParameters:\fP
@@ -404,11 +409,11 @@ Definition at line 77 of file mtk_dense_matrix\&.cc\&.
 .SS "\fBReal\fP* mtk::DenseMatrix::data_\fC [private]\fP"
 
 .PP
-Definition at line 284 of file mtk_dense_matrix\&.h\&.
+Definition at line 286 of file mtk_dense_matrix\&.h\&.
 .SS "\fBMatrix\fP mtk::DenseMatrix::matrix_properties_\fC [private]\fP"
 
 .PP
-Definition at line 282 of file mtk_dense_matrix\&.h\&.
+Definition at line 284 of file mtk_dense_matrix\&.h\&.
 
 .SH "Author"
 .PP 

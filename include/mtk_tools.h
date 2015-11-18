@@ -6,6 +6,10 @@
 Basic utilities.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
+
+\note Performance Tip 8.1. If they do not need to be modified by the called
+function, pass large objects using pointers to constant data or references to
+constant data, to obtain the performance benefits of pass-by-reference.
 */
 /*
 Copyright (C) 2015, Computational Science Research Center, San Diego State

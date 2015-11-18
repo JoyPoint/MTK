@@ -5,6 +5,7 @@ var searchData=
   ['bandwidth_5f',['bandwidth_',['../classmtk_1_1Matrix.html#a892449ddacb81d089818967e65979786',1,'mtk::Matrix']]],
   ['bcdescriptor1d',['BCDescriptor1D',['../classmtk_1_1BCDescriptor1D.html',1,'mtk']]],
   ['bcdescriptor2d',['BCDescriptor2D',['../classmtk_1_1BCDescriptor2D.html',1,'mtk']]],
+  ['bcdescriptor2d',['BCDescriptor2D',['../classmtk_1_1BCDescriptor2D.html#abbc3af29202dbfef203f4cafd9566fd0',1,'mtk::BCDescriptor2D::BCDescriptor2D()'],['../classmtk_1_1BCDescriptor2D.html#ae8a93352a94efed52747b710e6ff7893',1,'mtk::BCDescriptor2D::BCDescriptor2D(const BCDescriptor2D &amp;desc)']]],
   ['begin_5ftime_5f',['begin_time_',['../classmtk_1_1Tools.html#a4bd58d08397db42271ed9e2d3ecc9963',1,'mtk::Tools']]],
   ['beginunittestno',['BeginUnitTestNo',['../classmtk_1_1Tools.html#a26ee906d28523378522a75e25c3a4e19',1,'mtk::Tools']]],
   ['bindscalarfield',['BindScalarField',['../classmtk_1_1UniStgGrid1D.html#a438cda229830d0e2f35c615e70b59a76',1,'mtk::UniStgGrid1D::BindScalarField()'],['../classmtk_1_1UniStgGrid2D.html#ab6aff36e9f89fba1c1ff4f9914508211',1,'mtk::UniStgGrid2D::BindScalarField()']]],

@@ -158,7 +158,7 @@ mtk::Real mtk::UniStgGrid1D::delta_x() const {
   return delta_x_;
 }
 
-mtk::Real *mtk::UniStgGrid1D::discrete_domain_x() {
+const mtk::Real *mtk::UniStgGrid1D::discrete_domain_x() const {
 
   return discrete_domain_x_.data();
 }
@@ -239,7 +239,7 @@ void mtk::UniStgGrid1D::BindVectorField(
 
 bool mtk::UniStgGrid1D::WriteToFile(std::string filename,
                                     std::string space_name,
-                                    std::string field_name) {
+                                    std::string field_name) const {
 
   std::ofstream output_dat_file;  // Output file.
 

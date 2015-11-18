@@ -229,57 +229,58 @@ $(document).ready(function(){initNavTree('mtk__interp__1d_8cc_source.html','');}
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keywordflow">return</span> coeffs_interior_;</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="classmtk_1_1Interp1D.html#a62b241a3db626e92e9e57c7da772a36b">  135</a></span>&#160;<a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> <a class="code" href="classmtk_1_1Interp1D.html#a62b241a3db626e92e9e57c7da772a36b">mtk::Interp1D::ReturnAsDenseMatrix</a>(<span class="keyword">const</span> <a class="code" href="classmtk_1_1UniStgGrid1D.html">UniStgGrid1D</a> &amp;grid) {</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <span class="keywordtype">int</span> nn{grid.<a class="code" href="classmtk_1_1UniStgGrid1D.html#af1b3729d8afa07be5b2775ed68015b80">num_cells_x</a>()}; <span class="comment">// Number of cells on the grid.</span></div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#afe5bb096309258e2e72503fd7b41c7e0">mtk::Tools::Prevent</a>(nn &lt;= 0, __FILE__, __LINE__, __func__);</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keywordtype">int</span> gg_num_rows{};  <span class="comment">// Number of rows.</span></div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keywordtype">int</span> gg_num_cols{};  <span class="comment">// Number of columns.</span></div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordflow">if</span> (dir_interp_ == <a class="code" href="namespacemtk.html#ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139">mtk::SCALAR_TO_VECTOR</a>) {</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    gg_num_rows = nn + 1;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    gg_num_cols = nn + 2;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    gg_num_rows = nn + 2;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    gg_num_cols = nn + 1;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  }</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  <span class="comment">// Output matrix featuring sizes for gradient operators.</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> out(gg_num_rows, gg_num_cols);</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  out.<a class="code" href="classmtk_1_1DenseMatrix.html#ae0f873a6d3a734da467cafb817da64ae">SetValue</a>(0, 0, <a class="code" href="group__c01-roots.html#ga26407c24d43b6b95480943340d285c71">mtk::kOne</a>);</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 1; ii &lt; gg_num_rows - 1; ++ii) {</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span> jj = ii ; jj &lt; order_accuracy_ + ii; ++jj) {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;      out.<a class="code" href="classmtk_1_1DenseMatrix.html#ae0f873a6d3a734da467cafb817da64ae">SetValue</a>(ii, jj, <a class="code" href="group__c01-roots.html#ga26407c24d43b6b95480943340d285c71">mtk::kOne</a>/order_accuracy_);</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    }</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  }</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  out.<a class="code" href="classmtk_1_1DenseMatrix.html#ae0f873a6d3a734da467cafb817da64ae">SetValue</a>(gg_num_rows - 1, gg_num_cols - 1, <a class="code" href="group__c01-roots.html#ga26407c24d43b6b95480943340d285c71">mtk::kOne</a>);</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keywordflow">return</span> out;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;}</div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="classmtk_1_1Interp1D.html#aee8126b8a4be378a30be4d95b43b384b">  135</a></span>&#160;<a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> <a class="code" href="classmtk_1_1Interp1D.html#aee8126b8a4be378a30be4d95b43b384b">mtk::Interp1D::ReturnAsDenseMatrix</a>(</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keyword">const</span> <a class="code" href="classmtk_1_1UniStgGrid1D.html">UniStgGrid1D</a> &amp;grid)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordtype">int</span> nn{grid.<a class="code" href="classmtk_1_1UniStgGrid1D.html#af1b3729d8afa07be5b2775ed68015b80">num_cells_x</a>()}; <span class="comment">// Number of cells on the grid.</span></div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#afe5bb096309258e2e72503fd7b41c7e0">mtk::Tools::Prevent</a>(nn &lt;= 0, __FILE__, __LINE__, __func__);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <span class="keywordtype">int</span> gg_num_rows{};  <span class="comment">// Number of rows.</span></div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordtype">int</span> gg_num_cols{};  <span class="comment">// Number of columns.</span></div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <span class="keywordflow">if</span> (dir_interp_ == <a class="code" href="namespacemtk.html#ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139">mtk::SCALAR_TO_VECTOR</a>) {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    gg_num_rows = nn + 1;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    gg_num_cols = nn + 2;</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    gg_num_rows = nn + 2;</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    gg_num_cols = nn + 1;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  }</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="comment">// Output matrix featuring sizes for gradient operators.</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> out(gg_num_rows, gg_num_cols);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  out.<a class="code" href="classmtk_1_1DenseMatrix.html#ae0f873a6d3a734da467cafb817da64ae">SetValue</a>(0, 0, <a class="code" href="group__c01-roots.html#ga26407c24d43b6b95480943340d285c71">mtk::kOne</a>);</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 1; ii &lt; gg_num_rows - 1; ++ii) {</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    <span class="keywordflow">for</span>(<span class="keyword">auto</span> jj = ii ; jj &lt; order_accuracy_ + ii; ++jj) {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;      out.<a class="code" href="classmtk_1_1DenseMatrix.html#ae0f873a6d3a734da467cafb817da64ae">SetValue</a>(ii, jj, <a class="code" href="group__c01-roots.html#ga26407c24d43b6b95480943340d285c71">mtk::kOne</a>/order_accuracy_);</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    }</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  out.<a class="code" href="classmtk_1_1DenseMatrix.html#ae0f873a6d3a734da467cafb817da64ae">SetValue</a>(gg_num_rows - 1, gg_num_cols - 1, <a class="code" href="group__c01-roots.html#ga26407c24d43b6b95480943340d285c71">mtk::kOne</a>);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <span class="keywordflow">return</span> out;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
 <div class="ttc" id="namespacemtk_html_ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139"><div class="ttname"><a href="namespacemtk.html#ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139">mtk::SCALAR_TO_VECTOR</a></div><div class="ttdoc">Interpolations places scalar on vectors&#39; location. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__enums_8h_source.html#l00128">mtk_enums.h:128</a></div></div>
 <div class="ttc" id="classmtk_1_1Interp1D_html_a52ea06b5e3d7082eb06ade256f4e30fb"><div class="ttname"><a href="classmtk_1_1Interp1D.html#a52ea06b5e3d7082eb06ade256f4e30fb">mtk::Interp1D::~Interp1D</a></div><div class="ttdeci">~Interp1D()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__interp__1d_8cc_source.html#l00090">mtk_interp_1d.cc:90</a></div></div>
 <div class="ttc" id="group__c01-roots_html_gac080bbbf5cbb5502c9f00405f894857d"><div class="ttname"><a href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a></div><div class="ttdeci">float Real</div><div class="ttdoc">Users can simply change this to build a double- or single-precision MTK. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00083">mtk_roots.h:83</a></div></div>
 <div class="ttc" id="classmtk_1_1Interp1D_html_a1ee8467d93536dc04240cd76f0d95c9c"><div class="ttname"><a href="classmtk_1_1Interp1D.html#a1ee8467d93536dc04240cd76f0d95c9c">mtk::Interp1D::order_accuracy_</a></div><div class="ttdeci">int order_accuracy_</div><div class="ttdoc">Order of numerical accuracy of the operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__interp__1d_8h_source.html#l00125">mtk_interp_1d.h:125</a></div></div>
 <div class="ttc" id="namespacemtk_html"><div class="ttname"><a href="namespacemtk.html">mtk</a></div><div class="ttdoc">Mimetic Methods Toolkit namespace. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__bc__descriptor__1d_8h_source.html#l00066">mtk_bc_descriptor_1d.h:66</a></div></div>
 <div class="ttc" id="classmtk_1_1Interp1D_html_abae01ab84103d8b11903357cfdeb94d5"><div class="ttname"><a href="classmtk_1_1Interp1D.html#abae01ab84103d8b11903357cfdeb94d5">mtk::Interp1D::coeffs_interior_</a></div><div class="ttdeci">Real * coeffs_interior_</div><div class="ttdoc">Interior stencil. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__interp__1d_8h_source.html#l00127">mtk_interp_1d.h:127</a></div></div>
+<div class="ttc" id="classmtk_1_1Interp1D_html_aee8126b8a4be378a30be4d95b43b384b"><div class="ttname"><a href="classmtk_1_1Interp1D.html#aee8126b8a4be378a30be4d95b43b384b">mtk::Interp1D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &amp;grid) const </div><div class="ttdoc">Returns the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__interp__1d_8cc_source.html#l00135">mtk_interp_1d.cc:135</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid1D_html_af1b3729d8afa07be5b2775ed68015b80"><div class="ttname"><a href="classmtk_1_1UniStgGrid1D.html#af1b3729d8afa07be5b2775ed68015b80">mtk::UniStgGrid1D::num_cells_x</a></div><div class="ttdeci">int num_cells_x() const </div><div class="ttdoc">Provides access to the number of cells of the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__1d_8cc_source.html#l00171">mtk_uni_stg_grid_1d.cc:171</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid1D_html"><div class="ttname"><a href="classmtk_1_1UniStgGrid1D.html">mtk::UniStgGrid1D</a></div><div class="ttdoc">Uniform 1D Staggered Grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__1d_8h_source.html#l00077">mtk_uni_stg_grid_1d.h:77</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_ae0f873a6d3a734da467cafb817da64ae"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#ae0f873a6d3a734da467cafb817da64ae">mtk::DenseMatrix::SetValue</a></div><div class="ttdeci">void SetValue(const int &amp;row_coord, const int &amp;col_coord, const Real &amp;val)</div><div class="ttdoc">Sets a value on the given coordinates. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00360">mtk_dense_matrix.cc:360</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a></div><div class="ttdoc">Defines a common dense matrix, using a 1D array. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8h_source.html#l00092">mtk_dense_matrix.h:92</a></div></div>
 <div class="ttc" id="classmtk_1_1Interp1D_html_ae56f90c53579c91c1dbe715f7e7361be"><div class="ttname"><a href="classmtk_1_1Interp1D.html#ae56f90c53579c91c1dbe715f7e7361be">mtk::Interp1D::Interp1D</a></div><div class="ttdeci">Interp1D()</div><div class="ttdoc">Default constructor. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__interp__1d_8cc_source.html#l00080">mtk_interp_1d.cc:80</a></div></div>
 <div class="ttc" id="mtk__tools_8h_html"><div class="ttname"><a href="mtk__tools_8h.html">mtk_tools.h</a></div><div class="ttdoc">Tool manager class. </div></div>
-<div class="ttc" id="classmtk_1_1Interp1D_html_a62b241a3db626e92e9e57c7da772a36b"><div class="ttname"><a href="classmtk_1_1Interp1D.html#a62b241a3db626e92e9e57c7da772a36b">mtk::Interp1D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &amp;grid)</div><div class="ttdoc">Returns the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__interp__1d_8cc_source.html#l00135">mtk_interp_1d.cc:135</a></div></div>
 <div class="ttc" id="group__c01-roots_html_ga59a451a5fae30d59649bcda274fea271"><div class="ttname"><a href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a></div><div class="ttdeci">const float kZero</div><div class="ttdoc">MTK&#39;s zero defined according to selective compilation. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00107">mtk_roots.h:107</a></div></div>
 <div class="ttc" id="group__c01-roots_html_ga0d95560098eb36420511103637b6952f"><div class="ttname"><a href="group__c01-roots.html#ga0d95560098eb36420511103637b6952f">mtk::kDefaultOrderAccuracy</a></div><div class="ttdeci">const int kDefaultOrderAccuracy</div><div class="ttdoc">Default order of accuracy for mimetic operators. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00133">mtk_roots.h:133</a></div></div>
 <div class="ttc" id="namespacemtk_html_ad3bcf52cda59ddb5fc7b4bdce76c46dc"><div class="ttname"><a href="namespacemtk.html#ad3bcf52cda59ddb5fc7b4bdce76c46dc">mtk::operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;stream, mtk::DenseMatrix &amp;in)</div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00077">mtk_dense_matrix.cc:77</a></div></div>
@@ -297,7 +298,7 @@ $(document).ready(function(){initNavTree('mtk__interp__1d_8cc_source.html','');}
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="mtk__interp__1d_8cc.html">mtk_interp_1d.cc</a></li>
-    <li class="footer">Generated on Tue Nov 17 2015 16:24:44 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Wed Nov 18 2015 16:15:18 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

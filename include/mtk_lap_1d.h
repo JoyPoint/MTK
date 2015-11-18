@@ -104,14 +104,14 @@ class Lap1D {
 
   \return The operator as a dense matrix.
   */
-  DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid);
+  DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid) const;
 
   /*!
   \brief Return the operator as a dense array.
 
   \return The operator as a dense array.
   */
-  mtk::Real* data(const UniStgGrid1D &grid);
+  const mtk::Real* data(const UniStgGrid1D &grid) const;
 
  private:
   int order_accuracy_;    ///< Order of numerical accuracy of the operator.

@@ -105,13 +105,14 @@ $(document).ready(function(){initNavTree('mtk__bc__descriptor__2d_8h.html','');}
 <div class="header">
   <div class="summary">
 <a href="#nested-classes">Classes</a> &#124;
-<a href="#namespaces">Namespaces</a>  </div>
+<a href="#namespaces">Namespaces</a> &#124;
+<a href="#typedef-members">Typedefs</a>  </div>
   <div class="headertitle">
 <div class="title">mtk_bc_descriptor_2d.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>Enforces boundary conditions in either the operator or the grid.  
+<p>Imposes boundary conditions in either the operator or the grid.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="mtk__roots_8h_source.html">mtk_roots.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="mtk__dense__matrix_8h_source.html">mtk_dense_matrix.h</a>&quot;</code><br />
@@ -143,9 +144,20 @@ Namespaces</h2></td></tr>
 <tr class="memitem:namespacemtk"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacemtk.html">mtk</a></td></tr>
 <tr class="memdesc:namespacemtk"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mimetic Methods Toolkit namespace. <br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:ga0322dd5a158c1864242833ec224ee4c1"><td class="memItemLeft" align="right" valign="top">typedef Real(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__c07-mim__ops.html#ga0322dd5a158c1864242833ec224ee4c1">mtk::CoefficientFunction2D</a> )(Real, Real)</td></tr>
+<tr class="memdesc:ga0322dd5a158c1864242833ec224ee4c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function of a BC coefficient evaluated on a 2D domain.  <a href="group__c07-mim__ops.html#ga0322dd5a158c1864242833ec224ee4c1">More...</a><br /></td></tr>
+<tr class="separator:ga0322dd5a158c1864242833ec224ee4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class presents an interface for the user to specify boundary conditions on 2D mimetic operators and the grids they are acting on.</p>
+<p><b>Def.</b> Let <img class="formulaInl" alt="$ f $" src="form_32.png"/> be any scalar or vector field defined over a domain <img class="formulaInl" alt="$ \Omega $" src="form_33.png"/>. We can specify any linear combination of <img class="formulaInl" alt="$ f $" src="form_32.png"/> and its <img class="formulaInl" alt="$ n $" src="form_34.png"/> derivatives to fulfill a condition, which we define as a <b>boundary condition</b>:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\[ \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{n} c_i(\mathbf{x})\frac{\partial^i f}{\partial x^i}(\mathbf{x}) = \beta(\mathbf{x}). \]" src="form_41.png"/>
+</p>
+<p>This class receives information about the highest-order of differentiation, <img class="formulaInl" alt="$ n $" src="form_34.png"/>, all possible coefficient functions, <img class="formulaInl" alt="$ c_i(\mathbf{x}) $" src="form_42.png"/> for any subset of the boundary (south, north, west and east), and each condition for any subset of the boundary, and takes care of assigning them to both, the differentiation matrices and the grids.</p>
 <dl class="section author"><dt>Author</dt><dd>: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu </dd></dl>
 
 <p>Definition in file <a class="el" href="mtk__bc__descriptor__2d_8h_source.html">mtk_bc_descriptor_2d.h</a>.</p>
@@ -155,7 +167,7 @@ Namespaces</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="mtk__bc__descriptor__2d_8h.html">mtk_bc_descriptor_2d.h</a></li>
-    <li class="footer">Generated on Tue Nov 17 2015 16:24:44 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Wed Nov 18 2015 16:15:18 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

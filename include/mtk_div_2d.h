@@ -92,7 +92,7 @@ class Div2D {
 
   \return The operator as a dense matrix.
   */
-  DenseMatrix ReturnAsDenseMatrix();
+  DenseMatrix ReturnAsDenseMatrix() const;
 
  private:
   DenseMatrix divergence_;  ///< Actual operator.

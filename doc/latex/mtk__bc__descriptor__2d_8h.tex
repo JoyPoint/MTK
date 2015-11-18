@@ -3,22 +3,20 @@
 }
 
 
-Enforces boundary conditions in either the operator or the grid.  
+Imposes boundary conditions in either the operator or the grid.  
 
 
 {\ttfamily \#include \char`\"{}mtk\+\_\+roots.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}mtk\+\_\+dense\+\_\+matrix.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}mtk\+\_\+uni\+\_\+stg\+\_\+grid\+\_\+2d.\+h\char`\"{}}\\*
-Include dependency graph for mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h\+:
-\nopagebreak
+Include dependency graph for mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{mtk__bc__descriptor__2d_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:
-\nopagebreak
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -35,10 +33,21 @@ class \hyperlink{classmtk_1_1BCDescriptor2D}{mtk\+::\+B\+C\+Descriptor2\+D}
 \item 
  \hyperlink{namespacemtk}{mtk}
 \begin{DoxyCompactList}\small\item\em Mimetic Methods Toolkit namespace. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef Real($\ast$ \hyperlink{group__c07-mim__ops_ga0322dd5a158c1864242833ec224ee4c1}{mtk\+::\+Coefficient\+Function2\+D} )(Real, Real)
+\begin{DoxyCompactList}\small\item\em A function of a B\+C coefficient evaluated on a 2\+D domain. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
 This class presents an interface for the user to specify boundary conditions on 2\+D mimetic operators and the grids they are acting on.
+
+{\bfseries Def.} Let $ f $ be any scalar or vector field defined over a domain $ \Omega $. We can specify any linear combination of $ f $ and its $ n $ derivatives to fulfill a condition, which we define as a {\bfseries boundary condition}\+:
+
+\[ \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{n} c_i(\mathbf{x})\frac{\partial^i f}{\partial x^i}(\mathbf{x}) = \beta(\mathbf{x}). \]
+
+This class receives information about the highest-\/order of differentiation, $ n $, all possible coefficient functions, $ c_i(\mathbf{x}) $ for any subset of the boundary (south, north, west and east), and each condition for any subset of the boundary, and takes care of assigning them to both, the differentiation matrices and the grids.
 
 \begin{DoxyAuthor}{Author}
 \+: Eduardo J. Sanchez (ejspeiro) -\/ esanchez at mail dot sdsu dot edu 

@@ -1,8 +1,11 @@
-.TH "mtk::BCDescriptor1D" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::BCDescriptor1D" 3 "Wed Nov 18 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 mtk::BCDescriptor1D \- 
+.PP
+Enforces boundary conditions in either the operator or the grid\&.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -22,7 +25,9 @@ mtk::BCDescriptor1D \-
 .in -1c
 .SH "Detailed Description"
 .PP 
-Definition at line 68 of file mtk_bc_descriptor_1d\&.h\&.
+This class presents an interface for the user to specify boundary conditions on 1D mimetic operators and the grids they are acting on\&. 
+.PP
+Definition at line 78 of file mtk_bc_descriptor_1d\&.h\&.
 .SH "Member Function Documentation"
 .PP 
 .SS "void mtk::BCDescriptor1D::ImposeOnGrid (\fBmtk::UniStgGrid1D\fP &grid, const \fBReal\fP &epsilon, const \fBReal\fP &omega)\fC [static]\fP"
@@ -32,9 +37,9 @@ Definition at line 68 of file mtk_bc_descriptor_1d\&.h\&.
 .RS 4
 \fIgrid\fP Input grid\&. 
 .br
-\fIwest\fP Array of values for the west boundary\&. 
+\fIepsilon\fP Actual BC for the east\&. 
 .br
-\fIeast\fP Array of values for the east boundary\&. 
+\fIomega\fP Actual BC for the west\&. 
 .RE
 .PP
 

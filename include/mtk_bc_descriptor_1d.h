@@ -65,6 +65,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace mtk {
 
+  /*!
+\class BCDescriptor1D
+
+\ingroup c07-mim_ops
+
+\brief Enforces boundary conditions in either the operator or the grid.
+
+This class presents an interface for the user to specify boundary conditions
+on 1D mimetic operators and the grids they are acting on.
+*/
 class BCDescriptor1D {
  public:
   /*!
@@ -82,8 +92,8 @@ class BCDescriptor1D {
   \brief Enforces the condition on the grid.
 
   \param[in,out] grid Input grid.
-  \param[in] west Array of values for the west boundary.
-  \param[in] east Array of values for the east boundary.
+  \param[in] epsilon Actual BC for the east.
+  \param[in] omega Actual BC for the west.
   */
   static void ImposeOnGrid(UniStgGrid1D &grid,
                            const Real &epsilon,

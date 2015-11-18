@@ -140,7 +140,7 @@ bool mtk::Grad2D::ConstructGrad2D(const mtk::UniStgGrid2D &grid,
   return info;
 }
 
-mtk::DenseMatrix mtk::Grad2D::ReturnAsDenseMatrix() {
+mtk::DenseMatrix mtk::Grad2D::ReturnAsDenseMatrix() const {
 
   return gradient_;
 }

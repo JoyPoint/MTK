@@ -262,7 +262,8 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
   return true;
 }
 
-mtk::DenseMatrix mtk::Lap1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
+mtk::DenseMatrix mtk::Lap1D::ReturnAsDenseMatrix(
+  const UniStgGrid1D &grid) const {
 
   int nn{grid.num_cells_x()};  // Number of cells on the grid.
 
@@ -329,7 +330,7 @@ mtk::DenseMatrix mtk::Lap1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
   return lap;
 }
 
-mtk::Real* mtk::Lap1D::data(const UniStgGrid1D &grid) {
+const mtk::Real* mtk::Lap1D::data(const UniStgGrid1D &grid) const {
 
   mtk::DenseMatrix tmp;
 

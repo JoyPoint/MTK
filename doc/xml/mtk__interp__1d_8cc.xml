@@ -234,44 +234,45 @@
 <codeline lineno="132"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>coeffs_interior_;</highlight></codeline>
 <codeline lineno="133"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="134"><highlight class="normal"></highlight></codeline>
-<codeline lineno="135" refid="classmtk_1_1Interp1D_1a62b241a3db626e92e9e57c7da772a36b" refkind="member"><highlight class="normal"><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/><ref refid="classmtk_1_1Interp1D_1a62b241a3db626e92e9e57c7da772a36b" kindref="member">mtk::Interp1D::ReturnAsDenseMatrix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;grid)<sp/>{</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"></highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nn{grid.<ref refid="classmtk_1_1UniStgGrid1D_1af1b3729d8afa07be5b2775ed68015b80" kindref="member">num_cells_x</ref>()};<sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>cells<sp/>on<sp/>the<sp/>grid.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#if<sp/>MTK_DEBUG_LEVEL<sp/>&gt;<sp/>0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" kindref="member">mtk::Tools::Prevent</ref>(nn<sp/>&lt;=<sp/>0,<sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="142"><highlight class="normal"></highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>gg_num_rows{};<sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>rows.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>gg_num_cols{};<sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>columns.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="145"><highlight class="normal"></highlight></codeline>
-<codeline lineno="146"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir_interp_<sp/>==<sp/><ref refid="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139" kindref="member">mtk::SCALAR_TO_VECTOR</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/><sp/><sp/>gg_num_rows<sp/>=<sp/>nn<sp/>+<sp/>1;</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>gg_num_cols<sp/>=<sp/>nn<sp/>+<sp/>2;</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/>gg_num_rows<sp/>=<sp/>nn<sp/>+<sp/>2;</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>gg_num_cols<sp/>=<sp/>nn<sp/>+<sp/>1;</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"></highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Output<sp/>matrix<sp/>featuring<sp/>sizes<sp/>for<sp/>gradient<sp/>operators.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>out(gg_num_rows,<sp/>gg_num_cols);</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"></highlight></codeline>
-<codeline lineno="159"><highlight class="normal"></highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/>out.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(0,<sp/>0,<sp/><ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>);</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>1;<sp/>ii<sp/>&lt;<sp/>gg_num_rows<sp/>-<sp/>1;<sp/>++ii)<sp/>{</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>jj<sp/>=<sp/>ii<sp/>;<sp/>jj<sp/>&lt;<sp/>order_accuracy_<sp/>+<sp/>ii;<sp/>++jj)<sp/>{</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>out.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(ii,<sp/>jj,<sp/><ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>/order_accuracy_);</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"></highlight></codeline>
-<codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/>out.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(gg_num_rows<sp/>-<sp/>1,<sp/>gg_num_cols<sp/>-<sp/>1,<sp/><ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>);</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>out;</highlight></codeline>
-<codeline lineno="175"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="135" refid="classmtk_1_1Interp1D_1aee8126b8a4be378a30be4d95b43b384b" refkind="member"><highlight class="normal"><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/><ref refid="classmtk_1_1Interp1D_1aee8126b8a4be378a30be4d95b43b384b" kindref="member">mtk::Interp1D::ReturnAsDenseMatrix</ref>(</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;grid)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"></highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nn{grid.<ref refid="classmtk_1_1UniStgGrid1D_1af1b3729d8afa07be5b2775ed68015b80" kindref="member">num_cells_x</ref>()};<sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>cells<sp/>on<sp/>the<sp/>grid.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#if<sp/>MTK_DEBUG_LEVEL<sp/>&gt;<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" kindref="member">mtk::Tools::Prevent</ref>(nn<sp/>&lt;=<sp/>0,<sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>gg_num_rows{};<sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>rows.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>gg_num_cols{};<sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>columns.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="146"><highlight class="normal"></highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(dir_interp_<sp/>==<sp/><ref refid="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139" kindref="member">mtk::SCALAR_TO_VECTOR</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/><sp/><sp/>gg_num_rows<sp/>=<sp/>nn<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>gg_num_cols<sp/>=<sp/>nn<sp/>+<sp/>2;</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/><sp/><sp/>gg_num_rows<sp/>=<sp/>nn<sp/>+<sp/>2;</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>gg_num_cols<sp/>=<sp/>nn<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Output<sp/>matrix<sp/>featuring<sp/>sizes<sp/>for<sp/>gradient<sp/>operators.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>out(gg_num_rows,<sp/>gg_num_cols);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"></highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/>out.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(0,<sp/>0,<sp/><ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>);</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>1;<sp/>ii<sp/>&lt;<sp/>gg_num_rows<sp/>-<sp/>1;<sp/>++ii)<sp/>{</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal">(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>jj<sp/>=<sp/>ii<sp/>;<sp/>jj<sp/>&lt;<sp/>order_accuracy_<sp/>+<sp/>ii;<sp/>++jj)<sp/>{</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>out.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(ii,<sp/>jj,<sp/><ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>/order_accuracy_);</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/>out.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(gg_num_rows<sp/>-<sp/>1,<sp/>gg_num_cols<sp/>-<sp/>1,<sp/><ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>out;</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/home/esanchez/Dropbox/MTK/src/mtk_interp_1d.cc"/>
   </compounddef>

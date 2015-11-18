@@ -142,7 +142,7 @@ bool mtk::Div2D::ConstructDiv2D(const mtk::UniStgGrid2D &grid,
   return info;
 }
 
-mtk::DenseMatrix mtk::Div2D::ReturnAsDenseMatrix() {
+mtk::DenseMatrix mtk::Div2D::ReturnAsDenseMatrix() const {
 
   return divergence_;
 }

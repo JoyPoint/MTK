@@ -3,149 +3,437 @@
   <compounddef id="classmtk_1_1BCDescriptor2D" kind="class" prot="public">
     <compoundname>mtk::BCDescriptor2D</compoundname>
     <includes refid="mtk__bc__descriptor__2d_8h" local="no">mtk_bc_descriptor_2d.h</includes>
-      <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classmtk_1_1BCDescriptor2D_1a55617743d19ee506f768089716a1c381" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
-        <type>void</type>
-        <definition>void mtk::BCDescriptor2D::ImposeOnLaplacianMatrix</definition>
-        <argsstring>(DenseMatrix &amp;matrix, Real(*west)(int ii, int jj), Real(*east)(int ii, int jj), Real(*south)(int ii, int jj), Real(*north)(int ii, int jj))</argsstring>
-        <name>ImposeOnLaplacianMatrix</name>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmtk_1_1BCDescriptor2D_1af6dad4b8fe09597f25a710b1aec40a48" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::BCDescriptor2D::highest_order_differentiation_</definition>
+        <argsstring></argsstring>
+        <name>highest_order_differentiation_</name>
+        <briefdescription>
+<para>Highest order of differentiation. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="181" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" bodystart="181" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1BCDescriptor2D_1a7df71b43acc25c468683075cc7790bb2" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__c07-mim__ops_1ga0322dd5a158c1864242833ec224ee4c1" kindref="member">CoefficientFunction2D</ref> &gt;</type>
+        <definition>std::vector&lt;CoefficientFunction2D&gt; mtk::BCDescriptor2D::west_coefficients_</definition>
+        <argsstring></argsstring>
+        <name>west_coefficients_</name>
+        <briefdescription>
+<para>Coeffs. west. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="183" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" bodystart="183" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1BCDescriptor2D_1a1f90fc303984bf18c136a34896bbb7c9" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__c07-mim__ops_1ga0322dd5a158c1864242833ec224ee4c1" kindref="member">CoefficientFunction2D</ref> &gt;</type>
+        <definition>std::vector&lt;CoefficientFunction2D&gt; mtk::BCDescriptor2D::east_coefficients_</definition>
+        <argsstring></argsstring>
+        <name>east_coefficients_</name>
+        <briefdescription>
+<para>Coeffs. east. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="184" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" bodystart="184" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1BCDescriptor2D_1a263309b9ad288dc89826d818d9378d07" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__c07-mim__ops_1ga0322dd5a158c1864242833ec224ee4c1" kindref="member">CoefficientFunction2D</ref> &gt;</type>
+        <definition>std::vector&lt;CoefficientFunction2D&gt; mtk::BCDescriptor2D::south_coefficients_</definition>
+        <argsstring></argsstring>
+        <name>south_coefficients_</name>
+        <briefdescription>
+<para>Coeffs. south. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="185" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" bodystart="185" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1BCDescriptor2D_1a5429c040c034303dd92dcff554f9efad" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__c07-mim__ops_1ga0322dd5a158c1864242833ec224ee4c1" kindref="member">CoefficientFunction2D</ref> &gt;</type>
+        <definition>std::vector&lt;CoefficientFunction2D&gt; mtk::BCDescriptor2D::north_coefficients_</definition>
+        <argsstring></argsstring>
+        <name>north_coefficients_</name>
+        <briefdescription>
+<para>Coeffs. south. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="186" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" bodystart="186" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1BCDescriptor2D_1a98bfe7ea4256d0777a6b19d1701645db" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref>(*</type>
+        <definition>mtk::Real(* mtk::BCDescriptor2D::west_condition_)(Real xx, Real yy)</definition>
+        <argsstring>)(Real xx, Real yy)</argsstring>
+        <name>west_condition_</name>
+        <briefdescription>
+<para>Condition for west. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="188" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" bodystart="188" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1BCDescriptor2D_1ad63ffb74a62474e753e135324e6462d0" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref>(*</type>
+        <definition>mtk::Real(* mtk::BCDescriptor2D::east_condition_)(Real xx, Real yy)</definition>
+        <argsstring>)(Real xx, Real yy)</argsstring>
+        <name>east_condition_</name>
+        <briefdescription>
+<para>Condition for east. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="189" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" bodystart="189" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1BCDescriptor2D_1ae4e7cdb5e7007c5ab09b6c0efb329943" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref>(*</type>
+        <definition>mtk::Real(* mtk::BCDescriptor2D::south_condition_)(Real xx, Real yy)</definition>
+        <argsstring>)(Real xx, Real yy)</argsstring>
+        <name>south_condition_</name>
+        <briefdescription>
+<para>Condition for south. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="190" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" bodystart="190" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1BCDescriptor2D_1af3ecae6fedd3f3422e62b247ef5fea42" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref>(*</type>
+        <definition>mtk::Real(* mtk::BCDescriptor2D::north_condition_)(Real xx, Real yy)</definition>
+        <argsstring>)(Real xx, Real yy)</argsstring>
+        <name>north_condition_</name>
+        <briefdescription>
+<para>Condition for north. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="191" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" bodystart="191" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmtk_1_1BCDescriptor2D_1abbc3af29202dbfef203f4cafd9566fd0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::BCDescriptor2D::BCDescriptor2D</definition>
+        <argsstring>()</argsstring>
+        <name>BCDescriptor2D</name>
+        <briefdescription>
+<para>Default constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="96" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1BCDescriptor2D_1a8ca0aa779cf17f26f75e8b3cc98b6e30" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::BCDescriptor2D::~BCDescriptor2D</definition>
+        <argsstring>()</argsstring>
+        <name>~BCDescriptor2D</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="99" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1BCDescriptor2D_1ae8a93352a94efed52747b710e6ff7893" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::BCDescriptor2D::BCDescriptor2D</definition>
+        <argsstring>(const BCDescriptor2D &amp;desc)</argsstring>
+        <name>BCDescriptor2D</name>
         <param>
-          <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref> &amp;</type>
-          <declname>matrix</declname>
-        </param>
-        <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref>(*)(int ii, int jj)</type>
-          <declname>west</declname>
-        </param>
-        <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref>(*)(int ii, int jj)</type>
-          <declname>east</declname>
-        </param>
-        <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref>(*)(int ii, int jj)</type>
-          <declname>south</declname>
-        </param>
-        <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref>(*)(int ii, int jj)</type>
-          <declname>north</declname>
+          <type>const <ref refid="classmtk_1_1BCDescriptor2D" kindref="compound">BCDescriptor2D</ref> &amp;</type>
+          <declname>desc</declname>
         </param>
         <briefdescription>
-<para>Enforces the condition on the operator represented as matrix. </para>        </briefdescription>
+<para>Copy constructor. </para>        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername direction="inout">matrix</parametername>
+<parametername direction="in">desc</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Input operator. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">west</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Pointer to function returning west coefficient at (ii,jj). </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">east</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Pointer to function returning east coefficient at (ii,jj). </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">south</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Pointer to function returning south coefficient at (ii,jj). </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">north</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Pointer to function returning north coefficient at (ii,jj). </para></parameterdescription>
+<para>Given 2D descriptor. </para></parameterdescription>
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="77" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_bc_descriptor_2d.cc" bodystart="61" bodyend="77"/>
-        <references refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
-        <references refid="classmtk_1_1DenseMatrix_1a17d8d3b9cc0926044b6972dd190a5c21" compoundref="mtk__dense__matrix_8cc" startline="333" endline="336">mtk::DenseMatrix::num_rows</references>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="106" column="1"/>
       </memberdef>
-      <memberdef kind="function" id="classmtk_1_1BCDescriptor2D_1aedf1523832776e0fd0224919b2e36fb0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classmtk_1_1BCDescriptor2D_1a3da32ba89cfb15032bb1156394bad98c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::BCDescriptor2D::PushBackWestCoeff</definition>
+        <argsstring>(CoefficientFunction2D cw)</argsstring>
+        <name>PushBackWestCoeff</name>
+        <param>
+          <type><ref refid="group__c07-mim__ops_1ga0322dd5a158c1864242833ec224ee4c1" kindref="member">CoefficientFunction2D</ref></type>
+          <declname>cw</declname>
+        </param>
+        <briefdescription>
+<para>Push back coefficient function at west of lowest order diff. available. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">cw</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Function <formula id="45">$ c_w(x,y):\Omega\mapsto\mathbb{R} $</formula>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="113" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1BCDescriptor2D_1a27635428a6c36d1e305cafdc68271063" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::BCDescriptor2D::PushBackEastCoeff</definition>
+        <argsstring>(CoefficientFunction2D ce)</argsstring>
+        <name>PushBackEastCoeff</name>
+        <param>
+          <type><ref refid="group__c07-mim__ops_1ga0322dd5a158c1864242833ec224ee4c1" kindref="member">CoefficientFunction2D</ref></type>
+          <declname>ce</declname>
+        </param>
+        <briefdescription>
+<para>Push back coefficient function at east of lowest order diff. available. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">ce</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Function <formula id="46">$ c_e(x,y):\Omega\mapsto\mathbb{R} $</formula>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="120" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1BCDescriptor2D_1a9eb891f14c68968a0113632fa5fea630" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::BCDescriptor2D::PushBackSouthCoeff</definition>
+        <argsstring>(CoefficientFunction2D cs)</argsstring>
+        <name>PushBackSouthCoeff</name>
+        <param>
+          <type><ref refid="group__c07-mim__ops_1ga0322dd5a158c1864242833ec224ee4c1" kindref="member">CoefficientFunction2D</ref></type>
+          <declname>cs</declname>
+        </param>
+        <briefdescription>
+<para>Push back coefficient function south of lowest order diff. available. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">cs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Function <formula id="47">$ c_s(x,y):\Omega\mapsto\mathbb{R} $</formula>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="127" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1BCDescriptor2D_1a0fed58bd058d699a572888fe4b9934a4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::BCDescriptor2D::PushBackNorthCoeff</definition>
+        <argsstring>(CoefficientFunction2D cn)</argsstring>
+        <name>PushBackNorthCoeff</name>
+        <param>
+          <type><ref refid="group__c07-mim__ops_1ga0322dd5a158c1864242833ec224ee4c1" kindref="member">CoefficientFunction2D</ref></type>
+          <declname>cn</declname>
+        </param>
+        <briefdescription>
+<para>Push back coefficient function north of lowest order diff. available. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">cn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Function <formula id="45">$ c_w(x,y):\Omega\mapsto\mathbb{R} $</formula>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="134" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1BCDescriptor2D_1aa68984b82fa748dc51c0b448104f015f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::BCDescriptor2D::set_west_condition_</definition>
+        <argsstring>(mtk::Real(*west_condition_)(Real xx, Real yy))</argsstring>
+        <name>set_west_condition_</name>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref>(*)(<ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> xx, <ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> yy)</type>
+          <declname>west_condition_</declname>
+        </param>
+        <briefdescription>
+<para>Set boundary condition at west. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">west_condition_</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><formula id="48">$ \beta_w(x,y):\Omega\mapsto\mathbb{R} $</formula>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="141" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1BCDescriptor2D_1a2e555f1c7058522afdae45c372f36a33" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::BCDescriptor2D::set_east_condition_</definition>
+        <argsstring>(mtk::Real(*east_condition_)(Real xx, Real yy))</argsstring>
+        <name>set_east_condition_</name>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref>(*)(<ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> xx, <ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> yy)</type>
+          <declname>east_condition_</declname>
+        </param>
+        <briefdescription>
+<para>Set boundary condition at east. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">east_condition_</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><formula id="49">$ \beta_e(x,y):\Omega\mapsto\mathbb{R} $</formula>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="148" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1BCDescriptor2D_1ae7aaa690a6e0d972ea9380cc77bf7a73" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::BCDescriptor2D::set_south_condition_</definition>
+        <argsstring>(mtk::Real(*south_condition_)(Real xx, Real yy))</argsstring>
+        <name>set_south_condition_</name>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref>(*)(<ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> xx, <ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> yy)</type>
+          <declname>south_condition_</declname>
+        </param>
+        <briefdescription>
+<para>Set boundary condition at south. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">south_condition_</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><formula id="50">$ \beta_s(x,y):\Omega\mapsto\mathbb{R} $</formula>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="155" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1BCDescriptor2D_1ab9d25f5b0ca0826b9802874bcd741a9d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::BCDescriptor2D::set_north_condition_</definition>
+        <argsstring>(mtk::Real(*north_condition_)(Real xx, Real yy))</argsstring>
+        <name>set_north_condition_</name>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref>(*)(<ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> xx, <ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> yy)</type>
+          <declname>north_condition_</declname>
+        </param>
+        <briefdescription>
+<para>Set boundary condition at north. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">north_condition_</parametername>
+</parameternamelist>
+<parameterdescription>
+<para><formula id="51">$ \beta_n(x,y):\Omega\mapsto\mathbb{R} $</formula>. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="162" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1BCDescriptor2D_1abade249fa28783a5383a7c2aaf570ea9" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::BCDescriptor2D::ImposeOnLaplacianMatrix</definition>
+        <argsstring>(const UniStgGrid2D &amp;grid, DenseMatrix &amp;matrix) const </argsstring>
+        <name>ImposeOnLaplacianMatrix</name>
+        <param>
+          <type>const <ref refid="classmtk_1_1UniStgGrid2D" kindref="compound">UniStgGrid2D</ref> &amp;</type>
+          <declname>grid</declname>
+        </param>
+        <param>
+          <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref> &amp;</type>
+          <declname>matrix</declname>
+        </param>
+        <briefdescription>
+<para>Imposes the condition on the operator represented as matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">grid</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Grid upon which impose the desired boundary condition. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="inout">matrix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input Laplacian operator. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="170" column="1"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1BCDescriptor2D_1a5f0ff1fda1b5266dcd77ba2301c8ba2c" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void mtk::BCDescriptor2D::ImposeOnGrid</definition>
-        <argsstring>(UniStgGrid2D &amp;grid, Real(*west)(Real xx, Real yy), Real(*east)(Real xx, Real yy), Real(*south)(Real xx, Real yy), Real(*north)(Real xx, Real yy))</argsstring>
+        <argsstring>(UniStgGrid2D &amp;grid) const </argsstring>
         <name>ImposeOnGrid</name>
         <param>
           <type><ref refid="classmtk_1_1UniStgGrid2D" kindref="compound">UniStgGrid2D</ref> &amp;</type>
           <declname>grid</declname>
         </param>
-        <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref>(*)(<ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> xx, <ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> yy)</type>
-          <declname>west</declname>
-        </param>
-        <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref>(*)(<ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> xx, <ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> yy)</type>
-          <declname>east</declname>
-        </param>
-        <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref>(*)(<ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> xx, <ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> yy)</type>
-          <declname>south</declname>
-        </param>
-        <param>
-          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref>(*)(<ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> xx, <ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> yy)</type>
-          <declname>north</declname>
-        </param>
         <briefdescription>
-<para>Enforces the condition on the grid. </para>        </briefdescription>
+<para>Imposes the condition on the grid. </para>        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername direction="inout">matrix</parametername>
+<parametername direction="inout">grid</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Input operator. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">west</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Pointer to function returning west coefficient at (xx,yy). </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">east</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Pointer to function returning east coefficient at (xx,yy). </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">south</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Pointer to function returning south coefficient at (xx,yy). </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
-<parametername direction="in">north</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>Pointer to function returning north coefficient at (xx,yy). </para></parameterdescription>
+<para>Grid upon which impose the desired boundary condition. </para></parameterdescription>
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="92" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_bc_descriptor_2d.cc" bodystart="79" bodyend="95"/>
-        <references refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1a2d182866a398aba8e4829590e85bf939" compoundref="mtk__uni__stg__grid__2d_8cc" startline="220" endline="223">mtk::UniStgGrid2D::num_cells_x</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1aed05a801cc9a76dba0ff203cea58a61a" compoundref="mtk__uni__stg__grid__2d_8cc" startline="240" endline="243">mtk::UniStgGrid2D::num_cells_y</references>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="178" column="1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -153,15 +441,56 @@
     <detaileddescription>
     </detaileddescription>
     <collaborationgraph>
-      <node id="63">
+      <node id="69">
+        <label>T</label>
+      </node>
+      <node id="68">
+        <label>std::vector&lt; T &gt;</label>
+        <childnode refid="69" relation="usage">
+          <edgelabel>+elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="66">
         <label>mtk::BCDescriptor2D</label>
         <link refid="classmtk_1_1BCDescriptor2D"/>
+        <childnode refid="67" relation="usage">
+          <edgelabel>-east_coefficients_</edgelabel>
+          <edgelabel>-west_coefficients_</edgelabel>
+          <edgelabel>-south_coefficients_</edgelabel>
+          <edgelabel>-north_coefficients_</edgelabel>
+        </childnode>
+      </node>
+      <node id="67">
+        <label>std::vector&lt; CoefficientFunction2D &gt;</label>
+        <childnode refid="68" relation="template-instance">
+          <edgelabel>&lt; CoefficientFunction2D &gt;</edgelabel>
+        </childnode>
       </node>
     </collaborationgraph>
-    <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="66" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" bodystart="66" bodyend="97"/>
+    <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="93" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" bodystart="93" bodyend="192"/>
     <listofallmembers>
-      <member refid="classmtk_1_1BCDescriptor2D_1aedf1523832776e0fd0224919b2e36fb0" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>ImposeOnGrid</name></member>
-      <member refid="classmtk_1_1BCDescriptor2D_1a55617743d19ee506f768089716a1c381" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>ImposeOnLaplacianMatrix</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1abbc3af29202dbfef203f4cafd9566fd0" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>BCDescriptor2D</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1ae8a93352a94efed52747b710e6ff7893" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>BCDescriptor2D</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1a1f90fc303984bf18c136a34896bbb7c9" prot="private" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>east_coefficients_</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1ad63ffb74a62474e753e135324e6462d0" prot="private" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>east_condition_</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1af6dad4b8fe09597f25a710b1aec40a48" prot="private" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>highest_order_differentiation_</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1a5f0ff1fda1b5266dcd77ba2301c8ba2c" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>ImposeOnGrid</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1abade249fa28783a5383a7c2aaf570ea9" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>ImposeOnLaplacianMatrix</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1a5429c040c034303dd92dcff554f9efad" prot="private" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>north_coefficients_</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1af3ecae6fedd3f3422e62b247ef5fea42" prot="private" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>north_condition_</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1a27635428a6c36d1e305cafdc68271063" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>PushBackEastCoeff</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1a0fed58bd058d699a572888fe4b9934a4" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>PushBackNorthCoeff</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1a9eb891f14c68968a0113632fa5fea630" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>PushBackSouthCoeff</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1a3da32ba89cfb15032bb1156394bad98c" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>PushBackWestCoeff</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1a2e555f1c7058522afdae45c372f36a33" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>set_east_condition_</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1ab9d25f5b0ca0826b9802874bcd741a9d" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>set_north_condition_</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1ae7aaa690a6e0d972ea9380cc77bf7a73" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>set_south_condition_</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1aa68984b82fa748dc51c0b448104f015f" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>set_west_condition_</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1a263309b9ad288dc89826d818d9378d07" prot="private" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>south_coefficients_</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1ae4e7cdb5e7007c5ab09b6c0efb329943" prot="private" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>south_condition_</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1a7df71b43acc25c468683075cc7790bb2" prot="private" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>west_coefficients_</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1a98bfe7ea4256d0777a6b19d1701645db" prot="private" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>west_condition_</name></member>
+      <member refid="classmtk_1_1BCDescriptor2D_1a8ca0aa779cf17f26f75e8b3cc98b6e30" prot="public" virt="non-virtual"><scope>mtk::BCDescriptor2D</scope><name>~BCDescriptor2D</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

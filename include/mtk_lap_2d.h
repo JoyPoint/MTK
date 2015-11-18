@@ -92,14 +92,14 @@ class Lap2D {
 
   \return The operator as a dense matrix.
   */
-  DenseMatrix ReturnAsDenseMatrix();
+  DenseMatrix ReturnAsDenseMatrix() const;
 
   /*!
   \brief Return the operator as a dense array.
 
   \return The operator as a dense array.
   */
-  mtk::Real* data();
+  Real *data() const;
 
  private:
   DenseMatrix laplacian_;  ///< Actual operator.

@@ -1,5 +1,25 @@
 var classmtk_1_1BCDescriptor2D =
 [
-    [ "ImposeOnGrid", "classmtk_1_1BCDescriptor2D.html#aedf1523832776e0fd0224919b2e36fb0", null ],
-    [ "ImposeOnLaplacianMatrix", "classmtk_1_1BCDescriptor2D.html#a55617743d19ee506f768089716a1c381", null ]
+    [ "BCDescriptor2D", "classmtk_1_1BCDescriptor2D.html#abbc3af29202dbfef203f4cafd9566fd0", null ],
+    [ "~BCDescriptor2D", "classmtk_1_1BCDescriptor2D.html#a8ca0aa779cf17f26f75e8b3cc98b6e30", null ],
+    [ "BCDescriptor2D", "classmtk_1_1BCDescriptor2D.html#ae8a93352a94efed52747b710e6ff7893", null ],
+    [ "ImposeOnGrid", "classmtk_1_1BCDescriptor2D.html#a5f0ff1fda1b5266dcd77ba2301c8ba2c", null ],
+    [ "ImposeOnLaplacianMatrix", "classmtk_1_1BCDescriptor2D.html#abade249fa28783a5383a7c2aaf570ea9", null ],
+    [ "PushBackEastCoeff", "classmtk_1_1BCDescriptor2D.html#a27635428a6c36d1e305cafdc68271063", null ],
+    [ "PushBackNorthCoeff", "classmtk_1_1BCDescriptor2D.html#a0fed58bd058d699a572888fe4b9934a4", null ],
+    [ "PushBackSouthCoeff", "classmtk_1_1BCDescriptor2D.html#a9eb891f14c68968a0113632fa5fea630", null ],
+    [ "PushBackWestCoeff", "classmtk_1_1BCDescriptor2D.html#a3da32ba89cfb15032bb1156394bad98c", null ],
+    [ "set_east_condition_", "classmtk_1_1BCDescriptor2D.html#a2e555f1c7058522afdae45c372f36a33", null ],
+    [ "set_north_condition_", "classmtk_1_1BCDescriptor2D.html#ab9d25f5b0ca0826b9802874bcd741a9d", null ],
+    [ "set_south_condition_", "classmtk_1_1BCDescriptor2D.html#ae7aaa690a6e0d972ea9380cc77bf7a73", null ],
+    [ "set_west_condition_", "classmtk_1_1BCDescriptor2D.html#aa68984b82fa748dc51c0b448104f015f", null ],
+    [ "east_coefficients_", "classmtk_1_1BCDescriptor2D.html#a1f90fc303984bf18c136a34896bbb7c9", null ],
+    [ "east_condition_", "classmtk_1_1BCDescriptor2D.html#ad63ffb74a62474e753e135324e6462d0", null ],
+    [ "highest_order_differentiation_", "classmtk_1_1BCDescriptor2D.html#af6dad4b8fe09597f25a710b1aec40a48", null ],
+    [ "north_coefficients_", "classmtk_1_1BCDescriptor2D.html#a5429c040c034303dd92dcff554f9efad", null ],
+    [ "north_condition_", "classmtk_1_1BCDescriptor2D.html#af3ecae6fedd3f3422e62b247ef5fea42", null ],
+    [ "south_coefficients_", "classmtk_1_1BCDescriptor2D.html#a263309b9ad288dc89826d818d9378d07", null ],
+    [ "south_condition_", "classmtk_1_1BCDescriptor2D.html#ae4e7cdb5e7007c5ab09b6c0efb329943", null ],
+    [ "west_coefficients_", "classmtk_1_1BCDescriptor2D.html#a7df71b43acc25c468683075cc7790bb2", null ],
+    [ "west_condition_", "classmtk_1_1BCDescriptor2D.html#a98bfe7ea4256d0777a6b19d1701645db", null ]
 ];

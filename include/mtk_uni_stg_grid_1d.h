@@ -132,13 +132,17 @@ class UniStgGrid1D {
   \brief Provides access to the grid spatial data.
 
   \return Pointer to the spatial data.
+
+  \todo Review const-correctness of the pointer we return.
   */
-  Real *discrete_domain_x();
+  const Real *discrete_domain_x() const;
 
   /*!
   \brief Provides access to the grid field data.
 
   \return Pointer to the field data.
+
+  \todo Review const-correctness of the pointer we return. Look at the STL!
   */
   Real *discrete_field_u();
 
@@ -182,7 +186,7 @@ class UniStgGrid1D {
   */
   bool WriteToFile(std::string filename,
                    std::string space_name,
-                   std::string field_name);
+                   std::string field_name) const;
 
  private:
   FieldNature nature_;  ///< Nature of the discrete field.
@@ -193,7 +197,7 @@ class UniStgGrid1D {
   Real west_bndy_x_;  ///< West boundary spatial coordinate.
   Real east_bndy_x_;  ///< East boundary spatial coordinate.
   Real num_cells_x_;  ///< Number of cells discretizing the domain.
-  Real delta_x_;      ///< Produced \f$ \Delta x\f$.
+  Real delta_x_;      ///< Produced \f$ \Delta x \f$.
 };
 }
 #endif  // End of: MTK_INCLUDE_UNI_STG_GRID_1D_H_

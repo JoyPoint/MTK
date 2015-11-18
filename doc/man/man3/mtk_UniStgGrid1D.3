@@ -1,4 +1,4 @@
-.TH "mtk::UniStgGrid1D" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::UniStgGrid1D" 3 "Wed Nov 18 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -43,7 +43,7 @@ Uniform 1D Staggered Grid\&.
 .br
 .RI "\fIProvides access to the computed $  x $\&. \fP"
 .ti -1c
-.RI "\fBReal\fP * \fBdiscrete_domain_x\fP ()"
+.RI "const \fBReal\fP * \fBdiscrete_domain_x\fP () const "
 .br
 .RI "\fIProvides access to the grid spatial data\&. \fP"
 .ti -1c
@@ -63,7 +63,7 @@ Uniform 1D Staggered Grid\&.
 .br
 .RI "\fIBinds a given vector field to the grid\&. \fP"
 .ti -1c
-.RI "bool \fBWriteToFile\fP (std::string filename, std::string space_name, std::string field_name)"
+.RI "bool \fBWriteToFile\fP (std::string filename, std::string space_name, std::string field_name) const "
 .br
 .RI "\fIWrites grid to a file compatible with gnuplot 4\&.6\&. \fP"
 .in -1c
@@ -97,7 +97,7 @@ Uniform 1D Staggered Grid\&.
 .ti -1c
 .RI "\fBReal\fP \fBdelta_x_\fP"
 .br
-.RI "\fIProduced $ \Delta x$\&. \fP"
+.RI "\fIProduced $ \Delta x $\&. \fP"
 .in -1c
 .SS "Friends"
 
@@ -203,12 +203,17 @@ Computed $  x $\&.
 
 .PP
 Definition at line 156 of file mtk_uni_stg_grid_1d\&.cc\&.
-.SS "\fBmtk::Real\fP * mtk::UniStgGrid1D::discrete_domain_x ()"
+.SS "const \fBmtk::Real\fP * mtk::UniStgGrid1D::discrete_domain_x () const"
 
 .PP
 \fBReturns:\fP
 .RS 4
-Pointer to the spatial data\&. 
+Pointer to the spatial data\&.
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+Review const-correctness of the pointer we return\&. 
 .RE
 .PP
 
@@ -219,7 +224,12 @@ Definition at line 161 of file mtk_uni_stg_grid_1d\&.cc\&.
 .PP
 \fBReturns:\fP
 .RS 4
-Pointer to the field data\&. 
+Pointer to the field data\&.
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+Review const-correctness of the pointer we return\&. Look at the STL! 
 .RE
 .PP
 
@@ -258,7 +268,7 @@ West boundary spatial coordinate\&.
 
 .PP
 Definition at line 146 of file mtk_uni_stg_grid_1d\&.cc\&.
-.SS "bool mtk::UniStgGrid1D::WriteToFile (std::stringfilename, std::stringspace_name, std::stringfield_name)"
+.SS "bool mtk::UniStgGrid1D::WriteToFile (std::stringfilename, std::stringspace_name, std::stringfield_name) const"
 
 .PP
 \fBParameters:\fP
@@ -300,31 +310,31 @@ Definition at line 68 of file mtk_uni_stg_grid_1d\&.cc\&.
 .SS "\fBReal\fP mtk::UniStgGrid1D::delta_x_\fC [private]\fP"
 
 .PP
-Definition at line 196 of file mtk_uni_stg_grid_1d\&.h\&.
+Definition at line 200 of file mtk_uni_stg_grid_1d\&.h\&.
 .SS "std::vector<\fBReal\fP> mtk::UniStgGrid1D::discrete_domain_x_\fC [private]\fP"
 
 .PP
-Definition at line 190 of file mtk_uni_stg_grid_1d\&.h\&.
+Definition at line 194 of file mtk_uni_stg_grid_1d\&.h\&.
 .SS "std::vector<\fBReal\fP> mtk::UniStgGrid1D::discrete_field_u_\fC [private]\fP"
 
 .PP
-Definition at line 191 of file mtk_uni_stg_grid_1d\&.h\&.
+Definition at line 195 of file mtk_uni_stg_grid_1d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid1D::east_bndy_x_\fC [private]\fP"
 
 .PP
-Definition at line 194 of file mtk_uni_stg_grid_1d\&.h\&.
+Definition at line 198 of file mtk_uni_stg_grid_1d\&.h\&.
 .SS "\fBFieldNature\fP mtk::UniStgGrid1D::nature_\fC [private]\fP"
 
 .PP
-Definition at line 188 of file mtk_uni_stg_grid_1d\&.h\&.
+Definition at line 192 of file mtk_uni_stg_grid_1d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid1D::num_cells_x_\fC [private]\fP"
 
 .PP
-Definition at line 195 of file mtk_uni_stg_grid_1d\&.h\&.
+Definition at line 199 of file mtk_uni_stg_grid_1d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid1D::west_bndy_x_\fC [private]\fP"
 
 .PP
-Definition at line 193 of file mtk_uni_stg_grid_1d\&.h\&.
+Definition at line 197 of file mtk_uni_stg_grid_1d\&.h\&.
 
 .SH "Author"
 .PP 

@@ -51,43 +51,5 @@
 00055 \textcolor{comment}{*/}
 00056 
 00057 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
-00058 
-00059 \textcolor{preprocessor}{#include "\hyperlink{mtk__bc__descriptor__2d_8h}{mtk\_bc\_descriptor\_2d.h}"}
-00060 
-\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00061}{}\hyperlink{classmtk_1_1BCDescriptor2D_a55617743d19ee506f768089716a1c381}{00061} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a55617743d19ee506f768089716a1c381}{mtk::BCDescriptor2D::ImposeOnLaplacianMatrix}(
-00062     \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &matrix,
-00063     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*west)(\textcolor{keywordtype}{int} ii, \textcolor{keywordtype}{int} jj),
-00064     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*east)(\textcolor{keywordtype}{int} ii, \textcolor{keywordtype}{int} jj),
-00065     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*south)(\textcolor{keywordtype}{int} ii, \textcolor{keywordtype}{int} jj),
-00066     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*north)(\textcolor{keywordtype}{int} ii, \textcolor{keywordtype}{int} jj)) \{
-00067 
-00068 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00069   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(matrix.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00070   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(west == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00071   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(east == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00072   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(south == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00073   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(north == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00074 \textcolor{preprocessor}{  #endif}
-00075 
-00076 
-00077 \}
-00078 
-\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00079}{}\hyperlink{classmtk_1_1BCDescriptor2D_aedf1523832776e0fd0224919b2e36fb0}{00079} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_aedf1523832776e0fd0224919b2e36fb0}{mtk::BCDescriptor2D::ImposeOnGrid}(\textcolor{keyword}{const} 
-      \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &grid,
-00080     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*west)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy),
-00081     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*east)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy),
-00082     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*south)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy),
-00083     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*north)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy)) \{
-00084 
-00085 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00086   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00087   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(grid.\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00088   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(west == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00089   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(east == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00090   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(south == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00091   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(north == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00092 \textcolor{preprocessor}{  #endif}
-00093 
-00094 
-00095 \}
+00058 \textcolor{preprocessor}{#include "\hyperlink{mtk__bc__descriptor__2d_8h}{mtk\_bc\_descriptor\_2d.h}"}
 \end{DoxyCode}

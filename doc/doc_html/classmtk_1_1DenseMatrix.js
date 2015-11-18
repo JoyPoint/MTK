@@ -19,7 +19,7 @@ var classmtk_1_1DenseMatrix =
     [ "SetOrdering", "classmtk_1_1DenseMatrix.html#aacae136ae446cad8f0d81476e83efb39", null ],
     [ "SetValue", "classmtk_1_1DenseMatrix.html#ae0f873a6d3a734da467cafb817da64ae", null ],
     [ "Transpose", "classmtk_1_1DenseMatrix.html#a71d9c07ca66e88d97d1fd5012f43138b", null ],
-    [ "WriteToFile", "classmtk_1_1DenseMatrix.html#aedead04ae21c5d66428b84da3dac943a", null ],
+    [ "WriteToFile", "classmtk_1_1DenseMatrix.html#a783d5ea89262d4e2eeb14b9c1ecd0063", null ],
     [ "operator<<", "classmtk_1_1DenseMatrix.html#adbcc850ef373550f634f563573a31d28", null ],
     [ "data_", "classmtk_1_1DenseMatrix.html#a7893e4e5c8d2e2de32b156177e78cb6f", null ],
     [ "matrix_properties_", "classmtk_1_1DenseMatrix.html#a481c8d09af685a5ba67acefdcaa810cc", null ]

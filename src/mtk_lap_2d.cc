@@ -107,12 +107,12 @@ bool mtk::Lap2D::ConstructLap2D(const mtk::UniStgGrid2D &grid,
   return info;
 }
 
-mtk::DenseMatrix mtk::Lap2D::ReturnAsDenseMatrix() {
+mtk::DenseMatrix mtk::Lap2D::ReturnAsDenseMatrix() const {
 
   return laplacian_;
 }
 
-mtk::Real* mtk::Lap2D::data() {
+mtk::Real *mtk::Lap2D::data() const {
 
   return laplacian_.data();
 }

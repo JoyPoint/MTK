@@ -359,7 +359,7 @@ mtk::DenseMatrix mtk::Grad1D::mim_bndy() const {
 
 mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(mtk::Real west,
                                                   mtk::Real east,
-                                                  int num_cells_x) {
+                                                  int num_cells_x) const {
 
   int nn{num_cells_x}; // Number of cells on the grid.
 
@@ -425,7 +425,8 @@ mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(mtk::Real west,
   return out;
 }
 
-mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
+mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(
+  const UniStgGrid1D &grid) const {
 
   int nn{grid.num_cells_x()}; // Number of cells on the grid.
 
@@ -488,7 +489,8 @@ mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
   return out;
 }
 
-mtk::DenseMatrix mtk::Grad1D::ReturnAsDimensionlessDenseMatrix(int num_cells_x) {
+mtk::DenseMatrix mtk::Grad1D::ReturnAsDimensionlessDenseMatrix(
+  int num_cells_x) const {
 
   int nn{num_cells_x}; // Number of cells on the grid.
 

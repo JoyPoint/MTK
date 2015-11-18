@@ -338,14 +338,14 @@
 <codeline lineno="182"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
 <codeline lineno="183"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="184"><highlight class="normal"></highlight></codeline>
-<codeline lineno="185"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>grad_m(grad.<ref refid="classmtk_1_1Grad1D_1a4218516bfb43f683559322ea97058c78" kindref="member">ReturnAsDenseMatrix</ref>(aux));</highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>grad_m(grad.<ref refid="classmtk_1_1Grad1D_1a77b2eddbe4ab03f469306c604d505b1a" kindref="member">ReturnAsDenseMatrix</ref>(aux));</highlight></codeline>
 <codeline lineno="186"><highlight class="normal"></highlight></codeline>
 <codeline lineno="187"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#if<sp/>MTK_DEBUG_LEVEL<sp/>&gt;<sp/>0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="188"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;grad_m<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
 <codeline lineno="189"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>grad_m<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
 <codeline lineno="190"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="191"><highlight class="normal"></highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>div_m(div.<ref refid="classmtk_1_1Div1D_1afdbb1e11f05dd77b882f36426229acf7" kindref="member">ReturnAsDenseMatrix</ref>(aux));</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>div_m(div.<ref refid="classmtk_1_1Div1D_1a213fddbaaf86e4840c6a9649b69c2d49" kindref="member">ReturnAsDenseMatrix</ref>(aux));</highlight></codeline>
 <codeline lineno="193"><highlight class="normal"></highlight></codeline>
 <codeline lineno="194"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#if<sp/>MTK_DEBUG_LEVEL<sp/>&gt;<sp/>0</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="195"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;div_m<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
@@ -409,72 +409,73 @@
 <codeline lineno="262"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/></highlight><highlight class="keyword">true</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="263"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="264"><highlight class="normal"></highlight></codeline>
-<codeline lineno="265" refid="classmtk_1_1Lap1D_1a28672c735fa0d13e6204795b63aec4e2" refkind="member"><highlight class="normal"><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/><ref refid="classmtk_1_1Lap1D_1a28672c735fa0d13e6204795b63aec4e2" kindref="member">mtk::Lap1D::ReturnAsDenseMatrix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;grid)<sp/>{</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"></highlight></codeline>
-<codeline lineno="267"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nn{grid.<ref refid="classmtk_1_1UniStgGrid1D_1af1b3729d8afa07be5b2775ed68015b80" kindref="member">num_cells_x</ref>()};<sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>cells<sp/>on<sp/>the<sp/>grid.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="268"><highlight class="normal"></highlight></codeline>
-<codeline lineno="269"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#if<sp/>MTK_DEBUG_LEVEL<sp/>&gt;<sp/>0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="270"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" kindref="member">mtk::Tools::Prevent</ref>(nn<sp/>&lt;=<sp/>0,<sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
-<codeline lineno="271"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" kindref="member">mtk::Tools::Prevent</ref>(nn<sp/>&lt;<sp/>3*order_accuracy_<sp/>-<sp/>1,<sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
-<codeline lineno="272"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="273"><highlight class="normal"></highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>lap(nn<sp/>+<sp/>2,<sp/>nn<sp/>+<sp/>2);<sp/></highlight><highlight class="comment">//<sp/>Laplacian<sp/>matrix<sp/>to<sp/>be<sp/>returned.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="275"><highlight class="normal"></highlight></codeline>
-<codeline lineno="276"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>idx{<ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>/(grid.<ref refid="classmtk_1_1UniStgGrid1D_1a6e7173b01241632cf509496d66b9f74c" kindref="member">delta_x</ref>()*grid.<ref refid="classmtk_1_1UniStgGrid1D_1a6e7173b01241632cf509496d66b9f74c" kindref="member">delta_x</ref>())};<sp/></highlight><highlight class="comment">//<sp/>Inverse<sp/>of<sp/>dx^2.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="277"><highlight class="normal"></highlight></codeline>
-<codeline lineno="279"><highlight class="normal"></highlight></codeline>
-<codeline lineno="280"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>offset<sp/>=<sp/>(1<sp/>+<sp/>2*order_accuracy_<sp/>-<sp/>1);</highlight></codeline>
-<codeline lineno="281"><highlight class="normal"></highlight></codeline>
-<codeline lineno="282"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>0;<sp/>ii<sp/>&lt;<sp/>order_accuracy_<sp/>-<sp/>1;<sp/>++ii)<sp/>{</highlight></codeline>
-<codeline lineno="283"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>jj<sp/>=<sp/>0;<sp/>jj<sp/>&lt;<sp/>2*order_accuracy_;<sp/>++jj)<sp/>{</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>lap.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(1<sp/>+<sp/>ii,</highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jj,</highlight></codeline>
-<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idx*laplacian_[offset<sp/>+<sp/>ii*2*order_accuracy_<sp/>+<sp/>jj]);</highlight></codeline>
-<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="288"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="289"><highlight class="normal"></highlight></codeline>
-<codeline lineno="291"><highlight class="normal"></highlight></codeline>
-<codeline lineno="292"><highlight class="normal"><sp/><sp/>offset<sp/>=<sp/>1<sp/>+<sp/>(order_accuracy_<sp/>-<sp/>1);</highlight></codeline>
-<codeline lineno="293"><highlight class="normal"></highlight></codeline>
-<codeline lineno="294"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>kk{1};</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>order_accuracy_;<sp/>ii<sp/>&lt;=<sp/>nn<sp/>-<sp/>(order_accuracy_<sp/>-<sp/>1);<sp/>++ii)<sp/>{</highlight></codeline>
-<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mm{1};</highlight></codeline>
-<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>jj<sp/>=<sp/>0;<sp/>jj<sp/>&lt;<sp/>2*order_accuracy_<sp/>-<sp/>1;<sp/>++jj)<sp/>{</highlight></codeline>
-<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>lap.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(ii,<sp/>jj<sp/>+<sp/>kk,<sp/>idx*laplacian_[mm]);</highlight></codeline>
-<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mm<sp/>=<sp/>mm<sp/>+<sp/>1;</highlight></codeline>
-<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>kk<sp/>=<sp/>kk<sp/>+<sp/>1;</highlight></codeline>
-<codeline lineno="302"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="303"><highlight class="normal"></highlight></codeline>
-<codeline lineno="305"><highlight class="normal"></highlight></codeline>
-<codeline lineno="306"><highlight class="normal"><sp/><sp/>offset<sp/>=<sp/>(1<sp/>+<sp/>2*order_accuracy_<sp/>-<sp/>1);</highlight></codeline>
-<codeline lineno="307"><highlight class="normal"></highlight></codeline>
-<codeline lineno="308"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>aux<sp/>=<sp/>order_accuracy_<sp/>+<sp/>(nn<sp/>-<sp/>2*(order_accuracy_<sp/>-<sp/>1));</highlight></codeline>
-<codeline lineno="309"><highlight class="normal"></highlight></codeline>
-<codeline lineno="310"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ll<sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="311"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>rr<sp/>=<sp/>1;</highlight></codeline>
-<codeline lineno="312"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>nn;<sp/>ii<sp/>&gt;<sp/>aux<sp/>-<sp/>1;<sp/>--ii)<sp/>{</highlight></codeline>
-<codeline lineno="313"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>cc<sp/>=<sp/>0;</highlight></codeline>
-<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>jj<sp/>=<sp/>nn<sp/>+<sp/>2<sp/>-<sp/>1;<sp/>jj<sp/>&gt;=<sp/>(nn<sp/>+<sp/>2)<sp/>-<sp/>2*order_accuracy_;<sp/>--jj)<sp/>{</highlight></codeline>
-<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>lap.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(ii,<sp/>jj,<sp/>lap.<ref refid="classmtk_1_1DenseMatrix_1a87fb785713c04b13767947cc3325ce7c" kindref="member">GetValue</ref>(rr,cc));</highlight></codeline>
-<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>++ll;</highlight></codeline>
-<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>++cc;</highlight></codeline>
-<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
-<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>rr++;</highlight></codeline>
-<codeline lineno="320"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="321"><highlight class="normal"></highlight></codeline>
-<codeline lineno="328"><highlight class="normal"></highlight></codeline>
-<codeline lineno="329"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lap;</highlight></codeline>
-<codeline lineno="330"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="331"><highlight class="normal"></highlight></codeline>
-<codeline lineno="332" refid="classmtk_1_1Lap1D_1a8c3151d792efbe69f34cbb9b5ea870e9" refkind="member"><highlight class="normal"><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref>*<sp/><ref refid="classmtk_1_1Lap1D_1a8c3151d792efbe69f34cbb9b5ea870e9" kindref="member">mtk::Lap1D::data</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;grid)<sp/>{</highlight></codeline>
-<codeline lineno="333"><highlight class="normal"></highlight></codeline>
-<codeline lineno="334"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>tmp;</highlight></codeline>
-<codeline lineno="335"><highlight class="normal"></highlight></codeline>
-<codeline lineno="336"><highlight class="normal"><sp/><sp/>tmp<sp/>=<sp/>ReturnAsDenseMatrix(grid);</highlight></codeline>
-<codeline lineno="337"><highlight class="normal"></highlight></codeline>
-<codeline lineno="338"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tmp.<ref refid="classmtk_1_1DenseMatrix_1a16b3ff56feb2658b9fc7147d1de4d8e7" kindref="member">data</ref>();</highlight></codeline>
-<codeline lineno="339"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="265" refid="classmtk_1_1Lap1D_1aaea34a17b0879e05eb4109645a2ba8f4" refkind="member"><highlight class="normal"><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/><ref refid="classmtk_1_1Lap1D_1aaea34a17b0879e05eb4109645a2ba8f4" kindref="member">mtk::Lap1D::ReturnAsDenseMatrix</ref>(</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;grid)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"></highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nn{grid.<ref refid="classmtk_1_1UniStgGrid1D_1af1b3729d8afa07be5b2775ed68015b80" kindref="member">num_cells_x</ref>()};<sp/><sp/></highlight><highlight class="comment">//<sp/>Number<sp/>of<sp/>cells<sp/>on<sp/>the<sp/>grid.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="269"><highlight class="normal"></highlight></codeline>
+<codeline lineno="270"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#if<sp/>MTK_DEBUG_LEVEL<sp/>&gt;<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="271"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" kindref="member">mtk::Tools::Prevent</ref>(nn<sp/>&lt;=<sp/>0,<sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="272"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" kindref="member">mtk::Tools::Prevent</ref>(nn<sp/>&lt;<sp/>3*order_accuracy_<sp/>-<sp/>1,<sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="273"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>lap(nn<sp/>+<sp/>2,<sp/>nn<sp/>+<sp/>2);<sp/></highlight><highlight class="comment">//<sp/>Laplacian<sp/>matrix<sp/>to<sp/>be<sp/>returned.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"></highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>idx{<ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>/(grid.<ref refid="classmtk_1_1UniStgGrid1D_1a6e7173b01241632cf509496d66b9f74c" kindref="member">delta_x</ref>()*grid.<ref refid="classmtk_1_1UniStgGrid1D_1a6e7173b01241632cf509496d66b9f74c" kindref="member">delta_x</ref>())};<sp/></highlight><highlight class="comment">//<sp/>Inverse<sp/>of<sp/>dx^2.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="281"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>offset<sp/>=<sp/>(1<sp/>+<sp/>2*order_accuracy_<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"></highlight></codeline>
+<codeline lineno="283"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>0;<sp/>ii<sp/>&lt;<sp/>order_accuracy_<sp/>-<sp/>1;<sp/>++ii)<sp/>{</highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>jj<sp/>=<sp/>0;<sp/>jj<sp/>&lt;<sp/>2*order_accuracy_;<sp/>++jj)<sp/>{</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>lap.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(1<sp/>+<sp/>ii,</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>jj,</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>idx*laplacian_[offset<sp/>+<sp/>ii*2*order_accuracy_<sp/>+<sp/>jj]);</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="290"><highlight class="normal"></highlight></codeline>
+<codeline lineno="292"><highlight class="normal"></highlight></codeline>
+<codeline lineno="293"><highlight class="normal"><sp/><sp/>offset<sp/>=<sp/>1<sp/>+<sp/>(order_accuracy_<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="294"><highlight class="normal"></highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>kk{1};</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>order_accuracy_;<sp/>ii<sp/>&lt;=<sp/>nn<sp/>-<sp/>(order_accuracy_<sp/>-<sp/>1);<sp/>++ii)<sp/>{</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mm{1};</highlight></codeline>
+<codeline lineno="298"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>jj<sp/>=<sp/>0;<sp/>jj<sp/>&lt;<sp/>2*order_accuracy_<sp/>-<sp/>1;<sp/>++jj)<sp/>{</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>lap.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(ii,<sp/>jj<sp/>+<sp/>kk,<sp/>idx*laplacian_[mm]);</highlight></codeline>
+<codeline lineno="300"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>mm<sp/>=<sp/>mm<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/><sp/><sp/>kk<sp/>=<sp/>kk<sp/>+<sp/>1;</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="306"><highlight class="normal"></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/>offset<sp/>=<sp/>(1<sp/>+<sp/>2*order_accuracy_<sp/>-<sp/>1);</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>aux<sp/>=<sp/>order_accuracy_<sp/>+<sp/>(nn<sp/>-<sp/>2*(order_accuracy_<sp/>-<sp/>1));</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"></highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ll<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>rr<sp/>=<sp/>1;</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>nn;<sp/>ii<sp/>&gt;<sp/>aux<sp/>-<sp/>1;<sp/>--ii)<sp/>{</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>cc<sp/>=<sp/>0;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>jj<sp/>=<sp/>nn<sp/>+<sp/>2<sp/>-<sp/>1;<sp/>jj<sp/>&gt;=<sp/>(nn<sp/>+<sp/>2)<sp/>-<sp/>2*order_accuracy_;<sp/>--jj)<sp/>{</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>lap.<ref refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" kindref="member">SetValue</ref>(ii,<sp/>jj,<sp/>lap.<ref refid="classmtk_1_1DenseMatrix_1a87fb785713c04b13767947cc3325ce7c" kindref="member">GetValue</ref>(rr,cc));</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>++ll;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>++cc;</highlight></codeline>
+<codeline lineno="319"><highlight class="normal"><sp/><sp/><sp/><sp/>}</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/><sp/><sp/>rr++;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="322"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329"><highlight class="normal"></highlight></codeline>
+<codeline lineno="330"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lap;</highlight></codeline>
+<codeline lineno="331"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="332"><highlight class="normal"></highlight></codeline>
+<codeline lineno="333" refid="classmtk_1_1Lap1D_1ab2652725a8407c79247680c7bbd073b8" refkind="member"><highlight class="normal"></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref>*<sp/><ref refid="classmtk_1_1Lap1D_1ab2652725a8407c79247680c7bbd073b8" kindref="member">mtk::Lap1D::data</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;grid)</highlight><highlight class="keyword"><sp/>const<sp/></highlight><highlight class="normal">{</highlight></codeline>
+<codeline lineno="334"><highlight class="normal"></highlight></codeline>
+<codeline lineno="335"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>tmp;</highlight></codeline>
+<codeline lineno="336"><highlight class="normal"></highlight></codeline>
+<codeline lineno="337"><highlight class="normal"><sp/><sp/>tmp<sp/>=<sp/>ReturnAsDenseMatrix(grid);</highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>tmp.<ref refid="classmtk_1_1DenseMatrix_1a16b3ff56feb2658b9fc7147d1de4d8e7" kindref="member">data</ref>();</highlight></codeline>
+<codeline lineno="340"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/home/esanchez/Dropbox/MTK/src/mtk_lap_1d.cc"/>
   </compounddef>

@@ -1,15 +1,14 @@
 var searchData=
 [
-  ['kcriticalorderaccuracydiv',['kCriticalOrderAccuracyDiv',['../group__c01-roots.html#ga0898eef2108473e44a5223932d571c31',1,'mtk']]],
-  ['kcriticalorderaccuracygrad',['kCriticalOrderAccuracyGrad',['../group__c01-roots.html#ga295dd2f403c775ecd942c22b5a777496',1,'mtk']]],
-  ['kdefaultmimeticthreshold',['kDefaultMimeticThreshold',['../group__c01-roots.html#ga35718d949bdc81a08a9cc8ebbe3478a2',1,'mtk']]],
-  ['kdefaultorderaccuracy',['kDefaultOrderAccuracy',['../group__c01-roots.html#ga0d95560098eb36420511103637b6952f',1,'mtk']]],
-  ['kdefaulttolerance',['kDefaultTolerance',['../group__c01-roots.html#gae914b125d81d1b97e0aee7bbc7739786',1,'mtk']]],
-  ['kl',['kl',['../classmtk_1_1Matrix.html#ae271cb0b61c1ef04d57319d46db90ebf',1,'mtk::Matrix']]],
-  ['kl_5f',['kl_',['../classmtk_1_1Matrix.html#a45c2498d0b6d515c72c2e631508acd7d',1,'mtk::Matrix']]],
-  ['kone',['kOne',['../group__c01-roots.html#ga26407c24d43b6b95480943340d285c71',1,'mtk']]],
-  ['kron',['Kron',['../classmtk_1_1DenseMatrix.html#a01d3d8bd502870f93bf3a88a0cc5fb49',1,'mtk::DenseMatrix']]],
-  ['ku',['ku',['../classmtk_1_1Matrix.html#ab12a5b97320ca40fbfab970c005ce916',1,'mtk::Matrix']]],
-  ['ku_5f',['ku_',['../classmtk_1_1Matrix.html#afdb4436c4c4c6deaed608a06026179c9',1,'mtk::Matrix']]],
-  ['kzero',['kZero',['../group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271',1,'mtk']]]
+  ['imposeongrid',['ImposeOnGrid',['../classmtk_1_1BCDescriptor1D.html#adfb101c1a12b452f83dacd207febea0a',1,'mtk::BCDescriptor1D::ImposeOnGrid()'],['../classmtk_1_1BCDescriptor2D.html#a5f0ff1fda1b5266dcd77ba2301c8ba2c',1,'mtk::BCDescriptor2D::ImposeOnGrid()']]],
+  ['imposeonlaplacianmatrix',['ImposeOnLaplacianMatrix',['../classmtk_1_1BCDescriptor1D.html#a33e51235eaa930e4470f027001a023cf',1,'mtk::BCDescriptor1D::ImposeOnLaplacianMatrix()'],['../classmtk_1_1BCDescriptor2D.html#abade249fa28783a5383a7c2aaf570ea9',1,'mtk::BCDescriptor2D::ImposeOnLaplacianMatrix()']]],
+  ['increasenumnull',['IncreaseNumNull',['../classmtk_1_1Matrix.html#ac96dd5f31ebcd4388352577487cd6f11',1,'mtk::Matrix']]],
+  ['increasenumzero',['IncreaseNumZero',['../classmtk_1_1Matrix.html#a2e7c4b84d0cbf9b0122b5dc906ad1eae',1,'mtk::Matrix']]],
+  ['introduction',['Introduction',['../index.html',1,'']]],
+  ['integrate',['Integrate',['../classmtk_1_1Quad1D.html#a2d253b9ba8e05b06dc40a6a38bb0272d',1,'mtk::Quad1D']]],
+  ['interp1d',['Interp1D',['../classmtk_1_1Interp1D.html#ae56f90c53579c91c1dbe715f7e7361be',1,'mtk::Interp1D::Interp1D()'],['../classmtk_1_1Interp1D.html#a92a5ed77144b3824d201a586f4072fd0',1,'mtk::Interp1D::Interp1D(const Interp1D &amp;interp)']]],
+  ['interp1d',['Interp1D',['../classmtk_1_1Interp1D.html',1,'mtk']]],
+  ['interp2d',['Interp2D',['../classmtk_1_1Interp2D.html',1,'mtk']]],
+  ['interp2d',['Interp2D',['../classmtk_1_1Interp2D.html#a1ced84c0dbafdbe1cd3732d5a4848e10',1,'mtk::Interp2D::Interp2D()'],['../classmtk_1_1Interp2D.html#a86af209e6045050e4ebc205dd43b8279',1,'mtk::Interp2D::Interp2D(const Interp2D &amp;interp)']]],
+  ['interpolator_5f',['interpolator_',['../classmtk_1_1Interp2D.html#aa30fa30d96c8b0a37adac36c4e344329',1,'mtk::Interp2D']]]
 ];

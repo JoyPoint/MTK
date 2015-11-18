@@ -1,4 +1,4 @@
-.TH "mtk::Lap1D" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::Lap1D" 3 "Wed Nov 18 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -31,11 +31,11 @@ Implements a 1D mimetic Laplacian operator\&.
 .br
 .RI "\fIFactory method implementing the CBS Algorithm to build operator\&. \fP"
 .ti -1c
-.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP (const \fBUniStgGrid1D\fP &grid)"
+.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP (const \fBUniStgGrid1D\fP &grid) const "
 .br
 .RI "\fIReturn the operator as a dense matrix\&. \fP"
 .ti -1c
-.RI "\fBmtk::Real\fP * \fBdata\fP (const \fBUniStgGrid1D\fP &grid)"
+.RI "const \fBmtk::Real\fP * \fBdata\fP (const \fBUniStgGrid1D\fP &grid) const "
 .br
 .RI "\fIReturn the operator as a dense array\&. \fP"
 .in -1c
@@ -129,7 +129,7 @@ We DO NOT have weights in this operator\&. Copy mimetic bndy coeffs\&.
 
 .PP
 Definition at line 119 of file mtk_lap_1d\&.cc\&.
-.SS "\fBmtk::Real\fP * mtk::Lap1D::data (const \fBUniStgGrid1D\fP &grid)"
+.SS "const \fBmtk::Real\fP * mtk::Lap1D::data (const \fBUniStgGrid1D\fP &grid) const"
 
 .PP
 \fBReturns:\fP
@@ -139,8 +139,8 @@ The operator as a dense array\&.
 .PP
 
 .PP
-Definition at line 332 of file mtk_lap_1d\&.cc\&.
-.SS "\fBmtk::DenseMatrix\fP mtk::Lap1D::ReturnAsDenseMatrix (const \fBUniStgGrid1D\fP &grid)"
+Definition at line 333 of file mtk_lap_1d\&.cc\&.
+.SS "\fBmtk::DenseMatrix\fP mtk::Lap1D::ReturnAsDenseMatrix (const \fBUniStgGrid1D\fP &grid) const"
 
 .PP
 \fBReturns:\fP

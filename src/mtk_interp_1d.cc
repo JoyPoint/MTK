@@ -132,7 +132,8 @@ mtk::Real *mtk::Interp1D::coeffs_interior() const {
   return coeffs_interior_;
 }
 
-mtk::DenseMatrix mtk::Interp1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
+mtk::DenseMatrix mtk::Interp1D::ReturnAsDenseMatrix(
+  const UniStgGrid1D &grid) const {
 
   int nn{grid.num_cells_x()}; // Number of cells on the grid.
 
