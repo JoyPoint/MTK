@@ -95,15 +95,15 @@ class BCDescriptor2D {
   /// \brief Default constructor.
   BCDescriptor2D();
 
-  /// \brief Destructor.
-  ~BCDescriptor2D();
-
   /*!
   \brief Copy constructor.
 
   \param [in] desc Given 2D descriptor.
   */
   BCDescriptor2D(const BCDescriptor2D &desc);
+
+  /// \brief Destructor.
+  ~BCDescriptor2D();
 
   /*!
   \brief Push back coefficient function at west of lowest order diff. available.
@@ -136,30 +136,30 @@ class BCDescriptor2D {
   /*!
   \brief Set boundary condition at west.
 
-  \param [in] west_condition_ \f$ \beta_w(x,y):\Omega\mapsto\mathbb{R} \f$.
+  \param [in] west_condition \f$ \beta_w(x,y):\Omega\mapsto\mathbb{R} \f$.
   */
-  void set_west_condition_(mtk::Real (*west_condition_)(Real xx, Real yy));
+  void set_west_condition_(Real (*west_condition)(Real xx, Real yy));
 
   /*!
   \brief Set boundary condition at east.
 
-  \param [in] east_condition_ \f$ \beta_e(x,y):\Omega\mapsto\mathbb{R} \f$.
+  \param [in] east_condition \f$ \beta_e(x,y):\Omega\mapsto\mathbb{R} \f$.
   */
-  void set_east_condition_(mtk::Real (*east_condition_)(Real xx, Real yy));
+  void set_east_condition_(Real (*east_condition)(Real xx, Real yy));
 
   /*!
   \brief Set boundary condition at south.
 
-  \param [in] south_condition_ \f$ \beta_s(x,y):\Omega\mapsto\mathbb{R} \f$.
+  \param [in] south_condition \f$ \beta_s(x,y):\Omega\mapsto\mathbb{R} \f$.
   */
-  void set_south_condition_(mtk::Real (*south_condition_)(Real xx, Real yy));
+  void set_south_condition_(Real (*south_condition)(Real xx, Real yy));
 
   /*!
   \brief Set boundary condition at north.
 
-  \param [in] north_condition_ \f$ \beta_n(x,y):\Omega\mapsto\mathbb{R} \f$.
+  \param [in] north_condition \f$ \beta_n(x,y):\Omega\mapsto\mathbb{R} \f$.
   */
-  void set_north_condition_(mtk::Real (*north_condition_)(Real xx, Real yy));
+  void set_north_condition_(Real (*north_condition)(Real xx, Real yy));
 
   /*!
   \brief Imposes the condition on the operator represented as matrix.
@@ -178,17 +178,20 @@ class BCDescriptor2D {
   void ImposeOnGrid(UniStgGrid2D &grid) const;
 
 private:
-  int highest_order_differentiation_; ///< Highest order of differentiation.
+  int highest_order_diff_west; ///< Highest order of differentiation for west.
+  int highest_order_diff_east; ///< Highest order of differentiation for east.
+  int highest_order_diff_south; ///< Highest order of differentiation for south.
+  int highest_order_diff_north; ///< Highest order of differentiation for north.
 
   std::vector<CoefficientFunction2D> west_coefficients_;  ///< Coeffs. west.
   std::vector<CoefficientFunction2D> east_coefficients_;  ///< Coeffs. east.
   std::vector<CoefficientFunction2D> south_coefficients_; ///< Coeffs. south.
   std::vector<CoefficientFunction2D> north_coefficients_; ///< Coeffs. south.
 
-  mtk::Real (*west_condition_)(Real xx, Real yy);   ///< Condition for west.
-  mtk::Real (*east_condition_)(Real xx, Real yy);   ///< Condition for east.
-  mtk::Real (*south_condition_)(Real xx, Real yy);  ///< Condition for south.
-  mtk::Real (*north_condition_)(Real xx, Real yy);  ///< Condition for north.
+  Real (*west_condition_)(Real xx, Real yy);   ///< Condition for west.
+  Real (*east_condition_)(Real xx, Real yy);   ///< Condition for east.
+  Real (*south_condition_)(Real xx, Real yy);  ///< Condition for south.
+  Real (*north_condition_)(Real xx, Real yy);  ///< Condition for north.
 };
 }
 #endif  // End of: MTK_INCLUDE_BC_DESCRIPTOR_2D_H_
