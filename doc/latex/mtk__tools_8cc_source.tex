@@ -55,10 +55,10 @@
 00058 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
 00059 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
 00060 
-\hypertarget{mtk__tools_8cc_source_l00061}{}\hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{00061} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} condition,
-00062                          \textcolor{keyword}{const} \textcolor{keywordtype}{char} *fname,
+\hypertarget{mtk__tools_8cc_source_l00061}{}\hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{00061} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} condition,
+00062                          \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} fname,
 00063                          \textcolor{keywordtype}{int} lineno,
-00064                          \textcolor{keyword}{const} \textcolor{keywordtype}{char} *fxname) \{
+00064                          \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} fxname) noexcept \{
 00065 
 00067 
 00068 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
@@ -83,10 +83,10 @@
 00088 
 00089 clock\_t \hyperlink{classmtk_1_1Tools_a4bd58d08397db42271ed9e2d3ecc9963}{mtk::Tools::begin\_time\_};  \textcolor{comment}{// Used to time tests.}
 00090 
-\hypertarget{mtk__tools_8cc_source_l00091}{}\hyperlink{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}{00091} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}{mtk::Tools::BeginUnitTestNo}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &nn) \{
+\hypertarget{mtk__tools_8cc_source_l00091}{}\hyperlink{classmtk_1_1Tools_afc29ecaf337a13ed2e817d3890a5a441}{00091} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_afc29ecaf337a13ed2e817d3890a5a441}{mtk::Tools::BeginUnitTestNo}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &nn) noexcept \{
 00092 
 00093 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00094   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00094   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00095 \textcolor{preprocessor}{  #endif}
 00096 
 00097   test\_number\_ = nn;
@@ -97,16 +97,16 @@
 00102   begin\_time\_ = clock();
 00103 \}
 00104 
-\hypertarget{mtk__tools_8cc_source_l00105}{}\hyperlink{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}{00105} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}{mtk::Tools::EndUnitTestNo}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &nn) \{
+\hypertarget{mtk__tools_8cc_source_l00105}{}\hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{00105} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{mtk::Tools::EndUnitTestNo}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &nn) noexcept \{
 00106 
 00107 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00108   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(test\_number\_ != nn, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00108   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(test\_number\_ != nn, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00109 \textcolor{preprocessor}{  #endif}
 00110 
 00111   duration\_ = \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}(clock() - begin\_time\_)/CLOCKS\_PER\_SEC;
 00112 \}
 00113 
-\hypertarget{mtk__tools_8cc_source_l00114}{}\hyperlink{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}{00114} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}{mtk::Tools::Assert}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} condition) \{
+\hypertarget{mtk__tools_8cc_source_l00114}{}\hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{00114} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{mtk::Tools::Assert}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} &condition) noexcept \{
 00115 
 00116   \textcolor{keywordflow}{if} (condition) \{
 00117     std::cout << \textcolor{stringliteral}{"Test "} << test\_number\_ << \textcolor{stringliteral}{": PASSED in "} << duration\_ <<

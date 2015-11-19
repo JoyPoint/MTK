@@ -176,13 +176,13 @@
 00431                                          \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *rhs) \{
 00432 
 00433 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00434   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(rhs == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00434   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(rhs == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00435 \textcolor{preprocessor}{  #endif}
 00436 
 00437   \textcolor{keywordtype}{int} *ipiv\{\};                \textcolor{comment}{// Array for pivoting information.}
 00438   \textcolor{keywordtype}{int} nrhs\{1\};                \textcolor{comment}{// Number of right-hand sides.}
 00439   \textcolor{keywordtype}{int} info\{\};                 \textcolor{comment}{// Status of the solution.}
-00440   \textcolor{keywordtype}{int} mm\_rank\{mm.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}()\}; \textcolor{comment}{// Rank of the matrix.}
+00440   \textcolor{keywordtype}{int} mm\_rank\{mm.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}()\}; \textcolor{comment}{// Rank of the matrix.}
 00441 
 00442   \textcolor{keywordflow}{try} \{
 00443     ipiv = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[mm\_rank];
@@ -197,9 +197,9 @@
 00452   \textcolor{keywordtype}{int} mm\_ld = mm\_rank;
 00453 
 00454 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00455   dgesv\_(&mm\_rank, &nrhs, mm.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &mm\_ld, ipiv, rhs, &ldbb, &info);
+00455   dgesv\_(&mm\_rank, &nrhs, mm.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &mm\_ld, ipiv, rhs, &ldbb, &info);
 00456 \textcolor{preprocessor}{  #else}
-00457   fgesv\_(&mm\_rank, &nrhs, mm.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &mm\_ld, ipiv, rhs, &ldbb, &info);
+00457   fgesv\_(&mm\_rank, &nrhs, mm.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &mm\_ld, ipiv, rhs, &ldbb, &info);
 00458 \textcolor{preprocessor}{  #endif}
 00459 
 00460   \textcolor{keyword}{delete} [] ipiv;
@@ -211,15 +211,15 @@
       \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &mm,
 00466                                          \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &bb) \{
 00467 
-00468   \textcolor{keywordtype}{int} nrhs\{bb.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}()\};  \textcolor{comment}{// Number of right-hand sides.}
+00468   \textcolor{keywordtype}{int} nrhs\{bb.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}()\};  \textcolor{comment}{// Number of right-hand sides.}
 00469 
 00470 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00471   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(nrhs <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00471   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nrhs <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00472 \textcolor{preprocessor}{  #endif}
 00473 
 00474   \textcolor{keywordtype}{int} *ipiv\{\};                \textcolor{comment}{// Array for pivoting information.}
 00475   \textcolor{keywordtype}{int} info\{\};                 \textcolor{comment}{// Status of the solution.}
-00476   \textcolor{keywordtype}{int} mm\_rank\{mm.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}()\}; \textcolor{comment}{// Rank of the matrix.}
+00476   \textcolor{keywordtype}{int} mm\_rank\{mm.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}()\}; \textcolor{comment}{// Rank of the matrix.}
 00477 
 00478   \textcolor{keywordflow}{try} \{
 00479     ipiv = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[mm\_rank];
@@ -234,16 +234,16 @@
 00488   \textcolor{keywordtype}{int} mm\_ld = mm\_rank;
 00489 
 00490 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00491   dgesv\_(&mm\_rank, &nrhs, mm.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &mm\_ld, ipiv, bb.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &ldbb, &info);
+00491   dgesv\_(&mm\_rank, &nrhs, mm.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &mm\_ld, ipiv, bb.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &ldbb, &info);
 00492 \textcolor{preprocessor}{  #else}
-00493   fgesv\_(&mm\_rank, &nrhs, mm.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &mm\_ld, ipiv, bb.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &ldbb, &info);
+00493   fgesv\_(&mm\_rank, &nrhs, mm.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &mm\_ld, ipiv, bb.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &ldbb, &info);
 00494 \textcolor{preprocessor}{  #endif}
 00495 
 00496   \textcolor{keyword}{delete} [] ipiv;
 00497 
 00498   \textcolor{comment}{// After output, the data in the matrix will be column-major ordered.}
 00499 
-00500   bb.\hyperlink{classmtk_1_1DenseMatrix_aacae136ae446cad8f0d81476e83efb39}{SetOrdering}(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR});
+00500   bb.\hyperlink{classmtk_1_1DenseMatrix_a178e63f365cf8c547dc5020c60357f5e}{SetOrdering}(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR});
 00501 
 00502 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
 00503   std::cout << \textcolor{stringliteral}{"bb\_col\_maj\_ord ="} << std::endl;
@@ -268,7 +268,7 @@
 00521 
 00522   \textcolor{keywordtype}{int} *ipiv\{\};                \textcolor{comment}{// Array for pivoting information.}
 00523   \textcolor{keywordtype}{int} info\{\};                 \textcolor{comment}{// Status of the solution.}
-00524   \textcolor{keywordtype}{int} mm\_rank\{mm.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}()\}; \textcolor{comment}{// Rank of the matrix.}
+00524   \textcolor{keywordtype}{int} mm\_rank\{mm.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}()\}; \textcolor{comment}{// Rank of the matrix.}
 00525 
 00526   \textcolor{keywordflow}{try} \{
 00527     ipiv = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[mm\_rank];
@@ -285,10 +285,10 @@
 00538   mm.\hyperlink{classmtk_1_1DenseMatrix_a59b9bea24acf39dca64e8549b3527463}{OrderColMajor}();
 00539 
 00540 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00541   dgesv\_(&mm\_rank, &nrhs, mm.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &mm\_ld, ipiv,
+00541   dgesv\_(&mm\_rank, &nrhs, mm.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &mm\_ld, ipiv,
 00542          rhs.\hyperlink{classmtk_1_1UniStgGrid1D_acf28d702f6e702599986afcb253bbfc1}{discrete\_field\_u}(), &ldbb, &info);
 00543 \textcolor{preprocessor}{  #else}
-00544   fgesv\_(&mm\_rank, &nrhs, mm.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &mm\_ld, ipiv,
+00544   fgesv\_(&mm\_rank, &nrhs, mm.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &mm\_ld, ipiv,
 00545          rhs.\hyperlink{classmtk_1_1UniStgGrid1D_acf28d702f6e702599986afcb253bbfc1}{discrete\_field\_u}(), &ldbb, &info);
 00546 \textcolor{preprocessor}{  #endif}
 00547 
@@ -313,14 +313,14 @@
 00565       std::endl;
 00566     std::cerr << memory\_allocation\_exception.what() << std::endl;
 00567   \}
-00568   memset(work, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[0])*1);
+00568   memset(work, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[0])*1);
 00569 
 00570   \textcolor{keywordtype}{int} lwork\{-1\};
 00571   \textcolor{keywordtype}{int} info\{\};
 00572 
-00573   \textcolor{keywordtype}{int} aa\_num\_cols = aa.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}();
-00574   \textcolor{keywordtype}{int} aaT\_num\_rows = aa.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}();
-00575   \textcolor{keywordtype}{int} aaT\_num\_cols = aa.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}();
+00573   \textcolor{keywordtype}{int} aa\_num\_cols = aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}();
+00574   \textcolor{keywordtype}{int} aaT\_num\_rows = aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}();
+00575   \textcolor{keywordtype}{int} aaT\_num\_cols = aa.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}();
 00576 
 00577 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
 00578   std::cout << \textcolor{stringliteral}{"Input matrix BEFORE QR factorization:"} << std::endl;
@@ -328,11 +328,11 @@
 00580 \textcolor{preprocessor}{  #endif}
 00581 
 00582 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00583   dgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &aaT\_num\_rows,
+00583   dgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows,
 00584           tau,
 00585           work, &lwork, &info);
 00586 \textcolor{preprocessor}{  #else}
-00587   fgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &aaT\_num\_rows,
+00587   fgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows,
 00588           tau,
 00589           work, &lwork, &info);
 00590 \textcolor{preprocessor}{  #endif}
@@ -377,10 +377,10 @@
 00629   memset(tau, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(0.0)*ltau);
 00630 
 00631 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00632   dgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &aaT\_num\_rows,
+00632   dgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows,
 00633           tau, work, &lwork, &info);
 00634 \textcolor{preprocessor}{  #else}
-00635   fgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &aaT\_num\_rows,
+00635   fgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows,
 00636           tau, work, &lwork, &info);
 00637 \textcolor{preprocessor}{  #endif}
 00638 
@@ -408,7 +408,7 @@
 00660 
 00661   \textcolor{keywordtype}{bool} transpose\{\textcolor{keyword}{false}\};
 00662 
-00663   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} QQ\_(aa.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}(),padded,transpose);
+00663   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} QQ\_(aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}(),padded,transpose);
 00664 
 00665 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
 00666   std::cout << \textcolor{stringliteral}{"Initialized QQ\_T: "} << std::endl;
@@ -438,11 +438,11 @@
 00690 
 00691 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
 00692   dormqr\_(&side\_, &trans\_,
-00693           &aa\_num\_cols, &aa\_num\_cols, &ltau, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &aaT\_num\_rows, tau,
+00693           &aa\_num\_cols, &aa\_num\_cols, &ltau, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows, tau,
 00694           QQ\_.data(), &aux, work, &lwork, &info);
 00695 \textcolor{preprocessor}{  #else}
 00696   formqr\_(&side\_, &trans\_,
-00697           &aa\_num\_cols, &aa\_num\_cols, &ltau, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &aaT\_num\_rows, tau,
+00697           &aa\_num\_cols, &aa\_num\_cols, &ltau, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows, tau,
 00698           QQ\_.data(), &aux, work, &lwork, &info);
 00699 \textcolor{preprocessor}{  #endif}
 00700 
@@ -474,11 +474,11 @@
 00726 
 00727 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
 00728   dormqr\_(&side\_, &trans\_,
-00729           &aa\_num\_cols, &aa\_num\_cols, &ltau, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &aaT\_num\_rows, tau,
+00729           &aa\_num\_cols, &aa\_num\_cols, &ltau, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows, tau,
 00730           QQ\_.data(), &aux, work, &lwork, &info);
 00731 \textcolor{preprocessor}{  #else}
 00732   formqr\_(&side\_, &trans\_,
-00733           &aa\_num\_cols, &aa\_num\_cols, &ltau, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &aaT\_num\_rows, tau,
+00733           &aa\_num\_cols, &aa\_num\_cols, &ltau, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows, tau,
 00734           QQ\_.data(), &aux, work, &lwork, &info);
 00735 \textcolor{preprocessor}{  #endif}
 00736 
@@ -530,16 +530,16 @@
 00781   \textcolor{keywordtype}{int} info\{0\};
 00782   \textcolor{keywordtype}{int} lwork\{-1\};
 00783 
-00784   \textcolor{keywordtype}{int} AA\_num\_rows\_  = aa.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}();
-00785   \textcolor{keywordtype}{int} AA\_num\_cols\_  = aa.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}();
-00786   \textcolor{keywordtype}{int} AA\_ld\_ = std::max(1,aa.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}());
+00784   \textcolor{keywordtype}{int} AA\_num\_rows\_  = aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}();
+00785   \textcolor{keywordtype}{int} AA\_num\_cols\_  = aa.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}();
+00786   \textcolor{keywordtype}{int} AA\_ld\_ = std::max(1,aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}());
 00787 
 00788 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00789   dgels\_(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &AA\_ld\_,
+00789   dgels\_(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &AA\_ld\_,
 00790          ob\_, &ob\_ld\_,
 00791          work, &lwork, &info);
 00792 \textcolor{preprocessor}{  #else}
-00793   \hyperlink{namespacemtk_ada6df1b733204aa7ff0b1ec7556288f9}{sgels\_}(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &AA\_ld\_,
+00793   \hyperlink{namespacemtk_ada6df1b733204aa7ff0b1ec7556288f9}{sgels\_}(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &AA\_ld\_,
 00794          ob\_, &ob\_ld\_,
 00795          work, &lwork, &info);
 00796 \textcolor{preprocessor}{  #endif}
@@ -572,11 +572,11 @@
 00823 
 00824   \textcolor{comment}{// We now invoke the solver again:}
 00825 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00826   dgels\_(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &AA\_ld\_,
+00826   dgels\_(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &AA\_ld\_,
 00827          ob\_, &ob\_ld\_,
 00828          work, &lwork, &info);
 00829 \textcolor{preprocessor}{  #else}
-00830   \hyperlink{namespacemtk_ada6df1b733204aa7ff0b1ec7556288f9}{sgels\_}(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(), &AA\_ld\_,
+00830   \hyperlink{namespacemtk_ada6df1b733204aa7ff0b1ec7556288f9}{sgels\_}(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &AA\_ld\_,
 00831          ob\_, &ob\_ld\_,
 00832          work, &lwork, &info);
 00833 \textcolor{preprocessor}{  #endif}

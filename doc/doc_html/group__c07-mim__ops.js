@@ -109,5 +109,5 @@ var group__c07_mim__ops =
       [ "degree_approximation_", "classmtk_1_1Quad1D.html#aaff281c19f70faeb07f610fcffb300c5", null ],
       [ "weights_", "classmtk_1_1Quad1D.html#abce6b19c2e089bc0691ef7623ec6d994", null ]
     ] ],
-    [ "CoefficientFunction2D", "group__c07-mim__ops.html#ga0322dd5a158c1864242833ec224ee4c1", null ]
+    [ "CoefficientFunction2D", "group__c07-mim__ops.html#gad9e1c0ace886b0029aefffa5f320e852", null ]
 ];

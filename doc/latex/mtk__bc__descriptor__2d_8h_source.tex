@@ -59,54 +59,61 @@
 00081 
 00082 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk}\{
 00083 
-\hypertarget{mtk__bc__descriptor__2d_8h_source_l00091}{}\hyperlink{group__c07-mim__ops_ga0322dd5a158c1864242833ec224ee4c1}{00091} \textcolor{keyword}{typedef} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*\hyperlink{group__c07-mim__ops_ga0322dd5a158c1864242833ec224ee4c1}{CoefficientFunction2D})(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real});
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00091}{}\hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{00091} \textcolor{keyword}{typedef} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*\hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{CoefficientFunction2D})(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &, \textcolor{keyword}{const} Real &);
 00092 
 \hypertarget{mtk__bc__descriptor__2d_8h_source_l00093}{}\hyperlink{classmtk_1_1BCDescriptor2D}{00093} \textcolor{keyword}{class }\hyperlink{classmtk_1_1BCDescriptor2D}{BCDescriptor2D} \{
 00094  \textcolor{keyword}{public}:
 00096   \hyperlink{classmtk_1_1BCDescriptor2D_abbc3af29202dbfef203f4cafd9566fd0}{BCDescriptor2D}();
 00097 
-00099   \hyperlink{classmtk_1_1BCDescriptor2D_a8ca0aa779cf17f26f75e8b3cc98b6e30}{~BCDescriptor2D}();
-00100 
-00106   \hyperlink{classmtk_1_1BCDescriptor2D_abbc3af29202dbfef203f4cafd9566fd0}{BCDescriptor2D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1BCDescriptor2D}{BCDescriptor2D} &desc);
+00103   \hyperlink{classmtk_1_1BCDescriptor2D_abbc3af29202dbfef203f4cafd9566fd0}{BCDescriptor2D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1BCDescriptor2D}{BCDescriptor2D} &desc);
+00104 
+00106   \hyperlink{classmtk_1_1BCDescriptor2D_ae14e62548a8bc080d576fff6937c546b}{~BCDescriptor2D}() noexcept;
 00107 
-00113   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a3da32ba89cfb15032bb1156394bad98c}{PushBackWestCoeff}(\hyperlink{group__c07-mim__ops_ga0322dd5a158c1864242833ec224ee4c1}{CoefficientFunction2D} cw);
+00113   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1BCDescriptor2D_a0fa469ddf6ff76e2858d6d3b76cc8b6f}{highest\_order\_diff\_west}() \textcolor{keyword}{const} noexcept;
 00114 
-00120   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a27635428a6c36d1e305cafdc68271063}{PushBackEastCoeff}(\hyperlink{group__c07-mim__ops_ga0322dd5a158c1864242833ec224ee4c1}{CoefficientFunction2D} ce);
+00120   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1BCDescriptor2D_a5a9b80a2e9e579b05d9f3589d80448b6}{highest\_order\_diff\_east}() \textcolor{keyword}{const} noexcept;
 00121 
-00127   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a9eb891f14c68968a0113632fa5fea630}{PushBackSouthCoeff}(\hyperlink{group__c07-mim__ops_ga0322dd5a158c1864242833ec224ee4c1}{CoefficientFunction2D} cs);
+00127   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1BCDescriptor2D_a463d909f6014e7f01b33171a06d7b400}{highest\_order\_diff\_south}() \textcolor{keyword}{const} noexcept;
 00128 
-00134   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a0fed58bd058d699a572888fe4b9934a4}{PushBackNorthCoeff}(\hyperlink{group__c07-mim__ops_ga0322dd5a158c1864242833ec224ee4c1}{CoefficientFunction2D} cn);
+00134   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1BCDescriptor2D_a87c5f2449247d65ea07784ba2ec61bc7}{highest\_order\_diff\_north}() \textcolor{keyword}{const} noexcept;
 00135 
-00141   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_aa68984b82fa748dc51c0b448104f015f}{set\_west\_condition\_}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*
-      \hyperlink{classmtk_1_1BCDescriptor2D_a98bfe7ea4256d0777a6b19d1701645db}{west\_condition\_})(Real xx, Real yy));
+00141   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a3da32ba89cfb15032bb1156394bad98c}{PushBackWestCoeff}(\hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{CoefficientFunction2D} cw);
 00142 
-00148   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a2e555f1c7058522afdae45c372f36a33}{set\_east\_condition\_}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*
-      \hyperlink{classmtk_1_1BCDescriptor2D_ad63ffb74a62474e753e135324e6462d0}{east\_condition\_})(Real xx, Real yy));
+00148   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a27635428a6c36d1e305cafdc68271063}{PushBackEastCoeff}(\hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{CoefficientFunction2D} ce);
 00149 
-00155   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_ae7aaa690a6e0d972ea9380cc77bf7a73}{set\_south\_condition\_}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*
-      \hyperlink{classmtk_1_1BCDescriptor2D_ae4e7cdb5e7007c5ab09b6c0efb329943}{south\_condition\_})(Real xx, Real yy));
+00155   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a9eb891f14c68968a0113632fa5fea630}{PushBackSouthCoeff}(\hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{CoefficientFunction2D} cs);
 00156 
-00162   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_ab9d25f5b0ca0826b9802874bcd741a9d}{set\_north\_condition\_}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*
-      \hyperlink{classmtk_1_1BCDescriptor2D_af3ecae6fedd3f3422e62b247ef5fea42}{north\_condition\_})(Real xx, Real yy));
+00162   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a0fed58bd058d699a572888fe4b9934a4}{PushBackNorthCoeff}(\hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{CoefficientFunction2D} cn);
 00163 
-00170   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_abade249fa28783a5383a7c2aaf570ea9}{ImposeOnLaplacianMatrix}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid,
-00171                                \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &matrix) \textcolor{keyword}{const};
-00172 
-00178   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a5f0ff1fda1b5266dcd77ba2301c8ba2c}{ImposeOnGrid}(\hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid) \textcolor{keyword}{const};
-00179 
-00180 \textcolor{keyword}{private}:
-\hypertarget{mtk__bc__descriptor__2d_8h_source_l00181}{}\hyperlink{classmtk_1_1BCDescriptor2D_af6dad4b8fe09597f25a710b1aec40a48}{00181}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1BCDescriptor2D_af6dad4b8fe09597f25a710b1aec40a48}{highest\_order\_differentiation\_}; 
-00182 
-\hypertarget{mtk__bc__descriptor__2d_8h_source_l00183}{}\hyperlink{classmtk_1_1BCDescriptor2D_a7df71b43acc25c468683075cc7790bb2}{00183}   std::vector<CoefficientFunction2D> \hyperlink{classmtk_1_1BCDescriptor2D_a7df71b43acc25c468683075cc7790bb2}{west\_coefficients\_};  
-\hypertarget{mtk__bc__descriptor__2d_8h_source_l00184}{}\hyperlink{classmtk_1_1BCDescriptor2D_a1f90fc303984bf18c136a34896bbb7c9}{00184}   std::vector<CoefficientFunction2D> \hyperlink{classmtk_1_1BCDescriptor2D_a1f90fc303984bf18c136a34896bbb7c9}{east\_coefficients\_};  
-\hypertarget{mtk__bc__descriptor__2d_8h_source_l00185}{}\hyperlink{classmtk_1_1BCDescriptor2D_a263309b9ad288dc89826d818d9378d07}{00185}   std::vector<CoefficientFunction2D> \hyperlink{classmtk_1_1BCDescriptor2D_a263309b9ad288dc89826d818d9378d07}{south\_coefficients\_}; 
-\hypertarget{mtk__bc__descriptor__2d_8h_source_l00186}{}\hyperlink{classmtk_1_1BCDescriptor2D_a5429c040c034303dd92dcff554f9efad}{00186}   std::vector<CoefficientFunction2D> \hyperlink{classmtk_1_1BCDescriptor2D_a5429c040c034303dd92dcff554f9efad}{north\_coefficients\_}; 
-00187 
-\hypertarget{mtk__bc__descriptor__2d_8h_source_l00188}{}\hyperlink{classmtk_1_1BCDescriptor2D_a98bfe7ea4256d0777a6b19d1701645db}{00188}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*\hyperlink{classmtk_1_1BCDescriptor2D_a98bfe7ea4256d0777a6b19d1701645db}{west\_condition\_})(Real xx, Real yy);   
-\hypertarget{mtk__bc__descriptor__2d_8h_source_l00189}{}\hyperlink{classmtk_1_1BCDescriptor2D_ad63ffb74a62474e753e135324e6462d0}{00189}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*\hyperlink{classmtk_1_1BCDescriptor2D_ad63ffb74a62474e753e135324e6462d0}{east\_condition\_})(Real xx, Real yy);   
-\hypertarget{mtk__bc__descriptor__2d_8h_source_l00190}{}\hyperlink{classmtk_1_1BCDescriptor2D_ae4e7cdb5e7007c5ab09b6c0efb329943}{00190}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*\hyperlink{classmtk_1_1BCDescriptor2D_ae4e7cdb5e7007c5ab09b6c0efb329943}{south\_condition\_})(Real xx, Real yy);  
-\hypertarget{mtk__bc__descriptor__2d_8h_source_l00191}{}\hyperlink{classmtk_1_1BCDescriptor2D_af3ecae6fedd3f3422e62b247ef5fea42}{00191}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*\hyperlink{classmtk_1_1BCDescriptor2D_af3ecae6fedd3f3422e62b247ef5fea42}{north\_condition\_})(Real xx, Real yy);  
-00192 \};
-00193 \}
-00194 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_BC\_DESCRIPTOR\_2D\_H\_}
+00169   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a006050efe15b1be75b36a74a23051392}{set\_west\_condition}(Real (*west\_condition)(Real xx, Real yy)) noexcept;
+00170 
+00176   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a4ba8690e845f59a1507b056f3fc8061e}{set\_east\_condition}(Real (*east\_condition)(Real xx, Real yy)) noexcept;
+00177 
+00183   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a408f159cc44d7ee610191efb8ed48b2a}{set\_south\_condition}(Real (*south\_condition)(Real xx, Real yy)) noexcept;
+00184 
+00190   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a690f6881a88b202c074d9f90f2a7ddb0}{set\_north\_condition}(Real (*north\_condition)(Real xx, Real yy)) noexcept;
+00191 
+00198   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_abade249fa28783a5383a7c2aaf570ea9}{ImposeOnLaplacianMatrix}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid,
+00199                                \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &matrix) \textcolor{keyword}{const};
+00200 
+00206   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a5f0ff1fda1b5266dcd77ba2301c8ba2c}{ImposeOnGrid}(\hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid) \textcolor{keyword}{const};
+00207 
+00208 \textcolor{keyword}{private}:
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00209}{}\hyperlink{classmtk_1_1BCDescriptor2D_aa18ef62f8eda355e47f51bcb5dbe8fe7}{00209}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1BCDescriptor2D_aa18ef62f8eda355e47f51bcb5dbe8fe7}{highest\_order\_diff\_west\_}; 
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00210}{}\hyperlink{classmtk_1_1BCDescriptor2D_aea5e539a10d5641bd605ebe583c14bc5}{00210}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1BCDescriptor2D_aea5e539a10d5641bd605ebe583c14bc5}{highest\_order\_diff\_east\_}; 
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00211}{}\hyperlink{classmtk_1_1BCDescriptor2D_a1fb094e5e53ecfba32fe9fe56c051c47}{00211}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1BCDescriptor2D_a1fb094e5e53ecfba32fe9fe56c051c47}{highest\_order\_diff\_south\_}; 
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00212}{}\hyperlink{classmtk_1_1BCDescriptor2D_a6cdeefe70f5bef93196f34ab2949cad2}{00212}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1BCDescriptor2D_a6cdeefe70f5bef93196f34ab2949cad2}{highest\_order\_diff\_north\_}; 
+00213 
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00214}{}\hyperlink{classmtk_1_1BCDescriptor2D_a7df71b43acc25c468683075cc7790bb2}{00214}   std::vector<CoefficientFunction2D> \hyperlink{classmtk_1_1BCDescriptor2D_a7df71b43acc25c468683075cc7790bb2}{west\_coefficients\_};  
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00215}{}\hyperlink{classmtk_1_1BCDescriptor2D_a1f90fc303984bf18c136a34896bbb7c9}{00215}   std::vector<CoefficientFunction2D> \hyperlink{classmtk_1_1BCDescriptor2D_a1f90fc303984bf18c136a34896bbb7c9}{east\_coefficients\_};  
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00216}{}\hyperlink{classmtk_1_1BCDescriptor2D_a263309b9ad288dc89826d818d9378d07}{00216}   std::vector<CoefficientFunction2D> \hyperlink{classmtk_1_1BCDescriptor2D_a263309b9ad288dc89826d818d9378d07}{south\_coefficients\_}; 
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00217}{}\hyperlink{classmtk_1_1BCDescriptor2D_a5429c040c034303dd92dcff554f9efad}{00217}   std::vector<CoefficientFunction2D> \hyperlink{classmtk_1_1BCDescriptor2D_a5429c040c034303dd92dcff554f9efad}{north\_coefficients\_}; 
+00218 
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00219}{}\hyperlink{classmtk_1_1BCDescriptor2D_a2d4af48b3408658c7ace6eeb74464c9f}{00219}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*\hyperlink{classmtk_1_1BCDescriptor2D_a2d4af48b3408658c7ace6eeb74464c9f}{west\_condition\_})(Real xx, Real yy);   
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00220}{}\hyperlink{classmtk_1_1BCDescriptor2D_a6cca0c70293203c9d88773e5d5f93418}{00220}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*\hyperlink{classmtk_1_1BCDescriptor2D_a6cca0c70293203c9d88773e5d5f93418}{east\_condition\_})(Real xx, Real yy);   
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00221}{}\hyperlink{classmtk_1_1BCDescriptor2D_a2a933b473abbe47ad7c79ef7939e7768}{00221}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*\hyperlink{classmtk_1_1BCDescriptor2D_a2a933b473abbe47ad7c79ef7939e7768}{south\_condition\_})(Real xx, Real yy);  
+\hypertarget{mtk__bc__descriptor__2d_8h_source_l00222}{}\hyperlink{classmtk_1_1BCDescriptor2D_a23e0b9ae755dcf81841aa24ddaf0b090}{00222}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*\hyperlink{classmtk_1_1BCDescriptor2D_a23e0b9ae755dcf81841aa24ddaf0b090}{north\_condition\_})(Real xx, Real yy);  
+00223 \};
+00224 \}
+00225 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_BC\_DESCRIPTOR\_2D\_H\_}
 \end{DoxyCode}

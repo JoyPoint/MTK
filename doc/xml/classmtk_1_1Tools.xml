@@ -12,7 +12,7 @@
         <briefdescription>
 <para>Current test being executed. </para>        </briefdescription>
         <detaileddescription>
-<para><xrefsect id="todo_1_todo000024"><xreftitle>Todo</xreftitle><xrefdescription><para>Check usage of static methods and private members. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+<para><xrefsect id="todo_1_todo000023"><xreftitle>Todo</xreftitle><xrefdescription><para>Check usage of static methods and private members. </para></xrefdescription></xrefsect></para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/include/mtk_tools.h" line="117" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_tools.h" bodystart="117" bodyend="-1"/>
@@ -45,17 +45,17 @@
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void mtk::Tools::Prevent</definition>
-        <argsstring>(const bool complement, const char *fname, int lineno, const char *fxname)</argsstring>
+        <argsstring>(const bool complement, const char *const fname, int lineno, const char *const fxname) noexcept</argsstring>
         <name>Prevent</name>
         <param>
           <type>const bool</type>
           <declname>complement</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type>const char *const</type>
           <declname>fname</declname>
         </param>
         <param>
@@ -63,7 +63,7 @@
           <declname>lineno</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type>const char *const</type>
           <declname>fxname</declname>
         </param>
         <briefdescription>
@@ -101,18 +101,28 @@
 </parameterlist>
 </para>        </detaileddescription>
         <inbodydescription>
-<para><xrefsect id="todo_1_todo000023"><xreftitle>Todo</xreftitle><xrefdescription><para>Check if this is the best way of stalling execution. </para></xrefdescription></xrefsect></para>        </inbodydescription>
+<para><xrefsect id="todo_1_todo000022"><xreftitle>Todo</xreftitle><xrefdescription><para>Check if this is the best way of stalling execution. </para></xrefdescription></xrefsect></para>        </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/include/mtk_tools.h" line="90" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_tools.cc" bodystart="61" bodyend="81"/>
         <referencedby refid="classmtk_1_1BCDescriptor1D_1a33e51235eaa930e4470f027001a023cf" compoundref="mtk__bc__descriptor__1d_8cc" startline="61" endline="87">mtk::BCDescriptor1D::ImposeOnLaplacianMatrix</referencedby>
         <referencedby refid="classmtk_1_1BCDescriptor1D_1adfb101c1a12b452f83dacd207febea0a" compoundref="mtk__bc__descriptor__1d_8cc" startline="89" endline="104">mtk::BCDescriptor1D::ImposeOnGrid</referencedby>
+        <referencedby refid="classmtk_1_1BCDescriptor2D_1a3da32ba89cfb15032bb1156394bad98c" compoundref="mtk__bc__descriptor__2d_8cc" startline="95" endline="104">mtk::BCDescriptor2D::PushBackWestCoeff</referencedby>
+        <referencedby refid="classmtk_1_1BCDescriptor2D_1a27635428a6c36d1e305cafdc68271063" compoundref="mtk__bc__descriptor__2d_8cc" startline="106" endline="115">mtk::BCDescriptor2D::PushBackEastCoeff</referencedby>
+        <referencedby refid="classmtk_1_1BCDescriptor2D_1a9eb891f14c68968a0113632fa5fea630" compoundref="mtk__bc__descriptor__2d_8cc" startline="117" endline="126">mtk::BCDescriptor2D::PushBackSouthCoeff</referencedby>
+        <referencedby refid="classmtk_1_1BCDescriptor2D_1a0fed58bd058d699a572888fe4b9934a4" compoundref="mtk__bc__descriptor__2d_8cc" startline="128" endline="137">mtk::BCDescriptor2D::PushBackNorthCoeff</referencedby>
+        <referencedby refid="classmtk_1_1BCDescriptor2D_1a006050efe15b1be75b36a74a23051392" compoundref="mtk__bc__descriptor__2d_8cc" startline="139" endline="147">mtk::BCDescriptor2D::set_west_condition</referencedby>
+        <referencedby refid="classmtk_1_1BCDescriptor2D_1a4ba8690e845f59a1507b056f3fc8061e" compoundref="mtk__bc__descriptor__2d_8cc" startline="149" endline="157">mtk::BCDescriptor2D::set_east_condition</referencedby>
+        <referencedby refid="classmtk_1_1BCDescriptor2D_1a408f159cc44d7ee610191efb8ed48b2a" compoundref="mtk__bc__descriptor__2d_8cc" startline="159" endline="168">mtk::BCDescriptor2D::set_south_condition</referencedby>
+        <referencedby refid="classmtk_1_1BCDescriptor2D_1a690f6881a88b202c074d9f90f2a7ddb0" compoundref="mtk__bc__descriptor__2d_8cc" startline="170" endline="179">mtk::BCDescriptor2D::set_north_condition</referencedby>
+        <referencedby refid="classmtk_1_1BCDescriptor2D_1abade249fa28783a5383a7c2aaf570ea9" compoundref="mtk__bc__descriptor__2d_8cc" startline="181" endline="267">mtk::BCDescriptor2D::ImposeOnLaplacianMatrix</referencedby>
+        <referencedby refid="classmtk_1_1BCDescriptor2D_1a5f0ff1fda1b5266dcd77ba2301c8ba2c" compoundref="mtk__bc__descriptor__2d_8cc" startline="269" endline="277">mtk::BCDescriptor2D::ImposeOnGrid</referencedby>
         <referencedby refid="classmtk_1_1BLASAdapter_1ab92440888b730863244c5d9479c11aca" compoundref="mtk__blas__adapter_8cc" startline="324" endline="337">mtk::BLASAdapter::RealNRM2</referencedby>
         <referencedby refid="classmtk_1_1BLASAdapter_1a081cd092ae65e730f44eae8643edd539" compoundref="mtk__blas__adapter_8cc" startline="339" endline="356">mtk::BLASAdapter::RealAXPY</referencedby>
         <referencedby refid="classmtk_1_1BLASAdapter_1af2ac5691f45e67d6e26186b071119ec4" compoundref="mtk__blas__adapter_8cc" startline="358" endline="376">mtk::BLASAdapter::RelNorm2Error</referencedby>
         <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="409" endline="463">mtk::BLASAdapter::RealDenseMM</referencedby>
         <referencedby refid="classmtk_1_1DenseMatrix_1abe26c623467fc1b293cf4f22a3a47cc8" compoundref="mtk__dense__matrix_8cc" startline="201" endline="221">mtk::DenseMatrix::DenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1DenseMatrix_1aacae136ae446cad8f0d81476e83efb39" compoundref="mtk__dense__matrix_8cc" startline="323" endline="331">mtk::DenseMatrix::SetOrdering</referencedby>
-        <referencedby refid="classmtk_1_1DenseMatrix_1a87fb785713c04b13767947cc3325ce7c" compoundref="mtk__dense__matrix_8cc" startline="348" endline="358">mtk::DenseMatrix::GetValue</referencedby>
-        <referencedby refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" compoundref="mtk__dense__matrix_8cc" startline="360" endline="371">mtk::DenseMatrix::SetValue</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a178e63f365cf8c547dc5020c60357f5e" compoundref="mtk__dense__matrix_8cc" startline="323" endline="331">mtk::DenseMatrix::SetOrdering</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a4b23ecbebd970b5eea915dbb50691024" compoundref="mtk__dense__matrix_8cc" startline="348" endline="358">mtk::DenseMatrix::GetValue</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a784ce5784109ac86bfb9d8562b334b13" compoundref="mtk__dense__matrix_8cc" startline="360" endline="371">mtk::DenseMatrix::SetValue</referencedby>
         <referencedby refid="classmtk_1_1Div1D_1a52fcd1542f11e606e36bd188e48bfdf7" compoundref="mtk__div__1d_8cc" startline="176" endline="313">mtk::Div1D::ConstructDiv1D</referencedby>
         <referencedby refid="classmtk_1_1Div1D_1a213fddbaaf86e4840c6a9649b69c2d49" compoundref="mtk__div__1d_8cc" startline="351" endline="412">mtk::Div1D::ReturnAsDenseMatrix</referencedby>
         <referencedby refid="classmtk_1_1Grad1D_1a74ef5245cfae6fd158bd7f563a0c2e52" compoundref="mtk__grad__1d_8cc" startline="182" endline="323">mtk::Grad1D::ConstructGrad1D</referencedby>
@@ -123,25 +133,25 @@
         <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="119" endline="263">mtk::Lap1D::ConstructLap1D</referencedby>
         <referencedby refid="classmtk_1_1Lap1D_1aaea34a17b0879e05eb4109645a2ba8f4" compoundref="mtk__lap__1d_8cc" startline="265" endline="331">mtk::Lap1D::ReturnAsDenseMatrix</referencedby>
         <referencedby refid="classmtk_1_1LAPACKAdapter_1a7428bccf74fd4a4af68fb7233846da22" compoundref="mtk__lapack__adapter_8cc" startline="430" endline="463">mtk::LAPACKAdapter::SolveDenseSystem</referencedby>
-        <referencedby refid="classmtk_1_1Matrix_1ac0edd0ee07853d0ef6dea9b08d15e132" compoundref="mtk__matrix_8cc" startline="187" endline="197">mtk::Matrix::set_storage</referencedby>
-        <referencedby refid="classmtk_1_1Matrix_1aa390fa8883e58e8f1df9416e5b5b7a83" compoundref="mtk__matrix_8cc" startline="199" endline="210">mtk::Matrix::set_ordering</referencedby>
-        <referencedby refid="classmtk_1_1Matrix_1a242fedf2da10a3e5c14f63c2bc60beae" compoundref="mtk__matrix_8cc" startline="212" endline="222">mtk::Matrix::set_num_rows</referencedby>
-        <referencedby refid="classmtk_1_1Matrix_1a312883d34f2e0daf5db7432ee2c4ed51" compoundref="mtk__matrix_8cc" startline="224" endline="234">mtk::Matrix::set_num_cols</referencedby>
-        <referencedby refid="classmtk_1_1Matrix_1ae529100c5c280088e9acf8e8f7994f73" compoundref="mtk__matrix_8cc" startline="236" endline="248">mtk::Matrix::set_num_zero</referencedby>
-        <referencedby refid="classmtk_1_1Matrix_1a66c2c1c127f4efefc4a407e9552e928d" compoundref="mtk__matrix_8cc" startline="250" endline="262">mtk::Matrix::set_num_null</referencedby>
-        <referencedby refid="classmtk_1_1Tools_1a26ee906d28523378522a75e25c3a4e19" compoundref="mtk__tools_8cc" startline="91" endline="103">BeginUnitTestNo</referencedby>
-        <referencedby refid="classmtk_1_1Tools_1ad8cf0085133dd40c913fe195bc5b9694" compoundref="mtk__tools_8cc" startline="105" endline="112">EndUnitTestNo</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a111b89f2f21d06a59b8d043123bec625" compoundref="mtk__matrix_8cc" startline="187" endline="197">mtk::Matrix::set_storage</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a8bdaf3f8307b00a36843359f165e1f17" compoundref="mtk__matrix_8cc" startline="199" endline="210">mtk::Matrix::set_ordering</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1aa4aee0281421c22d9af273b7beb84306" compoundref="mtk__matrix_8cc" startline="212" endline="222">mtk::Matrix::set_num_rows</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1aad6b4ced4a0447cc7bf2347fe86fd722" compoundref="mtk__matrix_8cc" startline="224" endline="234">mtk::Matrix::set_num_cols</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a6eb14709692df59573548ffd8cf67198" compoundref="mtk__matrix_8cc" startline="236" endline="248">mtk::Matrix::set_num_zero</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a61dba12c767f98cda5343b4b16bbbe77" compoundref="mtk__matrix_8cc" startline="250" endline="262">mtk::Matrix::set_num_null</referencedby>
+        <referencedby refid="classmtk_1_1Tools_1afc29ecaf337a13ed2e817d3890a5a441" compoundref="mtk__tools_8cc" startline="91" endline="103">BeginUnitTestNo</referencedby>
+        <referencedby refid="classmtk_1_1Tools_1aba67d9dc35c9c1c49430fcc9ea035e03" compoundref="mtk__tools_8cc" startline="105" endline="112">EndUnitTestNo</referencedby>
         <referencedby refid="classmtk_1_1UniStgGrid1D_1ae19250f0cddef7a05c4a73a90991a26a" compoundref="mtk__uni__stg__grid__1d_8cc" startline="124" endline="142">mtk::UniStgGrid1D::UniStgGrid1D</referencedby>
         <referencedby refid="classmtk_1_1UniStgGrid1D_1a438cda229830d0e2f35c615e70b59a76" compoundref="mtk__uni__stg__grid__1d_8cc" startline="176" endline="210">mtk::UniStgGrid1D::BindScalarField</referencedby>
         <referencedby refid="classmtk_1_1UniStgGrid1D_1a5703f1f875f52f6de8f7db5a6250fafa" compoundref="mtk__uni__stg__grid__1d_8cc" startline="212" endline="238">mtk::UniStgGrid1D::BindVectorField</referencedby>
         <referencedby refid="classmtk_1_1UniStgGrid2D_1ad8813b1ffcf23bb759f59f8524702e80" compoundref="mtk__uni__stg__grid__2d_8cc" startline="169" endline="201">mtk::UniStgGrid2D::UniStgGrid2D</referencedby>
-        <referencedby refid="classmtk_1_1UniStgGrid2D_1ab6aff36e9f89fba1c1ff4f9914508211" compoundref="mtk__uni__stg__grid__2d_8cc" startline="265" endline="313">mtk::UniStgGrid2D::BindScalarField</referencedby>
-        <referencedby refid="classmtk_1_1UniStgGrid2D_1a1cba89c285973514c1351760d598c52b" compoundref="mtk__uni__stg__grid__2d_8cc" startline="408" endline="418">mtk::UniStgGrid2D::BindVectorField</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid2D_1ab6aff36e9f89fba1c1ff4f9914508211" compoundref="mtk__uni__stg__grid__2d_8cc" startline="270" endline="318">mtk::UniStgGrid2D::BindScalarField</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid2D_1a1cba89c285973514c1351760d598c52b" compoundref="mtk__uni__stg__grid__2d_8cc" startline="413" endline="423">mtk::UniStgGrid2D::BindVectorField</referencedby>
       </memberdef>
-      <memberdef kind="function" id="classmtk_1_1Tools_1a26ee906d28523378522a75e25c3a4e19" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classmtk_1_1Tools_1afc29ecaf337a13ed2e817d3890a5a441" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void mtk::Tools::BeginUnitTestNo</definition>
-        <argsstring>(const int &amp;nn)</argsstring>
+        <argsstring>(const int &amp;nn) noexcept</argsstring>
         <name>BeginUnitTestNo</name>
         <param>
           <type>const int &amp;</type>
@@ -162,12 +172,12 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/include/mtk_tools.h" line="100" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_tools.cc" bodystart="91" bodyend="103"/>
-        <references refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" compoundref="mtk__tools_8cc" startline="61" endline="81">Prevent</references>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="61" endline="81">Prevent</references>
       </memberdef>
-      <memberdef kind="function" id="classmtk_1_1Tools_1ad8cf0085133dd40c913fe195bc5b9694" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classmtk_1_1Tools_1aba67d9dc35c9c1c49430fcc9ea035e03" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void mtk::Tools::EndUnitTestNo</definition>
-        <argsstring>(const int &amp;nn)</argsstring>
+        <argsstring>(const int &amp;nn) noexcept</argsstring>
         <name>EndUnitTestNo</name>
         <param>
           <type>const int &amp;</type>
@@ -188,15 +198,15 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/include/mtk_tools.h" line="107" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_tools.cc" bodystart="105" bodyend="112"/>
-        <references refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" compoundref="mtk__tools_8cc" startline="61" endline="81">Prevent</references>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="61" endline="81">Prevent</references>
       </memberdef>
-      <memberdef kind="function" id="classmtk_1_1Tools_1aa311fada9255627d06c56b1e4fedce9e" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classmtk_1_1Tools_1ac6804df469c94ab6a796fb64f1e44a89" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void mtk::Tools::Assert</definition>
-        <argsstring>(const bool condition)</argsstring>
+        <argsstring>(const bool &amp;condition) noexcept</argsstring>
         <name>Assert</name>
         <param>
-          <type>const bool</type>
+          <type>const bool &amp;</type>
           <declname>condition</declname>
         </param>
         <briefdescription>
@@ -228,12 +238,12 @@
     </collaborationgraph>
     <location file="/home/esanchez/Dropbox/MTK/include/mtk_tools.h" line="78" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_tools.h" bodystart="78" bodyend="122"/>
     <listofallmembers>
-      <member refid="classmtk_1_1Tools_1aa311fada9255627d06c56b1e4fedce9e" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>Assert</name></member>
+      <member refid="classmtk_1_1Tools_1ac6804df469c94ab6a796fb64f1e44a89" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>Assert</name></member>
       <member refid="classmtk_1_1Tools_1a4bd58d08397db42271ed9e2d3ecc9963" prot="private" virt="non-virtual"><scope>mtk::Tools</scope><name>begin_time_</name></member>
-      <member refid="classmtk_1_1Tools_1a26ee906d28523378522a75e25c3a4e19" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>BeginUnitTestNo</name></member>
+      <member refid="classmtk_1_1Tools_1afc29ecaf337a13ed2e817d3890a5a441" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>BeginUnitTestNo</name></member>
       <member refid="classmtk_1_1Tools_1aba9d3d2952a3de9e7b46faa86d28d692" prot="private" virt="non-virtual"><scope>mtk::Tools</scope><name>duration_</name></member>
-      <member refid="classmtk_1_1Tools_1ad8cf0085133dd40c913fe195bc5b9694" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>EndUnitTestNo</name></member>
-      <member refid="classmtk_1_1Tools_1afe5bb096309258e2e72503fd7b41c7e0" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>Prevent</name></member>
+      <member refid="classmtk_1_1Tools_1aba67d9dc35c9c1c49430fcc9ea035e03" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>EndUnitTestNo</name></member>
+      <member refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>Prevent</name></member>
       <member refid="classmtk_1_1Tools_1a04a60458594336ee1badff79b8a9a77f" prot="private" virt="non-virtual"><scope>mtk::Tools</scope><name>test_number_</name></member>
     </listofallmembers>
   </compounddef>

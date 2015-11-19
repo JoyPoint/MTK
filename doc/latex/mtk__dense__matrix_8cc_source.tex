@@ -70,10 +70,10 @@
 00076 
 \hypertarget{mtk__dense__matrix_8cc_source_l00077}{}\hyperlink{namespacemtk_ad3bcf52cda59ddb5fc7b4bdce76c46dc}{00077} std::ostream& \hyperlink{namespacemtk_ad3bcf52cda59ddb5fc7b4bdce76c46dc}{operator <<}(std::ostream &stream, \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &in) \{
 00078 
-00079   \textcolor{keywordtype}{int} mm\{in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}()\};  \textcolor{comment}{// Auxiliary.}
-00080   \textcolor{keywordtype}{int} nn\{in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}()\};  \textcolor{comment}{// Auxiliary.}
+00079   \textcolor{keywordtype}{int} mm\{in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ab308b25b48e4fcd39fc60e0c3fc66dea}{num\_rows}()\};  \textcolor{comment}{// Auxiliary.}
+00080   \textcolor{keywordtype}{int} nn\{in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a2160118d0edf51cf2aaa806ee1b915f8}{num\_cols}()\};  \textcolor{comment}{// Auxiliary.}
 00081 
-00082   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}() == 
+00082   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a13cd17621652cd5551ff98549bd94df7}{ordering}() == 
       \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}) \{
 00083     std::swap(mm, nn);
 00084   \}
@@ -85,7 +85,7 @@
 00090     \}
 00091     stream << std::endl;
 00092   \}
-00093   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}() == 
+00093   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a13cd17621652cd5551ff98549bd94df7}{ordering}() == 
       \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}) \{
 00094     std::swap(mm, nn);
 00095   \}
@@ -100,40 +100,40 @@
 00103     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
 00104   \}
 00105 
-00106   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{set\_storage}(in.
-      \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a21893fc643eebadd9757c8995cf44dd3}{storage}());
+00106   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a111b89f2f21d06a59b8d043123bec625}{set\_storage}(in.
+      \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a9ffaa665a9cf7371b3be568415a08a3b}{storage}());
 00107 
-00108   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{set\_ordering}(in.
-      \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}());
+00108   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a8bdaf3f8307b00a36843359f165e1f17}{set\_ordering}(in.
+      \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a13cd17621652cd5551ff98549bd94df7}{ordering}());
 00109 
-00110   \textcolor{keyword}{auto} aux = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
-00111   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a242fedf2da10a3e5c14f63c2bc60beae}{set\_num\_rows}(aux);
+00110   \textcolor{keyword}{auto} aux = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ab308b25b48e4fcd39fc60e0c3fc66dea}{num\_rows}();
+00111   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_aa4aee0281421c22d9af273b7beb84306}{set\_num\_rows}(aux);
 00112 
-00113   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
-00114   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a312883d34f2e0daf5db7432ee2c4ed51}{set\_num\_cols}(aux);
+00113   aux = in.\hyperlink{classmtk_1_1DenseMatrix_a5aa83a0643f27a4652ea97630edf7143}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a2160118d0edf51cf2aaa806ee1b915f8}{num\_cols}();
+00114   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_aad6b4ced4a0447cc7bf2347fe86fd722}{set\_num\_cols}(aux);
 00115 
-00116   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a78e1f8449a21db53750e083c6802a993}{num\_zero}();
-00117   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ae529100c5c280088e9acf8e8f7994f73}{set\_num\_zero}(aux);
+00116   aux = in.\hyperlink{classmtk_1_1DenseMatrix_a5aa83a0643f27a4652ea97630edf7143}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a17f99bfdf7b8071962c37550028c22b5}{num\_zero}();
+00117   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a6eb14709692df59573548ffd8cf67198}{set\_num\_zero}(aux);
 00118 
-00119   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a5bf58512ee91d6ab80eb94541072a9cf}{num\_null}();
-00120   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a66c2c1c127f4efefc4a407e9552e928d}{set\_num\_null}(aux);
+00119   aux = in.\hyperlink{classmtk_1_1DenseMatrix_a5aa83a0643f27a4652ea97630edf7143}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a79ac4c1b31cef05b41a123917b0ad32f}{num\_null}();
+00120   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a61dba12c767f98cda5343b4b16bbbe77}{set\_num\_null}(aux);
 00121 
-00122   \textcolor{keyword}{auto} \hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows} = \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
-00123   \textcolor{keyword}{auto} \hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols} = \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
+00122   \textcolor{keyword}{auto} \hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows} = \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ab308b25b48e4fcd39fc60e0c3fc66dea}{num\_rows}();
+00123   \textcolor{keyword}{auto} \hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols} = \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a2160118d0edf51cf2aaa806ee1b915f8}{num\_cols}();
 00124 
 00125   \textcolor{keyword}{delete} [] \hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_};
 00126 
 00127   \textcolor{keywordflow}{try} \{
-00128     \hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_} = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}*\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}];
+00128     \hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_} = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}*\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}];
 00129   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
 00130     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
 00131       std::endl;
 00132     std::cerr << memory\_allocation\_exception.what() << std::endl;
 00133   \}
-00134   memset(\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[0])*\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}*
-      \hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols});
+00134   memset(\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}[0])*\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}*
+      \hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols});
 00135 
-00136   std::copy(in.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}, in.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_} + \hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}*num\_cols, \hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_});
+00136   std::copy(in.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_}, in.\hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_} + \hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}*num\_cols, \hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\_});
 00137 
 00138   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
 00139 \}
@@ -143,8 +143,8 @@
 00142 
 00143   \textcolor{keywordtype}{bool} ans\{\textcolor{keyword}{true}\};
 00144 
-00145   \textcolor{keyword}{auto} mm = in.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}();
-00146   \textcolor{keyword}{auto} nn = in.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}();
+00145   \textcolor{keyword}{auto} mm = in.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}();
+00146   \textcolor{keyword}{auto} nn = in.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}();
 00147 
 00148   \textcolor{keywordflow}{if} (mm != matrix\_properties\_.num\_rows() ||
 00149       nn != matrix\_properties\_.num\_cols()) \{
@@ -154,7 +154,7 @@
 00153   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < mm && ans; ++ii) \{
 00154     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < nn && ans; ++jj) \{
 00155       ans = ans &&
-00156         abs(data\_[ii*nn + jj] - in.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[ii*nn + jj]) < 
+00156         abs(data\_[ii*nn + jj] - in.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[ii*nn + jj]) < 
       \hyperlink{group__c01-roots_gae914b125d81d1b97e0aee7bbc7739786}{mtk::kDefaultTolerance};
 00157     \}
 00158   \}
@@ -163,32 +163,32 @@
 00161 
 \hypertarget{mtk__dense__matrix_8cc_source_l00162}{}\hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{00162} \hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{mtk::DenseMatrix::DenseMatrix}(): data\_(nullptr) \{
 00163 
-00164   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{set\_storage}(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
-00165   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{set\_ordering}(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
+00164   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a111b89f2f21d06a59b8d043123bec625}{set\_storage}(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
+00165   \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a8bdaf3f8307b00a36843359f165e1f17}{set\_ordering}(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
 00166 \}
 00167 
 \hypertarget{mtk__dense__matrix_8cc_source_l00168}{}\hyperlink{classmtk_1_1DenseMatrix_a90102d605a668bf7ecf0d766cc4c10db}{00168} \hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{mtk::DenseMatrix::DenseMatrix}(\textcolor{keyword}{const} 
       \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &in) \{
 00169 
-00170   matrix\_properties\_.set\_storage(in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a21893fc643eebadd9757c8995cf44dd3}{storage}());
+00170   matrix\_properties\_.set\_storage(in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a9ffaa665a9cf7371b3be568415a08a3b}{storage}());
 00171 
 00172   matrix\_properties\_.set\_ordering(in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.
-      \hyperlink{classmtk_1_1Matrix_af675e480c7b94f194aadad316e53b002}{ordering}());
+      \hyperlink{classmtk_1_1Matrix_a13cd17621652cd5551ff98549bd94df7}{ordering}());
 00173 
-00174   \textcolor{keyword}{auto} aux = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
+00174   \textcolor{keyword}{auto} aux = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ab308b25b48e4fcd39fc60e0c3fc66dea}{num\_rows}();
 00175   matrix\_properties\_.set\_num\_rows(aux);
 00176 
-00177   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
+00177   aux = in.\hyperlink{classmtk_1_1DenseMatrix_a5aa83a0643f27a4652ea97630edf7143}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a2160118d0edf51cf2aaa806ee1b915f8}{num\_cols}();
 00178   matrix\_properties\_.set\_num\_cols(aux);
 00179 
-00180   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a78e1f8449a21db53750e083c6802a993}{num\_zero}();
+00180   aux = in.\hyperlink{classmtk_1_1DenseMatrix_a5aa83a0643f27a4652ea97630edf7143}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a17f99bfdf7b8071962c37550028c22b5}{num\_zero}();
 00181   matrix\_properties\_.set\_num\_zero(aux);
 00182 
-00183   aux = in.\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a5bf58512ee91d6ab80eb94541072a9cf}{num\_null}();
+00183   aux = in.\hyperlink{classmtk_1_1DenseMatrix_a5aa83a0643f27a4652ea97630edf7143}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a79ac4c1b31cef05b41a123917b0ad32f}{num\_null}();
 00184   matrix\_properties\_.set\_num\_null(aux);
 00185 
-00186   \textcolor{keyword}{auto} num\_rows = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
-00187   \textcolor{keyword}{auto} num\_cols = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
+00186   \textcolor{keyword}{auto} num\_rows = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ab308b25b48e4fcd39fc60e0c3fc66dea}{num\_rows}();
+00187   \textcolor{keyword}{auto} num\_cols = in.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a2160118d0edf51cf2aaa806ee1b915f8}{num\_cols}();
 00188 
 00189   \textcolor{keywordflow}{try} \{
 00190     data\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_rows*num\_cols];
@@ -205,8 +205,8 @@
 \hypertarget{mtk__dense__matrix_8cc_source_l00201}{}\hyperlink{classmtk_1_1DenseMatrix_abe26c623467fc1b293cf4f22a3a47cc8}{00201} \hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{mtk::DenseMatrix::DenseMatrix}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_rows, \textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_cols) \{
 00202 
 00203 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00204   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(num\_rows < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00205   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(num\_cols < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00204   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(num\_rows < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00205   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(num\_cols < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00206 \textcolor{preprocessor}{  #endif}
 00207 
 00208   matrix\_properties\_.set\_storage(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
@@ -229,7 +229,7 @@
 00225                               \textcolor{keyword}{const} \textcolor{keywordtype}{bool} &transpose) \{
 00226 
 00227 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00228   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(rank < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00228   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(rank < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00229 \textcolor{preprocessor}{  #endif}
 00230 
 00231   \textcolor{keywordtype}{int} aux\{\};  \textcolor{comment}{// Used to control the padding.}
@@ -265,15 +265,15 @@
 00261   \}
 00262 \}
 00263 
-\hypertarget{mtk__dense__matrix_8cc_source_l00264}{}\hyperlink{classmtk_1_1DenseMatrix_a4a85c10adb8a1d695c992eb5fd3e3dac}{00264} \hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{mtk::DenseMatrix::DenseMatrix}(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *gen,
+\hypertarget{mtk__dense__matrix_8cc_source_l00264}{}\hyperlink{classmtk_1_1DenseMatrix_acedaf4058916614d66a18381e624a21d}{00264} \hyperlink{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}{mtk::DenseMatrix::DenseMatrix}(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *\textcolor{keyword}{const} gen,
 00265                               \textcolor{keyword}{const} \textcolor{keywordtype}{int} &gen\_length,
 00266                               \textcolor{keyword}{const} \textcolor{keywordtype}{int} &pro\_length,
 00267                               \textcolor{keyword}{const} \textcolor{keywordtype}{bool} &transpose) \{
 00268 
 00269 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00270   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(gen == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00271   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(gen\_length < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00272   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(pro\_length < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00270   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(gen == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00271   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(gen\_length < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00272   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(pro\_length < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00273 \textcolor{preprocessor}{  #endif}
 00274 
 00275   matrix\_properties\_.set\_storage(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
@@ -315,20 +315,21 @@
 00311 
 \hypertarget{mtk__dense__matrix_8cc_source_l00312}{}\hyperlink{classmtk_1_1DenseMatrix_a8d4a0df33bd4e4edf5d2fe5539885b85}{00312} \hyperlink{classmtk_1_1DenseMatrix_a8d4a0df33bd4e4edf5d2fe5539885b85}{mtk::DenseMatrix::~DenseMatrix}() \{
 00313 
-00314   \textcolor{keyword}{delete}[] data\_;
+00314   \textcolor{keyword}{delete} [] data\_;
 00315   data\_ = \textcolor{keyword}{nullptr};
 00316 \}
 00317 
-\hypertarget{mtk__dense__matrix_8cc_source_l00318}{}\hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{00318} \hyperlink{classmtk_1_1Matrix}{mtk::Matrix} \hyperlink{classmtk_1_1DenseMatrix_abb5e4db5688743c6f9fd9ec6e38ed4ca}{mtk::DenseMatrix::matrix\_properties}()\textcolor{keyword}{ const }\{
+\hypertarget{mtk__dense__matrix_8cc_source_l00318}{}\hyperlink{classmtk_1_1DenseMatrix_a5aa83a0643f27a4652ea97630edf7143}{00318} \hyperlink{classmtk_1_1Matrix}{mtk::Matrix} \hyperlink{classmtk_1_1DenseMatrix_a5aa83a0643f27a4652ea97630edf7143}{mtk::DenseMatrix::matrix\_properties}() const 
+      noexcept \{
 00319 
 00320   \textcolor{keywordflow}{return} matrix\_properties\_;
 00321 \}
 00322 
-\hypertarget{mtk__dense__matrix_8cc_source_l00323}{}\hyperlink{classmtk_1_1DenseMatrix_aacae136ae446cad8f0d81476e83efb39}{00323} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1DenseMatrix_aacae136ae446cad8f0d81476e83efb39}{mtk::DenseMatrix::SetOrdering}(
-      \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{mtk::MatrixOrdering} oo) \{
+\hypertarget{mtk__dense__matrix_8cc_source_l00323}{}\hyperlink{classmtk_1_1DenseMatrix_a178e63f365cf8c547dc5020c60357f5e}{00323} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1DenseMatrix_a178e63f365cf8c547dc5020c60357f5e}{mtk::DenseMatrix::SetOrdering}(
+      \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{mtk::MatrixOrdering} oo) noexcept \{
 00324 
 00325 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00326   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(!(oo == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR} || oo == 
+00326   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(!(oo == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR} || oo == 
       \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}),
 00327                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00328 \textcolor{preprocessor}{  #endif}
@@ -336,41 +337,41 @@
 00330   matrix\_properties\_.set\_ordering(oo);
 00331 \}
 00332 
-\hypertarget{mtk__dense__matrix_8cc_source_l00333}{}\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{00333} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{mtk::DenseMatrix::num\_rows}()\textcolor{keyword}{ const }\{
+\hypertarget{mtk__dense__matrix_8cc_source_l00333}{}\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{00333} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{mtk::DenseMatrix::num\_rows}() const noexcept \{
 00334 
 00335   \textcolor{keywordflow}{return} matrix\_properties\_.num\_rows();
 00336 \}
 00337 
-\hypertarget{mtk__dense__matrix_8cc_source_l00338}{}\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{00338} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{mtk::DenseMatrix::num\_cols}()\textcolor{keyword}{ const }\{
+\hypertarget{mtk__dense__matrix_8cc_source_l00338}{}\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{00338} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{mtk::DenseMatrix::num\_cols}() const noexcept \{
 00339 
 00340   \textcolor{keywordflow}{return} matrix\_properties\_.num\_cols();
 00341 \}
 00342 
-\hypertarget{mtk__dense__matrix_8cc_source_l00343}{}\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{00343} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}* \hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{mtk::DenseMatrix::data}()\textcolor{keyword}{ const }\{
+\hypertarget{mtk__dense__matrix_8cc_source_l00343}{}\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{00343} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}* \hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{mtk::DenseMatrix::data}() const noexcept \{
 00344 
 00345   \textcolor{keywordflow}{return} data\_;
 00346 \}
 00347 
-\hypertarget{mtk__dense__matrix_8cc_source_l00348}{}\hyperlink{classmtk_1_1DenseMatrix_a87fb785713c04b13767947cc3325ce7c}{00348} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1DenseMatrix_a87fb785713c04b13767947cc3325ce7c}{mtk::DenseMatrix::GetValue}(
+\hypertarget{mtk__dense__matrix_8cc_source_l00348}{}\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{00348} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{mtk::DenseMatrix::GetValue}(
 00349     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &mm,
-00350     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &nn)\textcolor{keyword}{ const }\{
+00350     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &nn) \textcolor{keyword}{const} noexcept \{
 00351 
 00352 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00353   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(mm < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00354   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(nn < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00353   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(mm < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00354   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00355 \textcolor{preprocessor}{  #endif}
 00356 
 00357   \textcolor{keywordflow}{return} data\_[mm*matrix\_properties\_.num\_cols() + nn];
 00358 \}
 00359 
-\hypertarget{mtk__dense__matrix_8cc_source_l00360}{}\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{00360} \textcolor{keywordtype}{void}  \hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{mtk::DenseMatrix::SetValue}(
+\hypertarget{mtk__dense__matrix_8cc_source_l00360}{}\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{00360} \textcolor{keywordtype}{void}  \hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{mtk::DenseMatrix::SetValue}(
 00361     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &mm,
 00362     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &nn,
-00363     \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &val) \{
+00363     \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &val) noexcept \{
 00364 
 00365 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00366   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(mm < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00367   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(nn < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00366   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(mm < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00367   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00368 \textcolor{preprocessor}{  #endif}
 00369 
 00370   data\_[mm*matrix\_properties\_.num\_cols() + nn] = val;
@@ -500,19 +501,19 @@
 00496   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aa\_factor\{\}; \textcolor{comment}{// Used in computation.}
 00497 
 00498   \textcolor{comment}{// Auxiliary variables:}
-00499   \textcolor{keyword}{auto} aux1 = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}()*bb.
-      \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}();
-00500   \textcolor{keyword}{auto} aux2 = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}()*bb.
-      \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}();
+00499   \textcolor{keyword}{auto} aux1 = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ab308b25b48e4fcd39fc60e0c3fc66dea}{num\_rows}()*bb.
+      \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ab308b25b48e4fcd39fc60e0c3fc66dea}{num\_rows}();
+00500   \textcolor{keyword}{auto} aux2 = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a2160118d0edf51cf2aaa806ee1b915f8}{num\_cols}()*bb.
+      \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a2160118d0edf51cf2aaa806ee1b915f8}{num\_cols}();
 00501 
 00502   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} output(aux1,aux2); \textcolor{comment}{// Output matrix.}
 00503 
-00504   \textcolor{keywordtype}{int} kk\_num\_cols\{output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}()\}; \textcolor{comment}{// Aux.}
+00504   \textcolor{keywordtype}{int} kk\_num\_cols\{output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a2160118d0edf51cf2aaa806ee1b915f8}{num\_cols}()\}; \textcolor{comment}{// Aux.}
 00505 
-00506   \textcolor{keyword}{auto} mm = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}(); \textcolor{comment}{// Rows of aa.}
-00507   \textcolor{keyword}{auto} nn = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}(); \textcolor{comment}{// Cols of aa.}
-00508   \textcolor{keyword}{auto} pp = bb.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a69feb30fc0018faee65fe9f7cb43e0ed}{num\_rows}(); \textcolor{comment}{// Rows of bb.}
-00509   \textcolor{keyword}{auto} qq = bb.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a1e52243fa290de6ee4bcc48cd1776a9a}{num\_cols}(); \textcolor{comment}{// Cols of bb.}
+00506   \textcolor{keyword}{auto} mm = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ab308b25b48e4fcd39fc60e0c3fc66dea}{num\_rows}(); \textcolor{comment}{// Rows of aa.}
+00507   \textcolor{keyword}{auto} nn = aa.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a2160118d0edf51cf2aaa806ee1b915f8}{num\_cols}(); \textcolor{comment}{// Cols of aa.}
+00508   \textcolor{keyword}{auto} pp = bb.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ab308b25b48e4fcd39fc60e0c3fc66dea}{num\_rows}(); \textcolor{comment}{// Rows of bb.}
+00509   \textcolor{keyword}{auto} qq = bb.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a2160118d0edf51cf2aaa806ee1b915f8}{num\_cols}(); \textcolor{comment}{// Cols of bb.}
 00510 
 00511   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < mm; ++ii) \{
 00512     row\_offset = ii*pp;
@@ -528,14 +529,14 @@
 00522     \}
 00523   \}
 00524 
-00525   output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_ac0edd0ee07853d0ef6dea9b08d15e132}{set\_storage}(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
-00526   output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_aa390fa8883e58e8f1df9416e5b5b7a83}{set\_ordering}(
+00525   output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a111b89f2f21d06a59b8d043123bec625}{set\_storage}(\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE});
+00526   output.\hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\_properties\_}.\hyperlink{classmtk_1_1Matrix_a8bdaf3f8307b00a36843359f165e1f17}{set\_ordering}(
       \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR});
 00527 
 00528   \textcolor{keywordflow}{return} output;
 00529 \}
 00530 
-\hypertarget{mtk__dense__matrix_8cc_source_l00531}{}\hyperlink{classmtk_1_1DenseMatrix_a783d5ea89262d4e2eeb14b9c1ecd0063}{00531} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1DenseMatrix_a783d5ea89262d4e2eeb14b9c1ecd0063}{mtk::DenseMatrix::WriteToFile}(std::string filename)\textcolor{keyword}{ const }\{
+\hypertarget{mtk__dense__matrix_8cc_source_l00531}{}\hyperlink{classmtk_1_1DenseMatrix_ab396804fb5f188e1eaa8578c738c59fc}{00531} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1DenseMatrix_ab396804fb5f188e1eaa8578c738c59fc}{mtk::DenseMatrix::WriteToFile}(\textcolor{keyword}{const} std::string &filename)\textcolor{keyword}{ const }\{
 00532 
 00533   std::ofstream output\_dat\_file;  \textcolor{comment}{// Output file.}
 00534 

@@ -1,7 +1,7 @@
 var searchData=
 [
   ['data_20structures_2e',['Data structures.',['../group__c04-data__structures.html',1,'']]],
-  ['data',['data',['../classmtk_1_1DenseMatrix.html#a16b3ff56feb2658b9fc7147d1de4d8e7',1,'mtk::DenseMatrix::data()'],['../classmtk_1_1Lap1D.html#ab2652725a8407c79247680c7bbd073b8',1,'mtk::Lap1D::data()'],['../classmtk_1_1Lap2D.html#a102427355df09c2aad400c6ce18e5636',1,'mtk::Lap2D::data()']]],
+  ['data',['data',['../classmtk_1_1DenseMatrix.html#a0c33b8a9e01d157c61ddbdf807c25d84',1,'mtk::DenseMatrix::data()'],['../classmtk_1_1Lap1D.html#ab2652725a8407c79247680c7bbd073b8',1,'mtk::Lap1D::data()'],['../classmtk_1_1Lap2D.html#a102427355df09c2aad400c6ce18e5636',1,'mtk::Lap2D::data()']]],
   ['data_5f',['data_',['../classmtk_1_1DenseMatrix.html#a7893e4e5c8d2e2de32b156177e78cb6f',1,'mtk::DenseMatrix']]],
   ['degree_5fapproximation',['degree_approximation',['../classmtk_1_1Quad1D.html#aa1d1fe5f7cdaf8bf923a11c7d3d2468f',1,'mtk::Quad1D']]],
   ['degree_5fapproximation_5f',['degree_approximation_',['../classmtk_1_1Quad1D.html#aaff281c19f70faeb07f610fcffb300c5',1,'mtk::Quad1D']]],
@@ -11,7 +11,7 @@ var searchData=
   ['delta_5fy_5f',['delta_y_',['../classmtk_1_1UniStgGrid2D.html#ace5af3c991f241a895318b9761db73eb',1,'mtk::UniStgGrid2D']]],
   ['dense',['DENSE',['../namespacemtk.html#ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87',1,'mtk']]],
   ['densematrix',['DenseMatrix',['../classmtk_1_1DenseMatrix.html',1,'mtk']]],
-  ['densematrix',['DenseMatrix',['../classmtk_1_1DenseMatrix.html#a0c75ee704707983f935b02835eab0933',1,'mtk::DenseMatrix::DenseMatrix()'],['../classmtk_1_1DenseMatrix.html#a90102d605a668bf7ecf0d766cc4c10db',1,'mtk::DenseMatrix::DenseMatrix(const DenseMatrix &amp;in)'],['../classmtk_1_1DenseMatrix.html#abe26c623467fc1b293cf4f22a3a47cc8',1,'mtk::DenseMatrix::DenseMatrix(const int &amp;num_rows, const int &amp;num_cols)'],['../classmtk_1_1DenseMatrix.html#a4ef0dec1b5558fcf00719bfac059ec68',1,'mtk::DenseMatrix::DenseMatrix(const int &amp;rank, const bool &amp;padded, const bool &amp;transpose)'],['../classmtk_1_1DenseMatrix.html#a4a85c10adb8a1d695c992eb5fd3e3dac',1,'mtk::DenseMatrix::DenseMatrix(const Real *gen, const int &amp;gen_length, const int &amp;pro_length, const bool &amp;transpose)']]],
+  ['densematrix',['DenseMatrix',['../classmtk_1_1DenseMatrix.html#a0c75ee704707983f935b02835eab0933',1,'mtk::DenseMatrix::DenseMatrix()'],['../classmtk_1_1DenseMatrix.html#a90102d605a668bf7ecf0d766cc4c10db',1,'mtk::DenseMatrix::DenseMatrix(const DenseMatrix &amp;in)'],['../classmtk_1_1DenseMatrix.html#abe26c623467fc1b293cf4f22a3a47cc8',1,'mtk::DenseMatrix::DenseMatrix(const int &amp;num_rows, const int &amp;num_cols)'],['../classmtk_1_1DenseMatrix.html#a4ef0dec1b5558fcf00719bfac059ec68',1,'mtk::DenseMatrix::DenseMatrix(const int &amp;rank, const bool &amp;padded, const bool &amp;transpose)'],['../classmtk_1_1DenseMatrix.html#acedaf4058916614d66a18381e624a21d',1,'mtk::DenseMatrix::DenseMatrix(const Real *const gen, const int &amp;gen_length, const int &amp;pro_length, const bool &amp;transpose)']]],
   ['dim_5fnull_5f',['dim_null_',['../classmtk_1_1Div1D.html#a264027144def76d802778391f55381a0',1,'mtk::Div1D::dim_null_()'],['../classmtk_1_1Grad1D.html#abe8eaf4f5c451f82c062daaef31e9e6a',1,'mtk::Grad1D::dim_null_()']]],
   ['dir_5finterp_5f',['dir_interp_',['../classmtk_1_1Interp1D.html#a854e2c72f07c9fca4bbe32bfad2e0792',1,'mtk::Interp1D']]],
   ['dirinterp',['DirInterp',['../group__c02-enums.html#ga674ec67bd1baa04e5dc06c2bcc351972',1,'mtk']]],

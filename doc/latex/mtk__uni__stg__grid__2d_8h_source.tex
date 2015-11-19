@@ -105,41 +105,42 @@
 00200 
 00206   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_a65a78cfc80ffdbeb282ed57af4dc5cb4}{delta\_y}() \textcolor{keyword}{const};
 00207 
-00213   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_ab6aff36e9f89fba1c1ff4f9914508211}{BindScalarField}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*ScalarField)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy));
+00213   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1UniStgGrid2D_aa651194ccd0321a7c61a8f56fa5e8455}{Bound}() \textcolor{keyword}{const};
 00214 
-00229   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a1cba89c285973514c1351760d598c52b}{BindVectorField}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldPComponent)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx,
+00220   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_ab6aff36e9f89fba1c1ff4f9914508211}{BindScalarField}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*ScalarField)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy));
+00221 
+00236   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a1cba89c285973514c1351760d598c52b}{BindVectorField}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldPComponent)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx,
       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy),
-00230                        \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldQComponent)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx,\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy));
-00231 
-00244   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1UniStgGrid2D_a1787a79e4bcee6b89c681dc7e5e2d7bc}{WriteToFile}(std::string filename,
-00245                    std::string space\_name\_x,
-00246                    std::string space\_name\_y,
-00247                    std::string field\_name) \textcolor{keyword}{const};
-00248 
-00249  \textcolor{keyword}{private}:
-00262   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a5ff685fde27134437dd0b372fb6b9958}{BindVectorFieldPComponent}(
-00263     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldPComponent)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy));
-00264 
-00277   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a8b7ae23231a4a694073b6c22715a4375}{BindVectorFieldQComponent}(
-00278     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldQComponent)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy));
-00279 
-00280 
-\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00281}{}\hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{00281}   std::vector<Real> \hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}; 
-\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00282}{}\hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{00282}   std::vector<Real> \hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}; 
-\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00283}{}\hyperlink{classmtk_1_1UniStgGrid2D_ad7474b2669ee988b84aed20b7f5dc7be}{00283}   std::vector<Real> \hyperlink{classmtk_1_1UniStgGrid2D_ad7474b2669ee988b84aed20b7f5dc7be}{discrete\_field\_};    
-00284 
-\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00285}{}\hyperlink{classmtk_1_1UniStgGrid2D_ac8b66740d328803f7fbabd1c42c775b2}{00285}   \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{FieldNature} \hyperlink{classmtk_1_1UniStgGrid2D_ac8b66740d328803f7fbabd1c42c775b2}{nature\_};  
+00237                        \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldQComponent)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx,\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy));
+00238 
+00251   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1UniStgGrid2D_a1787a79e4bcee6b89c681dc7e5e2d7bc}{WriteToFile}(std::string filename,
+00252                    std::string space\_name\_x,
+00253                    std::string space\_name\_y,
+00254                    std::string field\_name) \textcolor{keyword}{const};
+00255 
+00256  \textcolor{keyword}{private}:
+00269   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a5ff685fde27134437dd0b372fb6b9958}{BindVectorFieldPComponent}(
+00270     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldPComponent)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy));
+00271 
+00284   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a8b7ae23231a4a694073b6c22715a4375}{BindVectorFieldQComponent}(
+00285     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldQComponent)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy));
 00286 
-\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00287}{}\hyperlink{classmtk_1_1UniStgGrid2D_a59c42d8099a017bc8a082fddc1e5606c}{00287}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_a59c42d8099a017bc8a082fddc1e5606c}{west\_bndy\_};   
-\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00288}{}\hyperlink{classmtk_1_1UniStgGrid2D_ae24f3d5bf5ed3a6d066cdf48aa1fb307}{00288}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_ae24f3d5bf5ed3a6d066cdf48aa1fb307}{east\_bndy\_};   
-\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00289}{}\hyperlink{classmtk_1_1UniStgGrid2D_ac03a0f4840ee6ae1bc853e5d9c0df8d1}{00289}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1UniStgGrid2D_ac03a0f4840ee6ae1bc853e5d9c0df8d1}{num\_cells\_x\_};  
-\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00290}{}\hyperlink{classmtk_1_1UniStgGrid2D_ab1fbb3cf685c51f434488e378564bd2a}{00290}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_ab1fbb3cf685c51f434488e378564bd2a}{delta\_x\_};     
-00291 
-\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00292}{}\hyperlink{classmtk_1_1UniStgGrid2D_ac228c81fad7f4feeae93fb3c09d7e175}{00292}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_ac228c81fad7f4feeae93fb3c09d7e175}{south\_bndy\_};  
-\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00293}{}\hyperlink{classmtk_1_1UniStgGrid2D_a3f904091b6e74aa78d8543e5cba26afb}{00293}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_a3f904091b6e74aa78d8543e5cba26afb}{north\_bndy\_};  
-\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00294}{}\hyperlink{classmtk_1_1UniStgGrid2D_a3e4f61d781212ad57c34e9446c4074b6}{00294}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1UniStgGrid2D_a3e4f61d781212ad57c34e9446c4074b6}{num\_cells\_y\_};  
-\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00295}{}\hyperlink{classmtk_1_1UniStgGrid2D_ace5af3c991f241a895318b9761db73eb}{00295}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_ace5af3c991f241a895318b9761db73eb}{delta\_y\_};     
-00296 \};
-00297 \}
-00298 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_UNI\_STG\_GRID\_2D\_H\_}
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00287}{}\hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{00287}   std::vector<Real> \hyperlink{classmtk_1_1UniStgGrid2D_ab15979865852583a46662ea592f27a4f}{discrete\_domain\_x\_}; 
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00288}{}\hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{00288}   std::vector<Real> \hyperlink{classmtk_1_1UniStgGrid2D_ad69f93d4b27707d97f209b907383a7a2}{discrete\_domain\_y\_}; 
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00289}{}\hyperlink{classmtk_1_1UniStgGrid2D_ad7474b2669ee988b84aed20b7f5dc7be}{00289}   std::vector<Real> \hyperlink{classmtk_1_1UniStgGrid2D_ad7474b2669ee988b84aed20b7f5dc7be}{discrete\_field\_};    
+00290 
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00291}{}\hyperlink{classmtk_1_1UniStgGrid2D_ac8b66740d328803f7fbabd1c42c775b2}{00291}   \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{FieldNature} \hyperlink{classmtk_1_1UniStgGrid2D_ac8b66740d328803f7fbabd1c42c775b2}{nature\_};  
+00292 
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00293}{}\hyperlink{classmtk_1_1UniStgGrid2D_a59c42d8099a017bc8a082fddc1e5606c}{00293}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_a59c42d8099a017bc8a082fddc1e5606c}{west\_bndy\_};   
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00294}{}\hyperlink{classmtk_1_1UniStgGrid2D_ae24f3d5bf5ed3a6d066cdf48aa1fb307}{00294}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_ae24f3d5bf5ed3a6d066cdf48aa1fb307}{east\_bndy\_};   
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00295}{}\hyperlink{classmtk_1_1UniStgGrid2D_ac03a0f4840ee6ae1bc853e5d9c0df8d1}{00295}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1UniStgGrid2D_ac03a0f4840ee6ae1bc853e5d9c0df8d1}{num\_cells\_x\_};  
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00296}{}\hyperlink{classmtk_1_1UniStgGrid2D_ab1fbb3cf685c51f434488e378564bd2a}{00296}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_ab1fbb3cf685c51f434488e378564bd2a}{delta\_x\_};     
+00297 
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00298}{}\hyperlink{classmtk_1_1UniStgGrid2D_ac228c81fad7f4feeae93fb3c09d7e175}{00298}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_ac228c81fad7f4feeae93fb3c09d7e175}{south\_bndy\_};  
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00299}{}\hyperlink{classmtk_1_1UniStgGrid2D_a3f904091b6e74aa78d8543e5cba26afb}{00299}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_a3f904091b6e74aa78d8543e5cba26afb}{north\_bndy\_};  
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00300}{}\hyperlink{classmtk_1_1UniStgGrid2D_a3e4f61d781212ad57c34e9446c4074b6}{00300}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1UniStgGrid2D_a3e4f61d781212ad57c34e9446c4074b6}{num\_cells\_y\_};  
+\hypertarget{mtk__uni__stg__grid__2d_8h_source_l00301}{}\hyperlink{classmtk_1_1UniStgGrid2D_ace5af3c991f241a895318b9761db73eb}{00301}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid2D_ace5af3c991f241a895318b9761db73eb}{delta\_y\_};     
+00302 \};
+00303 \}
+00304 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_UNI\_STG\_GRID\_2D\_H\_}
 \end{DoxyCode}

@@ -1,4 +1,4 @@
-.TH "mtk::BCDescriptor2D" 3 "Wed Nov 18 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::BCDescriptor2D" 3 "Thu Nov 19 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -16,13 +16,29 @@ mtk::BCDescriptor2D \-
 .br
 .RI "\fIDefault constructor\&. \fP"
 .ti -1c
-.RI "\fB~BCDescriptor2D\fP ()"
-.br
-.RI "\fIDestructor\&. \fP"
-.ti -1c
 .RI "\fBBCDescriptor2D\fP (const \fBBCDescriptor2D\fP &desc)"
 .br
 .RI "\fICopy constructor\&. \fP"
+.ti -1c
+.RI "\fB~BCDescriptor2D\fP () noexcept"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_west\fP () const noexcept"
+.br
+.RI "\fIGetter for the highest order of differentiation in the west boundary\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_east\fP () const noexcept"
+.br
+.RI "\fIGetter for the highest order of differentiation in the east boundary\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_south\fP () const noexcept"
+.br
+.RI "\fIGetter for the highest order of differentiation in the south boundary\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_north\fP () const noexcept"
+.br
+.RI "\fIGetter for the highest order of differentiation in the north boundary\&. \fP"
 .ti -1c
 .RI "void \fBPushBackWestCoeff\fP (\fBCoefficientFunction2D\fP cw)"
 .br
@@ -40,19 +56,19 @@ mtk::BCDescriptor2D \-
 .br
 .RI "\fIPush back coefficient function north of lowest order diff\&. available\&. \fP"
 .ti -1c
-.RI "void \fBset_west_condition_\fP (\fBmtk::Real\fP(*\fBwest_condition_\fP)(\fBReal\fP xx, \fBReal\fP yy))"
+.RI "void \fBset_west_condition\fP (\fBReal\fP(*west_condition)(\fBReal\fP xx, \fBReal\fP yy)) noexcept"
 .br
 .RI "\fISet boundary condition at west\&. \fP"
 .ti -1c
-.RI "void \fBset_east_condition_\fP (\fBmtk::Real\fP(*\fBeast_condition_\fP)(\fBReal\fP xx, \fBReal\fP yy))"
+.RI "void \fBset_east_condition\fP (\fBReal\fP(*east_condition)(\fBReal\fP xx, \fBReal\fP yy)) noexcept"
 .br
 .RI "\fISet boundary condition at east\&. \fP"
 .ti -1c
-.RI "void \fBset_south_condition_\fP (\fBmtk::Real\fP(*\fBsouth_condition_\fP)(\fBReal\fP xx, \fBReal\fP yy))"
+.RI "void \fBset_south_condition\fP (\fBReal\fP(*south_condition)(\fBReal\fP xx, \fBReal\fP yy)) noexcept"
 .br
 .RI "\fISet boundary condition at south\&. \fP"
 .ti -1c
-.RI "void \fBset_north_condition_\fP (\fBmtk::Real\fP(*\fBnorth_condition_\fP)(\fBReal\fP xx, \fBReal\fP yy))"
+.RI "void \fBset_north_condition\fP (\fBReal\fP(*north_condition)(\fBReal\fP xx, \fBReal\fP yy)) noexcept"
 .br
 .RI "\fISet boundary condition at north\&. \fP"
 .ti -1c
@@ -68,9 +84,21 @@ mtk::BCDescriptor2D \-
 
 .in +1c
 .ti -1c
-.RI "int \fBhighest_order_differentiation_\fP"
+.RI "int \fBhighest_order_diff_west_\fP"
 .br
-.RI "\fIHighest order of differentiation\&. \fP"
+.RI "\fIHighest order of differentiation for west\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_east_\fP"
+.br
+.RI "\fIHighest order of differentiation for east\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_south_\fP"
+.br
+.RI "\fIHighest order differentiation for south\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_north_\fP"
+.br
+.RI "\fIHighest order differentiation for north\&. \fP"
 .ti -1c
 .RI "std::vector
 .br
@@ -96,19 +124,19 @@ mtk::BCDescriptor2D \-
 .br
 .RI "\fICoeffs\&. south\&. \fP"
 .ti -1c
-.RI "\fBmtk::Real\fP(* \fBwest_condition_\fP )(\fBReal\fP xx, \fBReal\fP yy)"
+.RI "\fBReal\fP(* \fBwest_condition_\fP )(\fBReal\fP xx, \fBReal\fP yy)"
 .br
 .RI "\fICondition for west\&. \fP"
 .ti -1c
-.RI "\fBmtk::Real\fP(* \fBeast_condition_\fP )(\fBReal\fP xx, \fBReal\fP yy)"
+.RI "\fBReal\fP(* \fBeast_condition_\fP )(\fBReal\fP xx, \fBReal\fP yy)"
 .br
 .RI "\fICondition for east\&. \fP"
 .ti -1c
-.RI "\fBmtk::Real\fP(* \fBsouth_condition_\fP )(\fBReal\fP xx, \fBReal\fP yy)"
+.RI "\fBReal\fP(* \fBsouth_condition_\fP )(\fBReal\fP xx, \fBReal\fP yy)"
 .br
 .RI "\fICondition for south\&. \fP"
 .ti -1c
-.RI "\fBmtk::Real\fP(* \fBnorth_condition_\fP )(\fBReal\fP xx, \fBReal\fP yy)"
+.RI "\fBReal\fP(* \fBnorth_condition_\fP )(\fBReal\fP xx, \fBReal\fP yy)"
 .br
 .RI "\fICondition for north\&. \fP"
 .in -1c
@@ -119,8 +147,8 @@ Definition at line 93 of file mtk_bc_descriptor_2d\&.h\&.
 .PP 
 .SS "mtk::BCDescriptor2D::BCDescriptor2D ()"
 
-.SS "mtk::BCDescriptor2D::~BCDescriptor2D ()"
-
+.PP
+Definition at line 61 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "mtk::BCDescriptor2D::BCDescriptor2D (const \fBBCDescriptor2D\fP &desc)"
 
 .PP
@@ -130,9 +158,59 @@ Definition at line 93 of file mtk_bc_descriptor_2d\&.h\&.
 .RE
 .PP
 
+.PP
+Definition at line 71 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "mtk::BCDescriptor2D::~BCDescriptor2D ()\fC [noexcept]\fP"
+
+.PP
+Definition at line 73 of file mtk_bc_descriptor_2d\&.cc\&.
 .SH "Member Function Documentation"
 .PP 
-.SS "void mtk::BCDescriptor2D::ImposeOnGrid (\fBUniStgGrid2D\fP &grid) const"
+.SS "int mtk::BCDescriptor2D::highest_order_diff_east () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Integer highest order of differentiation in the east boundary\&. 
+.RE
+.PP
+
+.PP
+Definition at line 80 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "int mtk::BCDescriptor2D::highest_order_diff_north () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Integer highest order of differentiation in the north boundary\&. 
+.RE
+.PP
+
+.PP
+Definition at line 90 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "int mtk::BCDescriptor2D::highest_order_diff_south () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Integer highest order of differentiation in the south boundary\&. 
+.RE
+.PP
+
+.PP
+Definition at line 85 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "int mtk::BCDescriptor2D::highest_order_diff_west () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Integer highest order of differentiation in the west boundary\&. 
+.RE
+.PP
+
+.PP
+Definition at line 75 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::ImposeOnGrid (\fBmtk::UniStgGrid2D\fP &grid) const"
 
 .PP
 \fBParameters:\fP
@@ -141,7 +219,9 @@ Definition at line 93 of file mtk_bc_descriptor_2d\&.h\&.
 .RE
 .PP
 
-.SS "void mtk::BCDescriptor2D::ImposeOnLaplacianMatrix (const \fBUniStgGrid2D\fP &grid, \fBDenseMatrix\fP &matrix) const"
+.PP
+Definition at line 269 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::ImposeOnLaplacianMatrix (const \fBUniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix) const"
 
 .PP
 \fBParameters:\fP
@@ -152,7 +232,18 @@ Definition at line 93 of file mtk_bc_descriptor_2d\&.h\&.
 .RE
 .PP
 
-.SS "void mtk::BCDescriptor2D::PushBackEastCoeff (\fBCoefficientFunction2D\fPce)"
+.IP "1." 4
+If we have not bound anything to the grid, then we have to generate our collection of spatial coordinates, as we evaluate the coefficients\&.
+.PP
+.IP "1." 4
+Impose the sum of the coefficients on the south boundary\&.
+.IP "2." 4
+Impose the sum of the coefficients on the north boundary\&. 
+.PP
+
+.PP
+Definition at line 181 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::PushBackEastCoeff (\fBmtk::CoefficientFunction2D\fPce)"
 
 .PP
 \fBParameters:\fP
@@ -161,16 +252,20 @@ Definition at line 93 of file mtk_bc_descriptor_2d\&.h\&.
 .RE
 .PP
 
-.SS "void mtk::BCDescriptor2D::PushBackNorthCoeff (\fBCoefficientFunction2D\fPcn)"
+.PP
+Definition at line 106 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::PushBackNorthCoeff (\fBmtk::CoefficientFunction2D\fPcn)"
 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIcn\fP Function $ c_w(x,y):\Omega\mapsto\mathbb{R} $\&. 
+\fIcn\fP Function $ c_n(x,y):\Omega\mapsto\mathbb{R} $\&. 
 .RE
 .PP
 
-.SS "void mtk::BCDescriptor2D::PushBackSouthCoeff (\fBCoefficientFunction2D\fPcs)"
+.PP
+Definition at line 128 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::PushBackSouthCoeff (\fBmtk::CoefficientFunction2D\fPcs)"
 
 .PP
 \fBParameters:\fP
@@ -179,7 +274,9 @@ Definition at line 93 of file mtk_bc_descriptor_2d\&.h\&.
 .RE
 .PP
 
-.SS "void mtk::BCDescriptor2D::PushBackWestCoeff (\fBCoefficientFunction2D\fPcw)"
+.PP
+Definition at line 117 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::PushBackWestCoeff (\fBmtk::CoefficientFunction2D\fPcw)"
 
 .PP
 \fBParameters:\fP
@@ -188,80 +285,102 @@ Definition at line 93 of file mtk_bc_descriptor_2d\&.h\&.
 .RE
 .PP
 
-.SS "void mtk::BCDescriptor2D::set_east_condition_ (\fBmtk::Real\fP(*)(\fBReal\fP xx, \fBReal\fP yy)east_condition_)"
+.PP
+Definition at line 95 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::set_east_condition (\fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)east_condition)\fC [noexcept]\fP"
 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIeast_condition_\fP $ \beta_e(x,y):\Omega\mapsto\mathbb{R} $\&. 
+\fIeast_condition\fP $ \beta_e(x,y):\Omega\mapsto\mathbb{R} $\&. 
 .RE
 .PP
 
-.SS "void mtk::BCDescriptor2D::set_north_condition_ (\fBmtk::Real\fP(*)(\fBReal\fP xx, \fBReal\fP yy)north_condition_)"
+.PP
+Definition at line 149 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::set_north_condition (\fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)north_condition)\fC [noexcept]\fP"
 
 .PP
 \fBParameters:\fP
 .RS 4
-\fInorth_condition_\fP $ \beta_n(x,y):\Omega\mapsto\mathbb{R} $\&. 
+\fInorth_condition\fP $ \beta_n(x,y):\Omega\mapsto\mathbb{R} $\&. 
 .RE
 .PP
 
-.SS "void mtk::BCDescriptor2D::set_south_condition_ (\fBmtk::Real\fP(*)(\fBReal\fP xx, \fBReal\fP yy)south_condition_)"
+.PP
+Definition at line 170 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::set_south_condition (\fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)south_condition)\fC [noexcept]\fP"
 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIsouth_condition_\fP $ \beta_s(x,y):\Omega\mapsto\mathbb{R} $\&. 
+\fIsouth_condition\fP $ \beta_s(x,y):\Omega\mapsto\mathbb{R} $\&. 
 .RE
 .PP
 
-.SS "void mtk::BCDescriptor2D::set_west_condition_ (\fBmtk::Real\fP(*)(\fBReal\fP xx, \fBReal\fP yy)west_condition_)"
+.PP
+Definition at line 159 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::set_west_condition (\fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)west_condition)\fC [noexcept]\fP"
 
 .PP
 \fBParameters:\fP
 .RS 4
-\fIwest_condition_\fP $ \beta_w(x,y):\Omega\mapsto\mathbb{R} $\&. 
+\fIwest_condition\fP $ \beta_w(x,y):\Omega\mapsto\mathbb{R} $\&. 
 .RE
 .PP
 
+.PP
+Definition at line 139 of file mtk_bc_descriptor_2d\&.cc\&.
 .SH "Member Data Documentation"
 .PP 
 .SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::east_coefficients_\fC [private]\fP"
 
 .PP
-Definition at line 184 of file mtk_bc_descriptor_2d\&.h\&.
-.SS "\fBmtk::Real\fP(* mtk::BCDescriptor2D::east_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
+Definition at line 215 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "\fBReal\fP(* mtk::BCDescriptor2D::east_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
 
 .PP
-Definition at line 189 of file mtk_bc_descriptor_2d\&.h\&.
-.SS "int mtk::BCDescriptor2D::highest_order_differentiation_\fC [private]\fP"
+Definition at line 220 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "int mtk::BCDescriptor2D::highest_order_diff_east_\fC [private]\fP"
 
 .PP
-Definition at line 181 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 210 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "int mtk::BCDescriptor2D::highest_order_diff_north_\fC [private]\fP"
+
+.PP
+Definition at line 212 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "int mtk::BCDescriptor2D::highest_order_diff_south_\fC [private]\fP"
+
+.PP
+Definition at line 211 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "int mtk::BCDescriptor2D::highest_order_diff_west_\fC [private]\fP"
+
+.PP
+Definition at line 209 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::north_coefficients_\fC [private]\fP"
 
 .PP
-Definition at line 186 of file mtk_bc_descriptor_2d\&.h\&.
-.SS "\fBmtk::Real\fP(* mtk::BCDescriptor2D::north_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
+Definition at line 217 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "\fBReal\fP(* mtk::BCDescriptor2D::north_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
 
 .PP
-Definition at line 191 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 222 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::south_coefficients_\fC [private]\fP"
 
 .PP
-Definition at line 185 of file mtk_bc_descriptor_2d\&.h\&.
-.SS "\fBmtk::Real\fP(* mtk::BCDescriptor2D::south_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
+Definition at line 216 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "\fBReal\fP(* mtk::BCDescriptor2D::south_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
 
 .PP
-Definition at line 190 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 221 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::west_coefficients_\fC [private]\fP"
 
 .PP
-Definition at line 183 of file mtk_bc_descriptor_2d\&.h\&.
-.SS "\fBmtk::Real\fP(* mtk::BCDescriptor2D::west_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
+Definition at line 214 of file mtk_bc_descriptor_2d\&.h\&.
+.SS "\fBReal\fP(* mtk::BCDescriptor2D::west_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
 
 .PP
-Definition at line 188 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 219 of file mtk_bc_descriptor_2d\&.h\&.
 
 .SH "Author"
 .PP 

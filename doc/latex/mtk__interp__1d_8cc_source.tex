@@ -91,9 +91,9 @@
       \hyperlink{group__c02-enums_ga674ec67bd1baa04e5dc06c2bcc351972}{mtk::DirInterp} dir) \{
 00097 
 00098 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00099   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(order\_accuracy < 2, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00100   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}((order\_accuracy%2) != 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00101   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(dir < \hyperlink{namespacemtk_ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139}{mtk::SCALAR\_TO\_VECTOR} &&
+00099   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(order\_accuracy < 2, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00100   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}((order\_accuracy%2) != 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00101   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(dir < \hyperlink{namespacemtk_ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139}{mtk::SCALAR\_TO\_VECTOR} &&
 00102                       dir > \hyperlink{namespacemtk_ga674ec67bd1baa04e5dc06c2bcc351972a122cf2e24aef105e9214698206af6904}{mtk::VECTOR\_TO\_SCALAR},
 00103                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00104 
@@ -132,7 +132,7 @@
 00138   \textcolor{keywordtype}{int} nn\{grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}()\}; \textcolor{comment}{// Number of cells on the grid.}
 00139 
 00140 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00141   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00141   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00142 \textcolor{preprocessor}{  #endif}
 00143 
 00144   \textcolor{keywordtype}{int} gg\_num\_rows\{\};  \textcolor{comment}{// Number of rows.}
@@ -151,17 +151,17 @@
 00157   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} out(gg\_num\_rows, gg\_num\_cols);
 00158 
 00160 
-00161   out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(0, 0, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
+00161   out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(0, 0, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
 00162 
 00164 
 00165   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < gg\_num\_rows - 1; ++ii) \{
 00166     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = ii ; jj < order\_accuracy\_ + ii; ++jj) \{
-00167       out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(ii, jj, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/order\_accuracy\_);
+00167       out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/order\_accuracy\_);
 00168     \}
 00169   \}
 00170 
 00172 
-00173   out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(gg\_num\_rows - 1, gg\_num\_cols - 1, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
+00173   out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(gg\_num\_rows - 1, gg\_num\_cols - 1, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
 00174 
 00175   \textcolor{keywordflow}{return} out;
 00176 \}

@@ -166,9 +166,9 @@
 00177                                 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} mimetic\_threshold) \{
 00178 
 00179 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00180   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(order\_accuracy < 2, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00181   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}((order\_accuracy%2) != 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00182   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(mimetic\_threshold <= \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
+00180   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(order\_accuracy < 2, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00181   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}((order\_accuracy%2) != 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00182   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(mimetic\_threshold <= \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
 00183                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00184 
 00185   \textcolor{keywordflow}{if} (order\_accuracy >= \hyperlink{group__c01-roots_ga0898eef2108473e44a5223932d571c31}{mtk::kCriticalOrderAccuracyDiv}) \{
@@ -323,7 +323,7 @@
 00340   \textcolor{keyword}{auto} counter = 0;
 00341   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_; ++ii) \{
 00342     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = 0; jj < 3*order\_accuracy\_/2; ++jj) \{
-00343       xx.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(ii,jj, divergence\_[2*order\_accuracy\_ + 1 + counter]);
+00343       xx.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj, divergence\_[2*order\_accuracy\_ + 1 + counter]);
 00344       counter++;
 00345     \}
 00346   \}
@@ -337,8 +337,8 @@
 00354   \textcolor{keywordtype}{int} nn\{grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}()\}; \textcolor{comment}{// Number of cells on the grid.}
 00355 
 00356 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00357   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00358   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(nn < 3*order\_accuracy\_ - 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00357   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00358   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn < 3*order\_accuracy\_ - 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00359 \textcolor{preprocessor}{  #endif}
 00360 
 00361   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} inv\_delta\_x\{\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/grid.\hyperlink{classmtk_1_1UniStgGrid1D_a6e7173b01241632cf509496d66b9f74c}{delta\_x}()\};
@@ -357,9 +357,9 @@
 00375     \textcolor{keyword}{auto} cc = 0;
 00376     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = 0 ; jj < dd\_num\_rows; jj++) \{
 00377       \textcolor{keywordflow}{if}( cc >= elements\_per\_row) \{
-00378         out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(ii, jj, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
+00378         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
 00379       \} \textcolor{keywordflow}{else} \{
-00380         out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(ii,jj, mim\_bndy\_[ee\_index++]*inv\_delta\_x);
+00380         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj, mim\_bndy\_[ee\_index++]*inv\_delta\_x);
 00381         cc++;
 00382       \}
 00383     \}
@@ -370,7 +370,7 @@
 00389        ii < dd\_num\_rows - num\_extra\_rows - 1; ii++) \{
 00390     \textcolor{keyword}{auto} jj = ii - num\_extra\_rows - 1;
 00391     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} cc = 0; cc < order\_accuracy\_; cc++, jj++) \{
-00392       out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(ii, jj, coeffs\_interior\_[cc]*inv\_delta\_x);
+00392       out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, coeffs\_interior\_[cc]*inv\_delta\_x);
 00393     \}
 00394   \}
 00395 
@@ -380,9 +380,9 @@
 00400     \textcolor{keyword}{auto} cc = 0;
 00401     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = dd\_num\_cols - 1; jj >= 0; jj--) \{
 00402       \textcolor{keywordflow}{if}( cc >= elements\_per\_row) \{
-00403         out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(ii,jj,0.0);
+00403         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,0.0);
 00404       \} \textcolor{keywordflow}{else} \{
-00405         out.\hyperlink{classmtk_1_1DenseMatrix_ae0f873a6d3a734da467cafb817da64ae}{SetValue}(ii,jj,-mim\_bndy\_[ee\_index++]*inv\_delta\_x);
+00405         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,-mim\_bndy\_[ee\_index++]*inv\_delta\_x);
 00406         cc++;
 00407       \}
 00408      \}
@@ -544,16 +544,16 @@
 00571 
 00572   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = num\_bndy\_coeffs\_ - dim\_null\_; ii < num\_bndy\_coeffs\_; ++ii) \{
 00573     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < num\_bndy\_coeffs\_; ++jj) \{
-00574       KK.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[jj*dim\_null\_ + (ii - (num\_bndy\_coeffs\_ - dim\_null\_))] =
-00575           qq\_t.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[ii*num\_bndy\_coeffs\_ + jj];
+00574       KK.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[jj*dim\_null\_ + (ii - (num\_bndy\_coeffs\_ - dim\_null\_))] =
+00575           qq\_t.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[ii*num\_bndy\_coeffs\_ + jj];
 00576     \}
 00577   \}
 00578 
 00579 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
 00580   std::cout << \textcolor{stringliteral}{"KK ="} << std::endl;
 00581   std::cout << KK << std::endl;
-00582   std::cout << \textcolor{stringliteral}{"KK.num\_rows() = "} << KK.\hyperlink{classmtk_1_1DenseMatrix_a17d8d3b9cc0926044b6972dd190a5c21}{num\_rows}() << std::endl;
-00583   std::cout << \textcolor{stringliteral}{"KK.num\_cols() = "} << KK.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}() << std::endl;
+00582   std::cout << \textcolor{stringliteral}{"KK.num\_rows() = "} << KK.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}() << std::endl;
+00583   std::cout << \textcolor{stringliteral}{"KK.num\_cols() = "} << KK.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}() << std::endl;
 00584   std::cout << std::endl;
 00585 \textcolor{preprocessor}{  #endif}
 00586 
@@ -579,8 +579,8 @@
 00607 
 00608   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = num\_bndy\_coeffs\_ - dim\_null\_; ii < num\_bndy\_coeffs\_; ++ii) \{
 00609     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < dim\_null\_; ++jj) \{
-00610       SUBK.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[(ii - (num\_bndy\_coeffs\_ - dim\_null\_))*dim\_null\_ + jj] =
-00611           KK.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[ii*dim\_null\_ + jj];
+00610       SUBK.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[(ii - (num\_bndy\_coeffs\_ - dim\_null\_))*dim\_null\_ + jj] =
+00611           KK.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[ii*dim\_null\_ + jj];
 00612     \}
 00613   \}
 00614 
@@ -888,7 +888,7 @@
 00924   \textcolor{comment}{// of the pi matrix:}
 00925   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
 00926     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < dim\_null\_; ++jj) \{
-00927       pi.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[ii*(2*dim\_null\_ + (order\_accuracy\_/2 + 1)) + jj] =
+00927       pi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[ii*(2*dim\_null\_ + (order\_accuracy\_/2 + 1)) + jj] =
 00928         prem\_apps\_[ii*dim\_null\_ + jj];
 00929     \}
 00930   \}
@@ -900,7 +900,7 @@
 00936   \textcolor{keyword}{auto} mm = 0;
 00937   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = dim\_null\_; jj < order\_accuracy\_; ++jj) \{
 00938     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
-00939       pi.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[(ii + mm)*(2*dim\_null\_ + (order\_accuracy\_/2 + 1)) + jj] =
+00939       pi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[(ii + mm)*(2*dim\_null\_ + (order\_accuracy\_/2 + 1)) + jj] =
 00940         coeffs\_interior\_[ii];
 00941     \}
 00942     ++mm;
@@ -919,7 +919,7 @@
 00955       \textcolor{keyword}{auto} og =
 00956         (jj - (dim\_null\_ + (order\_accuracy\_/2 + 1)))*num\_bndy\_coeffs\_ + ii;
 00957       \textcolor{keyword}{auto} de = ii*(2*dim\_null\_ + (order\_accuracy\_/2 + 1)) + jj;
-00958       pi.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[de] = rat\_basis\_null\_space\_.data()[og];
+00958       pi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[de] = rat\_basis\_null\_space\_.data()[og];
 00959     \}
 00960   \}
 00961 
@@ -976,7 +976,7 @@
 01014   \}
 01015   memset(weights\_cbs\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(weights\_cbs\_[0])*num\_bndy\_coeffs\_);
 01016 
-01017   \textcolor{keywordtype}{int} weights\_ld\{pi.\hyperlink{classmtk_1_1DenseMatrix_af6f78373aaf2136f0c78974d7c8de0a8}{num\_cols}() + 1\};
+01017   \textcolor{keywordtype}{int} weights\_ld\{pi.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}() + 1\};
 01018 
 01019   \textcolor{comment}{// Preserve hh.}
 01020   std::copy(hh, hh + weights\_ld, weights\_cbs\_);
@@ -1037,37 +1037,37 @@
 01075 
 01076     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_ + 1; ++ii) \{
 01077       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < dim\_null\_; ++jj) \{
-01078         phi.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[ii*(order\_accuracy\_) + jj] = prem\_apps\_[ii*dim\_null\_ + jj];
+01078         phi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[ii*(order\_accuracy\_) + jj] = prem\_apps\_[ii*dim\_null\_ + jj];
 01079       \}
 01080     \}
 01081 
 01082     \textcolor{keywordtype}{int} aux\{\};  \textcolor{comment}{// Auxiliary variable.}
 01083     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = dim\_null\_; jj < dim\_null\_ + 2; ++jj) \{
 01084       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
-01085         phi.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[(ii + aux)*order\_accuracy\_ + jj] = coeffs\_interior\_[ii];
+01085         phi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[(ii + aux)*order\_accuracy\_ + jj] = coeffs\_interior\_[ii];
 01086       \}
 01087       ++aux;
 01088     \}
 01089 
 01090     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj=order\_accuracy\_ - 1; jj >=order\_accuracy\_ - dim\_null\_; jj--) \{
 01091       \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} ii=0; ii<order\_accuracy\_ + 1; ++ii) \{
-01092         phi.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[ii*order\_accuracy\_+jj] = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero};
+01092         phi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[ii*order\_accuracy\_+jj] = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero};
 01093       \}
 01094     \}
 01095 
 01096     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < order\_accuracy\_ + 1; ++jj) \{
 01097       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_; ++ii) \{
-01098         phi.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[(ii + order\_accuracy\_ - dim\_null\_ + jj*order\_accuracy\_)] =
+01098         phi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[(ii + order\_accuracy\_ - dim\_null\_ + jj*order\_accuracy\_)] =
 01099           -prem\_apps\_[(dim\_null\_ - ii - 1 + jj*dim\_null\_)];
 01100       \}
 01101     \}
 01102 
 01103     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_/2; ++ii) \{
 01104       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = dim\_null\_ + 2; jj < order\_accuracy\_; ++jj) \{
-01105         \textcolor{keyword}{auto} swap = phi.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[ii*order\_accuracy\_+jj];
-01106         phi.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[ii*order\_accuracy\_ + jj] =
-01107           phi.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[(order\_accuracy\_-ii)*order\_accuracy\_+jj];
-01108         phi.\hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}()[(order\_accuracy\_-ii)*order\_accuracy\_+jj] = swap;
+01105         \textcolor{keyword}{auto} swap = phi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[ii*order\_accuracy\_+jj];
+01106         phi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[ii*order\_accuracy\_ + jj] =
+01107           phi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[(order\_accuracy\_-ii)*order\_accuracy\_+jj];
+01108         phi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[(order\_accuracy\_-ii)*order\_accuracy\_+jj] = swap;
 01109       \}
 01110     \}
 01111 
@@ -1124,7 +1124,7 @@
 01164 
 01165     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} row\_= 0; row\_ < order\_accuracy\_ + 1; ++row\_) \{
 01166       normerr\_ = \hyperlink{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f}{mtk::GLPKAdapter::SolveSimplexAndCompare}(phi.
-      \hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(),
+      \hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(),
 01167                                                           order\_accuracy\_ + 1,
 01168                                                           order\_accuracy\_,
 01169                                                           order\_accuracy\_,
@@ -1168,7 +1168,7 @@
 01208 
 01209     copy\_result = 1;
 01210     normerr\_ = \hyperlink{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f}{mtk::GLPKAdapter::SolveSimplexAndCompare}(phi.
-      \hyperlink{classmtk_1_1DenseMatrix_a16b3ff56feb2658b9fc7147d1de4d8e7}{data}(),
+      \hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(),
 01211                                                         order\_accuracy\_ + 1,
 01212                                                         order\_accuracy\_,
 01213                                                         order\_accuracy\_,
