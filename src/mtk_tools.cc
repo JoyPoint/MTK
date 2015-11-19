@@ -59,9 +59,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "mtk_tools.h"
 
 void mtk::Tools::Prevent(const bool condition,
-                         const char *fname,
+                         const char *const fname,
                          int lineno,
-                         const char *fxname) {
+                         const char *const fxname) noexcept {
 
   /// \todo Check if this is the best way of stalling execution.
 
@@ -88,7 +88,7 @@ mtk::Real mtk::Tools::duration_;  // Duration of the current test.
 
 clock_t mtk::Tools::begin_time_;  // Used to time tests.
 
-void mtk::Tools::BeginUnitTestNo(const int &nn) {
+void mtk::Tools::BeginUnitTestNo(const int &nn) noexcept {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
@@ -102,7 +102,7 @@ void mtk::Tools::BeginUnitTestNo(const int &nn) {
   begin_time_ = clock();
 }
 
-void mtk::Tools::EndUnitTestNo(const int &nn) {
+void mtk::Tools::EndUnitTestNo(const int &nn) noexcept {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(test_number_ != nn, __FILE__, __LINE__, __func__);
@@ -111,7 +111,7 @@ void mtk::Tools::EndUnitTestNo(const int &nn) {
   duration_ = mtk::Real(clock() - begin_time_)/CLOCKS_PER_SEC;
 }
 
-void mtk::Tools::Assert(const bool condition) {
+void mtk::Tools::Assert(const bool &condition) noexcept {
 
   if (condition) {
     std::cout << "Test " << test_number_ << ": PASSED in " << duration_ <<

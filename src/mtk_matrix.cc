@@ -102,89 +102,89 @@ mtk::Matrix::Matrix(const Matrix &in):
   abs_sparsity_(in.abs_sparsity_),
   rel_sparsity_(in.rel_sparsity_) {}
 
-mtk::Matrix::~Matrix() {}
+mtk::Matrix::~Matrix() noexcept {}
 
-mtk::MatrixStorage mtk::Matrix::storage() const {
+mtk::MatrixStorage mtk::Matrix::storage() const noexcept {
 
   return storage_;
 }
 
-mtk::MatrixOrdering mtk::Matrix::ordering() const {
+mtk::MatrixOrdering mtk::Matrix::ordering() const noexcept {
 
   return ordering_;
 }
 
-int mtk::Matrix::num_rows() const {
+int mtk::Matrix::num_rows() const noexcept {
 
   return num_rows_;
 }
 
-int mtk::Matrix::num_cols() const {
+int mtk::Matrix::num_cols() const noexcept {
 
   return num_cols_;
 }
 
-int mtk::Matrix::num_values() const {
+int mtk::Matrix::num_values() const noexcept {
 
   return num_values_;
 }
 
-int mtk::Matrix::ld() const {
+int mtk::Matrix::ld() const noexcept {
 
   return ld_;
 }
 
-int mtk::Matrix::num_zero() const {
+int mtk::Matrix::num_zero() const noexcept {
 
   return num_zero_;
 }
 
-int mtk::Matrix::num_non_zero() const {
+int mtk::Matrix::num_non_zero() const noexcept {
 
   return num_non_zero_;
 }
 
-int mtk::Matrix::num_null() const {
+int mtk::Matrix::num_null() const noexcept {
 
   return num_null_;
 }
 
-int mtk::Matrix::num_non_null() const {
+int mtk::Matrix::num_non_null() const noexcept {
 
   return num_non_null_;
 }
 
-int mtk::Matrix::kl() const {
+int mtk::Matrix::kl() const noexcept {
 
   return kl_;
 }
 
-int mtk::Matrix::ku() const {
+int mtk::Matrix::ku() const noexcept {
 
   return ku_;
 }
 
-int mtk::Matrix::bandwidth() const {
+int mtk::Matrix::bandwidth() const noexcept {
 
   return bandwidth_;
 }
 
-mtk::Real mtk::Matrix::rel_density() const {
+mtk::Real mtk::Matrix::rel_density() const noexcept {
 
   return rel_density_;
 }
 
-mtk::Real mtk::Matrix::abs_sparsity() const {
+mtk::Real mtk::Matrix::abs_sparsity() const noexcept {
 
   return abs_sparsity_;
 }
 
-mtk::Real mtk::Matrix::rel_sparsity() const {
+mtk::Real mtk::Matrix::rel_sparsity() const noexcept {
 
   return rel_sparsity_;
 }
 
-void mtk::Matrix::set_storage(const mtk::MatrixStorage &ss) {
+void mtk::Matrix::set_storage(const mtk::MatrixStorage &ss) noexcept {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(!(ss == mtk::DENSE ||
@@ -196,7 +196,7 @@ void mtk::Matrix::set_storage(const mtk::MatrixStorage &ss) {
   storage_ = ss;
 }
 
-void mtk::Matrix::set_ordering(const mtk::MatrixOrdering &oo) {
+void mtk::Matrix::set_ordering(const mtk::MatrixOrdering &oo) noexcept {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(!(oo == mtk::ROW_MAJOR || oo == mtk::COL_MAJOR),
@@ -209,7 +209,7 @@ void mtk::Matrix::set_ordering(const mtk::MatrixOrdering &oo) {
     std::max(1,num_cols_): std::max(1,num_rows_);
 }
 
-void mtk::Matrix::set_num_rows(int in) {
+void mtk::Matrix::set_num_rows(const int &in) noexcept {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(in < 1, __FILE__, __LINE__, __func__);
@@ -221,7 +221,7 @@ void mtk::Matrix::set_num_rows(int in) {
     std::max(1,num_cols_): std::max(1,num_rows_);
 }
 
-void mtk::Matrix::set_num_cols(int in) {
+void mtk::Matrix::set_num_cols(const int &in) noexcept {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(in < 1, __FILE__, __LINE__, __func__);
@@ -233,7 +233,7 @@ void mtk::Matrix::set_num_cols(int in) {
     std::max(1,num_cols_): std::max(1,num_rows_);
 }
 
-void mtk::Matrix::set_num_zero(int in) {
+void mtk::Matrix::set_num_zero(const int &in) noexcept {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(in < 0, __FILE__, __LINE__, __func__);
@@ -247,7 +247,7 @@ void mtk::Matrix::set_num_zero(int in) {
   rel_sparsity_ = 1.0 - rel_density_;
 }
 
-void mtk::Matrix::set_num_null(int in) {
+void mtk::Matrix::set_num_null(const int &in) noexcept {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(in < 0, __FILE__, __LINE__, __func__);
@@ -261,7 +261,7 @@ void mtk::Matrix::set_num_null(int in) {
   abs_sparsity_ = 1.0 - abs_density_;
 }
 
-void mtk::Matrix::IncreaseNumZero() {
+void mtk::Matrix::IncreaseNumZero() noexcept {
 
   /// \todo Review the definition of sparse matrices properties.
 
@@ -271,7 +271,7 @@ void mtk::Matrix::IncreaseNumZero() {
   rel_sparsity_ = 1.0 - rel_density_;
 }
 
-void mtk::Matrix::IncreaseNumNull() {
+void mtk::Matrix::IncreaseNumNull() noexcept {
 
   /// \todo Review the definition of sparse matrices properties.
 

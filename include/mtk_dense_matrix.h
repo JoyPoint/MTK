@@ -180,7 +180,7 @@ class DenseMatrix {
 
   \exception std::bad_alloc
   */
-  DenseMatrix(const Real *gen,
+  DenseMatrix(const Real *const gen,
               const int &gen_length,
               const int &pro_length,
               const bool &transpose);
@@ -193,30 +193,28 @@ class DenseMatrix {
 
   \return Pointer to a Matrix.
   */
-  Matrix matrix_properties() const;
+  Matrix matrix_properties() const noexcept;
 
   /*!
   \brief Gets the number of rows.
 
   \return Number of rows of the matrix.
   */
-  int num_rows() const;
+  int num_rows() const noexcept;
 
   /*!
   \brief Gets the number of columns.
 
   \return Number of columns of the matrix.
   */
-  int num_cols() const;
+  int num_cols() const noexcept;
 
   /*!
   \brief Provides access to the matrix value array.
 
   \return Pointer to an array of mtk::Real.
-
-  \todo Test the const-correctness of the returned pointer.
   */
-  Real* data() const;
+  Real* data() const noexcept;
 
    /*!
   \brief Sets the ordering of the matrix.
@@ -225,7 +223,7 @@ class DenseMatrix {
 
   \return The required value at the specified coordinates.
   */
-  void SetOrdering(mtk::MatrixOrdering oo);
+  void SetOrdering(mtk::MatrixOrdering oo) noexcept;
 
   /*!
   \brief Gets a value on the given coordinates.
@@ -235,7 +233,7 @@ class DenseMatrix {
 
   \return The required value at the specified coordinates.
   */
-  Real GetValue(const int &row_coord, const int &col_coord) const;
+  Real GetValue(const int &row_coord, const int &col_coord) const noexcept;
 
   /*!
   \brief Sets a value on the given coordinates.
@@ -246,7 +244,7 @@ class DenseMatrix {
   */
   void SetValue(const int &row_coord,
                 const int &col_coord,
-                const Real &val);
+                const Real &val) noexcept;
 
   /// \brief Transpose this matrix.
   void Transpose();
@@ -267,7 +265,8 @@ class DenseMatrix {
 
   \todo Implement Kronecker product using the BLAS.
   */
-  static DenseMatrix Kron(const DenseMatrix &aa, const DenseMatrix &bb);
+  static DenseMatrix Kron(const DenseMatrix &aa,
+                          const DenseMatrix &bb);
 
   /*!
   \brief Writes matrix to a file compatible with Gnuplot 4.6.
@@ -278,7 +277,7 @@ class DenseMatrix {
 
   \sa http://www.gnuplot.info/
   */
-  bool WriteToFile(std::string filename) const;
+  bool WriteToFile(const std::string &filename) const;
 
  private:
   Matrix matrix_properties_;  ///< Data related to the matrix nature.

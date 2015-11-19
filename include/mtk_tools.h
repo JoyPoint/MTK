@@ -88,30 +88,30 @@ class Tools {
   \param[in] fxname Name of the module containing the check.
   */
   static void Prevent(const bool complement,
-                      const char *fname,
+                      const char *const fname,
                       int lineno,
-                      const char *fxname);
+                      const char *const fxname) noexcept;
 
   /*!
   \brief Begins the execution of a unit test. Starts a timer.
 
   \param[in] nn Number of the test.
   */
-  static void BeginUnitTestNo(const int &nn);
+  static void BeginUnitTestNo(const int &nn) noexcept;
 
   /*!
   \brief Ends the execution of a unit test. Stops and reports wall-clock time.
 
   \param[in] nn Number of the test.
   */
-  static void EndUnitTestNo(const int &nn);
+  static void EndUnitTestNo(const int &nn) noexcept;
 
   /*!
   \brief Asserts if the condition required to pass the unit test occurs.
 
   \param[in] condition Condition to be asserted.
   */
-  static void Assert(const bool condition);
+  static void Assert(const bool &condition) noexcept;
 
  private:
   static int test_number_;  ///< Current test being executed.

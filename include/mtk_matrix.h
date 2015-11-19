@@ -85,42 +85,42 @@ class Matrix {
   Matrix(const Matrix &in);
 
   /// \brief Destructor.
-  ~Matrix();
+  ~Matrix() noexcept ;
 
   /*!
   \brief Gets the type of storage of this matrix.
 
   \return Type of storage of this matrix.
   */
-  MatrixStorage storage() const;
+  MatrixStorage storage() const noexcept;
 
   /*!
   \brief Gets the type of ordering of this matrix.
 
   \return Type of ordering of this matrix.
   */
-  MatrixOrdering ordering() const;
+  MatrixOrdering ordering() const noexcept;
 
   /*!
   \brief Gets the number of rows.
 
   \return Number of rows of the matrix.
   */
-  int num_rows() const;
+  int num_rows() const noexcept;
 
   /*!
   \brief Gets the number of rows.
 
   \return Number of rows of the matrix.
   */
-  int num_cols() const;
+  int num_cols() const noexcept;
 
   /*!
   \brief Gets the number of values.
 
   \return Number of values of the matrix.
   */
-  int num_values() const;
+  int num_values() const noexcept;
 
   /*!
   \brief Gets the matrix' leading dimension.
@@ -131,21 +131,21 @@ class Matrix {
 
   \return Leading dimension of the matrix.
   */
-  int ld() const;
+  int ld() const noexcept;
 
   /*!
   \brief Gets the number of zeros.
 
   \return Number of zeros of the matrix.
   */
-  int num_zero() const;
+  int num_zero() const noexcept;
 
   /*!
   \brief Gets the number of non-zero values.
 
   \return Number of non-zero values of the matrix.
   */
-  int num_non_zero() const;
+  int num_non_zero() const noexcept;
 
   /*!
   \brief Gets the number of null values.
@@ -154,7 +154,7 @@ class Matrix {
 
   \return Number of null values of the matrix.
   */
-  int num_null() const;
+  int num_null() const noexcept;
 
   /*!
   \brief Gets the number of non-null values.
@@ -163,28 +163,28 @@ class Matrix {
 
   \return Number of non-null values of the matrix.
   */
-  int num_non_null() const;
+  int num_non_null() const noexcept;
 
   /*!
   \brief Gets the number of lower diagonals.
 
   \return Number of lower diagonals.
   */
-  int kl() const;
+  int kl() const noexcept;
 
   /*!
   \brief Gets the number of upper diagonals.
 
   \return Number of upper diagonals.
   */
-  int ku() const;
+  int ku() const noexcept;
 
   /*!
   \brief Gets the bandwidth.
 
   \return Bandwidth of the matrix.
   */
-  int bandwidth() const;
+  int bandwidth() const noexcept;
 
   /*!
   \brief Gets the absolute density.
@@ -193,7 +193,7 @@ class Matrix {
 
   \return Absolute density of the matrix.
   */
-  Real abs_density() const;
+  Real abs_density() const noexcept;
 
   /*!
   \brief Gets the relative density.
@@ -202,7 +202,7 @@ class Matrix {
 
   \return Relative density of the matrix.
   */
-  Real rel_density() const;
+  Real rel_density() const noexcept;
 
   /*!
   \brief Gets the Absolute sparsity.
@@ -211,7 +211,7 @@ class Matrix {
 
   \return Absolute sparsity of the matrix.
   */
-  Real abs_sparsity() const;
+  Real abs_sparsity() const noexcept;
 
   /*!
   \brief Gets the Relative sparsity.
@@ -220,7 +220,7 @@ class Matrix {
 
   \return Relative sparsity of the matrix.
   */
-  Real rel_sparsity() const;
+  Real rel_sparsity() const noexcept;
 
   /*!
   \brief Sets the storage type of the matrix.
@@ -229,7 +229,7 @@ class Matrix {
 
   \param[in] tt Type of the matrix storage.
   */
-  void set_storage(const MatrixStorage &tt);
+  void set_storage(const MatrixStorage &tt) noexcept;
 
   /*!
   \brief Sets the ordering of the matrix.
@@ -238,41 +238,41 @@ class Matrix {
 
   \param[in] oo Ordering of the matrix.
   */
-  void set_ordering(const MatrixOrdering &oo);
+  void set_ordering(const MatrixOrdering &oo) noexcept;
 
   /*!
   \brief Sets the number of rows of the matrix.
 
   \param[in] num_rows Number of rows.
   */
-  void set_num_rows(int num_rows);
+  void set_num_rows(const int &num_rows) noexcept;
 
   /*!
   \brief Sets the number of columns of the matrix.
 
   \param[in] num_cols Number of columns.
   */
-  void set_num_cols(int num_cols);
+  void set_num_cols(const int &num_cols) noexcept;
 
   /*!
   \brief Sets the number of zero values of the matrix that matter.
 
   \param[in] in Number of zero values.
   */
-  void set_num_zero(int in);
+  void set_num_zero(const int &in) noexcept;
 
   /*!
   \brief Sets the number of zero values of the matrix that DO NOT matter.
 
   \param[in] in Number of zero values.
   */
-  void set_num_null(int in);
+  void set_num_null(const int &in) noexcept;
 
   /// \brief Increases the number of values that equal zero but with meaning.
-  void IncreaseNumZero();
+  void IncreaseNumZero() noexcept;
 
   /// \brief Increases the number of values that equal zero but with no meaning.
-  void IncreaseNumNull();
+  void IncreaseNumNull() noexcept;
 
  private:
   MatrixStorage storage_; ///< What type of matrix is this?
