@@ -59,10 +59,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "mtk_bc_descriptor_2d.h"
 
 mtk::BCDescriptor2D::BCDescriptor2D():
-  highest_order_diff_west(-1),
-  highest_order_diff_east(-1),
-  highest_order_diff_south(-1),
-  highest_order_diff_north(-1),
+  highest_order_diff_west_(-1),
+  highest_order_diff_east_(-1),
+  highest_order_diff_south_(-1),
+  highest_order_diff_north_(-1),
   west_condition_(),
   east_condition_(),
   south_condition_(),
@@ -70,7 +70,27 @@ mtk::BCDescriptor2D::BCDescriptor2D():
 
 mtk::BCDescriptor2D::BCDescriptor2D(const mtk::BCDescriptor2D &desc) {}
 
-mtk::BCDescriptor2D::~BCDescriptor2D() {}
+mtk::BCDescriptor2D::~BCDescriptor2D() noexcept {}
+
+int mtk::BCDescriptor2D::highest_order_diff_west() const noexcept {
+
+  return highest_order_diff_west_;
+}
+
+int mtk::BCDescriptor2D::highest_order_diff_east() const noexcept {
+
+  return highest_order_diff_east_;
+}
+
+int mtk::BCDescriptor2D::highest_order_diff_south() const noexcept {
+
+  return highest_order_diff_south_;
+}
+
+int mtk::BCDescriptor2D::highest_order_diff_north() const noexcept {
+
+  return highest_order_diff_north_;
+}
 
 void mtk::BCDescriptor2D::PushBackWestCoeff(mtk::CoefficientFunction2D cw) {
 
@@ -80,7 +100,7 @@ void mtk::BCDescriptor2D::PushBackWestCoeff(mtk::CoefficientFunction2D cw) {
 
   west_coefficients_.push_back(cw);
 
-  highest_order_diff_west++;
+  highest_order_diff_west_++;
 }
 
 void mtk::BCDescriptor2D::PushBackEastCoeff(mtk::CoefficientFunction2D ce) {
@@ -91,7 +111,7 @@ void mtk::BCDescriptor2D::PushBackEastCoeff(mtk::CoefficientFunction2D ce) {
 
   east_coefficients_.push_back(ce);
 
-  highest_order_diff_east++;
+  highest_order_diff_east_++;
 }
 
 void mtk::BCDescriptor2D::PushBackSouthCoeff(mtk::CoefficientFunction2D cs) {
@@ -102,7 +122,7 @@ void mtk::BCDescriptor2D::PushBackSouthCoeff(mtk::CoefficientFunction2D cs) {
 
   south_coefficients_.push_back(cs);
 
-  highest_order_diff_south++;
+  highest_order_diff_south_++;
 }
 
 void mtk::BCDescriptor2D::PushBackNorthCoeff(mtk::CoefficientFunction2D cn) {
@@ -113,11 +133,11 @@ void mtk::BCDescriptor2D::PushBackNorthCoeff(mtk::CoefficientFunction2D cn) {
 
   north_coefficients_.push_back(cn);
 
-  highest_order_diff_north++;
+  highest_order_diff_north_++;
 }
 
-void mtk::BCDescriptor2D::set_west_condition_(
-    mtk::Real (*west_condition)(mtk::Real xx, mtk::Real yy)) {
+void mtk::BCDescriptor2D::set_west_condition(
+    mtk::Real (*west_condition)(mtk::Real xx, mtk::Real yy)) noexcept {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(west_condition == nullptr, __FILE__, __LINE__, __func__);
@@ -126,8 +146,8 @@ void mtk::BCDescriptor2D::set_west_condition_(
   west_condition_ = west_condition;
 }
 
-void mtk::BCDescriptor2D::set_east_condition_(
-    mtk::Real (*east_condition)(mtk::Real xx, mtk::Real yy)) {
+void mtk::BCDescriptor2D::set_east_condition(
+    mtk::Real (*east_condition)(mtk::Real xx, mtk::Real yy)) noexcept {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(east_condition == nullptr, __FILE__, __LINE__, __func__);
@@ -136,8 +156,8 @@ void mtk::BCDescriptor2D::set_east_condition_(
   east_condition_ = east_condition;
 }
 
-void mtk::BCDescriptor2D::set_south_condition_(
-    mtk::Real (*south_condition)(mtk::Real xx, mtk::Real yy)) {
+void mtk::BCDescriptor2D::set_south_condition(
+    mtk::Real (*south_condition)(mtk::Real xx, mtk::Real yy)) noexcept {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(south_condition == nullptr,
@@ -147,8 +167,8 @@ void mtk::BCDescriptor2D::set_south_condition_(
   south_condition_ = south_condition;
 }
 
-void mtk::BCDescriptor2D::set_north_condition_(
-    mtk::Real (*north_condition)(mtk::Real xx, mtk::Real yy)) {
+void mtk::BCDescriptor2D::set_north_condition(
+    mtk::Real (*north_condition)(mtk::Real xx, mtk::Real yy)) noexcept {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(north_condition_ == nullptr,

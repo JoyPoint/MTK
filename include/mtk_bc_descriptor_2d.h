@@ -103,7 +103,35 @@ class BCDescriptor2D {
   BCDescriptor2D(const BCDescriptor2D &desc);
 
   /// \brief Destructor.
-  ~BCDescriptor2D();
+  ~BCDescriptor2D() noexcept;
+
+  /*!
+  \brief Getter for the highest order of differentiation in the west boundary.
+
+  \return Integer highest order of differentiation in the west boundary.
+  */
+  int highest_order_diff_west() const noexcept;
+
+  /*!
+  \brief Getter for the highest order of differentiation in the east boundary.
+
+  \return Integer highest order of differentiation in the east boundary.
+  */
+  int highest_order_diff_east() const noexcept;
+
+  /*!
+  \brief Getter for the highest order of differentiation in the south boundary.
+
+  \return Integer highest order of differentiation in the south boundary.
+  */
+  int highest_order_diff_south() const noexcept;
+
+  /*!
+  \brief Getter for the highest order of differentiation in the north boundary.
+
+  \return Integer highest order of differentiation in the north boundary.
+  */
+  int highest_order_diff_north() const noexcept;
 
   /*!
   \brief Push back coefficient function at west of lowest order diff. available.
@@ -138,28 +166,28 @@ class BCDescriptor2D {
 
   \param [in] west_condition \f$ \beta_w(x,y):\Omega\mapsto\mathbb{R} \f$.
   */
-  void set_west_condition_(Real (*west_condition)(Real xx, Real yy));
+  void set_west_condition(Real (*west_condition)(Real xx, Real yy)) noexcept;
 
   /*!
   \brief Set boundary condition at east.
 
   \param [in] east_condition \f$ \beta_e(x,y):\Omega\mapsto\mathbb{R} \f$.
   */
-  void set_east_condition_(Real (*east_condition)(Real xx, Real yy));
+  void set_east_condition(Real (*east_condition)(Real xx, Real yy)) noexcept;
 
   /*!
   \brief Set boundary condition at south.
 
   \param [in] south_condition \f$ \beta_s(x,y):\Omega\mapsto\mathbb{R} \f$.
   */
-  void set_south_condition_(Real (*south_condition)(Real xx, Real yy));
+  void set_south_condition(Real (*south_condition)(Real xx, Real yy)) noexcept;
 
   /*!
   \brief Set boundary condition at north.
 
   \param [in] north_condition \f$ \beta_n(x,y):\Omega\mapsto\mathbb{R} \f$.
   */
-  void set_north_condition_(Real (*north_condition)(Real xx, Real yy));
+  void set_north_condition(Real (*north_condition)(Real xx, Real yy)) noexcept;
 
   /*!
   \brief Imposes the condition on the operator represented as matrix.
@@ -178,10 +206,10 @@ class BCDescriptor2D {
   void ImposeOnGrid(UniStgGrid2D &grid) const;
 
 private:
-  int highest_order_diff_west; ///< Highest order of differentiation for west.
-  int highest_order_diff_east; ///< Highest order of differentiation for east.
-  int highest_order_diff_south; ///< Highest order of differentiation for south.
-  int highest_order_diff_north; ///< Highest order of differentiation for north.
+  int highest_order_diff_west_; ///< Highest order of differentiation for west.
+  int highest_order_diff_east_; ///< Highest order of differentiation for east.
+  int highest_order_diff_south_; ///< Highest order differentiation for south.
+  int highest_order_diff_north_; ///< Highest order differentiation for north.
 
   std::vector<CoefficientFunction2D> west_coefficients_;  ///< Coeffs. west.
   std::vector<CoefficientFunction2D> east_coefficients_;  ///< Coeffs. east.

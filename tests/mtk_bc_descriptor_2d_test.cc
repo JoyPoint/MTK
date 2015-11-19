@@ -60,16 +60,28 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk.h"
 
-void TestDefaultConstructor() {
+void TestDefaultConstructorGetters() {
 
+  mtk::Tools::BeginUnitTestNo(1);
 
+  mtk::BCDescriptor2D bcd;
+
+  bool assertion{true};
+
+  assertion = assertion && bcd.highest_order_diff_west() == -1;
+  assertion = assertion && bcd.highest_order_diff_east() == -1;
+  assertion = assertion && bcd.highest_order_diff_south() == -1;
+  assertion = assertion && bcd.highest_order_diff_north() == -1;
+
+  mtk::Tools::EndUnitTestNo(1);
+  mtk::Tools::Assert(assertion);
 }
 
 int main () {
 
   std::cout << "Testing mtk::BCDescriptor2D class." << std::endl;
 
-  TestDefaultConstructor();
+  TestDefaultConstructorGetters();
 }
 
 #else
