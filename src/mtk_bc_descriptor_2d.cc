@@ -183,15 +183,87 @@ void mtk::BCDescriptor2D::ImposeOnLaplacianMatrix(
     mtk::DenseMatrix &matrix) const {
 
   #if MTK_DEBUG_LEVEL > 0
+  mtk::Tools::Prevent(grid.nature() != mtk::SCALAR,
+                      __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(grid.num_cells_x() == 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(grid.num_cells_y() == 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(matrix.num_rows() == 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(matrix.num_cols() == 0, __FILE__, __LINE__, __func__);
   #endif
 
-  /// 1. Detect the order of accuracy of the Laplacian in the matrix.
+  /// 1. If we have not bound anything to the grid, then we have to generate
+  /// our collection of spatial coordinates, as we evaluate the coefficients.
 
-  /// 2. Impose coefficients on the matrix.
+  bool generate_space{false};
+
+  if (!grid.Bound()) {
+    generate_space = true;
+  }
+
+  /// 1. Impose the sum of the coefficients on the south boundary.
+
+  if (generate_space) {
+    // For the south-west corner:
+    mtk::Real cc{};
+    for (unsigned int jj = 0; jj < south_coefficients_.size(); ++jj) {
+      // Evaluate the coefficient on the grid.
+      cc += (south_coefficients_[jj])(grid.west_bndy(), grid.south_bndy());
+    }
+    matrix.SetValue(0, 0, cc);
+
+    // Compute first centers per dimension.
+    #ifdef MTK_PRECISION_DOUBLE
+    auto first_center_x = grid.west_bndy() + grid.delta_x()/2.0;
+    #else
+    auto first_center_x = grid.west_bndy() + grid.delta_x()/2.0f;
+    #endif
+
+    #ifdef MTK_PRECISION_DOUBLE
+    auto first_center_y = grid.south_bndy() + grid.delta_y()/2.0;
+    #else
+    auto first_center_y = grid.south_bndy() + grid.delta_y()/2.0f;
+    #endif
+
+    // For each entry on the diagonal (south boundary):
+    for (int ii = 0; ii < grid.num_cells_x(); ++ii) {
+      // Evaluate next set spatial coordinates to evaluate the coefficient at.
+      mtk::Real xx = first_center_x + ii*grid.delta_x();
+      mtk::Real yy = first_center_y + ii*grid.delta_y();
+
+      cc = 0;
+      // For each coefficient to sum:
+      for (unsigned int jj = 0; jj < south_coefficients_.size(); ++jj) {
+        // Evaluate the coefficient on the grid and accumulate.
+        cc += (south_coefficients_[jj])(xx, yy);
+      }
+      matrix.SetValue(ii + 1, ii + 1, cc);
+    }
+
+    // For the south-east corner:
+    cc = 0;
+    for (unsigned int jj = 0; jj < south_coefficients_.size(); ++jj) {
+      // Evaluate the coefficient on the grid.
+      cc += (south_coefficients_[jj])(grid.east_bndy(), grid.south_bndy());
+    }
+    matrix.SetValue(grid.num_cells_x() + 1, grid.num_cells_x() + 1, cc);
+
+  } else {
+    // For each entry on the diagonal:
+    for (int ii = 0; ii < grid.num_cells_x() + 2; ++ii) {
+      // For each coefficient to sum:
+      mtk::Real xx{(grid.discrete_domain_x())[ii]};
+      mtk::Real yy{(grid.discrete_domain_y())[ii]};
+      mtk::Real cc{};
+      for (unsigned int jj = 0; jj < south_coefficients_.size(); ++jj) {
+        // Evaluate the coefficient on the grid.
+        cc += (south_coefficients_[jj])(xx,yy);
+      }
+      matrix.SetValue(ii, ii, cc);
+    }
+  }
+
+
+  /// 2. Impose the sum of the coefficients on the north boundary.
 }
 
 void mtk::BCDescriptor2D::ImposeOnGrid(mtk::UniStgGrid2D &grid) const {

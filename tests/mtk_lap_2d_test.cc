@@ -110,7 +110,7 @@ void TestReturnAsDenseMatrixWriteToFile() {
 
   mtk::DenseMatrix llm(ll.ReturnAsDenseMatrix());
 
-  assertion = assertion && (llm.num_rows() != mtk::kZero);
+  assertion = assertion && (llm.num_rows() != 0);
 
   std::cout << llm << std::endl;
 

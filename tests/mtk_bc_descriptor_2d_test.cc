@@ -77,11 +77,65 @@ void TestDefaultConstructorGetters() {
   mtk::Tools::Assert(assertion);
 }
 
+mtk::Real cc(const mtk::Real &xx, const mtk::Real &yy) {
+
+  return mtk::kOne;
+}
+
+void TestPushBackImposeOnLaplacianMatrix() {
+
+  mtk::Tools::BeginUnitTestNo(2);
+
+  mtk::BCDescriptor2D bcd;
+
+  bool assertion{true};
+
+  bcd.PushBackWestCoeff(cc);
+  bcd.PushBackEastCoeff(cc);
+  bcd.PushBackSouthCoeff(cc);
+  bcd.PushBackNorthCoeff(cc);
+
+  assertion = assertion && bcd.highest_order_diff_west() == 0;
+  assertion = assertion && bcd.highest_order_diff_east() == 0;
+  assertion = assertion && bcd.highest_order_diff_south() == 0;
+  assertion = assertion && bcd.highest_order_diff_north() == 0;
+
+  mtk::Real aa = 0.0;
+  mtk::Real bb = 1.0;
+  mtk::Real cc = 0.0;
+  mtk::Real dd = 1.0;
+
+  int nn = 5;
+  int mm = 5;
+
+  mtk::UniStgGrid2D llg(aa, bb, nn, cc, dd, mm);
+
+  mtk::Lap2D ll;
+
+  assertion = ll.ConstructLap2D(llg);
+
+  if (!assertion) {
+    std::cerr << "Mimetic lap (2nd order) could not be built." << std::endl;
+  }
+
+  mtk::DenseMatrix llm(ll.ReturnAsDenseMatrix());
+
+  assertion = assertion && (llm.num_rows() != 0);
+
+  bcd.ImposeOnLaplacianMatrix(llg, llm);
+
+  assertion = assertion && llm.WriteToFile("mtk_bc_descriptor_2d_test_02.dat");
+
+  mtk::Tools::EndUnitTestNo(2);
+  mtk::Tools::Assert(assertion);
+}
+
 int main () {
 
   std::cout << "Testing mtk::BCDescriptor2D class." << std::endl;
 
   TestDefaultConstructorGetters();
+  TestPushBackImposeOnLaplacianMatrix();
 }
 
 #else

@@ -206,6 +206,13 @@ class UniStgGrid2D {
   Real delta_y() const;
 
   /*!
+  \brief Have any field been bound to the grid?
+
+  \return True is a field has been bound.
+  */
+  bool Bound() const;
+
+  /*!
   \brief Binds a given scalar field to the grid.
 
   \param[in] ScalarField Pointer to the function implementing the scalar field.
@@ -276,7 +283,6 @@ class UniStgGrid2D {
   */
   void BindVectorFieldQComponent(
     Real (*VectorFieldQComponent)(Real xx, Real yy));
-
 
   std::vector<Real> discrete_domain_x_; ///< Array of spatial data.
   std::vector<Real> discrete_domain_y_; ///< Array of spatial data.

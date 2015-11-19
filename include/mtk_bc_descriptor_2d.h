@@ -88,7 +88,7 @@ namespace mtk{
 
 \brief A function of a BC coefficient evaluated on a 2D domain.
 */
-typedef Real (*CoefficientFunction2D)(Real, Real);
+typedef Real (*CoefficientFunction2D)(const Real &, const Real &);
 
 class BCDescriptor2D {
  public:

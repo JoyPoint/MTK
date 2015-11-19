@@ -1,6 +1,6 @@
-# \file mtk_lap_2d_test_02.gnu
+# \file mtk_bc_descriptor_2d_test_02.gnu
 #
-# \brief gnuplot script for test suite mtk_lap_2d_test.cc
+# \brief gnuplot script for test suite mtk_bc_descriptor_2d_test.cc
 #
 # Minimally-complete gnuplot script to visualize data files created by the
 # mtk::DenseMatrix::WriteToFile method in the TestReturnAsDenseMatrixWriteToFile
@@ -58,23 +58,23 @@
 
 reset
 
-name = "mtk_lap_2d_test_02"
+name = "mtk_bc_descriptor_2d_test_02"
 
 # wxt terminal (wxWidgets library) for live rendering.
 set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
 
 # png terminal for disk storage.
-set terminal png
-set output name.".png"
+# set terminal png
+# set output name.".png"
 
 # Data manipulation.
 tol = 0.0000001
-f(x) = abs(x - 0.0) > tol? abs(x): 0.0
+f(x) = abs(x - 0.0) > tol? 100: 0.0
 
 # Data visualization.
-set palette defined (0 '#ffffff', \
-                     1 '#0000ff', \
-                     2 '#000000')
+set palette defined (0 '#ffffff', 1 '#000000')
+
+unset colorbox
 
 # Axes.
 set xlabel "Column"
@@ -89,6 +89,6 @@ set grid
 # Title and legend.
 set title "Matrix Encoding a 2D Mimetic Laplacian"
 
-set key bmargin center horizontal
+unset key
 
 plot name.".dat" u 2:1:(f($3)) title "Magnitude of entry" w p pt 5 palette

@@ -252,6 +252,11 @@ mtk::Real mtk::UniStgGrid2D::delta_y() const {
   return delta_y_;
 }
 
+bool mtk::UniStgGrid2D::Bound() const {
+
+  return discrete_field_.size() != 0;
+}
+
 const mtk::Real* mtk::UniStgGrid2D::discrete_domain_y() const {
 
   return discrete_domain_y_.data();

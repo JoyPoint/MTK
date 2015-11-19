@@ -78,10 +78,6 @@ bool mtk::Lap2D::ConstructLap2D(const mtk::UniStgGrid2D &grid,
                                 int order_accuracy,
                                 mtk::Real mimetic_threshold) {
 
-  int num_cells_x{grid.num_cells_x()};
-  int num_cells_y{grid.num_cells_y()};
-  int aux{(num_cells_x + 2)*(num_cells_y + 2)};
-
   mtk::Grad2D gg;
   mtk::Div2D dd;
 

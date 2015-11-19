@@ -80,11 +80,11 @@ DEBUG_LEVEL = 3
 
 # Flags recommended for release code:
 
-CCFLAGS = -Wall -O3
+CCFLAGS = -Wall -Werror -O3
 
 # Flags recommended for debugging code:
 
-CCFLAGS = -Wall -g
+CCFLAGS = -Wall -Werror -g
 
 #   7. Archiver, its flags, and ranlib:
 #   __________________________________________________________________
