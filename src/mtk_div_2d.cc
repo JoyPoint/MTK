@@ -83,10 +83,10 @@ bool mtk::Div2D::ConstructDiv2D(const mtk::UniStgGrid2D &grid,
   int num_cells_x = grid.num_cells_x();
   int num_cells_y = grid.num_cells_y();
 
-  int mx = num_cells_x + 2;  // Gx vertical dimension
-  int nx = num_cells_x + 1;  // Gx horizontal dimension
-  int my = num_cells_y + 2;  // Gy vertical dimension
-  int ny = num_cells_y + 1;  // Gy horizontal dimension
+  int mx = num_cells_x + 2;  // Dx vertical dimension.
+  int nx = num_cells_x + 1;  // Dx horizontal dimension.
+  int my = num_cells_y + 2;  // Dy vertical dimension.
+  int ny = num_cells_y + 1;  // Dy horizontal dimension.
 
   mtk::Div1D div;
 
@@ -118,15 +118,15 @@ bool mtk::Div2D::ConstructDiv2D(const mtk::UniStgGrid2D &grid,
   mtk::DenseMatrix dyx(mtk::DenseMatrix::Kron(dy, ix));
 
   #if MTK_DEBUG_LEVEL > 0
-  std::cout << "Gx :" << mx << "by " << nx << std::endl;
-  std::cout << "Transpose iy : " << num_cells_y<< " by " << ny  << std::endl;
-  std::cout << "Gy :" << my << "by " << ny << std::endl;
-  std::cout << "Transpose ix : " << num_cells_x<< " by " << nx  << std::endl;
-  std::cout << "Kronecker dimensions Grad 2D" <<
-  mx*num_cells_y + my*num_cells_x << " by " <<  nx*ny <<std::endl;
+  std::cout << "Dx: " << mx << " by " << nx << std::endl;
+  std::cout << "Iy : " << num_cells_y<< " by " << ny  << std::endl;
+  std::cout << "Dy: " << my << " by " << ny << std::endl;
+  std::cout << "Ix : " << num_cells_x<< " by " << nx  << std::endl;
+  std::cout << "Div 2D: " << mx*num_cells_y + my*num_cells_x << " by " <<
+    nx*ny <<std::endl;
   #endif
 
-  mtk::DenseMatrix d2d(mx*my,nx*num_cells_y + ny*num_cells_x);
+  mtk::DenseMatrix d2d(mx*my, nx*num_cells_y + ny*num_cells_x);
 
   for (auto ii = 0; ii < mx*my; ii++) {
     for (auto jj = 0; jj < nx*num_cells_y; jj++) {

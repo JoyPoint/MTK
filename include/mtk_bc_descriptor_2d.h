@@ -194,9 +194,11 @@ class BCDescriptor2D {
 
   \param[in] grid Grid upon which impose the desired boundary condition.
   \param[in,out] matrix Input Laplacian operator.
+  \param[in] order_accuracy Order of accuracy of the operator in the Matrix.
   */
   void ImposeOnLaplacianMatrix(const UniStgGrid2D &grid,
-                               DenseMatrix &matrix) const;
+                               DenseMatrix &matrix,
+                               const int &order_accuracy = 2) const;
 
   /*!
   \brief Imposes the condition on the grid.
@@ -206,6 +208,52 @@ class BCDescriptor2D {
   void ImposeOnGrid(UniStgGrid2D &grid) const;
 
 private:
+  /*!
+  \brief Imposes the condition on the south boundary.
+
+  \param[in] grid Grid upon which impose the desired boundary condition.
+  \param[in,out] matrix Input Laplacian operator.
+  \param[in] order_accuracy Order of accuracy of the operator in the Matrix.
+  */
+  void ImposeOnSouthBoundary(const mtk::UniStgGrid2D &grid,
+                             mtk::DenseMatrix &matrix,
+                             const int &order_accuracy) const;
+
+  /*!
+  \brief Imposes the condition on the north boundary.
+
+  \param[in] grid Grid upon which impose the desired boundary condition.
+  \param[in,out] matrix Input Laplacian operator.
+  \param[in] order_accuracy Order of accuracy of the operator in the Matrix.
+  */
+  void ImposeOnNorthBoundary(const mtk::UniStgGrid2D &grid,
+                             mtk::DenseMatrix &matrix,
+                             const int &order_accuracy) const;
+
+  /*!
+  \brief Imposes the condition on the west boundary.
+
+  \param[in] grid Grid upon which impose the desired boundary condition.
+  \param[in,out] matrix Input Laplacian operator.
+  \param[in] order_accuracy Order of accuracy of the operator in the Matrix.
+  */
+  void ImposeOnWestBoundary(const mtk::UniStgGrid2D &grid,
+                            mtk::DenseMatrix &matrix,
+                            const int &order_accuracy) const;
+
+  /*!
+  \brief Imposes the condition on the east boundary.
+
+  \param[in] grid Grid upon which impose the desired boundary condition.
+  \param[in,out] matrix Input Laplacian operator.
+  \param[in] order_accuracy Order of accuracy of the operator in the Matrix.
+  */
+  void ImposeOnEastBoundary(const mtk::UniStgGrid2D &grid,
+                            mtk::DenseMatrix &matrix,
+                            const int &order_accuracy) const;
+
+  mutable bool generate_space_; ///< Should I generate coordinates as evaluate?
+
   int highest_order_diff_west_; ///< Highest order of differentiation for west.
   int highest_order_diff_east_; ///< Highest order of differentiation for east.
   int highest_order_diff_south_; ///< Highest order differentiation for south.

@@ -59,6 +59,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "mtk_bc_descriptor_2d.h"
 
 mtk::BCDescriptor2D::BCDescriptor2D():
+  generate_space_(false),
   highest_order_diff_west_(-1),
   highest_order_diff_east_(-1),
   highest_order_diff_south_(-1),
@@ -96,6 +97,8 @@ void mtk::BCDescriptor2D::PushBackWestCoeff(mtk::CoefficientFunction2D cw) {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(cw == nullptr, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(highest_order_diff_west_ > 1,
+                      __FILE__, __LINE__, __func__);
   #endif
 
   west_coefficients_.push_back(cw);
@@ -107,6 +110,8 @@ void mtk::BCDescriptor2D::PushBackEastCoeff(mtk::CoefficientFunction2D ce) {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(ce == nullptr, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(highest_order_diff_east_ > 1,
+                      __FILE__, __LINE__, __func__);
   #endif
 
   east_coefficients_.push_back(ce);
@@ -118,6 +123,8 @@ void mtk::BCDescriptor2D::PushBackSouthCoeff(mtk::CoefficientFunction2D cs) {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(cs == nullptr, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(highest_order_diff_south_ > 1,
+                      __FILE__, __LINE__, __func__);
   #endif
 
   south_coefficients_.push_back(cs);
@@ -129,6 +136,8 @@ void mtk::BCDescriptor2D::PushBackNorthCoeff(mtk::CoefficientFunction2D cn) {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(cn == nullptr, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(highest_order_diff_north_ > 1,
+                      __FILE__, __LINE__, __func__);
   #endif
 
   north_coefficients_.push_back(cn);
@@ -178,11 +187,347 @@ void mtk::BCDescriptor2D::set_north_condition(
   north_condition_ = north_condition;
 }
 
+void mtk::BCDescriptor2D::ImposeOnSouthBoundary(
+    const mtk::UniStgGrid2D &grid,
+    mtk::DenseMatrix &matrix,
+    const int &order_accuracy) const {
+
+  // At this point we have all of the information we need to fully impose the
+  // south boundary condition:
+  // 1. We have the collection of coefficients. The size of this collection
+  // tells us the type of BC for this boundary.
+  // 2. We have the grid that we can use to evaluate the coefficients at.
+  // 3. We have the matrix where to place them.
+
+  // For now, we are sure that we will NOT have more than 2 coefficients per
+  // boundary. That is, we only support Robin type FOR NOW.
+
+  if (generate_space_) {
+
+    /// 1. Impose the Dirichlet condition first.
+
+    // For the south-west corner:
+    auto cc = (south_coefficients_[0])(grid.west_bndy(), grid.south_bndy());
+
+    #if MTK_DEBUG_LEVEL > 0
+    std::cout << "Matrix has " << matrix.num_rows() << " rows and " <<
+      matrix.num_cols() << " columns." << std::endl;
+    std::cout << "Setting at " << 0 << ' ' << 0 << std::endl;
+    #endif
+
+    matrix.SetValue(0, 0, cc);
+
+    // Compute first centers per dimension.
+    auto first_center_x = grid.west_bndy() + grid.delta_x()/mtk::kTwo;
+
+    // For each entry on the diagonal (south boundary):
+    for (int ii = 0; ii < grid.num_cells_x(); ++ii) {
+      // Evaluate next set spatial coordinates to evaluate the coefficient.
+      mtk::Real xx = first_center_x + ii*grid.delta_x();
+      // Evaluate and assign the Dirichlet coefficient.
+      cc = (south_coefficients_[0])(xx, grid.south_bndy());
+
+      #if MTK_DEBUG_LEVEL > 0
+      std::cout << "Setting at " << ii + 1 << ' ' << ii + 1 << std::endl;
+      #endif
+
+      matrix.SetValue(ii + 1, ii + 1, cc);
+    }
+
+    // For the south-east corner:
+    cc = (south_coefficients_[0])(grid.east_bndy(), grid.south_bndy());
+
+    #if MTK_DEBUG_LEVEL > 0
+    std::cout << "Setting at " << grid.num_cells_x() + 1 << ' ' <<
+      grid.num_cells_x() + 1 << std::endl;
+    #endif
+
+    matrix.SetValue(grid.num_cells_x() + 1, grid.num_cells_x() + 1, cc);
+
+    /// 2. Impose the Neumann condition second.
+
+    /// \todo Impose the Neumann conditions on every pole, for every scenario.
+  } else {
+
+    /// 1. Impose the Dirichlet condition first.
+
+    // For each entry on the diagonal:
+    for (int ii = 0; ii < grid.num_cells_x() + 2; ++ii) {
+      // Evaluate next set spatial coordinates to evaluate the coefficient.
+      mtk::Real xx{(grid.discrete_domain_x())[ii]};
+      // Evaluate and assign the Dirichlet coefficient.
+      mtk::Real cc = (south_coefficients_[0])(xx,grid.south_bndy());
+      matrix.SetValue(ii, ii, cc);
+    }
+
+    /// 2. Impose the Neumann condition second.
+  }
+}
+
+void mtk::BCDescriptor2D::ImposeOnNorthBoundary(
+    const mtk::UniStgGrid2D &grid,
+    mtk::DenseMatrix &matrix,
+    const int &order_accuracy) const {
+
+  // At this point we have all of the information we need to fully impose the
+  // north boundary condition:
+  // 1. We have the collection of coefficients. The size of this collection
+  // tells us the type of BC for this boundary.
+  // 2. We have the grid that we can use to evaluate the coefficients at.
+  // 3. We have the matrix where to place them.
+
+  // For now, we are sure that we will NOT have more than 2 coefficients per
+  // boundary. That is, we only support Robin type FOR NOW.
+
+  int north_offset{(grid.num_cells_y() + 1)*(grid.num_cells_x() + 2)};
+
+  if (generate_space_) {
+
+    /// 1. Impose the Dirichlet condition first.
+
+    // For the north-west corner:
+    mtk::Real cc =
+      (north_coefficients_[0])(grid.west_bndy(), grid.north_bndy());
+
+    #if MTK_DEBUG_LEVEL > 0
+    std::cout << "Matrix has " << matrix.num_rows() << " rows and " <<
+      matrix.num_cols() << " columns." << std::endl;
+    std::cout << "Setting at " << north_offset << ' ' << north_offset <<
+      std::endl;
+    #endif
+
+    matrix.SetValue(north_offset, north_offset, cc);
+
+    // Compute first centers per dimension.
+    auto first_center_x = grid.west_bndy() + grid.delta_x()/mtk::kTwo;
+
+    // For each entry on the diagonal (north boundary):
+    for (int ii = 0; ii < grid.num_cells_x(); ++ii) {
+      // Evaluate next set spatial coordinates to evaluate the coefficient.
+      mtk::Real xx = first_center_x + ii*grid.delta_x();
+      // Evaluate and assign the Dirichlet coefficient.
+      cc = (north_coefficients_[0])(xx, grid.north_bndy());
+
+      #if MTK_DEBUG_LEVEL > 0
+      std::cout << "Setting at " << north_offset + ii + 1 << ' ' <<
+        north_offset + ii + 1 << std::endl;
+      #endif
+
+      matrix.SetValue(north_offset + ii + 1, north_offset + ii + 1, cc);
+    }
+
+    // For the north-east corner:
+    cc = (north_coefficients_[0])(grid.east_bndy(), grid.north_bndy());
+
+    #if MTK_DEBUG_LEVEL > 0
+    std::cout << "Setting at " << north_offset + grid.num_cells_x() + 1 <<
+      ' ' << north_offset + grid.num_cells_x() + 1 << std::endl;
+    #endif
+
+    matrix.SetValue(north_offset + grid.num_cells_x() + 1,
+                    north_offset + grid.num_cells_x() + 1, cc);
+
+    /// 2. Impose the Neumann condition second.
+  } else {
+
+    /// 1. Impose the Dirichlet condition first.
+
+    // For each entry on the diagonal:
+    for (int ii = 0; ii < grid.num_cells_x() + 2; ++ii) {
+      // Evaluate next set spatial coordinates to evaluate the coefficient.
+      mtk::Real xx{(grid.discrete_domain_x())[ii]};
+      // Evaluate and assign the Dirichlet coefficient.
+      mtk::Real cc = (north_coefficients_[0])(xx, grid.north_bndy());
+      matrix.SetValue(north_offset + ii, north_offset + ii, cc);
+    }
+
+    /// 2. Impose the Neumann condition second.
+  }
+}
+
+void mtk::BCDescriptor2D::ImposeOnWestBoundary(
+    const mtk::UniStgGrid2D &grid,
+    mtk::DenseMatrix &matrix,
+    const int &order_accuracy) const {
+
+  // At this point we have all of the information we need to fully impose the
+  // west boundary condition:
+  // 1. We have the collection of coefficients. The size of this collection
+  // tells us the type of BC for this boundary.
+  // 2. We have the grid that we can use to evaluate the coefficients at.
+  // 3. We have the matrix where to place them.
+
+  if (generate_space_) {
+
+    /// 1. Impose the Dirichlet condition first.
+
+    // For the south-west corner:
+    auto cc = (west_coefficients_[0])(grid.west_bndy(), grid.south_bndy());
+
+    #if MTK_DEBUG_LEVEL > 0
+    std::cout << "Matrix has " << matrix.num_rows() << " rows and " <<
+      matrix.num_cols() << " columns." << std::endl;
+    std::cout << "Setting at " << 0 << ' ' << 0 << std::endl;
+    #endif
+
+    /// \note As it can be seen, we must adopt a convention about how to treat
+    /// the corners. Based on a reasoning with Otilio, we will take the
+    /// arithmetic mean.
+    matrix.SetValue(0, 0, (matrix.GetValue(0, 0) + cc)/mtk::kTwo);
+
+    int west_offset{grid.num_cells_x() + 1};
+
+    auto first_center_y = grid.south_bndy() + grid.delta_y()/mtk::kTwo;
+
+    // For each west entry on the diagonal (west boundary):
+    for (int ii = 0; ii < grid.num_cells_y(); ++ii) {
+      // Evaluate next set spatial coordinates to evaluate the coefficient.
+      mtk::Real yy = first_center_y + ii*grid.delta_y();
+      // Evaluate and assign the Dirichlet coefficient.
+      cc = (west_coefficients_[0])(grid.west_bndy(), yy);
+
+      #if MTK_DEBUG_LEVEL > 0
+      std::cout << "Setting at " << west_offset + ii + 1 << ' ' <<
+        west_offset + ii + 1 << std::endl;
+      #endif
+
+      matrix.SetValue(west_offset + ii + 1, west_offset + ii + 1, cc);
+
+      west_offset += grid.num_cells_x() + 1;
+    }
+
+    // For the north-west corner:
+    cc = (west_coefficients_[0])(grid.west_bndy(), grid.north_bndy());
+
+    west_offset += grid.num_cells_x() + 1;
+    int aux{west_offset};
+    #if MTK_DEBUG_LEVEL > 0
+    std::cout << "Setting at " << aux << ' ' << aux << std::endl;
+    #endif
+    matrix.SetValue(aux, aux, (matrix.GetValue(aux, aux) + cc)/mtk::kTwo);
+
+    /// 2. Impose the Neumann condition second.
+  } else {
+
+    /// 1. Impose the Dirichlet condition first.
+
+    int west_offset{grid.num_cells_x() + 1};
+    // For each west entry on the diagonal:
+    for (int ii = 0; ii < grid.num_cells_y() + 2; ++ii) {
+      // Evaluate next set spatial coordinates to evaluate the coefficient.
+      mtk::Real yy{(grid.discrete_domain_y())[ii]};
+      // Evaluate and assign the Dirichlet coefficient.
+      mtk::Real cc = (west_coefficients_[0])(grid.west_bndy(), yy);
+      mtk::Real aux =
+        (matrix.GetValue(west_offset + ii, west_offset + ii) + cc)/mtk::kTwo;
+      matrix.SetValue(west_offset + ii, west_offset + ii, aux);
+      west_offset += grid.num_cells_x() + 1;
+    }
+
+    /// 2. Impose the Neumann condition second.
+  }
+}
+
+void mtk::BCDescriptor2D::ImposeOnEastBoundary(
+    const mtk::UniStgGrid2D &grid,
+    mtk::DenseMatrix &matrix,
+    const int &order_accuracy) const {
+
+  // At this point we have all of the information we need to fully impose the
+  // east boundary condition:
+  // 1. We have the collection of coefficients. The size of this collection
+  // tells us the type of BC for this boundary.
+  // 2. We have the grid that we can use to evaluate the coefficients at.
+  // 3. We have the matrix where to place them.
+
+  if (generate_space_) {
+
+    /// 1. Impose the Dirichlet condition first.
+
+    // For the south-east corner:
+    auto cc = (east_coefficients_[0])(grid.east_bndy(), grid.south_bndy());
+
+    int east_offset{grid.num_cells_x() + 1};
+    #if MTK_DEBUG_LEVEL > 0
+    std::cout << "Matrix has " << matrix.num_rows() << " rows and " <<
+      matrix.num_cols() << " columns." << std::endl;
+    std::cout << "Setting at " << east_offset << ' ' << east_offset <<
+      std::endl;
+    #endif
+
+    matrix.SetValue(east_offset,
+                    east_offset,
+                    (matrix.GetValue(east_offset, east_offset) + cc)/mtk::kTwo);
+
+    auto first_center_y = grid.south_bndy() + grid.delta_y()/mtk::kTwo;
+
+    // For each east entry on the diagonal (east boundary):
+    for (int ii = 0; ii < grid.num_cells_y(); ++ii) {
+
+      east_offset += grid.num_cells_x() + 1;
+
+      // Evaluate next set spatial coordinates to evaluate the coefficient.
+      mtk::Real yy = first_center_y + ii*grid.delta_y();
+      // Evaluate and assign the Dirichlet coefficient.
+      cc = (east_coefficients_[0])(grid.east_bndy(), yy);
+
+      #if MTK_DEBUG_LEVEL > 0
+      std::cout << "Setting at " << east_offset + ii + 1 << ' ' <<
+        east_offset + ii + 1 << std::endl;
+      #endif
+
+      matrix.SetValue(east_offset + ii + 1, east_offset + ii + 1, cc);
+    }
+
+    // For the north-east corner:
+    cc = (east_coefficients_[0])(grid.east_bndy(), grid.north_bndy());
+
+    east_offset += grid.num_cells_x() + 1;
+    east_offset += grid.num_cells_x() + 1;
+    int aux{east_offset};
+    #if MTK_DEBUG_LEVEL > 0
+    std::cout << "Setting at " << aux << ' ' << aux << std::endl;
+    #endif
+    matrix.SetValue(aux, aux, (matrix.GetValue(aux, aux) + cc)/mtk::kTwo);
+
+    /// 2. Impose the Neumann condition second.
+
+  } else {
+
+    /// 1. Impose the Dirichlet condition first.
+
+    int east_offset{grid.num_cells_x() + 1};
+    // For each west entry on the diagonal:
+    for (int ii = 0; ii < grid.num_cells_y() + 2; ++ii) {
+      east_offset += grid.num_cells_x() + 1;
+      // Evaluate next set spatial coordinates to evaluate the coefficient.
+      mtk::Real yy{(grid.discrete_domain_y())[ii]};
+      // Evaluate and assign the Dirichlet coefficient.
+      mtk::Real cc = (east_coefficients_[0])(grid.east_bndy(), yy);
+      mtk::Real aux =
+        (matrix.GetValue(east_offset + ii, east_offset + ii) + cc)/mtk::kTwo;
+      matrix.SetValue(east_offset + ii, east_offset + ii, aux);
+    }
+
+    /// 2. Impose the Neumann condition second.
+
+  }
+}
+
 void mtk::BCDescriptor2D::ImposeOnLaplacianMatrix(
     const mtk::UniStgGrid2D &grid,
-    mtk::DenseMatrix &matrix) const {
+    mtk::DenseMatrix &matrix,
+    const int &order_accuracy) const {
 
   #if MTK_DEBUG_LEVEL > 0
+  mtk::Tools::Prevent(highest_order_diff_south_ == -1,
+                      __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(highest_order_diff_north_ == -1,
+                      __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(highest_order_diff_west_ == -1,
+                      __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(highest_order_diff_east_ == -1,
+                      __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(grid.nature() != mtk::SCALAR,
                       __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(grid.num_cells_x() == 0, __FILE__, __LINE__, __func__);
@@ -194,76 +539,23 @@ void mtk::BCDescriptor2D::ImposeOnLaplacianMatrix(
   /// 1. If we have not bound anything to the grid, then we have to generate
   /// our collection of spatial coordinates, as we evaluate the coefficients.
 
-  bool generate_space{false};
+  generate_space_ = !grid.Bound();
 
-  if (!grid.Bound()) {
-    generate_space = true;
-  }
+  /// 2. Assign values to implement south boundary condition.
 
-  /// 1. Impose the sum of the coefficients on the south boundary.
+  ImposeOnSouthBoundary(grid, matrix, order_accuracy);
 
-  if (generate_space) {
-    // For the south-west corner:
-    mtk::Real cc{};
-    for (unsigned int jj = 0; jj < south_coefficients_.size(); ++jj) {
-      // Evaluate the coefficient on the grid.
-      cc += (south_coefficients_[jj])(grid.west_bndy(), grid.south_bndy());
-    }
-    matrix.SetValue(0, 0, cc);
+  /// 3. Assign values to implement north boundary condition.
 
-    // Compute first centers per dimension.
-    #ifdef MTK_PRECISION_DOUBLE
-    auto first_center_x = grid.west_bndy() + grid.delta_x()/2.0;
-    #else
-    auto first_center_x = grid.west_bndy() + grid.delta_x()/2.0f;
-    #endif
+  ImposeOnNorthBoundary(grid, matrix, order_accuracy);
 
-    #ifdef MTK_PRECISION_DOUBLE
-    auto first_center_y = grid.south_bndy() + grid.delta_y()/2.0;
-    #else
-    auto first_center_y = grid.south_bndy() + grid.delta_y()/2.0f;
-    #endif
+  /// 4. Assign values to implement west boundary condition.
 
-    // For each entry on the diagonal (south boundary):
-    for (int ii = 0; ii < grid.num_cells_x(); ++ii) {
-      // Evaluate next set spatial coordinates to evaluate the coefficient at.
-      mtk::Real xx = first_center_x + ii*grid.delta_x();
-      mtk::Real yy = first_center_y + ii*grid.delta_y();
+  ImposeOnWestBoundary(grid, matrix, order_accuracy);
 
-      cc = 0;
-      // For each coefficient to sum:
-      for (unsigned int jj = 0; jj < south_coefficients_.size(); ++jj) {
-        // Evaluate the coefficient on the grid and accumulate.
-        cc += (south_coefficients_[jj])(xx, yy);
-      }
-      matrix.SetValue(ii + 1, ii + 1, cc);
-    }
+  /// 5. Assign values to implement east boundary condition.
 
-    // For the south-east corner:
-    cc = 0;
-    for (unsigned int jj = 0; jj < south_coefficients_.size(); ++jj) {
-      // Evaluate the coefficient on the grid.
-      cc += (south_coefficients_[jj])(grid.east_bndy(), grid.south_bndy());
-    }
-    matrix.SetValue(grid.num_cells_x() + 1, grid.num_cells_x() + 1, cc);
-
-  } else {
-    // For each entry on the diagonal:
-    for (int ii = 0; ii < grid.num_cells_x() + 2; ++ii) {
-      // For each coefficient to sum:
-      mtk::Real xx{(grid.discrete_domain_x())[ii]};
-      mtk::Real yy{(grid.discrete_domain_y())[ii]};
-      mtk::Real cc{};
-      for (unsigned int jj = 0; jj < south_coefficients_.size(); ++jj) {
-        // Evaluate the coefficient on the grid.
-        cc += (south_coefficients_[jj])(xx,yy);
-      }
-      matrix.SetValue(ii, ii, cc);
-    }
-  }
-
-
-  /// 2. Impose the sum of the coefficients on the north boundary.
+  ImposeOnEastBoundary(grid, matrix, order_accuracy);
 }
 
 void mtk::BCDescriptor2D::ImposeOnGrid(mtk::UniStgGrid2D &grid) const {

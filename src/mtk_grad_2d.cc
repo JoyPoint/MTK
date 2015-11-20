@@ -116,12 +116,12 @@ bool mtk::Grad2D::ConstructGrad2D(const mtk::UniStgGrid2D &grid,
   mtk::DenseMatrix gyx(mtk::DenseMatrix::Kron(Gy, tix));
 
   #if MTK_DEBUG_LEVEL > 0
-  std::cout << "Gx :" << mx << "by " << nx << std::endl;
-  std::cout << "Transpose Iy : " << num_cells_y<< " by " << ny  << std::endl;
-  std::cout << "Gy :" << my << "by " << ny << std::endl;
-  std::cout << "Transpose Ix : " << num_cells_x<< " by " << nx  << std::endl;
-  std::cout << "Kronecker dimensions Grad 2D" <<
-    mx*num_cells_y + my*num_cells_x << " by " <<  nx*ny <<std::endl;
+  std::cout << "Gx: " << mx << " by " << nx << std::endl;
+  std::cout << "Transpose Iy: " << num_cells_y << " by " << ny  << std::endl;
+  std::cout << "Gy: " << my << " by " << ny << std::endl;
+  std::cout << "Transpose Ix: " << num_cells_x << " by " << nx  << std::endl;
+  std::cout << "Grad 2D: " << mx*num_cells_y + my*num_cells_x << " by " <<
+    nx*ny <<std::endl;
   #endif
 
   mtk::DenseMatrix g2d(mx*num_cells_y + my*num_cells_x, nx*ny);
