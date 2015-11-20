@@ -80,10 +80,10 @@
 00083   \textcolor{keywordtype}{int} num\_cells\_x = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}();
 00084   \textcolor{keywordtype}{int} num\_cells\_y = grid.\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}();
 00085 
-00086   \textcolor{keywordtype}{int} mx = num\_cells\_x + 2;  \textcolor{comment}{// Gx vertical dimension}
-00087   \textcolor{keywordtype}{int} nx = num\_cells\_x + 1;  \textcolor{comment}{// Gx horizontal dimension}
-00088   \textcolor{keywordtype}{int} my = num\_cells\_y + 2;  \textcolor{comment}{// Gy vertical dimension}
-00089   \textcolor{keywordtype}{int} ny = num\_cells\_y + 1;  \textcolor{comment}{// Gy horizontal dimension}
+00086   \textcolor{keywordtype}{int} mx = num\_cells\_x + 2;  \textcolor{comment}{// Dx vertical dimension.}
+00087   \textcolor{keywordtype}{int} nx = num\_cells\_x + 1;  \textcolor{comment}{// Dx horizontal dimension.}
+00088   \textcolor{keywordtype}{int} my = num\_cells\_y + 2;  \textcolor{comment}{// Dy vertical dimension.}
+00089   \textcolor{keywordtype}{int} ny = num\_cells\_y + 1;  \textcolor{comment}{// Dy horizontal dimension.}
 00090 
 00091   \hyperlink{classmtk_1_1Div1D}{mtk::Div1D} div;
 00092 
@@ -115,15 +115,15 @@
 00118   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} dyx(\hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{mtk::DenseMatrix::Kron}(dy, ix));
 00119 
 00120 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00121   std::cout << \textcolor{stringliteral}{"Gx :"} << mx << \textcolor{stringliteral}{"by "} << nx << std::endl;
-00122   std::cout << \textcolor{stringliteral}{"Transpose iy : "} << num\_cells\_y<< \textcolor{stringliteral}{" by "} << ny  << std::endl;
-00123   std::cout << \textcolor{stringliteral}{"Gy :"} << my << \textcolor{stringliteral}{"by "} << ny << std::endl;
-00124   std::cout << \textcolor{stringliteral}{"Transpose ix : "} << num\_cells\_x<< \textcolor{stringliteral}{" by "} << nx  << std::endl;
-00125   std::cout << \textcolor{stringliteral}{"Kronecker dimensions Grad 2D"} <<
-00126   mx*num\_cells\_y + my*num\_cells\_x << \textcolor{stringliteral}{" by "} <<  nx*ny <<std::endl;
+00121   std::cout << \textcolor{stringliteral}{"Dx: "} << mx << \textcolor{stringliteral}{" by "} << nx << std::endl;
+00122   std::cout << \textcolor{stringliteral}{"Iy : "} << num\_cells\_y<< \textcolor{stringliteral}{" by "} << ny  << std::endl;
+00123   std::cout << \textcolor{stringliteral}{"Dy: "} << my << \textcolor{stringliteral}{" by "} << ny << std::endl;
+00124   std::cout << \textcolor{stringliteral}{"Ix : "} << num\_cells\_x<< \textcolor{stringliteral}{" by "} << nx  << std::endl;
+00125   std::cout << \textcolor{stringliteral}{"Div 2D: "} << mx*num\_cells\_y + my*num\_cells\_x << \textcolor{stringliteral}{" by "} <<
+00126     nx*ny <<std::endl;
 00127 \textcolor{preprocessor}{  #endif}
 00128 
-00129   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} d2d(mx*my,nx*num\_cells\_y + ny*num\_cells\_x);
+00129   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} d2d(mx*my, nx*num\_cells\_y + ny*num\_cells\_x);
 00130 
 00131   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < mx*my; ii++) \{
 00132     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < nx*num\_cells\_y; jj++) \{

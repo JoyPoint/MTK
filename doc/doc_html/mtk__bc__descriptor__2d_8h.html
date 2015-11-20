@@ -137,6 +137,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmtk_1_1BCDescriptor2D.html">mtk::BCDescriptor2D</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enforces boundary conditions in either the operator or the grid.  <a href="classmtk_1_1BCDescriptor2D.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
@@ -155,7 +156,7 @@ Typedefs</h2></td></tr>
 <div class="textblock"><p>This class presents an interface for the user to specify boundary conditions on 2D mimetic operators and the grids they are acting on.</p>
 <p><b>Def.</b> Let <img class="formulaInl" alt="$ f $" src="form_32.png"/> be any scalar or vector field defined over a domain <img class="formulaInl" alt="$ \Omega $" src="form_33.png"/>. We can specify any linear combination of <img class="formulaInl" alt="$ f $" src="form_32.png"/> and its <img class="formulaInl" alt="$ n $" src="form_34.png"/> derivatives to fulfill a condition, which we define as a <b>boundary condition</b>:</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{n} c_i(\mathbf{x})\frac{\partial^i f}{\partial x^i}(\mathbf{x}) = \beta(\mathbf{x}). \]" src="form_41.png"/>
+<img class="formulaDsp" alt="\[ \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{n} c_i(\mathbf{x}) <\mathbf{n}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> = \beta(\mathbf{x}). \]" src="form_55.png"/>
 </p>
 <p>This class receives information about the highest-order of differentiation, <img class="formulaInl" alt="$ n $" src="form_34.png"/>, all possible coefficient functions, <img class="formulaInl" alt="$ c_i(\mathbf{x}) $" src="form_42.png"/> for any subset of the boundary (south, north, west and east), and each condition for any subset of the boundary, and takes care of assigning them to both, the differentiation matrices and the grids.</p>
 <dl class="section author"><dt>Author</dt><dd>: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu </dd></dl>
@@ -167,7 +168,7 @@ Typedefs</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="mtk__bc__descriptor__2d_8h.html">mtk_bc_descriptor_2d.h</a></li>
-    <li class="footer">Generated on Thu Nov 19 2015 17:01:35 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Fri Nov 20 2015 17:17:01 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

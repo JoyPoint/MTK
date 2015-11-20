@@ -50,8 +50,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Makefile_8inc.html",
-"classmtk_1_1Quad1D.html#a2d253b9ba8e05b06dc40a6a38bb0272d",
-"mtk__lapack__adapter_8cc.html#a59c58408e1c0a9837b67a417be986b82"
+"classmtk_1_1Matrix.html#ae8f0a5063f50e1cd21b601a482888358",
+"mtk__lap__2d_8h.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

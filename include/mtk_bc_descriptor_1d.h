@@ -65,7 +65,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace mtk {
 
-  /*!
+/*!
 \class BCDescriptor1D
 
 \ingroup c07-mim_ops

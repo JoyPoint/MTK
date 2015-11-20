@@ -183,10 +183,10 @@ $(document).ready(function(){initNavTree('mtk__div__2d_8cc_source.html','');});
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  <span class="keywordtype">int</span> num_cells_x = grid.<a class="code" href="classmtk_1_1UniStgGrid2D.html#a2d182866a398aba8e4829590e85bf939">num_cells_x</a>();</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordtype">int</span> num_cells_y = grid.<a class="code" href="classmtk_1_1UniStgGrid2D.html#aed05a801cc9a76dba0ff203cea58a61a">num_cells_y</a>();</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordtype">int</span> mx = num_cells_x + 2;  <span class="comment">// Gx vertical dimension</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">int</span> nx = num_cells_x + 1;  <span class="comment">// Gx horizontal dimension</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordtype">int</span> my = num_cells_y + 2;  <span class="comment">// Gy vertical dimension</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordtype">int</span> ny = num_cells_y + 1;  <span class="comment">// Gy horizontal dimension</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordtype">int</span> mx = num_cells_x + 2;  <span class="comment">// Dx vertical dimension.</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordtype">int</span> nx = num_cells_x + 1;  <span class="comment">// Dx horizontal dimension.</span></div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordtype">int</span> my = num_cells_y + 2;  <span class="comment">// Dy vertical dimension.</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordtype">int</span> ny = num_cells_y + 1;  <span class="comment">// Dy horizontal dimension.</span></div>
 <div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
 <div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <a class="code" href="classmtk_1_1Div1D.html">mtk::Div1D</a> div;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
@@ -218,15 +218,15 @@ $(document).ready(function(){initNavTree('mtk__div__2d_8cc_source.html','');});
 <div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> dyx(<a class="code" href="classmtk_1_1DenseMatrix.html#a01d3d8bd502870f93bf3a88a0cc5fb49">mtk::DenseMatrix::Kron</a>(dy, ix));</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Gx :&quot;</span> &lt;&lt; mx &lt;&lt; <span class="stringliteral">&quot;by &quot;</span> &lt;&lt; nx &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Transpose iy : &quot;</span> &lt;&lt; num_cells_y&lt;&lt; <span class="stringliteral">&quot; by &quot;</span> &lt;&lt; ny  &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Gy :&quot;</span> &lt;&lt; my &lt;&lt; <span class="stringliteral">&quot;by &quot;</span> &lt;&lt; ny &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Transpose ix : &quot;</span> &lt;&lt; num_cells_x&lt;&lt; <span class="stringliteral">&quot; by &quot;</span> &lt;&lt; nx  &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Kronecker dimensions Grad 2D&quot;</span> &lt;&lt;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  mx*num_cells_y + my*num_cells_x &lt;&lt; <span class="stringliteral">&quot; by &quot;</span> &lt;&lt;  nx*ny &lt;&lt;std::endl;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Dx: &quot;</span> &lt;&lt; mx &lt;&lt; <span class="stringliteral">&quot; by &quot;</span> &lt;&lt; nx &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Iy : &quot;</span> &lt;&lt; num_cells_y&lt;&lt; <span class="stringliteral">&quot; by &quot;</span> &lt;&lt; ny  &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Dy: &quot;</span> &lt;&lt; my &lt;&lt; <span class="stringliteral">&quot; by &quot;</span> &lt;&lt; ny &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Ix : &quot;</span> &lt;&lt; num_cells_x&lt;&lt; <span class="stringliteral">&quot; by &quot;</span> &lt;&lt; nx  &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Div 2D: &quot;</span> &lt;&lt; mx*num_cells_y + my*num_cells_x &lt;&lt; <span class="stringliteral">&quot; by &quot;</span> &lt;&lt;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    nx*ny &lt;&lt;std::endl;</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;<span class="preprocessor">  #endif</span></div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> d2d(mx*my,nx*num_cells_y + ny*num_cells_x);</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> d2d(mx*my, nx*num_cells_y + ny*num_cells_x);</div>
 <div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 0; ii &lt; mx*my; ii++) {</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> jj = 0; jj &lt; nx*num_cells_y; jj++) {</div>
@@ -251,7 +251,7 @@ $(document).ready(function(){initNavTree('mtk__div__2d_8cc_source.html','');});
 <div class="ttc" id="mtk__uni__stg__grid__1d_8h_html"><div class="ttname"><a href="mtk__uni__stg__grid__1d_8h.html">mtk_uni_stg_grid_1d.h</a></div><div class="ttdoc">Definition of an 1D uniform staggered grid. </div></div>
 <div class="ttc" id="mtk__div__1d_8h_html"><div class="ttname"><a href="mtk__div__1d_8h.html">mtk_div_1d.h</a></div><div class="ttdoc">Includes the definition of the class Div1D. </div></div>
 <div class="ttc" id="group__c01-roots_html_gac080bbbf5cbb5502c9f00405f894857d"><div class="ttname"><a href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a></div><div class="ttdeci">float Real</div><div class="ttdoc">Users can simply change this to build a double- or single-precision MTK. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00083">mtk_roots.h:83</a></div></div>
-<div class="ttc" id="classmtk_1_1Div2D_html"><div class="ttname"><a href="classmtk_1_1Div2D.html">mtk::Div2D</a></div><div class="ttdef"><b>Definition:</b> <a href="mtk__div__2d_8h_source.html#l00066">mtk_div_2d.h:66</a></div></div>
+<div class="ttc" id="classmtk_1_1Div2D_html"><div class="ttname"><a href="classmtk_1_1Div2D.html">mtk::Div2D</a></div><div class="ttdoc">Implements a 2D mimetic divergence operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__div__2d_8h_source.html#l00076">mtk_div_2d.h:76</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid2D_html_a2d182866a398aba8e4829590e85bf939"><div class="ttname"><a href="classmtk_1_1UniStgGrid2D.html#a2d182866a398aba8e4829590e85bf939">mtk::UniStgGrid2D::num_cells_x</a></div><div class="ttdeci">int num_cells_x() const </div><div class="ttdoc">Provides access to the number of cells of the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__2d_8cc_source.html#l00220">mtk_uni_stg_grid_2d.cc:220</a></div></div>
 <div class="ttc" id="mtk__enums_8h_html"><div class="ttname"><a href="mtk__enums_8h.html">mtk_enums.h</a></div><div class="ttdoc">Considered enumeration types in the MTK. </div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_a01d3d8bd502870f93bf3a88a0cc5fb49"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#a01d3d8bd502870f93bf3a88a0cc5fb49">mtk::DenseMatrix::Kron</a></div><div class="ttdeci">static DenseMatrix Kron(const DenseMatrix &amp;aa, const DenseMatrix &amp;bb)</div><div class="ttdoc">Construct a dense matrix based on the Kronecker product of arguments. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00490">mtk_dense_matrix.cc:490</a></div></div>
@@ -277,7 +277,7 @@ $(document).ready(function(){initNavTree('mtk__div__2d_8cc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="mtk__div__2d_8cc.html">mtk_div_2d.cc</a></li>
-    <li class="footer">Generated on Thu Nov 19 2015 17:01:35 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Fri Nov 20 2015 17:17:01 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

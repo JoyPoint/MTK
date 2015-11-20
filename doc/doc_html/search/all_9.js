@@ -9,6 +9,7 @@ var searchData=
   ['kl_5f',['kl_',['../classmtk_1_1Matrix.html#a45c2498d0b6d515c72c2e631508acd7d',1,'mtk::Matrix']]],
   ['kone',['kOne',['../group__c01-roots.html#ga26407c24d43b6b95480943340d285c71',1,'mtk']]],
   ['kron',['Kron',['../classmtk_1_1DenseMatrix.html#a01d3d8bd502870f93bf3a88a0cc5fb49',1,'mtk::DenseMatrix']]],
+  ['ktwo',['kTwo',['../group__c01-roots.html#gaf39c2d851a2db744f4feb1c5ab3ec2cf',1,'mtk']]],
   ['ku',['ku',['../classmtk_1_1Matrix.html#ab129068deb2892b194d2cda9aca989eb',1,'mtk::Matrix']]],
   ['ku_5f',['ku_',['../classmtk_1_1Matrix.html#afdb4436c4c4c6deaed608a06026179c9',1,'mtk::Matrix']]],
   ['kzero',['kZero',['../group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271',1,'mtk']]]

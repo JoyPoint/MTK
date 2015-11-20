@@ -14,7 +14,8 @@ condition**:
 \f[
 \forall \mathbf{x} \in \partial\Omega:
   \sum_{i = 0}^{n}
-    c_i(\mathbf{x})\frac{\partial^i f}{\partial x^i}(\mathbf{x}) =
+    c_i(\mathbf{x})
+        <\mathbf{n}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> =
       \beta(\mathbf{x}).
 \f]
 
@@ -90,6 +91,35 @@ namespace mtk{
 */
 typedef Real (*CoefficientFunction2D)(const Real &, const Real &);
 
+/*!
+\class BCDescriptor2D
+
+\ingroup c07-mim_ops
+
+\brief Enforces boundary conditions in either the operator or the grid.
+
+This class presents an interface for the user to specify boundary conditions
+on 2D mimetic operators and the grids they are acting on.
+
+<b>Def.</b> Let \f$ f \f$ be any scalar or vector field defined over a domain
+\f$ \Omega \f$. We can specify any linear combination of \f$ f \f$ and its \f$
+n \f$ derivatives to fulfill a condition, which we define as a **boundary
+condition**:
+
+\f[
+\forall \mathbf{x} \in \partial\Omega:
+  \sum_{i = 0}^{n}
+    c_i(\mathbf{x})
+        <\mathbf{n}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> =
+      \beta(\mathbf{x}).
+\f]
+
+This class receives information about the highest-order of differentiation,
+\f$ n \f$, all possible coefficient functions, \f$ c_i(\mathbf{x}) \f$
+for any subset of the boundary (south, north, west and east), and each condition
+for any subset of the boundary, and takes care of assigning them to both, the
+differentiation matrices and the grids.
+*/
 class BCDescriptor2D {
  public:
   /// \brief Default constructor.

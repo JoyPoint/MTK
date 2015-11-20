@@ -4,6 +4,42 @@ var group__c07_mim__ops =
       [ "ImposeOnGrid", "classmtk_1_1BCDescriptor1D.html#adfb101c1a12b452f83dacd207febea0a", null ],
       [ "ImposeOnLaplacianMatrix", "classmtk_1_1BCDescriptor1D.html#a33e51235eaa930e4470f027001a023cf", null ]
     ] ],
+    [ "BCDescriptor2D", "classmtk_1_1BCDescriptor2D.html", [
+      [ "BCDescriptor2D", "classmtk_1_1BCDescriptor2D.html#abbc3af29202dbfef203f4cafd9566fd0", null ],
+      [ "BCDescriptor2D", "classmtk_1_1BCDescriptor2D.html#ae8a93352a94efed52747b710e6ff7893", null ],
+      [ "~BCDescriptor2D", "classmtk_1_1BCDescriptor2D.html#ae14e62548a8bc080d576fff6937c546b", null ],
+      [ "highest_order_diff_east", "classmtk_1_1BCDescriptor2D.html#a5a9b80a2e9e579b05d9f3589d80448b6", null ],
+      [ "highest_order_diff_north", "classmtk_1_1BCDescriptor2D.html#a87c5f2449247d65ea07784ba2ec61bc7", null ],
+      [ "highest_order_diff_south", "classmtk_1_1BCDescriptor2D.html#a463d909f6014e7f01b33171a06d7b400", null ],
+      [ "highest_order_diff_west", "classmtk_1_1BCDescriptor2D.html#a0fa469ddf6ff76e2858d6d3b76cc8b6f", null ],
+      [ "ImposeOnEastBoundary", "classmtk_1_1BCDescriptor2D.html#a3cf921884f08bf2eb87af6db7cc1ecba", null ],
+      [ "ImposeOnGrid", "classmtk_1_1BCDescriptor2D.html#a5f0ff1fda1b5266dcd77ba2301c8ba2c", null ],
+      [ "ImposeOnLaplacianMatrix", "classmtk_1_1BCDescriptor2D.html#a35592617dda3b965b680b2a1355122f4", null ],
+      [ "ImposeOnNorthBoundary", "classmtk_1_1BCDescriptor2D.html#a6062894dbe7c6f42a3bbcc54f2f8973d", null ],
+      [ "ImposeOnSouthBoundary", "classmtk_1_1BCDescriptor2D.html#acba15639218e80fd93aff482b185201e", null ],
+      [ "ImposeOnWestBoundary", "classmtk_1_1BCDescriptor2D.html#a0e7bc4d22fa8c9b9a29dd71669b35744", null ],
+      [ "PushBackEastCoeff", "classmtk_1_1BCDescriptor2D.html#a27635428a6c36d1e305cafdc68271063", null ],
+      [ "PushBackNorthCoeff", "classmtk_1_1BCDescriptor2D.html#a0fed58bd058d699a572888fe4b9934a4", null ],
+      [ "PushBackSouthCoeff", "classmtk_1_1BCDescriptor2D.html#a9eb891f14c68968a0113632fa5fea630", null ],
+      [ "PushBackWestCoeff", "classmtk_1_1BCDescriptor2D.html#a3da32ba89cfb15032bb1156394bad98c", null ],
+      [ "set_east_condition", "classmtk_1_1BCDescriptor2D.html#a4ba8690e845f59a1507b056f3fc8061e", null ],
+      [ "set_north_condition", "classmtk_1_1BCDescriptor2D.html#a690f6881a88b202c074d9f90f2a7ddb0", null ],
+      [ "set_south_condition", "classmtk_1_1BCDescriptor2D.html#a408f159cc44d7ee610191efb8ed48b2a", null ],
+      [ "set_west_condition", "classmtk_1_1BCDescriptor2D.html#a006050efe15b1be75b36a74a23051392", null ],
+      [ "east_coefficients_", "classmtk_1_1BCDescriptor2D.html#a1f90fc303984bf18c136a34896bbb7c9", null ],
+      [ "east_condition_", "classmtk_1_1BCDescriptor2D.html#a6cca0c70293203c9d88773e5d5f93418", null ],
+      [ "generate_space_", "classmtk_1_1BCDescriptor2D.html#a3ef0bc7e9fbc16669099314dd34b170a", null ],
+      [ "highest_order_diff_east_", "classmtk_1_1BCDescriptor2D.html#aea5e539a10d5641bd605ebe583c14bc5", null ],
+      [ "highest_order_diff_north_", "classmtk_1_1BCDescriptor2D.html#a6cdeefe70f5bef93196f34ab2949cad2", null ],
+      [ "highest_order_diff_south_", "classmtk_1_1BCDescriptor2D.html#a1fb094e5e53ecfba32fe9fe56c051c47", null ],
+      [ "highest_order_diff_west_", "classmtk_1_1BCDescriptor2D.html#aa18ef62f8eda355e47f51bcb5dbe8fe7", null ],
+      [ "north_coefficients_", "classmtk_1_1BCDescriptor2D.html#a5429c040c034303dd92dcff554f9efad", null ],
+      [ "north_condition_", "classmtk_1_1BCDescriptor2D.html#a23e0b9ae755dcf81841aa24ddaf0b090", null ],
+      [ "south_coefficients_", "classmtk_1_1BCDescriptor2D.html#a263309b9ad288dc89826d818d9378d07", null ],
+      [ "south_condition_", "classmtk_1_1BCDescriptor2D.html#a2a933b473abbe47ad7c79ef7939e7768", null ],
+      [ "west_coefficients_", "classmtk_1_1BCDescriptor2D.html#a7df71b43acc25c468683075cc7790bb2", null ],
+      [ "west_condition_", "classmtk_1_1BCDescriptor2D.html#a2d4af48b3408658c7ace6eeb74464c9f", null ]
+    ] ],
     [ "Div1D", "classmtk_1_1Div1D.html", [
       [ "Div1D", "classmtk_1_1Div1D.html#a339c66dd4ed8f50cbeda3645de18e5ab", null ],
       [ "Div1D", "classmtk_1_1Div1D.html#a25376152cf97aa27f6b61bcb62b4ea7a", null ],
@@ -36,6 +72,16 @@ var group__c07_mim__ops =
       [ "row_", "classmtk_1_1Div1D.html#a86d99df0e9b1e5d2943a2dcf58975556", null ],
       [ "weights_cbs_", "classmtk_1_1Div1D.html#a631dad42a0ec0f5d5ac767abdfd8949c", null ],
       [ "weights_crs_", "classmtk_1_1Div1D.html#ad36dcfade921f0488fe3edaecc17bd75", null ]
+    ] ],
+    [ "Div2D", "classmtk_1_1Div2D.html", [
+      [ "Div2D", "classmtk_1_1Div2D.html#a124b888d5889538977e1a47d2fec78ff", null ],
+      [ "Div2D", "classmtk_1_1Div2D.html#a0f5214b5099f17940d6643f39c53332e", null ],
+      [ "~Div2D", "classmtk_1_1Div2D.html#a5c10c0d7b974841e923ebe3fda67c468", null ],
+      [ "ConstructDiv2D", "classmtk_1_1Div2D.html#a4214055909a6b94fcb9d657cc839055f", null ],
+      [ "ReturnAsDenseMatrix", "classmtk_1_1Div2D.html#ae4f880fb28ad2379906e9ac0dfaa4458", null ],
+      [ "divergence_", "classmtk_1_1Div2D.html#a354633b23820bc2dbdd643cd5f8d7561", null ],
+      [ "mimetic_threshold_", "classmtk_1_1Div2D.html#a3d1b25cc7275588221e78ade7f80ce25", null ],
+      [ "order_accuracy_", "classmtk_1_1Div2D.html#a8502e254d1642bfdff16766dcde83381", null ]
     ] ],
     [ "Grad1D", "classmtk_1_1Grad1D.html", [
       [ "Grad1D", "classmtk_1_1Grad1D.html#ae21e6ac2652e653c48f15b304ee83a75", null ],
@@ -73,6 +119,16 @@ var group__c07_mim__ops =
       [ "weights_cbs_", "classmtk_1_1Grad1D.html#ae6b0a908748923b2acd97e5bf7acc000", null ],
       [ "weights_crs_", "classmtk_1_1Grad1D.html#a96914abea78528b32499963ce9bbe4a6", null ]
     ] ],
+    [ "Grad2D", "classmtk_1_1Grad2D.html", [
+      [ "Grad2D", "classmtk_1_1Grad2D.html#a15bdca254b7bf662913b34c7afb8d4c9", null ],
+      [ "Grad2D", "classmtk_1_1Grad2D.html#a31ccf118edb128c85f28b579bd9394a8", null ],
+      [ "~Grad2D", "classmtk_1_1Grad2D.html#ae6a071b24422d057c41346e80be96cb3", null ],
+      [ "ConstructGrad2D", "classmtk_1_1Grad2D.html#a9771be954c59880e3d83f4d645378c00", null ],
+      [ "ReturnAsDenseMatrix", "classmtk_1_1Grad2D.html#a4f5a17519455f833bb70b8434c272312", null ],
+      [ "gradient_", "classmtk_1_1Grad2D.html#a22b5ad8454b013e365257dcae04d87a4", null ],
+      [ "mimetic_threshold_", "classmtk_1_1Grad2D.html#a2bc4debde55eb2c2bc50cef7ceb60cfd", null ],
+      [ "order_accuracy_", "classmtk_1_1Grad2D.html#ab028aa2889a2f5d59f52e01691b1b9eb", null ]
+    ] ],
     [ "Interp1D", "classmtk_1_1Interp1D.html", [
       [ "Interp1D", "classmtk_1_1Interp1D.html#ae56f90c53579c91c1dbe715f7e7361be", null ],
       [ "Interp1D", "classmtk_1_1Interp1D.html#a92a5ed77144b3824d201a586f4072fd0", null ],
@@ -84,6 +140,16 @@ var group__c07_mim__ops =
       [ "coeffs_interior_", "classmtk_1_1Interp1D.html#abae01ab84103d8b11903357cfdeb94d5", null ],
       [ "dir_interp_", "classmtk_1_1Interp1D.html#a854e2c72f07c9fca4bbe32bfad2e0792", null ],
       [ "order_accuracy_", "classmtk_1_1Interp1D.html#a1ee8467d93536dc04240cd76f0d95c9c", null ]
+    ] ],
+    [ "Interp2D", "classmtk_1_1Interp2D.html", [
+      [ "Interp2D", "classmtk_1_1Interp2D.html#a1ced84c0dbafdbe1cd3732d5a4848e10", null ],
+      [ "Interp2D", "classmtk_1_1Interp2D.html#a86af209e6045050e4ebc205dd43b8279", null ],
+      [ "~Interp2D", "classmtk_1_1Interp2D.html#a037ed312b0baa2137a31984108e6907d", null ],
+      [ "ConstructInterp2D", "classmtk_1_1Interp2D.html#ae9a83433caa1fd62956cce0872a02fb8", null ],
+      [ "ReturnAsDenseMatrix", "classmtk_1_1Interp2D.html#a8ec771bc030c11d0a806b642387d3b32", null ],
+      [ "interpolator_", "classmtk_1_1Interp2D.html#aa30fa30d96c8b0a37adac36c4e344329", null ],
+      [ "mimetic_threshold_", "classmtk_1_1Interp2D.html#a842cfa59a56be76a240dd5de68007134", null ],
+      [ "order_accuracy_", "classmtk_1_1Interp2D.html#ad83cea724e0eff1d8b14bcba3575612e", null ]
     ] ],
     [ "Lap1D", "classmtk_1_1Lap1D.html", [
       [ "Lap1D", "classmtk_1_1Lap1D.html#a6fc2aeea35d4dfa49f17e625411f5a70", null ],
@@ -97,6 +163,17 @@ var group__c07_mim__ops =
       [ "laplacian_length_", "classmtk_1_1Lap1D.html#a05578b0729f2bb4fe8bb442fc555fa80", null ],
       [ "mimetic_threshold_", "classmtk_1_1Lap1D.html#a20dce13067774c64dff892323d9c586e", null ],
       [ "order_accuracy_", "classmtk_1_1Lap1D.html#a35d34c085b9cf6f9961a699dfb02fea6", null ]
+    ] ],
+    [ "Lap2D", "classmtk_1_1Lap2D.html", [
+      [ "Lap2D", "classmtk_1_1Lap2D.html#ada4370fb8d7726e70a3257e3841c6d1f", null ],
+      [ "Lap2D", "classmtk_1_1Lap2D.html#acf62bf6a1c041e4b02f06346054d7af2", null ],
+      [ "~Lap2D", "classmtk_1_1Lap2D.html#a8ca8447a4da7a5ddcf826486992374a5", null ],
+      [ "ConstructLap2D", "classmtk_1_1Lap2D.html#a188ee8fee643463affca7de2884711b1", null ],
+      [ "data", "classmtk_1_1Lap2D.html#a102427355df09c2aad400c6ce18e5636", null ],
+      [ "ReturnAsDenseMatrix", "classmtk_1_1Lap2D.html#aaac0a22eaa2f036869b24fd420ce5761", null ],
+      [ "laplacian_", "classmtk_1_1Lap2D.html#a6c52889838324a89f85ed37bd3bf44f4", null ],
+      [ "mimetic_threshold_", "classmtk_1_1Lap2D.html#a5501bd196f7307f64d6fa58da070196e", null ],
+      [ "order_accuracy_", "classmtk_1_1Lap2D.html#a9c4fdfe20a093b19f3b3f7ff0c49f560", null ]
     ] ],
     [ "Quad1D", "classmtk_1_1Quad1D.html", [
       [ "Quad1D", "classmtk_1_1Quad1D.html#ada5a2f1e7c92dbf1f85c61ecd0d173ec", null ],

@@ -27,7 +27,7 @@ This graph shows which files directly or indirectly include this file\+:\nopageb
 \begin{DoxyCompactItemize}
 \item 
 class \hyperlink{classmtk_1_1BCDescriptor2D}{mtk\+::\+B\+C\+Descriptor2\+D}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Enforces boundary conditions in either the operator or the grid. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
@@ -45,7 +45,7 @@ This class presents an interface for the user to specify boundary conditions on 
 
 {\bfseries Def.} Let $ f $ be any scalar or vector field defined over a domain $ \Omega $. We can specify any linear combination of $ f $ and its $ n $ derivatives to fulfill a condition, which we define as a {\bfseries boundary condition}\+:
 
-\[ \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{n} c_i(\mathbf{x})\frac{\partial^i f}{\partial x^i}(\mathbf{x}) = \beta(\mathbf{x}). \]
+\[ \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{n} c_i(\mathbf{x}) <\mathbf{n}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> = \beta(\mathbf{x}). \]
 
 This class receives information about the highest-\/order of differentiation, $ n $, all possible coefficient functions, $ c_i(\mathbf{x}) $ for any subset of the boundary (south, north, west and east), and each condition for any subset of the boundary, and takes care of assigning them to both, the differentiation matrices and the grids.
 

@@ -63,6 +63,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace mtk{
 
+/*!
+\class Grad2D
+
+\ingroup c07-mim_ops
+
+\brief Implements a 2D mimetic gradient operator.
+
+This class implements a 2D gradient operator, constructed using the
+Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
+*/
 class Grad2D {
  public:
   /// \brief Default constructor.
