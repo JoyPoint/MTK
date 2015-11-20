@@ -122,7 +122,12 @@ Include dependency graph for mtk_bc_descriptor_2d.cc:</div>
 </div>
 <p><a href="mtk__bc__descriptor__2d_8cc_source.html">Go to the source code of this file.</a></p>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class implements an interface for the user to specify boundary conditions on 2D mimetic operators and the grids they are acting on.</p>
+<div class="textblock"><p>This class presents an interface for the user to specify boundary conditions on 2D mimetic operators and the grids they are acting on.</p>
+<p><b>Def.</b> Let <img class="formulaInl" alt="$ f $" src="form_32.png"/> be any scalar or vector field defined over a domain <img class="formulaInl" alt="$ \Omega $" src="form_33.png"/>. We can specify any linear combination of <img class="formulaInl" alt="$ f $" src="form_32.png"/> and its <img class="formulaInl" alt="$ n $" src="form_34.png"/> derivatives to fulfill a condition, which we define as a <b>boundary condition</b>:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\[ \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{n} c_i(\mathbf{x}) <\hat{\mathbf{n}}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> = \beta(\mathbf{x}). \]" src="form_56.png"/>
+</p>
+<p>This class receives information about the highest-order of differentiation, <img class="formulaInl" alt="$ n $" src="form_34.png"/>, all possible coefficient functions, <img class="formulaInl" alt="$ c_i(\mathbf{x}) $" src="form_42.png"/> for any subset of the boundary (south, north, west and east), and each condition for any subset of the boundary, and takes care of assigning them to both, the differentiation matrices and the grids.</p>
 <dl class="section author"><dt>Author</dt><dd>: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu </dd></dl>
 
 <p>Definition in file <a class="el" href="mtk__bc__descriptor__2d_8cc_source.html">mtk_bc_descriptor_2d.cc</a>.</p>
@@ -132,7 +137,7 @@ Include dependency graph for mtk_bc_descriptor_2d.cc:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="mtk__bc__descriptor__2d_8cc.html">mtk_bc_descriptor_2d.cc</a></li>
-    <li class="footer">Generated on Fri Nov 20 2015 17:17:01 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Fri Nov 20 2015 17:21:25 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

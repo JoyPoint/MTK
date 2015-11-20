@@ -16,7 +16,12 @@ Enforces boundary conditions in either the operator or the grid\&.
 
 .SH "Detailed Description"
 .PP 
-This class implements an interface for the user to specify boundary conditions on 2D mimetic operators and the grids they are acting on\&.
+This class presents an interface for the user to specify boundary conditions on 2D mimetic operators and the grids they are acting on\&.
+.PP
+\fBDef\&.\fP Let $ f $ be any scalar or vector field defined over a domain $ \Omega $\&. We can specify any linear combination of $ f $ and its $ n $ derivatives to fulfill a condition, which we define as a \fBboundary condition\fP:
+.PP
+\[ \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{n} c_i(\mathbf{x}) <\hat{\mathbf{n}}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> = \beta(\mathbf{x}). \].PP
+This class receives information about the highest-order of differentiation, $ n $, all possible coefficient functions, $ c_i(\mathbf{x}) $ for any subset of the boundary (south, north, west and east), and each condition for any subset of the boundary, and takes care of assigning them to both, the differentiation matrices and the grids\&.
 .PP
 \fBAuthor:\fP
 .RS 4

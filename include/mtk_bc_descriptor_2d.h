@@ -15,7 +15,7 @@ condition**:
 \forall \mathbf{x} \in \partial\Omega:
   \sum_{i = 0}^{n}
     c_i(\mathbf{x})
-        <\mathbf{n}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> =
+        <\hat{\mathbf{n}}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> =
       \beta(\mathbf{x}).
 \f]
 
@@ -110,7 +110,7 @@ condition**:
 \forall \mathbf{x} \in \partial\Omega:
   \sum_{i = 0}^{n}
     c_i(\mathbf{x})
-        <\mathbf{n}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> =
+        <\hat{\mathbf{n}}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> =
       \beta(\mathbf{x}).
 \f]
 
