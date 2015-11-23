@@ -1,4 +1,4 @@
-.TH "mtk::BCDescriptor2D" 3 "Fri Nov 20 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::BCDescriptor2D" 3 "Mon Nov 23 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -87,19 +87,35 @@ Enforces boundary conditions in either the operator or the grid\&.
 
 .in +1c
 .ti -1c
-.RI "void \fBImposeOnSouthBoundary\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const "
+.RI "void \fBImposeOnSouthBoundaryNoSpace\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const "
 .br
 .RI "\fIImposes the condition on the south boundary\&. \fP"
 .ti -1c
-.RI "void \fBImposeOnNorthBoundary\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const "
+.RI "void \fBImposeOnNorthBoundaryNoSpace\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const "
 .br
 .RI "\fIImposes the condition on the north boundary\&. \fP"
 .ti -1c
-.RI "void \fBImposeOnWestBoundary\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const "
+.RI "void \fBImposeOnWestBoundaryNoSpace\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const "
 .br
 .RI "\fIImposes the condition on the west boundary\&. \fP"
 .ti -1c
-.RI "void \fBImposeOnEastBoundary\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const "
+.RI "void \fBImposeOnEastBoundaryNoSpace\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const "
+.br
+.RI "\fIImposes the condition on the east boundary\&. \fP"
+.ti -1c
+.RI "void \fBImposeOnSouthBoundaryWithSpace\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const "
+.br
+.RI "\fIImposes the condition on the south boundary\&. \fP"
+.ti -1c
+.RI "void \fBImposeOnNorthBoundaryWithSpace\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const "
+.br
+.RI "\fIImposes the condition on the north boundary\&. \fP"
+.ti -1c
+.RI "void \fBImposeOnWestBoundaryWithSpace\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const "
+.br
+.RI "\fIImposes the condition on the west boundary\&. \fP"
+.ti -1c
+.RI "void \fBImposeOnEastBoundaryWithSpace\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const "
 .br
 .RI "\fIImposes the condition on the east boundary\&. \fP"
 .in -1c
@@ -244,7 +260,7 @@ Integer highest order of differentiation in the west boundary\&.
 
 .PP
 Definition at line 95 of file mtk_bc_descriptor_2d\&.cc\&.
-.SS "void mtk::BCDescriptor2D::ImposeOnEastBoundary (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
+.SS "void mtk::BCDescriptor2D::ImposeOnEastBoundaryNoSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
 
 .PP
 \fBParameters:\fP
@@ -260,8 +276,24 @@ Definition at line 95 of file mtk_bc_descriptor_2d\&.cc\&.
 .IP "1." 4
 Impose the Dirichlet condition first\&.
 .IP "2." 4
-Impose the Neumann condition second\&.
+Impose the Neumann condition second\&. 
 .PP
+
+.PP
+Definition at line 467 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::ImposeOnEastBoundaryWithSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
+.br
+\fImatrix\fP Input Laplacian operator\&. 
+.br
+\fIorder_accuracy\fP Order of accuracy of the operator in the \fBMatrix\fP\&. 
+.RE
+.PP
+
 .IP "1." 4
 Impose the Dirichlet condition first\&.
 .IP "2." 4
@@ -269,7 +301,7 @@ Impose the Neumann condition second\&.
 .PP
 
 .PP
-Definition at line 450 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 537 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::ImposeOnGrid (\fBmtk::UniStgGrid2D\fP &grid) const"
 
 .PP
@@ -279,8 +311,59 @@ Definition at line 450 of file mtk_bc_descriptor_2d\&.cc\&.
 .RE
 .PP
 
+.IP "1." 4
+Impose assuming an scalar grid\&.
 .PP
-Definition at line 580 of file mtk_bc_descriptor_2d\&.cc\&.
+.PP
+1\&.1\&. Impose south condition\&.
+.PP
+1\&.1\&.1\&. Impose south-west corner\&.
+.PP
+1\&.1\&.2\&. Impose south border\&.
+.PP
+1\&.1\&.3\&. Impose south-east corner\&.
+.PP
+1\&.2\&. Impose north condition\&.
+.PP
+1\&.2\&.1\&. Impose north-west corner\&.
+.PP
+1\&.2\&.2\&. Impose north border\&.
+.PP
+1\&.2\&.3\&. Impose north-east corner\&.
+.PP
+1\&.3\&. Impose west condition\&.
+.PP
+1\&.3\&.1\&. Impose south-west corner\&. 
+.PP
+\fBNote:\fP
+.RS 4
+As per discussion with Otilio, we will take the \fBarithmetic\fP \fBmean\fP of the values of the BCs at the corners\&.
+.RE
+.PP
+1\&.3\&.2\&. Impose west border\&.
+.PP
+1\&.3\&.3\&. Impose north-west corner\&.
+.PP
+1\&.4\&. Impose east condition\&.
+.PP
+1\&.4\&.1\&. Impose south-east corner\&.
+.PP
+1\&.4\&.2\&. Impose east border\&.
+.PP
+1\&.4\&.3\&. Impose north-east corner\&.
+.PP
+.IP "2." 4
+Impose assuming a vector grid\&.
+.PP
+.PP
+\fBTodo\fP
+.RS 4
+Implement imposition for vector-valued grids\&. 
+.RE
+.PP
+
+.PP
+Definition at line 596 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::ImposeOnLaplacianMatrix (const \fBUniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy = \fC2\fP) const"
 
 .PP
@@ -293,22 +376,10 @@ Definition at line 580 of file mtk_bc_descriptor_2d\&.cc\&.
 \fIorder_accuracy\fP Order of accuracy of the operator in the \fBMatrix\fP\&. 
 .RE
 .PP
-
-.IP "1." 4
-If we have not bound anything to the grid, then we have to generate our collection of spatial coordinates, as we evaluate the coefficients\&.
-.IP "2." 4
-Assign values to implement south boundary condition\&.
-.IP "3." 4
-Assign values to implement north boundary condition\&.
-.IP "4." 4
-Assign values to implement west boundary condition\&.
-.IP "5." 4
-Assign values to implement east boundary condition\&. 
+If we have not bound anything to the grid, then we have to generate our collection of spatial coordinates, as we evaluate the coefficients\&. 
 .PP
-
-.PP
-Definition at line 536 of file mtk_bc_descriptor_2d\&.cc\&.
-.SS "void mtk::BCDescriptor2D::ImposeOnNorthBoundary (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
+Definition at line 558 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::ImposeOnNorthBoundaryNoSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
 
 .PP
 \fBParameters:\fP
@@ -324,17 +395,41 @@ Definition at line 536 of file mtk_bc_descriptor_2d\&.cc\&.
 .IP "1." 4
 Impose the Dirichlet condition first\&.
 .IP "2." 4
-Impose the Neumann condition second\&.
-.PP
-.IP "1." 4
-Impose the Dirichlet condition first\&.
-.IP "2." 4
 Impose the Neumann condition second\&. 
 .PP
 
 .PP
-Definition at line 286 of file mtk_bc_descriptor_2d\&.cc\&.
-.SS "void mtk::BCDescriptor2D::ImposeOnSouthBoundary (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
+Definition at line 291 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::ImposeOnNorthBoundaryWithSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
+.br
+\fImatrix\fP Input Laplacian operator\&. 
+.br
+\fIorder_accuracy\fP Order of accuracy of the operator in the \fBMatrix\fP\&. 
+.RE
+.PP
+
+.IP "1." 4
+Impose Dirichlet condition\&.
+.PP
+.PP
+For each entry on the diagonal:
+.PP
+Evaluate next set spatial coordinates to evaluate the coefficient\&.
+.PP
+Evaluate and assign the Dirichlet coefficient\&.
+.PP
+.IP "2." 4
+Impose the Neumann condition\&. 
+.PP
+
+.PP
+Definition at line 355 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::ImposeOnSouthBoundaryNoSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
 
 .PP
 \fBParameters:\fP
@@ -358,16 +453,39 @@ Impose the Neumann condition second\&.
 Impose the Neumann conditions on every pole, for every scenario\&. 
 .RE
 .PP
+
 .PP
+Definition at line 209 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::ImposeOnSouthBoundaryWithSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
+.br
+\fImatrix\fP Input Laplacian operator\&. 
+.br
+\fIorder_accuracy\fP Order of accuracy of the operator in the \fBMatrix\fP\&. 
+.RE
+.PP
+
 .IP "1." 4
 Impose the Dirichlet condition first\&.
+.PP
+.PP
+\fBTodo\fP
+.RS 4
+Impose Harmonic mean on the corners for the case when the generated space is available, for all poles\&. 
+.RE
+.PP
+.PP
 .IP "2." 4
 Impose the Neumann condition second\&. 
 .PP
 
 .PP
-Definition at line 209 of file mtk_bc_descriptor_2d\&.cc\&.
-.SS "void mtk::BCDescriptor2D::ImposeOnWestBoundary (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
+Definition at line 269 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::ImposeOnWestBoundaryNoSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
 
 .PP
 \fBParameters:\fP
@@ -386,12 +504,28 @@ Impose the Dirichlet condition first\&.
 .PP
 \fBNote:\fP
 .RS 4
-As it can be seen, we must adopt a convention about how to treat the corners\&. Based on a reasoning with Otilio, we will take the arithmetic mean\&.
+As it can be seen, we must adopt a convention about how to treat the corners\&. Based on a reasoning with Otilio, we will take the \fBharmonic mean\fP\&.
 .RE
 .PP
 .IP "2." 4
-Impose the Neumann condition second\&.
+Impose the Neumann condition second\&. 
 .PP
+
+.PP
+Definition at line 376 of file mtk_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::BCDescriptor2D::ImposeOnWestBoundaryWithSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
+.br
+\fImatrix\fP Input Laplacian operator\&. 
+.br
+\fIorder_accuracy\fP Order of accuracy of the operator in the \fBMatrix\fP\&. 
+.RE
+.PP
+
 .IP "1." 4
 Impose the Dirichlet condition first\&.
 .IP "2." 4
@@ -399,7 +533,7 @@ Impose the Neumann condition second\&.
 .PP
 
 .PP
-Definition at line 367 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 446 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::PushBackEastCoeff (\fBmtk::CoefficientFunction2D\fPce)"
 
 .PP
@@ -493,55 +627,55 @@ Definition at line 167 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::east_coefficients_\fC [private]\fP"
 
 .PP
-Definition at line 293 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 330 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "\fBReal\fP(* mtk::BCDescriptor2D::east_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
 
 .PP
-Definition at line 298 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 335 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "bool mtk::BCDescriptor2D::generate_space_\fC [mutable]\fP, \fC [private]\fP"
 
 .PP
-Definition at line 285 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 322 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "int mtk::BCDescriptor2D::highest_order_diff_east_\fC [private]\fP"
 
 .PP
-Definition at line 288 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 325 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "int mtk::BCDescriptor2D::highest_order_diff_north_\fC [private]\fP"
 
 .PP
-Definition at line 290 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 327 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "int mtk::BCDescriptor2D::highest_order_diff_south_\fC [private]\fP"
 
 .PP
-Definition at line 289 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 326 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "int mtk::BCDescriptor2D::highest_order_diff_west_\fC [private]\fP"
 
 .PP
-Definition at line 287 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 324 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::north_coefficients_\fC [private]\fP"
 
 .PP
-Definition at line 295 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 332 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "\fBReal\fP(* mtk::BCDescriptor2D::north_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
 
 .PP
-Definition at line 300 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 337 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::south_coefficients_\fC [private]\fP"
 
 .PP
-Definition at line 294 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 331 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "\fBReal\fP(* mtk::BCDescriptor2D::south_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
 
 .PP
-Definition at line 299 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 336 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::west_coefficients_\fC [private]\fP"
 
 .PP
-Definition at line 292 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 329 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "\fBReal\fP(* mtk::BCDescriptor2D::west_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
 
 .PP
-Definition at line 297 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 334 of file mtk_bc_descriptor_2d\&.h\&.
 
 .SH "Author"
 .PP 

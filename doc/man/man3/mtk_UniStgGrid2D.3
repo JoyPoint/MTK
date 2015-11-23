@@ -1,4 +1,4 @@
-.TH "mtk::UniStgGrid2D" 3 "Fri Nov 20 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::UniStgGrid2D" 3 "Mon Nov 23 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -39,7 +39,7 @@ Uniform 2D Staggered Grid\&.
 .br
 .RI "\fIProvides access to the grid spatial data\&. \fP"
 .ti -1c
-.RI "const \fBReal\fP * \fBdiscrete_field\fP () const "
+.RI "\fBReal\fP * \fBdiscrete_field\fP ()"
 .br
 .RI "\fIProvides access to the grid field data\&. \fP"
 .ti -1c
@@ -255,7 +255,7 @@ We assume the field to be of the form:
 .PP
 
 .PP
-Definition at line 413 of file mtk_uni_stg_grid_2d\&.cc\&.
+Definition at line 417 of file mtk_uni_stg_grid_2d\&.cc\&.
 .SS "void mtk::UniStgGrid2D::BindVectorFieldPComponent (\fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)VectorFieldPComponent)\fC [private]\fP"
 We assume the field to be of the form:
 .PP
@@ -275,7 +275,7 @@ Allocate space for discrete vector field and bind $ p $ component\&.
 .PP
 
 .PP
-Definition at line 320 of file mtk_uni_stg_grid_2d\&.cc\&.
+Definition at line 324 of file mtk_uni_stg_grid_2d\&.cc\&.
 .SS "void mtk::UniStgGrid2D::BindVectorFieldQComponent (\fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)VectorFieldQComponent)\fC [private]\fP"
 We assume the field to be of the form:
 .PP
@@ -291,7 +291,7 @@ Bind $ q $ component, since $ p $ component has already been bound\&.
 .PP
 
 .PP
-Definition at line 385 of file mtk_uni_stg_grid_2d\&.cc\&.
+Definition at line 389 of file mtk_uni_stg_grid_2d\&.cc\&.
 .SS "bool mtk::UniStgGrid2D::Bound () const"
 
 .PP
@@ -357,7 +357,7 @@ Review const-correctness of the pointer we return\&.
 
 .PP
 Definition at line 260 of file mtk_uni_stg_grid_2d\&.cc\&.
-.SS "const \fBmtk::Real\fP * mtk::UniStgGrid2D::discrete_field () const"
+.SS "\fBmtk::Real\fP * mtk::UniStgGrid2D::discrete_field ()"
 
 .PP
 \fBReturns:\fP
@@ -478,7 +478,7 @@ Write the values of the p component, with a null q component\&.
 .PP
 Write the values of the q component, with a null p component\&. 
 .PP
-Definition at line 425 of file mtk_uni_stg_grid_2d\&.cc\&.
+Definition at line 429 of file mtk_uni_stg_grid_2d\&.cc\&.
 .SH "Friends And Related Function Documentation"
 .PP 
 .SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::UniStgGrid2D\fP &in)\fC [friend]\fP"

@@ -263,7 +263,7 @@
 00262   \textcolor{keywordflow}{return} discrete\_domain\_y\_.data();
 00263 \}
 00264 
-\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00265}{}\hyperlink{classmtk_1_1UniStgGrid2D_ac17f8a24f8e95f19cb03e27cc8011e4e}{00265} \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}* \hyperlink{classmtk_1_1UniStgGrid2D_ac17f8a24f8e95f19cb03e27cc8011e4e}{mtk::UniStgGrid2D::discrete\_field}()\textcolor{keyword}{ const }\{
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00265}{}\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{00265} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}* \hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{mtk::UniStgGrid2D::discrete\_field}() \{
 00266 
 00267   \textcolor{keywordflow}{return} discrete\_field\_.data();
 00268 \}
@@ -308,184 +308,190 @@
 00309 
 00310   discrete\_field\_.reserve((num\_cells\_x\_ + 2)*(num\_cells\_y\_ + 2));
 00311 
-00312   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < num\_cells\_x\_ + 2; ++ii) \{
-00313     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < num\_cells\_y\_ + 2; ++jj) \{
-00314       discrete\_field\_.push\_back(ScalarField(discrete\_domain\_x\_[ii],
-00315                                             discrete\_domain\_y\_[jj]));
-00316     \}
-00317   \}
-00318 \}
-00319 
-\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00320}{}\hyperlink{classmtk_1_1UniStgGrid2D_a5ff685fde27134437dd0b372fb6b9958}{00320} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a5ff685fde27134437dd0b372fb6b9958}{mtk::UniStgGrid2D::BindVectorFieldPComponent}(
-00321   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*VectorField)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy)) \{
-00322 
-00323   \textcolor{keywordtype}{int} mm\{num\_cells\_x\_\};
-00324   \textcolor{keywordtype}{int} nn\{num\_cells\_y\_\};
-00325 
-00326   \textcolor{keywordtype}{int} total\{nn*(mm + 1) + mm*(nn + 1)\};
-00327 
-00328 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00329   \textcolor{keywordtype}{double} half\_delta\_x\{delta\_x\_/2.0\};
-00330   \textcolor{keywordtype}{double} half\_delta\_y\{delta\_y\_/2.0\};
-00331 \textcolor{preprocessor}{  #else}
-00332   \textcolor{keywordtype}{float} half\_delta\_x\{delta\_x\_/2.0f\};
-00333   \textcolor{keywordtype}{float} half\_delta\_y\{delta\_y\_/2.0f\};
-00334 \textcolor{preprocessor}{  #endif}
-00335 
-00337 
-00338   \textcolor{comment}{// We need every data point of the discrete domain; i.e. we need all the}
-00339   \textcolor{comment}{// nodes and all the centers. There are mm centers for the x direction, and}
-00340   \textcolor{comment}{// nn centers for the y direction. Since there is one node per center, that}
-00341   \textcolor{comment}{// amounts to 2*mm. If we finally consider the final boundary node, it}
-00342   \textcolor{comment}{// amounts to a total of 2*mm + 1 for the x direction. Analogously, for the}
-00343   \textcolor{comment}{// y direction, this amounts to 2*nn + 1.}
-00344 
-00345   discrete\_domain\_x\_.reserve(2*mm + 1);
-00346 
-00347   discrete\_domain\_x\_.push\_back(west\_bndy\_);
-00348   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii < (2*mm + 1); ++ii) \{
-00349     discrete\_domain\_x\_.push\_back(west\_bndy\_ + ii*half\_delta\_x);
-00350   \}
-00351 
-00353 
-00354   discrete\_domain\_y\_.reserve(2*nn + 1);
+00312   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < num\_cells\_y\_ + 2; ++ii) \{
+00313     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < num\_cells\_x\_ + 2; ++jj) \{
+00314 \textcolor{preprocessor}{      #if MTK\_DEBUG\_LEVEL > 0}
+00315       std::cout << \textcolor{stringliteral}{"Pushing value for x = "} << discrete\_domain\_x\_[jj] <<
+00316         \textcolor{stringliteral}{" y = "} << discrete\_domain\_y\_[ii] << std::endl;
+00317 \textcolor{preprocessor}{      #endif}
+00318       discrete\_field\_.push\_back(ScalarField(discrete\_domain\_x\_[jj],
+00319                                             discrete\_domain\_y\_[ii]));
+00320     \}
+00321   \}
+00322 \}
+00323 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00324}{}\hyperlink{classmtk_1_1UniStgGrid2D_a5ff685fde27134437dd0b372fb6b9958}{00324} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a5ff685fde27134437dd0b372fb6b9958}{mtk::UniStgGrid2D::BindVectorFieldPComponent}(
+00325   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*VectorField)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy)) \{
+00326 
+00327   \textcolor{keywordtype}{int} mm\{num\_cells\_x\_\};
+00328   \textcolor{keywordtype}{int} nn\{num\_cells\_y\_\};
+00329 
+00330   \textcolor{keywordtype}{int} total\{nn*(mm + 1) + mm*(nn + 1)\};
+00331 
+00332 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00333   \textcolor{keywordtype}{double} half\_delta\_x\{delta\_x\_/2.0\};
+00334   \textcolor{keywordtype}{double} half\_delta\_y\{delta\_y\_/2.0\};
+00335 \textcolor{preprocessor}{  #else}
+00336   \textcolor{keywordtype}{float} half\_delta\_x\{delta\_x\_/2.0f\};
+00337   \textcolor{keywordtype}{float} half\_delta\_y\{delta\_y\_/2.0f\};
+00338 \textcolor{preprocessor}{  #endif}
+00339 
+00341 
+00342   \textcolor{comment}{// We need every data point of the discrete domain; i.e. we need all the}
+00343   \textcolor{comment}{// nodes and all the centers. There are mm centers for the x direction, and}
+00344   \textcolor{comment}{// nn centers for the y direction. Since there is one node per center, that}
+00345   \textcolor{comment}{// amounts to 2*mm. If we finally consider the final boundary node, it}
+00346   \textcolor{comment}{// amounts to a total of 2*mm + 1 for the x direction. Analogously, for the}
+00347   \textcolor{comment}{// y direction, this amounts to 2*nn + 1.}
+00348 
+00349   discrete\_domain\_x\_.reserve(2*mm + 1);
+00350 
+00351   discrete\_domain\_x\_.push\_back(west\_bndy\_);
+00352   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii < (2*mm + 1); ++ii) \{
+00353     discrete\_domain\_x\_.push\_back(west\_bndy\_ + ii*half\_delta\_x);
+00354   \}
 00355 
-00356   discrete\_domain\_y\_.push\_back(south\_bndy\_);
-00357   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii < (2*nn + 1); ++ii) \{
-00358     discrete\_domain\_y\_.push\_back(south\_bndy\_ + ii*half\_delta\_y);
-00359   \}
-00360 
-00362 
-00363   discrete\_field\_.reserve(total);
+00357 
+00358   discrete\_domain\_y\_.reserve(2*nn + 1);
+00359 
+00360   discrete\_domain\_y\_.push\_back(south\_bndy\_);
+00361   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii < (2*nn + 1); ++ii) \{
+00362     discrete\_domain\_y\_.push\_back(south\_bndy\_ + ii*half\_delta\_y);
+00363   \}
 00364 
-00365   \textcolor{comment}{// For each y-center.}
-00366   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii < 2*nn + 1; ii += 2) \{
-00367 
-00368     \textcolor{comment}{// Bind all of the x-nodes for this y-center.}
-00369     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < 2*mm + 1; jj += 2) \{
-00370       discrete\_field\_.push\_back(VectorField(discrete\_domain\_x\_[jj],
-00371                                             discrete\_domain\_y\_[ii]));
-00372 
-00373 \textcolor{preprocessor}{      #if MTK\_DEBUG\_LEVEL > 0}
-00374       std::cout << \textcolor{stringliteral}{"Binding v at x = "} << discrete\_domain\_x\_[jj] << \textcolor{stringliteral}{" y = "} <<
-00375         discrete\_domain\_y\_[ii] << \textcolor{stringliteral}{" = "} <<
-00376         VectorField(discrete\_domain\_x\_[jj],discrete\_domain\_y\_[ii]) << std::endl;
-00377 \textcolor{preprocessor}{      #endif}
-00378     \}
-00379   \}
-00380 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00381   std::cout << std::endl;
-00382 \textcolor{preprocessor}{  #endif}
-00383 \}
-00384 
-\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00385}{}\hyperlink{classmtk_1_1UniStgGrid2D_a8b7ae23231a4a694073b6c22715a4375}{00385} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a8b7ae23231a4a694073b6c22715a4375}{mtk::UniStgGrid2D::BindVectorFieldQComponent}(
-00386   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*VectorField)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy)) \{
-00387 
-00388   \textcolor{keywordtype}{int} mm\{num\_cells\_x\_\};
-00389   \textcolor{keywordtype}{int} nn\{num\_cells\_y\_\};
-00390 
-00392 
-00393   \textcolor{comment}{// For each y-node.}
-00394   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < 2*nn + 1; ii += 2) \{
-00395 
-00396     \textcolor{comment}{// Bind all of the x-center for this y-node.}
-00397     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 1; jj < 2*mm + 1; jj += 2) \{
-00398       discrete\_field\_.push\_back(VectorField(discrete\_domain\_x\_[jj],
-00399                                             discrete\_domain\_y\_[ii]));
-00400 
-00401 \textcolor{preprocessor}{      #if MTK\_DEBUG\_LEVEL > 0}
-00402       std::cout << \textcolor{stringliteral}{"Binding v at x = "} << discrete\_domain\_x\_[jj] << \textcolor{stringliteral}{" y = "} <<
-00403         discrete\_domain\_y\_[ii] << \textcolor{stringliteral}{" = "} <<
-00404         VectorField(discrete\_domain\_x\_[jj],discrete\_domain\_y\_[ii]) << std::endl;
-00405 \textcolor{preprocessor}{      #endif}
-00406     \}
-00407   \}
-00408 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00409   std::cout << std::endl;
-00410 \textcolor{preprocessor}{  #endif}
-00411 \}
-00412 
-\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00413}{}\hyperlink{classmtk_1_1UniStgGrid2D_a1cba89c285973514c1351760d598c52b}{00413} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a1cba89c285973514c1351760d598c52b}{mtk::UniStgGrid2D::BindVectorField}(
-00414   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldPComponent)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx,\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy),
-00415   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldQComponent)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx,\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy)) \{
+00366 
+00367   discrete\_field\_.reserve(total);
+00368 
+00369   \textcolor{comment}{// For each y-center.}
+00370   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii < 2*nn + 1; ii += 2) \{
+00371 
+00372     \textcolor{comment}{// Bind all of the x-nodes for this y-center.}
+00373     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < 2*mm + 1; jj += 2) \{
+00374       discrete\_field\_.push\_back(VectorField(discrete\_domain\_x\_[jj],
+00375                                             discrete\_domain\_y\_[ii]));
+00376 
+00377 \textcolor{preprocessor}{      #if MTK\_DEBUG\_LEVEL > 0}
+00378       std::cout << \textcolor{stringliteral}{"Binding v at x = "} << discrete\_domain\_x\_[jj] << \textcolor{stringliteral}{" y = "} <<
+00379         discrete\_domain\_y\_[ii] << \textcolor{stringliteral}{" = "} <<
+00380         VectorField(discrete\_domain\_x\_[jj],discrete\_domain\_y\_[ii]) << std::endl;
+00381 \textcolor{preprocessor}{      #endif}
+00382     \}
+00383   \}
+00384 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00385   std::cout << std::endl;
+00386 \textcolor{preprocessor}{  #endif}
+00387 \}
+00388 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00389}{}\hyperlink{classmtk_1_1UniStgGrid2D_a8b7ae23231a4a694073b6c22715a4375}{00389} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a8b7ae23231a4a694073b6c22715a4375}{mtk::UniStgGrid2D::BindVectorFieldQComponent}(
+00390   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*VectorField)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy)) \{
+00391 
+00392   \textcolor{keywordtype}{int} mm\{num\_cells\_x\_\};
+00393   \textcolor{keywordtype}{int} nn\{num\_cells\_y\_\};
+00394 
+00396 
+00397   \textcolor{comment}{// For each y-node.}
+00398   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < 2*nn + 1; ii += 2) \{
+00399 
+00400     \textcolor{comment}{// Bind all of the x-center for this y-node.}
+00401     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 1; jj < 2*mm + 1; jj += 2) \{
+00402       discrete\_field\_.push\_back(VectorField(discrete\_domain\_x\_[jj],
+00403                                             discrete\_domain\_y\_[ii]));
+00404 
+00405 \textcolor{preprocessor}{      #if MTK\_DEBUG\_LEVEL > 0}
+00406       std::cout << \textcolor{stringliteral}{"Binding v at x = "} << discrete\_domain\_x\_[jj] << \textcolor{stringliteral}{" y = "} <<
+00407         discrete\_domain\_y\_[ii] << \textcolor{stringliteral}{" = "} <<
+00408         VectorField(discrete\_domain\_x\_[jj],discrete\_domain\_y\_[ii]) << std::endl;
+00409 \textcolor{preprocessor}{      #endif}
+00410     \}
+00411   \}
+00412 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00413   std::cout << std::endl;
+00414 \textcolor{preprocessor}{  #endif}
+00415 \}
 00416 
-00417 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00418   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nature\_ != \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a3d8cb27a993651a74d67fb8c98ae91b2}{mtk::VECTOR}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00419 \textcolor{preprocessor}{  #endif}
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00417}{}\hyperlink{classmtk_1_1UniStgGrid2D_a1cba89c285973514c1351760d598c52b}{00417} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a1cba89c285973514c1351760d598c52b}{mtk::UniStgGrid2D::BindVectorField}(
+00418   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldPComponent)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx,\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy),
+00419   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldQComponent)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx,\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy)) \{
 00420 
-00421   BindVectorFieldPComponent(VectorFieldPComponent);
-00422   BindVectorFieldQComponent(VectorFieldQComponent);
-00423 \}
+00421 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00422   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nature\_ != \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a3d8cb27a993651a74d67fb8c98ae91b2}{mtk::VECTOR}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00423 \textcolor{preprocessor}{  #endif}
 00424 
-\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00425}{}\hyperlink{classmtk_1_1UniStgGrid2D_a1787a79e4bcee6b89c681dc7e5e2d7bc}{00425} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1UniStgGrid2D_a1787a79e4bcee6b89c681dc7e5e2d7bc}{mtk::UniStgGrid2D::WriteToFile}(std::string filename,
-00426                                     std::string space\_name\_x,
-00427                                     std::string space\_name\_y,
-00428                                     std::string field\_name)\textcolor{keyword}{ const }\{
-00429 
-00430   std::ofstream output\_dat\_file;  \textcolor{comment}{// Output file.}
-00431 
-00432   output\_dat\_file.open(filename);
+00425   BindVectorFieldPComponent(VectorFieldPComponent);
+00426   BindVectorFieldQComponent(VectorFieldQComponent);
+00427 \}
+00428 
+\hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00429}{}\hyperlink{classmtk_1_1UniStgGrid2D_a1787a79e4bcee6b89c681dc7e5e2d7bc}{00429} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1UniStgGrid2D_a1787a79e4bcee6b89c681dc7e5e2d7bc}{mtk::UniStgGrid2D::WriteToFile}(std::string filename,
+00430                                     std::string space\_name\_x,
+00431                                     std::string space\_name\_y,
+00432                                     std::string field\_name)\textcolor{keyword}{ const }\{
 00433 
-00434   \textcolor{keywordflow}{if} (!output\_dat\_file.is\_open()) \{
-00435     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-00436   \}
+00434   std::ofstream output\_dat\_file;  \textcolor{comment}{// Output file.}
+00435 
+00436   output\_dat\_file.open(filename);
 00437 
-00438   \textcolor{keywordflow}{if} (nature\_ == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{mtk::SCALAR}) \{
-00439     output\_dat\_file << \textcolor{stringliteral}{"# "} << space\_name\_x <<  \textcolor{charliteral}{' '} << space\_name\_y << \textcolor{charliteral}{' '} <<
-00440       field\_name << std::endl;
+00438   \textcolor{keywordflow}{if} (!output\_dat\_file.is\_open()) \{
+00439     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00440   \}
 00441 
-00442     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < discrete\_domain\_x\_.size(); ++ii) \{
-00443       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} jj = 0; jj < discrete\_domain\_y\_.size(); ++jj) \{
-00444         output\_dat\_file << discrete\_domain\_x\_[ii] << \textcolor{charliteral}{' '} <<
-00445                            discrete\_domain\_y\_[jj] << \textcolor{charliteral}{' '} <<
-00446                            discrete\_field\_[ii*discrete\_domain\_y\_.size() + jj] <<
-00447                           std::endl;
-00448       \}
-00449       output\_dat\_file << std::endl;
-00450     \}
-00451   \} \textcolor{keywordflow}{else} \{
-00452     output\_dat\_file << \textcolor{stringliteral}{"# "} << space\_name\_x <<  \textcolor{charliteral}{' '} << space\_name\_y << \textcolor{charliteral}{' '} <<
-00453       field\_name << std::endl;
-00454 
-00455     output\_dat\_file << \textcolor{stringliteral}{"# Horizontal component:"} << std::endl;
-00456 
-00457     \textcolor{keywordtype}{int} mm\{num\_cells\_x\_\};
-00458     \textcolor{keywordtype}{int} nn\{num\_cells\_y\_\};
-00459 
-00461 
-00462     \textcolor{comment}{// For each y-center.}
-00463     \textcolor{keywordtype}{int} idx\{\};
-00464     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii < 2*nn + 1; ii += 2) \{
-00465       \textcolor{comment}{// Bind all of the x-nodes for this y-center.}
-00466       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < 2*mm + 1; jj += 2) \{
+00442   \textcolor{keywordflow}{if} (nature\_ == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{mtk::SCALAR}) \{
+00443     output\_dat\_file << \textcolor{stringliteral}{"# "} << space\_name\_x <<  \textcolor{charliteral}{' '} << space\_name\_y << \textcolor{charliteral}{' '} <<
+00444       field\_name << std::endl;
+00445 
+00446     \textcolor{keywordtype}{int} idx\{\};
+00447     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < discrete\_domain\_y\_.size(); ++ii) \{
+00448       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} jj = 0; jj < discrete\_domain\_x\_.size(); ++jj) \{
+00449         output\_dat\_file << discrete\_domain\_x\_[jj] << \textcolor{charliteral}{' '} <<
+00450                            discrete\_domain\_y\_[ii] << \textcolor{charliteral}{' '} <<
+00451                            discrete\_field\_[idx] <<
+00452                           std::endl;
+00453         idx++;
+00454       \}
+00455       output\_dat\_file << std::endl;
+00456     \}
+00457   \} \textcolor{keywordflow}{else} \{
+00458     output\_dat\_file << \textcolor{stringliteral}{"# "} << space\_name\_x <<  \textcolor{charliteral}{' '} << space\_name\_y << \textcolor{charliteral}{' '} <<
+00459       field\_name << std::endl;
+00460 
+00461     output\_dat\_file << \textcolor{stringliteral}{"# Horizontal component:"} << std::endl;
+00462 
+00463     \textcolor{keywordtype}{int} mm\{num\_cells\_x\_\};
+00464     \textcolor{keywordtype}{int} nn\{num\_cells\_y\_\};
+00465 
 00467 
-00468         output\_dat\_file << discrete\_domain\_x\_[jj] << \textcolor{charliteral}{' '} <<
-00469           discrete\_domain\_y\_[ii] << \textcolor{charliteral}{' '} << discrete\_field\_[idx] << \textcolor{charliteral}{' '} <<
-00470           \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero} << std::endl;
-00471 
-00472         ++idx;
-00473       \}
-00474     \}
-00475 
-00477     \textcolor{keywordtype}{int} p\_offset\{nn*(mm + 1) - 1\};
-00478     idx = 0;
-00479     output\_dat\_file << \textcolor{stringliteral}{"# Vertical component:"} << std::endl;
-00480     \textcolor{comment}{// For each y-node.}
-00481     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < 2*nn + 1; ii += 2) \{
-00482       \textcolor{comment}{// Bind all of the x-center for this y-node.}
-00483       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 1; jj < 2*mm + 1; jj += 2) \{
-00484 
-00485         output\_dat\_file << discrete\_domain\_x\_[jj] << \textcolor{charliteral}{' '} <<
-00486           discrete\_domain\_y\_[ii] << \textcolor{charliteral}{' '} << \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero} << \textcolor{charliteral}{' '} <<
-00487           discrete\_field\_[p\_offset + idx] << std::endl;
-00488 
-00489         ++idx;
-00490       \}
-00491     \}
-00492   \}
-00493 
-00494   output\_dat\_file.close();
-00495 
-00496   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-00497 \}
+00468     \textcolor{comment}{// For each y-center.}
+00469     \textcolor{keywordtype}{int} idx\{\};
+00470     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii < 2*nn + 1; ii += 2) \{
+00471       \textcolor{comment}{// Bind all of the x-nodes for this y-center.}
+00472       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < 2*mm + 1; jj += 2) \{
+00473 
+00474         output\_dat\_file << discrete\_domain\_x\_[jj] << \textcolor{charliteral}{' '} <<
+00475           discrete\_domain\_y\_[ii] << \textcolor{charliteral}{' '} << discrete\_field\_[idx] << \textcolor{charliteral}{' '} <<
+00476           \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero} << std::endl;
+00477 
+00478         ++idx;
+00479       \}
+00480     \}
+00481 
+00483     \textcolor{keywordtype}{int} p\_offset\{nn*(mm + 1) - 1\};
+00484     idx = 0;
+00485     output\_dat\_file << \textcolor{stringliteral}{"# Vertical component:"} << std::endl;
+00486     \textcolor{comment}{// For each y-node.}
+00487     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < 2*nn + 1; ii += 2) \{
+00488       \textcolor{comment}{// Bind all of the x-center for this y-node.}
+00489       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 1; jj < 2*mm + 1; jj += 2) \{
+00490 
+00491         output\_dat\_file << discrete\_domain\_x\_[jj] << \textcolor{charliteral}{' '} <<
+00492           discrete\_domain\_y\_[ii] << \textcolor{charliteral}{' '} << \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero} << \textcolor{charliteral}{' '} <<
+00493           discrete\_field\_[p\_offset + idx] << std::endl;
+00494 
+00495         ++idx;
+00496       \}
+00497     \}
+00498   \}
+00499 
+00500   output\_dat\_file.close();
+00501 
+00502   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00503 \}
 \end{DoxyCode}

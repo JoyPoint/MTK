@@ -1,11 +1,15 @@
-.TH "todo" 3 "Fri Nov 20 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "todo" 3 "Mon Nov 23 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 todo \- Todo List 
 
-.IP "\fBMember \fBmtk::BCDescriptor2D::ImposeOnSouthBoundary\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const \fP" 1c
+.IP "\fBMember \fBmtk::BCDescriptor2D::ImposeOnGrid\fP (UniStgGrid2D &grid) const \fP" 1c
+Implement imposition for vector-valued grids\&.  
+.IP "\fBMember \fBmtk::BCDescriptor2D::ImposeOnSouthBoundaryNoSpace\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const \fP" 1c
 Impose the Neumann conditions on every pole, for every scenario\&.  
+.IP "\fBMember \fBmtk::BCDescriptor2D::ImposeOnSouthBoundaryWithSpace\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const \fP" 1c
+Impose Harmonic mean on the corners for the case when the generated space is available, for all poles\&.  
 .IP "\fBMember \fBmtk::DenseMatrix::Kron\fP (const DenseMatrix &aa, const DenseMatrix &bb)\fP" 1c
 Implement Kronecker product using the BLAS\&.  
 .IP "\fBMember \fBmtk::DenseMatrix::OrderColMajor\fP ()\fP" 1c
