@@ -245,10 +245,9 @@ private:
   \param[in,out] matrix Input Laplacian operator.
   \param[in] order_accuracy Order of accuracy of the operator in the Matrix.
   */
-  void ImposeOnSouthBoundary(const mtk::UniStgGrid2D &grid,
-                             mtk::DenseMatrix &matrix,
-                             const int &order_accuracy) const;
-
+  void ImposeOnSouthBoundaryNoSpace(const mtk::UniStgGrid2D &grid,
+                                    mtk::DenseMatrix &matrix,
+                                    const int &order_accuracy) const;
   /*!
   \brief Imposes the condition on the north boundary.
 
@@ -256,10 +255,9 @@ private:
   \param[in,out] matrix Input Laplacian operator.
   \param[in] order_accuracy Order of accuracy of the operator in the Matrix.
   */
-  void ImposeOnNorthBoundary(const mtk::UniStgGrid2D &grid,
-                             mtk::DenseMatrix &matrix,
-                             const int &order_accuracy) const;
-
+  void ImposeOnNorthBoundaryNoSpace(const mtk::UniStgGrid2D &grid,
+                                    mtk::DenseMatrix &matrix,
+                                    const int &order_accuracy) const;
   /*!
   \brief Imposes the condition on the west boundary.
 
@@ -267,10 +265,9 @@ private:
   \param[in,out] matrix Input Laplacian operator.
   \param[in] order_accuracy Order of accuracy of the operator in the Matrix.
   */
-  void ImposeOnWestBoundary(const mtk::UniStgGrid2D &grid,
-                            mtk::DenseMatrix &matrix,
-                            const int &order_accuracy) const;
-
+  void ImposeOnWestBoundaryNoSpace(const mtk::UniStgGrid2D &grid,
+                                   mtk::DenseMatrix &matrix,
+                                   const int &order_accuracy) const;
   /*!
   \brief Imposes the condition on the east boundary.
 
@@ -278,9 +275,49 @@ private:
   \param[in,out] matrix Input Laplacian operator.
   \param[in] order_accuracy Order of accuracy of the operator in the Matrix.
   */
-  void ImposeOnEastBoundary(const mtk::UniStgGrid2D &grid,
+  void ImposeOnEastBoundaryNoSpace(const mtk::UniStgGrid2D &grid,
                             mtk::DenseMatrix &matrix,
                             const int &order_accuracy) const;
+  /*!
+  \brief Imposes the condition on the south boundary.
+
+  \param[in] grid Grid upon which impose the desired boundary condition.
+  \param[in,out] matrix Input Laplacian operator.
+  \param[in] order_accuracy Order of accuracy of the operator in the Matrix.
+  */
+  void ImposeOnSouthBoundaryWithSpace(const mtk::UniStgGrid2D &grid,
+                                      mtk::DenseMatrix &matrix,
+                                      const int &order_accuracy) const;
+  /*!
+  \brief Imposes the condition on the north boundary.
+
+  \param[in] grid Grid upon which impose the desired boundary condition.
+  \param[in,out] matrix Input Laplacian operator.
+  \param[in] order_accuracy Order of accuracy of the operator in the Matrix.
+  */
+  void ImposeOnNorthBoundaryWithSpace(const mtk::UniStgGrid2D &grid,
+                                      mtk::DenseMatrix &matrix,
+                                      const int &order_accuracy) const;
+  /*!
+  \brief Imposes the condition on the west boundary.
+
+  \param[in] grid Grid upon which impose the desired boundary condition.
+  \param[in,out] matrix Input Laplacian operator.
+  \param[in] order_accuracy Order of accuracy of the operator in the Matrix.
+  */
+  void ImposeOnWestBoundaryWithSpace(const mtk::UniStgGrid2D &grid,
+                                     mtk::DenseMatrix &matrix,
+                                     const int &order_accuracy) const;
+  /*!
+  \brief Imposes the condition on the east boundary.
+
+  \param[in] grid Grid upon which impose the desired boundary condition.
+  \param[in,out] matrix Input Laplacian operator.
+  \param[in] order_accuracy Order of accuracy of the operator in the Matrix.
+  */
+  void ImposeOnEastBoundaryWithSpace(const mtk::UniStgGrid2D &grid,
+                                     mtk::DenseMatrix &matrix,
+                                     const int &order_accuracy) const;
 
   mutable bool generate_space_; ///< Should I generate coordinates as evaluate?
 

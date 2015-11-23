@@ -138,7 +138,7 @@ class UniStgGrid2D {
 
   \return Pointer to the field data.
   */
-  const Real *discrete_field() const;
+  Real *discrete_field();
 
   /*!
   \brief Physical nature of the data bound to the grid.

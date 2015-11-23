@@ -262,7 +262,7 @@ const mtk::Real* mtk::UniStgGrid2D::discrete_domain_y() const {
   return discrete_domain_y_.data();
 }
 
-const mtk::Real* mtk::UniStgGrid2D::discrete_field() const {
+mtk::Real* mtk::UniStgGrid2D::discrete_field() {
 
   return discrete_field_.data();
 }
@@ -309,10 +309,14 @@ void mtk::UniStgGrid2D::BindScalarField(Real (*ScalarField)(Real xx, Real yy)) {
 
   discrete_field_.reserve((num_cells_x_ + 2)*(num_cells_y_ + 2));
 
-  for (int ii = 0; ii < num_cells_x_ + 2; ++ii) {
-    for (int jj = 0; jj < num_cells_y_ + 2; ++jj) {
-      discrete_field_.push_back(ScalarField(discrete_domain_x_[ii],
-                                            discrete_domain_y_[jj]));
+  for (int ii = 0; ii < num_cells_y_ + 2; ++ii) {
+    for (int jj = 0; jj < num_cells_x_ + 2; ++jj) {
+      #if MTK_DEBUG_LEVEL > 0
+      std::cout << "Pushing value for x = " << discrete_domain_x_[jj] <<
+        " y = " << discrete_domain_y_[ii] << std::endl;
+      #endif
+      discrete_field_.push_back(ScalarField(discrete_domain_x_[jj],
+                                            discrete_domain_y_[ii]));
     }
   }
 }
@@ -439,12 +443,14 @@ bool mtk::UniStgGrid2D::WriteToFile(std::string filename,
     output_dat_file << "# " << space_name_x <<  ' ' << space_name_y << ' ' <<
       field_name << std::endl;
 
-    for (unsigned int ii = 0; ii < discrete_domain_x_.size(); ++ii) {
-      for (unsigned int jj = 0; jj < discrete_domain_y_.size(); ++jj) {
-        output_dat_file << discrete_domain_x_[ii] << ' ' <<
-                           discrete_domain_y_[jj] << ' ' <<
-                           discrete_field_[ii*discrete_domain_y_.size() + jj] <<
+    int idx{};
+    for (unsigned int ii = 0; ii < discrete_domain_y_.size(); ++ii) {
+      for (unsigned int jj = 0; jj < discrete_domain_x_.size(); ++jj) {
+        output_dat_file << discrete_domain_x_[jj] << ' ' <<
+                           discrete_domain_y_[ii] << ' ' <<
+                           discrete_field_[idx] <<
                           std::endl;
+        idx++;
       }
       output_dat_file << std::endl;
     }

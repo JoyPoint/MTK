@@ -130,12 +130,63 @@ void TestPushBackImposeOnLaplacianMatrix() {
   mtk::Tools::Assert(assertion);
 }
 
+mtk::Real ScalarField(mtk::Real xx, mtk::Real yy) {
+
+  mtk::Real aux{-(1.0/2.0)*xx*xx - (1.0/2.0)*yy*yy};
+
+  return xx*yy*exp(aux);
+}
+
+mtk::Real HomogeneousDiricheletBC(mtk::Real xx, mtk::Real yy) {
+
+  return mtk::kZero;
+}
+
+void TestImposeOnGrid() {
+
+  mtk::Tools::BeginUnitTestNo(3);
+
+  mtk::Real aa = 0.0;
+  mtk::Real bb = 1.0;
+  mtk::Real cc = 0.0;
+  mtk::Real dd = 1.0;
+
+  int nn = 5;
+  int mm = 5;
+
+  mtk::UniStgGrid2D gg(aa, bb, nn, cc, dd, mm);
+
+  gg.BindScalarField(ScalarField);
+
+  mtk::BCDescriptor2D desc;
+
+  desc.set_west_condition(HomogeneousDiricheletBC);
+  desc.set_east_condition(HomogeneousDiricheletBC);
+  desc.set_south_condition(HomogeneousDiricheletBC);
+  desc.set_north_condition(HomogeneousDiricheletBC);
+
+  desc.ImposeOnGrid(gg);
+
+  bool assertion{gg.WriteToFile("mtk_bc_descriptor_2d_test_03.dat",
+                                "x",
+                                "y",
+                                "u(x,y)")};
+
+  if(!assertion) {
+    std::cerr << "Error writing to file." << std::endl;
+  }
+
+  mtk::Tools::EndUnitTestNo(3);
+  mtk::Tools::Assert(assertion);
+}
+
 int main () {
 
   std::cout << "Testing mtk::BCDescriptor2D class." << std::endl;
 
   TestDefaultConstructorGetters();
   TestPushBackImposeOnLaplacianMatrix();
+  TestImposeOnGrid();
 }
 
 #else
