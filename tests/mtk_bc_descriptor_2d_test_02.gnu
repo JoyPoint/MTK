@@ -88,7 +88,7 @@ set autoscale fix
 set grid
 
 # Title and legend.
-set title "Matrix Encoding a 2D Mimetic Laplacian with Dirichlet BCs"
+set title "Matrix Encoding a 2D 2nd-order Mimetic Laplacian with Dirichlet BCs"
 
 unset key
 
