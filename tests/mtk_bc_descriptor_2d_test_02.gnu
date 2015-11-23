@@ -92,4 +92,5 @@ set title "Matrix Encoding a 2D Mimetic Laplacian with Dirichlet BCs"
 
 unset key
 
-plot name.".dat" u 2:1:(f($3)) title "Magnitude of entry" w p pt 5 palette
+plot name.".dat" u 2:1:(f($3)) title "Magnitude of entry" w p pt 5 ps 0.5 \
+  palette
