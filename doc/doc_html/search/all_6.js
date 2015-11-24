@@ -1,7 +1,6 @@
 var searchData=
 [
   ['grids_2e',['Grids.',['../group__c06-grids.html',1,'']]],
-  ['generate_5fspace_5f',['generate_space_',['../classmtk_1_1BCDescriptor2D.html#a3ef0bc7e9fbc16669099314dd34b170a',1,'mtk::BCDescriptor2D']]],
   ['getvalue',['GetValue',['../classmtk_1_1DenseMatrix.html#a4b23ecbebd970b5eea915dbb50691024',1,'mtk::DenseMatrix']]],
   ['glpkadapter',['GLPKAdapter',['../classmtk_1_1GLPKAdapter.html',1,'mtk']]],
   ['grad1d',['Grad1D',['../classmtk_1_1Grad1D.html',1,'mtk']]],

@@ -1,4 +1,4 @@
-.TH "mtk::BCDescriptor2D" 3 "Mon Nov 23 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::BCDescriptor2D" 3 "Tue Nov 24 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -123,10 +123,6 @@ Enforces boundary conditions in either the operator or the grid\&.
 
 .in +1c
 .ti -1c
-.RI "bool \fBgenerate_space_\fP"
-.br
-.RI "\fIShould I generate coordinates as evaluate? \fP"
-.ti -1c
 .RI "int \fBhighest_order_diff_west_\fP"
 .br
 .RI "\fIHighest order of differentiation for west\&. \fP"
@@ -190,9 +186,9 @@ This class presents an interface for the user to specify boundary conditions on 
 \fBDef\&.\fP Let $ f $ be any scalar or vector field defined over a domain $ \Omega $\&. We can specify any linear combination of $ f $ and its $ n $ derivatives to fulfill a condition, which we define as a \fBboundary condition\fP:
 .PP
 \[ \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{n} c_i(\mathbf{x}) <\hat{\mathbf{n}}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> = \beta(\mathbf{x}). \].PP
-This class receives information about the highest-order of differentiation, $ n $, all possible coefficient functions, $ c_i(\mathbf{x}) $ for any subset of the boundary (south, north, west and east), and each condition for any subset of the boundary, and takes care of assigning them to both, the differentiation matrices and the grids\&. 
+This class receives information about all possible coefficient functions, $ c_i(\mathbf{x}) $ for any subset of the boundary (south, north, west and east), and each condition for any subset of the boundary, and takes care of assigning them to both, the differentiation matrices and the grids\&. The highest order of differentiation is computed based on how many coefficients have been given at run-time\&. 
 .PP
-Definition at line 123 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 130 of file mtk_bc_descriptor_2d\&.h\&.
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "mtk::BCDescriptor2D::BCDescriptor2D ()"
@@ -209,11 +205,11 @@ Definition at line 80 of file mtk_bc_descriptor_2d\&.cc\&.
 .PP
 
 .PP
-Definition at line 91 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 90 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "mtk::BCDescriptor2D::~BCDescriptor2D ()\fC [noexcept]\fP"
 
 .PP
-Definition at line 93 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 92 of file mtk_bc_descriptor_2d\&.cc\&.
 .SH "Member Function Documentation"
 .PP 
 .SS "int mtk::BCDescriptor2D::highest_order_diff_east () const\fC [noexcept]\fP"
@@ -226,7 +222,7 @@ Integer highest order of differentiation in the east boundary\&.
 .PP
 
 .PP
-Definition at line 100 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 99 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "int mtk::BCDescriptor2D::highest_order_diff_north () const\fC [noexcept]\fP"
 
 .PP
@@ -237,7 +233,7 @@ Integer highest order of differentiation in the north boundary\&.
 .PP
 
 .PP
-Definition at line 110 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 109 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "int mtk::BCDescriptor2D::highest_order_diff_south () const\fC [noexcept]\fP"
 
 .PP
@@ -248,7 +244,7 @@ Integer highest order of differentiation in the south boundary\&.
 .PP
 
 .PP
-Definition at line 105 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 104 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "int mtk::BCDescriptor2D::highest_order_diff_west () const\fC [noexcept]\fP"
 
 .PP
@@ -259,7 +255,7 @@ Integer highest order of differentiation in the west boundary\&.
 .PP
 
 .PP
-Definition at line 95 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 94 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::ImposeOnEastBoundaryNoSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
 
 .PP
@@ -280,7 +276,7 @@ Impose the Neumann condition second\&.
 .PP
 
 .PP
-Definition at line 467 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 466 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::ImposeOnEastBoundaryWithSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
 
 .PP
@@ -301,7 +297,7 @@ Impose the Neumann condition second\&.
 .PP
 
 .PP
-Definition at line 537 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 536 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::ImposeOnGrid (\fBmtk::UniStgGrid2D\fP &grid) const"
 
 .PP
@@ -363,7 +359,7 @@ Implement imposition for vector-valued grids\&.
 .PP
 
 .PP
-Definition at line 596 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 595 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::ImposeOnLaplacianMatrix (const \fBUniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy = \fC2\fP) const"
 
 .PP
@@ -378,7 +374,7 @@ Definition at line 596 of file mtk_bc_descriptor_2d\&.cc\&.
 .PP
 If we have not bound anything to the grid, then we have to generate our collection of spatial coordinates, as we evaluate the coefficients\&. 
 .PP
-Definition at line 558 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 557 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::ImposeOnNorthBoundaryNoSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
 
 .PP
@@ -399,7 +395,7 @@ Impose the Neumann condition second\&.
 .PP
 
 .PP
-Definition at line 291 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 290 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::ImposeOnNorthBoundaryWithSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
 
 .PP
@@ -428,7 +424,7 @@ Impose the Neumann condition\&.
 .PP
 
 .PP
-Definition at line 355 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 354 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::ImposeOnSouthBoundaryNoSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
 
 .PP
@@ -455,7 +451,7 @@ Impose the Neumann conditions on every pole, for every scenario\&.
 .PP
 
 .PP
-Definition at line 209 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 208 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::ImposeOnSouthBoundaryWithSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
 
 .PP
@@ -484,7 +480,7 @@ Impose the Neumann condition second\&.
 .PP
 
 .PP
-Definition at line 269 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 268 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::ImposeOnWestBoundaryNoSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
 
 .PP
@@ -512,7 +508,7 @@ Impose the Neumann condition second\&.
 .PP
 
 .PP
-Definition at line 376 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 375 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::ImposeOnWestBoundaryWithSpace (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const\fC [private]\fP"
 
 .PP
@@ -533,7 +529,7 @@ Impose the Neumann condition second\&.
 .PP
 
 .PP
-Definition at line 446 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 445 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::PushBackEastCoeff (\fBmtk::CoefficientFunction2D\fPce)"
 
 .PP
@@ -544,7 +540,7 @@ Definition at line 446 of file mtk_bc_descriptor_2d\&.cc\&.
 .PP
 
 .PP
-Definition at line 128 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 127 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::PushBackNorthCoeff (\fBmtk::CoefficientFunction2D\fPcn)"
 
 .PP
@@ -555,7 +551,7 @@ Definition at line 128 of file mtk_bc_descriptor_2d\&.cc\&.
 .PP
 
 .PP
-Definition at line 154 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 153 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::PushBackSouthCoeff (\fBmtk::CoefficientFunction2D\fPcs)"
 
 .PP
@@ -566,7 +562,7 @@ Definition at line 154 of file mtk_bc_descriptor_2d\&.cc\&.
 .PP
 
 .PP
-Definition at line 141 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 140 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::PushBackWestCoeff (\fBmtk::CoefficientFunction2D\fPcw)"
 
 .PP
@@ -577,7 +573,7 @@ Definition at line 141 of file mtk_bc_descriptor_2d\&.cc\&.
 .PP
 
 .PP
-Definition at line 115 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 114 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::set_east_condition (\fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)east_condition)\fC [noexcept]\fP"
 
 .PP
@@ -588,7 +584,7 @@ Definition at line 115 of file mtk_bc_descriptor_2d\&.cc\&.
 .PP
 
 .PP
-Definition at line 177 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 176 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::set_north_condition (\fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)north_condition)\fC [noexcept]\fP"
 
 .PP
@@ -599,7 +595,7 @@ Definition at line 177 of file mtk_bc_descriptor_2d\&.cc\&.
 .PP
 
 .PP
-Definition at line 198 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 197 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::set_south_condition (\fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)south_condition)\fC [noexcept]\fP"
 
 .PP
@@ -610,7 +606,7 @@ Definition at line 198 of file mtk_bc_descriptor_2d\&.cc\&.
 .PP
 
 .PP
-Definition at line 187 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 186 of file mtk_bc_descriptor_2d\&.cc\&.
 .SS "void mtk::BCDescriptor2D::set_west_condition (\fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)west_condition)\fC [noexcept]\fP"
 
 .PP
@@ -621,61 +617,57 @@ Definition at line 187 of file mtk_bc_descriptor_2d\&.cc\&.
 .PP
 
 .PP
-Definition at line 167 of file mtk_bc_descriptor_2d\&.cc\&.
+Definition at line 166 of file mtk_bc_descriptor_2d\&.cc\&.
 .SH "Member Data Documentation"
 .PP 
 .SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::east_coefficients_\fC [private]\fP"
 
 .PP
-Definition at line 330 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 335 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "\fBReal\fP(* mtk::BCDescriptor2D::east_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
 
 .PP
-Definition at line 335 of file mtk_bc_descriptor_2d\&.h\&.
-.SS "bool mtk::BCDescriptor2D::generate_space_\fC [mutable]\fP, \fC [private]\fP"
-
-.PP
-Definition at line 322 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 340 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "int mtk::BCDescriptor2D::highest_order_diff_east_\fC [private]\fP"
 
 .PP
-Definition at line 325 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 330 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "int mtk::BCDescriptor2D::highest_order_diff_north_\fC [private]\fP"
 
 .PP
-Definition at line 327 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 332 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "int mtk::BCDescriptor2D::highest_order_diff_south_\fC [private]\fP"
 
 .PP
-Definition at line 326 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 331 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "int mtk::BCDescriptor2D::highest_order_diff_west_\fC [private]\fP"
 
 .PP
-Definition at line 324 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 329 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::north_coefficients_\fC [private]\fP"
 
 .PP
-Definition at line 332 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 337 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "\fBReal\fP(* mtk::BCDescriptor2D::north_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
 
 .PP
-Definition at line 337 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 342 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::south_coefficients_\fC [private]\fP"
 
 .PP
-Definition at line 331 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 336 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "\fBReal\fP(* mtk::BCDescriptor2D::south_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
 
 .PP
-Definition at line 336 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 341 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor2D::west_coefficients_\fC [private]\fP"
 
 .PP
-Definition at line 329 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 334 of file mtk_bc_descriptor_2d\&.h\&.
 .SS "\fBReal\fP(* mtk::BCDescriptor2D::west_condition_)(\fBReal\fP xx, \fBReal\fP yy)\fC [private]\fP"
 
 .PP
-Definition at line 334 of file mtk_bc_descriptor_2d\&.h\&.
+Definition at line 339 of file mtk_bc_descriptor_2d\&.h\&.
 
 .SH "Author"
 .PP 

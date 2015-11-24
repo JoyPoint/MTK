@@ -267,7 +267,8 @@ mtk::Real* mtk::UniStgGrid2D::discrete_field() {
   return discrete_field_.data();
 }
 
-void mtk::UniStgGrid2D::BindScalarField(Real (*ScalarField)(Real xx, Real yy)) {
+void mtk::UniStgGrid2D::BindScalarField(
+    Real (*ScalarField)(const Real &xx, const Real &yy)) {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(nature_ != mtk::SCALAR, __FILE__, __LINE__, __func__);
@@ -322,7 +323,7 @@ void mtk::UniStgGrid2D::BindScalarField(Real (*ScalarField)(Real xx, Real yy)) {
 }
 
 void mtk::UniStgGrid2D::BindVectorFieldPComponent(
-  mtk::Real (*VectorField)(mtk::Real xx, mtk::Real yy)) {
+  mtk::Real (*VectorField)(const mtk::Real &xx, const mtk::Real &yy)) {
 
   int mm{num_cells_x_};
   int nn{num_cells_y_};
@@ -387,7 +388,7 @@ void mtk::UniStgGrid2D::BindVectorFieldPComponent(
 }
 
 void mtk::UniStgGrid2D::BindVectorFieldQComponent(
-  mtk::Real (*VectorField)(mtk::Real xx, mtk::Real yy)) {
+  mtk::Real (*VectorField)(const mtk::Real &xx, const mtk::Real &yy)) {
 
   int mm{num_cells_x_};
   int nn{num_cells_y_};
@@ -415,8 +416,8 @@ void mtk::UniStgGrid2D::BindVectorFieldQComponent(
 }
 
 void mtk::UniStgGrid2D::BindVectorField(
-  Real (*VectorFieldPComponent)(Real xx,Real yy),
-  Real (*VectorFieldQComponent)(Real xx,Real yy)) {
+  Real (*VectorFieldPComponent)(const Real &xx, const Real &yy),
+  Real (*VectorFieldQComponent)(const Real &xx, const Real &yy)) {
 
   #if MTK_DEBUG_LEVEL > 0
   mtk::Tools::Prevent(nature_ != mtk::VECTOR, __FILE__, __LINE__, __func__);

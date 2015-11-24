@@ -12,8 +12,7 @@ Enforces boundary conditions in either the operator or the grid.
 
 
 
-Collaboration diagram for mtk\+:\+:B\+C\+Descriptor2\+D\+:
-\nopagebreak
+Collaboration diagram for mtk\+:\+:B\+C\+Descriptor2\+D\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -79,8 +78,6 @@ void \hyperlink{classmtk_1_1BCDescriptor2D_a7208d08bfa84192e13c848093eaa88f0}{Im
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-bool \hyperlink{classmtk_1_1BCDescriptor2D_a3ef0bc7e9fbc16669099314dd34b170a}{generate\+\_\+space\+\_\+}
-\begin{DoxyCompactList}\small\item\em Should I generate coordinates as evaluate? \end{DoxyCompactList}\item 
 int \hyperlink{classmtk_1_1BCDescriptor2D_aa18ef62f8eda355e47f51bcb5dbe8fe7}{highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+}
 \begin{DoxyCompactList}\small\item\em Highest order of differentiation for west. \end{DoxyCompactList}\item 
 int \hyperlink{classmtk_1_1BCDescriptor2D_aea5e539a10d5641bd605ebe583c14bc5}{highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+}
@@ -118,9 +115,9 @@ This class presents an interface for the user to specify boundary conditions on 
 
 \[ \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{n} c_i(\mathbf{x}) <\hat{\mathbf{n}}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> = \beta(\mathbf{x}). \]
 
-This class receives information about the highest-\/order of differentiation, $ n $, all possible coefficient functions, $ c_i(\mathbf{x}) $ for any subset of the boundary (south, north, west and east), and each condition for any subset of the boundary, and takes care of assigning them to both, the differentiation matrices and the grids. 
+This class receives information about all possible coefficient functions, $ c_i(\mathbf{x}) $ for any subset of the boundary (south, north, west and east), and each condition for any subset of the boundary, and takes care of assigning them to both, the differentiation matrices and the grids. The highest order of differentiation is computed based on how many coefficients have been given at run-\/time. 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00123}{123} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00130}{130} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
 
 
 
@@ -150,7 +147,7 @@ Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00080}{80} of 
 \end{DoxyParams}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00091}{91} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00090}{90} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_ae14e62548a8bc080d576fff6937c546b}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!````~B\+C\+Descriptor2\+D@{$\sim$\+B\+C\+Descriptor2\+D}}
 \index{````~B\+C\+Descriptor2\+D@{$\sim$\+B\+C\+Descriptor2\+D}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
@@ -161,7 +158,7 @@ Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00091}{91} of 
 )\hspace{0.3cm}{\ttfamily [noexcept]}}}\label{classmtk_1_1BCDescriptor2D_ae14e62548a8bc080d576fff6937c546b}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00093}{93} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00092}{92} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
@@ -178,7 +175,7 @@ Integer highest order of differentiation in the east boundary.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00100}{100} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00099}{99} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_a87c5f2449247d65ea07784ba2ec61bc7}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!highest\+\_\+order\+\_\+diff\+\_\+north@{highest\+\_\+order\+\_\+diff\+\_\+north}}
 \index{highest\+\_\+order\+\_\+diff\+\_\+north@{highest\+\_\+order\+\_\+diff\+\_\+north}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
@@ -192,7 +189,7 @@ Integer highest order of differentiation in the north boundary.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00110}{110} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00109}{109} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_a463d909f6014e7f01b33171a06d7b400}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!highest\+\_\+order\+\_\+diff\+\_\+south@{highest\+\_\+order\+\_\+diff\+\_\+south}}
 \index{highest\+\_\+order\+\_\+diff\+\_\+south@{highest\+\_\+order\+\_\+diff\+\_\+south}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
@@ -206,7 +203,7 @@ Integer highest order of differentiation in the south boundary.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00105}{105} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00104}{104} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_a0fa469ddf6ff76e2858d6d3b76cc8b6f}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!highest\+\_\+order\+\_\+diff\+\_\+west@{highest\+\_\+order\+\_\+diff\+\_\+west}}
 \index{highest\+\_\+order\+\_\+diff\+\_\+west@{highest\+\_\+order\+\_\+diff\+\_\+west}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
@@ -220,7 +217,7 @@ Integer highest order of differentiation in the west boundary.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00095}{95} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00094}{94} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_a65f58f43f3fdc793cce7293780b70b80}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!Impose\+On\+East\+Boundary\+No\+Space@{Impose\+On\+East\+Boundary\+No\+Space}}
 \index{Impose\+On\+East\+Boundary\+No\+Space@{Impose\+On\+East\+Boundary\+No\+Space}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
@@ -246,12 +243,11 @@ Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00095}{95} of 
 \item Impose the Neumann condition second. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00467}{467} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00466}{466} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -284,12 +280,11 @@ Here is the call graph for this function\+:
 \item Impose the Neumann condition second. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00537}{537} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00536}{536} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -357,12 +352,11 @@ As per discussion with Otilio, we will take the {\bfseries arithmetic} {\bfserie
 \item[\hyperlink{todo__todo000014}{Todo}]Implement imposition for vector-\/valued grids. \end{DoxyRefDesc}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00596}{596} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00595}{595} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -391,7 +385,7 @@ Here is the call graph for this function\+:
 \end{DoxyParams}
 If we have not bound anything to the grid, then we have to generate our collection of spatial coordinates, as we evaluate the coefficients. 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00558}{558} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00557}{557} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
@@ -428,12 +422,11 @@ Here is the call graph for this function\+:\nopagebreak
 \item Impose the Neumann condition second. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00291}{291} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00290}{290} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -476,12 +469,11 @@ Evaluate and assign the Dirichlet coefficient.
 \item Impose the Neumann condition. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00355}{355} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00354}{354} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -518,12 +510,11 @@ Here is the call graph for this function\+:
 \item[\hyperlink{todo__todo000012}{Todo}]Impose the Neumann conditions on every pole, for every scenario. \end{DoxyRefDesc}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00209}{209} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00208}{208} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -564,12 +555,11 @@ Here is the call graph for this function\+:
 \item Impose the Neumann condition second. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00269}{269} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00268}{268} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -609,12 +599,11 @@ As it can be seen, we must adopt a convention about how to treat the corners. Ba
 \item Impose the Neumann condition second. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00376}{376} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00375}{375} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -647,12 +636,11 @@ Here is the call graph for this function\+:
 \item Impose the Neumann condition second. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00446}{446} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00445}{445} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
-Here is the call graph for this function\+:
-\nopagebreak
+Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -675,7 +663,7 @@ Here is the call graph for this function\+:
 \end{DoxyParams}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00128}{128} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00127}{127} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
@@ -702,7 +690,7 @@ Here is the call graph for this function\+:\nopagebreak
 \end{DoxyParams}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00154}{154} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00153}{153} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
@@ -729,7 +717,7 @@ Here is the call graph for this function\+:\nopagebreak
 \end{DoxyParams}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00141}{141} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00140}{140} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
@@ -756,7 +744,7 @@ Here is the call graph for this function\+:\nopagebreak
 \end{DoxyParams}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00115}{115} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00114}{114} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
@@ -783,7 +771,7 @@ Here is the call graph for this function\+:\nopagebreak
 \end{DoxyParams}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00177}{177} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00176}{176} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
@@ -810,7 +798,7 @@ Here is the call graph for this function\+:\nopagebreak
 \end{DoxyParams}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00198}{198} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00197}{197} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
@@ -837,7 +825,7 @@ Here is the call graph for this function\+:\nopagebreak
 \end{DoxyParams}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00187}{187} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00186}{186} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
@@ -864,7 +852,7 @@ Here is the call graph for this function\+:\nopagebreak
 \end{DoxyParams}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00167}{167} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00166}{166} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
 
 
 
@@ -885,91 +873,84 @@ Here is the call graph for this function\+:\nopagebreak
 \subsubsection[{east\+\_\+coefficients\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Coefficient\+Function2\+D}$>$ mtk\+::\+B\+C\+Descriptor2\+D\+::east\+\_\+coefficients\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a1f90fc303984bf18c136a34896bbb7c9}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00330}{330} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00335}{335} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_a6cca0c70293203c9d88773e5d5f93418}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!east\+\_\+condition\+\_\+@{east\+\_\+condition\+\_\+}}
 \index{east\+\_\+condition\+\_\+@{east\+\_\+condition\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
 \subsubsection[{east\+\_\+condition\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}($\ast$ mtk\+::\+B\+C\+Descriptor2\+D\+::east\+\_\+condition\+\_\+)({\bf Real} xx, {\bf Real} yy)\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a6cca0c70293203c9d88773e5d5f93418}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00335}{335} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
-
-\hypertarget{classmtk_1_1BCDescriptor2D_a3ef0bc7e9fbc16669099314dd34b170a}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!generate\+\_\+space\+\_\+@{generate\+\_\+space\+\_\+}}
-\index{generate\+\_\+space\+\_\+@{generate\+\_\+space\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
-\subsubsection[{generate\+\_\+space\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}bool mtk\+::\+B\+C\+Descriptor2\+D\+::generate\+\_\+space\+\_\+\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a3ef0bc7e9fbc16669099314dd34b170a}
-
-
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00322}{322} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00340}{340} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_aea5e539a10d5641bd605ebe583c14bc5}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+}}
 \index{highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
 \subsubsection[{highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+B\+C\+Descriptor2\+D\+::highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_aea5e539a10d5641bd605ebe583c14bc5}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00325}{325} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00330}{330} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_a6cdeefe70f5bef93196f34ab2949cad2}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!highest\+\_\+order\+\_\+diff\+\_\+north\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+north\+\_\+}}
 \index{highest\+\_\+order\+\_\+diff\+\_\+north\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+north\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
 \subsubsection[{highest\+\_\+order\+\_\+diff\+\_\+north\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+B\+C\+Descriptor2\+D\+::highest\+\_\+order\+\_\+diff\+\_\+north\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a6cdeefe70f5bef93196f34ab2949cad2}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00327}{327} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00332}{332} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_a1fb094e5e53ecfba32fe9fe56c051c47}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!highest\+\_\+order\+\_\+diff\+\_\+south\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+south\+\_\+}}
 \index{highest\+\_\+order\+\_\+diff\+\_\+south\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+south\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
 \subsubsection[{highest\+\_\+order\+\_\+diff\+\_\+south\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+B\+C\+Descriptor2\+D\+::highest\+\_\+order\+\_\+diff\+\_\+south\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a1fb094e5e53ecfba32fe9fe56c051c47}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00326}{326} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00331}{331} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_aa18ef62f8eda355e47f51bcb5dbe8fe7}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+}}
 \index{highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
 \subsubsection[{highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+B\+C\+Descriptor2\+D\+::highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_aa18ef62f8eda355e47f51bcb5dbe8fe7}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00324}{324} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00329}{329} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_a5429c040c034303dd92dcff554f9efad}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!north\+\_\+coefficients\+\_\+@{north\+\_\+coefficients\+\_\+}}
 \index{north\+\_\+coefficients\+\_\+@{north\+\_\+coefficients\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
 \subsubsection[{north\+\_\+coefficients\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Coefficient\+Function2\+D}$>$ mtk\+::\+B\+C\+Descriptor2\+D\+::north\+\_\+coefficients\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a5429c040c034303dd92dcff554f9efad}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00332}{332} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00337}{337} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_a23e0b9ae755dcf81841aa24ddaf0b090}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!north\+\_\+condition\+\_\+@{north\+\_\+condition\+\_\+}}
 \index{north\+\_\+condition\+\_\+@{north\+\_\+condition\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
 \subsubsection[{north\+\_\+condition\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}($\ast$ mtk\+::\+B\+C\+Descriptor2\+D\+::north\+\_\+condition\+\_\+)({\bf Real} xx, {\bf Real} yy)\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a23e0b9ae755dcf81841aa24ddaf0b090}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00337}{337} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00342}{342} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_a263309b9ad288dc89826d818d9378d07}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!south\+\_\+coefficients\+\_\+@{south\+\_\+coefficients\+\_\+}}
 \index{south\+\_\+coefficients\+\_\+@{south\+\_\+coefficients\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
 \subsubsection[{south\+\_\+coefficients\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Coefficient\+Function2\+D}$>$ mtk\+::\+B\+C\+Descriptor2\+D\+::south\+\_\+coefficients\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a263309b9ad288dc89826d818d9378d07}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00331}{331} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00336}{336} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_a2a933b473abbe47ad7c79ef7939e7768}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!south\+\_\+condition\+\_\+@{south\+\_\+condition\+\_\+}}
 \index{south\+\_\+condition\+\_\+@{south\+\_\+condition\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
 \subsubsection[{south\+\_\+condition\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}($\ast$ mtk\+::\+B\+C\+Descriptor2\+D\+::south\+\_\+condition\+\_\+)({\bf Real} xx, {\bf Real} yy)\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a2a933b473abbe47ad7c79ef7939e7768}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00336}{336} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00341}{341} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_a7df71b43acc25c468683075cc7790bb2}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!west\+\_\+coefficients\+\_\+@{west\+\_\+coefficients\+\_\+}}
 \index{west\+\_\+coefficients\+\_\+@{west\+\_\+coefficients\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
 \subsubsection[{west\+\_\+coefficients\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Coefficient\+Function2\+D}$>$ mtk\+::\+B\+C\+Descriptor2\+D\+::west\+\_\+coefficients\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a7df71b43acc25c468683075cc7790bb2}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00329}{329} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00334}{334} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
 
 \hypertarget{classmtk_1_1BCDescriptor2D_a2d4af48b3408658c7ace6eeb74464c9f}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!west\+\_\+condition\+\_\+@{west\+\_\+condition\+\_\+}}
 \index{west\+\_\+condition\+\_\+@{west\+\_\+condition\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
 \subsubsection[{west\+\_\+condition\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}($\ast$ mtk\+::\+B\+C\+Descriptor2\+D\+::west\+\_\+condition\+\_\+)({\bf Real} xx, {\bf Real} yy)\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a2d4af48b3408658c7ace6eeb74464c9f}
 
 
-Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00334}{334} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00339}{339} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
 
 
 

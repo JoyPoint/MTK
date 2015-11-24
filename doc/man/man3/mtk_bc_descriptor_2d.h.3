@@ -1,10 +1,10 @@
-.TH "include/mtk_bc_descriptor_2d.h" 3 "Mon Nov 23 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "include/mtk_bc_descriptor_2d.h" 3 "Tue Nov 24 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 include/mtk_bc_descriptor_2d.h \- 
 .PP
-Imposes boundary conditions in either the operator or the grid\&.  
+Imposes mimetic boundary conditions on the operators and on the grids\&.  
 
 .SH SYNOPSIS
 .br
@@ -42,12 +42,22 @@ Imposes boundary conditions in either the operator or the grid\&.
 .in -1c
 .SH "Detailed Description"
 .PP 
-This class presents an interface for the user to specify boundary conditions on 2D mimetic operators and the grids they are acting on\&.
+This class presents an interface for the user to specify mimetic boundary conditions on 2D mimetic operators and the grids they are acting on\&.
 .PP
-\fBDef\&.\fP Let $ f $ be any scalar or vector field defined over a domain $ \Omega $\&. We can specify any linear combination of $ f $ and its $ n $ derivatives to fulfill a condition, which we define as a \fBboundary condition\fP:
+\fBDef\&.\fP Let $ f(t,\mathbf{x}) $ be any scalar field defined over a domain $ \Omega $ on a given time snapshot $ t \in [t_0,t_n] $\&. Any linear combination of $ f $ and its $ m $ derivatives fulfilling a condition $ \beta(t,\mathbf{x}) $ is defined as a \fBboundary condition\fP:
 .PP
-\[ \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{n} c_i(\mathbf{x}) <\hat{\mathbf{n}}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> = \beta(\mathbf{x}). \].PP
-This class receives information about the highest-order of differentiation, $ n $, all possible coefficient functions, $ c_i(\mathbf{x}) $ for any subset of the boundary (south, north, west and east), and each condition for any subset of the boundary, and takes care of assigning them to both, the differentiation matrices and the grids\&.
+\[ \forall t \in [t_0,t_n]\; \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{m} c_i(\mathbf{x},t) <\hat{\mathbf{n}}, \frac{\partial^i f}{\partial \mathbf{x}^i}(\mathbf{x},t)> = \beta(\mathbf{x},t). \].PP
+This class receives information about all possible coefficient functions, $ c_i(\mathbf{x},t) $ for any subset of the boundary (south, north, west and east), and every condition $\beta(\mathbf{x},t) $ for any subset of the boundary, and takes care of assigning them to both the differentiation matrices and the grids\&. The highest order of differentiation is computed based on how many coefficients have been given at run-time\&.
+.PP
+\fBWarning:\fP
+.RS 4
+For now, we only support orders as high as 1\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+http://mathworld.wolfram.com/NormalVector.html
+.RE
 .PP
 \fBAuthor:\fP
 .RS 4

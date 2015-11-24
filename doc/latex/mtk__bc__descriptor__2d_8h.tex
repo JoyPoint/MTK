@@ -3,7 +3,7 @@
 }
 
 
-Imposes boundary conditions in either the operator or the grid.  
+Imposes mimetic boundary conditions on the operators and on the grids.  
 
 
 {\ttfamily \#include \char`\"{}mtk\+\_\+roots.\+h\char`\"{}}\\*
@@ -41,14 +41,20 @@ typedef Real($\ast$ \hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f32
 
 
 \subsection{Detailed Description}
-This class presents an interface for the user to specify boundary conditions on 2\+D mimetic operators and the grids they are acting on.
+This class presents an interface for the user to specify mimetic boundary conditions on 2\+D mimetic operators and the grids they are acting on.
 
-{\bfseries Def.} Let $ f $ be any scalar or vector field defined over a domain $ \Omega $. We can specify any linear combination of $ f $ and its $ n $ derivatives to fulfill a condition, which we define as a {\bfseries boundary condition}\+:
+{\bfseries Def.} Let $ f(t,\mathbf{x}) $ be any scalar field defined over a domain $ \Omega $ on a given time snapshot $ t \in [t_0,t_n] $. Any linear combination of $ f $ and its $ m $ derivatives fulfilling a condition $ \beta(t,\mathbf{x}) $ is defined as a {\bfseries boundary condition}\+:
 
-\[ \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{n} c_i(\mathbf{x}) <\hat{\mathbf{n}}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> = \beta(\mathbf{x}). \]
+\[ \forall t \in [t_0,t_n]\; \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{m} c_i(\mathbf{x},t) <\hat{\mathbf{n}}, \frac{\partial^i f}{\partial \mathbf{x}^i}(\mathbf{x},t)> = \beta(\mathbf{x},t). \]
 
-This class receives information about the highest-\/order of differentiation, $ n $, all possible coefficient functions, $ c_i(\mathbf{x}) $ for any subset of the boundary (south, north, west and east), and each condition for any subset of the boundary, and takes care of assigning them to both, the differentiation matrices and the grids.
+This class receives information about all possible coefficient functions, $ c_i(\mathbf{x},t) $ for any subset of the boundary (south, north, west and east), and every condition $\beta(\mathbf{x},t) $ for any subset of the boundary, and takes care of assigning them to both the differentiation matrices and the grids. The highest order of differentiation is computed based on how many coefficients have been given at run-\/time.
 
+\begin{DoxyWarning}{Warning}
+For now, we only support orders as high as 1.
+\end{DoxyWarning}
+\begin{DoxySeeAlso}{See also}
+\href{http://mathworld.wolfram.com/NormalVector.html}{\tt http\+://mathworld.\+wolfram.\+com/\+Normal\+Vector.\+html}
+\end{DoxySeeAlso}
 \begin{DoxyAuthor}{Author}
 \+: Eduardo J. Sanchez (ejspeiro) -\/ esanchez at mail dot sdsu dot edu 
 \end{DoxyAuthor}

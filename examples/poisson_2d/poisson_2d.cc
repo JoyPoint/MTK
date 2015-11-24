@@ -1,12 +1,43 @@
 /*!
-\file mtk_bc_descriptor_1d.cc
+\file poisson_2d.cc
 
-\brief Enforces boundary conditions in either the operator or the grid.
+\brief Poisson Equation on a 2D Uniform Staggered Grid with Robin BCs.
 
-This class presents an interface for the user to specify boundary conditions
-on 1D mimetic operators and the grids they are acting on.
+We solve:
+
+\f[
+\nabla^2 p(x) = -s(x),
+\f]
+
+for \f$ x \in \Omega = [a,b] = [0,1] \f$.
+
+The source term function is defined as
+
+\f[
+s(x) = \frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1}
+\f]
+
+where \f$ \lambda = -1 \f$ is a parameter.
+
+We consider Robin's boundary conditions of the form:
+
+\f[
+\alpha p(a) - \beta p'(a) = \omega,
+\f]
+
+\f[
+\alpha p(b) + \beta p'(b) = \epsilon.
+\f]
+
+The analytical solution for this problem is given by
+
+\f[
+p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}.
+\f]
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
+
+\author: Raul Vargas--Navarro - vargasna at rohan dot sdsu dot edu
 */
 /*
 Copyright (C) 2015, Computational Science Research Center, San Diego State
@@ -54,51 +85,29 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#include "mtk_tools.h"
+#if __cplusplus == 201103L
 
-#include "mtk_bc_descriptor_1d.h"
+#include <iostream>
+#include <fstream>
+#include <cmath>
 
-void mtk::BCDescriptor1D::ImposeOnLaplacianMatrix(
-    mtk::DenseMatrix &matrix,
-    const std::vector<mtk::Real> &west,
-    const std::vector<mtk::Real> &east) {
+#include <vector>
 
-  #if MTK_DEBUG_LEVEL > 0
-  mtk::Tools::Prevent(matrix.num_rows() == 0, __FILE__, __LINE__, __func__);
-  mtk::Tools::Prevent(west.size() > (unsigned int) matrix.num_cols(),
-                      __FILE__, __LINE__, __func__);
-  mtk::Tools::Prevent(east.size() > (unsigned int) matrix.num_cols(),
-                      __FILE__, __LINE__, __func__);
-  #endif
+#include "mtk.h"
 
-  /// 1. Assign the west array.
+int main () {
 
-  for (unsigned int ii = 0; ii < west.size(); ++ii) {
-    matrix.SetValue(0, ii, west[ii]);
-  }
-
-  /// 2. Assign the east array.
-
-  for (unsigned int ii = 0; ii < east.size(); ++ii) {
-    matrix.SetValue(matrix.num_rows() - 1,
-                    matrix.num_cols() - 1 - ii,
-                    east[ii]);
-  }
+  std::cout << "Example: Poisson Equation on a 2D Uniform Staggered Grid ";
+  std::cout << "with Robin BCs." << std::endl;
 }
 
-void mtk::BCDescriptor1D::ImposeOnGrid(mtk::UniStgGrid1D &grid,
-                                       const mtk::Real &omega,
-                                       const mtk::Real &epsilon) {
-
-  #if MTK_DEBUG_LEVEL > 0
-  mtk::Tools::Prevent(grid.num_cells_x() == 0, __FILE__, __LINE__, __func__);
-  #endif
-
-  /// 1. Assign the west condition.
-
-  grid.discrete_field_u()[0] = omega;
-
-  /// 2. Assign the east condition.
-
-  grid.discrete_field_u()[grid.num_cells_x() + 2 - 1] = epsilon;
+#else
+#include <iostream>
+using std::cout;
+using std::endl;
+int main () {
+  cout << "This code HAS to be compiled with support for C++11." << endl;
+  cout << "Exiting..." << endl;
+  return EXIT_SUCCESS;
 }
+#endif

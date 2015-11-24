@@ -539,10 +539,10 @@ int mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &mm,
 
   #ifdef MTK_PRECISION_DOUBLE
   dgesv_(&mm_rank, &nrhs, mm.data(), &mm_ld, ipiv,
-         rhs.discrete_field_u(), &ldbb, &info);
+         rhs.discrete_field(), &ldbb, &info);
   #else
   fgesv_(&mm_rank, &nrhs, mm.data(), &mm_ld, ipiv,
-         rhs.discrete_field_u(), &ldbb, &info);
+         rhs.discrete_field(), &ldbb, &info);
   #endif
 
   mm.OrderRowMajor();

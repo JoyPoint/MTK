@@ -27,7 +27,6 @@ var classmtk_1_1BCDescriptor2D =
     [ "set_west_condition", "classmtk_1_1BCDescriptor2D.html#a006050efe15b1be75b36a74a23051392", null ],
     [ "east_coefficients_", "classmtk_1_1BCDescriptor2D.html#a1f90fc303984bf18c136a34896bbb7c9", null ],
     [ "east_condition_", "classmtk_1_1BCDescriptor2D.html#a6cca0c70293203c9d88773e5d5f93418", null ],
-    [ "generate_space_", "classmtk_1_1BCDescriptor2D.html#a3ef0bc7e9fbc16669099314dd34b170a", null ],
     [ "highest_order_diff_east_", "classmtk_1_1BCDescriptor2D.html#aea5e539a10d5641bd605ebe583c14bc5", null ],
     [ "highest_order_diff_north_", "classmtk_1_1BCDescriptor2D.html#a6cdeefe70f5bef93196f34ab2949cad2", null ],
     [ "highest_order_diff_south_", "classmtk_1_1BCDescriptor2D.html#a1fb094e5e53ecfba32fe9fe56c051c47", null ],

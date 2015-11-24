@@ -1,7 +1,7 @@
 /*!
-\file mtk_bc_descriptor_2d_test.cc
+\file mtk_robin_bc_descriptor_2d_test.cc
 
-\brief Test file for the mtk::BCDescriptor2D class.
+\brief Test file for the mtk::RobinBCDescriptor2D class.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -64,7 +64,7 @@ void TestDefaultConstructorGetters() {
 
   mtk::Tools::BeginUnitTestNo(1);
 
-  mtk::BCDescriptor2D bcd;
+  mtk::RobinBCDescriptor2D bcd;
 
   bool assertion{true};
 
@@ -86,7 +86,7 @@ void TestPushBackImposeOnLaplacianMatrix() {
 
   mtk::Tools::BeginUnitTestNo(2);
 
-  mtk::BCDescriptor2D bcd;
+  mtk::RobinBCDescriptor2D bcd;
 
   bool assertion{true};
 
@@ -122,7 +122,7 @@ void TestPushBackImposeOnLaplacianMatrix() {
 
   assertion = assertion && (llm.num_rows() != 0);
 
-  bcd.ImposeOnLaplacianMatrix(llg, llm);
+  bcd.ImposeOnLaplacianMatrix(ll, llg, llm);
 
   assertion = assertion && llm.WriteToFile("mtk_bc_descriptor_2d_test_02.dat");
 
@@ -130,14 +130,15 @@ void TestPushBackImposeOnLaplacianMatrix() {
   mtk::Tools::Assert(assertion);
 }
 
-mtk::Real ScalarField(mtk::Real xx, mtk::Real yy) {
+mtk::Real ScalarField(const mtk::Real &xx, const mtk::Real &yy) {
 
   mtk::Real aux{-(1.0/2.0)*xx*xx - (1.0/2.0)*yy*yy};
 
   return xx*yy*exp(aux);
 }
 
-mtk::Real HomogeneousDiricheletBC(mtk::Real xx, mtk::Real yy) {
+mtk::Real HomogeneousDiricheletBC(const mtk::Real &xx,
+                                  const mtk::Real &tt) {
 
   return mtk::kZero;
 }
@@ -158,7 +159,7 @@ void TestImposeOnGrid() {
 
   gg.BindScalarField(ScalarField);
 
-  mtk::BCDescriptor2D desc;
+  mtk::RobinBCDescriptor2D desc;
 
   desc.set_west_condition(HomogeneousDiricheletBC);
   desc.set_east_condition(HomogeneousDiricheletBC);
@@ -182,7 +183,7 @@ void TestImposeOnGrid() {
 
 int main () {
 
-  std::cout << "Testing mtk::BCDescriptor2D class." << std::endl;
+  std::cout << "Testing mtk::RobinBCDescriptor2D class." << std::endl;
 
   TestDefaultConstructorGetters();
   TestPushBackImposeOnLaplacianMatrix();

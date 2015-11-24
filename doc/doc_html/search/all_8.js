@@ -2,8 +2,8 @@ var searchData=
 [
   ['imposeoneastboundarynospace',['ImposeOnEastBoundaryNoSpace',['../classmtk_1_1BCDescriptor2D.html#a65f58f43f3fdc793cce7293780b70b80',1,'mtk::BCDescriptor2D']]],
   ['imposeoneastboundarywithspace',['ImposeOnEastBoundaryWithSpace',['../classmtk_1_1BCDescriptor2D.html#a7208d08bfa84192e13c848093eaa88f0',1,'mtk::BCDescriptor2D']]],
-  ['imposeongrid',['ImposeOnGrid',['../classmtk_1_1BCDescriptor1D.html#adfb101c1a12b452f83dacd207febea0a',1,'mtk::BCDescriptor1D::ImposeOnGrid()'],['../classmtk_1_1BCDescriptor2D.html#a5f0ff1fda1b5266dcd77ba2301c8ba2c',1,'mtk::BCDescriptor2D::ImposeOnGrid()']]],
-  ['imposeonlaplacianmatrix',['ImposeOnLaplacianMatrix',['../classmtk_1_1BCDescriptor1D.html#a33e51235eaa930e4470f027001a023cf',1,'mtk::BCDescriptor1D::ImposeOnLaplacianMatrix()'],['../classmtk_1_1BCDescriptor2D.html#a35592617dda3b965b680b2a1355122f4',1,'mtk::BCDescriptor2D::ImposeOnLaplacianMatrix()']]],
+  ['imposeongrid',['ImposeOnGrid',['../classmtk_1_1BCDescriptor2D.html#a5f0ff1fda1b5266dcd77ba2301c8ba2c',1,'mtk::BCDescriptor2D::ImposeOnGrid()'],['../classmtk_1_1BCDescriptor1D.html#adfb101c1a12b452f83dacd207febea0a',1,'mtk::BCDescriptor1D::ImposeOnGrid()']]],
+  ['imposeonlaplacianmatrix',['ImposeOnLaplacianMatrix',['../classmtk_1_1BCDescriptor2D.html#a35592617dda3b965b680b2a1355122f4',1,'mtk::BCDescriptor2D::ImposeOnLaplacianMatrix()'],['../classmtk_1_1BCDescriptor1D.html#a33e51235eaa930e4470f027001a023cf',1,'mtk::BCDescriptor1D::ImposeOnLaplacianMatrix()']]],
   ['imposeonnorthboundarynospace',['ImposeOnNorthBoundaryNoSpace',['../classmtk_1_1BCDescriptor2D.html#a5e7d4b9deba6c07170e983eb1c0e9776',1,'mtk::BCDescriptor2D']]],
   ['imposeonnorthboundarywithspace',['ImposeOnNorthBoundaryWithSpace',['../classmtk_1_1BCDescriptor2D.html#a6b9b6f2bec06bce5a9070236ca10ec3a',1,'mtk::BCDescriptor2D']]],
   ['imposeonsouthboundarynospace',['ImposeOnSouthBoundaryNoSpace',['../classmtk_1_1BCDescriptor2D.html#a0188a64f242ae6015385a4597934fcda',1,'mtk::BCDescriptor2D']]],

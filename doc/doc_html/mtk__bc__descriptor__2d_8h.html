@@ -112,7 +112,7 @@ $(document).ready(function(){initNavTree('mtk__bc__descriptor__2d_8h.html','');}
 </div><!--header-->
 <div class="contents">
 
-<p>Imposes boundary conditions in either the operator or the grid.  
+<p>Imposes mimetic boundary conditions on the operators and on the grids.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &quot;<a class="el" href="mtk__roots_8h_source.html">mtk_roots.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="mtk__dense__matrix_8h_source.html">mtk_dense_matrix.h</a>&quot;</code><br />
@@ -153,12 +153,14 @@ Typedefs</h2></td></tr>
 <tr class="separator:gad9e1c0ace886b0029aefffa5f320e852"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>This class presents an interface for the user to specify boundary conditions on 2D mimetic operators and the grids they are acting on.</p>
-<p><b>Def.</b> Let <img class="formulaInl" alt="$ f $" src="form_32.png"/> be any scalar or vector field defined over a domain <img class="formulaInl" alt="$ \Omega $" src="form_33.png"/>. We can specify any linear combination of <img class="formulaInl" alt="$ f $" src="form_32.png"/> and its <img class="formulaInl" alt="$ n $" src="form_34.png"/> derivatives to fulfill a condition, which we define as a <b>boundary condition</b>:</p>
+<div class="textblock"><p>This class presents an interface for the user to specify mimetic boundary conditions on 2D mimetic operators and the grids they are acting on.</p>
+<p><b>Def.</b> Let <img class="formulaInl" alt="$ f(t,\mathbf{x}) $" src="form_57.png"/> be any scalar field defined over a domain <img class="formulaInl" alt="$ \Omega $" src="form_33.png"/> on a given time snapshot <img class="formulaInl" alt="$ t \in [t_0,t_n] $" src="form_64.png"/>. Any linear combination of <img class="formulaInl" alt="$ f $" src="form_32.png"/> and its <img class="formulaInl" alt="$ m $" src="form_59.png"/> derivatives fulfilling a condition <img class="formulaInl" alt="$ \beta(t,\mathbf{x}) $" src="form_60.png"/> is defined as a <b>boundary condition</b>:</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{n} c_i(\mathbf{x}) <\hat{\mathbf{n}}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> = \beta(\mathbf{x}). \]" src="form_56.png"/>
+<img class="formulaDsp" alt="\[ \forall t \in [t_0,t_n]\; \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{m} c_i(\mathbf{x},t) <\hat{\mathbf{n}}, \frac{\partial^i f}{\partial \mathbf{x}^i}(\mathbf{x},t)> = \beta(\mathbf{x},t). \]" src="form_67.png"/>
 </p>
-<p>This class receives information about the highest-order of differentiation, <img class="formulaInl" alt="$ n $" src="form_34.png"/>, all possible coefficient functions, <img class="formulaInl" alt="$ c_i(\mathbf{x}) $" src="form_42.png"/> for any subset of the boundary (south, north, west and east), and each condition for any subset of the boundary, and takes care of assigning them to both, the differentiation matrices and the grids.</p>
+<p>This class receives information about all possible coefficient functions, <img class="formulaInl" alt="$ c_i(\mathbf{x},t) $" src="form_62.png"/> for any subset of the boundary (south, north, west and east), and every condition <img class="formulaInl" alt="$\beta(\mathbf{x},t) $" src="form_63.png"/> for any subset of the boundary, and takes care of assigning them to both the differentiation matrices and the grids. The highest order of differentiation is computed based on how many coefficients have been given at run-time.</p>
+<dl class="section warning"><dt>Warning</dt><dd>For now, we only support orders as high as 1.</dd></dl>
+<dl class="section see"><dt>See also</dt><dd><a href="http://mathworld.wolfram.com/NormalVector.html">http://mathworld.wolfram.com/NormalVector.html</a></dd></dl>
 <dl class="section author"><dt>Author</dt><dd>: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu </dd></dl>
 
 <p>Definition in file <a class="el" href="mtk__bc__descriptor__2d_8h_source.html">mtk_bc_descriptor_2d.h</a>.</p>
@@ -168,7 +170,7 @@ Typedefs</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="mtk__bc__descriptor__2d_8h.html">mtk_bc_descriptor_2d.h</a></li>
-    <li class="footer">Generated on Mon Nov 23 2015 17:21:08 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Tue Nov 24 2015 11:56:12 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

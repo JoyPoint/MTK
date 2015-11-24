@@ -1,12 +1,12 @@
-# \file mtk_bc_descriptor_2d_test_03.gnu
+# \file mtk_robin_bc_descriptor_2d_test_02.gnu
 #
 # \brief gnuplot script for test suite mtk_bc_descriptor_2d_test.cc
 #
 # Minimally-complete gnuplot script to visualize data files created by the
-# mtk::UniStgGrid2D::WriteToFile method in the TestImposeOnGrid test
-# implemented in the mtk_bc_descriptor_2d_test.cc test suite.
+# mtk::DenseMatrix::WriteToFile method in the TestReturnAsDenseMatrixWriteToFile
+# test implemented in the mtk_lap_2d_test.cc test suite.
 #
-# \warning Not intended to be a general solution but a minimal guidance.
+# \warning Not intended to be a general solution gut a minimal guidance.
 #
 # \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 
@@ -58,40 +58,39 @@
 
 reset
 
-name = "mtk_bc_descriptor_2d_test_03"
+name = "mtk_robin_bc_descriptor_2d_test_02"
 
 # wxt terminal (wxWidgets library) for live rendering.
 set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
 
 # png terminal for disk storage.
-# set terminal png
-# set output name.".png"
+set terminal png
+set output name.".png"
+
+# Data manipulation.
+tol = 0.0000001
+f(x) = abs(x - 0.0) > tol? 100: 0.0
 
 # Data visualization.
-set grid
-# Comment next line for a 3D surface plot where z = u(x,y):
-# set view map
+set palette defined (0 '#ffffff', 1 '#000000')
 
-set palette defined (0 '#0000ff', \
-                     1 '#00ff00', \
-                     2 '#ff0000')
+unset colorbox
 
 # Axes.
-set xlabel "x"
+set xlabel "Column"
 set x2tics
 
-set ylabel "y"
+set ylabel "Row"
+set yrange [] reverse
 
 set autoscale fix
 
+set grid
+
 # Title and legend.
-set title "Scalar Field on a Uniform Staggered 2D Grid"
+set title "Matrix Encoding a 2D 2nd-order Mimetic Laplacian with Dirichlet BCs"
 
-set key bmargin center horizontal
+unset key
 
-# View coordinates of the centers:
-splot name.".dat" u 1:2:3:xticlabels(1):yticlabels(2) w points pt 7 palette \
-  title "u(x,y)"
-
-# View coordinates of the cell edges:
-splot name.".dat" u 1:2:3 w points pt 7 palette title "u(x,y)"
+plot name.".dat" u 2:1:(f($3)) title "Magnitude of entry" w p pt 5 ps 0.5 \
+  palette

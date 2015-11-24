@@ -217,7 +217,7 @@ class UniStgGrid2D {
 
   \param[in] ScalarField Pointer to the function implementing the scalar field.
   */
-  void BindScalarField(Real (*ScalarField)(Real xx, Real yy));
+  void BindScalarField(Real (*ScalarField)(const Real &xx, const Real &yy));
 
   /*!
   \brief Binds a given vector field to the grid.
@@ -233,8 +233,10 @@ class UniStgGrid2D {
   \param[in] VectorFieldPComponent Pointer to the function implementing the \$
   q \$ component of the vector field.
   */
-  void BindVectorField(Real (*VectorFieldPComponent)(Real xx,Real yy),
-                       Real (*VectorFieldQComponent)(Real xx,Real yy));
+  void BindVectorField(Real (*VectorFieldPComponent)(const Real &xx,
+                                                     const Real &yy),
+                       Real (*VectorFieldQComponent)(const Real &xx,
+                                                     const Real &yy));
 
   /*!
   \brief Writes grid to a file compatible with Gnuplot 4.6.
@@ -267,7 +269,7 @@ class UniStgGrid2D {
   \$ p \$ component of the vector field.
   */
   void BindVectorFieldPComponent(
-    Real (*VectorFieldPComponent)(Real xx, Real yy));
+    Real (*VectorFieldPComponent)(const Real &xx, const Real &yy));
 
   /*!
   \brief Binds a given component of a vector field to the grid.
@@ -282,7 +284,7 @@ class UniStgGrid2D {
   \$ q \$ component of the vector field.
   */
   void BindVectorFieldQComponent(
-    Real (*VectorFieldQComponent)(Real xx, Real yy));
+    Real (*VectorFieldQComponent)(const Real &xx, const Real &yy));
 
   std::vector<Real> discrete_domain_x_; ///< Array of spatial data.
   std::vector<Real> discrete_domain_y_; ///< Array of spatial data.

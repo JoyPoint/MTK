@@ -94,12 +94,30 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk.h"
 
-mtk::Real Source(mtk::Real xx) {
+mtk::Real Alpha(const mtk::Real &tt) {
+  mtk::Real lambda = -1.0;
+  return -exp(lambda);
+}
+
+mtk::Real Beta(const mtk::Real &tt) {
+  mtk::Real lambda = -1.0;
+  return (exp(lambda) - 1.0)/lambda;
+};
+
+mtk::Real Omega(const mtk::Real &tt) {
+  return -1.0;
+};
+
+mtk::Real Epsilon(const mtk::Real &tt) {
+  return 0.0;
+};
+
+mtk::Real Source(const mtk::Real &xx) {
   mtk::Real lambda = -1.0;
   return lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
 }
 
-mtk::Real KnownSolution(mtk::Real xx) {
+mtk::Real KnownSolution(const mtk::Real &xx) {
   mtk::Real lambda = -1.0;
   return (exp(lambda*xx) - 1.0)/(exp(lambda) - 1.0);
 }
@@ -117,33 +135,24 @@ int main () {
   mtk::UniStgGrid1D source(west_bndy_x, east_bndy_x, num_cells_x);
   mtk::UniStgGrid1D comp_sol(west_bndy_x, east_bndy_x, num_cells_x);
   mtk::UniStgGrid1D known_sol(west_bndy_x, east_bndy_x, num_cells_x);
-
   if (!lap.ConstructLap1D()) {
     std::cerr << "Mimetic lap could not be built." << std::endl;
     return EXIT_FAILURE;
   }
   mtk::DenseMatrix lapm(lap.ReturnAsDenseMatrix(comp_sol));
-  if (!grad.ConstructGrad1D()) {
-    std::cerr << "Mimetic grad could not be built." << std::endl;
+  source.BindScalarField(Source);
+  mtk::RobinBCDescriptor1D bcs;
+  bcs.PushBackWestCoeff(Alpha);
+  bcs.PushBackWestCoeff(Beta);
+  bcs.PushBackEastCoeff(Alpha);
+  bcs.PushBackEastCoeff(Beta);
+  bcs.set_west_condition(Omega);
+  bcs.set_east_condition(Epsilon);
+  if (!bcs.ImposeOnLaplacianMatrix(lap, lapm)) {
+    std::cerr << "BCs  could not be bound to the matrix." << std::endl;
     return EXIT_FAILURE;
   }
-  mtk::DenseMatrix gradm(grad.ReturnAsDenseMatrix(comp_sol));
-
-  source.BindScalarField(Source);
-
-  for (auto ii = 0; ii < grad.num_bndy_coeffs(); ++ii) {
-    west_coeffs.push_back(-((exp(-1.0) - 1.0)/-1.0)*gradm.GetValue(0, ii));
-  }
-  for (auto ii = 0; ii < grad.num_bndy_coeffs(); ++ii) {
-    east_coeffs.push_back(
-      ((exp(-1.0) - 1.0)/-1.0)*gradm.GetValue(gradm.num_rows() - 1,
-                                              gradm.num_cols() - 1 - ii));
-  }
-  west_coeffs[0] += -exp(-1.0);
-  east_coeffs[0] += -exp(-1.0);
-  mtk::BCDescriptor1D::ImposeOnLaplacianMatrix(lapm, west_coeffs, east_coeffs);
-  mtk::BCDescriptor1D::ImposeOnGrid(source, -1.0, 0.0);
-
+  bcs.ImposeOnGrid(source);
   int info{mtk::LAPACKAdapter::SolveDenseSystem(lapm, source)};
   if (info != 0) {
     std::cerr << "Something wrong solving system! info = " << info << std::endl;
@@ -153,8 +162,8 @@ int main () {
   source.WriteToFile("minimalistic_poisson_1d_comp_sol.dat", "x", "~u(x)");
   known_sol.BindScalarField(KnownSolution);
   relative_norm_2_error =
-    mtk::BLASAdapter::RelNorm2Error(source.discrete_field_u(),
-                                    known_sol.discrete_field_u(),
+    mtk::BLASAdapter::RelNorm2Error(source.discrete_field(),
+                                    known_sol.discrete_field(),
                                     known_sol.num_cells_x());
   std::cout << "relative_norm_2_error = ";
   std::cout << relative_norm_2_error << std::endl;

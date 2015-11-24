@@ -1,9 +1,5 @@
 var group__c07_mim__ops =
 [
-    [ "BCDescriptor1D", "classmtk_1_1BCDescriptor1D.html", [
-      [ "ImposeOnGrid", "classmtk_1_1BCDescriptor1D.html#adfb101c1a12b452f83dacd207febea0a", null ],
-      [ "ImposeOnLaplacianMatrix", "classmtk_1_1BCDescriptor1D.html#a33e51235eaa930e4470f027001a023cf", null ]
-    ] ],
     [ "BCDescriptor2D", "classmtk_1_1BCDescriptor2D.html", [
       [ "BCDescriptor2D", "classmtk_1_1BCDescriptor2D.html#abbc3af29202dbfef203f4cafd9566fd0", null ],
       [ "BCDescriptor2D", "classmtk_1_1BCDescriptor2D.html#ae8a93352a94efed52747b710e6ff7893", null ],
@@ -32,7 +28,6 @@ var group__c07_mim__ops =
       [ "set_west_condition", "classmtk_1_1BCDescriptor2D.html#a006050efe15b1be75b36a74a23051392", null ],
       [ "east_coefficients_", "classmtk_1_1BCDescriptor2D.html#a1f90fc303984bf18c136a34896bbb7c9", null ],
       [ "east_condition_", "classmtk_1_1BCDescriptor2D.html#a6cca0c70293203c9d88773e5d5f93418", null ],
-      [ "generate_space_", "classmtk_1_1BCDescriptor2D.html#a3ef0bc7e9fbc16669099314dd34b170a", null ],
       [ "highest_order_diff_east_", "classmtk_1_1BCDescriptor2D.html#aea5e539a10d5641bd605ebe583c14bc5", null ],
       [ "highest_order_diff_north_", "classmtk_1_1BCDescriptor2D.html#a6cdeefe70f5bef93196f34ab2949cad2", null ],
       [ "highest_order_diff_south_", "classmtk_1_1BCDescriptor2D.html#a1fb094e5e53ecfba32fe9fe56c051c47", null ],
@@ -189,6 +184,16 @@ var group__c07_mim__ops =
       [ "operator<<", "classmtk_1_1Quad1D.html#af1194665f127e323852f778c8c0d4f95", null ],
       [ "degree_approximation_", "classmtk_1_1Quad1D.html#aaff281c19f70faeb07f610fcffb300c5", null ],
       [ "weights_", "classmtk_1_1Quad1D.html#abce6b19c2e089bc0691ef7623ec6d994", null ]
+    ] ],
+    [ "BCDescriptor1D", "classmtk_1_1BCDescriptor1D.html", [
+      [ "ImposeOnGrid", "classmtk_1_1BCDescriptor1D.html#adfb101c1a12b452f83dacd207febea0a", null ],
+      [ "ImposeOnLaplacianMatrix", "classmtk_1_1BCDescriptor1D.html#a33e51235eaa930e4470f027001a023cf", null ],
+      [ "east_coefficients_", "classmtk_1_1BCDescriptor1D.html#af29b1f07614f7fc05032b0be8838fe7b", null ],
+      [ "east_condition_", "classmtk_1_1BCDescriptor1D.html#a828e318e90b255e2ebf0ad7495e4fe32", null ],
+      [ "highest_order_diff_east_", "classmtk_1_1BCDescriptor1D.html#a8a1190eb88ba70e1e98b0905e11631db", null ],
+      [ "highest_order_diff_west_", "classmtk_1_1BCDescriptor1D.html#a18ac9c75ffd5af33366c0c43c8191cf2", null ],
+      [ "west_coefficients_", "classmtk_1_1BCDescriptor1D.html#a0d4c145da23dd5eaacebd17ee421c0a6", null ],
+      [ "west_condition_", "classmtk_1_1BCDescriptor1D.html#a2e2c621083756cc2c47b981302485836", null ]
     ] ],
     [ "CoefficientFunction2D", "group__c07-mim__ops.html#gad9e1c0ace886b0029aefffa5f320e852", null ]
 ];

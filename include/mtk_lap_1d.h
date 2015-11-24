@@ -92,6 +92,20 @@ class Lap1D {
   ~Lap1D();
 
   /*!
+  \brief Order of accuracy of the operator.
+
+  \return Order of accuracy of the operator.
+  */
+  int order_accuracy() const;
+
+  /*!
+  \brief Mimetic threshold used in the CBS algorithm to construct this operator.
+
+  \return Mimetic threshold used in the CBS algorithm to construct operator.
+  */
+  Real mimetic_threshold() const;
+
+  /*!
   \brief Factory method implementing the CBS Algorithm to build operator.
 
   \return Success of the solution.

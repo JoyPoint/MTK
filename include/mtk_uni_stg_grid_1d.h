@@ -144,7 +144,7 @@ class UniStgGrid1D {
 
   \todo Review const-correctness of the pointer we return. Look at the STL!
   */
-  Real *discrete_field_u();
+  Real *discrete_field();
 
   /*!
   \brief Provides access to the number of cells of the grid.
@@ -158,7 +158,7 @@ class UniStgGrid1D {
 
   \param[in] ScalarField Pointer to the function implementing the scalar field.
   */
-  void BindScalarField(Real (*ScalarField)(Real xx));
+  void BindScalarField(Real (*ScalarField)(const Real &xx));
 
   /*!
   \brief Binds a given vector field to the grid.
@@ -192,7 +192,7 @@ class UniStgGrid1D {
   FieldNature nature_;  ///< Nature of the discrete field.
 
   std::vector<Real> discrete_domain_x_; ///< Array of spatial data.
-  std::vector<Real> discrete_field_u_;  ///< Array of field's data.
+  std::vector<Real> discrete_field_;  ///< Array of field's data.
 
   Real west_bndy_x_;  ///< West boundary spatial coordinate.
   Real east_bndy_x_;  ///< East boundary spatial coordinate.

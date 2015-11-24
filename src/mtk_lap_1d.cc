@@ -116,6 +116,16 @@ mtk::Lap1D::~Lap1D() {
   laplacian_ = nullptr;
 }
 
+int mtk::Lap1D::order_accuracy() const {
+
+  return order_accuracy_;
+}
+
+mtk::Real mtk::Lap1D::mimetic_threshold() const {
+
+  return mimetic_threshold_;
+}
+
 bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
                                 mtk::Real mimetic_threshold) {
 
