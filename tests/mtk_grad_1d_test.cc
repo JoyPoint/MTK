@@ -275,6 +275,28 @@ void TestWriteToFile() {
   mtk::Tools::Assert(assertion);
 }
 
+void TestMimBndy() {
+
+  mtk::Tools::BeginUnitTestNo(9);
+
+  mtk::Grad1D grad2;
+
+  bool assertion = grad2.ConstructGrad1D();
+
+  if (!assertion) {
+    std::cerr << "Mimetic grad (2nd order) could not be built." << std::endl;
+  }
+
+  std::cout << grad2 << std::endl;
+
+  mtk::DenseMatrix grad2m(grad2.mim_bndy());
+
+  std::cout << grad2m << std::endl;
+
+  mtk::Tools::EndUnitTestNo(9);
+  mtk::Tools::Assert(assertion);
+}
+
 int main () {
 
   std::cout << "Testing mtk::Grad1D class." << std::endl;
@@ -287,6 +309,7 @@ int main () {
   TestReturnAsDenseMatrixWithGrid();
   TestReturnAsDimensionlessDenseMatrix();
   TestWriteToFile();
+  TestMimBndy();
 }
 
 #else

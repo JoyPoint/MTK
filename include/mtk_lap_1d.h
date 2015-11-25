@@ -106,6 +106,13 @@ class Lap1D {
   Real mimetic_threshold() const;
 
   /*!
+  \brief Value of \f$ \Delta x \f$ used be scaled. If 0, then dimensionless.
+
+  \return Value of \f$ \Delta x \f$ used be scaled. If 0, then dimensionless.
+  */
+  Real delta() const;
+
+  /*!
   \brief Factory method implementing the CBS Algorithm to build operator.
 
   \return Success of the solution.
@@ -132,6 +139,8 @@ class Lap1D {
   int laplacian_length_;  ///< Length of the output array.
 
   Real *laplacian_;      ///< Output array containing the operator and weights.
+
+  mutable Real delta_;     ///<< If 0.0, then this Laplacian is dimensionless.
 
   Real mimetic_threshold_;  ///<< Mimetic threshold.
 };

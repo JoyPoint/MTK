@@ -138,7 +138,7 @@ void mtk::RobinBCDescriptor1D::PushBackEastCoeff(
                       __FILE__, __LINE__, __func__);
   #endif
 
-  west_coefficients_.push_back(ce);
+  east_coefficients_.push_back(ce);
 
   highest_order_diff_east_++;
 }
@@ -197,17 +197,42 @@ bool mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix(
     }
 
     /// 2.2. Extract the coefficients approximating the boundary.
+
+    /// \warning Coefficients returned by the mim_bndy getter are dimensionless!
+    /// Therefore we must scale them by delta_x (from the grid), before adding
+    /// to the matrix! But this information is in the given lap!
     mtk::DenseMatrix coeffs(grad.mim_bndy());
+
+    mtk::Real idx = mtk::kOne/lap.delta();
 
     /// 2.3. Impose Neumann condition at the west.
     for (int ii = 0; ii < coeffs.num_cols(); ++ii) {
-      mtk::Real aux{-(west_coefficients_[1])(time)*coeffs.GetValue(0, ii)};
+      /// 2.3.1. Get gradient coefficient and scale it.
+      mtk::Real aux{idx*coeffs.GetValue(0, ii)};
+      /// 2.3.2. Multiply times the coefficient for this boundary, times the
+      /// unit normal for this boundary.
+      mtk::Real unit_normal{-mtk::kOne};
+      aux *= unit_normal*(west_coefficients_[1])(time);
+      /// 2.3.3. Set the final value summing it with what is on the matrix.
       matrix.SetValue(0, ii, matrix.GetValue(0, ii) + aux);
     }
 
     /// 2.4. Impose Neumann condition at the east.
+
+    /// \warning The Coefficients returned by the mim_bndy getter are those
+    /// intended for the west boundary. We must enforce the
+    /// center-skew-symmetry of the resulting operator by permuting their
+    /// location in the matrix, and changing their sign.
+
     for (int ii = 0; ii < coeffs.num_cols(); ++ii) {
-      mtk::Real aux{(east_coefficients_[1])(time)*coeffs.GetValue(0, ii)};
+      /// 2.4.1. Get gradient coefficient and scale it.
+      mtk::Real aux{idx*coeffs.GetValue(0, ii)};
+      /// 2.4.2. Multiply times the coefficient for this boundary, times the
+      /// unit normal for this boundary, and change the sign to enforce
+      /// center-skew-symmetry.
+      mtk::Real unit_normal{mtk::kOne};
+      aux *= -unit_normal*(east_coefficients_[1])(time);
+      /// 2.4.3. Set the final value summing it with what is on the matrix.
       matrix.SetValue(matrix.num_rows() - 1,
                       matrix.num_rows() - 1 - ii,
                       matrix.GetValue(matrix.num_rows() - 1,

@@ -199,7 +199,6 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
   mimetic_threshold_ = mimetic_threshold;
 
   /// 1. Compute stencil for the interior cells.
-
   bool abort_construction = ComputeStencilInteriorGrid();
 
   #if MTK_DEBUG_LEVEL > 0
@@ -263,7 +262,6 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
   }
 
   /// 3. Compute preliminary approximation (non-mimetic) on the boundaries.
-
   abort_construction = ComputePreliminaryApproximations();
 
   #if MTK_DEBUG_LEVEL > 0
@@ -275,7 +273,6 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
   #endif
 
   /// 4. Compute quadrature weights to impose the mimetic conditions.
-
   abort_construction = ComputeWeights();
 
   #if MTK_DEBUG_LEVEL > 0
@@ -286,8 +283,7 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
   }
   #endif
 
-    /// 5. Compute real approximation (mimetic) on the boundaries.
-
+  /// 5. Compute real approximation (mimetic) on the boundaries.
   if (dim_null_ > 0) {
 
     abort_construction = ComputeStencilBoundaryGrid();
@@ -344,10 +340,10 @@ mtk::Real *mtk::Grad1D::weights_cbs() const {
 
 mtk::DenseMatrix mtk::Grad1D::mim_bndy() const {
 
-  mtk::DenseMatrix xx(dim_null_, 3*order_accuracy_/2);
+  mtk::DenseMatrix xx(dim_null_ + 1, 3*order_accuracy_/2);
 
   auto counter = 0;
-  for (auto ii = 0; ii < dim_null_; ++ii) {
+  for (auto ii = 0; ii < dim_null_ + 1; ++ii) {
     for(auto jj = 0; jj < 3*order_accuracy_/2; ++jj) {
       xx.SetValue(ii,jj, gradient_[2*order_accuracy_ + 1 + counter]);
       counter++;

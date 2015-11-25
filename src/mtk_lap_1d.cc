@@ -108,6 +108,7 @@ std::ostream& operator <<(std::ostream &stream, mtk::Lap1D &in) {
 mtk::Lap1D::Lap1D():
   order_accuracy_(mtk::kDefaultOrderAccuracy),
   laplacian_length_(),
+  delta_(mtk::kZero),
   mimetic_threshold_(mtk::kDefaultMimeticThreshold) {}
 
 mtk::Lap1D::~Lap1D() {
@@ -124,6 +125,11 @@ int mtk::Lap1D::order_accuracy() const {
 mtk::Real mtk::Lap1D::mimetic_threshold() const {
 
   return mimetic_threshold_;
+}
+
+mtk::Real mtk::Lap1D::delta() const {
+
+  return delta_;
 }
 
 bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
@@ -147,7 +153,6 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
   mimetic_threshold_ = mimetic_threshold;
 
   /// 1. Create gradient operator using specific values for the Laplacian.
-
   mtk::Grad1D grad; // Mimetic gradient.
 
   bool info = grad.ConstructGrad1D(order_accuracy_, mimetic_threshold_);
@@ -176,10 +181,10 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
 
   // However, we must choose a grid that implied a step size of 1, so to get
   // the approximating coefficients, without being affected from the
-  // normalization with respect to the grid.
+  // normalization with respect to the grid (dimensionless).
 
   // Also, the grid must be of the minimum size to support the requested order
-  // of accuracy. We must please the divergence.
+  // of accuracy. We must please the divergence for this!
 
   mtk::UniStgGrid1D aux(mtk::kZero,
                         (mtk::Real) 3*order_accuracy_ - 1,
@@ -221,7 +226,7 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
 
   /// 5. Extract the coefficients from the matrix and store them in the array.
 
-  /// \warning We do not compute weights for this operator.
+  /// \warning We do not compute weights for this operator... no need to!
 
   // The output array will have this form:
   // 1. The first entry of the array will contain the used order kk.
@@ -269,6 +274,8 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
     }
   }
 
+  delta_ = mtk::kZero;
+
   return true;
 }
 
@@ -283,6 +290,8 @@ mtk::DenseMatrix mtk::Lap1D::ReturnAsDenseMatrix(
   #endif
 
   mtk::DenseMatrix lap(nn + 2, nn + 2); // Laplacian matrix to be returned.
+
+  delta_ = grid.delta_x();
 
   mtk::Real idx{mtk::kOne/(grid.delta_x()*grid.delta_x())}; // Inverse of dx^2.
 

@@ -64,8 +64,8 @@ name = "mtk_robin_bc_descriptor_2d_test_02"
 set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
 
 # png terminal for disk storage.
-set terminal png
-set output name.".png"
+# set terminal png
+# set output name.".png"
 
 # Data manipulation.
 tol = 0.0000001
@@ -83,9 +83,9 @@ set x2tics
 set ylabel "Row"
 set yrange [] reverse
 
-set autoscale fix
-
 set grid
+
+set autoscale fix
 
 # Title and legend.
 set title "Matrix Encoding a 2D 2nd-order Mimetic Laplacian with Dirichlet BCs"
