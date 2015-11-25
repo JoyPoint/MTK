@@ -22,13 +22,21 @@ We consider Robin's boundary conditions of the form:
 \f[
 \alpha p(b) + \beta p'(b) = \epsilon,
 \f]
-where \f$ \alpha \f$, \f$ \alpha \f$, \f$ \alpha \f$, and \f$ \alpha \f$ are
-real numbers.
+where \f$ \alpha = -\exp(\lambda) \f$,
+\f$ \beta = (\exp(\lambda) - 1.0)/\lambda \f$,
+\f$ \omega = -1 \f$, and \f$ \epsilon = 0 \f$.
 
 The analytical solution for this problem is given by:
 \f[
 p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}.
 \f]
+
+The mimetic counterpart of this equation is:
+\f[
+-\breve{\mathbf{L}}^k_x \tilde{p} = \tilde{s}.
+\f]
+
+Finally, we will solve this problem considering \f$ k = 2 \f$.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -90,14 +98,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 mtk::Real Alpha(const mtk::Real &tt) {
 
-  mtk::Real lambda = -1.0;
+  mtk::Real lambda{-1.0};
 
   return -exp(lambda);
 }
 
 mtk::Real Beta(const mtk::Real &tt) {
 
-  mtk::Real lambda = -1.0;
+  mtk::Real lambda{-1.0};
 
   return (exp(lambda) - 1.0)/lambda;
 };
@@ -114,14 +122,14 @@ mtk::Real Epsilon(const mtk::Real &tt) {
 
 mtk::Real Source(const mtk::Real &xx) {
 
-  mtk::Real lambda = -1.0;
+  mtk::Real lambda{-1.0};
 
-  return lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
+  return -lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
 }
 
 mtk::Real KnownSolution(const mtk::Real &xx) {
 
-  mtk::Real lambda = -1.0;
+  mtk::Real lambda{-1.0};
 
   return (exp(lambda*xx) - 1.0)/(exp(lambda) - 1.0);
 }
@@ -132,9 +140,9 @@ int main () {
   std::cout << "with Robin BCs." << std::endl;
 
   /// 1. Discretize space.
-  mtk::Real west_bndy_x = 0.0;
-  mtk::Real east_bndy_x = 1.0;
-  int num_cells_x = 5;
+  mtk::Real west_bndy_x{0.0};
+  mtk::Real east_bndy_x{1.0};
+  int num_cells_x{5};
 
   mtk::UniStgGrid1D comp_sol(west_bndy_x, east_bndy_x, num_cells_x);
 
@@ -142,13 +150,20 @@ int main () {
   mtk::Lap1D lap;
 
   if (!lap.ConstructLap1D()) {
-    std::cerr << "Mimetic lap could not be built." << std::endl;
+    std::cerr << "Mimetic Laplacian could not be built." << std::endl;
     return EXIT_FAILURE;
   }
 
   mtk::DenseMatrix lapm(lap.ReturnAsDenseMatrix(comp_sol));
 
-  std::cout << "Mimetic Laplacian operator: " << std::endl;
+  std::cout << "lapm = " << std::endl;
+  std::cout << lapm << std::endl;
+
+  /// 2.1. Multiply times -1 to mimic the problem.
+
+  lapm = mtk::BLASAdapter::RealDenseSM(-1.0, lapm);
+
+  std::cout << "-lapm = " << std::endl;
   std::cout << lapm << std::endl;
 
   /// 3. Create grid for source term.
@@ -156,33 +171,46 @@ int main () {
 
   source.BindScalarField(Source);
 
+  std::cout << "source =" << std::endl;
   std::cout << source << std::endl;
 
-  if (!source.WriteToFile("poisson_1d_source.dat", "x", "s(x)")) {
-    std::cerr << "Mimetic lap could not be built." << std::endl;
-    return EXIT_FAILURE;
-  }
+  /// 4. Apply Boundary Conditions to operator.
+  mtk::RobinBCDescriptor1D robin_bc_desc_1d;
 
-  /// 4. Apply Boundary Conditions to both operator and source term.
-  mtk::RobinBCDescriptor1D bcs;
+  robin_bc_desc_1d.PushBackWestCoeff(Alpha);
+  robin_bc_desc_1d.PushBackWestCoeff(Beta);
 
-  bcs.PushBackWestCoeff(Alpha);
-  bcs.PushBackWestCoeff(Beta);
+  robin_bc_desc_1d.PushBackEastCoeff(Alpha);
+  robin_bc_desc_1d.PushBackEastCoeff(Beta);
 
-  bcs.PushBackEastCoeff(Alpha);
-  bcs.PushBackEastCoeff(Beta);
+  robin_bc_desc_1d.set_west_condition(Omega);
+  robin_bc_desc_1d.set_east_condition(Epsilon);
 
-  bcs.set_west_condition(Omega);
-  bcs.set_east_condition(Epsilon);
-
-  if (!bcs.ImposeOnLaplacianMatrix(lap, lapm)) {
+  if (!robin_bc_desc_1d.ImposeOnLaplacianMatrix(lap, lapm)) {
     std::cerr << "BCs  could not be bound to the matrix." << std::endl;
     return EXIT_FAILURE;
   }
 
-  bcs.ImposeOnGrid(source);
+  std::cout << "Mimetic Laplacian operator with imposed BCs: " << std::endl;
+  std::cout << lapm << std::endl;
 
-  /// 5. Solve the problem.
+  if (!lapm.WriteToFile("poisson_1d_lapm.dat")) {
+    std::cerr << "Laplacian matrix could not be written to disk." << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  /// 5. Apply Boundary Conditions to source term's grid.
+  robin_bc_desc_1d.ImposeOnGrid(source);
+
+  std::cout << "source =" << std::endl;
+  std::cout << source << std::endl;
+
+  if (!source.WriteToFile("poisson_1d_source.dat", "x", "s(x)")) {
+    std::cerr << "Source term could not be written to disk." << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  /// 6. Solve the problem.
   int info{mtk::LAPACKAdapter::SolveDenseSystem(lapm, source)};
 
   if (!info) {
@@ -202,7 +230,7 @@ int main () {
     return EXIT_FAILURE;
   }
 
-  /// 6. Compare computed solution against known solution.
+  /// 7. Compare computed solution against known solution.
   mtk::UniStgGrid1D known_sol(west_bndy_x, east_bndy_x, num_cells_x);
 
   known_sol.BindScalarField(KnownSolution);

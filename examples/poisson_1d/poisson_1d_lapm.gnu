@@ -1,10 +1,10 @@
-# \file poisson_1d_source.gnu
+# \file poisson_1d_lapm.gnu
 #
-# \brief gnuplot script for example poisson_1d.cc
+# \brief gnuplot script for test suite mtk_lap_2d_test.cc
 #
 # Minimally-complete gnuplot script to visualize data files created by the
-# mtk::UniStgGrid1D::WriteToFile method in the main module of the poisson_1d.cc
-# example.
+# mtk::DenseMatrix::WriteToFile method in the TestReturnAsDenseMatrixWriteToFile
+# test implemented in the mtk_lap_2d_test.cc test suite.
 #
 # \warning Not intended to be a general solution gut a minimal guidance.
 #
@@ -58,7 +58,7 @@
 
 reset
 
-name = "poisson_1d_source"
+name = "poisson_1d_lapm"
 
 # wxt terminal (wxWidgets library) for live rendering.
 set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
@@ -67,24 +67,30 @@ set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
 # set terminal png
 # set output name.".png"
 
-set termoption dash
+# Data manipulation.
+tol = 0.0000001
+f(x) = abs(x - 0.0) > tol? 100: 0.0
 
 # Data visualization.
+set palette defined (0 '#ffffff', 1 '#000000')
 
-# Style 1 for analytic/control data.
-set style line 1 lt 2 lc rgb "black" lw 1 pt 7 ps 0.2
-# Style 2 for computed data.
-set style line 2 lt 2 lc rgb 'black' lw 1 pt 7 ps 1
+unset colorbox
 
 # Axes.
-set xlabel "x"
-set ylabel "s(x)"
+set xlabel "Column"
+set x2tics
+
+set ylabel "Row"
+set yrange [] reverse
+
 set grid
+
 set autoscale fix
 
 # Title and legend.
-set title "Source Term with BCs bound to a 1D Uniform Staggered Grid"
+set title "Matrix Encoding a 1D 2nd-order Mimetic Laplacian with Robin BCs"
 
-set key bmargin center horizontal
+unset key
 
-plot name.".dat" u 1:2:xtic(1) title "s(x)"  w lp ls 1
+plot name.".dat" u 2:1:(f($3)) title "Magnitude of entry" w p pt 5 ps 1.0 \
+  palette

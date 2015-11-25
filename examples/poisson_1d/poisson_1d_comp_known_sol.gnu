@@ -1,4 +1,4 @@
-# \file poisson_1d_source.gnu
+# \file poisson_1d_comp_known_sol.gnu
 #
 # \brief gnuplot script for example poisson_1d.cc
 #
@@ -58,7 +58,7 @@
 
 reset
 
-name = "poisson_1d_source"
+# Terminals
 
 # wxt terminal (wxWidgets library) for live rendering.
 set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
@@ -78,13 +78,15 @@ set style line 2 lt 2 lc rgb 'black' lw 1 pt 7 ps 1
 
 # Axes.
 set xlabel "x"
-set ylabel "s(x)"
+set ylabel "u(x)"
 set grid
 set autoscale fix
 
 # Title and legend.
-set title "Source Term with BCs bound to a 1D Uniform Staggered Grid"
+set title "Analytic and Computed Solution"
 
 set key bmargin center horizontal
 
-plot name.".dat" u 1:2:xtic(1) title "s(x)"  w lp ls 1
+plot \
+  "poisson_1d_known_sol.dat" u 1:2:xtic(1) title "Analytic" w lp ls 1, \
+  "poisson_1d_comp_sol.dat" u 1:2:xtic(1) title "Computed" w p ls 2

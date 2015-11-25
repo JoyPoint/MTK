@@ -60,6 +60,8 @@ reset
 
 name = "poisson_1d_comp_sol"
 
+# Terminals
+
 # wxt terminal (wxWidgets library) for live rendering.
 set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
 
@@ -67,14 +69,24 @@ set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
 # set terminal png
 # set output name.".png"
 
+set termoption dash
+
+# Data visualization.
+
+# Style 1 for analytic/control data.
+set style line 1 lt 2 lc rgb "black" lw 1 pt 7 ps 1
+# Style 2 for computed data.
+set style line 2 lc rgb 'black' pt 7 ps 1
+
 # Axes.
 set xlabel "x"
-set ylabel "s(x)"
+set ylabel "u(x)"
 set grid
+set autoscale fix
 
 # Title and legend.
 set title "Computed Solution"
 
 set key bmargin center horizontal
 
-plot name.".dat" u 2:xticlabel(1) title "s(x)"  w lp
+plot name.".dat" u 1:2:xtic(1) title "u(x)" w points ls 2
