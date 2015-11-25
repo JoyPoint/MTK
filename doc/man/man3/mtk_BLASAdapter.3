@@ -1,4 +1,4 @@
-.TH "mtk::BLASAdapter" 3 "Tue Nov 24 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::BLASAdapter" 3 "Wed Nov 25 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -34,6 +34,10 @@ Adapter class for the BLAS API\&.
 .RI "static \fBDenseMatrix\fP \fBRealDenseMM\fP (\fBDenseMatrix\fP &aa, \fBDenseMatrix\fP &bb)"
 .br
 .RI "\fIReal-Arithmetic General (Dense matrices) Matrix-Matrix multiplier\&. \fP"
+.ti -1c
+.RI "static \fBDenseMatrix\fP \fBRealDenseSM\fP (\fBReal\fP alpha, \fBDenseMatrix\fP &aa)"
+.br
+.RI "\fIReal-Arithmetic General (Dense matrices) Scalar-Matrix multiplier\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -91,6 +95,14 @@ http://ejspeiro.github.io/Netlib-and-CPP/
 .RE
 .PP
 
+.IP "1." 4
+Make sure input matrices are row-major ordered\&.
+.IP "2." 4
+Setup the problem\&.
+.IP "3." 4
+Perform multiplication\&. 
+.PP
+
 .PP
 Definition at line 409 of file mtk_blas_adapter\&.cc\&.
 .SS "void mtk::BLASAdapter::RealDenseMV (\fBmtk::Real\fP &alpha, \fBmtk::DenseMatrix\fP &aa, \fBmtk::Real\fP *xx, \fBmtk::Real\fP &beta, \fBmtk::Real\fP *yy)\fC [static]\fP"
@@ -118,6 +130,33 @@ http://ejspeiro.github.io/Netlib-and-CPP/
 
 .PP
 Definition at line 378 of file mtk_blas_adapter\&.cc\&.
+.SS "\fBmtk::DenseMatrix\fP mtk::BLASAdapter::RealDenseSM (\fBmtk::Real\fPalpha, \fBmtk::DenseMatrix\fP &aa)\fC [static]\fP"
+Performs:
+.PP
+\[ \mathbf{B} := \alpha\mathbf{A} \].PP
+\fBParameters:\fP
+.RS 4
+\fIalpha\fP Input scalar\&. 
+.br
+\fIaa\fP Input matrix\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+http://ejspeiro.github.io/Netlib-and-CPP/ 
+.RE
+.PP
+
+.IP "1." 4
+Make sure input matrices are row-major ordered\&.
+.IP "2." 4
+Setup the problem\&.
+.IP "3." 4
+Perform multiplication\&. 
+.PP
+
+.PP
+Definition at line 466 of file mtk_blas_adapter\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::BLASAdapter::RealNRM2 (\fBReal\fP *in, int &in_length)\fC [static]\fP"
 
 .PP

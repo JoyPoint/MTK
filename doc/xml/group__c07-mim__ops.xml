@@ -3,7 +3,6 @@
   <compounddef id="group__c07-mim__ops" kind="group">
     <compoundname>c07-mim_ops</compoundname>
     <title>Mimetic operators.</title>
-    <innerclass refid="classmtk_1_1BCDescriptor2D" prot="public">mtk::BCDescriptor2D</innerclass>
     <innerclass refid="classmtk_1_1Div1D" prot="public">mtk::Div1D</innerclass>
     <innerclass refid="classmtk_1_1Div2D" prot="public">mtk::Div2D</innerclass>
     <innerclass refid="classmtk_1_1Grad1D" prot="public">mtk::Grad1D</innerclass>
@@ -13,20 +12,35 @@
     <innerclass refid="classmtk_1_1Lap1D" prot="public">mtk::Lap1D</innerclass>
     <innerclass refid="classmtk_1_1Lap2D" prot="public">mtk::Lap2D</innerclass>
     <innerclass refid="classmtk_1_1Quad1D" prot="public">mtk::Quad1D</innerclass>
-    <innerclass refid="classmtk_1_1BCDescriptor1D" prot="public">mtk::BCDescriptor1D</innerclass>
+    <innerclass refid="classmtk_1_1RobinBCDescriptor1D" prot="public">mtk::RobinBCDescriptor1D</innerclass>
+    <innerclass refid="classmtk_1_1RobinBCDescriptor2D" prot="public">mtk::RobinBCDescriptor2D</innerclass>
       <sectiondef kind="typedef">
-      <memberdef kind="typedef" id="group__c07-mim__ops_1gad9e1c0ace886b0029aefffa5f320e852" prot="public" static="no">
+      <memberdef kind="typedef" id="group__c07-mim__ops_1ga04276745b4d511f0f3c636d6e0df7c2d" prot="public" static="no">
         <type>Real(*</type>
-        <definition>mtk::CoefficientFunction2D</definition>
-        <argsstring>)(const Real &amp;, const Real &amp;)</argsstring>
-        <name>CoefficientFunction2D</name>
+        <definition>mtk::CoefficientFunction0D</definition>
+        <argsstring>)(const Real &amp;tt)</argsstring>
+        <name>CoefficientFunction0D</name>
         <briefdescription>
-<para>A function of a BC coefficient evaluated on a 2D domain. </para>        </briefdescription>
+<para>A function of a BC coefficient evaluated on a 0D domain and time. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="warning"><para>This definition implies that, for now, coefficients will depend on space and time, thus no extra parameters can influence their behavior. We will fix this soon enough. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_robin_bc_descriptor_1d.h" line="111" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_robin_bc_descriptor_1d.h" bodystart="111" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="typedef" id="group__c07-mim__ops_1gaa79593eeb6676d6011db339e01983909" prot="public" static="no">
+        <type>Real(*</type>
+        <definition>mtk::CoefficientFunction1D</definition>
+        <argsstring>)(const Real &amp;xx, const Real &amp;tt)</argsstring>
+        <name>CoefficientFunction1D</name>
+        <briefdescription>
+<para>A function of a BC coefficient evaluated on a 1D domain and time. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" line="98" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h" bodystart="98" bodyend="-1"/>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_robin_bc_descriptor_2d.h" line="97" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_robin_bc_descriptor_2d.h" bodystart="97" bodyend="-1"/>
       </memberdef>
       </sectiondef>
     <briefdescription>

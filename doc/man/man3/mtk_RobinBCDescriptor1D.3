@@ -1,0 +1,304 @@
+.TH "mtk::RobinBCDescriptor1D" 3 "Wed Nov 25 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk::RobinBCDescriptor1D \- 
+.PP
+Impose Robin boundary conditions on the operators and on the grids\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mtk_robin_bc_descriptor_1d\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRobinBCDescriptor1D\fP ()"
+.br
+.RI "\fIDefault constructor\&. \fP"
+.ti -1c
+.RI "\fBRobinBCDescriptor1D\fP (const \fBRobinBCDescriptor1D\fP &desc)"
+.br
+.RI "\fICopy constructor\&. \fP"
+.ti -1c
+.RI "\fB~RobinBCDescriptor1D\fP () noexcept"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_west\fP () const noexcept"
+.br
+.RI "\fIGetter for the highest order of differentiation in the west boundary\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_east\fP () const noexcept"
+.br
+.RI "\fIGetter for the highest order of differentiation in the east boundary\&. \fP"
+.ti -1c
+.RI "void \fBPushBackWestCoeff\fP (\fBCoefficientFunction0D\fP cw)"
+.br
+.RI "\fIPush back coefficient function at west of lowest order diff\&. available\&. \fP"
+.ti -1c
+.RI "void \fBPushBackEastCoeff\fP (\fBCoefficientFunction0D\fP ce)"
+.br
+.RI "\fIPush back coefficient function at east of lowest order diff\&. available\&. \fP"
+.ti -1c
+.RI "void \fBset_west_condition\fP (\fBReal\fP(*west_condition)(const \fBReal\fP &tt)) noexcept"
+.br
+.RI "\fISet boundary condition at west\&. \fP"
+.ti -1c
+.RI "void \fBset_east_condition\fP (\fBReal\fP(*east_condition)(const \fBReal\fP &tt)) noexcept"
+.br
+.RI "\fISet boundary condition at east\&. \fP"
+.ti -1c
+.RI "bool \fBImposeOnLaplacianMatrix\fP (const \fBLap1D\fP &lap, \fBDenseMatrix\fP &matrix, const \fBReal\fP &time=\fBmtk::kZero\fP) const "
+.br
+.RI "\fIImposes the condition on the operator represented as matrix\&. \fP"
+.ti -1c
+.RI "void \fBImposeOnGrid\fP (\fBUniStgGrid1D\fP &grid, const \fBReal\fP &time=\fBmtk::kZero\fP) const "
+.br
+.RI "\fIImposes the condition on the grid\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBhighest_order_diff_west_\fP"
+.br
+.RI "\fIHighest order of differentiation for west\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_east_\fP"
+.br
+.RI "\fIHighest order of differentiation for east\&. \fP"
+.ti -1c
+.RI "std::vector
+.br
+< \fBCoefficientFunction0D\fP > \fBwest_coefficients_\fP"
+.br
+.RI "\fICoeffs\&. west\&. \fP"
+.ti -1c
+.RI "std::vector
+.br
+< \fBCoefficientFunction0D\fP > \fBeast_coefficients_\fP"
+.br
+.RI "\fICoeffs\&. east\&. \fP"
+.ti -1c
+.RI "\fBReal\fP(* \fBwest_condition_\fP )(const \fBReal\fP &tt)"
+.br
+.RI "\fICondition for west\&. \fP"
+.ti -1c
+.RI "\fBReal\fP(* \fBeast_condition_\fP )(const \fBReal\fP &tt)"
+.br
+.RI "\fICondition for east\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class presents an interface for the user to specify Robin boundary conditions on 1D mimetic operators and the grids they are acting on\&.
+.PP
+\fBDef\&.\fP Let $ u(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} $ be the solution to an ordinary or partial differential equation of interest\&. We say that $ u $ satisfies a \fBRobin boundary condition on\fP $ \partial\Omega $ if and only if there exists $ \beta(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} $ so that: \[ \forall t \in [t_0,t_n]\; \forall \mathbf{x} \in \partial\Omega: \delta(\mathbf{x},t)u(\mathbf{x},t) + \eta(\mathbf{x},t)(\hat{\mathbf{n}}\cdot\nabla u) = \beta(\mathbf{x},t). \]
+.PP
+Intuitively, a \fBRobin boundary condition\fP is a constraint that must be satisfied by any linear combination of any scalar field $ u $ and its first normal derivative, in order for $ u $ to represent a unique solution to a given ordinary or partial differential equation of interest\&.
+.PP
+In a 1D context ( $ \partial\Omega = \{a,b\}\subset\mathbb{R} $), this condition can be written as follows: \[ \delta_a(a,t)u(a,t) - \eta_a(a,t)u^\prime(a,t) = \beta_a(a,t), \] \[ \delta_b(b,t)u(b,t) + \eta_b(b,t)u^\prime(b,t) = \beta_b(b,t). \]
+.PP
+Instances of this class receive information about the coefficient functions and each condition for any subset of the boundary (west and east, in 1D)\&. These instances then handle the complexity of placing the coefficients in the differentiation matrices and the conditions in the grids\&.
+.PP
+\fBSee also:\fP
+.RS 4
+http://mathworld.wolfram.com/NormalVector.html 
+.RE
+.PP
+
+.PP
+Definition at line 155 of file mtk_robin_bc_descriptor_1d\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mtk::RobinBCDescriptor1D::RobinBCDescriptor1D ()"
+
+.PP
+Definition at line 93 of file mtk_robin_bc_descriptor_1d\&.cc\&.
+.SS "mtk::RobinBCDescriptor1D::RobinBCDescriptor1D (const \fBRobinBCDescriptor1D\fP &desc)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdesc\fP Given 1D descriptor\&. 
+.RE
+.PP
+
+.PP
+Definition at line 99 of file mtk_robin_bc_descriptor_1d\&.cc\&.
+.SS "mtk::RobinBCDescriptor1D::~RobinBCDescriptor1D ()\fC [noexcept]\fP"
+
+.PP
+Definition at line 106 of file mtk_robin_bc_descriptor_1d\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int mtk::RobinBCDescriptor1D::highest_order_diff_east () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Integer highest order of differentiation in the east boundary\&. 
+.RE
+.PP
+
+.PP
+Definition at line 113 of file mtk_robin_bc_descriptor_1d\&.cc\&.
+.SS "int mtk::RobinBCDescriptor1D::highest_order_diff_west () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Integer highest order of differentiation in the west boundary\&. 
+.RE
+.PP
+
+.PP
+Definition at line 108 of file mtk_robin_bc_descriptor_1d\&.cc\&.
+.SS "void mtk::RobinBCDescriptor1D::ImposeOnGrid (\fBUniStgGrid1D\fP &grid, const \fBReal\fP &time = \fC\fBmtk::kZero\fP\fP) const"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
+.br
+\fItime\fP Current time snapshot\&. Default is kZero\&. 
+.RE
+.PP
+
+.PP
+Definition at line 246 of file mtk_robin_bc_descriptor_1d\&.cc\&.
+.SS "bool mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix (const \fBLap1D\fP &lap, \fBmtk::DenseMatrix\fP &matrix, const \fBReal\fP &time = \fC\fBmtk::kZero\fP\fP) const"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlap\fP Operator in the \fBMatrix\fP\&. 
+.br
+\fImatrix\fP Input Laplacian operator\&. 
+.br
+\fItime\fP Current time snapshot\&. Default is kZero\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Success of the imposition\&. 
+.RE
+.PP
+
+.IP "1." 4
+Impose Dirichlet coefficients\&. 1\&.1\&. Impose Dirichlet condition at the west\&.
+.PP
+.PP
+1\&.2\&. Impose Dirichlet condition at the east\&.
+.PP
+.IP "2." 4
+Impose Neumann coefficients\&.
+.PP
+.PP
+2\&.1\&. Create a mimetic gradient to approximate the first derivative\&.
+.PP
+2\&.2\&. Extract the coefficients approximating the boundary\&.
+.PP
+\fBWarning:\fP
+.RS 4
+Coefficients returned by the mim_bndy getter are dimensionless! Therefore we must scale them by delta_x (from the grid), before adding to the matrix! But this information is in the given lap!
+.RE
+.PP
+2\&.3\&. Impose Neumann condition at the west\&.
+.PP
+2\&.3\&.1\&. Get gradient coefficient and scale it\&.
+.PP
+2\&.3\&.2\&. Multiply times the coefficient for this boundary, times the unit normal for this boundary\&.
+.PP
+2\&.3\&.3\&. Set the final value summing it with what is on the matrix\&.
+.PP
+2\&.4\&. Impose Neumann condition at the east\&.
+.PP
+\fBWarning:\fP
+.RS 4
+The Coefficients returned by the mim_bndy getter are those intended for the west boundary\&. We must enforce the center-skew-symmetry of the resulting operator by permuting their location in the matrix, and changing their sign\&.
+.RE
+.PP
+2\&.4\&.1\&. Get gradient coefficient and scale it\&.
+.PP
+2\&.4\&.2\&. Multiply times the coefficient for this boundary, times the unit normal for this boundary, and change the sign to enforce center-skew-symmetry\&.
+.PP
+2\&.4\&.3\&. Set the final value summing it with what is on the matrix\&. 
+.PP
+Definition at line 166 of file mtk_robin_bc_descriptor_1d\&.cc\&.
+.SS "void mtk::RobinBCDescriptor1D::PushBackEastCoeff (\fBmtk::CoefficientFunction0D\fPce)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIce\fP Function $ c_e(x,y):\Omega\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.PP
+Definition at line 132 of file mtk_robin_bc_descriptor_1d\&.cc\&.
+.SS "void mtk::RobinBCDescriptor1D::PushBackWestCoeff (\fBmtk::CoefficientFunction0D\fPcw)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcw\fP Function $ c_w(x,y):\Omega\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.PP
+Definition at line 118 of file mtk_robin_bc_descriptor_1d\&.cc\&.
+.SS "void mtk::RobinBCDescriptor1D::set_east_condition (\fBReal\fP(*)(const \fBReal\fP &tt)east_condition)\fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIeast_condition\fP $ \beta_e(y,t):\Omega\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.PP
+Definition at line 156 of file mtk_robin_bc_descriptor_1d\&.cc\&.
+.SS "void mtk::RobinBCDescriptor1D::set_west_condition (\fBReal\fP(*)(const \fBReal\fP &tt)west_condition)\fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwest_condition\fP $ \beta_w(y,t):\Omega\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.PP
+Definition at line 146 of file mtk_robin_bc_descriptor_1d\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<\fBCoefficientFunction0D\fP> mtk::RobinBCDescriptor1D::east_coefficients_\fC [private]\fP"
+
+.PP
+Definition at line 237 of file mtk_robin_bc_descriptor_1d\&.h\&.
+.SS "\fBReal\fP(* mtk::RobinBCDescriptor1D::east_condition_)(const \fBReal\fP &tt)\fC [private]\fP"
+
+.PP
+Definition at line 240 of file mtk_robin_bc_descriptor_1d\&.h\&.
+.SS "int mtk::RobinBCDescriptor1D::highest_order_diff_east_\fC [private]\fP"
+
+.PP
+Definition at line 234 of file mtk_robin_bc_descriptor_1d\&.h\&.
+.SS "int mtk::RobinBCDescriptor1D::highest_order_diff_west_\fC [private]\fP"
+
+.PP
+Definition at line 233 of file mtk_robin_bc_descriptor_1d\&.h\&.
+.SS "std::vector<\fBCoefficientFunction0D\fP> mtk::RobinBCDescriptor1D::west_coefficients_\fC [private]\fP"
+
+.PP
+Definition at line 236 of file mtk_robin_bc_descriptor_1d\&.h\&.
+.SS "\fBReal\fP(* mtk::RobinBCDescriptor1D::west_condition_)(const \fBReal\fP &tt)\fC [private]\fP"
+
+.PP
+Definition at line 239 of file mtk_robin_bc_descriptor_1d\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

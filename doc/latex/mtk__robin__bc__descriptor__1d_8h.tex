@@ -10,30 +10,38 @@ Impose Robin boundary conditions on the operators and on the grids.
 {\ttfamily \#include \char`\"{}mtk\+\_\+roots.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}mtk\+\_\+dense\+\_\+matrix.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}mtk\+\_\+uni\+\_\+stg\+\_\+grid\+\_\+1d.\+h\char`\"{}}\\*
-Include dependency graph for mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h\+:\nopagebreak
+{\ttfamily \#include \char`\"{}mtk\+\_\+lap\+\_\+1d.\+h\char`\"{}}\\*
+Include dependency graph for mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{mtk__robin__bc__descriptor__1d_8h__incl}
 \end{center}
 \end{figure}
-This graph shows which files directly or indirectly include this file\+:\nopagebreak
+This graph shows which files directly or indirectly include this file\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=198pt]{mtk__robin__bc__descriptor__1d_8h__dep__incl}
+\includegraphics[width=332pt]{mtk__robin__bc__descriptor__1d_8h__dep__incl}
 \end{center}
 \end{figure}
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classmtk_1_1BCDescriptor1D}{mtk\+::\+B\+C\+Descriptor1\+D}
-\begin{DoxyCompactList}\small\item\em Imposes boundary conditions on the operators or on the grids. \end{DoxyCompactList}\end{DoxyCompactItemize}
+class \hyperlink{classmtk_1_1RobinBCDescriptor1D}{mtk\+::\+Robin\+B\+C\+Descriptor1\+D}
+\begin{DoxyCompactList}\small\item\em Impose Robin boundary conditions on the operators and on the grids. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Namespaces}
 \begin{DoxyCompactItemize}
 \item 
  \hyperlink{namespacemtk}{mtk}
 \begin{DoxyCompactList}\small\item\em Mimetic Methods Toolkit namespace. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef Real($\ast$ \hyperlink{group__c07-mim__ops_ga04276745b4d511f0f3c636d6e0df7c2d}{mtk\+::\+Coefficient\+Function0\+D} )(const Real \&tt)
+\begin{DoxyCompactList}\small\item\em A function of a B\+C coefficient evaluated on a 0\+D domain and time. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -45,8 +53,11 @@ Intuitively, a {\bfseries Robin boundary condition} is a constraint that must be
 
 In a 1\+D context ( $ \partial\Omega = \{a,b\}\subset\mathbb{R} $), this condition can be written as follows\+: \[ \delta_a(a,t)u(a,t) - \eta_a(a,t)u^\prime(a,t) = \beta_a(a,t), \] \[ \delta_b(b,t)u(b,t) + \eta_b(b,t)u^\prime(b,t) = \beta_b(b,t). \]
 
-Instances of this class receive information about the coefficient functions and each condition for any subset of the boundary (west and east, in 1\+D). These instances then handle the complexity of placing the coefficients in the differentiation matrices and condition in the grids.
+Instances of this class receive information about the coefficient functions and each condition for any subset of the boundary (west and east, in 1\+D). These instances then handle the complexity of placing the coefficients in the differentiation matrices and the condition in the grids.
 
+\begin{DoxySeeAlso}{See also}
+\href{http://mathworld.wolfram.com/NormalVector.html}{\tt http\+://mathworld.\+wolfram.\+com/\+Normal\+Vector.\+html}
+\end{DoxySeeAlso}
 \begin{DoxyAuthor}{Author}
 \+: Eduardo J. Sanchez (ejspeiro) -\/ esanchez at mail dot sdsu dot edu 
 \end{DoxyAuthor}

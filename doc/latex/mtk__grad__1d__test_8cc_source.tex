@@ -275,27 +275,50 @@
 00275   \hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{mtk::Tools::Assert}(assertion);
 00276 \}
 00277 
-00278 \textcolor{keywordtype}{int} \hyperlink{mtk__grad__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00278 \textcolor{keywordtype}{void} TestMimBndy() \{
 00279 
-00280   std::cout << \textcolor{stringliteral}{"Testing mtk::Grad1D class."} << std::endl;
+00280   \hyperlink{classmtk_1_1Tools_afc29ecaf337a13ed2e817d3890a5a441}{mtk::Tools::BeginUnitTestNo}(9);
 00281 
-00282   TestDefaultConstructorFactoryMethodDefault();
-00283   TestDefaultConstructorFactoryMethodFourthOrder();
-00284   TestDefaultConstructorFactoryMethodSixthOrder();
-00285   TestDefaultConstructorFactoryMethodEightOrderDefThreshold();
-00286   TestDefaultConstructorFactoryMethodTenthOrderDefThreshold();
-00287   TestReturnAsDenseMatrixWithGrid();
-00288   TestReturnAsDimensionlessDenseMatrix();
-00289   TestWriteToFile();
-00290 \}
+00282   \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} grad2;
+00283 
+00284   \textcolor{keywordtype}{bool} assertion = grad2.\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{ConstructGrad1D}();
+00285 
+00286   \textcolor{keywordflow}{if} (!assertion) \{
+00287     std::cerr << \textcolor{stringliteral}{"Mimetic grad (2nd order) could not be built."} << std::endl;
+00288   \}
+00289 
+00290   std::cout << grad2 << std::endl;
 00291 
-00292 \textcolor{preprocessor}{#else}
-00293 \textcolor{preprocessor}{#include <iostream>}
-00294 \textcolor{keyword}{using} std::cout;
-00295 \textcolor{keyword}{using} std::endl;
-\hypertarget{mtk__grad__1d__test_8cc_source_l00296}{}\hyperlink{mtk__grad__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00296} \textcolor{keywordtype}{int} \hyperlink{mtk__grad__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
-00297   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
-00298   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
-00299 \}
-00300 \textcolor{preprocessor}{#endif}
+00292   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} grad2m(grad2.\hyperlink{classmtk_1_1Grad1D_ab25e1d064a5a00fbe3777e65fd5750c0}{mim\_bndy}());
+00293 
+00294   std::cout << grad2m << std::endl;
+00295 
+00296   \hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{mtk::Tools::EndUnitTestNo}(9);
+00297   \hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{mtk::Tools::Assert}(assertion);
+00298 \}
+00299 
+00300 \textcolor{keywordtype}{int} \hyperlink{mtk__grad__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00301 
+00302   std::cout << \textcolor{stringliteral}{"Testing mtk::Grad1D class."} << std::endl;
+00303 
+00304   TestDefaultConstructorFactoryMethodDefault();
+00305   TestDefaultConstructorFactoryMethodFourthOrder();
+00306   TestDefaultConstructorFactoryMethodSixthOrder();
+00307   TestDefaultConstructorFactoryMethodEightOrderDefThreshold();
+00308   TestDefaultConstructorFactoryMethodTenthOrderDefThreshold();
+00309   TestReturnAsDenseMatrixWithGrid();
+00310   TestReturnAsDimensionlessDenseMatrix();
+00311   TestWriteToFile();
+00312   TestMimBndy();
+00313 \}
+00314 
+00315 \textcolor{preprocessor}{#else}
+00316 \textcolor{preprocessor}{#include <iostream>}
+00317 \textcolor{keyword}{using} std::cout;
+00318 \textcolor{keyword}{using} std::endl;
+\hypertarget{mtk__grad__1d__test_8cc_source_l00319}{}\hyperlink{mtk__grad__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00319} \textcolor{keywordtype}{int} \hyperlink{mtk__grad__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00320   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
+00321   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
+00322 \}
+00323 \textcolor{preprocessor}{#endif}
 \end{DoxyCode}

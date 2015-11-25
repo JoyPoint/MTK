@@ -4,13 +4,13 @@
     <compoundname>mtk_grad_1d_test.cc</compoundname>
     <includes local="no">iostream</includes>
     <incdepgraph>
-      <node id="1397">
+      <node id="1448">
         <label>iostream</label>
       </node>
-      <node id="1396">
+      <node id="1447">
         <label>tests/mtk_grad_1d_test.cc</label>
         <link refid="mtk_grad_1d_test.cc"/>
-        <childnode refid="1397" relation="include">
+        <childnode refid="1448" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -26,7 +26,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/tests/mtk_grad_1d_test.cc" line="296" column="1" bodyfile="/home/esanchez/Dropbox/MTK/tests/mtk_grad_1d_test.cc" bodystart="296" bodyend="299"/>
+        <location file="/home/esanchez/Dropbox/MTK/tests/mtk_grad_1d_test.cc" line="319" column="1" bodyfile="/home/esanchez/Dropbox/MTK/tests/mtk_grad_1d_test.cc" bodystart="319" bodyend="322"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -306,29 +306,52 @@
 <codeline lineno="275"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1ac6804df469c94ab6a796fb64f1e44a89" kindref="member">mtk::Tools::Assert</ref>(assertion);</highlight></codeline>
 <codeline lineno="276"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="277"><highlight class="normal"></highlight></codeline>
-<codeline lineno="278"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mtk__grad__1d__test_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>()<sp/>{</highlight></codeline>
+<codeline lineno="278"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/>TestMimBndy()<sp/>{</highlight></codeline>
 <codeline lineno="279"><highlight class="normal"></highlight></codeline>
-<codeline lineno="280"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>mtk::Grad1D<sp/>class.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1afc29ecaf337a13ed2e817d3890a5a441" kindref="member">mtk::Tools::BeginUnitTestNo</ref>(9);</highlight></codeline>
 <codeline lineno="281"><highlight class="normal"></highlight></codeline>
-<codeline lineno="282"><highlight class="normal"><sp/><sp/>TestDefaultConstructorFactoryMethodDefault();</highlight></codeline>
-<codeline lineno="283"><highlight class="normal"><sp/><sp/>TestDefaultConstructorFactoryMethodFourthOrder();</highlight></codeline>
-<codeline lineno="284"><highlight class="normal"><sp/><sp/>TestDefaultConstructorFactoryMethodSixthOrder();</highlight></codeline>
-<codeline lineno="285"><highlight class="normal"><sp/><sp/>TestDefaultConstructorFactoryMethodEightOrderDefThreshold();</highlight></codeline>
-<codeline lineno="286"><highlight class="normal"><sp/><sp/>TestDefaultConstructorFactoryMethodTenthOrderDefThreshold();</highlight></codeline>
-<codeline lineno="287"><highlight class="normal"><sp/><sp/>TestReturnAsDenseMatrixWithGrid();</highlight></codeline>
-<codeline lineno="288"><highlight class="normal"><sp/><sp/>TestReturnAsDimensionlessDenseMatrix();</highlight></codeline>
-<codeline lineno="289"><highlight class="normal"><sp/><sp/>TestWriteToFile();</highlight></codeline>
-<codeline lineno="290"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="282"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Grad1D" kindref="compound">mtk::Grad1D</ref><sp/>grad2;</highlight></codeline>
+<codeline lineno="283"><highlight class="normal"></highlight></codeline>
+<codeline lineno="284"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>assertion<sp/>=<sp/>grad2.<ref refid="classmtk_1_1Grad1D_1a74ef5245cfae6fd158bd7f563a0c2e52" kindref="member">ConstructGrad1D</ref>();</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"></highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!assertion)<sp/>{</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mimetic<sp/>grad<sp/>(2nd<sp/>order)<sp/>could<sp/>not<sp/>be<sp/>built.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="288"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="289"><highlight class="normal"></highlight></codeline>
+<codeline lineno="290"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>grad2<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
 <codeline lineno="291"><highlight class="normal"></highlight></codeline>
-<codeline lineno="292"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="293"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="294"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::cout;</highlight></codeline>
-<codeline lineno="295"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::endl;</highlight></codeline>
-<codeline lineno="296" refid="mtk__grad__1d__test_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mtk__grad__1d__test_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>()<sp/>{</highlight></codeline>
-<codeline lineno="297"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;This<sp/>code<sp/>HAS<sp/>to<sp/>be<sp/>compiled<sp/>with<sp/>support<sp/>for<sp/>C++11.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
-<codeline lineno="298"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Exiting...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
-<codeline lineno="299"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="300"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>grad2m(grad2.<ref refid="classmtk_1_1Grad1D_1ab25e1d064a5a00fbe3777e65fd5750c0" kindref="member">mim_bndy</ref>());</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="294"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>grad2m<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"></highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1aba67d9dc35c9c1c49430fcc9ea035e03" kindref="member">mtk::Tools::EndUnitTestNo</ref>(9);</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1ac6804df469c94ab6a796fb64f1e44a89" kindref="member">mtk::Tools::Assert</ref>(assertion);</highlight></codeline>
+<codeline lineno="298"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="299"><highlight class="normal"></highlight></codeline>
+<codeline lineno="300"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mtk__grad__1d__test_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>()<sp/>{</highlight></codeline>
+<codeline lineno="301"><highlight class="normal"></highlight></codeline>
+<codeline lineno="302"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Testing<sp/>mtk::Grad1D<sp/>class.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="303"><highlight class="normal"></highlight></codeline>
+<codeline lineno="304"><highlight class="normal"><sp/><sp/>TestDefaultConstructorFactoryMethodDefault();</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/>TestDefaultConstructorFactoryMethodFourthOrder();</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/>TestDefaultConstructorFactoryMethodSixthOrder();</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/>TestDefaultConstructorFactoryMethodEightOrderDefThreshold();</highlight></codeline>
+<codeline lineno="308"><highlight class="normal"><sp/><sp/>TestDefaultConstructorFactoryMethodTenthOrderDefThreshold();</highlight></codeline>
+<codeline lineno="309"><highlight class="normal"><sp/><sp/>TestReturnAsDenseMatrixWithGrid();</highlight></codeline>
+<codeline lineno="310"><highlight class="normal"><sp/><sp/>TestReturnAsDimensionlessDenseMatrix();</highlight></codeline>
+<codeline lineno="311"><highlight class="normal"><sp/><sp/>TestWriteToFile();</highlight></codeline>
+<codeline lineno="312"><highlight class="normal"><sp/><sp/>TestMimBndy();</highlight></codeline>
+<codeline lineno="313"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="314"><highlight class="normal"></highlight></codeline>
+<codeline lineno="315"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="316"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="317"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::cout;</highlight></codeline>
+<codeline lineno="318"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::endl;</highlight></codeline>
+<codeline lineno="319" refid="mtk__grad__1d__test_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="mtk__grad__1d__test_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>()<sp/>{</highlight></codeline>
+<codeline lineno="320"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;This<sp/>code<sp/>HAS<sp/>to<sp/>be<sp/>compiled<sp/>with<sp/>support<sp/>for<sp/>C++11.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline lineno="321"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Exiting...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline lineno="322"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="323"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="/home/esanchez/Dropbox/MTK/tests/mtk_grad_1d_test.cc"/>
   </compounddef>

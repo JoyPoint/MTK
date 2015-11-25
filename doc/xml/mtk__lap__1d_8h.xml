@@ -5,81 +5,96 @@
     <includes refid="mtk__dense__matrix_8h" local="yes">mtk_dense_matrix.h</includes>
     <includes refid="mtk__uni__stg__grid__1d_8h" local="yes">mtk_uni_stg_grid_1d.h</includes>
     <includedby refid="mtk_8h" local="yes">include/mtk.h</includedby>
+    <includedby refid="mtk__robin__bc__descriptor__1d_8h" local="yes">include/mtk_robin_bc_descriptor_1d.h</includedby>
     <includedby refid="mtk__lap__1d_8cc" local="yes">src/mtk_lap_1d.cc</includedby>
     <incdepgraph>
-      <node id="934">
+      <node id="955">
         <label>mtk_dense_matrix.h</label>
         <link refid="mtk__dense__matrix_8h"/>
-        <childnode refid="935" relation="include">
+        <childnode refid="956" relation="include">
         </childnode>
-        <childnode refid="936" relation="include">
+        <childnode refid="957" relation="include">
         </childnode>
-        <childnode refid="937" relation="include">
+        <childnode refid="958" relation="include">
         </childnode>
-        <childnode refid="938" relation="include">
+        <childnode refid="959" relation="include">
         </childnode>
       </node>
-      <node id="938">
+      <node id="959">
         <label>mtk_matrix.h</label>
         <link refid="mtk__matrix_8h"/>
-        <childnode refid="935" relation="include">
+        <childnode refid="956" relation="include">
         </childnode>
-        <childnode refid="936" relation="include">
+        <childnode refid="957" relation="include">
         </childnode>
-        <childnode refid="937" relation="include">
+        <childnode refid="958" relation="include">
         </childnode>
       </node>
-      <node id="936">
+      <node id="957">
         <label>mtk_roots.h</label>
         <link refid="mtk__roots_8h"/>
       </node>
-      <node id="941">
+      <node id="962">
         <label>string</label>
       </node>
-      <node id="940">
+      <node id="961">
         <label>vector</label>
       </node>
-      <node id="933">
+      <node id="954">
         <label>include/mtk_lap_1d.h</label>
         <link refid="mtk_lap_1d.h"/>
-        <childnode refid="934" relation="include">
+        <childnode refid="955" relation="include">
         </childnode>
-        <childnode refid="939" relation="include">
+        <childnode refid="960" relation="include">
         </childnode>
       </node>
-      <node id="935">
+      <node id="956">
         <label>iostream</label>
       </node>
-      <node id="937">
+      <node id="958">
         <label>mtk_enums.h</label>
         <link refid="mtk__enums_8h"/>
       </node>
-      <node id="939">
+      <node id="960">
         <label>mtk_uni_stg_grid_1d.h</label>
         <link refid="mtk__uni__stg__grid__1d_8h"/>
-        <childnode refid="940" relation="include">
+        <childnode refid="961" relation="include">
         </childnode>
-        <childnode refid="941" relation="include">
+        <childnode refid="962" relation="include">
         </childnode>
-        <childnode refid="936" relation="include">
+        <childnode refid="957" relation="include">
         </childnode>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="944">
+      <node id="965">
+        <label>include/mtk_robin_bc_descriptor_1d.h</label>
+        <link refid="mtk__robin__bc__descriptor__1d_8h"/>
+        <childnode refid="964" relation="include">
+        </childnode>
+        <childnode refid="966" relation="include">
+        </childnode>
+      </node>
+      <node id="966">
+        <label>src/mtk_robin_bc_descriptor_1d.cc</label>
+        <link refid="mtk__robin__bc__descriptor__1d_8cc"/>
+      </node>
+      <node id="967">
         <label>src/mtk_lap_1d.cc</label>
         <link refid="mtk__lap__1d_8cc"/>
       </node>
-      <node id="943">
+      <node id="964">
         <label>include/mtk.h</label>
         <link refid="mtk_8h"/>
       </node>
-      <node id="942">
+      <node id="963">
         <label>include/mtk_lap_1d.h</label>
         <link refid="mtk_lap_1d.h"/>
-        <childnode refid="943" relation="include">
+        <childnode refid="964" relation="include">
         </childnode>
-        <childnode refid="944" relation="include">
+        <childnode refid="965" relation="include">
+        </childnode>
+        <childnode refid="967" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -157,23 +172,31 @@
 <codeline lineno="90"><highlight class="normal"></highlight></codeline>
 <codeline lineno="92"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Lap1D_1ac0cb868243a66658cc46de5b818fa4e8" kindref="member">~Lap1D</ref>();</highlight></codeline>
 <codeline lineno="93"><highlight class="normal"></highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" kindref="member">ConstructLap1D</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>order_accuracy<sp/>=<sp/><ref refid="group__c01-roots_1ga0d95560098eb36420511103637b6952f" kindref="member">kDefaultOrderAccuracy</ref>,</highlight></codeline>
-<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>mimetic_threshold<sp/>=<sp/><ref refid="group__c01-roots_1ga35718d949bdc81a08a9cc8ebbe3478a2" kindref="member">kDefaultMimeticThreshold</ref>);</highlight></codeline>
-<codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/><ref refid="classmtk_1_1Lap1D_1aaea34a17b0879e05eb4109645a2ba8f4" kindref="member">ReturnAsDenseMatrix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;grid)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref>*<sp/><ref refid="classmtk_1_1Lap1D_1ab2652725a8407c79247680c7bbd073b8" kindref="member">data</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;grid)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="117" refid="classmtk_1_1Lap1D_1a35d34c085b9cf6f9961a699dfb02fea6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1Lap1D_1a35d34c085b9cf6f9961a699dfb02fea6" kindref="member">order_accuracy_</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="118" refid="classmtk_1_1Lap1D_1a05578b0729f2bb4fe8bb442fc555fa80" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1Lap1D_1a05578b0729f2bb4fe8bb442fc555fa80" kindref="member">laplacian_length_</ref>;<sp/><sp/></highlight></codeline>
-<codeline lineno="119"><highlight class="normal"></highlight></codeline>
-<codeline lineno="120" refid="classmtk_1_1Lap1D_1a64a3977527c00b4ef994d1bd549f82fd" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>*<ref refid="classmtk_1_1Lap1D_1a64a3977527c00b4ef994d1bd549f82fd" kindref="member">laplacian_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
-<codeline lineno="121"><highlight class="normal"></highlight></codeline>
-<codeline lineno="122" refid="classmtk_1_1Lap1D_1a20dce13067774c64dff892323d9c586e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/><ref refid="classmtk_1_1Lap1D_1a20dce13067774c64dff892323d9c586e" kindref="member">mimetic_threshold_</ref>;<sp/><sp/></highlight></codeline>
-<codeline lineno="123"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="124"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>End<sp/>of:<sp/>MTK_INCLUDE_LAP_1D_H_</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1Lap1D_1ae3490534a9e950df3f81b3840c31b13a" kindref="member">order_accuracy</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/><ref refid="classmtk_1_1Lap1D_1a957ae4ff6053d605ac7b93650ad6f188" kindref="member">mimetic_threshold</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/><ref refid="classmtk_1_1Lap1D_1a4e16e80c6dd845ac42bda23385a1c56e" kindref="member">delta</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" kindref="member">ConstructLap1D</ref>(</highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>order_accuracy<sp/>=<sp/><ref refid="group__c01-roots_1ga0d95560098eb36420511103637b6952f" kindref="member">kDefaultOrderAccuracy</ref>,</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>mimetic_threshold<sp/>=<sp/><ref refid="group__c01-roots_1ga35718d949bdc81a08a9cc8ebbe3478a2" kindref="member">kDefaultMimeticThreshold</ref>);</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"></highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/><ref refid="classmtk_1_1Lap1D_1aaea34a17b0879e05eb4109645a2ba8f4" kindref="member">ReturnAsDenseMatrix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;grid)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref>*<sp/><ref refid="classmtk_1_1Lap1D_1ab2652725a8407c79247680c7bbd073b8" kindref="member">data</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;grid)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"></highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="138" refid="classmtk_1_1Lap1D_1a35d34c085b9cf6f9961a699dfb02fea6" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1Lap1D_1a35d34c085b9cf6f9961a699dfb02fea6" kindref="member">order_accuracy_</ref>;<sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="139" refid="classmtk_1_1Lap1D_1a05578b0729f2bb4fe8bb442fc555fa80" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1Lap1D_1a05578b0729f2bb4fe8bb442fc555fa80" kindref="member">laplacian_length_</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight></codeline>
+<codeline lineno="141" refid="classmtk_1_1Lap1D_1a64a3977527c00b4ef994d1bd549f82fd" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>*<ref refid="classmtk_1_1Lap1D_1a64a3977527c00b4ef994d1bd549f82fd" kindref="member">laplacian_</ref>;<sp/><sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143" refid="classmtk_1_1Lap1D_1a0feafd7b78e62be8644503d14c0204d9" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">mutable</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/><ref refid="classmtk_1_1Lap1D_1a0feafd7b78e62be8644503d14c0204d9" kindref="member">delta_</ref>;<sp/><sp/><sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="145" refid="classmtk_1_1Lap1D_1a20dce13067774c64dff892323d9c586e" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/><ref refid="classmtk_1_1Lap1D_1a20dce13067774c64dff892323d9c586e" kindref="member">mimetic_threshold_</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="146"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>End<sp/>of:<sp/>MTK_INCLUDE_LAP_1D_H_</highlight></codeline>
     </programlisting>
     <location file="/home/esanchez/Dropbox/MTK/include/mtk_lap_1d.h"/>
   </compounddef>

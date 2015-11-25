@@ -1,0 +1,79 @@
+\hypertarget{poisson__2d_8cc_source}{\section{poisson\+\_\+2d.\+cc}
+\label{poisson__2d_8cc_source}\index{examples/poisson\+\_\+2d/poisson\+\_\+2d.\+cc@{examples/poisson\+\_\+2d/poisson\+\_\+2d.\+cc}}
+}
+
+\begin{DoxyCode}
+00001 
+00042 \textcolor{comment}{/*}
+00043 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00044 \textcolor{comment}{University. All rights reserved.}
+00045 \textcolor{comment}{}
+00046 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00047 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00048 \textcolor{comment}{}
+00049 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00050 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00051 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
+00052 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
+00053 \textcolor{comment}{should be developed and included in any deliverable.}
+00054 \textcolor{comment}{}
+00055 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00056 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00057 \textcolor{comment}{}
+00058 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
+00059 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00060 \textcolor{comment}{other materials provided with the distribution.}
+00061 \textcolor{comment}{}
+00062 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
+00063 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
+00064 \textcolor{comment}{be given to the copyright holders.}
+00065 \textcolor{comment}{}
+00066 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
+00067 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00068 \textcolor{comment}{specific prior written permission.}
+00069 \textcolor{comment}{}
+00070 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00071 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00072 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00073 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00074 \textcolor{comment}{parties intellectual property rights.}
+00075 \textcolor{comment}{}
+00076 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00077 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00078 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00079 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00080 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00081 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00082 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00083 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00084 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00085 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00086 \textcolor{comment}{*/}
+00087 
+00088 \textcolor{preprocessor}{#if \_\_cplusplus == 201103L}
+00089 
+00090 \textcolor{preprocessor}{#include <iostream>}
+00091 \textcolor{preprocessor}{#include <fstream>}
+00092 \textcolor{preprocessor}{#include <cmath>}
+00093 
+00094 \textcolor{preprocessor}{#include <vector>}
+00095 
+00096 \textcolor{preprocessor}{#include "\hyperlink{mtk_8h}{mtk.h}"}
+00097 
+00098 \textcolor{keywordtype}{int} \hyperlink{poisson__2d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00099 
+00100   std::cout << \textcolor{stringliteral}{"Example: Poisson Equation on a 2D Uniform Staggered Grid "};
+00101   std::cout << \textcolor{stringliteral}{"with Robin BCs."} << std::endl;
+00102 \}
+00103 
+00104 \textcolor{preprocessor}{#else}
+00105 \textcolor{preprocessor}{#include <iostream>}
+00106 \textcolor{keyword}{using} std::cout;
+00107 \textcolor{keyword}{using} std::endl;
+\hypertarget{poisson__2d_8cc_source_l00108}{}\hyperlink{poisson__2d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00108} \textcolor{keywordtype}{int} \hyperlink{poisson__2d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00109   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
+00110   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
+00111   \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+00112 \}
+00113 \textcolor{preprocessor}{#endif}
+\end{DoxyCode}

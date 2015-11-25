@@ -239,17 +239,15 @@
 00414                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00415 \textcolor{preprocessor}{  #endif}
 00416 
-00417   \textcolor{comment}{// Make sure input matrices are row-major ordered.}
-00418 
-00419   \textcolor{keywordflow}{if} (aa.\hyperlink{classmtk_1_1DenseMatrix_a5aa83a0643f27a4652ea97630edf7143}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a13cd17621652cd5551ff98549bd94df7}{ordering}() == 
+00418   \textcolor{keywordflow}{if} (aa.\hyperlink{classmtk_1_1DenseMatrix_a5aa83a0643f27a4652ea97630edf7143}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a13cd17621652cd5551ff98549bd94df7}{ordering}() == 
       \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}) \{
-00420     aa.\hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{OrderRowMajor}();
-00421   \}
-00422   \textcolor{keywordflow}{if} (bb.\hyperlink{classmtk_1_1DenseMatrix_a5aa83a0643f27a4652ea97630edf7143}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a13cd17621652cd5551ff98549bd94df7}{ordering}() == 
+00419     aa.\hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{OrderRowMajor}();
+00420   \}
+00421   \textcolor{keywordflow}{if} (bb.\hyperlink{classmtk_1_1DenseMatrix_a5aa83a0643f27a4652ea97630edf7143}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a13cd17621652cd5551ff98549bd94df7}{ordering}() == 
       \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}) \{
-00423     bb.\hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{OrderRowMajor}();
-00424   \}
-00425 
+00422     bb.\hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{OrderRowMajor}();
+00423   \}
+00424 
 00426   \textcolor{keywordtype}{char} ta\{\textcolor{charliteral}{'T'}\}; \textcolor{comment}{// State that input matrix aa is in row-wise ordering.}
 00427   \textcolor{keywordtype}{char} tb\{\textcolor{charliteral}{'T'}\}; \textcolor{comment}{// State that input matrix bb is in row-wise ordering.}
 00428 
@@ -264,28 +262,75 @@
 00437   \textcolor{keywordtype}{int} ldb\{std::max(1,nn)\};  \textcolor{comment}{// Leading dimension of the bb matrix.}
 00438   \textcolor{keywordtype}{int} ldc\{std::max(1,mm)\};  \textcolor{comment}{// Leading dimension of the cc matrix.}
 00439 
-00440   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} alpha\{1.0\}; \textcolor{comment}{// First scalar coefficient.}
-00441   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} beta\{0.0\};  \textcolor{comment}{// Second scalar coefficient.}
+00440   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} alpha\{\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}\}; \textcolor{comment}{// First scalar coefficient.}
+00441   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} beta\{\hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}\}; \textcolor{comment}{// Second scalar coefficient.}
 00442 
 00443   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} cc\_col\_maj\_ord(cc\_num\_rows,cc\_num\_cols); \textcolor{comment}{// Output matrix.}
 00444 
 00445   cc\_col\_maj\_ord.\hyperlink{classmtk_1_1DenseMatrix_a178e63f365cf8c547dc5020c60357f5e}{SetOrdering}(\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR});
 00446 
-00447 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00448   dgemm\_(&ta, &tb, &mm, &nn, &kk, &alpha, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &lda,
-00449          bb.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &ldb, &beta, cc\_col\_maj\_ord.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &ldc);
-00450 \textcolor{preprocessor}{  #else}
-00451   \hyperlink{namespacemtk_adb7c0560326b8e57f255e58b87ec76b0}{sgemm\_}(&ta, &tb, &mm, &nn, &kk, &alpha, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &lda,
-00452          bb.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &ldb, &beta, cc\_col\_maj\_ord.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &ldc);
-00453 \textcolor{preprocessor}{  #endif}
-00454 
-00455 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00456   std::cout << \textcolor{stringliteral}{"cc\_col\_maj\_ord ="} << std::endl;
-00457   std::cout << cc\_col\_maj\_ord << std::endl;
-00458 \textcolor{preprocessor}{  #endif}
-00459 
-00460   cc\_col\_maj\_ord.\hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{OrderRowMajor}();
-00461 
-00462   \textcolor{keywordflow}{return} cc\_col\_maj\_ord;
-00463 \}
+00448 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00449   dgemm\_(&ta, &tb, &mm, &nn, &kk, &alpha, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &lda,
+00450          bb.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &ldb, &beta, cc\_col\_maj\_ord.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &ldc);
+00451 \textcolor{preprocessor}{  #else}
+00452   \hyperlink{namespacemtk_adb7c0560326b8e57f255e58b87ec76b0}{sgemm\_}(&ta, &tb, &mm, &nn, &kk, &alpha, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &lda,
+00453          bb.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &ldb, &beta, cc\_col\_maj\_ord.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &ldc);
+00454 \textcolor{preprocessor}{  #endif}
+00455 
+00456 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00457   std::cout << \textcolor{stringliteral}{"cc\_col\_maj\_ord ="} << std::endl;
+00458   std::cout << cc\_col\_maj\_ord << std::endl;
+00459 \textcolor{preprocessor}{  #endif}
+00460 
+00461   cc\_col\_maj\_ord.\hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{OrderRowMajor}();
+00462 
+00463   \textcolor{keywordflow}{return} cc\_col\_maj\_ord;
+00464 \}
+00465 
+\hypertarget{mtk__blas__adapter_8cc_source_l00466}{}\hyperlink{classmtk_1_1BLASAdapter_a0dd80d043615a95f11b7341ce69b44d3}{00466} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1BLASAdapter_a0dd80d043615a95f11b7341ce69b44d3}{mtk::BLASAdapter::RealDenseSM}(
+      \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} alpha,
+00467                                                \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &aa) \{
+00468 
+00469 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00470   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(aa.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00471   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00472 \textcolor{preprocessor}{  #endif}
+00473 
+00475   \textcolor{keywordflow}{if} (aa.\hyperlink{classmtk_1_1DenseMatrix_a5aa83a0643f27a4652ea97630edf7143}{matrix\_properties}().\hyperlink{classmtk_1_1Matrix_a13cd17621652cd5551ff98549bd94df7}{ordering}() == 
+      \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}) \{
+00476     aa.\hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{OrderRowMajor}();
+00477   \}
+00478 
+00480   \textcolor{keywordtype}{char} ta\{\textcolor{charliteral}{'T'}\}; \textcolor{comment}{// State that input matrix aa is in row-wise ordering.}
+00481   \textcolor{keywordtype}{char} tb\{\textcolor{charliteral}{'T'}\}; \textcolor{comment}{// State that input matrix bb is in row-wise ordering.}
+00482 
+00483   \textcolor{keywordtype}{int} mm\{aa.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}()\};  \textcolor{comment}{// Rows of aa and rows of cc.}
+00484   \textcolor{keywordtype}{int} nn\{aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}()\};  \textcolor{comment}{// Cols of bb and cols of cc.}
+00485   \textcolor{keywordtype}{int} kk\{aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}()\};  \textcolor{comment}{// Cols of aa and rows of bb.}
+00486 
+00487   \textcolor{keywordtype}{int} lda\{std::max(1,kk)\};  \textcolor{comment}{// Leading dimension of the aa matrix.}
+00488   \textcolor{keywordtype}{int} ldb\{std::max(1,nn)\};  \textcolor{comment}{// Leading dimension of the bb matrix.}
+00489   \textcolor{keywordtype}{int} ldc\{std::max(1,mm)\};  \textcolor{comment}{// Leading dimension of the cc matrix.}
+00490 
+00491   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} beta\{alpha\}; \textcolor{comment}{// Second scalar coefficient.}
+00492 
+00493   alpha = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero};
+00494 
+00495   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} alpha\_aa(aa); \textcolor{comment}{// Output matrix.}
+00496 
+00498 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00499   dgemm\_(&ta, &tb, &mm, &nn, &kk, &alpha, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &lda,
+00500          aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &ldb, &beta, alpha\_aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &ldc);
+00501 \textcolor{preprocessor}{  #else}
+00502   \hyperlink{namespacemtk_adb7c0560326b8e57f255e58b87ec76b0}{sgemm\_}(&ta, &tb, &mm, &nn, &kk, &alpha, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &lda,
+00503          aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &ldb, &beta, alpha\_aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &ldc);
+00504 \textcolor{preprocessor}{  #endif}
+00505 
+00506 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00507   std::cout << \textcolor{stringliteral}{"alpha\_aa ="} << std::endl;
+00508   std::cout << alpha\_aa << std::endl;
+00509 \textcolor{preprocessor}{  #endif}
+00510 
+00511   \textcolor{keywordflow}{return} alpha\_aa;
+00512 \}
 \end{DoxyCode}

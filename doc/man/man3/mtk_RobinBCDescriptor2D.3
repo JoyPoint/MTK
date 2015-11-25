@@ -1,0 +1,702 @@
+.TH "mtk::RobinBCDescriptor2D" 3 "Wed Nov 25 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk::RobinBCDescriptor2D \- 
+.PP
+Impose Robin boundary conditions on the operators and on the grids\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mtk_robin_bc_descriptor_2d\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBRobinBCDescriptor2D\fP ()"
+.br
+.RI "\fIDefault constructor\&. \fP"
+.ti -1c
+.RI "\fBRobinBCDescriptor2D\fP (const \fBRobinBCDescriptor2D\fP &desc)"
+.br
+.RI "\fICopy constructor\&. \fP"
+.ti -1c
+.RI "\fB~RobinBCDescriptor2D\fP () noexcept"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_west\fP () const noexcept"
+.br
+.RI "\fIGetter for the highest order of differentiation in the west boundary\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_east\fP () const noexcept"
+.br
+.RI "\fIGetter for the highest order of differentiation in the east boundary\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_south\fP () const noexcept"
+.br
+.RI "\fIGetter for the highest order of differentiation in the south boundary\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_north\fP () const noexcept"
+.br
+.RI "\fIGetter for the highest order of differentiation in the north boundary\&. \fP"
+.ti -1c
+.RI "void \fBPushBackWestCoeff\fP (\fBCoefficientFunction1D\fP cw)"
+.br
+.RI "\fIPush back coefficient function at west of lowest order diff\&. available\&. \fP"
+.ti -1c
+.RI "void \fBPushBackEastCoeff\fP (\fBCoefficientFunction1D\fP ce)"
+.br
+.RI "\fIPush back coefficient function at east of lowest order diff\&. available\&. \fP"
+.ti -1c
+.RI "void \fBPushBackSouthCoeff\fP (\fBCoefficientFunction1D\fP cs)"
+.br
+.RI "\fIPush back coefficient function south of lowest order diff\&. available\&. \fP"
+.ti -1c
+.RI "void \fBPushBackNorthCoeff\fP (\fBCoefficientFunction1D\fP cn)"
+.br
+.RI "\fIPush back coefficient function north of lowest order diff\&. available\&. \fP"
+.ti -1c
+.RI "void \fBset_west_condition\fP (\fBReal\fP(*west_condition)(const \fBReal\fP &yy, const \fBReal\fP &tt)) noexcept"
+.br
+.RI "\fISet boundary condition at west\&. \fP"
+.ti -1c
+.RI "void \fBset_east_condition\fP (\fBReal\fP(*east_condition)(const \fBReal\fP &yy, const \fBReal\fP &tt)) noexcept"
+.br
+.RI "\fISet boundary condition at east\&. \fP"
+.ti -1c
+.RI "void \fBset_south_condition\fP (\fBReal\fP(*south_condition)(const \fBReal\fP &xx, const \fBReal\fP &tt)) noexcept"
+.br
+.RI "\fISet boundary condition at south\&. \fP"
+.ti -1c
+.RI "void \fBset_north_condition\fP (\fBReal\fP(*north_condition)(const \fBReal\fP &xx, const \fBReal\fP &tt)) noexcept"
+.br
+.RI "\fISet boundary condition at north\&. \fP"
+.ti -1c
+.RI "bool \fBImposeOnLaplacianMatrix\fP (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBDenseMatrix\fP &matrix, const \fBReal\fP &time=\fBkZero\fP) const "
+.br
+.RI "\fIImposes the condition on the operator represented as matrix\&. \fP"
+.ti -1c
+.RI "void \fBImposeOnGrid\fP (\fBUniStgGrid2D\fP &grid, const \fBReal\fP &time=\fBkZero\fP) const "
+.br
+.RI "\fIImposes the condition on the grid\&. \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "bool \fBImposeOnSouthBoundaryNoSpace\fP (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBDenseMatrix\fP &matrix, const \fBReal\fP &time=\fBkZero\fP) const "
+.br
+.RI "\fIImposes the condition on the south boundary\&. \fP"
+.ti -1c
+.RI "bool \fBImposeOnNorthBoundaryNoSpace\fP (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBDenseMatrix\fP &matrix, const \fBReal\fP &time=\fBkZero\fP) const "
+.br
+.RI "\fIImposes the condition on the north boundary\&. \fP"
+.ti -1c
+.RI "bool \fBImposeOnWestBoundaryNoSpace\fP (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBDenseMatrix\fP &matrix, const \fBReal\fP &time=\fBkZero\fP) const "
+.br
+.RI "\fIImposes the condition on the west boundary\&. \fP"
+.ti -1c
+.RI "bool \fBImposeOnEastBoundaryNoSpace\fP (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBDenseMatrix\fP &matrix, const \fBReal\fP &time=\fBkZero\fP) const "
+.br
+.RI "\fIImposes the condition on the east boundary\&. \fP"
+.ti -1c
+.RI "bool \fBImposeOnSouthBoundaryWithSpace\fP (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBDenseMatrix\fP &matrix, const \fBReal\fP &time=\fBkZero\fP) const "
+.br
+.RI "\fIImposes the condition on the south boundary\&. \fP"
+.ti -1c
+.RI "bool \fBImposeOnNorthBoundaryWithSpace\fP (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBDenseMatrix\fP &matrix, const \fBReal\fP &time=\fBkZero\fP) const "
+.br
+.RI "\fIImposes the condition on the north boundary\&. \fP"
+.ti -1c
+.RI "bool \fBImposeOnWestBoundaryWithSpace\fP (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBDenseMatrix\fP &matrix, const \fBReal\fP &time=\fBkZero\fP) const "
+.br
+.RI "\fIImposes the condition on the west boundary\&. \fP"
+.ti -1c
+.RI "bool \fBImposeOnEastBoundaryWithSpace\fP (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBDenseMatrix\fP &matrix, const \fBReal\fP &time=\fBkZero\fP) const "
+.br
+.RI "\fIImposes the condition on the east boundary\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBhighest_order_diff_west_\fP"
+.br
+.RI "\fIHighest order of differentiation west\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_east_\fP"
+.br
+.RI "\fIHighest order of differentiation east\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_south_\fP"
+.br
+.RI "\fIHighest order differentiation for south\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_north_\fP"
+.br
+.RI "\fIHighest order differentiation for north\&. \fP"
+.ti -1c
+.RI "std::vector
+.br
+< \fBCoefficientFunction1D\fP > \fBwest_coefficients_\fP"
+.br
+.RI "\fICoeffs\&. west\&. \fP"
+.ti -1c
+.RI "std::vector
+.br
+< \fBCoefficientFunction1D\fP > \fBeast_coefficients_\fP"
+.br
+.RI "\fICoeffs\&. east\&. \fP"
+.ti -1c
+.RI "std::vector
+.br
+< \fBCoefficientFunction1D\fP > \fBsouth_coefficients_\fP"
+.br
+.RI "\fICoeffs\&. south\&. \fP"
+.ti -1c
+.RI "std::vector
+.br
+< \fBCoefficientFunction1D\fP > \fBnorth_coefficients_\fP"
+.br
+.RI "\fICoeffs\&. south\&. \fP"
+.ti -1c
+.RI "\fBReal\fP(* \fBwest_condition_\fP )(const \fBReal\fP &xx, const \fBReal\fP &tt)"
+.br
+.RI "\fICondition west\&. \fP"
+.ti -1c
+.RI "\fBReal\fP(* \fBeast_condition_\fP )(const \fBReal\fP &xx, const \fBReal\fP &tt)"
+.br
+.RI "\fICondition east\&. \fP"
+.ti -1c
+.RI "\fBReal\fP(* \fBsouth_condition_\fP )(const \fBReal\fP &yy, const \fBReal\fP &tt)"
+.br
+.RI "\fICond\&. south\&. \fP"
+.ti -1c
+.RI "\fBReal\fP(* \fBnorth_condition_\fP )(const \fBReal\fP &yy, const \fBReal\fP &tt)"
+.br
+.RI "\fICond\&. north\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class presents an interface for the user to specify Robin boundary conditions on 2D mimetic operators and the grids they are acting on\&.
+.PP
+\fBDef\&.\fP Let $ u(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} $ be the solution to an ordinary or partial differential equation of interest\&. We say that $ u $ satisfies a \fBRobin boundary condition on\fP $ \partial\Omega $ if and only if there exists $ \beta(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} $ so that: \[ \forall t \in [t_0,t_n]\; \forall \mathbf{x} \in \partial\Omega: \delta(\mathbf{x},t)u(\mathbf{x},t) + \eta(\mathbf{x},t)(\hat{\mathbf{n}}\cdot\nabla u) = \beta(\mathbf{x},t). \]
+.PP
+Intuitively, a \fBRobin boundary condition\fP is a constraint that must be satisfied by any linear combination of any scalar field $ u $ and its first normal derivative, in order for $ u $ to represent a unique solution to a given ordinary or partial differential equation of interest\&.
+.PP
+Instances of this class receive information about the coefficient functions and each condition for any subset of the boundary (west, east, south and north in 2D)\&. These instances then handle the complexity of placing the coefficients in the differentiation matrices and the conditions in the grids\&.
+.PP
+\fBSee also:\fP
+.RS 4
+http://mathworld.wolfram.com/NormalVector.html 
+.RE
+.PP
+
+.PP
+Definition at line 132 of file mtk_robin_bc_descriptor_2d\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mtk::RobinBCDescriptor2D::RobinBCDescriptor2D ()"
+
+.PP
+Definition at line 84 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "mtk::RobinBCDescriptor2D::RobinBCDescriptor2D (const \fBRobinBCDescriptor2D\fP &desc)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdesc\fP Given 2D descriptor\&. 
+.RE
+.PP
+
+.PP
+Definition at line 94 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "mtk::RobinBCDescriptor2D::~RobinBCDescriptor2D ()\fC [noexcept]\fP"
+
+.PP
+Definition at line 105 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "int mtk::RobinBCDescriptor2D::highest_order_diff_east () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Integer highest order of differentiation in the east boundary\&. 
+.RE
+.PP
+
+.PP
+Definition at line 112 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "int mtk::RobinBCDescriptor2D::highest_order_diff_north () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Integer highest order of differentiation in the north boundary\&. 
+.RE
+.PP
+
+.PP
+Definition at line 122 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "int mtk::RobinBCDescriptor2D::highest_order_diff_south () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Integer highest order of differentiation in the south boundary\&. 
+.RE
+.PP
+
+.PP
+Definition at line 117 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "int mtk::RobinBCDescriptor2D::highest_order_diff_west () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Integer highest order of differentiation in the west boundary\&. 
+.RE
+.PP
+
+.PP
+Definition at line 107 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "bool mtk::RobinBCDescriptor2D::ImposeOnEastBoundaryNoSpace (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const \fBReal\fP &time = \fC\fBkZero\fP\fP) const\fC [private]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlap\fP Laplacian operator on the matrix\&. 
+.br
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
+.br
+\fImatrix\fP Input matrix with the Laplacian operator\&. 
+.br
+\fItime\fP Current time snapshot\&. Default is kZero\&. 
+.RE
+.PP
+
+.IP "1." 4
+Impose the Dirichlet condition first\&.
+.IP "2." 4
+Impose the Neumann condition\&. 
+.PP
+
+.PP
+Definition at line 495 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "bool mtk::RobinBCDescriptor2D::ImposeOnEastBoundaryWithSpace (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const \fBReal\fP &time = \fC\fBkZero\fP\fP) const\fC [private]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlap\fP Laplacian operator on the matrix\&. 
+.br
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
+.br
+\fImatrix\fP Input matrix with the Laplacian operator\&. 
+.br
+\fItime\fP Current time snapshot\&. Default is kZero\&. 
+.RE
+.PP
+
+.IP "1." 4
+Impose the Dirichlet condition first\&.
+.IP "2." 4
+Impose the Neumann condition\&. 
+.PP
+
+.PP
+Definition at line 564 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::RobinBCDescriptor2D::ImposeOnGrid (\fBmtk::UniStgGrid2D\fP &grid, const \fBReal\fP &time = \fC\fBkZero\fP\fP) const"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
+.br
+\fItime\fP Current time snapshot\&. Default is kZero\&. 
+.RE
+.PP
+
+.IP "1." 4
+Impose assuming an scalar grid\&.
+.PP
+.PP
+1\&.1\&. Impose south condition\&.
+.PP
+1\&.1\&.1\&. Impose south-west corner\&.
+.PP
+1\&.1\&.2\&. Impose south border\&.
+.PP
+1\&.1\&.3\&. Impose south-east corner\&.
+.PP
+1\&.2\&. Impose north condition\&.
+.PP
+1\&.2\&.1\&. Impose north-west corner\&.
+.PP
+1\&.2\&.2\&. Impose north border\&.
+.PP
+1\&.2\&.3\&. Impose north-east corner\&.
+.PP
+1\&.3\&. Impose west condition\&.
+.PP
+1\&.3\&.1\&. Impose south-west corner\&. 
+.PP
+\fBNote:\fP
+.RS 4
+As per discussion with Otilio, we will take the \fBarithmetic\fP \fBmean\fP of the values of the BCs at the corners\&.
+.RE
+.PP
+1\&.3\&.2\&. Impose west border\&.
+.PP
+1\&.3\&.3\&. Impose north-west corner\&.
+.PP
+1\&.4\&. Impose east condition\&.
+.PP
+1\&.4\&.1\&. Impose south-east corner\&.
+.PP
+1\&.4\&.2\&. Impose east border\&.
+.PP
+1\&.4\&.3\&. Impose north-east corner\&.
+.PP
+.IP "2." 4
+Impose assuming a vector grid\&.
+.PP
+.PP
+\fBTodo\fP
+.RS 4
+Implement imposition for vector-valued grids\&. Need research here! 
+.RE
+.PP
+
+.PP
+Definition at line 674 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "bool mtk::RobinBCDescriptor2D::ImposeOnLaplacianMatrix (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const \fBReal\fP &time = \fC\fBkZero\fP\fP) const"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlap\fP Laplacian operator on the matrix\&. 
+.br
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
+.br
+\fImatrix\fP Input matrix with the Laplacian operator\&. 
+.br
+\fItime\fP Current time snapshot\&. Default is kZero\&. 
+.RE
+.PP
+If we have not bound anything to the grid, then we have to generate our collection of spatial coordinates, as we evaluate the coefficients\&. 
+.PP
+Definition at line 591 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "bool mtk::RobinBCDescriptor2D::ImposeOnNorthBoundaryNoSpace (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const \fBReal\fP &time = \fC\fBkZero\fP\fP) const\fC [private]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlap\fP Laplacian operator on the matrix\&. 
+.br
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
+.br
+\fImatrix\fP Input matrix with the Laplacian operator\&. 
+.br
+\fItime\fP Current time snapshot\&. Default is kZero\&. 
+.RE
+.PP
+
+.IP "1." 4
+Impose the Dirichlet condition first\&.
+.IP "2." 4
+Impose the Neumann condition\&. 
+.PP
+
+.PP
+Definition at line 312 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "bool mtk::RobinBCDescriptor2D::ImposeOnNorthBoundaryWithSpace (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const \fBReal\fP &time = \fC\fBkZero\fP\fP) const\fC [private]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlap\fP Laplacian operator on the matrix\&. 
+.br
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
+.br
+\fImatrix\fP Input matrix with the Laplacian operator\&. 
+.br
+\fItime\fP Current time snapshot\&. Default is kZero\&. 
+.RE
+.PP
+
+.IP "1." 4
+Impose Dirichlet condition\&.
+.PP
+.PP
+For each entry on the diagonal:
+.PP
+Evaluate next set spatial coordinates to evaluate the coefficient\&.
+.PP
+Evaluate and assign the Dirichlet coefficient\&.
+.PP
+.IP "2." 4
+Impose the Neumann condition\&. 
+.PP
+
+.PP
+Definition at line 372 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "bool mtk::RobinBCDescriptor2D::ImposeOnSouthBoundaryNoSpace (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const \fBReal\fP &time = \fC\fBkZero\fP\fP) const\fC [private]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlap\fP Laplacian operator on the matrix\&. 
+.br
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
+.br
+\fImatrix\fP Input matrix with the Laplacian operator\&. 
+.br
+\fItime\fP Current time snapshot\&. Default is kZero\&. 
+.RE
+.PP
+
+.IP "1." 4
+Impose the Dirichlet condition first\&.
+.IP "2." 4
+Impose the Neumann condition\&.
+.PP
+.PP
+\fBTodo\fP
+.RS 4
+Impose the Neumann conditions on every pole, for every scenario\&. 
+.RE
+.PP
+
+.PP
+Definition at line 229 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "bool mtk::RobinBCDescriptor2D::ImposeOnSouthBoundaryWithSpace (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const \fBReal\fP &time = \fC\fBkZero\fP\fP) const\fC [private]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlap\fP Laplacian operator on the matrix\&. 
+.br
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
+.br
+\fImatrix\fP Input matrix with the Laplacian operator\&. 
+.br
+\fItime\fP Current time snapshot\&. Default is kZero\&. 
+.RE
+.PP
+
+.IP "1." 4
+Impose the Dirichlet condition first\&.
+.PP
+.PP
+\fBTodo\fP
+.RS 4
+Impose Harmonic mean on the corners for the case when the generated space is available, for all poles\&. 
+.RE
+.PP
+.PP
+.IP "2." 4
+Impose the Neumann condition\&. 
+.PP
+
+.PP
+Definition at line 284 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "bool mtk::RobinBCDescriptor2D::ImposeOnWestBoundaryNoSpace (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const \fBReal\fP &time = \fC\fBkZero\fP\fP) const\fC [private]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlap\fP Laplacian operator on the matrix\&. 
+.br
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
+.br
+\fImatrix\fP Input matrix with the Laplacian operator\&. 
+.br
+\fItime\fP Current time snapshot\&. Default is kZero\&. 
+.RE
+.PP
+
+.IP "1." 4
+Impose the Dirichlet condition first\&.
+.PP
+.PP
+\fBNote:\fP
+.RS 4
+As it can be seen, we must adopt a convention about how to treat the corners\&. Based on a reasoning with Otilio, we will take the \fBharmonic mean\fP\&.
+.RE
+.PP
+.IP "2." 4
+Impose the Neumann condition\&. 
+.PP
+
+.PP
+Definition at line 399 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "bool mtk::RobinBCDescriptor2D::ImposeOnWestBoundaryWithSpace (const \fBLap2D\fP &lap, const \fBUniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const \fBReal\fP &time = \fC\fBkZero\fP\fP) const\fC [private]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIlap\fP Laplacian operator on the matrix\&. 
+.br
+\fIgrid\fP Grid upon which impose the desired boundary condition\&. 
+.br
+\fImatrix\fP Input matrix with the Laplacian operator\&. 
+.br
+\fItime\fP Current time snapshot\&. Default is kZero\&. 
+.RE
+.PP
+
+.IP "1." 4
+Impose the Dirichlet condition first\&.
+.IP "2." 4
+Impose the Neumann condition\&. 
+.PP
+
+.PP
+Definition at line 468 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::RobinBCDescriptor2D::PushBackEastCoeff (\fBmtk::CoefficientFunction1D\fPce)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcw\fP Coeff\&. $ c_e(y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.PP
+Definition at line 141 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::RobinBCDescriptor2D::PushBackNorthCoeff (\fBmtk::CoefficientFunction1D\fPcn)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcw\fP Coeff\&. $ c_n(x,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.PP
+Definition at line 169 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::RobinBCDescriptor2D::PushBackSouthCoeff (\fBmtk::CoefficientFunction1D\fPcs)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcw\fP Coeff\&. $ c_s(x,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.PP
+Definition at line 155 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::RobinBCDescriptor2D::PushBackWestCoeff (\fBmtk::CoefficientFunction1D\fPcw)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIcw\fP Coeff\&. $ c_w(y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.PP
+Definition at line 127 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::RobinBCDescriptor2D::set_east_condition (\fBReal\fP(*)(const \fBReal\fP &yy, const \fBReal\fP &tt)east_condition)\fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIeast_condition\fP $ \beta_e(y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.PP
+Definition at line 194 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::RobinBCDescriptor2D::set_north_condition (\fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &tt)north_condition)\fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInorth_condition\fP $ \beta_n(x,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.PP
+Definition at line 217 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::RobinBCDescriptor2D::set_south_condition (\fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &tt)south_condition)\fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsouth_condition\fP $ \beta_s(x,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.PP
+Definition at line 205 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SS "void mtk::RobinBCDescriptor2D::set_west_condition (\fBReal\fP(*)(const \fBReal\fP &yy, const \fBReal\fP &tt)west_condition)\fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwest_condition\fP $ \beta_w(y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $\&. 
+.RE
+.PP
+
+.PP
+Definition at line 183 of file mtk_robin_bc_descriptor_2d\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<\fBCoefficientFunction1D\fP> mtk::RobinBCDescriptor2D::east_coefficients_\fC [private]\fP"
+
+.PP
+Definition at line 367 of file mtk_robin_bc_descriptor_2d\&.h\&.
+.SS "\fBReal\fP(* mtk::RobinBCDescriptor2D::east_condition_)(const \fBReal\fP &xx, const \fBReal\fP &tt)\fC [private]\fP"
+
+.PP
+Definition at line 372 of file mtk_robin_bc_descriptor_2d\&.h\&.
+.SS "int mtk::RobinBCDescriptor2D::highest_order_diff_east_\fC [private]\fP"
+
+.PP
+Definition at line 362 of file mtk_robin_bc_descriptor_2d\&.h\&.
+.SS "int mtk::RobinBCDescriptor2D::highest_order_diff_north_\fC [private]\fP"
+
+.PP
+Definition at line 364 of file mtk_robin_bc_descriptor_2d\&.h\&.
+.SS "int mtk::RobinBCDescriptor2D::highest_order_diff_south_\fC [private]\fP"
+
+.PP
+Definition at line 363 of file mtk_robin_bc_descriptor_2d\&.h\&.
+.SS "int mtk::RobinBCDescriptor2D::highest_order_diff_west_\fC [private]\fP"
+
+.PP
+Definition at line 361 of file mtk_robin_bc_descriptor_2d\&.h\&.
+.SS "std::vector<\fBCoefficientFunction1D\fP> mtk::RobinBCDescriptor2D::north_coefficients_\fC [private]\fP"
+
+.PP
+Definition at line 369 of file mtk_robin_bc_descriptor_2d\&.h\&.
+.SS "\fBReal\fP(* mtk::RobinBCDescriptor2D::north_condition_)(const \fBReal\fP &yy, const \fBReal\fP &tt)\fC [private]\fP"
+
+.PP
+Definition at line 374 of file mtk_robin_bc_descriptor_2d\&.h\&.
+.SS "std::vector<\fBCoefficientFunction1D\fP> mtk::RobinBCDescriptor2D::south_coefficients_\fC [private]\fP"
+
+.PP
+Definition at line 368 of file mtk_robin_bc_descriptor_2d\&.h\&.
+.SS "\fBReal\fP(* mtk::RobinBCDescriptor2D::south_condition_)(const \fBReal\fP &yy, const \fBReal\fP &tt)\fC [private]\fP"
+
+.PP
+Definition at line 373 of file mtk_robin_bc_descriptor_2d\&.h\&.
+.SS "std::vector<\fBCoefficientFunction1D\fP> mtk::RobinBCDescriptor2D::west_coefficients_\fC [private]\fP"
+
+.PP
+Definition at line 366 of file mtk_robin_bc_descriptor_2d\&.h\&.
+.SS "\fBReal\fP(* mtk::RobinBCDescriptor2D::west_condition_)(const \fBReal\fP &xx, const \fBReal\fP &tt)\fC [private]\fP"
+
+.PP
+Definition at line 371 of file mtk_robin_bc_descriptor_2d\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

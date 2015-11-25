@@ -1,0 +1,164 @@
+\hypertarget{mtk__robin__bc__descriptor__2d_8h_source}{\section{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}
+\label{mtk__robin__bc__descriptor__2d_8h_source}\index{include/mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h@{include/mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}}
+}
+
+\begin{DoxyCode}
+00001 
+00034 \textcolor{comment}{/*}
+00035 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00036 \textcolor{comment}{University. All rights reserved.}
+00037 \textcolor{comment}{}
+00038 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00039 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00040 \textcolor{comment}{}
+00041 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00042 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00043 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
+00044 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
+00045 \textcolor{comment}{should be developed and included in any deliverable.}
+00046 \textcolor{comment}{}
+00047 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00048 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00049 \textcolor{comment}{}
+00050 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
+00051 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00052 \textcolor{comment}{other materials provided with the distribution.}
+00053 \textcolor{comment}{}
+00054 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
+00055 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
+00056 \textcolor{comment}{be given to the copyright holders.}
+00057 \textcolor{comment}{}
+00058 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
+00059 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00060 \textcolor{comment}{specific prior written permission.}
+00061 \textcolor{comment}{}
+00062 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00063 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00064 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00065 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00066 \textcolor{comment}{parties intellectual property rights.}
+00067 \textcolor{comment}{}
+00068 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00069 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00070 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00071 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00072 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00073 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00074 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00075 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00076 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00077 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00078 \textcolor{comment}{*/}
+00079 
+00080 \textcolor{preprocessor}{#ifndef MTK\_INCLUDE\_BC\_DESCRIPTOR\_2D\_H\_}
+00081 \textcolor{preprocessor}{#define MTK\_INCLUDE\_BC\_DESCRIPTOR\_2D\_H\_}
+00082 
+00083 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
+00084 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
+00085 \textcolor{preprocessor}{#include "\hyperlink{mtk__lap__2d_8h}{mtk\_lap\_2d.h}"}
+00086 \textcolor{preprocessor}{#include "\hyperlink{mtk__uni__stg__grid__2d_8h}{mtk\_uni\_stg\_grid\_2d.h}"}
+00087 
+00088 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk}\{
+00089 
+\hypertarget{mtk__robin__bc__descriptor__2d_8h_source_l00097}{}\hyperlink{group__c07-mim__ops_gaa79593eeb6676d6011db339e01983909}{00097} \textcolor{keyword}{typedef} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*\hyperlink{group__c07-mim__ops_gaa79593eeb6676d6011db339e01983909}{CoefficientFunction1D})(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &xx, \textcolor{keyword}{const} 
+      \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &tt);
+00098 
+\hypertarget{mtk__robin__bc__descriptor__2d_8h_source_l00132}{}\hyperlink{classmtk_1_1RobinBCDescriptor2D}{00132} \textcolor{keyword}{class }\hyperlink{classmtk_1_1RobinBCDescriptor2D}{RobinBCDescriptor2D} \{
+00133  \textcolor{keyword}{public}:
+00135   \hyperlink{classmtk_1_1RobinBCDescriptor2D_a00589475c84facde18949150bd6df961}{RobinBCDescriptor2D}();
+00136 
+00142   \hyperlink{classmtk_1_1RobinBCDescriptor2D_a00589475c84facde18949150bd6df961}{RobinBCDescriptor2D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1RobinBCDescriptor2D}{RobinBCDescriptor2D} &desc);
+00143 
+00145   \hyperlink{classmtk_1_1RobinBCDescriptor2D_a75351b00a9e306f468d1733ce38dff5f}{~RobinBCDescriptor2D}() noexcept;
+00146 
+00152   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1RobinBCDescriptor2D_ac75fc5f402e3f6e6d4f1e253f8ada98c}{highest\_order\_diff\_west}() \textcolor{keyword}{const} noexcept;
+00153 
+00159   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1RobinBCDescriptor2D_aebe62f9ae39b02f9c029257d6e6381af}{highest\_order\_diff\_east}() \textcolor{keyword}{const} noexcept;
+00160 
+00166   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1RobinBCDescriptor2D_a6aaa1f5a3dc46446acd66209f1519410}{highest\_order\_diff\_south}() \textcolor{keyword}{const} noexcept;
+00167 
+00173   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1RobinBCDescriptor2D_a77d5d6b65f39bc74072fbc1d638eb899}{highest\_order\_diff\_north}() \textcolor{keyword}{const} noexcept;
+00174 
+00181   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1RobinBCDescriptor2D_a671a38d5ea78be8f0a88ccf034d09987}{PushBackWestCoeff}(\hyperlink{group__c07-mim__ops_gaa79593eeb6676d6011db339e01983909}{CoefficientFunction1D} cw);
+00182 
+00189   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1RobinBCDescriptor2D_a7cc1e6ca729b8b092eb73161eb244160}{PushBackEastCoeff}(\hyperlink{group__c07-mim__ops_gaa79593eeb6676d6011db339e01983909}{CoefficientFunction1D} ce);
+00190 
+00197   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1RobinBCDescriptor2D_ad74c5d9f2c1d0359d350348ac2a7e61e}{PushBackSouthCoeff}(\hyperlink{group__c07-mim__ops_gaa79593eeb6676d6011db339e01983909}{CoefficientFunction1D} cs);
+00198 
+00205   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1RobinBCDescriptor2D_abc6e299516af5d1c5c2d04797875b446}{PushBackNorthCoeff}(\hyperlink{group__c07-mim__ops_gaa79593eeb6676d6011db339e01983909}{CoefficientFunction1D} cn);
+00206 
+00213   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1RobinBCDescriptor2D_aeaff87510dc1773effc0b5429579de23}{set\_west\_condition}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*west\_condition)(\textcolor{keyword}{const} 
+      \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &yy,
+00214                                                  \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &tt)) noexcept;
+00215 
+00222   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1RobinBCDescriptor2D_a94570f6e741bb00038c4bf81842d226c}{set\_east\_condition}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*east\_condition)(\textcolor{keyword}{const} 
+      \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &yy,
+00223                                                  \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &tt)) noexcept;
+00224 
+00231   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1RobinBCDescriptor2D_a3fbdf58ba24861011fd852f0c642a4c8}{set\_south\_condition}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*south\_condition)(\textcolor{keyword}{const} 
+      \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &xx,
+00232                                                    \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &tt)) noexcept;
+00233 
+00240   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1RobinBCDescriptor2D_ade17884e6a2636a7c6f989602a0052e0}{set\_north\_condition}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*north\_condition)(\textcolor{keyword}{const} 
+      \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &xx,
+00241                                                    \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &tt)) noexcept;
+00242 
+00251   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1RobinBCDescriptor2D_a0a26693f5265fcad978e7ba84e01ed69}{ImposeOnLaplacianMatrix}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Lap2D}{Lap2D} &lap,
+00252                                \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid,
+00253                                \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &matrix,
+00254                                \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &time = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{kZero}) \textcolor{keyword}{const};
+00261   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1RobinBCDescriptor2D_ac9564bc46c196cbf4720a0e4b93da8b0}{ImposeOnGrid}(\hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid, \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &time = 
+      \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{kZero}) \textcolor{keyword}{const};
+00262 
+00263 \textcolor{keyword}{private}:
+00272   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1RobinBCDescriptor2D_a82159bcca93555114532c5fa4d0fb3db}{ImposeOnSouthBoundaryNoSpace}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Lap2D}{Lap2D} &lap,
+00273                                     \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid,
+00274                                     \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &matrix,
+00275                                     \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &time = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{kZero}) \textcolor{keyword}{const};
+00284   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1RobinBCDescriptor2D_a3bc22c1d5a7a4d7c2130351cbfa35135}{ImposeOnNorthBoundaryNoSpace}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Lap2D}{Lap2D} &lap,
+00285                                     \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid,
+00286                                     \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &matrix,
+00287                                     \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &time = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{kZero}) \textcolor{keyword}{const};
+00296   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1RobinBCDescriptor2D_af5dd24444e7eb14592a3c3feaf30d561}{ImposeOnWestBoundaryNoSpace}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Lap2D}{Lap2D} &lap,
+00297                                    \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid,
+00298                                    \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &matrix,
+00299                                    \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &time = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{kZero}) \textcolor{keyword}{const};
+00308   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1RobinBCDescriptor2D_ae1df82802d541d3566f3d2659e4aaf05}{ImposeOnEastBoundaryNoSpace}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Lap2D}{Lap2D} &lap,
+00309                                    \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid,
+00310                                    \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &matrix,
+00311                                    \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &time = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{kZero}) \textcolor{keyword}{const};
+00320   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1RobinBCDescriptor2D_a2f99cdd8bda2bc46cf259bb96ef4bd49}{ImposeOnSouthBoundaryWithSpace}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Lap2D}{Lap2D} &lap,
+00321                                       \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid,
+00322                                       \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &matrix,
+00323                                       \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &time = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{kZero}) \textcolor{keyword}{const};
+00332   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1RobinBCDescriptor2D_afdf9cc19481303564a17c8c7157d57cb}{ImposeOnNorthBoundaryWithSpace}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Lap2D}{Lap2D} &lap,
+00333                                       \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid,
+00334                                       \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &matrix,
+00335                                       \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &time = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{kZero}) \textcolor{keyword}{const};
+00344   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1RobinBCDescriptor2D_adbfdfa9c6b93df8d23c50686b5b356ef}{ImposeOnWestBoundaryWithSpace}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Lap2D}{Lap2D} &lap,
+00345                                      \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid,
+00346                                      \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &matrix,
+00347                                      \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &time = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{kZero}) \textcolor{keyword}{const};
+00356   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1RobinBCDescriptor2D_a37efc8077bf5ea4f28539da248dc2a41}{ImposeOnEastBoundaryWithSpace}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Lap2D}{Lap2D} &lap,
+00357                                      \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{UniStgGrid2D} &grid,
+00358                                      \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &matrix,
+00359                                      \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &time = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{kZero}) \textcolor{keyword}{const};
+00360 
+\hypertarget{mtk__robin__bc__descriptor__2d_8h_source_l00361}{}\hyperlink{classmtk_1_1RobinBCDescriptor2D_a5d4d25e65ae74dbde678270933e2fa84}{00361}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1RobinBCDescriptor2D_a5d4d25e65ae74dbde678270933e2fa84}{highest\_order\_diff\_west\_};   
+\hypertarget{mtk__robin__bc__descriptor__2d_8h_source_l00362}{}\hyperlink{classmtk_1_1RobinBCDescriptor2D_aedb5c01c28158beb1689e1d70e10d8e5}{00362}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1RobinBCDescriptor2D_aedb5c01c28158beb1689e1d70e10d8e5}{highest\_order\_diff\_east\_};   
+\hypertarget{mtk__robin__bc__descriptor__2d_8h_source_l00363}{}\hyperlink{classmtk_1_1RobinBCDescriptor2D_a9a408620e32bcdbd80fa83a0d1063872}{00363}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1RobinBCDescriptor2D_a9a408620e32bcdbd80fa83a0d1063872}{highest\_order\_diff\_south\_};  
+\hypertarget{mtk__robin__bc__descriptor__2d_8h_source_l00364}{}\hyperlink{classmtk_1_1RobinBCDescriptor2D_a7c715341c17da7e75fd8b3e54e2417c5}{00364}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1RobinBCDescriptor2D_a7c715341c17da7e75fd8b3e54e2417c5}{highest\_order\_diff\_north\_};  
+00365 
+\hypertarget{mtk__robin__bc__descriptor__2d_8h_source_l00366}{}\hyperlink{classmtk_1_1RobinBCDescriptor2D_a1f341dc6485b78acf5408d22c87a6dd1}{00366}   std::vector<CoefficientFunction1D> \hyperlink{classmtk_1_1RobinBCDescriptor2D_a1f341dc6485b78acf5408d22c87a6dd1}{west\_coefficients\_};  
+\hypertarget{mtk__robin__bc__descriptor__2d_8h_source_l00367}{}\hyperlink{classmtk_1_1RobinBCDescriptor2D_aacf640e8d310f53fc9b0a10b66e04ab6}{00367}   std::vector<CoefficientFunction1D> \hyperlink{classmtk_1_1RobinBCDescriptor2D_aacf640e8d310f53fc9b0a10b66e04ab6}{east\_coefficients\_};  
+\hypertarget{mtk__robin__bc__descriptor__2d_8h_source_l00368}{}\hyperlink{classmtk_1_1RobinBCDescriptor2D_a97335ce1103cb89ab0696d5ae2fc6d37}{00368}   std::vector<CoefficientFunction1D> \hyperlink{classmtk_1_1RobinBCDescriptor2D_a97335ce1103cb89ab0696d5ae2fc6d37}{south\_coefficients\_}; 
+\hypertarget{mtk__robin__bc__descriptor__2d_8h_source_l00369}{}\hyperlink{classmtk_1_1RobinBCDescriptor2D_a91fc1a7322ceda8f5409e1fe6490861c}{00369}   std::vector<CoefficientFunction1D> \hyperlink{classmtk_1_1RobinBCDescriptor2D_a91fc1a7322ceda8f5409e1fe6490861c}{north\_coefficients\_}; 
+00370 
+\hypertarget{mtk__robin__bc__descriptor__2d_8h_source_l00371}{}\hyperlink{classmtk_1_1RobinBCDescriptor2D_a3d04c776a3fa34cf4fea7c484e2056d6}{00371}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*\hyperlink{classmtk_1_1RobinBCDescriptor2D_a3d04c776a3fa34cf4fea7c484e2056d6}{west\_condition\_})(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &xx, \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &tt);  
+\hypertarget{mtk__robin__bc__descriptor__2d_8h_source_l00372}{}\hyperlink{classmtk_1_1RobinBCDescriptor2D_a9b2b901adfa258a8e05788857de31c8a}{00372}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*\hyperlink{classmtk_1_1RobinBCDescriptor2D_a9b2b901adfa258a8e05788857de31c8a}{east\_condition\_})(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &xx, \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &tt);  
+\hypertarget{mtk__robin__bc__descriptor__2d_8h_source_l00373}{}\hyperlink{classmtk_1_1RobinBCDescriptor2D_aa45a1867ab80b81966f4221bbdb576ff}{00373}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*\hyperlink{classmtk_1_1RobinBCDescriptor2D_aa45a1867ab80b81966f4221bbdb576ff}{south\_condition\_})(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &yy, \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &tt); 
+\hypertarget{mtk__robin__bc__descriptor__2d_8h_source_l00374}{}\hyperlink{classmtk_1_1RobinBCDescriptor2D_ad2a1e821b0c6d226a8b884baadcf1f1b}{00374}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*\hyperlink{classmtk_1_1RobinBCDescriptor2D_ad2a1e821b0c6d226a8b884baadcf1f1b}{north\_condition\_})(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &yy, \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &tt); 
+00375 \};
+00376 \}
+00377 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_BC\_DESCRIPTOR\_2D\_H\_}
+\end{DoxyCode}

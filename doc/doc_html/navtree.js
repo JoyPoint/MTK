@@ -32,7 +32,7 @@ var NAVTREE =
       [ "Class Index", "classes.html", null ],
       [ "Class Members", "functions.html", [
         [ "All", "functions.html", "functions_dup" ],
-        [ "Functions", "functions_func.html", null ],
+        [ "Functions", "functions_func.html", "functions_func" ],
         [ "Variables", "functions_vars.html", null ],
         [ "Related Functions", "functions_rela.html", null ]
       ] ]
@@ -50,8 +50,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Makefile_8inc.html",
-"classmtk_1_1Matrix.html#abf78ec78b23ee639c08fecbb80ca09e5",
-"mtk__lap__1d_8h.html"
+"classmtk_1_1RobinBCDescriptor2D.html#a00589475c84facde18949150bd6df961",
+"mtk__grad__1d_8cc.html#a3f546b8a3743b8719db17e33f2d7ef7f"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

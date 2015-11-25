@@ -67,7 +67,7 @@
 00068   \hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{mtk::Tools::Assert}(gg.\hyperlink{classmtk_1_1UniStgGrid1D_a6e7173b01241632cf509496d66b9f74c}{delta\_x}() == \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
 00069 \}
 00070 
-00071 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} ScalarField(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx) \{
+00071 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} ScalarField(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx) \{
 00072 
 00073   \textcolor{keywordflow}{return} 2.0*xx;
 00074 \}
@@ -83,7 +83,7 @@
 00084 
 00085   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} gg(aa, bb, nn);
 00086 
-00087   gg.\hyperlink{classmtk_1_1UniStgGrid1D_a438cda229830d0e2f35c615e70b59a76}{BindScalarField}(ScalarField);
+00087   gg.\hyperlink{classmtk_1_1UniStgGrid1D_ab49f0009b66b0a58ae7f70a538f4d12b}{BindScalarField}(ScalarField);
 00088 
 00089   std::cout << gg << std::endl;
 00090 
@@ -105,12 +105,12 @@
 00105 
 00106   \textcolor{keywordtype}{bool} assertion\{\textcolor{keyword}{true}\};
 00107 
-00108   gg.\hyperlink{classmtk_1_1UniStgGrid1D_a438cda229830d0e2f35c615e70b59a76}{BindScalarField}(ScalarField);
+00108   gg.\hyperlink{classmtk_1_1UniStgGrid1D_ab49f0009b66b0a58ae7f70a538f4d12b}{BindScalarField}(ScalarField);
 00109 
 00110   assertion =
 00111     assertion &&
-00112     gg.\hyperlink{classmtk_1_1UniStgGrid1D_acf28d702f6e702599986afcb253bbfc1}{discrete\_field\_u}()[0] == 0.0 &&
-00113     gg.\hyperlink{classmtk_1_1UniStgGrid1D_acf28d702f6e702599986afcb253bbfc1}{discrete\_field\_u}()[gg.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}() + 2 - 1] == 2.0;
+00112     gg.\hyperlink{classmtk_1_1UniStgGrid1D_ab9c3f9ee2ac76a351b01e4abfede4d19}{discrete\_field}()[0] == 0.0 &&
+00113     gg.\hyperlink{classmtk_1_1UniStgGrid1D_ab9c3f9ee2ac76a351b01e4abfede4d19}{discrete\_field}()[gg.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}() + 2 - 1] == 2.0;
 00114 
 00115   \textcolor{keywordflow}{if}(!gg.\hyperlink{classmtk_1_1UniStgGrid1D_a6d2c10aa9468a037829f0eb043b898dc}{WriteToFile}(\textcolor{stringliteral}{"mtk\_uni\_stg\_grid\_1d\_test\_03.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"u(x)"})) \{
 00116     std::cerr << \textcolor{stringliteral}{"Error writing to file."} << std::endl;
@@ -143,8 +143,8 @@
 00143 
 00144   assertion =
 00145     assertion &&
-00146     gg.\hyperlink{classmtk_1_1UniStgGrid1D_acf28d702f6e702599986afcb253bbfc1}{discrete\_field\_u}()[0] == 0.0 &&
-00147     gg.\hyperlink{classmtk_1_1UniStgGrid1D_acf28d702f6e702599986afcb253bbfc1}{discrete\_field\_u}()[gg.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}() + 1 - 1] == 1.0;
+00146     gg.\hyperlink{classmtk_1_1UniStgGrid1D_ab9c3f9ee2ac76a351b01e4abfede4d19}{discrete\_field}()[0] == 0.0 &&
+00147     gg.\hyperlink{classmtk_1_1UniStgGrid1D_ab9c3f9ee2ac76a351b01e4abfede4d19}{discrete\_field}()[gg.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}() + 1 - 1] == 1.0;
 00148 
 00149   \textcolor{keywordflow}{if}(!gg.\hyperlink{classmtk_1_1UniStgGrid1D_a6d2c10aa9468a037829f0eb043b898dc}{WriteToFile}(\textcolor{stringliteral}{"mtk\_uni\_stg\_grid\_1d\_test\_04.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"v(x)"})) \{
 00150     std::cerr << \textcolor{stringliteral}{"Error writing to file."} << std::endl;

@@ -110,9 +110,6 @@ $(document).ready(function(){initNavTree('group__c07-mim__ops.html','');});
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmtk_1_1BCDescriptor2D.html">mtk::BCDescriptor2D</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Enforces boundary conditions in either the operator or the grid.  <a href="classmtk_1_1BCDescriptor2D.html#details">More...</a><br /></td></tr>
-<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmtk_1_1Div1D.html">mtk::Div1D</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements a 1D mimetic divergence operator.  <a href="classmtk_1_1Div1D.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -140,30 +137,51 @@ Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmtk_1_1Quad1D.html">mtk::Quad1D</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Implements a 1D mimetic quadrature.  <a href="classmtk_1_1Quad1D.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmtk_1_1BCDescriptor1D.html">mtk::BCDescriptor1D</a></td></tr>
-<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposes boundary conditions on the operators or on the grids.  <a href="classmtk_1_1BCDescriptor1D.html#details">More...</a><br /></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmtk_1_1RobinBCDescriptor1D.html">mtk::RobinBCDescriptor1D</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Impose Robin boundary conditions on the operators and on the grids.  <a href="classmtk_1_1RobinBCDescriptor1D.html#details">More...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmtk_1_1RobinBCDescriptor2D.html">mtk::RobinBCDescriptor2D</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Impose Robin boundary conditions on the operators and on the grids.  <a href="classmtk_1_1RobinBCDescriptor2D.html#details">More...</a><br /></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
-<tr class="memitem:gad9e1c0ace886b0029aefffa5f320e852"><td class="memItemLeft" align="right" valign="top">typedef Real(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__c07-mim__ops.html#gad9e1c0ace886b0029aefffa5f320e852">mtk::CoefficientFunction2D</a> )(const Real &amp;, const Real &amp;)</td></tr>
-<tr class="memdesc:gad9e1c0ace886b0029aefffa5f320e852"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function of a BC coefficient evaluated on a 2D domain.  <a href="#gad9e1c0ace886b0029aefffa5f320e852">More...</a><br /></td></tr>
-<tr class="separator:gad9e1c0ace886b0029aefffa5f320e852"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ga04276745b4d511f0f3c636d6e0df7c2d"><td class="memItemLeft" align="right" valign="top">typedef Real(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__c07-mim__ops.html#ga04276745b4d511f0f3c636d6e0df7c2d">mtk::CoefficientFunction0D</a> )(const Real &amp;tt)</td></tr>
+<tr class="memdesc:ga04276745b4d511f0f3c636d6e0df7c2d"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function of a BC coefficient evaluated on a 0D domain and time.  <a href="#ga04276745b4d511f0f3c636d6e0df7c2d">More...</a><br /></td></tr>
+<tr class="separator:ga04276745b4d511f0f3c636d6e0df7c2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gaa79593eeb6676d6011db339e01983909"><td class="memItemLeft" align="right" valign="top">typedef Real(*&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="group__c07-mim__ops.html#gaa79593eeb6676d6011db339e01983909">mtk::CoefficientFunction1D</a> )(const Real &amp;xx, const Real &amp;tt)</td></tr>
+<tr class="memdesc:gaa79593eeb6676d6011db339e01983909"><td class="mdescLeft">&#160;</td><td class="mdescRight">A function of a BC coefficient evaluated on a 1D domain and time.  <a href="#gaa79593eeb6676d6011db339e01983909">More...</a><br /></td></tr>
+<tr class="separator:gaa79593eeb6676d6011db339e01983909"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <p>Mimetic operators. </p>
 <h2 class="groupheader">Typedef Documentation</h2>
-<a class="anchor" id="gad9e1c0ace886b0029aefffa5f320e852"></a>
+<a class="anchor" id="ga04276745b4d511f0f3c636d6e0df7c2d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">mtk::CoefficientFunction2D</td>
+          <td class="memname">mtk::CoefficientFunction0D</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section warning"><dt>Warning</dt><dd>This definition implies that, for now, coefficients will depend on space and time, thus no extra parameters can influence their behavior. We will fix this soon enough. </dd></dl>
+
+<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html#l00111">111</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html">mtk_robin_bc_descriptor_1d.h</a>.</p>
+
+</div>
+</div>
+<a class="anchor" id="gaa79593eeb6676d6011db339e01983909"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mtk::CoefficientFunction1D</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="mtk__bc__descriptor__2d_8h_source.html#l00098">98</a> of file <a class="el" href="mtk__bc__descriptor__2d_8h_source.html">mtk_bc_descriptor_2d.h</a>.</p>
+<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__2d_8h_source.html#l00097">97</a> of file <a class="el" href="mtk__robin__bc__descriptor__2d_8h_source.html">mtk_robin_bc_descriptor_2d.h</a>.</p>
 
 </div>
 </div>
@@ -172,7 +190,7 @@ Typedefs</h2></td></tr>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue Nov 24 2015 11:56:13 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Wed Nov 25 2015 13:45:22 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

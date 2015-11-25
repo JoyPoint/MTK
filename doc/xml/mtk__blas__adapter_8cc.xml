@@ -9,75 +9,75 @@
     <includes refid="mtk__tools_8h" local="yes">mtk_tools.h</includes>
     <includes refid="mtk__blas__adapter_8h" local="yes">mtk_blas_adapter.h</includes>
     <incdepgraph>
-      <node id="1144">
+      <node id="1167">
         <label>iomanip</label>
       </node>
-      <node id="1150">
+      <node id="1173">
         <label>mtk_dense_matrix.h</label>
         <link refid="mtk__dense__matrix_8h"/>
-        <childnode refid="1143" relation="include">
+        <childnode refid="1166" relation="include">
         </childnode>
-        <childnode refid="1146" relation="include">
+        <childnode refid="1169" relation="include">
         </childnode>
-        <childnode refid="1151" relation="include">
+        <childnode refid="1174" relation="include">
         </childnode>
-        <childnode refid="1152" relation="include">
+        <childnode refid="1175" relation="include">
         </childnode>
       </node>
-      <node id="1152">
+      <node id="1175">
         <label>mtk_matrix.h</label>
         <link refid="mtk__matrix_8h"/>
-        <childnode refid="1143" relation="include">
+        <childnode refid="1166" relation="include">
         </childnode>
-        <childnode refid="1146" relation="include">
+        <childnode refid="1169" relation="include">
         </childnode>
-        <childnode refid="1151" relation="include">
+        <childnode refid="1174" relation="include">
         </childnode>
       </node>
-      <node id="1146">
+      <node id="1169">
         <label>mtk_roots.h</label>
         <link refid="mtk__roots_8h"/>
       </node>
-      <node id="1142">
+      <node id="1165">
         <label>src/mtk_blas_adapter.cc</label>
         <link refid="mtk_blas_adapter.cc"/>
-        <childnode refid="1143" relation="include">
+        <childnode refid="1166" relation="include">
         </childnode>
-        <childnode refid="1144" relation="include">
+        <childnode refid="1167" relation="include">
         </childnode>
-        <childnode refid="1145" relation="include">
+        <childnode refid="1168" relation="include">
         </childnode>
-        <childnode refid="1146" relation="include">
+        <childnode refid="1169" relation="include">
         </childnode>
-        <childnode refid="1147" relation="include">
+        <childnode refid="1170" relation="include">
         </childnode>
-        <childnode refid="1149" relation="include">
+        <childnode refid="1172" relation="include">
         </childnode>
       </node>
-      <node id="1147">
+      <node id="1170">
         <label>mtk_tools.h</label>
         <link refid="mtk__tools_8h"/>
-        <childnode refid="1148" relation="include">
+        <childnode refid="1171" relation="include">
         </childnode>
-        <childnode refid="1146" relation="include">
+        <childnode refid="1169" relation="include">
         </childnode>
       </node>
-      <node id="1148">
+      <node id="1171">
         <label>ctime</label>
       </node>
-      <node id="1149">
+      <node id="1172">
         <label>mtk_blas_adapter.h</label>
         <link refid="mtk__blas__adapter_8h"/>
-        <childnode refid="1150" relation="include">
+        <childnode refid="1173" relation="include">
         </childnode>
       </node>
-      <node id="1145">
+      <node id="1168">
         <label>vector</label>
       </node>
-      <node id="1143">
+      <node id="1166">
         <label>iostream</label>
       </node>
-      <node id="1151">
+      <node id="1174">
         <label>mtk_enums.h</label>
         <link refid="mtk__enums_8h"/>
       </node>
@@ -323,15 +323,13 @@
 <codeline lineno="414"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
 <codeline lineno="415"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="416"><highlight class="normal"></highlight></codeline>
-<codeline lineno="417"><highlight class="normal"><sp/><sp/></highlight><highlight class="comment">//<sp/>Make<sp/>sure<sp/>input<sp/>matrices<sp/>are<sp/>row-major<sp/>ordered.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="418"><highlight class="normal"></highlight></codeline>
-<codeline lineno="419"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(aa.<ref refid="classmtk_1_1DenseMatrix_1a5aa83a0643f27a4652ea97630edf7143" kindref="member">matrix_properties</ref>().<ref refid="classmtk_1_1Matrix_1a13cd17621652cd5551ff98549bd94df7" kindref="member">ordering</ref>()<sp/>==<sp/><ref refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13" kindref="member">mtk::COL_MAJOR</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="420"><highlight class="normal"><sp/><sp/><sp/><sp/>aa.<ref refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" kindref="member">OrderRowMajor</ref>();</highlight></codeline>
-<codeline lineno="421"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="422"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bb.<ref refid="classmtk_1_1DenseMatrix_1a5aa83a0643f27a4652ea97630edf7143" kindref="member">matrix_properties</ref>().<ref refid="classmtk_1_1Matrix_1a13cd17621652cd5551ff98549bd94df7" kindref="member">ordering</ref>()<sp/>==<sp/><ref refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13" kindref="member">mtk::COL_MAJOR</ref>)<sp/>{</highlight></codeline>
-<codeline lineno="423"><highlight class="normal"><sp/><sp/><sp/><sp/>bb.<ref refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" kindref="member">OrderRowMajor</ref>();</highlight></codeline>
-<codeline lineno="424"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="425"><highlight class="normal"></highlight></codeline>
+<codeline lineno="418"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(aa.<ref refid="classmtk_1_1DenseMatrix_1a5aa83a0643f27a4652ea97630edf7143" kindref="member">matrix_properties</ref>().<ref refid="classmtk_1_1Matrix_1a13cd17621652cd5551ff98549bd94df7" kindref="member">ordering</ref>()<sp/>==<sp/><ref refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13" kindref="member">mtk::COL_MAJOR</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="419"><highlight class="normal"><sp/><sp/><sp/><sp/>aa.<ref refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" kindref="member">OrderRowMajor</ref>();</highlight></codeline>
+<codeline lineno="420"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="421"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(bb.<ref refid="classmtk_1_1DenseMatrix_1a5aa83a0643f27a4652ea97630edf7143" kindref="member">matrix_properties</ref>().<ref refid="classmtk_1_1Matrix_1a13cd17621652cd5551ff98549bd94df7" kindref="member">ordering</ref>()<sp/>==<sp/><ref refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13" kindref="member">mtk::COL_MAJOR</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="422"><highlight class="normal"><sp/><sp/><sp/><sp/>bb.<ref refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" kindref="member">OrderRowMajor</ref>();</highlight></codeline>
+<codeline lineno="423"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="424"><highlight class="normal"></highlight></codeline>
 <codeline lineno="426"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>ta{</highlight><highlight class="charliteral">&apos;T&apos;</highlight><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>State<sp/>that<sp/>input<sp/>matrix<sp/>aa<sp/>is<sp/>in<sp/>row-wise<sp/>ordering.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="427"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>tb{</highlight><highlight class="charliteral">&apos;T&apos;</highlight><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>State<sp/>that<sp/>input<sp/>matrix<sp/>bb<sp/>is<sp/>in<sp/>row-wise<sp/>ordering.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="428"><highlight class="normal"></highlight></codeline>
@@ -346,30 +344,75 @@
 <codeline lineno="437"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ldb{std::max(1,nn)};<sp/><sp/></highlight><highlight class="comment">//<sp/>Leading<sp/>dimension<sp/>of<sp/>the<sp/>bb<sp/>matrix.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="438"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ldc{std::max(1,mm)};<sp/><sp/></highlight><highlight class="comment">//<sp/>Leading<sp/>dimension<sp/>of<sp/>the<sp/>cc<sp/>matrix.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="439"><highlight class="normal"></highlight></codeline>
-<codeline lineno="440"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>alpha{1.0};<sp/></highlight><highlight class="comment">//<sp/>First<sp/>scalar<sp/>coefficient.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="441"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>beta{0.0};<sp/><sp/></highlight><highlight class="comment">//<sp/>Second<sp/>scalar<sp/>coefficient.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="440"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>alpha{<ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>};<sp/></highlight><highlight class="comment">//<sp/>First<sp/>scalar<sp/>coefficient.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="441"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>beta{<ref refid="group__c01-roots_1ga59a451a5fae30d59649bcda274fea271" kindref="member">mtk::kZero</ref>};<sp/></highlight><highlight class="comment">//<sp/>Second<sp/>scalar<sp/>coefficient.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="442"><highlight class="normal"></highlight></codeline>
 <codeline lineno="443"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>cc_col_maj_ord(cc_num_rows,cc_num_cols);<sp/></highlight><highlight class="comment">//<sp/>Output<sp/>matrix.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="444"><highlight class="normal"></highlight></codeline>
 <codeline lineno="445"><highlight class="normal"><sp/><sp/>cc_col_maj_ord.<ref refid="classmtk_1_1DenseMatrix_1a178e63f365cf8c547dc5020c60357f5e" kindref="member">SetOrdering</ref>(<ref refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13" kindref="member">mtk::COL_MAJOR</ref>);</highlight></codeline>
 <codeline lineno="446"><highlight class="normal"></highlight></codeline>
-<codeline lineno="447"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#ifdef<sp/>MTK_PRECISION_DOUBLE</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="448"><highlight class="normal"><sp/><sp/>dgemm_(&amp;ta,<sp/>&amp;tb,<sp/>&amp;mm,<sp/>&amp;nn,<sp/>&amp;kk,<sp/>&amp;alpha,<sp/>aa.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;lda,</highlight></codeline>
-<codeline lineno="449"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bb.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;ldb,<sp/>&amp;beta,<sp/>cc_col_maj_ord.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;ldc);</highlight></codeline>
-<codeline lineno="450"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="451"><highlight class="normal"><sp/><sp/><ref refid="namespacemtk_1adb7c0560326b8e57f255e58b87ec76b0" kindref="member">sgemm_</ref>(&amp;ta,<sp/>&amp;tb,<sp/>&amp;mm,<sp/>&amp;nn,<sp/>&amp;kk,<sp/>&amp;alpha,<sp/>aa.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;lda,</highlight></codeline>
-<codeline lineno="452"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bb.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;ldb,<sp/>&amp;beta,<sp/>cc_col_maj_ord.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;ldc);</highlight></codeline>
-<codeline lineno="453"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="454"><highlight class="normal"></highlight></codeline>
-<codeline lineno="455"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#if<sp/>MTK_DEBUG_LEVEL<sp/>&gt;<sp/>0</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="456"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;cc_col_maj_ord<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="457"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>cc_col_maj_ord<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="458"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="459"><highlight class="normal"></highlight></codeline>
-<codeline lineno="460"><highlight class="normal"><sp/><sp/>cc_col_maj_ord.<ref refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" kindref="member">OrderRowMajor</ref>();</highlight></codeline>
-<codeline lineno="461"><highlight class="normal"></highlight></codeline>
-<codeline lineno="462"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cc_col_maj_ord;</highlight></codeline>
-<codeline lineno="463"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="448"><highlight class="preprocessor"><sp/><sp/>#ifdef<sp/>MTK_PRECISION_DOUBLE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="449"><highlight class="normal"><sp/><sp/>dgemm_(&amp;ta,<sp/>&amp;tb,<sp/>&amp;mm,<sp/>&amp;nn,<sp/>&amp;kk,<sp/>&amp;alpha,<sp/>aa.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;lda,</highlight></codeline>
+<codeline lineno="450"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bb.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;ldb,<sp/>&amp;beta,<sp/>cc_col_maj_ord.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;ldc);</highlight></codeline>
+<codeline lineno="451"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="452"><highlight class="normal"><sp/><sp/><ref refid="namespacemtk_1adb7c0560326b8e57f255e58b87ec76b0" kindref="member">sgemm_</ref>(&amp;ta,<sp/>&amp;tb,<sp/>&amp;mm,<sp/>&amp;nn,<sp/>&amp;kk,<sp/>&amp;alpha,<sp/>aa.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;lda,</highlight></codeline>
+<codeline lineno="453"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>bb.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;ldb,<sp/>&amp;beta,<sp/>cc_col_maj_ord.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;ldc);</highlight></codeline>
+<codeline lineno="454"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="455"><highlight class="normal"></highlight></codeline>
+<codeline lineno="456"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#if<sp/>MTK_DEBUG_LEVEL<sp/>&gt;<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="457"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;cc_col_maj_ord<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="458"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>cc_col_maj_ord<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="459"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="460"><highlight class="normal"></highlight></codeline>
+<codeline lineno="461"><highlight class="normal"><sp/><sp/>cc_col_maj_ord.<ref refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" kindref="member">OrderRowMajor</ref>();</highlight></codeline>
+<codeline lineno="462"><highlight class="normal"></highlight></codeline>
+<codeline lineno="463"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>cc_col_maj_ord;</highlight></codeline>
+<codeline lineno="464"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="465"><highlight class="normal"></highlight></codeline>
+<codeline lineno="466" refid="classmtk_1_1BLASAdapter_1a0dd80d043615a95f11b7341ce69b44d3" refkind="member"><highlight class="normal"><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/><ref refid="classmtk_1_1BLASAdapter_1a0dd80d043615a95f11b7341ce69b44d3" kindref="member">mtk::BLASAdapter::RealDenseSM</ref>(<ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>alpha,</highlight></codeline>
+<codeline lineno="467"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>&amp;aa)<sp/>{</highlight></codeline>
+<codeline lineno="468"><highlight class="normal"></highlight></codeline>
+<codeline lineno="469"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#if<sp/>MTK_DEBUG_LEVEL<sp/>&gt;<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="470"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" kindref="member">mtk::Tools::Prevent</ref>(aa.<ref refid="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" kindref="member">num_rows</ref>()<sp/>==<sp/>0,<sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="471"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" kindref="member">mtk::Tools::Prevent</ref>(aa.<ref refid="classmtk_1_1DenseMatrix_1a41747502d468c6728a4be31501b16e0e" kindref="member">num_cols</ref>()<sp/>==<sp/>0,<sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="472"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="473"><highlight class="normal"></highlight></codeline>
+<codeline lineno="475"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(aa.<ref refid="classmtk_1_1DenseMatrix_1a5aa83a0643f27a4652ea97630edf7143" kindref="member">matrix_properties</ref>().<ref refid="classmtk_1_1Matrix_1a13cd17621652cd5551ff98549bd94df7" kindref="member">ordering</ref>()<sp/>==<sp/><ref refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13" kindref="member">mtk::COL_MAJOR</ref>)<sp/>{</highlight></codeline>
+<codeline lineno="476"><highlight class="normal"><sp/><sp/><sp/><sp/>aa.<ref refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" kindref="member">OrderRowMajor</ref>();</highlight></codeline>
+<codeline lineno="477"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="478"><highlight class="normal"></highlight></codeline>
+<codeline lineno="480"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>ta{</highlight><highlight class="charliteral">&apos;T&apos;</highlight><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>State<sp/>that<sp/>input<sp/>matrix<sp/>aa<sp/>is<sp/>in<sp/>row-wise<sp/>ordering.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="481"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">char</highlight><highlight class="normal"><sp/>tb{</highlight><highlight class="charliteral">&apos;T&apos;</highlight><highlight class="normal">};<sp/></highlight><highlight class="comment">//<sp/>State<sp/>that<sp/>input<sp/>matrix<sp/>bb<sp/>is<sp/>in<sp/>row-wise<sp/>ordering.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="482"><highlight class="normal"></highlight></codeline>
+<codeline lineno="483"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>mm{aa.<ref refid="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" kindref="member">num_rows</ref>()};<sp/><sp/></highlight><highlight class="comment">//<sp/>Rows<sp/>of<sp/>aa<sp/>and<sp/>rows<sp/>of<sp/>cc.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="484"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>nn{aa.<ref refid="classmtk_1_1DenseMatrix_1a41747502d468c6728a4be31501b16e0e" kindref="member">num_cols</ref>()};<sp/><sp/></highlight><highlight class="comment">//<sp/>Cols<sp/>of<sp/>bb<sp/>and<sp/>cols<sp/>of<sp/>cc.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="485"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>kk{aa.<ref refid="classmtk_1_1DenseMatrix_1a41747502d468c6728a4be31501b16e0e" kindref="member">num_cols</ref>()};<sp/><sp/></highlight><highlight class="comment">//<sp/>Cols<sp/>of<sp/>aa<sp/>and<sp/>rows<sp/>of<sp/>bb.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="486"><highlight class="normal"></highlight></codeline>
+<codeline lineno="487"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>lda{std::max(1,kk)};<sp/><sp/></highlight><highlight class="comment">//<sp/>Leading<sp/>dimension<sp/>of<sp/>the<sp/>aa<sp/>matrix.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="488"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ldb{std::max(1,nn)};<sp/><sp/></highlight><highlight class="comment">//<sp/>Leading<sp/>dimension<sp/>of<sp/>the<sp/>bb<sp/>matrix.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="489"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>ldc{std::max(1,mm)};<sp/><sp/></highlight><highlight class="comment">//<sp/>Leading<sp/>dimension<sp/>of<sp/>the<sp/>cc<sp/>matrix.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="490"><highlight class="normal"></highlight></codeline>
+<codeline lineno="491"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>beta{alpha};<sp/></highlight><highlight class="comment">//<sp/>Second<sp/>scalar<sp/>coefficient.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="492"><highlight class="normal"></highlight></codeline>
+<codeline lineno="493"><highlight class="normal"><sp/><sp/>alpha<sp/>=<sp/><ref refid="group__c01-roots_1ga59a451a5fae30d59649bcda274fea271" kindref="member">mtk::kZero</ref>;</highlight></codeline>
+<codeline lineno="494"><highlight class="normal"></highlight></codeline>
+<codeline lineno="495"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>alpha_aa(aa);<sp/></highlight><highlight class="comment">//<sp/>Output<sp/>matrix.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="496"><highlight class="normal"></highlight></codeline>
+<codeline lineno="498"><highlight class="preprocessor"><sp/><sp/>#ifdef<sp/>MTK_PRECISION_DOUBLE</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="499"><highlight class="normal"><sp/><sp/>dgemm_(&amp;ta,<sp/>&amp;tb,<sp/>&amp;mm,<sp/>&amp;nn,<sp/>&amp;kk,<sp/>&amp;alpha,<sp/>aa.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;lda,</highlight></codeline>
+<codeline lineno="500"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>aa.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;ldb,<sp/>&amp;beta,<sp/>alpha_aa.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;ldc);</highlight></codeline>
+<codeline lineno="501"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="502"><highlight class="normal"><sp/><sp/><ref refid="namespacemtk_1adb7c0560326b8e57f255e58b87ec76b0" kindref="member">sgemm_</ref>(&amp;ta,<sp/>&amp;tb,<sp/>&amp;mm,<sp/>&amp;nn,<sp/>&amp;kk,<sp/>&amp;alpha,<sp/>aa.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;lda,</highlight></codeline>
+<codeline lineno="503"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>aa.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;ldb,<sp/>&amp;beta,<sp/>alpha_aa.<ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>(),<sp/>&amp;ldc);</highlight></codeline>
+<codeline lineno="504"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="505"><highlight class="normal"></highlight></codeline>
+<codeline lineno="506"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#if<sp/>MTK_DEBUG_LEVEL<sp/>&gt;<sp/>0</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="507"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;alpha_aa<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="508"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>alpha_aa<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="509"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="510"><highlight class="normal"></highlight></codeline>
+<codeline lineno="511"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>alpha_aa;</highlight></codeline>
+<codeline lineno="512"><highlight class="normal">}</highlight></codeline>
     </programlisting>
     <location file="/home/esanchez/Dropbox/MTK/src/mtk_blas_adapter.cc"/>
   </compounddef>

@@ -1,4 +1,4 @@
-.TH "Mimetic operators." 3 "Tue Nov 24 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "Mimetic operators." 3 "Wed Nov 25 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -9,10 +9,6 @@ Mimetic operators\&.
 .SS "Classes"
 
 .in +1c
-.ti -1c
-.RI "class \fBmtk::BCDescriptor2D\fP"
-.br
-.RI "\fIEnforces boundary conditions in either the operator or the grid\&. \fP"
 .ti -1c
 .RI "class \fBmtk::Div1D\fP"
 .br
@@ -50,27 +46,46 @@ Mimetic operators\&.
 .br
 .RI "\fIImplements a 1D mimetic quadrature\&. \fP"
 .ti -1c
-.RI "class \fBmtk::BCDescriptor1D\fP"
+.RI "class \fBmtk::RobinBCDescriptor1D\fP"
 .br
-.RI "\fIImposes boundary conditions on the operators or on the grids\&. \fP"
+.RI "\fIImpose Robin boundary conditions on the operators and on the grids\&. \fP"
+.ti -1c
+.RI "class \fBmtk::RobinBCDescriptor2D\fP"
+.br
+.RI "\fIImpose Robin boundary conditions on the operators and on the grids\&. \fP"
 .in -1c
 .SS "Typedefs"
 
 .in +1c
 .ti -1c
-.RI "typedef Real(* \fBmtk::CoefficientFunction2D\fP )(const Real &, const Real &)"
+.RI "typedef Real(* \fBmtk::CoefficientFunction0D\fP )(const Real &tt)"
 .br
-.RI "\fIA function of a BC coefficient evaluated on a 2D domain\&. \fP"
+.RI "\fIA function of a BC coefficient evaluated on a 0D domain and time\&. \fP"
+.ti -1c
+.RI "typedef Real(* \fBmtk::CoefficientFunction1D\fP )(const Real &xx, const Real &tt)"
+.br
+.RI "\fIA function of a BC coefficient evaluated on a 1D domain and time\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
 Mimetic operators\&. 
 .SH "Typedef Documentation"
 .PP 
-.SS "mtk::CoefficientFunction2D"
+.SS "mtk::CoefficientFunction0D"
 
 .PP
-Definition at line 98 of file mtk_bc_descriptor_2d\&.h\&.
+\fBWarning:\fP
+.RS 4
+This definition implies that, for now, coefficients will depend on space and time, thus no extra parameters can influence their behavior\&. We will fix this soon enough\&. 
+.RE
+.PP
+
+.PP
+Definition at line 111 of file mtk_robin_bc_descriptor_1d\&.h\&.
+.SS "mtk::CoefficientFunction1D"
+
+.PP
+Definition at line 97 of file mtk_robin_bc_descriptor_2d\&.h\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

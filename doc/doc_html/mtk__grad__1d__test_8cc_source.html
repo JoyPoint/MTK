@@ -378,48 +378,72 @@ $(document).ready(function(){initNavTree('mtk__grad__1d__test_8cc_source.html','
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#ac6804df469c94ab6a796fb64f1e44a89">mtk::Tools::Assert</a>(assertion);</div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;}</div>
 <div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="keywordtype">int</span> <a class="code" href="mtk__grad__1d__test_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> () {</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;<span class="keywordtype">void</span> TestMimBndy() {</div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Testing mtk::Grad1D class.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#afc29ecaf337a13ed2e817d3890a5a441">mtk::Tools::BeginUnitTestNo</a>(9);</div>
 <div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  TestDefaultConstructorFactoryMethodDefault();</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  TestDefaultConstructorFactoryMethodFourthOrder();</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  TestDefaultConstructorFactoryMethodSixthOrder();</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;  TestDefaultConstructorFactoryMethodEightOrderDefThreshold();</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;  TestDefaultConstructorFactoryMethodTenthOrderDefThreshold();</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  TestReturnAsDenseMatrixWithGrid();</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  TestReturnAsDimensionlessDenseMatrix();</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  TestWriteToFile();</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;}</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  <a class="code" href="classmtk_1_1Grad1D.html">mtk::Grad1D</a> grad2;</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  <span class="keywordtype">bool</span> assertion = grad2.<a class="code" href="classmtk_1_1Grad1D.html#a74ef5245cfae6fd158bd7f563a0c2e52">ConstructGrad1D</a>();</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;  <span class="keywordflow">if</span> (!assertion) {</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Mimetic grad (2nd order) could not be built.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  }</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  std::cout &lt;&lt; grad2 &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;<span class="keyword">using</span> std::cout;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;<span class="keyword">using</span> std::endl;</div>
-<div class="line"><a name="l00296"></a><span class="lineno"><a class="line" href="mtk__grad__1d__test_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">  296</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="mtk__grad__1d__test_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> () {</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;This code HAS to be compiled with support for C++11.&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;Exiting...&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;}</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> grad2m(grad2.<a class="code" href="classmtk_1_1Grad1D.html#ab25e1d064a5a00fbe3777e65fd5750c0">mim_bndy</a>());</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  std::cout &lt;&lt; grad2m &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#aba67d9dc35c9c1c49430fcc9ea035e03">mtk::Tools::EndUnitTestNo</a>(9);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#ac6804df469c94ab6a796fb64f1e44a89">mtk::Tools::Assert</a>(assertion);</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;}</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;<span class="keywordtype">int</span> <a class="code" href="mtk__grad__1d__test_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> () {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Testing mtk::Grad1D class.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  TestDefaultConstructorFactoryMethodDefault();</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;  TestDefaultConstructorFactoryMethodFourthOrder();</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;  TestDefaultConstructorFactoryMethodSixthOrder();</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  TestDefaultConstructorFactoryMethodEightOrderDefThreshold();</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;  TestDefaultConstructorFactoryMethodTenthOrderDefThreshold();</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  TestReturnAsDenseMatrixWithGrid();</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  TestReturnAsDimensionlessDenseMatrix();</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  TestWriteToFile();</div>
+<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;  TestMimBndy();</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;}</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;<span class="keyword">using</span> std::cout;</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="keyword">using</span> std::endl;</div>
+<div class="line"><a name="l00319"></a><span class="lineno"><a class="line" href="mtk__grad__1d__test_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">  319</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="mtk__grad__1d__test_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> () {</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;This code HAS to be compiled with support for C++11.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;Exiting...&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;}</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classmtk_1_1Tools_html_aba67d9dc35c9c1c49430fcc9ea035e03"><div class="ttname"><a href="classmtk_1_1Tools.html#aba67d9dc35c9c1c49430fcc9ea035e03">mtk::Tools::EndUnitTestNo</a></div><div class="ttdeci">static void EndUnitTestNo(const int &amp;nn) noexcept</div><div class="ttdoc">Ends the execution of a unit test. Stops and reports wall-clock time. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8cc_source.html#l00105">mtk_tools.cc:105</a></div></div>
-<div class="ttc" id="classmtk_1_1Grad1D_html_ab07e6a15edca32534ae3d1a8ccaf1c42"><div class="ttname"><a href="classmtk_1_1Grad1D.html#ab07e6a15edca32534ae3d1a8ccaf1c42">mtk::Grad1D::ReturnAsDimensionlessDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDimensionlessDenseMatrix(int num_cells_x) const </div><div class="ttdoc">Returns the operator as a dimensionless dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__1d_8cc_source.html#l00492">mtk_grad_1d.cc:492</a></div></div>
+<div class="ttc" id="classmtk_1_1Grad1D_html_ab25e1d064a5a00fbe3777e65fd5750c0"><div class="ttname"><a href="classmtk_1_1Grad1D.html#ab25e1d064a5a00fbe3777e65fd5750c0">mtk::Grad1D::mim_bndy</a></div><div class="ttdeci">DenseMatrix mim_bndy() const </div><div class="ttdoc">Return collection of mimetic approximations at the boundary. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__1d_8cc_source.html#l00341">mtk_grad_1d.cc:341</a></div></div>
+<div class="ttc" id="classmtk_1_1Grad1D_html_ab07e6a15edca32534ae3d1a8ccaf1c42"><div class="ttname"><a href="classmtk_1_1Grad1D.html#ab07e6a15edca32534ae3d1a8ccaf1c42">mtk::Grad1D::ReturnAsDimensionlessDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDimensionlessDenseMatrix(int num_cells_x) const </div><div class="ttdoc">Returns the operator as a dimensionless dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__1d_8cc_source.html#l00488">mtk_grad_1d.cc:488</a></div></div>
 <div class="ttc" id="classmtk_1_1Grad1D_html"><div class="ttname"><a href="classmtk_1_1Grad1D.html">mtk::Grad1D</a></div><div class="ttdoc">Implements a 1D mimetic gradient operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__1d_8h_source.html#l00081">mtk_grad_1d.h:81</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid1D_html"><div class="ttname"><a href="classmtk_1_1UniStgGrid1D.html">mtk::UniStgGrid1D</a></div><div class="ttdoc">Uniform 1D Staggered Grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__1d_8h_source.html#l00077">mtk_uni_stg_grid_1d.h:77</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a></div><div class="ttdoc">Defines a common dense matrix, using a 1D array. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8h_source.html#l00092">mtk_dense_matrix.h:92</a></div></div>
-<div class="ttc" id="classmtk_1_1Grad1D_html_a77b2eddbe4ab03f469306c604d505b1a"><div class="ttname"><a href="classmtk_1_1Grad1D.html#a77b2eddbe4ab03f469306c604d505b1a">mtk::Grad1D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix(Real west, Real east, int num_cells_x) const </div><div class="ttdoc">Returns the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__1d_8cc_source.html#l00360">mtk_grad_1d.cc:360</a></div></div>
+<div class="ttc" id="classmtk_1_1Grad1D_html_a77b2eddbe4ab03f469306c604d505b1a"><div class="ttname"><a href="classmtk_1_1Grad1D.html#a77b2eddbe4ab03f469306c604d505b1a">mtk::Grad1D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix(Real west, Real east, int num_cells_x) const </div><div class="ttdoc">Returns the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__1d_8cc_source.html#l00356">mtk_grad_1d.cc:356</a></div></div>
 <div class="ttc" id="classmtk_1_1Tools_html_ac6804df469c94ab6a796fb64f1e44a89"><div class="ttname"><a href="classmtk_1_1Tools.html#ac6804df469c94ab6a796fb64f1e44a89">mtk::Tools::Assert</a></div><div class="ttdeci">static void Assert(const bool &amp;condition) noexcept</div><div class="ttdoc">Asserts if the condition required to pass the unit test occurs. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8cc_source.html#l00114">mtk_tools.cc:114</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_ab396804fb5f188e1eaa8578c738c59fc"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#ab396804fb5f188e1eaa8578c738c59fc">mtk::DenseMatrix::WriteToFile</a></div><div class="ttdeci">bool WriteToFile(const std::string &amp;filename) const </div><div class="ttdoc">Writes matrix to a file compatible with Gnuplot 4.6. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00531">mtk_dense_matrix.cc:531</a></div></div>
 <div class="ttc" id="classmtk_1_1Grad1D_html_a74ef5245cfae6fd158bd7f563a0c2e52"><div class="ttname"><a href="classmtk_1_1Grad1D.html#a74ef5245cfae6fd158bd7f563a0c2e52">mtk::Grad1D::ConstructGrad1D</a></div><div class="ttdeci">bool ConstructGrad1D(int order_accuracy=kDefaultOrderAccuracy, Real mimetic_threshold=kDefaultMimeticThreshold)</div><div class="ttdoc">Factory method implementing the CBS Algorithm to build operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__1d_8cc_source.html#l00182">mtk_grad_1d.cc:182</a></div></div>
 <div class="ttc" id="classmtk_1_1Tools_html_afc29ecaf337a13ed2e817d3890a5a441"><div class="ttname"><a href="classmtk_1_1Tools.html#afc29ecaf337a13ed2e817d3890a5a441">mtk::Tools::BeginUnitTestNo</a></div><div class="ttdeci">static void BeginUnitTestNo(const int &amp;nn) noexcept</div><div class="ttdoc">Begins the execution of a unit test. Starts a timer. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8cc_source.html#l00091">mtk_tools.cc:91</a></div></div>
 <div class="ttc" id="mtk_8h_html"><div class="ttname"><a href="mtk_8h.html">mtk.h</a></div><div class="ttdoc">Includes the entire API. </div></div>
-<div class="ttc" id="mtk__grad__1d__test_8cc_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="mtk__grad__1d__test_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__1d__test_8cc_source.html#l00296">mtk_grad_1d_test.cc:296</a></div></div>
+<div class="ttc" id="mtk__grad__1d__test_8cc_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="mtk__grad__1d__test_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__1d__test_8cc_source.html#l00319">mtk_grad_1d_test.cc:319</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_59425e443f801f1f2fd8bbe4959a3ccf.html">tests</a></li><li class="navelem"><a class="el" href="mtk__grad__1d__test_8cc.html">mtk_grad_1d_test.cc</a></li>
-    <li class="footer">Generated on Tue Nov 24 2015 11:56:12 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Wed Nov 25 2015 13:45:21 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

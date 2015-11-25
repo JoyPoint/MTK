@@ -1,4 +1,4 @@
-.TH "include/mtk_robin_bc_descriptor_1d.h" 3 "Tue Nov 24 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "include/mtk_robin_bc_descriptor_1d.h" 3 "Wed Nov 25 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -17,14 +17,16 @@ Impose Robin boundary conditions on the operators and on the grids\&.
 .br
 \fC#include 'mtk_uni_stg_grid_1d\&.h'\fP
 .br
+\fC#include 'mtk_lap_1d\&.h'\fP
+.br
 
 .SS "Classes"
 
 .in +1c
 .ti -1c
-.RI "class \fBmtk::BCDescriptor1D\fP"
+.RI "class \fBmtk::RobinBCDescriptor1D\fP"
 .br
-.RI "\fIImposes boundary conditions on the operators or on the grids\&. \fP"
+.RI "\fIImpose Robin boundary conditions on the operators and on the grids\&. \fP"
 .in -1c
 .SS "Namespaces"
 
@@ -33,6 +35,14 @@ Impose Robin boundary conditions on the operators and on the grids\&.
 .RI " \fBmtk\fP"
 .br
 .RI "\fIMimetic Methods Toolkit namespace\&. \fP"
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef Real(* \fBmtk::CoefficientFunction0D\fP )(const Real &tt)"
+.br
+.RI "\fIA function of a BC coefficient evaluated on a 0D domain and time\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -44,7 +54,12 @@ Intuitively, a \fBRobin boundary condition\fP is a constraint that must be satis
 .PP
 In a 1D context ( $ \partial\Omega = \{a,b\}\subset\mathbb{R} $), this condition can be written as follows: \[ \delta_a(a,t)u(a,t) - \eta_a(a,t)u^\prime(a,t) = \beta_a(a,t), \] \[ \delta_b(b,t)u(b,t) + \eta_b(b,t)u^\prime(b,t) = \beta_b(b,t). \]
 .PP
-Instances of this class receive information about the coefficient functions and each condition for any subset of the boundary (west and east, in 1D)\&. These instances then handle the complexity of placing the coefficients in the differentiation matrices and condition in the grids\&.
+Instances of this class receive information about the coefficient functions and each condition for any subset of the boundary (west and east, in 1D)\&. These instances then handle the complexity of placing the coefficients in the differentiation matrices and the condition in the grids\&.
+.PP
+\fBSee also:\fP
+.RS 4
+http://mathworld.wolfram.com/NormalVector.html
+.RE
 .PP
 \fBAuthor:\fP
 .RS 4

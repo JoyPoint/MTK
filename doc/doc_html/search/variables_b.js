@@ -2,8 +2,8 @@ var searchData=
 [
   ['nature_5f',['nature_',['../classmtk_1_1UniStgGrid1D.html#a061b66c92532b1498ce0e15418754911',1,'mtk::UniStgGrid1D::nature_()'],['../classmtk_1_1UniStgGrid2D.html#ac8b66740d328803f7fbabd1c42c775b2',1,'mtk::UniStgGrid2D::nature_()']]],
   ['north_5fbndy_5f',['north_bndy_',['../classmtk_1_1UniStgGrid2D.html#a3f904091b6e74aa78d8543e5cba26afb',1,'mtk::UniStgGrid2D']]],
-  ['north_5fcoefficients_5f',['north_coefficients_',['../classmtk_1_1BCDescriptor2D.html#a5429c040c034303dd92dcff554f9efad',1,'mtk::BCDescriptor2D']]],
-  ['north_5fcondition_5f',['north_condition_',['../classmtk_1_1BCDescriptor2D.html#a23e0b9ae755dcf81841aa24ddaf0b090',1,'mtk::BCDescriptor2D']]],
+  ['north_5fcoefficients_5f',['north_coefficients_',['../classmtk_1_1RobinBCDescriptor2D.html#a91fc1a7322ceda8f5409e1fe6490861c',1,'mtk::RobinBCDescriptor2D']]],
+  ['north_5fcondition_5f',['north_condition_',['../classmtk_1_1RobinBCDescriptor2D.html#ad2a1e821b0c6d226a8b884baadcf1f1b',1,'mtk::RobinBCDescriptor2D']]],
   ['num_5fbndy_5fapproxs_5f',['num_bndy_approxs_',['../classmtk_1_1Grad1D.html#abe15c1ffd9dfaba1a65f4f0e096287ce',1,'mtk::Grad1D']]],
   ['num_5fbndy_5fcoeffs_5f',['num_bndy_coeffs_',['../classmtk_1_1Div1D.html#a717240b41eaa2adde858630b9e3d3042',1,'mtk::Div1D::num_bndy_coeffs_()'],['../classmtk_1_1Grad1D.html#a60c560882bc601f9ab1d4cd5331e55ef',1,'mtk::Grad1D::num_bndy_coeffs_()']]],
   ['num_5fcells_5fx_5f',['num_cells_x_',['../classmtk_1_1UniStgGrid1D.html#afa43750db0029b7454aef343759e7097',1,'mtk::UniStgGrid1D::num_cells_x_()'],['../classmtk_1_1UniStgGrid2D.html#ac03a0f4840ee6ae1bc853e5d9c0df8d1',1,'mtk::UniStgGrid2D::num_cells_x_()']]],

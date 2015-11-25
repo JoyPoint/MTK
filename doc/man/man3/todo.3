@@ -1,15 +1,9 @@
-.TH "todo" 3 "Tue Nov 24 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "todo" 3 "Wed Nov 25 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 todo \- Todo List 
 
-.IP "\fBMember \fBmtk::BCDescriptor2D::ImposeOnGrid\fP (UniStgGrid2D &grid) const \fP" 1c
-Implement imposition for vector-valued grids\&.  
-.IP "\fBMember \fBmtk::BCDescriptor2D::ImposeOnSouthBoundaryNoSpace\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const \fP" 1c
-Impose the Neumann conditions on every pole, for every scenario\&.  
-.IP "\fBMember \fBmtk::BCDescriptor2D::ImposeOnSouthBoundaryWithSpace\fP (const \fBmtk::UniStgGrid2D\fP &grid, \fBmtk::DenseMatrix\fP &matrix, const int &order_accuracy) const \fP" 1c
-Impose Harmonic mean on the corners for the case when the generated space is available, for all poles\&.  
 .IP "\fBMember \fBmtk::DenseMatrix::Kron\fP (const DenseMatrix &aa, const DenseMatrix &bb)\fP" 1c
 Implement Kronecker product using the BLAS\&.  
 .IP "\fBMember \fBmtk::DenseMatrix::OrderColMajor\fP ()\fP" 1c
@@ -24,13 +18,19 @@ Rescind from the GLPK as the numerical core for CLO problems\&.
 Review the definition of sparse matrices properties\&.  
 .IP "\fBMember \fBmtk::Matrix::IncreaseNumZero\fP () noexcept\fP" 1c
 Review the definition of sparse matrices properties\&.  
+.IP "\fBMember \fBmtk::RobinBCDescriptor2D::ImposeOnGrid\fP (UniStgGrid2D &grid, const Real &time=kZero) const \fP" 1c
+Implement imposition for vector-valued grids\&. Need research here!  
+.IP "\fBMember \fBmtk::RobinBCDescriptor2D::ImposeOnSouthBoundaryNoSpace\fP (const Lap2D &lap, const UniStgGrid2D &grid, DenseMatrix &matrix, const Real &time=kZero) const \fP" 1c
+Impose the Neumann conditions on every pole, for every scenario\&.  
+.IP "\fBMember \fBmtk::RobinBCDescriptor2D::ImposeOnSouthBoundaryWithSpace\fP (const Lap2D &lap, const UniStgGrid2D &grid, DenseMatrix &matrix, const Real &time=kZero) const \fP" 1c
+Impose Harmonic mean on the corners for the case when the generated space is available, for all poles\&.  
 .IP "\fBMember \fBmtk::Tools::Prevent\fP (const bool complement, const char *const fname, int lineno, const char *const fxname) noexcept\fP" 1c
 Check if this is the best way of stalling execution\&.  
 .IP "\fBMember \fBmtk::Tools::test_number_\fP \fP" 1c
 Check usage of static methods and private members\&.  
 .IP "\fBMember \fBmtk::UniStgGrid1D::discrete_domain_x\fP () const \fP" 1c
 Review const-correctness of the pointer we return\&.  
-.IP "\fBMember \fBmtk::UniStgGrid1D::discrete_field_u\fP ()\fP" 1c
+.IP "\fBMember \fBmtk::UniStgGrid1D::discrete_field\fP ()\fP" 1c
 Review const-correctness of the pointer we return\&. Look at the STL!  
 .IP "\fBMember \fBmtk::UniStgGrid2D::discrete_domain_x\fP () const \fP" 1c
 Review const-correctness of the pointer we return\&.  

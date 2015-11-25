@@ -4,13 +4,13 @@
     <compoundname>minimalistic_poisson_1d.cc</compoundname>
     <includes local="no">iostream</includes>
     <incdepgraph>
-      <node id="710">
+      <node id="737">
         <label>examples/minimalistic_poisson_1d/minimalistic_poisson_1d.cc</label>
         <link refid="minimalistic_poisson_1d.cc"/>
-        <childnode refid="711" relation="include">
+        <childnode refid="738" relation="include">
         </childnode>
       </node>
-      <node id="711">
+      <node id="738">
         <label>iostream</label>
       </node>
     </incdepgraph>
@@ -26,7 +26,7 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/examples/minimalistic_poisson_1d/minimalistic_poisson_1d.cc" line="167" column="1" bodyfile="/home/esanchez/Dropbox/MTK/examples/minimalistic_poisson_1d/minimalistic_poisson_1d.cc" bodystart="167" bodyend="171"/>
+        <location file="/home/esanchez/Dropbox/MTK/examples/minimalistic_poisson_1d/minimalistic_poisson_1d.cc" line="176" column="1" bodyfile="/home/esanchez/Dropbox/MTK/examples/minimalistic_poisson_1d/minimalistic_poisson_1d.cc" bodystart="176" bodyend="180"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -92,82 +92,91 @@
 <codeline lineno="94"><highlight class="normal"></highlight></codeline>
 <codeline lineno="95"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk_8h" kindref="compound">mtk.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="97"><highlight class="normal"><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>Source(<ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>xx)<sp/>{</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>Alpha(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>&amp;tt)<sp/>{</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>lambda<sp/>=<sp/>-1.0;</highlight></codeline>
-<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lambda*lambda*exp(lambda*xx)/(exp(lambda)<sp/>-<sp/>1.0);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-exp(lambda);</highlight></codeline>
 <codeline lineno="100"><highlight class="normal">}</highlight></codeline>
 <codeline lineno="101"><highlight class="normal"></highlight></codeline>
-<codeline lineno="102"><highlight class="normal"><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>KnownSolution(<ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>xx)<sp/>{</highlight></codeline>
+<codeline lineno="102"><highlight class="normal"><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>Beta(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>&amp;tt)<sp/>{</highlight></codeline>
 <codeline lineno="103"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>lambda<sp/>=<sp/>-1.0;</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(exp(lambda*xx)<sp/>-<sp/>1.0)/(exp(lambda)<sp/>-<sp/>1.0);</highlight></codeline>
-<codeline lineno="105"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(exp(lambda)<sp/>-<sp/>1.0)/lambda;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal">};</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="minimalistic__poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>()<sp/>{</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>west_bndy_x<sp/>=<sp/>0.0;</highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>east_bndy_x<sp/>=<sp/>1.0;</highlight></codeline>
-<codeline lineno="111"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>relative_norm_2_error{};</highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_cells_x<sp/>=<sp/>5;</highlight></codeline>
-<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Grad1D" kindref="compound">mtk::Grad1D</ref><sp/>grad;</highlight></codeline>
-<codeline lineno="114"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Lap1D" kindref="compound">mtk::Lap1D</ref><sp/>lap;</highlight></codeline>
-<codeline lineno="115"><highlight class="normal"><sp/><sp/>std::vector&lt;mtk::Real&gt;<sp/>west_coeffs;</highlight></codeline>
-<codeline lineno="116"><highlight class="normal"><sp/><sp/>std::vector&lt;mtk::Real&gt;<sp/>east_coeffs;</highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>source(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>comp_sol(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
-<codeline lineno="119"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>known_sol(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
-<codeline lineno="120"><highlight class="normal"></highlight></codeline>
-<codeline lineno="121"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!lap.<ref refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" kindref="member">ConstructLap1D</ref>())<sp/>{</highlight></codeline>
-<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mimetic<sp/>lap<sp/>could<sp/>not<sp/>be<sp/>built.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="123"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="125"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>lapm(lap.<ref refid="classmtk_1_1Lap1D_1aaea34a17b0879e05eb4109645a2ba8f4" kindref="member">ReturnAsDenseMatrix</ref>(comp_sol));</highlight></codeline>
-<codeline lineno="126"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!grad.<ref refid="classmtk_1_1Grad1D_1a74ef5245cfae6fd158bd7f563a0c2e52" kindref="member">ConstructGrad1D</ref>())<sp/>{</highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mimetic<sp/>grad<sp/>could<sp/>not<sp/>be<sp/>built.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="130"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>gradm(grad.<ref refid="classmtk_1_1Grad1D_1a77b2eddbe4ab03f469306c604d505b1a" kindref="member">ReturnAsDenseMatrix</ref>(comp_sol));</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"></highlight></codeline>
-<codeline lineno="132"><highlight class="normal"><sp/><sp/>source.BindScalarField(Source);</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"></highlight></codeline>
-<codeline lineno="134"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>0;<sp/>ii<sp/>&lt;<sp/>grad.<ref refid="classmtk_1_1Grad1D_1a7168205c21ba00012558f8bba069c119" kindref="member">num_bndy_coeffs</ref>();<sp/>++ii)<sp/>{</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"><sp/><sp/><sp/><sp/>west_coeffs.push_back(-((exp(-1.0)<sp/>-<sp/>1.0)/-1.0)*gradm.GetValue(0,<sp/>ii));</highlight></codeline>
-<codeline lineno="136"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="137"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">for</highlight><highlight class="normal"><sp/>(</highlight><highlight class="keyword">auto</highlight><highlight class="normal"><sp/>ii<sp/>=<sp/>0;<sp/>ii<sp/>&lt;<sp/>grad.<ref refid="classmtk_1_1Grad1D_1a7168205c21ba00012558f8bba069c119" kindref="member">num_bndy_coeffs</ref>();<sp/>++ii)<sp/>{</highlight></codeline>
-<codeline lineno="138"><highlight class="normal"><sp/><sp/><sp/><sp/>east_coeffs.push_back(</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/>((exp(-1.0)<sp/>-<sp/>1.0)/-1.0)*gradm.GetValue(gradm.num_rows()<sp/>-<sp/>1,</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>gradm.num_cols()<sp/>-<sp/>1<sp/>-<sp/>ii));</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>Omega(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>&amp;tt)<sp/>{</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>-1.0;</highlight></codeline>
+<codeline lineno="109"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"></highlight></codeline>
+<codeline lineno="111"><highlight class="normal"><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>Epsilon(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>&amp;tt)<sp/>{</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>0.0;</highlight></codeline>
+<codeline lineno="113"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>Source(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>&amp;xx)<sp/>{</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>lambda<sp/>=<sp/>-1.0;</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>lambda*lambda*exp(lambda*xx)/(exp(lambda)<sp/>-<sp/>1.0);</highlight></codeline>
+<codeline lineno="118"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="119"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>KnownSolution(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>&amp;xx)<sp/>{</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>lambda<sp/>=<sp/>-1.0;</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>(exp(lambda*xx)<sp/>-<sp/>1.0)/(exp(lambda)<sp/>-<sp/>1.0);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"></highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="minimalistic__poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>()<sp/>{</highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>west_bndy_x<sp/>=<sp/>0.0;</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>east_bndy_x<sp/>=<sp/>1.0;</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>relative_norm_2_error{};</highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>num_cells_x<sp/>=<sp/>5;</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Grad1D" kindref="compound">mtk::Grad1D</ref><sp/>grad;</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Lap1D" kindref="compound">mtk::Lap1D</ref><sp/>lap;</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/>std::vector&lt;mtk::Real&gt;<sp/>west_coeffs;</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/>std::vector&lt;mtk::Real&gt;<sp/>east_coeffs;</highlight></codeline>
+<codeline lineno="135"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>source(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>comp_sol(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
+<codeline lineno="137"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>known_sol(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!lap.<ref refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" kindref="member">ConstructLap1D</ref>())<sp/>{</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mimetic<sp/>lap<sp/>could<sp/>not<sp/>be<sp/>built.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="142"><highlight class="normal"><sp/><sp/>west_coeffs[0]<sp/>+=<sp/>-exp(-1.0);</highlight></codeline>
-<codeline lineno="143"><highlight class="normal"><sp/><sp/>east_coeffs[0]<sp/>+=<sp/>-exp(-1.0);</highlight></codeline>
-<codeline lineno="144"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1BCDescriptor1D_1a33e51235eaa930e4470f027001a023cf" kindref="member">mtk::BCDescriptor1D::ImposeOnLaplacianMatrix</ref>(lapm,<sp/>west_coeffs,<sp/>east_coeffs);</highlight></codeline>
-<codeline lineno="145"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1BCDescriptor1D_1adfb101c1a12b452f83dacd207febea0a" kindref="member">mtk::BCDescriptor1D::ImposeOnGrid</ref>(source,<sp/>-1.0,<sp/>0.0);</highlight></codeline>
-<codeline lineno="146"><highlight class="normal"></highlight></codeline>
-<codeline lineno="147"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>info{<ref refid="classmtk_1_1LAPACKAdapter_1a7428bccf74fd4a4af68fb7233846da22" kindref="member">mtk::LAPACKAdapter::SolveDenseSystem</ref>(lapm,<sp/>source)};</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(info<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
-<codeline lineno="149"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Something<sp/>wrong<sp/>solving<sp/>system!<sp/>info<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>info<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
-<codeline lineno="151"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"></highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/>source.WriteToFile(</highlight><highlight class="stringliteral">&quot;minimalistic_poisson_1d_comp_sol.dat&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;~u(x)&quot;</highlight><highlight class="normal">);</highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/>known_sol.BindScalarField(KnownSolution);</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/>relative_norm_2_error<sp/>=</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1BLASAdapter_1af2ac5691f45e67d6e26186b071119ec4" kindref="member">mtk::BLASAdapter::RelNorm2Error</ref>(source.discrete_field_u(),</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>known_sol.discrete_field_u(),</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>known_sol.num_cells_x());</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;relative_norm_2_error<sp/>=<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>relative_norm_2_error<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="161"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="165"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::cout;</highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::endl;</highlight></codeline>
-<codeline lineno="167" refid="minimalistic__poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="minimalistic__poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>()<sp/>{</highlight></codeline>
-<codeline lineno="168"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;This<sp/>code<sp/>HAS<sp/>to<sp/>be<sp/>compiled<sp/>with<sp/>support<sp/>for<sp/>C++11.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
-<codeline lineno="169"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Exiting...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_SUCCESS;</highlight></codeline>
-<codeline lineno="171"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="172"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="142"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>lapm(lap.<ref refid="classmtk_1_1Lap1D_1aaea34a17b0879e05eb4109645a2ba8f4" kindref="member">ReturnAsDenseMatrix</ref>(comp_sol));</highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/>source.BindScalarField(Source);</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1RobinBCDescriptor1D" kindref="compound">mtk::RobinBCDescriptor1D</ref><sp/>bcs;</highlight></codeline>
+<codeline lineno="145"><highlight class="normal"><sp/><sp/>bcs.<ref refid="classmtk_1_1RobinBCDescriptor1D_1acdf8a75f8c39b3b8a032af81e0fd2e89" kindref="member">PushBackWestCoeff</ref>(Alpha);</highlight></codeline>
+<codeline lineno="146"><highlight class="normal"><sp/><sp/>bcs.<ref refid="classmtk_1_1RobinBCDescriptor1D_1acdf8a75f8c39b3b8a032af81e0fd2e89" kindref="member">PushBackWestCoeff</ref>(Beta);</highlight></codeline>
+<codeline lineno="147"><highlight class="normal"><sp/><sp/>bcs.<ref refid="classmtk_1_1RobinBCDescriptor1D_1a7791c11e0950656cb5608a77918c28d4" kindref="member">PushBackEastCoeff</ref>(Alpha);</highlight></codeline>
+<codeline lineno="148"><highlight class="normal"><sp/><sp/>bcs.<ref refid="classmtk_1_1RobinBCDescriptor1D_1a7791c11e0950656cb5608a77918c28d4" kindref="member">PushBackEastCoeff</ref>(Beta);</highlight></codeline>
+<codeline lineno="149"><highlight class="normal"><sp/><sp/>bcs.<ref refid="classmtk_1_1RobinBCDescriptor1D_1a06bfaf0126d528247c3c76fdd19f4b85" kindref="member">set_west_condition</ref>(Omega);</highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/>bcs.<ref refid="classmtk_1_1RobinBCDescriptor1D_1a4edc92eeaaaa3f1e7f2cedfea3d35681" kindref="member">set_east_condition</ref>(Epsilon);</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!bcs.<ref refid="classmtk_1_1RobinBCDescriptor1D_1ab8446428df923c27f388a85bd3f2c6d4" kindref="member">ImposeOnLaplacianMatrix</ref>(lap,<sp/>lapm))<sp/>{</highlight></codeline>
+<codeline lineno="152"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;BCs<sp/><sp/>could<sp/>not<sp/>be<sp/>bound<sp/>to<sp/>the<sp/>matrix.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
+<codeline lineno="154"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="155"><highlight class="normal"><sp/><sp/>bcs.<ref refid="classmtk_1_1RobinBCDescriptor1D_1ab0daec1d6c5c9c6768bea08281a3831d" kindref="member">ImposeOnGrid</ref>(source);</highlight></codeline>
+<codeline lineno="156"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>info{<ref refid="classmtk_1_1LAPACKAdapter_1a7428bccf74fd4a4af68fb7233846da22" kindref="member">mtk::LAPACKAdapter::SolveDenseSystem</ref>(lapm,<sp/>source)};</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(info<sp/>!=<sp/>0)<sp/>{</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Something<sp/>wrong<sp/>solving<sp/>system!<sp/>info<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>info<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"></highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/>source.WriteToFile(</highlight><highlight class="stringliteral">&quot;minimalistic_poisson_1d_comp_sol.dat&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;~u(x)&quot;</highlight><highlight class="normal">);</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/>known_sol.BindScalarField(KnownSolution);</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/>relative_norm_2_error<sp/>=</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1BLASAdapter_1af2ac5691f45e67d6e26186b071119ec4" kindref="member">mtk::BLASAdapter::RelNorm2Error</ref>(source.discrete_field(),</highlight></codeline>
+<codeline lineno="166"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>known_sol.discrete_field(),</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>known_sol.num_cells_x());</highlight></codeline>
+<codeline lineno="168"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;relative_norm_2_error<sp/>=<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>relative_norm_2_error<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="173"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::cout;</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::endl;</highlight></codeline>
+<codeline lineno="176" refid="minimalistic__poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="minimalistic__poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>()<sp/>{</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;This<sp/>code<sp/>HAS<sp/>to<sp/>be<sp/>compiled<sp/>with<sp/>support<sp/>for<sp/>C++11.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Exiting...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_SUCCESS;</highlight></codeline>
+<codeline lineno="180"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="/home/esanchez/Dropbox/MTK/examples/minimalistic_poisson_1d/minimalistic_poisson_1d.cc"/>
   </compounddef>

@@ -120,7 +120,7 @@
 00119   \hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{mtk::Tools::Assert}(assertion);
 00120 \}
 00121 
-00122 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} ScalarField(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy) \{
+00122 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} ScalarField(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx, \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &yy) \{
 00123 
 00124   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aux\{-(1.0/2.0)*xx*xx - (1.0/2.0)*yy*yy\};
 00125 
@@ -141,7 +141,7 @@
 00140 
 00141   \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} gg(aa, bb, nn, cc, dd, mm);
 00142 
-00143   gg.\hyperlink{classmtk_1_1UniStgGrid2D_ab6aff36e9f89fba1c1ff4f9914508211}{BindScalarField}(ScalarField);
+00143   gg.\hyperlink{classmtk_1_1UniStgGrid2D_a5f9910ffb94e0314b16c026c4b5762ee}{BindScalarField}(ScalarField);
 00144 
 00145   \textcolor{keywordflow}{if}(!gg.\hyperlink{classmtk_1_1UniStgGrid2D_a1787a79e4bcee6b89c681dc7e5e2d7bc}{WriteToFile}(\textcolor{stringliteral}{"mtk\_uni\_stg\_grid\_2d\_test\_04.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"y"}, \textcolor{stringliteral}{"u(x,y)"})) \{
 00146     std::cerr << \textcolor{stringliteral}{"Error writing to file."} << std::endl;
@@ -150,12 +150,14 @@
 00149   \hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{mtk::Tools::EndUnitTestNo}(4);
 00150 \}
 00151 
-00152 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} VectorFieldPComponent(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy) \{
+00152 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} VectorFieldPComponent(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx, \textcolor{keyword}{const} 
+      \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &yy) \{
 00153 
 00154   \textcolor{keywordflow}{return} xx + 0.01;
 00155 \}
 00156 
-00157 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} VectorFieldQComponent(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy) \{
+00157 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} VectorFieldQComponent(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx, \textcolor{keyword}{const} 
+      \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &yy) \{
 00158 
 00159   \textcolor{keywordflow}{return} yy + 0.01;
 00160 \}
@@ -174,7 +176,7 @@
 00173 
 00174   \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} gg(aa, bb, nn, cc, dd, mm, \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a3d8cb27a993651a74d67fb8c98ae91b2}{mtk::VECTOR});
 00175 
-00176   gg.\hyperlink{classmtk_1_1UniStgGrid2D_a1cba89c285973514c1351760d598c52b}{BindVectorField}(VectorFieldPComponent, VectorFieldQComponent);
+00176   gg.\hyperlink{classmtk_1_1UniStgGrid2D_ae274b24672e9bd6075bf38b015bd9083}{BindVectorField}(VectorFieldPComponent, VectorFieldQComponent);
 00177 
 00178   std::cout << gg << std::endl;
 00179 

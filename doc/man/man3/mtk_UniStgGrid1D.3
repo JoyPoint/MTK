@@ -1,4 +1,4 @@
-.TH "mtk::UniStgGrid1D" 3 "Tue Nov 24 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::UniStgGrid1D" 3 "Wed Nov 25 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -47,7 +47,7 @@ Uniform 1D Staggered Grid\&.
 .br
 .RI "\fIProvides access to the grid spatial data\&. \fP"
 .ti -1c
-.RI "\fBReal\fP * \fBdiscrete_field_u\fP ()"
+.RI "\fBReal\fP * \fBdiscrete_field\fP ()"
 .br
 .RI "\fIProvides access to the grid field data\&. \fP"
 .ti -1c
@@ -55,7 +55,7 @@ Uniform 1D Staggered Grid\&.
 .br
 .RI "\fIProvides access to the number of cells of the grid\&. \fP"
 .ti -1c
-.RI "void \fBBindScalarField\fP (\fBReal\fP(*ScalarField)(\fBReal\fP xx))"
+.RI "void \fBBindScalarField\fP (\fBReal\fP(*ScalarField)(const \fBReal\fP &xx))"
 .br
 .RI "\fIBinds a given scalar field to the grid\&. \fP"
 .ti -1c
@@ -79,7 +79,7 @@ Uniform 1D Staggered Grid\&.
 .br
 .RI "\fIArray of spatial data\&. \fP"
 .ti -1c
-.RI "std::vector< \fBReal\fP > \fBdiscrete_field_u_\fP"
+.RI "std::vector< \fBReal\fP > \fBdiscrete_field_\fP"
 .br
 .RI "\fIArray of field's data\&. \fP"
 .ti -1c
@@ -157,7 +157,7 @@ Definition at line 124 of file mtk_uni_stg_grid_1d\&.cc\&.
 Definition at line 144 of file mtk_uni_stg_grid_1d\&.cc\&.
 .SH "Member Function Documentation"
 .PP 
-.SS "void mtk::UniStgGrid1D::BindScalarField (\fBReal\fP(*)(\fBReal\fP xx)ScalarField)"
+.SS "void mtk::UniStgGrid1D::BindScalarField (\fBReal\fP(*)(const \fBReal\fP &xx)ScalarField)"
 
 .PP
 \fBParameters:\fP
@@ -219,7 +219,7 @@ Review const-correctness of the pointer we return\&.
 
 .PP
 Definition at line 161 of file mtk_uni_stg_grid_1d\&.cc\&.
-.SS "\fBmtk::Real\fP * mtk::UniStgGrid1D::discrete_field_u ()"
+.SS "\fBmtk::Real\fP * mtk::UniStgGrid1D::discrete_field ()"
 
 .PP
 \fBReturns:\fP
@@ -315,7 +315,7 @@ Definition at line 200 of file mtk_uni_stg_grid_1d\&.h\&.
 
 .PP
 Definition at line 194 of file mtk_uni_stg_grid_1d\&.h\&.
-.SS "std::vector<\fBReal\fP> mtk::UniStgGrid1D::discrete_field_u_\fC [private]\fP"
+.SS "std::vector<\fBReal\fP> mtk::UniStgGrid1D::discrete_field_\fC [private]\fP"
 
 .PP
 Definition at line 195 of file mtk_uni_stg_grid_1d\&.h\&.

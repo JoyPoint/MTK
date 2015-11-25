@@ -59,81 +59,89 @@
 00094 
 00095 \textcolor{preprocessor}{#include "\hyperlink{mtk_8h}{mtk.h}"}
 00096 
-00097 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Source(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx) \{
+00097 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Alpha(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &tt) \{
 00098   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda = -1.0;
-00099   \textcolor{keywordflow}{return} lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
+00099   \textcolor{keywordflow}{return} -exp(lambda);
 00100 \}
 00101 
-00102 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} KnownSolution(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx) \{
+00102 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Beta(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &tt) \{
 00103   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda = -1.0;
-00104   \textcolor{keywordflow}{return} (exp(lambda*xx) - 1.0)/(exp(lambda) - 1.0);
-00105 \}
+00104   \textcolor{keywordflow}{return} (exp(lambda) - 1.0)/lambda;
+00105 \};
 00106 
-00107 \textcolor{keywordtype}{int} \hyperlink{minimalistic__poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
-00108 
-00109   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} west\_bndy\_x = 0.0;
-00110   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} east\_bndy\_x = 1.0;
-00111   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} relative\_norm\_2\_error\{\};
-00112   \textcolor{keywordtype}{int} num\_cells\_x = 5;
-00113   \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} grad;
-00114   \hyperlink{classmtk_1_1Lap1D}{mtk::Lap1D} lap;
-00115   std::vector<mtk::Real> west\_coeffs;
-00116   std::vector<mtk::Real> east\_coeffs;
-00117   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} source(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
-00118   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} comp\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
-00119   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} known\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
-00120 
-00121   \textcolor{keywordflow}{if} (!lap.\hyperlink{classmtk_1_1Lap1D_a685dcba88c08cf5b7b6c2aa4669a472c}{ConstructLap1D}()) \{
-00122     std::cerr << \textcolor{stringliteral}{"Mimetic lap could not be built."} << std::endl;
-00123     \textcolor{keywordflow}{return} EXIT\_FAILURE;
-00124   \}
-00125   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} lapm(lap.\hyperlink{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4}{ReturnAsDenseMatrix}(comp\_sol));
-00126   \textcolor{keywordflow}{if} (!grad.\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{ConstructGrad1D}()) \{
-00127     std::cerr << \textcolor{stringliteral}{"Mimetic grad could not be built."} << std::endl;
-00128     \textcolor{keywordflow}{return} EXIT\_FAILURE;
-00129   \}
-00130   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} gradm(grad.\hyperlink{classmtk_1_1Grad1D_a77b2eddbe4ab03f469306c604d505b1a}{ReturnAsDenseMatrix}(comp\_sol));
-00131 
-00132   source.BindScalarField(Source);
-00133 
-00134   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < grad.\hyperlink{classmtk_1_1Grad1D_a7168205c21ba00012558f8bba069c119}{num\_bndy\_coeffs}(); ++ii) \{
-00135     west\_coeffs.push\_back(-((exp(-1.0) - 1.0)/-1.0)*gradm.GetValue(0, ii));
-00136   \}
-00137   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < grad.\hyperlink{classmtk_1_1Grad1D_a7168205c21ba00012558f8bba069c119}{num\_bndy\_coeffs}(); ++ii) \{
-00138     east\_coeffs.push\_back(
-00139       ((exp(-1.0) - 1.0)/-1.0)*gradm.GetValue(gradm.num\_rows() - 1,
-00140                                               gradm.num\_cols() - 1 - ii));
+00107 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Omega(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &tt) \{
+00108   \textcolor{keywordflow}{return} -1.0;
+00109 \};
+00110 
+00111 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Epsilon(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &tt) \{
+00112   \textcolor{keywordflow}{return} 0.0;
+00113 \};
+00114 
+00115 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Source(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx) \{
+00116   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda = -1.0;
+00117   \textcolor{keywordflow}{return} lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
+00118 \}
+00119 
+00120 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} KnownSolution(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx) \{
+00121   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda = -1.0;
+00122   \textcolor{keywordflow}{return} (exp(lambda*xx) - 1.0)/(exp(lambda) - 1.0);
+00123 \}
+00124 
+00125 \textcolor{keywordtype}{int} \hyperlink{minimalistic__poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00126 
+00127   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} west\_bndy\_x = 0.0;
+00128   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} east\_bndy\_x = 1.0;
+00129   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} relative\_norm\_2\_error\{\};
+00130   \textcolor{keywordtype}{int} num\_cells\_x = 5;
+00131   \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} grad;
+00132   \hyperlink{classmtk_1_1Lap1D}{mtk::Lap1D} lap;
+00133   std::vector<mtk::Real> west\_coeffs;
+00134   std::vector<mtk::Real> east\_coeffs;
+00135   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} source(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00136   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} comp\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00137   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} known\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00138   \textcolor{keywordflow}{if} (!lap.\hyperlink{classmtk_1_1Lap1D_a685dcba88c08cf5b7b6c2aa4669a472c}{ConstructLap1D}()) \{
+00139     std::cerr << \textcolor{stringliteral}{"Mimetic lap could not be built."} << std::endl;
+00140     \textcolor{keywordflow}{return} EXIT\_FAILURE;
 00141   \}
-00142   west\_coeffs[0] += -exp(-1.0);
-00143   east\_coeffs[0] += -exp(-1.0);
-00144   \hyperlink{classmtk_1_1BCDescriptor1D_a33e51235eaa930e4470f027001a023cf}{mtk::BCDescriptor1D::ImposeOnLaplacianMatrix}(lapm, 
-      west\_coeffs, east\_coeffs);
-00145   \hyperlink{classmtk_1_1BCDescriptor1D_adfb101c1a12b452f83dacd207febea0a}{mtk::BCDescriptor1D::ImposeOnGrid}(source, -1.0, 0.0);
-00146 
-00147   \textcolor{keywordtype}{int} info\{\hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{mtk::LAPACKAdapter::SolveDenseSystem}(lapm, source)\};
-00148   \textcolor{keywordflow}{if} (info != 0) \{
-00149     std::cerr << \textcolor{stringliteral}{"Something wrong solving system! info = "} << info << std::endl;
-00150     \textcolor{keywordflow}{return} EXIT\_FAILURE;
-00151   \}
-00152 
-00153   source.WriteToFile(\textcolor{stringliteral}{"minimalistic\_poisson\_1d\_comp\_sol.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"~u(x)"});
-00154   known\_sol.BindScalarField(KnownSolution);
-00155   relative\_norm\_2\_error =
-00156     \hyperlink{classmtk_1_1BLASAdapter_af2ac5691f45e67d6e26186b071119ec4}{mtk::BLASAdapter::RelNorm2Error}(source.discrete\_field\_u(),
-00157                                     known\_sol.discrete\_field\_u(),
-00158                                     known\_sol.num\_cells\_x());
-00159   std::cout << \textcolor{stringliteral}{"relative\_norm\_2\_error = "};
-00160   std::cout << relative\_norm\_2\_error << std::endl;
-00161 \}
-00162 
-00163 \textcolor{preprocessor}{#else}
-00164 \textcolor{preprocessor}{#include <iostream>}
-00165 \textcolor{keyword}{using} std::cout;
-00166 \textcolor{keyword}{using} std::endl;
-\hypertarget{minimalistic__poisson__1d_8cc_source_l00167}{}\hyperlink{minimalistic__poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00167} \textcolor{keywordtype}{int} \hyperlink{minimalistic__poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
-00168   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
-00169   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
-00170   \textcolor{keywordflow}{return} EXIT\_SUCCESS;
-00171 \}
-00172 \textcolor{preprocessor}{#endif}
+00142   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} lapm(lap.\hyperlink{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4}{ReturnAsDenseMatrix}(comp\_sol));
+00143   source.BindScalarField(Source);
+00144   \hyperlink{classmtk_1_1RobinBCDescriptor1D}{mtk::RobinBCDescriptor1D} bcs;
+00145   bcs.\hyperlink{classmtk_1_1RobinBCDescriptor1D_acdf8a75f8c39b3b8a032af81e0fd2e89}{PushBackWestCoeff}(Alpha);
+00146   bcs.\hyperlink{classmtk_1_1RobinBCDescriptor1D_acdf8a75f8c39b3b8a032af81e0fd2e89}{PushBackWestCoeff}(Beta);
+00147   bcs.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a7791c11e0950656cb5608a77918c28d4}{PushBackEastCoeff}(Alpha);
+00148   bcs.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a7791c11e0950656cb5608a77918c28d4}{PushBackEastCoeff}(Beta);
+00149   bcs.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a06bfaf0126d528247c3c76fdd19f4b85}{set\_west\_condition}(Omega);
+00150   bcs.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a4edc92eeaaaa3f1e7f2cedfea3d35681}{set\_east\_condition}(Epsilon);
+00151   \textcolor{keywordflow}{if} (!bcs.\hyperlink{classmtk_1_1RobinBCDescriptor1D_ab8446428df923c27f388a85bd3f2c6d4}{ImposeOnLaplacianMatrix}(lap, lapm)) \{
+00152     std::cerr << \textcolor{stringliteral}{"BCs  could not be bound to the matrix."} << std::endl;
+00153     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00154   \}
+00155   bcs.\hyperlink{classmtk_1_1RobinBCDescriptor1D_ab0daec1d6c5c9c6768bea08281a3831d}{ImposeOnGrid}(source);
+00156   \textcolor{keywordtype}{int} info\{\hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{mtk::LAPACKAdapter::SolveDenseSystem}(lapm, source)\};
+00157   \textcolor{keywordflow}{if} (info != 0) \{
+00158     std::cerr << \textcolor{stringliteral}{"Something wrong solving system! info = "} << info << std::endl;
+00159     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00160   \}
+00161 
+00162   source.WriteToFile(\textcolor{stringliteral}{"minimalistic\_poisson\_1d\_comp\_sol.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"~u(x)"});
+00163   known\_sol.BindScalarField(KnownSolution);
+00164   relative\_norm\_2\_error =
+00165     \hyperlink{classmtk_1_1BLASAdapter_af2ac5691f45e67d6e26186b071119ec4}{mtk::BLASAdapter::RelNorm2Error}(source.discrete\_field(),
+00166                                     known\_sol.discrete\_field(),
+00167                                     known\_sol.num\_cells\_x());
+00168   std::cout << \textcolor{stringliteral}{"relative\_norm\_2\_error = "};
+00169   std::cout << relative\_norm\_2\_error << std::endl;
+00170 \}
+00171 
+00172 \textcolor{preprocessor}{#else}
+00173 \textcolor{preprocessor}{#include <iostream>}
+00174 \textcolor{keyword}{using} std::cout;
+00175 \textcolor{keyword}{using} std::endl;
+\hypertarget{minimalistic__poisson__1d_8cc_source_l00176}{}\hyperlink{minimalistic__poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00176} \textcolor{keywordtype}{int} \hyperlink{minimalistic__poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00177   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
+00178   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
+00179   \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+00180 \}
+00181 \textcolor{preprocessor}{#endif}
 \end{DoxyCode}

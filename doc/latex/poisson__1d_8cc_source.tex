@@ -4,209 +4,206 @@
 
 \begin{DoxyCode}
 00001 
-00042 \textcolor{comment}{/*}
-00043 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
-00044 \textcolor{comment}{University. All rights reserved.}
-00045 \textcolor{comment}{}
-00046 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
-00047 \textcolor{comment}{are permitted provided that the following conditions are met:}
-00048 \textcolor{comment}{}
-00049 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
-00050 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
-00051 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
-00052 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
-00053 \textcolor{comment}{should be developed and included in any deliverable.}
-00054 \textcolor{comment}{}
-00055 \textcolor{comment}{2. Redistributions of source code must be done through direct}
-00056 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
-00057 \textcolor{comment}{}
-00058 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
-00059 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
-00060 \textcolor{comment}{other materials provided with the distribution.}
-00061 \textcolor{comment}{}
-00062 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
-00063 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
-00064 \textcolor{comment}{be given to the copyright holders.}
-00065 \textcolor{comment}{}
-00066 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
-00067 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
-00068 \textcolor{comment}{specific prior written permission.}
-00069 \textcolor{comment}{}
-00070 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
-00071 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
-00072 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
-00073 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
-00074 \textcolor{comment}{parties intellectual property rights.}
-00075 \textcolor{comment}{}
-00076 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
-00077 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
-00078 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
-00079 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
-00080 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
-00081 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
-00082 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
-00083 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
-00084 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
-00085 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
-00086 \textcolor{comment}{*/}
-00087 
-00088 \textcolor{preprocessor}{#if \_\_cplusplus == 201103L}
-00089 
-00090 \textcolor{preprocessor}{#include <iostream>}
-00091 \textcolor{preprocessor}{#include <fstream>}
-00092 \textcolor{preprocessor}{#include <cmath>}
-00093 
-00094 \textcolor{preprocessor}{#include <vector>}
-00095 
-00096 \textcolor{preprocessor}{#include "\hyperlink{mtk_8h}{mtk.h}"}
-00097 
-00098 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Source(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx) \{
-00099 
-00100   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda = -1.0;
-00101 
-00102   \textcolor{keywordflow}{return} lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
-00103 \}
-00104 
-00105 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} KnownSolution(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx) \{
-00106 
-00107   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda = -1.0;
-00108 
-00109   \textcolor{keywordflow}{return} (exp(lambda*xx) - 1.0)/(exp(lambda) - 1.0);
-00110 \}
-00111 
-00112 \textcolor{keywordtype}{int} \hyperlink{poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
-00113 
-00114   std::cout << \textcolor{stringliteral}{"Example: Poisson Equation on a 1D Uniform Staggered Grid "};
-00115   std::cout << \textcolor{stringliteral}{"with Robin BCs."} << std::endl;
-00116 
-00118 
-00119   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda = -1.0;
-00120   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} alpha = -exp(lambda);
-00121   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} beta = (exp(lambda) - 1.0)/lambda;
-00122   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} omega = -1.0;
-00123   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} epsilon = 0.0;
+00043 \textcolor{comment}{/*}
+00044 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00045 \textcolor{comment}{University. All rights reserved.}
+00046 \textcolor{comment}{}
+00047 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00048 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00049 \textcolor{comment}{}
+00050 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00051 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00052 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
+00053 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
+00054 \textcolor{comment}{should be developed and included in any deliverable.}
+00055 \textcolor{comment}{}
+00056 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00057 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00058 \textcolor{comment}{}
+00059 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
+00060 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00061 \textcolor{comment}{other materials provided with the distribution.}
+00062 \textcolor{comment}{}
+00063 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
+00064 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
+00065 \textcolor{comment}{be given to the copyright holders.}
+00066 \textcolor{comment}{}
+00067 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
+00068 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00069 \textcolor{comment}{specific prior written permission.}
+00070 \textcolor{comment}{}
+00071 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00072 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00073 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00074 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00075 \textcolor{comment}{parties intellectual property rights.}
+00076 \textcolor{comment}{}
+00077 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00078 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00079 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00080 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00081 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00082 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00083 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00084 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00085 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00086 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00087 \textcolor{comment}{*/}
+00088 
+00089 \textcolor{preprocessor}{#if \_\_cplusplus == 201103L}
+00090 
+00091 \textcolor{preprocessor}{#include <iostream>}
+00092 \textcolor{preprocessor}{#include <fstream>}
+00093 \textcolor{preprocessor}{#include <cmath>}
+00094 
+00095 \textcolor{preprocessor}{#include <vector>}
+00096 
+00097 \textcolor{preprocessor}{#include "\hyperlink{mtk_8h}{mtk.h}"}
+00098 
+00099 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Alpha(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &tt) \{
+00100 
+00101   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda\{-1.0\};
+00102 
+00103   \textcolor{keywordflow}{return} -exp(lambda);
+00104 \}
+00105 
+00106 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Beta(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &tt) \{
+00107 
+00108   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda\{-1.0\};
+00109 
+00110   \textcolor{keywordflow}{return} (exp(lambda) - 1.0)/lambda;
+00111 \};
+00112 
+00113 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Omega(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &tt) \{
+00114 
+00115   \textcolor{keywordflow}{return} -1.0;
+00116 \};
+00117 
+00118 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Epsilon(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &tt) \{
+00119 
+00120   \textcolor{keywordflow}{return} 0.0;
+00121 \};
+00122 
+00123 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Source(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx) \{
 00124 
+00125   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda\{-1.0\};
 00126 
-00127   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} west\_bndy\_x = 0.0;
-00128   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} east\_bndy\_x = 1.0;
-00129   \textcolor{keywordtype}{int} num\_cells\_x = 5;
-00130 
-00131   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} comp\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
-00132 
-00134 
-00135   \textcolor{keywordtype}{int} order\_of\_accuracy\{2\};  \textcolor{comment}{// Desired order of accuracy for approximation.}
+00127   \textcolor{keywordflow}{return} -lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
+00128 \}
+00129 
+00130 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} KnownSolution(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx) \{
+00131 
+00132   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} lambda\{-1.0\};
+00133 
+00134   \textcolor{keywordflow}{return} (exp(lambda*xx) - 1.0)/(exp(lambda) - 1.0);
+00135 \}
 00136 
-00137   \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} grad;  \textcolor{comment}{// Mimetic gradient operator.}
+00137 \textcolor{keywordtype}{int} \hyperlink{poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
 00138 
-00139   \hyperlink{classmtk_1_1Lap1D}{mtk::Lap1D} lap;  \textcolor{comment}{// Mimetic Laplacian operator.}
-00140 
-00141   \textcolor{keywordflow}{if} (!lap.\hyperlink{classmtk_1_1Lap1D_a685dcba88c08cf5b7b6c2aa4669a472c}{ConstructLap1D}(order\_of\_accuracy)) \{
-00142     std::cerr << \textcolor{stringliteral}{"Mimetic lap could not be built."} << std::endl;
-00143     \textcolor{keywordflow}{return} EXIT\_FAILURE;
-00144   \}
-00145 
-00146   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} lapm(lap.\hyperlink{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4}{ReturnAsDenseMatrix}(comp\_sol));
-00147 
-00148   std::cout << \textcolor{stringliteral}{"Mimetic Laplacian operator: "} << std::endl;
-00149   std::cout << lapm << std::endl;
-00150 
-00151   \textcolor{keywordflow}{if} (!grad.\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{ConstructGrad1D}(order\_of\_accuracy)) \{
-00152     std::cerr << \textcolor{stringliteral}{"Mimetic grad could not be built."} << std::endl;
-00153     \textcolor{keywordflow}{return} EXIT\_FAILURE;
-00154   \}
-00155 
-00156   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} gradm(grad.\hyperlink{classmtk_1_1Grad1D_a77b2eddbe4ab03f469306c604d505b1a}{ReturnAsDenseMatrix}(comp\_sol));
-00157 
-00158   std::cout << \textcolor{stringliteral}{"Mimetic gradient operator: "} << std::endl;
-00159   std::cout << gradm << std::endl;
-00160 
-00162 
-00163   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} source(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
-00164 
-00165   source.BindScalarField(Source);
-00166 
-00167   std::cout << source << std::endl;
+00139   std::cout << \textcolor{stringliteral}{"Example: Poisson Equation on a 1D Uniform Staggered Grid "};
+00140   std::cout << \textcolor{stringliteral}{"with Robin BCs."} << std::endl;
+00141 
+00143   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} west\_bndy\_x\{0.0\};
+00144   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} east\_bndy\_x\{1.0\};
+00145   \textcolor{keywordtype}{int} num\_cells\_x\{5\};
+00146 
+00147   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} comp\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00148 
+00150   \hyperlink{classmtk_1_1Lap1D}{mtk::Lap1D} lap;
+00151 
+00152   \textcolor{keywordflow}{if} (!lap.\hyperlink{classmtk_1_1Lap1D_a685dcba88c08cf5b7b6c2aa4669a472c}{ConstructLap1D}()) \{
+00153     std::cerr << \textcolor{stringliteral}{"Mimetic Laplacian could not be built."} << std::endl;
+00154     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00155   \}
+00156 
+00157   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} lapm(lap.\hyperlink{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4}{ReturnAsDenseMatrix}(comp\_sol));
+00158 
+00159   std::cout << \textcolor{stringliteral}{"lapm = "} << std::endl;
+00160   std::cout << lapm << std::endl;
+00161 
+00163 
+00164   lapm = \hyperlink{classmtk_1_1BLASAdapter_a0dd80d043615a95f11b7341ce69b44d3}{mtk::BLASAdapter::RealDenseSM}(-1.0, lapm);
+00165 
+00166   std::cout << \textcolor{stringliteral}{"-lapm = "} << std::endl;
+00167   std::cout << lapm << std::endl;
 00168 
-00170 
-00171   \textcolor{comment}{// Since we need to approximate the first derivative times beta, we must use}
-00172   \textcolor{comment}{// the approximation of the gradient at the boundary. We could extract them}
-00173   \textcolor{comment}{// from the gradient operator as packed in the grad object. BUT, since we have}
-00174   \textcolor{comment}{// generated at matrix containing this operator, we can extract these from the}
-00175   \textcolor{comment}{// matrix.}
+00170   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} source(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00171 
+00172   source.BindScalarField(Source);
+00173 
+00174   std::cout << \textcolor{stringliteral}{"source ="} << std::endl;
+00175   std::cout << source << std::endl;
 00176 
-00177   \textcolor{comment}{// Array containing the coefficients for the west boundary condition.}
-00178   std::vector<mtk::Real> west\_coeffs;
+00178   \hyperlink{classmtk_1_1RobinBCDescriptor1D}{mtk::RobinBCDescriptor1D} robin\_bc\_desc\_1d;
 00179 
-00180   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < grad.\hyperlink{classmtk_1_1Grad1D_a7168205c21ba00012558f8bba069c119}{num\_bndy\_coeffs}(); ++ii) \{
-00181     west\_coeffs.push\_back(-beta*gradm.GetValue(0, ii));
-00182   \}
-00183 
-00184   \textcolor{comment}{// Array containing the coefficients for the east boundary condition.}
-00185   std::vector<mtk::Real> east\_coeffs;
-00186 
-00187   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < grad.\hyperlink{classmtk_1_1Grad1D_a7168205c21ba00012558f8bba069c119}{num\_bndy\_coeffs}(); ++ii) \{
-00188     east\_coeffs.push\_back(beta*gradm.GetValue(gradm.num\_rows() - 1,
-00189                                               gradm.num\_cols() - 1 - ii));
-00190   \}
-00191 
-00192   \textcolor{comment}{// To impose the Dirichlet condition, we simple add its coefficient to the}
-00193   \textcolor{comment}{// first entry of the west, and the last entry of the east array.}
-00194 
-00195   west\_coeffs[0] += alpha;
+00180   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_acdf8a75f8c39b3b8a032af81e0fd2e89}{PushBackWestCoeff}(Alpha);
+00181   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_acdf8a75f8c39b3b8a032af81e0fd2e89}{PushBackWestCoeff}(Beta);
+00182 
+00183   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a7791c11e0950656cb5608a77918c28d4}{PushBackEastCoeff}(Alpha);
+00184   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a7791c11e0950656cb5608a77918c28d4}{PushBackEastCoeff}(Beta);
+00185 
+00186   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a06bfaf0126d528247c3c76fdd19f4b85}{set\_west\_condition}(Omega);
+00187   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a4edc92eeaaaa3f1e7f2cedfea3d35681}{set\_east\_condition}(Epsilon);
+00188 
+00189   \textcolor{keywordflow}{if} (!robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_ab8446428df923c27f388a85bd3f2c6d4}{ImposeOnLaplacianMatrix}(lap, lapm)) \{
+00190     std::cerr << \textcolor{stringliteral}{"BCs  could not be bound to the matrix."} << std::endl;
+00191     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00192   \}
+00193 
+00194   std::cout << \textcolor{stringliteral}{"Mimetic Laplacian operator with imposed BCs: "} << std::endl;
+00195   std::cout << lapm << std::endl;
 00196 
-00197   east\_coeffs[0] += alpha;
-00198 
-00199   \textcolor{comment}{// Now that we have the coefficients that should be in the operator, we create}
-00200   \textcolor{comment}{// a boundary condition descriptor object, which will encapsulate the}
-00201   \textcolor{comment}{// complexity of assigning them in the matrix, to complete the construction of}
-00202   \textcolor{comment}{// the mimetic operator.}
-00203 
-00204   \hyperlink{classmtk_1_1BCDescriptor1D_a33e51235eaa930e4470f027001a023cf}{mtk::BCDescriptor1D::ImposeOnLaplacianMatrix}(lapm, 
-      west\_coeffs, east\_coeffs);
-00205 
-00206   std::cout << \textcolor{stringliteral}{"Mimetic Laplacian with Robin conditions:"} << std::endl;
-00207   std::cout << lapm << std::endl;
-00208 
-00209   \hyperlink{classmtk_1_1BCDescriptor1D_adfb101c1a12b452f83dacd207febea0a}{mtk::BCDescriptor1D::ImposeOnGrid}(source, omega, epsilon);
-00210 
-00211   std::cout << \textcolor{stringliteral}{"Source term with imposed BCs:"} << std::endl;
-00212   std::cout << source << std::endl;
-00213 
-00214   source.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_source.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"s(x)"});
+00197   \textcolor{keywordflow}{if} (!lapm.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_lapm.dat"})) \{
+00198     std::cerr << \textcolor{stringliteral}{"Laplacian matrix could not be written to disk."} << std::endl;
+00199     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00200   \}
+00201 
+00203   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_ab0daec1d6c5c9c6768bea08281a3831d}{ImposeOnGrid}(source);
+00204 
+00205   std::cout << \textcolor{stringliteral}{"source ="} << std::endl;
+00206   std::cout << source << std::endl;
+00207 
+00208   \textcolor{keywordflow}{if} (!source.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_source.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"s(x)"})) \{
+00209     std::cerr << \textcolor{stringliteral}{"Source term could not be written to disk."} << std::endl;
+00210     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00211   \}
+00212 
+00214   \textcolor{keywordtype}{int} info\{\hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{mtk::LAPACKAdapter::SolveDenseSystem}(lapm, source)\};
 00215 
-00217 
-00218   \textcolor{keywordtype}{int} info\{\hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{mtk::LAPACKAdapter::SolveDenseSystem}(lapm, source)\};
-00219 
-00220   \textcolor{keywordflow}{if} (!info) \{
-00221     std::cout << \textcolor{stringliteral}{"System solved! Problem solved!"} << std::endl;
-00222     std::cout << std::endl;
+00216   \textcolor{keywordflow}{if} (!info) \{
+00217     std::cout << \textcolor{stringliteral}{"System solved."} << std::endl;
+00218     std::cout << std::endl;
+00219   \} \textcolor{keywordflow}{else} \{
+00220     std::cerr << \textcolor{stringliteral}{"Something wrong solving system! info = "} << info << std::endl;
+00221     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
+00222     \textcolor{keywordflow}{return} EXIT\_FAILURE;
 00223   \}
-00224   \textcolor{keywordflow}{else} \{
-00225     std::cerr << \textcolor{stringliteral}{"Something wrong solving system! info = "} << info << std::endl;
-00226     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
-00227     \textcolor{keywordflow}{return} EXIT\_FAILURE;
-00228   \}
-00229 
-00230   std::cout << \textcolor{stringliteral}{"Computed solution:"} << std::endl;
-00231   std::cout << source << std::endl;
+00224 
+00225   std::cout << \textcolor{stringliteral}{"Computed solution:"} << std::endl;
+00226   std::cout << source << std::endl;
+00227 
+00228   \textcolor{keywordflow}{if} (!source.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_comp\_sol.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"~u(x)"})) \{
+00229     std::cerr << \textcolor{stringliteral}{"Solution could not be written to file."} << std::endl;
+00230     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00231   \}
 00232 
-00233   source.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_comp\_sol.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"~u(x)"});
-00234 
-00236 
-00237   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} known\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
-00238 
-00239   known\_sol.BindScalarField(KnownSolution);
+00234   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} known\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00235 
+00236   known\_sol.BindScalarField(KnownSolution);
+00237 
+00238   std::cout << \textcolor{stringliteral}{"known\_sol ="} << std::endl;
+00239   std::cout << known\_sol << std::endl;
 00240 
-00241   std::cout << \textcolor{stringliteral}{"known\_sol ="} << std::endl;
-00242   std::cout << known\_sol << std::endl;
-00243 
-00244   known\_sol.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_known\_sol.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"u(x)"});
+00241   \textcolor{keywordflow}{if} (!known\_sol.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_known\_sol.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"u(x)"})) \{
+00242     std::cerr << \textcolor{stringliteral}{"Known solution could not be written to file."} << std::endl;
+00243     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00244   \}
 00245 
-00246   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} relative\_norm\_2\_error\{\};  \textcolor{comment}{// Relative norm 2 of the error.}
+00246   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} relative\_norm\_2\_error\{\};
 00247 
 00248   relative\_norm\_2\_error =
-00249     \hyperlink{classmtk_1_1BLASAdapter_af2ac5691f45e67d6e26186b071119ec4}{mtk::BLASAdapter::RelNorm2Error}(source.discrete\_field\_u(),
-00250                                     known\_sol.discrete\_field\_u(),
+00249     \hyperlink{classmtk_1_1BLASAdapter_af2ac5691f45e67d6e26186b071119ec4}{mtk::BLASAdapter::RelNorm2Error}(source.discrete\_field(),
+00250                                     known\_sol.discrete\_field(),
 00251                                     known\_sol.num\_cells\_x());
 00252 
 00253   std::cout << \textcolor{stringliteral}{"relative\_norm\_2\_error = "};

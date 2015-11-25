@@ -120,6 +120,8 @@ $(document).ready(function(){initNavTree('classmtk_1_1BLASAdapter.html','');});
 Collaboration diagram for mtk::BLASAdapter:</div>
 <div class="dyncontent">
 <div class="center"><img src="classmtk_1_1BLASAdapter__coll__graph.gif" border="0" usemap="#mtk_1_1BLASAdapter_coll__map" alt="Collaboration graph"/></div>
+<map name="mtk_1_1BLASAdapter_coll__map" id="mtk_1_1BLASAdapter_coll__map">
+</map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
@@ -139,6 +141,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:acebd0e9bfe0bdd609c7fbea98ccfd3b5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmtk_1_1BLASAdapter.html#acebd0e9bfe0bdd609c7fbea98ccfd3b5">RealDenseMM</a> (<a class="el" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> &amp;aa, <a class="el" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> &amp;bb)</td></tr>
 <tr class="memdesc:acebd0e9bfe0bdd609c7fbea98ccfd3b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Real-Arithmetic General (Dense matrices) Matrix-Matrix multiplier.  <a href="#acebd0e9bfe0bdd609c7fbea98ccfd3b5">More...</a><br /></td></tr>
 <tr class="separator:acebd0e9bfe0bdd609c7fbea98ccfd3b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dd80d043615a95f11b7341ce69b44d3"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmtk_1_1BLASAdapter.html#a0dd80d043615a95f11b7341ce69b44d3">RealDenseSM</a> (<a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> alpha, <a class="el" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> &amp;aa)</td></tr>
+<tr class="memdesc:a0dd80d043615a95f11b7341ce69b44d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Real-Arithmetic General (Dense matrices) Scalar-Matrix multiplier.  <a href="#a0dd80d043615a95f11b7341ce69b44d3">More...</a><br /></td></tr>
+<tr class="separator:a0dd80d043615a95f11b7341ce69b44d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class contains a collection of static classes, that posses direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the BLAS.</p>
@@ -270,6 +275,11 @@ Here is the caller graph for this function:</div>
   </dd>
 </dl>
 <dl class="section see"><dt>See also</dt><dd><a href="http://ejspeiro.github.io/Netlib-and-CPP/">http://ejspeiro.github.io/Netlib-and-CPP/</a> </dd></dl>
+<ol type="1">
+<li>Make sure input matrices are row-major ordered.</li>
+<li>Setup the problem.</li>
+<li>Perform multiplication. </li>
+</ol>
 
 <p>Definition at line <a class="el" href="mtk__blas__adapter_8cc_source.html#l00409">409</a> of file <a class="el" href="mtk__blas__adapter_8cc_source.html">mtk_blas_adapter.cc</a>.</p>
 
@@ -375,6 +385,68 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="classmtk_1_1BLASAdapter_afdcac059a4294287cb55638221220646_icgraph.gif" border="0" usemap="#classmtk_1_1BLASAdapter_afdcac059a4294287cb55638221220646_icgraph" alt=""/></div>
 <map name="classmtk_1_1BLASAdapter_afdcac059a4294287cb55638221220646_icgraph" id="classmtk_1_1BLASAdapter_afdcac059a4294287cb55638221220646_icgraph">
 <area shape="rect" id="node2" href="classmtk_1_1Div1D.html#a4be0534a4e22d44a7aedde326cc3f3b6" title="Stage 2.2 of the CBS Algorithm. " alt="" coords="294,5,525,47"/><area shape="rect" id="node3" href="classmtk_1_1Grad1D.html#add4c68a6e78d8b9c2b800b3f96f4757d" title="Stage 2.2 of the CBS Algorithm. " alt="" coords="288,71,531,112"/></map>
+</div>
+</p>
+
+</div>
+</div>
+<a class="anchor" id="a0dd80d043615a95f11b7341ce69b44d3"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> mtk::BLASAdapter::RealDenseSM </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a>&#160;</td>
+          <td class="paramname"><em>alpha</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>aa</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Performs:</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\[ \mathbf{B} := \alpha\mathbf{A} \]" src="form_94.png"/>
+</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">alpha</td><td>Input scalar. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">aa</td><td>Input matrix.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See also</dt><dd><a href="http://ejspeiro.github.io/Netlib-and-CPP/">http://ejspeiro.github.io/Netlib-and-CPP/</a> </dd></dl>
+<ol type="1">
+<li>Make sure input matrices are row-major ordered.</li>
+<li>Setup the problem.</li>
+<li>Perform multiplication. </li>
+</ol>
+
+<p>Definition at line <a class="el" href="mtk__blas__adapter_8cc_source.html#l00466">466</a> of file <a class="el" href="mtk__blas__adapter_8cc_source.html">mtk_blas_adapter.cc</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classmtk_1_1BLASAdapter_a0dd80d043615a95f11b7341ce69b44d3_cgraph.gif" border="0" usemap="#classmtk_1_1BLASAdapter_a0dd80d043615a95f11b7341ce69b44d3_cgraph" alt=""/></div>
+<map name="classmtk_1_1BLASAdapter_a0dd80d043615a95f11b7341ce69b44d3_cgraph" id="classmtk_1_1BLASAdapter_a0dd80d043615a95f11b7341ce69b44d3_cgraph">
+<area shape="rect" id="node2" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f" title="Enforces preconditions by preventing their complements from occur. " alt="" coords="321,5,463,32"/><area shape="rect" id="node3" href="classmtk_1_1DenseMatrix.html#a53f3afb3b6a8d21854458aaa9663cc74" title="Gets the number of rows. " alt="" coords="288,56,496,83"/><area shape="rect" id="node4" href="classmtk_1_1DenseMatrix.html#a41747502d468c6728a4be31501b16e0e" title="Gets the number of columns. " alt="" coords="290,107,494,133"/><area shape="rect" id="node5" href="classmtk_1_1DenseMatrix.html#a5aa83a0643f27a4652ea97630edf7143" title="Provides access to the matrix data. " alt="" coords="300,158,484,199"/><area shape="rect" id="node6" href="classmtk_1_1Matrix.html#a13cd17621652cd5551ff98549bd94df7" title="Gets the type of ordering of this matrix. " alt="" coords="315,224,469,251"/><area shape="rect" id="node7" href="classmtk_1_1DenseMatrix.html#ac2949efba3e8278335d45418c85433e4" title="Make the matrix row&#45;wise ordered. " alt="" coords="291,275,493,317"/><area shape="rect" id="node8" href="classmtk_1_1DenseMatrix.html#a0c33b8a9e01d157c61ddbdf807c25d84" title="Provides access to the matrix value array. " alt="" coords="306,341,478,368"/><area shape="rect" id="node9" href="namespacemtk.html#adb7c0560326b8e57f255e58b87ec76b0" title="mtk::sgemm_" alt="" coords="337,392,447,419"/></map>
 </div>
 </p>
 
@@ -515,7 +587,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemtk.html">mtk</a></li><li class="navelem"><a class="el" href="classmtk_1_1BLASAdapter.html">BLASAdapter</a></li>
-    <li class="footer">Generated on Tue Nov 24 2015 11:56:13 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Wed Nov 25 2015 13:45:22 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

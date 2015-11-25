@@ -1,7 +1,5 @@
 var namespacemtk =
 [
-    [ "BCDescriptor1D", "classmtk_1_1BCDescriptor1D.html", "classmtk_1_1BCDescriptor1D" ],
-    [ "BCDescriptor2D", "classmtk_1_1BCDescriptor2D.html", "classmtk_1_1BCDescriptor2D" ],
     [ "BLASAdapter", "classmtk_1_1BLASAdapter.html", "classmtk_1_1BLASAdapter" ],
     [ "DenseMatrix", "classmtk_1_1DenseMatrix.html", "classmtk_1_1DenseMatrix" ],
     [ "Div1D", "classmtk_1_1Div1D.html", "classmtk_1_1Div1D" ],
@@ -16,6 +14,8 @@ var namespacemtk =
     [ "LAPACKAdapter", "classmtk_1_1LAPACKAdapter.html", "classmtk_1_1LAPACKAdapter" ],
     [ "Matrix", "classmtk_1_1Matrix.html", "classmtk_1_1Matrix" ],
     [ "Quad1D", "classmtk_1_1Quad1D.html", "classmtk_1_1Quad1D" ],
+    [ "RobinBCDescriptor1D", "classmtk_1_1RobinBCDescriptor1D.html", "classmtk_1_1RobinBCDescriptor1D" ],
+    [ "RobinBCDescriptor2D", "classmtk_1_1RobinBCDescriptor2D.html", "classmtk_1_1RobinBCDescriptor2D" ],
     [ "Tools", "classmtk_1_1Tools.html", "classmtk_1_1Tools" ],
     [ "UniStgGrid1D", "classmtk_1_1UniStgGrid1D.html", "classmtk_1_1UniStgGrid1D" ],
     [ "UniStgGrid2D", "classmtk_1_1UniStgGrid2D.html", "classmtk_1_1UniStgGrid2D" ]

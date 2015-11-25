@@ -9,10 +9,6 @@ Mimetic Methods Toolkit namespace.
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classmtk_1_1BCDescriptor1D}{B\+C\+Descriptor1\+D}
-\begin{DoxyCompactList}\small\item\em Imposes boundary conditions on the operators or on the grids. \end{DoxyCompactList}\item 
-class \hyperlink{classmtk_1_1BCDescriptor2D}{B\+C\+Descriptor2\+D}
-\begin{DoxyCompactList}\small\item\em Enforces boundary conditions in either the operator or the grid. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1BLASAdapter}{B\+L\+A\+S\+Adapter}
 \begin{DoxyCompactList}\small\item\em Adapter class for the B\+L\+A\+S A\+P\+I. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix}
@@ -41,6 +37,10 @@ class \hyperlink{classmtk_1_1Matrix}{Matrix}
 \begin{DoxyCompactList}\small\item\em Definition of the representation of a matrix in the M\+T\+K. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Quad1D}{Quad1\+D}
 \begin{DoxyCompactList}\small\item\em Implements a 1\+D mimetic quadrature. \end{DoxyCompactList}\item 
+class \hyperlink{classmtk_1_1RobinBCDescriptor1D}{Robin\+B\+C\+Descriptor1\+D}
+\begin{DoxyCompactList}\small\item\em Impose Robin boundary conditions on the operators and on the grids. \end{DoxyCompactList}\item 
+class \hyperlink{classmtk_1_1RobinBCDescriptor2D}{Robin\+B\+C\+Descriptor2\+D}
+\begin{DoxyCompactList}\small\item\em Impose Robin boundary conditions on the operators and on the grids. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Tools}{Tools}
 \begin{DoxyCompactList}\small\item\em Tool manager class. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1UniStgGrid1D}{Uni\+Stg\+Grid1\+D}
@@ -50,8 +50,10 @@ class \hyperlink{classmtk_1_1UniStgGrid2D}{Uni\+Stg\+Grid2\+D}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
-typedef \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}($\ast$ \hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{Coefficient\+Function2\+D} )(const \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&, const \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&)
-\begin{DoxyCompactList}\small\item\em A function of a B\+C coefficient evaluated on a 2\+D domain. \end{DoxyCompactList}\item 
+typedef \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}($\ast$ \hyperlink{group__c07-mim__ops_ga04276745b4d511f0f3c636d6e0df7c2d}{Coefficient\+Function0\+D} )(const \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&tt)
+\begin{DoxyCompactList}\small\item\em A function of a B\+C coefficient evaluated on a 0\+D domain and time. \end{DoxyCompactList}\item 
+typedef \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}($\ast$ \hyperlink{group__c07-mim__ops_gaa79593eeb6676d6011db339e01983909}{Coefficient\+Function1\+D} )(const \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&xx, const \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&tt)
+\begin{DoxyCompactList}\small\item\em A function of a B\+C coefficient evaluated on a 1\+D domain and time. \end{DoxyCompactList}\item 
 typedef float \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}
 \begin{DoxyCompactList}\small\item\em Users can simply change this to build a double-\/ or single-\/precision M\+T\+K. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
@@ -370,7 +372,8 @@ Here is the caller graph for this function\+:\nopagebreak
 )}}\label{namespacemtk_adb7c0560326b8e57f255e58b87ec76b0}
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
