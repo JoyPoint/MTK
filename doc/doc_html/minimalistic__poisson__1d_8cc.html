@@ -127,30 +127,29 @@ Functions</h2></td></tr>
 <tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>We solve:</p>
-<p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \nabla^2 p(x) = -s(x), \]" src="form_0.png"/>
+<div class="textblock"><p>We solve: </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[ -\nabla^2 p(x) = s(x), \]" src="form_105.png"/>
 </p>
-<p>for <img class="formulaInl" alt="$ x \in \Omega = [a,b] = [0,1] $" src="form_1.png"/>.</p>
-<p>The source term function is defined as</p>
-<p class="formulaDsp">
-<img class="formulaDsp" alt="\[ s(x) = \frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1} \]" src="form_2.png"/>
+<p> for <img class="formulaInl" alt="$ x \in \Omega = [a,b] = [0,1] $" src="form_1.png"/>.</p>
+<p>The source term function is defined as: </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[ s(x) = -\frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1}, \]" src="form_106.png"/>
 </p>
-<p>where <img class="formulaInl" alt="$ \lambda = -1 $" src="form_3.png"/> is a parameter.</p>
-<p>We consider Robin's boundary conditions of the form:</p>
-<p class="formulaDsp">
+<p> where <img class="formulaInl" alt="$ \lambda = -1 $" src="form_3.png"/> is a real-valued parameter.</p>
+<p>We consider Robin's boundary conditions of the form: </p><p class="formulaDsp">
 <img class="formulaDsp" alt="\[ \alpha p(a) - \beta p'(a) = \omega, \]" src="form_4.png"/>
 </p>
-<p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \alpha p(b) + \beta p'(b) = \epsilon. \]" src="form_5.png"/>
+ <p class="formulaDsp">
+<img class="formulaDsp" alt="\[ \alpha p(b) + \beta p'(b) = \epsilon, \]" src="form_87.png"/>
 </p>
-<p>The analytical solution for this problem is given by</p>
-<p class="formulaDsp">
+<p> where <img class="formulaInl" alt="$ \alpha = -\exp(\lambda) $" src="form_88.png"/>, <img class="formulaInl" alt="$ \beta = (\exp(\lambda) - 1.0)/\lambda $" src="form_89.png"/>, <img class="formulaInl" alt="$ \omega = -1 $" src="form_90.png"/>, and <img class="formulaInl" alt="$ \epsilon = 0 $" src="form_91.png"/>.</p>
+<p>The analytical solution for this problem is given by: </p><p class="formulaDsp">
 <img class="formulaDsp" alt="\[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \]" src="form_6.png"/>
 </p>
-<dl class="section author"><dt>Author</dt><dd>: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu</dd>
-<dd>
-: Raul Vargas&ndash;Navarro - vargasna at rohan dot sdsu dot edu </dd></dl>
+<p>The mimetic counterpart of this equation is: </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[ -\breve{\mathbf{L}}^k_x \tilde{p} = \tilde{s}. \]" src="form_92.png"/>
+</p>
+<p>Finally, we will solve this problem considering <img class="formulaInl" alt="$ k = 2 $" src="form_93.png"/>.</p>
+<dl class="section author"><dt>Author</dt><dd>: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu </dd></dl>
 
 <p>Definition in file <a class="el" href="minimalistic__poisson__1d_8cc_source.html">minimalistic_poisson_1d.cc</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -167,7 +166,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="minimalistic__poisson__1d_8cc_source.html#l00176">176</a> of file <a class="el" href="minimalistic__poisson__1d_8cc_source.html">minimalistic_poisson_1d.cc</a>.</p>
+<p>Definition at line <a class="el" href="minimalistic__poisson__1d_8cc_source.html#l00164">164</a> of file <a class="el" href="minimalistic__poisson__1d_8cc_source.html">minimalistic_poisson_1d.cc</a>.</p>
 
 </div>
 </div>
@@ -177,7 +176,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d28a4824dc47e487b107a5db32ef43c4.html">examples</a></li><li class="navelem"><a class="el" href="dir_393c18441c0f1ef343a0be23b827d53c.html">minimalistic_poisson_1d</a></li><li class="navelem"><a class="el" href="minimalistic__poisson__1d_8cc.html">minimalistic_poisson_1d.cc</a></li>
-    <li class="footer">Generated on Wed Nov 25 2015 13:45:21 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Thu Nov 26 2015 13:28:47 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

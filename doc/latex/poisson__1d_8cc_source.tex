@@ -100,8 +100,8 @@
 00136 
 00137 \textcolor{keywordtype}{int} \hyperlink{poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
 00138 
-00139   std::cout << \textcolor{stringliteral}{"Example: Poisson Equation on a 1D Uniform Staggered Grid "};
-00140   std::cout << \textcolor{stringliteral}{"with Robin BCs."} << std::endl;
+00139   std::cout << \textcolor{stringliteral}{"Example: Poisson Equation with Robin BCs on a"};
+00140   std::cout << \textcolor{stringliteral}{"1D Uniform Staggered Grid."} << std::endl;
 00141 
 00143   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} west\_bndy\_x\{0.0\};
 00144   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} east\_bndy\_x\{1.0\};
@@ -116,108 +116,110 @@
 00154     \textcolor{keywordflow}{return} EXIT\_FAILURE;
 00155   \}
 00156 
-00157   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} lapm(lap.\hyperlink{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4}{ReturnAsDenseMatrix}(comp\_sol));
-00158 
-00159   std::cout << \textcolor{stringliteral}{"lapm = "} << std::endl;
-00160   std::cout << lapm << std::endl;
+00157   std::cout << \textcolor{stringliteral}{"lap="} << std::endl;
+00158   std::cout << lap << std::endl;
+00159 
+00160   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} lapm(lap.\hyperlink{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4}{ReturnAsDenseMatrix}(comp\_sol));
 00161 
-00163 
-00164   lapm = \hyperlink{classmtk_1_1BLASAdapter_a0dd80d043615a95f11b7341ce69b44d3}{mtk::BLASAdapter::RealDenseSM}(-1.0, lapm);
-00165 
-00166   std::cout << \textcolor{stringliteral}{"-lapm = "} << std::endl;
-00167   std::cout << lapm << std::endl;
+00162   std::cout << \textcolor{stringliteral}{"lapm ="} << std::endl;
+00163   std::cout << lapm << std::endl;
+00164 
+00166 
+00167   lapm = \hyperlink{classmtk_1_1BLASAdapter_a0dd80d043615a95f11b7341ce69b44d3}{mtk::BLASAdapter::RealDenseSM}(-1.0, lapm);
 00168 
-00170   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} source(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00169   std::cout << \textcolor{stringliteral}{"-lapm ="} << std::endl;
+00170   std::cout << lapm << std::endl;
 00171 
-00172   source.BindScalarField(Source);
-00173 
-00174   std::cout << \textcolor{stringliteral}{"source ="} << std::endl;
-00175   std::cout << source << std::endl;
+00173   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} source(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00174 
+00175   source.BindScalarField(Source);
 00176 
-00178   \hyperlink{classmtk_1_1RobinBCDescriptor1D}{mtk::RobinBCDescriptor1D} robin\_bc\_desc\_1d;
+00177   std::cout << \textcolor{stringliteral}{"source ="} << std::endl;
+00178   std::cout << source << std::endl;
 00179 
-00180   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_acdf8a75f8c39b3b8a032af81e0fd2e89}{PushBackWestCoeff}(Alpha);
-00181   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_acdf8a75f8c39b3b8a032af81e0fd2e89}{PushBackWestCoeff}(Beta);
+00181   \hyperlink{classmtk_1_1RobinBCDescriptor1D}{mtk::RobinBCDescriptor1D} robin\_bc\_desc\_1d;
 00182 
-00183   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a7791c11e0950656cb5608a77918c28d4}{PushBackEastCoeff}(Alpha);
-00184   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a7791c11e0950656cb5608a77918c28d4}{PushBackEastCoeff}(Beta);
+00183   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_acdf8a75f8c39b3b8a032af81e0fd2e89}{PushBackWestCoeff}(Alpha);
+00184   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_acdf8a75f8c39b3b8a032af81e0fd2e89}{PushBackWestCoeff}(Beta);
 00185 
-00186   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a06bfaf0126d528247c3c76fdd19f4b85}{set\_west\_condition}(Omega);
-00187   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a4edc92eeaaaa3f1e7f2cedfea3d35681}{set\_east\_condition}(Epsilon);
+00186   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a7791c11e0950656cb5608a77918c28d4}{PushBackEastCoeff}(Alpha);
+00187   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a7791c11e0950656cb5608a77918c28d4}{PushBackEastCoeff}(Beta);
 00188 
-00189   \textcolor{keywordflow}{if} (!robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_ab8446428df923c27f388a85bd3f2c6d4}{ImposeOnLaplacianMatrix}(lap, lapm)) \{
-00190     std::cerr << \textcolor{stringliteral}{"BCs  could not be bound to the matrix."} << std::endl;
-00191     \textcolor{keywordflow}{return} EXIT\_FAILURE;
-00192   \}
-00193 
-00194   std::cout << \textcolor{stringliteral}{"Mimetic Laplacian operator with imposed BCs: "} << std::endl;
-00195   std::cout << lapm << std::endl;
+00189   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a06bfaf0126d528247c3c76fdd19f4b85}{set\_west\_condition}(Omega);
+00190   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_a4edc92eeaaaa3f1e7f2cedfea3d35681}{set\_east\_condition}(Epsilon);
+00191 
+00192   \textcolor{keywordflow}{if} (!robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_ab8446428df923c27f388a85bd3f2c6d4}{ImposeOnLaplacianMatrix}(lap, lapm)) \{
+00193     std::cerr << \textcolor{stringliteral}{"BCs  could not be bound to the matrix."} << std::endl;
+00194     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00195   \}
 00196 
-00197   \textcolor{keywordflow}{if} (!lapm.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_lapm.dat"})) \{
-00198     std::cerr << \textcolor{stringliteral}{"Laplacian matrix could not be written to disk."} << std::endl;
-00199     \textcolor{keywordflow}{return} EXIT\_FAILURE;
-00200   \}
-00201 
-00203   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_ab0daec1d6c5c9c6768bea08281a3831d}{ImposeOnGrid}(source);
+00197   std::cout << \textcolor{stringliteral}{"Mimetic Laplacian operator with imposed BCs:"} << std::endl;
+00198   std::cout << lapm << std::endl;
+00199 
+00200   \textcolor{keywordflow}{if} (!lapm.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_lapm.dat"})) \{
+00201     std::cerr << \textcolor{stringliteral}{"Laplacian matrix could not be written to disk."} << std::endl;
+00202     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00203   \}
 00204 
-00205   std::cout << \textcolor{stringliteral}{"source ="} << std::endl;
-00206   std::cout << source << std::endl;
+00206   robin\_bc\_desc\_1d.\hyperlink{classmtk_1_1RobinBCDescriptor1D_ab0daec1d6c5c9c6768bea08281a3831d}{ImposeOnGrid}(source);
 00207 
-00208   \textcolor{keywordflow}{if} (!source.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_source.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"s(x)"})) \{
-00209     std::cerr << \textcolor{stringliteral}{"Source term could not be written to disk."} << std::endl;
-00210     \textcolor{keywordflow}{return} EXIT\_FAILURE;
-00211   \}
-00212 
-00214   \textcolor{keywordtype}{int} info\{\hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{mtk::LAPACKAdapter::SolveDenseSystem}(lapm, source)\};
+00208   std::cout << \textcolor{stringliteral}{"source ="} << std::endl;
+00209   std::cout << source << std::endl;
+00210 
+00211   \textcolor{keywordflow}{if} (!source.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_source.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"s(x)"})) \{
+00212     std::cerr << \textcolor{stringliteral}{"Source term could not be written to disk."} << std::endl;
+00213     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00214   \}
 00215 
-00216   \textcolor{keywordflow}{if} (!info) \{
-00217     std::cout << \textcolor{stringliteral}{"System solved."} << std::endl;
-00218     std::cout << std::endl;
-00219   \} \textcolor{keywordflow}{else} \{
-00220     std::cerr << \textcolor{stringliteral}{"Something wrong solving system! info = "} << info << std::endl;
-00221     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
-00222     \textcolor{keywordflow}{return} EXIT\_FAILURE;
-00223   \}
-00224 
-00225   std::cout << \textcolor{stringliteral}{"Computed solution:"} << std::endl;
-00226   std::cout << source << std::endl;
+00217   \textcolor{keywordtype}{int} info\{\hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{mtk::LAPACKAdapter::SolveDenseSystem}(lapm, source)\};
+00218 
+00219   \textcolor{keywordflow}{if} (!info) \{
+00220     std::cout << \textcolor{stringliteral}{"System solved."} << std::endl;
+00221     std::cout << std::endl;
+00222   \} \textcolor{keywordflow}{else} \{
+00223     std::cerr << \textcolor{stringliteral}{"Something wrong solving system! info = "} << info << std::endl;
+00224     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
+00225     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00226   \}
 00227 
-00228   \textcolor{keywordflow}{if} (!source.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_comp\_sol.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"~u(x)"})) \{
-00229     std::cerr << \textcolor{stringliteral}{"Solution could not be written to file."} << std::endl;
-00230     \textcolor{keywordflow}{return} EXIT\_FAILURE;
-00231   \}
-00232 
-00234   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} known\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00228   std::cout << \textcolor{stringliteral}{"Computed solution:"} << std::endl;
+00229   std::cout << source << std::endl;
+00230 
+00231   \textcolor{keywordflow}{if} (!source.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_comp\_sol.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"~u(x)"})) \{
+00232     std::cerr << \textcolor{stringliteral}{"Solution could not be written to file."} << std::endl;
+00233     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00234   \}
 00235 
-00236   known\_sol.BindScalarField(KnownSolution);
-00237 
-00238   std::cout << \textcolor{stringliteral}{"known\_sol ="} << std::endl;
-00239   std::cout << known\_sol << std::endl;
+00237   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} known\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x);
+00238 
+00239   known\_sol.BindScalarField(KnownSolution);
 00240 
-00241   \textcolor{keywordflow}{if} (!known\_sol.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_known\_sol.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"u(x)"})) \{
-00242     std::cerr << \textcolor{stringliteral}{"Known solution could not be written to file."} << std::endl;
-00243     \textcolor{keywordflow}{return} EXIT\_FAILURE;
-00244   \}
-00245 
-00246   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} relative\_norm\_2\_error\{\};
-00247 
-00248   relative\_norm\_2\_error =
-00249     \hyperlink{classmtk_1_1BLASAdapter_af2ac5691f45e67d6e26186b071119ec4}{mtk::BLASAdapter::RelNorm2Error}(source.discrete\_field(),
-00250                                     known\_sol.discrete\_field(),
-00251                                     known\_sol.num\_cells\_x());
-00252 
-00253   std::cout << \textcolor{stringliteral}{"relative\_norm\_2\_error = "};
-00254   std::cout << relative\_norm\_2\_error << std::endl;
-00255 \}
-00256 
-00257 \textcolor{preprocessor}{#else}
-00258 \textcolor{preprocessor}{#include <iostream>}
-00259 \textcolor{keyword}{using} std::cout;
-00260 \textcolor{keyword}{using} std::endl;
-\hypertarget{poisson__1d_8cc_source_l00261}{}\hyperlink{poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00261} \textcolor{keywordtype}{int} \hyperlink{poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
-00262   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
-00263   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
-00264   \textcolor{keywordflow}{return} EXIT\_SUCCESS;
-00265 \}
-00266 \textcolor{preprocessor}{#endif}
+00241   std::cout << \textcolor{stringliteral}{"known\_sol ="} << std::endl;
+00242   std::cout << known\_sol << std::endl;
+00243 
+00244   \textcolor{keywordflow}{if} (!known\_sol.WriteToFile(\textcolor{stringliteral}{"poisson\_1d\_known\_sol.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"u(x)"})) \{
+00245     std::cerr << \textcolor{stringliteral}{"Known solution could not be written to file."} << std::endl;
+00246     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00247   \}
+00248 
+00249   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} relative\_norm\_2\_error\{\};
+00250 
+00251   relative\_norm\_2\_error =
+00252     \hyperlink{classmtk_1_1BLASAdapter_af2ac5691f45e67d6e26186b071119ec4}{mtk::BLASAdapter::RelNorm2Error}(source.discrete\_field(),
+00253                                     known\_sol.discrete\_field(),
+00254                                     known\_sol.num\_cells\_x());
+00255 
+00256   std::cout << \textcolor{stringliteral}{"relative\_norm\_2\_error = "};
+00257   std::cout << relative\_norm\_2\_error << std::endl;
+00258 \}
+00259 \textcolor{preprocessor}{#else}
+00260 \textcolor{preprocessor}{#include <iostream>}
+00261 \textcolor{keyword}{using} std::cout;
+00262 \textcolor{keyword}{using} std::endl;
+\hypertarget{poisson__1d_8cc_source_l00263}{}\hyperlink{poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00263} \textcolor{keywordtype}{int} \hyperlink{poisson__1d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00264   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
+00265   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
+00266   \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+00267 \}
+00268 \textcolor{preprocessor}{#endif}
 \end{DoxyCode}

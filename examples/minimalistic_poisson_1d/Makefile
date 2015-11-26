@@ -22,4 +22,4 @@ memcheck:
 	valgrind $(MEMCHECK_OPTS) minimalistic_poisson_1d.exe >& minimalistic_poisson_1d.memcheck
 
 clean:
-	rm -f *~ *.o *.dat *.png *.exe
+	rm -f *~ *.o *.exe *.dat *.png *.eps *.tex *.aux *.log *.pdf

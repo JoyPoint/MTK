@@ -5,13 +5,13 @@
 
 We solve:
 \f[
-\nabla^2 p(x) = -s(x),
+-\nabla^2 p(x) = s(x),
 \f]
 for \f$ x \in \Omega = [a,b] = [0,1] \f$.
 
 The source term function is defined as:
 \f[
-s(x) = \frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1},
+s(x) = -\frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1},
 \f]
 where \f$ \lambda = -1 \f$ is a real-valued parameter.
 
@@ -136,8 +136,8 @@ mtk::Real KnownSolution(const mtk::Real &xx) {
 
 int main () {
 
-  std::cout << "Example: Poisson Equation on a 1D Uniform Staggered Grid ";
-  std::cout << "with Robin BCs." << std::endl;
+  std::cout << "Example: Poisson Equation with Robin BCs on a";
+  std::cout << "1D Uniform Staggered Grid." << std::endl;
 
   /// 1. Discretize space.
   mtk::Real west_bndy_x{0.0};
@@ -154,16 +154,19 @@ int main () {
     return EXIT_FAILURE;
   }
 
+  std::cout << "lap=" << std::endl;
+  std::cout << lap << std::endl;
+
   mtk::DenseMatrix lapm(lap.ReturnAsDenseMatrix(comp_sol));
 
-  std::cout << "lapm = " << std::endl;
+  std::cout << "lapm =" << std::endl;
   std::cout << lapm << std::endl;
 
   /// 2.1. Multiply times -1 to mimic the problem.
 
   lapm = mtk::BLASAdapter::RealDenseSM(-1.0, lapm);
 
-  std::cout << "-lapm = " << std::endl;
+  std::cout << "-lapm =" << std::endl;
   std::cout << lapm << std::endl;
 
   /// 3. Create grid for source term.
@@ -191,7 +194,7 @@ int main () {
     return EXIT_FAILURE;
   }
 
-  std::cout << "Mimetic Laplacian operator with imposed BCs: " << std::endl;
+  std::cout << "Mimetic Laplacian operator with imposed BCs:" << std::endl;
   std::cout << lapm << std::endl;
 
   if (!lapm.WriteToFile("poisson_1d_lapm.dat")) {
@@ -253,7 +256,6 @@ int main () {
   std::cout << "relative_norm_2_error = ";
   std::cout << relative_norm_2_error << std::endl;
 }
-
 #else
 #include <iostream>
 using std::cout;

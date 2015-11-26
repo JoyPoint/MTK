@@ -1,4 +1,4 @@
-.TH "examples/poisson_1d/poisson_1d.cc" 3 "Wed Nov 25 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "examples/poisson_1d/poisson_1d.cc" 3 "Thu Nov 26 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -21,9 +21,9 @@ Poisson Equation on a 1D Uniform Staggered Grid with Robin BCs\&.
 .in -1c
 .SH "Detailed Description"
 .PP 
-We solve: \[ \nabla^2 p(x) = -s(x), \] for $ x \in \Omega = [a,b] = [0,1] $\&.
+We solve: \[ -\nabla^2 p(x) = s(x), \] for $ x \in \Omega = [a,b] = [0,1] $\&.
 .PP
-The source term function is defined as: \[ s(x) = \frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1}, \] where $ \lambda = -1 $ is a real-valued parameter\&.
+The source term function is defined as: \[ s(x) = -\frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1}, \] where $ \lambda = -1 $ is a real-valued parameter\&.
 .PP
 We consider Robin's boundary conditions of the form: \[ \alpha p(a) - \beta p'(a) = \omega, \] \[ \alpha p(b) + \beta p'(b) = \epsilon, \] where $ \alpha = -\exp(\lambda) $, $ \beta = (\exp(\lambda) - 1.0)/\lambda $, $ \omega = -1 $, and $ \epsilon = 0 $\&.
 .PP
@@ -46,7 +46,7 @@ Definition in file \fBpoisson_1d\&.cc\fP\&.
 .SS "int main ()"
 
 .PP
-Definition at line 261 of file poisson_1d\&.cc\&.
+Definition at line 263 of file poisson_1d\&.cc\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

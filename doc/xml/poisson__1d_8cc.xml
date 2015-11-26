@@ -26,13 +26,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/examples/poisson_1d/poisson_1d.cc" line="261" column="1" bodyfile="/home/esanchez/Dropbox/MTK/examples/poisson_1d/poisson_1d.cc" bodystart="261" bodyend="265"/>
+        <location file="/home/esanchez/Dropbox/MTK/examples/poisson_1d/poisson_1d.cc" line="263" column="1" bodyfile="/home/esanchez/Dropbox/MTK/examples/poisson_1d/poisson_1d.cc" bodystart="263" bodyend="267"/>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Poisson Equation on a 1D Uniform Staggered Grid with Robin BCs. </para>    </briefdescription>
     <detaileddescription>
-<para>We solve: <formula id="0">\[ \nabla^2 p(x) = -s(x), \]</formula> for <formula id="1">$ x \in \Omega = [a,b] = [0,1] $</formula>.</para><para>The source term function is defined as: <formula id="86">\[ s(x) = \frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1}, \]</formula> where <formula id="3">$ \lambda = -1 $</formula> is a real-valued parameter.</para><para>We consider Robin&apos;s boundary conditions of the form: <formula id="4">\[ \alpha p(a) - \beta p&apos;(a) = \omega, \]</formula> <formula id="87">\[ \alpha p(b) + \beta p&apos;(b) = \epsilon, \]</formula> where <formula id="88">$ \alpha = -\exp(\lambda) $</formula>, <formula id="89">$ \beta = (\exp(\lambda) - 1.0)/\lambda $</formula>, <formula id="90">$ \omega = -1 $</formula>, and <formula id="91">$ \epsilon = 0 $</formula>.</para><para>The analytical solution for this problem is given by: <formula id="6">\[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \]</formula></para><para>The mimetic counterpart of this equation is: <formula id="92">\[ -\breve{\mathbf{L}}^k_x \tilde{p} = \tilde{s}. \]</formula></para><para>Finally, we will solve this problem considering <formula id="93">$ k = 2 $</formula>.</para><para><simplesect kind="author"><para>: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu </para></simplesect>
+<para>We solve: <formula id="105">\[ -\nabla^2 p(x) = s(x), \]</formula> for <formula id="1">$ x \in \Omega = [a,b] = [0,1] $</formula>.</para><para>The source term function is defined as: <formula id="106">\[ s(x) = -\frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1}, \]</formula> where <formula id="3">$ \lambda = -1 $</formula> is a real-valued parameter.</para><para>We consider Robin&apos;s boundary conditions of the form: <formula id="4">\[ \alpha p(a) - \beta p&apos;(a) = \omega, \]</formula> <formula id="87">\[ \alpha p(b) + \beta p&apos;(b) = \epsilon, \]</formula> where <formula id="88">$ \alpha = -\exp(\lambda) $</formula>, <formula id="89">$ \beta = (\exp(\lambda) - 1.0)/\lambda $</formula>, <formula id="90">$ \omega = -1 $</formula>, and <formula id="91">$ \epsilon = 0 $</formula>.</para><para>The analytical solution for this problem is given by: <formula id="6">\[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \]</formula></para><para>The mimetic counterpart of this equation is: <formula id="92">\[ -\breve{\mathbf{L}}^k_x \tilde{p} = \tilde{s}. \]</formula></para><para>Finally, we will solve this problem considering <formula id="93">$ k = 2 $</formula>.</para><para><simplesect kind="author"><para>: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu </para></simplesect>
 </para>    </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>
@@ -132,8 +132,8 @@
 <codeline lineno="136"><highlight class="normal"></highlight></codeline>
 <codeline lineno="137"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>()<sp/>{</highlight></codeline>
 <codeline lineno="138"><highlight class="normal"></highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Example:<sp/>Poisson<sp/>Equation<sp/>on<sp/>a<sp/>1D<sp/>Uniform<sp/>Staggered<sp/>Grid<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="140"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;with<sp/>Robin<sp/>BCs.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="139"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Example:<sp/>Poisson<sp/>Equation<sp/>with<sp/>Robin<sp/>BCs<sp/>on<sp/>a&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;1D<sp/>Uniform<sp/>Staggered<sp/>Grid.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
 <codeline lineno="141"><highlight class="normal"></highlight></codeline>
 <codeline lineno="143"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>west_bndy_x{0.0};</highlight></codeline>
 <codeline lineno="144"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>east_bndy_x{1.0};</highlight></codeline>
@@ -148,110 +148,112 @@
 <codeline lineno="154"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
 <codeline lineno="155"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="156"><highlight class="normal"></highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>lapm(lap.<ref refid="classmtk_1_1Lap1D_1aaea34a17b0879e05eb4109645a2ba8f4" kindref="member">ReturnAsDenseMatrix</ref>(comp_sol));</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"></highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;lapm<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>lapm<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;lap=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>lap<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>lapm(lap.<ref refid="classmtk_1_1Lap1D_1aaea34a17b0879e05eb4109645a2ba8f4" kindref="member">ReturnAsDenseMatrix</ref>(comp_sol));</highlight></codeline>
 <codeline lineno="161"><highlight class="normal"></highlight></codeline>
-<codeline lineno="163"><highlight class="normal"></highlight></codeline>
-<codeline lineno="164"><highlight class="normal"><sp/><sp/>lapm<sp/>=<sp/><ref refid="classmtk_1_1BLASAdapter_1a0dd80d043615a95f11b7341ce69b44d3" kindref="member">mtk::BLASAdapter::RealDenseSM</ref>(-1.0,<sp/>lapm);</highlight></codeline>
-<codeline lineno="165"><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;-lapm<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="167"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>lapm<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="162"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;lapm<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>lapm<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="164"><highlight class="normal"></highlight></codeline>
+<codeline lineno="166"><highlight class="normal"></highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/>lapm<sp/>=<sp/><ref refid="classmtk_1_1BLASAdapter_1a0dd80d043615a95f11b7341ce69b44d3" kindref="member">mtk::BLASAdapter::RealDenseSM</ref>(-1.0,<sp/>lapm);</highlight></codeline>
 <codeline lineno="168"><highlight class="normal"></highlight></codeline>
-<codeline lineno="170"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>source(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;-lapm<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="170"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>lapm<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
 <codeline lineno="171"><highlight class="normal"></highlight></codeline>
-<codeline lineno="172"><highlight class="normal"><sp/><sp/>source.BindScalarField(Source);</highlight></codeline>
-<codeline lineno="173"><highlight class="normal"></highlight></codeline>
-<codeline lineno="174"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;source<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="175"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>source<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>source(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
+<codeline lineno="174"><highlight class="normal"></highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/>source.BindScalarField(Source);</highlight></codeline>
 <codeline lineno="176"><highlight class="normal"></highlight></codeline>
-<codeline lineno="178"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1RobinBCDescriptor1D" kindref="compound">mtk::RobinBCDescriptor1D</ref><sp/>robin_bc_desc_1d;</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;source<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>source<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
 <codeline lineno="179"><highlight class="normal"></highlight></codeline>
-<codeline lineno="180"><highlight class="normal"><sp/><sp/>robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1acdf8a75f8c39b3b8a032af81e0fd2e89" kindref="member">PushBackWestCoeff</ref>(Alpha);</highlight></codeline>
-<codeline lineno="181"><highlight class="normal"><sp/><sp/>robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1acdf8a75f8c39b3b8a032af81e0fd2e89" kindref="member">PushBackWestCoeff</ref>(Beta);</highlight></codeline>
+<codeline lineno="181"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1RobinBCDescriptor1D" kindref="compound">mtk::RobinBCDescriptor1D</ref><sp/>robin_bc_desc_1d;</highlight></codeline>
 <codeline lineno="182"><highlight class="normal"></highlight></codeline>
-<codeline lineno="183"><highlight class="normal"><sp/><sp/>robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1a7791c11e0950656cb5608a77918c28d4" kindref="member">PushBackEastCoeff</ref>(Alpha);</highlight></codeline>
-<codeline lineno="184"><highlight class="normal"><sp/><sp/>robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1a7791c11e0950656cb5608a77918c28d4" kindref="member">PushBackEastCoeff</ref>(Beta);</highlight></codeline>
+<codeline lineno="183"><highlight class="normal"><sp/><sp/>robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1acdf8a75f8c39b3b8a032af81e0fd2e89" kindref="member">PushBackWestCoeff</ref>(Alpha);</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"><sp/><sp/>robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1acdf8a75f8c39b3b8a032af81e0fd2e89" kindref="member">PushBackWestCoeff</ref>(Beta);</highlight></codeline>
 <codeline lineno="185"><highlight class="normal"></highlight></codeline>
-<codeline lineno="186"><highlight class="normal"><sp/><sp/>robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1a06bfaf0126d528247c3c76fdd19f4b85" kindref="member">set_west_condition</ref>(Omega);</highlight></codeline>
-<codeline lineno="187"><highlight class="normal"><sp/><sp/>robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1a4edc92eeaaaa3f1e7f2cedfea3d35681" kindref="member">set_east_condition</ref>(Epsilon);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/>robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1a7791c11e0950656cb5608a77918c28d4" kindref="member">PushBackEastCoeff</ref>(Alpha);</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1a7791c11e0950656cb5608a77918c28d4" kindref="member">PushBackEastCoeff</ref>(Beta);</highlight></codeline>
 <codeline lineno="188"><highlight class="normal"></highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1ab8446428df923c27f388a85bd3f2c6d4" kindref="member">ImposeOnLaplacianMatrix</ref>(lap,<sp/>lapm))<sp/>{</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;BCs<sp/><sp/>could<sp/>not<sp/>be<sp/>bound<sp/>to<sp/>the<sp/>matrix.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"></highlight></codeline>
-<codeline lineno="194"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mimetic<sp/>Laplacian<sp/>operator<sp/>with<sp/>imposed<sp/>BCs:<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>lapm<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/>robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1a06bfaf0126d528247c3c76fdd19f4b85" kindref="member">set_west_condition</ref>(Omega);</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/>robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1a4edc92eeaaaa3f1e7f2cedfea3d35681" kindref="member">set_east_condition</ref>(Epsilon);</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1ab8446428df923c27f388a85bd3f2c6d4" kindref="member">ImposeOnLaplacianMatrix</ref>(lap,<sp/>lapm))<sp/>{</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;BCs<sp/><sp/>could<sp/>not<sp/>be<sp/>bound<sp/>to<sp/>the<sp/>matrix.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"></highlight></codeline>
-<codeline lineno="197"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!lapm.WriteToFile(</highlight><highlight class="stringliteral">&quot;poisson_1d_lapm.dat&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
-<codeline lineno="198"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Laplacian<sp/>matrix<sp/>could<sp/>not<sp/>be<sp/>written<sp/>to<sp/>disk.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="199"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
-<codeline lineno="200"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="201"><highlight class="normal"></highlight></codeline>
-<codeline lineno="203"><highlight class="normal"><sp/><sp/>robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1ab0daec1d6c5c9c6768bea08281a3831d" kindref="member">ImposeOnGrid</ref>(source);</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Mimetic<sp/>Laplacian<sp/>operator<sp/>with<sp/>imposed<sp/>BCs:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>lapm<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!lapm.WriteToFile(</highlight><highlight class="stringliteral">&quot;poisson_1d_lapm.dat&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="201"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Laplacian<sp/>matrix<sp/>could<sp/>not<sp/>be<sp/>written<sp/>to<sp/>disk.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="202"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
+<codeline lineno="203"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="204"><highlight class="normal"></highlight></codeline>
-<codeline lineno="205"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;source<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="206"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>source<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/>robin_bc_desc_1d.<ref refid="classmtk_1_1RobinBCDescriptor1D_1ab0daec1d6c5c9c6768bea08281a3831d" kindref="member">ImposeOnGrid</ref>(source);</highlight></codeline>
 <codeline lineno="207"><highlight class="normal"></highlight></codeline>
-<codeline lineno="208"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!source.WriteToFile(</highlight><highlight class="stringliteral">&quot;poisson_1d_source.dat&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;s(x)&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Source<sp/>term<sp/>could<sp/>not<sp/>be<sp/>written<sp/>to<sp/>disk.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
-<codeline lineno="211"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="212"><highlight class="normal"></highlight></codeline>
-<codeline lineno="214"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>info{<ref refid="classmtk_1_1LAPACKAdapter_1a7428bccf74fd4a4af68fb7233846da22" kindref="member">mtk::LAPACKAdapter::SolveDenseSystem</ref>(lapm,<sp/>source)};</highlight></codeline>
+<codeline lineno="208"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;source<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="209"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>source<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="210"><highlight class="normal"></highlight></codeline>
+<codeline lineno="211"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!source.WriteToFile(</highlight><highlight class="stringliteral">&quot;poisson_1d_source.dat&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;s(x)&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Source<sp/>term<sp/>could<sp/>not<sp/>be<sp/>written<sp/>to<sp/>disk.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="215"><highlight class="normal"></highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!info)<sp/>{</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;System<sp/>solved.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="218"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="219"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
-<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Something<sp/>wrong<sp/>solving<sp/>system!<sp/>info<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>info<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Exiting...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="222"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="224"><highlight class="normal"></highlight></codeline>
-<codeline lineno="225"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Computed<sp/>solution:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="226"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>source<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="217"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>info{<ref refid="classmtk_1_1LAPACKAdapter_1a7428bccf74fd4a4af68fb7233846da22" kindref="member">mtk::LAPACKAdapter::SolveDenseSystem</ref>(lapm,<sp/>source)};</highlight></codeline>
+<codeline lineno="218"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!info)<sp/>{</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;System<sp/>solved.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="222"><highlight class="normal"><sp/><sp/>}<sp/></highlight><highlight class="keywordflow">else</highlight><highlight class="normal"><sp/>{</highlight></codeline>
+<codeline lineno="223"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Something<sp/>wrong<sp/>solving<sp/>system!<sp/>info<sp/>=<sp/>&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>info<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="224"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Exiting...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="225"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="227"><highlight class="normal"></highlight></codeline>
-<codeline lineno="228"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!source.WriteToFile(</highlight><highlight class="stringliteral">&quot;poisson_1d_comp_sol.dat&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;~u(x)&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
-<codeline lineno="229"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Solution<sp/>could<sp/>not<sp/>be<sp/>written<sp/>to<sp/>file.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="230"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
-<codeline lineno="231"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="232"><highlight class="normal"></highlight></codeline>
-<codeline lineno="234"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>known_sol(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Computed<sp/>solution:&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="229"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>source<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="230"><highlight class="normal"></highlight></codeline>
+<codeline lineno="231"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!source.WriteToFile(</highlight><highlight class="stringliteral">&quot;poisson_1d_comp_sol.dat&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;~u(x)&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="232"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Solution<sp/>could<sp/>not<sp/>be<sp/>written<sp/>to<sp/>file.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
 <codeline lineno="235"><highlight class="normal"></highlight></codeline>
-<codeline lineno="236"><highlight class="normal"><sp/><sp/>known_sol.BindScalarField(KnownSolution);</highlight></codeline>
-<codeline lineno="237"><highlight class="normal"></highlight></codeline>
-<codeline lineno="238"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;known_sol<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="239"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>known_sol<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">mtk::UniStgGrid1D</ref><sp/>known_sol(west_bndy_x,<sp/>east_bndy_x,<sp/>num_cells_x);</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"></highlight></codeline>
+<codeline lineno="239"><highlight class="normal"><sp/><sp/>known_sol.BindScalarField(KnownSolution);</highlight></codeline>
 <codeline lineno="240"><highlight class="normal"></highlight></codeline>
-<codeline lineno="241"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!known_sol.WriteToFile(</highlight><highlight class="stringliteral">&quot;poisson_1d_known_sol.dat&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;u(x)&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Known<sp/>solution<sp/>could<sp/>not<sp/>be<sp/>written<sp/>to<sp/>file.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="243"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
-<codeline lineno="244"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
-<codeline lineno="245"><highlight class="normal"></highlight></codeline>
-<codeline lineno="246"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>relative_norm_2_error{};</highlight></codeline>
-<codeline lineno="247"><highlight class="normal"></highlight></codeline>
-<codeline lineno="248"><highlight class="normal"><sp/><sp/>relative_norm_2_error<sp/>=</highlight></codeline>
-<codeline lineno="249"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1BLASAdapter_1af2ac5691f45e67d6e26186b071119ec4" kindref="member">mtk::BLASAdapter::RelNorm2Error</ref>(source.discrete_field(),</highlight></codeline>
-<codeline lineno="250"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>known_sol.discrete_field(),</highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>known_sol.num_cells_x());</highlight></codeline>
-<codeline lineno="252"><highlight class="normal"></highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;relative_norm_2_error<sp/>=<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>relative_norm_2_error<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
-<codeline lineno="255"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="256"><highlight class="normal"></highlight></codeline>
-<codeline lineno="257"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="258"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="259"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::cout;</highlight></codeline>
-<codeline lineno="260"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::endl;</highlight></codeline>
-<codeline lineno="261" refid="poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>()<sp/>{</highlight></codeline>
-<codeline lineno="262"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;This<sp/>code<sp/>HAS<sp/>to<sp/>be<sp/>compiled<sp/>with<sp/>support<sp/>for<sp/>C++11.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
-<codeline lineno="263"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Exiting...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
-<codeline lineno="264"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_SUCCESS;</highlight></codeline>
-<codeline lineno="265"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="266"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;known_sol<sp/>=&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="242"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>known_sol<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="243"><highlight class="normal"></highlight></codeline>
+<codeline lineno="244"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">if</highlight><highlight class="normal"><sp/>(!known_sol.WriteToFile(</highlight><highlight class="stringliteral">&quot;poisson_1d_known_sol.dat&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;x&quot;</highlight><highlight class="normal">,<sp/></highlight><highlight class="stringliteral">&quot;u(x)&quot;</highlight><highlight class="normal">))<sp/>{</highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/><sp/><sp/>std::cerr<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Known<sp/>solution<sp/>could<sp/>not<sp/>be<sp/>written<sp/>to<sp/>file.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"><sp/><sp/><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_FAILURE;</highlight></codeline>
+<codeline lineno="247"><highlight class="normal"><sp/><sp/>}</highlight></codeline>
+<codeline lineno="248"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>relative_norm_2_error{};</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="251"><highlight class="normal"><sp/><sp/>relative_norm_2_error<sp/>=</highlight></codeline>
+<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1BLASAdapter_1af2ac5691f45e67d6e26186b071119ec4" kindref="member">mtk::BLASAdapter::RelNorm2Error</ref>(source.discrete_field(),</highlight></codeline>
+<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>known_sol.discrete_field(),</highlight></codeline>
+<codeline lineno="254"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>known_sol.num_cells_x());</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"></highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;relative_norm_2_error<sp/>=<sp/>&quot;</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/>std::cout<sp/>&lt;&lt;<sp/>relative_norm_2_error<sp/>&lt;&lt;<sp/>std::endl;</highlight></codeline>
+<codeline lineno="258"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="259"><highlight class="normal"></highlight><highlight class="preprocessor">#else</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="260"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="261"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::cout;</highlight></codeline>
+<codeline lineno="262"><highlight class="normal"></highlight><highlight class="keyword">using</highlight><highlight class="normal"><sp/>std::endl;</highlight></codeline>
+<codeline lineno="263" refid="poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kindref="member">main</ref><sp/>()<sp/>{</highlight></codeline>
+<codeline lineno="264"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;This<sp/>code<sp/>HAS<sp/>to<sp/>be<sp/>compiled<sp/>with<sp/>support<sp/>for<sp/>C++11.&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/>cout<sp/>&lt;&lt;<sp/></highlight><highlight class="stringliteral">&quot;Exiting...&quot;</highlight><highlight class="normal"><sp/>&lt;&lt;<sp/>endl;</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordflow">return</highlight><highlight class="normal"><sp/>EXIT_SUCCESS;</highlight></codeline>
+<codeline lineno="267"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"></highlight><highlight class="preprocessor">#endif</highlight></codeline>
     </programlisting>
     <location file="/home/esanchez/Dropbox/MTK/examples/poisson_1d/poisson_1d.cc"/>
   </compounddef>
