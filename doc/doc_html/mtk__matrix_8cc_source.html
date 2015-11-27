@@ -287,7 +287,7 @@ $(document).ready(function(){initNavTree('mtk__matrix_8cc_source.html','');});
 <div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
 <div class="line"><a name="l00187"></a><span class="lineno"><a class="line" href="classmtk_1_1Matrix.html#a111b89f2f21d06a59b8d043123bec625">  187</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1Matrix.html#a111b89f2f21d06a59b8d043123bec625">mtk::Matrix::set_storage</a>(<span class="keyword">const</span> <a class="code" href="group__c02-enums.html#ga25b67ec6a2afeee69f9bb196a9c66619">mtk::MatrixStorage</a> &amp;ss) noexcept {</div>
 <div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
 <div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(!(ss == <a class="code" href="namespacemtk.html#ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87">mtk::DENSE</a> ||</div>
 <div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;                        ss == <a class="code" href="namespacemtk.html#ga25b67ec6a2afeee69f9bb196a9c66619aef1d4271d5005282978a3a40a8a52c9b">mtk::BANDED</a> ||</div>
 <div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                        ss == <a class="code" href="namespacemtk.html#ga25b67ec6a2afeee69f9bb196a9c66619a87619d374775e937bca967402b988b8b">mtk::CRS</a>),</div>
@@ -299,7 +299,7 @@ $(document).ready(function(){initNavTree('mtk__matrix_8cc_source.html','');});
 <div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;</div>
 <div class="line"><a name="l00199"></a><span class="lineno"><a class="line" href="classmtk_1_1Matrix.html#a8bdaf3f8307b00a36843359f165e1f17">  199</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1Matrix.html#a8bdaf3f8307b00a36843359f165e1f17">mtk::Matrix::set_ordering</a>(<span class="keyword">const</span> <a class="code" href="group__c02-enums.html#ga622801bd9f912d0f976c3e383f5f581c">mtk::MatrixOrdering</a> &amp;oo) noexcept {</div>
 <div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
 <div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(!(oo == <a class="code" href="namespacemtk.html#ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3">mtk::ROW_MAJOR</a> || oo == <a class="code" href="namespacemtk.html#ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13">mtk::COL_MAJOR</a>),</div>
 <div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                      __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;<span class="preprocessor">  #endif</span></div>
@@ -312,7 +312,7 @@ $(document).ready(function(){initNavTree('mtk__matrix_8cc_source.html','');});
 <div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;</div>
 <div class="line"><a name="l00212"></a><span class="lineno"><a class="line" href="classmtk_1_1Matrix.html#aa4aee0281421c22d9af273b7beb84306">  212</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1Matrix.html#aa4aee0281421c22d9af273b7beb84306">mtk::Matrix::set_num_rows</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;in) noexcept {</div>
 <div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(in &lt; 1, __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;<span class="preprocessor">  #endif</span></div>
 <div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;</div>
@@ -324,7 +324,7 @@ $(document).ready(function(){initNavTree('mtk__matrix_8cc_source.html','');});
 <div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;</div>
 <div class="line"><a name="l00224"></a><span class="lineno"><a class="line" href="classmtk_1_1Matrix.html#aad6b4ced4a0447cc7bf2347fe86fd722">  224</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1Matrix.html#aad6b4ced4a0447cc7bf2347fe86fd722">mtk::Matrix::set_num_cols</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;in) noexcept {</div>
 <div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
 <div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(in &lt; 1, __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;<span class="preprocessor">  #endif</span></div>
 <div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
@@ -336,7 +336,7 @@ $(document).ready(function(){initNavTree('mtk__matrix_8cc_source.html','');});
 <div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
 <div class="line"><a name="l00236"></a><span class="lineno"><a class="line" href="classmtk_1_1Matrix.html#a6eb14709692df59573548ffd8cf67198">  236</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1Matrix.html#a6eb14709692df59573548ffd8cf67198">mtk::Matrix::set_num_zero</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;in) noexcept {</div>
 <div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
 <div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(in &lt; 0, __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;<span class="preprocessor">  #endif</span></div>
 <div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
@@ -349,7 +349,7 @@ $(document).ready(function(){initNavTree('mtk__matrix_8cc_source.html','');});
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;</div>
 <div class="line"><a name="l00250"></a><span class="lineno"><a class="line" href="classmtk_1_1Matrix.html#a61dba12c767f98cda5343b4b16bbbe77">  250</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1Matrix.html#a61dba12c767f98cda5343b4b16bbbe77">mtk::Matrix::set_num_null</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;in) noexcept {</div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(in &lt; 0, __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;<span class="preprocessor">  #endif</span></div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
@@ -422,7 +422,7 @@ $(document).ready(function(){initNavTree('mtk__matrix_8cc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="mtk__matrix_8cc.html">mtk_matrix.cc</a></li>
-    <li class="footer">Generated on Thu Nov 26 2015 13:28:47 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Fri Nov 27 2015 18:42:56 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

@@ -273,7 +273,7 @@ $(document).ready(function(){initNavTree('mtk__uni__stg__grid__2d_8cc_source.htm
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;                                <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;num_cells_y,</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                <span class="keyword">const</span> <a class="code" href="group__c02-enums.html#ga4c54f2a329cfb4e56213b02a259d19e2">mtk::FieldNature</a> &amp;nature) {</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(west_bndy &lt; <a class="code" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a>, __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(east_bndy &lt; <a class="code" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a>, __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(east_bndy &lt;= west_bndy, __FILE__, __LINE__, __func__);</div>
@@ -369,7 +369,7 @@ $(document).ready(function(){initNavTree('mtk__uni__stg__grid__2d_8cc_source.htm
 <div class="line"><a name="l00270"></a><span class="lineno"><a class="line" href="classmtk_1_1UniStgGrid2D.html#a5f9910ffb94e0314b16c026c4b5762ee">  270</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1UniStgGrid2D.html#a5f9910ffb94e0314b16c026c4b5762ee">mtk::UniStgGrid2D::BindScalarField</a>(</div>
 <div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> (*ScalarField)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;xx, <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;yy)) {</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(nature_ != <a class="code" href="namespacemtk.html#ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205">mtk::SCALAR</a>, __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="preprocessor">  #endif</span></div>
 <div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
@@ -408,7 +408,7 @@ $(document).ready(function(){initNavTree('mtk__uni__stg__grid__2d_8cc_source.htm
 <div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
 <div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ii = 0; ii &lt; num_cells_y_ + 2; ++ii) {</div>
 <div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> jj = 0; jj &lt; num_cells_x_ + 2; ++jj) {</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="preprocessor">      #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;<span class="preprocessor">      #if MTK_VERBOSE_LEVEL &gt; 6</span></div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Pushing value for x = &quot;</span> &lt;&lt; discrete_domain_x_[jj] &lt;&lt;</div>
 <div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;        <span class="stringliteral">&quot; y = &quot;</span> &lt;&lt; discrete_domain_y_[ii] &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;<span class="preprocessor">      #endif</span></div>
@@ -468,14 +468,14 @@ $(document).ready(function(){initNavTree('mtk__uni__stg__grid__2d_8cc_source.htm
 <div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;      discrete_field_.push_back(VectorField(discrete_domain_x_[jj],</div>
 <div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;                                            discrete_domain_y_[ii]));</div>
 <div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="preprocessor">      #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;<span class="preprocessor">      #if MTK_VERBOSE_LEVEL &gt; 6</span></div>
 <div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Binding v at x = &quot;</span> &lt;&lt; discrete_domain_x_[jj] &lt;&lt; <span class="stringliteral">&quot; y = &quot;</span> &lt;&lt;</div>
 <div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;        discrete_domain_y_[ii] &lt;&lt; <span class="stringliteral">&quot; = &quot;</span> &lt;&lt;</div>
 <div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        VectorField(discrete_domain_x_[jj],discrete_domain_y_[ii]) &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;<span class="preprocessor">      #endif</span></div>
 <div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;    }</div>
 <div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  }</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="preprocessor">  #if MTK_VERBOSE_LEVEL &gt; 6</span></div>
 <div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;  std::cout &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;<span class="preprocessor">  #endif</span></div>
 <div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;}</div>
@@ -495,14 +495,14 @@ $(document).ready(function(){initNavTree('mtk__uni__stg__grid__2d_8cc_source.htm
 <div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;      discrete_field_.push_back(VectorField(discrete_domain_x_[jj],</div>
 <div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                                            discrete_domain_y_[ii]));</div>
 <div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="preprocessor">      #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;<span class="preprocessor">      #if MTK_VERBOSE_LEVEL &gt; 6</span></div>
 <div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;      std::cout &lt;&lt; <span class="stringliteral">&quot;Binding v at x = &quot;</span> &lt;&lt; discrete_domain_x_[jj] &lt;&lt; <span class="stringliteral">&quot; y = &quot;</span> &lt;&lt;</div>
 <div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;        discrete_domain_y_[ii] &lt;&lt; <span class="stringliteral">&quot; = &quot;</span> &lt;&lt;</div>
 <div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;        VectorField(discrete_domain_x_[jj],discrete_domain_y_[ii]) &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;<span class="preprocessor">      #endif</span></div>
 <div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;    }</div>
 <div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;  }</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;<span class="preprocessor">  #if MTK_VERBOSE_LEVEL &gt; 6</span></div>
 <div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;  std::cout &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;<span class="preprocessor">  #endif</span></div>
 <div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;}</div>
@@ -511,7 +511,7 @@ $(document).ready(function(){initNavTree('mtk__uni__stg__grid__2d_8cc_source.htm
 <div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> (*VectorFieldPComponent)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;xx, <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;yy),</div>
 <div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> (*VectorFieldQComponent)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;xx, <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;yy)) {</div>
 <div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
 <div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(nature_ != <a class="code" href="namespacemtk.html#ga4c54f2a329cfb4e56213b02a259d19e2a3d8cb27a993651a74d67fb8c98ae91b2">mtk::VECTOR</a>, __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;<span class="preprocessor">  #endif</span></div>
 <div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;</div>
@@ -639,7 +639,7 @@ $(document).ready(function(){initNavTree('mtk__uni__stg__grid__2d_8cc_source.htm
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="mtk__uni__stg__grid__2d_8cc.html">mtk_uni_stg_grid_2d.cc</a></li>
-    <li class="footer">Generated on Thu Nov 26 2015 13:28:47 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Fri Nov 27 2015 18:42:56 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

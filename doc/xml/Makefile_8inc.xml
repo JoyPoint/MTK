@@ -7,7 +7,7 @@
     <detaileddescription>
     </detaileddescription>
     <programlisting>
-<codeline lineno="1"><highlight class="preprocessor">#<sp/>Makefile<sp/>setup<sp/>file<sp/>for<sp/>MTK.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="1"><highlight class="preprocessor">#<sp/>Makefile<sp/>setup<sp/>file<sp/>for<sp/>the<sp/>MTK.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="2"><highlight class="normal"></highlight></codeline>
 <codeline lineno="3"><highlight class="normal">SHELL<sp/>:=<sp/>/bin/bash</highlight></codeline>
 <codeline lineno="4"><highlight class="normal"></highlight></codeline>
@@ -79,106 +79,140 @@
 <codeline lineno="70"><highlight class="stringliteral"></highlight></codeline>
 <codeline lineno="71"><highlight class="stringliteral">CC<sp/>=<sp/>g++</highlight></codeline>
 <codeline lineno="72"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="73"><highlight class="stringliteral">#<sp/>Debug<sp/>Level.<sp/>Options<sp/>are:</highlight></codeline>
-<codeline lineno="74"><highlight class="stringliteral">#<sp/>0.<sp/>NO<sp/>debug<sp/>at<sp/>all<sp/>NOR<sp/>any<sp/>run-time<sp/>checks...<sp/>be<sp/>cautious!</highlight></codeline>
-<codeline lineno="75"><highlight class="stringliteral">#<sp/>1.<sp/>Verbose<sp/>(execution<sp/>messages)<sp/>AND<sp/>run-time<sp/>checks.</highlight></codeline>
-<codeline lineno="76"><highlight class="stringliteral">#<sp/>2.<sp/>Level<sp/>1<sp/>plus<sp/>intermediate<sp/>scalar-valued<sp/>results.</highlight></codeline>
-<codeline lineno="77"><highlight class="stringliteral">#<sp/>3.<sp/>Level<sp/>2<sp/>plus<sp/>intermediate<sp/>array-valued<sp/>results.</highlight></codeline>
-<codeline lineno="78"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="79"><highlight class="stringliteral">DEBUG_LEVEL<sp/>=<sp/>3</highlight></codeline>
-<codeline lineno="80"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="81"><highlight class="stringliteral">#<sp/>Flags<sp/>recommended<sp/>for<sp/>release<sp/>code:</highlight></codeline>
+<codeline lineno="73"><highlight class="stringliteral">#<sp/>Selective<sp/>Verbose<sp/>Execution<sp/>for<sp/>Quick<sp/>Debugging.<sp/>Options<sp/>are<sp/>defined<sp/>per</highlight></codeline>
+<codeline lineno="74"><highlight class="stringliteral">#<sp/>concern,<sp/>and<sp/>per<sp/>data<sp/>hierarchy<sp/>on<sp/>each<sp/>concern.</highlight></codeline>
+<codeline lineno="75"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="76"><highlight class="stringliteral">#<sp/>0:<sp/>NO<sp/>verbose<sp/>at<sp/>all.</highlight></codeline>
+<codeline lineno="77"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="78"><highlight class="stringliteral">#<sp/>1:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>7th<sp/>concern:<sp/>messages.</highlight></codeline>
+<codeline lineno="79"><highlight class="stringliteral">#<sp/>2:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>7th<sp/>concern:<sp/>messages<sp/>+<sp/>scalar<sp/>results.</highlight></codeline>
+<codeline lineno="80"><highlight class="stringliteral">#<sp/>3:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>7th<sp/>concern.<sp/>1.1.<sp/>+<sp/>array<sp/>results.</highlight></codeline>
+<codeline lineno="81"><highlight class="stringliteral">#<sp/>4:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>7th<sp/>concern.<sp/>1.2.<sp/>+<sp/>matrix<sp/>results.</highlight></codeline>
 <codeline lineno="82"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="83"><highlight class="stringliteral">CCFLAGS<sp/>=<sp/>-Wall<sp/>-Werror<sp/>-O3</highlight></codeline>
-<codeline lineno="84"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="85"><highlight class="stringliteral">#<sp/>Flags<sp/>recommended<sp/>for<sp/>debugging<sp/>code:</highlight></codeline>
-<codeline lineno="86"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="87"><highlight class="stringliteral">CCFLAGS<sp/>=<sp/>-Wall<sp/>-Werror<sp/>-g</highlight></codeline>
-<codeline lineno="88"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="89"><highlight class="stringliteral">#<sp/><sp/><sp/>7.<sp/>Archiver,<sp/>its<sp/>flags,<sp/>and<sp/>ranlib:</highlight></codeline>
-<codeline lineno="90"><highlight class="stringliteral">#<sp/><sp/><sp/>__________________________________________________________________</highlight></codeline>
-<codeline lineno="91"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="92"><highlight class="stringliteral">ARCH<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>ar</highlight></codeline>
-<codeline lineno="93"><highlight class="stringliteral">ARCHFLAGS<sp/>=<sp/>cr</highlight></codeline>
-<codeline lineno="94"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="95"><highlight class="stringliteral">#<sp/>If<sp/>your<sp/>system<sp/>does<sp/>not<sp/>have<sp/>&quot;ranlib&quot;<sp/>then<sp/>set:<sp/>&quot;RANLIB<sp/>=<sp/>echo&quot;:</highlight></codeline>
-<codeline lineno="96"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="97"><highlight class="stringliteral">RANLIB<sp/>=<sp/>echo</highlight></codeline>
-<codeline lineno="98"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="99"><highlight class="stringliteral">#<sp/>But,<sp/>if<sp/>possible:</highlight></codeline>
-<codeline lineno="100"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="101"><highlight class="stringliteral">RANLIB<sp/>=<sp/>ranlib</highlight></codeline>
-<codeline lineno="102"><highlight class="stringliteral"></highlight></codeline>
-<codeline lineno="103"><highlight class="stringliteral">#<sp/><sp/><sp/>8.<sp/>Valgrind&apos;</highlight><highlight class="normal">s<sp/>memcheck<sp/>options<sp/>(optional):</highlight></codeline>
-<codeline lineno="104"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>__________________________________________________________________</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="106"><highlight class="normal">MEMCHECK_OPTS<sp/>=<sp/>-v<sp/>--tool=memcheck<sp/>--leak-check=full<sp/>--show-leak-kinds=all<sp/>\</highlight></codeline>
-<codeline lineno="107"><highlight class="normal">--track-origins=yes<sp/>--freelist-vol=20000000</highlight></codeline>
-<codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="109"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>Done!<sp/>User,<sp/>please,<sp/>do<sp/>not<sp/>mess<sp/>with<sp/>the<sp/>definitions<sp/>from<sp/>this<sp/>point<sp/>on.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"></highlight></codeline>
-<codeline lineno="111"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>__________________________________________________________________</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>__________________________________________________________________</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="113"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>__________________________________________________________________</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="114"><highlight class="normal"></highlight></codeline>
-<codeline lineno="115"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>MTK-related.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="116"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>__________________________________________________________________</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"></highlight></codeline>
-<codeline lineno="118"><highlight class="normal">SRC<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>$(BASE)/src</highlight></codeline>
-<codeline lineno="119"><highlight class="normal">INCLUDE<sp/><sp/><sp/>=<sp/>$(BASE)/include</highlight></codeline>
-<codeline lineno="120"><highlight class="normal">LIB<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>$(BASE)/lib</highlight></codeline>
-<codeline lineno="121"><highlight class="normal">MTK_LIB<sp/><sp/><sp/>=<sp/>$(LIB)/libmtk.a</highlight></codeline>
-<codeline lineno="122"><highlight class="normal">TESTS<sp/><sp/><sp/><sp/><sp/>=<sp/>$(BASE)/tests</highlight></codeline>
-<codeline lineno="123"><highlight class="normal">EXAMPLES<sp/><sp/>=<sp/>$(BASE)/examples</highlight></codeline>
-<codeline lineno="124"><highlight class="normal"></highlight></codeline>
-<codeline lineno="125"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>Compiling-related.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="126"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>__________________________________________________________________</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"></highlight></codeline>
-<codeline lineno="128"><highlight class="normal">CCFLAGS<sp/>+=<sp/>-<ref refid="namespacestd" kindref="compound">std</ref>=c++11<sp/>-fPIC<sp/>-DMTK_DEBUG_LEVEL=$(DEBUG_LEVEL)<sp/>-I$(INCLUDE)<sp/><sp/>-c</highlight></codeline>
-<codeline lineno="129"><highlight class="normal"></highlight></codeline>
-<codeline lineno="130"><highlight class="normal">ifeq<sp/>($(PRECISION),DOUBLE)</highlight></codeline>
-<codeline lineno="131"><highlight class="normal"><sp/><sp/>CCFLAGS<sp/>+=<sp/>-DMTK_PRECISION_DOUBLE</highlight></codeline>
-<codeline lineno="132"><highlight class="normal">else</highlight></codeline>
-<codeline lineno="133"><highlight class="normal"><sp/><sp/>CCFLAGS<sp/>+=<sp/>-DMTK_PRECISION_SINGLE</highlight></codeline>
-<codeline lineno="134"><highlight class="normal">endif</highlight></codeline>
-<codeline lineno="135"><highlight class="normal"></highlight></codeline>
-<codeline lineno="136"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>Only<sp/>the<sp/>GLPK<sp/>is<sp/>included<sp/>because<sp/>the<sp/>other<sp/>dependencies<sp/>are<sp/>coded<sp/>in<sp/>Fortran.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="stringliteral">#<sp/>5:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>6th<sp/>concern:<sp/>messages.</highlight></codeline>
+<codeline lineno="84"><highlight class="stringliteral">#<sp/>6:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>6th<sp/>concern:<sp/>messages<sp/>+<sp/>scalar<sp/>results.</highlight></codeline>
+<codeline lineno="85"><highlight class="stringliteral">#<sp/>7:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>6th<sp/>concern.<sp/>2.1.<sp/>+<sp/>array<sp/>results.</highlight></codeline>
+<codeline lineno="86"><highlight class="stringliteral">#<sp/>8:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>6th<sp/>concern.<sp/>2.2.<sp/>+<sp/>matrix<sp/>results.</highlight></codeline>
+<codeline lineno="87"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="88"><highlight class="stringliteral">#<sp/>9:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>5th<sp/>concern:<sp/>messages.</highlight></codeline>
+<codeline lineno="89"><highlight class="stringliteral">#<sp/>10:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>5th<sp/>concern:<sp/>messages<sp/>+<sp/>scalar<sp/>results.</highlight></codeline>
+<codeline lineno="90"><highlight class="stringliteral">#<sp/>11:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>5th<sp/>concern.<sp/>3.1.<sp/>+<sp/>array<sp/>results.</highlight></codeline>
+<codeline lineno="91"><highlight class="stringliteral">#<sp/>12:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>5th<sp/>concern.<sp/>3.2.<sp/>+<sp/>matrix<sp/>results.</highlight></codeline>
+<codeline lineno="92"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="93"><highlight class="stringliteral">#<sp/>13:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>4th<sp/>concern:<sp/>messages.</highlight></codeline>
+<codeline lineno="94"><highlight class="stringliteral">#<sp/>14:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>4th<sp/>concern:<sp/>messages<sp/>+<sp/>scalar<sp/>results.</highlight></codeline>
+<codeline lineno="95"><highlight class="stringliteral">#<sp/>15:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>4th<sp/>concern.<sp/>4.1.<sp/>+<sp/>array<sp/>results.</highlight></codeline>
+<codeline lineno="96"><highlight class="stringliteral">#<sp/>16:<sp/>Enable<sp/>verbose<sp/>down<sp/>to<sp/>the<sp/>4th<sp/>concern.<sp/>4.2.<sp/>+<sp/>matrix<sp/>results.</highlight></codeline>
+<codeline lineno="97"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="98"><highlight class="stringliteral">VERBOSE_LEVEL<sp/>=<sp/>16</highlight></codeline>
+<codeline lineno="99"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="100"><highlight class="stringliteral">#<sp/>Enable<sp/>preventions.<sp/>In<sp/>the<sp/>MTK,<sp/>methods<sp/>first<sp/>validate<sp/>their<sp/>required</highlight></codeline>
+<codeline lineno="101"><highlight class="stringliteral">#<sp/>pre-conditions<sp/>in<sp/>run-time.<sp/>Similarly,<sp/>in<sp/>many<sp/>points<sp/>throughout<sp/>the<sp/>MTK</highlight></codeline>
+<codeline lineno="102"><highlight class="stringliteral">#<sp/>codebase,<sp/>different<sp/>sanity<sp/>checks<sp/>are<sp/>performed,<sp/>as<sp/>well.<sp/>If<sp/>this<sp/>symbol<sp/>is</highlight></codeline>
+<codeline lineno="103"><highlight class="stringliteral">#<sp/>defined<sp/>to<sp/>be<sp/>0,<sp/>the<sp/>MTK<sp/>will<sp/>#<sp/>perform<sp/>no<sp/>validations<sp/>to<sp/>enhance<sp/>execution</highlight></codeline>
+<codeline lineno="104"><highlight class="stringliteral">#<sp/>performance.<sp/>Options<sp/>are:</highlight></codeline>
+<codeline lineno="105"><highlight class="stringliteral">#<sp/>-<sp/>YES.</highlight></codeline>
+<codeline lineno="106"><highlight class="stringliteral">#<sp/>-<sp/>NO.</highlight></codeline>
+<codeline lineno="107"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="108"><highlight class="stringliteral">PERFORM_PREVENTIONS<sp/>=<sp/>YES</highlight></codeline>
+<codeline lineno="109"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="110"><highlight class="stringliteral">#<sp/>Flags<sp/>recommended<sp/>for<sp/>release<sp/>code:</highlight></codeline>
+<codeline lineno="111"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="112"><highlight class="stringliteral">CCFLAGS<sp/>=<sp/>-Wall<sp/>-Werror<sp/>-O3</highlight></codeline>
+<codeline lineno="113"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="114"><highlight class="stringliteral">#<sp/>Flags<sp/>recommended<sp/>for<sp/>debugging<sp/>code:</highlight></codeline>
+<codeline lineno="115"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="116"><highlight class="stringliteral">CCFLAGS<sp/>=<sp/>-Wall<sp/>-Werror<sp/>-g</highlight></codeline>
+<codeline lineno="117"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="118"><highlight class="stringliteral">#<sp/><sp/><sp/>7.<sp/>Archiver,<sp/>its<sp/>flags,<sp/>and<sp/>ranlib:</highlight></codeline>
+<codeline lineno="119"><highlight class="stringliteral">#<sp/><sp/><sp/>__________________________________________________________________</highlight></codeline>
+<codeline lineno="120"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="121"><highlight class="stringliteral">ARCH<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>ar</highlight></codeline>
+<codeline lineno="122"><highlight class="stringliteral">ARCHFLAGS<sp/>=<sp/>cr</highlight></codeline>
+<codeline lineno="123"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="124"><highlight class="stringliteral">#<sp/>If<sp/>your<sp/>system<sp/>does<sp/>not<sp/>have<sp/>&quot;ranlib&quot;<sp/>then<sp/>set:<sp/>&quot;RANLIB<sp/>=<sp/>echo&quot;:</highlight></codeline>
+<codeline lineno="125"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="126"><highlight class="stringliteral">RANLIB<sp/>=<sp/>echo</highlight></codeline>
+<codeline lineno="127"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="128"><highlight class="stringliteral">#<sp/>But,<sp/>if<sp/>possible:</highlight></codeline>
+<codeline lineno="129"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="130"><highlight class="stringliteral">RANLIB<sp/>=<sp/>ranlib</highlight></codeline>
+<codeline lineno="131"><highlight class="stringliteral"></highlight></codeline>
+<codeline lineno="132"><highlight class="stringliteral">#<sp/><sp/><sp/>8.<sp/>Valgrind&apos;</highlight><highlight class="normal">s<sp/>memcheck<sp/>options<sp/>(optional):</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>__________________________________________________________________</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="135"><highlight class="normal">MEMCHECK_OPTS<sp/>=<sp/>-v<sp/>--tool=memcheck<sp/>--leak-check=full<sp/>--show-leak-kinds=all<sp/>\</highlight></codeline>
+<codeline lineno="136"><highlight class="normal"><sp/><sp/>--track-origins=yes<sp/>--freelist-vol=20000000</highlight></codeline>
 <codeline lineno="137"><highlight class="normal"></highlight></codeline>
-<codeline lineno="138"><highlight class="normal">ifeq<sp/>($(ATL_OPT),ON)</highlight></codeline>
-<codeline lineno="139"><highlight class="normal"><sp/><sp/>CCFLAGS<sp/><sp/>+=<sp/>-I$(GLPK_INC)<sp/>$(ATLAS_INC)</highlight></codeline>
-<codeline lineno="140"><highlight class="normal">else</highlight></codeline>
-<codeline lineno="141"><highlight class="normal"><sp/><sp/>CCFLAGS<sp/><sp/>+=<sp/>-I$(GLPK_INC)</highlight></codeline>
-<codeline lineno="142"><highlight class="normal">endif</highlight></codeline>
+<codeline lineno="138"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>Done!<sp/>User,<sp/>please,<sp/>do<sp/>not<sp/>mess<sp/>with<sp/>the<sp/>definitions<sp/>from<sp/>this<sp/>point<sp/>on.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="139"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>__________________________________________________________________</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>__________________________________________________________________</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="142"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>__________________________________________________________________</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="143"><highlight class="normal"></highlight></codeline>
-<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>Linking-related.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>MTK-related.</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="145"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>__________________________________________________________________</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="146"><highlight class="normal"></highlight></codeline>
-<codeline lineno="147"><highlight class="normal">NOOPT_LIBS<sp/><sp/>=<sp/>$(LAPACK_LIB)<sp/>$(BLAS_LIB)<sp/>-lm<sp/>$(GLPK_LIB)<sp/>-lstdc++</highlight></codeline>
-<codeline lineno="148"><highlight class="normal"></highlight></codeline>
-<codeline lineno="149"><highlight class="normal">OPT_LIBS<sp/><sp/><sp/><sp/>=<sp/>-L$(ATLAS_LIB)<sp/>-latlas<sp/>-llapack<sp/>-lblas<sp/>-lm<sp/>-latlas<sp/>-lstdc++</highlight></codeline>
-<codeline lineno="150"><highlight class="normal"></highlight></codeline>
-<codeline lineno="151"><highlight class="normal">ifeq<sp/>($(PLAT),OSX)</highlight></codeline>
-<codeline lineno="152"><highlight class="normal"><sp/><sp/>LINKER<sp/><sp/>=<sp/>g++</highlight></codeline>
-<codeline lineno="153"><highlight class="normal"><sp/><sp/>LINKER<sp/><sp/>+=<sp/>-framework<sp/>Accelerate<sp/>$(GLPK_LIB)<sp/>$(MTK_LIB)</highlight></codeline>
-<codeline lineno="154"><highlight class="normal">else</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"><sp/><sp/>ifeq<sp/>($(ATL_OPT),ON)</highlight></codeline>
-<codeline lineno="156"><highlight class="normal"><sp/><sp/><sp/><sp/>LINKER<sp/><sp/>=<sp/>g++</highlight></codeline>
-<codeline lineno="157"><highlight class="normal"><sp/><sp/><sp/><sp/>LIBS<sp/>=<sp/>$(MTK_LIB)</highlight></codeline>
-<codeline lineno="158"><highlight class="normal"><sp/><sp/><sp/><sp/>LIBS<sp/>+=<sp/>$(OPT_LIBS)</highlight></codeline>
-<codeline lineno="159"><highlight class="normal"><sp/><sp/>else</highlight></codeline>
-<codeline lineno="160"><highlight class="normal"><sp/><sp/><sp/><sp/>LINKER<sp/><sp/>=<sp/>gfortran</highlight></codeline>
-<codeline lineno="161"><highlight class="normal"><sp/><sp/><sp/><sp/>LIBS<sp/>=<sp/>$(MTK_LIB)</highlight></codeline>
-<codeline lineno="162"><highlight class="normal"><sp/><sp/><sp/><sp/>LIBS<sp/>+=<sp/>$(NOOPT_LIBS)</highlight></codeline>
-<codeline lineno="163"><highlight class="normal"><sp/><sp/>endif</highlight></codeline>
+<codeline lineno="147"><highlight class="normal">SRC<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>$(BASE)/src</highlight></codeline>
+<codeline lineno="148"><highlight class="normal">INCLUDE<sp/><sp/><sp/>=<sp/>$(BASE)/include</highlight></codeline>
+<codeline lineno="149"><highlight class="normal">LIB<sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>$(BASE)/lib</highlight></codeline>
+<codeline lineno="150"><highlight class="normal">MTK_LIB<sp/><sp/><sp/>=<sp/>$(LIB)/libmtk.a</highlight></codeline>
+<codeline lineno="151"><highlight class="normal">TESTS<sp/><sp/><sp/><sp/><sp/>=<sp/>$(BASE)/tests</highlight></codeline>
+<codeline lineno="152"><highlight class="normal">EXAMPLES<sp/><sp/>=<sp/>$(BASE)/examples</highlight></codeline>
+<codeline lineno="153"><highlight class="normal"></highlight></codeline>
+<codeline lineno="154"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>Compiling-related.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="155"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>__________________________________________________________________</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="156"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal">CCFLAGS<sp/>+=<sp/>-<ref refid="namespacestd" kindref="compound">std</ref>=c++11<sp/>-fPIC<sp/>\</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"><sp/><sp/>-DMTK_VERBOSE_LEVEL=$(VERBOSE_LEVEL)<sp/>-I$(INCLUDE)<sp/>-c</highlight></codeline>
+<codeline lineno="159"><highlight class="normal"></highlight></codeline>
+<codeline lineno="160"><highlight class="normal">ifeq<sp/>($(PRECISION),DOUBLE)</highlight></codeline>
+<codeline lineno="161"><highlight class="normal"><sp/><sp/>CCFLAGS<sp/>+=<sp/>-DMTK_PRECISION_DOUBLE</highlight></codeline>
+<codeline lineno="162"><highlight class="normal">else</highlight></codeline>
+<codeline lineno="163"><highlight class="normal"><sp/><sp/>CCFLAGS<sp/>+=<sp/>-DMTK_PRECISION_SINGLE</highlight></codeline>
 <codeline lineno="164"><highlight class="normal">endif</highlight></codeline>
 <codeline lineno="165"><highlight class="normal"></highlight></codeline>
-<codeline lineno="166"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>Documentation-related.</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="167"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>__________________________________________________________________</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="168"><highlight class="normal"></highlight></codeline>
-<codeline lineno="169"><highlight class="normal">DOCGEN<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>doxygen</highlight></codeline>
-<codeline lineno="170"><highlight class="normal">DOCFILENAME<sp/>=<sp/>doc_config.dxcf</highlight></codeline>
-<codeline lineno="171"><highlight class="normal">DOC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>$(BASE)/doc</highlight></codeline>
-<codeline lineno="172"><highlight class="normal">DOCFILE<sp/><sp/><sp/><sp/><sp/>=<sp/>$(BASE)/$(DOCFILENAME)</highlight></codeline>
+<codeline lineno="166"><highlight class="normal">ifeq<sp/>($(PERFORM_PREVENTIONS),YES)</highlight></codeline>
+<codeline lineno="167"><highlight class="normal"><sp/><sp/>CCFLAGS<sp/>+=<sp/>-DMTK_PERFORM_PREVENTIONS</highlight></codeline>
+<codeline lineno="168"><highlight class="normal">endif</highlight></codeline>
+<codeline lineno="169"><highlight class="normal"></highlight></codeline>
+<codeline lineno="170"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/>Only<sp/>the<sp/>GLPK<sp/>is<sp/>included<sp/>because<sp/>the<sp/>other<sp/>dependencies<sp/>are<sp/>coded<sp/>in<sp/>Fortran.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"></highlight></codeline>
+<codeline lineno="172"><highlight class="normal">ifeq<sp/>($(ATL_OPT),ON)</highlight></codeline>
+<codeline lineno="173"><highlight class="normal"><sp/><sp/>CCFLAGS<sp/><sp/>+=<sp/>-I$(GLPK_INC)<sp/>$(ATLAS_INC)</highlight></codeline>
+<codeline lineno="174"><highlight class="normal">else</highlight></codeline>
+<codeline lineno="175"><highlight class="normal"><sp/><sp/>CCFLAGS<sp/><sp/>+=<sp/>-I$(GLPK_INC)</highlight></codeline>
+<codeline lineno="176"><highlight class="normal">endif</highlight></codeline>
+<codeline lineno="177"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>Linking-related.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>__________________________________________________________________</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="180"><highlight class="normal"></highlight></codeline>
+<codeline lineno="181"><highlight class="normal">NOOPT_LIBS<sp/><sp/>=<sp/>$(LAPACK_LIB)<sp/>$(BLAS_LIB)<sp/>-lm<sp/>$(GLPK_LIB)<sp/>-lstdc++</highlight></codeline>
+<codeline lineno="182"><highlight class="normal"></highlight></codeline>
+<codeline lineno="183"><highlight class="normal">OPT_LIBS<sp/><sp/><sp/><sp/>=<sp/>-L$(ATLAS_LIB)<sp/>-latlas<sp/>-llapack<sp/>-lblas<sp/>-lm<sp/>-latlas<sp/>-lstdc++</highlight></codeline>
+<codeline lineno="184"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal">ifeq<sp/>($(PLAT),OSX)</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"><sp/><sp/>LINKER<sp/><sp/>=<sp/>g++</highlight></codeline>
+<codeline lineno="187"><highlight class="normal"><sp/><sp/>LINKER<sp/><sp/>+=<sp/>-framework<sp/>Accelerate<sp/>$(GLPK_LIB)<sp/>$(MTK_LIB)</highlight></codeline>
+<codeline lineno="188"><highlight class="normal">else</highlight></codeline>
+<codeline lineno="189"><highlight class="normal"><sp/><sp/>ifeq<sp/>($(ATL_OPT),ON)</highlight></codeline>
+<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/>LINKER<sp/><sp/>=<sp/>g++</highlight></codeline>
+<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/>LIBS<sp/>=<sp/>$(MTK_LIB)</highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/>LIBS<sp/>+=<sp/>$(OPT_LIBS)</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/>else</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/>LINKER<sp/><sp/>=<sp/>gfortran</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/>LIBS<sp/>=<sp/>$(MTK_LIB)</highlight></codeline>
+<codeline lineno="196"><highlight class="normal"><sp/><sp/><sp/><sp/>LIBS<sp/>+=<sp/>$(NOOPT_LIBS)</highlight></codeline>
+<codeline lineno="197"><highlight class="normal"><sp/><sp/>endif</highlight></codeline>
+<codeline lineno="198"><highlight class="normal">endif</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>Documentation-related.</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="201"><highlight class="normal"></highlight><highlight class="preprocessor">#<sp/><sp/><sp/>__________________________________________________________________</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="202"><highlight class="normal"></highlight></codeline>
+<codeline lineno="203"><highlight class="normal">DOCGEN<sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>doxygen</highlight></codeline>
+<codeline lineno="204"><highlight class="normal">DOCFILENAME<sp/>=<sp/>doc_config.dxcf</highlight></codeline>
+<codeline lineno="205"><highlight class="normal">DOC<sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>=<sp/>$(BASE)/doc</highlight></codeline>
+<codeline lineno="206"><highlight class="normal">DOCFILE<sp/><sp/><sp/><sp/><sp/>=<sp/>$(BASE)/$(DOCFILENAME)</highlight></codeline>
     </programlisting>
     <location file="/home/esanchez/Dropbox/MTK/Makefile.inc"/>
   </compounddef>

@@ -183,36 +183,40 @@ $(document).ready(function(){initNavTree('mtk__lap__2d_8cc_source.html','');});
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
 <div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  <span class="keywordtype">bool</span> info{gg.<a class="code" href="classmtk_1_1Grad2D.html#a9771be954c59880e3d83f4d645378c00">ConstructGrad2D</a>(grid, order_accuracy, mimetic_threshold)};</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordflow">if</span> (!info) {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Mimetic lap could not be built.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keywordflow">return</span> info;</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  info = dd.<a class="code" href="classmtk_1_1Div2D.html#a4214055909a6b94fcb9d657cc839055f">ConstructDiv2D</a>(grid, order_accuracy, mimetic_threshold);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">if</span> (!info) {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Mimetic lap could not be built.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordflow">return</span> info;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">  #endif</span></div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordflow">if</span> (!info) {</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Mimetic div could not be built.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    <span class="keywordflow">return</span> info;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  }</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> ggm(gg.<a class="code" href="classmtk_1_1Grad2D.html#a4f5a17519455f833bb70b8434c272312">ReturnAsDenseMatrix</a>());</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> ddm(dd.<a class="code" href="classmtk_1_1Div2D.html#ae4f880fb28ad2379906e9ac0dfaa4458">ReturnAsDenseMatrix</a>());</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;  laplacian_ = <a class="code" href="classmtk_1_1BLASAdapter.html#acebd0e9bfe0bdd609c7fbea98ccfd3b5">mtk::BLASAdapter::RealDenseMM</a>(ddm, ggm);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <span class="keywordflow">return</span> info;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap2D.html#aaac0a22eaa2f036869b24fd420ce5761">  106</a></span>&#160;<a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> <a class="code" href="classmtk_1_1Lap2D.html#aaac0a22eaa2f036869b24fd420ce5761">mtk::Lap2D::ReturnAsDenseMatrix</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">return</span> laplacian_;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap2D.html#a102427355df09c2aad400c6ce18e5636">  111</a></span>&#160;<a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> *<a class="code" href="classmtk_1_1Lap2D.html#a102427355df09c2aad400c6ce18e5636">mtk::Lap2D::data</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  <span class="keywordflow">return</span> laplacian_.data();</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;}</div>
-<div class="ttc" id="classmtk_1_1Lap2D_html_a102427355df09c2aad400c6ce18e5636"><div class="ttname"><a href="classmtk_1_1Lap2D.html#a102427355df09c2aad400c6ce18e5636">mtk::Lap2D::data</a></div><div class="ttdeci">Real * data() const </div><div class="ttdoc">Return the operator as a dense array. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__2d_8cc_source.html#l00111">mtk_lap_2d.cc:111</a></div></div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  info = dd.<a class="code" href="classmtk_1_1Div2D.html#a4214055909a6b94fcb9d657cc839055f">ConstructDiv2D</a>(grid, order_accuracy, mimetic_threshold);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">if</span> (!info) {</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Mimetic div could not be built.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">return</span> info;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;  }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> ggm(gg.<a class="code" href="classmtk_1_1Grad2D.html#a4f5a17519455f833bb70b8434c272312">ReturnAsDenseMatrix</a>());</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> ddm(dd.<a class="code" href="classmtk_1_1Div2D.html#ae4f880fb28ad2379906e9ac0dfaa4458">ReturnAsDenseMatrix</a>());</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  laplacian_ = <a class="code" href="classmtk_1_1BLASAdapter.html#acebd0e9bfe0bdd609c7fbea98ccfd3b5">mtk::BLASAdapter::RealDenseMM</a>(ddm, ggm);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <span class="keywordflow">return</span> info;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;}</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap2D.html#aaac0a22eaa2f036869b24fd420ce5761">  110</a></span>&#160;<a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> <a class="code" href="classmtk_1_1Lap2D.html#aaac0a22eaa2f036869b24fd420ce5761">mtk::Lap2D::ReturnAsDenseMatrix</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordflow">return</span> laplacian_;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;</div>
+<div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap2D.html#a102427355df09c2aad400c6ce18e5636">  115</a></span>&#160;<a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> *<a class="code" href="classmtk_1_1Lap2D.html#a102427355df09c2aad400c6ce18e5636">mtk::Lap2D::data</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  <span class="keywordflow">return</span> laplacian_.data();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
+<div class="ttc" id="classmtk_1_1Lap2D_html_a102427355df09c2aad400c6ce18e5636"><div class="ttname"><a href="classmtk_1_1Lap2D.html#a102427355df09c2aad400c6ce18e5636">mtk::Lap2D::data</a></div><div class="ttdeci">Real * data() const </div><div class="ttdoc">Return the operator as a dense array. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__2d_8cc_source.html#l00115">mtk_lap_2d.cc:115</a></div></div>
 <div class="ttc" id="classmtk_1_1Div2D_html_a4214055909a6b94fcb9d657cc839055f"><div class="ttname"><a href="classmtk_1_1Div2D.html#a4214055909a6b94fcb9d657cc839055f">mtk::Div2D::ConstructDiv2D</a></div><div class="ttdeci">bool ConstructDiv2D(const UniStgGrid2D &amp;grid, int order_accuracy=kDefaultOrderAccuracy, Real mimetic_threshold=kDefaultMimeticThreshold)</div><div class="ttdoc">Factory method implementing the CBS Algorithm to build operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__div__2d_8cc_source.html#l00079">mtk_div_2d.cc:79</a></div></div>
 <div class="ttc" id="group__c01-roots_html_gac080bbbf5cbb5502c9f00405f894857d"><div class="ttname"><a href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a></div><div class="ttdeci">float Real</div><div class="ttdoc">Users can simply change this to build a double- or single-precision MTK. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00083">mtk_roots.h:83</a></div></div>
 <div class="ttc" id="classmtk_1_1Div2D_html"><div class="ttname"><a href="classmtk_1_1Div2D.html">mtk::Div2D</a></div><div class="ttdoc">Implements a 2D mimetic divergence operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__div__2d_8h_source.html#l00076">mtk_div_2d.h:76</a></div></div>
@@ -227,9 +231,9 @@ $(document).ready(function(){initNavTree('mtk__lap__2d_8cc_source.html','');});
 <div class="ttc" id="mtk__lap__2d_8h_html"><div class="ttname"><a href="mtk__lap__2d_8h.html">mtk_lap_2d.h</a></div><div class="ttdoc">Includes the implementation of the class Lap2D. </div></div>
 <div class="ttc" id="classmtk_1_1Lap2D_html"><div class="ttname"><a href="classmtk_1_1Lap2D.html">mtk::Lap2D</a></div><div class="ttdoc">Implements a 2D mimetic Laplacian operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__2d_8h_source.html#l00076">mtk_lap_2d.h:76</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid2D_html"><div class="ttname"><a href="classmtk_1_1UniStgGrid2D.html">mtk::UniStgGrid2D</a></div><div class="ttdoc">Uniform 2D Staggered Grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__2d_8h_source.html#l00079">mtk_uni_stg_grid_2d.h:79</a></div></div>
-<div class="ttc" id="classmtk_1_1Grad2D_html_a4f5a17519455f833bb70b8434c272312"><div class="ttname"><a href="classmtk_1_1Grad2D.html#a4f5a17519455f833bb70b8434c272312">mtk::Grad2D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix() const </div><div class="ttdoc">Return the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__2d_8cc_source.html#l00143">mtk_grad_2d.cc:143</a></div></div>
-<div class="ttc" id="classmtk_1_1Lap2D_html_aaac0a22eaa2f036869b24fd420ce5761"><div class="ttname"><a href="classmtk_1_1Lap2D.html#aaac0a22eaa2f036869b24fd420ce5761">mtk::Lap2D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix() const </div><div class="ttdoc">Return the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__2d_8cc_source.html#l00106">mtk_lap_2d.cc:106</a></div></div>
-<div class="ttc" id="classmtk_1_1Div2D_html_ae4f880fb28ad2379906e9ac0dfaa4458"><div class="ttname"><a href="classmtk_1_1Div2D.html#ae4f880fb28ad2379906e9ac0dfaa4458">mtk::Div2D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix() const </div><div class="ttdoc">Return the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__div__2d_8cc_source.html#l00145">mtk_div_2d.cc:145</a></div></div>
+<div class="ttc" id="classmtk_1_1Grad2D_html_a4f5a17519455f833bb70b8434c272312"><div class="ttname"><a href="classmtk_1_1Grad2D.html#a4f5a17519455f833bb70b8434c272312">mtk::Grad2D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix() const </div><div class="ttdoc">Return the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__2d_8cc_source.html#l00145">mtk_grad_2d.cc:145</a></div></div>
+<div class="ttc" id="classmtk_1_1Lap2D_html_aaac0a22eaa2f036869b24fd420ce5761"><div class="ttname"><a href="classmtk_1_1Lap2D.html#aaac0a22eaa2f036869b24fd420ce5761">mtk::Lap2D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix() const </div><div class="ttdoc">Return the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__2d_8cc_source.html#l00110">mtk_lap_2d.cc:110</a></div></div>
+<div class="ttc" id="classmtk_1_1Div2D_html_ae4f880fb28ad2379906e9ac0dfaa4458"><div class="ttname"><a href="classmtk_1_1Div2D.html#ae4f880fb28ad2379906e9ac0dfaa4458">mtk::Div2D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix() const </div><div class="ttdoc">Return the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__div__2d_8cc_source.html#l00147">mtk_div_2d.cc:147</a></div></div>
 <div class="ttc" id="classmtk_1_1Grad2D_html"><div class="ttname"><a href="classmtk_1_1Grad2D.html">mtk::Grad2D</a></div><div class="ttdoc">Implements a 2D mimetic gradient operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__2d_8h_source.html#l00076">mtk_grad_2d.h:76</a></div></div>
 <div class="ttc" id="mtk__roots_8h_html"><div class="ttname"><a href="mtk__roots_8h.html">mtk_roots.h</a></div><div class="ttdoc">Fundamental definitions to be used across all classes of the MTK. </div></div>
 <div class="ttc" id="mtk__blas__adapter_8h_html"><div class="ttname"><a href="mtk__blas__adapter_8h.html">mtk_blas_adapter.h</a></div><div class="ttdoc">Adapter class for the BLAS API. </div></div>
@@ -239,7 +243,7 @@ $(document).ready(function(){initNavTree('mtk__lap__2d_8cc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="mtk__lap__2d_8cc.html">mtk_lap_2d.cc</a></li>
-    <li class="footer">Generated on Thu Nov 26 2015 13:28:47 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Fri Nov 27 2015 18:42:56 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

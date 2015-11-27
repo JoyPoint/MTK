@@ -123,7 +123,7 @@
 00126                                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_cells\_x,
 00127                                 \textcolor{keyword}{const} \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{mtk::FieldNature} &nature) \{
 00128 
-00129 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00129 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00130   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(west\_bndy\_x < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00131   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(east\_bndy\_x < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00132   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(east\_bndy\_x <= west\_bndy\_x, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
@@ -174,7 +174,7 @@
 \hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00176}{}\hyperlink{classmtk_1_1UniStgGrid1D_ab49f0009b66b0a58ae7f70a538f4d12b}{00176} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid1D_ab49f0009b66b0a58ae7f70a538f4d12b}{mtk::UniStgGrid1D::BindScalarField}(
 00177     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*ScalarField)(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx)) \{
 00178 
-00179 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00179 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00180   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nature\_ == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a3d8cb27a993651a74d67fb8c98ae91b2}{mtk::VECTOR}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00181 \textcolor{preprocessor}{  #endif}
 00182 
@@ -208,7 +208,7 @@
 \hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00212}{}\hyperlink{classmtk_1_1UniStgGrid1D_a5703f1f875f52f6de8f7db5a6250fafa}{00212} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid1D_a5703f1f875f52f6de8f7db5a6250fafa}{mtk::UniStgGrid1D::BindVectorField}(
 00213     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*VectorField)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx)) \{
 00214 
-00215 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00215 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00216   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nature\_ == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{mtk::SCALAR}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00217 \textcolor{preprocessor}{  #endif}
 00218 

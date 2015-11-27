@@ -173,7 +173,7 @@
 00174                                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_cells\_y,
 00175                                 \textcolor{keyword}{const} \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{mtk::FieldNature} &nature) \{
 00176 
-00177 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00177 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00178   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(west\_bndy < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00179   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(east\_bndy < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00180   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(east\_bndy <= west\_bndy, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
@@ -271,7 +271,7 @@
 \hypertarget{mtk__uni__stg__grid__2d_8cc_source_l00270}{}\hyperlink{classmtk_1_1UniStgGrid2D_a5f9910ffb94e0314b16c026c4b5762ee}{00270} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid2D_a5f9910ffb94e0314b16c026c4b5762ee}{mtk::UniStgGrid2D::BindScalarField}(
 00271     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*ScalarField)(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &xx, \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &yy)) \{
 00272 
-00273 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00273 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00274   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nature\_ != \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{mtk::SCALAR}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00275 \textcolor{preprocessor}{  #endif}
 00276 
@@ -310,7 +310,7 @@
 00312 
 00313   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < num\_cells\_y\_ + 2; ++ii) \{
 00314     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < num\_cells\_x\_ + 2; ++jj) \{
-00315 \textcolor{preprocessor}{      #if MTK\_DEBUG\_LEVEL > 0}
+00315 \textcolor{preprocessor}{      #if MTK\_VERBOSE\_LEVEL > 6}
 00316       std::cout << \textcolor{stringliteral}{"Pushing value for x = "} << discrete\_domain\_x\_[jj] <<
 00317         \textcolor{stringliteral}{" y = "} << discrete\_domain\_y\_[ii] << std::endl;
 00318 \textcolor{preprocessor}{      #endif}
@@ -371,14 +371,14 @@
 00375       discrete\_field\_.push\_back(VectorField(discrete\_domain\_x\_[jj],
 00376                                             discrete\_domain\_y\_[ii]));
 00377 
-00378 \textcolor{preprocessor}{      #if MTK\_DEBUG\_LEVEL > 0}
+00378 \textcolor{preprocessor}{      #if MTK\_VERBOSE\_LEVEL > 6}
 00379       std::cout << \textcolor{stringliteral}{"Binding v at x = "} << discrete\_domain\_x\_[jj] << \textcolor{stringliteral}{" y = "} <<
 00380         discrete\_domain\_y\_[ii] << \textcolor{stringliteral}{" = "} <<
 00381         VectorField(discrete\_domain\_x\_[jj],discrete\_domain\_y\_[ii]) << std::endl;
 00382 \textcolor{preprocessor}{      #endif}
 00383     \}
 00384   \}
-00385 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00385 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 6}
 00386   std::cout << std::endl;
 00387 \textcolor{preprocessor}{  #endif}
 00388 \}
@@ -399,14 +399,14 @@
 00403       discrete\_field\_.push\_back(VectorField(discrete\_domain\_x\_[jj],
 00404                                             discrete\_domain\_y\_[ii]));
 00405 
-00406 \textcolor{preprocessor}{      #if MTK\_DEBUG\_LEVEL > 0}
+00406 \textcolor{preprocessor}{      #if MTK\_VERBOSE\_LEVEL > 6}
 00407       std::cout << \textcolor{stringliteral}{"Binding v at x = "} << discrete\_domain\_x\_[jj] << \textcolor{stringliteral}{" y = "} <<
 00408         discrete\_domain\_y\_[ii] << \textcolor{stringliteral}{" = "} <<
 00409         VectorField(discrete\_domain\_x\_[jj],discrete\_domain\_y\_[ii]) << std::endl;
 00410 \textcolor{preprocessor}{      #endif}
 00411     \}
 00412   \}
-00413 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00413 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 6}
 00414   std::cout << std::endl;
 00415 \textcolor{preprocessor}{  #endif}
 00416 \}
@@ -415,7 +415,7 @@
 00419   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldPComponent)(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &xx, \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &yy),
 00420   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldQComponent)(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &xx, \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &yy)) \{
 00421 
-00422 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00422 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00423   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nature\_ != \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a3d8cb27a993651a74d67fb8c98ae91b2}{mtk::VECTOR}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00424 \textcolor{preprocessor}{  #endif}
 00425 

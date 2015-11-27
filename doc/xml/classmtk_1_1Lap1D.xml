@@ -221,15 +221,15 @@
 <orderedlist>
 <listitem><para>The first entry of the array will contain the order of accuracy.</para></listitem><listitem><para>The second entry of the array will contain the collection of approximating coefficients for the interior of the grid.</para></listitem><listitem><para>We DO NOT have weights in this operator. Copy mimetic bndy coeffs. </para></listitem></orderedlist>
 </para>        </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lap_1d.h" line="120" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lap_1d.cc" bodystart="135" bodyend="280"/>
-        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lap_1d.h" line="120" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lap_1d.cc" bodystart="135" bodyend="284"/>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="61" endline="78">mtk::Tools::Prevent</references>
         <references refid="group__c01-roots_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__roots_8h" startline="116">mtk::kZero</references>
         <references refid="group__c01-roots_1ga0898eef2108473e44a5223932d571c31" compoundref="mtk__roots_8h" startline="167">mtk::kCriticalOrderAccuracyDiv</references>
         <references refid="classmtk_1_1Grad1D_1a74ef5245cfae6fd158bd7f563a0c2e52" compoundref="mtk__grad__1d_8cc" startline="182" endline="319">mtk::Grad1D::ConstructGrad1D</references>
         <references refid="classmtk_1_1Div1D_1a52fcd1542f11e606e36bd188e48bfdf7" compoundref="mtk__div__1d_8cc" startline="176" endline="313">mtk::Div1D::ConstructDiv1D</references>
         <references refid="classmtk_1_1UniStgGrid1D_1a6e7173b01241632cf509496d66b9f74c" compoundref="mtk__uni__stg__grid__1d_8cc" startline="156" endline="159">mtk::UniStgGrid1D::delta_x</references>
-        <references refid="classmtk_1_1Grad1D_1a77b2eddbe4ab03f469306c604d505b1a" compoundref="mtk__grad__1d_8cc" startline="356" endline="422">mtk::Grad1D::ReturnAsDenseMatrix</references>
-        <references refid="classmtk_1_1Div1D_1a213fddbaaf86e4840c6a9649b69c2d49" compoundref="mtk__div__1d_8cc" startline="351" endline="412">mtk::Div1D::ReturnAsDenseMatrix</references>
+        <references refid="classmtk_1_1Grad1D_1a77b2eddbe4ab03f469306c604d505b1a" compoundref="mtk__grad__1d_8cc" startline="356" endline="423">mtk::Grad1D::ReturnAsDenseMatrix</references>
+        <references refid="classmtk_1_1Div1D_1a213fddbaaf86e4840c6a9649b69c2d49" compoundref="mtk__div__1d_8cc" startline="350" endline="412">mtk::Div1D::ReturnAsDenseMatrix</references>
         <references refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="409" endline="464">mtk::BLASAdapter::RealDenseMM</references>
         <references refid="classmtk_1_1DenseMatrix_1a4b23ecbebd970b5eea915dbb50691024" compoundref="mtk__dense__matrix_8cc" startline="348" endline="358">mtk::DenseMatrix::GetValue</references>
       </memberdef>
@@ -252,9 +252,9 @@
 <listitem><para>Extract mimetic coefficients from the west boundary.</para></listitem><listitem><para>Extract interior coefficients.</para></listitem><listitem><para>Extract mimetic coefficients from the west boundary to go east.</para></listitem></orderedlist>
 </para><para><simplesect kind="note"><para>We could create two matrices of the requested size and multiply them, but that would be inefficient, since we already have the computed coefficients stored. We just have to set them in place, in a matrix of an adequate size, and multiply them times the inverse of the square of the step size, in order for the matrix to actually represent a differential operator. </para></simplesect>
 </para>        </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lap_1d.h" line="128" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lap_1d.cc" bodystart="282" bodyend="350"/>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lap_1d.h" line="128" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lap_1d.cc" bodystart="286" bodyend="354"/>
         <references refid="classmtk_1_1UniStgGrid1D_1af1b3729d8afa07be5b2775ed68015b80" compoundref="mtk__uni__stg__grid__1d_8cc" startline="171" endline="174">mtk::UniStgGrid1D::num_cells_x</references>
-        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="61" endline="81">mtk::Tools::Prevent</references>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="61" endline="78">mtk::Tools::Prevent</references>
         <references refid="classmtk_1_1UniStgGrid1D_1a6e7173b01241632cf509496d66b9f74c" compoundref="mtk__uni__stg__grid__1d_8cc" startline="156" endline="159">mtk::UniStgGrid1D::delta_x</references>
         <references refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" compoundref="mtk__roots_8h" startline="117">mtk::kOne</references>
         <references refid="classmtk_1_1DenseMatrix_1a784ce5784109ac86bfb9d8562b334b13" compoundref="mtk__dense__matrix_8cc" startline="360" endline="371">mtk::DenseMatrix::SetValue</references>
@@ -276,7 +276,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lap_1d.h" line="135" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lap_1d.cc" bodystart="352" bodyend="359"/>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lap_1d.h" line="135" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lap_1d.cc" bodystart="356" bodyend="363"/>
         <references refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" compoundref="mtk__dense__matrix_8cc" startline="343" endline="346">mtk::DenseMatrix::data</references>
       </memberdef>
       </sectiondef>

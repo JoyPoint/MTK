@@ -184,7 +184,7 @@
 \hypertarget{mtk__matrix_8cc_source_l00187}{}\hyperlink{classmtk_1_1Matrix_a111b89f2f21d06a59b8d043123bec625}{00187} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a111b89f2f21d06a59b8d043123bec625}{mtk::Matrix::set\_storage}(\textcolor{keyword}{const} \hyperlink{group__c02-enums_ga25b67ec6a2afeee69f9bb196a9c66619}{mtk::MatrixStorage} &ss) 
       noexcept \{
 00188 
-00189 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00189 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00190   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(!(ss == \hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE} ||
 00191                         ss == \hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619aef1d4271d5005282978a3a40a8a52c9b}{mtk::BANDED} ||
 00192                         ss == \hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a87619d374775e937bca967402b988b8b}{mtk::CRS}),
@@ -197,7 +197,7 @@
 \hypertarget{mtk__matrix_8cc_source_l00199}{}\hyperlink{classmtk_1_1Matrix_a8bdaf3f8307b00a36843359f165e1f17}{00199} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a8bdaf3f8307b00a36843359f165e1f17}{mtk::Matrix::set\_ordering}(\textcolor{keyword}{const} 
       \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{mtk::MatrixOrdering} &oo) noexcept \{
 00200 
-00201 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00201 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00202   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(!(oo == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR} || oo == 
       \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}),
 00203                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
@@ -211,7 +211,7 @@
 00211 
 \hypertarget{mtk__matrix_8cc_source_l00212}{}\hyperlink{classmtk_1_1Matrix_aa4aee0281421c22d9af273b7beb84306}{00212} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_aa4aee0281421c22d9af273b7beb84306}{mtk::Matrix::set\_num\_rows}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &in) noexcept \{
 00213 
-00214 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00214 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00215   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(in < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00216 \textcolor{preprocessor}{  #endif}
 00217 
@@ -223,7 +223,7 @@
 00223 
 \hypertarget{mtk__matrix_8cc_source_l00224}{}\hyperlink{classmtk_1_1Matrix_aad6b4ced4a0447cc7bf2347fe86fd722}{00224} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_aad6b4ced4a0447cc7bf2347fe86fd722}{mtk::Matrix::set\_num\_cols}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &in) noexcept \{
 00225 
-00226 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00226 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00227   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(in < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00228 \textcolor{preprocessor}{  #endif}
 00229 
@@ -235,7 +235,7 @@
 00235 
 \hypertarget{mtk__matrix_8cc_source_l00236}{}\hyperlink{classmtk_1_1Matrix_a6eb14709692df59573548ffd8cf67198}{00236} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a6eb14709692df59573548ffd8cf67198}{mtk::Matrix::set\_num\_zero}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &in) noexcept \{
 00237 
-00238 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00238 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00239   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(in < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00240 \textcolor{preprocessor}{  #endif}
 00241 
@@ -248,7 +248,7 @@
 00249 
 \hypertarget{mtk__matrix_8cc_source_l00250}{}\hyperlink{classmtk_1_1Matrix_a61dba12c767f98cda5343b4b16bbbe77}{00250} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a61dba12c767f98cda5343b4b16bbbe77}{mtk::Matrix::set\_num\_null}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &in) noexcept \{
 00251 
-00252 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00252 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00253   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(in < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00254 \textcolor{preprocessor}{  #endif}
 00255 

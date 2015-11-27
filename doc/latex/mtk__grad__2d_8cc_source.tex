@@ -87,58 +87,60 @@
 00090 
 00091   \textcolor{keywordtype}{bool} info = grad.\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{ConstructGrad1D}(order\_accuracy, mimetic\_threshold);
 00092 
-00093   \textcolor{keywordflow}{if} (!info) \{
-00094     std::cerr << \textcolor{stringliteral}{"Mimetic grad could not be built."} << std::endl;
-00095     \textcolor{keywordflow}{return} info;
-00096   \}
-00097 
-00098   \textcolor{keyword}{auto} west = grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}();
-00099   \textcolor{keyword}{auto} east = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}();
-00100   \textcolor{keyword}{auto} south = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{south\_bndy}();
-00101   \textcolor{keyword}{auto} north = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}();
-00102 
-00103   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid\_x(west, east, num\_cells\_x);
-00104   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid\_y(south, north, num\_cells\_y);
-00105 
-00106   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} Gx(grad.\hyperlink{classmtk_1_1Grad1D_a77b2eddbe4ab03f469306c604d505b1a}{ReturnAsDenseMatrix}(grid\_x));
-00107   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} Gy(grad.\hyperlink{classmtk_1_1Grad1D_a77b2eddbe4ab03f469306c604d505b1a}{ReturnAsDenseMatrix}(grid\_y));
-00108 
-00109   \textcolor{keywordtype}{bool} padded\{\textcolor{keyword}{true}\};
-00110   \textcolor{keywordtype}{bool} transpose\{\textcolor{keyword}{true}\};
-00111 
-00112   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} tix(num\_cells\_x, padded, transpose);
-00113   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} tiy(num\_cells\_y, padded, transpose);
-00114 
-00115   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} gxy(\hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{mtk::DenseMatrix::Kron}(tiy, Gx));
-00116   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} gyx(\hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{mtk::DenseMatrix::Kron}(Gy, tix));
-00117 
-00118 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00119   std::cout << \textcolor{stringliteral}{"Gx: "} << mx << \textcolor{stringliteral}{" by "} << nx << std::endl;
-00120   std::cout << \textcolor{stringliteral}{"Transpose Iy: "} << num\_cells\_y << \textcolor{stringliteral}{" by "} << ny  << std::endl;
-00121   std::cout << \textcolor{stringliteral}{"Gy: "} << my << \textcolor{stringliteral}{" by "} << ny << std::endl;
-00122   std::cout << \textcolor{stringliteral}{"Transpose Ix: "} << num\_cells\_x << \textcolor{stringliteral}{" by "} << nx  << std::endl;
-00123   std::cout << \textcolor{stringliteral}{"Grad 2D: "} << mx*num\_cells\_y + my*num\_cells\_x << \textcolor{stringliteral}{" by "} <<
-00124     nx*ny <<std::endl;
-00125 \textcolor{preprocessor}{  #endif}
-00126 
-00127   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} g2d(mx*num\_cells\_y + my*num\_cells\_x, nx*ny);
+00093 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00094   \textcolor{keywordflow}{if} (!info) \{
+00095     std::cerr << \textcolor{stringliteral}{"Mimetic grad could not be built."} << std::endl;
+00096     \textcolor{keywordflow}{return} info;
+00097   \}
+00098 \textcolor{preprocessor}{  #endif}
+00099 
+00100   \textcolor{keyword}{auto} west = grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}();
+00101   \textcolor{keyword}{auto} east = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}();
+00102   \textcolor{keyword}{auto} south = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{south\_bndy}();
+00103   \textcolor{keyword}{auto} north = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}();
+00104 
+00105   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid\_x(west, east, num\_cells\_x);
+00106   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid\_y(south, north, num\_cells\_y);
+00107 
+00108   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} Gx(grad.\hyperlink{classmtk_1_1Grad1D_a77b2eddbe4ab03f469306c604d505b1a}{ReturnAsDenseMatrix}(grid\_x));
+00109   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} Gy(grad.\hyperlink{classmtk_1_1Grad1D_a77b2eddbe4ab03f469306c604d505b1a}{ReturnAsDenseMatrix}(grid\_y));
+00110 
+00111   \textcolor{keywordtype}{bool} padded\{\textcolor{keyword}{true}\};
+00112   \textcolor{keywordtype}{bool} transpose\{\textcolor{keyword}{true}\};
+00113 
+00114   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} tix(num\_cells\_x, padded, transpose);
+00115   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} tiy(num\_cells\_y, padded, transpose);
+00116 
+00117   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} gxy(\hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{mtk::DenseMatrix::Kron}(tiy, Gx));
+00118   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} gyx(\hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{mtk::DenseMatrix::Kron}(Gy, tix));
+00119 
+00120 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 2}
+00121   std::cout << \textcolor{stringliteral}{"Gx: "} << mx << \textcolor{stringliteral}{" by "} << nx << std::endl;
+00122   std::cout << \textcolor{stringliteral}{"Transpose Iy: "} << num\_cells\_y << \textcolor{stringliteral}{" by "} << ny  << std::endl;
+00123   std::cout << \textcolor{stringliteral}{"Gy: "} << my << \textcolor{stringliteral}{" by "} << ny << std::endl;
+00124   std::cout << \textcolor{stringliteral}{"Transpose Ix: "} << num\_cells\_x << \textcolor{stringliteral}{" by "} << nx  << std::endl;
+00125   std::cout << \textcolor{stringliteral}{"Grad 2D: "} << mx*num\_cells\_y + my*num\_cells\_x << \textcolor{stringliteral}{" by "} <<
+00126     nx*ny <<std::endl;
+00127 \textcolor{preprocessor}{  #endif}
 00128 
-00129   \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} ii = 0; ii < nx*ny; ii++) \{
-00130     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = 0; jj < mx*num\_cells\_y; jj++) \{
-00131       g2d.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(jj,ii, gxy.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(jj,ii));
-00132     \}
-00133     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} kk = 0; kk < my*num\_cells\_x; kk++) \{
-00134       g2d.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(kk + mx*num\_cells\_y, ii, gyx.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(kk,ii));
-00135     \}
-00136   \}
-00137 
-00138   gradient\_ = g2d;
+00129   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} g2d(mx*num\_cells\_y + my*num\_cells\_x, nx*ny);
+00130 
+00131   \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} ii = 0; ii < nx*ny; ii++) \{
+00132     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = 0; jj < mx*num\_cells\_y; jj++) \{
+00133       g2d.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(jj,ii, gxy.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(jj,ii));
+00134     \}
+00135     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} kk = 0; kk < my*num\_cells\_x; kk++) \{
+00136       g2d.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(kk + mx*num\_cells\_y, ii, gyx.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(kk,ii));
+00137     \}
+00138   \}
 00139 
-00140   \textcolor{keywordflow}{return} info;
-00141 \}
-00142 
-\hypertarget{mtk__grad__2d_8cc_source_l00143}{}\hyperlink{classmtk_1_1Grad2D_a4f5a17519455f833bb70b8434c272312}{00143} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Grad2D_a4f5a17519455f833bb70b8434c272312}{mtk::Grad2D::ReturnAsDenseMatrix}()\textcolor{keyword}{ const }\{
+00140   gradient\_ = g2d;
+00141 
+00142   \textcolor{keywordflow}{return} info;
+00143 \}
 00144 
-00145   \textcolor{keywordflow}{return} gradient\_;
-00146 \}
+\hypertarget{mtk__grad__2d_8cc_source_l00145}{}\hyperlink{classmtk_1_1Grad2D_a4f5a17519455f833bb70b8434c272312}{00145} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Grad2D_a4f5a17519455f833bb70b8434c272312}{mtk::Grad2D::ReturnAsDenseMatrix}()\textcolor{keyword}{ const }\{
+00146 
+00147   \textcolor{keywordflow}{return} gradient\_;
+00148 \}
 \end{DoxyCode}

@@ -186,7 +186,7 @@ $(document).ready(function(){initNavTree('mtk__robin__bc__descriptor__1d_8cc_sou
 <div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="classmtk_1_1RobinBCDescriptor1D.html#acdf8a75f8c39b3b8a032af81e0fd2e89">  118</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#acdf8a75f8c39b3b8a032af81e0fd2e89">mtk::RobinBCDescriptor1D::PushBackWestCoeff</a>(</div>
 <div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="group__c07-mim__ops.html#ga04276745b4d511f0f3c636d6e0df7c2d">mtk::CoefficientFunction0D</a> cw) {</div>
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(cw == <span class="keyword">nullptr</span>, __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(highest_order_diff_west_ &gt; 1,</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;                      __FILE__, __LINE__, __func__);</div>
@@ -200,7 +200,7 @@ $(document).ready(function(){initNavTree('mtk__robin__bc__descriptor__1d_8cc_sou
 <div class="line"><a name="l00132"></a><span class="lineno"><a class="line" href="classmtk_1_1RobinBCDescriptor1D.html#a7791c11e0950656cb5608a77918c28d4">  132</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#a7791c11e0950656cb5608a77918c28d4">mtk::RobinBCDescriptor1D::PushBackEastCoeff</a>(</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    <a class="code" href="group__c07-mim__ops.html#ga04276745b4d511f0f3c636d6e0df7c2d">mtk::CoefficientFunction0D</a> ce) {</div>
 <div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(ce == <span class="keyword">nullptr</span>, __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(highest_order_diff_east_ &gt; 1,</div>
 <div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;                      __FILE__, __LINE__, __func__);</div>
@@ -214,7 +214,7 @@ $(document).ready(function(){initNavTree('mtk__robin__bc__descriptor__1d_8cc_sou
 <div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="classmtk_1_1RobinBCDescriptor1D.html#a06bfaf0126d528247c3c76fdd19f4b85">  146</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#a06bfaf0126d528247c3c76fdd19f4b85">mtk::RobinBCDescriptor1D::set_west_condition</a>(</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> (*west_condition)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;tt)) noexcept {</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(west_condition == <span class="keyword">nullptr</span>, __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;<span class="preprocessor">  #endif</span></div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
@@ -224,7 +224,7 @@ $(document).ready(function(){initNavTree('mtk__robin__bc__descriptor__1d_8cc_sou
 <div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="classmtk_1_1RobinBCDescriptor1D.html#a4edc92eeaaaa3f1e7f2cedfea3d35681">  156</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#a4edc92eeaaaa3f1e7f2cedfea3d35681">mtk::RobinBCDescriptor1D::set_east_condition</a>(</div>
 <div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;    <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> (*east_condition)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;tt)) noexcept {</div>
 <div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
 <div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(east_condition == <span class="keyword">nullptr</span>, __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;<span class="preprocessor">  #endif</span></div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
@@ -236,7 +236,7 @@ $(document).ready(function(){initNavTree('mtk__robin__bc__descriptor__1d_8cc_sou
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;    <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> &amp;matrix,</div>
 <div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;time)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(highest_order_diff_west_ == -1,</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;                      __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(highest_order_diff_east_ == -1,</div>
@@ -291,7 +291,7 @@ $(document).ready(function(){initNavTree('mtk__robin__bc__descriptor__1d_8cc_sou
 <div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    <a class="code" href="classmtk_1_1UniStgGrid1D.html">UniStgGrid1D</a> &amp;grid,</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;    <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;time)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="preprocessor">  #if MTK_DEBUG_LEVEL &gt; 0</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
 <div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(grid.<a class="code" href="classmtk_1_1UniStgGrid1D.html#af1b3729d8afa07be5b2775ed68015b80">num_cells_x</a>() == 0, __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(west_condition_ == <span class="keyword">nullptr</span>, __FILE__, __LINE__, __func__);</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(east_condition_ == <span class="keyword">nullptr</span>, __FILE__, __LINE__, __func__);</div>
@@ -339,7 +339,7 @@ $(document).ready(function(){initNavTree('mtk__robin__bc__descriptor__1d_8cc_sou
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="mtk__robin__bc__descriptor__1d_8cc.html">mtk_robin_bc_descriptor_1d.cc</a></li>
-    <li class="footer">Generated on Thu Nov 26 2015 13:28:47 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Fri Nov 27 2015 18:42:56 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

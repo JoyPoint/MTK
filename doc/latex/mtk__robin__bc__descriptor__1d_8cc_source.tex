@@ -84,7 +84,7 @@
 \hypertarget{mtk__robin__bc__descriptor__1d_8cc_source_l00118}{}\hyperlink{classmtk_1_1RobinBCDescriptor1D_acdf8a75f8c39b3b8a032af81e0fd2e89}{00118} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1RobinBCDescriptor1D_acdf8a75f8c39b3b8a032af81e0fd2e89}{mtk::RobinBCDescriptor1D::PushBackWestCoeff}(
 00119     \hyperlink{group__c07-mim__ops_ga04276745b4d511f0f3c636d6e0df7c2d}{mtk::CoefficientFunction0D} cw) \{
 00120 
-00121 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00121 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00122   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(cw == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00123   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(highest\_order\_diff\_west\_ > 1,
 00124                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
@@ -98,7 +98,7 @@
 \hypertarget{mtk__robin__bc__descriptor__1d_8cc_source_l00132}{}\hyperlink{classmtk_1_1RobinBCDescriptor1D_a7791c11e0950656cb5608a77918c28d4}{00132} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1RobinBCDescriptor1D_a7791c11e0950656cb5608a77918c28d4}{mtk::RobinBCDescriptor1D::PushBackEastCoeff}(
 00133     \hyperlink{group__c07-mim__ops_ga04276745b4d511f0f3c636d6e0df7c2d}{mtk::CoefficientFunction0D} ce) \{
 00134 
-00135 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00135 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00136   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(ce == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00137   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(highest\_order\_diff\_east\_ > 1,
 00138                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
@@ -112,7 +112,7 @@
 \hypertarget{mtk__robin__bc__descriptor__1d_8cc_source_l00146}{}\hyperlink{classmtk_1_1RobinBCDescriptor1D_a06bfaf0126d528247c3c76fdd19f4b85}{00146} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1RobinBCDescriptor1D_a06bfaf0126d528247c3c76fdd19f4b85}{mtk::RobinBCDescriptor1D::set\_west\_condition}(
 00147     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*west\_condition)(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &tt)) noexcept \{
 00148 
-00149 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00149 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00150   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(west\_condition == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00151 \textcolor{preprocessor}{  #endif}
 00152 
@@ -122,7 +122,7 @@
 \hypertarget{mtk__robin__bc__descriptor__1d_8cc_source_l00156}{}\hyperlink{classmtk_1_1RobinBCDescriptor1D_a4edc92eeaaaa3f1e7f2cedfea3d35681}{00156} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1RobinBCDescriptor1D_a4edc92eeaaaa3f1e7f2cedfea3d35681}{mtk::RobinBCDescriptor1D::set\_east\_condition}(
 00157     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*east\_condition)(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &tt)) noexcept \{
 00158 
-00159 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00159 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00160   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(east\_condition == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00161 \textcolor{preprocessor}{  #endif}
 00162 
@@ -134,7 +134,7 @@
 00168     \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &matrix,
 00169     \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &time)\textcolor{keyword}{ const }\{
 00170 
-00171 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00171 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00172   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(highest\_order\_diff\_west\_ == -1,
 00173                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00174   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(highest\_order\_diff\_east\_ == -1,
@@ -189,7 +189,7 @@
 00247     \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid,
 00248     \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &time)\textcolor{keyword}{ const }\{
 00249 
-00250 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00250 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
 00251   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00252   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(west\_condition\_ == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00253   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(east\_condition\_ == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);

@@ -89,58 +89,60 @@
 00092 
 00093   \textcolor{keywordtype}{bool} info = div.\hyperlink{classmtk_1_1Div1D_a52fcd1542f11e606e36bd188e48bfdf7}{ConstructDiv1D}(order\_accuracy, mimetic\_threshold);
 00094 
-00095   \textcolor{keywordflow}{if} (!info) \{
-00096     std::cerr << \textcolor{stringliteral}{"Mimetic div could not be built."} << std::endl;
-00097     \textcolor{keywordflow}{return} info;
-00098   \}
-00099 
-00100   \textcolor{keyword}{auto} west = grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}();
-00101   \textcolor{keyword}{auto} east = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}();
-00102   \textcolor{keyword}{auto} south = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{south\_bndy}();
-00103   \textcolor{keyword}{auto} north = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}();
-00104 
-00105   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid\_x(west, east, num\_cells\_x);
-00106   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid\_y(south, north, num\_cells\_y);
-00107 
-00108   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} dx(div.\hyperlink{classmtk_1_1Div1D_a213fddbaaf86e4840c6a9649b69c2d49}{ReturnAsDenseMatrix}(grid\_x));
-00109   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} dy(div.\hyperlink{classmtk_1_1Div1D_a213fddbaaf86e4840c6a9649b69c2d49}{ReturnAsDenseMatrix}(grid\_y));
-00110 
-00111   \textcolor{keywordtype}{bool} padded\{\textcolor{keyword}{true}\};
-00112   \textcolor{keywordtype}{bool} transpose\{\textcolor{keyword}{false}\};
-00113 
-00114   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} ix(num\_cells\_x, padded, transpose);
-00115   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} iy(num\_cells\_y, padded, transpose);
-00116 
-00117   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} dxy(\hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{mtk::DenseMatrix::Kron}(iy, dx));
-00118   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} dyx(\hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{mtk::DenseMatrix::Kron}(dy, ix));
-00119 
-00120 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00121   std::cout << \textcolor{stringliteral}{"Dx: "} << mx << \textcolor{stringliteral}{" by "} << nx << std::endl;
-00122   std::cout << \textcolor{stringliteral}{"Iy : "} << num\_cells\_y<< \textcolor{stringliteral}{" by "} << ny  << std::endl;
-00123   std::cout << \textcolor{stringliteral}{"Dy: "} << my << \textcolor{stringliteral}{" by "} << ny << std::endl;
-00124   std::cout << \textcolor{stringliteral}{"Ix : "} << num\_cells\_x<< \textcolor{stringliteral}{" by "} << nx  << std::endl;
-00125   std::cout << \textcolor{stringliteral}{"Div 2D: "} << mx*num\_cells\_y + my*num\_cells\_x << \textcolor{stringliteral}{" by "} <<
-00126     nx*ny <<std::endl;
-00127 \textcolor{preprocessor}{  #endif}
-00128 
-00129   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} d2d(mx*my, nx*num\_cells\_y + ny*num\_cells\_x);
+00095 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00096   \textcolor{keywordflow}{if} (!info) \{
+00097     std::cerr << \textcolor{stringliteral}{"Mimetic div could not be built."} << std::endl;
+00098     \textcolor{keywordflow}{return} info;
+00099   \}
+00100 \textcolor{preprocessor}{  #endif}
+00101 
+00102   \textcolor{keyword}{auto} west = grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}();
+00103   \textcolor{keyword}{auto} east = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}();
+00104   \textcolor{keyword}{auto} south = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{south\_bndy}();
+00105   \textcolor{keyword}{auto} north = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}();
+00106 
+00107   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid\_x(west, east, num\_cells\_x);
+00108   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid\_y(south, north, num\_cells\_y);
+00109 
+00110   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} dx(div.\hyperlink{classmtk_1_1Div1D_a213fddbaaf86e4840c6a9649b69c2d49}{ReturnAsDenseMatrix}(grid\_x));
+00111   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} dy(div.\hyperlink{classmtk_1_1Div1D_a213fddbaaf86e4840c6a9649b69c2d49}{ReturnAsDenseMatrix}(grid\_y));
+00112 
+00113   \textcolor{keywordtype}{bool} padded\{\textcolor{keyword}{true}\};
+00114   \textcolor{keywordtype}{bool} transpose\{\textcolor{keyword}{false}\};
+00115 
+00116   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} ix(num\_cells\_x, padded, transpose);
+00117   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} iy(num\_cells\_y, padded, transpose);
+00118 
+00119   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} dxy(\hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{mtk::DenseMatrix::Kron}(iy, dx));
+00120   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} dyx(\hyperlink{classmtk_1_1DenseMatrix_a01d3d8bd502870f93bf3a88a0cc5fb49}{mtk::DenseMatrix::Kron}(dy, ix));
+00121 
+00122 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 2}
+00123   std::cout << \textcolor{stringliteral}{"Dx: "} << mx << \textcolor{stringliteral}{" by "} << nx << std::endl;
+00124   std::cout << \textcolor{stringliteral}{"Iy : "} << num\_cells\_y<< \textcolor{stringliteral}{" by "} << ny  << std::endl;
+00125   std::cout << \textcolor{stringliteral}{"Dy: "} << my << \textcolor{stringliteral}{" by "} << ny << std::endl;
+00126   std::cout << \textcolor{stringliteral}{"Ix : "} << num\_cells\_x<< \textcolor{stringliteral}{" by "} << nx  << std::endl;
+00127   std::cout << \textcolor{stringliteral}{"Div 2D: "} << mx*num\_cells\_y + my*num\_cells\_x << \textcolor{stringliteral}{" by "} <<
+00128     nx*ny <<std::endl;
+00129 \textcolor{preprocessor}{  #endif}
 00130 
-00131   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < mx*my; ii++) \{
-00132     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < nx*num\_cells\_y; jj++) \{
-00133       d2d.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, dxy.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(ii,jj));
-00134     \}
-00135     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} kk=0; kk<ny*num\_cells\_x; kk++) \{
-00136       d2d.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, kk + nx*num\_cells\_y, dyx.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(ii, kk));
-00137     \}
-00138   \}
-00139 
-00140   divergence\_ = d2d;
+00131   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} d2d(mx*my, nx*num\_cells\_y + ny*num\_cells\_x);
+00132 
+00133   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < mx*my; ii++) \{
+00134     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < nx*num\_cells\_y; jj++) \{
+00135       d2d.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, dxy.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(ii,jj));
+00136     \}
+00137     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} kk=0; kk<ny*num\_cells\_x; kk++) \{
+00138       d2d.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, kk + nx*num\_cells\_y, dyx.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(ii, kk));
+00139     \}
+00140   \}
 00141 
-00142   \textcolor{keywordflow}{return} info;
-00143 \}
-00144 
-\hypertarget{mtk__div__2d_8cc_source_l00145}{}\hyperlink{classmtk_1_1Div2D_ae4f880fb28ad2379906e9ac0dfaa4458}{00145} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Div2D_ae4f880fb28ad2379906e9ac0dfaa4458}{mtk::Div2D::ReturnAsDenseMatrix}()\textcolor{keyword}{ const }\{
+00142   divergence\_ = d2d;
+00143 
+00144   \textcolor{keywordflow}{return} info;
+00145 \}
 00146 
-00147   \textcolor{keywordflow}{return} divergence\_;
-00148 \}
+\hypertarget{mtk__div__2d_8cc_source_l00147}{}\hyperlink{classmtk_1_1Div2D_ae4f880fb28ad2379906e9ac0dfaa4458}{00147} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Div2D_ae4f880fb28ad2379906e9ac0dfaa4458}{mtk::Div2D::ReturnAsDenseMatrix}()\textcolor{keyword}{ const }\{
+00148 
+00149   \textcolor{keywordflow}{return} divergence\_;
+00150 \}
 \end{DoxyCode}
