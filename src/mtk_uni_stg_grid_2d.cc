@@ -174,7 +174,7 @@ mtk::UniStgGrid2D::UniStgGrid2D(const Real &west_bndy,
                                 const int &num_cells_y,
                                 const mtk::FieldNature &nature) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(west_bndy < mtk::kZero, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(east_bndy < mtk::kZero, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(east_bndy <= west_bndy, __FILE__, __LINE__, __func__);
@@ -270,7 +270,7 @@ mtk::Real* mtk::UniStgGrid2D::discrete_field() {
 void mtk::UniStgGrid2D::BindScalarField(
     Real (*ScalarField)(const Real &xx, const Real &yy)) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nature_ != mtk::SCALAR, __FILE__, __LINE__, __func__);
   #endif
 
@@ -312,7 +312,7 @@ void mtk::UniStgGrid2D::BindScalarField(
 
   for (int ii = 0; ii < num_cells_y_ + 2; ++ii) {
     for (int jj = 0; jj < num_cells_x_ + 2; ++jj) {
-      #if MTK_DEBUG_LEVEL > 0
+      #if MTK_VERBOSE_LEVEL > 6
       std::cout << "Pushing value for x = " << discrete_domain_x_[jj] <<
         " y = " << discrete_domain_y_[ii] << std::endl;
       #endif
@@ -375,14 +375,14 @@ void mtk::UniStgGrid2D::BindVectorFieldPComponent(
       discrete_field_.push_back(VectorField(discrete_domain_x_[jj],
                                             discrete_domain_y_[ii]));
 
-      #if MTK_DEBUG_LEVEL > 0
+      #if MTK_VERBOSE_LEVEL > 6
       std::cout << "Binding v at x = " << discrete_domain_x_[jj] << " y = " <<
         discrete_domain_y_[ii] << " = " <<
         VectorField(discrete_domain_x_[jj],discrete_domain_y_[ii]) << std::endl;
       #endif
     }
   }
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 6
   std::cout << std::endl;
   #endif
 }
@@ -403,14 +403,14 @@ void mtk::UniStgGrid2D::BindVectorFieldQComponent(
       discrete_field_.push_back(VectorField(discrete_domain_x_[jj],
                                             discrete_domain_y_[ii]));
 
-      #if MTK_DEBUG_LEVEL > 0
+      #if MTK_VERBOSE_LEVEL > 6
       std::cout << "Binding v at x = " << discrete_domain_x_[jj] << " y = " <<
         discrete_domain_y_[ii] << " = " <<
         VectorField(discrete_domain_x_[jj],discrete_domain_y_[ii]) << std::endl;
       #endif
     }
   }
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 6
   std::cout << std::endl;
   #endif
 }
@@ -419,7 +419,7 @@ void mtk::UniStgGrid2D::BindVectorField(
   Real (*VectorFieldPComponent)(const Real &xx, const Real &yy),
   Real (*VectorFieldQComponent)(const Real &xx, const Real &yy)) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nature_ != mtk::VECTOR, __FILE__, __LINE__, __func__);
   #endif
 

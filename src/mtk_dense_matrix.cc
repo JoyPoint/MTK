@@ -1,7 +1,7 @@
 /*!
 \file mtk_dense_matrix.nn
 
-\brief Implements a common dense matrix, using a 1D ammay.
+\brief Implements a common dense matrix, using a 1D array.
 
 For developing purposes, it is better to have a not-so-intrincated data
 structure implementing matrices. This is the purpose of this class: to be used
@@ -200,7 +200,7 @@ mtk::DenseMatrix::DenseMatrix(const mtk::DenseMatrix &in) {
 
 mtk::DenseMatrix::DenseMatrix(const int &num_rows, const int &num_cols) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(num_rows < 1, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(num_cols < 1, __FILE__, __LINE__, __func__);
   #endif
@@ -224,7 +224,7 @@ mtk::DenseMatrix::DenseMatrix(const int &rank,
                               const bool &padded,
                               const bool &transpose) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(rank < 1, __FILE__, __LINE__, __func__);
   #endif
 
@@ -266,7 +266,7 @@ mtk::DenseMatrix::DenseMatrix(const mtk::Real *const gen,
                               const int &pro_length,
                               const bool &transpose) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(gen == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(gen_length < 1, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(pro_length < 1, __FILE__, __LINE__, __func__);
@@ -322,7 +322,7 @@ mtk::Matrix mtk::DenseMatrix::matrix_properties() const noexcept {
 
 void mtk::DenseMatrix::SetOrdering(mtk::MatrixOrdering oo) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(!(oo == mtk::ROW_MAJOR || oo == mtk::COL_MAJOR),
                       __FILE__, __LINE__, __func__);
   #endif
@@ -349,7 +349,7 @@ mtk::Real mtk::DenseMatrix::GetValue(
     const int &mm,
     const int &nn) const noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(mm < 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(nn < 0, __FILE__, __LINE__, __func__);
   #endif
@@ -362,7 +362,7 @@ void  mtk::DenseMatrix::SetValue(
     const int &nn,
     const mtk::Real &val) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(mm < 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(nn < 0, __FILE__, __LINE__, __func__);
   #endif

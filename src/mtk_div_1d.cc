@@ -176,7 +176,7 @@ mtk::Div1D::~Div1D() {
 bool mtk::Div1D::ConstructDiv1D(int order_accuracy,
                                 mtk::Real mimetic_threshold) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(order_accuracy < 2, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent((order_accuracy%2) != 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(mimetic_threshold <= mtk::kZero,
@@ -197,7 +197,7 @@ bool mtk::Div1D::ConstructDiv1D(int order_accuracy,
 
   bool abort_construction = ComputeStencilInteriorGrid();
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!abort_construction) {
     std::cerr << "Could NOT complete stage 1." << std::endl;
     std::cerr << "Exiting..." << std::endl;
@@ -245,7 +245,7 @@ bool mtk::Div1D::ConstructDiv1D(int order_accuracy,
 
     abort_construction = ComputeRationalBasisNullSpace();
 
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!abort_construction) {
       std::cerr << "Could NOT complete stage 2.1." << std::endl;
       std::cerr << "Exiting..." << std::endl;
@@ -257,7 +257,7 @@ bool mtk::Div1D::ConstructDiv1D(int order_accuracy,
 
     abort_construction = ComputePreliminaryApproximations();
 
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!abort_construction) {
       std::cerr << "Could NOT complete stage 2.2." << std::endl;
       std::cerr << "Exiting..." << std::endl;
@@ -269,7 +269,7 @@ bool mtk::Div1D::ConstructDiv1D(int order_accuracy,
 
     abort_construction = ComputeWeights();
 
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!abort_construction) {
       std::cerr << "Could NOT complete stage 2.3." << std::endl;
       std::cerr << "Exiting..." << std::endl;
@@ -281,7 +281,7 @@ bool mtk::Div1D::ConstructDiv1D(int order_accuracy,
 
     abort_construction = ComputeStencilBoundaryGrid();
 
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!abort_construction) {
       std::cerr << "Could NOT complete stage 2.4." << std::endl;
       std::cerr << "Exiting..." << std::endl;
@@ -301,7 +301,7 @@ bool mtk::Div1D::ConstructDiv1D(int order_accuracy,
 
   abort_construction = AssembleOperator();
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!abort_construction) {
     std::cerr << "Could NOT complete stage 3." << std::endl;
     std::cerr << "Exiting..." << std::endl;
@@ -329,7 +329,6 @@ mtk::Real *mtk::Div1D::weights_crs() const {
 
 mtk::Real *mtk::Div1D::weights_cbs() const {
 
-
   return weights_cbs_;
 }
 
@@ -353,7 +352,7 @@ mtk::DenseMatrix mtk::Div1D::ReturnAsDenseMatrix(
 
   int nn{grid.num_cells_x()}; // Number of cells on the grid.
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(nn < 3*order_accuracy_ - 1, __FILE__, __LINE__, __func__);
   #endif
@@ -396,7 +395,8 @@ mtk::DenseMatrix mtk::Div1D::ReturnAsDenseMatrix(
   /// 3. Impose center-skew symmetry by permuting the mimetic boundaries.
 
   ee_index = 0;
-  for (auto ii = dd_num_rows - 2; ii >= dd_num_rows - num_extra_rows - 1; ii--) {
+  for (auto ii = dd_num_rows - 2; ii >= dd_num_rows - num_extra_rows - 1; ii--)
+{
     auto cc = 0;
     for (auto jj = dd_num_cols - 1; jj >= 0; jj--) {
       if( cc >= elements_per_row) {
@@ -436,7 +436,7 @@ bool mtk::Div1D::ComputeStencilInteriorGrid() {
     pp[ii] = pp[ii - 1] + mtk::kOne;
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "pp =" << std::endl;
   for (auto ii = 0; ii < order_accuracy_; ++ii) {
     std::cout << std::setw(12) << pp[ii];
@@ -453,7 +453,7 @@ bool mtk::Div1D::ComputeStencilInteriorGrid() {
                                  order_accuracy_,
                                  transpose);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "vander_matrix = " << std::endl;
   std::cout << vander_matrix << std::endl;
   #endif
@@ -467,11 +467,13 @@ bool mtk::Div1D::ComputeStencilInteriorGrid() {
       std::endl;
     std::cerr << memory_allocation_exception.what() << std::endl;
   }
-  memset(coeffs_interior_, mtk::kZero, sizeof(coeffs_interior_[0])*order_accuracy_);
+  memset(coeffs_interior_,
+         mtk::kZero,
+         sizeof(coeffs_interior_[0])*order_accuracy_);
 
   coeffs_interior_[1] = mtk::kOne;
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "oo =" << std::endl;
   for (auto ii = 0; ii < order_accuracy_; ++ii) {
     std::cout << std::setw(12) << coeffs_interior_[ii] << std::endl;
@@ -484,7 +486,7 @@ bool mtk::Div1D::ComputeStencilInteriorGrid() {
   int info{mtk::LAPACKAdapter::SolveDenseSystem(vander_matrix,
                                                 coeffs_interior_)};
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
     std::cout << "System solved! Interior stencil attained!" << std::endl;
     std::cout << std::endl;
@@ -496,7 +498,7 @@ bool mtk::Div1D::ComputeStencilInteriorGrid() {
   }
   #endif
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "coeffs_interior_ =" << std::endl;
   for (auto ii = 0; ii < order_accuracy_; ++ii) {
     std::cout << std::setw(12) << coeffs_interior_[ii];
@@ -534,7 +536,7 @@ bool mtk::Div1D::ComputeRationalBasisNullSpace(void) {
     gg[ii] = gg[ii - 1] + mtk::kOne;
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "gg =" << std::endl;
   for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
     std::cout << std::setw(12) << gg[ii];
@@ -548,7 +550,7 @@ bool mtk::Div1D::ComputeRationalBasisNullSpace(void) {
 
   mtk::DenseMatrix vv_west_t(gg, num_bndy_coeffs_, order_accuracy_ + 1, tran);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "vv_west_t =" << std::endl;
   std::cout << vv_west_t << std::endl;
   #endif
@@ -557,7 +559,7 @@ bool mtk::Div1D::ComputeRationalBasisNullSpace(void) {
 
   mtk::DenseMatrix qq_t(mtk::LAPACKAdapter::QRFactorDenseMatrix(vv_west_t));
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "QQ^T = " << std::endl;
   std::cout << qq_t << std::endl;
   #endif
@@ -576,7 +578,7 @@ bool mtk::Div1D::ComputeRationalBasisNullSpace(void) {
     }
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "KK =" << std::endl;
   std::cout << KK << std::endl;
   std::cout << "KK.num_rows() = " << KK.num_rows() << std::endl;
@@ -612,14 +614,14 @@ bool mtk::Div1D::ComputeRationalBasisNullSpace(void) {
     }
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "SUBK =" << std::endl;
   std::cout << SUBK << std::endl;
   #endif
 
   SUBK.Transpose();
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "SUBK^T =" << std::endl;
   std::cout << SUBK << std::endl;
   #endif
@@ -629,7 +631,7 @@ bool mtk::Div1D::ComputeRationalBasisNullSpace(void) {
 
   mtk::DenseMatrix II(dim_null_, padded, tran);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "II =" << std::endl;
   std::cout << II << std::endl;
   #endif
@@ -650,7 +652,7 @@ bool mtk::Div1D::ComputeRationalBasisNullSpace(void) {
 
   int info{mtk::LAPACKAdapter::SolveDenseSystem(SUBK, II)};
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
     std::cout << "System successfully solved!" <<
       std::endl;
@@ -663,7 +665,7 @@ bool mtk::Div1D::ComputeRationalBasisNullSpace(void) {
   std::cout << std::endl;
   #endif
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "Computed scalers:" << std::endl;
   std::cout << II << std::endl;
   #endif
@@ -672,7 +674,7 @@ bool mtk::Div1D::ComputeRationalBasisNullSpace(void) {
 
   rat_basis_null_space_ = mtk::BLASAdapter::RealDenseMM(KK, II);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "Rational basis for the null-space:" << std::endl;
   std::cout << rat_basis_null_space_ << std::endl;
   #endif
@@ -710,7 +712,7 @@ std::endl;
     gg[ii] = gg[ii - 1] + mtk::kOne;
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "gg0 =" << std::endl;
   for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
     std::cout << std::setw(12) << gg[ii];
@@ -723,7 +725,7 @@ std::endl;
     prem_apps_ = new mtk::Real[num_bndy_coeffs_*dim_null_];
   } catch (std::bad_alloc &memory_allocation_exception) {
     std::cerr << "Memory allocation exception on line " << __LINE__ - 3 <<
-std::endl;
+      std::endl;
     std::cerr << memory_allocation_exception.what() << std::endl;
   }
   memset(prem_apps_,
@@ -735,7 +737,7 @@ std::endl;
   for (auto ll = 0; ll < dim_null_; ++ll) {
 
     // Re-check new generator vector for every iteration except for the first.
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 3
     if (ll > 0) {
       std::cout << "gg" << ll << " =" << std::endl;
       for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
@@ -753,7 +755,7 @@ std::endl;
                          num_bndy_coeffs_, order_accuracy_ + 1,
                          transpose);
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 4
     std::cout << "AA_" << ll << " =" << std::endl;
     std::cout << AA_ << std::endl;
     #endif
@@ -775,7 +777,7 @@ std::endl;
 
     ob[1] = mtk::kOne;
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 4
     std::cout << "ob = " << std::endl << std::endl;
     for (auto ii = 0; ii < ob_ld; ++ii) {
       std::cout << std::setw(12) << ob[ii] << std::endl;
@@ -792,7 +794,7 @@ std::endl;
     int info_{
       mtk::LAPACKAdapter::SolveRectangularDenseSystem(AA_, ob, ob_ld)};
 
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!info_) {
       std::cout << "System successfully solved!" << std::endl << std::endl;
     } else {
@@ -800,7 +802,7 @@ std::endl;
     }
     #endif
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 3
     std::cout << "ob =" << std::endl;
     for (auto ii = 0; ii < ob_ld; ++ii) {
       std::cout << std::setw(12) << ob[ii] << std::endl;
@@ -831,7 +833,7 @@ std::endl;
       ob_bottom[(dim_null_ - 1) - ii] = ob[num_bndy_coeffs_ - ii - 1];
     }
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 3
     std::cout << "ob_bottom =" << std::endl;
     for (auto ii = 0; ii < dim_null_; ++ii) {
       std::cout << std::setw(12) << ob_bottom[ii] << std::endl;
@@ -847,7 +849,7 @@ std::endl;
     // or:                 ob = -1.0*rat_basis_null_space_*ob_bottom + 1.0*ob
     // thus:                Y =    a*A    *x         +   b*Y (DAXPY).
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 3
     std::cout << "Rational basis for the null-space:" << std::endl;
     std::cout << rat_basis_null_space_ << std::endl;
     #endif
@@ -858,7 +860,7 @@ std::endl;
     mtk::BLASAdapter::RealDenseMV(alpha, rat_basis_null_space_,
                                   ob_bottom, beta, ob);
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 3
     std::cout << "scaled ob:" << std::endl;
     for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
       std::cout << std::setw(12) << ob[ii] << std::endl;
@@ -889,7 +891,7 @@ std::endl;
     ob_bottom = nullptr;
   } // End of: for (ll = 0; ll < dim_null; ll++);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "Matrix post-scaled preliminary apps: " << std::endl;
   for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
     for (auto jj = 0; jj < dim_null_; ++jj) {
@@ -944,13 +946,15 @@ bool mtk::Div1D::ComputeWeights(void) {
 
   rat_basis_null_space_.OrderColMajor();
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "Rational basis for the null-space (col. major):" << std::endl;
   std::cout << rat_basis_null_space_ << std::endl;
   #endif
 
   // 1.3. Add final set of columns: rational basis for null-space.
-  for (auto jj = dim_null_ + (order_accuracy_/2 + 1); jj < num_bndy_coeffs_ - 1; ++jj) {
+  for (auto jj = dim_null_ + (order_accuracy_/2 + 1);
+       jj < num_bndy_coeffs_ - 1;
+       ++jj) {
     for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
       auto og =
         (jj - (dim_null_ + (order_accuracy_/2 + 1)))*num_bndy_coeffs_ + ii;
@@ -959,7 +963,7 @@ bool mtk::Div1D::ComputeWeights(void) {
     }
   }
 
-  #if MTK_DEBUG_LEVEL >0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "coeffs_interior_ =" << std::endl;
   for (auto ii = 0; ii < order_accuracy_; ++ii) {
     std::cout << std::setw(12) << coeffs_interior_[ii];
@@ -967,7 +971,7 @@ bool mtk::Div1D::ComputeWeights(void) {
   std::cout << std::endl << std::endl;
   #endif
 
-  #if MTK_DEBUG_LEVEL >0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "Constructed pi matrix for CRS Algorithm: " << std::endl;
   std::cout << pi << std::endl;
   #endif
@@ -1021,9 +1025,11 @@ bool mtk::Div1D::ComputeWeights(void) {
 
   pi.Transpose();
 
-  int info{mtk::LAPACKAdapter::SolveRectangularDenseSystem(pi, weights_cbs_, weights_ld)};
+  int info{mtk::LAPACKAdapter::SolveRectangularDenseSystem(pi,
+                                                           weights_cbs_,
+                                                           weights_ld)};
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
     std::cout << "System successfully solved!" << std::endl << std::endl;
   } else {
@@ -1031,7 +1037,7 @@ bool mtk::Div1D::ComputeWeights(void) {
   }
   #endif
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "hh =" << std::endl;
   for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
     std::cout << std::setw(11) << hh[ii] << std::endl;
@@ -1052,7 +1058,7 @@ bool mtk::Div1D::ComputeWeights(void) {
 
   std::copy(weights_cbs_, weights_cbs_ + (weights_ld - 1), weights_crs_);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "weights_CRSA + lambda =" << std::endl;
   for (auto ii = 0; ii < weights_ld - 1; ++ii) {
     std::cout << std::setw(12) << weights_crs_[ii] << std::endl;
@@ -1109,7 +1115,7 @@ bool mtk::Div1D::ComputeWeights(void) {
       }
     }
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 4
     std::cout << "Constructed PHI matrix for CBS Algorithm: " << std::endl;
     std::cout << phi << std::endl;
     #endif
@@ -1131,7 +1137,7 @@ bool mtk::Div1D::ComputeWeights(void) {
       lamed[ii] = hh[ii + order_accuracy_ + 1] ;
     }
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 3
     std::cout << "lamed =" << std::endl;
     for (auto ii = 0; ii < dim_null_; ++ii) {
       std::cout << std::setw(12) << lamed[ii] << std::endl;
@@ -1148,7 +1154,7 @@ bool mtk::Div1D::ComputeWeights(void) {
       hh[ii] = hh[ii] - temp;
     }
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 3
     std::cout << "big_lambda =" << std::endl;
     for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
       std::cout << std::setw(12) << hh[ii] << std::endl;
@@ -1174,7 +1180,7 @@ bool mtk::Div1D::ComputeWeights(void) {
                                                           copy_result);
       mtk::Real aux{normerr_/norm_};
 
-      #if MTK_DEBUG_LEVEL>0
+      #if MTK_VERBOSE_LEVEL > 2
       std::cout << "Relative norm: " << aux << " " << std::endl;
       std::cout << std::endl;
       #endif
@@ -1185,7 +1191,7 @@ bool mtk::Div1D::ComputeWeights(void) {
       }
     }
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 3
     std::cout << "weights_CBSA + lambda (after brute force search):" <<
       std::endl;
     for (auto ii = 0; ii < num_bndy_coeffs_ - 1; ++ii) {
@@ -1200,7 +1206,7 @@ bool mtk::Div1D::ComputeWeights(void) {
     // chosen to be the objective function and the result of the optimizer is
     // chosen to be the new weights_.
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 2
     std::cout << "Minimum Relative Norm " << minnorm_ << " found at row " <<
       minrow_ + 1 << std::endl;
     std::cout << std::endl;
@@ -1217,7 +1223,7 @@ bool mtk::Div1D::ComputeWeights(void) {
                                                         mimetic_threshold_,
                                                         copy_result);
     mtk::Real aux_{normerr_/norm_};
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 2
     std::cout << "Relative norm: " << aux_ << std::endl;
     std::cout << std::endl;
     #endif
@@ -1234,7 +1240,7 @@ bool mtk::Div1D::ComputeWeights(void) {
 
 bool mtk::Div1D::ComputeStencilBoundaryGrid(void) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "weights_CBSA + lambda =" << std::endl;
   for (auto ii = 0; ii < num_bndy_coeffs_ - 1; ++ii) {
     std::cout << std::setw(12) << weights_cbs_[ii] << std::endl;
@@ -1259,7 +1265,7 @@ bool mtk::Div1D::ComputeStencilBoundaryGrid(void) {
     lambda[ii] = weights_cbs_[order_accuracy_ + ii];
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "lambda =" << std::endl;
   for (auto ii = 0; ii < dim_null_; ++ii) {
     std::cout << std::setw(12) << lambda[ii] << std::endl;
@@ -1284,7 +1290,7 @@ bool mtk::Div1D::ComputeStencilBoundaryGrid(void) {
     alpha[ii] = lambda[ii]/weights_cbs_[ii] ;
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "alpha =" << std::endl;
   for (auto ii = 0; ii < dim_null_; ++ii) {
     std::cout << std::setw(12) << alpha[ii] << std::endl;
@@ -1301,7 +1307,9 @@ bool mtk::Div1D::ComputeStencilBoundaryGrid(void) {
       std::endl;
     std::cerr << memory_allocation_exception.what() << std::endl;
   }
-  memset(mim_bndy_, mtk::kZero, sizeof(mim_bndy_[0])*num_bndy_coeffs_*dim_null_);
+  memset(mim_bndy_,
+         mtk::kZero,
+         sizeof(mim_bndy_[0])*num_bndy_coeffs_*dim_null_);
 
   for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
     for (auto jj = 0; jj < dim_null_; ++jj) {
@@ -1311,7 +1319,7 @@ bool mtk::Div1D::ComputeStencilBoundaryGrid(void) {
     }
   }
 
-  #if MTK_DEBUG_LEVEL >0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "Collection of mimetic approximations:" << std::endl;
   for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
     for (auto jj = 0; jj < dim_null_; ++jj) {
@@ -1334,12 +1342,14 @@ bool mtk::Div1D::ComputeStencilBoundaryGrid(void) {
 bool mtk::Div1D::AssembleOperator(void) {
 
   // The output array will have this form:
-  // 1. The first entry of the array will contain the used order order_accuracy_.
+  // 1. The first entry of the array will contain used order order_accuracy_.
   // 2. The second entry of the array will contain the collection of
   // approximating coefficients for the interior of the grid.
-  // 3. IF order_accuracy_ > 2, then the third entry will contain a collection of weights.
-  // 4. IF order_accuracy_ > 2, the next dim_null_ entries will contain the collections of
-  // approximating coefficients for the west boundary of the grid.
+  // 3. IF order_accuracy_ > 2, then the third entry will contain a collection
+  // of weights.
+  // 4. IF order_accuracy_ > 2, the next dim_null_ entries will contain the
+  // collections of approximating coefficients for the west boundary of the
+  // grid.
 
   if (order_accuracy_ > mtk::kDefaultOrderAccuracy) {
     divergence_length_ =
@@ -1348,7 +1358,7 @@ bool mtk::Div1D::AssembleOperator(void) {
     divergence_length_ = 1 + order_accuracy_;
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "divergence_length_ = " << divergence_length_ << std::endl;
   #endif
 
@@ -1393,7 +1403,7 @@ bool mtk::Div1D::AssembleOperator(void) {
     }
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 1
   std::cout << "1D " << order_accuracy_ << "-order div built!" << std::endl;
   std::cout << std::endl;
   #endif

@@ -64,14 +64,11 @@ void mtk::Tools::Prevent(const bool condition,
                          const char *const fxname) noexcept {
 
   /// \todo Check if this is the best way of stalling execution.
-
-  #if MTK_DEBUG_LEVEL > 0
   if (lineno < 1) {
     std::cerr << __FILE__ << ": " << "Incorrect parameter at line " <<
     __LINE__ - 2 << " (" << __func__ << ")" << std::endl;
     exit(EXIT_FAILURE);
   }
-  #endif
 
   if (condition) {
     std::cerr << fname << ": " << "Incorrect parameter at line " <<
@@ -90,21 +87,19 @@ clock_t mtk::Tools::begin_time_;  // Used to time tests.
 
 void mtk::Tools::BeginUnitTestNo(const int &nn) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
   #endif
 
   test_number_ = nn;
 
-  #if MTK_DEBUG_LEVEL > 0
   std::cout << "Beginning test " << nn << "." << std::endl;
-  #endif
   begin_time_ = clock();
 }
 
 void mtk::Tools::EndUnitTestNo(const int &nn) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(test_number_ != nn, __FILE__, __LINE__, __func__);
   #endif
 

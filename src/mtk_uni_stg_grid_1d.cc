@@ -126,7 +126,7 @@ mtk::UniStgGrid1D::UniStgGrid1D(const Real &west_bndy_x,
                                 const int &num_cells_x,
                                 const mtk::FieldNature &nature) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(west_bndy_x < mtk::kZero, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(east_bndy_x < mtk::kZero, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(east_bndy_x <= west_bndy_x, __FILE__, __LINE__, __func__);
@@ -176,7 +176,7 @@ int mtk::UniStgGrid1D::num_cells_x() const {
 void mtk::UniStgGrid1D::BindScalarField(
     mtk::Real (*ScalarField)(const mtk::Real &xx)) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nature_ == mtk::VECTOR, __FILE__, __LINE__, __func__);
   #endif
 
@@ -212,7 +212,7 @@ void mtk::UniStgGrid1D::BindScalarField(
 void mtk::UniStgGrid1D::BindVectorField(
     mtk::Real (*VectorField)(mtk::Real xx)) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nature_ == mtk::SCALAR, __FILE__, __LINE__, __func__);
   #endif
 

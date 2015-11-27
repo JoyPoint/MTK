@@ -430,7 +430,7 @@ void sormqr_(char *side,
 int mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &mm,
                                          mtk::Real *rhs) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(rhs == nullptr, __FILE__, __LINE__, __func__);
   #endif
 
@@ -467,7 +467,7 @@ int mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &mm,
 
   int nrhs{bb.num_rows()};  // Number of right-hand sides.
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nrhs <= 0, __FILE__, __LINE__, __func__);
   #endif
 
@@ -499,14 +499,14 @@ int mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &mm,
 
   bb.SetOrdering(mtk::COL_MAJOR);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 12
   std::cout << "bb_col_maj_ord =" << std::endl;
   std::cout << bb << std::endl;
   #endif
 
   bb.OrderRowMajor();
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 12
   std::cout << "bb_row_maj_ord =" << std::endl;
   std::cout << bb << std::endl;
   #endif
@@ -574,7 +574,7 @@ mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
   int aaT_num_rows = aa.num_cols();
   int aaT_num_cols = aa.num_rows();
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 12
   std::cout << "Input matrix BEFORE QR factorization:" << std::endl;
   std::cout << aa << std::endl;
   #endif
@@ -589,7 +589,6 @@ mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
           work, &lwork, &info);
   #endif
 
-  #if MTK_DEBUG_LEVEL > 0
   if (info == 0) {
     lwork = (int) work[0];
   } else {
@@ -597,9 +596,8 @@ mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
       std::endl;
     std::cerr << "Exiting..." << std::endl;
   }
-  #endif
 
-  #if MTK_DEBUG_LEVEL>0
+  #if MTK_VERBOSE_LEVEL > 10
   std::cout << "lwork = " << std::endl << std::setw(12) << lwork << std::endl
     << std::endl;
   #endif
@@ -636,16 +634,16 @@ mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
           tau, work, &lwork, &info);
   #endif
 
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
-    #if MTK_DEBUG_LEVEL > 0
     std::cout << "QR factorization completed!" << std::endl << std::endl;
-    #endif
   } else {
     std::cerr << "Error solving system! info = " << info << std::endl;
     std::cerr << "Exiting..." << std::endl;
   }
+  #endif
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 12
   std::cout << "Input matrix AFTER QR factorization:" << std::endl;
   std::cout << aa << std::endl;
   #endif
@@ -662,7 +660,7 @@ mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
 
   mtk::DenseMatrix QQ_(aa.num_cols(),padded,transpose);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 12
   std::cout << "Initialized QQ_T: " << std::endl;
   std::cout << QQ_ << std::endl;
   #endif
@@ -698,16 +696,14 @@ mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
           QQ_.data(), &aux, work, &lwork, &info);
   #endif
 
-  #if MTK_DEBUG_LEVEL > 0
   if (info == 0) {
     lwork = (int) work[0];
   } else {
     std::cerr << "Could not get lwork on line " << __LINE__ - 5 << std::endl;
     std::cerr << "Exiting..." << std::endl;
   }
-  #endif
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 10
   std::cout << "lwork = " << std::endl << std::setw(12) << lwork <<
     std::endl << std::endl;
   #endif
@@ -734,15 +730,15 @@ mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
           QQ_.data(), &aux, work, &lwork, &info);
   #endif
 
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
-    #if MTK_DEBUG_LEVEL>0
     std::cout << "Q matrix successfully assembled!" << std::endl << std::endl;
-    #endif
   } else {
     std::cerr << "Something went wrong solving system! info = " << info <<
       std::endl;
     std::cerr << "Exiting..." << std::endl;
   }
+  #endif
 
   delete[] work;
   work = nullptr;
@@ -771,7 +767,8 @@ int mtk::LAPACKAdapter::SolveRectangularDenseSystem(const mtk::DenseMatrix &aa,
   try {
     work = new mtk::Real[1];
   } catch (std::bad_alloc &memory_allocation_exception) {
-    std::cerr << "Memory allocation exception on line " << __LINE__ - 3 << std::endl;
+    std::cerr << "Memory allocation exception on line " << __LINE__ - 3 <<
+      std::endl;
     std::cerr << memory_allocation_exception.what() << std::endl;
   }
   memset(work, mtk::kZero, sizeof(work[0])*1);
@@ -804,7 +801,7 @@ int mtk::LAPACKAdapter::SolveRectangularDenseSystem(const mtk::DenseMatrix &aa,
     return info;
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 10
   std::cout << "lwork = " << std::endl << std::setw(12)<< lwork <<
     std::endl << std::endl;
   #endif

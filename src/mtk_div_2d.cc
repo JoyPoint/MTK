@@ -92,10 +92,12 @@ bool mtk::Div2D::ConstructDiv2D(const mtk::UniStgGrid2D &grid,
 
   bool info = div.ConstructDiv1D(order_accuracy, mimetic_threshold);
 
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
     std::cerr << "Mimetic div could not be built." << std::endl;
     return info;
   }
+  #endif
 
   auto west = grid.west_bndy();
   auto east = grid.east_bndy();
@@ -117,7 +119,7 @@ bool mtk::Div2D::ConstructDiv2D(const mtk::UniStgGrid2D &grid,
   mtk::DenseMatrix dxy(mtk::DenseMatrix::Kron(iy, dx));
   mtk::DenseMatrix dyx(mtk::DenseMatrix::Kron(dy, ix));
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "Dx: " << mx << " by " << nx << std::endl;
   std::cout << "Iy : " << num_cells_y<< " by " << ny  << std::endl;
   std::cout << "Dy: " << my << " by " << ny << std::endl;

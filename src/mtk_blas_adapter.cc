@@ -323,7 +323,7 @@ void sgemm_(char *transa,
 
 mtk::Real mtk::BLASAdapter::RealNRM2(Real *in, int &in_length) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(in_length <= 0, __FILE__, __LINE__, __func__);
   #endif
 
@@ -341,7 +341,7 @@ void mtk::BLASAdapter::RealAXPY(mtk::Real alpha,
                                      mtk::Real *yy,
                                      int &in_length) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(xx == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(yy == nullptr, __FILE__, __LINE__, __func__);
   #endif
@@ -359,7 +359,7 @@ mtk::Real mtk::BLASAdapter::RelNorm2Error(mtk::Real *computed,
                                           mtk::Real *known,
                                           int length) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(computed == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(known == nullptr, __FILE__, __LINE__, __func__);
   #endif
@@ -409,7 +409,7 @@ void mtk::BLASAdapter::RealDenseMV(mtk::Real &alpha,
 mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM(mtk::DenseMatrix &aa,
                                                mtk::DenseMatrix &bb) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(aa.num_cols() != bb.num_rows(),
                       __FILE__, __LINE__, __func__);
   #endif
@@ -453,7 +453,7 @@ mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM(mtk::DenseMatrix &aa,
          bb.data(), &ldb, &beta, cc_col_maj_ord.data(), &ldc);
   #endif
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 12
   std::cout << "cc_col_maj_ord =" << std::endl;
   std::cout << cc_col_maj_ord << std::endl;
   #endif
@@ -466,7 +466,7 @@ mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM(mtk::DenseMatrix &aa,
 mtk::DenseMatrix mtk::BLASAdapter::RealDenseSM(mtk::Real alpha,
                                                mtk::DenseMatrix &aa) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(aa.num_rows() == 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(aa.num_cols() == 0, __FILE__, __LINE__, __func__);
   #endif
@@ -503,7 +503,7 @@ mtk::DenseMatrix mtk::BLASAdapter::RealDenseSM(mtk::Real alpha,
          aa.data(), &ldb, &beta, alpha_aa.data(), &ldc);
   #endif
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 12
   std::cout << "alpha_aa =" << std::endl;
   std::cout << alpha_aa << std::endl;
   #endif

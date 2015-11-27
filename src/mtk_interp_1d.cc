@@ -95,13 +95,15 @@ mtk::Interp1D::~Interp1D() {
 
 bool mtk::Interp1D::ConstructInterp1D(int order_accuracy, mtk::DirInterp dir) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(order_accuracy < 2, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent((order_accuracy%2) != 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(dir < mtk::SCALAR_TO_VECTOR &&
                       dir > mtk::VECTOR_TO_SCALAR,
                       __FILE__, __LINE__, __func__);
+  #endif
 
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "order_accuracy_ = " << order_accuracy << std::endl;
   #endif
 
@@ -137,7 +139,7 @@ mtk::DenseMatrix mtk::Interp1D::ReturnAsDenseMatrix(
 
   int nn{grid.num_cells_x()}; // Number of cells on the grid.
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
   #endif
 

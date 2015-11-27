@@ -127,7 +127,7 @@ int mtk::RobinBCDescriptor2D::highest_order_diff_north() const noexcept {
 void mtk::RobinBCDescriptor2D::PushBackWestCoeff(
     mtk::CoefficientFunction1D cw) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(cw == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(highest_order_diff_west_ > 1,
                       __FILE__, __LINE__, __func__);
@@ -141,7 +141,7 @@ void mtk::RobinBCDescriptor2D::PushBackWestCoeff(
 void mtk::RobinBCDescriptor2D::PushBackEastCoeff(
     mtk::CoefficientFunction1D ce) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(ce == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(highest_order_diff_east_ > 1,
                       __FILE__, __LINE__, __func__);
@@ -155,7 +155,7 @@ void mtk::RobinBCDescriptor2D::PushBackEastCoeff(
 void mtk::RobinBCDescriptor2D::PushBackSouthCoeff(
     mtk::CoefficientFunction1D cs) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(cs == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(highest_order_diff_south_ > 1,
                       __FILE__, __LINE__, __func__);
@@ -169,7 +169,7 @@ void mtk::RobinBCDescriptor2D::PushBackSouthCoeff(
 void mtk::RobinBCDescriptor2D::PushBackNorthCoeff(
     mtk::CoefficientFunction1D cn) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(cn == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(highest_order_diff_north_ > 1,
                       __FILE__, __LINE__, __func__);
@@ -184,7 +184,7 @@ void mtk::RobinBCDescriptor2D::set_west_condition(
     mtk::Real (*west_condition)(const mtk::Real &yy,
                                 const mtk::Real &tt)) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(west_condition == nullptr, __FILE__, __LINE__, __func__);
   #endif
 
@@ -195,7 +195,7 @@ void mtk::RobinBCDescriptor2D::set_east_condition(
     mtk::Real (*east_condition)(const mtk::Real &yy,
                                 const mtk::Real &tt)) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(east_condition == nullptr, __FILE__, __LINE__, __func__);
   #endif
 
@@ -206,7 +206,7 @@ void mtk::RobinBCDescriptor2D::set_south_condition(
     mtk::Real (*south_condition)(const mtk::Real &xx,
                                  const mtk::Real &tt)) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(south_condition == nullptr,
                       __FILE__, __LINE__, __func__);
   #endif
@@ -218,7 +218,7 @@ void mtk::RobinBCDescriptor2D::set_north_condition(
     mtk::Real (*north_condition)(const mtk::Real &xx,
                                  const mtk::Real &tt)) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(north_condition == nullptr,
                       __FILE__, __LINE__, __func__);
   #endif
@@ -237,7 +237,7 @@ bool mtk::RobinBCDescriptor2D::ImposeOnSouthBoundaryNoSpace(
   // For the south-west corner:
   auto cc = (south_coefficients_[0])(grid.west_bndy(), time);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "Matrix has " << matrix.num_rows() << " rows and " <<
     matrix.num_cols() << " columns." << std::endl;
   std::cout << "Setting at " << 0 << ' ' << 0 << std::endl;
@@ -255,7 +255,7 @@ bool mtk::RobinBCDescriptor2D::ImposeOnSouthBoundaryNoSpace(
     // Evaluate and assign the Dirichlet coefficient.
     cc = (south_coefficients_[0])(xx, time);
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 2
     std::cout << "Setting at " << ii + 1 << ' ' << ii + 1 << std::endl;
     #endif
 
@@ -265,7 +265,7 @@ bool mtk::RobinBCDescriptor2D::ImposeOnSouthBoundaryNoSpace(
   // For the south-east corner:
   cc = (south_coefficients_[0])(grid.east_bndy(), time);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "Setting at " << grid.num_cells_x() + 1 << ' ' <<
     grid.num_cells_x() + 1 << std::endl;
   #endif
@@ -323,7 +323,7 @@ bool mtk::RobinBCDescriptor2D::ImposeOnNorthBoundaryNoSpace(
   mtk::Real cc =
     (north_coefficients_[0])(grid.west_bndy(), time);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "Matrix has " << matrix.num_rows() << " rows and " <<
     matrix.num_cols() << " columns." << std::endl;
   std::cout << "Setting at " << north_offset << ' ' << north_offset <<
@@ -342,7 +342,7 @@ bool mtk::RobinBCDescriptor2D::ImposeOnNorthBoundaryNoSpace(
     // Evaluate and assign the Dirichlet coefficient.
     cc = (north_coefficients_[0])(xx, time);
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 2
     std::cout << "Setting at " << north_offset + ii + 1 << ' ' <<
       north_offset + ii + 1 << std::endl;
     #endif
@@ -353,7 +353,7 @@ bool mtk::RobinBCDescriptor2D::ImposeOnNorthBoundaryNoSpace(
   // For the north-east corner:
   cc = (north_coefficients_[0])(grid.east_bndy(), time);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "Setting at " << north_offset + grid.num_cells_x() + 1 <<
     ' ' << north_offset + grid.num_cells_x() + 1 << std::endl;
   #endif
@@ -407,7 +407,7 @@ bool mtk::RobinBCDescriptor2D::ImposeOnWestBoundaryNoSpace(
   // For the south-west corner:
   auto cc = (west_coefficients_[0])(grid.south_bndy(), time);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "Matrix has " << matrix.num_rows() << " rows and " <<
     matrix.num_cols() << " columns." << std::endl;
   std::cout << "Setting at " << 0 << ' ' << 0 << std::endl;
@@ -433,7 +433,7 @@ bool mtk::RobinBCDescriptor2D::ImposeOnWestBoundaryNoSpace(
     // Evaluate and assign the Dirichlet coefficient.
     cc = (west_coefficients_[0])(yy, time);
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 2
     std::cout << "Setting at " << west_offset + ii + 1 << ' ' <<
       west_offset + ii + 1 << std::endl;
     #endif
@@ -448,7 +448,7 @@ bool mtk::RobinBCDescriptor2D::ImposeOnWestBoundaryNoSpace(
 
   west_offset += grid.num_cells_x() + 1;
   int aux{west_offset};
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "Setting at " << aux << ' ' << aux << std::endl;
   #endif
 
@@ -504,7 +504,7 @@ bool mtk::RobinBCDescriptor2D::ImposeOnEastBoundaryNoSpace(
   auto cc = (east_coefficients_[0])(grid.south_bndy(), time);
 
   int east_offset{grid.num_cells_x() + 1};
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "Matrix has " << matrix.num_rows() << " rows and " <<
     matrix.num_cols() << " columns." << std::endl;
   std::cout << "Setting at " << east_offset << ' ' << east_offset <<
@@ -529,7 +529,7 @@ bool mtk::RobinBCDescriptor2D::ImposeOnEastBoundaryNoSpace(
     // Evaluate and assign the Dirichlet coefficient.
     cc = (east_coefficients_[0])(yy, time);
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 2
     std::cout << "Setting at " << east_offset + ii + 1 << ' ' <<
       east_offset + ii + 1 << std::endl;
     #endif
@@ -543,7 +543,7 @@ bool mtk::RobinBCDescriptor2D::ImposeOnEastBoundaryNoSpace(
   east_offset += grid.num_cells_x() + 1;
   east_offset += grid.num_cells_x() + 1;
   int aux{east_offset};
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "Setting at " << aux << ' ' << aux << std::endl;
   #endif
 
@@ -594,7 +594,7 @@ bool mtk::RobinBCDescriptor2D::ImposeOnLaplacianMatrix(
     mtk::DenseMatrix &matrix,
     const mtk::Real &time) const {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(highest_order_diff_south_ == -1,
                       __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(highest_order_diff_north_ == -1,
@@ -618,50 +618,50 @@ bool mtk::RobinBCDescriptor2D::ImposeOnLaplacianMatrix(
 
   if (!grid.Bound()) {
     success = ImposeOnSouthBoundaryNoSpace(lap, grid, matrix, time);
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!success) {
       return false;
     }
     #endif
     success = ImposeOnNorthBoundaryNoSpace(lap, grid, matrix, time);
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!success) {
       return false;
     }
     #endif
     success = ImposeOnWestBoundaryNoSpace(lap, grid, matrix, time);
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!success) {
       return false;
     }
     #endif
     success = ImposeOnEastBoundaryNoSpace(lap, grid, matrix, time);
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!success) {
       return false;
     }
     #endif
   } else {
     success = ImposeOnSouthBoundaryWithSpace(lap, grid, matrix, time);
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!success) {
       return false;
     }
     #endif
     success = ImposeOnNorthBoundaryWithSpace(lap, grid, matrix, time);
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!success) {
       return false;
     }
     #endif
     success = ImposeOnWestBoundaryWithSpace(lap, grid, matrix, time);
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!success) {
       return false;
     }
     #endif
     success = ImposeOnEastBoundaryWithSpace(lap, grid, matrix, time);
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!success) {
       return false;
     }
@@ -675,7 +675,7 @@ void mtk::RobinBCDescriptor2D::ImposeOnGrid(
     mtk::UniStgGrid2D &grid,
     const mtk::Real &time) const {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(grid.num_cells_x() == 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(grid.num_cells_y() == 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(west_condition_ == nullptr, __FILE__, __LINE__, __func__);
@@ -740,7 +740,7 @@ void mtk::RobinBCDescriptor2D::ImposeOnGrid(
     int west_offset{grid.num_cells_x() + 1 + 1};
     yy = yy + grid.delta_y()/mtk::kTwo;
     for (int ii = 0; ii < grid.num_cells_y(); ++ii) {
-      #if MTK_DEBUG_LEVEL > 0
+      #if MTK_VERBOSE_LEVEL > 2
       std::cout << "Adding on " << west_offset << "-th position." << std::endl;
       #endif
       (grid.discrete_field())[west_offset] =
@@ -768,7 +768,7 @@ void mtk::RobinBCDescriptor2D::ImposeOnGrid(
     yy = yy + grid.delta_y()/mtk::kTwo;
     for (int ii = 0; ii < grid.num_cells_y(); ++ii) {
       east_offset += grid.num_cells_x() + 1 + 1;
-      #if MTK_DEBUG_LEVEL > 0
+      #if MTK_VERBOSE_LEVEL > 2
       std::cout << "Adding on " << east_offset << "-th position." << std::endl;
       #endif
       (grid.discrete_field())[east_offset] =

@@ -90,10 +90,12 @@ bool mtk::Grad2D::ConstructGrad2D(const mtk::UniStgGrid2D &grid,
 
   bool info = grad.ConstructGrad1D(order_accuracy, mimetic_threshold);
 
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
     std::cerr << "Mimetic grad could not be built." << std::endl;
     return info;
   }
+  #endif
 
   auto west = grid.west_bndy();
   auto east = grid.east_bndy();
@@ -115,7 +117,7 @@ bool mtk::Grad2D::ConstructGrad2D(const mtk::UniStgGrid2D &grid,
   mtk::DenseMatrix gxy(mtk::DenseMatrix::Kron(tiy, Gx));
   mtk::DenseMatrix gyx(mtk::DenseMatrix::Kron(Gy, tix));
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "Gx: " << mx << " by " << nx << std::endl;
   std::cout << "Transpose Iy: " << num_cells_y << " by " << ny  << std::endl;
   std::cout << "Gy: " << my << " by " << ny << std::endl;

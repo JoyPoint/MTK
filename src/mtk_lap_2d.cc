@@ -83,17 +83,21 @@ bool mtk::Lap2D::ConstructLap2D(const mtk::UniStgGrid2D &grid,
 
   bool info{gg.ConstructGrad2D(grid, order_accuracy, mimetic_threshold)};
 
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
     std::cerr << "Mimetic lap could not be built." << std::endl;
     return info;
   }
+  #endif
 
   info = dd.ConstructDiv2D(grid, order_accuracy, mimetic_threshold);
 
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
     std::cerr << "Mimetic div could not be built." << std::endl;
     return info;
   }
+  #endif
 
   mtk::DenseMatrix ggm(gg.ReturnAsDenseMatrix());
   mtk::DenseMatrix ddm(dd.ReturnAsDenseMatrix());

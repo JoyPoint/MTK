@@ -118,7 +118,7 @@ int mtk::RobinBCDescriptor1D::highest_order_diff_east() const noexcept {
 void mtk::RobinBCDescriptor1D::PushBackWestCoeff(
     mtk::CoefficientFunction0D cw) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(cw == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(highest_order_diff_west_ > 1,
                       __FILE__, __LINE__, __func__);
@@ -132,7 +132,7 @@ void mtk::RobinBCDescriptor1D::PushBackWestCoeff(
 void mtk::RobinBCDescriptor1D::PushBackEastCoeff(
     mtk::CoefficientFunction0D ce) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(ce == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(highest_order_diff_east_ > 1,
                       __FILE__, __LINE__, __func__);
@@ -146,7 +146,7 @@ void mtk::RobinBCDescriptor1D::PushBackEastCoeff(
 void mtk::RobinBCDescriptor1D::set_west_condition(
     mtk::Real (*west_condition)(const mtk::Real &tt)) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(west_condition == nullptr, __FILE__, __LINE__, __func__);
   #endif
 
@@ -156,7 +156,7 @@ void mtk::RobinBCDescriptor1D::set_west_condition(
 void mtk::RobinBCDescriptor1D::set_east_condition(
     mtk::Real (*east_condition)(const mtk::Real &tt)) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(east_condition == nullptr, __FILE__, __LINE__, __func__);
   #endif
 
@@ -168,7 +168,7 @@ bool mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix(
     mtk::DenseMatrix &matrix,
     const mtk::Real &time) const {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(highest_order_diff_west_ == -1,
                       __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(highest_order_diff_east_ == -1,
@@ -247,7 +247,7 @@ void mtk::RobinBCDescriptor1D::ImposeOnGrid(
     UniStgGrid1D &grid,
     const mtk::Real &time) const {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(grid.num_cells_x() == 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(west_condition_ == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(east_condition_ == nullptr, __FILE__, __LINE__, __func__);

@@ -186,7 +186,7 @@ mtk::Real mtk::Matrix::rel_sparsity() const noexcept {
 
 void mtk::Matrix::set_storage(const mtk::MatrixStorage &ss) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(!(ss == mtk::DENSE ||
                         ss == mtk::BANDED ||
                         ss == mtk::CRS),
@@ -198,7 +198,7 @@ void mtk::Matrix::set_storage(const mtk::MatrixStorage &ss) noexcept {
 
 void mtk::Matrix::set_ordering(const mtk::MatrixOrdering &oo) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(!(oo == mtk::ROW_MAJOR || oo == mtk::COL_MAJOR),
                       __FILE__, __LINE__, __func__);
   #endif
@@ -211,7 +211,7 @@ void mtk::Matrix::set_ordering(const mtk::MatrixOrdering &oo) noexcept {
 
 void mtk::Matrix::set_num_rows(const int &in) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(in < 1, __FILE__, __LINE__, __func__);
   #endif
 
@@ -223,7 +223,7 @@ void mtk::Matrix::set_num_rows(const int &in) noexcept {
 
 void mtk::Matrix::set_num_cols(const int &in) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(in < 1, __FILE__, __LINE__, __func__);
   #endif
 
@@ -235,7 +235,7 @@ void mtk::Matrix::set_num_cols(const int &in) noexcept {
 
 void mtk::Matrix::set_num_zero(const int &in) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(in < 0, __FILE__, __LINE__, __func__);
   #endif
 
@@ -249,7 +249,7 @@ void mtk::Matrix::set_num_zero(const int &in) noexcept {
 
 void mtk::Matrix::set_num_null(const int &in) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(in < 0, __FILE__, __LINE__, __func__);
   #endif
 
