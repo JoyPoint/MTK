@@ -6,38 +6,42 @@
 We solve:
 
 \f[
-\nabla^2 p(x) = -s(x),
+\nabla^2 u(\mathbf{x}) = s(\mathbf{x}),
 \f]
 
-for \f$ x \in \Omega = [a,b] = [0,1] \f$.
+for \f$ \mathbf{x} \in \Omega = [0,1]^2 \f$.
 
 The source term function is defined as
 
 \f[
-s(x) = \frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1}
+s(x,y) = xye^{-frac{1}{2}(x^2 + y^2)}(x^2 + y^2 - 6).
 \f]
 
-where \f$ \lambda = -1 \f$ is a parameter.
-
-We consider Robin's boundary conditions of the form:
-
+Let \f$ \Omega = S \cup N \cup W \cup E\f$. We consider Dirichlet and Neumann
+boundary conditions of the following form:
 \f[
-\alpha p(a) - \beta p'(a) = \omega,
+\forall\mathbf{x}\in W: u(\mathbf{x}) = 0.
 \f]
 
 \f[
-\alpha p(b) + \beta p'(b) = \epsilon.
+\forall\mathbf{x}\in E:
+\f]
+
+\f[
+\forall\mathbf{x}\in S: u(\mathbf{x}) = 0.
+\f]
+
+\f[
+\forall\mathbf{x}\in N:
 \f]
 
 The analytical solution for this problem is given by
 
 \f[
-p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}.
+u(x,y) = xye^{-frac{1}{2}(x^2 + y^2)}.
 \f]
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
-
-\author: Raul Vargas--Navarro - vargasna at rohan dot sdsu dot edu
 */
 /*
 Copyright (C) 2015, Computational Science Research Center, San Diego State
@@ -95,10 +99,56 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk.h"
 
+mtk::Real Source(const mtk::Real &xx, const mtk::Real &yy) {
+
+  mtk::Real x_squared{xx*xx};
+  mtk::Real y_squared{yy*yy};
+  mtk::Real aux{-0.5*(x_squared + y_squared)};
+
+  return xx*yy*exp(aux)*(x_squared + y_squared - 6.0);
+}
+
 int main () {
 
   std::cout << "Example: Poisson Equation on a 2D Uniform Staggered Grid ";
-  std::cout << "with Robin BCs." << std::endl;
+  std::cout << "with Dirichlet and Neumann BCs." << std::endl;
+
+  /// 1. Discretize space.
+  mtk::Real west_bndy_x{0.0};
+  mtk::Real east_bndy_x{1.0};
+  mtk::Real south_bndy_y{0.0};
+  mtk::Real north_bndy_y{1.0};
+  int num_cells_x{5};
+  int num_cells_y{5};
+
+  mtk::UniStgGrid2D comp_sol(west_bndy_x, east_bndy_x, num_cells_x,
+                             south_bndy_y, north_bndy_y, num_cells_y);
+
+  /// 2. Create mimetic operator as a matrix.
+  mtk::Lap2D lap;
+
+  if (!lap.ConstructLap2D(comp_sol)) {
+    std::cerr << "Mimetic Laplacian could not be built." << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  mtk::DenseMatrix lapm(lap.ReturnAsDenseMatrix());
+
+  if (!lapm.WriteToFile("poisson_2d_lapm.dat")) {
+    std::cerr << "Laplacian matrix could not be written to disk." << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  /// 3. Create grid for source term.
+  mtk::UniStgGrid2D source(west_bndy_x, east_bndy_x, num_cells_x,
+                           south_bndy_y, north_bndy_y, num_cells_y);
+
+  source.BindScalarField(Source);
+
+  if(!source.WriteToFile("poisson_2d_source.dat", "x", "y", "s(x,y)")) {
+    std::cerr << "Source term could not be written to disk." << std::endl;
+    return EXIT_FAILURE;
+  }
 }
 
 #else

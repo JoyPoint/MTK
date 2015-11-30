@@ -8,6 +8,8 @@
 #
 # \warning Not intended to be a general solution but a minimal guidance.
 #
+# \sa https://github.com/ejspeiro/gnuplot-Scripts-Sci-Comp
+#
 # \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 
 # Copyright (C) 2015, Computational Science Research Center, San Diego State
@@ -58,7 +60,7 @@
 
 reset
 
-name = "poisson_1d_comp_sol"
+dat_file_name = "poisson_1d_comp_sol"
 
 # Terminals.
 # wxt terminal (wxWidgets library) for live rendering.
@@ -66,11 +68,11 @@ name = "poisson_1d_comp_sol"
 
 # png terminal for disk storage.
 # set terminal png
-# set output name.".png"
+# set output dat_file_name.".png"
 
-# epslatex terminal for publication.
+# epslatex terminal for publication. (Proportions: 1024/768).
 set terminal epslatex standalone size 13cm,9.75cm color colortext 10
-set output name.".tex"
+set output dat_file_name.".tex"
 
 set termoption dash
 
@@ -91,4 +93,4 @@ set ylabel "$u(x)$"
 set title "Computed Solution"
 unset key
 
-plot name.".dat" u 1:2:xtic(1) w p ls 2
+plot dat_file_name.".dat" u 1:2:xtic(1) w p ls 2

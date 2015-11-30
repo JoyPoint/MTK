@@ -1,6 +1,6 @@
 # \file poisson_1d_lapm.gnu
 #
-# \brief gnuplot script for test suite mtk_lap_2d_test.cc
+# \brief gnuplot script for example poisson_1d.cc
 #
 # Minimally-complete gnuplot script to visualize data files created by the
 # mtk::DenseMatrix::WriteToFile method in the main module of the poisson_1d.cc
@@ -58,7 +58,7 @@
 
 reset
 
-name = "poisson_1d_lapm"
+dat_file_name = "poisson_1d_lapm"
 
 # Terminals.
 # wxt terminal (wxWidgets library) for live rendering.
@@ -66,11 +66,11 @@ name = "poisson_1d_lapm"
 
 # png terminal for disk storage.
 # set terminal png
-# set output name.".png"
+# set output dat_file_name.".png"
 
-# epslatex terminal for publication.
+# epslatex terminal for publication. (Proportions: 1024/768).
 set terminal epslatex standalone size 13cm,9.75cm color colortext 10
-set output name.".tex"
+set output dat_file_name.".tex"
 
 set termoption dash
 
@@ -91,8 +91,7 @@ set ylabel "Row"
 set yrange [] reverse
 
 # Title and legend.
-set title "Matrix Encoding a 1D 2nd-Order Mimetic Laplacian with Robin BCs"
+set title "Matrix Encoding a 2D 2nd-Order Mimetic Laplacian"
 unset key
 
-plot name.".dat" u 2:1:(f($3)) title "Magnitude of entry" w p pt 5 ps 1.0 \
-  palette
+plot dat_file_name.".dat" u 2:1:(f($3)) w p pt 5 ps 1.0 palette
