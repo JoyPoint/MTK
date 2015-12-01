@@ -290,9 +290,6 @@ If successful you'll read (before building the examples):
 \verbatim
 ----- Library created! Check in /home/ejspeiro/Dropbox/MTK/lib
 \endverbatim
-
-Examples and tests will also be built.
-
     __________________________________________________________________
 
 ## 4. Contact, Support, and Credits
