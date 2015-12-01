@@ -4,15 +4,12 @@
 \brief Poisson Equation on a 2D Uniform Staggered Grid with Robin BCs.
 
 We solve:
-
 \f[
 \nabla^2 u(\mathbf{x}) = s(\mathbf{x}),
 \f]
-
 for \f$ \mathbf{x} \in \Omega = [0,1]^2 \f$.
 
 The source term function is defined as
-
 \f[
 s(x,y) = xye^{-0.5(x^2 + y^2)}(x^2 + y^2 - 6).
 \f]
@@ -22,21 +19,17 @@ conditions of the following form:
 \f[
 \forall\mathbf{x}\in W: u(\mathbf{x}) = 0.
 \f]
-
 \f[
 \forall\mathbf{x}\in E: u(1,y) = -e^{-0.5(1 - y^2)}(1 - y^2).
 \f]
-
 \f[
 \forall\mathbf{x}\in S: u(\mathbf{x}) = 0.
 \f]
-
 \f[
 \forall\mathbf{x}\in N: u(x,1) = -e^{-0.5(x^2 - 1)}(x^2 - 1).
 \f]
 
 The analytical solution for this problem is given by
-
 \f[
 u(x,y) = xye^{-0.5(x^2 + y^2)}.
 \f]
