@@ -4,76 +4,119 @@
 
 \begin{DoxyCode}
 00001 
-00042 \textcolor{comment}{/*}
-00043 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
-00044 \textcolor{comment}{University. All rights reserved.}
-00045 \textcolor{comment}{}
-00046 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
-00047 \textcolor{comment}{are permitted provided that the following conditions are met:}
-00048 \textcolor{comment}{}
-00049 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
-00050 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
-00051 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
-00052 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
-00053 \textcolor{comment}{should be developed and included in any deliverable.}
-00054 \textcolor{comment}{}
-00055 \textcolor{comment}{2. Redistributions of source code must be done through direct}
-00056 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
-00057 \textcolor{comment}{}
-00058 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
-00059 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
-00060 \textcolor{comment}{other materials provided with the distribution.}
+00046 \textcolor{comment}{/*}
+00047 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00048 \textcolor{comment}{University. All rights reserved.}
+00049 \textcolor{comment}{}
+00050 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00051 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00052 \textcolor{comment}{}
+00053 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00054 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00055 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
+00056 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
+00057 \textcolor{comment}{should be developed and included in any deliverable.}
+00058 \textcolor{comment}{}
+00059 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00060 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
 00061 \textcolor{comment}{}
-00062 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
-00063 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
-00064 \textcolor{comment}{be given to the copyright holders.}
+00062 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
+00063 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00064 \textcolor{comment}{other materials provided with the distribution.}
 00065 \textcolor{comment}{}
-00066 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
-00067 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
-00068 \textcolor{comment}{specific prior written permission.}
+00066 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
+00067 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
+00068 \textcolor{comment}{be given to the copyright holders.}
 00069 \textcolor{comment}{}
-00070 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
-00071 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
-00072 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
-00073 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
-00074 \textcolor{comment}{parties intellectual property rights.}
-00075 \textcolor{comment}{}
-00076 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
-00077 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
-00078 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
-00079 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
-00080 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
-00081 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
-00082 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
-00083 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
-00084 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
-00085 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
-00086 \textcolor{comment}{*/}
-00087 
-00088 \textcolor{preprocessor}{#if \_\_cplusplus == 201103L}
-00089 
-00090 \textcolor{preprocessor}{#include <iostream>}
-00091 \textcolor{preprocessor}{#include <fstream>}
-00092 \textcolor{preprocessor}{#include <cmath>}
+00070 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
+00071 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00072 \textcolor{comment}{specific prior written permission.}
+00073 \textcolor{comment}{}
+00074 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00075 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00076 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00077 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00078 \textcolor{comment}{parties intellectual property rights.}
+00079 \textcolor{comment}{}
+00080 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00081 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00082 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00083 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00084 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00085 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00086 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00087 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00088 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00089 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00090 \textcolor{comment}{*/}
+00091 
+00092 \textcolor{preprocessor}{#if \_\_cplusplus == 201103L}
 00093 
-00094 \textcolor{preprocessor}{#include <vector>}
-00095 
-00096 \textcolor{preprocessor}{#include "\hyperlink{mtk_8h}{mtk.h}"}
+00094 \textcolor{preprocessor}{#include <iostream>}
+00095 \textcolor{preprocessor}{#include <fstream>}
+00096 \textcolor{preprocessor}{#include <cmath>}
 00097 
-00098 \textcolor{keywordtype}{int} \hyperlink{poisson__2d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00098 \textcolor{preprocessor}{#include <vector>}
 00099 
-00100   std::cout << \textcolor{stringliteral}{"Example: Poisson Equation on a 2D Uniform Staggered Grid "};
-00101   std::cout << \textcolor{stringliteral}{"with Robin BCs."} << std::endl;
-00102 \}
+00100 \textcolor{preprocessor}{#include "\hyperlink{mtk_8h}{mtk.h}"}
+00101 
+00102 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} Source(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx, \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &yy) \{
 00103 
-00104 \textcolor{preprocessor}{#else}
-00105 \textcolor{preprocessor}{#include <iostream>}
-00106 \textcolor{keyword}{using} std::cout;
-00107 \textcolor{keyword}{using} std::endl;
-\hypertarget{poisson__2d_8cc_source_l00108}{}\hyperlink{poisson__2d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00108} \textcolor{keywordtype}{int} \hyperlink{poisson__2d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
-00109   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
-00110   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
-00111   \textcolor{keywordflow}{return} EXIT\_SUCCESS;
-00112 \}
-00113 \textcolor{preprocessor}{#endif}
+00104   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} x\_squared\{xx*xx\};
+00105   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} y\_squared\{yy*yy\};
+00106   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aux\{-0.5*(x\_squared + y\_squared)\};
+00107 
+00108   \textcolor{keywordflow}{return} xx*yy*exp(aux)*(x\_squared + y\_squared - 6.0);
+00109 \}
+00110 
+00111 \textcolor{keywordtype}{int} \hyperlink{poisson__2d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00112 
+00113   std::cout << \textcolor{stringliteral}{"Example: Poisson Equation on a 2D Uniform Staggered Grid "};
+00114   std::cout << \textcolor{stringliteral}{"with Dirichlet and Neumann BCs."} << std::endl;
+00115 
+00117   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} west\_bndy\_x\{0.0\};
+00118   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} east\_bndy\_x\{1.0\};
+00119   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} south\_bndy\_y\{0.0\};
+00120   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} north\_bndy\_y\{1.0\};
+00121   \textcolor{keywordtype}{int} num\_cells\_x\{5\};
+00122   \textcolor{keywordtype}{int} num\_cells\_y\{5\};
+00123 
+00124   \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} comp\_sol(west\_bndy\_x, east\_bndy\_x, num\_cells\_x,
+00125                              south\_bndy\_y, north\_bndy\_y, num\_cells\_y);
+00126 
+00128   \hyperlink{classmtk_1_1Lap2D}{mtk::Lap2D} lap;
+00129 
+00130   \textcolor{keywordflow}{if} (!lap.\hyperlink{classmtk_1_1Lap2D_a188ee8fee643463affca7de2884711b1}{ConstructLap2D}(comp\_sol)) \{
+00131     std::cerr << \textcolor{stringliteral}{"Mimetic Laplacian could not be built."} << std::endl;
+00132     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00133   \}
+00134 
+00135   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} lapm(lap.\hyperlink{classmtk_1_1Lap2D_aaac0a22eaa2f036869b24fd420ce5761}{ReturnAsDenseMatrix}());
+00136 
+00137   \textcolor{keywordflow}{if} (!lapm.WriteToFile(\textcolor{stringliteral}{"poisson\_2d\_lapm.dat"})) \{
+00138     std::cerr << \textcolor{stringliteral}{"Laplacian matrix could not be written to disk."} << std::endl;
+00139     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00140   \}
+00141 
+00143   \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} source(west\_bndy\_x, east\_bndy\_x, num\_cells\_x,
+00144                            south\_bndy\_y, north\_bndy\_y, num\_cells\_y);
+00145 
+00146   source.BindScalarField(Source);
+00147 
+00148   \textcolor{keywordflow}{if}(!source.WriteToFile(\textcolor{stringliteral}{"poisson\_2d\_source.dat"}, \textcolor{stringliteral}{"x"}, \textcolor{stringliteral}{"y"}, \textcolor{stringliteral}{"s(x,y)"})) \{
+00149     std::cerr << \textcolor{stringliteral}{"Source term could not be written to disk."} << std::endl;
+00150     \textcolor{keywordflow}{return} EXIT\_FAILURE;
+00151   \}
+00152 \}
+00153 
+00154 \textcolor{preprocessor}{#else}
+00155 \textcolor{preprocessor}{#include <iostream>}
+00156 \textcolor{keyword}{using} std::cout;
+00157 \textcolor{keyword}{using} std::endl;
+\hypertarget{poisson__2d_8cc_source_l00158}{}\hyperlink{poisson__2d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00158} \textcolor{keywordtype}{int} \hyperlink{poisson__2d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00159   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
+00160   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
+00161   \textcolor{keywordflow}{return} EXIT\_SUCCESS;
+00162 \}
+00163 \textcolor{preprocessor}{#endif}
 \end{DoxyCode}

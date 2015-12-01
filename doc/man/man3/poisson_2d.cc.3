@@ -1,4 +1,4 @@
-.TH "examples/poisson_2d/poisson_2d.cc" 3 "Fri Nov 27 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "examples/poisson_2d/poisson_2d.cc" 3 "Mon Nov 30 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -23,26 +23,23 @@ Poisson Equation on a 2D Uniform Staggered Grid with Robin BCs\&.
 .PP 
 We solve:
 .PP
-\[ \nabla^2 p(x) = -s(x), \].PP
-for $ x \in \Omega = [a,b] = [0,1] $\&.
+\[ \nabla^2 u(\mathbf{x}) = s(\mathbf{x}), \].PP
+for $ \mathbf{x} \in \Omega = [0,1]^2 $\&.
 .PP
 The source term function is defined as
 .PP
-\[ s(x) = \frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1} \].PP
-where $ \lambda = -1 $ is a parameter\&.
+\[ s(x,y) = xye^{-0.5(x^2 + y^2)}(x^2 + y^2 - 6). \].PP
+Let $ \Omega = S \cup N \cup W \cup E$\&. We consider Dirichlet and Neumann boundary conditions of the following form: \[ \forall\mathbf{x}\in W: u(\mathbf{x}) = 0. \]
 .PP
-We consider Robin's boundary conditions of the form:
-.PP
-\[ \alpha p(a) - \beta p'(a) = \omega, \].PP
-\[ \alpha p(b) + \beta p'(b) = \epsilon. \].PP
+\[ \forall\mathbf{x}\in E: \nabla u(1,y) = -e^{-0.5(1 - y^2)}(1 - y^2). \].PP
+\[ \forall\mathbf{x}\in S: u(\mathbf{x}) = 0. \].PP
+\[ \forall\mathbf{x}\in N: \nabla u(x,1) = -e^{-0.5(x^2 - 1)}(x^2 - 1). \].PP
 The analytical solution for this problem is given by
 .PP
-\[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \].PP
+\[ u(x,y) = xye^{-0.5(x^2 + y^2)}. \].PP
 \fBAuthor:\fP
 .RS 4
-: Eduardo J\&. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
-.PP
-: Raul Vargas--Navarro - vargasna at rohan dot sdsu dot edu 
+: Eduardo J\&. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu 
 .RE
 .PP
 
@@ -53,7 +50,7 @@ Definition in file \fBpoisson_2d\&.cc\fP\&.
 .SS "int main ()"
 
 .PP
-Definition at line 108 of file poisson_2d\&.cc\&.
+Definition at line 158 of file poisson_2d\&.cc\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

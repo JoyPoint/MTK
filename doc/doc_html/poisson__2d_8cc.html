@@ -129,28 +129,30 @@ Functions</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>We solve:</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \nabla^2 p(x) = -s(x), \]" src="form_0.png"/>
+<img class="formulaDsp" alt="\[ \nabla^2 u(\mathbf{x}) = s(\mathbf{x}), \]" src="form_107.png"/>
 </p>
-<p>for <img class="formulaInl" alt="$ x \in \Omega = [a,b] = [0,1] $" src="form_1.png"/>.</p>
+<p>for <img class="formulaInl" alt="$ \mathbf{x} \in \Omega = [0,1]^2 $" src="form_108.png"/>.</p>
 <p>The source term function is defined as</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ s(x) = \frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1} \]" src="form_2.png"/>
+<img class="formulaDsp" alt="\[ s(x,y) = xye^{-0.5(x^2 + y^2)}(x^2 + y^2 - 6). \]" src="form_116.png"/>
 </p>
-<p>where <img class="formulaInl" alt="$ \lambda = -1 $" src="form_3.png"/> is a parameter.</p>
-<p>We consider Robin's boundary conditions of the form:</p>
-<p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \alpha p(a) - \beta p'(a) = \omega, \]" src="form_4.png"/>
+<p>Let <img class="formulaInl" alt="$ \Omega = S \cup N \cup W \cup E$" src="form_110.png"/>. We consider Dirichlet and Neumann boundary conditions of the following form: </p><p class="formulaDsp">
+<img class="formulaDsp" alt="\[ \forall\mathbf{x}\in W: u(\mathbf{x}) = 0. \]" src="form_111.png"/>
 </p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ \alpha p(b) + \beta p'(b) = \epsilon. \]" src="form_5.png"/>
+<img class="formulaDsp" alt="\[ \forall\mathbf{x}\in E: \nabla u(1,y) = -e^{-0.5(1 - y^2)}(1 - y^2). \]" src="form_120.png"/>
+</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\[ \forall\mathbf{x}\in S: u(\mathbf{x}) = 0. \]" src="form_113.png"/>
+</p>
+<p class="formulaDsp">
+<img class="formulaDsp" alt="\[ \forall\mathbf{x}\in N: \nabla u(x,1) = -e^{-0.5(x^2 - 1)}(x^2 - 1). \]" src="form_119.png"/>
 </p>
 <p>The analytical solution for this problem is given by</p>
 <p class="formulaDsp">
-<img class="formulaDsp" alt="\[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \]" src="form_6.png"/>
+<img class="formulaDsp" alt="\[ u(x,y) = xye^{-0.5(x^2 + y^2)}. \]" src="form_117.png"/>
 </p>
-<dl class="section author"><dt>Author</dt><dd>: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu</dd>
-<dd>
-: Raul Vargas&ndash;Navarro - vargasna at rohan dot sdsu dot edu </dd></dl>
+<dl class="section author"><dt>Author</dt><dd>: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu </dd></dl>
 
 <p>Definition in file <a class="el" href="poisson__2d_8cc_source.html">poisson_2d.cc</a>.</p>
 </div><h2 class="groupheader">Function Documentation</h2>
@@ -167,7 +169,7 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="poisson__2d_8cc_source.html#l00108">108</a> of file <a class="el" href="poisson__2d_8cc_source.html">poisson_2d.cc</a>.</p>
+<p>Definition at line <a class="el" href="poisson__2d_8cc_source.html#l00158">158</a> of file <a class="el" href="poisson__2d_8cc_source.html">poisson_2d.cc</a>.</p>
 
 </div>
 </div>
@@ -177,7 +179,7 @@ Functions</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d28a4824dc47e487b107a5db32ef43c4.html">examples</a></li><li class="navelem"><a class="el" href="dir_f75d176e50705990aa7d8ee803f5bee2.html">poisson_2d</a></li><li class="navelem"><a class="el" href="poisson__2d_8cc.html">poisson_2d.cc</a></li>
-    <li class="footer">Generated on Fri Nov 27 2015 18:42:56 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Mon Nov 30 2015 16:11:22 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

@@ -213,6 +213,13 @@ class UniStgGrid2D {
   bool Bound() const;
 
   /*!
+  \brief Total number of samples in the grid.
+
+  \return Total number of samples in the grid.
+  */
+  int Size() const;
+
+  /*!
   \brief Binds a given scalar field to the grid.
 
   \param[in] ScalarField Pointer to the function implementing the scalar field.

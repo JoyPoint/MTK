@@ -3,7 +3,7 @@
 # \brief gnuplot script for example poisson_2d.cc
 #
 # Minimally-complete gnuplot script to visualize data files created by the
-# mtk::UniStgGrid1D::WriteToFile method in the main module of the poisson_2d.cc
+# mtk::UniStgGrid2D::WriteToFile method in the main module of the poisson_2d.cc
 # example.
 #
 # \warning Not intended to be a general solution gut a minimal guidance.

@@ -24,30 +24,28 @@ int \hyperlink{poisson__2d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
 \subsection{Detailed Description}
 We solve\+:
 
-\[ \nabla^2 p(x) = -s(x), \]
+\[ \nabla^2 u(\mathbf{x}) = s(\mathbf{x}), \]
 
-for $ x \in \Omega = [a,b] = [0,1] $.
+for $ \mathbf{x} \in \Omega = [0,1]^2 $.
 
 The source term function is defined as
 
-\[ s(x) = \frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1} \]
+\[ s(x,y) = xye^{-0.5(x^2 + y^2)}(x^2 + y^2 - 6). \]
 
-where $ \lambda = -1 $ is a parameter.
+Let $ \Omega = S \cup N \cup W \cup E$. We consider Dirichlet and Neumann boundary conditions of the following form\+: \[ \forall\mathbf{x}\in W: u(\mathbf{x}) = 0. \]
 
-We consider Robin's boundary conditions of the form\+:
+\[ \forall\mathbf{x}\in E: \nabla u(1,y) = -e^{-0.5(1 - y^2)}(1 - y^2). \]
 
-\[ \alpha p(a) - \beta p'(a) = \omega, \]
+\[ \forall\mathbf{x}\in S: u(\mathbf{x}) = 0. \]
 
-\[ \alpha p(b) + \beta p'(b) = \epsilon. \]
+\[ \forall\mathbf{x}\in N: \nabla u(x,1) = -e^{-0.5(x^2 - 1)}(x^2 - 1). \]
 
 The analytical solution for this problem is given by
 
-\[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \]
+\[ u(x,y) = xye^{-0.5(x^2 + y^2)}. \]
 
 \begin{DoxyAuthor}{Author}
-\+: Eduardo J. Sanchez (ejspeiro) -\/ esanchez at mail dot sdsu dot edu
-
-\+: Raul Vargas--Navarro -\/ vargasna at rohan dot sdsu dot edu 
+\+: Eduardo J. Sanchez (ejspeiro) -\/ esanchez at mail dot sdsu dot edu 
 \end{DoxyAuthor}
 
 
@@ -65,5 +63,5 @@ Definition in file \hyperlink{poisson__2d_8cc_source}{poisson\+\_\+2d.\+cc}.
 )}}\label{poisson__2d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}
 
 
-Definition at line \hyperlink{poisson__2d_8cc_source_l00108}{108} of file \hyperlink{poisson__2d_8cc_source}{poisson\+\_\+2d.\+cc}.
+Definition at line \hyperlink{poisson__2d_8cc_source_l00158}{158} of file \hyperlink{poisson__2d_8cc_source}{poisson\+\_\+2d.\+cc}.
 

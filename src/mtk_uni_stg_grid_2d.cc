@@ -267,6 +267,11 @@ mtk::Real* mtk::UniStgGrid2D::discrete_field() {
   return discrete_field_.data();
 }
 
+int mtk::UniStgGrid2D::Size() const {
+
+  return discrete_field_.size();
+}
+
 void mtk::UniStgGrid2D::BindScalarField(
     Real (*ScalarField)(const Real &xx, const Real &yy)) {
 

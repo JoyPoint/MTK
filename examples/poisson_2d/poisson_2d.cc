@@ -14,7 +14,7 @@ for \f$ \mathbf{x} \in \Omega = [0,1]^2 \f$.
 The source term function is defined as
 
 \f[
-s(x,y) = xye^{-frac{1}{2}(x^2 + y^2)}(x^2 + y^2 - 6).
+s(x,y) = xye^{-0.5(x^2 + y^2)}(x^2 + y^2 - 6).
 \f]
 
 Let \f$ \Omega = S \cup N \cup W \cup E\f$. We consider Dirichlet and Neumann
@@ -24,7 +24,7 @@ boundary conditions of the following form:
 \f]
 
 \f[
-\forall\mathbf{x}\in E:
+\forall\mathbf{x}\in E: \nabla u(1,y) = -e^{-0.5(1 - y^2)}(1 - y^2).
 \f]
 
 \f[
@@ -32,13 +32,13 @@ boundary conditions of the following form:
 \f]
 
 \f[
-\forall\mathbf{x}\in N:
+\forall\mathbf{x}\in N: \nabla u(x,1) = -e^{-0.5(x^2 - 1)}(x^2 - 1).
 \f]
 
 The analytical solution for this problem is given by
 
 \f[
-u(x,y) = xye^{-frac{1}{2}(x^2 + y^2)}.
+u(x,y) = xye^{-0.5(x^2 + y^2)}.
 \f]
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
@@ -108,6 +108,40 @@ mtk::Real Source(const mtk::Real &xx, const mtk::Real &yy) {
   return xx*yy*exp(aux)*(x_squared + y_squared - 6.0);
 }
 
+mtk::Real BCCoeff(const mtk::Real &xx, const mtk::Real &yy) {
+
+  return mtk::kOne;
+}
+
+mtk::Real WestBC(const mtk::Real &xx, const mtk::Real &tt) {
+
+  return mtk::kZero;
+}
+
+mtk::Real EastBC(const mtk::Real &yy, const mtk::Real &tt) {
+
+  return yy*exp(-0.5*(mtk::kOne + yy*yy));
+}
+
+mtk::Real SouthBC(const mtk::Real &xx, const mtk::Real &tt) {
+
+  return mtk::kZero;
+}
+
+mtk::Real NorthBC(const mtk::Real &xx, const mtk::Real &tt) {
+
+  return xx*exp(-0.5*(xx*xx + mtk::kOne));
+}
+
+mtk::Real KnownSolution(const mtk::Real &xx, const mtk::Real &yy) {
+
+  mtk::Real x_squared{xx*xx};
+  mtk::Real y_squared{yy*yy};
+  mtk::Real aux{-0.5*(x_squared + y_squared)};
+
+  return xx*yy*exp(aux);
+}
+
 int main () {
 
   std::cout << "Example: Poisson Equation on a 2D Uniform Staggered Grid ";
@@ -134,21 +168,77 @@ int main () {
 
   mtk::DenseMatrix lapm(lap.ReturnAsDenseMatrix());
 
-  if (!lapm.WriteToFile("poisson_2d_lapm.dat")) {
-    std::cerr << "Laplacian matrix could not be written to disk." << std::endl;
-    return EXIT_FAILURE;
-  }
-
   /// 3. Create grid for source term.
   mtk::UniStgGrid2D source(west_bndy_x, east_bndy_x, num_cells_x,
                            south_bndy_y, north_bndy_y, num_cells_y);
 
   source.BindScalarField(Source);
 
+  /// 4. Apply Boundary Conditions to operator.
+  mtk::RobinBCDescriptor2D bcd;
+
+  bcd.PushBackWestCoeff(BCCoeff);
+  bcd.PushBackEastCoeff(BCCoeff);
+  bcd.PushBackSouthCoeff(BCCoeff);
+  bcd.PushBackNorthCoeff(BCCoeff);
+
+  bcd.ImposeOnLaplacianMatrix(lap, comp_sol, lapm);
+
+  if (!lapm.WriteToFile("poisson_2d_lapm.dat")) {
+    std::cerr << "Laplacian matrix could not be written to disk." << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  /// 5. Apply Boundary Conditions to source term's grid.
+  bcd.set_west_condition(WestBC);
+  bcd.set_east_condition(EastBC);
+  bcd.set_south_condition(SouthBC);
+  bcd.set_north_condition(NorthBC);
+
+  bcd.ImposeOnGrid(source);
+
   if(!source.WriteToFile("poisson_2d_source.dat", "x", "y", "s(x,y)")) {
     std::cerr << "Source term could not be written to disk." << std::endl;
     return EXIT_FAILURE;
   }
+
+  /// 6. Solve the problem.
+  int info{mtk::LAPACKAdapter::SolveDenseSystem(lapm, source)};
+
+  if (!info) {
+    std::cout << "System solved." << std::endl;
+    std::cout << std::endl;
+  } else {
+    std::cerr << "Something wrong solving system! info = " << info << std::endl;
+    std::cerr << "Exiting..." << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  if (!source.WriteToFile("poisson_2d_comp_sol.dat", "x", "y", "~u(x,y)")) {
+    std::cerr << "Solution could not be written to file." << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  /// 7. Compare computed solution against known solution.
+  mtk::UniStgGrid2D known_sol(west_bndy_x, east_bndy_x, num_cells_x,
+                              south_bndy_y, north_bndy_y, num_cells_y);
+
+  known_sol.BindScalarField(KnownSolution);
+
+  if (!known_sol.WriteToFile("poisson_2d_known_sol.dat", "x", "y", "u(x,y)")) {
+    std::cerr << "Known solution could not be written to file." << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  mtk::Real relative_norm_2_error{};
+
+  relative_norm_2_error =
+    mtk::BLASAdapter::RelNorm2Error(source.discrete_field(),
+                                    known_sol.discrete_field(),
+                                    known_sol.Size());
+
+  std::cout << "relative_norm_2_error = ";
+  std::cout << relative_norm_2_error << std::endl;
 }
 
 #else
