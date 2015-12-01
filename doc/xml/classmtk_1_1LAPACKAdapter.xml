@@ -46,7 +46,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lapack_adapter.h" line="104" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lapack_adapter.cc" bodystart="430" bodyend="463"/>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lapack_adapter.h" line="105" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lapack_adapter.cc" bodystart="430" bodyend="463"/>
         <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="61" endline="78">mtk::Tools::Prevent</references>
         <references refid="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" compoundref="mtk__dense__matrix_8cc" startline="333" endline="336">mtk::DenseMatrix::num_rows</references>
         <references refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" compoundref="mtk__dense__matrix_8cc" startline="343" endline="346">mtk::DenseMatrix::data</references>
@@ -97,7 +97,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lapack_adapter.h" line="117" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lapack_adapter.cc" bodystart="465" bodyend="515"/>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lapack_adapter.h" line="118" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lapack_adapter.cc" bodystart="465" bodyend="515"/>
         <references refid="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" compoundref="mtk__dense__matrix_8cc" startline="333" endline="336">mtk::DenseMatrix::num_rows</references>
         <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="61" endline="78">mtk::Tools::Prevent</references>
         <references refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" compoundref="mtk__dense__matrix_8cc" startline="343" endline="346">mtk::DenseMatrix::data</references>
@@ -130,7 +130,7 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">rr</parametername>
+<parametername direction="in">rhs</parametername>
 </parameternamelist>
 <parameterdescription>
 <para>Input right-hand side from info on a grid.</para></parameterdescription>
@@ -147,11 +147,60 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lapack_adapter.h" line="130" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lapack_adapter.cc" bodystart="517" bodyend="553"/>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lapack_adapter.h" line="131" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lapack_adapter.cc" bodystart="517" bodyend="553"/>
         <references refid="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" compoundref="mtk__dense__matrix_8cc" startline="333" endline="336">mtk::DenseMatrix::num_rows</references>
         <references refid="classmtk_1_1DenseMatrix_1a59b9bea24acf39dca64e8549b3527463" compoundref="mtk__dense__matrix_8cc" startline="451" endline="488">mtk::DenseMatrix::OrderColMajor</references>
         <references refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" compoundref="mtk__dense__matrix_8cc" startline="343" endline="346">mtk::DenseMatrix::data</references>
         <references refid="classmtk_1_1UniStgGrid1D_1ab9c3f9ee2ac76a351b01e4abfede4d19" compoundref="mtk__uni__stg__grid__1d_8cc" startline="166" endline="169">mtk::UniStgGrid1D::discrete_field</references>
+        <references refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" compoundref="mtk__dense__matrix_8cc" startline="410" endline="449">mtk::DenseMatrix::OrderRowMajor</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1LAPACKAdapter_1a6c040471a1e9256bafa74e3603ff7bf5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::LAPACKAdapter::SolveDenseSystem</definition>
+        <argsstring>(mtk::DenseMatrix &amp;mm, mtk::UniStgGrid2D &amp;rhs)</argsstring>
+        <name>SolveDenseSystem</name>
+        <param>
+          <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref> &amp;</type>
+          <declname>mm</declname>
+        </param>
+        <param>
+          <type><ref refid="classmtk_1_1UniStgGrid2D" kindref="compound">mtk::UniStgGrid2D</ref> &amp;</type>
+          <declname>rhs</declname>
+        </param>
+        <briefdescription>
+<para>Solves a dense system of linear equations. </para>        </briefdescription>
+        <detaileddescription>
+<para>Adapts the MTK to LAPACK&apos;s dgesv_ routine.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">matrix</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input matrix. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">rhs</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Input right-hand side from info on a grid.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::bad_alloc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lapack_adapter.h" line="145" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lapack_adapter.cc" bodystart="555" bodyend="591"/>
+        <references refid="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" compoundref="mtk__dense__matrix_8cc" startline="333" endline="336">mtk::DenseMatrix::num_rows</references>
+        <references refid="classmtk_1_1DenseMatrix_1a59b9bea24acf39dca64e8549b3527463" compoundref="mtk__dense__matrix_8cc" startline="451" endline="488">mtk::DenseMatrix::OrderColMajor</references>
+        <references refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" compoundref="mtk__dense__matrix_8cc" startline="343" endline="346">mtk::DenseMatrix::data</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1a3e72d59843a3f9c5e47da07e5850dfe0" compoundref="mtk__uni__stg__grid__2d_8cc" startline="265" endline="268">mtk::UniStgGrid2D::discrete_field</references>
         <references refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" compoundref="mtk__dense__matrix_8cc" startline="410" endline="449">mtk::DenseMatrix::OrderRowMajor</references>
       </memberdef>
       <memberdef kind="function" id="classmtk_1_1LAPACKAdapter_1a380f148ffdf96bae2f79ae28f1a6560c" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
@@ -194,7 +243,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lapack_adapter.h" line="144" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lapack_adapter.cc" bodystart="752" bodyend="836"/>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lapack_adapter.h" line="159" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lapack_adapter.cc" bodystart="790" bodyend="874"/>
         <references refid="group__c01-roots_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__roots_8h" startline="116">mtk::kZero</references>
         <references refid="classmtk_1_1DenseMatrix_1a41747502d468c6728a4be31501b16e0e" compoundref="mtk__dense__matrix_8cc" startline="338" endline="341">mtk::DenseMatrix::num_cols</references>
         <references refid="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" compoundref="mtk__dense__matrix_8cc" startline="333" endline="336">mtk::DenseMatrix::num_rows</references>
@@ -238,7 +287,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lapack_adapter.h" line="159" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lapack_adapter.cc" bodystart="555" bodyend="750"/>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_lapack_adapter.h" line="174" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_lapack_adapter.cc" bodystart="593" bodyend="788"/>
         <references refid="group__c01-roots_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__roots_8h" startline="116">mtk::kZero</references>
         <references refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" compoundref="mtk__dense__matrix_8cc" startline="343" endline="346">mtk::DenseMatrix::data</references>
         <references refid="classmtk_1_1DenseMatrix_1a41747502d468c6728a4be31501b16e0e" compoundref="mtk__dense__matrix_8cc" startline="338" endline="341">mtk::DenseMatrix::num_cols</references>
@@ -258,12 +307,13 @@
         <link refid="classmtk_1_1LAPACKAdapter"/>
       </node>
     </collaborationgraph>
-    <location file="/home/esanchez/Dropbox/MTK/include/mtk_lapack_adapter.h" line="92" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_lapack_adapter.h" bodystart="92" bodyend="160"/>
+    <location file="/home/esanchez/Dropbox/MTK/include/mtk_lapack_adapter.h" line="93" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_lapack_adapter.h" bodystart="93" bodyend="175"/>
     <listofallmembers>
       <member refid="classmtk_1_1LAPACKAdapter_1ae5c6e78c9c819c9ac7a6f31bfd011d7a" prot="public" virt="non-virtual"><scope>mtk::LAPACKAdapter</scope><name>QRFactorDenseMatrix</name></member>
       <member refid="classmtk_1_1LAPACKAdapter_1a7428bccf74fd4a4af68fb7233846da22" prot="public" virt="non-virtual"><scope>mtk::LAPACKAdapter</scope><name>SolveDenseSystem</name></member>
       <member refid="classmtk_1_1LAPACKAdapter_1af0723bba1d73450119d093b9cf1ff6f0" prot="public" virt="non-virtual"><scope>mtk::LAPACKAdapter</scope><name>SolveDenseSystem</name></member>
       <member refid="classmtk_1_1LAPACKAdapter_1ac38be1e30a2456b2a14c8a81f47c4ba1" prot="public" virt="non-virtual"><scope>mtk::LAPACKAdapter</scope><name>SolveDenseSystem</name></member>
+      <member refid="classmtk_1_1LAPACKAdapter_1a6c040471a1e9256bafa74e3603ff7bf5" prot="public" virt="non-virtual"><scope>mtk::LAPACKAdapter</scope><name>SolveDenseSystem</name></member>
       <member refid="classmtk_1_1LAPACKAdapter_1a380f148ffdf96bae2f79ae28f1a6560c" prot="public" virt="non-virtual"><scope>mtk::LAPACKAdapter</scope><name>SolveRectangularDenseSystem</name></member>
     </listofallmembers>
   </compounddef>

@@ -12,7 +12,8 @@ Adapter class for the L\+A\+P\+A\+C\+K A\+P\+I.
 
 
 
-Collaboration diagram for mtk\+:\+:L\+A\+P\+A\+C\+K\+Adapter\+:\nopagebreak
+Collaboration diagram for mtk\+:\+:L\+A\+P\+A\+C\+K\+Adapter\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -27,6 +28,8 @@ static int \hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da2
 static int \hyperlink{classmtk_1_1LAPACKAdapter_af0723bba1d73450119d093b9cf1ff6f0}{Solve\+Dense\+System} (\hyperlink{classmtk_1_1DenseMatrix}{mtk\+::\+Dense\+Matrix} \&mm, \hyperlink{classmtk_1_1DenseMatrix}{mtk\+::\+Dense\+Matrix} \&rr)
 \begin{DoxyCompactList}\small\item\em Solves a dense system of linear equations. \end{DoxyCompactList}\item 
 static int \hyperlink{classmtk_1_1LAPACKAdapter_ac38be1e30a2456b2a14c8a81f47c4ba1}{Solve\+Dense\+System} (\hyperlink{classmtk_1_1DenseMatrix}{mtk\+::\+Dense\+Matrix} \&mm, \hyperlink{classmtk_1_1UniStgGrid1D}{mtk\+::\+Uni\+Stg\+Grid1\+D} \&rhs)
+\begin{DoxyCompactList}\small\item\em Solves a dense system of linear equations. \end{DoxyCompactList}\item 
+static int \hyperlink{classmtk_1_1LAPACKAdapter_a6c040471a1e9256bafa74e3603ff7bf5}{Solve\+Dense\+System} (\hyperlink{classmtk_1_1DenseMatrix}{mtk\+::\+Dense\+Matrix} \&mm, \hyperlink{classmtk_1_1UniStgGrid2D}{mtk\+::\+Uni\+Stg\+Grid2\+D} \&rhs)
 \begin{DoxyCompactList}\small\item\em Solves a dense system of linear equations. \end{DoxyCompactList}\item 
 static int \hyperlink{classmtk_1_1LAPACKAdapter_a380f148ffdf96bae2f79ae28f1a6560c}{Solve\+Rectangular\+Dense\+System} (const \hyperlink{classmtk_1_1DenseMatrix}{mtk\+::\+Dense\+Matrix} \&aa, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\+::\+Real} $\ast$ob\+\_\+, int ob\+\_\+ld\+\_\+)
 \begin{DoxyCompactList}\small\item\em Solves overdetermined or underdetermined real linear systems. \end{DoxyCompactList}\item 
@@ -44,7 +47,7 @@ The {\bfseries L\+A\+P\+A\+C\+K (Linear Algebra P\+A\+C\+Kage)} is written in Fo
 \end{DoxySeeAlso}
 
 
-Definition at line \hyperlink{mtk__lapack__adapter_8h_source_l00092}{92} of file \hyperlink{mtk__lapack__adapter_8h_source}{mtk\+\_\+lapack\+\_\+adapter.\+h}.
+Definition at line \hyperlink{mtk__lapack__adapter_8h_source_l00093}{93} of file \hyperlink{mtk__lapack__adapter_8h_source}{mtk\+\_\+lapack\+\_\+adapter.\+h}.
 
 
 
@@ -73,7 +76,7 @@ Adapts the M\+T\+K to L\+A\+P\+A\+C\+K's routine.
 \end{DoxyExceptions}
 
 
-Definition at line \hyperlink{mtk__lapack__adapter_8cc_source_l00555}{555} of file \hyperlink{mtk__lapack__adapter_8cc_source}{mtk\+\_\+lapack\+\_\+adapter.\+cc}.
+Definition at line \hyperlink{mtk__lapack__adapter_8cc_source_l00593}{593} of file \hyperlink{mtk__lapack__adapter_8cc_source}{mtk\+\_\+lapack\+\_\+adapter.\+cc}.
 
 
 
@@ -196,7 +199,7 @@ Adapts the M\+T\+K to L\+A\+P\+A\+C\+K's dgesv\+\_\+ routine.
 \begin{DoxyParams}[1]{Parameters}
 \mbox{\tt in}  & {\em matrix} & Input matrix. \\
 \hline
-\mbox{\tt in}  & {\em rr} & Input right-\/hand side from info on a grid.\\
+\mbox{\tt in}  & {\em rhs} & Input right-\/hand side from info on a grid.\\
 \hline
 \end{DoxyParams}
 
@@ -215,6 +218,44 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classmtk_1_1LAPACKAdapter_ac38be1e30a2456b2a14c8a81f47c4ba1_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1LAPACKAdapter_a6c040471a1e9256bafa74e3603ff7bf5}{\index{mtk\+::\+L\+A\+P\+A\+C\+K\+Adapter@{mtk\+::\+L\+A\+P\+A\+C\+K\+Adapter}!Solve\+Dense\+System@{Solve\+Dense\+System}}
+\index{Solve\+Dense\+System@{Solve\+Dense\+System}!mtk\+::\+L\+A\+P\+A\+C\+K\+Adapter@{mtk\+::\+L\+A\+P\+A\+C\+K\+Adapter}}
+\subsubsection[{Solve\+Dense\+System}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+L\+A\+P\+A\+C\+K\+Adapter\+::\+Solve\+Dense\+System (
+\begin{DoxyParamCaption}
+\item[{{\bf mtk\+::\+Dense\+Matrix} \&}]{mm, }
+\item[{{\bf mtk\+::\+Uni\+Stg\+Grid2\+D} \&}]{rhs}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmtk_1_1LAPACKAdapter_a6c040471a1e9256bafa74e3603ff7bf5}
+Adapts the M\+T\+K to L\+A\+P\+A\+C\+K's dgesv\+\_\+ routine.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em matrix} & Input matrix. \\
+\hline
+\mbox{\tt in}  & {\em rhs} & Input right-\/hand side from info on a grid.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::bad\+\_\+alloc} & \\
+\hline
+\end{DoxyExceptions}
+
+
+Definition at line \hyperlink{mtk__lapack__adapter_8cc_source_l00555}{555} of file \hyperlink{mtk__lapack__adapter_8cc_source}{mtk\+\_\+lapack\+\_\+adapter.\+cc}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1LAPACKAdapter_a6c040471a1e9256bafa74e3603ff7bf5_cgraph}
 \end{center}
 \end{figure}
 
@@ -245,7 +286,7 @@ Success of the solution.
 \end{DoxyExceptions}
 
 
-Definition at line \hyperlink{mtk__lapack__adapter_8cc_source_l00752}{752} of file \hyperlink{mtk__lapack__adapter_8cc_source}{mtk\+\_\+lapack\+\_\+adapter.\+cc}.
+Definition at line \hyperlink{mtk__lapack__adapter_8cc_source_l00790}{790} of file \hyperlink{mtk__lapack__adapter_8cc_source}{mtk\+\_\+lapack\+\_\+adapter.\+cc}.
 
 
 

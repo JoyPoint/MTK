@@ -17,14 +17,14 @@ The source term function is defined as
 s(x,y) = xye^{-0.5(x^2 + y^2)}(x^2 + y^2 - 6).
 \f]
 
-Let \f$ \Omega = S \cup N \cup W \cup E\f$. We consider Dirichlet and Neumann
-boundary conditions of the following form:
+Let \f$ \Omega = S \cup N \cup W \cup E\f$. We consider Dirichlet boundary
+conditions of the following form:
 \f[
 \forall\mathbf{x}\in W: u(\mathbf{x}) = 0.
 \f]
 
 \f[
-\forall\mathbf{x}\in E: \nabla u(1,y) = -e^{-0.5(1 - y^2)}(1 - y^2).
+\forall\mathbf{x}\in E: u(1,y) = -e^{-0.5(1 - y^2)}(1 - y^2).
 \f]
 
 \f[
@@ -32,7 +32,7 @@ boundary conditions of the following form:
 \f]
 
 \f[
-\forall\mathbf{x}\in N: \nabla u(x,1) = -e^{-0.5(x^2 - 1)}(x^2 - 1).
+\forall\mathbf{x}\in N: u(x,1) = -e^{-0.5(x^2 - 1)}(x^2 - 1).
 \f]
 
 The analytical solution for this problem is given by

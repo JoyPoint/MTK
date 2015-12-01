@@ -43,6 +43,7 @@ var group__c06_grids =
       [ "north_bndy", "classmtk_1_1UniStgGrid2D.html#afe1ead253cdeb5503e0489eba8fd84e2", null ],
       [ "num_cells_x", "classmtk_1_1UniStgGrid2D.html#a2d182866a398aba8e4829590e85bf939", null ],
       [ "num_cells_y", "classmtk_1_1UniStgGrid2D.html#aed05a801cc9a76dba0ff203cea58a61a", null ],
+      [ "Size", "classmtk_1_1UniStgGrid2D.html#a9df5729dc490325c35757422b744bea3", null ],
       [ "south_bndy", "classmtk_1_1UniStgGrid2D.html#a1442eaf219f099d0ebf46a170fdebf92", null ],
       [ "west_bndy", "classmtk_1_1UniStgGrid2D.html#af2b1712387ded85edaf2b64617d3fc13", null ],
       [ "WriteToFile", "classmtk_1_1UniStgGrid2D.html#a1787a79e4bcee6b89c681dc7e5e2d7bc", null ],

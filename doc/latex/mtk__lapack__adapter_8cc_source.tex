@@ -299,288 +299,327 @@
 00552   \textcolor{keywordflow}{return} info;
 00553 \}
 00554 
-\hypertarget{mtk__lapack__adapter_8cc_source_l00555}{}\hyperlink{classmtk_1_1LAPACKAdapter_ae5c6e78c9c819c9ac7a6f31bfd011d7a}{00555} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1LAPACKAdapter_ae5c6e78c9c819c9ac7a6f31bfd011d7a}{mtk::LAPACKAdapter::QRFactorDenseMatrix}
-      (\hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &aa) \{
-00556 
-00557   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *work\{\}; \textcolor{comment}{// Working array.}
-00558   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *tau\{\};  \textcolor{comment}{// Array for the Householder scalars.}
+\hypertarget{mtk__lapack__adapter_8cc_source_l00555}{}\hyperlink{classmtk_1_1LAPACKAdapter_a6c040471a1e9256bafa74e3603ff7bf5}{00555} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{mtk::LAPACKAdapter::SolveDenseSystem}(
+      \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &mm,
+00556                                          \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &rhs) \{
+00557 
+00558   \textcolor{keywordtype}{int} nrhs\{1\};  \textcolor{comment}{// Number of right-hand sides.}
 00559 
-00560   \textcolor{comment}{// Prepare to factorize: allocate and inquire for the value of lwork.}
-00561   \textcolor{keywordflow}{try} \{
-00562     work = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[1];
-00563   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00564     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00565       std::endl;
-00566     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00567   \}
-00568   memset(work, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[0])*1);
-00569 
-00570   \textcolor{keywordtype}{int} lwork\{-1\};
-00571   \textcolor{keywordtype}{int} info\{\};
+00560   \textcolor{keywordtype}{int} *ipiv\{\};                \textcolor{comment}{// Array for pivoting information.}
+00561   \textcolor{keywordtype}{int} info\{\};                 \textcolor{comment}{// Status of the solution.}
+00562   \textcolor{keywordtype}{int} mm\_rank\{mm.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}()\}; \textcolor{comment}{// Rank of the matrix.}
+00563 
+00564   \textcolor{keywordflow}{try} \{
+00565     ipiv = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[mm\_rank];
+00566   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00567     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00568       std::endl;
+00569     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00570   \}
+00571   memset(ipiv, 0, \textcolor{keyword}{sizeof}(ipiv[0])*mm\_rank);
 00572 
-00573   \textcolor{keywordtype}{int} aa\_num\_cols = aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}();
-00574   \textcolor{keywordtype}{int} aaT\_num\_rows = aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}();
-00575   \textcolor{keywordtype}{int} aaT\_num\_cols = aa.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}();
-00576 
-00577 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 12}
-00578   std::cout << \textcolor{stringliteral}{"Input matrix BEFORE QR factorization:"} << std::endl;
-00579   std::cout << aa << std::endl;
-00580 \textcolor{preprocessor}{  #endif}
-00581 
-00582 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00583   dgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows,
-00584           tau,
-00585           work, &lwork, &info);
-00586 \textcolor{preprocessor}{  #else}
-00587   fgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows,
-00588           tau,
-00589           work, &lwork, &info);
-00590 \textcolor{preprocessor}{  #endif}
-00591 
-00592   \textcolor{keywordflow}{if} (info == 0) \{
-00593     lwork = (int) work[0];
-00594   \} \textcolor{keywordflow}{else} \{
-00595     std::cerr << \textcolor{stringliteral}{"Could not get value for lwork on line "} << \_\_LINE\_\_ - 5 <<
-00596       std::endl;
-00597     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
-00598   \}
-00599 
-00600 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 10}
-00601   std::cout << \textcolor{stringliteral}{"lwork = "} << std::endl << std::setw(12) << lwork << std::endl
-00602     << std::endl;
-00603 \textcolor{preprocessor}{  #endif}
-00604 
-00605   \textcolor{keyword}{delete} [] work;
-00606   work = \textcolor{keyword}{nullptr};
+00573   \textcolor{keywordtype}{int} ldbb = mm\_rank;
+00574   \textcolor{keywordtype}{int} mm\_ld = mm\_rank;
+00575 
+00576   mm.\hyperlink{classmtk_1_1DenseMatrix_a59b9bea24acf39dca64e8549b3527463}{OrderColMajor}();
+00577 
+00578 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00579   dgesv\_(&mm\_rank, &nrhs, mm.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &mm\_ld, ipiv,
+00580          rhs.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}(), &ldbb, &info);
+00581 \textcolor{preprocessor}{  #else}
+00582   fgesv\_(&mm\_rank, &nrhs, mm.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &mm\_ld, ipiv,
+00583          rhs.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}(), &ldbb, &info);
+00584 \textcolor{preprocessor}{  #endif}
+00585 
+00586   mm.\hyperlink{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}{OrderRowMajor}();
+00587 
+00588   \textcolor{keyword}{delete} [] ipiv;
+00589 
+00590   \textcolor{keywordflow}{return} info;
+00591 \}
+00592 
+\hypertarget{mtk__lapack__adapter_8cc_source_l00593}{}\hyperlink{classmtk_1_1LAPACKAdapter_ae5c6e78c9c819c9ac7a6f31bfd011d7a}{00593} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1LAPACKAdapter_ae5c6e78c9c819c9ac7a6f31bfd011d7a}{mtk::LAPACKAdapter::QRFactorDenseMatrix}
+      (\hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &aa) \{
+00594 
+00595   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *work\{\}; \textcolor{comment}{// Working array.}
+00596   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *tau\{\};  \textcolor{comment}{// Array for the Householder scalars.}
+00597 
+00598   \textcolor{comment}{// Prepare to factorize: allocate and inquire for the value of lwork.}
+00599   \textcolor{keywordflow}{try} \{
+00600     work = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[1];
+00601   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00602     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00603       std::endl;
+00604     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00605   \}
+00606   memset(work, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[0])*1);
 00607 
-00608   \textcolor{comment}{// Once we know lwork, we can actually invoke the factorization:}
-00609   \textcolor{keywordflow}{try} \{
-00610     work = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} [lwork];
-00611   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00612     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00613       std::endl;
-00614     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00615   \}
-00616   memset(work, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(work[0])*lwork);
-00617 
-00618   \textcolor{keywordtype}{int} ltau = std::min(aaT\_num\_rows,aaT\_num\_cols);
+00608   \textcolor{keywordtype}{int} lwork\{-1\};
+00609   \textcolor{keywordtype}{int} info\{\};
+00610 
+00611   \textcolor{keywordtype}{int} aa\_num\_cols = aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}();
+00612   \textcolor{keywordtype}{int} aaT\_num\_rows = aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}();
+00613   \textcolor{keywordtype}{int} aaT\_num\_cols = aa.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}();
+00614 
+00615 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 12}
+00616   std::cout << \textcolor{stringliteral}{"Input matrix BEFORE QR factorization:"} << std::endl;
+00617   std::cout << aa << std::endl;
+00618 \textcolor{preprocessor}{  #endif}
 00619 
-00620   \textcolor{keywordflow}{try} \{
-00621     tau = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} [ltau];
-00622   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00623     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00624       std::endl;
-00625     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00626   \}
-00627   memset(tau, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(0.0)*ltau);
-00628 
-00629 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00630   dgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows,
-00631           tau, work, &lwork, &info);
-00632 \textcolor{preprocessor}{  #else}
-00633   fgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows,
-00634           tau, work, &lwork, &info);
-00635 \textcolor{preprocessor}{  #endif}
-00636 
-00637 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00638   \textcolor{keywordflow}{if} (!info) \{
-00639     std::cout << \textcolor{stringliteral}{"QR factorization completed!"} << std::endl << std::endl;
-00640   \} \textcolor{keywordflow}{else} \{
-00641     std::cerr << \textcolor{stringliteral}{"Error solving system! info = "} << info << std::endl;
-00642     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
-00643   \}
-00644 \textcolor{preprocessor}{  #endif}
+00620 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00621   dgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows,
+00622           tau,
+00623           work, &lwork, &info);
+00624 \textcolor{preprocessor}{  #else}
+00625   fgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows,
+00626           tau,
+00627           work, &lwork, &info);
+00628 \textcolor{preprocessor}{  #endif}
+00629 
+00630   \textcolor{keywordflow}{if} (info == 0) \{
+00631     lwork = (int) work[0];
+00632   \} \textcolor{keywordflow}{else} \{
+00633     std::cerr << \textcolor{stringliteral}{"Could not get value for lwork on line "} << \_\_LINE\_\_ - 5 <<
+00634       std::endl;
+00635     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
+00636   \}
+00637 
+00638 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 10}
+00639   std::cout << \textcolor{stringliteral}{"lwork = "} << std::endl << std::setw(12) << lwork << std::endl
+00640     << std::endl;
+00641 \textcolor{preprocessor}{  #endif}
+00642 
+00643   \textcolor{keyword}{delete} [] work;
+00644   work = \textcolor{keyword}{nullptr};
 00645 
-00646 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 12}
-00647   std::cout << \textcolor{stringliteral}{"Input matrix AFTER QR factorization:"} << std::endl;
-00648   std::cout << aa << std::endl;
-00649 \textcolor{preprocessor}{  #endif}
-00650 
-00651   \textcolor{comment}{// We now generate the real matrix Q with orthonormal columns. This has to}
-00652   \textcolor{comment}{// be done separately since the actual output of dgeqrf\_ (AA\_) represents}
-00653   \textcolor{comment}{// the orthogonal matrix Q as a product of min(aa\_num\_rows,aa\_num\_cols)}
-00654   \textcolor{comment}{// elementary Householder reflectors. Notice that we must re-inquire the new}
-00655   \textcolor{comment}{// value for lwork that is used.}
-00656 
-00657   \textcolor{keywordtype}{bool} padded\{\textcolor{keyword}{false}\};
-00658 
-00659   \textcolor{keywordtype}{bool} transpose\{\textcolor{keyword}{false}\};
-00660 
-00661   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} QQ\_(aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}(),padded,transpose);
-00662 
-00663 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 12}
-00664   std::cout << \textcolor{stringliteral}{"Initialized QQ\_T: "} << std::endl;
-00665   std::cout << QQ\_ << std::endl;
-00666 \textcolor{preprocessor}{  #endif}
-00667 
-00668   \textcolor{comment}{// Assemble the QQ\_ matrix:}
-00669   lwork = -1;
-00670 
-00671   \textcolor{keyword}{delete}[] work;
-00672   work = \textcolor{keyword}{nullptr};
-00673 
-00674   \textcolor{keywordflow}{try} \{
-00675     work = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[1];
-00676   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00677     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00678       std::endl;
-00679     std::cerr << memory\_allocation\_exception.what() <<
-00680       std::endl;
+00646   \textcolor{comment}{// Once we know lwork, we can actually invoke the factorization:}
+00647   \textcolor{keywordflow}{try} \{
+00648     work = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} [lwork];
+00649   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00650     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00651       std::endl;
+00652     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00653   \}
+00654   memset(work, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(work[0])*lwork);
+00655 
+00656   \textcolor{keywordtype}{int} ltau = std::min(aaT\_num\_rows,aaT\_num\_cols);
+00657 
+00658   \textcolor{keywordflow}{try} \{
+00659     tau = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} [ltau];
+00660   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00661     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00662       std::endl;
+00663     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00664   \}
+00665   memset(tau, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(0.0)*ltau);
+00666 
+00667 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00668   dgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows,
+00669           tau, work, &lwork, &info);
+00670 \textcolor{preprocessor}{  #else}
+00671   fgeqrf\_(&aaT\_num\_rows, &aaT\_num\_cols, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows,
+00672           tau, work, &lwork, &info);
+00673 \textcolor{preprocessor}{  #endif}
+00674 
+00675 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00676   \textcolor{keywordflow}{if} (!info) \{
+00677     std::cout << \textcolor{stringliteral}{"QR factorization completed!"} << std::endl << std::endl;
+00678   \} \textcolor{keywordflow}{else} \{
+00679     std::cerr << \textcolor{stringliteral}{"Error solving system! info = "} << info << std::endl;
+00680     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
 00681   \}
-00682   memset(work, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(work[0])*1);
+00682 \textcolor{preprocessor}{  #endif}
 00683 
-00684   \textcolor{keywordtype}{char} side\_\{\textcolor{charliteral}{'L'}\};
-00685   \textcolor{keywordtype}{char} trans\_\{\textcolor{charliteral}{'N'}\};
-00686 
-00687   \textcolor{keywordtype}{int} aux = QQ\_.num\_rows();
+00684 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 12}
+00685   std::cout << \textcolor{stringliteral}{"Input matrix AFTER QR factorization:"} << std::endl;
+00686   std::cout << aa << std::endl;
+00687 \textcolor{preprocessor}{  #endif}
 00688 
-00689 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00690   dormqr\_(&side\_, &trans\_,
-00691           &aa\_num\_cols, &aa\_num\_cols, &ltau, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows, tau,
-00692           QQ\_.data(), &aux, work, &lwork, &info);
-00693 \textcolor{preprocessor}{  #else}
-00694   formqr\_(&side\_, &trans\_,
-00695           &aa\_num\_cols, &aa\_num\_cols, &ltau, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows, tau,
-00696           QQ\_.data(), &aux, work, &lwork, &info);
-00697 \textcolor{preprocessor}{  #endif}
+00689   \textcolor{comment}{// We now generate the real matrix Q with orthonormal columns. This has to}
+00690   \textcolor{comment}{// be done separately since the actual output of dgeqrf\_ (AA\_) represents}
+00691   \textcolor{comment}{// the orthogonal matrix Q as a product of min(aa\_num\_rows,aa\_num\_cols)}
+00692   \textcolor{comment}{// elementary Householder reflectors. Notice that we must re-inquire the new}
+00693   \textcolor{comment}{// value for lwork that is used.}
+00694 
+00695   \textcolor{keywordtype}{bool} padded\{\textcolor{keyword}{false}\};
+00696 
+00697   \textcolor{keywordtype}{bool} transpose\{\textcolor{keyword}{false}\};
 00698 
-00699   \textcolor{keywordflow}{if} (info == 0) \{
-00700     lwork = (int) work[0];
-00701   \} \textcolor{keywordflow}{else} \{
-00702     std::cerr << \textcolor{stringliteral}{"Could not get lwork on line "} << \_\_LINE\_\_ - 5 << std::endl;
-00703     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
-00704   \}
+00699   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} QQ\_(aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}(),padded,transpose);
+00700 
+00701 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 12}
+00702   std::cout << \textcolor{stringliteral}{"Initialized QQ\_T: "} << std::endl;
+00703   std::cout << QQ\_ << std::endl;
+00704 \textcolor{preprocessor}{  #endif}
 00705 
-00706 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 10}
-00707   std::cout << \textcolor{stringliteral}{"lwork = "} << std::endl << std::setw(12) << lwork <<
-00708     std::endl << std::endl;
-00709 \textcolor{preprocessor}{  #endif}
-00710 
-00711   \textcolor{keyword}{delete}[] work;
-00712   work = \textcolor{keyword}{nullptr};
-00713 
-00714   \textcolor{keywordflow}{try} \{
-00715     work = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[lwork];
-00716   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00717     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00706   \textcolor{comment}{// Assemble the QQ\_ matrix:}
+00707   lwork = -1;
+00708 
+00709   \textcolor{keyword}{delete}[] work;
+00710   work = \textcolor{keyword}{nullptr};
+00711 
+00712   \textcolor{keywordflow}{try} \{
+00713     work = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[1];
+00714   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00715     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00716       std::endl;
+00717     std::cerr << memory\_allocation\_exception.what() <<
 00718       std::endl;
-00719     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00720   \}
-00721   memset(work, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(work[0])*lwork);
-00722 
-00723 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00724   dormqr\_(&side\_, &trans\_,
-00725           &aa\_num\_cols, &aa\_num\_cols, &ltau, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows, tau,
-00726           QQ\_.data(), &aux, work, &lwork, &info);
-00727 \textcolor{preprocessor}{  #else}
-00728   formqr\_(&side\_, &trans\_,
+00719   \}
+00720   memset(work, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(work[0])*1);
+00721 
+00722   \textcolor{keywordtype}{char} side\_\{\textcolor{charliteral}{'L'}\};
+00723   \textcolor{keywordtype}{char} trans\_\{\textcolor{charliteral}{'N'}\};
+00724 
+00725   \textcolor{keywordtype}{int} aux = QQ\_.num\_rows();
+00726 
+00727 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00728   dormqr\_(&side\_, &trans\_,
 00729           &aa\_num\_cols, &aa\_num\_cols, &ltau, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows, tau,
 00730           QQ\_.data(), &aux, work, &lwork, &info);
-00731 \textcolor{preprocessor}{  #endif}
-00732 
-00733 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00734   \textcolor{keywordflow}{if} (!info) \{
-00735     std::cout << \textcolor{stringliteral}{"Q matrix successfully assembled!"} << std::endl << std::endl;
-00736   \} \textcolor{keywordflow}{else} \{
-00737     std::cerr << \textcolor{stringliteral}{"Something went wrong solving system! info = "} << info <<
-00738       std::endl;
-00739     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
-00740   \}
-00741 \textcolor{preprocessor}{  #endif}
-00742 
-00743   \textcolor{keyword}{delete}[] work;
-00744   work = \textcolor{keyword}{nullptr};
-00745 
-00746   \textcolor{keyword}{delete}[] tau;
-00747   tau = \textcolor{keyword}{nullptr};
+00731 \textcolor{preprocessor}{  #else}
+00732   formqr\_(&side\_, &trans\_,
+00733           &aa\_num\_cols, &aa\_num\_cols, &ltau, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows, tau,
+00734           QQ\_.data(), &aux, work, &lwork, &info);
+00735 \textcolor{preprocessor}{  #endif}
+00736 
+00737   \textcolor{keywordflow}{if} (info == 0) \{
+00738     lwork = (int) work[0];
+00739   \} \textcolor{keywordflow}{else} \{
+00740     std::cerr << \textcolor{stringliteral}{"Could not get lwork on line "} << \_\_LINE\_\_ - 5 << std::endl;
+00741     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
+00742   \}
+00743 
+00744 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 10}
+00745   std::cout << \textcolor{stringliteral}{"lwork = "} << std::endl << std::setw(12) << lwork <<
+00746     std::endl << std::endl;
+00747 \textcolor{preprocessor}{  #endif}
 00748 
-00749   \textcolor{keywordflow}{return} QQ\_;
-00750 \}
+00749   \textcolor{keyword}{delete}[] work;
+00750   work = \textcolor{keyword}{nullptr};
 00751 
-\hypertarget{mtk__lapack__adapter_8cc_source_l00752}{}\hyperlink{classmtk_1_1LAPACKAdapter_a380f148ffdf96bae2f79ae28f1a6560c}{00752} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a380f148ffdf96bae2f79ae28f1a6560c}{mtk::LAPACKAdapter::SolveRectangularDenseSystem}(\textcolor{keyword}{const} 
-      \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &aa,
-00753                                                    \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *ob\_,
-00754                                                    \textcolor{keywordtype}{int} ob\_ld\_) \{
-00755 
-00756   \textcolor{comment}{// We first invoke the solver to query for the value of lwork. For this,}
-00757   \textcolor{comment}{// we must at least allocate enough space to allow access to WORK(1), or}
-00758   \textcolor{comment}{// work[0]:}
-00759 
-00760   \textcolor{comment}{// If LWORK = -1, then a workspace query is assumed; the routine only}
-00761   \textcolor{comment}{// calculates the optimal size of the WORK array, returns this value as}
-00762   \textcolor{comment}{// the first entry of the WORK array, and no error message related to}
-00763   \textcolor{comment}{// LWORK is issued by XERBLA.}
-00764 
-00765   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *work\{\}; \textcolor{comment}{// Work array.}
-00766 
-00767   \textcolor{keywordflow}{try} \{
-00768     work = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[1];
-00769   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00770     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00771       std::endl;
-00772     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00773   \}
-00774   memset(work, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(work[0])*1);
-00775 
-00776   \textcolor{keywordtype}{char} trans\_\{\textcolor{charliteral}{'N'}\};
-00777   \textcolor{keywordtype}{int} nrhs\_\{1\};
-00778   \textcolor{keywordtype}{int} info\{0\};
-00779   \textcolor{keywordtype}{int} lwork\{-1\};
+00752   \textcolor{keywordflow}{try} \{
+00753     work = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[lwork];
+00754   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00755     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00756       std::endl;
+00757     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00758   \}
+00759   memset(work, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(work[0])*lwork);
+00760 
+00761 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00762   dormqr\_(&side\_, &trans\_,
+00763           &aa\_num\_cols, &aa\_num\_cols, &ltau, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows, tau,
+00764           QQ\_.data(), &aux, work, &lwork, &info);
+00765 \textcolor{preprocessor}{  #else}
+00766   formqr\_(&side\_, &trans\_,
+00767           &aa\_num\_cols, &aa\_num\_cols, &ltau, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &aaT\_num\_rows, tau,
+00768           QQ\_.data(), &aux, work, &lwork, &info);
+00769 \textcolor{preprocessor}{  #endif}
+00770 
+00771 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00772   \textcolor{keywordflow}{if} (!info) \{
+00773     std::cout << \textcolor{stringliteral}{"Q matrix successfully assembled!"} << std::endl << std::endl;
+00774   \} \textcolor{keywordflow}{else} \{
+00775     std::cerr << \textcolor{stringliteral}{"Something went wrong solving system! info = "} << info <<
+00776       std::endl;
+00777     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
+00778   \}
+00779 \textcolor{preprocessor}{  #endif}
 00780 
-00781   \textcolor{keywordtype}{int} AA\_num\_rows\_  = aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}();
-00782   \textcolor{keywordtype}{int} AA\_num\_cols\_  = aa.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}();
-00783   \textcolor{keywordtype}{int} AA\_ld\_ = std::max(1,aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}());
-00784 
-00785 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00786   dgels\_(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &AA\_ld\_,
-00787          ob\_, &ob\_ld\_,
-00788          work, &lwork, &info);
-00789 \textcolor{preprocessor}{  #else}
-00790   \hyperlink{namespacemtk_ada6df1b733204aa7ff0b1ec7556288f9}{sgels\_}(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &AA\_ld\_,
-00791          ob\_, &ob\_ld\_,
-00792          work, &lwork, &info);
-00793 \textcolor{preprocessor}{  #endif}
-00794 
-00795   \textcolor{keywordflow}{if} (info == 0) \{
-00796     lwork = (int) work[0];
-00797   \} \textcolor{keywordflow}{else} \{
-00798     std::cerr << \textcolor{stringliteral}{"Could not get value for lwork on line "} << \_\_LINE\_\_ - 2 <<
-00799       std::endl;
-00800     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
-00801     \textcolor{keywordflow}{return} info;
-00802   \}
-00803 
-00804 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 10}
-00805   std::cout << \textcolor{stringliteral}{"lwork = "} << std::endl << std::setw(12)<< lwork <<
-00806     std::endl << std::endl;
-00807 \textcolor{preprocessor}{  #endif}
-00808 
-00809   \textcolor{comment}{// We then use lwork's new value to create the work array:}
-00810   \textcolor{keyword}{delete}[] work;
-00811   work = \textcolor{keyword}{nullptr};
-00812 
-00813   \textcolor{keywordflow}{try} \{
-00814     work = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[lwork];
-00815   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00816     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 << std::endl;
-00817     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00818   \}
-00819   memset(work, 0.0, \textcolor{keyword}{sizeof}(work[0])*lwork);
-00820 
-00821   \textcolor{comment}{// We now invoke the solver again:}
-00822 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00823   dgels\_(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &AA\_ld\_,
-00824          ob\_, &ob\_ld\_,
-00825          work, &lwork, &info);
-00826 \textcolor{preprocessor}{  #else}
-00827   \hyperlink{namespacemtk_ada6df1b733204aa7ff0b1ec7556288f9}{sgels\_}(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &AA\_ld\_,
-00828          ob\_, &ob\_ld\_,
-00829          work, &lwork, &info);
-00830 \textcolor{preprocessor}{  #endif}
-00831 
-00832   \textcolor{keyword}{delete} [] work;
-00833   work = \textcolor{keyword}{nullptr};
-00834 
-00835   \textcolor{keywordflow}{return} info;
-00836 \}
+00781   \textcolor{keyword}{delete}[] work;
+00782   work = \textcolor{keyword}{nullptr};
+00783 
+00784   \textcolor{keyword}{delete}[] tau;
+00785   tau = \textcolor{keyword}{nullptr};
+00786 
+00787   \textcolor{keywordflow}{return} QQ\_;
+00788 \}
+00789 
+\hypertarget{mtk__lapack__adapter_8cc_source_l00790}{}\hyperlink{classmtk_1_1LAPACKAdapter_a380f148ffdf96bae2f79ae28f1a6560c}{00790} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a380f148ffdf96bae2f79ae28f1a6560c}{mtk::LAPACKAdapter::SolveRectangularDenseSystem}(\textcolor{keyword}{const} 
+      \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &aa,
+00791                                                    \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *ob\_,
+00792                                                    \textcolor{keywordtype}{int} ob\_ld\_) \{
+00793 
+00794   \textcolor{comment}{// We first invoke the solver to query for the value of lwork. For this,}
+00795   \textcolor{comment}{// we must at least allocate enough space to allow access to WORK(1), or}
+00796   \textcolor{comment}{// work[0]:}
+00797 
+00798   \textcolor{comment}{// If LWORK = -1, then a workspace query is assumed; the routine only}
+00799   \textcolor{comment}{// calculates the optimal size of the WORK array, returns this value as}
+00800   \textcolor{comment}{// the first entry of the WORK array, and no error message related to}
+00801   \textcolor{comment}{// LWORK is issued by XERBLA.}
+00802 
+00803   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *work\{\}; \textcolor{comment}{// Work array.}
+00804 
+00805   \textcolor{keywordflow}{try} \{
+00806     work = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[1];
+00807   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00808     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00809       std::endl;
+00810     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00811   \}
+00812   memset(work, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(work[0])*1);
+00813 
+00814   \textcolor{keywordtype}{char} trans\_\{\textcolor{charliteral}{'N'}\};
+00815   \textcolor{keywordtype}{int} nrhs\_\{1\};
+00816   \textcolor{keywordtype}{int} info\{0\};
+00817   \textcolor{keywordtype}{int} lwork\{-1\};
+00818 
+00819   \textcolor{keywordtype}{int} AA\_num\_rows\_  = aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}();
+00820   \textcolor{keywordtype}{int} AA\_num\_cols\_  = aa.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}();
+00821   \textcolor{keywordtype}{int} AA\_ld\_ = std::max(1,aa.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}());
+00822 
+00823 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00824   dgels\_(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &AA\_ld\_,
+00825          ob\_, &ob\_ld\_,
+00826          work, &lwork, &info);
+00827 \textcolor{preprocessor}{  #else}
+00828   \hyperlink{namespacemtk_ada6df1b733204aa7ff0b1ec7556288f9}{sgels\_}(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &AA\_ld\_,
+00829          ob\_, &ob\_ld\_,
+00830          work, &lwork, &info);
+00831 \textcolor{preprocessor}{  #endif}
+00832 
+00833   \textcolor{keywordflow}{if} (info == 0) \{
+00834     lwork = (int) work[0];
+00835   \} \textcolor{keywordflow}{else} \{
+00836     std::cerr << \textcolor{stringliteral}{"Could not get value for lwork on line "} << \_\_LINE\_\_ - 2 <<
+00837       std::endl;
+00838     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
+00839     \textcolor{keywordflow}{return} info;
+00840   \}
+00841 
+00842 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 10}
+00843   std::cout << \textcolor{stringliteral}{"lwork = "} << std::endl << std::setw(12)<< lwork <<
+00844     std::endl << std::endl;
+00845 \textcolor{preprocessor}{  #endif}
+00846 
+00847   \textcolor{comment}{// We then use lwork's new value to create the work array:}
+00848   \textcolor{keyword}{delete}[] work;
+00849   work = \textcolor{keyword}{nullptr};
+00850 
+00851   \textcolor{keywordflow}{try} \{
+00852     work = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[lwork];
+00853   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00854     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 << std::endl;
+00855     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00856   \}
+00857   memset(work, 0.0, \textcolor{keyword}{sizeof}(work[0])*lwork);
+00858 
+00859   \textcolor{comment}{// We now invoke the solver again:}
+00860 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00861   dgels\_(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &AA\_ld\_,
+00862          ob\_, &ob\_ld\_,
+00863          work, &lwork, &info);
+00864 \textcolor{preprocessor}{  #else}
+00865   \hyperlink{namespacemtk_ada6df1b733204aa7ff0b1ec7556288f9}{sgels\_}(&trans\_, &AA\_num\_rows\_, &AA\_num\_cols\_, &nrhs\_, aa.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(), &AA\_ld\_,
+00866          ob\_, &ob\_ld\_,
+00867          work, &lwork, &info);
+00868 \textcolor{preprocessor}{  #endif}
+00869 
+00870   \textcolor{keyword}{delete} [] work;
+00871   work = \textcolor{keyword}{nullptr};
+00872 
+00873   \textcolor{keywordflow}{return} info;
+00874 \}
 \end{DoxyCode}
