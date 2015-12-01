@@ -199,7 +199,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # README File for the Mimetic Methods Toolkit (MTK)
 
 By: **Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu**
-    __________________________________________________________________
 
 ## 1. Description
 
@@ -213,7 +212,6 @@ numerical solution of ordinary and partial differential equations.
 
 An older version of this library is available outside of GitHub... just email me
 about it, and you can have it... it is ugly, yet functional and more complete.
-    __________________________________________________________________
 
 ## 2. Dependencies
 
@@ -247,7 +245,6 @@ Therefore, the following dependencies tree arises:
 ### For OS X:
 
 1. GLPK - Available from: https://www.gnu.org/software/glpk/
-    __________________________________________________________________
 
 ## 3. Installation
 
@@ -290,7 +287,6 @@ If successful you'll read (before building the examples):
 \verbatim
 ----- Library created! Check in /home/ejspeiro/Dropbox/MTK/lib
 \endverbatim
-    __________________________________________________________________
 
 ## 4. Contact, Support, and Credits
 
