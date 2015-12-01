@@ -1,0 +1,960 @@
+\hypertarget{classmtk_1_1BCDescriptor2D}{\section{mtk\+:\+:B\+C\+Descriptor2\+D Class Reference}
+\label{classmtk_1_1BCDescriptor2D}\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+}
+
+
+Enforces boundary conditions in either the operator or the grid.  
+
+
+
+
+{\ttfamily \#include $<$mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h$>$}
+
+
+
+Collaboration diagram for mtk\+:\+:B\+C\+Descriptor2\+D\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classmtk_1_1BCDescriptor2D__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classmtk_1_1BCDescriptor2D_abbc3af29202dbfef203f4cafd9566fd0}{B\+C\+Descriptor2\+D} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{classmtk_1_1BCDescriptor2D_ae8a93352a94efed52747b710e6ff7893}{B\+C\+Descriptor2\+D} (const \hyperlink{classmtk_1_1BCDescriptor2D}{B\+C\+Descriptor2\+D} \&desc)
+\begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
+\hyperlink{classmtk_1_1BCDescriptor2D_ae14e62548a8bc080d576fff6937c546b}{$\sim$\+B\+C\+Descriptor2\+D} () noexcept
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1BCDescriptor2D_a0fa469ddf6ff76e2858d6d3b76cc8b6f}{highest\+\_\+order\+\_\+diff\+\_\+west} () const noexcept
+\begin{DoxyCompactList}\small\item\em Getter for the highest order of differentiation in the west boundary. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1BCDescriptor2D_a5a9b80a2e9e579b05d9f3589d80448b6}{highest\+\_\+order\+\_\+diff\+\_\+east} () const noexcept
+\begin{DoxyCompactList}\small\item\em Getter for the highest order of differentiation in the east boundary. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1BCDescriptor2D_a463d909f6014e7f01b33171a06d7b400}{highest\+\_\+order\+\_\+diff\+\_\+south} () const noexcept
+\begin{DoxyCompactList}\small\item\em Getter for the highest order of differentiation in the south boundary. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1BCDescriptor2D_a87c5f2449247d65ea07784ba2ec61bc7}{highest\+\_\+order\+\_\+diff\+\_\+north} () const noexcept
+\begin{DoxyCompactList}\small\item\em Getter for the highest order of differentiation in the north boundary. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a3da32ba89cfb15032bb1156394bad98c}{Push\+Back\+West\+Coeff} (\hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{Coefficient\+Function2\+D} cw)
+\begin{DoxyCompactList}\small\item\em Push back coefficient function at west of lowest order diff. available. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a27635428a6c36d1e305cafdc68271063}{Push\+Back\+East\+Coeff} (\hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{Coefficient\+Function2\+D} ce)
+\begin{DoxyCompactList}\small\item\em Push back coefficient function at east of lowest order diff. available. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a9eb891f14c68968a0113632fa5fea630}{Push\+Back\+South\+Coeff} (\hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{Coefficient\+Function2\+D} cs)
+\begin{DoxyCompactList}\small\item\em Push back coefficient function south of lowest order diff. available. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a0fed58bd058d699a572888fe4b9934a4}{Push\+Back\+North\+Coeff} (\hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{Coefficient\+Function2\+D} cn)
+\begin{DoxyCompactList}\small\item\em Push back coefficient function north of lowest order diff. available. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a006050efe15b1be75b36a74a23051392}{set\+\_\+west\+\_\+condition} (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}($\ast$west\+\_\+condition)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy)) noexcept
+\begin{DoxyCompactList}\small\item\em Set boundary condition at west. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a4ba8690e845f59a1507b056f3fc8061e}{set\+\_\+east\+\_\+condition} (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}($\ast$east\+\_\+condition)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy)) noexcept
+\begin{DoxyCompactList}\small\item\em Set boundary condition at east. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a408f159cc44d7ee610191efb8ed48b2a}{set\+\_\+south\+\_\+condition} (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}($\ast$south\+\_\+condition)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy)) noexcept
+\begin{DoxyCompactList}\small\item\em Set boundary condition at south. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a690f6881a88b202c074d9f90f2a7ddb0}{set\+\_\+north\+\_\+condition} (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}($\ast$north\+\_\+condition)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy)) noexcept
+\begin{DoxyCompactList}\small\item\em Set boundary condition at north. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a35592617dda3b965b680b2a1355122f4}{Impose\+On\+Laplacian\+Matrix} (const \hyperlink{classmtk_1_1UniStgGrid2D}{Uni\+Stg\+Grid2\+D} \&grid, \hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix} \&matrix, const int \&order\+\_\+accuracy=2) const 
+\begin{DoxyCompactList}\small\item\em Imposes the condition on the operator represented as matrix. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a5f0ff1fda1b5266dcd77ba2301c8ba2c}{Impose\+On\+Grid} (\hyperlink{classmtk_1_1UniStgGrid2D}{Uni\+Stg\+Grid2\+D} \&grid) const 
+\begin{DoxyCompactList}\small\item\em Imposes the condition on the grid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a0188a64f242ae6015385a4597934fcda}{Impose\+On\+South\+Boundary\+No\+Space} (const \hyperlink{classmtk_1_1UniStgGrid2D}{mtk\+::\+Uni\+Stg\+Grid2\+D} \&grid, \hyperlink{classmtk_1_1DenseMatrix}{mtk\+::\+Dense\+Matrix} \&matrix, const int \&order\+\_\+accuracy) const 
+\begin{DoxyCompactList}\small\item\em Imposes the condition on the south boundary. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a5e7d4b9deba6c07170e983eb1c0e9776}{Impose\+On\+North\+Boundary\+No\+Space} (const \hyperlink{classmtk_1_1UniStgGrid2D}{mtk\+::\+Uni\+Stg\+Grid2\+D} \&grid, \hyperlink{classmtk_1_1DenseMatrix}{mtk\+::\+Dense\+Matrix} \&matrix, const int \&order\+\_\+accuracy) const 
+\begin{DoxyCompactList}\small\item\em Imposes the condition on the north boundary. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a0b153abdcb78c54197858148c9632517}{Impose\+On\+West\+Boundary\+No\+Space} (const \hyperlink{classmtk_1_1UniStgGrid2D}{mtk\+::\+Uni\+Stg\+Grid2\+D} \&grid, \hyperlink{classmtk_1_1DenseMatrix}{mtk\+::\+Dense\+Matrix} \&matrix, const int \&order\+\_\+accuracy) const 
+\begin{DoxyCompactList}\small\item\em Imposes the condition on the west boundary. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a65f58f43f3fdc793cce7293780b70b80}{Impose\+On\+East\+Boundary\+No\+Space} (const \hyperlink{classmtk_1_1UniStgGrid2D}{mtk\+::\+Uni\+Stg\+Grid2\+D} \&grid, \hyperlink{classmtk_1_1DenseMatrix}{mtk\+::\+Dense\+Matrix} \&matrix, const int \&order\+\_\+accuracy) const 
+\begin{DoxyCompactList}\small\item\em Imposes the condition on the east boundary. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_af30c275cf06176a2ae9722014142c810}{Impose\+On\+South\+Boundary\+With\+Space} (const \hyperlink{classmtk_1_1UniStgGrid2D}{mtk\+::\+Uni\+Stg\+Grid2\+D} \&grid, \hyperlink{classmtk_1_1DenseMatrix}{mtk\+::\+Dense\+Matrix} \&matrix, const int \&order\+\_\+accuracy) const 
+\begin{DoxyCompactList}\small\item\em Imposes the condition on the south boundary. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a6b9b6f2bec06bce5a9070236ca10ec3a}{Impose\+On\+North\+Boundary\+With\+Space} (const \hyperlink{classmtk_1_1UniStgGrid2D}{mtk\+::\+Uni\+Stg\+Grid2\+D} \&grid, \hyperlink{classmtk_1_1DenseMatrix}{mtk\+::\+Dense\+Matrix} \&matrix, const int \&order\+\_\+accuracy) const 
+\begin{DoxyCompactList}\small\item\em Imposes the condition on the north boundary. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_aa5d88027ff9c5d2eccab93cd51154c9e}{Impose\+On\+West\+Boundary\+With\+Space} (const \hyperlink{classmtk_1_1UniStgGrid2D}{mtk\+::\+Uni\+Stg\+Grid2\+D} \&grid, \hyperlink{classmtk_1_1DenseMatrix}{mtk\+::\+Dense\+Matrix} \&matrix, const int \&order\+\_\+accuracy) const 
+\begin{DoxyCompactList}\small\item\em Imposes the condition on the west boundary. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1BCDescriptor2D_a7208d08bfa84192e13c848093eaa88f0}{Impose\+On\+East\+Boundary\+With\+Space} (const \hyperlink{classmtk_1_1UniStgGrid2D}{mtk\+::\+Uni\+Stg\+Grid2\+D} \&grid, \hyperlink{classmtk_1_1DenseMatrix}{mtk\+::\+Dense\+Matrix} \&matrix, const int \&order\+\_\+accuracy) const 
+\begin{DoxyCompactList}\small\item\em Imposes the condition on the east boundary. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{classmtk_1_1BCDescriptor2D_aa18ef62f8eda355e47f51bcb5dbe8fe7}{highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+}
+\begin{DoxyCompactList}\small\item\em Highest order of differentiation for west. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1BCDescriptor2D_aea5e539a10d5641bd605ebe583c14bc5}{highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+}
+\begin{DoxyCompactList}\small\item\em Highest order of differentiation for east. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1BCDescriptor2D_a1fb094e5e53ecfba32fe9fe56c051c47}{highest\+\_\+order\+\_\+diff\+\_\+south\+\_\+}
+\begin{DoxyCompactList}\small\item\em Highest order differentiation for south. \end{DoxyCompactList}\item 
+int \hyperlink{classmtk_1_1BCDescriptor2D_a6cdeefe70f5bef93196f34ab2949cad2}{highest\+\_\+order\+\_\+diff\+\_\+north\+\_\+}
+\begin{DoxyCompactList}\small\item\em Highest order differentiation for north. \end{DoxyCompactList}\item 
+std\+::vector\\*
+$<$ \hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{Coefficient\+Function2\+D} $>$ \hyperlink{classmtk_1_1BCDescriptor2D_a7df71b43acc25c468683075cc7790bb2}{west\+\_\+coefficients\+\_\+}
+\begin{DoxyCompactList}\small\item\em Coeffs. west. \end{DoxyCompactList}\item 
+std\+::vector\\*
+$<$ \hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{Coefficient\+Function2\+D} $>$ \hyperlink{classmtk_1_1BCDescriptor2D_a1f90fc303984bf18c136a34896bbb7c9}{east\+\_\+coefficients\+\_\+}
+\begin{DoxyCompactList}\small\item\em Coeffs. east. \end{DoxyCompactList}\item 
+std\+::vector\\*
+$<$ \hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{Coefficient\+Function2\+D} $>$ \hyperlink{classmtk_1_1BCDescriptor2D_a263309b9ad288dc89826d818d9378d07}{south\+\_\+coefficients\+\_\+}
+\begin{DoxyCompactList}\small\item\em Coeffs. south. \end{DoxyCompactList}\item 
+std\+::vector\\*
+$<$ \hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{Coefficient\+Function2\+D} $>$ \hyperlink{classmtk_1_1BCDescriptor2D_a5429c040c034303dd92dcff554f9efad}{north\+\_\+coefficients\+\_\+}
+\begin{DoxyCompactList}\small\item\em Coeffs. south. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}($\ast$ \hyperlink{classmtk_1_1BCDescriptor2D_a2d4af48b3408658c7ace6eeb74464c9f}{west\+\_\+condition\+\_\+} )(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy)
+\begin{DoxyCompactList}\small\item\em Condition for west. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}($\ast$ \hyperlink{classmtk_1_1BCDescriptor2D_a6cca0c70293203c9d88773e5d5f93418}{east\+\_\+condition\+\_\+} )(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy)
+\begin{DoxyCompactList}\small\item\em Condition for east. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}($\ast$ \hyperlink{classmtk_1_1BCDescriptor2D_a2a933b473abbe47ad7c79ef7939e7768}{south\+\_\+condition\+\_\+} )(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy)
+\begin{DoxyCompactList}\small\item\em Condition for south. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}($\ast$ \hyperlink{classmtk_1_1BCDescriptor2D_a23e0b9ae755dcf81841aa24ddaf0b090}{north\+\_\+condition\+\_\+} )(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} yy)
+\begin{DoxyCompactList}\small\item\em Condition for north. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class presents an interface for the user to specify boundary conditions on 2\+D mimetic operators and the grids they are acting on.
+
+{\bfseries Def.} Let $ f $ be any scalar or vector field defined over a domain $ \Omega $. We can specify any linear combination of $ f $ and its $ n $ derivatives to fulfill a condition, which we define as a {\bfseries boundary condition}\+:
+
+\[ \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{n} c_i(\mathbf{x}) <\hat{\mathbf{n}}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> = \beta(\mathbf{x}). \]
+
+This class receives information about all possible coefficient functions, $ c_i(\mathbf{x}) $ for any subset of the boundary (south, north, west and east), and each condition for any subset of the boundary, and takes care of assigning them to both, the differentiation matrices and the grids. The highest order of differentiation is computed based on how many coefficients have been given at run-\/time. 
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00130}{130} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classmtk_1_1BCDescriptor2D_abbc3af29202dbfef203f4cafd9566fd0}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!B\+C\+Descriptor2\+D@{B\+C\+Descriptor2\+D}}
+\index{B\+C\+Descriptor2\+D@{B\+C\+Descriptor2\+D}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{B\+C\+Descriptor2\+D}]{\setlength{\rightskip}{0pt plus 5cm}mtk\+::\+B\+C\+Descriptor2\+D\+::\+B\+C\+Descriptor2\+D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1BCDescriptor2D_abbc3af29202dbfef203f4cafd9566fd0}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00080}{80} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_ae8a93352a94efed52747b710e6ff7893}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!B\+C\+Descriptor2\+D@{B\+C\+Descriptor2\+D}}
+\index{B\+C\+Descriptor2\+D@{B\+C\+Descriptor2\+D}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{B\+C\+Descriptor2\+D}]{\setlength{\rightskip}{0pt plus 5cm}mtk\+::\+B\+C\+Descriptor2\+D\+::\+B\+C\+Descriptor2\+D (
+\begin{DoxyParamCaption}
+\item[{const {\bf B\+C\+Descriptor2\+D} \&}]{desc}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1BCDescriptor2D_ae8a93352a94efed52747b710e6ff7893}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em desc} & Given 2\+D descriptor. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00090}{90} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_ae14e62548a8bc080d576fff6937c546b}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!````~B\+C\+Descriptor2\+D@{$\sim$\+B\+C\+Descriptor2\+D}}
+\index{````~B\+C\+Descriptor2\+D@{$\sim$\+B\+C\+Descriptor2\+D}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{$\sim$\+B\+C\+Descriptor2\+D}]{\setlength{\rightskip}{0pt plus 5cm}mtk\+::\+B\+C\+Descriptor2\+D\+::$\sim$\+B\+C\+Descriptor2\+D (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [noexcept]}}}\label{classmtk_1_1BCDescriptor2D_ae14e62548a8bc080d576fff6937c546b}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00092}{92} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classmtk_1_1BCDescriptor2D_a5a9b80a2e9e579b05d9f3589d80448b6}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!highest\+\_\+order\+\_\+diff\+\_\+east@{highest\+\_\+order\+\_\+diff\+\_\+east}}
+\index{highest\+\_\+order\+\_\+diff\+\_\+east@{highest\+\_\+order\+\_\+diff\+\_\+east}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{highest\+\_\+order\+\_\+diff\+\_\+east}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+B\+C\+Descriptor2\+D\+::highest\+\_\+order\+\_\+diff\+\_\+east (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [noexcept]}}}\label{classmtk_1_1BCDescriptor2D_a5a9b80a2e9e579b05d9f3589d80448b6}
+\begin{DoxyReturn}{Returns}
+Integer highest order of differentiation in the east boundary. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00099}{99} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a87c5f2449247d65ea07784ba2ec61bc7}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!highest\+\_\+order\+\_\+diff\+\_\+north@{highest\+\_\+order\+\_\+diff\+\_\+north}}
+\index{highest\+\_\+order\+\_\+diff\+\_\+north@{highest\+\_\+order\+\_\+diff\+\_\+north}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{highest\+\_\+order\+\_\+diff\+\_\+north}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+B\+C\+Descriptor2\+D\+::highest\+\_\+order\+\_\+diff\+\_\+north (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [noexcept]}}}\label{classmtk_1_1BCDescriptor2D_a87c5f2449247d65ea07784ba2ec61bc7}
+\begin{DoxyReturn}{Returns}
+Integer highest order of differentiation in the north boundary. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00109}{109} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a463d909f6014e7f01b33171a06d7b400}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!highest\+\_\+order\+\_\+diff\+\_\+south@{highest\+\_\+order\+\_\+diff\+\_\+south}}
+\index{highest\+\_\+order\+\_\+diff\+\_\+south@{highest\+\_\+order\+\_\+diff\+\_\+south}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{highest\+\_\+order\+\_\+diff\+\_\+south}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+B\+C\+Descriptor2\+D\+::highest\+\_\+order\+\_\+diff\+\_\+south (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [noexcept]}}}\label{classmtk_1_1BCDescriptor2D_a463d909f6014e7f01b33171a06d7b400}
+\begin{DoxyReturn}{Returns}
+Integer highest order of differentiation in the south boundary. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00104}{104} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a0fa469ddf6ff76e2858d6d3b76cc8b6f}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!highest\+\_\+order\+\_\+diff\+\_\+west@{highest\+\_\+order\+\_\+diff\+\_\+west}}
+\index{highest\+\_\+order\+\_\+diff\+\_\+west@{highest\+\_\+order\+\_\+diff\+\_\+west}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{highest\+\_\+order\+\_\+diff\+\_\+west}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+B\+C\+Descriptor2\+D\+::highest\+\_\+order\+\_\+diff\+\_\+west (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [noexcept]}}}\label{classmtk_1_1BCDescriptor2D_a0fa469ddf6ff76e2858d6d3b76cc8b6f}
+\begin{DoxyReturn}{Returns}
+Integer highest order of differentiation in the west boundary. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00094}{94} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a65f58f43f3fdc793cce7293780b70b80}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!Impose\+On\+East\+Boundary\+No\+Space@{Impose\+On\+East\+Boundary\+No\+Space}}
+\index{Impose\+On\+East\+Boundary\+No\+Space@{Impose\+On\+East\+Boundary\+No\+Space}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{Impose\+On\+East\+Boundary\+No\+Space}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::\+Impose\+On\+East\+Boundary\+No\+Space (
+\begin{DoxyParamCaption}
+\item[{const {\bf mtk\+::\+Uni\+Stg\+Grid2\+D} \&}]{grid, }
+\item[{{\bf mtk\+::\+Dense\+Matrix} \&}]{matrix, }
+\item[{const int \&}]{order\+\_\+accuracy}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a65f58f43f3fdc793cce7293780b70b80}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em grid} & Grid upon which impose the desired boundary condition. \\
+\hline
+\mbox{\tt in,out}  & {\em matrix} & Input Laplacian operator. \\
+\hline
+\mbox{\tt in}  & {\em order\+\_\+accuracy} & Order of accuracy of the operator in the \hyperlink{classmtk_1_1Matrix}{Matrix}. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyEnumerate}
+\item Impose the Dirichlet condition first.
+\item Impose the Neumann condition second. 
+\end{DoxyEnumerate}
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00466}{466} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1BCDescriptor2D_a65f58f43f3fdc793cce7293780b70b80_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a7208d08bfa84192e13c848093eaa88f0}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!Impose\+On\+East\+Boundary\+With\+Space@{Impose\+On\+East\+Boundary\+With\+Space}}
+\index{Impose\+On\+East\+Boundary\+With\+Space@{Impose\+On\+East\+Boundary\+With\+Space}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{Impose\+On\+East\+Boundary\+With\+Space}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::\+Impose\+On\+East\+Boundary\+With\+Space (
+\begin{DoxyParamCaption}
+\item[{const {\bf mtk\+::\+Uni\+Stg\+Grid2\+D} \&}]{grid, }
+\item[{{\bf mtk\+::\+Dense\+Matrix} \&}]{matrix, }
+\item[{const int \&}]{order\+\_\+accuracy}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a7208d08bfa84192e13c848093eaa88f0}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em grid} & Grid upon which impose the desired boundary condition. \\
+\hline
+\mbox{\tt in,out}  & {\em matrix} & Input Laplacian operator. \\
+\hline
+\mbox{\tt in}  & {\em order\+\_\+accuracy} & Order of accuracy of the operator in the \hyperlink{classmtk_1_1Matrix}{Matrix}. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyEnumerate}
+\item Impose the Dirichlet condition first.
+\item Impose the Neumann condition second. 
+\end{DoxyEnumerate}
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00536}{536} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1BCDescriptor2D_a7208d08bfa84192e13c848093eaa88f0_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a5f0ff1fda1b5266dcd77ba2301c8ba2c}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!Impose\+On\+Grid@{Impose\+On\+Grid}}
+\index{Impose\+On\+Grid@{Impose\+On\+Grid}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{Impose\+On\+Grid}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::\+Impose\+On\+Grid (
+\begin{DoxyParamCaption}
+\item[{{\bf mtk\+::\+Uni\+Stg\+Grid2\+D} \&}]{grid}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1BCDescriptor2D_a5f0ff1fda1b5266dcd77ba2301c8ba2c}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in,out}  & {\em grid} & Grid upon which impose the desired boundary condition. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyEnumerate}
+\item Impose assuming an scalar grid.
+\end{DoxyEnumerate}
+
+1.\+1. Impose south condition.
+
+1.\+1.\+1. Impose south-\/west corner.
+
+1.\+1.\+2. Impose south border.
+
+1.\+1.\+3. Impose south-\/east corner.
+
+1.\+2. Impose north condition.
+
+1.\+2.\+1. Impose north-\/west corner.
+
+1.\+2.\+2. Impose north border.
+
+1.\+2.\+3. Impose north-\/east corner.
+
+1.\+3. Impose west condition.
+
+1.\+3.\+1. Impose south-\/west corner. \begin{DoxyNote}{Note}
+As per discussion with Otilio, we will take the {\bfseries arithmetic} {\bfseries mean} of the values of the B\+Cs at the corners.
+\end{DoxyNote}
+1.\+3.\+2. Impose west border.
+
+1.\+3.\+3. Impose north-\/west corner.
+
+1.\+4. Impose east condition.
+
+1.\+4.\+1. Impose south-\/east corner.
+
+1.\+4.\+2. Impose east border.
+
+1.\+4.\+3. Impose north-\/east corner.
+
+
+\begin{DoxyEnumerate}
+\item Impose assuming a vector grid.
+\end{DoxyEnumerate}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000014}{Todo}]Implement imposition for vector-\/valued grids. \end{DoxyRefDesc}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00595}{595} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=550pt]{classmtk_1_1BCDescriptor2D_a5f0ff1fda1b5266dcd77ba2301c8ba2c_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a35592617dda3b965b680b2a1355122f4}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!Impose\+On\+Laplacian\+Matrix@{Impose\+On\+Laplacian\+Matrix}}
+\index{Impose\+On\+Laplacian\+Matrix@{Impose\+On\+Laplacian\+Matrix}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{Impose\+On\+Laplacian\+Matrix}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::\+Impose\+On\+Laplacian\+Matrix (
+\begin{DoxyParamCaption}
+\item[{const {\bf Uni\+Stg\+Grid2\+D} \&}]{grid, }
+\item[{{\bf mtk\+::\+Dense\+Matrix} \&}]{matrix, }
+\item[{const int \&}]{order\+\_\+accuracy = {\ttfamily 2}}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1BCDescriptor2D_a35592617dda3b965b680b2a1355122f4}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em grid} & Grid upon which impose the desired boundary condition. \\
+\hline
+\mbox{\tt in,out}  & {\em matrix} & Input Laplacian operator. \\
+\hline
+\mbox{\tt in}  & {\em order\+\_\+accuracy} & Order of accuracy of the operator in the \hyperlink{classmtk_1_1Matrix}{Matrix}. \\
+\hline
+\end{DoxyParams}
+If we have not bound anything to the grid, then we have to generate our collection of spatial coordinates, as we evaluate the coefficients. 
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00557}{557} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1BCDescriptor2D_a35592617dda3b965b680b2a1355122f4_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a5e7d4b9deba6c07170e983eb1c0e9776}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!Impose\+On\+North\+Boundary\+No\+Space@{Impose\+On\+North\+Boundary\+No\+Space}}
+\index{Impose\+On\+North\+Boundary\+No\+Space@{Impose\+On\+North\+Boundary\+No\+Space}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{Impose\+On\+North\+Boundary\+No\+Space}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::\+Impose\+On\+North\+Boundary\+No\+Space (
+\begin{DoxyParamCaption}
+\item[{const {\bf mtk\+::\+Uni\+Stg\+Grid2\+D} \&}]{grid, }
+\item[{{\bf mtk\+::\+Dense\+Matrix} \&}]{matrix, }
+\item[{const int \&}]{order\+\_\+accuracy}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a5e7d4b9deba6c07170e983eb1c0e9776}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em grid} & Grid upon which impose the desired boundary condition. \\
+\hline
+\mbox{\tt in,out}  & {\em matrix} & Input Laplacian operator. \\
+\hline
+\mbox{\tt in}  & {\em order\+\_\+accuracy} & Order of accuracy of the operator in the \hyperlink{classmtk_1_1Matrix}{Matrix}. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyEnumerate}
+\item Impose the Dirichlet condition first.
+\item Impose the Neumann condition second. 
+\end{DoxyEnumerate}
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00290}{290} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1BCDescriptor2D_a5e7d4b9deba6c07170e983eb1c0e9776_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a6b9b6f2bec06bce5a9070236ca10ec3a}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!Impose\+On\+North\+Boundary\+With\+Space@{Impose\+On\+North\+Boundary\+With\+Space}}
+\index{Impose\+On\+North\+Boundary\+With\+Space@{Impose\+On\+North\+Boundary\+With\+Space}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{Impose\+On\+North\+Boundary\+With\+Space}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::\+Impose\+On\+North\+Boundary\+With\+Space (
+\begin{DoxyParamCaption}
+\item[{const {\bf mtk\+::\+Uni\+Stg\+Grid2\+D} \&}]{grid, }
+\item[{{\bf mtk\+::\+Dense\+Matrix} \&}]{matrix, }
+\item[{const int \&}]{order\+\_\+accuracy}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a6b9b6f2bec06bce5a9070236ca10ec3a}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em grid} & Grid upon which impose the desired boundary condition. \\
+\hline
+\mbox{\tt in,out}  & {\em matrix} & Input Laplacian operator. \\
+\hline
+\mbox{\tt in}  & {\em order\+\_\+accuracy} & Order of accuracy of the operator in the \hyperlink{classmtk_1_1Matrix}{Matrix}. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyEnumerate}
+\item Impose Dirichlet condition.
+\end{DoxyEnumerate}
+
+For each entry on the diagonal\+:
+
+Evaluate next set spatial coordinates to evaluate the coefficient.
+
+Evaluate and assign the Dirichlet coefficient.
+
+
+\begin{DoxyEnumerate}
+\item Impose the Neumann condition. 
+\end{DoxyEnumerate}
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00354}{354} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1BCDescriptor2D_a6b9b6f2bec06bce5a9070236ca10ec3a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a0188a64f242ae6015385a4597934fcda}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!Impose\+On\+South\+Boundary\+No\+Space@{Impose\+On\+South\+Boundary\+No\+Space}}
+\index{Impose\+On\+South\+Boundary\+No\+Space@{Impose\+On\+South\+Boundary\+No\+Space}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{Impose\+On\+South\+Boundary\+No\+Space}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::\+Impose\+On\+South\+Boundary\+No\+Space (
+\begin{DoxyParamCaption}
+\item[{const {\bf mtk\+::\+Uni\+Stg\+Grid2\+D} \&}]{grid, }
+\item[{{\bf mtk\+::\+Dense\+Matrix} \&}]{matrix, }
+\item[{const int \&}]{order\+\_\+accuracy}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a0188a64f242ae6015385a4597934fcda}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em grid} & Grid upon which impose the desired boundary condition. \\
+\hline
+\mbox{\tt in,out}  & {\em matrix} & Input Laplacian operator. \\
+\hline
+\mbox{\tt in}  & {\em order\+\_\+accuracy} & Order of accuracy of the operator in the \hyperlink{classmtk_1_1Matrix}{Matrix}. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyEnumerate}
+\item Impose the Dirichlet condition first.
+\item Impose the Neumann condition second.
+\end{DoxyEnumerate}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000012}{Todo}]Impose the Neumann conditions on every pole, for every scenario. \end{DoxyRefDesc}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00208}{208} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1BCDescriptor2D_a0188a64f242ae6015385a4597934fcda_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_af30c275cf06176a2ae9722014142c810}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!Impose\+On\+South\+Boundary\+With\+Space@{Impose\+On\+South\+Boundary\+With\+Space}}
+\index{Impose\+On\+South\+Boundary\+With\+Space@{Impose\+On\+South\+Boundary\+With\+Space}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{Impose\+On\+South\+Boundary\+With\+Space}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::\+Impose\+On\+South\+Boundary\+With\+Space (
+\begin{DoxyParamCaption}
+\item[{const {\bf mtk\+::\+Uni\+Stg\+Grid2\+D} \&}]{grid, }
+\item[{{\bf mtk\+::\+Dense\+Matrix} \&}]{matrix, }
+\item[{const int \&}]{order\+\_\+accuracy}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_af30c275cf06176a2ae9722014142c810}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em grid} & Grid upon which impose the desired boundary condition. \\
+\hline
+\mbox{\tt in,out}  & {\em matrix} & Input Laplacian operator. \\
+\hline
+\mbox{\tt in}  & {\em order\+\_\+accuracy} & Order of accuracy of the operator in the \hyperlink{classmtk_1_1Matrix}{Matrix}. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyEnumerate}
+\item Impose the Dirichlet condition first.
+\end{DoxyEnumerate}
+
+\begin{DoxyRefDesc}{Todo}
+\item[\hyperlink{todo__todo000013}{Todo}]Impose Harmonic mean on the corners for the case when the generated space is available, for all poles. \end{DoxyRefDesc}
+
+
+
+\begin{DoxyEnumerate}
+\item Impose the Neumann condition second. 
+\end{DoxyEnumerate}
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00268}{268} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1BCDescriptor2D_af30c275cf06176a2ae9722014142c810_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a0b153abdcb78c54197858148c9632517}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!Impose\+On\+West\+Boundary\+No\+Space@{Impose\+On\+West\+Boundary\+No\+Space}}
+\index{Impose\+On\+West\+Boundary\+No\+Space@{Impose\+On\+West\+Boundary\+No\+Space}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{Impose\+On\+West\+Boundary\+No\+Space}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::\+Impose\+On\+West\+Boundary\+No\+Space (
+\begin{DoxyParamCaption}
+\item[{const {\bf mtk\+::\+Uni\+Stg\+Grid2\+D} \&}]{grid, }
+\item[{{\bf mtk\+::\+Dense\+Matrix} \&}]{matrix, }
+\item[{const int \&}]{order\+\_\+accuracy}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a0b153abdcb78c54197858148c9632517}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em grid} & Grid upon which impose the desired boundary condition. \\
+\hline
+\mbox{\tt in,out}  & {\em matrix} & Input Laplacian operator. \\
+\hline
+\mbox{\tt in}  & {\em order\+\_\+accuracy} & Order of accuracy of the operator in the \hyperlink{classmtk_1_1Matrix}{Matrix}. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyEnumerate}
+\item Impose the Dirichlet condition first.
+\end{DoxyEnumerate}
+
+\begin{DoxyNote}{Note}
+As it can be seen, we must adopt a convention about how to treat the corners. Based on a reasoning with Otilio, we will take the {\bfseries harmonic mean}.
+\end{DoxyNote}
+
+\begin{DoxyEnumerate}
+\item Impose the Neumann condition second. 
+\end{DoxyEnumerate}
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00375}{375} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1BCDescriptor2D_a0b153abdcb78c54197858148c9632517_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_aa5d88027ff9c5d2eccab93cd51154c9e}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!Impose\+On\+West\+Boundary\+With\+Space@{Impose\+On\+West\+Boundary\+With\+Space}}
+\index{Impose\+On\+West\+Boundary\+With\+Space@{Impose\+On\+West\+Boundary\+With\+Space}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{Impose\+On\+West\+Boundary\+With\+Space}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::\+Impose\+On\+West\+Boundary\+With\+Space (
+\begin{DoxyParamCaption}
+\item[{const {\bf mtk\+::\+Uni\+Stg\+Grid2\+D} \&}]{grid, }
+\item[{{\bf mtk\+::\+Dense\+Matrix} \&}]{matrix, }
+\item[{const int \&}]{order\+\_\+accuracy}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_aa5d88027ff9c5d2eccab93cd51154c9e}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em grid} & Grid upon which impose the desired boundary condition. \\
+\hline
+\mbox{\tt in,out}  & {\em matrix} & Input Laplacian operator. \\
+\hline
+\mbox{\tt in}  & {\em order\+\_\+accuracy} & Order of accuracy of the operator in the \hyperlink{classmtk_1_1Matrix}{Matrix}. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyEnumerate}
+\item Impose the Dirichlet condition first.
+\item Impose the Neumann condition second. 
+\end{DoxyEnumerate}
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00445}{445} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1BCDescriptor2D_aa5d88027ff9c5d2eccab93cd51154c9e_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a27635428a6c36d1e305cafdc68271063}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!Push\+Back\+East\+Coeff@{Push\+Back\+East\+Coeff}}
+\index{Push\+Back\+East\+Coeff@{Push\+Back\+East\+Coeff}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{Push\+Back\+East\+Coeff}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::\+Push\+Back\+East\+Coeff (
+\begin{DoxyParamCaption}
+\item[{{\bf mtk\+::\+Coefficient\+Function2\+D}}]{ce}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1BCDescriptor2D_a27635428a6c36d1e305cafdc68271063}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em ce} & Function $ c_e(x,y):\Omega\mapsto\mathbb{R} $. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00127}{127} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{classmtk_1_1BCDescriptor2D_a27635428a6c36d1e305cafdc68271063_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a0fed58bd058d699a572888fe4b9934a4}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!Push\+Back\+North\+Coeff@{Push\+Back\+North\+Coeff}}
+\index{Push\+Back\+North\+Coeff@{Push\+Back\+North\+Coeff}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{Push\+Back\+North\+Coeff}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::\+Push\+Back\+North\+Coeff (
+\begin{DoxyParamCaption}
+\item[{{\bf mtk\+::\+Coefficient\+Function2\+D}}]{cn}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1BCDescriptor2D_a0fed58bd058d699a572888fe4b9934a4}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cn} & Function $ c_n(x,y):\Omega\mapsto\mathbb{R} $. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00153}{153} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=344pt]{classmtk_1_1BCDescriptor2D_a0fed58bd058d699a572888fe4b9934a4_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a9eb891f14c68968a0113632fa5fea630}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!Push\+Back\+South\+Coeff@{Push\+Back\+South\+Coeff}}
+\index{Push\+Back\+South\+Coeff@{Push\+Back\+South\+Coeff}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{Push\+Back\+South\+Coeff}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::\+Push\+Back\+South\+Coeff (
+\begin{DoxyParamCaption}
+\item[{{\bf mtk\+::\+Coefficient\+Function2\+D}}]{cs}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1BCDescriptor2D_a9eb891f14c68968a0113632fa5fea630}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cs} & Function $ c_s(x,y):\Omega\mapsto\mathbb{R} $. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00140}{140} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{classmtk_1_1BCDescriptor2D_a9eb891f14c68968a0113632fa5fea630_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a3da32ba89cfb15032bb1156394bad98c}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!Push\+Back\+West\+Coeff@{Push\+Back\+West\+Coeff}}
+\index{Push\+Back\+West\+Coeff@{Push\+Back\+West\+Coeff}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{Push\+Back\+West\+Coeff}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::\+Push\+Back\+West\+Coeff (
+\begin{DoxyParamCaption}
+\item[{{\bf mtk\+::\+Coefficient\+Function2\+D}}]{cw}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1BCDescriptor2D_a3da32ba89cfb15032bb1156394bad98c}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em cw} & Function $ c_w(x,y):\Omega\mapsto\mathbb{R} $. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00114}{114} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{classmtk_1_1BCDescriptor2D_a3da32ba89cfb15032bb1156394bad98c_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a4ba8690e845f59a1507b056f3fc8061e}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!set\+\_\+east\+\_\+condition@{set\+\_\+east\+\_\+condition}}
+\index{set\+\_\+east\+\_\+condition@{set\+\_\+east\+\_\+condition}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{set\+\_\+east\+\_\+condition}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::set\+\_\+east\+\_\+condition (
+\begin{DoxyParamCaption}
+\item[{{\bf Real}($\ast$)({\bf Real} xx, {\bf Real} yy)}]{east\+\_\+condition}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [noexcept]}}}\label{classmtk_1_1BCDescriptor2D_a4ba8690e845f59a1507b056f3fc8061e}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em east\+\_\+condition} & $ \beta_e(x,y):\Omega\mapsto\mathbb{R} $. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00176}{176} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{classmtk_1_1BCDescriptor2D_a4ba8690e845f59a1507b056f3fc8061e_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a690f6881a88b202c074d9f90f2a7ddb0}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!set\+\_\+north\+\_\+condition@{set\+\_\+north\+\_\+condition}}
+\index{set\+\_\+north\+\_\+condition@{set\+\_\+north\+\_\+condition}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{set\+\_\+north\+\_\+condition}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::set\+\_\+north\+\_\+condition (
+\begin{DoxyParamCaption}
+\item[{{\bf Real}($\ast$)({\bf Real} xx, {\bf Real} yy)}]{north\+\_\+condition}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [noexcept]}}}\label{classmtk_1_1BCDescriptor2D_a690f6881a88b202c074d9f90f2a7ddb0}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em north\+\_\+condition} & $ \beta_n(x,y):\Omega\mapsto\mathbb{R} $. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00197}{197} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{classmtk_1_1BCDescriptor2D_a690f6881a88b202c074d9f90f2a7ddb0_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a408f159cc44d7ee610191efb8ed48b2a}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!set\+\_\+south\+\_\+condition@{set\+\_\+south\+\_\+condition}}
+\index{set\+\_\+south\+\_\+condition@{set\+\_\+south\+\_\+condition}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{set\+\_\+south\+\_\+condition}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::set\+\_\+south\+\_\+condition (
+\begin{DoxyParamCaption}
+\item[{{\bf Real}($\ast$)({\bf Real} xx, {\bf Real} yy)}]{south\+\_\+condition}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [noexcept]}}}\label{classmtk_1_1BCDescriptor2D_a408f159cc44d7ee610191efb8ed48b2a}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em south\+\_\+condition} & $ \beta_s(x,y):\Omega\mapsto\mathbb{R} $. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00186}{186} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{classmtk_1_1BCDescriptor2D_a408f159cc44d7ee610191efb8ed48b2a_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a006050efe15b1be75b36a74a23051392}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!set\+\_\+west\+\_\+condition@{set\+\_\+west\+\_\+condition}}
+\index{set\+\_\+west\+\_\+condition@{set\+\_\+west\+\_\+condition}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{set\+\_\+west\+\_\+condition}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+C\+Descriptor2\+D\+::set\+\_\+west\+\_\+condition (
+\begin{DoxyParamCaption}
+\item[{{\bf Real}($\ast$)({\bf Real} xx, {\bf Real} yy)}]{west\+\_\+condition}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [noexcept]}}}\label{classmtk_1_1BCDescriptor2D_a006050efe15b1be75b36a74a23051392}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em west\+\_\+condition} & $ \beta_w(x,y):\Omega\mapsto\mathbb{R} $. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8cc_source_l00166}{166} of file \hyperlink{mtk__bc__descriptor__2d_8cc_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=341pt]{classmtk_1_1BCDescriptor2D_a006050efe15b1be75b36a74a23051392_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+\subsection{Member Data Documentation}
+\hypertarget{classmtk_1_1BCDescriptor2D_a1f90fc303984bf18c136a34896bbb7c9}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!east\+\_\+coefficients\+\_\+@{east\+\_\+coefficients\+\_\+}}
+\index{east\+\_\+coefficients\+\_\+@{east\+\_\+coefficients\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{east\+\_\+coefficients\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Coefficient\+Function2\+D}$>$ mtk\+::\+B\+C\+Descriptor2\+D\+::east\+\_\+coefficients\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a1f90fc303984bf18c136a34896bbb7c9}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00335}{335} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a6cca0c70293203c9d88773e5d5f93418}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!east\+\_\+condition\+\_\+@{east\+\_\+condition\+\_\+}}
+\index{east\+\_\+condition\+\_\+@{east\+\_\+condition\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{east\+\_\+condition\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}($\ast$ mtk\+::\+B\+C\+Descriptor2\+D\+::east\+\_\+condition\+\_\+)({\bf Real} xx, {\bf Real} yy)\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a6cca0c70293203c9d88773e5d5f93418}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00340}{340} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_aea5e539a10d5641bd605ebe583c14bc5}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+}}
+\index{highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+B\+C\+Descriptor2\+D\+::highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_aea5e539a10d5641bd605ebe583c14bc5}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00330}{330} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a6cdeefe70f5bef93196f34ab2949cad2}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!highest\+\_\+order\+\_\+diff\+\_\+north\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+north\+\_\+}}
+\index{highest\+\_\+order\+\_\+diff\+\_\+north\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+north\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{highest\+\_\+order\+\_\+diff\+\_\+north\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+B\+C\+Descriptor2\+D\+::highest\+\_\+order\+\_\+diff\+\_\+north\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a6cdeefe70f5bef93196f34ab2949cad2}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00332}{332} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a1fb094e5e53ecfba32fe9fe56c051c47}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!highest\+\_\+order\+\_\+diff\+\_\+south\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+south\+\_\+}}
+\index{highest\+\_\+order\+\_\+diff\+\_\+south\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+south\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{highest\+\_\+order\+\_\+diff\+\_\+south\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+B\+C\+Descriptor2\+D\+::highest\+\_\+order\+\_\+diff\+\_\+south\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a1fb094e5e53ecfba32fe9fe56c051c47}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00331}{331} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_aa18ef62f8eda355e47f51bcb5dbe8fe7}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+}}
+\index{highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+B\+C\+Descriptor2\+D\+::highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_aa18ef62f8eda355e47f51bcb5dbe8fe7}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00329}{329} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a5429c040c034303dd92dcff554f9efad}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!north\+\_\+coefficients\+\_\+@{north\+\_\+coefficients\+\_\+}}
+\index{north\+\_\+coefficients\+\_\+@{north\+\_\+coefficients\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{north\+\_\+coefficients\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Coefficient\+Function2\+D}$>$ mtk\+::\+B\+C\+Descriptor2\+D\+::north\+\_\+coefficients\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a5429c040c034303dd92dcff554f9efad}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00337}{337} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a23e0b9ae755dcf81841aa24ddaf0b090}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!north\+\_\+condition\+\_\+@{north\+\_\+condition\+\_\+}}
+\index{north\+\_\+condition\+\_\+@{north\+\_\+condition\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{north\+\_\+condition\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}($\ast$ mtk\+::\+B\+C\+Descriptor2\+D\+::north\+\_\+condition\+\_\+)({\bf Real} xx, {\bf Real} yy)\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a23e0b9ae755dcf81841aa24ddaf0b090}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00342}{342} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a263309b9ad288dc89826d818d9378d07}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!south\+\_\+coefficients\+\_\+@{south\+\_\+coefficients\+\_\+}}
+\index{south\+\_\+coefficients\+\_\+@{south\+\_\+coefficients\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{south\+\_\+coefficients\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Coefficient\+Function2\+D}$>$ mtk\+::\+B\+C\+Descriptor2\+D\+::south\+\_\+coefficients\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a263309b9ad288dc89826d818d9378d07}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00336}{336} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a2a933b473abbe47ad7c79ef7939e7768}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!south\+\_\+condition\+\_\+@{south\+\_\+condition\+\_\+}}
+\index{south\+\_\+condition\+\_\+@{south\+\_\+condition\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{south\+\_\+condition\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}($\ast$ mtk\+::\+B\+C\+Descriptor2\+D\+::south\+\_\+condition\+\_\+)({\bf Real} xx, {\bf Real} yy)\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a2a933b473abbe47ad7c79ef7939e7768}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00341}{341} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a7df71b43acc25c468683075cc7790bb2}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!west\+\_\+coefficients\+\_\+@{west\+\_\+coefficients\+\_\+}}
+\index{west\+\_\+coefficients\+\_\+@{west\+\_\+coefficients\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{west\+\_\+coefficients\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Coefficient\+Function2\+D}$>$ mtk\+::\+B\+C\+Descriptor2\+D\+::west\+\_\+coefficients\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a7df71b43acc25c468683075cc7790bb2}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00334}{334} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+
+\hypertarget{classmtk_1_1BCDescriptor2D_a2d4af48b3408658c7ace6eeb74464c9f}{\index{mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}!west\+\_\+condition\+\_\+@{west\+\_\+condition\+\_\+}}
+\index{west\+\_\+condition\+\_\+@{west\+\_\+condition\+\_\+}!mtk\+::\+B\+C\+Descriptor2\+D@{mtk\+::\+B\+C\+Descriptor2\+D}}
+\subsubsection[{west\+\_\+condition\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}($\ast$ mtk\+::\+B\+C\+Descriptor2\+D\+::west\+\_\+condition\+\_\+)({\bf Real} xx, {\bf Real} yy)\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1BCDescriptor2D_a2d4af48b3408658c7ace6eeb74464c9f}
+
+
+Definition at line \hyperlink{mtk__bc__descriptor__2d_8h_source_l00339}{339} of file \hyperlink{mtk__bc__descriptor__2d_8h_source}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\hyperlink{mtk__bc__descriptor__2d_8h}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}\item 
+src/\hyperlink{mtk__bc__descriptor__2d_8cc}{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}\end{DoxyCompactItemize}

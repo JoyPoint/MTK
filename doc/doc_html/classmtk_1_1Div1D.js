@@ -13,7 +13,7 @@ var classmtk_1_1Div1D =
     [ "ConstructDiv1D", "classmtk_1_1Div1D.html#a52fcd1542f11e606e36bd188e48bfdf7", null ],
     [ "mim_bndy", "classmtk_1_1Div1D.html#a2c844ef39825e73e4024d35fcdd42b12", null ],
     [ "num_bndy_coeffs", "classmtk_1_1Div1D.html#a975cb2a91ed6806f6fc0a3a5b01b01b1", null ],
-    [ "ReturnAsDenseMatrix", "classmtk_1_1Div1D.html#afdbb1e11f05dd77b882f36426229acf7", null ],
+    [ "ReturnAsDenseMatrix", "classmtk_1_1Div1D.html#a213fddbaaf86e4840c6a9649b69c2d49", null ],
     [ "weights_cbs", "classmtk_1_1Div1D.html#a5d4fe8c61ce41cb1134a3f9cb16deb59", null ],
     [ "weights_crs", "classmtk_1_1Div1D.html#ab5c791285e7e51a85b8c62a1b0ab9126", null ],
     [ "operator<<", "classmtk_1_1Div1D.html#af3b80aac338975509618e593089e1ed9", null ],

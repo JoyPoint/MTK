@@ -1,7 +1,7 @@
 var searchData=
 [
   ['grids_2e',['Grids.',['../group__c06-grids.html',1,'']]],
-  ['getvalue',['GetValue',['../classmtk_1_1DenseMatrix.html#a87fb785713c04b13767947cc3325ce7c',1,'mtk::DenseMatrix']]],
+  ['getvalue',['GetValue',['../classmtk_1_1DenseMatrix.html#a4b23ecbebd970b5eea915dbb50691024',1,'mtk::DenseMatrix']]],
   ['glpkadapter',['GLPKAdapter',['../classmtk_1_1GLPKAdapter.html',1,'mtk']]],
   ['grad1d',['Grad1D',['../classmtk_1_1Grad1D.html',1,'mtk']]],
   ['grad1d',['Grad1D',['../classmtk_1_1Grad1D.html#ae21e6ac2652e653c48f15b304ee83a75',1,'mtk::Grad1D::Grad1D()'],['../classmtk_1_1Grad1D.html#a5708bcb61bde3f7f3a4ddede191d82a4',1,'mtk::Grad1D::Grad1D(const Grad1D &amp;grad)']]],

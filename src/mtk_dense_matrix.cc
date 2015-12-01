@@ -1,7 +1,7 @@
 /*!
 \file mtk_dense_matrix.nn
 
-\brief Implements a common dense matrix, using a 1D ammay.
+\brief Implements a common dense matrix, using a 1D array.
 
 For developing purposes, it is better to have a not-so-intrincated data
 structure implementing matrices. This is the purpose of this class: to be used
@@ -200,7 +200,7 @@ mtk::DenseMatrix::DenseMatrix(const mtk::DenseMatrix &in) {
 
 mtk::DenseMatrix::DenseMatrix(const int &num_rows, const int &num_cols) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(num_rows < 1, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(num_cols < 1, __FILE__, __LINE__, __func__);
   #endif
@@ -224,7 +224,7 @@ mtk::DenseMatrix::DenseMatrix(const int &rank,
                               const bool &padded,
                               const bool &transpose) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(rank < 1, __FILE__, __LINE__, __func__);
   #endif
 
@@ -261,12 +261,12 @@ mtk::DenseMatrix::DenseMatrix(const int &rank,
   }
 }
 
-mtk::DenseMatrix::DenseMatrix(const mtk::Real *gen,
+mtk::DenseMatrix::DenseMatrix(const mtk::Real *const gen,
                               const int &gen_length,
                               const int &pro_length,
                               const bool &transpose) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(gen == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(gen_length < 1, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(pro_length < 1, __FILE__, __LINE__, __func__);
@@ -311,18 +311,18 @@ mtk::DenseMatrix::DenseMatrix(const mtk::Real *gen,
 
 mtk::DenseMatrix::~DenseMatrix() {
 
-  delete[] data_;
+  delete [] data_;
   data_ = nullptr;
 }
 
-mtk::Matrix mtk::DenseMatrix::matrix_properties() const {
+mtk::Matrix mtk::DenseMatrix::matrix_properties() const noexcept {
 
   return matrix_properties_;
 }
 
-void mtk::DenseMatrix::SetOrdering(mtk::MatrixOrdering oo) {
+void mtk::DenseMatrix::SetOrdering(mtk::MatrixOrdering oo) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(!(oo == mtk::ROW_MAJOR || oo == mtk::COL_MAJOR),
                       __FILE__, __LINE__, __func__);
   #endif
@@ -330,26 +330,26 @@ void mtk::DenseMatrix::SetOrdering(mtk::MatrixOrdering oo) {
   matrix_properties_.set_ordering(oo);
 }
 
-int mtk::DenseMatrix::num_rows() const {
+int mtk::DenseMatrix::num_rows() const noexcept {
 
   return matrix_properties_.num_rows();
 }
 
-int mtk::DenseMatrix::num_cols() const {
+int mtk::DenseMatrix::num_cols() const noexcept {
 
   return matrix_properties_.num_cols();
 }
 
-mtk::Real* mtk::DenseMatrix::data() const {
+mtk::Real* mtk::DenseMatrix::data() const noexcept {
 
   return data_;
 }
 
 mtk::Real mtk::DenseMatrix::GetValue(
     const int &mm,
-    const int &nn) const {
+    const int &nn) const noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(mm < 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(nn < 0, __FILE__, __LINE__, __func__);
   #endif
@@ -360,9 +360,9 @@ mtk::Real mtk::DenseMatrix::GetValue(
 void  mtk::DenseMatrix::SetValue(
     const int &mm,
     const int &nn,
-    const mtk::Real &val) {
+    const mtk::Real &val) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(mm < 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(nn < 0, __FILE__, __LINE__, __func__);
   #endif
@@ -411,7 +411,7 @@ void mtk::DenseMatrix::OrderRowMajor() {
 
   if (matrix_properties_.ordering() == mtk::COL_MAJOR) {
 
-    /// \todo Improve this so that no new ammays have to be created.
+    /// \todo Improve this so that no new arrays have to be created.
 
     mtk::Real *data_transposed{}; // Buffer.
 
@@ -452,7 +452,7 @@ void mtk::DenseMatrix::OrderColMajor() {
 
   if (matrix_properties_.ordering() == ROW_MAJOR) {
 
-    /// \todo Improve this so that no new ammays have to be created.
+    /// \todo Improve this so that no new arrays have to be created.
 
     mtk::Real *data_transposed{}; // Buffer.
 
@@ -528,7 +528,7 @@ mtk::DenseMatrix mtk::DenseMatrix::Kron(const mtk::DenseMatrix &aa,
   return output;
 }
 
-bool mtk::DenseMatrix::WriteToFile(std::string filename) {
+bool mtk::DenseMatrix::WriteToFile(const std::string &filename) const {
 
   std::ofstream output_dat_file;  // Output file.
 

@@ -177,6 +177,22 @@ class BLASAdapter {
   \sa http://ejspeiro.github.io/Netlib-and-CPP/
   */
   static DenseMatrix RealDenseMM(DenseMatrix &aa, DenseMatrix &bb);
+
+  /*!
+  \brief Real-Arithmetic General (Dense matrices) Scalar-Matrix multiplier.
+
+  Performs:
+
+  \f[
+  \mathbf{B} := \alpha\mathbf{A}
+  \f]
+
+  \param[in] alpha Input scalar.
+  \param[in] aa Input matrix.
+
+  \sa http://ejspeiro.github.io/Netlib-and-CPP/
+  */
+  static DenseMatrix RealDenseSM(Real alpha, DenseMatrix &aa);
 };
 }
 #endif	// End of: MTK_INCLUDE_BLAS_ADAPTER_H_

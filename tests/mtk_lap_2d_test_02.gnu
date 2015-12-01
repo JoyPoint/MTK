@@ -1,10 +1,10 @@
 # \file mtk_lap_2d_test_02.gnu
 #
-# \brief gnuplot script for test suite mtk_lap_2d_test_02.cc
+# \brief gnuplot script for test suite mtk_lap_2d_test.cc
 #
 # Minimally-complete gnuplot script to visualize data files created by the
 # mtk::DenseMatrix::WriteToFile method in the TestReturnAsDenseMatrixWriteToFile
-# test implemented in the mtk_lap_2d_test_02.cc test suite.
+# test implemented in the mtk_lap_2d_test.cc test suite.
 #
 # \warning Not intended to be a general solution gut a minimal guidance.
 #

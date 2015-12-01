@@ -1,4 +1,4 @@
-.TH "mtk" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk" 3 "Tue Dec 1 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -12,12 +12,6 @@ Mimetic Methods Toolkit namespace\&.
 .SS "Classes"
 
 .in +1c
-.ti -1c
-.RI "class \fBBCDesc1D\fP"
-.br
-.ti -1c
-.RI "class \fBBCDesc2D\fP"
-.br
 .ti -1c
 .RI "class \fBBLASAdapter\fP"
 .br
@@ -33,6 +27,7 @@ Mimetic Methods Toolkit namespace\&.
 .ti -1c
 .RI "class \fBDiv2D\fP"
 .br
+.RI "\fIImplements a 2D mimetic divergence operator\&. \fP"
 .ti -1c
 .RI "class \fBGLPKAdapter\fP"
 .br
@@ -44,6 +39,7 @@ Mimetic Methods Toolkit namespace\&.
 .ti -1c
 .RI "class \fBGrad2D\fP"
 .br
+.RI "\fIImplements a 2D mimetic gradient operator\&. \fP"
 .ti -1c
 .RI "class \fBInterp1D\fP"
 .br
@@ -51,6 +47,7 @@ Mimetic Methods Toolkit namespace\&.
 .ti -1c
 .RI "class \fBInterp2D\fP"
 .br
+.RI "\fIImplements a 2D interpolation operator\&. \fP"
 .ti -1c
 .RI "class \fBLap1D\fP"
 .br
@@ -58,6 +55,7 @@ Mimetic Methods Toolkit namespace\&.
 .ti -1c
 .RI "class \fBLap2D\fP"
 .br
+.RI "\fIImplements a 2D mimetic Laplacian operator\&. \fP"
 .ti -1c
 .RI "class \fBLAPACKAdapter\fP"
 .br
@@ -70,6 +68,14 @@ Mimetic Methods Toolkit namespace\&.
 .RI "class \fBQuad1D\fP"
 .br
 .RI "\fIImplements a 1D mimetic quadrature\&. \fP"
+.ti -1c
+.RI "class \fBRobinBCDescriptor1D\fP"
+.br
+.RI "\fIImpose Robin boundary conditions on the operators and on the grids\&. \fP"
+.ti -1c
+.RI "class \fBRobinBCDescriptor2D\fP"
+.br
+.RI "\fIImpose Robin boundary conditions on the operators and on the grids\&. \fP"
 .ti -1c
 .RI "class \fBTools\fP"
 .br
@@ -86,6 +92,14 @@ Mimetic Methods Toolkit namespace\&.
 .SS "Typedefs"
 
 .in +1c
+.ti -1c
+.RI "typedef \fBReal\fP(* \fBCoefficientFunction0D\fP )(const \fBReal\fP &tt)"
+.br
+.RI "\fIA function of a BC coefficient evaluated on a 0D domain and time\&. \fP"
+.ti -1c
+.RI "typedef \fBReal\fP(* \fBCoefficientFunction1D\fP )(const \fBReal\fP &xx, const \fBReal\fP &tt)"
+.br
+.RI "\fIA function of a BC coefficient evaluated on a 1D domain and time\&. \fP"
 .ti -1c
 .RI "typedef float \fBReal\fP"
 .br
@@ -109,7 +123,7 @@ Mimetic Methods Toolkit namespace\&.
 .ti -1c
 .RI "enum \fBDirInterp\fP { \fBSCALAR_TO_VECTOR\fP, \fBVECTOR_TO_SCALAR\fP }"
 .br
-.RI "\fI1D interpolation operator\&. \fP"
+.RI "\fIInterpolation operator\&. \fP"
 .in -1c
 .SS "Functions"
 
@@ -174,6 +188,10 @@ Mimetic Methods Toolkit namespace\&.
 .RI "const float \fBkOne\fP {1\&.0f}"
 .br
 .RI "\fIMTK's one defined according to selective compilation\&. \fP"
+.ti -1c
+.RI "const float \fBkTwo\fP {2\&.0f}"
+.br
+.RI "\fIMTK's two defined according to selective compilation\&. \fP"
 .ti -1c
 .RI "const float \fBkDefaultTolerance\fP {1e-7f}"
 .br

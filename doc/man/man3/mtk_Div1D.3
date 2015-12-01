@@ -1,4 +1,4 @@
-.TH "mtk::Div1D" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::Div1D" 3 "Tue Dec 1 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -51,7 +51,7 @@ Implements a 1D mimetic divergence operator\&.
 .br
 .RI "\fIReturn collection of mimetic approximations at the boundary\&. \fP"
 .ti -1c
-.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP (const \fBUniStgGrid1D\fP &grid)"
+.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP (const \fBUniStgGrid1D\fP &grid) const "
 .br
 .RI "\fIReturn the operator as a dense matrix\&. \fP"
 .in -1c
@@ -192,7 +192,7 @@ If order_accuracy_ > 2, next dim_null_ entries is approximating coefficients for
 .PP
 
 .PP
-Definition at line 1333 of file mtk_div_1d\&.cc\&.
+Definition at line 1342 of file mtk_div_1d\&.cc\&.
 .SS "\fBmtk::Real\fP * mtk::Div1D::coeffs_interior () const"
 
 .PP
@@ -225,7 +225,7 @@ Once we posses the bottom elements, we proceed with the scaling\&.
 .PP
 
 .PP
-Definition at line 688 of file mtk_div_1d\&.cc\&.
+Definition at line 691 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ComputeRationalBasisNullSpace (void)\fC [private]\fP"
 Compute a rational basis for the null-space of the Vandermonde matrix approximating at the west boundary\&. 
 .IP "1." 4
@@ -241,7 +241,7 @@ Scale null-space to make it rational\&.
 .PP
 
 .PP
-Definition at line 512 of file mtk_div_1d\&.cc\&.
+Definition at line 515 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ComputeStencilBoundaryGrid (void)\fC [private]\fP"
 Compute mimetic stencil approximating at boundary\&. 
 .IP "1." 4
@@ -253,7 +253,7 @@ Compute the mimetic boundary approximations\&.
 .PP
 
 .PP
-Definition at line 1234 of file mtk_div_1d\&.cc\&.
+Definition at line 1241 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ComputeStencilInteriorGrid (void)\fC [private]\fP"
 Compute the stencil approximating the interior of the staggered grid\&. 
 .IP "1." 4
@@ -267,7 +267,7 @@ Solve dense Vandermonde system to attain the interior coefficients\&.
 .PP
 
 .PP
-Definition at line 413 of file mtk_div_1d\&.cc\&.
+Definition at line 414 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ComputeWeights (void)\fC [private]\fP"
 Compute the set of mimetic weights to impose the mimetic condition\&. 
 .IP "1." 4
@@ -289,7 +289,7 @@ Apply solution found from brute force search\&.
 .PP
 
 .PP
-Definition at line 908 of file mtk_div_1d\&.cc\&.
+Definition at line 911 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ConstructDiv1D (intorder_accuracy = \fC\fBkDefaultOrderAccuracy\fP\fP, \fBmtk::Real\fPmimetic_threshold = \fC\fBkDefaultMimeticThreshold\fP\fP)"
 
 .PP
@@ -325,7 +325,7 @@ Collection of mimetic approximations at the boundary\&.
 .PP
 
 .PP
-Definition at line 336 of file mtk_div_1d\&.cc\&.
+Definition at line 335 of file mtk_div_1d\&.cc\&.
 .SS "int mtk::Div1D::num_bndy_coeffs () const"
 
 .PP
@@ -337,7 +337,7 @@ How many coefficients are approximating at the boundary\&.
 
 .PP
 Definition at line 315 of file mtk_div_1d\&.cc\&.
-.SS "\fBmtk::DenseMatrix\fP mtk::Div1D::ReturnAsDenseMatrix (const \fBUniStgGrid1D\fP &grid)"
+.SS "\fBmtk::DenseMatrix\fP mtk::Div1D::ReturnAsDenseMatrix (const \fBUniStgGrid1D\fP &grid) const"
 
 .PP
 \fBReturns:\fP
@@ -355,7 +355,7 @@ Impose center-skew symmetry by permuting the mimetic boundaries\&.
 .PP
 
 .PP
-Definition at line 351 of file mtk_div_1d\&.cc\&.
+Definition at line 350 of file mtk_div_1d\&.cc\&.
 .SS "\fBmtk::Real\fP * mtk::Div1D::weights_cbs (void) const"
 
 .PP

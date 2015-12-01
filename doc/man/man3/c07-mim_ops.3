@@ -1,4 +1,4 @@
-.TH "Mimetic operators." 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "Mimetic operators." 3 "Tue Dec 1 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -14,25 +14,78 @@ Mimetic operators\&.
 .br
 .RI "\fIImplements a 1D mimetic divergence operator\&. \fP"
 .ti -1c
+.RI "class \fBmtk::Div2D\fP"
+.br
+.RI "\fIImplements a 2D mimetic divergence operator\&. \fP"
+.ti -1c
 .RI "class \fBmtk::Grad1D\fP"
 .br
 .RI "\fIImplements a 1D mimetic gradient operator\&. \fP"
+.ti -1c
+.RI "class \fBmtk::Grad2D\fP"
+.br
+.RI "\fIImplements a 2D mimetic gradient operator\&. \fP"
 .ti -1c
 .RI "class \fBmtk::Interp1D\fP"
 .br
 .RI "\fIImplements a 1D interpolation operator\&. \fP"
 .ti -1c
+.RI "class \fBmtk::Interp2D\fP"
+.br
+.RI "\fIImplements a 2D interpolation operator\&. \fP"
+.ti -1c
 .RI "class \fBmtk::Lap1D\fP"
 .br
 .RI "\fIImplements a 1D mimetic Laplacian operator\&. \fP"
 .ti -1c
+.RI "class \fBmtk::Lap2D\fP"
+.br
+.RI "\fIImplements a 2D mimetic Laplacian operator\&. \fP"
+.ti -1c
 .RI "class \fBmtk::Quad1D\fP"
 .br
 .RI "\fIImplements a 1D mimetic quadrature\&. \fP"
+.ti -1c
+.RI "class \fBmtk::RobinBCDescriptor1D\fP"
+.br
+.RI "\fIImpose Robin boundary conditions on the operators and on the grids\&. \fP"
+.ti -1c
+.RI "class \fBmtk::RobinBCDescriptor2D\fP"
+.br
+.RI "\fIImpose Robin boundary conditions on the operators and on the grids\&. \fP"
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef Real(* \fBmtk::CoefficientFunction0D\fP )(const Real &tt)"
+.br
+.RI "\fIA function of a BC coefficient evaluated on a 0D domain and time\&. \fP"
+.ti -1c
+.RI "typedef Real(* \fBmtk::CoefficientFunction1D\fP )(const Real &xx, const Real &tt)"
+.br
+.RI "\fIA function of a BC coefficient evaluated on a 1D domain and time\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
 Mimetic operators\&. 
+.SH "Typedef Documentation"
+.PP 
+.SS "mtk::CoefficientFunction0D"
+
+.PP
+\fBWarning:\fP
+.RS 4
+This definition implies that, for now, coefficients will depend on space and time, thus no extra parameters can influence their behavior\&. We will fix this soon enough\&. 
+.RE
+.PP
+
+.PP
+Definition at line 111 of file mtk_robin_bc_descriptor_1d\&.h\&.
+.SS "mtk::CoefficientFunction1D"
+
+.PP
+Definition at line 97 of file mtk_robin_bc_descriptor_2d\&.h\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

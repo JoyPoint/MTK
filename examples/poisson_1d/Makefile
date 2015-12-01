@@ -22,4 +22,4 @@ memcheck:
 	valgrind $(MEMCHECK_OPTS) poisson_1d.exe >& poisson_1d.memcheck
 
 clean:
-	rm -f *~ *.o *.dat *.png *.exe
+	rm -f *~ *.o *.exe *.dat *.png *.eps *.tex *.aux *.log *.pdf

@@ -55,65 +55,60 @@
 00058 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
 00059 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
 00060 
-\hypertarget{mtk__tools_8cc_source_l00061}{}\hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{00061} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} condition,
-00062                          \textcolor{keyword}{const} \textcolor{keywordtype}{char} *fname,
+\hypertarget{mtk__tools_8cc_source_l00061}{}\hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{00061} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} condition,
+00062                          \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} fname,
 00063                          \textcolor{keywordtype}{int} lineno,
-00064                          \textcolor{keyword}{const} \textcolor{keywordtype}{char} *fxname) \{
+00064                          \textcolor{keyword}{const} \textcolor{keywordtype}{char} *\textcolor{keyword}{const} fxname) noexcept \{
 00065 
-00067 
-00068 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00069   \textcolor{keywordflow}{if} (lineno < 1) \{
-00070     std::cerr << \_\_FILE\_\_ << \textcolor{stringliteral}{": "} << \textcolor{stringliteral}{"Incorrect parameter at line "} <<
-00071     \_\_LINE\_\_ - 2 << \textcolor{stringliteral}{" ("} << \_\_func\_\_ << \textcolor{stringliteral}{")"} << std::endl;
-00072     exit(EXIT\_FAILURE);
-00073   \}
-00074 \textcolor{preprocessor}{  #endif}
-00075 
-00076   \textcolor{keywordflow}{if} (condition) \{
-00077     std::cerr << fname << \textcolor{stringliteral}{": "} << \textcolor{stringliteral}{"Incorrect parameter at line "} <<
-00078     lineno << \textcolor{stringliteral}{" ("} << fxname << \textcolor{stringliteral}{")"} << std::endl;
-00079     exit(EXIT\_FAILURE);
-00080   \}
-00081 \}
-00082 
-00084 
-00085 \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Tools_a04a60458594336ee1badff79b8a9a77f}{mtk::Tools::test\_number\_};  \textcolor{comment}{// Used to control the correctness of the test.}
-00086 
-00087 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1Tools_aba9d3d2952a3de9e7b46faa86d28d692}{mtk::Tools::duration\_};  \textcolor{comment}{// Duration of the current test.}
-00088 
-00089 clock\_t \hyperlink{classmtk_1_1Tools_a4bd58d08397db42271ed9e2d3ecc9963}{mtk::Tools::begin\_time\_};  \textcolor{comment}{// Used to time tests.}
-00090 
-\hypertarget{mtk__tools_8cc_source_l00091}{}\hyperlink{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}{00091} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_a26ee906d28523378522a75e25c3a4e19}{mtk::Tools::BeginUnitTestNo}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &nn) \{
-00092 
-00093 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00094   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00095 \textcolor{preprocessor}{  #endif}
-00096 
-00097   test\_number\_ = nn;
-00098 
-00099 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00100   std::cout << \textcolor{stringliteral}{"Beginning test "} << nn << \textcolor{stringliteral}{"."} << std::endl;
-00101 \textcolor{preprocessor}{  #endif}
-00102   begin\_time\_ = clock();
-00103 \}
-00104 
-\hypertarget{mtk__tools_8cc_source_l00105}{}\hyperlink{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}{00105} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_ad8cf0085133dd40c913fe195bc5b9694}{mtk::Tools::EndUnitTestNo}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &nn) \{
-00106 
-00107 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00108   \hyperlink{classmtk_1_1Tools_afe5bb096309258e2e72503fd7b41c7e0}{mtk::Tools::Prevent}(test\_number\_ != nn, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00109 \textcolor{preprocessor}{  #endif}
+00067   \textcolor{keywordflow}{if} (lineno < 1) \{
+00068     std::cerr << \_\_FILE\_\_ << \textcolor{stringliteral}{": "} << \textcolor{stringliteral}{"Incorrect parameter at line "} <<
+00069     \_\_LINE\_\_ - 2 << \textcolor{stringliteral}{" ("} << \_\_func\_\_ << \textcolor{stringliteral}{")"} << std::endl;
+00070     exit(EXIT\_FAILURE);
+00071   \}
+00072 
+00073   \textcolor{keywordflow}{if} (condition) \{
+00074     std::cerr << fname << \textcolor{stringliteral}{": "} << \textcolor{stringliteral}{"Incorrect parameter at line "} <<
+00075     lineno << \textcolor{stringliteral}{" ("} << fxname << \textcolor{stringliteral}{")"} << std::endl;
+00076     exit(EXIT\_FAILURE);
+00077   \}
+00078 \}
+00079 
+00081 
+00082 \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Tools_a04a60458594336ee1badff79b8a9a77f}{mtk::Tools::test\_number\_};  \textcolor{comment}{// Used to control the correctness of the test.}
+00083 
+00084 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1Tools_aba9d3d2952a3de9e7b46faa86d28d692}{mtk::Tools::duration\_};  \textcolor{comment}{// Duration of the current test.}
+00085 
+00086 clock\_t \hyperlink{classmtk_1_1Tools_a4bd58d08397db42271ed9e2d3ecc9963}{mtk::Tools::begin\_time\_};  \textcolor{comment}{// Used to time tests.}
+00087 
+\hypertarget{mtk__tools_8cc_source_l00088}{}\hyperlink{classmtk_1_1Tools_afc29ecaf337a13ed2e817d3890a5a441}{00088} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_afc29ecaf337a13ed2e817d3890a5a441}{mtk::Tools::BeginUnitTestNo}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &nn) noexcept \{
+00089 
+00090 \textcolor{preprocessor}{  #if MTK\_PERFORM\_PREVENTIONS}
+00091   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00092 \textcolor{preprocessor}{  #endif}
+00093 
+00094   test\_number\_ = nn;
+00095 
+00096   std::cout << \textcolor{stringliteral}{"Beginning test "} << nn << \textcolor{stringliteral}{"."} << std::endl;
+00097   begin\_time\_ = clock();
+00098 \}
+00099 
+\hypertarget{mtk__tools_8cc_source_l00100}{}\hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{00100} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{mtk::Tools::EndUnitTestNo}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &nn) noexcept \{
+00101 
+00102 \textcolor{preprocessor}{  #if MTK\_PERFORM\_PREVENTIONS}
+00103   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(test\_number\_ != nn, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00104 \textcolor{preprocessor}{  #endif}
+00105 
+00106   duration\_ = \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}(clock() - begin\_time\_)/CLOCKS\_PER\_SEC;
+00107 \}
+00108 
+\hypertarget{mtk__tools_8cc_source_l00109}{}\hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{00109} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{mtk::Tools::Assert}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} &condition) noexcept \{
 00110 
-00111   duration\_ = \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}(clock() - begin\_time\_)/CLOCKS\_PER\_SEC;
-00112 \}
-00113 
-\hypertarget{mtk__tools_8cc_source_l00114}{}\hyperlink{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}{00114} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Tools_aa311fada9255627d06c56b1e4fedce9e}{mtk::Tools::Assert}(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} condition) \{
-00115 
-00116   \textcolor{keywordflow}{if} (condition) \{
-00117     std::cout << \textcolor{stringliteral}{"Test "} << test\_number\_ << \textcolor{stringliteral}{": PASSED in "} << duration\_ <<
-00118       \textcolor{stringliteral}{" s."} << std::endl;
-00119   \} \textcolor{keywordflow}{else} \{
-00120     std::cout << \textcolor{stringliteral}{"Test "} << test\_number\_ << \textcolor{stringliteral}{": FAILED in "} << duration\_ <<
-00121       \textcolor{stringliteral}{" s."} << std::endl;
-00122   \}
-00123 \}
+00111   \textcolor{keywordflow}{if} (condition) \{
+00112     std::cout << \textcolor{stringliteral}{"Test "} << test\_number\_ << \textcolor{stringliteral}{": PASSED in "} << duration\_ <<
+00113       \textcolor{stringliteral}{" s."} << std::endl;
+00114   \} \textcolor{keywordflow}{else} \{
+00115     std::cout << \textcolor{stringliteral}{"Test "} << test\_number\_ << \textcolor{stringliteral}{": FAILED in "} << duration\_ <<
+00116       \textcolor{stringliteral}{" s."} << std::endl;
+00117   \}
+00118 \}
 \end{DoxyCode}

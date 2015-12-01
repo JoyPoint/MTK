@@ -92,6 +92,27 @@ class Lap1D {
   ~Lap1D();
 
   /*!
+  \brief Order of accuracy of the operator.
+
+  \return Order of accuracy of the operator.
+  */
+  int order_accuracy() const;
+
+  /*!
+  \brief Mimetic threshold used in the CBS algorithm to construct this operator.
+
+  \return Mimetic threshold used in the CBS algorithm to construct operator.
+  */
+  Real mimetic_threshold() const;
+
+  /*!
+  \brief Value of \f$ \Delta x \f$ used be scaled. If 0, then dimensionless.
+
+  \return Value of \f$ \Delta x \f$ used be scaled. If 0, then dimensionless.
+  */
+  Real delta() const;
+
+  /*!
   \brief Factory method implementing the CBS Algorithm to build operator.
 
   \return Success of the solution.
@@ -104,20 +125,22 @@ class Lap1D {
 
   \return The operator as a dense matrix.
   */
-  DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid);
+  DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid) const;
 
   /*!
   \brief Return the operator as a dense array.
 
   \return The operator as a dense array.
   */
-  mtk::Real* data(const UniStgGrid1D &grid);
+  const mtk::Real* data(const UniStgGrid1D &grid) const;
 
  private:
   int order_accuracy_;    ///< Order of numerical accuracy of the operator.
   int laplacian_length_;  ///< Length of the output array.
 
   Real *laplacian_;      ///< Output array containing the operator and weights.
+
+  mutable Real delta_;     ///<< If 0.0, then this Laplacian is dimensionless.
 
   Real mimetic_threshold_;  ///<< Mimetic threshold.
 };

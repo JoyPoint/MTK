@@ -1,4 +1,4 @@
-.TH "mtk::Tools" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::Tools" 3 "Tue Dec 1 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -15,19 +15,19 @@ Tool manager class\&.
 
 .in +1c
 .ti -1c
-.RI "static void \fBPrevent\fP (const bool complement, const char *fname, int lineno, const char *fxname)"
+.RI "static void \fBPrevent\fP (const bool complement, const char *const fname, int lineno, const char *const fxname) noexcept"
 .br
 .RI "\fIEnforces preconditions by preventing their complements from occur\&. \fP"
 .ti -1c
-.RI "static void \fBBeginUnitTestNo\fP (const int &nn)"
+.RI "static void \fBBeginUnitTestNo\fP (const int &nn) noexcept"
 .br
 .RI "\fIBegins the execution of a unit test\&. Starts a timer\&. \fP"
 .ti -1c
-.RI "static void \fBEndUnitTestNo\fP (const int &nn)"
+.RI "static void \fBEndUnitTestNo\fP (const int &nn) noexcept"
 .br
 .RI "\fIEnds the execution of a unit test\&. Stops and reports wall-clock time\&. \fP"
 .ti -1c
-.RI "static void \fBAssert\fP (const bool condition)"
+.RI "static void \fBAssert\fP (const bool &condition) noexcept"
 .br
 .RI "\fIAsserts if the condition required to pass the unit test occurs\&. \fP"
 .in -1c
@@ -51,10 +51,10 @@ Tool manager class\&.
 .PP 
 Basic tools to ensure execution correctness\&. 
 .PP
-Definition at line 74 of file mtk_tools\&.h\&.
+Definition at line 78 of file mtk_tools\&.h\&.
 .SH "Member Function Documentation"
 .PP 
-.SS "void mtk::Tools::Assert (const boolcondition)\fC [static]\fP"
+.SS "void mtk::Tools::Assert (const bool &condition)\fC [static]\fP, \fC [noexcept]\fP"
 
 .PP
 \fBParameters:\fP
@@ -64,8 +64,8 @@ Definition at line 74 of file mtk_tools\&.h\&.
 .PP
 
 .PP
-Definition at line 114 of file mtk_tools\&.cc\&.
-.SS "void mtk::Tools::BeginUnitTestNo (const int &nn)\fC [static]\fP"
+Definition at line 109 of file mtk_tools\&.cc\&.
+.SS "void mtk::Tools::BeginUnitTestNo (const int &nn)\fC [static]\fP, \fC [noexcept]\fP"
 
 .PP
 \fBParameters:\fP
@@ -75,8 +75,8 @@ Definition at line 114 of file mtk_tools\&.cc\&.
 .PP
 
 .PP
-Definition at line 91 of file mtk_tools\&.cc\&.
-.SS "void mtk::Tools::EndUnitTestNo (const int &nn)\fC [static]\fP"
+Definition at line 88 of file mtk_tools\&.cc\&.
+.SS "void mtk::Tools::EndUnitTestNo (const int &nn)\fC [static]\fP, \fC [noexcept]\fP"
 
 .PP
 \fBParameters:\fP
@@ -86,8 +86,8 @@ Definition at line 91 of file mtk_tools\&.cc\&.
 .PP
 
 .PP
-Definition at line 105 of file mtk_tools\&.cc\&.
-.SS "void mtk::Tools::Prevent (const boolcomplement, const char *fname, intlineno, const char *fxname)\fC [static]\fP"
+Definition at line 100 of file mtk_tools\&.cc\&.
+.SS "void mtk::Tools::Prevent (const boolcomplement, const char *constfname, intlineno, const char *constfxname)\fC [static]\fP, \fC [noexcept]\fP"
 
 .PP
 \fBSee also:\fP
@@ -121,11 +121,11 @@ Definition at line 61 of file mtk_tools\&.cc\&.
 .SS "clock_t mtk::Tools::begin_time_\fC [static]\fP, \fC [private]\fP"
 
 .PP
-Definition at line 117 of file mtk_tools\&.h\&.
+Definition at line 121 of file mtk_tools\&.h\&.
 .SS "\fBmtk::Real\fP mtk::Tools::duration_\fC [static]\fP, \fC [private]\fP"
 
 .PP
-Definition at line 115 of file mtk_tools\&.h\&.
+Definition at line 119 of file mtk_tools\&.h\&.
 .SS "int mtk::Tools::test_number_\fC [static]\fP, \fC [private]\fP"
 
 .PP
@@ -136,7 +136,7 @@ Check usage of static methods and private members\&.
 .PP
 
 .PP
-Definition at line 113 of file mtk_tools\&.h\&.
+Definition at line 117 of file mtk_tools\&.h\&.
 
 .SH "Author"
 .PP 

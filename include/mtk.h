@@ -65,7 +65,7 @@ properties of their continuum counterparts to be **mimetic**.
 
 The **Mimetic Methods Toolkit (MTK)** is a C++ library for mimetic numerical
 methods. It is arranged as a set of classes for **mimetic quadratures**,
-**mimetic interpolation**, and **mimetic finite differences** methods for the
+ **mimetic interpolation**, and **mimetic finite differences** methods for the
 numerical solution of ordinary and partial differential equations.
 
 An older version of this library is available outside of GitHub... just email me
@@ -447,12 +447,13 @@ Mimetic operators.
 #include "mtk_grad_1d.h"
 #include "mtk_div_1d.h"
 #include "mtk_lap_1d.h"
-#include "mtk_bc_desc_1d.h"
+#include "mtk_robin_bc_descriptor_1d.h"
 #include "mtk_quad_1d.h"
 #include "mtk_interp_1d.h"
 
 #include "mtk_grad_2d.h"
 #include "mtk_div_2d.h"
 #include "mtk_lap_2d.h"
+#include "mtk_robin_bc_descriptor_2d.h"
 
 #endif // End of: MTK_INCLUDE_MTK_H_

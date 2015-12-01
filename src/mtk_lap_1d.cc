@@ -108,6 +108,7 @@ std::ostream& operator <<(std::ostream &stream, mtk::Lap1D &in) {
 mtk::Lap1D::Lap1D():
   order_accuracy_(mtk::kDefaultOrderAccuracy),
   laplacian_length_(),
+  delta_(mtk::kZero),
   mimetic_threshold_(mtk::kDefaultMimeticThreshold) {}
 
 mtk::Lap1D::~Lap1D() {
@@ -116,10 +117,25 @@ mtk::Lap1D::~Lap1D() {
   laplacian_ = nullptr;
 }
 
+int mtk::Lap1D::order_accuracy() const {
+
+  return order_accuracy_;
+}
+
+mtk::Real mtk::Lap1D::mimetic_threshold() const {
+
+  return mimetic_threshold_;
+}
+
+mtk::Real mtk::Lap1D::delta() const {
+
+  return delta_;
+}
+
 bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
                                 mtk::Real mimetic_threshold) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(order_accuracy < 2, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent((order_accuracy%2) != 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(mimetic_threshold <= mtk::kZero,
@@ -137,15 +153,16 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
   mimetic_threshold_ = mimetic_threshold;
 
   /// 1. Create gradient operator using specific values for the Laplacian.
-
   mtk::Grad1D grad; // Mimetic gradient.
 
   bool info = grad.ConstructGrad1D(order_accuracy_, mimetic_threshold_);
 
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
     std::cerr << "Mimetic grad could not be built." << std::endl;
     return false;
   }
+  #endif
 
   /// 2. Create gradient operator using specific values for the Laplacian.
 
@@ -153,10 +170,12 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
 
   info = div.ConstructDiv1D(order_accuracy_, mimetic_threshold_);
 
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
     std::cerr << "Mimetic div could not be built." << std::endl;
     return false;
   }
+  #endif
 
   /// 3. Create both operators as matrices.
 
@@ -166,16 +185,16 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
 
   // However, we must choose a grid that implied a step size of 1, so to get
   // the approximating coefficients, without being affected from the
-  // normalization with respect to the grid.
+  // normalization with respect to the grid (dimensionless).
 
   // Also, the grid must be of the minimum size to support the requested order
-  // of accuracy. We must please the divergence.
+  // of accuracy. We must please the divergence for this!
 
   mtk::UniStgGrid1D aux(mtk::kZero,
                         (mtk::Real) 3*order_accuracy_ - 1,
                         3*order_accuracy_ - 1);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "aux =" << std::endl;
   std::cout << aux << std::endl;
   std::cout <<"aux.delta_x() = " << aux.delta_x() << std::endl;
@@ -184,14 +203,14 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
 
   mtk::DenseMatrix grad_m(grad.ReturnAsDenseMatrix(aux));
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "grad_m =" << std::endl;
   std::cout << grad_m << std::endl;
   #endif
 
   mtk::DenseMatrix div_m(div.ReturnAsDenseMatrix(aux));
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "div_m =" << std::endl;
   std::cout << div_m << std::endl;
   #endif
@@ -204,14 +223,14 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
 
   lap = mtk::BLASAdapter::RealDenseMM(div_m, grad_m);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "lap =" << std::endl;
   std::cout << lap << std::endl;
   #endif
 
   /// 5. Extract the coefficients from the matrix and store them in the array.
 
-  /// \warning We do not compute weights for this operator.
+  /// \warning We do not compute weights for this operator... no need to!
 
   // The output array will have this form:
   // 1. The first entry of the array will contain the used order kk.
@@ -223,7 +242,7 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
   laplacian_length_ = 1 + (2*order_accuracy_ - 1) +
     (order_accuracy_ - 1)*(2*order_accuracy_);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "laplacian_length_ = " << laplacian_length_ << std::endl;
   std::cout << std::endl;
   #endif
@@ -259,19 +278,24 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
     }
   }
 
+  delta_ = mtk::kZero;
+
   return true;
 }
 
-mtk::DenseMatrix mtk::Lap1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
+mtk::DenseMatrix mtk::Lap1D::ReturnAsDenseMatrix(
+  const UniStgGrid1D &grid) const {
 
   int nn{grid.num_cells_x()};  // Number of cells on the grid.
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(nn < 3*order_accuracy_ - 1, __FILE__, __LINE__, __func__);
   #endif
 
   mtk::DenseMatrix lap(nn + 2, nn + 2); // Laplacian matrix to be returned.
+
+  delta_ = grid.delta_x();
 
   mtk::Real idx{mtk::kOne/(grid.delta_x()*grid.delta_x())}; // Inverse of dx^2.
 
@@ -329,7 +353,7 @@ mtk::DenseMatrix mtk::Lap1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
   return lap;
 }
 
-mtk::Real* mtk::Lap1D::data(const UniStgGrid1D &grid) {
+const mtk::Real* mtk::Lap1D::data(const UniStgGrid1D &grid) const {
 
   mtk::DenseMatrix tmp;
 

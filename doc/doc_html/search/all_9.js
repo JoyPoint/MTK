@@ -1,13 +1,16 @@
 var searchData=
 [
-  ['lap1d',['Lap1D',['../classmtk_1_1Lap1D.html',1,'mtk']]],
-  ['lap1d',['Lap1D',['../classmtk_1_1Lap1D.html#a6fc2aeea35d4dfa49f17e625411f5a70',1,'mtk::Lap1D::Lap1D()'],['../classmtk_1_1Lap1D.html#a95c3fdcd0c9e4c56e775a2a20a2fac42',1,'mtk::Lap1D::Lap1D(const Lap1D &amp;lap)']]],
-  ['lap2d',['Lap2D',['../classmtk_1_1Lap2D.html',1,'mtk']]],
-  ['lap2d',['Lap2D',['../classmtk_1_1Lap2D.html#ada4370fb8d7726e70a3257e3841c6d1f',1,'mtk::Lap2D::Lap2D()'],['../classmtk_1_1Lap2D.html#acf62bf6a1c041e4b02f06346054d7af2',1,'mtk::Lap2D::Lap2D(const Lap2D &amp;lap)']]],
-  ['lapackadapter',['LAPACKAdapter',['../classmtk_1_1LAPACKAdapter.html',1,'mtk']]],
-  ['laplacian_5f',['laplacian_',['../classmtk_1_1Lap1D.html#a64a3977527c00b4ef994d1bd549f82fd',1,'mtk::Lap1D::laplacian_()'],['../classmtk_1_1Lap2D.html#a6c52889838324a89f85ed37bd3bf44f4',1,'mtk::Lap2D::laplacian_()']]],
-  ['laplacian_5flength_5f',['laplacian_length_',['../classmtk_1_1Lap1D.html#a05578b0729f2bb4fe8bb442fc555fa80',1,'mtk::Lap1D']]],
-  ['ld',['ld',['../classmtk_1_1Matrix.html#acdaa5281bd8f86ea4abf20292d9fd20f',1,'mtk::Matrix']]],
-  ['ld_5f',['ld_',['../classmtk_1_1Matrix.html#a8cb46a0aa1d665a9f92f14e66a307bd5',1,'mtk::Matrix']]],
-  ['licensing_20and_20modifications',['Licensing and Modifications',['../section_license_mod.html',1,'']]]
+  ['kcriticalorderaccuracydiv',['kCriticalOrderAccuracyDiv',['../group__c01-roots.html#ga0898eef2108473e44a5223932d571c31',1,'mtk']]],
+  ['kcriticalorderaccuracygrad',['kCriticalOrderAccuracyGrad',['../group__c01-roots.html#ga295dd2f403c775ecd942c22b5a777496',1,'mtk']]],
+  ['kdefaultmimeticthreshold',['kDefaultMimeticThreshold',['../group__c01-roots.html#ga35718d949bdc81a08a9cc8ebbe3478a2',1,'mtk']]],
+  ['kdefaultorderaccuracy',['kDefaultOrderAccuracy',['../group__c01-roots.html#ga0d95560098eb36420511103637b6952f',1,'mtk']]],
+  ['kdefaulttolerance',['kDefaultTolerance',['../group__c01-roots.html#gae914b125d81d1b97e0aee7bbc7739786',1,'mtk']]],
+  ['kl',['kl',['../classmtk_1_1Matrix.html#ae6400690d7e9fe2fd00cb678a4033f3c',1,'mtk::Matrix']]],
+  ['kl_5f',['kl_',['../classmtk_1_1Matrix.html#a45c2498d0b6d515c72c2e631508acd7d',1,'mtk::Matrix']]],
+  ['kone',['kOne',['../group__c01-roots.html#ga26407c24d43b6b95480943340d285c71',1,'mtk']]],
+  ['kron',['Kron',['../classmtk_1_1DenseMatrix.html#a01d3d8bd502870f93bf3a88a0cc5fb49',1,'mtk::DenseMatrix']]],
+  ['ktwo',['kTwo',['../group__c01-roots.html#gaf39c2d851a2db744f4feb1c5ab3ec2cf',1,'mtk']]],
+  ['ku',['ku',['../classmtk_1_1Matrix.html#ab129068deb2892b194d2cda9aca989eb',1,'mtk::Matrix']]],
+  ['ku_5f',['ku_',['../classmtk_1_1Matrix.html#afdb4436c4c4c6deaed608a06026179c9',1,'mtk::Matrix']]],
+  ['kzero',['kZero',['../group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271',1,'mtk']]]
 ];

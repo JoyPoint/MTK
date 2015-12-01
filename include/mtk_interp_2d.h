@@ -64,6 +64,15 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace mtk{
 
+/*!
+\class Interp2D
+
+\ingroup c07-mim_ops
+
+\brief Implements a 2D interpolation operator.
+
+This class implements a 2D interpolation operator.
+*/
 class Interp2D {
  public:
   /// \brief Default constructor.

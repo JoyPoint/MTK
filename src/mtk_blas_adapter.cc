@@ -323,7 +323,7 @@ void sgemm_(char *transa,
 
 mtk::Real mtk::BLASAdapter::RealNRM2(Real *in, int &in_length) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(in_length <= 0, __FILE__, __LINE__, __func__);
   #endif
 
@@ -341,7 +341,7 @@ void mtk::BLASAdapter::RealAXPY(mtk::Real alpha,
                                      mtk::Real *yy,
                                      int &in_length) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(xx == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(yy == nullptr, __FILE__, __LINE__, __func__);
   #endif
@@ -359,7 +359,7 @@ mtk::Real mtk::BLASAdapter::RelNorm2Error(mtk::Real *computed,
                                           mtk::Real *known,
                                           int length) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(computed == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(known == nullptr, __FILE__, __LINE__, __func__);
   #endif
@@ -409,13 +409,12 @@ void mtk::BLASAdapter::RealDenseMV(mtk::Real &alpha,
 mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM(mtk::DenseMatrix &aa,
                                                mtk::DenseMatrix &bb) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(aa.num_cols() != bb.num_rows(),
                       __FILE__, __LINE__, __func__);
   #endif
 
-  // Make sure input matrices are row-major ordered.
-
+  /// 1. Make sure input matrices are row-major ordered.
   if (aa.matrix_properties().ordering() == mtk::COL_MAJOR) {
     aa.OrderRowMajor();
   }
@@ -423,6 +422,7 @@ mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM(mtk::DenseMatrix &aa,
     bb.OrderRowMajor();
   }
 
+  /// 2. Setup the problem.
   char ta{'T'}; // State that input matrix aa is in row-wise ordering.
   char tb{'T'}; // State that input matrix bb is in row-wise ordering.
 
@@ -437,13 +437,14 @@ mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM(mtk::DenseMatrix &aa,
   int ldb{std::max(1,nn)};  // Leading dimension of the bb matrix.
   int ldc{std::max(1,mm)};  // Leading dimension of the cc matrix.
 
-  mtk::Real alpha{1.0}; // First scalar coefficient.
-  mtk::Real beta{0.0};  // Second scalar coefficient.
+  mtk::Real alpha{mtk::kOne}; // First scalar coefficient.
+  mtk::Real beta{mtk::kZero}; // Second scalar coefficient.
 
   mtk::DenseMatrix cc_col_maj_ord(cc_num_rows,cc_num_cols); // Output matrix.
 
   cc_col_maj_ord.SetOrdering(mtk::COL_MAJOR);
 
+  /// 3. Perform multiplication.
   #ifdef MTK_PRECISION_DOUBLE
   dgemm_(&ta, &tb, &mm, &nn, &kk, &alpha, aa.data(), &lda,
          bb.data(), &ldb, &beta, cc_col_maj_ord.data(), &ldc);
@@ -452,7 +453,7 @@ mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM(mtk::DenseMatrix &aa,
          bb.data(), &ldb, &beta, cc_col_maj_ord.data(), &ldc);
   #endif
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 12
   std::cout << "cc_col_maj_ord =" << std::endl;
   std::cout << cc_col_maj_ord << std::endl;
   #endif
@@ -460,4 +461,52 @@ mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM(mtk::DenseMatrix &aa,
   cc_col_maj_ord.OrderRowMajor();
 
   return cc_col_maj_ord;
+}
+
+mtk::DenseMatrix mtk::BLASAdapter::RealDenseSM(mtk::Real alpha,
+                                               mtk::DenseMatrix &aa) {
+
+  #ifdef MTK_PERFORM_PREVENTIONS
+  mtk::Tools::Prevent(aa.num_rows() == 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(aa.num_cols() == 0, __FILE__, __LINE__, __func__);
+  #endif
+
+  /// 1. Make sure input matrices are row-major ordered.
+  if (aa.matrix_properties().ordering() == mtk::COL_MAJOR) {
+    aa.OrderRowMajor();
+  }
+
+  /// 2. Setup the problem.
+  char ta{'T'}; // State that input matrix aa is in row-wise ordering.
+  char tb{'T'}; // State that input matrix bb is in row-wise ordering.
+
+  int mm{aa.num_rows()};  // Rows of aa and rows of cc.
+  int nn{aa.num_cols()};  // Cols of bb and cols of cc.
+  int kk{aa.num_cols()};  // Cols of aa and rows of bb.
+
+  int lda{std::max(1,kk)};  // Leading dimension of the aa matrix.
+  int ldb{std::max(1,nn)};  // Leading dimension of the bb matrix.
+  int ldc{std::max(1,mm)};  // Leading dimension of the cc matrix.
+
+  mtk::Real beta{alpha}; // Second scalar coefficient.
+
+  alpha = mtk::kZero;
+
+  mtk::DenseMatrix alpha_aa(aa); // Output matrix.
+
+  /// 3. Perform multiplication.
+  #ifdef MTK_PRECISION_DOUBLE
+  dgemm_(&ta, &tb, &mm, &nn, &kk, &alpha, aa.data(), &lda,
+         aa.data(), &ldb, &beta, alpha_aa.data(), &ldc);
+  #else
+  sgemm_(&ta, &tb, &mm, &nn, &kk, &alpha, aa.data(), &lda,
+         aa.data(), &ldb, &beta, alpha_aa.data(), &ldc);
+  #endif
+
+  #if MTK_VERBOSE_LEVEL > 12
+  std::cout << "alpha_aa =" << std::endl;
+  std::cout << alpha_aa << std::endl;
+  #endif
+
+  return alpha_aa;
 }

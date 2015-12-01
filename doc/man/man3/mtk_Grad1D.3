@@ -1,4 +1,4 @@
-.TH "mtk::Grad1D" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::Grad1D" 3 "Tue Dec 1 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -51,15 +51,15 @@ Implements a 1D mimetic gradient operator\&.
 .br
 .RI "\fIReturn collection of mimetic approximations at the boundary\&. \fP"
 .ti -1c
-.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP (\fBReal\fP west, \fBReal\fP east, int num_cells_x)"
+.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP (\fBReal\fP west, \fBReal\fP east, int num_cells_x) const "
 .br
 .RI "\fIReturns the operator as a dense matrix\&. \fP"
 .ti -1c
-.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP (const \fBUniStgGrid1D\fP &grid)"
+.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP (const \fBUniStgGrid1D\fP &grid) const "
 .br
 .RI "\fIReturns the operator as a dense matrix\&. \fP"
 .ti -1c
-.RI "\fBDenseMatrix\fP \fBReturnAsDimensionlessDenseMatrix\fP (int num_cells_x)"
+.RI "\fBDenseMatrix\fP \fBReturnAsDimensionlessDenseMatrix\fP (int num_cells_x) const "
 .br
 .RI "\fIReturns the operator as a dimensionless dense matrix\&. \fP"
 .in -1c
@@ -204,7 +204,7 @@ The next dim_null + 1 entries will contain the collections of approximating coef
 .PP
 
 .PP
-Definition at line 1497 of file mtk_grad_1d\&.cc\&.
+Definition at line 1499 of file mtk_grad_1d\&.cc\&.
 .SS "\fBmtk::Real\fP * mtk::Grad1D::coeffs_interior () const"
 
 .PP
@@ -215,7 +215,7 @@ Coefficients for the interior of the grid\&.
 .PP
 
 .PP
-Definition at line 330 of file mtk_grad_1d\&.cc\&.
+Definition at line 326 of file mtk_grad_1d\&.cc\&.
 .SS "bool mtk::Grad1D::ComputePreliminaryApproximations (void)\fC [private]\fP"
 Compute the set of preliminary approximations on the boundary neighborhood\&. 
 .IP "1." 4
@@ -265,7 +265,7 @@ Compute the mimetic boundary approximations\&.
 .PP
 
 .PP
-Definition at line 1391 of file mtk_grad_1d\&.cc\&.
+Definition at line 1393 of file mtk_grad_1d\&.cc\&.
 .SS "bool mtk::Grad1D::ComputeStencilInteriorGrid (void)\fC [private]\fP"
 Compute the stencil approximating the interior of the staggered grid\&. 
 .IP "1." 4
@@ -279,7 +279,7 @@ Solve dense Vandermonde system to attain the interior coefficients\&.
 .PP
 
 .PP
-Definition at line 552 of file mtk_grad_1d\&.cc\&.
+Definition at line 551 of file mtk_grad_1d\&.cc\&.
 .SS "bool mtk::Grad1D::ComputeWeights (void)\fC [private]\fP"
 Compute the set of mimetic weights to impose the mimetic condition\&. 
 .IP "1." 4
@@ -301,7 +301,7 @@ Apply solution found from brute force search\&.
 .PP
 
 .PP
-Definition at line 1051 of file mtk_grad_1d\&.cc\&.
+Definition at line 1052 of file mtk_grad_1d\&.cc\&.
 .SS "bool mtk::Grad1D::ConstructGrad1D (intorder_accuracy = \fC\fBkDefaultOrderAccuracy\fP\fP, \fBReal\fPmimetic_threshold = \fC\fBkDefaultMimeticThreshold\fP\fP)"
 
 .PP
@@ -337,7 +337,7 @@ Collection of mimetic approximations at the boundary\&.
 .PP
 
 .PP
-Definition at line 345 of file mtk_grad_1d\&.cc\&.
+Definition at line 341 of file mtk_grad_1d\&.cc\&.
 .SS "int mtk::Grad1D::num_bndy_coeffs () const"
 
 .PP
@@ -348,8 +348,8 @@ How many coefficients are approximating at the boundary\&.
 .PP
 
 .PP
-Definition at line 325 of file mtk_grad_1d\&.cc\&.
-.SS "\fBmtk::DenseMatrix\fP mtk::Grad1D::ReturnAsDenseMatrix (\fBmtk::Real\fPwest, \fBmtk::Real\fPeast, intnum_cells_x)"
+Definition at line 321 of file mtk_grad_1d\&.cc\&.
+.SS "\fBmtk::DenseMatrix\fP mtk::Grad1D::ReturnAsDenseMatrix (\fBmtk::Real\fPwest, \fBmtk::Real\fPeast, intnum_cells_x) const"
 
 .PP
 \fBReturns:\fP
@@ -367,8 +367,8 @@ Impose center-skew symmetry by permuting the mimetic boundaries\&.
 .PP
 
 .PP
-Definition at line 360 of file mtk_grad_1d\&.cc\&.
-.SS "\fBmtk::DenseMatrix\fP mtk::Grad1D::ReturnAsDenseMatrix (const \fBUniStgGrid1D\fP &grid)"
+Definition at line 356 of file mtk_grad_1d\&.cc\&.
+.SS "\fBmtk::DenseMatrix\fP mtk::Grad1D::ReturnAsDenseMatrix (const \fBUniStgGrid1D\fP &grid) const"
 
 .PP
 \fBReturns:\fP
@@ -386,8 +386,8 @@ Impose center-skew symmetry by permuting the mimetic boundaries\&.
 .PP
 
 .PP
-Definition at line 428 of file mtk_grad_1d\&.cc\&.
-.SS "\fBmtk::DenseMatrix\fP mtk::Grad1D::ReturnAsDimensionlessDenseMatrix (intnum_cells_x)"
+Definition at line 425 of file mtk_grad_1d\&.cc\&.
+.SS "\fBmtk::DenseMatrix\fP mtk::Grad1D::ReturnAsDimensionlessDenseMatrix (intnum_cells_x) const"
 
 .PP
 \fBReturns:\fP
@@ -405,7 +405,7 @@ Impose center-skew symmetry by permuting the mimetic boundaries\&.
 .PP
 
 .PP
-Definition at line 491 of file mtk_grad_1d\&.cc\&.
+Definition at line 489 of file mtk_grad_1d\&.cc\&.
 .SS "\fBmtk::Real\fP * mtk::Grad1D::weights_cbs (void) const"
 
 .PP
@@ -416,7 +416,7 @@ Collection of weights as computed by the CBSA\&.
 .PP
 
 .PP
-Definition at line 340 of file mtk_grad_1d\&.cc\&.
+Definition at line 336 of file mtk_grad_1d\&.cc\&.
 .SS "\fBmtk::Real\fP * mtk::Grad1D::weights_crs (void) const"
 
 .PP
@@ -427,7 +427,7 @@ Success of the solution\&.
 .PP
 
 .PP
-Definition at line 335 of file mtk_grad_1d\&.cc\&.
+Definition at line 331 of file mtk_grad_1d\&.cc\&.
 .SH "Friends And Related Function Documentation"
 .PP 
 .SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::Grad1D\fP &in)\fC [friend]\fP"

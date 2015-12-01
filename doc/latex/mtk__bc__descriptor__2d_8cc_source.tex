@@ -1,0 +1,665 @@
+\hypertarget{mtk__bc__descriptor__2d_8cc_source}{\section{mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}
+\label{mtk__bc__descriptor__2d_8cc_source}\index{src/mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc@{src/mtk\+\_\+bc\+\_\+descriptor\+\_\+2d.\+cc}}
+}
+
+\begin{DoxyCode}
+00001 
+00030 \textcolor{comment}{/*}
+00031 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00032 \textcolor{comment}{University. All rights reserved.}
+00033 \textcolor{comment}{}
+00034 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00035 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00036 \textcolor{comment}{}
+00037 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00038 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00039 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
+00040 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
+00041 \textcolor{comment}{should be developed and included in any deliverable.}
+00042 \textcolor{comment}{}
+00043 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00044 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00045 \textcolor{comment}{}
+00046 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
+00047 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00048 \textcolor{comment}{other materials provided with the distribution.}
+00049 \textcolor{comment}{}
+00050 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
+00051 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
+00052 \textcolor{comment}{be given to the copyright holders.}
+00053 \textcolor{comment}{}
+00054 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
+00055 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00056 \textcolor{comment}{specific prior written permission.}
+00057 \textcolor{comment}{}
+00058 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00059 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00060 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00061 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00062 \textcolor{comment}{parties intellectual property rights.}
+00063 \textcolor{comment}{}
+00064 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00065 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00066 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00067 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00068 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00069 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00070 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00071 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00072 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00073 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00074 \textcolor{comment}{*/}
+00075 
+00076 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
+00077 
+00078 \textcolor{preprocessor}{#include "\hyperlink{mtk__bc__descriptor__2d_8h}{mtk\_bc\_descriptor\_2d.h}"}
+00079 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00080}{}\hyperlink{classmtk_1_1BCDescriptor2D_abbc3af29202dbfef203f4cafd9566fd0}{00080} \hyperlink{classmtk_1_1BCDescriptor2D_abbc3af29202dbfef203f4cafd9566fd0}{mtk::BCDescriptor2D::BCDescriptor2D}():
+00081   highest\_order\_diff\_west\_(-1),
+00082   highest\_order\_diff\_east\_(-1),
+00083   highest\_order\_diff\_south\_(-1),
+00084   highest\_order\_diff\_north\_(-1),
+00085   west\_condition\_(),
+00086   east\_condition\_(),
+00087   south\_condition\_(),
+00088   north\_condition\_() \{\}
+00089 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00090}{}\hyperlink{classmtk_1_1BCDescriptor2D_ae8a93352a94efed52747b710e6ff7893}{00090} \hyperlink{classmtk_1_1BCDescriptor2D_abbc3af29202dbfef203f4cafd9566fd0}{mtk::BCDescriptor2D::BCDescriptor2D}(\textcolor{keyword}{const} 
+      \hyperlink{classmtk_1_1BCDescriptor2D}{mtk::BCDescriptor2D} &desc) \{\}
+00091 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00092}{}\hyperlink{classmtk_1_1BCDescriptor2D_ae14e62548a8bc080d576fff6937c546b}{00092} \hyperlink{classmtk_1_1BCDescriptor2D_ae14e62548a8bc080d576fff6937c546b}{mtk::BCDescriptor2D::~BCDescriptor2D}() noexcept \{\}
+00093 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00094}{}\hyperlink{classmtk_1_1BCDescriptor2D_a0fa469ddf6ff76e2858d6d3b76cc8b6f}{00094} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1BCDescriptor2D_a0fa469ddf6ff76e2858d6d3b76cc8b6f}{mtk::BCDescriptor2D::highest\_order\_diff\_west}() const 
+      noexcept \{
+00095 
+00096   \textcolor{keywordflow}{return} highest\_order\_diff\_west\_;
+00097 \}
+00098 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00099}{}\hyperlink{classmtk_1_1BCDescriptor2D_a5a9b80a2e9e579b05d9f3589d80448b6}{00099} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1BCDescriptor2D_a5a9b80a2e9e579b05d9f3589d80448b6}{mtk::BCDescriptor2D::highest\_order\_diff\_east}() const 
+      noexcept \{
+00100 
+00101   \textcolor{keywordflow}{return} highest\_order\_diff\_east\_;
+00102 \}
+00103 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00104}{}\hyperlink{classmtk_1_1BCDescriptor2D_a463d909f6014e7f01b33171a06d7b400}{00104} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1BCDescriptor2D_a463d909f6014e7f01b33171a06d7b400}{mtk::BCDescriptor2D::highest\_order\_diff\_south}() const 
+      noexcept \{
+00105 
+00106   \textcolor{keywordflow}{return} highest\_order\_diff\_south\_;
+00107 \}
+00108 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00109}{}\hyperlink{classmtk_1_1BCDescriptor2D_a87c5f2449247d65ea07784ba2ec61bc7}{00109} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1BCDescriptor2D_a87c5f2449247d65ea07784ba2ec61bc7}{mtk::BCDescriptor2D::highest\_order\_diff\_north}() const 
+      noexcept \{
+00110 
+00111   \textcolor{keywordflow}{return} highest\_order\_diff\_north\_;
+00112 \}
+00113 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00114}{}\hyperlink{classmtk_1_1BCDescriptor2D_a3da32ba89cfb15032bb1156394bad98c}{00114} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a3da32ba89cfb15032bb1156394bad98c}{mtk::BCDescriptor2D::PushBackWestCoeff}(
+      \hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{mtk::CoefficientFunction2D} cw) \{
+00115 
+00116 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00117   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(cw == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00118   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(highest\_order\_diff\_west\_ > 1,
+00119                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00120 \textcolor{preprocessor}{  #endif}
+00121 
+00122   west\_coefficients\_.push\_back(cw);
+00123 
+00124   highest\_order\_diff\_west\_++;
+00125 \}
+00126 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00127}{}\hyperlink{classmtk_1_1BCDescriptor2D_a27635428a6c36d1e305cafdc68271063}{00127} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a27635428a6c36d1e305cafdc68271063}{mtk::BCDescriptor2D::PushBackEastCoeff}(
+      \hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{mtk::CoefficientFunction2D} ce) \{
+00128 
+00129 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00130   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(ce == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00131   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(highest\_order\_diff\_east\_ > 1,
+00132                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00133 \textcolor{preprocessor}{  #endif}
+00134 
+00135   east\_coefficients\_.push\_back(ce);
+00136 
+00137   highest\_order\_diff\_east\_++;
+00138 \}
+00139 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00140}{}\hyperlink{classmtk_1_1BCDescriptor2D_a9eb891f14c68968a0113632fa5fea630}{00140} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a9eb891f14c68968a0113632fa5fea630}{mtk::BCDescriptor2D::PushBackSouthCoeff}(
+      \hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{mtk::CoefficientFunction2D} cs) \{
+00141 
+00142 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00143   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(cs == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00144   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(highest\_order\_diff\_south\_ > 1,
+00145                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00146 \textcolor{preprocessor}{  #endif}
+00147 
+00148   south\_coefficients\_.push\_back(cs);
+00149 
+00150   highest\_order\_diff\_south\_++;
+00151 \}
+00152 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00153}{}\hyperlink{classmtk_1_1BCDescriptor2D_a0fed58bd058d699a572888fe4b9934a4}{00153} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a0fed58bd058d699a572888fe4b9934a4}{mtk::BCDescriptor2D::PushBackNorthCoeff}(
+      \hyperlink{group__c07-mim__ops_gad9e1c0ace886b0029aefffa5f320e852}{mtk::CoefficientFunction2D} cn) \{
+00154 
+00155 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00156   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(cn == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00157   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(highest\_order\_diff\_north\_ > 1,
+00158                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00159 \textcolor{preprocessor}{  #endif}
+00160 
+00161   north\_coefficients\_.push\_back(cn);
+00162 
+00163   highest\_order\_diff\_north\_++;
+00164 \}
+00165 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00166}{}\hyperlink{classmtk_1_1BCDescriptor2D_a006050efe15b1be75b36a74a23051392}{00166} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a006050efe15b1be75b36a74a23051392}{mtk::BCDescriptor2D::set\_west\_condition}(
+00167     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*west\_condition)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy)) noexcept \{
+00168 
+00169 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00170   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(west\_condition == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00171 \textcolor{preprocessor}{  #endif}
+00172 
+00173   west\_condition\_ = west\_condition;
+00174 \}
+00175 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00176}{}\hyperlink{classmtk_1_1BCDescriptor2D_a4ba8690e845f59a1507b056f3fc8061e}{00176} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a4ba8690e845f59a1507b056f3fc8061e}{mtk::BCDescriptor2D::set\_east\_condition}(
+00177     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*east\_condition)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy)) noexcept \{
+00178 
+00179 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00180   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(east\_condition == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00181 \textcolor{preprocessor}{  #endif}
+00182 
+00183   east\_condition\_ = east\_condition;
+00184 \}
+00185 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00186}{}\hyperlink{classmtk_1_1BCDescriptor2D_a408f159cc44d7ee610191efb8ed48b2a}{00186} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a408f159cc44d7ee610191efb8ed48b2a}{mtk::BCDescriptor2D::set\_south\_condition}(
+00187     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*south\_condition)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy)) noexcept \{
+00188 
+00189 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00190   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(south\_condition == \textcolor{keyword}{nullptr},
+00191                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00192 \textcolor{preprocessor}{  #endif}
+00193 
+00194   south\_condition\_ = south\_condition;
+00195 \}
+00196 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00197}{}\hyperlink{classmtk_1_1BCDescriptor2D_a690f6881a88b202c074d9f90f2a7ddb0}{00197} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a690f6881a88b202c074d9f90f2a7ddb0}{mtk::BCDescriptor2D::set\_north\_condition}(
+00198     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*north\_condition)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy)) noexcept \{
+00199 
+00200 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00201   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(north\_condition == \textcolor{keyword}{nullptr},
+00202                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00203 \textcolor{preprocessor}{  #endif}
+00204 
+00205   north\_condition\_ = north\_condition;
+00206 \}
+00207 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00208}{}\hyperlink{classmtk_1_1BCDescriptor2D_a0188a64f242ae6015385a4597934fcda}{00208} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a0188a64f242ae6015385a4597934fcda}{mtk::BCDescriptor2D::ImposeOnSouthBoundaryNoSpace}(
+00209     \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &grid,
+00210     \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &matrix,
+00211     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &order\_accuracy)\textcolor{keyword}{ const }\{
+00212 
+00213   \textcolor{comment}{// At this point we have all of the information we need to fully impose the}
+00214   \textcolor{comment}{// south boundary condition:}
+00215   \textcolor{comment}{// 1. We have the collection of coefficients. The size of this collection}
+00216   \textcolor{comment}{// tells us the type of BC for this boundary.}
+00217   \textcolor{comment}{// 2. We have the grid that we can use to evaluate the coefficients at.}
+00218   \textcolor{comment}{// 3. We have the matrix where to place them.}
+00219 
+00220   \textcolor{comment}{// For now, we are sure that we will NOT have more than 2 coefficients per}
+00221   \textcolor{comment}{// boundary. That is, we only support Robin type FOR NOW.}
+00222 
+00224 
+00225   \textcolor{comment}{// For the south-west corner:}
+00226   \textcolor{keyword}{auto} cc = (south\_coefficients\_[0])(grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}(), grid.\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{south\_bndy}());
+00227 
+00228 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00229   std::cout << \textcolor{stringliteral}{"Matrix has "} << matrix.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}() << \textcolor{stringliteral}{" rows and "} <<
+00230     matrix.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}() << \textcolor{stringliteral}{" columns."} << std::endl;
+00231   std::cout << \textcolor{stringliteral}{"Setting at "} << 0 << \textcolor{charliteral}{' '} << 0 << std::endl;
+00232 \textcolor{preprocessor}{  #endif}
+00233 
+00234   matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(0, 0, cc);
+00235 
+00236   \textcolor{comment}{// Compute first centers per dimension.}
+00237   \textcolor{keyword}{auto} first\_center\_x = grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}() + grid.\hyperlink{classmtk_1_1UniStgGrid2D_aca4710004c4a7da6a9e8fd6ab32a691f}{delta\_x}()/
+      \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo};
+00238 
+00239   \textcolor{comment}{// For each entry on the diagonal (south boundary):}
+00240   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}(); ++ii) \{
+00241     \textcolor{comment}{// Evaluate next set spatial coordinates to evaluate the coefficient.}
+00242     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx = first\_center\_x + ii*grid.\hyperlink{classmtk_1_1UniStgGrid2D_aca4710004c4a7da6a9e8fd6ab32a691f}{delta\_x}();
+00243     \textcolor{comment}{// Evaluate and assign the Dirichlet coefficient.}
+00244     cc = (south\_coefficients\_[0])(xx, grid.\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{south\_bndy}());
+00245 
+00246 \textcolor{preprocessor}{    #if MTK\_DEBUG\_LEVEL > 0}
+00247     std::cout << \textcolor{stringliteral}{"Setting at "} << ii + 1 << \textcolor{charliteral}{' '} << ii + 1 << std::endl;
+00248 \textcolor{preprocessor}{    #endif}
+00249 
+00250     matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii + 1, ii + 1, cc);
+00251   \}
+00252 
+00253   \textcolor{comment}{// For the south-east corner:}
+00254   cc = (south\_coefficients\_[0])(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}(), grid.\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{south\_bndy}());
+00255 
+00256 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00257   std::cout << \textcolor{stringliteral}{"Setting at "} << grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1 << \textcolor{charliteral}{' '} <<
+00258     grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1 << std::endl;
+00259 \textcolor{preprocessor}{  #endif}
+00260 
+00261   matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1, grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1, cc);
+00262 
+00264 
+00266 \}
+00267 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00268}{}\hyperlink{classmtk_1_1BCDescriptor2D_af30c275cf06176a2ae9722014142c810}{00268} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_af30c275cf06176a2ae9722014142c810}{mtk::BCDescriptor2D::ImposeOnSouthBoundaryWithSpace}
+      (
+00269     \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &grid,
+00270     \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &matrix,
+00271     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &order\_accuracy)\textcolor{keyword}{ const }\{
+00272 
+00274 
+00277 
+00278   \textcolor{comment}{// For each entry on the diagonal:}
+00279   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 2; ++ii) \{
+00280     \textcolor{comment}{// Evaluate next set spatial coordinates to evaluate the coefficient.}
+00281     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx\{(grid.\hyperlink{classmtk_1_1UniStgGrid2D_ab2f70cf5cd0a2d5486992d9f2f8baa4a}{discrete\_domain\_x}())[ii]\};
+00282     \textcolor{comment}{// Evaluate and assign the Dirichlet coefficient.}
+00283     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} cc = (south\_coefficients\_[0])(xx,grid.\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{south\_bndy}());
+00284     matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, ii, cc);
+00285   \}
+00286 
+00288 \}
+00289 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00290}{}\hyperlink{classmtk_1_1BCDescriptor2D_a5e7d4b9deba6c07170e983eb1c0e9776}{00290} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a5e7d4b9deba6c07170e983eb1c0e9776}{mtk::BCDescriptor2D::ImposeOnNorthBoundaryNoSpace}(
+00291     \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &grid,
+00292     \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &matrix,
+00293     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &order\_accuracy)\textcolor{keyword}{ const }\{
+00294 
+00295   \textcolor{comment}{// At this point we have all of the information we need to fully impose the}
+00296   \textcolor{comment}{// north boundary condition:}
+00297   \textcolor{comment}{// 1. We have the collection of coefficients. The size of this collection}
+00298   \textcolor{comment}{// tells us the type of BC for this boundary.}
+00299   \textcolor{comment}{// 2. We have the grid that we can use to evaluate the coefficients at.}
+00300   \textcolor{comment}{// 3. We have the matrix where to place them.}
+00301 
+00302   \textcolor{comment}{// For now, we are sure that we will NOT have more than 2 coefficients per}
+00303   \textcolor{comment}{// boundary. That is, we only support Robin type FOR NOW.}
+00304 
+00305   \textcolor{keywordtype}{int} north\_offset\{(grid.\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}() + 1)*(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 2)\};
+00306 
+00308 
+00309   \textcolor{comment}{// For the north-west corner:}
+00310   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} cc =
+00311     (north\_coefficients\_[0])(grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}(), grid.\hyperlink{classmtk_1_1UniStgGrid2D_afe1ead253cdeb5503e0489eba8fd84e2}{north\_bndy}());
+00312 
+00313 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00314   std::cout << \textcolor{stringliteral}{"Matrix has "} << matrix.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}() << \textcolor{stringliteral}{" rows and "} <<
+00315     matrix.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}() << \textcolor{stringliteral}{" columns."} << std::endl;
+00316   std::cout << \textcolor{stringliteral}{"Setting at "} << north\_offset << \textcolor{charliteral}{' '} << north\_offset <<
+00317     std::endl;
+00318 \textcolor{preprocessor}{  #endif}
+00319 
+00320   matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(north\_offset, north\_offset, cc);
+00321 
+00322   \textcolor{comment}{// Compute first centers per dimension.}
+00323   \textcolor{keyword}{auto} first\_center\_x = grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}() + grid.\hyperlink{classmtk_1_1UniStgGrid2D_aca4710004c4a7da6a9e8fd6ab32a691f}{delta\_x}()/
+      \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo};
+00324 
+00325   \textcolor{comment}{// For each entry on the diagonal (north boundary):}
+00326   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}(); ++ii) \{
+00327     \textcolor{comment}{// Evaluate next set spatial coordinates to evaluate the coefficient.}
+00328     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx = first\_center\_x + ii*grid.\hyperlink{classmtk_1_1UniStgGrid2D_aca4710004c4a7da6a9e8fd6ab32a691f}{delta\_x}();
+00329     \textcolor{comment}{// Evaluate and assign the Dirichlet coefficient.}
+00330     cc = (north\_coefficients\_[0])(xx, grid.\hyperlink{classmtk_1_1UniStgGrid2D_afe1ead253cdeb5503e0489eba8fd84e2}{north\_bndy}());
+00331 
+00332 \textcolor{preprocessor}{    #if MTK\_DEBUG\_LEVEL > 0}
+00333     std::cout << \textcolor{stringliteral}{"Setting at "} << north\_offset + ii + 1 << \textcolor{charliteral}{' '} <<
+00334       north\_offset + ii + 1 << std::endl;
+00335 \textcolor{preprocessor}{    #endif}
+00336 
+00337     matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(north\_offset + ii + 1, north\_offset + ii + 1, cc);
+00338   \}
+00339 
+00340   \textcolor{comment}{// For the north-east corner:}
+00341   cc = (north\_coefficients\_[0])(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}(), grid.\hyperlink{classmtk_1_1UniStgGrid2D_afe1ead253cdeb5503e0489eba8fd84e2}{north\_bndy}());
+00342 
+00343 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00344   std::cout << \textcolor{stringliteral}{"Setting at "} << north\_offset + grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1 <<
+00345     \textcolor{charliteral}{' '} << north\_offset + grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1 << std::endl;
+00346 \textcolor{preprocessor}{  #endif}
+00347 
+00348   matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(north\_offset + grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1,
+00349                   north\_offset + grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1, cc);
+00350 
+00352 \}
+00353 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00354}{}\hyperlink{classmtk_1_1BCDescriptor2D_a6b9b6f2bec06bce5a9070236ca10ec3a}{00354} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a6b9b6f2bec06bce5a9070236ca10ec3a}{mtk::BCDescriptor2D::ImposeOnNorthBoundaryWithSpace}
+      (
+00355     \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &grid,
+00356     \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &matrix,
+00357     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &order\_accuracy)\textcolor{keyword}{ const }\{
+00358 
+00360 
+00361   \textcolor{keywordtype}{int} north\_offset\{(grid.\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}() + 1)*(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 2)\};
+00362 
+00364   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 2; ++ii) \{
+00366     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx\{(grid.\hyperlink{classmtk_1_1UniStgGrid2D_ab2f70cf5cd0a2d5486992d9f2f8baa4a}{discrete\_domain\_x}())[ii]\};
+00368     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} cc = (north\_coefficients\_[0])(xx, grid.\hyperlink{classmtk_1_1UniStgGrid2D_afe1ead253cdeb5503e0489eba8fd84e2}{north\_bndy}());
+00369     matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(north\_offset + ii, north\_offset + ii, cc);
+00370   \}
+00371 
+00373 \}
+00374 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00375}{}\hyperlink{classmtk_1_1BCDescriptor2D_a0b153abdcb78c54197858148c9632517}{00375} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a0b153abdcb78c54197858148c9632517}{mtk::BCDescriptor2D::ImposeOnWestBoundaryNoSpace}(
+00376     \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &grid,
+00377     \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &matrix,
+00378     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &order\_accuracy)\textcolor{keyword}{ const }\{
+00379 
+00380   \textcolor{comment}{// At this point we have all of the information we need to fully impose the}
+00381   \textcolor{comment}{// west boundary condition:}
+00382   \textcolor{comment}{// 1. We have the collection of coefficients. The size of this collection}
+00383   \textcolor{comment}{// tells us the type of BC for this boundary.}
+00384   \textcolor{comment}{// 2. We have the grid that we can use to evaluate the coefficients at.}
+00385   \textcolor{comment}{// 3. We have the matrix where to place them.}
+00386 
+00388 
+00389   \textcolor{comment}{// For the south-west corner:}
+00390   \textcolor{keyword}{auto} cc = (west\_coefficients\_[0])(grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}(), grid.\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{south\_bndy}());
+00391 
+00392 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00393   std::cout << \textcolor{stringliteral}{"Matrix has "} << matrix.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}() << \textcolor{stringliteral}{" rows and "} <<
+00394     matrix.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}() << \textcolor{stringliteral}{" columns."} << std::endl;
+00395   std::cout << \textcolor{stringliteral}{"Setting at "} << 0 << \textcolor{charliteral}{' '} << 0 << std::endl;
+00396 \textcolor{preprocessor}{  #endif}
+00397 
+00401 
+00402   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} harmonic\_mean = \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/matrix.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(0, 0) + 
+      \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/cc;
+00403   harmonic\_mean = \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo}/harmonic\_mean;
+00404 
+00405   matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(0, 0, harmonic\_mean);
+00406 
+00407   \textcolor{keywordtype}{int} west\_offset\{grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1\};
+00408 
+00409   \textcolor{keyword}{auto} first\_center\_y = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{south\_bndy}() + grid.\hyperlink{classmtk_1_1UniStgGrid2D_a65a78cfc80ffdbeb282ed57af4dc5cb4}{delta\_y}()/
+      \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo};
+00410 
+00411   \textcolor{comment}{// For each west entry on the diagonal (west boundary):}
+00412   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < grid.\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}(); ++ii) \{
+00413     \textcolor{comment}{// Evaluate next set spatial coordinates to evaluate the coefficient.}
+00414     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy = first\_center\_y + ii*grid.\hyperlink{classmtk_1_1UniStgGrid2D_a65a78cfc80ffdbeb282ed57af4dc5cb4}{delta\_y}();
+00415     \textcolor{comment}{// Evaluate and assign the Dirichlet coefficient.}
+00416     cc = (west\_coefficients\_[0])(grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}(), yy);
+00417 
+00418 \textcolor{preprocessor}{    #if MTK\_DEBUG\_LEVEL > 0}
+00419     std::cout << \textcolor{stringliteral}{"Setting at "} << west\_offset + ii + 1 << \textcolor{charliteral}{' '} <<
+00420       west\_offset + ii + 1 << std::endl;
+00421 \textcolor{preprocessor}{    #endif}
+00422 
+00423     matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(west\_offset + ii + 1, west\_offset + ii + 1, cc);
+00424 
+00425     west\_offset += grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1;
+00426   \}
+00427 
+00428   \textcolor{comment}{// For the north-west corner:}
+00429   cc = (west\_coefficients\_[0])(grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}(), grid.\hyperlink{classmtk_1_1UniStgGrid2D_afe1ead253cdeb5503e0489eba8fd84e2}{north\_bndy}());
+00430 
+00431   west\_offset += grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1;
+00432   \textcolor{keywordtype}{int} aux\{west\_offset\};
+00433 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00434   std::cout << \textcolor{stringliteral}{"Setting at "} << aux << \textcolor{charliteral}{' '} << aux << std::endl;
+00435 \textcolor{preprocessor}{  #endif}
+00436 
+00437   harmonic\_mean = \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/matrix.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(aux, aux) + 
+      \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/cc;
+00438   harmonic\_mean = \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo}/harmonic\_mean;
+00439 
+00440   matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(aux, aux, harmonic\_mean);
+00441 
+00443 \}
+00444 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00445}{}\hyperlink{classmtk_1_1BCDescriptor2D_aa5d88027ff9c5d2eccab93cd51154c9e}{00445} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_aa5d88027ff9c5d2eccab93cd51154c9e}{mtk::BCDescriptor2D::ImposeOnWestBoundaryWithSpace}(
+00446     \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &grid,
+00447     \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &matrix,
+00448     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &order\_accuracy)\textcolor{keyword}{ const }\{
+00449 
+00451 
+00452   \textcolor{keywordtype}{int} west\_offset\{grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1\};
+00453   \textcolor{comment}{// For each west entry on the diagonal:}
+00454   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < grid.\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}() + 2; ++ii) \{
+00455     \textcolor{comment}{// Evaluate next set spatial coordinates to evaluate the coefficient.}
+00456     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy\{(grid.\hyperlink{classmtk_1_1UniStgGrid2D_ac33a58d65105550dcf6f6b92b48b5105}{discrete\_domain\_y}())[ii]\};
+00457     \textcolor{comment}{// Evaluate and assign the Dirichlet coefficient.}
+00458     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} cc = (west\_coefficients\_[0])(grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}(), yy);
+00459     matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(west\_offset + ii, west\_offset + ii, cc);
+00460     west\_offset += grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1;
+00461   \}
+00462 
+00464 \}
+00465 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00466}{}\hyperlink{classmtk_1_1BCDescriptor2D_a65f58f43f3fdc793cce7293780b70b80}{00466} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a65f58f43f3fdc793cce7293780b70b80}{mtk::BCDescriptor2D::ImposeOnEastBoundaryNoSpace}(
+00467     \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &grid,
+00468     \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &matrix,
+00469     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &order\_accuracy)\textcolor{keyword}{ const }\{
+00470 
+00471   \textcolor{comment}{// At this point we have all of the information we need to fully impose the}
+00472   \textcolor{comment}{// east boundary condition:}
+00473   \textcolor{comment}{// 1. We have the collection of coefficients. The size of this collection}
+00474   \textcolor{comment}{// tells us the type of BC for this boundary.}
+00475   \textcolor{comment}{// 2. We have the grid that we can use to evaluate the coefficients at.}
+00476   \textcolor{comment}{// 3. We have the matrix where to place them.}
+00477 
+00479 
+00480   \textcolor{comment}{// For the south-east corner:}
+00481   \textcolor{keyword}{auto} cc = (east\_coefficients\_[0])(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}(), grid.\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{south\_bndy}());
+00482 
+00483   \textcolor{keywordtype}{int} east\_offset\{grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1\};
+00484 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00485   std::cout << \textcolor{stringliteral}{"Matrix has "} << matrix.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}() << \textcolor{stringliteral}{" rows and "} <<
+00486     matrix.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}() << \textcolor{stringliteral}{" columns."} << std::endl;
+00487   std::cout << \textcolor{stringliteral}{"Setting at "} << east\_offset << \textcolor{charliteral}{' '} << east\_offset <<
+00488     std::endl;
+00489 \textcolor{preprocessor}{  #endif}
+00490 
+00491   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} harmonic\_mean =
+00492     \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/matrix.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(east\_offset,east\_offset) + 
+      \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/cc;
+00493   harmonic\_mean = \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo}/harmonic\_mean;
+00494 
+00495   matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(east\_offset, east\_offset, harmonic\_mean);
+00496 
+00497   \textcolor{keyword}{auto} first\_center\_y = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{south\_bndy}() + grid.\hyperlink{classmtk_1_1UniStgGrid2D_a65a78cfc80ffdbeb282ed57af4dc5cb4}{delta\_y}()/
+      \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo};
+00498 
+00499   \textcolor{comment}{// For each east entry on the diagonal (east boundary):}
+00500   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < grid.\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}(); ++ii) \{
+00501 
+00502     east\_offset += grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1;
+00503 
+00504     \textcolor{comment}{// Evaluate next set spatial coordinates to evaluate the coefficient.}
+00505     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy = first\_center\_y + ii*grid.\hyperlink{classmtk_1_1UniStgGrid2D_a65a78cfc80ffdbeb282ed57af4dc5cb4}{delta\_y}();
+00506     \textcolor{comment}{// Evaluate and assign the Dirichlet coefficient.}
+00507     cc = (east\_coefficients\_[0])(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}(), yy);
+00508 
+00509 \textcolor{preprocessor}{    #if MTK\_DEBUG\_LEVEL > 0}
+00510     std::cout << \textcolor{stringliteral}{"Setting at "} << east\_offset + ii + 1 << \textcolor{charliteral}{' '} <<
+00511       east\_offset + ii + 1 << std::endl;
+00512 \textcolor{preprocessor}{    #endif}
+00513 
+00514     matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(east\_offset + ii + 1, east\_offset + ii + 1, cc);
+00515   \}
+00516 
+00517   \textcolor{comment}{// For the north-east corner:}
+00518   cc = (east\_coefficients\_[0])(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}(), grid.\hyperlink{classmtk_1_1UniStgGrid2D_afe1ead253cdeb5503e0489eba8fd84e2}{north\_bndy}());
+00519 
+00520   east\_offset += grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1;
+00521   east\_offset += grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1;
+00522   \textcolor{keywordtype}{int} aux\{east\_offset\};
+00523 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00524   std::cout << \textcolor{stringliteral}{"Setting at "} << aux << \textcolor{charliteral}{' '} << aux << std::endl;
+00525 \textcolor{preprocessor}{  #endif}
+00526 
+00527   harmonic\_mean =
+00528     \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/matrix.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(aux, aux) + \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/cc;
+00529   harmonic\_mean = \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo}/harmonic\_mean;
+00530 
+00531   matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(aux, aux, harmonic\_mean);
+00532 
+00534 \}
+00535 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00536}{}\hyperlink{classmtk_1_1BCDescriptor2D_a7208d08bfa84192e13c848093eaa88f0}{00536} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a7208d08bfa84192e13c848093eaa88f0}{mtk::BCDescriptor2D::ImposeOnEastBoundaryWithSpace}(
+00537     \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &grid,
+00538     \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &matrix,
+00539     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &order\_accuracy)\textcolor{keyword}{ const }\{
+00540 
+00542 
+00543   \textcolor{keywordtype}{int} east\_offset\{grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1\};
+00544   \textcolor{comment}{// For each west entry on the diagonal:}
+00545   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < grid.\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}() + 2; ++ii) \{
+00546     east\_offset += grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1;
+00547     \textcolor{comment}{// Evaluate next set spatial coordinates to evaluate the coefficient.}
+00548     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy\{(grid.\hyperlink{classmtk_1_1UniStgGrid2D_ac33a58d65105550dcf6f6b92b48b5105}{discrete\_domain\_y}())[ii]\};
+00549     \textcolor{comment}{// Evaluate and assign the arithmetic mean of Dirichlet coefficients.}
+00550     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} cc = (east\_coefficients\_[0])(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}(), yy);
+00551     matrix.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(east\_offset + ii, east\_offset + ii, cc);
+00552   \}
+00553 
+00555 \}
+00556 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00557}{}\hyperlink{classmtk_1_1BCDescriptor2D_a35592617dda3b965b680b2a1355122f4}{00557} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a35592617dda3b965b680b2a1355122f4}{mtk::BCDescriptor2D::ImposeOnLaplacianMatrix}(
+00558     \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &grid,
+00559     \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &matrix,
+00560     \textcolor{keyword}{const} \textcolor{keywordtype}{int} &order\_accuracy)\textcolor{keyword}{ const }\{
+00561 
+00562 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00563   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(highest\_order\_diff\_south\_ == -1,
+00564                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00565   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(highest\_order\_diff\_north\_ == -1,
+00566                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00567   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(highest\_order\_diff\_west\_ == -1,
+00568                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00569   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(highest\_order\_diff\_east\_ == -1,
+00570                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00571   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a99a3a9cdb05b7306be99bde935509e30}{nature}() != \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{mtk::SCALAR},
+00572                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00573   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00574   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(grid.\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00575   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(matrix.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00576   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(matrix.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00577 \textcolor{preprocessor}{  #endif}
+00578 
+00581 
+00582   \textcolor{keywordflow}{if} (!grid.\hyperlink{classmtk_1_1UniStgGrid2D_aa651194ccd0321a7c61a8f56fa5e8455}{Bound}()) \{
+00583     ImposeOnSouthBoundaryNoSpace(grid, matrix, order\_accuracy);
+00584     ImposeOnNorthBoundaryNoSpace(grid, matrix, order\_accuracy);
+00585     ImposeOnWestBoundaryNoSpace(grid, matrix, order\_accuracy);
+00586     ImposeOnEastBoundaryNoSpace(grid, matrix, order\_accuracy);
+00587   \} \textcolor{keywordflow}{else} \{
+00588     ImposeOnSouthBoundaryWithSpace(grid, matrix, order\_accuracy);
+00589     ImposeOnNorthBoundaryWithSpace(grid, matrix, order\_accuracy);
+00590     ImposeOnWestBoundaryWithSpace(grid, matrix, order\_accuracy);
+00591     ImposeOnEastBoundaryWithSpace(grid, matrix, order\_accuracy);
+00592   \}
+00593 \}
+00594 
+\hypertarget{mtk__bc__descriptor__2d_8cc_source_l00595}{}\hyperlink{classmtk_1_1BCDescriptor2D_a5f0ff1fda1b5266dcd77ba2301c8ba2c}{00595} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1BCDescriptor2D_a5f0ff1fda1b5266dcd77ba2301c8ba2c}{mtk::BCDescriptor2D::ImposeOnGrid}(
+      \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &grid)\textcolor{keyword}{ const }\{
+00596 
+00597 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00598   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00599   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(grid.\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}() == 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00600   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(west\_condition\_ == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00601   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(east\_condition\_ == \textcolor{keyword}{nullptr}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00602   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(south\_condition\_ == \textcolor{keyword}{nullptr},
+00603                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00604   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(north\_condition\_ == \textcolor{keyword}{nullptr},
+00605                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00606 \textcolor{preprocessor}{  #endif}
+00607 
+00609   \textcolor{keywordflow}{if} (grid.\hyperlink{classmtk_1_1UniStgGrid2D_a99a3a9cdb05b7306be99bde935509e30}{nature}() == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{mtk::SCALAR}) \{
+00610 
+00612 
+00614     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx = grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}();
+00615     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} yy = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{south\_bndy}();
+00616     (grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[0] = south\_condition\_(xx, yy);
+00617 
+00619     xx = xx + grid.\hyperlink{classmtk_1_1UniStgGrid2D_aca4710004c4a7da6a9e8fd6ab32a691f}{delta\_x}()/\hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo};
+00620     \textcolor{comment}{// For every point on the south boundary:}
+00621     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}(); ++ii) \{
+00622       (grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[ii + 1] =
+00623         south\_condition\_(xx + ii*grid.\hyperlink{classmtk_1_1UniStgGrid2D_aca4710004c4a7da6a9e8fd6ab32a691f}{delta\_x}(), yy);
+00624     \}
+00625 
+00627     xx = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}();
+00628     (grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1] = south\_condition\_(xx, yy);
+00629 
+00631 
+00633     xx = grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}();
+00634     yy = grid.\hyperlink{classmtk_1_1UniStgGrid2D_afe1ead253cdeb5503e0489eba8fd84e2}{north\_bndy}();
+00635     \textcolor{keywordtype}{int} north\_offset\{(grid.\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}() + 1)*(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 2)\};
+00636     (grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[north\_offset] = north\_condition\_(xx, yy);
+00637 
+00639     xx = xx + grid.\hyperlink{classmtk_1_1UniStgGrid2D_aca4710004c4a7da6a9e8fd6ab32a691f}{delta\_x}()/\hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo};
+00640     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}(); ++ii) \{
+00641       (grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[north\_offset + ii + 1] =
+00642         north\_condition\_(xx + ii*grid.\hyperlink{classmtk_1_1UniStgGrid2D_aca4710004c4a7da6a9e8fd6ab32a691f}{delta\_x}(), yy);
+00643     \}
+00644 
+00646     xx = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}();
+00647     yy = grid.\hyperlink{classmtk_1_1UniStgGrid2D_afe1ead253cdeb5503e0489eba8fd84e2}{north\_bndy}();
+00648     (grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[north\_offset + grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1] =
+00649         north\_condition\_(xx, yy);
+00650 
+00652 
+00656     xx = grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}();
+00657     yy = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{south\_bndy}();
+00658     (grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[0] =
+00659       ((grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[0] + west\_condition\_(xx,yy))/
+      \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo};
+00660 
+00662     \textcolor{keywordtype}{int} west\_offset\{grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1 + 1\};
+00663     yy = yy + grid.\hyperlink{classmtk_1_1UniStgGrid2D_a65a78cfc80ffdbeb282ed57af4dc5cb4}{delta\_y}()/\hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo};
+00664     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < grid.\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}(); ++ii) \{
+00665 \textcolor{preprocessor}{      #if MTK\_DEBUG\_LEVEL > 0}
+00666       std::cout << \textcolor{stringliteral}{"Adding on "} << west\_offset << \textcolor{stringliteral}{"-th position."} << std::endl;
+00667 \textcolor{preprocessor}{      #endif}
+00668       (grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[west\_offset] =
+00669         west\_condition\_(xx, yy + ii*grid.\hyperlink{classmtk_1_1UniStgGrid2D_a65a78cfc80ffdbeb282ed57af4dc5cb4}{delta\_y}());
+00670       west\_offset += grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1 + 1;
+00671     \}
+00672 
+00674     xx = grid.\hyperlink{classmtk_1_1UniStgGrid2D_af2b1712387ded85edaf2b64617d3fc13}{west\_bndy}();
+00675     yy = grid.\hyperlink{classmtk_1_1UniStgGrid2D_afe1ead253cdeb5503e0489eba8fd84e2}{north\_bndy}();
+00676     north\_offset = (grid.\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}() + 1)*(grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 2);
+00677     (grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[north\_offset] =
+00678       ((grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[north\_offset] + west\_condition\_(xx, yy))/
+00679         \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo};
+00680 
+00682 
+00684     xx = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}();
+00685     yy = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a1442eaf219f099d0ebf46a170fdebf92}{south\_bndy}();
+00686     \textcolor{keywordtype}{int} east\_offset\{grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1\};
+00687     (grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[east\_offset] =
+00688       ((grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[east\_offset] + east\_condition\_(xx, yy))/
+00689         \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo};
+00690 
+00692     yy = yy + grid.\hyperlink{classmtk_1_1UniStgGrid2D_a65a78cfc80ffdbeb282ed57af4dc5cb4}{delta\_y}()/\hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo};
+00693     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < grid.\hyperlink{classmtk_1_1UniStgGrid2D_aed05a801cc9a76dba0ff203cea58a61a}{num\_cells\_y}(); ++ii) \{
+00694       east\_offset += grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1 + 1;
+00695 \textcolor{preprocessor}{      #if MTK\_DEBUG\_LEVEL > 0}
+00696       std::cout << \textcolor{stringliteral}{"Adding on "} << east\_offset << \textcolor{stringliteral}{"-th position."} << std::endl;
+00697 \textcolor{preprocessor}{      #endif}
+00698       (grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[east\_offset] =
+00699         east\_condition\_(xx, yy + ii*grid.\hyperlink{classmtk_1_1UniStgGrid2D_a65a78cfc80ffdbeb282ed57af4dc5cb4}{delta\_y}());
+00700     \}
+00701 
+00703     xx = grid.\hyperlink{classmtk_1_1UniStgGrid2D_a03f689eb29a6369b82ce1207c655d5ff}{east\_bndy}();
+00704     yy = grid.\hyperlink{classmtk_1_1UniStgGrid2D_afe1ead253cdeb5503e0489eba8fd84e2}{north\_bndy}();
+00705     (grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[north\_offset + grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1] =
+00706       ((grid.\hyperlink{classmtk_1_1UniStgGrid2D_a3e72d59843a3f9c5e47da07e5850dfe0}{discrete\_field}())[north\_offset + grid.\hyperlink{classmtk_1_1UniStgGrid2D_a2d182866a398aba8e4829590e85bf939}{num\_cells\_x}() + 1] +
+00707       east\_condition\_(xx, yy))/\hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{mtk::kTwo};
+00708 
+00709   \} \textcolor{keywordflow}{else} \{
+00710 
+00712 
+00714   \}
+00715 \}
+\end{DoxyCode}

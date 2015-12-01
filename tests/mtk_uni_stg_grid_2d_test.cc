@@ -119,7 +119,7 @@ void TestGetters() {
   mtk::Tools::Assert(assertion);
 }
 
-mtk::Real ScalarField(mtk::Real xx, mtk::Real yy) {
+mtk::Real ScalarField(const mtk::Real &xx, const mtk::Real &yy) {
 
   mtk::Real aux{-(1.0/2.0)*xx*xx - (1.0/2.0)*yy*yy};
 
@@ -149,12 +149,12 @@ void TestBindScalarFieldWriteToFile() {
   mtk::Tools::EndUnitTestNo(4);
 }
 
-mtk::Real VectorFieldPComponent(mtk::Real xx, mtk::Real yy) {
+mtk::Real VectorFieldPComponent(const mtk::Real &xx, const mtk::Real &yy) {
 
   return xx + 0.01;
 }
 
-mtk::Real VectorFieldQComponent(mtk::Real xx, mtk::Real yy) {
+mtk::Real VectorFieldQComponent(const mtk::Real &xx, const mtk::Real &yy) {
 
   return yy + 0.01;
 }

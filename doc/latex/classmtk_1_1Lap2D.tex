@@ -3,6 +3,11 @@
 }
 
 
+Implements a 2\+D mimetic Laplacian operator.  
+
+
+
+
 {\ttfamily \#include $<$mtk\+\_\+lap\+\_\+2d.\+h$>$}
 
 
@@ -25,9 +30,9 @@ Collaboration diagram for mtk\+:\+:Lap2\+D\+:\nopagebreak
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 bool \hyperlink{classmtk_1_1Lap2D_a188ee8fee643463affca7de2884711b1}{Construct\+Lap2\+D} (const \hyperlink{classmtk_1_1UniStgGrid2D}{Uni\+Stg\+Grid2\+D} \&grid, int order\+\_\+accuracy=\hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{k\+Default\+Order\+Accuracy}, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} mimetic\+\_\+threshold=\hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{k\+Default\+Mimetic\+Threshold})
 \begin{DoxyCompactList}\small\item\em Factory method implementing the C\+B\+S Algorithm to build operator. \end{DoxyCompactList}\item 
-\hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix} \hyperlink{classmtk_1_1Lap2D_af23266b8f7b31b0da7a9480fbaca0cac}{Return\+As\+Dense\+Matrix} ()
+\hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix} \hyperlink{classmtk_1_1Lap2D_aaac0a22eaa2f036869b24fd420ce5761}{Return\+As\+Dense\+Matrix} () const 
 \begin{DoxyCompactList}\small\item\em Return the operator as a dense matrix. \end{DoxyCompactList}\item 
-\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\+::\+Real} $\ast$ \hyperlink{classmtk_1_1Lap2D_a686853fb66c8ed4b05034c151bd22604}{data} ()
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$ \hyperlink{classmtk_1_1Lap2D_a102427355df09c2aad400c6ce18e5636}{data} () const 
 \begin{DoxyCompactList}\small\item\em Return the operator as a dense array. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -41,9 +46,9 @@ int \hyperlink{classmtk_1_1Lap2D_a9c4fdfe20a093b19f3b3f7ff0c49f560}{order\+\_\+a
 
 
 \subsection{Detailed Description}
+This class implements a 2\+D Laplacian operator, constructed using the Castillo-\/\+Blomgren-\/\+Sanchez (C\+B\+S) Algorithm (C\+B\+S\+A). 
 
-
-Definition at line \hyperlink{mtk__lap__2d_8h_source_l00066}{66} of file \hyperlink{mtk__lap__2d_8h_source}{mtk\+\_\+lap\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__lap__2d_8h_source_l00076}{76} of file \hyperlink{mtk__lap__2d_8h_source}{mtk\+\_\+lap\+\_\+2d.\+h}.
 
 
 
@@ -116,13 +121,13 @@ Here is the call graph for this function\+:\nopagebreak
 \end{figure}
 
 
-\hypertarget{classmtk_1_1Lap2D_a686853fb66c8ed4b05034c151bd22604}{\index{mtk\+::\+Lap2\+D@{mtk\+::\+Lap2\+D}!data@{data}}
+\hypertarget{classmtk_1_1Lap2D_a102427355df09c2aad400c6ce18e5636}{\index{mtk\+::\+Lap2\+D@{mtk\+::\+Lap2\+D}!data@{data}}
 \index{data@{data}!mtk\+::\+Lap2\+D@{mtk\+::\+Lap2\+D}}
 \subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\+::\+Real} $\ast$ mtk\+::\+Lap2\+D\+::data (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{classmtk_1_1Lap2D_a686853fb66c8ed4b05034c151bd22604}
+) const}}\label{classmtk_1_1Lap2D_a102427355df09c2aad400c6ce18e5636}
 \begin{DoxyReturn}{Returns}
 The operator as a dense array. 
 \end{DoxyReturn}
@@ -130,13 +135,13 @@ The operator as a dense array.
 
 Definition at line \hyperlink{mtk__lap__2d_8cc_source_l00115}{115} of file \hyperlink{mtk__lap__2d_8cc_source}{mtk\+\_\+lap\+\_\+2d.\+cc}.
 
-\hypertarget{classmtk_1_1Lap2D_af23266b8f7b31b0da7a9480fbaca0cac}{\index{mtk\+::\+Lap2\+D@{mtk\+::\+Lap2\+D}!Return\+As\+Dense\+Matrix@{Return\+As\+Dense\+Matrix}}
+\hypertarget{classmtk_1_1Lap2D_aaac0a22eaa2f036869b24fd420ce5761}{\index{mtk\+::\+Lap2\+D@{mtk\+::\+Lap2\+D}!Return\+As\+Dense\+Matrix@{Return\+As\+Dense\+Matrix}}
 \index{Return\+As\+Dense\+Matrix@{Return\+As\+Dense\+Matrix}!mtk\+::\+Lap2\+D@{mtk\+::\+Lap2\+D}}
 \subsubsection[{Return\+As\+Dense\+Matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\+::\+Dense\+Matrix} mtk\+::\+Lap2\+D\+::\+Return\+As\+Dense\+Matrix (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{classmtk_1_1Lap2D_af23266b8f7b31b0da7a9480fbaca0cac}
+) const}}\label{classmtk_1_1Lap2D_aaac0a22eaa2f036869b24fd420ce5761}
 \begin{DoxyReturn}{Returns}
 The operator as a dense matrix. 
 \end{DoxyReturn}
@@ -152,21 +157,21 @@ Definition at line \hyperlink{mtk__lap__2d_8cc_source_l00110}{110} of file \hype
 \subsubsection[{laplacian\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Dense\+Matrix} mtk\+::\+Lap2\+D\+::laplacian\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Lap2D_a6c52889838324a89f85ed37bd3bf44f4}
 
 
-Definition at line \hyperlink{mtk__lap__2d_8h_source_l00105}{105} of file \hyperlink{mtk__lap__2d_8h_source}{mtk\+\_\+lap\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__lap__2d_8h_source_l00115}{115} of file \hyperlink{mtk__lap__2d_8h_source}{mtk\+\_\+lap\+\_\+2d.\+h}.
 
 \hypertarget{classmtk_1_1Lap2D_a5501bd196f7307f64d6fa58da070196e}{\index{mtk\+::\+Lap2\+D@{mtk\+::\+Lap2\+D}!mimetic\+\_\+threshold\+\_\+@{mimetic\+\_\+threshold\+\_\+}}
 \index{mimetic\+\_\+threshold\+\_\+@{mimetic\+\_\+threshold\+\_\+}!mtk\+::\+Lap2\+D@{mtk\+::\+Lap2\+D}}
 \subsubsection[{mimetic\+\_\+threshold\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real} mtk\+::\+Lap2\+D\+::mimetic\+\_\+threshold\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Lap2D_a5501bd196f7307f64d6fa58da070196e}
 
 
-Definition at line \hyperlink{mtk__lap__2d_8h_source_l00109}{109} of file \hyperlink{mtk__lap__2d_8h_source}{mtk\+\_\+lap\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__lap__2d_8h_source_l00119}{119} of file \hyperlink{mtk__lap__2d_8h_source}{mtk\+\_\+lap\+\_\+2d.\+h}.
 
 \hypertarget{classmtk_1_1Lap2D_a9c4fdfe20a093b19f3b3f7ff0c49f560}{\index{mtk\+::\+Lap2\+D@{mtk\+::\+Lap2\+D}!order\+\_\+accuracy\+\_\+@{order\+\_\+accuracy\+\_\+}}
 \index{order\+\_\+accuracy\+\_\+@{order\+\_\+accuracy\+\_\+}!mtk\+::\+Lap2\+D@{mtk\+::\+Lap2\+D}}
 \subsubsection[{order\+\_\+accuracy\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+Lap2\+D\+::order\+\_\+accuracy\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Lap2D_a9c4fdfe20a093b19f3b3f7ff0c49f560}
 
 
-Definition at line \hyperlink{mtk__lap__2d_8h_source_l00107}{107} of file \hyperlink{mtk__lap__2d_8h_source}{mtk\+\_\+lap\+\_\+2d.\+h}.
+Definition at line \hyperlink{mtk__lap__2d_8h_source_l00117}{117} of file \hyperlink{mtk__lap__2d_8h_source}{mtk\+\_\+lap\+\_\+2d.\+h}.
 
 
 

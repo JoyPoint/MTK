@@ -1,8 +1,11 @@
-.TH "mtk::Lap2D" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::Lap2D" 3 "Tue Dec 1 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 mtk::Lap2D \- 
+.PP
+Implements a 2D mimetic Laplacian operator\&.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -28,11 +31,11 @@ mtk::Lap2D \-
 .br
 .RI "\fIFactory method implementing the CBS Algorithm to build operator\&. \fP"
 .ti -1c
-.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP ()"
+.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP () const "
 .br
 .RI "\fIReturn the operator as a dense matrix\&. \fP"
 .ti -1c
-.RI "\fBmtk::Real\fP * \fBdata\fP ()"
+.RI "\fBReal\fP * \fBdata\fP () const "
 .br
 .RI "\fIReturn the operator as a dense array\&. \fP"
 .in -1c
@@ -54,7 +57,9 @@ mtk::Lap2D \-
 .in -1c
 .SH "Detailed Description"
 .PP 
-Definition at line 66 of file mtk_lap_2d\&.h\&.
+This class implements a 2D Laplacian operator, constructed using the Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA)\&. 
+.PP
+Definition at line 76 of file mtk_lap_2d\&.h\&.
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "mtk::Lap2D::Lap2D ()"
@@ -89,7 +94,7 @@ Success of the construction\&.
 
 .PP
 Definition at line 77 of file mtk_lap_2d\&.cc\&.
-.SS "\fBmtk::Real\fP * mtk::Lap2D::data ()"
+.SS "\fBmtk::Real\fP * mtk::Lap2D::data () const"
 
 .PP
 \fBReturns:\fP
@@ -100,7 +105,7 @@ The operator as a dense array\&.
 
 .PP
 Definition at line 115 of file mtk_lap_2d\&.cc\&.
-.SS "\fBmtk::DenseMatrix\fP mtk::Lap2D::ReturnAsDenseMatrix ()"
+.SS "\fBmtk::DenseMatrix\fP mtk::Lap2D::ReturnAsDenseMatrix () const"
 
 .PP
 \fBReturns:\fP
@@ -116,15 +121,15 @@ Definition at line 110 of file mtk_lap_2d\&.cc\&.
 .SS "\fBDenseMatrix\fP mtk::Lap2D::laplacian_\fC [private]\fP"
 
 .PP
-Definition at line 105 of file mtk_lap_2d\&.h\&.
+Definition at line 115 of file mtk_lap_2d\&.h\&.
 .SS "\fBReal\fP mtk::Lap2D::mimetic_threshold_\fC [private]\fP"
 
 .PP
-Definition at line 109 of file mtk_lap_2d\&.h\&.
+Definition at line 119 of file mtk_lap_2d\&.h\&.
 .SS "int mtk::Lap2D::order_accuracy_\fC [private]\fP"
 
 .PP
-Definition at line 107 of file mtk_lap_2d\&.h\&.
+Definition at line 117 of file mtk_lap_2d\&.h\&.
 
 .SH "Author"
 .PP 

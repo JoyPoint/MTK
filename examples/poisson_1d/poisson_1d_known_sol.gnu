@@ -6,7 +6,9 @@
 # mtk::UniStgGrid1D::WriteToFile method in the main module of the poisson_1d.cc
 # example.
 #
-# \warning Not intended to be a general solution gut a minimal guidance.
+# \warning Not intended to be a general solution but a minimal guidance.
+#
+# \sa https://github.com/ejspeiro/gnuplot-Scripts-Sci-Comp
 #
 # \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 
@@ -58,23 +60,37 @@
 
 reset
 
-name = "poisson_1d_known_sol"
+dat_file_name = "poisson_1d_known_sol"
 
+# Terminals.
 # wxt terminal (wxWidgets library) for live rendering.
-set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
+# set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
 
 # png terminal for disk storage.
 # set terminal png
-# set output name.".png"
+# set output dat_file_name.".png"
+
+# epslatex terminal for publication. (Proportions: 1024/768).
+set terminal epslatex standalone size 13cm,9.75cm color colortext 10
+set output dat_file_name.".tex"
+
+set termoption dash
+
+# Data visualization.
+# Style 1 for analytic/control data.
+set style line 1 lt 2 lc rgb 'black' lw 1 pt 7 ps 0.2
+# Style 2 for computed data.
+set style line 2 lt 2 lc rgb 'black' lw 1 pt 7 ps 1
 
 # Axes.
-set xlabel "x"
-set ylabel "u(x)"
+set autoscale fix
 set grid
+set format '$%g$'
+set xlabel "$x$"
+set ylabel "$u(x)$"
 
 # Title and legend.
-set title "Known Solution"
+set title "Analytic Solution"
+unset key
 
-set key bmargin center horizontal
-
-plot name.".dat"  u 2:xticlabel(1) title "u(x)"  w lp
+plot dat_file_name.".dat" u 1:2:xtic(1) w lp ls 1

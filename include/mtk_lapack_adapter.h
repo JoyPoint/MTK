@@ -68,6 +68,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "mtk_roots.h"
 #include "mtk_dense_matrix.h"
 #include "mtk_uni_stg_grid_1d.h"
+#include "mtk_uni_stg_grid_2d.h"
 
 namespace mtk {
 
@@ -123,12 +124,26 @@ class LAPACKAdapter {
   Adapts the MTK to LAPACK's dgesv_ routine.
 
   \param[in] matrix Input matrix.
-  \param[in] rr     Input right-hand side from info on a grid.
+  \param[in] rhs     Input right-hand side from info on a grid.
 
   \exception std::bad_alloc
   */
   static int SolveDenseSystem(mtk::DenseMatrix &mm,
                               mtk::UniStgGrid1D &rhs);
+
+
+  /*!
+  \brief Solves a dense system of linear equations.
+
+  Adapts the MTK to LAPACK's dgesv_ routine.
+
+  \param[in] matrix Input matrix.
+  \param[in] rhs     Input right-hand side from info on a grid.
+
+  \exception std::bad_alloc
+  */
+  static int SolveDenseSystem(mtk::DenseMatrix &mm,
+                              mtk::UniStgGrid2D &rhs);
 
   /*!
   \brief Solves overdetermined or underdetermined real linear systems.

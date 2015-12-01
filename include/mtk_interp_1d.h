@@ -117,7 +117,7 @@ class Interp1D {
 
   \return The operator as a dense matrix.
   */
-  DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid);
+  DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid) const;
 
  private:
   DirInterp dir_interp_;  ///< Direction of interpolation.

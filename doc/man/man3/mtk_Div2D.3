@@ -1,8 +1,11 @@
-.TH "mtk::Div2D" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::Div2D" 3 "Tue Dec 1 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 mtk::Div2D \- 
+.PP
+Implements a 2D mimetic divergence operator\&.  
+
 .SH SYNOPSIS
 .br
 .PP
@@ -28,7 +31,7 @@ mtk::Div2D \-
 .br
 .RI "\fIFactory method implementing the CBS Algorithm to build operator\&. \fP"
 .ti -1c
-.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP ()"
+.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP () const "
 .br
 .RI "\fIReturn the operator as a dense matrix\&. \fP"
 .in -1c
@@ -50,7 +53,9 @@ mtk::Div2D \-
 .in -1c
 .SH "Detailed Description"
 .PP 
-Definition at line 66 of file mtk_div_2d\&.h\&.
+This class implements a 2D divergence operator, constructed using the Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA)\&. 
+.PP
+Definition at line 76 of file mtk_div_2d\&.h\&.
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "mtk::Div2D::Div2D ()"
@@ -85,7 +90,7 @@ Success of the construction\&.
 
 .PP
 Definition at line 79 of file mtk_div_2d\&.cc\&.
-.SS "\fBmtk::DenseMatrix\fP mtk::Div2D::ReturnAsDenseMatrix ()"
+.SS "\fBmtk::DenseMatrix\fP mtk::Div2D::ReturnAsDenseMatrix () const"
 
 .PP
 \fBReturns:\fP
@@ -95,21 +100,21 @@ The operator as a dense matrix\&.
 .PP
 
 .PP
-Definition at line 145 of file mtk_div_2d\&.cc\&.
+Definition at line 147 of file mtk_div_2d\&.cc\&.
 .SH "Member Data Documentation"
 .PP 
 .SS "\fBDenseMatrix\fP mtk::Div2D::divergence_\fC [private]\fP"
 
 .PP
-Definition at line 98 of file mtk_div_2d\&.h\&.
+Definition at line 108 of file mtk_div_2d\&.h\&.
 .SS "\fBReal\fP mtk::Div2D::mimetic_threshold_\fC [private]\fP"
 
 .PP
-Definition at line 102 of file mtk_div_2d\&.h\&.
+Definition at line 112 of file mtk_div_2d\&.h\&.
 .SS "int mtk::Div2D::order_accuracy_\fC [private]\fP"
 
 .PP
-Definition at line 100 of file mtk_div_2d\&.h\&.
+Definition at line 110 of file mtk_div_2d\&.h\&.
 
 .SH "Author"
 .PP 

@@ -1,0 +1,62 @@
+\hypertarget{mtk__robin__bc__descriptor__2d_8h}{\section{include/mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+2d.h File Reference}
+\label{mtk__robin__bc__descriptor__2d_8h}\index{include/mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h@{include/mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}}
+}
+
+
+Impose Robin boundary conditions on the operators and on the grids.  
+
+
+{\ttfamily \#include \char`\"{}mtk\+\_\+roots.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mtk\+\_\+dense\+\_\+matrix.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mtk\+\_\+lap\+\_\+2d.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mtk\+\_\+uni\+\_\+stg\+\_\+grid\+\_\+2d.\+h\char`\"{}}\\*
+Include dependency graph for mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mtk__robin__bc__descriptor__2d_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=332pt]{mtk__robin__bc__descriptor__2d_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \hyperlink{classmtk_1_1RobinBCDescriptor2D}{mtk\+::\+Robin\+B\+C\+Descriptor2\+D}
+\begin{DoxyCompactList}\small\item\em Impose Robin boundary conditions on the operators and on the grids. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+ \hyperlink{namespacemtk}{mtk}
+\begin{DoxyCompactList}\small\item\em Mimetic Methods Toolkit namespace. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef Real($\ast$ \hyperlink{group__c07-mim__ops_gaa79593eeb6676d6011db339e01983909}{mtk\+::\+Coefficient\+Function1\+D} )(const Real \&xx, const Real \&tt)
+\begin{DoxyCompactList}\small\item\em A function of a B\+C coefficient evaluated on a 1\+D domain and time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+This class presents an interface for the user to specify Robin boundary conditions on 2\+D mimetic operators and the grids they are acting on.
+
+{\bfseries Def.} Let $ u(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} $ be the solution to an ordinary or partial differential equation of interest. We say that $ u $ satisfies a {\bfseries Robin boundary condition on} $ \partial\Omega $ if and only if there exists $ \beta(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} $ so that\+: \[ \forall t \in [t_0,t_n]\; \forall \mathbf{x} \in \partial\Omega: \delta(\mathbf{x},t)u(\mathbf{x},t) + \eta(\mathbf{x},t)(\hat{\mathbf{n}}\cdot\nabla u) = \beta(\mathbf{x},t). \]
+
+Intuitively, a {\bfseries Robin boundary condition} is a constraint that must be satisfied by any linear combination of any scalar field $ u $ and its first normal derivative, in order for $ u $ to represent a unique solution to a given ordinary or partial differential equation of interest.
+
+Instances of this class receive information about the coefficient functions and each condition for any subset of the boundary (west, east, south and north in 2\+D). These instances then handle the complexity of placing the coefficients in the differentiation matrices and the conditions in the grids.
+
+\begin{DoxySeeAlso}{See also}
+\href{http://mathworld.wolfram.com/NormalVector.html}{\tt http\+://mathworld.\+wolfram.\+com/\+Normal\+Vector.\+html}
+\end{DoxySeeAlso}
+\begin{DoxyAuthor}{Author}
+\+: Eduardo J. Sanchez (ejspeiro) -\/ esanchez at mail dot sdsu dot edu 
+\end{DoxyAuthor}
+
+
+Definition in file \hyperlink{mtk__robin__bc__descriptor__2d_8h_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+2d.\+h}.
+

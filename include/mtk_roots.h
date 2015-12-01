@@ -99,13 +99,23 @@ typedef float Real;
 \ingroup c01-roots
 
 \warning Declared as double if MTK_PRECISION_DOUBLE is defined.
+
+\var kTwo
+
+\brief MTK's two defined according to selective compilation.
+
+\ingroup c01-roots
+
+\warning Declared as double if MTK_PRECISION_DOUBLE is defined.
 */
 #ifdef MTK_PRECISION_DOUBLE
 const double kZero{0.0};
 const double kOne{1.0};
+const double kTwo{2.0};
 #else
 const float kZero{0.0f};
 const float kOne{1.0f};
+const float kTwo{2.0f};
 #endif
 
 /*!

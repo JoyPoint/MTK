@@ -1,4 +1,4 @@
-.TH "mtk::Matrix" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::Matrix" 3 "Tue Dec 1 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -23,107 +23,107 @@ Definition of the representation of a matrix in the MTK\&.
 .br
 .RI "\fICopy constructor\&. \fP"
 .ti -1c
-.RI "\fB~Matrix\fP ()"
+.RI "\fB~Matrix\fP () noexcept"
 .br
 .RI "\fIDestructor\&. \fP"
 .ti -1c
-.RI "\fBMatrixStorage\fP \fBstorage\fP () const "
+.RI "\fBMatrixStorage\fP \fBstorage\fP () const noexcept"
 .br
 .RI "\fIGets the type of storage of this matrix\&. \fP"
 .ti -1c
-.RI "\fBMatrixOrdering\fP \fBordering\fP () const "
+.RI "\fBMatrixOrdering\fP \fBordering\fP () const noexcept"
 .br
 .RI "\fIGets the type of ordering of this matrix\&. \fP"
 .ti -1c
-.RI "int \fBnum_rows\fP () const "
+.RI "int \fBnum_rows\fP () const noexcept"
 .br
 .RI "\fIGets the number of rows\&. \fP"
 .ti -1c
-.RI "int \fBnum_cols\fP () const "
+.RI "int \fBnum_cols\fP () const noexcept"
 .br
 .RI "\fIGets the number of rows\&. \fP"
 .ti -1c
-.RI "int \fBnum_values\fP () const "
+.RI "int \fBnum_values\fP () const noexcept"
 .br
 .RI "\fIGets the number of values\&. \fP"
 .ti -1c
-.RI "int \fBld\fP () const "
+.RI "int \fBld\fP () const noexcept"
 .br
 .RI "\fIGets the matrix' leading dimension\&. \fP"
 .ti -1c
-.RI "int \fBnum_zero\fP () const "
+.RI "int \fBnum_zero\fP () const noexcept"
 .br
 .RI "\fIGets the number of zeros\&. \fP"
 .ti -1c
-.RI "int \fBnum_non_zero\fP () const "
+.RI "int \fBnum_non_zero\fP () const noexcept"
 .br
 .RI "\fIGets the number of non-zero values\&. \fP"
 .ti -1c
-.RI "int \fBnum_null\fP () const "
+.RI "int \fBnum_null\fP () const noexcept"
 .br
 .RI "\fIGets the number of null values\&. \fP"
 .ti -1c
-.RI "int \fBnum_non_null\fP () const "
+.RI "int \fBnum_non_null\fP () const noexcept"
 .br
 .RI "\fIGets the number of non-null values\&. \fP"
 .ti -1c
-.RI "int \fBkl\fP () const "
+.RI "int \fBkl\fP () const noexcept"
 .br
 .RI "\fIGets the number of lower diagonals\&. \fP"
 .ti -1c
-.RI "int \fBku\fP () const "
+.RI "int \fBku\fP () const noexcept"
 .br
 .RI "\fIGets the number of upper diagonals\&. \fP"
 .ti -1c
-.RI "int \fBbandwidth\fP () const "
+.RI "int \fBbandwidth\fP () const noexcept"
 .br
 .RI "\fIGets the bandwidth\&. \fP"
 .ti -1c
-.RI "\fBReal\fP \fBabs_density\fP () const "
+.RI "\fBReal\fP \fBabs_density\fP () const noexcept"
 .br
 .RI "\fIGets the absolute density\&. \fP"
 .ti -1c
-.RI "\fBReal\fP \fBrel_density\fP () const "
+.RI "\fBReal\fP \fBrel_density\fP () const noexcept"
 .br
 .RI "\fIGets the relative density\&. \fP"
 .ti -1c
-.RI "\fBReal\fP \fBabs_sparsity\fP () const "
+.RI "\fBReal\fP \fBabs_sparsity\fP () const noexcept"
 .br
 .RI "\fIGets the Absolute sparsity\&. \fP"
 .ti -1c
-.RI "\fBReal\fP \fBrel_sparsity\fP () const "
+.RI "\fBReal\fP \fBrel_sparsity\fP () const noexcept"
 .br
 .RI "\fIGets the Relative sparsity\&. \fP"
 .ti -1c
-.RI "void \fBset_storage\fP (const \fBMatrixStorage\fP &tt)"
+.RI "void \fBset_storage\fP (const \fBMatrixStorage\fP &tt) noexcept"
 .br
 .RI "\fISets the storage type of the matrix\&. \fP"
 .ti -1c
-.RI "void \fBset_ordering\fP (const \fBMatrixOrdering\fP &oo)"
+.RI "void \fBset_ordering\fP (const \fBMatrixOrdering\fP &oo) noexcept"
 .br
 .RI "\fISets the ordering of the matrix\&. \fP"
 .ti -1c
-.RI "void \fBset_num_rows\fP (int \fBnum_rows\fP)"
+.RI "void \fBset_num_rows\fP (const int &\fBnum_rows\fP) noexcept"
 .br
 .RI "\fISets the number of rows of the matrix\&. \fP"
 .ti -1c
-.RI "void \fBset_num_cols\fP (int \fBnum_cols\fP)"
+.RI "void \fBset_num_cols\fP (const int &\fBnum_cols\fP) noexcept"
 .br
 .RI "\fISets the number of columns of the matrix\&. \fP"
 .ti -1c
-.RI "void \fBset_num_zero\fP (int in)"
+.RI "void \fBset_num_zero\fP (const int &in) noexcept"
 .br
 .RI "\fISets the number of zero values of the matrix that matter\&. \fP"
 .ti -1c
-.RI "void \fBset_num_null\fP (int in)"
+.RI "void \fBset_num_null\fP (const int &in) noexcept"
 .br
 .RI "\fISets the number of zero values of the matrix that DO NOT matter\&. \fP"
 .ti -1c
-.RI "void \fBIncreaseNumZero\fP ()"
+.RI "void \fBIncreaseNumZero\fP () noexcept"
 .br
 .RI "\fIIncreases the number of values that equal zero but with meaning\&. \fP"
 .ti -1c
-.RI "void \fBIncreaseNumNull\fP ()"
+.RI "void \fBIncreaseNumNull\fP () noexcept"
 .br
 .RI "\fIIncreases the number of values that equal zero but with no meaning\&. \fP"
 .in -1c
@@ -221,13 +221,13 @@ Definition at line 67 of file mtk_matrix\&.cc\&.
 
 .PP
 Definition at line 86 of file mtk_matrix\&.cc\&.
-.SS "mtk::Matrix::~Matrix ()"
+.SS "mtk::Matrix::~Matrix ()\fC [noexcept]\fP"
 
 .PP
 Definition at line 105 of file mtk_matrix\&.cc\&.
 .SH "Member Function Documentation"
 .PP 
-.SS "\fBReal\fP mtk::Matrix::abs_density () const"
+.SS "\fBReal\fP mtk::Matrix::abs_density () const\fC [noexcept]\fP"
 
 .PP
 \fBSee also:\fP
@@ -241,7 +241,7 @@ Absolute density of the matrix\&.
 .RE
 .PP
 
-.SS "\fBmtk::Real\fP mtk::Matrix::abs_sparsity () const"
+.SS "\fBmtk::Real\fP mtk::Matrix::abs_sparsity () const\fC [noexcept]\fP"
 
 .PP
 \fBSee also:\fP
@@ -257,7 +257,7 @@ Absolute sparsity of the matrix\&.
 
 .PP
 Definition at line 177 of file mtk_matrix\&.cc\&.
-.SS "int mtk::Matrix::bandwidth () const"
+.SS "int mtk::Matrix::bandwidth () const\fC [noexcept]\fP"
 
 .PP
 \fBReturns:\fP
@@ -268,7 +268,7 @@ Bandwidth of the matrix\&.
 
 .PP
 Definition at line 167 of file mtk_matrix\&.cc\&.
-.SS "void mtk::Matrix::IncreaseNumNull ()"
+.SS "void mtk::Matrix::IncreaseNumNull ()\fC [noexcept]\fP"
 
 .PP
 \fBTodo\fP
@@ -279,7 +279,7 @@ Review the definition of sparse matrices properties\&.
 
 .PP
 Definition at line 274 of file mtk_matrix\&.cc\&.
-.SS "void mtk::Matrix::IncreaseNumZero ()"
+.SS "void mtk::Matrix::IncreaseNumZero ()\fC [noexcept]\fP"
 
 .PP
 \fBTodo\fP
@@ -290,7 +290,7 @@ Review the definition of sparse matrices properties\&.
 
 .PP
 Definition at line 264 of file mtk_matrix\&.cc\&.
-.SS "int mtk::Matrix::kl () const"
+.SS "int mtk::Matrix::kl () const\fC [noexcept]\fP"
 
 .PP
 \fBReturns:\fP
@@ -301,7 +301,7 @@ Number of lower diagonals\&.
 
 .PP
 Definition at line 157 of file mtk_matrix\&.cc\&.
-.SS "int mtk::Matrix::ku () const"
+.SS "int mtk::Matrix::ku () const\fC [noexcept]\fP"
 
 .PP
 \fBReturns:\fP
@@ -312,7 +312,7 @@ Number of upper diagonals\&.
 
 .PP
 Definition at line 162 of file mtk_matrix\&.cc\&.
-.SS "int mtk::Matrix::ld () const"
+.SS "int mtk::Matrix::ld () const\fC [noexcept]\fP"
 Leading dimension of the data array is the number of elements between successive rows (for row major storage) in memory\&. Most of the cases, the leading dimension is the same as the number of columns\&.
 .PP
 \fBReturns:\fP
@@ -323,7 +323,7 @@ Leading dimension of the matrix\&.
 
 .PP
 Definition at line 132 of file mtk_matrix\&.cc\&.
-.SS "int mtk::Matrix::num_cols () const"
+.SS "int mtk::Matrix::num_cols () const\fC [noexcept]\fP"
 
 .PP
 \fBReturns:\fP
@@ -334,7 +334,7 @@ Number of rows of the matrix\&.
 
 .PP
 Definition at line 122 of file mtk_matrix\&.cc\&.
-.SS "int mtk::Matrix::num_non_null () const"
+.SS "int mtk::Matrix::num_non_null () const\fC [noexcept]\fP"
 
 .PP
 \fBSee also:\fP
@@ -350,7 +350,7 @@ Number of non-null values of the matrix\&.
 
 .PP
 Definition at line 152 of file mtk_matrix\&.cc\&.
-.SS "int mtk::Matrix::num_non_zero () const"
+.SS "int mtk::Matrix::num_non_zero () const\fC [noexcept]\fP"
 
 .PP
 \fBReturns:\fP
@@ -361,7 +361,7 @@ Number of non-zero values of the matrix\&.
 
 .PP
 Definition at line 142 of file mtk_matrix\&.cc\&.
-.SS "int mtk::Matrix::num_null () const"
+.SS "int mtk::Matrix::num_null () const\fC [noexcept]\fP"
 
 .PP
 \fBSee also:\fP
@@ -377,7 +377,7 @@ Number of null values of the matrix\&.
 
 .PP
 Definition at line 147 of file mtk_matrix\&.cc\&.
-.SS "int mtk::Matrix::num_rows () const"
+.SS "int mtk::Matrix::num_rows () const\fC [noexcept]\fP"
 
 .PP
 \fBReturns:\fP
@@ -388,7 +388,7 @@ Number of rows of the matrix\&.
 
 .PP
 Definition at line 117 of file mtk_matrix\&.cc\&.
-.SS "int mtk::Matrix::num_values () const"
+.SS "int mtk::Matrix::num_values () const\fC [noexcept]\fP"
 
 .PP
 \fBReturns:\fP
@@ -399,7 +399,7 @@ Number of values of the matrix\&.
 
 .PP
 Definition at line 127 of file mtk_matrix\&.cc\&.
-.SS "int mtk::Matrix::num_zero () const"
+.SS "int mtk::Matrix::num_zero () const\fC [noexcept]\fP"
 
 .PP
 \fBReturns:\fP
@@ -410,7 +410,7 @@ Number of zeros of the matrix\&.
 
 .PP
 Definition at line 137 of file mtk_matrix\&.cc\&.
-.SS "\fBmtk::MatrixOrdering\fP mtk::Matrix::ordering () const"
+.SS "\fBmtk::MatrixOrdering\fP mtk::Matrix::ordering () const\fC [noexcept]\fP"
 
 .PP
 \fBReturns:\fP
@@ -421,7 +421,7 @@ Type of ordering of this matrix\&.
 
 .PP
 Definition at line 112 of file mtk_matrix\&.cc\&.
-.SS "\fBmtk::Real\fP mtk::Matrix::rel_density () const"
+.SS "\fBmtk::Real\fP mtk::Matrix::rel_density () const\fC [noexcept]\fP"
 
 .PP
 \fBSee also:\fP
@@ -437,7 +437,7 @@ Relative density of the matrix\&.
 
 .PP
 Definition at line 172 of file mtk_matrix\&.cc\&.
-.SS "\fBmtk::Real\fP mtk::Matrix::rel_sparsity () const"
+.SS "\fBmtk::Real\fP mtk::Matrix::rel_sparsity () const\fC [noexcept]\fP"
 
 .PP
 \fBSee also:\fP
@@ -453,7 +453,7 @@ Relative sparsity of the matrix\&.
 
 .PP
 Definition at line 182 of file mtk_matrix\&.cc\&.
-.SS "void mtk::Matrix::set_num_cols (intnum_cols)"
+.SS "void mtk::Matrix::set_num_cols (const int &num_cols)\fC [noexcept]\fP"
 
 .PP
 \fBParameters:\fP
@@ -464,7 +464,7 @@ Definition at line 182 of file mtk_matrix\&.cc\&.
 
 .PP
 Definition at line 224 of file mtk_matrix\&.cc\&.
-.SS "void mtk::Matrix::set_num_null (intin)"
+.SS "void mtk::Matrix::set_num_null (const int &in)\fC [noexcept]\fP"
 
 .PP
 \fBParameters:\fP
@@ -482,7 +482,7 @@ Definition at line 224 of file mtk_matrix\&.cc\&.
 
 .PP
 Definition at line 250 of file mtk_matrix\&.cc\&.
-.SS "void mtk::Matrix::set_num_rows (intnum_rows)"
+.SS "void mtk::Matrix::set_num_rows (const int &num_rows)\fC [noexcept]\fP"
 
 .PP
 \fBParameters:\fP
@@ -493,7 +493,7 @@ Definition at line 250 of file mtk_matrix\&.cc\&.
 
 .PP
 Definition at line 212 of file mtk_matrix\&.cc\&.
-.SS "void mtk::Matrix::set_num_zero (intin)"
+.SS "void mtk::Matrix::set_num_zero (const int &in)\fC [noexcept]\fP"
 
 .PP
 \fBParameters:\fP
@@ -511,7 +511,7 @@ Definition at line 212 of file mtk_matrix\&.cc\&.
 
 .PP
 Definition at line 236 of file mtk_matrix\&.cc\&.
-.SS "void mtk::Matrix::set_ordering (const \fBMatrixOrdering\fP &oo)"
+.SS "void mtk::Matrix::set_ordering (const \fBMatrixOrdering\fP &oo)\fC [noexcept]\fP"
 
 .PP
 \fBSee also:\fP
@@ -527,7 +527,7 @@ Definition at line 236 of file mtk_matrix\&.cc\&.
 
 .PP
 Definition at line 199 of file mtk_matrix\&.cc\&.
-.SS "void mtk::Matrix::set_storage (const \fBMatrixStorage\fP &tt)"
+.SS "void mtk::Matrix::set_storage (const \fBMatrixStorage\fP &tt)\fC [noexcept]\fP"
 
 .PP
 \fBSee also:\fP
@@ -543,7 +543,7 @@ Definition at line 199 of file mtk_matrix\&.cc\&.
 
 .PP
 Definition at line 187 of file mtk_matrix\&.cc\&.
-.SS "\fBmtk::MatrixStorage\fP mtk::Matrix::storage () const"
+.SS "\fBmtk::MatrixStorage\fP mtk::Matrix::storage () const\fC [noexcept]\fP"
 
 .PP
 \fBReturns:\fP

@@ -174,7 +174,7 @@ mtk::UniStgGrid2D::UniStgGrid2D(const Real &west_bndy,
                                 const int &num_cells_y,
                                 const mtk::FieldNature &nature) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(west_bndy < mtk::kZero, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(east_bndy < mtk::kZero, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(east_bndy <= west_bndy, __FILE__, __LINE__, __func__);
@@ -227,6 +227,11 @@ mtk::Real mtk::UniStgGrid2D::delta_x() const {
   return delta_x_;
 }
 
+const mtk::Real* mtk::UniStgGrid2D::discrete_domain_x() const {
+
+  return discrete_domain_x_.data();
+}
+
 mtk::Real mtk::UniStgGrid2D::south_bndy() const {
 
   return south_bndy_;
@@ -247,9 +252,30 @@ mtk::Real mtk::UniStgGrid2D::delta_y() const {
   return delta_y_;
 }
 
-void mtk::UniStgGrid2D::BindScalarField(Real (*ScalarField)(Real xx, Real yy)) {
+bool mtk::UniStgGrid2D::Bound() const {
 
-  #if MTK_DEBUG_LEVEL > 0
+  return discrete_field_.size() != 0;
+}
+
+const mtk::Real* mtk::UniStgGrid2D::discrete_domain_y() const {
+
+  return discrete_domain_y_.data();
+}
+
+mtk::Real* mtk::UniStgGrid2D::discrete_field() {
+
+  return discrete_field_.data();
+}
+
+int mtk::UniStgGrid2D::Size() const {
+
+  return discrete_field_.size();
+}
+
+void mtk::UniStgGrid2D::BindScalarField(
+    Real (*ScalarField)(const Real &xx, const Real &yy)) {
+
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nature_ != mtk::SCALAR, __FILE__, __LINE__, __func__);
   #endif
 
@@ -289,16 +315,20 @@ void mtk::UniStgGrid2D::BindScalarField(Real (*ScalarField)(Real xx, Real yy)) {
 
   discrete_field_.reserve((num_cells_x_ + 2)*(num_cells_y_ + 2));
 
-  for (int ii = 0; ii < num_cells_x_ + 2; ++ii) {
-    for (int jj = 0; jj < num_cells_y_ + 2; ++jj) {
-      discrete_field_.push_back(ScalarField(discrete_domain_x_[ii],
-                                            discrete_domain_y_[jj]));
+  for (int ii = 0; ii < num_cells_y_ + 2; ++ii) {
+    for (int jj = 0; jj < num_cells_x_ + 2; ++jj) {
+      #if MTK_VERBOSE_LEVEL > 6
+      std::cout << "Pushing value for x = " << discrete_domain_x_[jj] <<
+        " y = " << discrete_domain_y_[ii] << std::endl;
+      #endif
+      discrete_field_.push_back(ScalarField(discrete_domain_x_[jj],
+                                            discrete_domain_y_[ii]));
     }
   }
 }
 
 void mtk::UniStgGrid2D::BindVectorFieldPComponent(
-  mtk::Real (*VectorField)(mtk::Real xx, mtk::Real yy)) {
+  mtk::Real (*VectorField)(const mtk::Real &xx, const mtk::Real &yy)) {
 
   int mm{num_cells_x_};
   int nn{num_cells_y_};
@@ -350,20 +380,20 @@ void mtk::UniStgGrid2D::BindVectorFieldPComponent(
       discrete_field_.push_back(VectorField(discrete_domain_x_[jj],
                                             discrete_domain_y_[ii]));
 
-      #if MTK_DEBUG_LEVEL > 0
+      #if MTK_VERBOSE_LEVEL > 6
       std::cout << "Binding v at x = " << discrete_domain_x_[jj] << " y = " <<
         discrete_domain_y_[ii] << " = " <<
         VectorField(discrete_domain_x_[jj],discrete_domain_y_[ii]) << std::endl;
       #endif
     }
   }
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 6
   std::cout << std::endl;
   #endif
 }
 
 void mtk::UniStgGrid2D::BindVectorFieldQComponent(
-  mtk::Real (*VectorField)(mtk::Real xx, mtk::Real yy)) {
+  mtk::Real (*VectorField)(const mtk::Real &xx, const mtk::Real &yy)) {
 
   int mm{num_cells_x_};
   int nn{num_cells_y_};
@@ -378,23 +408,23 @@ void mtk::UniStgGrid2D::BindVectorFieldQComponent(
       discrete_field_.push_back(VectorField(discrete_domain_x_[jj],
                                             discrete_domain_y_[ii]));
 
-      #if MTK_DEBUG_LEVEL > 0
+      #if MTK_VERBOSE_LEVEL > 6
       std::cout << "Binding v at x = " << discrete_domain_x_[jj] << " y = " <<
         discrete_domain_y_[ii] << " = " <<
         VectorField(discrete_domain_x_[jj],discrete_domain_y_[ii]) << std::endl;
       #endif
     }
   }
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 6
   std::cout << std::endl;
   #endif
 }
 
 void mtk::UniStgGrid2D::BindVectorField(
-  Real (*VectorFieldPComponent)(Real xx,Real yy),
-  Real (*VectorFieldQComponent)(Real xx,Real yy)) {
+  Real (*VectorFieldPComponent)(const Real &xx, const Real &yy),
+  Real (*VectorFieldQComponent)(const Real &xx, const Real &yy)) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nature_ != mtk::VECTOR, __FILE__, __LINE__, __func__);
   #endif
 
@@ -405,7 +435,7 @@ void mtk::UniStgGrid2D::BindVectorField(
 bool mtk::UniStgGrid2D::WriteToFile(std::string filename,
                                     std::string space_name_x,
                                     std::string space_name_y,
-                                    std::string field_name) {
+                                    std::string field_name) const {
 
   std::ofstream output_dat_file;  // Output file.
 
@@ -419,12 +449,14 @@ bool mtk::UniStgGrid2D::WriteToFile(std::string filename,
     output_dat_file << "# " << space_name_x <<  ' ' << space_name_y << ' ' <<
       field_name << std::endl;
 
-    for (unsigned int ii = 0; ii < discrete_domain_x_.size(); ++ii) {
-      for (unsigned int jj = 0; jj < discrete_domain_y_.size(); ++jj) {
-        output_dat_file << discrete_domain_x_[ii] << ' ' <<
-                           discrete_domain_y_[jj] << ' ' <<
-                           discrete_field_[ii*discrete_domain_y_.size() + jj] <<
+    int idx{};
+    for (unsigned int ii = 0; ii < discrete_domain_y_.size(); ++ii) {
+      for (unsigned int jj = 0; jj < discrete_domain_x_.size(); ++jj) {
+        output_dat_file << discrete_domain_x_[jj] << ' ' <<
+                           discrete_domain_y_[ii] << ' ' <<
+                           discrete_field_[idx] <<
                           std::endl;
+        idx++;
       }
       output_dat_file << std::endl;
     }

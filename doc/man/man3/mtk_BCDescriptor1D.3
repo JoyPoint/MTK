@@ -1,0 +1,141 @@
+.TH "mtk::BCDescriptor1D" 3 "Tue Nov 24 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk::BCDescriptor1D \- 
+.PP
+Imposes boundary conditions on the operators or on the grids\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mtk_robin_bc_descriptor_1d\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static void \fBImposeOnLaplacianMatrix\fP (\fBDenseMatrix\fP &matrix, const std::vector< \fBReal\fP > &west, const std::vector< \fBReal\fP > &east)"
+.br
+.RI "\fIEnforces the condition on the Laplacian represented as matrix\&. \fP"
+.ti -1c
+.RI "static void \fBImposeOnGrid\fP (\fBUniStgGrid1D\fP &grid, const \fBReal\fP &epsilon, const \fBReal\fP &omega)"
+.br
+.RI "\fIEnforces the condition on the grid\&. \fP"
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "int \fBhighest_order_diff_west_\fP"
+.br
+.RI "\fIHighest order of differentiation for west\&. \fP"
+.ti -1c
+.RI "int \fBhighest_order_diff_east_\fP"
+.br
+.RI "\fIHighest order of differentiation for east\&. \fP"
+.ti -1c
+.RI "std::vector
+.br
+< \fBCoefficientFunction2D\fP > \fBwest_coefficients_\fP"
+.br
+.RI "\fICoeffs\&. west\&. \fP"
+.ti -1c
+.RI "std::vector
+.br
+< \fBCoefficientFunction2D\fP > \fBeast_coefficients_\fP"
+.br
+.RI "\fICoeffs\&. east\&. \fP"
+.ti -1c
+.RI "\fBReal\fP(* \fBwest_condition_\fP )(\fBReal\fP xx, \fBReal\fP yy)"
+.br
+.RI "\fICondition for west\&. \fP"
+.ti -1c
+.RI "\fBReal\fP(* \fBeast_condition_\fP )(\fBReal\fP xx, \fBReal\fP yy)"
+.br
+.RI "\fICondition for east\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class presents an interface for the user to specify boundary conditions on 1D mimetic operators and the grids they are acting on\&.
+.PP
+\fBDef\&.\fP Let $ f $ be any scalar or vector field defined over a domain $ \Omega $\&. We can specify any linear combination of $ f $ and its $ n $ derivatives to fulfill a condition, which we define as a \fBboundary condition\fP:
+.PP
+\[ \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{n} c_i(\mathbf{x}) <\hat{\mathbf{n}}, \frac{\partial^i f}{\partial x^i}(\mathbf{x})> = \beta(\mathbf{x}). \].PP
+This class receives information about all possible coefficient functions, $ c_i(\mathbf{x}) $ for any subset of the boundary (west and east), and each condition for any subset of the boundary, and takes care of assigning them to both, the differentiation matrices and the grids\&. The highest order of differentiation is computed based on how many coefficients have been given at run-time\&. 
+.PP
+Definition at line 128 of file mtk_robin_bc_descriptor_1d\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void mtk::BCDescriptor1D::ImposeOnGrid (\fBmtk::UniStgGrid1D\fP &grid, const \fBReal\fP &epsilon, const \fBReal\fP &omega)\fC [static]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrid\fP Input grid\&. 
+.br
+\fIepsilon\fP Actual BC for the east\&. 
+.br
+\fIomega\fP Actual BC for the west\&. 
+.RE
+.PP
+
+.IP "1." 4
+Assign the west condition\&.
+.IP "2." 4
+Assign the east condition\&. 
+.PP
+
+.PP
+Definition at line 89 of file mtk_bc_descriptor_1d\&.cc\&.
+.SS "void mtk::BCDescriptor1D::ImposeOnLaplacianMatrix (\fBmtk::DenseMatrix\fP &matrix, const std::vector< \fBReal\fP > &west, const std::vector< \fBReal\fP > &east)\fC [static]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrix\fP Input operator\&. 
+.br
+\fIwest\fP Array of values for the west boundary\&. 
+.br
+\fIeast\fP Array of values for the east boundary\&. 
+.RE
+.PP
+
+.IP "1." 4
+Assign the west array\&.
+.IP "2." 4
+Assign the east array\&. 
+.PP
+
+.PP
+Definition at line 61 of file mtk_bc_descriptor_1d\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor1D::east_coefficients_"
+
+.PP
+Definition at line 157 of file mtk_robin_bc_descriptor_1d\&.h\&.
+.SS "\fBReal\fP(* mtk::BCDescriptor1D::east_condition_)(\fBReal\fP xx, \fBReal\fP yy)"
+
+.PP
+Definition at line 160 of file mtk_robin_bc_descriptor_1d\&.h\&.
+.SS "int mtk::BCDescriptor1D::highest_order_diff_east_"
+
+.PP
+Definition at line 154 of file mtk_robin_bc_descriptor_1d\&.h\&.
+.SS "int mtk::BCDescriptor1D::highest_order_diff_west_"
+
+.PP
+Definition at line 153 of file mtk_robin_bc_descriptor_1d\&.h\&.
+.SS "std::vector<\fBCoefficientFunction2D\fP> mtk::BCDescriptor1D::west_coefficients_"
+
+.PP
+Definition at line 156 of file mtk_robin_bc_descriptor_1d\&.h\&.
+.SS "\fBReal\fP(* mtk::BCDescriptor1D::west_condition_)(\fBReal\fP xx, \fBReal\fP yy)"
+
+.PP
+Definition at line 159 of file mtk_robin_bc_descriptor_1d\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

@@ -118,7 +118,7 @@ class Quad1D {
 
   \return Result of the integration.
   */
-  Real Integrate(Real (*Integrand)(Real xx), UniStgGrid1D grid);
+  Real Integrate(Real (*Integrand)(Real xx), UniStgGrid1D grid) const;
 
  private:
   int degree_approximation_;  ///< Degree of the interpolating polynomial.

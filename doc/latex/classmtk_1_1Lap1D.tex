@@ -28,11 +28,17 @@ Collaboration diagram for mtk\+:\+:Lap1\+D\+:\nopagebreak
 \begin{DoxyCompactList}\small\item\em Copy constructor. \end{DoxyCompactList}\item 
 \hyperlink{classmtk_1_1Lap1D_ac0cb868243a66658cc46de5b818fa4e8}{$\sim$\+Lap1\+D} ()
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
-bool \hyperlink{classmtk_1_1Lap1D_a685dcba88c08cf5b7b6c2aa4669a472c}{Construct\+Lap1\+D} (int order\+\_\+accuracy=\hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{k\+Default\+Order\+Accuracy}, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} mimetic\+\_\+threshold=\hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{k\+Default\+Mimetic\+Threshold})
+int \hyperlink{classmtk_1_1Lap1D_ae3490534a9e950df3f81b3840c31b13a}{order\+\_\+accuracy} () const 
+\begin{DoxyCompactList}\small\item\em Order of accuracy of the operator. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Lap1D_a957ae4ff6053d605ac7b93650ad6f188}{mimetic\+\_\+threshold} () const 
+\begin{DoxyCompactList}\small\item\em Mimetic threshold used in the C\+B\+S algorithm to construct this operator. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Lap1D_a4e16e80c6dd845ac42bda23385a1c56e}{delta} () const 
+\begin{DoxyCompactList}\small\item\em Value of $ \Delta x $ used be scaled. If 0, then dimensionless. \end{DoxyCompactList}\item 
+bool \hyperlink{classmtk_1_1Lap1D_a685dcba88c08cf5b7b6c2aa4669a472c}{Construct\+Lap1\+D} (int \hyperlink{classmtk_1_1Lap1D_ae3490534a9e950df3f81b3840c31b13a}{order\+\_\+accuracy}=\hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{k\+Default\+Order\+Accuracy}, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Lap1D_a957ae4ff6053d605ac7b93650ad6f188}{mimetic\+\_\+threshold}=\hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{k\+Default\+Mimetic\+Threshold})
 \begin{DoxyCompactList}\small\item\em Factory method implementing the C\+B\+S Algorithm to build operator. \end{DoxyCompactList}\item 
-\hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix} \hyperlink{classmtk_1_1Lap1D_a28672c735fa0d13e6204795b63aec4e2}{Return\+As\+Dense\+Matrix} (const \hyperlink{classmtk_1_1UniStgGrid1D}{Uni\+Stg\+Grid1\+D} \&grid)
+\hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix} \hyperlink{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4}{Return\+As\+Dense\+Matrix} (const \hyperlink{classmtk_1_1UniStgGrid1D}{Uni\+Stg\+Grid1\+D} \&grid) const 
 \begin{DoxyCompactList}\small\item\em Return the operator as a dense matrix. \end{DoxyCompactList}\item 
-\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\+::\+Real} $\ast$ \hyperlink{classmtk_1_1Lap1D_a8c3151d792efbe69f34cbb9b5ea870e9}{data} (const \hyperlink{classmtk_1_1UniStgGrid1D}{Uni\+Stg\+Grid1\+D} \&grid)
+const \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\+::\+Real} $\ast$ \hyperlink{classmtk_1_1Lap1D_ab2652725a8407c79247680c7bbd073b8}{data} (const \hyperlink{classmtk_1_1UniStgGrid1D}{Uni\+Stg\+Grid1\+D} \&grid) const 
 \begin{DoxyCompactList}\small\item\em Return the operator as a dense array. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
@@ -43,6 +49,8 @@ int \hyperlink{classmtk_1_1Lap1D_a05578b0729f2bb4fe8bb442fc555fa80}{laplacian\+\
 \begin{DoxyCompactList}\small\item\em Length of the output array. \end{DoxyCompactList}\item 
 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$ \hyperlink{classmtk_1_1Lap1D_a64a3977527c00b4ef994d1bd549f82fd}{laplacian\+\_\+}
 \begin{DoxyCompactList}\small\item\em Output array containing the operator and weights. \end{DoxyCompactList}\item 
+\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Lap1D_a0feafd7b78e62be8644503d14c0204d9}{delta\+\_\+}
+\begin{DoxyCompactList}\small\item\em $<$ If 0.\+0, then this Laplacian is dimensionless. \end{DoxyCompactList}\item 
 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Lap1D_a20dce13067774c64dff892323d9c586e}{mimetic\+\_\+threshold\+\_\+}
 \begin{DoxyCompactList}\small\item\em $<$ Mimetic threshold. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Friends}
@@ -92,7 +100,7 @@ Definition at line \hyperlink{mtk__lap__1d_8cc_source_l00108}{108} of file \hype
 )}}\label{classmtk_1_1Lap1D_ac0cb868243a66658cc46de5b818fa4e8}
 
 
-Definition at line \hyperlink{mtk__lap__1d_8cc_source_l00113}{113} of file \hyperlink{mtk__lap__1d_8cc_source}{mtk\+\_\+lap\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__lap__1d_8cc_source_l00114}{114} of file \hyperlink{mtk__lap__1d_8cc_source}{mtk\+\_\+lap\+\_\+1d.\+cc}.
 
 
 
@@ -118,7 +126,7 @@ Success of the solution.
 \end{DoxyEnumerate}
 
 \begin{DoxyWarning}{Warning}
-We do not compute weights for this operator.
+We do not compute weights for this operator... no need to!
 \end{DoxyWarning}
 
 \begin{DoxyEnumerate}
@@ -127,7 +135,7 @@ We do not compute weights for this operator.
 \item We D\+O N\+O\+T have weights in this operator. Copy mimetic bndy coeffs. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__lap__1d_8cc_source_l00119}{119} of file \hyperlink{mtk__lap__1d_8cc_source}{mtk\+\_\+lap\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__lap__1d_8cc_source_l00135}{135} of file \hyperlink{mtk__lap__1d_8cc_source}{mtk\+\_\+lap\+\_\+1d.\+cc}.
 
 
 
@@ -140,19 +148,19 @@ Here is the call graph for this function\+:\nopagebreak
 \end{figure}
 
 
-\hypertarget{classmtk_1_1Lap1D_a8c3151d792efbe69f34cbb9b5ea870e9}{\index{mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}!data@{data}}
+\hypertarget{classmtk_1_1Lap1D_ab2652725a8407c79247680c7bbd073b8}{\index{mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}!data@{data}}
 \index{data@{data}!mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}}
-\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\+::\+Real} $\ast$ mtk\+::\+Lap1\+D\+::data (
+\subsubsection[{data}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf mtk\+::\+Real} $\ast$ mtk\+::\+Lap1\+D\+::data (
 \begin{DoxyParamCaption}
 \item[{const {\bf Uni\+Stg\+Grid1\+D} \&}]{grid}
 \end{DoxyParamCaption}
-)}}\label{classmtk_1_1Lap1D_a8c3151d792efbe69f34cbb9b5ea870e9}
+) const}}\label{classmtk_1_1Lap1D_ab2652725a8407c79247680c7bbd073b8}
 \begin{DoxyReturn}{Returns}
 The operator as a dense array. 
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__lap__1d_8cc_source_l00332}{332} of file \hyperlink{mtk__lap__1d_8cc_source}{mtk\+\_\+lap\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__lap__1d_8cc_source_l00356}{356} of file \hyperlink{mtk__lap__1d_8cc_source}{mtk\+\_\+lap\+\_\+1d.\+cc}.
 
 
 
@@ -160,18 +168,93 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=345pt]{classmtk_1_1Lap1D_a8c3151d792efbe69f34cbb9b5ea870e9_cgraph}
+\includegraphics[width=345pt]{classmtk_1_1Lap1D_ab2652725a8407c79247680c7bbd073b8_cgraph}
 \end{center}
 \end{figure}
 
 
-\hypertarget{classmtk_1_1Lap1D_a28672c735fa0d13e6204795b63aec4e2}{\index{mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}!Return\+As\+Dense\+Matrix@{Return\+As\+Dense\+Matrix}}
+\hypertarget{classmtk_1_1Lap1D_a4e16e80c6dd845ac42bda23385a1c56e}{\index{mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}!delta@{delta}}
+\index{delta@{delta}!mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}}
+\subsubsection[{delta}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\+::\+Real} mtk\+::\+Lap1\+D\+::delta (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Lap1D_a4e16e80c6dd845ac42bda23385a1c56e}
+\begin{DoxyReturn}{Returns}
+Value of $ \Delta x $ used be scaled. If 0, then dimensionless. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__lap__1d_8cc_source_l00130}{130} of file \hyperlink{mtk__lap__1d_8cc_source}{mtk\+\_\+lap\+\_\+1d.\+cc}.
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Lap1D_a4e16e80c6dd845ac42bda23385a1c56e_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1Lap1D_a957ae4ff6053d605ac7b93650ad6f188}{\index{mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}!mimetic\+\_\+threshold@{mimetic\+\_\+threshold}}
+\index{mimetic\+\_\+threshold@{mimetic\+\_\+threshold}!mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}}
+\subsubsection[{mimetic\+\_\+threshold}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\+::\+Real} mtk\+::\+Lap1\+D\+::mimetic\+\_\+threshold (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Lap1D_a957ae4ff6053d605ac7b93650ad6f188}
+\begin{DoxyReturn}{Returns}
+Mimetic threshold used in the C\+B\+S algorithm to construct operator. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__lap__1d_8cc_source_l00125}{125} of file \hyperlink{mtk__lap__1d_8cc_source}{mtk\+\_\+lap\+\_\+1d.\+cc}.
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Lap1D_a957ae4ff6053d605ac7b93650ad6f188_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1Lap1D_ae3490534a9e950df3f81b3840c31b13a}{\index{mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}!order\+\_\+accuracy@{order\+\_\+accuracy}}
+\index{order\+\_\+accuracy@{order\+\_\+accuracy}!mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}}
+\subsubsection[{order\+\_\+accuracy}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+Lap1\+D\+::order\+\_\+accuracy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Lap1D_ae3490534a9e950df3f81b3840c31b13a}
+\begin{DoxyReturn}{Returns}
+Order of accuracy of the operator. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__lap__1d_8cc_source_l00120}{120} of file \hyperlink{mtk__lap__1d_8cc_source}{mtk\+\_\+lap\+\_\+1d.\+cc}.
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1Lap1D_ae3490534a9e950df3f81b3840c31b13a_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4}{\index{mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}!Return\+As\+Dense\+Matrix@{Return\+As\+Dense\+Matrix}}
 \index{Return\+As\+Dense\+Matrix@{Return\+As\+Dense\+Matrix}!mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}}
 \subsubsection[{Return\+As\+Dense\+Matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\+::\+Dense\+Matrix} mtk\+::\+Lap1\+D\+::\+Return\+As\+Dense\+Matrix (
 \begin{DoxyParamCaption}
 \item[{const {\bf Uni\+Stg\+Grid1\+D} \&}]{grid}
 \end{DoxyParamCaption}
-)}}\label{classmtk_1_1Lap1D_a28672c735fa0d13e6204795b63aec4e2}
+) const}}\label{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4}
 \begin{DoxyReturn}{Returns}
 The operator as a dense matrix. 
 \end{DoxyReturn}
@@ -187,7 +270,7 @@ We could create two matrices of the requested size and multiply them, but that w
 \end{DoxyNote}
 
 
-Definition at line \hyperlink{mtk__lap__1d_8cc_source_l00265}{265} of file \hyperlink{mtk__lap__1d_8cc_source}{mtk\+\_\+lap\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__lap__1d_8cc_source_l00286}{286} of file \hyperlink{mtk__lap__1d_8cc_source}{mtk\+\_\+lap\+\_\+1d.\+cc}.
 
 
 
@@ -195,7 +278,7 @@ Here is the call graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classmtk_1_1Lap1D_a28672c735fa0d13e6204795b63aec4e2_cgraph}
+\includegraphics[width=350pt]{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4_cgraph}
 \end{center}
 \end{figure}
 
@@ -223,33 +306,40 @@ Definition at line \hyperlink{mtk__lap__1d_8cc_source_l00073}{73} of file \hyper
 
 
 \subsection{Member Data Documentation}
+\hypertarget{classmtk_1_1Lap1D_a0feafd7b78e62be8644503d14c0204d9}{\index{mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}!delta\+\_\+@{delta\+\_\+}}
+\index{delta\+\_\+@{delta\+\_\+}!mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}}
+\subsubsection[{delta\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real} mtk\+::\+Lap1\+D\+::delta\+\_\+\hspace{0.3cm}{\ttfamily [mutable]}, {\ttfamily [private]}}}\label{classmtk_1_1Lap1D_a0feafd7b78e62be8644503d14c0204d9}
+
+
+Definition at line \hyperlink{mtk__lap__1d_8h_source_l00143}{143} of file \hyperlink{mtk__lap__1d_8h_source}{mtk\+\_\+lap\+\_\+1d.\+h}.
+
 \hypertarget{classmtk_1_1Lap1D_a64a3977527c00b4ef994d1bd549f82fd}{\index{mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}!laplacian\+\_\+@{laplacian\+\_\+}}
 \index{laplacian\+\_\+@{laplacian\+\_\+}!mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}}
 \subsubsection[{laplacian\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}$\ast$ mtk\+::\+Lap1\+D\+::laplacian\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Lap1D_a64a3977527c00b4ef994d1bd549f82fd}
 
 
-Definition at line \hyperlink{mtk__lap__1d_8h_source_l00120}{120} of file \hyperlink{mtk__lap__1d_8h_source}{mtk\+\_\+lap\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__lap__1d_8h_source_l00141}{141} of file \hyperlink{mtk__lap__1d_8h_source}{mtk\+\_\+lap\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Lap1D_a05578b0729f2bb4fe8bb442fc555fa80}{\index{mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}!laplacian\+\_\+length\+\_\+@{laplacian\+\_\+length\+\_\+}}
 \index{laplacian\+\_\+length\+\_\+@{laplacian\+\_\+length\+\_\+}!mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}}
 \subsubsection[{laplacian\+\_\+length\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+Lap1\+D\+::laplacian\+\_\+length\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Lap1D_a05578b0729f2bb4fe8bb442fc555fa80}
 
 
-Definition at line \hyperlink{mtk__lap__1d_8h_source_l00118}{118} of file \hyperlink{mtk__lap__1d_8h_source}{mtk\+\_\+lap\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__lap__1d_8h_source_l00139}{139} of file \hyperlink{mtk__lap__1d_8h_source}{mtk\+\_\+lap\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Lap1D_a20dce13067774c64dff892323d9c586e}{\index{mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}!mimetic\+\_\+threshold\+\_\+@{mimetic\+\_\+threshold\+\_\+}}
 \index{mimetic\+\_\+threshold\+\_\+@{mimetic\+\_\+threshold\+\_\+}!mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}}
 \subsubsection[{mimetic\+\_\+threshold\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real} mtk\+::\+Lap1\+D\+::mimetic\+\_\+threshold\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Lap1D_a20dce13067774c64dff892323d9c586e}
 
 
-Definition at line \hyperlink{mtk__lap__1d_8h_source_l00122}{122} of file \hyperlink{mtk__lap__1d_8h_source}{mtk\+\_\+lap\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__lap__1d_8h_source_l00145}{145} of file \hyperlink{mtk__lap__1d_8h_source}{mtk\+\_\+lap\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Lap1D_a35d34c085b9cf6f9961a699dfb02fea6}{\index{mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}!order\+\_\+accuracy\+\_\+@{order\+\_\+accuracy\+\_\+}}
 \index{order\+\_\+accuracy\+\_\+@{order\+\_\+accuracy\+\_\+}!mtk\+::\+Lap1\+D@{mtk\+::\+Lap1\+D}}
 \subsubsection[{order\+\_\+accuracy\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+Lap1\+D\+::order\+\_\+accuracy\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Lap1D_a35d34c085b9cf6f9961a699dfb02fea6}
 
 
-Definition at line \hyperlink{mtk__lap__1d_8h_source_l00117}{117} of file \hyperlink{mtk__lap__1d_8h_source}{mtk\+\_\+lap\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__lap__1d_8h_source_l00138}{138} of file \hyperlink{mtk__lap__1d_8h_source}{mtk\+\_\+lap\+\_\+1d.\+h}.
 
 
 

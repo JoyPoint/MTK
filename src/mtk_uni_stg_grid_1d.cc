@@ -86,8 +86,8 @@ std::ostream& operator <<(std::ostream &stream, mtk::UniStgGrid1D &in) {
   else {
     stream << "v:";
   }
-  for (unsigned int ii = 0; ii < in.discrete_field_u_.size(); ++ii) {
-    stream << std::setw(10) << in.discrete_field_u_[ii];
+  for (unsigned int ii = 0; ii < in.discrete_field_.size(); ++ii) {
+    stream << std::setw(10) << in.discrete_field_[ii];
   }
 
   stream << std::endl;
@@ -99,7 +99,7 @@ std::ostream& operator <<(std::ostream &stream, mtk::UniStgGrid1D &in) {
 mtk::UniStgGrid1D::UniStgGrid1D():
     nature_(),
     discrete_domain_x_(),
-    discrete_field_u_(),
+    discrete_field_(),
     west_bndy_x_(),
     east_bndy_x_(),
     num_cells_x_(),
@@ -116,9 +116,9 @@ mtk::UniStgGrid1D::UniStgGrid1D(const UniStgGrid1D &grid):
               grid.discrete_domain_x_.begin() + grid.discrete_domain_x_.size(),
               discrete_domain_x_.begin());
 
-    std::copy(grid.discrete_field_u_.begin(),
-              grid.discrete_field_u_.begin() + grid.discrete_field_u_.size(),
-              discrete_field_u_.begin());
+    std::copy(grid.discrete_field_.begin(),
+              grid.discrete_field_.begin() + grid.discrete_field_.size(),
+              discrete_field_.begin());
 }
 
 mtk::UniStgGrid1D::UniStgGrid1D(const Real &west_bndy_x,
@@ -126,7 +126,7 @@ mtk::UniStgGrid1D::UniStgGrid1D(const Real &west_bndy_x,
                                 const int &num_cells_x,
                                 const mtk::FieldNature &nature) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(west_bndy_x < mtk::kZero, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(east_bndy_x < mtk::kZero, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(east_bndy_x <= west_bndy_x, __FILE__, __LINE__, __func__);
@@ -158,14 +158,14 @@ mtk::Real mtk::UniStgGrid1D::delta_x() const {
   return delta_x_;
 }
 
-mtk::Real *mtk::UniStgGrid1D::discrete_domain_x() {
+const mtk::Real *mtk::UniStgGrid1D::discrete_domain_x() const {
 
   return discrete_domain_x_.data();
 }
 
-mtk::Real *mtk::UniStgGrid1D::discrete_field_u() {
+mtk::Real *mtk::UniStgGrid1D::discrete_field() {
 
-  return discrete_field_u_.data();
+  return discrete_field_.data();
 }
 
 int mtk::UniStgGrid1D::num_cells_x() const {
@@ -174,9 +174,9 @@ int mtk::UniStgGrid1D::num_cells_x() const {
 }
 
 void mtk::UniStgGrid1D::BindScalarField(
-    mtk::Real (*ScalarField)(mtk::Real xx)) {
+    mtk::Real (*ScalarField)(const mtk::Real &xx)) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nature_ == mtk::VECTOR, __FILE__, __LINE__, __func__);
   #endif
 
@@ -198,21 +198,21 @@ void mtk::UniStgGrid1D::BindScalarField(
 
   /// 2. Create collection of field samples.
 
-  discrete_field_u_.reserve(num_cells_x_ + 2);
+  discrete_field_.reserve(num_cells_x_ + 2);
 
-  discrete_field_u_.push_back(ScalarField(west_bndy_x_));
+  discrete_field_.push_back(ScalarField(west_bndy_x_));
 
-  discrete_field_u_.push_back(ScalarField(first_center));
+  discrete_field_.push_back(ScalarField(first_center));
   for (auto ii = 1; ii < num_cells_x_; ++ii) {
-    discrete_field_u_.push_back(ScalarField(first_center + ii*delta_x_));
+    discrete_field_.push_back(ScalarField(first_center + ii*delta_x_));
   }
-  discrete_field_u_.push_back(ScalarField(east_bndy_x_));
+  discrete_field_.push_back(ScalarField(east_bndy_x_));
 }
 
 void mtk::UniStgGrid1D::BindVectorField(
     mtk::Real (*VectorField)(mtk::Real xx)) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nature_ == mtk::SCALAR, __FILE__, __LINE__, __func__);
   #endif
 
@@ -228,18 +228,18 @@ void mtk::UniStgGrid1D::BindVectorField(
 
   /// 2. Create collection of field samples.
 
-  discrete_field_u_.reserve(num_cells_x_ + 1);
+  discrete_field_.reserve(num_cells_x_ + 1);
 
-  discrete_field_u_.push_back(VectorField(west_bndy_x_));
+  discrete_field_.push_back(VectorField(west_bndy_x_));
   for (auto ii = 1; ii < num_cells_x_; ++ii) {
-    discrete_field_u_.push_back(VectorField(west_bndy_x_ + ii*delta_x_));
+    discrete_field_.push_back(VectorField(west_bndy_x_ + ii*delta_x_));
   }
-  discrete_field_u_.push_back(VectorField(east_bndy_x_));
+  discrete_field_.push_back(VectorField(east_bndy_x_));
 }
 
 bool mtk::UniStgGrid1D::WriteToFile(std::string filename,
                                     std::string space_name,
-                                    std::string field_name) {
+                                    std::string field_name) const {
 
   std::ofstream output_dat_file;  // Output file.
 
@@ -251,7 +251,7 @@ bool mtk::UniStgGrid1D::WriteToFile(std::string filename,
 
   output_dat_file << "# " << space_name <<  ' ' << field_name << std::endl;
   for (unsigned int ii = 0; ii < discrete_domain_x_.size(); ++ii) {
-    output_dat_file << discrete_domain_x_[ii] << ' ' << discrete_field_u_[ii] <<
+    output_dat_file << discrete_domain_x_[ii] << ' ' << discrete_field_[ii] <<
       std::endl;
   }
 

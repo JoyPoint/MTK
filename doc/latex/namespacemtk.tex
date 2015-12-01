@@ -9,10 +9,6 @@ Mimetic Methods Toolkit namespace.
 \subsection*{Classes}
 \begin{DoxyCompactItemize}
 \item 
-class \hyperlink{classmtk_1_1BCDesc1D}{B\+C\+Desc1\+D}
-\item 
-class \hyperlink{classmtk_1_1BCDesc2D}{B\+C\+Desc2\+D}
-\item 
 class \hyperlink{classmtk_1_1BLASAdapter}{B\+L\+A\+S\+Adapter}
 \begin{DoxyCompactList}\small\item\em Adapter class for the B\+L\+A\+S A\+P\+I. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix}
@@ -20,27 +16,31 @@ class \hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix}
 class \hyperlink{classmtk_1_1Div1D}{Div1\+D}
 \begin{DoxyCompactList}\small\item\em Implements a 1\+D mimetic divergence operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Div2D}{Div2\+D}
-\item 
+\begin{DoxyCompactList}\small\item\em Implements a 2\+D mimetic divergence operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1GLPKAdapter}{G\+L\+P\+K\+Adapter}
 \begin{DoxyCompactList}\small\item\em Adapter class for the G\+L\+P\+K A\+P\+I. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Grad1D}{Grad1\+D}
 \begin{DoxyCompactList}\small\item\em Implements a 1\+D mimetic gradient operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Grad2D}{Grad2\+D}
-\item 
+\begin{DoxyCompactList}\small\item\em Implements a 2\+D mimetic gradient operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Interp1D}{Interp1\+D}
 \begin{DoxyCompactList}\small\item\em Implements a 1\+D interpolation operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Interp2D}{Interp2\+D}
-\item 
+\begin{DoxyCompactList}\small\item\em Implements a 2\+D interpolation operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Lap1D}{Lap1\+D}
 \begin{DoxyCompactList}\small\item\em Implements a 1\+D mimetic Laplacian operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Lap2D}{Lap2\+D}
-\item 
+\begin{DoxyCompactList}\small\item\em Implements a 2\+D mimetic Laplacian operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1LAPACKAdapter}{L\+A\+P\+A\+C\+K\+Adapter}
 \begin{DoxyCompactList}\small\item\em Adapter class for the L\+A\+P\+A\+C\+K A\+P\+I. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Matrix}{Matrix}
 \begin{DoxyCompactList}\small\item\em Definition of the representation of a matrix in the M\+T\+K. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Quad1D}{Quad1\+D}
 \begin{DoxyCompactList}\small\item\em Implements a 1\+D mimetic quadrature. \end{DoxyCompactList}\item 
+class \hyperlink{classmtk_1_1RobinBCDescriptor1D}{Robin\+B\+C\+Descriptor1\+D}
+\begin{DoxyCompactList}\small\item\em Impose Robin boundary conditions on the operators and on the grids. \end{DoxyCompactList}\item 
+class \hyperlink{classmtk_1_1RobinBCDescriptor2D}{Robin\+B\+C\+Descriptor2\+D}
+\begin{DoxyCompactList}\small\item\em Impose Robin boundary conditions on the operators and on the grids. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Tools}{Tools}
 \begin{DoxyCompactList}\small\item\em Tool manager class. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1UniStgGrid1D}{Uni\+Stg\+Grid1\+D}
@@ -50,6 +50,10 @@ class \hyperlink{classmtk_1_1UniStgGrid2D}{Uni\+Stg\+Grid2\+D}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
+typedef \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}($\ast$ \hyperlink{group__c07-mim__ops_ga04276745b4d511f0f3c636d6e0df7c2d}{Coefficient\+Function0\+D} )(const \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&tt)
+\begin{DoxyCompactList}\small\item\em A function of a B\+C coefficient evaluated on a 0\+D domain and time. \end{DoxyCompactList}\item 
+typedef \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}($\ast$ \hyperlink{group__c07-mim__ops_gaa79593eeb6676d6011db339e01983909}{Coefficient\+Function1\+D} )(const \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&xx, const \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&tt)
+\begin{DoxyCompactList}\small\item\em A function of a B\+C coefficient evaluated on a 1\+D domain and time. \end{DoxyCompactList}\item 
 typedef float \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}
 \begin{DoxyCompactList}\small\item\em Users can simply change this to build a double-\/ or single-\/precision M\+T\+K. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Enumerations}
@@ -71,7 +75,7 @@ enum \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{Field\+Natu
 enum \hyperlink{group__c02-enums_ga674ec67bd1baa04e5dc06c2bcc351972}{Dir\+Interp} \{ \hyperlink{group__c02-enums_ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139}{S\+C\+A\+L\+A\+R\+\_\+\+T\+O\+\_\+\+V\+E\+C\+T\+O\+R}, 
 \hyperlink{group__c02-enums_ga674ec67bd1baa04e5dc06c2bcc351972a122cf2e24aef105e9214698206af6904}{V\+E\+C\+T\+O\+R\+\_\+\+T\+O\+\_\+\+S\+C\+A\+L\+A\+R}
  \}
-\begin{DoxyCompactList}\small\item\em 1\+D interpolation operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Interpolation operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -112,6 +116,8 @@ const float \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{k\+Z
 \begin{DoxyCompactList}\small\item\em M\+T\+K's zero defined according to selective compilation. \end{DoxyCompactList}\item 
 const float \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{k\+One} \{1.\+0f\}
 \begin{DoxyCompactList}\small\item\em M\+T\+K's one defined according to selective compilation. \end{DoxyCompactList}\item 
+const float \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{k\+Two} \{2.\+0f\}
+\begin{DoxyCompactList}\small\item\em M\+T\+K's two defined according to selective compilation. \end{DoxyCompactList}\item 
 const float \hyperlink{group__c01-roots_gae914b125d81d1b97e0aee7bbc7739786}{k\+Default\+Tolerance} \{1e-\/7f\}
 \begin{DoxyCompactList}\small\item\em Considered tolerance for comparisons in numerical methods. \end{DoxyCompactList}\item 
 const int \hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{k\+Default\+Order\+Accuracy} \{2\}

@@ -1,4 +1,4 @@
-.TH "mtk::LAPACKAdapter" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::LAPACKAdapter" 3 "Tue Dec 1 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -27,6 +27,10 @@ Adapter class for the LAPACK API\&.
 .br
 .RI "\fISolves a dense system of linear equations\&. \fP"
 .ti -1c
+.RI "static int \fBSolveDenseSystem\fP (\fBmtk::DenseMatrix\fP &mm, \fBmtk::UniStgGrid2D\fP &rhs)"
+.br
+.RI "\fISolves a dense system of linear equations\&. \fP"
+.ti -1c
 .RI "static int \fBSolveRectangularDenseSystem\fP (const \fBmtk::DenseMatrix\fP &aa, \fBmtk::Real\fP *ob_, int ob_ld_)"
 .br
 .RI "\fISolves overdetermined or underdetermined real linear systems\&. \fP"
@@ -48,7 +52,7 @@ http://www.netlib.org/lapack/
 .PP
 
 .PP
-Definition at line 92 of file mtk_lapack_adapter\&.h\&.
+Definition at line 93 of file mtk_lapack_adapter\&.h\&.
 .SH "Member Function Documentation"
 .PP 
 .SS "\fBmtk::DenseMatrix\fP mtk::LAPACKAdapter::QRFactorDenseMatrix (\fBmtk::DenseMatrix\fP &aa)\fC [static]\fP"
@@ -71,7 +75,7 @@ Adapts the MTK to LAPACK's routine\&.
 .PP
 
 .PP
-Definition at line 555 of file mtk_lapack_adapter\&.cc\&.
+Definition at line 593 of file mtk_lapack_adapter\&.cc\&.
 .SS "int mtk::LAPACKAdapter::SolveDenseSystem (\fBmtk::DenseMatrix\fP &mm, \fBmtk::Real\fP *rhs)\fC [static]\fP"
 Adapts the MTK to LAPACK's dgesv_ routine\&.
 .PP
@@ -115,7 +119,7 @@ Adapts the MTK to LAPACK's dgesv_ routine\&.
 .RS 4
 \fImatrix\fP Input matrix\&. 
 .br
-\fIrr\fP Input right-hand side from info on a grid\&.
+\fIrhs\fP Input right-hand side from info on a grid\&.
 .RE
 .PP
 \fBExceptions:\fP
@@ -126,6 +130,24 @@ Adapts the MTK to LAPACK's dgesv_ routine\&.
 
 .PP
 Definition at line 517 of file mtk_lapack_adapter\&.cc\&.
+.SS "int mtk::LAPACKAdapter::SolveDenseSystem (\fBmtk::DenseMatrix\fP &mm, \fBmtk::UniStgGrid2D\fP &rhs)\fC [static]\fP"
+Adapts the MTK to LAPACK's dgesv_ routine\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrix\fP Input matrix\&. 
+.br
+\fIrhs\fP Input right-hand side from info on a grid\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::bad_alloc\fP 
+.RE
+.PP
+
+.PP
+Definition at line 555 of file mtk_lapack_adapter\&.cc\&.
 .SS "int mtk::LAPACKAdapter::SolveRectangularDenseSystem (const \fBmtk::DenseMatrix\fP &aa, \fBmtk::Real\fP *ob_, intob_ld_)\fC [static]\fP"
 Adapts the MTK to LAPACK's routine\&.
 .PP
@@ -146,7 +168,7 @@ Success of the solution\&.
 .PP
 
 .PP
-Definition at line 756 of file mtk_lapack_adapter\&.cc\&.
+Definition at line 790 of file mtk_lapack_adapter\&.cc\&.
 
 .SH "Author"
 .PP 

@@ -63,6 +63,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 namespace mtk{
 
+/*!
+\class Div2D
+
+\ingroup c07-mim_ops
+
+\brief Implements a 2D mimetic divergence operator.
+
+This class implements a 2D divergence operator, constructed using the
+Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
+*/
 class Div2D {
  public:
   /// \brief Default constructor.
@@ -92,7 +102,7 @@ class Div2D {
 
   \return The operator as a dense matrix.
   */
-  DenseMatrix ReturnAsDenseMatrix();
+  DenseMatrix ReturnAsDenseMatrix() const;
 
  private:
   DenseMatrix divergence_;  ///< Actual operator.

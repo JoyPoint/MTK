@@ -78,26 +78,26 @@ bool mtk::Lap2D::ConstructLap2D(const mtk::UniStgGrid2D &grid,
                                 int order_accuracy,
                                 mtk::Real mimetic_threshold) {
 
-  int num_cells_x{grid.num_cells_x()};
-  int num_cells_y{grid.num_cells_y()};
-  int aux{(num_cells_x + 2)*(num_cells_y + 2)};
-
   mtk::Grad2D gg;
   mtk::Div2D dd;
 
   bool info{gg.ConstructGrad2D(grid, order_accuracy, mimetic_threshold)};
 
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
     std::cerr << "Mimetic lap could not be built." << std::endl;
     return info;
   }
+  #endif
 
   info = dd.ConstructDiv2D(grid, order_accuracy, mimetic_threshold);
 
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
     std::cerr << "Mimetic div could not be built." << std::endl;
     return info;
   }
+  #endif
 
   mtk::DenseMatrix ggm(gg.ReturnAsDenseMatrix());
   mtk::DenseMatrix ddm(dd.ReturnAsDenseMatrix());
@@ -107,12 +107,12 @@ bool mtk::Lap2D::ConstructLap2D(const mtk::UniStgGrid2D &grid,
   return info;
 }
 
-mtk::DenseMatrix mtk::Lap2D::ReturnAsDenseMatrix() {
+mtk::DenseMatrix mtk::Lap2D::ReturnAsDenseMatrix() const {
 
   return laplacian_;
 }
 
-mtk::Real* mtk::Lap2D::data() {
+mtk::Real *mtk::Lap2D::data() const {
 
   return laplacian_.data();
 }

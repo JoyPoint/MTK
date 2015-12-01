@@ -2,7 +2,7 @@
 }
 
 \begin{DoxyCode}
-00001 \textcolor{preprocessor}{# Makefile setup file for MTK.}
+00001 \textcolor{preprocessor}{# Makefile setup file for the MTK.}
 00002 
 00003 SHELL := /bin/bash
 00004 
@@ -74,104 +74,138 @@
 00070 \textcolor{stringliteral}{}
 00071 \textcolor{stringliteral}{CC = g++}
 00072 \textcolor{stringliteral}{}
-00073 \textcolor{stringliteral}{# Debug Level. Options are:}
-00074 \textcolor{stringliteral}{# 0. NO debug at all NOR any run-time checks... be cautious!}
-00075 \textcolor{stringliteral}{# 1. Verbose (execution messages) AND run-time checks.}
-00076 \textcolor{stringliteral}{# 2. Level 1 plus intermediate scalar-valued results.}
-00077 \textcolor{stringliteral}{# 3. Level 2 plus intermediate array-valued results.}
-00078 \textcolor{stringliteral}{}
-00079 \textcolor{stringliteral}{DEBUG\_LEVEL = 3}
-00080 \textcolor{stringliteral}{}
-00081 \textcolor{stringliteral}{# Flags recommended for release code:}
+00073 \textcolor{stringliteral}{# Selective Verbose Execution for Quick Debugging. Options are defined per}
+00074 \textcolor{stringliteral}{# concern, and per data hierarchy on each concern.}
+00075 \textcolor{stringliteral}{}
+00076 \textcolor{stringliteral}{# 0: NO verbose at all.}
+00077 \textcolor{stringliteral}{}
+00078 \textcolor{stringliteral}{# 1: Enable verbose down to the 7th concern: messages.}
+00079 \textcolor{stringliteral}{# 2: Enable verbose down to the 7th concern: messages + scalar results.}
+00080 \textcolor{stringliteral}{# 3: Enable verbose down to the 7th concern. 1.1. + array results.}
+00081 \textcolor{stringliteral}{# 4: Enable verbose down to the 7th concern. 1.2. + matrix results.}
 00082 \textcolor{stringliteral}{}
-00083 \textcolor{stringliteral}{CCFLAGS = -Wall -O3}
-00084 \textcolor{stringliteral}{}
-00085 \textcolor{stringliteral}{# Flags recommended for debugging code:}
-00086 \textcolor{stringliteral}{}
-00087 \textcolor{stringliteral}{CCFLAGS = -Wall -g}
-00088 \textcolor{stringliteral}{}
-00089 \textcolor{stringliteral}{#   7. Archiver, its flags, and ranlib:}
-00090 \textcolor{stringliteral}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
-00091 \textcolor{stringliteral}{}
-00092 \textcolor{stringliteral}{ARCH      = ar}
-00093 \textcolor{stringliteral}{ARCHFLAGS = cr}
-00094 \textcolor{stringliteral}{}
-00095 \textcolor{stringliteral}{# If your system does not have "ranlib" then set: "RANLIB = echo":}
-00096 \textcolor{stringliteral}{}
-00097 \textcolor{stringliteral}{RANLIB = echo}
-00098 \textcolor{stringliteral}{}
-00099 \textcolor{stringliteral}{# But, if possible:}
-00100 \textcolor{stringliteral}{}
-00101 \textcolor{stringliteral}{RANLIB = ranlib}
-00102 \textcolor{stringliteral}{}
-00103 \textcolor{stringliteral}{#   8. Valgrind'}s memcheck options (optional):
-00104 \textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
-00105 
-00106 MEMCHECK\_OPTS = -v --tool=memcheck --leak-check=full --show-leak-kinds=all \(\backslash\)
-00107 --track-origins=yes --freelist-vol=20000000
-00108 
-00109 \textcolor{preprocessor}{# Done! User, please, do not mess with the definitions from this point on.}
-00110 
-00111 \textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
-00112 \textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
-00113 \textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
-00114 
-00115 \textcolor{preprocessor}{#   MTK-related.}
-00116 \textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
-00117 
-00118 SRC       = $(BASE)/src
-00119 INCLUDE   = $(BASE)/include
-00120 LIB       = $(BASE)/lib
-00121 MTK\_LIB   = $(LIB)/libmtk.a
-00122 TESTS     = $(BASE)/tests
-00123 EXAMPLES  = $(BASE)/examples
-00124 
-00125 \textcolor{preprocessor}{#   Compiling-related.}
-00126 \textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
-00127 
-00128 CCFLAGS += -\hyperlink{namespacestd}{std}=c++11 -fPIC -DMTK\_DEBUG\_LEVEL=$(DEBUG\_LEVEL) -I$(INCLUDE)  -c
-00129 
-00130 ifeq ($(PRECISION),DOUBLE)
-00131   CCFLAGS += -DMTK\_PRECISION\_DOUBLE
-00132 else
-00133   CCFLAGS += -DMTK\_PRECISION\_SINGLE
-00134 endif
-00135 
-00136 \textcolor{preprocessor}{# Only the GLPK is included because the other dependencies are coded in Fortran.}
+00083 \textcolor{stringliteral}{# 5: Enable verbose down to the 6th concern: messages.}
+00084 \textcolor{stringliteral}{# 6: Enable verbose down to the 6th concern: messages + scalar results.}
+00085 \textcolor{stringliteral}{# 7: Enable verbose down to the 6th concern. 2.1. + array results.}
+00086 \textcolor{stringliteral}{# 8: Enable verbose down to the 6th concern. 2.2. + matrix results.}
+00087 \textcolor{stringliteral}{}
+00088 \textcolor{stringliteral}{# 9: Enable verbose down to the 5th concern: messages.}
+00089 \textcolor{stringliteral}{# 10: Enable verbose down to the 5th concern: messages + scalar results.}
+00090 \textcolor{stringliteral}{# 11: Enable verbose down to the 5th concern. 3.1. + array results.}
+00091 \textcolor{stringliteral}{# 12: Enable verbose down to the 5th concern. 3.2. + matrix results.}
+00092 \textcolor{stringliteral}{}
+00093 \textcolor{stringliteral}{# 13: Enable verbose down to the 4th concern: messages.}
+00094 \textcolor{stringliteral}{# 14: Enable verbose down to the 4th concern: messages + scalar results.}
+00095 \textcolor{stringliteral}{# 15: Enable verbose down to the 4th concern. 4.1. + array results.}
+00096 \textcolor{stringliteral}{# 16: Enable verbose down to the 4th concern. 4.2. + matrix results.}
+00097 \textcolor{stringliteral}{}
+00098 \textcolor{stringliteral}{VERBOSE\_LEVEL = 16}
+00099 \textcolor{stringliteral}{}
+00100 \textcolor{stringliteral}{# Enable preventions. In the MTK, methods first validate their required}
+00101 \textcolor{stringliteral}{# pre-conditions in run-time. Similarly, in many points throughout the MTK}
+00102 \textcolor{stringliteral}{# codebase, different sanity checks are performed, as well. If this symbol is}
+00103 \textcolor{stringliteral}{# defined to be 0, the MTK will # perform no validations to enhance execution}
+00104 \textcolor{stringliteral}{# performance. Options are:}
+00105 \textcolor{stringliteral}{# - YES.}
+00106 \textcolor{stringliteral}{# - NO.}
+00107 \textcolor{stringliteral}{}
+00108 \textcolor{stringliteral}{PERFORM\_PREVENTIONS = YES}
+00109 \textcolor{stringliteral}{}
+00110 \textcolor{stringliteral}{# Flags recommended for release code:}
+00111 \textcolor{stringliteral}{}
+00112 \textcolor{stringliteral}{CCFLAGS = -Wall -Werror -O3}
+00113 \textcolor{stringliteral}{}
+00114 \textcolor{stringliteral}{# Flags recommended for debugging code:}
+00115 \textcolor{stringliteral}{}
+00116 \textcolor{stringliteral}{CCFLAGS = -Wall -Werror -g}
+00117 \textcolor{stringliteral}{}
+00118 \textcolor{stringliteral}{#   7. Archiver, its flags, and ranlib:}
+00119 \textcolor{stringliteral}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+00120 \textcolor{stringliteral}{}
+00121 \textcolor{stringliteral}{ARCH      = ar}
+00122 \textcolor{stringliteral}{ARCHFLAGS = cr}
+00123 \textcolor{stringliteral}{}
+00124 \textcolor{stringliteral}{# If your system does not have "ranlib" then set: "RANLIB = echo":}
+00125 \textcolor{stringliteral}{}
+00126 \textcolor{stringliteral}{RANLIB = echo}
+00127 \textcolor{stringliteral}{}
+00128 \textcolor{stringliteral}{# But, if possible:}
+00129 \textcolor{stringliteral}{}
+00130 \textcolor{stringliteral}{RANLIB = ranlib}
+00131 \textcolor{stringliteral}{}
+00132 \textcolor{stringliteral}{#   8. Valgrind'}s memcheck options (optional):
+00133 \textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+00134 
+00135 MEMCHECK\_OPTS = -v --tool=memcheck --leak-check=full --show-leak-kinds=all \(\backslash\)
+00136   --track-origins=yes --freelist-vol=20000000
 00137 
-00138 ifeq ($(ATL\_OPT),ON)
-00139   CCFLAGS  += -I$(GLPK\_INC) $(ATLAS\_INC)
-00140 else
-00141   CCFLAGS  += -I$(GLPK\_INC)
-00142 endif
+00138 \textcolor{preprocessor}{# Done! User, please, do not mess with the definitions from this point on.}
+00139 
+00140 \textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+00141 \textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+00142 \textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
 00143 
-00144 \textcolor{preprocessor}{#   Linking-related.}
+00144 \textcolor{preprocessor}{#   MTK-related.}
 00145 \textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
 00146 
-00147 NOOPT\_LIBS  = $(LAPACK\_LIB) $(BLAS\_LIB) -lm $(GLPK\_LIB) -lstdc++
-00148 
-00149 OPT\_LIBS    = -L$(ATLAS\_LIB) -latlas -llapack -lblas -lm -latlas -lstdc++
-00150 
-00151 ifeq ($(PLAT),OSX)
-00152   LINKER  = g++
-00153   LINKER  += -framework Accelerate $(GLPK\_LIB) $(MTK\_LIB)
-00154 else
-00155   ifeq ($(ATL\_OPT),ON)
-00156     LINKER  = g++
-00157     LIBS = $(MTK\_LIB)
-00158     LIBS += $(OPT\_LIBS)
-00159   else
-00160     LINKER  = gfortran
-00161     LIBS = $(MTK\_LIB)
-00162     LIBS += $(NOOPT\_LIBS)
-00163   endif
+00147 SRC       = $(BASE)/src
+00148 INCLUDE   = $(BASE)/include
+00149 LIB       = $(BASE)/lib
+00150 MTK\_LIB   = $(LIB)/libmtk.a
+00151 TESTS     = $(BASE)/tests
+00152 EXAMPLES  = $(BASE)/examples
+00153 
+00154 \textcolor{preprocessor}{#   Compiling-related.}
+00155 \textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+00156 
+00157 CCFLAGS += -\hyperlink{namespacestd}{std}=c++11 -fPIC \(\backslash\)
+00158   -DMTK\_VERBOSE\_LEVEL=$(VERBOSE\_LEVEL) -I$(INCLUDE) -c
+00159 
+00160 ifeq ($(PRECISION),DOUBLE)
+00161   CCFLAGS += -DMTK\_PRECISION\_DOUBLE
+00162 else
+00163   CCFLAGS += -DMTK\_PRECISION\_SINGLE
 00164 endif
 00165 
-00166 \textcolor{preprocessor}{#   Documentation-related.}
-00167 \textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
-00168 
-00169 DOCGEN      = doxygen
-00170 DOCFILENAME = doc\_config.dxcf
-00171 DOC         = $(BASE)/doc
-00172 DOCFILE     = $(BASE)/$(DOCFILENAME)
+00166 ifeq ($(PERFORM\_PREVENTIONS),YES)
+00167   CCFLAGS += -DMTK\_PERFORM\_PREVENTIONS
+00168 endif
+00169 
+00170 \textcolor{preprocessor}{# Only the GLPK is included because the other dependencies are coded in Fortran.}
+00171 
+00172 ifeq ($(ATL\_OPT),ON)
+00173   CCFLAGS  += -I$(GLPK\_INC) $(ATLAS\_INC)
+00174 else
+00175   CCFLAGS  += -I$(GLPK\_INC)
+00176 endif
+00177 
+00178 \textcolor{preprocessor}{#   Linking-related.}
+00179 \textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+00180 
+00181 NOOPT\_LIBS  = $(LAPACK\_LIB) $(BLAS\_LIB) -lm $(GLPK\_LIB) -lstdc++
+00182 
+00183 OPT\_LIBS    = -L$(ATLAS\_LIB) -latlas -llapack -lblas -lm -latlas -lstdc++
+00184 
+00185 ifeq ($(PLAT),OSX)
+00186   LINKER  = g++
+00187   LINKER  += -framework Accelerate $(GLPK\_LIB) $(MTK\_LIB)
+00188 else
+00189   ifeq ($(ATL\_OPT),ON)
+00190     LINKER  = g++
+00191     LIBS = $(MTK\_LIB)
+00192     LIBS += $(OPT\_LIBS)
+00193   else
+00194     LINKER  = gfortran
+00195     LIBS = $(MTK\_LIB)
+00196     LIBS += $(NOOPT\_LIBS)
+00197   endif
+00198 endif
+00199 
+00200 \textcolor{preprocessor}{#   Documentation-related.}
+00201 \textcolor{preprocessor}{#   \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_}
+00202 
+00203 DOCGEN      = doxygen
+00204 DOCFILENAME = doc\_config.dxcf
+00205 DOC         = $(BASE)/doc
+00206 DOCFILE     = $(BASE)/$(DOCFILENAME)
 \end{DoxyCode}

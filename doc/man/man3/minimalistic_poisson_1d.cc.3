@@ -1,4 +1,4 @@
-.TH "examples/minimalistic_poisson_1d/minimalistic_poisson_1d.cc" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "examples/minimalistic_poisson_1d/minimalistic_poisson_1d.cc" 3 "Tue Dec 1 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -20,28 +20,21 @@ Poisson Equation on a 1D Uniform Staggered Grid with Robin BCs\&.
 .in -1c
 .SH "Detailed Description"
 .PP 
-We solve:
+We solve: \[ -\nabla^2 p(x) = s(x), \] for $ x \in \Omega = [a,b] = [0,1] $\&.
 .PP
-\[ \nabla^2 p(x) = -s(x), \].PP
-for $ x \in \Omega = [a,b] = [0,1] $\&.
+The source term function is defined as: \[ s(x) = -\frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1}, \] where $ \lambda = -1 $ is a real-valued parameter\&.
 .PP
-The source term function is defined as
+We consider Robin's boundary conditions of the form: \[ \alpha p(a) - \beta p'(a) = \omega, \] \[ \alpha p(b) + \beta p'(b) = \epsilon, \] where $ \alpha = -\exp(\lambda) $, $ \beta = (\exp(\lambda) - 1.0)/\lambda $, $ \omega = -1 $, and $ \epsilon = 0 $\&.
 .PP
-\[ s(x) = \frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1} \].PP
-where $ \lambda = -1 $ is a parameter\&.
+The analytical solution for this problem is given by: \[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \]
 .PP
-We consider Robin's boundary conditions of the form:
+The mimetic counterpart of this equation is: \[ -\breve{\mathbf{L}}^k_x \tilde{p} = \tilde{s}. \]
 .PP
-\[ \alpha p(a) - \beta p'(a) = \omega, \].PP
-\[ \alpha p(b) + \beta p'(b) = \epsilon. \].PP
-The analytical solution for this problem is given by
+Finally, we will solve this problem considering $ k = 2 $\&.
 .PP
-\[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \].PP
 \fBAuthor:\fP
 .RS 4
-: Eduardo J\&. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
-.PP
-: Raul Vargas--Navarro - vargasna at rohan dot sdsu dot edu 
+: Eduardo J\&. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu 
 .RE
 .PP
 
@@ -52,7 +45,7 @@ Definition in file \fBminimalistic_poisson_1d\&.cc\fP\&.
 .SS "int main ()"
 
 .PP
-Definition at line 167 of file minimalistic_poisson_1d\&.cc\&.
+Definition at line 164 of file minimalistic_poisson_1d\&.cc\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

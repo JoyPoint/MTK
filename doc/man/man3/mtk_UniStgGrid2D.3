@@ -1,4 +1,4 @@
-.TH "mtk::UniStgGrid2D" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::UniStgGrid2D" 3 "Tue Dec 1 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -31,11 +31,11 @@ Uniform 2D Staggered Grid\&.
 .br
 .RI "\fIDestructor\&. \fP"
 .ti -1c
-.RI "\fBReal\fP * \fBdiscrete_domain_x\fP ()"
+.RI "const \fBReal\fP * \fBdiscrete_domain_x\fP () const "
 .br
 .RI "\fIProvides access to the grid spatial data\&. \fP"
 .ti -1c
-.RI "\fBReal\fP * \fBdiscrete_domain_y\fP ()"
+.RI "const \fBReal\fP * \fBdiscrete_domain_y\fP () const "
 .br
 .RI "\fIProvides access to the grid spatial data\&. \fP"
 .ti -1c
@@ -79,15 +79,23 @@ Uniform 2D Staggered Grid\&.
 .br
 .RI "\fIProvides access to the computed $  y $\&. \fP"
 .ti -1c
-.RI "void \fBBindScalarField\fP (\fBReal\fP(*ScalarField)(\fBReal\fP xx, \fBReal\fP yy))"
+.RI "bool \fBBound\fP () const "
+.br
+.RI "\fIHave any field been bound to the grid? \fP"
+.ti -1c
+.RI "int \fBSize\fP () const "
+.br
+.RI "\fITotal number of samples in the grid\&. \fP"
+.ti -1c
+.RI "void \fBBindScalarField\fP (\fBReal\fP(*ScalarField)(const \fBReal\fP &xx, const \fBReal\fP &yy))"
 .br
 .RI "\fIBinds a given scalar field to the grid\&. \fP"
 .ti -1c
-.RI "void \fBBindVectorField\fP (\fBReal\fP(*VectorFieldPComponent)(\fBReal\fP xx, \fBReal\fP yy), \fBReal\fP(*VectorFieldQComponent)(\fBReal\fP xx, \fBReal\fP yy))"
+.RI "void \fBBindVectorField\fP (\fBReal\fP(*VectorFieldPComponent)(const \fBReal\fP &xx, const \fBReal\fP &yy), \fBReal\fP(*VectorFieldQComponent)(const \fBReal\fP &xx, const \fBReal\fP &yy))"
 .br
 .RI "\fIBinds a given vector field to the grid\&. \fP"
 .ti -1c
-.RI "bool \fBWriteToFile\fP (std::string filename, std::string space_name_x, std::string space_name_y, std::string field_name)"
+.RI "bool \fBWriteToFile\fP (std::string filename, std::string space_name_x, std::string space_name_y, std::string field_name) const "
 .br
 .RI "\fIWrites grid to a file compatible with Gnuplot 4\&.6\&. \fP"
 .in -1c
@@ -95,11 +103,11 @@ Uniform 2D Staggered Grid\&.
 
 .in +1c
 .ti -1c
-.RI "void \fBBindVectorFieldPComponent\fP (\fBReal\fP(*VectorFieldPComponent)(\fBReal\fP xx, \fBReal\fP yy))"
+.RI "void \fBBindVectorFieldPComponent\fP (\fBReal\fP(*VectorFieldPComponent)(const \fBReal\fP &xx, const \fBReal\fP &yy))"
 .br
 .RI "\fIBinds a given component of a vector field to the grid\&. \fP"
 .ti -1c
-.RI "void \fBBindVectorFieldQComponent\fP (\fBReal\fP(*VectorFieldQComponent)(\fBReal\fP xx, \fBReal\fP yy))"
+.RI "void \fBBindVectorFieldQComponent\fP (\fBReal\fP(*VectorFieldQComponent)(const \fBReal\fP &xx, const \fBReal\fP &yy))"
 .br
 .RI "\fIBinds a given component of a vector field to the grid\&. \fP"
 .in -1c
@@ -219,7 +227,7 @@ Definition at line 169 of file mtk_uni_stg_grid_2d\&.cc\&.
 Definition at line 203 of file mtk_uni_stg_grid_2d\&.cc\&.
 .SH "Member Function Documentation"
 .PP 
-.SS "void mtk::UniStgGrid2D::BindScalarField (\fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)ScalarField)"
+.SS "void mtk::UniStgGrid2D::BindScalarField (\fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &yy)ScalarField)"
 
 .PP
 \fBParameters:\fP
@@ -237,8 +245,8 @@ Create collection of field samples\&.
 .PP
 
 .PP
-Definition at line 250 of file mtk_uni_stg_grid_2d\&.cc\&.
-.SS "void mtk::UniStgGrid2D::BindVectorField (\fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)VectorFieldPComponent, \fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)VectorFieldQComponent)"
+Definition at line 275 of file mtk_uni_stg_grid_2d\&.cc\&.
+.SS "void mtk::UniStgGrid2D::BindVectorField (\fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &yy)VectorFieldPComponent, \fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &yy)VectorFieldQComponent)"
 We assume the field to be of the form:
 .PP
 \[ \mathbf{v}(x) = p(x, y)\hat{\mathbf{i}} + q(x, y)\hat{\mathbf{j}} \].PP
@@ -251,8 +259,8 @@ We assume the field to be of the form:
 .PP
 
 .PP
-Definition at line 393 of file mtk_uni_stg_grid_2d\&.cc\&.
-.SS "void mtk::UniStgGrid2D::BindVectorFieldPComponent (\fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)VectorFieldPComponent)\fC [private]\fP"
+Definition at line 423 of file mtk_uni_stg_grid_2d\&.cc\&.
+.SS "void mtk::UniStgGrid2D::BindVectorFieldPComponent (\fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &yy)VectorFieldPComponent)\fC [private]\fP"
 We assume the field to be of the form:
 .PP
 \[ \mathbf{v}(x) = p(x, y)\hat{\mathbf{i}} + q(x, y)\hat{\mathbf{j}} \].PP
@@ -271,8 +279,8 @@ Allocate space for discrete vector field and bind $ p $ component\&.
 .PP
 
 .PP
-Definition at line 300 of file mtk_uni_stg_grid_2d\&.cc\&.
-.SS "void mtk::UniStgGrid2D::BindVectorFieldQComponent (\fBReal\fP(*)(\fBReal\fP xx, \fBReal\fP yy)VectorFieldQComponent)\fC [private]\fP"
+Definition at line 330 of file mtk_uni_stg_grid_2d\&.cc\&.
+.SS "void mtk::UniStgGrid2D::BindVectorFieldQComponent (\fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &yy)VectorFieldQComponent)\fC [private]\fP"
 We assume the field to be of the form:
 .PP
 \[ \mathbf{v}(x) = p(x, y)\hat{\mathbf{i}} + q(x, y)\hat{\mathbf{j}} \].PP
@@ -287,7 +295,18 @@ Bind $ q $ component, since $ p $ component has already been bound\&.
 .PP
 
 .PP
-Definition at line 365 of file mtk_uni_stg_grid_2d\&.cc\&.
+Definition at line 395 of file mtk_uni_stg_grid_2d\&.cc\&.
+.SS "bool mtk::UniStgGrid2D::Bound () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+True is a field has been bound\&. 
+.RE
+.PP
+
+.PP
+Definition at line 255 of file mtk_uni_stg_grid_2d\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::UniStgGrid2D::delta_x () const"
 
 .PP
@@ -309,26 +328,40 @@ Computed $  y $\&.
 .PP
 
 .PP
-Definition at line 245 of file mtk_uni_stg_grid_2d\&.cc\&.
-.SS "\fBReal\fP* mtk::UniStgGrid2D::discrete_domain_x ()"
+Definition at line 250 of file mtk_uni_stg_grid_2d\&.cc\&.
+.SS "const \fBmtk::Real\fP * mtk::UniStgGrid2D::discrete_domain_x () const"
 
 .PP
 \fBReturns:\fP
 .RS 4
-Pointer to the spatial data\&. 
+Pointer to the spatial data\&.
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+Review const-correctness of the pointer we return\&. 
 .RE
 .PP
 
-.SS "\fBReal\fP* mtk::UniStgGrid2D::discrete_domain_y ()"
+.PP
+Definition at line 230 of file mtk_uni_stg_grid_2d\&.cc\&.
+.SS "const \fBmtk::Real\fP * mtk::UniStgGrid2D::discrete_domain_y () const"
 
 .PP
 \fBReturns:\fP
 .RS 4
-Pointer to the spatial data\&. 
+Pointer to the spatial data\&.
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+Review const-correctness of the pointer we return\&. 
 .RE
 .PP
 
-.SS "\fBReal\fP* mtk::UniStgGrid2D::discrete_field ()"
+.PP
+Definition at line 260 of file mtk_uni_stg_grid_2d\&.cc\&.
+.SS "\fBmtk::Real\fP * mtk::UniStgGrid2D::discrete_field ()"
 
 .PP
 \fBReturns:\fP
@@ -337,6 +370,8 @@ Pointer to the field data\&.
 .RE
 .PP
 
+.PP
+Definition at line 265 of file mtk_uni_stg_grid_2d\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::UniStgGrid2D::east_bndy () const"
 
 .PP
@@ -374,7 +409,7 @@ North boundary spatial coordinate\&.
 .PP
 
 .PP
-Definition at line 235 of file mtk_uni_stg_grid_2d\&.cc\&.
+Definition at line 240 of file mtk_uni_stg_grid_2d\&.cc\&.
 .SS "int mtk::UniStgGrid2D::num_cells_x () const"
 
 .PP
@@ -396,7 +431,18 @@ Number of cells of the grid\&.
 .PP
 
 .PP
-Definition at line 240 of file mtk_uni_stg_grid_2d\&.cc\&.
+Definition at line 245 of file mtk_uni_stg_grid_2d\&.cc\&.
+.SS "int mtk::UniStgGrid2D::Size () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Total number of samples in the grid\&. 
+.RE
+.PP
+
+.PP
+Definition at line 270 of file mtk_uni_stg_grid_2d\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::UniStgGrid2D::south_bndy () const"
 
 .PP
@@ -407,7 +453,7 @@ South boundary spatial coordinate\&.
 .PP
 
 .PP
-Definition at line 230 of file mtk_uni_stg_grid_2d\&.cc\&.
+Definition at line 235 of file mtk_uni_stg_grid_2d\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::UniStgGrid2D::west_bndy () const"
 
 .PP
@@ -419,7 +465,7 @@ West boundary spatial coordinate\&.
 
 .PP
 Definition at line 210 of file mtk_uni_stg_grid_2d\&.cc\&.
-.SS "bool mtk::UniStgGrid2D::WriteToFile (std::stringfilename, std::stringspace_name_x, std::stringspace_name_y, std::stringfield_name)"
+.SS "bool mtk::UniStgGrid2D::WriteToFile (std::stringfilename, std::stringspace_name_x, std::stringspace_name_y, std::stringfield_name) const"
 
 .PP
 \fBParameters:\fP
@@ -447,7 +493,7 @@ Write the values of the p component, with a null q component\&.
 .PP
 Write the values of the q component, with a null p component\&. 
 .PP
-Definition at line 405 of file mtk_uni_stg_grid_2d\&.cc\&.
+Definition at line 435 of file mtk_uni_stg_grid_2d\&.cc\&.
 .SH "Friends And Related Function Documentation"
 .PP 
 .SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::UniStgGrid2D\fP &in)\fC [friend]\fP"
@@ -465,51 +511,51 @@ Definition at line 67 of file mtk_uni_stg_grid_2d\&.cc\&.
 .SS "\fBReal\fP mtk::UniStgGrid2D::delta_x_\fC [private]\fP"
 
 .PP
-Definition at line 286 of file mtk_uni_stg_grid_2d\&.h\&.
+Definition at line 305 of file mtk_uni_stg_grid_2d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid2D::delta_y_\fC [private]\fP"
 
 .PP
-Definition at line 291 of file mtk_uni_stg_grid_2d\&.h\&.
+Definition at line 310 of file mtk_uni_stg_grid_2d\&.h\&.
 .SS "std::vector<\fBReal\fP> mtk::UniStgGrid2D::discrete_domain_x_\fC [private]\fP"
 
 .PP
-Definition at line 277 of file mtk_uni_stg_grid_2d\&.h\&.
+Definition at line 296 of file mtk_uni_stg_grid_2d\&.h\&.
 .SS "std::vector<\fBReal\fP> mtk::UniStgGrid2D::discrete_domain_y_\fC [private]\fP"
 
 .PP
-Definition at line 278 of file mtk_uni_stg_grid_2d\&.h\&.
+Definition at line 297 of file mtk_uni_stg_grid_2d\&.h\&.
 .SS "std::vector<\fBReal\fP> mtk::UniStgGrid2D::discrete_field_\fC [private]\fP"
 
 .PP
-Definition at line 279 of file mtk_uni_stg_grid_2d\&.h\&.
+Definition at line 298 of file mtk_uni_stg_grid_2d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid2D::east_bndy_\fC [private]\fP"
 
 .PP
-Definition at line 284 of file mtk_uni_stg_grid_2d\&.h\&.
+Definition at line 303 of file mtk_uni_stg_grid_2d\&.h\&.
 .SS "\fBFieldNature\fP mtk::UniStgGrid2D::nature_\fC [private]\fP"
 
 .PP
-Definition at line 281 of file mtk_uni_stg_grid_2d\&.h\&.
+Definition at line 300 of file mtk_uni_stg_grid_2d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid2D::north_bndy_\fC [private]\fP"
 
 .PP
-Definition at line 289 of file mtk_uni_stg_grid_2d\&.h\&.
+Definition at line 308 of file mtk_uni_stg_grid_2d\&.h\&.
 .SS "int mtk::UniStgGrid2D::num_cells_x_\fC [private]\fP"
 
 .PP
-Definition at line 285 of file mtk_uni_stg_grid_2d\&.h\&.
+Definition at line 304 of file mtk_uni_stg_grid_2d\&.h\&.
 .SS "int mtk::UniStgGrid2D::num_cells_y_\fC [private]\fP"
 
 .PP
-Definition at line 290 of file mtk_uni_stg_grid_2d\&.h\&.
+Definition at line 309 of file mtk_uni_stg_grid_2d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid2D::south_bndy_\fC [private]\fP"
 
 .PP
-Definition at line 288 of file mtk_uni_stg_grid_2d\&.h\&.
+Definition at line 307 of file mtk_uni_stg_grid_2d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid2D::west_bndy_\fC [private]\fP"
 
 .PP
-Definition at line 283 of file mtk_uni_stg_grid_2d\&.h\&.
+Definition at line 302 of file mtk_uni_stg_grid_2d\&.h\&.
 
 .SH "Author"
 .PP 

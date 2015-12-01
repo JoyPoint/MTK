@@ -56,28 +56,33 @@
 00068 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
 00069 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
 00070 \textcolor{preprocessor}{#include "\hyperlink{mtk__uni__stg__grid__1d_8h}{mtk\_uni\_stg\_grid\_1d.h}"}
-00071 
-00072 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk} \{
-00073 
-\hypertarget{mtk__lapack__adapter_8h_source_l00092}{}\hyperlink{classmtk_1_1LAPACKAdapter}{00092} \textcolor{keyword}{class }\hyperlink{classmtk_1_1LAPACKAdapter}{LAPACKAdapter} \{
-00093  \textcolor{keyword}{public}:
-00104   \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{SolveDenseSystem}(\hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &mm,
-00105                               \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *rhs);
-00106 
-00117   \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{SolveDenseSystem}(\hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &mm,
-00118                               \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &rr);
-00119 
-00130   \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{SolveDenseSystem}(\hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &mm,
-00131                               \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} &rhs);
-00132 
-00144   \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a380f148ffdf96bae2f79ae28f1a6560c}{SolveRectangularDenseSystem}(\textcolor{keyword}{const} 
-      \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &aa,
-00145                                          \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *ob\_,
-00146                                          \textcolor{keywordtype}{int} ob\_ld\_);
+00071 \textcolor{preprocessor}{#include "\hyperlink{mtk__uni__stg__grid__2d_8h}{mtk\_uni\_stg\_grid\_2d.h}"}
+00072 
+00073 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk} \{
+00074 
+\hypertarget{mtk__lapack__adapter_8h_source_l00093}{}\hyperlink{classmtk_1_1LAPACKAdapter}{00093} \textcolor{keyword}{class }\hyperlink{classmtk_1_1LAPACKAdapter}{LAPACKAdapter} \{
+00094  \textcolor{keyword}{public}:
+00105   \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{SolveDenseSystem}(\hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &mm,
+00106                               \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *rhs);
+00107 
+00118   \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{SolveDenseSystem}(\hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &mm,
+00119                               \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &rr);
+00120 
+00131   \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{SolveDenseSystem}(\hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &mm,
+00132                               \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} &rhs);
+00133 
+00134 
+00145   \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{SolveDenseSystem}(\hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &mm,
+00146                               \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} &rhs);
 00147 
-00159   \textcolor{keyword}{static} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1LAPACKAdapter_ae5c6e78c9c819c9ac7a6f31bfd011d7a}{QRFactorDenseMatrix}(
+00159   \textcolor{keyword}{static} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1LAPACKAdapter_a380f148ffdf96bae2f79ae28f1a6560c}{SolveRectangularDenseSystem}(\textcolor{keyword}{const} 
+      \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} &aa,
+00160                                          \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *ob\_,
+00161                                          \textcolor{keywordtype}{int} ob\_ld\_);
+00162 
+00174   \textcolor{keyword}{static} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1LAPACKAdapter_ae5c6e78c9c819c9ac7a6f31bfd011d7a}{QRFactorDenseMatrix}(
       \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} &matrix);
-00160 \};
-00161 \}
-00162 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_LAPACK\_ADAPTER\_H\_}
+00175 \};
+00176 \}
+00177 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_LAPACK\_ADAPTER\_H\_}
 \end{DoxyCode}

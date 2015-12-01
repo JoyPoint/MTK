@@ -68,7 +68,7 @@ void TestDefaultConstructor() {
   mtk::Tools::Assert(gg.delta_x() == mtk::kZero);
 }
 
-mtk::Real ScalarField(mtk::Real xx) {
+mtk::Real ScalarField(const mtk::Real &xx) {
 
   return 2.0*xx;
 }
@@ -109,8 +109,8 @@ void TestBindScalarFieldWriteToFile() {
 
   assertion =
     assertion &&
-    gg.discrete_field_u()[0] == 0.0 &&
-    gg.discrete_field_u()[gg.num_cells_x() + 2 - 1] == 2.0;
+    gg.discrete_field()[0] == 0.0 &&
+    gg.discrete_field()[gg.num_cells_x() + 2 - 1] == 2.0;
 
   if(!gg.WriteToFile("mtk_uni_stg_grid_1d_test_03.dat", "x", "u(x)")) {
     std::cerr << "Error writing to file." << std::endl;
@@ -143,8 +143,8 @@ void TestBindVectorField() {
 
   assertion =
     assertion &&
-    gg.discrete_field_u()[0] == 0.0 &&
-    gg.discrete_field_u()[gg.num_cells_x() + 1 - 1] == 1.0;
+    gg.discrete_field()[0] == 0.0 &&
+    gg.discrete_field()[gg.num_cells_x() + 1 - 1] == 1.0;
 
   if(!gg.WriteToFile("mtk_uni_stg_grid_1d_test_04.dat", "x", "v(x)")) {
     std::cerr << "Error writing to file." << std::endl;

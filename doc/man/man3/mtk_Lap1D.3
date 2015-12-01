@@ -1,4 +1,4 @@
-.TH "mtk::Lap1D" 3 "Tue Nov 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::Lap1D" 3 "Tue Dec 1 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -27,15 +27,27 @@ Implements a 1D mimetic Laplacian operator\&.
 .br
 .RI "\fIDestructor\&. \fP"
 .ti -1c
-.RI "bool \fBConstructLap1D\fP (int order_accuracy=\fBkDefaultOrderAccuracy\fP, \fBReal\fP mimetic_threshold=\fBkDefaultMimeticThreshold\fP)"
+.RI "int \fBorder_accuracy\fP () const "
+.br
+.RI "\fIOrder of accuracy of the operator\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBmimetic_threshold\fP () const "
+.br
+.RI "\fIMimetic threshold used in the CBS algorithm to construct this operator\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBdelta\fP () const "
+.br
+.RI "\fIValue of $ \Delta x $ used be scaled\&. If 0, then dimensionless\&. \fP"
+.ti -1c
+.RI "bool \fBConstructLap1D\fP (int \fBorder_accuracy\fP=\fBkDefaultOrderAccuracy\fP, \fBReal\fP \fBmimetic_threshold\fP=\fBkDefaultMimeticThreshold\fP)"
 .br
 .RI "\fIFactory method implementing the CBS Algorithm to build operator\&. \fP"
 .ti -1c
-.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP (const \fBUniStgGrid1D\fP &grid)"
+.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP (const \fBUniStgGrid1D\fP &grid) const "
 .br
 .RI "\fIReturn the operator as a dense matrix\&. \fP"
 .ti -1c
-.RI "\fBmtk::Real\fP * \fBdata\fP (const \fBUniStgGrid1D\fP &grid)"
+.RI "const \fBmtk::Real\fP * \fBdata\fP (const \fBUniStgGrid1D\fP &grid) const "
 .br
 .RI "\fIReturn the operator as a dense array\&. \fP"
 .in -1c
@@ -54,6 +66,10 @@ Implements a 1D mimetic Laplacian operator\&.
 .RI "\fBReal\fP * \fBlaplacian_\fP"
 .br
 .RI "\fIOutput array containing the operator and weights\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBdelta_\fP"
+.br
+.RI "\fI< If 0\&.0, then this Laplacian is dimensionless\&. \fP"
 .ti -1c
 .RI "\fBReal\fP \fBmimetic_threshold_\fP"
 .br
@@ -90,7 +106,7 @@ Definition at line 108 of file mtk_lap_1d\&.cc\&.
 .SS "mtk::Lap1D::~Lap1D ()"
 
 .PP
-Definition at line 113 of file mtk_lap_1d\&.cc\&.
+Definition at line 114 of file mtk_lap_1d\&.cc\&.
 .SH "Member Function Documentation"
 .PP 
 .SS "bool mtk::Lap1D::ConstructLap1D (intorder_accuracy = \fC\fBkDefaultOrderAccuracy\fP\fP, \fBmtk::Real\fPmimetic_threshold = \fC\fBkDefaultMimeticThreshold\fP\fP)"
@@ -116,7 +132,7 @@ Extract the coefficients from the matrix and store them in the array\&.
 .PP
 \fBWarning:\fP
 .RS 4
-We do not compute weights for this operator\&.
+We do not compute weights for this operator\&.\&.\&. no need to!
 .RE
 .PP
 .IP "1." 4
@@ -128,8 +144,8 @@ We DO NOT have weights in this operator\&. Copy mimetic bndy coeffs\&.
 .PP
 
 .PP
-Definition at line 119 of file mtk_lap_1d\&.cc\&.
-.SS "\fBmtk::Real\fP * mtk::Lap1D::data (const \fBUniStgGrid1D\fP &grid)"
+Definition at line 135 of file mtk_lap_1d\&.cc\&.
+.SS "const \fBmtk::Real\fP * mtk::Lap1D::data (const \fBUniStgGrid1D\fP &grid) const"
 
 .PP
 \fBReturns:\fP
@@ -139,8 +155,41 @@ The operator as a dense array\&.
 .PP
 
 .PP
-Definition at line 332 of file mtk_lap_1d\&.cc\&.
-.SS "\fBmtk::DenseMatrix\fP mtk::Lap1D::ReturnAsDenseMatrix (const \fBUniStgGrid1D\fP &grid)"
+Definition at line 356 of file mtk_lap_1d\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::Lap1D::delta () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Value of $ \Delta x $ used be scaled\&. If 0, then dimensionless\&. 
+.RE
+.PP
+
+.PP
+Definition at line 130 of file mtk_lap_1d\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::Lap1D::mimetic_threshold () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Mimetic threshold used in the CBS algorithm to construct operator\&. 
+.RE
+.PP
+
+.PP
+Definition at line 125 of file mtk_lap_1d\&.cc\&.
+.SS "int mtk::Lap1D::order_accuracy () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Order of accuracy of the operator\&. 
+.RE
+.PP
+
+.PP
+Definition at line 120 of file mtk_lap_1d\&.cc\&.
+.SS "\fBmtk::DenseMatrix\fP mtk::Lap1D::ReturnAsDenseMatrix (const \fBUniStgGrid1D\fP &grid) const"
 
 .PP
 \fBReturns:\fP
@@ -164,7 +213,7 @@ We could create two matrices of the requested size and multiply them, but that w
 .PP
 
 .PP
-Definition at line 265 of file mtk_lap_1d\&.cc\&.
+Definition at line 286 of file mtk_lap_1d\&.cc\&.
 .SH "Friends And Related Function Documentation"
 .PP 
 .SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::Lap1D\fP &in)\fC [friend]\fP"
@@ -181,22 +230,26 @@ No weights, thus print the mimetic boundary coefficients\&.
 Definition at line 73 of file mtk_lap_1d\&.cc\&.
 .SH "Member Data Documentation"
 .PP 
+.SS "\fBReal\fP mtk::Lap1D::delta_\fC [mutable]\fP, \fC [private]\fP"
+
+.PP
+Definition at line 143 of file mtk_lap_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Lap1D::laplacian_\fC [private]\fP"
 
 .PP
-Definition at line 120 of file mtk_lap_1d\&.h\&.
+Definition at line 141 of file mtk_lap_1d\&.h\&.
 .SS "int mtk::Lap1D::laplacian_length_\fC [private]\fP"
 
 .PP
-Definition at line 118 of file mtk_lap_1d\&.h\&.
+Definition at line 139 of file mtk_lap_1d\&.h\&.
 .SS "\fBReal\fP mtk::Lap1D::mimetic_threshold_\fC [private]\fP"
 
 .PP
-Definition at line 122 of file mtk_lap_1d\&.h\&.
+Definition at line 145 of file mtk_lap_1d\&.h\&.
 .SS "int mtk::Lap1D::order_accuracy_\fC [private]\fP"
 
 .PP
-Definition at line 117 of file mtk_lap_1d\&.h\&.
+Definition at line 138 of file mtk_lap_1d\&.h\&.
 
 .SH "Author"
 .PP 

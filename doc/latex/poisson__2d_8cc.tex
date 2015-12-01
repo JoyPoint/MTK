@@ -1,0 +1,67 @@
+\hypertarget{poisson__2d_8cc}{\section{examples/poisson\+\_\+2d/poisson\+\_\+2d.cc File Reference}
+\label{poisson__2d_8cc}\index{examples/poisson\+\_\+2d/poisson\+\_\+2d.\+cc@{examples/poisson\+\_\+2d/poisson\+\_\+2d.\+cc}}
+}
+
+
+Poisson Equation on a 2\+D Uniform Staggered Grid with Robin B\+Cs.  
+
+
+{\ttfamily \#include $<$iostream$>$}\\*
+Include dependency graph for poisson\+\_\+2d.\+cc\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=200pt]{poisson__2d_8cc__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{poisson__2d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+We solve\+:
+
+\[ \nabla^2 u(\mathbf{x}) = s(\mathbf{x}), \]
+
+for $ \mathbf{x} \in \Omega = [0,1]^2 $.
+
+The source term function is defined as
+
+\[ s(x,y) = xye^{-0.5(x^2 + y^2)}(x^2 + y^2 - 6). \]
+
+Let $ \Omega = S \cup N \cup W \cup E$. We consider Dirichlet boundary conditions of the following form\+: \[ \forall\mathbf{x}\in W: u(\mathbf{x}) = 0. \]
+
+\[ \forall\mathbf{x}\in E: u(1,y) = -e^{-0.5(1 - y^2)}(1 - y^2). \]
+
+\[ \forall\mathbf{x}\in S: u(\mathbf{x}) = 0. \]
+
+\[ \forall\mathbf{x}\in N: u(x,1) = -e^{-0.5(x^2 - 1)}(x^2 - 1). \]
+
+The analytical solution for this problem is given by
+
+\[ u(x,y) = xye^{-0.5(x^2 + y^2)}. \]
+
+\begin{DoxyAuthor}{Author}
+\+: Eduardo J. Sanchez (ejspeiro) -\/ esanchez at mail dot sdsu dot edu 
+\end{DoxyAuthor}
+
+
+Definition in file \hyperlink{poisson__2d_8cc_source}{poisson\+\_\+2d.\+cc}.
+
+
+
+\subsection{Function Documentation}
+\hypertarget{poisson__2d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{\index{poisson\+\_\+2d.\+cc@{poisson\+\_\+2d.\+cc}!main@{main}}
+\index{main@{main}!poisson\+\_\+2d.\+cc@{poisson\+\_\+2d.\+cc}}
+\subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{poisson__2d_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}
+
+
+Definition at line \hyperlink{poisson__2d_8cc_source_l00248}{248} of file \hyperlink{poisson__2d_8cc_source}{poisson\+\_\+2d.\+cc}.
+

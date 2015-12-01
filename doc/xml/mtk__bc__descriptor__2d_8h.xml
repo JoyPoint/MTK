@@ -1,0 +1,245 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="mtk__bc__descriptor__2d_8h" kind="file">
+    <compoundname>mtk_bc_descriptor_2d.h</compoundname>
+    <includes refid="mtk__roots_8h" local="yes">mtk_roots.h</includes>
+    <includes refid="mtk__dense__matrix_8h" local="yes">mtk_dense_matrix.h</includes>
+    <includes refid="mtk__uni__stg__grid__2d_8h" local="yes">mtk_uni_stg_grid_2d.h</includes>
+    <includedby refid="mtk_8h" local="yes">include/mtk.h</includedby>
+    <includedby refid="mtk__bc__descriptor__2d_8cc" local="yes">src/mtk_bc_descriptor_2d.cc</includedby>
+    <incdepgraph>
+      <node id="746">
+        <label>mtk_dense_matrix.h</label>
+        <link refid="mtk__dense__matrix_8h"/>
+        <childnode refid="747" relation="include">
+        </childnode>
+        <childnode refid="745" relation="include">
+        </childnode>
+        <childnode refid="748" relation="include">
+        </childnode>
+        <childnode refid="749" relation="include">
+        </childnode>
+      </node>
+      <node id="744">
+        <label>include/mtk_bc_descriptor_2d.h</label>
+        <link refid="mtk_bc_descriptor_2d.h"/>
+        <childnode refid="745" relation="include">
+        </childnode>
+        <childnode refid="746" relation="include">
+        </childnode>
+        <childnode refid="750" relation="include">
+        </childnode>
+      </node>
+      <node id="749">
+        <label>mtk_matrix.h</label>
+        <link refid="mtk__matrix_8h"/>
+        <childnode refid="747" relation="include">
+        </childnode>
+        <childnode refid="745" relation="include">
+        </childnode>
+        <childnode refid="748" relation="include">
+        </childnode>
+      </node>
+      <node id="745">
+        <label>mtk_roots.h</label>
+        <link refid="mtk__roots_8h"/>
+      </node>
+      <node id="752">
+        <label>string</label>
+      </node>
+      <node id="751">
+        <label>vector</label>
+      </node>
+      <node id="750">
+        <label>mtk_uni_stg_grid_2d.h</label>
+        <link refid="mtk__uni__stg__grid__2d_8h"/>
+        <childnode refid="751" relation="include">
+        </childnode>
+        <childnode refid="752" relation="include">
+        </childnode>
+        <childnode refid="745" relation="include">
+        </childnode>
+        <childnode refid="748" relation="include">
+        </childnode>
+        <childnode refid="746" relation="include">
+        </childnode>
+      </node>
+      <node id="747">
+        <label>iostream</label>
+      </node>
+      <node id="748">
+        <label>mtk_enums.h</label>
+        <link refid="mtk__enums_8h"/>
+      </node>
+    </incdepgraph>
+    <invincdepgraph>
+      <node id="753">
+        <label>include/mtk_bc_descriptor_2d.h</label>
+        <link refid="mtk_bc_descriptor_2d.h"/>
+        <childnode refid="754" relation="include">
+        </childnode>
+        <childnode refid="755" relation="include">
+        </childnode>
+      </node>
+      <node id="755">
+        <label>src/mtk_bc_descriptor_2d.cc</label>
+        <link refid="mtk__bc__descriptor__2d_8cc"/>
+      </node>
+      <node id="754">
+        <label>include/mtk.h</label>
+        <link refid="mtk_8h"/>
+      </node>
+    </invincdepgraph>
+    <innerclass refid="classmtk_1_1BCDescriptor2D" prot="public">mtk::BCDescriptor2D</innerclass>
+    <innernamespace refid="namespacemtk">mtk</innernamespace>
+    <briefdescription>
+<para>Imposes mimetic boundary conditions on the operators and on the grids. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class presents an interface for the user to specify mimetic boundary conditions on 2D mimetic operators and the grids they are acting on.</para><para><bold>Def.</bold> Let <formula id="57">$ f(t,\mathbf{x}) $</formula> be any scalar field defined over a domain <formula id="33">$ \Omega $</formula> on a given time snapshot <formula id="64">$ t \in [t_0,t_n] $</formula>. Any linear combination of <formula id="32">$ f $</formula> and its <formula id="59">$ m $</formula> derivatives fulfilling a condition <formula id="60">$ \beta(t,\mathbf{x}) $</formula> is defined as a <bold>boundary condition</bold>:</para><para><formula id="67">\[ \forall t \in [t_0,t_n]\; \forall \mathbf{x} \in \partial\Omega: \sum_{i = 0}^{m} c_i(\mathbf{x},t) &lt;\hat{\mathbf{n}}, \frac{\partial^i f}{\partial \mathbf{x}^i}(\mathbf{x},t)&gt; = \beta(\mathbf{x},t). \]</formula></para><para>This class receives information about all possible coefficient functions, <formula id="62">$ c_i(\mathbf{x},t) $</formula> for any subset of the boundary (south, north, west and east), and every condition <formula id="63">$\beta(\mathbf{x},t) $</formula> for any subset of the boundary, and takes care of assigning them to both the differentiation matrices and the grids. The highest order of differentiation is computed based on how many coefficients have been given at run-time.</para><para><simplesect kind="warning"><para>For now, we only support orders as high as 1.</para></simplesect>
+<simplesect kind="see"><para><ulink url="http://mathworld.wolfram.com/NormalVector.html">http://mathworld.wolfram.com/NormalVector.html</ulink></para></simplesect>
+<simplesect kind="author"><para>: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="36"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">Copyright<sp/>(C)<sp/>2015,<sp/>Computational<sp/>Science<sp/>Research<sp/>Center,<sp/>San<sp/>Diego<sp/>State</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">University.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="39"><highlight class="comment"></highlight></codeline>
+<codeline lineno="40"><highlight class="comment">Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,</highlight></codeline>
+<codeline lineno="41"><highlight class="comment">are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="42"><highlight class="comment"></highlight></codeline>
+<codeline lineno="43"><highlight class="comment">1.<sp/>Modifications<sp/>to<sp/>source<sp/>code<sp/>should<sp/>be<sp/>reported<sp/>to:<sp/>esanchez@mail.sdsu.edu</highlight></codeline>
+<codeline lineno="44"><highlight class="comment">and<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>modified<sp/>files<sp/>should<sp/>be<sp/>reported<sp/>once<sp/>modifications<sp/>are</highlight></codeline>
+<codeline lineno="45"><highlight class="comment">completed,<sp/>unless<sp/>these<sp/>modifications<sp/>are<sp/>made<sp/>through<sp/>the<sp/>project&apos;s<sp/>GitHub</highlight></codeline>
+<codeline lineno="46"><highlight class="comment">page:<sp/>http://www.csrc.sdsu.edu/mtk.<sp/>Documentation<sp/>related<sp/>to<sp/>said<sp/>modifications</highlight></codeline>
+<codeline lineno="47"><highlight class="comment">should<sp/>be<sp/>developed<sp/>and<sp/>included<sp/>in<sp/>any<sp/>deliverable.</highlight></codeline>
+<codeline lineno="48"><highlight class="comment"></highlight></codeline>
+<codeline lineno="49"><highlight class="comment">2.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>be<sp/>done<sp/>through<sp/>direct</highlight></codeline>
+<codeline lineno="50"><highlight class="comment">downloads<sp/>from<sp/>the<sp/>project&apos;s<sp/>GitHub<sp/>page:<sp/>http://www.csrc.sdsu.edu/mtk</highlight></codeline>
+<codeline lineno="51"><highlight class="comment"></highlight></codeline>
+<codeline lineno="52"><highlight class="comment">3.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,</highlight></codeline>
+<codeline lineno="53"><highlight class="comment">this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or</highlight></codeline>
+<codeline lineno="54"><highlight class="comment">other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="55"><highlight class="comment"></highlight></codeline>
+<codeline lineno="56"><highlight class="comment">4.<sp/>Usage<sp/>of<sp/>the<sp/>binary<sp/>form<sp/>on<sp/>proprietary<sp/>applications<sp/>shall<sp/>require<sp/>explicit</highlight></codeline>
+<codeline lineno="57"><highlight class="comment">prior<sp/>written<sp/>permission<sp/>from<sp/>the<sp/>the<sp/>copyright<sp/>holders,<sp/>and<sp/>due<sp/>credit<sp/>should</highlight></codeline>
+<codeline lineno="58"><highlight class="comment">be<sp/>given<sp/>to<sp/>the<sp/>copyright<sp/>holders.</highlight></codeline>
+<codeline lineno="59"><highlight class="comment"></highlight></codeline>
+<codeline lineno="60"><highlight class="comment">5.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors</highlight></codeline>
+<codeline lineno="61"><highlight class="comment">may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without</highlight></codeline>
+<codeline lineno="62"><highlight class="comment">specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="63"><highlight class="comment"></highlight></codeline>
+<codeline lineno="64"><highlight class="comment">The<sp/>copyright<sp/>holders<sp/>provide<sp/>no<sp/>reassurances<sp/>that<sp/>the<sp/>source<sp/>code<sp/>provided<sp/>does</highlight></codeline>
+<codeline lineno="65"><highlight class="comment">not<sp/>infringe<sp/>any<sp/>patent,<sp/>copyright,<sp/>or<sp/>any<sp/>other<sp/>intellectual<sp/>property<sp/>rights<sp/>of</highlight></codeline>
+<codeline lineno="66"><highlight class="comment">third<sp/>parties.<sp/>The<sp/>copyright<sp/>holders<sp/>disclaim<sp/>any<sp/>liability<sp/>to<sp/>any<sp/>recipient<sp/>for</highlight></codeline>
+<codeline lineno="67"><highlight class="comment">claims<sp/>brought<sp/>against<sp/>recipient<sp/>by<sp/>any<sp/>third<sp/>party<sp/>for<sp/>infringement<sp/>of<sp/>that</highlight></codeline>
+<codeline lineno="68"><highlight class="comment">parties<sp/>intellectual<sp/>property<sp/>rights.</highlight></codeline>
+<codeline lineno="69"><highlight class="comment"></highlight></codeline>
+<codeline lineno="70"><highlight class="comment">THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND</highlight></codeline>
+<codeline lineno="71"><highlight class="comment">ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED</highlight></codeline>
+<codeline lineno="72"><highlight class="comment">WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE</highlight></codeline>
+<codeline lineno="73"><highlight class="comment">DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR</highlight></codeline>
+<codeline lineno="74"><highlight class="comment">ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES</highlight></codeline>
+<codeline lineno="75"><highlight class="comment">(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;</highlight></codeline>
+<codeline lineno="76"><highlight class="comment">LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON</highlight></codeline>
+<codeline lineno="77"><highlight class="comment">ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT</highlight></codeline>
+<codeline lineno="78"><highlight class="comment">(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="79"><highlight class="comment">SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="80"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight><highlight class="preprocessor">#ifndef<sp/>MTK_INCLUDE_BC_DESCRIPTOR_2D_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="83"><highlight class="normal"></highlight><highlight class="preprocessor">#define<sp/>MTK_INCLUDE_BC_DESCRIPTOR_2D_H_</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="84"><highlight class="normal"></highlight></codeline>
+<codeline lineno="85"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk__roots_8h" kindref="compound">mtk_roots.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="86"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk__dense__matrix_8h" kindref="compound">mtk_dense_matrix.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk__uni__stg__grid__2d_8h" kindref="compound">mtk_uni_stg_grid_2d.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="88"><highlight class="normal"></highlight></codeline>
+<codeline lineno="89" refid="namespacemtk" refkind="compound"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacemtk" kindref="compound">mtk</ref>{</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"></highlight></codeline>
+<codeline lineno="98" refid="group__c07-mim__ops_1gad9e1c0ace886b0029aefffa5f320e852" refkind="member"><highlight class="keyword">typedef</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>(*<ref refid="group__c07-mim__ops_1gad9e1c0ace886b0029aefffa5f320e852" kindref="member">CoefficientFunction2D</ref>)(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>&amp;,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>Real<sp/>&amp;);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130" refid="classmtk_1_1BCDescriptor2D" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmtk_1_1BCDescriptor2D" kindref="compound">BCDescriptor2D</ref><sp/>{</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1BCDescriptor2D_1abbc3af29202dbfef203f4cafd9566fd0" kindref="member">BCDescriptor2D</ref>();</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"></highlight></codeline>
+<codeline lineno="140"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1BCDescriptor2D_1abbc3af29202dbfef203f4cafd9566fd0" kindref="member">BCDescriptor2D</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D" kindref="compound">BCDescriptor2D</ref><sp/>&amp;desc);</highlight></codeline>
+<codeline lineno="141"><highlight class="normal"></highlight></codeline>
+<codeline lineno="143"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1BCDescriptor2D_1ae14e62548a8bc080d576fff6937c546b" kindref="member">~BCDescriptor2D</ref>()<sp/>noexcept;</highlight></codeline>
+<codeline lineno="144"><highlight class="normal"></highlight></codeline>
+<codeline lineno="150"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a0fa469ddf6ff76e2858d6d3b76cc8b6f" kindref="member">highest_order_diff_west</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept;</highlight></codeline>
+<codeline lineno="151"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a5a9b80a2e9e579b05d9f3589d80448b6" kindref="member">highest_order_diff_east</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept;</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="164"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a463d909f6014e7f01b33171a06d7b400" kindref="member">highest_order_diff_south</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept;</highlight></codeline>
+<codeline lineno="165"><highlight class="normal"></highlight></codeline>
+<codeline lineno="171"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a87c5f2449247d65ea07784ba2ec61bc7" kindref="member">highest_order_diff_north</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept;</highlight></codeline>
+<codeline lineno="172"><highlight class="normal"></highlight></codeline>
+<codeline lineno="178"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a3da32ba89cfb15032bb1156394bad98c" kindref="member">PushBackWestCoeff</ref>(<ref refid="group__c07-mim__ops_1gad9e1c0ace886b0029aefffa5f320e852" kindref="member">CoefficientFunction2D</ref><sp/>cw);</highlight></codeline>
+<codeline lineno="179"><highlight class="normal"></highlight></codeline>
+<codeline lineno="185"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a27635428a6c36d1e305cafdc68271063" kindref="member">PushBackEastCoeff</ref>(<ref refid="group__c07-mim__ops_1gad9e1c0ace886b0029aefffa5f320e852" kindref="member">CoefficientFunction2D</ref><sp/>ce);</highlight></codeline>
+<codeline lineno="186"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a9eb891f14c68968a0113632fa5fea630" kindref="member">PushBackSouthCoeff</ref>(<ref refid="group__c07-mim__ops_1gad9e1c0ace886b0029aefffa5f320e852" kindref="member">CoefficientFunction2D</ref><sp/>cs);</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"></highlight></codeline>
+<codeline lineno="199"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a0fed58bd058d699a572888fe4b9934a4" kindref="member">PushBackNorthCoeff</ref>(<ref refid="group__c07-mim__ops_1gad9e1c0ace886b0029aefffa5f320e852" kindref="member">CoefficientFunction2D</ref><sp/>cn);</highlight></codeline>
+<codeline lineno="200"><highlight class="normal"></highlight></codeline>
+<codeline lineno="206"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a006050efe15b1be75b36a74a23051392" kindref="member">set_west_condition</ref>(Real<sp/>(*west_condition)(Real<sp/>xx,<sp/>Real<sp/>yy))<sp/>noexcept;</highlight></codeline>
+<codeline lineno="207"><highlight class="normal"></highlight></codeline>
+<codeline lineno="213"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a4ba8690e845f59a1507b056f3fc8061e" kindref="member">set_east_condition</ref>(Real<sp/>(*east_condition)(Real<sp/>xx,<sp/>Real<sp/>yy))<sp/>noexcept;</highlight></codeline>
+<codeline lineno="214"><highlight class="normal"></highlight></codeline>
+<codeline lineno="220"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a408f159cc44d7ee610191efb8ed48b2a" kindref="member">set_south_condition</ref>(Real<sp/>(*south_condition)(Real<sp/>xx,<sp/>Real<sp/>yy))<sp/>noexcept;</highlight></codeline>
+<codeline lineno="221"><highlight class="normal"></highlight></codeline>
+<codeline lineno="227"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a690f6881a88b202c074d9f90f2a7ddb0" kindref="member">set_north_condition</ref>(Real<sp/>(*north_condition)(Real<sp/>xx,<sp/>Real<sp/>yy))<sp/>noexcept;</highlight></codeline>
+<codeline lineno="228"><highlight class="normal"></highlight></codeline>
+<codeline lineno="236"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a35592617dda3b965b680b2a1355122f4" kindref="member">ImposeOnLaplacianMatrix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid2D" kindref="compound">UniStgGrid2D</ref><sp/>&amp;grid,</highlight></codeline>
+<codeline lineno="237"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;matrix,</highlight></codeline>
+<codeline lineno="238"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;order_accuracy<sp/>=<sp/>2)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="239"><highlight class="normal"></highlight></codeline>
+<codeline lineno="245"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a5f0ff1fda1b5266dcd77ba2301c8ba2c" kindref="member">ImposeOnGrid</ref>(<ref refid="classmtk_1_1UniStgGrid2D" kindref="compound">UniStgGrid2D</ref><sp/>&amp;grid)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="246"><highlight class="normal"></highlight></codeline>
+<codeline lineno="247"><highlight class="normal"></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="255"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a0188a64f242ae6015385a4597934fcda" kindref="member">ImposeOnSouthBoundaryNoSpace</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid2D" kindref="compound">mtk::UniStgGrid2D</ref><sp/>&amp;grid,</highlight></codeline>
+<codeline lineno="256"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>&amp;matrix,</highlight></codeline>
+<codeline lineno="257"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;order_accuracy)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="265"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a5e7d4b9deba6c07170e983eb1c0e9776" kindref="member">ImposeOnNorthBoundaryNoSpace</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid2D" kindref="compound">mtk::UniStgGrid2D</ref><sp/>&amp;grid,</highlight></codeline>
+<codeline lineno="266"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>&amp;matrix,</highlight></codeline>
+<codeline lineno="267"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;order_accuracy)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="275"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a0b153abdcb78c54197858148c9632517" kindref="member">ImposeOnWestBoundaryNoSpace</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid2D" kindref="compound">mtk::UniStgGrid2D</ref><sp/>&amp;grid,</highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>&amp;matrix,</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;order_accuracy)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="285"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a65f58f43f3fdc793cce7293780b70b80" kindref="member">ImposeOnEastBoundaryNoSpace</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid2D" kindref="compound">mtk::UniStgGrid2D</ref><sp/>&amp;grid,</highlight></codeline>
+<codeline lineno="286"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>&amp;matrix,</highlight></codeline>
+<codeline lineno="287"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;order_accuracy)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="295"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1af30c275cf06176a2ae9722014142c810" kindref="member">ImposeOnSouthBoundaryWithSpace</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid2D" kindref="compound">mtk::UniStgGrid2D</ref><sp/>&amp;grid,</highlight></codeline>
+<codeline lineno="296"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>&amp;matrix,</highlight></codeline>
+<codeline lineno="297"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;order_accuracy)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a6b9b6f2bec06bce5a9070236ca10ec3a" kindref="member">ImposeOnNorthBoundaryWithSpace</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid2D" kindref="compound">mtk::UniStgGrid2D</ref><sp/>&amp;grid,</highlight></codeline>
+<codeline lineno="306"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>&amp;matrix,</highlight></codeline>
+<codeline lineno="307"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;order_accuracy)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="315"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1aa5d88027ff9c5d2eccab93cd51154c9e" kindref="member">ImposeOnWestBoundaryWithSpace</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid2D" kindref="compound">mtk::UniStgGrid2D</ref><sp/>&amp;grid,</highlight></codeline>
+<codeline lineno="316"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>&amp;matrix,</highlight></codeline>
+<codeline lineno="317"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;order_accuracy)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="325"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a7208d08bfa84192e13c848093eaa88f0" kindref="member">ImposeOnEastBoundaryWithSpace</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1UniStgGrid2D" kindref="compound">mtk::UniStgGrid2D</ref><sp/>&amp;grid,</highlight></codeline>
+<codeline lineno="326"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">mtk::DenseMatrix</ref><sp/>&amp;matrix,</highlight></codeline>
+<codeline lineno="327"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;order_accuracy)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="328"><highlight class="normal"></highlight></codeline>
+<codeline lineno="329" refid="classmtk_1_1BCDescriptor2D_1aa18ef62f8eda355e47f51bcb5dbe8fe7" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1aa18ef62f8eda355e47f51bcb5dbe8fe7" kindref="member">highest_order_diff_west_</ref>;<sp/></highlight></codeline>
+<codeline lineno="330" refid="classmtk_1_1BCDescriptor2D_1aea5e539a10d5641bd605ebe583c14bc5" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1aea5e539a10d5641bd605ebe583c14bc5" kindref="member">highest_order_diff_east_</ref>;<sp/></highlight></codeline>
+<codeline lineno="331" refid="classmtk_1_1BCDescriptor2D_1a1fb094e5e53ecfba32fe9fe56c051c47" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a1fb094e5e53ecfba32fe9fe56c051c47" kindref="member">highest_order_diff_south_</ref>;<sp/></highlight></codeline>
+<codeline lineno="332" refid="classmtk_1_1BCDescriptor2D_1a6cdeefe70f5bef93196f34ab2949cad2" refkind="member"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1BCDescriptor2D_1a6cdeefe70f5bef93196f34ab2949cad2" kindref="member">highest_order_diff_north_</ref>;<sp/></highlight></codeline>
+<codeline lineno="333"><highlight class="normal"></highlight></codeline>
+<codeline lineno="334" refid="classmtk_1_1BCDescriptor2D_1a7df71b43acc25c468683075cc7790bb2" refkind="member"><highlight class="normal"><sp/><sp/>std::vector&lt;CoefficientFunction2D&gt;<sp/><ref refid="classmtk_1_1BCDescriptor2D_1a7df71b43acc25c468683075cc7790bb2" kindref="member">west_coefficients_</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="335" refid="classmtk_1_1BCDescriptor2D_1a1f90fc303984bf18c136a34896bbb7c9" refkind="member"><highlight class="normal"><sp/><sp/>std::vector&lt;CoefficientFunction2D&gt;<sp/><ref refid="classmtk_1_1BCDescriptor2D_1a1f90fc303984bf18c136a34896bbb7c9" kindref="member">east_coefficients_</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="336" refid="classmtk_1_1BCDescriptor2D_1a263309b9ad288dc89826d818d9378d07" refkind="member"><highlight class="normal"><sp/><sp/>std::vector&lt;CoefficientFunction2D&gt;<sp/><ref refid="classmtk_1_1BCDescriptor2D_1a263309b9ad288dc89826d818d9378d07" kindref="member">south_coefficients_</ref>;<sp/></highlight></codeline>
+<codeline lineno="337" refid="classmtk_1_1BCDescriptor2D_1a5429c040c034303dd92dcff554f9efad" refkind="member"><highlight class="normal"><sp/><sp/>std::vector&lt;CoefficientFunction2D&gt;<sp/><ref refid="classmtk_1_1BCDescriptor2D_1a5429c040c034303dd92dcff554f9efad" kindref="member">north_coefficients_</ref>;<sp/></highlight></codeline>
+<codeline lineno="338"><highlight class="normal"></highlight></codeline>
+<codeline lineno="339" refid="classmtk_1_1BCDescriptor2D_1a2d4af48b3408658c7ace6eeb74464c9f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>(*<ref refid="classmtk_1_1BCDescriptor2D_1a2d4af48b3408658c7ace6eeb74464c9f" kindref="member">west_condition_</ref>)(Real<sp/>xx,<sp/>Real<sp/>yy);<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="340" refid="classmtk_1_1BCDescriptor2D_1a6cca0c70293203c9d88773e5d5f93418" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>(*<ref refid="classmtk_1_1BCDescriptor2D_1a6cca0c70293203c9d88773e5d5f93418" kindref="member">east_condition_</ref>)(Real<sp/>xx,<sp/>Real<sp/>yy);<sp/><sp/><sp/></highlight></codeline>
+<codeline lineno="341" refid="classmtk_1_1BCDescriptor2D_1a2a933b473abbe47ad7c79ef7939e7768" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>(*<ref refid="classmtk_1_1BCDescriptor2D_1a2a933b473abbe47ad7c79ef7939e7768" kindref="member">south_condition_</ref>)(Real<sp/>xx,<sp/>Real<sp/>yy);<sp/><sp/></highlight></codeline>
+<codeline lineno="342" refid="classmtk_1_1BCDescriptor2D_1a23e0b9ae755dcf81841aa24ddaf0b090" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>(*<ref refid="classmtk_1_1BCDescriptor2D_1a23e0b9ae755dcf81841aa24ddaf0b090" kindref="member">north_condition_</ref>)(Real<sp/>xx,<sp/>Real<sp/>yy);<sp/><sp/></highlight></codeline>
+<codeline lineno="343"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="344"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="345"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>End<sp/>of:<sp/>MTK_INCLUDE_BC_DESCRIPTOR_2D_H_</highlight></codeline>
+    </programlisting>
+    <location file="/home/esanchez/Dropbox/MTK/include/mtk_bc_descriptor_2d.h"/>
+  </compounddef>
+</doxygen>

@@ -1,4 +1,4 @@
-# Makefile setup file for MTK.
+# Makefile setup file for the MTK.
 
 SHELL := /bin/bash
 
@@ -70,21 +70,50 @@ ATLAS_LIB   = $(HOME)/Libraries/ATLAS_3.8.4-CORE/ATLAS_3.8.4-BUILD-Citadel/lib
 
 CC = g++
 
-# Debug Level. Options are:
-# 0. NO debug at all NOR any run-time checks... be cautious!
-# 1. Verbose (execution messages) AND run-time checks.
-# 2. Level 1 plus intermediate scalar-valued results.
-# 3. Level 2 plus intermediate array-valued results.
+# Selective Verbose Execution for Quick Debugging. Options are defined per
+# concern, and per data hierarchy on each concern.
 
-DEBUG_LEVEL = 3
+# 0: NO verbose at all.
+
+# 1: Enable verbose down to the 7th concern: messages.
+# 2: Enable verbose down to the 7th concern: messages + scalar results.
+# 3: Enable verbose down to the 7th concern. 1.1. + array results.
+# 4: Enable verbose down to the 7th concern. 1.2. + matrix results.
+
+# 5: Enable verbose down to the 6th concern: messages.
+# 6: Enable verbose down to the 6th concern: messages + scalar results.
+# 7: Enable verbose down to the 6th concern. 2.1. + array results.
+# 8: Enable verbose down to the 6th concern. 2.2. + matrix results.
+
+# 9: Enable verbose down to the 5th concern: messages.
+# 10: Enable verbose down to the 5th concern: messages + scalar results.
+# 11: Enable verbose down to the 5th concern. 3.1. + array results.
+# 12: Enable verbose down to the 5th concern. 3.2. + matrix results.
+
+# 13: Enable verbose down to the 4th concern: messages.
+# 14: Enable verbose down to the 4th concern: messages + scalar results.
+# 15: Enable verbose down to the 4th concern. 4.1. + array results.
+# 16: Enable verbose down to the 4th concern. 4.2. + matrix results.
+
+VERBOSE_LEVEL = 16
+
+# Enable preventions. In the MTK, methods first validate their required
+# pre-conditions in run-time. Similarly, in many points throughout the MTK
+# codebase, different sanity checks are performed, as well. If this symbol is
+# defined to be 0, the MTK will # perform no validations to enhance execution
+# performance. Options are:
+# - YES.
+# - NO.
+
+PERFORM_PREVENTIONS = YES
 
 # Flags recommended for release code:
 
-CCFLAGS = -Wall -O3
+CCFLAGS = -Wall -Werror -O3
 
 # Flags recommended for debugging code:
 
-CCFLAGS = -Wall -g
+CCFLAGS = -Wall -Werror -g
 
 #   7. Archiver, its flags, and ranlib:
 #   __________________________________________________________________
@@ -104,7 +133,7 @@ RANLIB = ranlib
 #   __________________________________________________________________
 
 MEMCHECK_OPTS = -v --tool=memcheck --leak-check=full --show-leak-kinds=all \
---track-origins=yes --freelist-vol=20000000
+  --track-origins=yes --freelist-vol=20000000
 
 # Done! User, please, do not mess with the definitions from this point on.
 
@@ -125,12 +154,17 @@ EXAMPLES  = $(BASE)/examples
 #   Compiling-related.
 #   __________________________________________________________________
 
-CCFLAGS += -std=c++11 -fPIC -DMTK_DEBUG_LEVEL=$(DEBUG_LEVEL) -I$(INCLUDE)  -c
+CCFLAGS += -std=c++11 -fPIC \
+  -DMTK_VERBOSE_LEVEL=$(VERBOSE_LEVEL) -I$(INCLUDE) -c
 
 ifeq ($(PRECISION),DOUBLE)
   CCFLAGS += -DMTK_PRECISION_DOUBLE
 else
   CCFLAGS += -DMTK_PRECISION_SINGLE
+endif
+
+ifeq ($(PERFORM_PREVENTIONS),YES)
+  CCFLAGS += -DMTK_PERFORM_PREVENTIONS
 endif
 
 # Only the GLPK is included because the other dependencies are coded in Fortran.
