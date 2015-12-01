@@ -97,19 +97,7 @@ If successful you'll read (before building the tests and examples):
 Examples and tests will also be built.
     __________________________________________________________________
 
-## 4. Frequently Asked Questions
-
-Q: Why haven't you guys implemented GBS to build the library?
-A: I'm on it as we speak! ;)
-
-Q: Is there any main reference when it comes to the theory on Mimetic Methods?
-A: Yes! Check: http://www.csrc.sdsu.edu/mimetic-book
-
-Q: Do I need to generate the documentation myself?
-A: You can if you want to... but if you DO NOT want to, just go to our website.
-    __________________________________________________________________
-
-## 5. Contact, Support, and Credits
+## 4. Contact, Support, and Credits
 
 The MTK is developed by researchers and adjuncts to the
 [Computational Science Research Center (CSRC)](http://www.csrc.sdsu.edu/)
