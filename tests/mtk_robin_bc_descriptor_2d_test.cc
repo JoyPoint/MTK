@@ -124,7 +124,8 @@ void TestPushBackImposeOnLaplacianMatrix() {
 
   bcd.ImposeOnLaplacianMatrix(ll, llg, llm);
 
-  assertion = assertion && llm.WriteToFile("mtk_bc_descriptor_2d_test_02.dat");
+  assertion = assertion &&
+    llm.WriteToFile("mtk_robin_bc_descriptor_2d_test_02.dat");
 
   mtk::Tools::EndUnitTestNo(2);
   mtk::Tools::Assert(assertion);
@@ -168,7 +169,7 @@ void TestImposeOnGrid() {
 
   desc.ImposeOnGrid(gg);
 
-  bool assertion{gg.WriteToFile("mtk_bc_descriptor_2d_test_03.dat",
+  bool assertion{gg.WriteToFile("mtk_robin_bc_descriptor_2d_test_03.dat",
                                 "x",
                                 "y",
                                 "u(x,y)")};

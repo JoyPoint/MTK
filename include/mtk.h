@@ -6,9 +6,9 @@
 This file contains every required header file, thus containing the entire API.
 In this way, client codes only have to instruct #include "mtk.h".
 
-\warning IT IS EXTREMELY IMPORTANT THAT THE HEADERS ARE ADDED TO THIS FILE IN A
-SPECIFIC ORDER; THAT IS, CONSIDERING THE DEPENDENCE BETWEEN THE CLASSES THESE
-CONTAIN!
+\warning It is extremely important that the headers are added to this file in a
+specific order; that is, considering the dependence between the classes these
+contain.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -68,16 +68,13 @@ methods. It is arranged as a set of classes for **mimetic quadratures**,
  **mimetic interpolation**, and **mimetic finite differences** methods for the
 numerical solution of ordinary and partial differential equations.
 
-An older version of this library is available outside of GitHub... just email me
-about it, and you can have it... it is ugly, yet functional and more complete.
-
 \section section_mtk_concerns MTK Concerns
 
 Since collaborative development efforts are definitely important in achieving
 the level of generality we intend the library to possess, we have divided the
 library's source code according to the designated purpose the classes possess
-within the library. These divisions (or concerns) are grouped by layers, and are
-hierarchically related by the dependence they have among them.
+within the library. These divisions (or **concerns**) are grouped by layers,
+and are hierarchically related by the dependence they have among them.
 
 One concern is said to depend on another one, if the classes the first concern
 includes, rely on the classes the second concern includes.
@@ -99,7 +96,7 @@ The MTK collection of wrappers is:
 -# MMTK: MATLAB wrappers collection for MTK; intended for sequential
 computations.
 
-Others are being designed and developed.
+Others are being strongly considered.
 
 \section section_authors Contact, Support and Credits
 
@@ -133,6 +130,7 @@ Specifically, our thanks go to (alphabetical order):
 
 -# Mohammad Abouali, Ph.D.
 -# Dany De Cecchis, Ph.D.
+-# Otilio Rojas, Ph.D.
 -# Julia Rossi.
 
 \page section_prog_tools Programming Tools
@@ -141,11 +139,12 @@ The development of MTK has been made possible through the use of the following
 applications:
 -# Editor: Kate - KDE Advanced Text Editor. Version 3.13.3. Using KDE
 Development Platform 4.13.3 (C) 2000-2005 The Kate Authors.
--# Compiler: gcc version 4.4.5 (Ubuntu/Linaro 4.4.4-14ubuntu5). Copyright (C)
-2013 Free Software Foundation, Inc.
 -# Debugger: GNU gdb (Ubuntu 7.7.1-0ubuntu5~14.04.2) 7.7.1. Copyright (C) 2014
 Free Software Foundation, Inc.
 -# Memory Profiler: valgrind-3.10.0.SVN.
+
+See the section on test architectures for information about operating systems
+and compilers used.
 
 \page section_license_mod Licensing and Modifications
 
@@ -209,9 +208,6 @@ The **Mimetic Methods Toolkit (MTK)** is a C++ library for mimetic numerical
 methods. It is arranged as a set of classes for **mimetic quadratures**,
 **mimetic interpolation**, and **mimetic finite differences** methods for the
 numerical solution of ordinary and partial differential equations.
-
-An older version of this library is available outside of GitHub... just email me
-about it, and you can have it... it is ugly, yet functional and more complete.
 
 ## 2. Dependencies
 
@@ -328,17 +324,18 @@ throughout architectures. The following architectures have provided flawless
 installations of the API and correct execution of the examples:
 
 <pre>
-1. Linux 3.2.0-23-generic-pae #36-Ubuntu SMP i386 GNU/Linux.
-   Intel(R) Pentium(R) M CPU 1.73 GHz 2048 KB of cache and stepping of 8.
-   gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5).
+1. Intel(R) Pentium(R) M CPU 1.73 GHz 2048 KB of cache and stepping of 8.
+   Linux 3.2.0-23-generic-pae #36-Ubuntu SMP i386 GNU/Linux
+   gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5)
 
-2. Linux 3.13.0-67-generic #110-Ubuntu SMP x86_64 GNU/Linux.
-   Intel(R) Core(TM) i7-4700MQ CPU 2.40 GHz 6144 KB of cache and stepping of 3.
-   gcc version 4.8.4 (Ubuntu 4.4.4-2ubuntu1~14.04).
+2. Intel(R) Core(TM) i7-4700MQ CPU 2.40 GHz 6144 KB of cache and stepping of 3.
+   Linux 3.13.0-67-generic #110-Ubuntu SMP x86_64 GNU/Linux
+   gcc version 4.8.4 (Ubuntu 4.4.4-2ubuntu1~14.04)
 
-3. Linux 3.16.7-29-desktop #1 SMP PREEMPT (6be6a97) x86_64 GNU/Linux
-   Intel(R) Core(TM) i7-4600U CPU 2.10 GHz 4096 KB of cache and a stepping of 1.
-   gcc (SUSE Linux) 4.8.3 20140627 [gcc-4_8-branch revision 212064].
+3. Intel(R) Core(TM) i7-4600U CPU 2.10 GHz 4096 KB of cache and a stepping of 1.
+   Linux 3.16.7-29-desktop #1 SMP PREEMPT (6be6a97) x86_64 GNU/Linux
+   openSUSE 13.2 (Harlequin) (x86_64)
+   gcc (SUSE Linux) 4.8.3 20140627 [gcc-4_8-branch revision 212064]
 </pre>
 
 Further architectures will be tested!

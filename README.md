@@ -12,10 +12,6 @@ methods. It is arranged as a set of classes for **mimetic quadratures**,
 **mimetic interpolation**, and **mimetic finite differences** methods for the
 numerical solution of ordinary and partial differential equations.
 
-An older version of this library is available outside of GitHub... just email me
-about it, and you can have it... it is ugly, yet it is functional and more
-complete.
-
 ## 2. Dependencies
 
 This README assumes all of these dependencies are installed in the following

@@ -14,8 +14,8 @@ The source term function is defined as
 s(x,y) = xye^{-0.5(x^2 + y^2)}(x^2 + y^2 - 6).
 \f]
 
-Let \f$ \Omega = S \cup N \cup W \cup E\f$. We consider Dirichlet boundary
-conditions of the following form:
+Let \f$ \partial\Omega = S \cup N \cup W \cup E\f$. We consider Dirichlet
+boundary conditions of the following form:
 \f[
 \forall\mathbf{x}\in W: u(\mathbf{x}) = 0.
 \f]
