@@ -1,0 +1,131 @@
+.TH "mtk::Grad3D" 3 "Fri Dec 11 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk::Grad3D \- 
+.PP
+Implements a 3D mimetic gradient operator\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mtk_grad_3d\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBGrad3D\fP ()"
+.br
+.RI "\fIDefault constructor\&. \fP"
+.ti -1c
+.RI "\fBGrad3D\fP (const \fBGrad3D\fP &grad)"
+.br
+.RI "\fICopy constructor\&. \fP"
+.ti -1c
+.RI "\fB~Grad3D\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "bool \fBConstructGrad3D\fP (const \fBUniStgGrid3D\fP &grid, int order_accuracy=\fBkDefaultOrderAccuracy\fP, \fBReal\fP mimetic_threshold=\fBkDefaultMimeticThreshold\fP)"
+.br
+.RI "\fIFactory method implementing the CBS Algorithm to build operator\&. \fP"
+.ti -1c
+.RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP () const "
+.br
+.RI "\fIReturn the operator as a dense matrix\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBDenseMatrix\fP \fBgradient_\fP"
+.br
+.RI "\fIActual operator\&. \fP"
+.ti -1c
+.RI "int \fBorder_accuracy_\fP"
+.br
+.RI "\fIOrder of accuracy\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBmimetic_threshold_\fP"
+.br
+.RI "\fIMimetic Threshold\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class implements a 3D gradient operator, constructed using the Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA)\&. 
+.PP
+Definition at line 76 of file mtk_grad_3d\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mtk::Grad3D::Grad3D ()"
+
+.PP
+Definition at line 67 of file mtk_grad_3d\&.cc\&.
+.SS "mtk::Grad3D::Grad3D (const \fBGrad3D\fP &grad)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdiv\fP Given divergence\&. 
+.RE
+.PP
+
+.PP
+Definition at line 71 of file mtk_grad_3d\&.cc\&.
+.SS "mtk::Grad3D::~Grad3D ()"
+
+.PP
+Definition at line 75 of file mtk_grad_3d\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "bool mtk::Grad3D::ConstructGrad3D (const \fBUniStgGrid3D\fP &grid, intorder_accuracy = \fC\fBkDefaultOrderAccuracy\fP\fP, \fBmtk::Real\fPmimetic_threshold = \fC\fBkDefaultMimeticThreshold\fP\fP)"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Success of the construction\&. 
+.RE
+.PP
+
+.IP "1." 4
+Build preliminary staggering through the x direction\&.
+.IP "2." 4
+Build preliminary staggering through the y direction\&.
+.IP "3." 4
+Build preliminary staggering through the z direction\&.
+.IP "4." 4
+Actual operator: GG_xyz = [gx; gy; gz]\&. 
+.PP
+
+.PP
+Definition at line 77 of file mtk_grad_3d\&.cc\&.
+.SS "\fBmtk::DenseMatrix\fP mtk::Grad3D::ReturnAsDenseMatrix () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+The operator as a dense matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 185 of file mtk_grad_3d\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBDenseMatrix\fP mtk::Grad3D::gradient_\fC [private]\fP"
+
+.PP
+Definition at line 108 of file mtk_grad_3d\&.h\&.
+.SS "\fBReal\fP mtk::Grad3D::mimetic_threshold_\fC [private]\fP"
+
+.PP
+Definition at line 112 of file mtk_grad_3d\&.h\&.
+.SS "int mtk::Grad3D::order_accuracy_\fC [private]\fP"
+
+.PP
+Definition at line 110 of file mtk_grad_3d\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

@@ -11,18 +11,24 @@ Mimetic Methods Toolkit namespace.
 \item 
 class \hyperlink{classmtk_1_1BLASAdapter}{B\+L\+A\+S\+Adapter}
 \begin{DoxyCompactList}\small\item\em Adapter class for the B\+L\+A\+S A\+P\+I. \end{DoxyCompactList}\item 
+class \hyperlink{classmtk_1_1Curl2D}{Curl2\+D}
+\begin{DoxyCompactList}\small\item\em Implements a 2\+D mimetic curl operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix}
 \begin{DoxyCompactList}\small\item\em Defines a common dense matrix, using a 1\+D array. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Div1D}{Div1\+D}
 \begin{DoxyCompactList}\small\item\em Implements a 1\+D mimetic divergence operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Div2D}{Div2\+D}
 \begin{DoxyCompactList}\small\item\em Implements a 2\+D mimetic divergence operator. \end{DoxyCompactList}\item 
+class \hyperlink{classmtk_1_1Div3D}{Div3\+D}
+\begin{DoxyCompactList}\small\item\em Implements a 3\+D mimetic divergence operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1GLPKAdapter}{G\+L\+P\+K\+Adapter}
 \begin{DoxyCompactList}\small\item\em Adapter class for the G\+L\+P\+K A\+P\+I. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Grad1D}{Grad1\+D}
 \begin{DoxyCompactList}\small\item\em Implements a 1\+D mimetic gradient operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Grad2D}{Grad2\+D}
 \begin{DoxyCompactList}\small\item\em Implements a 2\+D mimetic gradient operator. \end{DoxyCompactList}\item 
+class \hyperlink{classmtk_1_1Grad3D}{Grad3\+D}
+\begin{DoxyCompactList}\small\item\em Implements a 3\+D mimetic gradient operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Interp1D}{Interp1\+D}
 \begin{DoxyCompactList}\small\item\em Implements a 1\+D interpolation operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Interp2D}{Interp2\+D}
@@ -31,6 +37,8 @@ class \hyperlink{classmtk_1_1Lap1D}{Lap1\+D}
 \begin{DoxyCompactList}\small\item\em Implements a 1\+D mimetic Laplacian operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Lap2D}{Lap2\+D}
 \begin{DoxyCompactList}\small\item\em Implements a 2\+D mimetic Laplacian operator. \end{DoxyCompactList}\item 
+class \hyperlink{classmtk_1_1Lap3D}{Lap3\+D}
+\begin{DoxyCompactList}\small\item\em Implements a 3\+D mimetic Laplacian operator. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1LAPACKAdapter}{L\+A\+P\+A\+C\+K\+Adapter}
 \begin{DoxyCompactList}\small\item\em Adapter class for the L\+A\+P\+A\+C\+K A\+P\+I. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Matrix}{Matrix}
@@ -46,7 +54,9 @@ class \hyperlink{classmtk_1_1Tools}{Tools}
 class \hyperlink{classmtk_1_1UniStgGrid1D}{Uni\+Stg\+Grid1\+D}
 \begin{DoxyCompactList}\small\item\em Uniform 1\+D Staggered Grid. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1UniStgGrid2D}{Uni\+Stg\+Grid2\+D}
-\begin{DoxyCompactList}\small\item\em Uniform 2\+D Staggered Grid. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Uniform 2\+D Staggered Grid. \end{DoxyCompactList}\item 
+class \hyperlink{classmtk_1_1UniStgGrid3D}{Uni\+Stg\+Grid3\+D}
+\begin{DoxyCompactList}\small\item\em Uniform 3\+D Staggered Grid. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Typedefs}
 \begin{DoxyCompactItemize}
 \item 
@@ -108,6 +118,8 @@ void \hyperlink{namespacemtk_a59c58408e1c0a9837b67a417be986b82}{sormqr\+\_\+} (c
 std\+::ostream \& \hyperlink{namespacemtk_a97f79d150b3b5c7b76d4fcc2271f972b}{operator$<$$<$} (std\+::ostream \&stream, \hyperlink{classmtk_1_1UniStgGrid1D}{mtk\+::\+Uni\+Stg\+Grid1\+D} \&in)
 \item 
 std\+::ostream \& \hyperlink{namespacemtk_a82cd99c0c7e695e4eccfbe7380525959}{operator$<$$<$} (std\+::ostream \&stream, \hyperlink{classmtk_1_1UniStgGrid2D}{mtk\+::\+Uni\+Stg\+Grid2\+D} \&in)
+\item 
+std\+::ostream \& \hyperlink{namespacemtk_a50ce3dc63af019c21e15e1b09465d334}{operator$<$$<$} (std\+::ostream \&stream, \hyperlink{classmtk_1_1UniStgGrid3D}{mtk\+::\+Uni\+Stg\+Grid3\+D} \&in)
 \end{DoxyCompactItemize}
 \subsection*{Variables}
 \begin{DoxyCompactItemize}
@@ -145,6 +157,22 @@ const int \hyperlink{group__c01-roots_ga295dd2f403c775ecd942c22b5a777496}{k\+Cri
 \end{DoxyEnumerate}
 
 Definition at line \hyperlink{mtk__interp__1d_8cc_source_l00066}{66} of file \hyperlink{mtk__interp__1d_8cc_source}{mtk\+\_\+interp\+\_\+1d.\+cc}.
+
+\hypertarget{namespacemtk_a50ce3dc63af019c21e15e1b09465d334}{\index{mtk@{mtk}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!mtk@{mtk}}
+\subsubsection[{operator$<$$<$}]{\setlength{\rightskip}{0pt plus 5cm}std\+::ostream\& mtk\+::operator$<$$<$ (
+\begin{DoxyParamCaption}
+\item[{std\+::ostream \&}]{stream, }
+\item[{{\bf mtk\+::\+Uni\+Stg\+Grid3\+D} \&}]{in}
+\end{DoxyParamCaption}
+)}}\label{namespacemtk_a50ce3dc63af019c21e15e1b09465d334}
+
+\begin{DoxyEnumerate}
+\item Print spatial coordinates.
+\item Print scalar field. 
+\end{DoxyEnumerate}
+
+Definition at line \hyperlink{mtk__uni__stg__grid__3d_8cc_source_l00067}{67} of file \hyperlink{mtk__uni__stg__grid__3d_8cc_source}{mtk\+\_\+uni\+\_\+stg\+\_\+grid\+\_\+3d.\+cc}.
 
 \hypertarget{namespacemtk_a82cd99c0c7e695e4eccfbe7380525959}{\index{mtk@{mtk}!operator$<$$<$@{operator$<$$<$}}
 \index{operator$<$$<$@{operator$<$$<$}!mtk@{mtk}}

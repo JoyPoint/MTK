@@ -1,0 +1,193 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classmtk_1_1Grad3D" kind="class" prot="public">
+    <compoundname>mtk::Grad3D</compoundname>
+    <includes refid="mtk__grad__3d_8h" local="no">mtk_grad_3d.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmtk_1_1Grad3D_1ad3c0ade3555aa72f7d392b3d5f218f43" prot="private" static="no" mutable="no">
+        <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref></type>
+        <definition>DenseMatrix mtk::Grad3D::gradient_</definition>
+        <argsstring></argsstring>
+        <name>gradient_</name>
+        <briefdescription>
+<para>Actual operator. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_3d.h" line="108" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_grad_3d.h" bodystart="108" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Grad3D_1aa7cfccc5ec2f3b5419080e105148e588" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Grad3D::order_accuracy_</definition>
+        <argsstring></argsstring>
+        <name>order_accuracy_</name>
+        <briefdescription>
+<para>Order of accuracy. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_3d.h" line="110" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_grad_3d.h" bodystart="110" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Grad3D_1a50c44fefe019d7a383964167bc7866f3" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>Real mtk::Grad3D::mimetic_threshold_</definition>
+        <argsstring></argsstring>
+        <name>mimetic_threshold_</name>
+        <briefdescription>
+<para>Mimetic Threshold. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_3d.h" line="112" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_grad_3d.h" bodystart="112" bodyend="-1"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmtk_1_1Grad3D_1a035b360199d58fed7a2436375951e10d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::Grad3D::Grad3D</definition>
+        <argsstring>()</argsstring>
+        <name>Grad3D</name>
+        <briefdescription>
+<para>Default constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_3d.h" line="79" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_grad_3d.cc" bodystart="67" bodyend="69"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Grad3D_1ab65fd99ad56efd41d9a76f25a531d85c" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::Grad3D::Grad3D</definition>
+        <argsstring>(const Grad3D &amp;grad)</argsstring>
+        <name>Grad3D</name>
+        <param>
+          <type>const <ref refid="classmtk_1_1Grad3D" kindref="compound">Grad3D</ref> &amp;</type>
+          <declname>grad</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">div</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Given divergence. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_3d.h" line="86" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_grad_3d.cc" bodystart="71" bodyend="73"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Grad3D_1aae7713f7abb6e9bfbafe80f30b1aac49" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::Grad3D::~Grad3D</definition>
+        <argsstring>()</argsstring>
+        <name>~Grad3D</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_3d.h" line="89" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_grad_3d.cc" bodystart="75" bodyend="75"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Grad3D_1a56c77fd4eb2d929fc83c063534aba479" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mtk::Grad3D::ConstructGrad3D</definition>
+        <argsstring>(const UniStgGrid3D &amp;grid, int order_accuracy=kDefaultOrderAccuracy, Real mimetic_threshold=kDefaultMimeticThreshold)</argsstring>
+        <name>ConstructGrad3D</name>
+        <param>
+          <type>const <ref refid="classmtk_1_1UniStgGrid3D" kindref="compound">UniStgGrid3D</ref> &amp;</type>
+          <declname>grid</declname>
+        </param>
+        <param>
+          <type>int</type>
+          <declname>order_accuracy</declname>
+          <defval><ref refid="group__c01-roots_1ga0d95560098eb36420511103637b6952f" kindref="member">kDefaultOrderAccuracy</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+          <declname>mimetic_threshold</declname>
+          <defval><ref refid="group__c01-roots_1ga35718d949bdc81a08a9cc8ebbe3478a2" kindref="member">kDefaultMimeticThreshold</ref></defval>
+        </param>
+        <briefdescription>
+<para>Factory method implementing the CBS Algorithm to build operator. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Success of the construction. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>Build preliminary staggering through the x direction.</para></listitem><listitem><para>Build preliminary staggering through the y direction.</para></listitem><listitem><para>Build preliminary staggering through the z direction.</para></listitem><listitem><para>Actual operator: GG_xyz = [gx; gy; gz]. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_3d.h" line="96" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_grad_3d.cc" bodystart="77" bodyend="183"/>
+        <references refid="classmtk_1_1UniStgGrid3D_1a716f5f02f4cdae0e596f4fe43a2c3359" compoundref="mtk__uni__stg__grid__3d_8cc" startline="231" endline="234">mtk::UniStgGrid3D::num_cells_x</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1abb0fc143b06048f69ac05e33c40f85db" compoundref="mtk__uni__stg__grid__3d_8cc" startline="256" endline="259">mtk::UniStgGrid3D::num_cells_y</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1acd896b210eac3434fb51b26bef3c3ce0" compoundref="mtk__uni__stg__grid__3d_8cc" startline="281" endline="284">mtk::UniStgGrid3D::num_cells_z</references>
+        <references refid="classmtk_1_1Grad1D_1a74ef5245cfae6fd158bd7f563a0c2e52" compoundref="mtk__grad__1d_8cc" startline="182" endline="319">mtk::Grad1D::ConstructGrad1D</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1a1abb2b9fb57e36b81fd8ffc879f552d4" compoundref="mtk__uni__stg__grid__3d_8cc" startline="221" endline="224">mtk::UniStgGrid3D::west_bndy</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1aa20f1775772e144dd1b116ec82b88174" compoundref="mtk__uni__stg__grid__3d_8cc" startline="226" endline="229">mtk::UniStgGrid3D::east_bndy</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1a0d36500dff853d7c7a63cdd89abe9b8d" compoundref="mtk__uni__stg__grid__3d_8cc" startline="246" endline="249">mtk::UniStgGrid3D::south_bndy</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1ae060c84d98994e1dd62d75f7226e8a00" compoundref="mtk__uni__stg__grid__3d_8cc" startline="271" endline="274">mtk::UniStgGrid3D::bottom_bndy</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1a835df71a84dbcbe3860ad86cd7133027" compoundref="mtk__uni__stg__grid__3d_8cc" startline="276" endline="279">mtk::UniStgGrid3D::top_bndy</references>
+        <references refid="classmtk_1_1Grad1D_1a77b2eddbe4ab03f469306c604d505b1a" compoundref="mtk__grad__1d_8cc" startline="356" endline="423">mtk::Grad1D::ReturnAsDenseMatrix</references>
+        <references refid="classmtk_1_1DenseMatrix_1a01d3d8bd502870f93bf3a88a0cc5fb49" compoundref="mtk__dense__matrix_8cc" startline="490" endline="529">mtk::DenseMatrix::Kron</references>
+        <references refid="classmtk_1_1DenseMatrix_1a784ce5784109ac86bfb9d8562b334b13" compoundref="mtk__dense__matrix_8cc" startline="360" endline="371">mtk::DenseMatrix::SetValue</references>
+        <references refid="classmtk_1_1DenseMatrix_1a4b23ecbebd970b5eea915dbb50691024" compoundref="mtk__dense__matrix_8cc" startline="348" endline="358">mtk::DenseMatrix::GetValue</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Grad3D_1acd9f6c3d22ee09a15c06f024310dfd67" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref></type>
+        <definition>mtk::DenseMatrix mtk::Grad3D::ReturnAsDenseMatrix</definition>
+        <argsstring>() const </argsstring>
+        <name>ReturnAsDenseMatrix</name>
+        <briefdescription>
+<para>Return the operator as a dense matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The operator as a dense matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_3d.h" line="105" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_grad_3d.cc" bodystart="185" bodyend="188"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Implements a 3D mimetic gradient operator. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class implements a 3D gradient operator, constructed using the Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA). </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="120">
+        <label>mtk::DenseMatrix</label>
+        <link refid="classmtk_1_1DenseMatrix"/>
+        <childnode refid="121" relation="usage">
+          <edgelabel>-matrix_properties_</edgelabel>
+        </childnode>
+      </node>
+      <node id="119">
+        <label>mtk::Grad3D</label>
+        <link refid="classmtk_1_1Grad3D"/>
+        <childnode refid="120" relation="usage">
+          <edgelabel>-gradient_</edgelabel>
+        </childnode>
+      </node>
+      <node id="121">
+        <label>mtk::Matrix</label>
+        <link refid="classmtk_1_1Matrix"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/esanchez/Dropbox/MTK/include/mtk_grad_3d.h" line="76" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_grad_3d.h" bodystart="76" bodyend="113"/>
+    <listofallmembers>
+      <member refid="classmtk_1_1Grad3D_1a56c77fd4eb2d929fc83c063534aba479" prot="public" virt="non-virtual"><scope>mtk::Grad3D</scope><name>ConstructGrad3D</name></member>
+      <member refid="classmtk_1_1Grad3D_1a035b360199d58fed7a2436375951e10d" prot="public" virt="non-virtual"><scope>mtk::Grad3D</scope><name>Grad3D</name></member>
+      <member refid="classmtk_1_1Grad3D_1ab65fd99ad56efd41d9a76f25a531d85c" prot="public" virt="non-virtual"><scope>mtk::Grad3D</scope><name>Grad3D</name></member>
+      <member refid="classmtk_1_1Grad3D_1ad3c0ade3555aa72f7d392b3d5f218f43" prot="private" virt="non-virtual"><scope>mtk::Grad3D</scope><name>gradient_</name></member>
+      <member refid="classmtk_1_1Grad3D_1a50c44fefe019d7a383964167bc7866f3" prot="private" virt="non-virtual"><scope>mtk::Grad3D</scope><name>mimetic_threshold_</name></member>
+      <member refid="classmtk_1_1Grad3D_1aa7cfccc5ec2f3b5419080e105148e588" prot="private" virt="non-virtual"><scope>mtk::Grad3D</scope><name>order_accuracy_</name></member>
+      <member refid="classmtk_1_1Grad3D_1acd9f6c3d22ee09a15c06f024310dfd67" prot="public" virt="non-virtual"><scope>mtk::Grad3D</scope><name>ReturnAsDenseMatrix</name></member>
+      <member refid="classmtk_1_1Grad3D_1aae7713f7abb6e9bfbafe80f30b1aac49" prot="public" virt="non-virtual"><scope>mtk::Grad3D</scope><name>~Grad3D</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

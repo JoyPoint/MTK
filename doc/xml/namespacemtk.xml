@@ -3,16 +3,20 @@
   <compounddef id="namespacemtk" kind="namespace">
     <compoundname>mtk</compoundname>
     <innerclass refid="classmtk_1_1BLASAdapter" prot="public">mtk::BLASAdapter</innerclass>
+    <innerclass refid="classmtk_1_1Curl2D" prot="public">mtk::Curl2D</innerclass>
     <innerclass refid="classmtk_1_1DenseMatrix" prot="public">mtk::DenseMatrix</innerclass>
     <innerclass refid="classmtk_1_1Div1D" prot="public">mtk::Div1D</innerclass>
     <innerclass refid="classmtk_1_1Div2D" prot="public">mtk::Div2D</innerclass>
+    <innerclass refid="classmtk_1_1Div3D" prot="public">mtk::Div3D</innerclass>
     <innerclass refid="classmtk_1_1GLPKAdapter" prot="public">mtk::GLPKAdapter</innerclass>
     <innerclass refid="classmtk_1_1Grad1D" prot="public">mtk::Grad1D</innerclass>
     <innerclass refid="classmtk_1_1Grad2D" prot="public">mtk::Grad2D</innerclass>
+    <innerclass refid="classmtk_1_1Grad3D" prot="public">mtk::Grad3D</innerclass>
     <innerclass refid="classmtk_1_1Interp1D" prot="public">mtk::Interp1D</innerclass>
     <innerclass refid="classmtk_1_1Interp2D" prot="public">mtk::Interp2D</innerclass>
     <innerclass refid="classmtk_1_1Lap1D" prot="public">mtk::Lap1D</innerclass>
     <innerclass refid="classmtk_1_1Lap2D" prot="public">mtk::Lap2D</innerclass>
+    <innerclass refid="classmtk_1_1Lap3D" prot="public">mtk::Lap3D</innerclass>
     <innerclass refid="classmtk_1_1LAPACKAdapter" prot="public">mtk::LAPACKAdapter</innerclass>
     <innerclass refid="classmtk_1_1Matrix" prot="public">mtk::Matrix</innerclass>
     <innerclass refid="classmtk_1_1Quad1D" prot="public">mtk::Quad1D</innerclass>
@@ -21,6 +25,7 @@
     <innerclass refid="classmtk_1_1Tools" prot="public">mtk::Tools</innerclass>
     <innerclass refid="classmtk_1_1UniStgGrid1D" prot="public">mtk::UniStgGrid1D</innerclass>
     <innerclass refid="classmtk_1_1UniStgGrid2D" prot="public">mtk::UniStgGrid2D</innerclass>
+    <innerclass refid="classmtk_1_1UniStgGrid3D" prot="public">mtk::UniStgGrid3D</innerclass>
       <sectiondef kind="enum">
       <memberdef kind="enum" id="group__c02-enums_1ga25b67ec6a2afeee69f9bb196a9c66619" prot="public" static="no">
         <name>MatrixStorage</name>
@@ -218,6 +223,7 @@
         <referencedby refid="classmtk_1_1UniStgGrid1D_1ae19250f0cddef7a05c4a73a90991a26a" compoundref="mtk__uni__stg__grid__1d_8cc" startline="124" endline="142">mtk::UniStgGrid1D::UniStgGrid1D</referencedby>
         <referencedby refid="classmtk_1_1UniStgGrid2D_1ad8813b1ffcf23bb759f59f8524702e80" compoundref="mtk__uni__stg__grid__2d_8cc" startline="169" endline="201">mtk::UniStgGrid2D::UniStgGrid2D</referencedby>
         <referencedby refid="classmtk_1_1UniStgGrid2D_1a1787a79e4bcee6b89c681dc7e5e2d7bc" compoundref="mtk__uni__stg__grid__2d_8cc" startline="435" endline="509">mtk::UniStgGrid2D::WriteToFile</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid3D_1ad5b06964b6697d40222f0f5cbec39464" compoundref="mtk__uni__stg__grid__3d_8cc" startline="167" endline="212">mtk::UniStgGrid3D::UniStgGrid3D</referencedby>
       </memberdef>
       <memberdef kind="variable" id="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" prot="public" static="no" mutable="no">
         <type>const float</type>
@@ -272,6 +278,7 @@
         <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1af5dd24444e7eb14592a3c3feaf30d561" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="399" endline="466">mtk::RobinBCDescriptor2D::ImposeOnWestBoundaryNoSpace</referencedby>
         <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1ae1df82802d541d3566f3d2659e4aaf05" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="495" endline="562">mtk::RobinBCDescriptor2D::ImposeOnEastBoundaryNoSpace</referencedby>
         <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1ac9564bc46c196cbf4720a0e4b93da8b0" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="674" endline="790">mtk::RobinBCDescriptor2D::ImposeOnGrid</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid3D_1a02fb1ea08f81e733ab3c8ac244b78371" compoundref="mtk__uni__stg__grid__3d_8cc" startline="311" endline="371">mtk::UniStgGrid3D::BindScalarField</referencedby>
       </memberdef>
       <memberdef kind="variable" id="group__c01-roots_1gae914b125d81d1b97e0aee7bbc7739786" prot="public" static="no" mutable="no">
         <type>const float</type>
@@ -1150,13 +1157,13 @@
 <listitem><para>Print spatial coordinates.</para></listitem><listitem><para>Print scalar field. </para></listitem></orderedlist>
 </para>        </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/src/mtk_uni_stg_grid_1d.cc" line="68" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_uni_stg_grid_1d.cc" bodystart="68" bodyend="96"/>
-        <references refid="classmtk_1_1UniStgGrid1D_1a6910438d3396d0b9a130d11d16979c46" compoundref="mtk__uni__stg__grid__1d_8h" startline="197">mtk::UniStgGrid1D::west_bndy_x_</references>
-        <references refid="classmtk_1_1UniStgGrid1D_1afa43750db0029b7454aef343759e7097" compoundref="mtk__uni__stg__grid__1d_8h" startline="199">mtk::UniStgGrid1D::num_cells_x_</references>
-        <references refid="classmtk_1_1UniStgGrid1D_1a69a7d6be3171e53177e476348d04f4ae" compoundref="mtk__uni__stg__grid__1d_8h" startline="198">mtk::UniStgGrid1D::east_bndy_x_</references>
-        <references refid="classmtk_1_1UniStgGrid1D_1a0a1f9c00e21659e05f414dd97e2a52e3" compoundref="mtk__uni__stg__grid__1d_8h" startline="194">mtk::UniStgGrid1D::discrete_domain_x_</references>
-        <references refid="classmtk_1_1UniStgGrid1D_1a061b66c92532b1498ce0e15418754911" compoundref="mtk__uni__stg__grid__1d_8h" startline="192">mtk::UniStgGrid1D::nature_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a6910438d3396d0b9a130d11d16979c46" compoundref="mtk__uni__stg__grid__1d_8h" startline="196">mtk::UniStgGrid1D::west_bndy_x_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1afa43750db0029b7454aef343759e7097" compoundref="mtk__uni__stg__grid__1d_8h" startline="198">mtk::UniStgGrid1D::num_cells_x_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a69a7d6be3171e53177e476348d04f4ae" compoundref="mtk__uni__stg__grid__1d_8h" startline="197">mtk::UniStgGrid1D::east_bndy_x_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a0a1f9c00e21659e05f414dd97e2a52e3" compoundref="mtk__uni__stg__grid__1d_8h" startline="193">mtk::UniStgGrid1D::discrete_domain_x_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a061b66c92532b1498ce0e15418754911" compoundref="mtk__uni__stg__grid__1d_8h" startline="191">mtk::UniStgGrid1D::nature_</references>
         <references refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205" compoundref="mtk__enums_8h" startline="114">SCALAR</references>
-        <references refid="classmtk_1_1UniStgGrid1D_1a7379a5c6d16210cdd61ffa731bc47edc" compoundref="mtk__uni__stg__grid__1d_8h" startline="195">mtk::UniStgGrid1D::discrete_field_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a7379a5c6d16210cdd61ffa731bc47edc" compoundref="mtk__uni__stg__grid__1d_8h" startline="194">mtk::UniStgGrid1D::discrete_field_</references>
       </memberdef>
       <memberdef kind="function" id="namespacemtk_1a82cd99c0c7e695e4eccfbe7380525959" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -1180,17 +1187,55 @@
 <listitem><para>Print spatial coordinates.</para></listitem><listitem><para>Print scalar field. </para></listitem></orderedlist>
 </para>        </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/src/mtk_uni_stg_grid_2d.cc" line="67" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_uni_stg_grid_2d.cc" bodystart="67" bodyend="128"/>
-        <references refid="classmtk_1_1UniStgGrid2D_1a59c42d8099a017bc8a082fddc1e5606c" compoundref="mtk__uni__stg__grid__2d_8h" startline="302">mtk::UniStgGrid2D::west_bndy_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1ac03a0f4840ee6ae1bc853e5d9c0df8d1" compoundref="mtk__uni__stg__grid__2d_8h" startline="304">mtk::UniStgGrid2D::num_cells_x_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1ae24f3d5bf5ed3a6d066cdf48aa1fb307" compoundref="mtk__uni__stg__grid__2d_8h" startline="303">mtk::UniStgGrid2D::east_bndy_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1ac228c81fad7f4feeae93fb3c09d7e175" compoundref="mtk__uni__stg__grid__2d_8h" startline="307">mtk::UniStgGrid2D::south_bndy_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1a3e4f61d781212ad57c34e9446c4074b6" compoundref="mtk__uni__stg__grid__2d_8h" startline="309">mtk::UniStgGrid2D::num_cells_y_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1a3f904091b6e74aa78d8543e5cba26afb" compoundref="mtk__uni__stg__grid__2d_8h" startline="308">mtk::UniStgGrid2D::north_bndy_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1ab15979865852583a46662ea592f27a4f" compoundref="mtk__uni__stg__grid__2d_8h" startline="296">mtk::UniStgGrid2D::discrete_domain_x_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1ad69f93d4b27707d97f209b907383a7a2" compoundref="mtk__uni__stg__grid__2d_8h" startline="297">mtk::UniStgGrid2D::discrete_domain_y_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1ac8b66740d328803f7fbabd1c42c775b2" compoundref="mtk__uni__stg__grid__2d_8h" startline="300">mtk::UniStgGrid2D::nature_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1a59c42d8099a017bc8a082fddc1e5606c" compoundref="mtk__uni__stg__grid__2d_8h" startline="299">mtk::UniStgGrid2D::west_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1ac03a0f4840ee6ae1bc853e5d9c0df8d1" compoundref="mtk__uni__stg__grid__2d_8h" startline="301">mtk::UniStgGrid2D::num_cells_x_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1ae24f3d5bf5ed3a6d066cdf48aa1fb307" compoundref="mtk__uni__stg__grid__2d_8h" startline="300">mtk::UniStgGrid2D::east_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1ac228c81fad7f4feeae93fb3c09d7e175" compoundref="mtk__uni__stg__grid__2d_8h" startline="304">mtk::UniStgGrid2D::south_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1a3e4f61d781212ad57c34e9446c4074b6" compoundref="mtk__uni__stg__grid__2d_8h" startline="306">mtk::UniStgGrid2D::num_cells_y_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1a3f904091b6e74aa78d8543e5cba26afb" compoundref="mtk__uni__stg__grid__2d_8h" startline="305">mtk::UniStgGrid2D::north_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1ab15979865852583a46662ea592f27a4f" compoundref="mtk__uni__stg__grid__2d_8h" startline="293">mtk::UniStgGrid2D::discrete_domain_x_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1ad69f93d4b27707d97f209b907383a7a2" compoundref="mtk__uni__stg__grid__2d_8h" startline="294">mtk::UniStgGrid2D::discrete_domain_y_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1ac8b66740d328803f7fbabd1c42c775b2" compoundref="mtk__uni__stg__grid__2d_8h" startline="297">mtk::UniStgGrid2D::nature_</references>
         <references refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205" compoundref="mtk__enums_8h" startline="114">SCALAR</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1ad7474b2669ee988b84aed20b7f5dc7be" compoundref="mtk__uni__stg__grid__2d_8h" startline="298">mtk::UniStgGrid2D::discrete_field_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1ad7474b2669ee988b84aed20b7f5dc7be" compoundref="mtk__uni__stg__grid__2d_8h" startline="295">mtk::UniStgGrid2D::discrete_field_</references>
+      </memberdef>
+      <memberdef kind="function" id="namespacemtk_1a50ce3dc63af019c21e15e1b09465d334" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>std::ostream &amp;</type>
+        <definition>std::ostream&amp; mtk::operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;stream, mtk::UniStgGrid3D &amp;in)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type><ref refid="classmtk_1_1UniStgGrid3D" kindref="compound">mtk::UniStgGrid3D</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>Print spatial coordinates.</para></listitem><listitem><para>Print scalar field. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/src/mtk_uni_stg_grid_3d.cc" line="67" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_uni_stg_grid_3d.cc" bodystart="67" bodyend="113"/>
+        <references refid="classmtk_1_1UniStgGrid3D_1ac61f8810468d2a802d8a5ba11b0409c9" compoundref="mtk__uni__stg__grid__3d_8h" startline="377">mtk::UniStgGrid3D::west_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1a44c1a51843b37aee9b714c8bb9016262" compoundref="mtk__uni__stg__grid__3d_8h" startline="379">mtk::UniStgGrid3D::num_cells_x_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1aafe32f2f7eb2660f06a8b9ef30c3cc0c" compoundref="mtk__uni__stg__grid__3d_8h" startline="378">mtk::UniStgGrid3D::east_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1a30b52c42ba39f2be09df1a5dd140cba1" compoundref="mtk__uni__stg__grid__3d_8h" startline="382">mtk::UniStgGrid3D::south_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1ae944d431e0228fad3a807fbefb21fe62" compoundref="mtk__uni__stg__grid__3d_8h" startline="384">mtk::UniStgGrid3D::num_cells_y_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1aa123abdd43dddd27a8206e99eb496c05" compoundref="mtk__uni__stg__grid__3d_8h" startline="383">mtk::UniStgGrid3D::north_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1aae37910fbf5466a711bf290041839a75" compoundref="mtk__uni__stg__grid__3d_8h" startline="387">mtk::UniStgGrid3D::bottom_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1a1758dfb9c97287f69662e77388f3dfc9" compoundref="mtk__uni__stg__grid__3d_8h" startline="389">mtk::UniStgGrid3D::num_cells_z_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1af2cc6416dfd1c3afb3b9db5d1c846128" compoundref="mtk__uni__stg__grid__3d_8h" startline="388">mtk::UniStgGrid3D::top_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1ad3064a12921a11823dbd8fe253867898" compoundref="mtk__uni__stg__grid__3d_8h" startline="370">mtk::UniStgGrid3D::discrete_domain_x_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1aea0e7ee9e363c850e3ec466966cd7a9a" compoundref="mtk__uni__stg__grid__3d_8h" startline="371">mtk::UniStgGrid3D::discrete_domain_y_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1a9863aad800bf00d17f478ec511dd25fe" compoundref="mtk__uni__stg__grid__3d_8h" startline="372">mtk::UniStgGrid3D::discrete_domain_z_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1a04f7ad8ef5ea51ef0442fdbf0592a14c" compoundref="mtk__uni__stg__grid__3d_8h" startline="375">mtk::UniStgGrid3D::nature_</references>
+        <references refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205" compoundref="mtk__enums_8h" startline="114">SCALAR</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1acbd2e19beffc89f87e6ef7b39f98bfe2" compoundref="mtk__uni__stg__grid__3d_8h" startline="373">mtk::UniStgGrid3D::discrete_field_</references>
       </memberdef>
       </sectiondef>
     <briefdescription>

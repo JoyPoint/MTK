@@ -1,16 +1,20 @@
 var namespacemtk =
 [
     [ "BLASAdapter", "classmtk_1_1BLASAdapter.html", "classmtk_1_1BLASAdapter" ],
+    [ "Curl2D", "classmtk_1_1Curl2D.html", "classmtk_1_1Curl2D" ],
     [ "DenseMatrix", "classmtk_1_1DenseMatrix.html", "classmtk_1_1DenseMatrix" ],
     [ "Div1D", "classmtk_1_1Div1D.html", "classmtk_1_1Div1D" ],
     [ "Div2D", "classmtk_1_1Div2D.html", "classmtk_1_1Div2D" ],
+    [ "Div3D", "classmtk_1_1Div3D.html", "classmtk_1_1Div3D" ],
     [ "GLPKAdapter", "classmtk_1_1GLPKAdapter.html", "classmtk_1_1GLPKAdapter" ],
     [ "Grad1D", "classmtk_1_1Grad1D.html", "classmtk_1_1Grad1D" ],
     [ "Grad2D", "classmtk_1_1Grad2D.html", "classmtk_1_1Grad2D" ],
+    [ "Grad3D", "classmtk_1_1Grad3D.html", "classmtk_1_1Grad3D" ],
     [ "Interp1D", "classmtk_1_1Interp1D.html", "classmtk_1_1Interp1D" ],
     [ "Interp2D", "classmtk_1_1Interp2D.html", "classmtk_1_1Interp2D" ],
     [ "Lap1D", "classmtk_1_1Lap1D.html", "classmtk_1_1Lap1D" ],
     [ "Lap2D", "classmtk_1_1Lap2D.html", "classmtk_1_1Lap2D" ],
+    [ "Lap3D", "classmtk_1_1Lap3D.html", "classmtk_1_1Lap3D" ],
     [ "LAPACKAdapter", "classmtk_1_1LAPACKAdapter.html", "classmtk_1_1LAPACKAdapter" ],
     [ "Matrix", "classmtk_1_1Matrix.html", "classmtk_1_1Matrix" ],
     [ "Quad1D", "classmtk_1_1Quad1D.html", "classmtk_1_1Quad1D" ],
@@ -18,5 +22,6 @@ var namespacemtk =
     [ "RobinBCDescriptor2D", "classmtk_1_1RobinBCDescriptor2D.html", "classmtk_1_1RobinBCDescriptor2D" ],
     [ "Tools", "classmtk_1_1Tools.html", "classmtk_1_1Tools" ],
     [ "UniStgGrid1D", "classmtk_1_1UniStgGrid1D.html", "classmtk_1_1UniStgGrid1D" ],
-    [ "UniStgGrid2D", "classmtk_1_1UniStgGrid2D.html", "classmtk_1_1UniStgGrid2D" ]
+    [ "UniStgGrid2D", "classmtk_1_1UniStgGrid2D.html", "classmtk_1_1UniStgGrid2D" ],
+    [ "UniStgGrid3D", "classmtk_1_1UniStgGrid3D.html", "classmtk_1_1UniStgGrid3D" ]
 ];

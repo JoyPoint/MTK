@@ -5,139 +5,117 @@
 00001 # The Mimetic Methods Toolkit (MTK)
 00002 
 00003 By: **Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu**
-00004     \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-00005 
-00006 ## 1. Description
-00007 
-00008 We define numerical methods that are based on discretizations preserving the
-00009 properties of their continuum counterparts to be **mimetic**.
-00010 
-00011 The **Mimetic Methods Toolkit (MTK)** is a C++ library for mimetic numerical
-00012 methods. It is arranged as a set of classes for **mimetic quadratures**,
-00013 **mimetic interpolation**, and **mimetic finite differences** methods for the
-00014 numerical solution of ordinary and partial differential equations.
-00015 
-00016 An older version of this library is available outside of GitHub... just email me
-00017 about it, and you can have it... it is ugly, yet it is functional and more
-00018 complete.
-00019     \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-00020 
-00021 ## 2. Dependencies
-00022 
-00023 This README assumes all of these dependencies are installed in the following
-00024 folder:
-00025 
-00026 ```
-00027 $(HOME)/Libraries/
-00028 ```
-00029 
-00030 In this version, the MTK optionally uses ATLAS-optimized BLAS and LAPACK
-00031 routines for the internal computation on some of the layers. However, ATLAS
-00032 requires both BLAS and LAPACK in order to create their optimized distributions.
-00033 Therefore, the following dependencies tree arises:
-00034 
-00035 ### For Linux:
-00036 
-00037 1. LAPACK - Available from: http://www.netlib.org/lapack/
-00038   1. BLAS - Available from: http://www.netlib.org/blas/
+00004 
+00005 ## 1. Description
+00006 
+00007 We define numerical methods that are based on discretizations preserving the
+00008 properties of their continuum counterparts to be **mimetic**.
+00009 
+00010 The **Mimetic Methods Toolkit (MTK)** is a C++ library for mimetic numerical
+00011 methods. It is arranged as a set of classes for **mimetic quadratures**,
+00012 **mimetic interpolation**, and **mimetic finite differences** methods for the
+00013 numerical solution of ordinary and partial differential equations.
+00014 
+00015 ## 2. Dependencies
+00016 
+00017 This README assumes all of these dependencies are installed in the following
+00018 folder:
+00019 
+00020 ```
+00021 $(HOME)/Libraries/
+00022 ```
+00023 
+00024 In this version, the MTK optionally uses ATLAS-optimized BLAS and LAPACK
+00025 routines for the internal computation on some of the layers. However, ATLAS
+00026 requires both BLAS and LAPACK in order to create their optimized distributions.
+00027 Therefore, the following dependencies tree arises:
+00028 
+00029 ### For Linux:
+00030 
+00031 1. LAPACK - Available from: http://www.netlib.org/lapack/
+00032   1. BLAS - Available from: http://www.netlib.org/blas/
+00033 
+00034 2. GLPK - Available from: https://www.gnu.org/software/glpk/
+00035 
+00036 3. (Optional) ATLAS - Available from: http://math-atlas.sourceforge.net/
+00037   1. LAPACK - Available from: http://www.netlib.org/lapack/
+00038     1. BLAS - Available from: http://www.netlib.org/blas
 00039 
-00040 2. GLPK - Available from: https://www.gnu.org/software/glpk/
+00040 4. (Optional) Valgrind - Available from: http://valgrind.org/
 00041 
-00042 3. (Optional) ATLAS - Available from: http://math-atlas.sourceforge.net/
-00043   1. LAPACK - Available from: http://www.netlib.org/lapack/
-00044     1. BLAS - Available from: http://www.netlib.org/blas
+00042 5. (Optional) Doxygen - Available from http://www.stack.nl/~dimitri/doxygen/
+00043 
+00044 ### For OS X:
 00045 
-00046 4. (Optional) Valgrind - Available from: http://valgrind.org/
+00046 1. GLPK - Available from: https://www.gnu.org/software/glpk/
 00047 
-00048 5. (Optional) Doxygen - Available from http://www.stack.nl/~dimitri/doxygen/
+00048 ## 3. Installation
 00049 
-00050 ### For OS X:
+00050 ### PART 1. CONFIGURATION OF THE MAKEFILE.
 00051 
-00052 1. GLPK - Available from: https://www.gnu.org/software/glpk/
-00053     \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-00054 
-00055 ## 3. Installation
-00056 
-00057 ### PART 1. CONFIGURATION OF THE MAKEFILE.
-00058 
-00059 The following steps are required to build and test the MTK. Please use the
-00060 accompanying `Makefile.inc` file, which should provide a solid template to
-00061 start with. The following command provides help on the options for make:
-00062 
-00063 ```
-00064 $ make help
-00065 -----
-00066 Makefile for the MTK.
-00067 
-00068 Options are:
-00069 - all: builds the library, the tests, and examples.
-00070 - mtklib: builds the library.
-00071 - test: builds the test files.
-00072 - example: builds the examples.
-00073 
-00074 - testall: runs all the tests.
-00075 
-00076 - gendoc: generates the documentation for the library.
+00052 The following steps are required to build and test the MTK. Please use the
+00053 accompanying `Makefile.inc` file, which should provide a solid template to
+00054 start with. The following command provides help on the options for make:
+00055 
+00056 ```
+00057 $ make help
+00058 -----
+00059 Makefile for the MTK.
+00060 
+00061 Options are:
+00062 - all: builds the library, the tests, and examples.
+00063 - mtklib: builds the library.
+00064 - test: builds the test files.
+00065 - example: builds the examples.
+00066 
+00067 - testall: runs all the tests.
+00068 
+00069 - gendoc: generates the documentation for the library.
+00070 
+00071 - clean: cleans all the generated files.
+00072 - cleanlib: cleans the generated archive and object files.
+00073 - cleantest: cleans the generated tests executables.
+00074 - cleanexample: cleans the generated examples executables.
+00075 -----
+00076 ```
 00077 
-00078 - clean: cleans all the generated files.
-00079 - cleanlib: cleans the generated archive and object files.
-00080 - cleantest: cleans the generated tests executables.
-00081 - cleanexample: cleans the generated examples executables.
-00082 -----
-00083 ```
-00084 
-00085 ### PART 2. BUILD THE LIBRARY.
-00086 
-00087 ```
-00088 $ make
-00089 ```
-00090 
-00091 If successful you'll read (before building the tests and examples):
-00092 
-00093 ```
-00094 ----- Library created! Check in /home/ejspeiro/Dropbox/MTK/lib
-00095 ```
-00096 
-00097 Examples and tests will also be built.
-00098     \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
-00099 
-00100 ## 4. Frequently Asked Questions
+00078 ### PART 2. BUILD THE LIBRARY.
+00079 
+00080 ```
+00081 $ make
+00082 ```
+00083 
+00084 If successful you'll read (before building the tests and examples):
+00085 
+00086 ```
+00087 ----- Library created! Check in /home/ejspeiro/Dropbox/MTK/lib
+00088 ```
+00089 
+00090 ## 4. Contact, Support, and Credits
+00091 
+00092 The MTK is developed by researchers and adjuncts to the
+00093 [Computational Science Research Center (CSRC)](http://www.csrc.sdsu.edu/)
+00094 at [San Diego State University (SDSU)](http://www.sdsu.edu/).
+00095 
+00096 Developers are members of:
+00097 
+00098 1. Mimetic Numerical Methods Research and Development Group.
+00099 2. Computational Geoscience Research and Development Group.
+00100 3. Ocean Modeling Research and Development Group.
 00101 
-00102 Q: Why haven't you guys implemented GBS to build the library?
-00103 A: I'm on it as we speak! ;)
-00104 
-00105 Q: Is there any main reference when it comes to the theory on Mimetic Methods?
-00106 A: Yes! Check: http://www.csrc.sdsu.edu/mimetic-book
-00107 
-00108 Q: Do I need to generate the documentation myself?
-00109 A: You can if you want to... but if you DO NOT want to, just go to our website.
-00110     \_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_\_
+00102 Currently the developers are:
+00103 
+00104 - **Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu** - @ejspeiro
+00105 - Jose E. Castillo, Ph.D. - jcastillo at mail dot sdsu dot edu
+00106 - Guillermo F. Miranda, Ph.D. - unigrav at hotmail dot com
+00107 - Christopher P. Paolini, Ph.D. - paolini at engineering dot sdsu dot edu
+00108 - Angel Boada.
+00109 - Johnny Corbino.
+00110 - Raul Vargas-Navarro.
 00111 
-00112 ## 5. Contact, Support, and Credits
+00112 Finally, please feel free to contact me with suggestions or corrections:
 00113 
-00114 The MTK is developed by researchers and adjuncts to the
-00115 [Computational Science Research Center (CSRC)](http://www.csrc.sdsu.edu/)
-00116 at [San Diego State University (SDSU)](http://www.sdsu.edu/).
-00117 
-00118 Developers are members of:
-00119 
-00120 1. Mimetic Numerical Methods Research and Development Group.
-00121 2. Computational Geoscience Research and Development Group.
-00122 3. Ocean Modeling Research and Development Group.
-00123 
-00124 Currently the developers are:
-00125 
-00126 - **Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu** - @ejspeiro
-00127 - Jose E. Castillo, Ph.D. - jcastillo at mail dot sdsu dot edu
-00128 - Guillermo F. Miranda, Ph.D. - unigrav at hotmail dot com
-00129 - Christopher P. Paolini, Ph.D. - paolini at engineering dot sdsu dot edu
-00130 - Angel Boada.
-00131 - Johnny Corbino.
-00132 - Raul Vargas-Navarro.
-00133 
-00134 Finally, please feel free to contact me with suggestions or corrections:
-00135 
-00136 **Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu** - @ejspeiro
-00137 
-00138 Thanks and happy coding!
+00114 **Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu** - @ejspeiro
+00115 
+00116 Thanks and happy coding!
 \end{DoxyCode}

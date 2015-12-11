@@ -123,79 +123,80 @@
 00124 
 00125   bcd.\hyperlink{classmtk_1_1RobinBCDescriptor2D_a0a26693f5265fcad978e7ba84e01ed69}{ImposeOnLaplacianMatrix}(ll, llg, llm);
 00126 
-00127   assertion = assertion && llm.WriteToFile(\textcolor{stringliteral}{"mtk\_bc\_descriptor\_2d\_test\_02.dat"});
-00128 
-00129   \hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{mtk::Tools::EndUnitTestNo}(2);
-00130   \hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{mtk::Tools::Assert}(assertion);
-00131 \}
-00132 
-00133 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} ScalarField(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx, \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &yy) \{
-00134 
-00135   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aux\{-(1.0/2.0)*xx*xx - (1.0/2.0)*yy*yy\};
-00136 
-00137   \textcolor{keywordflow}{return} xx*yy*exp(aux);
-00138 \}
-00139 
-00140 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} HomogeneousDiricheletBC(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx,
-00141                                   \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &tt) \{
-00142 
-00143   \textcolor{keywordflow}{return} \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero};
-00144 \}
-00145 
-00146 \textcolor{keywordtype}{void} TestImposeOnGrid() \{
-00147 
-00148   \hyperlink{classmtk_1_1Tools_afc29ecaf337a13ed2e817d3890a5a441}{mtk::Tools::BeginUnitTestNo}(3);
-00149 
-00150   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aa = 0.0;
-00151   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} bb = 1.0;
-00152   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} cc = 0.0;
-00153   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} dd = 1.0;
-00154 
-00155   \textcolor{keywordtype}{int} nn = 5;
-00156   \textcolor{keywordtype}{int} mm = 5;
-00157 
-00158   \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} gg(aa, bb, nn, cc, dd, mm);
-00159 
-00160   gg.BindScalarField(ScalarField);
-00161 
-00162   \hyperlink{classmtk_1_1RobinBCDescriptor2D}{mtk::RobinBCDescriptor2D} desc;
-00163 
-00164   desc.\hyperlink{classmtk_1_1RobinBCDescriptor2D_aeaff87510dc1773effc0b5429579de23}{set\_west\_condition}(HomogeneousDiricheletBC);
-00165   desc.\hyperlink{classmtk_1_1RobinBCDescriptor2D_a94570f6e741bb00038c4bf81842d226c}{set\_east\_condition}(HomogeneousDiricheletBC);
-00166   desc.\hyperlink{classmtk_1_1RobinBCDescriptor2D_a3fbdf58ba24861011fd852f0c642a4c8}{set\_south\_condition}(HomogeneousDiricheletBC);
-00167   desc.\hyperlink{classmtk_1_1RobinBCDescriptor2D_ade17884e6a2636a7c6f989602a0052e0}{set\_north\_condition}(HomogeneousDiricheletBC);
-00168 
-00169   desc.\hyperlink{classmtk_1_1RobinBCDescriptor2D_ac9564bc46c196cbf4720a0e4b93da8b0}{ImposeOnGrid}(gg);
-00170 
-00171   \textcolor{keywordtype}{bool} assertion\{gg.WriteToFile(\textcolor{stringliteral}{"mtk\_bc\_descriptor\_2d\_test\_03.dat"},
-00172                                 \textcolor{stringliteral}{"x"},
-00173                                 \textcolor{stringliteral}{"y"},
-00174                                 \textcolor{stringliteral}{"u(x,y)"})\};
-00175 
-00176   \textcolor{keywordflow}{if}(!assertion) \{
-00177     std::cerr << \textcolor{stringliteral}{"Error writing to file."} << std::endl;
-00178   \}
-00179 
-00180   \hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{mtk::Tools::EndUnitTestNo}(3);
-00181   \hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{mtk::Tools::Assert}(assertion);
-00182 \}
-00183 
-00184 \textcolor{keywordtype}{int} \hyperlink{mtk__robin__bc__descriptor__2d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
-00185 
-00186   std::cout << \textcolor{stringliteral}{"Testing mtk::RobinBCDescriptor2D class."} << std::endl;
-00187 
-00188   TestDefaultConstructorGetters();
-00189   TestPushBackImposeOnLaplacianMatrix();
-00190   TestImposeOnGrid();
-00191 \}
-00192 
-00193 \textcolor{preprocessor}{#else}
-00194 \textcolor{preprocessor}{#include <iostream>}
-00195 \textcolor{keyword}{using} std::cout;
-00196 \textcolor{keyword}{using} std::endl;
-\hypertarget{mtk__robin__bc__descriptor__2d__test_8cc_source_l00197}{}\hyperlink{mtk__robin__bc__descriptor__2d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00197} \textcolor{keywordtype}{int} \hyperlink{mtk__robin__bc__descriptor__2d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
-00198   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
-00199   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
-00200 \}
-00201 \textcolor{preprocessor}{#endif}
+00127   assertion = assertion &&
+00128     llm.WriteToFile(\textcolor{stringliteral}{"mtk\_robin\_bc\_descriptor\_2d\_test\_02.dat"});
+00129 
+00130   \hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{mtk::Tools::EndUnitTestNo}(2);
+00131   \hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{mtk::Tools::Assert}(assertion);
+00132 \}
+00133 
+00134 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} ScalarField(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx, \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &yy) \{
+00135 
+00136   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aux\{-(1.0/2.0)*xx*xx - (1.0/2.0)*yy*yy\};
+00137 
+00138   \textcolor{keywordflow}{return} xx*yy*exp(aux);
+00139 \}
+00140 
+00141 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} HomogeneousDiricheletBC(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx,
+00142                                   \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &tt) \{
+00143 
+00144   \textcolor{keywordflow}{return} \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero};
+00145 \}
+00146 
+00147 \textcolor{keywordtype}{void} TestImposeOnGrid() \{
+00148 
+00149   \hyperlink{classmtk_1_1Tools_afc29ecaf337a13ed2e817d3890a5a441}{mtk::Tools::BeginUnitTestNo}(3);
+00150 
+00151   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aa = 0.0;
+00152   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} bb = 1.0;
+00153   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} cc = 0.0;
+00154   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} dd = 1.0;
+00155 
+00156   \textcolor{keywordtype}{int} nn = 5;
+00157   \textcolor{keywordtype}{int} mm = 5;
+00158 
+00159   \hyperlink{classmtk_1_1UniStgGrid2D}{mtk::UniStgGrid2D} gg(aa, bb, nn, cc, dd, mm);
+00160 
+00161   gg.BindScalarField(ScalarField);
+00162 
+00163   \hyperlink{classmtk_1_1RobinBCDescriptor2D}{mtk::RobinBCDescriptor2D} desc;
+00164 
+00165   desc.\hyperlink{classmtk_1_1RobinBCDescriptor2D_aeaff87510dc1773effc0b5429579de23}{set\_west\_condition}(HomogeneousDiricheletBC);
+00166   desc.\hyperlink{classmtk_1_1RobinBCDescriptor2D_a94570f6e741bb00038c4bf81842d226c}{set\_east\_condition}(HomogeneousDiricheletBC);
+00167   desc.\hyperlink{classmtk_1_1RobinBCDescriptor2D_a3fbdf58ba24861011fd852f0c642a4c8}{set\_south\_condition}(HomogeneousDiricheletBC);
+00168   desc.\hyperlink{classmtk_1_1RobinBCDescriptor2D_ade17884e6a2636a7c6f989602a0052e0}{set\_north\_condition}(HomogeneousDiricheletBC);
+00169 
+00170   desc.\hyperlink{classmtk_1_1RobinBCDescriptor2D_ac9564bc46c196cbf4720a0e4b93da8b0}{ImposeOnGrid}(gg);
+00171 
+00172   \textcolor{keywordtype}{bool} assertion\{gg.WriteToFile(\textcolor{stringliteral}{"mtk\_robin\_bc\_descriptor\_2d\_test\_03.dat"},
+00173                                 \textcolor{stringliteral}{"x"},
+00174                                 \textcolor{stringliteral}{"y"},
+00175                                 \textcolor{stringliteral}{"u(x,y)"})\};
+00176 
+00177   \textcolor{keywordflow}{if}(!assertion) \{
+00178     std::cerr << \textcolor{stringliteral}{"Error writing to file."} << std::endl;
+00179   \}
+00180 
+00181   \hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{mtk::Tools::EndUnitTestNo}(3);
+00182   \hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{mtk::Tools::Assert}(assertion);
+00183 \}
+00184 
+00185 \textcolor{keywordtype}{int} \hyperlink{mtk__robin__bc__descriptor__2d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00186 
+00187   std::cout << \textcolor{stringliteral}{"Testing mtk::RobinBCDescriptor2D class."} << std::endl;
+00188 
+00189   TestDefaultConstructorGetters();
+00190   TestPushBackImposeOnLaplacianMatrix();
+00191   TestImposeOnGrid();
+00192 \}
+00193 
+00194 \textcolor{preprocessor}{#else}
+00195 \textcolor{preprocessor}{#include <iostream>}
+00196 \textcolor{keyword}{using} std::cout;
+00197 \textcolor{keyword}{using} std::endl;
+\hypertarget{mtk__robin__bc__descriptor__2d__test_8cc_source_l00198}{}\hyperlink{mtk__robin__bc__descriptor__2d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00198} \textcolor{keywordtype}{int} \hyperlink{mtk__robin__bc__descriptor__2d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00199   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
+00200   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
+00201 \}
+00202 \textcolor{preprocessor}{#endif}
 \end{DoxyCode}

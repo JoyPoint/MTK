@@ -1,4 +1,4 @@
-.TH "mtk" 3 "Tue Dec 1 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk" 3 "Fri Dec 11 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -17,6 +17,10 @@ Mimetic Methods Toolkit namespace\&.
 .br
 .RI "\fIAdapter class for the BLAS API\&. \fP"
 .ti -1c
+.RI "class \fBCurl2D\fP"
+.br
+.RI "\fIImplements a 2D mimetic curl operator\&. \fP"
+.ti -1c
 .RI "class \fBDenseMatrix\fP"
 .br
 .RI "\fIDefines a common dense matrix, using a 1D array\&. \fP"
@@ -29,6 +33,10 @@ Mimetic Methods Toolkit namespace\&.
 .br
 .RI "\fIImplements a 2D mimetic divergence operator\&. \fP"
 .ti -1c
+.RI "class \fBDiv3D\fP"
+.br
+.RI "\fIImplements a 3D mimetic divergence operator\&. \fP"
+.ti -1c
 .RI "class \fBGLPKAdapter\fP"
 .br
 .RI "\fIAdapter class for the GLPK API\&. \fP"
@@ -40,6 +48,10 @@ Mimetic Methods Toolkit namespace\&.
 .RI "class \fBGrad2D\fP"
 .br
 .RI "\fIImplements a 2D mimetic gradient operator\&. \fP"
+.ti -1c
+.RI "class \fBGrad3D\fP"
+.br
+.RI "\fIImplements a 3D mimetic gradient operator\&. \fP"
 .ti -1c
 .RI "class \fBInterp1D\fP"
 .br
@@ -56,6 +68,10 @@ Mimetic Methods Toolkit namespace\&.
 .RI "class \fBLap2D\fP"
 .br
 .RI "\fIImplements a 2D mimetic Laplacian operator\&. \fP"
+.ti -1c
+.RI "class \fBLap3D\fP"
+.br
+.RI "\fIImplements a 3D mimetic Laplacian operator\&. \fP"
 .ti -1c
 .RI "class \fBLAPACKAdapter\fP"
 .br
@@ -88,6 +104,10 @@ Mimetic Methods Toolkit namespace\&.
 .RI "class \fBUniStgGrid2D\fP"
 .br
 .RI "\fIUniform 2D Staggered Grid\&. \fP"
+.ti -1c
+.RI "class \fBUniStgGrid3D\fP"
+.br
+.RI "\fIUniform 3D Staggered Grid\&. \fP"
 .in -1c
 .SS "Typedefs"
 
@@ -176,6 +196,9 @@ Mimetic Methods Toolkit namespace\&.
 .ti -1c
 .RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBmtk::UniStgGrid2D\fP &in)"
 .br
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBmtk::UniStgGrid3D\fP &in)"
+.br
 .in -1c
 .SS "Variables"
 
@@ -223,6 +246,16 @@ Print approximating coefficients for the interior\&.
 
 .PP
 Definition at line 66 of file mtk_interp_1d\&.cc\&.
+.SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::UniStgGrid3D\fP &in)"
+
+.IP "1." 4
+Print spatial coordinates\&.
+.IP "2." 4
+Print scalar field\&. 
+.PP
+
+.PP
+Definition at line 67 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::UniStgGrid2D\fP &in)"
 
 .IP "1." 4
