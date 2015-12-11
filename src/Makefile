@@ -18,7 +18,8 @@ NUMMETHODS = \
 
 GRIDS = \
 	mtk_uni_stg_grid_1d.o \
-	mtk_uni_stg_grid_2d.o
+	mtk_uni_stg_grid_2d.o \
+	mtk_uni_stg_grid_3d.o
 
 MIMOPS = \
 	mtk_grad_1d.o \
@@ -29,6 +30,7 @@ MIMOPS = \
 	mtk_interp_1d.o \
 	mtk_grad_2d.o \
 	mtk_div_2d.o \
+	mtk_curl_2d.o \
 	mtk_lap_2d.o
 
 exetools: $(EXETOOLS)

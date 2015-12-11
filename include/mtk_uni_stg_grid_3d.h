@@ -1,9 +1,9 @@
 /*!
-\file mtk_uni_stg_grid_2d.h
+\file mtk_uni_stg_grid_3d.h
 
-\brief Definition of an 2D uniform staggered grid.
+\brief Definition of an 3D uniform staggered grid.
 
-Definition of an 2D uniform staggered grid.
+Definition of an 3D uniform staggered grid.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 
@@ -55,8 +55,8 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef MTK_INCLUDE_UNI_STG_GRID_2D_H_
-#define MTK_INCLUDE_UNI_STG_GRID_2D_H_
+#ifndef MTK_INCLUDE_UNI_STG_GRID_3D_H_
+#define MTK_INCLUDE_UNI_STG_GRID_3D_H_
 
 #include <vector>
 #include <string>
@@ -68,28 +68,28 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 namespace mtk {
 
 /*!
-\class UniStgGrid2D
+\class UniStgGrid3D
 
 \ingroup c06-grids
 
-\brief Uniform 2D Staggered Grid.
+\brief Uniform 3D Staggered Grid.
 
-Uniform 2D Staggered Grid.
+Uniform 3D Staggered Grid.
 */
-class UniStgGrid2D {
+class UniStgGrid3D {
  public:
   /// \brief Prints the grid as a tuple of arrays.
-  friend std::ostream& operator <<(std::ostream& stream, UniStgGrid2D &in);
+  friend std::ostream& operator <<(std::ostream& stream, UniStgGrid3D &in);
 
   /// \brief Default constructor.
-  UniStgGrid2D();
+  UniStgGrid3D();
 
   /*!
   \brief Copy constructor.
 
   \param [in] grid Given grid.
   */
-  UniStgGrid2D(const UniStgGrid2D &grid);
+  UniStgGrid3D(const UniStgGrid3D &grid);
 
   /*!
   \brief Construct a grid based on spatial discretization parameters.
@@ -100,20 +100,26 @@ class UniStgGrid2D {
   \param[in] south_bndy_y Coordinate for the west boundary.
   \param[in] north_bndy_y Coordinate for the east boundary.
   \param[in] num_cells_y Number of cells of the required grid.
+  \param[in] bottom_bndy_z Coordinate for the bottom boundary.
+  \param[in] top_bndy_z Coordinate for the top boundary.
+  \param[in] num_cells_z Number of cells of the required grid.
   \param[in] nature Nature of the discrete field to hold.
 
   \sa mtk::FieldNature
   */
-  UniStgGrid2D(const Real &west_bndy_x,
+  UniStgGrid3D(const Real &west_bndy_x,
                const Real &east_bndy_x,
                const int &num_cells_x,
                const Real &south_bndy_y,
                const Real &north_bndy_y,
                const int &num_cells_y,
+               const Real &bottom_bndy_z,
+               const Real &top_bndy_z,
+               const int &num_cells_z,
                const mtk::FieldNature &nature = mtk::SCALAR);
 
   /// \brief Destructor.
-  ~UniStgGrid2D();
+  ~UniStgGrid3D();
 
   /*!
   \brief Provides access to the grid spatial data.
@@ -132,6 +138,15 @@ class UniStgGrid2D {
   \todo Review const-correctness of the pointer we return.
   */
   const Real *discrete_domain_y() const;
+
+  /*!
+  \brief Provides access to the grid spatial data.
+
+  \return Pointer to the spatial data.
+
+  \todo Review const-correctness of the pointer we return.
+  */
+  const Real *discrete_domain_z() const;
 
   /*!
   \brief Provides access to the grid field data.
@@ -206,6 +221,34 @@ class UniStgGrid2D {
   Real delta_y() const;
 
   /*!
+  \brief Provides access to bottom boundary spatial coordinate.
+
+  \return Bottom boundary spatial coordinate.
+  */
+  Real bottom_bndy() const;
+
+  /*!
+  \brief Provides access to top boundary spatial coordinate.
+
+  \return Top boundary spatial coordinate.
+  */
+  Real top_bndy() const;
+
+  /*!
+  \brief Provides access to the number of cells of the grid.
+
+  \return Number of cells of the grid.
+  */
+  int num_cells_z() const;
+
+  /*!
+  \brief Provides access to the computed \$ \Delta z \$.
+
+  \return Computed \$ \Delta z \$.
+  */
+  Real delta_z() const;
+
+  /*!
   \brief Have any field been bound to the grid?
 
   \return True is a field has been bound.
@@ -224,25 +267,34 @@ class UniStgGrid2D {
 
   \param[in] ScalarField Pointer to the function implementing the scalar field.
   */
-  void BindScalarField(Real (*ScalarField)(const Real &xx, const Real &yy));
+  void BindScalarField(
+    Real (*ScalarField)(const Real &xx, const Real &yy, const Real &zz));
 
   /*!
   \brief Binds a given vector field to the grid.
 
   We assume the field to be of the form:
   \f[
-    \mathbf{v}(\mathbf{x}) = p(x, y)\hat{\mathbf{i}} + q(x, y)\hat{\mathbf{j}}
+    \mathbf{v}(\mathbf{x}) = p(x, y, z)\hat{\mathbf{i}} +
+      q(x, y, z)\hat{\mathbf{j}} + r(x, y, z)\hat{\mathbf{k}}
   \f]
 
   \param[in] VectorFieldPComponent Pointer to the function implementing the \$
   p \$ component of the vector field.
   \param[in] VectorFieldPComponent Pointer to the function implementing the \$
   q \$ component of the vector field.
+  \param[in] VectorFieldRComponent Pointer to the function implementing the \$
+  r \$ component of the vector field.
   */
   void BindVectorField(Real (*VectorFieldPComponent)(const Real &xx,
-                                                     const Real &yy),
+                                                     const Real &yy,
+                                                     const Real &zz),
                        Real (*VectorFieldQComponent)(const Real &xx,
-                                                     const Real &yy));
+                                                     const Real &yy,
+                                                     const Real &zz),
+                       Real (*VectorFieldRComponent)(const Real &xx,
+                                                     const Real &yy,
+                                                     const Real &zz));
 
   /*!
   \brief Writes grid to a file compatible with Gnuplot 4.6.
@@ -250,6 +302,7 @@ class UniStgGrid2D {
   \param[in] filename Name of the output file.
   \param[in] space_name_x Name for the first column of the (spatial) data.
   \param[in] space_name_y Name for the second column of the (spatial) data.
+  \param[in] space_name_z Name for the third column of the (spatial) data.
   \param[in] field_name Name for the second column of the (physical field) data.
 
   \return Success of the file writing process.
@@ -259,6 +312,7 @@ class UniStgGrid2D {
   bool WriteToFile(std::string filename,
                    std::string space_name_x,
                    std::string space_name_y,
+                   std::string space_name_z,
                    std::string field_name) const;
 
  private:
@@ -267,31 +321,55 @@ class UniStgGrid2D {
 
   We assume the field to be of the form:
   \f[
-    \mathbf{v}(\mathbf{x}) = p(x, y)\hat{\mathbf{i}} + q(x, y)\hat{\mathbf{j}}
+    \mathbf{v}(\mathbf{x}) = p(x, y, z)\hat{\mathbf{i}} +
+      q(x, y, z)\hat{\mathbf{j}} + r(x, y, z)\hat{\mathbf{k}}
   \f]
 
   \param[in] BindVectorFieldPComponent Pointer to the function implementing the
   \$ p \$ component of the vector field.
   */
   void BindVectorFieldPComponent(
-    Real (*VectorFieldPComponent)(const Real &xx, const Real &yy));
+    Real (*VectorFieldPComponent)(const Real &xx,
+                                  const Real &yy,
+                                  const Real &zz));
 
   /*!
   \brief Binds a given component of a vector field to the grid.
 
   We assume the field to be of the form:
   \f[
-    \mathbf{v}(\mathbf{x}) = p(x, y)\hat{\mathbf{i}} + q(x, y)\hat{\mathbf{j}}
+    \mathbf{v}(\mathbf{x}) = p(x, y, z)\hat{\mathbf{i}} +
+      q(x, y, z)\hat{\mathbf{j}} + r(x, y, z)\hat{\mathbf{k}}
   \f]
 
   \param[in] BindVectorFieldQComponent Pointer to the function implementing the
   \$ q \$ component of the vector field.
   */
   void BindVectorFieldQComponent(
-    Real (*VectorFieldQComponent)(const Real &xx, const Real &yy));
+    Real (*VectorFieldQComponent)(const Real &xx,
+                                  const Real &yy,
+                                  const Real &zz));
+
+  /*!
+  \brief Binds a given component of a vector field to the grid.
+
+  We assume the field to be of the form:
+  \f[
+    \mathbf{v}(\mathbf{x}) = p(x, y, z)\hat{\mathbf{i}} +
+      q(x, y, z)\hat{\mathbf{j}} + r(x, y, z)\hat{\mathbf{k}}
+  \f]
+
+  \param[in] BindVectorFieldQComponent Pointer to the function implementing the
+  \$ r \$ component of the vector field.
+  */
+  void BindVectorFieldRComponent(
+    Real (*VectorFieldRComponent)(const Real &xx,
+                                  const Real &yy,
+                                  const Real &zz));
 
   std::vector<Real> discrete_domain_x_; ///< Array of spatial data.
   std::vector<Real> discrete_domain_y_; ///< Array of spatial data.
+  std::vector<Real> discrete_domain_z_; ///< Array of spatial data.
   std::vector<Real> discrete_field_;    ///< Array of field's data.
 
   FieldNature nature_;  ///< Nature of the discrete field.
@@ -305,6 +383,11 @@ class UniStgGrid2D {
   Real north_bndy_;  ///< East boundary spatial coordinate.
   int num_cells_y_;  ///< Number of cells discretizing the domain.
   Real delta_y_;     ///< Computed \f$ \Delta y \f$.
+
+  Real bottom_bndy_;  ///< Bottom boundary spatial coordinate.
+  Real top_bndy_;     ///< Top boundary spatial coordinate.
+  int num_cells_z_;   ///< Number of cells discretizing the domain.
+  Real delta_z_;      ///< Computed \f$ \Delta z \f$.
 };
 }
-#endif  // End of: MTK_INCLUDE_UNI_STG_GRID_2D_H_
+#endif  // End of: MTK_INCLUDE_UNI_STG_GRID_3D_H_

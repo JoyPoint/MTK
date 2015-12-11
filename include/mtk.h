@@ -432,6 +432,7 @@ Mimetic operators.
 
 #include "mtk_grad_2d.h"
 #include "mtk_div_2d.h"
+#include "mtk_curl_2d.h"
 #include "mtk_lap_2d.h"
 #include "mtk_robin_bc_descriptor_2d.h"
 

@@ -1,10 +1,12 @@
 /*!
-\file mtk_curl_2d.h
+\file curl_2d_angular_velocity.cc
 
-\brief Includes the definition of the class Curl2D.
+\brief Compute the curl of a 2D angular velocity field.
 
-This class implements a 2D curl operator, constructed using the
-Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
+We compute the curl of:
+\f[
+\mathbf{v}(x,y) = -y\hat{\mathbf{i}} + x\hat{\mathbf{j}}.
+\f]
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -54,66 +56,56 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef MTK_INCLUDE_MTK_CURL_2D_H_
-#define MTK_INCLUDE_MTK_CURL_2D_H_
+#if __cplusplus == 201103L
 
-#include "mtk_roots.h"
-#include "mtk_dense_matrix.h"
-#include "mtk_uni_stg_grid_2d.h"
-#include "mtk_uni_stg_grid_3d.h"
+#include <iostream>
+#include <fstream>
+#include <cmath>
 
-namespace mtk{
+#include <vector>
 
-/*!
-\class Curl2D
+#include "mtk.h"
 
-\ingroup c07-mim_ops
+mtk::Real VectorFieldPComponent(const mtk::Real &xx, const mtk::Real &yy) {
 
-\brief Implements a 2D mimetic curl operator.
-
-This class implements a 2D curl operator, constructed using the
-Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
-*/
-class Curl2D {
- public:
-  /// \brief Operator application operator on a grid.
-  UniStgGrid3D operator*(const UniStgGrid2D &grid) const;
-
-  /// \brief Default constructor.
-  Curl2D();
-
-  /*!
-  \brief Copy constructor.
-
-  \param [in] curl Given curl.
-  */
-  Curl2D(const Curl2D &curl);
-
-  /// \brief Destructor.
-  ~Curl2D();
-
-  /*!
-  \brief Factory method implementing the CBS Algorithm to build operator.
-
-  \return Success of the construction.
-  */
-  bool ConstructCurl2D(const UniStgGrid2D &grid,
-                      int order_accuracy = kDefaultOrderAccuracy,
-                      Real mimetic_threshold = kDefaultMimeticThreshold);
-
-  /*!
-  \brief Return the operator as a dense matrix.
-
-  \return The operator as a dense matrix.
-  */
-  DenseMatrix ReturnAsDenseMatrix() const;
-
- private:
-  DenseMatrix curl_;  ///< Actual operator.
-
-  int order_accuracy_;  ///< Order of accuracy.
-
-  Real mimetic_threshold_;  ///< Mimetic Threshold.
-};
+  return -yy;
 }
-#endif  // End of: MTK_INCLUDE_MTK_CURL_2D_H_
+
+mtk::Real VectorFieldQComponent(const mtk::Real &xx, const mtk::Real &yy) {
+
+  return xx;
+}
+
+int main () {
+
+  std::cout << "Example: Curl of a angular velocity field." << std::endl;
+
+  /// 1. Discretize space.
+  mtk::Real aa = 0.0;
+  mtk::Real bb = 4.0;
+  mtk::Real cc = 0.0;
+  mtk::Real dd = 4.0;
+
+  int nn = 10;
+  int mm = 10;
+
+  mtk::UniStgGrid2D gg(aa, bb, nn, cc, dd, mm, mtk::VECTOR);
+
+  gg.BindVectorField(VectorFieldPComponent, VectorFieldQComponent);
+
+  if(!gg.WriteToFile("curl_2d_angular_velocity_gg.dat", "x", "y", "v(x,y)")) {
+    std::cerr << "Angular field could not be written to disk." << std::endl;
+    return EXIT_FAILURE;
+  }
+}
+
+#else
+#include <iostream>
+using std::cout;
+using std::endl;
+int main () {
+  cout << "This code HAS to be compiled with support for C++11." << endl;
+  cout << "Exiting..." << endl;
+  return EXIT_SUCCESS;
+}
+#endif

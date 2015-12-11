@@ -164,9 +164,8 @@ class UniStgGrid1D {
   \brief Binds a given vector field to the grid.
 
   We assume the field to be of the form:
-
   \f[
-    \mathbf{v}(x) = v(x)\hat{\mathbf{i}}
+    \mathbf{v}(\mathbf{x}) = v(x)\hat{\mathbf{i}}
   \f]
 
   \param[in] VectorField Pointer to the function implementing the vector field.
