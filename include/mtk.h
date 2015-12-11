@@ -415,6 +415,7 @@ Uniform rectangular staggered grids.
 */
 #include "mtk_uni_stg_grid_1d.h"
 #include "mtk_uni_stg_grid_2d.h"
+#include "mtk_uni_stg_grid_3d.h"
 
 /*!
 \defgroup c07-mim_ops Mimetic operators.
@@ -435,5 +436,9 @@ Mimetic operators.
 #include "mtk_curl_2d.h"
 #include "mtk_lap_2d.h"
 #include "mtk_robin_bc_descriptor_2d.h"
+
+#include "mtk_grad_3d.h"
+#include "mtk_div_3d.h"
+#include "mtk_lap_3d.h"
 
 #endif // End of: MTK_INCLUDE_MTK_H_

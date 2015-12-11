@@ -363,7 +363,7 @@ void mtk::UniStgGrid3D::BindScalarField(
 
   /// 4. Create collection of field samples.
 
-  auto aux{(num_cells_x_ + 2)*(num_cells_y_ + 2)*(num_cells_z_ + 2)};
+  int aux{(num_cells_x_ + 2)*(num_cells_y_ + 2)*(num_cells_z_ + 2)};
 
   discrete_field_.reserve(aux);
 
@@ -375,99 +375,32 @@ void mtk::UniStgGrid3D::BindVectorFieldPComponent(
                            const mtk::Real &yy,
                            const mtk::Real &zz)) {
 
-  int mm{num_cells_x_};
-  int nn{num_cells_y_};
-
-  int total{nn*(mm + 1) + mm*(nn + 1)};
-
-  #ifdef MTK_PRECISION_DOUBLE
-  double half_delta_x{delta_x_/2.0};
-  double half_delta_y{delta_y_/2.0};
-  #else
-  float half_delta_x{delta_x_/2.0f};
-  float half_delta_y{delta_y_/2.0f};
-  #endif
-
-  /// 1. Create collection of spatial coordinates for \f$ x \f$.
-
-  // We need every data point of the discrete domain; i.e. we need all the
-  // nodes and all the centers. There are mm centers for the x direction, and
-  // nn centers for the y direction. Since there is one node per center, that
-  // amounts to 2*mm. If we finally consider the final boundary node, it
-  // amounts to a total of 2*mm + 1 for the x direction. Analogously, for the
-  // y direction, this amounts to 2*nn + 1.
-
-  discrete_domain_x_.reserve(2*mm + 1);
-
-  discrete_domain_x_.push_back(west_bndy_);
-  for (int ii = 1; ii < (2*mm + 1); ++ii) {
-    discrete_domain_x_.push_back(west_bndy_ + ii*half_delta_x);
-  }
-
-  /// 2. Create collection of spatial coordinates for \f$ y \f$.
-
-  discrete_domain_y_.reserve(2*nn + 1);
-
-  discrete_domain_y_.push_back(south_bndy_);
-  for (int ii = 1; ii < (2*nn + 1); ++ii) {
-    discrete_domain_y_.push_back(south_bndy_ + ii*half_delta_y);
-  }
-
-  /// 3. Allocate space for discrete vector field and bind \$ p \$ component.
-
-  discrete_field_.reserve(total);
-
-  // For each y-center.
-  for (int ii = 1; ii < 2*nn + 1; ii += 2) {
-
-    // Bind all of the x-nodes for this y-center.
-    for (int jj = 0; jj < 2*mm + 1; jj += 2) {
-      discrete_field_.push_back(VectorField(discrete_domain_x_[jj],
-                                            discrete_domain_y_[ii]));
-
-      #if MTK_VERBOSE_LEVEL > 6
-      std::cout << "Binding v at x = " << discrete_domain_x_[jj] << " y = " <<
-        discrete_domain_y_[ii] << " = " <<
-        VectorField(discrete_domain_x_[jj],discrete_domain_y_[ii]) << std::endl;
-      #endif
-    }
-  }
-  #if MTK_VERBOSE_LEVEL > 6
-  std::cout << std::endl;
-  #endif
 }
 
 void mtk::UniStgGrid3D::BindVectorFieldQComponent(
-  mtk::Real (*VectorField)(const mtk::Real &xx, const mtk::Real &yy)) {
+  mtk::Real (*VectorField)(const mtk::Real &xx,
+                           const mtk::Real &yy,
+                           const mtk::Real &zz)) {
 
-  int mm{num_cells_x_};
-  int nn{num_cells_y_};
+}
 
-  /// 3. Bind \$ q \$ component, since \$ p \$ component has already been bound.
+void mtk::UniStgGrid3D::BindVectorFieldRComponent(
+  mtk::Real (*VectorField)(const mtk::Real &xx,
+                           const mtk::Real &yy,
+                           const mtk::Real &zz)) {
 
-  // For each y-node.
-  for (int ii = 0; ii < 2*nn + 1; ii += 2) {
-
-    // Bind all of the x-center for this y-node.
-    for (int jj = 1; jj < 2*mm + 1; jj += 2) {
-      discrete_field_.push_back(VectorField(discrete_domain_x_[jj],
-                                            discrete_domain_y_[ii]));
-
-      #if MTK_VERBOSE_LEVEL > 6
-      std::cout << "Binding v at x = " << discrete_domain_x_[jj] << " y = " <<
-        discrete_domain_y_[ii] << " = " <<
-        VectorField(discrete_domain_x_[jj],discrete_domain_y_[ii]) << std::endl;
-      #endif
-    }
-  }
-  #if MTK_VERBOSE_LEVEL > 6
-  std::cout << std::endl;
-  #endif
 }
 
 void mtk::UniStgGrid3D::BindVectorField(
-  Real (*VectorFieldPComponent)(const Real &xx, const Real &yy),
-  Real (*VectorFieldQComponent)(const Real &xx, const Real &yy)) {
+  mtk::Real (*VectorFieldPComponent)(const mtk::Real &xx,
+                                     const mtk::Real &yy,
+                                     const mtk::Real &zz),
+  mtk::Real (*VectorFieldQComponent)(const mtk::Real &xx,
+                                     const mtk::Real &yy,
+                                     const mtk::Real &zz),
+  mtk::Real (*VectorFieldRComponent)(const mtk::Real &xx,
+                                     const mtk::Real &yy,
+                                     const mtk::Real &zz)) {
 
   #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nature_ != mtk::VECTOR, __FILE__, __LINE__, __func__);
@@ -480,6 +413,7 @@ void mtk::UniStgGrid3D::BindVectorField(
 bool mtk::UniStgGrid3D::WriteToFile(std::string filename,
                                     std::string space_name_x,
                                     std::string space_name_y,
+                                    std::string space_name_z,
                                     std::string field_name) const {
 
   std::ofstream output_dat_file;  // Output file.
@@ -492,60 +426,12 @@ bool mtk::UniStgGrid3D::WriteToFile(std::string filename,
 
   if (nature_ == mtk::SCALAR) {
     output_dat_file << "# " << space_name_x <<  ' ' << space_name_y << ' ' <<
-      field_name << std::endl;
+      space_name_z << ' ' << field_name << std::endl;
 
-    int idx{};
-    for (unsigned int ii = 0; ii < discrete_domain_y_.size(); ++ii) {
-      for (unsigned int jj = 0; jj < discrete_domain_x_.size(); ++jj) {
-        output_dat_file << discrete_domain_x_[jj] << ' ' <<
-                           discrete_domain_y_[ii] << ' ' <<
-                           discrete_field_[idx] <<
-                          std::endl;
-        idx++;
-      }
-      output_dat_file << std::endl;
-    }
   } else {
     output_dat_file << "# " << space_name_x <<  ' ' << space_name_y << ' ' <<
-      field_name << std::endl;
+      space_name_z << ' ' << field_name << std::endl;
 
-    output_dat_file << "# Horizontal component:" << std::endl;
-
-    int mm{num_cells_x_};
-    int nn{num_cells_y_};
-
-    /// Write the values of the p component, with a null q component.
-
-    // For each y-center.
-    int idx{};
-    for (int ii = 1; ii < 2*nn + 1; ii += 2) {
-      // Bind all of the x-nodes for this y-center.
-      for (int jj = 0; jj < 2*mm + 1; jj += 2) {
-
-        output_dat_file << discrete_domain_x_[jj] << ' ' <<
-          discrete_domain_y_[ii] << ' ' << discrete_field_[idx] << ' ' <<
-          mtk::kZero << std::endl;
-
-        ++idx;
-      }
-    }
-
-    /// Write the values of the q component, with a null p component.
-    int p_offset{nn*(mm + 1) - 1};
-    idx = 0;
-    output_dat_file << "# Vertical component:" << std::endl;
-    // For each y-node.
-    for (int ii = 0; ii < 2*nn + 1; ii += 2) {
-      // Bind all of the x-center for this y-node.
-      for (int jj = 1; jj < 2*mm + 1; jj += 2) {
-
-        output_dat_file << discrete_domain_x_[jj] << ' ' <<
-          discrete_domain_y_[ii] << ' ' << mtk::kZero << ' ' <<
-          discrete_field_[p_offset + idx] << std::endl;
-
-        ++idx;
-      }
-    }
   }
 
   output_dat_file.close();

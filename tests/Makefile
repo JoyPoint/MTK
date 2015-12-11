@@ -5,7 +5,7 @@ include ../Makefile.inc
 all: mtk_dense_matrix_test \
 	mtk_blas_adapter_test mtk_lapack_adapter_test mtk_glpk_adapter_test \
 	mtk_uni_stg_grid_1d_test mtk_uni_stg_grid_2d_test \
-	mtk_grad_1d_test mtk_grad_2d_test \
+	mtk_grad_1d_test mtk_grad_2d_test mtk_grad_3d_test \
 	mtk_div_1d_test mtk_div_2d_test \
 	mtk_lap_1d_test mtk_lap_2d_test \
 	mtk_robin_bc_descriptor_2d_test \
@@ -20,6 +20,7 @@ EXE = \
 	mtk_uni_stg_grid_2d_test.exe \
 	mtk_grad_1d_test.exe \
 	mtk_grad_2d_test.exe \
+	mtk_grad_3d_test.exe \
 	mtk_div_1d_test.exe \
 	mtk_div_2d_test.exe \
 	mtk_lap_1d_test.exe \
@@ -71,6 +72,10 @@ mtk_grad_2d_test: mtk_grad_2d_test.o mtk_grad_2d_test.cc
 	$(LINKER) mtk_grad_2d_test.o $(LIBS) -o mtk_grad_2d_test.exe
 	@echo ' '
 
+mtk_grad_3d_test: mtk_grad_3d_test.o mtk_grad_3d_test.cc
+	$(LINKER) mtk_grad_3d_test.o $(LIBS) -o mtk_grad_3d_test.exe
+	@echo ' '
+
 mtk_div_1d_test: mtk_div_1d_test.o mtk_div_1d_test.cc
 	$(LINKER) mtk_div_1d_test.o $(LIBS) -o mtk_div_1d_test.exe
 	@echo ' '
@@ -111,6 +116,7 @@ testall: mtk_dense_matrix_test_exe \
 	\
 	mtk_grad_1d_test_exe \
 	mtk_grad_2d_test_exe \
+	mtk_grad_3d_test_exe \
 	mtk_div_1d_test_exe \
 	mtk_div_2d_test_exe \
 	mtk_lap_1d_test_exe \
@@ -141,6 +147,9 @@ mtk_grad_1d_test_exe:
 
 mtk_grad_2d_test_exe:
 	./mtk_grad_2d_test.exe
+
+mtk_grad_3d_test_exe:
+	./mtk_grad_3d_test.exe
 
 mtk_div_1d_test_exe:
 	./mtk_div_1d_test.exe
@@ -177,6 +186,8 @@ memcheck:
 	./mtk_grad_1d_test.exe >& mtk_grad_1d_test.memcheck
 	valgrind $(MEMCHECK_OPTS) \
 	./mtk_grad_2d_test.exe >& mtk_grad_2d_test.memcheck
+	valgrind $(MEMCHECK_OPTS) \
+	./mtk_grad_3d_test.exe >& mtk_grad_3d_test.memcheck
 	valgrind $(MEMCHECK_OPTS) \
 	./mtk_div_1d_test.exe >& mtk_div_1d_test.memcheck
 	valgrind $(MEMCHECK_OPTS) \
