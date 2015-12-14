@@ -159,7 +159,7 @@ bool mtk::Grad3D::ConstructGrad3D(const mtk::UniStgGrid3D &grid,
 
   mtk::DenseMatrix g3d(total_rows, total_cols);
 
-  for(auto ii = 0; ii < nx*ny*nz; ii++) {
+  for(auto ii = 0; ii < total_cols; ii++) {
     for(auto jj = 0; jj < mx*num_cells_y*num_cells_z; jj++) {
       g3d.SetValue(jj,ii, gx.GetValue(jj,ii));
     }

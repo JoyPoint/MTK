@@ -1,10 +1,10 @@
 /*!
-\file mtk_div_2d.cc
+\file mtk_lap_3d.cc
 
-\brief Implements the class Div2D.
+\brief Includes the implementation of the class Lap3D.
 
-This class implements a 2D divergence matrix operator, constructed using the
-Castillo-Blomgren-Sanchez (CBS) Algorithm.
+This class implements a 3D Laplacian operator, constructed using the
+Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -61,36 +61,36 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iomanip>
 
 #include "mtk_roots.h"
-#include "mtk_enums.h"
-#include "mtk_uni_stg_grid_1d.h"
-#include "mtk_div_1d.h"
-#include "mtk_div_2d.h"
+#include "mtk_blas_adapter.h"
+#include "mtk_grad_3d.h"
+#include "mtk_div_3d.h"
+#include "mtk_lap_3d.h"
 
-mtk::Div2D::Div2D():
-  order_accuracy_(),
-  mimetic_threshold_() {}
+mtk::Lap3D::Lap3D(): order_accuracy_(), mimetic_threshold_() {}
 
-mtk::Div2D::Div2D(const Div2D &div):
-  order_accuracy_(div.order_accuracy_),
-  mimetic_threshold_(div.mimetic_threshold_) {}
+mtk::Lap3D::Lap3D(const Lap3D &lap):
+  order_accuracy_(lap.order_accuracy_),
+  mimetic_threshold_(lap.mimetic_threshold_) {}
 
-mtk::Div2D::~Div2D() {}
+mtk::Lap3D::~Lap3D() {}
 
-bool mtk::Div2D::ConstructDiv2D(const mtk::UniStgGrid2D &grid,
+bool mtk::Lap3D::ConstructLap3D(const mtk::UniStgGrid3D &grid,
                                 int order_accuracy,
                                 mtk::Real mimetic_threshold) {
 
-  int num_cells_x = grid.num_cells_x();
-  int num_cells_y = grid.num_cells_y();
+  mtk::Grad3D gg;
+  mtk::Div3D dd;
 
-  int mx = num_cells_x + 2;  // Dx vertical dimension.
-  int nx = num_cells_x + 1;  // Dx horizontal dimension.
-  int my = num_cells_y + 2;  // Dy vertical dimension.
-  int ny = num_cells_y + 1;  // Dy horizontal dimension.
+  bool info{gg.ConstructGrad3D(grid, order_accuracy, mimetic_threshold)};
 
-  mtk::Div1D div;
+  #ifdef MTK_PERFORM_PREVENTIONS
+  if (!info) {
+    std::cerr << "Mimetic lap could not be built." << std::endl;
+    return info;
+  }
+  #endif
 
-  bool info = div.ConstructDiv1D(order_accuracy, mimetic_threshold);
+  info = dd.ConstructDiv3D(grid, order_accuracy, mimetic_threshold);
 
   #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
@@ -99,52 +99,20 @@ bool mtk::Div2D::ConstructDiv2D(const mtk::UniStgGrid2D &grid,
   }
   #endif
 
-  auto west = grid.west_bndy();
-  auto east = grid.east_bndy();
-  auto south = grid.south_bndy();
-  auto north = grid.east_bndy();
+  mtk::DenseMatrix ggm(gg.ReturnAsDenseMatrix());
+  mtk::DenseMatrix ddm(dd.ReturnAsDenseMatrix());
 
-  mtk::UniStgGrid1D grid_x(west, east, num_cells_x);
-  mtk::UniStgGrid1D grid_y(south, north, num_cells_y);
-
-  mtk::DenseMatrix dx(div.ReturnAsDenseMatrix(grid_x));
-  mtk::DenseMatrix dy(div.ReturnAsDenseMatrix(grid_y));
-
-  bool padded{true};
-  bool transpose{false};
-
-  mtk::DenseMatrix ix(num_cells_x, padded, transpose);
-  mtk::DenseMatrix iy(num_cells_y, padded, transpose);
-
-  mtk::DenseMatrix dxy(mtk::DenseMatrix::Kron(iy, dx));
-  mtk::DenseMatrix dyx(mtk::DenseMatrix::Kron(dy, ix));
-
-  #if MTK_VERBOSE_LEVEL > 2
-  std::cout << "Dx: " << mx << " by " << nx << std::endl;
-  std::cout << "Iy : " << num_cells_y<< " by " << ny  << std::endl;
-  std::cout << "Dy: " << my << " by " << ny << std::endl;
-  std::cout << "Ix : " << num_cells_x<< " by " << nx  << std::endl;
-  std::cout << "Div 2D: " << mx*num_cells_y + my*num_cells_x << " by " <<
-    nx*ny <<std::endl;
-  #endif
-
-  mtk::DenseMatrix d2d(mx*my, nx*num_cells_y + ny*num_cells_x);
-
-  for (auto ii = 0; ii < mx*my; ii++) {
-    for (auto jj = 0; jj < nx*num_cells_y; jj++) {
-      d2d.SetValue(ii, jj, dxy.GetValue(ii,jj));
-    }
-    for(auto kk = 0; kk<ny*num_cells_x; kk++) {
-      d2d.SetValue(ii, kk + nx*num_cells_y, dyx.GetValue(ii, kk));
-    }
-  }
-
-  divergence_ = d2d;
+  laplacian_ = mtk::BLASAdapter::RealDenseMM(ddm, ggm);
 
   return info;
 }
 
-mtk::DenseMatrix mtk::Div2D::ReturnAsDenseMatrix() const {
+mtk::DenseMatrix mtk::Lap3D::ReturnAsDenseMatrix() const {
 
-  return divergence_;
+  return laplacian_;
+}
+
+mtk::Real *mtk::Lap3D::data() const {
+
+  return laplacian_.data();
 }

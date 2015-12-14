@@ -1,10 +1,10 @@
 /*!
-\file mtk_div_2d.cc
+\file mtk_div_3d.cc
 
-\brief Implements the class Div2D.
+\brief Implements the class Div3D.
 
-This class implements a 2D divergence matrix operator, constructed using the
-Castillo-Blomgren-Sanchez (CBS) Algorithm.
+This class implements a 3D divergence operator, constructed using the
+Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -61,32 +61,33 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iomanip>
 
 #include "mtk_roots.h"
-#include "mtk_enums.h"
-#include "mtk_uni_stg_grid_1d.h"
 #include "mtk_div_1d.h"
-#include "mtk_div_2d.h"
+#include "mtk_div_3d.h"
 
-mtk::Div2D::Div2D():
+mtk::Div3D::Div3D():
   order_accuracy_(),
   mimetic_threshold_() {}
 
-mtk::Div2D::Div2D(const Div2D &div):
-  order_accuracy_(div.order_accuracy_),
-  mimetic_threshold_(div.mimetic_threshold_) {}
+mtk::Div3D::Div3D(const Div3D &grad):
+  order_accuracy_(grad.order_accuracy_),
+  mimetic_threshold_(grad.mimetic_threshold_) {}
 
-mtk::Div2D::~Div2D() {}
+mtk::Div3D::~Div3D() {}
 
-bool mtk::Div2D::ConstructDiv2D(const mtk::UniStgGrid2D &grid,
+bool mtk::Div3D::ConstructDiv3D(const mtk::UniStgGrid3D &grid,
                                 int order_accuracy,
                                 mtk::Real mimetic_threshold) {
 
   int num_cells_x = grid.num_cells_x();
   int num_cells_y = grid.num_cells_y();
+  int num_cells_z = grid.num_cells_z();
 
-  int mx = num_cells_x + 2;  // Dx vertical dimension.
-  int nx = num_cells_x + 1;  // Dx horizontal dimension.
-  int my = num_cells_y + 2;  // Dy vertical dimension.
-  int ny = num_cells_y + 1;  // Dy horizontal dimension.
+  int mx = num_cells_x + 1;  // Dx vertical dimension.
+  int nx = num_cells_x + 2;  // Dx horizontal dimension.
+  int my = num_cells_y + 1;  // Dy vertical dimension.
+  int ny = num_cells_y + 2;  // Dy horizontal dimension.
+  int mz = num_cells_z + 1;  // Dz vertical dimension.
+  int nz = num_cells_z + 2;  // Dz horizontal dimension.
 
   mtk::Div1D div;
 
@@ -103,48 +104,86 @@ bool mtk::Div2D::ConstructDiv2D(const mtk::UniStgGrid2D &grid,
   auto east = grid.east_bndy();
   auto south = grid.south_bndy();
   auto north = grid.east_bndy();
+  auto bottom = grid.bottom_bndy();
+  auto top = grid.top_bndy();
 
   mtk::UniStgGrid1D grid_x(west, east, num_cells_x);
   mtk::UniStgGrid1D grid_y(south, north, num_cells_y);
+  mtk::UniStgGrid1D grid_z(bottom, top, num_cells_z);
 
-  mtk::DenseMatrix dx(div.ReturnAsDenseMatrix(grid_x));
-  mtk::DenseMatrix dy(div.ReturnAsDenseMatrix(grid_y));
+  mtk::DenseMatrix Dx(div.ReturnAsDenseMatrix(grid_x));
+  mtk::DenseMatrix Dy(div.ReturnAsDenseMatrix(grid_y));
+  mtk::DenseMatrix Dz(div.ReturnAsDenseMatrix(grid_z));
 
   bool padded{true};
   bool transpose{false};
 
   mtk::DenseMatrix ix(num_cells_x, padded, transpose);
   mtk::DenseMatrix iy(num_cells_y, padded, transpose);
+  mtk::DenseMatrix iz(num_cells_z, padded, transpose);
 
-  mtk::DenseMatrix dxy(mtk::DenseMatrix::Kron(iy, dx));
-  mtk::DenseMatrix dyx(mtk::DenseMatrix::Kron(dy, ix));
+  /// 1. Build preliminary staggering through the x direction.
+
+  mtk::DenseMatrix aux1(mtk::DenseMatrix::Kron(iz, iy));
+  mtk::DenseMatrix dx(mtk::DenseMatrix::Kron(aux1, Dx));
+
+  /// 2. Build preliminary staggering through the y direction.
+
+  mtk::DenseMatrix aux2(mtk::DenseMatrix::Kron(iz, Dy));
+  mtk::DenseMatrix dy(mtk::DenseMatrix::Kron(aux2, ix));
+
+  /// 3. Build preliminary staggering through the z direction.
+
+  mtk::DenseMatrix aux3(mtk::DenseMatrix::Kron(Dz, iy));
+  mtk::DenseMatrix dz(mtk::DenseMatrix::Kron(aux3, ix));
 
   #if MTK_VERBOSE_LEVEL > 2
   std::cout << "Dx: " << mx << " by " << nx << std::endl;
-  std::cout << "Iy : " << num_cells_y<< " by " << ny  << std::endl;
+  std::cout << "Ix: " << num_cells_x << " by " << nx  << std::endl;
   std::cout << "Dy: " << my << " by " << ny << std::endl;
-  std::cout << "Ix : " << num_cells_x<< " by " << nx  << std::endl;
-  std::cout << "Div 2D: " << mx*num_cells_y + my*num_cells_x << " by " <<
-    nx*ny <<std::endl;
+  std::cout << "Iy: " << num_cells_y << " by " << ny  << std::endl;
+  std::cout << "Dz: " << mz << " by " << nz << std::endl;
+  std::cout << "Iz: " << num_cells_z << " by " << nz  << std::endl;
   #endif
 
-  mtk::DenseMatrix d2d(mx*my, nx*num_cells_y + ny*num_cells_x);
+  /// 4. Actual operator: DD_xyz = [dx dy dz].
 
-  for (auto ii = 0; ii < mx*my; ii++) {
-    for (auto jj = 0; jj < nx*num_cells_y; jj++) {
-      d2d.SetValue(ii, jj, dxy.GetValue(ii,jj));
+  int total_rows{nx*ny*nz};
+  int total_cols{mx*num_cells_y*num_cells_z +
+                 num_cells_x*my*num_cells_z +
+                 num_cells_x*num_cells_y*mz};
+
+  #if MTK_VERBOSE_LEVEL > 2
+  std::cout << "Div 3D: " << total_rows << " by " << total_cols << std::endl;
+  #endif
+
+  mtk::DenseMatrix d3d(total_rows, total_cols);
+
+  for (auto ii = 0; ii < total_rows; ++ii) {
+
+    for (auto jj = 0; jj < mx*num_cells_y*num_cells_z; ++jj) {
+      d3d.SetValue(ii, jj, dx.GetValue(ii, jj));
     }
-    for(auto kk = 0; kk<ny*num_cells_x; kk++) {
-      d2d.SetValue(ii, kk + nx*num_cells_y, dyx.GetValue(ii, kk));
+
+    int offset = mx*num_cells_y*num_cells_z;
+
+    for(auto kk = 0; kk < num_cells_x*my*num_cells_z; ++kk) {
+      d3d.SetValue(ii, kk + offset, dy.GetValue(ii, kk));
+    }
+
+    offset += num_cells_x*my*num_cells_z;
+
+    for(auto ll = 0; ll < num_cells_x*num_cells_y*mz; ++ll) {
+      d3d.SetValue(ii, ll + offset, dz.GetValue(ii, ll));
     }
   }
 
-  divergence_ = d2d;
+  divergence_ = d3d;
 
   return info;
 }
 
-mtk::DenseMatrix mtk::Div2D::ReturnAsDenseMatrix() const {
+mtk::DenseMatrix mtk::Div3D::ReturnAsDenseMatrix() const {
 
   return divergence_;
 }
