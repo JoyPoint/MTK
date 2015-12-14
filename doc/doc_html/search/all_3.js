@@ -1,7 +1,7 @@
 var searchData=
 [
   ['data_20structures_2e',['Data structures.',['../group__c04-data__structures.html',1,'']]],
-  ['data',['data',['../classmtk_1_1DenseMatrix.html#a0c33b8a9e01d157c61ddbdf807c25d84',1,'mtk::DenseMatrix::data()'],['../classmtk_1_1Lap1D.html#ab2652725a8407c79247680c7bbd073b8',1,'mtk::Lap1D::data()'],['../classmtk_1_1Lap2D.html#a102427355df09c2aad400c6ce18e5636',1,'mtk::Lap2D::data()'],['../classmtk_1_1Lap3D.html#af5d06ada104622003c2ee3f77a5886de',1,'mtk::Lap3D::data()']]],
+  ['data',['data',['../classmtk_1_1DenseMatrix.html#a0c33b8a9e01d157c61ddbdf807c25d84',1,'mtk::DenseMatrix::data()'],['../classmtk_1_1Lap1D.html#ab2652725a8407c79247680c7bbd073b8',1,'mtk::Lap1D::data()'],['../classmtk_1_1Lap2D.html#a102427355df09c2aad400c6ce18e5636',1,'mtk::Lap2D::data()'],['../classmtk_1_1Lap3D.html#a8e447c74d2201abe25e8c93a9dd58ef3',1,'mtk::Lap3D::data()']]],
   ['data_5f',['data_',['../classmtk_1_1DenseMatrix.html#a7893e4e5c8d2e2de32b156177e78cb6f',1,'mtk::DenseMatrix']]],
   ['degree_5fapproximation',['degree_approximation',['../classmtk_1_1Quad1D.html#aa1d1fe5f7cdaf8bf923a11c7d3d2468f',1,'mtk::Quad1D']]],
   ['degree_5fapproximation_5f',['degree_approximation_',['../classmtk_1_1Quad1D.html#aaff281c19f70faeb07f610fcffb300c5',1,'mtk::Quad1D']]],

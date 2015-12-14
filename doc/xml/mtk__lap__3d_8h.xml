@@ -6,81 +6,88 @@
     <includes refid="mtk__dense__matrix_8h" local="yes">mtk_dense_matrix.h</includes>
     <includes refid="mtk__uni__stg__grid__2d_8h" local="yes">mtk_uni_stg_grid_2d.h</includes>
     <includedby refid="mtk_8h" local="yes">include/mtk.h</includedby>
+    <includedby refid="mtk__lap__3d_8cc" local="yes">src/mtk_lap_3d.cc</includedby>
     <incdepgraph>
-      <node id="1219">
+      <node id="1290">
         <label>include/mtk_lap_3d.h</label>
         <link refid="mtk_lap_3d.h"/>
-        <childnode refid="1220" relation="include">
+        <childnode refid="1291" relation="include">
         </childnode>
-        <childnode refid="1221" relation="include">
+        <childnode refid="1292" relation="include">
         </childnode>
-        <childnode refid="1225" relation="include">
+        <childnode refid="1296" relation="include">
         </childnode>
       </node>
-      <node id="1221">
+      <node id="1292">
         <label>mtk_dense_matrix.h</label>
         <link refid="mtk__dense__matrix_8h"/>
-        <childnode refid="1222" relation="include">
+        <childnode refid="1293" relation="include">
         </childnode>
-        <childnode refid="1220" relation="include">
+        <childnode refid="1291" relation="include">
         </childnode>
-        <childnode refid="1223" relation="include">
+        <childnode refid="1294" relation="include">
         </childnode>
-        <childnode refid="1224" relation="include">
+        <childnode refid="1295" relation="include">
         </childnode>
       </node>
-      <node id="1224">
+      <node id="1295">
         <label>mtk_matrix.h</label>
         <link refid="mtk__matrix_8h"/>
-        <childnode refid="1222" relation="include">
+        <childnode refid="1293" relation="include">
         </childnode>
-        <childnode refid="1220" relation="include">
+        <childnode refid="1291" relation="include">
         </childnode>
-        <childnode refid="1223" relation="include">
+        <childnode refid="1294" relation="include">
         </childnode>
       </node>
-      <node id="1220">
+      <node id="1291">
         <label>mtk_roots.h</label>
         <link refid="mtk__roots_8h"/>
       </node>
-      <node id="1227">
+      <node id="1298">
         <label>string</label>
       </node>
-      <node id="1226">
+      <node id="1297">
         <label>vector</label>
       </node>
-      <node id="1225">
+      <node id="1296">
         <label>mtk_uni_stg_grid_2d.h</label>
         <link refid="mtk__uni__stg__grid__2d_8h"/>
-        <childnode refid="1226" relation="include">
+        <childnode refid="1297" relation="include">
         </childnode>
-        <childnode refid="1227" relation="include">
+        <childnode refid="1298" relation="include">
         </childnode>
-        <childnode refid="1220" relation="include">
+        <childnode refid="1291" relation="include">
         </childnode>
-        <childnode refid="1223" relation="include">
+        <childnode refid="1294" relation="include">
         </childnode>
-        <childnode refid="1221" relation="include">
+        <childnode refid="1292" relation="include">
         </childnode>
       </node>
-      <node id="1222">
+      <node id="1293">
         <label>iostream</label>
       </node>
-      <node id="1223">
+      <node id="1294">
         <label>mtk_enums.h</label>
         <link refid="mtk__enums_8h"/>
       </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1228">
+      <node id="1299">
         <label>include/mtk_lap_3d.h</label>
         <link refid="mtk_lap_3d.h"/>
-        <childnode refid="1229" relation="include">
+        <childnode refid="1300" relation="include">
+        </childnode>
+        <childnode refid="1301" relation="include">
         </childnode>
       </node>
-      <node id="1229">
+      <node id="1300">
         <label>include/mtk.h</label>
         <link refid="mtk_8h"/>
+      </node>
+      <node id="1301">
+        <label>src/mtk_lap_3d.cc</label>
+        <link refid="mtk__lap__3d_8cc"/>
       </node>
     </invincdepgraph>
     <innerclass refid="classmtk_1_1Lap3D" prot="public">mtk::Lap3D</innerclass>
@@ -159,9 +166,9 @@
 <codeline lineno="97"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>order_accuracy<sp/>=<sp/><ref refid="group__c01-roots_1ga0d95560098eb36420511103637b6952f" kindref="member">kDefaultOrderAccuracy</ref>,</highlight></codeline>
 <codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>mimetic_threshold<sp/>=<sp/><ref refid="group__c01-roots_1ga35718d949bdc81a08a9cc8ebbe3478a2" kindref="member">kDefaultMimeticThreshold</ref>);</highlight></codeline>
 <codeline lineno="99"><highlight class="normal"></highlight></codeline>
-<codeline lineno="105"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/><ref refid="classmtk_1_1Lap3D_1ad62c603f66e06c4a940532957ace9129" kindref="member">ReturnAsDenseMatrix</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/><ref refid="classmtk_1_1Lap3D_1aab62193eeb20dc57c1b1e67a80bceef0" kindref="member">ReturnAsDenseMatrix</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="106"><highlight class="normal"></highlight></codeline>
-<codeline lineno="112"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>*<ref refid="classmtk_1_1Lap3D_1af5d06ada104622003c2ee3f77a5886de" kindref="member">data</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>*<ref refid="classmtk_1_1Lap3D_1a8e447c74d2201abe25e8c93a9dd58ef3" kindref="member">data</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
 <codeline lineno="113"><highlight class="normal"></highlight></codeline>
 <codeline lineno="114"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
 <codeline lineno="115" refid="classmtk_1_1Lap3D_1a4b4046cd2de7e297e69e3559b81ca180" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/><ref refid="classmtk_1_1Lap3D_1a4b4046cd2de7e297e69e3559b81ca180" kindref="member">laplacian_</ref>;<sp/><sp/></highlight></codeline>

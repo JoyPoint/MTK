@@ -59,7 +59,7 @@ var group__c07_mim__ops =
       [ "Div3D", "classmtk_1_1Div3D.html#a3e0857769414f48db68bf08b6282cfdd", null ],
       [ "~Div3D", "classmtk_1_1Div3D.html#a7dda1b117f6df57d71e03c618d77c80d", null ],
       [ "ConstructDiv3D", "classmtk_1_1Div3D.html#aa386efd096a548fd1a47f72f1020f42f", null ],
-      [ "ReturnAsDenseMatrix", "classmtk_1_1Div3D.html#a78c2198be9370774be316adc09db8064", null ],
+      [ "ReturnAsDenseMatrix", "classmtk_1_1Div3D.html#a68dcecf46f3bc3318a19e4d220af327c", null ],
       [ "divergence_", "classmtk_1_1Div3D.html#a6844b090b97d2f1442fcd78ca1918344", null ],
       [ "mimetic_threshold_", "classmtk_1_1Div3D.html#abfbe11b19c37374d235ec88ab55c7ea5", null ],
       [ "order_accuracy_", "classmtk_1_1Div3D.html#aa53931ade3fe307b8e240b14fce066a6", null ]
@@ -175,8 +175,8 @@ var group__c07_mim__ops =
       [ "Lap3D", "classmtk_1_1Lap3D.html#ab2a02acd3c5b38bfce760091b73111f9", null ],
       [ "~Lap3D", "classmtk_1_1Lap3D.html#a8e5f8dfb4ad9163e726e52ff4d3b0542", null ],
       [ "ConstructLap3D", "classmtk_1_1Lap3D.html#a1c1261156426ddf729173612a509bab5", null ],
-      [ "data", "classmtk_1_1Lap3D.html#af5d06ada104622003c2ee3f77a5886de", null ],
-      [ "ReturnAsDenseMatrix", "classmtk_1_1Lap3D.html#ad62c603f66e06c4a940532957ace9129", null ],
+      [ "data", "classmtk_1_1Lap3D.html#a8e447c74d2201abe25e8c93a9dd58ef3", null ],
+      [ "ReturnAsDenseMatrix", "classmtk_1_1Lap3D.html#aab62193eeb20dc57c1b1e67a80bceef0", null ],
       [ "laplacian_", "classmtk_1_1Lap3D.html#a4b4046cd2de7e297e69e3559b81ca180", null ],
       [ "mimetic_threshold_", "classmtk_1_1Lap3D.html#a5160ec862d571437acf9ac3146474b25", null ],
       [ "order_accuracy_", "classmtk_1_1Lap3D.html#a59c97571ab548c16d7e500ed411837d2", null ]

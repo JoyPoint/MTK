@@ -1,4 +1,4 @@
-.TH "mtk::Div3D" 3 "Fri Dec 11 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::Div3D" 3 "Mon Dec 14 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -60,6 +60,8 @@ Definition at line 76 of file mtk_div_3d\&.h\&.
 .PP 
 .SS "mtk::Div3D::Div3D ()"
 
+.PP
+Definition at line 67 of file mtk_div_3d\&.cc\&.
 .SS "mtk::Div3D::Div3D (const \fBDiv3D\fP &div)"
 
 .PP
@@ -69,11 +71,15 @@ Definition at line 76 of file mtk_div_3d\&.h\&.
 .RE
 .PP
 
+.PP
+Definition at line 71 of file mtk_div_3d\&.cc\&.
 .SS "mtk::Div3D::~Div3D ()"
 
+.PP
+Definition at line 75 of file mtk_div_3d\&.cc\&.
 .SH "Member Function Documentation"
 .PP 
-.SS "bool mtk::Div3D::ConstructDiv3D (const \fBUniStgGrid3D\fP &grid, intorder_accuracy = \fC\fBkDefaultOrderAccuracy\fP\fP, \fBReal\fPmimetic_threshold = \fC\fBkDefaultMimeticThreshold\fP\fP)"
+.SS "bool mtk::Div3D::ConstructDiv3D (const \fBUniStgGrid3D\fP &grid, intorder_accuracy = \fC\fBkDefaultOrderAccuracy\fP\fP, \fBmtk::Real\fPmimetic_threshold = \fC\fBkDefaultMimeticThreshold\fP\fP)"
 
 .PP
 \fBReturns:\fP
@@ -82,7 +88,19 @@ Success of the construction\&.
 .RE
 .PP
 
-.SS "\fBDenseMatrix\fP mtk::Div3D::ReturnAsDenseMatrix () const"
+.IP "1." 4
+Build preliminary staggering through the x direction\&.
+.IP "2." 4
+Build preliminary staggering through the y direction\&.
+.IP "3." 4
+Build preliminary staggering through the z direction\&.
+.IP "4." 4
+Actual operator: DD_xyz = [dx dy dz]\&. 
+.PP
+
+.PP
+Definition at line 77 of file mtk_div_3d\&.cc\&.
+.SS "\fBmtk::DenseMatrix\fP mtk::Div3D::ReturnAsDenseMatrix () const"
 
 .PP
 \fBReturns:\fP
@@ -91,6 +109,8 @@ The operator as a dense matrix\&.
 .RE
 .PP
 
+.PP
+Definition at line 186 of file mtk_div_3d\&.cc\&.
 .SH "Member Data Documentation"
 .PP 
 .SS "\fBDenseMatrix\fP mtk::Div3D::divergence_\fC [private]\fP"

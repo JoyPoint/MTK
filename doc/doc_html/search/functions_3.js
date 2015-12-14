@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data',['data',['../classmtk_1_1DenseMatrix.html#a0c33b8a9e01d157c61ddbdf807c25d84',1,'mtk::DenseMatrix::data()'],['../classmtk_1_1Lap1D.html#ab2652725a8407c79247680c7bbd073b8',1,'mtk::Lap1D::data()'],['../classmtk_1_1Lap2D.html#a102427355df09c2aad400c6ce18e5636',1,'mtk::Lap2D::data()'],['../classmtk_1_1Lap3D.html#af5d06ada104622003c2ee3f77a5886de',1,'mtk::Lap3D::data()']]],
+  ['data',['data',['../classmtk_1_1DenseMatrix.html#a0c33b8a9e01d157c61ddbdf807c25d84',1,'mtk::DenseMatrix::data()'],['../classmtk_1_1Lap1D.html#ab2652725a8407c79247680c7bbd073b8',1,'mtk::Lap1D::data()'],['../classmtk_1_1Lap2D.html#a102427355df09c2aad400c6ce18e5636',1,'mtk::Lap2D::data()'],['../classmtk_1_1Lap3D.html#a8e447c74d2201abe25e8c93a9dd58ef3',1,'mtk::Lap3D::data()']]],
   ['degree_5fapproximation',['degree_approximation',['../classmtk_1_1Quad1D.html#aa1d1fe5f7cdaf8bf923a11c7d3d2468f',1,'mtk::Quad1D']]],
   ['delta',['delta',['../classmtk_1_1Lap1D.html#a4e16e80c6dd845ac42bda23385a1c56e',1,'mtk::Lap1D']]],
   ['delta_5fx',['delta_x',['../classmtk_1_1UniStgGrid1D.html#a6e7173b01241632cf509496d66b9f74c',1,'mtk::UniStgGrid1D::delta_x()'],['../classmtk_1_1UniStgGrid2D.html#aca4710004c4a7da6a9e8fd6ab32a691f',1,'mtk::UniStgGrid2D::delta_x()'],['../classmtk_1_1UniStgGrid3D.html#a9882a34289ee09954f2958666fb48dd2',1,'mtk::UniStgGrid3D::delta_x()']]],
