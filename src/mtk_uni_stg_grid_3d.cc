@@ -367,7 +367,20 @@ void mtk::UniStgGrid3D::BindScalarField(
 
   discrete_field_.reserve(aux);
 
-  // ...
+  for (int kk = 0; kk < num_cells_z_ + 2; ++kk) {
+    for (int ii = 0; ii < num_cells_y_ + 2; ++ii) {
+      for (int jj = 0; jj < num_cells_x_ + 2; ++jj) {
+        #if MTK_VERBOSE_LEVEL > 6
+        std::cout << "At z = " << discrete_domain_z_[kk] << ": Pushing value"
+          " for x = " << discrete_domain_x_[jj] << " y = " <<
+          discrete_domain_y_[ii] << std::endl;
+        #endif
+        discrete_field_.push_back(ScalarField(discrete_domain_x_[jj],
+                                              discrete_domain_y_[ii],
+                                              discrete_domain_z_[kk]));
+      }
+    }
+  }
 }
 
 void mtk::UniStgGrid3D::BindVectorFieldPComponent(
@@ -427,6 +440,18 @@ bool mtk::UniStgGrid3D::WriteToFile(std::string filename,
   if (nature_ == mtk::SCALAR) {
     output_dat_file << "# " << space_name_x <<  ' ' << space_name_y << ' ' <<
       space_name_z << ' ' << field_name << std::endl;
+
+  int idx{};
+  for (int kk = 0; kk < num_cells_z_ + 2; ++kk) {
+    for (int ii = 0; ii < num_cells_y_ + 2; ++ii) {
+      for (int jj = 0; jj < num_cells_x_ + 2; ++jj) {
+        output_dat_file << discrete_domain_x_[jj] << ' ' <<
+          discrete_domain_y_[ii] << ' ' << discrete_domain_z_[kk] << ' ' <<
+          discrete_field_[idx] << std::endl;
+        idx++;
+      }
+    }
+  }
 
   } else {
     output_dat_file << "# " << space_name_x <<  ' ' << space_name_y << ' ' <<
