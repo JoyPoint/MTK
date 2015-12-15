@@ -94,7 +94,13 @@ class DenseMatrix {
   /// \brief Prints the matrix as a block of numbers (standard way).
   friend std::ostream& operator <<(std::ostream &stream, DenseMatrix &in);
 
-  /// \brief Overloaded assignment operator.
+  /*!
+  \brief Overloaded assignment operator.
+
+  \param [in] in Given matrix.
+
+  \return Copy of the given matrix.
+  */
   DenseMatrix& operator =(const DenseMatrix &in);
 
   /// \brief Am I equal to the in matrix?

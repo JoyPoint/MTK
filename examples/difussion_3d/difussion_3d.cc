@@ -1,10 +1,15 @@
 /*!
-\file mtk_lap_3d.h
+\file difussion_3d.cc
 
-\brief Includes the implementation of the class Lap3D.
+\brief Poisson Equation on a 2D Uniform Staggered Grid with Robin BCs.
 
-This class implements a 3D Laplacian operator, constructed using the
-Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
+We solve:
+\f[
+\frac{\partial u}{\partial t} = \nabla^2 u(\mathbf{x}),
+\f]
+for \f$ \mathbf{x} \in \Omega = [0,1]^3 \f$.
+
+We consider autonomous homogeneous Dirichlet boundary conditions.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -54,72 +59,69 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef MTK_INCLUDE_MTK_LAP_3D_H_
-#define MTK_INCLUDE_MTK_LAP_3D_H_
+#if __cplusplus == 201103L
 
-#include "mtk_roots.h"
-#include "mtk_dense_matrix.h"
-#include "mtk_uni_stg_grid_2d.h"
+#include <iostream>
+#include <fstream>
+#include <cmath>
 
-namespace mtk{
+#include <vector>
 
-/*!
-\class Lap3D
+#include "mtk.h"
 
-\ingroup c07-mim_ops
+mtk::Real InitialCondition(const mtk::Real &xx,
+                           const mtk::Real &yy,
+                           const mtk::Real &zz) {
 
-\brief Implements a 3D mimetic Laplacian operator.
+  mtk::Real rr{0.3};
 
-This class implements a 3D Laplacian operator, constructed using the
-Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
-*/
-class Lap3D {
- public:
-  /// \brief Operator application operator on a grid.
-  UniStgGrid3D operator*(const UniStgGrid3D &grid) const;
+  mtk::Real aux{xx*xx + yy*yy + zz*zz};
 
-  /// \brief Default constructor.
-  Lap3D();
-
-  /*!
-  \brief Copy constructor.
-
-  \param [in] lap Given Laplacian.
-  */
-  Lap3D(const Lap3D &lap);
-
-  /// \brief Destructor.
-  ~Lap3D();
-
-  /*!
-  \brief Factory method implementing the CBS Algorithm to build operator.
-
-  \return Success of the construction.
-  */
-  bool ConstructLap3D(const UniStgGrid3D &grid,
-                      int order_accuracy = kDefaultOrderAccuracy,
-                      Real mimetic_threshold = kDefaultMimeticThreshold);
-
-  /*!
-  \brief Return the operator as a dense matrix.
-
-  \return The operator as a dense matrix.
-  */
-  DenseMatrix ReturnAsDenseMatrix() const;
-
-  /*!
-  \brief Return the operator as a dense array.
-
-  \return The operator as a dense array.
-  */
-  Real *data() const;
-
- private:
-  DenseMatrix laplacian_;  ///< Actual operator.
-
-  int order_accuracy_;  ///< Order of accuracy.
-
-  Real mimetic_threshold_;  ///< Mimetic Threshold.
-};
+  return (aux < rr? rr - aux: mtk::kZero);
 }
-#endif  // End of: MTK_INCLUDE_MTK_LAP_3D_H_
+
+int main () {
+
+  std::cout << "Example: Diffusion Equation in 3D "
+    "with Dirichlet BCs." << std::endl;
+
+  /// 1. Discretize space.
+  mtk::Real west_bndy_x{0.0};
+  mtk::Real east_bndy_x{1.0};
+  mtk::Real south_bndy_y{0.0};
+  mtk::Real north_bndy_y{1.0};
+  mtk::Real bottom_bndy_z{0.0};
+  mtk::Real top_bndy_z{1.0};
+
+  int num_cells_x{50};
+  int num_cells_y{50};
+  int num_cells_z{50};
+
+  mtk::UniStgGrid3D comp_sol(west_bndy_x, east_bndy_x, num_cells_x,
+                             south_bndy_y, north_bndy_y, num_cells_y,
+                             bottom_bndy_z, top_bndy_z, num_cells_z);
+
+  /// 2. Bind initial condition to the grid.
+  comp_sol.BindScalarField(InitialCondition);
+
+  if(!comp_sol.WriteToFile("difussion_3d_comp_sol.dat",
+                     "x",
+                     "y",
+                     "z",
+                     "Initial u(x,y,z)")) {
+    std::cerr << "Error writing to file." << std::endl;
+  }
+
+  /// \todo Time discretization...
+}
+
+#else
+#include <iostream>
+using std::cout;
+using std::endl;
+int main () {
+  cout << "This code HAS to be compiled with support for C++11." << endl;
+  cout << "Exiting..." << endl;
+  return EXIT_SUCCESS;
+}
+#endif

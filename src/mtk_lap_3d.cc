@@ -66,6 +66,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "mtk_div_3d.h"
 #include "mtk_lap_3d.h"
 
+mtk::UniStgGrid3D mtk::Lap3D::operator*(const mtk::UniStgGrid3D &grid) const {
+
+  mtk::UniStgGrid3D out;
+
+  return out;
+}
+
 mtk::Lap3D::Lap3D(): order_accuracy_(), mimetic_threshold_() {}
 
 mtk::Lap3D::Lap3D(const Lap3D &lap):

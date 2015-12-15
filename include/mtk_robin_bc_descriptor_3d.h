@@ -1,10 +1,10 @@
 /*!
-\file mtk_robin_bc_descriptor_2d.h
+\file mtk_robin_bc_descriptor_3d.h
 
 \brief Impose Robin boundary conditions on the operators and on the grids.
 
 This class presents an interface for the user to specify Robin boundary
-conditions on 2D mimetic operators and the grids they are acting on.
+conditions on 3D mimetic operators and the grids they are acting on.
 
 <b>Def.</b> Let \f$ u(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} \f$
 be the solution to an ordinary or partial differential equation of interest. We
@@ -23,9 +23,9 @@ normal derivative, in order for \f$ u \f$ to represent a unique solution to a
 given ordinary or partial differential equation of interest.
 
 Instances of this class receive information about the coefficient functions
-and each condition for any subset of the boundary (west, east, south and north
-in 2D). These instances then handle the complexity of placing the coefficients
-in the differentiation matrices and the conditions in the grids.
+and each condition for any subset of the boundary. These instances then handle
+the complexity of placing the coefficients in the differentiation matrices and
+the conditions in the grids.
 
 \sa http://mathworld.wolfram.com/NormalVector.html
 
@@ -77,8 +77,8 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef MTK_INCLUDE_ROBIN_BC_DESCRIPTOR_2D_H_
-#define MTK_INCLUDE_ROBIN_BC_DESCRIPTOR_2D_H_
+#ifndef MTK_INCLUDE_ROBIN_BC_DESCRIPTOR_3D_H_
+#define MTK_INCLUDE_ROBIN_BC_DESCRIPTOR_3D_H_
 
 #include "mtk_roots.h"
 #include "mtk_dense_matrix.h"
@@ -88,23 +88,25 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 namespace mtk{
 
 /*!
-\typedef CoefficientFunction1D
+\typedef CoefficientFunction2D
 
 \ingroup c07-mim_ops
 
-\brief A function of a BC coefficient evaluated on a 1D domain and time.
+\brief A function of a BC coefficient evaluated on a 2D domain and time.
 */
-typedef Real (*CoefficientFunction1D)(const Real &xx, const Real &tt);
+typedef Real (*CoefficientFunction2D)(const Real &xx,
+                                      const Real &yy,
+                                      const Real &tt);
 
 /*!
-\class RobinBCDescriptor2D
+\class RobinBCDescriptor3D
 
 \ingroup c07-mim_ops
 
 \brief Impose Robin boundary conditions on the operators and on the grids.
 
 This class presents an interface for the user to specify Robin boundary
-conditions on 2D mimetic operators and the grids they are acting on.
+conditions on 3D mimetic operators and the grids they are acting on.
 
 <b>Def.</b> Let \f$ u(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} \f$
 be the solution to an ordinary or partial differential equation of interest. We
@@ -123,122 +125,57 @@ normal derivative, in order for \f$ u \f$ to represent a unique solution to a
 given ordinary or partial differential equation of interest.
 
 Instances of this class receive information about the coefficient functions
-and each condition for any subset of the boundary (west, east, south and north
-in 2D). These instances then handle the complexity of placing the coefficients
-in the differentiation matrices and the conditions in the grids.
+and each condition for any subset of the boundary. These instances then handle
+the complexity of placing the coefficients in the differentiation matrices and
+the conditions in the grids.
 
 \sa http://mathworld.wolfram.com/NormalVector.html
 */
-class RobinBCDescriptor2D {
+class RobinBCDescriptor3D {
  public:
   /// \brief Default constructor.
-  RobinBCDescriptor2D();
+  RobinBCDescriptor3D();
 
   /*!
   \brief Copy constructor.
 
   \param [in] desc Given 2D descriptor.
   */
-  RobinBCDescriptor2D(const RobinBCDescriptor2D &desc);
+  RobinBCDescriptor3D(const RobinBCDescriptor3D &desc);
 
   /// \brief Destructor.
-  ~RobinBCDescriptor2D() noexcept;
+  ~RobinBCDescriptor3D() noexcept;
 
   /*!
-  \brief Getter for the highest order of differentiation in the west boundary.
+  \brief Getter for highest order of differentiation in the * face.
 
-  \return Integer highest order of differentiation in the west boundary.
+  \return Integer highest order of differentiation in the * face.
   */
   int highest_order_diff_west() const noexcept;
 
-  /*!
-  \brief Getter for the highest order of differentiation in the east boundary.
-
-  \return Integer highest order of differentiation in the east boundary.
-  */
-  int highest_order_diff_east() const noexcept;
+  // ...
 
   /*!
-  \brief Getter for the highest order of differentiation in the south boundary.
-
-  \return Integer highest order of differentiation in the south boundary.
-  */
-  int highest_order_diff_south() const noexcept;
-
-  /*!
-  \brief Getter for the highest order of differentiation in the north boundary.
-
-  \return Integer highest order of differentiation in the north boundary.
-  */
-  int highest_order_diff_north() const noexcept;
-
-  /*!
-  \brief Push back coefficient function at west of lowest order diff. available.
+  \brief Push back coefficient function at west lowest order diff. available.
 
   \param [in] cw Coeff.
-    \f$ c_w(y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} \f$.
+    \f$ c_w(x,y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} \f$.
   */
-  void PushBackWestCoeff(CoefficientFunction1D cw);
+  void PushBackWestCoeff(CoefficientFunction2D cw);
 
-  /*!
-  \brief Push back coefficient function at east of lowest order diff. available.
-
-  \param [in] cw Coeff.
-    \f$ c_e(y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} \f$.
-  */
-  void PushBackEastCoeff(CoefficientFunction1D ce);
-
-  /*!
-  \brief Push back coefficient function south of lowest order diff. available.
-
-  \param [in] cw Coeff.
-    \f$ c_s(x,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} \f$.
-  */
-  void PushBackSouthCoeff(CoefficientFunction1D cs);
-
-  /*!
-  \brief Push back coefficient function north of lowest order diff. available.
-
-  \param [in] cw Coeff.
-    \f$ c_n(x,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} \f$.
-  */
-  void PushBackNorthCoeff(CoefficientFunction1D cn);
+  // ...
 
   /*!
   \brief Set boundary condition at west.
 
   \param [in] west_condition
-    \f$ \beta_w(y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} \f$.
+    \f$ \beta_w(x,y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} \f$.
   */
-  void set_west_condition(Real (*west_condition)(const Real &yy,
+  void set_west_condition(Real (*west_condition)(const Real &xx,
+                                                 const Real &yy,
                                                  const Real &tt)) noexcept;
 
-  /*!
-  \brief Set boundary condition at east.
-
-  \param [in] east_condition
-    \f$ \beta_e(y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} \f$.
-  */
-  void set_east_condition(Real (*east_condition)(const Real &yy,
-                                                 const Real &tt)) noexcept;
-
-  /*!
-  \brief Set boundary condition at south.
-
-  \param [in] south_condition
-    \f$ \beta_s(x,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} \f$.
-  */
-  void set_south_condition(Real (*south_condition)(const Real &xx,
-                                                   const Real &tt)) noexcept;
-
-  /*!
-  \brief Set boundary condition at north.
-
-  \param [in] north_condition
-    \f$ \beta_n(x,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} \f$.
-  */
-  void set_north_condition(Real (*north_condition)(const Real &xx,
-                                                   const Real &tt)) noexcept;
+  // ...
 
   /*!
   \brief Imposes the condition on the operator represented as matrix.
@@ -248,8 +185,8 @@ class RobinBCDescriptor2D {
   \param[in,out] matrix Input matrix with the Laplacian operator.
   \param[in] time Current time snapshot. Default is kZero.
   */
-  bool ImposeOnLaplacianMatrix(const Lap2D &lap,
-                               const UniStgGrid2D &grid,
+  bool ImposeOnLaplacianMatrix(const Lap3D &lap,
+                               const UniStgGrid3D &grid,
                                DenseMatrix &matrix,
                                const Real &time = kZero) const;
   /*!
@@ -258,7 +195,7 @@ class RobinBCDescriptor2D {
   \param[in,out] grid Grid upon which impose the desired boundary condition.
   \param[in] time Current time snapshot. Default is kZero.
   */
-  void ImposeOnGrid(UniStgGrid2D &grid, const Real &time = kZero) const;
+  void ImposeOnGrid(UniStgGrid3D &grid, const Real &time = kZero) const;
 
 private:
   /*!
@@ -362,16 +299,34 @@ private:
   int highest_order_diff_east_;   ///< Highest order of differentiation east.
   int highest_order_diff_south_;  ///< Highest order differentiation for south.
   int highest_order_diff_north_;  ///< Highest order differentiation for north.
+  int highest_order_diff_bottom_; ///< Highest order differentiation bottom.
+  int highest_order_diff_top_;    ///< Highest order differentiation for top.
 
-  std::vector<CoefficientFunction1D> west_coefficients_;  ///< Coeffs. west.
-  std::vector<CoefficientFunction1D> east_coefficients_;  ///< Coeffs. east.
-  std::vector<CoefficientFunction1D> south_coefficients_; ///< Coeffs. south.
-  std::vector<CoefficientFunction1D> north_coefficients_; ///< Coeffs. north.
+  std::vector<CoefficientFunction2D> west_coefficients_;    ///< Coeffs. west.
+  std::vector<CoefficientFunction2D> east_coefficients_;    ///< Coeffs. east.
+  std::vector<CoefficientFunction2D> south_coefficients_;   ///< Coeffs. south.
+  std::vector<CoefficientFunction2D> north_coefficients_;   ///< Coeffs. north.
+  std::vector<CoefficientFunction2D> bottom_coefficients_;  ///< Coeffs. bottom.
+  std::vector<CoefficientFunction2D> top_coefficients_;     ///< Coeffs. top.
 
-  Real (*west_condition_)(const Real &xx, const Real &tt);  ///< Condition west.
-  Real (*east_condition_)(const Real &xx, const Real &tt);  ///< Condition east.
-  Real (*south_condition_)(const Real &yy, const Real &tt); ///< Cond. south.
-  Real (*north_condition_)(const Real &yy, const Real &tt); ///< Cond. north.
+  Real (*west_condition_)(const Real &xx,
+                          const Real &yy,
+                          const Real &tt);  ///< Condition west.
+  Real (*east_condition_)(const Real &xx,
+                          const Real &yy,
+                          const Real &tt);  ///< Condition east.
+  Real (*south_condition_)(const Real &xx,
+                           const Real &yy,
+                           const Real &tt); ///< Cond. south.
+  Real (*north_condition_)(const Real &xx,
+                           const Real &yy,
+                           const Real &tt); ///< Cond. north.
+  Real (*bottom_condition_)(const Real &xx,
+                            const Real &yy,
+                            const Real &tt); ///< Cond. bottom.
+  Real (*top_condition_)(const Real &xx,
+                         const Real &yy,
+                         const Real &tt); ///< Cond. top.
 };
 }
-#endif  // End of: MTK_INCLUDE_ROBIN_BC_DESCRIPTOR_2D_H_
+#endif  // End of: MTK_INCLUDE_ROBIN_BC_DESCRIPTOR_3D_H_

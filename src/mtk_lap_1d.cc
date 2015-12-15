@@ -197,7 +197,7 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
   #if MTK_VERBOSE_LEVEL > 2
   std::cout << "aux =" << std::endl;
   std::cout << aux << std::endl;
-  std::cout <<"aux.delta_x() = " << aux.delta_x() << std::endl;
+  std::cout << "aux.delta_x() = " << aux.delta_x() << std::endl;
   std::cout << std::endl;
   #endif
 

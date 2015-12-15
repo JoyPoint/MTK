@@ -440,5 +440,6 @@ Mimetic operators.
 #include "mtk_grad_3d.h"
 #include "mtk_div_3d.h"
 #include "mtk_lap_3d.h"
+#include "mtk_robin_bc_descriptor_3d.h"
 
 #endif // End of: MTK_INCLUDE_MTK_H_

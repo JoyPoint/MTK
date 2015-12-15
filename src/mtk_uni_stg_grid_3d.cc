@@ -113,6 +113,13 @@ std::ostream& operator <<(std::ostream &stream, mtk::UniStgGrid3D &in) {
 }
 }
 
+mtk::UniStgGrid3D mtk::UniStgGrid3D::operator=(const mtk::UniStgGrid3D &in) {
+
+  UniStgGrid3D out(in);
+
+  return out;
+}
+
 mtk::UniStgGrid3D::UniStgGrid3D():
     discrete_domain_x_(),
     discrete_domain_y_(),

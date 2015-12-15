@@ -81,6 +81,15 @@ class UniStgGrid3D {
   /// \brief Prints the grid as a tuple of arrays.
   friend std::ostream& operator <<(std::ostream& stream, UniStgGrid3D &in);
 
+  /*!
+  \brief Overloaded assignment operator.
+
+  \param [in] in Given grid.
+
+  \return Copy of the given grid.
+  */
+  UniStgGrid3D operator=(const UniStgGrid3D &in);
+
   /// \brief Default constructor.
   UniStgGrid3D();
 
