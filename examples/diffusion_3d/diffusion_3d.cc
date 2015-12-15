@@ -1,7 +1,7 @@
 /*!
-\file difussion_3d.cc
+\file diffusion_3d.cc
 
-\brief Poisson Equation on a 2D Uniform Staggered Grid with Robin BCs.
+\brief Diffusion Equation on a 3D Uniform Staggered Grid with Dirichlet BCs.
 
 We solve:
 \f[
@@ -104,7 +104,7 @@ int main () {
   /// 2. Bind initial condition to the grid.
   comp_sol.BindScalarField(InitialCondition);
 
-  if(!comp_sol.WriteToFile("difussion_3d_comp_sol.dat",
+  if(!comp_sol.WriteToFile("diffusion_3d_comp_sol.dat",
                      "x",
                      "y",
                      "z",
