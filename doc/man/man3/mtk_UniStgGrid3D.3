@@ -1,4 +1,4 @@
-.TH "mtk::UniStgGrid3D" 3 "Mon Dec 14 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::UniStgGrid3D" 3 "Tue Dec 15 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -14,6 +14,10 @@ Uniform 3D Staggered Grid\&.
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fBUniStgGrid3D\fP \fBoperator=\fP (const \fBUniStgGrid3D\fP &in)"
+.br
+.RI "\fIOverloaded assignment operator\&. \fP"
 .ti -1c
 .RI "\fBUniStgGrid3D\fP ()"
 .br
@@ -225,7 +229,7 @@ Definition at line 79 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "mtk::UniStgGrid3D::UniStgGrid3D ()"
 
 .PP
-Definition at line 116 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 123 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "mtk::UniStgGrid3D::UniStgGrid3D (const \fBUniStgGrid3D\fP &grid)"
 
 .PP
@@ -236,7 +240,7 @@ Definition at line 116 of file mtk_uni_stg_grid_3d\&.cc\&.
 .PP
 
 .PP
-Definition at line 135 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 142 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "mtk::UniStgGrid3D::UniStgGrid3D (const \fBReal\fP &west_bndy_x, const \fBReal\fP &east_bndy_x, const int &num_cells_x, const \fBReal\fP &south_bndy_y, const \fBReal\fP &north_bndy_y, const int &num_cells_y, const \fBReal\fP &bottom_bndy_z, const \fBReal\fP &top_bndy_z, const int &num_cells_z, const \fBmtk::FieldNature\fP &nature = \fC\fBmtk::SCALAR\fP\fP)"
 
 .PP
@@ -270,11 +274,11 @@ Definition at line 135 of file mtk_uni_stg_grid_3d\&.cc\&.
 .PP
 
 .PP
-Definition at line 167 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 174 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "mtk::UniStgGrid3D::~UniStgGrid3D ()"
 
 .PP
-Definition at line 214 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 221 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SH "Member Function Documentation"
 .PP 
 .SS "void mtk::UniStgGrid3D::BindScalarField (\fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &yy, const \fBReal\fP &zz)ScalarField)"
@@ -297,7 +301,7 @@ Create collection of field samples\&.
 .PP
 
 .PP
-Definition at line 311 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 318 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "void mtk::UniStgGrid3D::BindVectorField (\fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &yy, const \fBReal\fP &zz)VectorFieldPComponent, \fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &yy, const \fBReal\fP &zz)VectorFieldQComponent, \fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &yy, const \fBReal\fP &zz)VectorFieldRComponent)"
 We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = p(x, y, z)\hat{\mathbf{i}} + q(x, y, z)\hat{\mathbf{j}} + r(x, y, z)\hat{\mathbf{k}} \]
 .PP
@@ -312,7 +316,7 @@ We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = p(x, y, z)\ha
 .PP
 
 .PP
-Definition at line 407 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 414 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "void mtk::UniStgGrid3D::BindVectorFieldPComponent (\fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &yy, const \fBReal\fP &zz)VectorFieldPComponent)\fC [private]\fP"
 We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = p(x, y, z)\hat{\mathbf{i}} + q(x, y, z)\hat{\mathbf{j}} + r(x, y, z)\hat{\mathbf{k}} \]
 .PP
@@ -323,7 +327,7 @@ We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = p(x, y, z)\ha
 .PP
 
 .PP
-Definition at line 386 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 393 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "void mtk::UniStgGrid3D::BindVectorFieldQComponent (\fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &yy, const \fBReal\fP &zz)VectorFieldQComponent)\fC [private]\fP"
 We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = p(x, y, z)\hat{\mathbf{i}} + q(x, y, z)\hat{\mathbf{j}} + r(x, y, z)\hat{\mathbf{k}} \]
 .PP
@@ -334,7 +338,7 @@ We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = p(x, y, z)\ha
 .PP
 
 .PP
-Definition at line 393 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 400 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "void mtk::UniStgGrid3D::BindVectorFieldRComponent (\fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &yy, const \fBReal\fP &zz)VectorFieldRComponent)\fC [private]\fP"
 We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = p(x, y, z)\hat{\mathbf{i}} + q(x, y, z)\hat{\mathbf{j}} + r(x, y, z)\hat{\mathbf{k}} \]
 .PP
@@ -345,7 +349,7 @@ We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = p(x, y, z)\ha
 .PP
 
 .PP
-Definition at line 400 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 407 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::UniStgGrid3D::bottom_bndy () const"
 
 .PP
@@ -356,7 +360,7 @@ Bottom boundary spatial coordinate\&.
 .PP
 
 .PP
-Definition at line 271 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 278 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "bool mtk::UniStgGrid3D::Bound () const"
 
 .PP
@@ -367,7 +371,7 @@ True is a field has been bound\&.
 .PP
 
 .PP
-Definition at line 301 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 308 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::UniStgGrid3D::delta_x () const"
 
 .PP
@@ -378,7 +382,7 @@ Computed $  x $\&.
 .PP
 
 .PP
-Definition at line 236 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 243 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::UniStgGrid3D::delta_y () const"
 
 .PP
@@ -389,7 +393,7 @@ Computed $  y $\&.
 .PP
 
 .PP
-Definition at line 261 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 268 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::UniStgGrid3D::delta_z () const"
 
 .PP
@@ -400,7 +404,7 @@ Computed $  z $\&.
 .PP
 
 .PP
-Definition at line 286 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 293 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "const \fBmtk::Real\fP * mtk::UniStgGrid3D::discrete_domain_x () const"
 
 .PP
@@ -416,7 +420,7 @@ Review const-correctness of the pointer we return\&.
 .PP
 
 .PP
-Definition at line 241 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 248 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "const \fBmtk::Real\fP * mtk::UniStgGrid3D::discrete_domain_y () const"
 
 .PP
@@ -432,7 +436,7 @@ Review const-correctness of the pointer we return\&.
 .PP
 
 .PP
-Definition at line 266 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 273 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "const \fBmtk::Real\fP * mtk::UniStgGrid3D::discrete_domain_z () const"
 
 .PP
@@ -448,7 +452,7 @@ Review const-correctness of the pointer we return\&.
 .PP
 
 .PP
-Definition at line 291 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 298 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "\fBmtk::Real\fP * mtk::UniStgGrid3D::discrete_field ()"
 
 .PP
@@ -459,7 +463,7 @@ Pointer to the field data\&.
 .PP
 
 .PP
-Definition at line 296 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 303 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::UniStgGrid3D::east_bndy () const"
 
 .PP
@@ -470,7 +474,7 @@ East boundary spatial coordinate\&.
 .PP
 
 .PP
-Definition at line 226 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 233 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "\fBmtk::FieldNature\fP mtk::UniStgGrid3D::nature () const"
 
 .PP
@@ -486,7 +490,7 @@ Value of an enumeration\&.
 .PP
 
 .PP
-Definition at line 216 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 223 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::UniStgGrid3D::north_bndy () const"
 
 .PP
@@ -497,7 +501,7 @@ North boundary spatial coordinate\&.
 .PP
 
 .PP
-Definition at line 251 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 258 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "int mtk::UniStgGrid3D::num_cells_x () const"
 
 .PP
@@ -508,7 +512,7 @@ Number of cells of the grid\&.
 .PP
 
 .PP
-Definition at line 231 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 238 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "int mtk::UniStgGrid3D::num_cells_y () const"
 
 .PP
@@ -519,7 +523,7 @@ Number of cells of the grid\&.
 .PP
 
 .PP
-Definition at line 256 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 263 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "int mtk::UniStgGrid3D::num_cells_z () const"
 
 .PP
@@ -530,7 +534,23 @@ Number of cells of the grid\&.
 .PP
 
 .PP
-Definition at line 281 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 288 of file mtk_uni_stg_grid_3d\&.cc\&.
+.SS "\fBmtk::UniStgGrid3D\fP mtk::UniStgGrid3D::operator= (const \fBUniStgGrid3D\fP &in)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIin\fP Given grid\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the given grid\&. 
+.RE
+.PP
+
+.PP
+Definition at line 116 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "int mtk::UniStgGrid3D::Size () const"
 
 .PP
@@ -541,7 +561,7 @@ Total number of samples in the grid\&.
 .PP
 
 .PP
-Definition at line 306 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 313 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::UniStgGrid3D::south_bndy () const"
 
 .PP
@@ -552,7 +572,7 @@ South boundary spatial coordinate\&.
 .PP
 
 .PP
-Definition at line 246 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 253 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::UniStgGrid3D::top_bndy () const"
 
 .PP
@@ -563,7 +583,7 @@ Top boundary spatial coordinate\&.
 .PP
 
 .PP
-Definition at line 276 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 283 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::UniStgGrid3D::west_bndy () const"
 
 .PP
@@ -574,7 +594,7 @@ West boundary spatial coordinate\&.
 .PP
 
 .PP
-Definition at line 221 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 228 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "bool mtk::UniStgGrid3D::WriteToFile (std::stringfilename, std::stringspace_name_x, std::stringspace_name_y, std::stringspace_name_z, std::stringfield_name) const"
 
 .PP
@@ -603,7 +623,7 @@ http://www.gnuplot.info/
 .PP
 
 .PP
-Definition at line 426 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 433 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SH "Friends And Related Function Documentation"
 .PP 
 .SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::UniStgGrid3D\fP &in)\fC [friend]\fP"
@@ -621,71 +641,71 @@ Definition at line 67 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "\fBReal\fP mtk::UniStgGrid3D::bottom_bndy_\fC [private]\fP"
 
 .PP
-Definition at line 387 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 396 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid3D::delta_x_\fC [private]\fP"
 
 .PP
-Definition at line 380 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 389 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid3D::delta_y_\fC [private]\fP"
 
 .PP
-Definition at line 385 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 394 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid3D::delta_z_\fC [private]\fP"
 
 .PP
-Definition at line 390 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 399 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "std::vector<\fBReal\fP> mtk::UniStgGrid3D::discrete_domain_x_\fC [private]\fP"
 
 .PP
-Definition at line 370 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 379 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "std::vector<\fBReal\fP> mtk::UniStgGrid3D::discrete_domain_y_\fC [private]\fP"
 
 .PP
-Definition at line 371 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 380 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "std::vector<\fBReal\fP> mtk::UniStgGrid3D::discrete_domain_z_\fC [private]\fP"
 
 .PP
-Definition at line 372 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 381 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "std::vector<\fBReal\fP> mtk::UniStgGrid3D::discrete_field_\fC [private]\fP"
 
 .PP
-Definition at line 373 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 382 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid3D::east_bndy_\fC [private]\fP"
 
 .PP
-Definition at line 378 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 387 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "\fBFieldNature\fP mtk::UniStgGrid3D::nature_\fC [private]\fP"
 
 .PP
-Definition at line 375 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 384 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid3D::north_bndy_\fC [private]\fP"
 
 .PP
-Definition at line 383 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 392 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "int mtk::UniStgGrid3D::num_cells_x_\fC [private]\fP"
 
 .PP
-Definition at line 379 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 388 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "int mtk::UniStgGrid3D::num_cells_y_\fC [private]\fP"
 
 .PP
-Definition at line 384 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 393 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "int mtk::UniStgGrid3D::num_cells_z_\fC [private]\fP"
 
 .PP
-Definition at line 389 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 398 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid3D::south_bndy_\fC [private]\fP"
 
 .PP
-Definition at line 382 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 391 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid3D::top_bndy_\fC [private]\fP"
 
 .PP
-Definition at line 388 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 397 of file mtk_uni_stg_grid_3d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid3D::west_bndy_\fC [private]\fP"
 
 .PP
-Definition at line 377 of file mtk_uni_stg_grid_3d\&.h\&.
+Definition at line 386 of file mtk_uni_stg_grid_3d\&.h\&.
 
 .SH "Author"
 .PP 

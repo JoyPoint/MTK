@@ -101,7 +101,7 @@
         <argsstring></argsstring>
         <name>north_coefficients_</name>
         <briefdescription>
-<para>Coeffs. south. </para>        </briefdescription>
+<para>Coeffs. north. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
@@ -1157,28 +1157,28 @@
 <para>This class presents an interface for the user to specify Robin boundary conditions on 2D mimetic operators and the grids they are acting on.</para><para><bold>Def.</bold> Let <formula id="72">$ u(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} $</formula> be the solution to an ordinary or partial differential equation of interest. We say that <formula id="76">$ u $</formula> satisfies a <bold>Robin boundary condition on</bold> <formula id="77">$ \partial\Omega $</formula> if and only if there exists <formula id="71">$ \beta(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} $</formula> so that: <formula id="78">\[ \forall t \in [t_0,t_n]\; \forall \mathbf{x} \in \partial\Omega: \delta(\mathbf{x},t)u(\mathbf{x},t) + \eta(\mathbf{x},t)(\hat{\mathbf{n}}\cdot\nabla u) = \beta(\mathbf{x},t). \]</formula></para><para>Intuitively, a <bold>Robin boundary condition</bold> is a constraint that must be satisfied by any linear combination of any scalar field <formula id="76">$ u $</formula> and its first normal derivative, in order for <formula id="76">$ u $</formula> to represent a unique solution to a given ordinary or partial differential equation of interest.</para><para>Instances of this class receive information about the coefficient functions and each condition for any subset of the boundary (west, east, south and north in 2D). These instances then handle the complexity of placing the coefficients in the differentiation matrices and the conditions in the grids.</para><para><simplesect kind="see"><para><ulink url="http://mathworld.wolfram.com/NormalVector.html">http://mathworld.wolfram.com/NormalVector.html</ulink> </para></simplesect>
 </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="156">
+      <node id="161">
         <label>T</label>
       </node>
-      <node id="153">
+      <node id="158">
         <label>mtk::RobinBCDescriptor2D</label>
         <link refid="classmtk_1_1RobinBCDescriptor2D"/>
-        <childnode refid="154" relation="usage">
+        <childnode refid="159" relation="usage">
           <edgelabel>-east_coefficients_</edgelabel>
           <edgelabel>-west_coefficients_</edgelabel>
           <edgelabel>-south_coefficients_</edgelabel>
           <edgelabel>-north_coefficients_</edgelabel>
         </childnode>
       </node>
-      <node id="155">
+      <node id="160">
         <label>std::vector&lt; T &gt;</label>
-        <childnode refid="156" relation="usage">
+        <childnode refid="161" relation="usage">
           <edgelabel>+elements</edgelabel>
         </childnode>
       </node>
-      <node id="154">
+      <node id="159">
         <label>std::vector&lt; CoefficientFunction1D &gt;</label>
-        <childnode refid="155" relation="template-instance">
+        <childnode refid="160" relation="template-instance">
           <edgelabel>&lt; CoefficientFunction1D &gt;</edgelabel>
         </childnode>
       </node>

@@ -13,6 +13,8 @@ var searchData=
   ['blasadapter',['BLASAdapter',['../classmtk_1_1BLASAdapter.html',1,'mtk']]],
   ['bottom_5fbndy',['bottom_bndy',['../classmtk_1_1UniStgGrid3D.html#ae060c84d98994e1dd62d75f7226e8a00',1,'mtk::UniStgGrid3D']]],
   ['bottom_5fbndy_5f',['bottom_bndy_',['../classmtk_1_1UniStgGrid3D.html#aae37910fbf5466a711bf290041839a75',1,'mtk::UniStgGrid3D']]],
+  ['bottom_5fcoefficients_5f',['bottom_coefficients_',['../classmtk_1_1RobinBCDescriptor3D.html#a89bc7efb7b8f5947fb97c1ad5947a4f5',1,'mtk::RobinBCDescriptor3D']]],
+  ['bottom_5fcondition_5f',['bottom_condition_',['../classmtk_1_1RobinBCDescriptor3D.html#aeefbed0ba8c4dbf5e1c077d997fea3c1',1,'mtk::RobinBCDescriptor3D']]],
   ['bound',['Bound',['../classmtk_1_1UniStgGrid2D.html#aa651194ccd0321a7c61a8f56fa5e8455',1,'mtk::UniStgGrid2D::Bound()'],['../classmtk_1_1UniStgGrid3D.html#a0b4e72db76d5406b65d092a5d31f1361',1,'mtk::UniStgGrid3D::Bound()']]],
   ['bug_20list',['Bug List',['../bug.html',1,'']]]
 ];

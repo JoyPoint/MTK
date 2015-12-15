@@ -21,6 +21,8 @@ var searchData=
   ['robinbcdescriptor1d',['RobinBCDescriptor1D',['../classmtk_1_1RobinBCDescriptor1D.html',1,'mtk']]],
   ['robinbcdescriptor2d',['RobinBCDescriptor2D',['../classmtk_1_1RobinBCDescriptor2D.html',1,'mtk']]],
   ['robinbcdescriptor2d',['RobinBCDescriptor2D',['../classmtk_1_1RobinBCDescriptor2D.html#a00589475c84facde18949150bd6df961',1,'mtk::RobinBCDescriptor2D::RobinBCDescriptor2D()'],['../classmtk_1_1RobinBCDescriptor2D.html#a996e5ddee3a6f76cb5fa813bfff905d5',1,'mtk::RobinBCDescriptor2D::RobinBCDescriptor2D(const RobinBCDescriptor2D &amp;desc)']]],
+  ['robinbcdescriptor3d',['RobinBCDescriptor3D',['../classmtk_1_1RobinBCDescriptor3D.html#ae9321af786c4502732ffd62e7cc06498',1,'mtk::RobinBCDescriptor3D::RobinBCDescriptor3D()'],['../classmtk_1_1RobinBCDescriptor3D.html#a0a4aadcc15defd050e7c0dd2b218c1ca',1,'mtk::RobinBCDescriptor3D::RobinBCDescriptor3D(const RobinBCDescriptor3D &amp;desc)']]],
+  ['robinbcdescriptor3d',['RobinBCDescriptor3D',['../classmtk_1_1RobinBCDescriptor3D.html',1,'mtk']]],
   ['row_5f',['row_',['../classmtk_1_1Div1D.html#a86d99df0e9b1e5d2943a2dcf58975556',1,'mtk::Div1D::row_()'],['../classmtk_1_1Grad1D.html#a7947235d61d0dd27c5b81a81ca78d9a8',1,'mtk::Grad1D::row_()']]],
   ['row_5fmajor',['ROW_MAJOR',['../namespacemtk.html#ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3',1,'mtk']]]
 ];

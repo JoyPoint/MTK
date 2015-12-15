@@ -20,6 +20,7 @@ var namespacemtk =
     [ "Quad1D", "classmtk_1_1Quad1D.html", "classmtk_1_1Quad1D" ],
     [ "RobinBCDescriptor1D", "classmtk_1_1RobinBCDescriptor1D.html", "classmtk_1_1RobinBCDescriptor1D" ],
     [ "RobinBCDescriptor2D", "classmtk_1_1RobinBCDescriptor2D.html", "classmtk_1_1RobinBCDescriptor2D" ],
+    [ "RobinBCDescriptor3D", "classmtk_1_1RobinBCDescriptor3D.html", "classmtk_1_1RobinBCDescriptor3D" ],
     [ "Tools", "classmtk_1_1Tools.html", "classmtk_1_1Tools" ],
     [ "UniStgGrid1D", "classmtk_1_1UniStgGrid1D.html", "classmtk_1_1UniStgGrid1D" ],
     [ "UniStgGrid2D", "classmtk_1_1UniStgGrid2D.html", "classmtk_1_1UniStgGrid2D" ],

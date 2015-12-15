@@ -1,4 +1,4 @@
-.TH "mtk::Lap3D" 3 "Mon Dec 14 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::Lap3D" 3 "Tue Dec 15 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -14,6 +14,10 @@ Implements a 3D mimetic Laplacian operator\&.
 .SS "Public Member Functions"
 
 .in +1c
+.ti -1c
+.RI "\fBUniStgGrid3D\fP \fBoperator*\fP (const \fBUniStgGrid3D\fP &grid) const "
+.br
+.RI "\fIOperator application operator on a grid\&. \fP"
 .ti -1c
 .RI "\fBLap3D\fP ()"
 .br
@@ -65,7 +69,7 @@ Definition at line 76 of file mtk_lap_3d\&.h\&.
 .SS "mtk::Lap3D::Lap3D ()"
 
 .PP
-Definition at line 69 of file mtk_lap_3d\&.cc\&.
+Definition at line 76 of file mtk_lap_3d\&.cc\&.
 .SS "mtk::Lap3D::Lap3D (const \fBLap3D\fP &lap)"
 
 .PP
@@ -76,11 +80,11 @@ Definition at line 69 of file mtk_lap_3d\&.cc\&.
 .PP
 
 .PP
-Definition at line 71 of file mtk_lap_3d\&.cc\&.
+Definition at line 78 of file mtk_lap_3d\&.cc\&.
 .SS "mtk::Lap3D::~Lap3D ()"
 
 .PP
-Definition at line 75 of file mtk_lap_3d\&.cc\&.
+Definition at line 82 of file mtk_lap_3d\&.cc\&.
 .SH "Member Function Documentation"
 .PP 
 .SS "bool mtk::Lap3D::ConstructLap3D (const \fBUniStgGrid3D\fP &grid, intorder_accuracy = \fC\fBkDefaultOrderAccuracy\fP\fP, \fBmtk::Real\fPmimetic_threshold = \fC\fBkDefaultMimeticThreshold\fP\fP)"
@@ -93,7 +97,7 @@ Success of the construction\&.
 .PP
 
 .PP
-Definition at line 77 of file mtk_lap_3d\&.cc\&.
+Definition at line 84 of file mtk_lap_3d\&.cc\&.
 .SS "\fBmtk::Real\fP * mtk::Lap3D::data () const"
 
 .PP
@@ -104,7 +108,11 @@ The operator as a dense array\&.
 .PP
 
 .PP
-Definition at line 115 of file mtk_lap_3d\&.cc\&.
+Definition at line 122 of file mtk_lap_3d\&.cc\&.
+.SS "\fBmtk::UniStgGrid3D\fP mtk::Lap3D::operator* (const \fBUniStgGrid3D\fP &grid) const"
+
+.PP
+Definition at line 69 of file mtk_lap_3d\&.cc\&.
 .SS "\fBmtk::DenseMatrix\fP mtk::Lap3D::ReturnAsDenseMatrix () const"
 
 .PP
@@ -115,21 +123,21 @@ The operator as a dense matrix\&.
 .PP
 
 .PP
-Definition at line 110 of file mtk_lap_3d\&.cc\&.
+Definition at line 117 of file mtk_lap_3d\&.cc\&.
 .SH "Member Data Documentation"
 .PP 
 .SS "\fBDenseMatrix\fP mtk::Lap3D::laplacian_\fC [private]\fP"
 
 .PP
-Definition at line 115 of file mtk_lap_3d\&.h\&.
+Definition at line 118 of file mtk_lap_3d\&.h\&.
 .SS "\fBReal\fP mtk::Lap3D::mimetic_threshold_\fC [private]\fP"
 
 .PP
-Definition at line 119 of file mtk_lap_3d\&.h\&.
+Definition at line 122 of file mtk_lap_3d\&.h\&.
 .SS "int mtk::Lap3D::order_accuracy_\fC [private]\fP"
 
 .PP
-Definition at line 117 of file mtk_lap_3d\&.h\&.
+Definition at line 120 of file mtk_lap_3d\&.h\&.
 
 .SH "Author"
 .PP 

@@ -86,6 +86,7 @@ var group__c06_grids =
       [ "num_cells_x", "classmtk_1_1UniStgGrid3D.html#a716f5f02f4cdae0e596f4fe43a2c3359", null ],
       [ "num_cells_y", "classmtk_1_1UniStgGrid3D.html#abb0fc143b06048f69ac05e33c40f85db", null ],
       [ "num_cells_z", "classmtk_1_1UniStgGrid3D.html#acd896b210eac3434fb51b26bef3c3ce0", null ],
+      [ "operator=", "classmtk_1_1UniStgGrid3D.html#a3be112ac8a4b7f8b5152b48e9de8756f", null ],
       [ "Size", "classmtk_1_1UniStgGrid3D.html#a9f7f6ab34586f8d7fb54f0ad6c47c834", null ],
       [ "south_bndy", "classmtk_1_1UniStgGrid3D.html#a0d36500dff853d7c7a63cdd89abe9b8d", null ],
       [ "top_bndy", "classmtk_1_1UniStgGrid3D.html#a835df71a84dbcbe3860ad86cd7133027", null ],
