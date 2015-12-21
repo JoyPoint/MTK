@@ -107,6 +107,10 @@ VERBOSE_LEVEL = 16
 
 PERFORM_PREVENTIONS = YES
 
+# Enables creation of LaTeX table verbosing the computation of mimetic weights.
+
+VERBOSE_WEIGHTS = YES
+
 # Flags recommended for release code:
 
 CCFLAGS = -Wall -Werror -O3
@@ -165,6 +169,10 @@ endif
 
 ifeq ($(PERFORM_PREVENTIONS),YES)
   CCFLAGS += -DMTK_PERFORM_PREVENTIONS
+endif
+
+ifeq ($(VERBOSE_WEIGHTS),YES)
+  CCFLAGS += -DMTK_VERBOSE_WEIGHTS
 endif
 
 # Only the GLPK is included because the other dependencies are coded in Fortran.
