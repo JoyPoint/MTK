@@ -63,6 +63,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <iostream>
 #include <iomanip>
+
+#ifdef MTK_VERBOSE_WEIGHTS
+#include <fstream>
+#endif
+
 #include <limits>
 #include <algorithm>
 
@@ -1214,11 +1219,6 @@ bool mtk::Grad1D::ComputeWeights() {
 
   if (order_accuracy_ >= mtk::kCriticalOrderAccuracyGrad) {
 
-    int minrow_{std::numeric_limits<int>::infinity()};
-
-    mtk::Real norm{mtk::BLASAdapter::RealNRM2(weights_cbs_,order_accuracy_)};
-    mtk::Real minnorm{std::numeric_limits<mtk::Real>::infinity()};
-
     /// 6. Create \f$ \mathbf{\Phi} \f$ matrix from \f$ \mathbf{\Pi} \f$.
 
     mtk::DenseMatrix phi(order_accuracy_ + 1, order_accuracy_);
@@ -1316,9 +1316,33 @@ bool mtk::Grad1D::ComputeWeights() {
 
     /// 8. Brute force search through all the rows of the \f$\Phi\f$ matrix.
 
-    int copy_result{};  // Should I replace the solution... not for now.
+    #ifdef MTK_VERBOSE_WEIGHTS
+    int copy_result{1};
+    #else
+    int copy_result{};
+    #endif
+
+    int minrow_{std::numeric_limits<int>::infinity()};
+
+    mtk::Real norm{mtk::BLASAdapter::RealNRM2(weights_cbs_,order_accuracy_)};
+    mtk::Real minnorm{std::numeric_limits<mtk::Real>::infinity()};
 
     mtk::Real normerr_; // Norm of the error for the solution on each row.
+
+    #ifdef MTK_VERBOSE_WEIGHTS
+    std::ofstream table("grad_1d_" + std::to_string(order_accuracy_) +
+      "_weights.tex");
+
+    table << "\\begin{tabular}[c]{c";
+    for (int ii = 1; ii <= order_accuracy_; ++ii) {
+      table << 'c';
+    }
+    table << ":c}\n\\toprule\nRow & ";
+    for (int ii = 1; ii <= order_accuracy_; ++ii) {
+      table << "$ q_{" + std::to_string(ii) + "}$ &";
+    }
+    table << " Relative error \\\\\n\\midrule\n";
+    #endif
 
     for(auto row_= 0; row_ < order_accuracy_ + 1; ++row_) {
       normerr_ = mtk::GLPKAdapter::SolveSimplexAndCompare(phi.data(),
@@ -1341,7 +1365,31 @@ bool mtk::Grad1D::ComputeWeights() {
         minnorm = aux;
         minrow_= row_;
       }
+
+      #ifdef MTK_VERBOSE_WEIGHTS
+      table << std::to_string(row_ + 1) << " & ";
+      if (normerr_ != std::numeric_limits<mtk::Real>::infinity()) {
+        for (int ii = 1; ii <= order_accuracy_; ++ii) {
+          table << std::to_string(weights_cbs_[ii - 1]) + " & ";
+        }
+        table << std::to_string(aux) << " \\\\" << std::endl;
+      } else {
+        table << "\\multicolumn{" << std::to_string(order_accuracy_) <<
+          "}{c}{$\\emptyset$} & ";
+        table << " - \\\\" << std::endl;
+      }
+      #endif
     }
+
+    #ifdef MTK_VERBOSE_WEIGHTS
+    table << "\\midrule" << std::endl;
+    table << "CRS weights:";
+    for (int ii = 1; ii <= order_accuracy_; ++ii) {
+      table << " & " << std::to_string(weights_crs_[ii - 1]);
+    }
+    table << " & - \\\\\n\\bottomrule\n\\end{tabular}" << std::endl;
+    table.close();
+    #endif
 
     #if MTK_VERBOSE_LEVEL > 3
     std::cout << "weights_CBSA + lambda (after brute force search):" <<

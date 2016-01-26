@@ -66,7 +66,49 @@ int main () {
   std::cout << "Example: Positive-Definite Weights for 1D Mimetic"
     "Operators." << std::endl;
 
-  
+  /// 1. Create all critical-order divergence operators.
+
+  mtk::Grad1D grad10;
+
+  bool assertion = grad10.ConstructGrad1D(10);
+  if (!assertion) {
+    std::cerr << "Mimetic grad (10th order) could not be built." << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  mtk::Grad1D grad12;
+
+  assertion = grad12.ConstructGrad1D(12);
+  if (!assertion) {
+    std::cerr << "Mimetic grad (12th order) could not be built." << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  /// 2. Create all critical-order divergence operators.
+
+  mtk::Div1D div8;
+
+  assertion = div8.ConstructDiv1D(8);
+  if (!assertion) {
+    std::cerr << "Mimetic div (8th order) could not be built." << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  mtk::Div1D div10;
+
+  assertion = div10.ConstructDiv1D(10);
+  if (!assertion) {
+    std::cerr << "Mimetic div (10th order) could not be built." << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  mtk::Div1D div12;
+
+  assertion = div12.ConstructDiv1D(12);
+  if (!assertion) {
+    std::cerr << "Mimetic div (12th order) could not be built." << std::endl;
+    return EXIT_FAILURE;
+  }
 }
 
 #else

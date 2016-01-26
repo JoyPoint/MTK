@@ -1,4 +1,4 @@
-.TH "mtk" 3 "Thu Dec 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk" 3 "Tue Jan 26 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -137,19 +137,19 @@ Mimetic Methods Toolkit namespace\&.
 
 .in +1c
 .ti -1c
-.RI "enum \fBMatrixStorage\fP { \fBDENSE\fP, \fBBANDED\fP, \fBCRS\fP }"
+.RI "enum \fBMatrixStorage\fP { \fBMatrixStorage::DENSE\fP, \fBMatrixStorage::BANDED\fP, \fBMatrixStorage::CRS\fP }"
 .br
 .RI "\fIConsidered matrix storage schemes to implement sparse matrices\&. \fP"
 .ti -1c
-.RI "enum \fBMatrixOrdering\fP { \fBROW_MAJOR\fP, \fBCOL_MAJOR\fP }"
+.RI "enum \fBMatrixOrdering\fP { \fBMatrixOrdering::ROW_MAJOR\fP, \fBMatrixOrdering::COL_MAJOR\fP }"
 .br
 .RI "\fIConsidered matrix ordering (for Fortran purposes)\&. \fP"
 .ti -1c
-.RI "enum \fBFieldNature\fP { \fBSCALAR\fP, \fBVECTOR\fP }"
+.RI "enum \fBFieldNature\fP { \fBFieldNature::SCALAR\fP, \fBFieldNature::VECTOR\fP }"
 .br
 .RI "\fINature of the field discretized in a given grid\&. \fP"
 .ti -1c
-.RI "enum \fBDirInterp\fP { \fBSCALAR_TO_VECTOR\fP, \fBVECTOR_TO_SCALAR\fP }"
+.RI "enum \fBDirInterp\fP { \fBDirInterp::SCALAR_TO_VECTOR\fP, \fBDirInterp::VECTOR_TO_SCALAR\fP }"
 .br
 .RI "\fIInterpolation operator\&. \fP"
 .in -1c
@@ -228,21 +228,21 @@ Mimetic Methods Toolkit namespace\&.
 .br
 .RI "\fIConsidered tolerance for comparisons in numerical methods\&. \fP"
 .ti -1c
-.RI "const int \fBkDefaultOrderAccuracy\fP {2}"
-.br
-.RI "\fIDefault order of accuracy for mimetic operators\&. \fP"
-.ti -1c
 .RI "const float \fBkDefaultMimeticThreshold\fP {1e-6f}"
 .br
 .RI "\fIDefault tolerance for higher-order mimetic operators\&. \fP"
 .ti -1c
-.RI "const int \fBkCriticalOrderAccuracyDiv\fP {8}"
+.RI "const int \fBkDefaultOrderAccuracy\fP {2}"
 .br
-.RI "\fIAt this order (and higher) we must use the CBSA to construct\&. \fP"
+.RI "\fIDefault order of accuracy for mimetic operators\&. \fP"
 .ti -1c
 .RI "const int \fBkCriticalOrderAccuracyGrad\fP {10}"
 .br
-.RI "\fIAt this order (and higher) we must use the CBSA to construct\&. \fP"
+.RI "\fIAt this order (and higher) we must use the CBSA to construct gradients\&. \fP"
+.ti -1c
+.RI "const int \fBkCriticalOrderAccuracyDiv\fP {8}"
+.br
+.RI "\fIAt this order (and higher) we must use the CBSA to construct divergences\&. \fP"
 .in -1c
 .SH "Function Documentation"
 .PP 
@@ -299,7 +299,7 @@ Definition at line 73 of file mtk_lap_1d\&.cc\&.
 .SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::DenseMatrix\fP &in)"
 
 .PP
-Definition at line 77 of file mtk_dense_matrix\&.cc\&.
+Definition at line 79 of file mtk_dense_matrix\&.cc\&.
 .SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::Grad1D\fP &in)"
 
 .IP "1." 4
@@ -313,7 +313,7 @@ Print mimetic approximations at the boundary\&.
 .PP
 
 .PP
-Definition at line 79 of file mtk_grad_1d\&.cc\&.
+Definition at line 84 of file mtk_grad_1d\&.cc\&.
 .SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::Div1D\fP &in)"
 
 .IP "1." 4
@@ -327,7 +327,7 @@ Print mimetic approximations at the boundary\&.
 .PP
 
 .PP
-Definition at line 79 of file mtk_div_1d\&.cc\&.
+Definition at line 84 of file mtk_div_1d\&.cc\&.
 .SS "void mtk::saxpy_ (int *n, float *sa, float *sx, int *incx, float *sy, int *incy)"
 
 .SS "void mtk::sgels_ (char *trans, int *m, int *n, int *nrhs, Real *a, int *lda, Real *b, int *ldb, Real *work, int *lwork, int *info)"

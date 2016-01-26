@@ -102,7 +102,7 @@ class UniStgGrid1D {
   UniStgGrid1D(const Real &west_bndy_x,
                const Real &east_bndy_x,
                const int &num_cells_x,
-               const mtk::FieldNature &nature = mtk::SCALAR);
+               const mtk::FieldNature &nature = mtk::FieldNature::SCALAR);
 
   /// \brief Destructor.
   ~UniStgGrid1D();

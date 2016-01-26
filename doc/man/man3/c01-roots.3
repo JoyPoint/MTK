@@ -1,4 +1,4 @@
-.TH "Roots." 3 "Thu Dec 17 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "Roots." 3 "Tue Jan 26 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -34,21 +34,21 @@ Fundamental execution parameters and defined types\&.
 .br
 .RI "\fIConsidered tolerance for comparisons in numerical methods\&. \fP"
 .ti -1c
-.RI "const int \fBmtk::kDefaultOrderAccuracy\fP {2}"
-.br
-.RI "\fIDefault order of accuracy for mimetic operators\&. \fP"
-.ti -1c
 .RI "const float \fBmtk::kDefaultMimeticThreshold\fP {1e-6f}"
 .br
 .RI "\fIDefault tolerance for higher-order mimetic operators\&. \fP"
 .ti -1c
-.RI "const int \fBmtk::kCriticalOrderAccuracyDiv\fP {8}"
+.RI "const int \fBmtk::kDefaultOrderAccuracy\fP {2}"
 .br
-.RI "\fIAt this order (and higher) we must use the CBSA to construct\&. \fP"
+.RI "\fIDefault order of accuracy for mimetic operators\&. \fP"
 .ti -1c
 .RI "const int \fBmtk::kCriticalOrderAccuracyGrad\fP {10}"
 .br
-.RI "\fIAt this order (and higher) we must use the CBSA to construct\&. \fP"
+.RI "\fIAt this order (and higher) we must use the CBSA to construct gradients\&. \fP"
+.ti -1c
+.RI "const int \fBmtk::kCriticalOrderAccuracyDiv\fP {8}"
+.br
+.RI "\fIAt this order (and higher) we must use the CBSA to construct divergences\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
@@ -58,76 +58,83 @@ Fundamental execution parameters and defined types\&.
 .SS "\fBmtk::Real\fP"
 
 .PP
-Definition at line 83 of file mtk_roots\&.h\&.
+\fBWarning:\fP
+.RS 4
+Defined as double if MTK_PRECISION_DOUBLE is defined on \fBMakefile\&.inc\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 93 of file mtk_roots\&.h\&.
 .SH "Variable Documentation"
 .PP 
 .SS "mtk::kCriticalOrderAccuracyDiv {8}"
 
 .PP
-Definition at line 167 of file mtk_roots\&.h\&.
+Definition at line 186 of file mtk_roots\&.h\&.
 .SS "mtk::kCriticalOrderAccuracyGrad {10}"
 
 .PP
-Definition at line 176 of file mtk_roots\&.h\&.
+Definition at line 177 of file mtk_roots\&.h\&.
 .SS "mtk::kDefaultMimeticThreshold {1e-6f}"
 
 .PP
 \fBWarning:\fP
 .RS 4
-Declared as double if MTK_PRECISION_DOUBLE is defined\&. 
+Declared as double if MTK_PRECISION_DOUBLE is defined on \fBMakefile\&.inc\fP\&. 
 .RE
 .PP
 
 .PP
-Definition at line 157 of file mtk_roots\&.h\&.
+Definition at line 158 of file mtk_roots\&.h\&.
 .SS "mtk::kDefaultOrderAccuracy {2}"
+
+.PP
+Definition at line 168 of file mtk_roots\&.h\&.
+.SS "mtk::kDefaultTolerance {1e-7f}"
 
 .PP
 \fBWarning:\fP
 .RS 4
-Declared as double if MTK_PRECISION_DOUBLE is defined\&. 
+Declared as double if MTK_PRECISION_DOUBLE is defined on \fBMakefile\&.inc\fP\&. 
 .RE
 .PP
 
 .PP
 Definition at line 143 of file mtk_roots\&.h\&.
-.SS "mtk::kDefaultTolerance {1e-7f}"
-
-.PP
-Definition at line 131 of file mtk_roots\&.h\&.
 .SS "mtk::kOne {1\&.0f}"
 
 .PP
 \fBWarning:\fP
 .RS 4
-Declared as double if MTK_PRECISION_DOUBLE is defined\&. 
+Declared as double if MTK_PRECISION_DOUBLE is defined on \fBMakefile\&.inc\fP\&. 
 .RE
 .PP
 
 .PP
-Definition at line 117 of file mtk_roots\&.h\&.
+Definition at line 127 of file mtk_roots\&.h\&.
 .SS "mtk::kTwo {2\&.0f}"
 
 .PP
 \fBWarning:\fP
 .RS 4
-Declared as double if MTK_PRECISION_DOUBLE is defined\&. 
+Declared as double if MTK_PRECISION_DOUBLE is defined on \fBMakefile\&.inc\fP\&. 
 .RE
 .PP
 
 .PP
-Definition at line 118 of file mtk_roots\&.h\&.
+Definition at line 128 of file mtk_roots\&.h\&.
 .SS "mtk::kZero {0\&.0f}"
 
 .PP
 \fBWarning:\fP
 .RS 4
-Declared as double if MTK_PRECISION_DOUBLE is defined\&. 
+Declared as double if MTK_PRECISION_DOUBLE is defined on \fBMakefile\&.inc\fP\&. 
 .RE
 .PP
 
 .PP
-Definition at line 116 of file mtk_roots\&.h\&.
+Definition at line 126 of file mtk_roots\&.h\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

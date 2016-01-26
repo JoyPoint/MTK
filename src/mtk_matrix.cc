@@ -65,8 +65,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "mtk_matrix.h"
 
 mtk::Matrix::Matrix():
-  storage_(mtk::DENSE),
-  ordering_(mtk::ROW_MAJOR),
+  storage_(mtk::MatrixStorage::DENSE),
+  ordering_(mtk::MatrixOrdering::ROW_MAJOR),
   num_rows_(),
   num_cols_(),
   num_values_(),
@@ -187,9 +187,9 @@ mtk::Real mtk::Matrix::rel_sparsity() const noexcept {
 void mtk::Matrix::set_storage(const mtk::MatrixStorage &ss) noexcept {
 
   #ifdef MTK_PERFORM_PREVENTIONS
-  mtk::Tools::Prevent(!(ss == mtk::DENSE ||
-                        ss == mtk::BANDED ||
-                        ss == mtk::CRS),
+  mtk::Tools::Prevent(!(ss == mtk::MatrixStorage::DENSE ||
+                        ss == mtk::MatrixStorage::BANDED ||
+                        ss == mtk::MatrixStorage::CRS),
                       __FILE__, __LINE__, __func__);
   #endif
 
@@ -199,13 +199,14 @@ void mtk::Matrix::set_storage(const mtk::MatrixStorage &ss) noexcept {
 void mtk::Matrix::set_ordering(const mtk::MatrixOrdering &oo) noexcept {
 
   #ifdef MTK_PERFORM_PREVENTIONS
-  mtk::Tools::Prevent(!(oo == mtk::ROW_MAJOR || oo == mtk::COL_MAJOR),
-                      __FILE__, __LINE__, __func__);
+  bool aux{oo == mtk::MatrixOrdering::ROW_MAJOR ||
+           oo == mtk::MatrixOrdering::COL_MAJOR};
+  mtk::Tools::Prevent(!aux, __FILE__, __LINE__, __func__);
   #endif
 
   ordering_ = oo;
 
-  ld_ = (ordering_ == mtk::ROW_MAJOR)?
+  ld_ = (ordering_ == mtk::MatrixOrdering::ROW_MAJOR)?
     std::max(1,num_cols_): std::max(1,num_rows_);
 }
 
@@ -217,7 +218,7 @@ void mtk::Matrix::set_num_rows(const int &in) noexcept {
 
   num_rows_ = in;
   num_values_ = num_rows_*num_cols_;
-  ld_ = (ordering_ == mtk::ROW_MAJOR)?
+  ld_ = (ordering_ == mtk::MatrixOrdering::ROW_MAJOR)?
     std::max(1,num_cols_): std::max(1,num_rows_);
 }
 
@@ -229,7 +230,7 @@ void mtk::Matrix::set_num_cols(const int &in) noexcept {
 
   num_cols_ = in;
   num_values_ = num_rows_*num_cols_;
-  ld_ = (ordering_ == mtk::ROW_MAJOR)?
+  ld_ = (ordering_ == mtk::MatrixOrdering::ROW_MAJOR)?
     std::max(1,num_cols_): std::max(1,num_rows_);
 }
 

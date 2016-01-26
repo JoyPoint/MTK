@@ -72,7 +72,7 @@
 00078 \}
 00079 
 \hypertarget{mtk__interp__1d_8cc_source_l00080}{}\hyperlink{classmtk_1_1Interp1D_ae56f90c53579c91c1dbe715f7e7361be}{00080} \hyperlink{classmtk_1_1Interp1D_ae56f90c53579c91c1dbe715f7e7361be}{mtk::Interp1D::Interp1D}():
-00081   dir\_interp\_(\hyperlink{namespacemtk}{mtk}::\hyperlink{namespacemtk_ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139}{SCALAR\_TO\_VECTOR}),
+00081   dir\_interp\_(\hyperlink{namespacemtk}{mtk}::\hyperlink{namespacemtk_ga674ec67bd1baa04e5dc06c2bcc351972a53facfbeb6725b2bd220c8d9811a0673}{SCALAR\_TO\_VECTOR}),
 00082   order\_accuracy\_(\hyperlink{namespacemtk}{mtk}::\hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{kDefaultOrderAccuracy}),
 00083   coeffs\_interior\_(nullptr) \{\}
 00084 
@@ -93,8 +93,8 @@
 00098 \textcolor{preprocessor}{  #if MTK\_PERFORM\_PREVENTIONS}
 00099   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(order\_accuracy < 2, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00100   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}((order\_accuracy%2) != 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00101   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(dir < \hyperlink{namespacemtk_ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139}{mtk::SCALAR\_TO\_VECTOR} &&
-00102                       dir > \hyperlink{namespacemtk_ga674ec67bd1baa04e5dc06c2bcc351972a122cf2e24aef105e9214698206af6904}{mtk::VECTOR\_TO\_SCALAR},
+00101   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(dir < mtk::SCALAR\_TO\_VECTOR &&
+00102                       dir > mtk::VECTOR\_TO\_SCALAR,
 00103                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00104 \textcolor{preprocessor}{  #endif}
 00105 
@@ -140,7 +140,7 @@
 00146   \textcolor{keywordtype}{int} gg\_num\_rows\{\};  \textcolor{comment}{// Number of rows.}
 00147   \textcolor{keywordtype}{int} gg\_num\_cols\{\};  \textcolor{comment}{// Number of columns.}
 00148 
-00149   \textcolor{keywordflow}{if} (dir\_interp\_ == \hyperlink{namespacemtk_ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139}{mtk::SCALAR\_TO\_VECTOR}) \{
+00149   \textcolor{keywordflow}{if} (dir\_interp\_ == mtk::SCALAR\_TO\_VECTOR) \{
 00150     gg\_num\_rows = nn + 1;
 00151     gg\_num\_cols = nn + 2;
 00152   \} \textcolor{keywordflow}{else} \{

@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['banded',['BANDED',['../namespacemtk.html#ga25b67ec6a2afeee69f9bb196a9c66619aef1d4271d5005282978a3a40a8a52c9b',1,'mtk']]],
+  ['banded',['BANDED',['../namespacemtk.html#ga25b67ec6a2afeee69f9bb196a9c66619a710800eb2f07821684373493be7fee14',1,'mtk']]],
   ['bandwidth',['bandwidth',['../classmtk_1_1Matrix.html#a6ea9d49db9b0b57617377ed962c2a7e6',1,'mtk::Matrix']]],
   ['bandwidth_5f',['bandwidth_',['../classmtk_1_1Matrix.html#a892449ddacb81d089818967e65979786',1,'mtk::Matrix']]],
   ['begin_5ftime_5f',['begin_time_',['../classmtk_1_1Tools.html#a4bd58d08397db42271ed9e2d3ecc9963',1,'mtk::Tools']]],

@@ -1,8 +1,8 @@
 var searchData=
 [
   ['saxpy_5f',['saxpy_',['../namespacemtk.html#a81a2d7d1ea9eff65ae13646c93dad5e9',1,'mtk']]],
-  ['scalar',['SCALAR',['../namespacemtk.html#ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205',1,'mtk']]],
-  ['scalar_5fto_5fvector',['SCALAR_TO_VECTOR',['../namespacemtk.html#ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139',1,'mtk']]],
+  ['scalar',['SCALAR',['../namespacemtk.html#ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9',1,'mtk']]],
+  ['scalar_5fto_5fvector',['SCALAR_TO_VECTOR',['../namespacemtk.html#ga674ec67bd1baa04e5dc06c2bcc351972a53facfbeb6725b2bd220c8d9811a0673',1,'mtk']]],
   ['set_5feast_5fcondition',['set_east_condition',['../classmtk_1_1RobinBCDescriptor1D.html#a4edc92eeaaaa3f1e7f2cedfea3d35681',1,'mtk::RobinBCDescriptor1D::set_east_condition()'],['../classmtk_1_1RobinBCDescriptor2D.html#a94570f6e741bb00038c4bf81842d226c',1,'mtk::RobinBCDescriptor2D::set_east_condition()']]],
   ['set_5fnorth_5fcondition',['set_north_condition',['../classmtk_1_1RobinBCDescriptor2D.html#ade17884e6a2636a7c6f989602a0052e0',1,'mtk::RobinBCDescriptor2D']]],
   ['set_5fnum_5fcols',['set_num_cols',['../classmtk_1_1Matrix.html#aad6b4ced4a0447cc7bf2347fe86fd722',1,'mtk::Matrix']]],
@@ -31,5 +31,6 @@ var searchData=
   ['south_5fcoefficients_5f',['south_coefficients_',['../classmtk_1_1RobinBCDescriptor2D.html#a97335ce1103cb89ab0696d5ae2fc6d37',1,'mtk::RobinBCDescriptor2D::south_coefficients_()'],['../classmtk_1_1RobinBCDescriptor3D.html#a434315a05c5fba8cd90e29688c83b5ff',1,'mtk::RobinBCDescriptor3D::south_coefficients_()']]],
   ['south_5fcondition_5f',['south_condition_',['../classmtk_1_1RobinBCDescriptor2D.html#aa45a1867ab80b81966f4221bbdb576ff',1,'mtk::RobinBCDescriptor2D::south_condition_()'],['../classmtk_1_1RobinBCDescriptor3D.html#a2442b117d257c472cf9d9a0aa195b35e',1,'mtk::RobinBCDescriptor3D::south_condition_()']]],
   ['storage',['storage',['../classmtk_1_1Matrix.html#a9ffaa665a9cf7371b3be568415a08a3b',1,'mtk::Matrix']]],
-  ['storage_5f',['storage_',['../classmtk_1_1Matrix.html#ae343697531e0849f20bed4a9760b9a54',1,'mtk::Matrix']]]
+  ['storage_5f',['storage_',['../classmtk_1_1Matrix.html#ae343697531e0849f20bed4a9760b9a54',1,'mtk::Matrix']]],
+  ['sum_5frows_5fmim_5fbndy_5f',['sum_rows_mim_bndy_',['../classmtk_1_1Div1D.html#a1df70645f34490a70b3437c0122f5646',1,'mtk::Div1D']]]
 ];

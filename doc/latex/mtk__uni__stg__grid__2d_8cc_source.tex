@@ -83,7 +83,7 @@
 00087   stream << std::endl;
 00088 
 00090 
-00091   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1UniStgGrid2D_ac8b66740d328803f7fbabd1c42c775b2}{nature\_} == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{mtk::SCALAR}) \{
+00091   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1UniStgGrid2D_ac8b66740d328803f7fbabd1c42c775b2}{nature\_} == mtk::SCALAR) \{
 00092     stream << \textcolor{stringliteral}{"u:"} << std::endl;
 00093     \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1UniStgGrid2D_ad7474b2669ee988b84aed20b7f5dc7be}{discrete\_field\_}.size() > 0) \{
 00094       \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < in.\hyperlink{classmtk_1_1UniStgGrid2D_ac03a0f4840ee6ae1bc853e5d9c0df8d1}{num\_cells\_x\_} + 2; ++ii) \{
@@ -277,7 +277,7 @@
 00276     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*ScalarField)(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &xx, \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &yy)) \{
 00277 
 00278 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00279   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nature\_ != \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{mtk::SCALAR}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00279   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nature\_ != mtk::SCALAR, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00280 \textcolor{preprocessor}{  #endif}
 00281 
 00283 
@@ -421,7 +421,7 @@
 00425   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorFieldQComponent)(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &xx, \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &yy)) \{
 00426 
 00427 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00428   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nature\_ != \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a3d8cb27a993651a74d67fb8c98ae91b2}{mtk::VECTOR}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00428   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nature\_ != mtk::VECTOR, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00429 \textcolor{preprocessor}{  #endif}
 00430 
 00431   BindVectorFieldPComponent(VectorFieldPComponent);
@@ -441,7 +441,7 @@
 00445     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
 00446   \}
 00447 
-00448   \textcolor{keywordflow}{if} (nature\_ == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205}{mtk::SCALAR}) \{
+00448   \textcolor{keywordflow}{if} (nature\_ == mtk::SCALAR) \{
 00449     output\_dat\_file << \textcolor{stringliteral}{"# "} << space\_name\_x <<  \textcolor{charliteral}{' '} << space\_name\_y << \textcolor{charliteral}{' '} <<
 00450       field\_name << std::endl;
 00451 

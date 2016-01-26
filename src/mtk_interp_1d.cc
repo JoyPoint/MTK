@@ -78,7 +78,7 @@ std::ostream& operator <<(std::ostream &stream, mtk::Interp1D &in) {
 }
 
 mtk::Interp1D::Interp1D():
-  dir_interp_(mtk::SCALAR_TO_VECTOR),
+  dir_interp_(mtk::DirInterp::SCALAR_TO_VECTOR),
   order_accuracy_(mtk::kDefaultOrderAccuracy),
   coeffs_interior_(nullptr) {}
 
@@ -98,8 +98,8 @@ bool mtk::Interp1D::ConstructInterp1D(int order_accuracy, mtk::DirInterp dir) {
   #if MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(order_accuracy < 2, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent((order_accuracy%2) != 0, __FILE__, __LINE__, __func__);
-  mtk::Tools::Prevent(dir < mtk::SCALAR_TO_VECTOR &&
-                      dir > mtk::VECTOR_TO_SCALAR,
+  mtk::Tools::Prevent(dir < mtk::DirInterp::SCALAR_TO_VECTOR &&
+                      dir > mtk::DirInterp::VECTOR_TO_SCALAR,
                       __FILE__, __LINE__, __func__);
   #endif
 
@@ -146,7 +146,7 @@ mtk::DenseMatrix mtk::Interp1D::ReturnAsDenseMatrix(
   int gg_num_rows{};  // Number of rows.
   int gg_num_cols{};  // Number of columns.
 
-  if (dir_interp_ == mtk::SCALAR_TO_VECTOR) {
+  if (dir_interp_ == mtk::DirInterp::SCALAR_TO_VECTOR) {
     gg_num_rows = nn + 1;
     gg_num_cols = nn + 2;
   } else {

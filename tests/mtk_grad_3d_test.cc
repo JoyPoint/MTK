@@ -77,7 +77,8 @@ void TestDefaultConstructorFactory() {
   int mm = 5;
   int oo = 5;
 
-  mtk::UniStgGrid3D ggg(aa, bb, nn, cc, dd, mm, ee, ff, oo, mtk::VECTOR);
+  mtk::UniStgGrid3D ggg(aa, bb, nn, cc, dd, mm, ee, ff, oo,
+mtk::FieldNature::VECTOR);
 
   bool assertion = gg.ConstructGrad3D(ggg);
 
@@ -106,7 +107,8 @@ void TestReturnAsDenseMatrixWriteToFile() {
   int mm = 5;
   int oo = 5;
 
-  mtk::UniStgGrid3D ggg(aa, bb, nn, cc, dd, mm, ee, ff, oo, mtk::VECTOR);
+  mtk::UniStgGrid3D ggg(aa, bb, nn, cc, dd, mm, ee, ff, oo,
+mtk::FieldNature::VECTOR);
 
   bool assertion = gg.ConstructGrad3D(ggg);
 

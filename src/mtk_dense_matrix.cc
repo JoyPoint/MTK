@@ -66,6 +66,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <typeinfo>
 
+#include <vector>
+
 #include <algorithm>
 
 #include "mtk_roots.h"
@@ -78,19 +80,22 @@ std::ostream& operator <<(std::ostream &stream, mtk::DenseMatrix &in) {
 
   int mm{in.matrix_properties_.num_rows()};  // Auxiliary.
   int nn{in.matrix_properties_.num_cols()};  // Auxiliary.
+  int output_precision{4};
+  int output_width{10};
 
-  if (in.matrix_properties_.ordering() == mtk::COL_MAJOR) {
+  if (in.matrix_properties_.ordering() == mtk::MatrixOrdering::COL_MAJOR) {
     std::swap(mm, nn);
   }
   for (int ii = 0; ii < mm; ii++) {
     int offset{ii*nn};
     for (int jj = 0; jj < nn; jj++) {
       mtk::Real value = in.data_[offset + jj];
-      stream << std::setw(9) << value;
+      stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << value;
     }
     stream << std::endl;
   }
-  if (in.matrix_properties_.ordering() == mtk::COL_MAJOR) {
+  if (in.matrix_properties_.ordering() == mtk::MatrixOrdering::COL_MAJOR) {
     std::swap(mm, nn);
   }
   return stream;
@@ -161,8 +166,8 @@ bool mtk::DenseMatrix::operator ==(const DenseMatrix &in) {
 
 mtk::DenseMatrix::DenseMatrix(): data_(nullptr) {
 
-  matrix_properties_.set_storage(mtk::DENSE);
-  matrix_properties_.set_ordering(mtk::ROW_MAJOR);
+  matrix_properties_.set_storage(mtk::MatrixStorage::DENSE);
+  matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
 }
 
 mtk::DenseMatrix::DenseMatrix(const mtk::DenseMatrix &in) {
@@ -205,8 +210,8 @@ mtk::DenseMatrix::DenseMatrix(const int &num_rows, const int &num_cols) {
   mtk::Tools::Prevent(num_cols < 1, __FILE__, __LINE__, __func__);
   #endif
 
-  matrix_properties_.set_storage(mtk::DENSE);
-  matrix_properties_.set_ordering(mtk::ROW_MAJOR);
+  matrix_properties_.set_storage(mtk::MatrixStorage::DENSE);
+  matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
   matrix_properties_.set_num_rows(num_rows);
   matrix_properties_.set_num_cols(num_cols);
 
@@ -234,8 +239,8 @@ mtk::DenseMatrix::DenseMatrix(const int &rank,
     aux = 1;
   }
 
-  matrix_properties_.set_storage(mtk::DENSE);
-  matrix_properties_.set_ordering(mtk::ROW_MAJOR);
+  matrix_properties_.set_storage(mtk::MatrixStorage::DENSE);
+  matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
   matrix_properties_.set_num_rows(aux + rank + aux);
   matrix_properties_.set_num_cols(rank);
 
@@ -272,8 +277,8 @@ mtk::DenseMatrix::DenseMatrix(const mtk::Real *const gen,
   mtk::Tools::Prevent(pro_length < 1, __FILE__, __LINE__, __func__);
   #endif
 
-  matrix_properties_.set_storage(mtk::DENSE);
-  matrix_properties_.set_ordering(mtk::ROW_MAJOR);
+  matrix_properties_.set_storage(mtk::MatrixStorage::DENSE);
+  matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
   if (!transpose) {
     matrix_properties_.set_num_rows(gen_length);
     matrix_properties_.set_num_cols(pro_length);
@@ -323,7 +328,8 @@ mtk::Matrix mtk::DenseMatrix::matrix_properties() const noexcept {
 void mtk::DenseMatrix::SetOrdering(mtk::MatrixOrdering oo) noexcept {
 
   #ifdef MTK_PERFORM_PREVENTIONS
-  mtk::Tools::Prevent(!(oo == mtk::ROW_MAJOR || oo == mtk::COL_MAJOR),
+  mtk::Tools::Prevent(!(oo == mtk::MatrixOrdering::ROW_MAJOR || oo ==
+mtk::MatrixOrdering::COL_MAJOR),
                       __FILE__, __LINE__, __func__);
   #endif
 
@@ -409,7 +415,7 @@ void mtk::DenseMatrix::Transpose() {
 
 void mtk::DenseMatrix::OrderRowMajor() {
 
-  if (matrix_properties_.ordering() == mtk::COL_MAJOR) {
+  if (matrix_properties_.ordering() == mtk::MatrixOrdering::COL_MAJOR) {
 
     /// \todo Improve this so that no new arrays have to be created.
 
@@ -444,13 +450,13 @@ void mtk::DenseMatrix::OrderRowMajor() {
     delete [] tmp;
     tmp = nullptr;
 
-    matrix_properties_.set_ordering(mtk::ROW_MAJOR);
+    matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
   }
 }
 
 void mtk::DenseMatrix::OrderColMajor() {
 
-  if (matrix_properties_.ordering() == ROW_MAJOR) {
+  if (matrix_properties_.ordering() == mtk::MatrixOrdering::ROW_MAJOR) {
 
     /// \todo Improve this so that no new arrays have to be created.
 
@@ -483,17 +489,19 @@ void mtk::DenseMatrix::OrderColMajor() {
     delete [] tmp;
     tmp = nullptr;
 
-    matrix_properties_.set_ordering(mtk::COL_MAJOR);
+    matrix_properties_.set_ordering(mtk::MatrixOrdering::COL_MAJOR);
   }
 }
 
 mtk::DenseMatrix mtk::DenseMatrix::Kron(const mtk::DenseMatrix &aa,
                                         const mtk::DenseMatrix &bb) {
 
-  int row_offset{};	// Offset for rows.
-  int col_offset{};	// Offset for rows.
+  /// \todo Implement Kron using the BLAS.
 
-  mtk::Real aa_factor{};	// Used in computation.
+  int row_offset{}; // Offset for rows.
+  int col_offset{}; // Offset for rows.
+
+  mtk::Real aa_factor{};    // Used in computation.
 
   // Auxiliary variables:
   auto aux1 = aa.matrix_properties_.num_rows()*bb.matrix_properties_.num_rows();
@@ -522,8 +530,8 @@ mtk::DenseMatrix mtk::DenseMatrix::Kron(const mtk::DenseMatrix &aa,
     }
   }
 
-  output.matrix_properties_.set_storage(mtk::DENSE);
-  output.matrix_properties_.set_ordering(mtk::ROW_MAJOR);
+  output.matrix_properties_.set_storage(mtk::MatrixStorage::DENSE);
+  output.matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
 
   return output;
 }

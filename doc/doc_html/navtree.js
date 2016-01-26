@@ -3,16 +3,18 @@ var NAVTREE =
   [ "MTK: Mimetic Methods Toolkit", "index.html", [
     [ "Introduction", "index.html", [
       [ "MTK Concerns", "index.html#section_mtk_concerns", null ],
-      [ "MTK Flavors", "index.html#section_flavors", null ],
-      [ "Contact, Support and Credits", "index.html#section_authors", null ],
-      [ "Acknowledgements and Contributions", "index.html#subsection_acknowledgements", null ]
+      [ "MTK Wrappers", "index.html#section_wrappers", null ],
+      [ "Contact, Support and Credits", "index.html#section_authors", [
+        [ "Acknowledgements and Contributions", "index.html#subsection_acknowledgements", null ]
+      ] ]
     ] ],
-    [ "Programming Tools", "section_prog_tools.html", null ],
-    [ "Licensing and Modifications", "section_license_mod.html", null ],
+    [ "Referencing This Work", "page_referencing.html", null ],
     [ "Read Me File and Installation Instructions", "page_readme.html", null ],
+    [ "Programming Tools", "section_prog_tools.html", null ],
     [ "Tests and Test Architectures", "page_architectures.html", null ],
-    [ "Examples", "page_examples.html", null ],
     [ "User Manual, References and Theory", "page_ref_the.html", null ],
+    [ "Examples", "page_examples.html", null ],
+    [ "Licensing and Modifications", "section_license_mod.html", null ],
     [ "Todo List", "todo.html", null ],
     [ "Bug List", "bug.html", null ],
     [ "Modules", "modules.html", "modules" ],
@@ -23,8 +25,7 @@ var NAVTREE =
         [ "Functions", "namespacemembers_func.html", null ],
         [ "Variables", "namespacemembers_vars.html", null ],
         [ "Typedefs", "namespacemembers_type.html", null ],
-        [ "Enumerations", "namespacemembers_enum.html", null ],
-        [ "Enumerator", "namespacemembers_eval.html", null ]
+        [ "Enumerations", "namespacemembers_enum.html", null ]
       ] ]
     ] ],
     [ "Classes", null, [
@@ -50,9 +51,9 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "Makefile_8inc.html",
-"classmtk_1_1Matrix.html#ac3f64429ee2509c502ce7f0d75341da0",
-"functions_func.html",
-"mtk__uni__stg__grid__1d_8h_source.html"
+"classmtk_1_1Matrix.html#abf78ec78b23ee639c08fecbb80ca09e5",
+"divergence__operators__1d_8cc_source.html",
+"mtk__roots_8h.html#gae914b125d81d1b97e0aee7bbc7739786"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -63,6 +63,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <iostream>
 #include <iomanip>
+
+#ifdef MTK_VERBOSE_WEIGHTS
+#include <fstream>
+#endif
+
 #include <limits>
 #include <algorithm>
 
@@ -78,16 +83,21 @@ namespace mtk {
 
 std::ostream& operator <<(std::ostream &stream, mtk::Div1D &in) {
 
+  int output_precision{5};
+  int output_width{8};
+
   /// 1. Print order of accuracy.
 
-  stream << "divergence_[0] = " << std::setw(9) << in.divergence_[0] <<
+  stream << "divergence_[0] = " << std::setprecision(output_precision) <<
+        std::setw(output_width) << in.divergence_[0] <<
     std::endl;
 
   /// 2. Print approximating coefficients for the interior.
 
   stream << "divergence_[1:" << in.order_accuracy_ << "] = ";
   for (auto ii = 1; ii <= in.order_accuracy_; ++ii) {
-    stream << std::setw(9) << in.divergence_[ii] << " ";
+    stream << std::setprecision(output_precision) <<
+      std::setw(output_width) << in.divergence_[ii] << " ";
   }
   stream << std::endl;
 
@@ -98,7 +108,8 @@ std::ostream& operator <<(std::ostream &stream, mtk::Div1D &in) {
     stream << "divergence_[" << in.order_accuracy_ + 1 << ":" <<
       2*in.order_accuracy_ << "] = ";
     for (auto ii = in.order_accuracy_ + 1; ii <= 2*in.order_accuracy_; ++ii) {
-      stream << std::setw(9) << in.divergence_[ii] << " ";
+      stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << in.divergence_[ii] << " ";
     }
     stream << std::endl;
 
@@ -111,7 +122,8 @@ std::ostream& operator <<(std::ostream &stream, mtk::Div1D &in) {
         offset + mm + in.num_bndy_coeffs_ - 1 << "] = ";
       for (auto jj = 0; jj < in.num_bndy_coeffs_; ++jj) {
         auto value = in.divergence_[offset + mm];
-        stream << std::setw(9) << value << " ";
+        stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << value << " ";
         ++mm;
       }
       stream << std::endl;
@@ -403,6 +415,68 @@ mtk::DenseMatrix mtk::Div1D::ReturnAsDenseMatrix(
         out.SetValue(ii,jj,0.0);
       } else {
         out.SetValue(ii,jj,-mim_bndy_[ee_index++]*inv_delta_x);
+        cc++;
+      }
+     }
+  }
+
+  return out;
+}
+
+mtk::DenseMatrix mtk::Div1D::ReturnAsDimensionlessDenseMatrix(
+  int num_cells_x) const {
+
+  int nn{num_cells_x}; // Number of cells on the grid.
+
+  #ifdef MTK_PERFORM_PREVENTIONS
+  mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nn < 3*order_accuracy_ - 1, __FILE__, __LINE__, __func__);
+  #endif
+
+  int dd_num_rows = nn + 2;
+  int dd_num_cols = nn + 1;
+  int elements_per_row = num_bndy_coeffs_;
+  int num_extra_rows = dim_null_;
+
+  // Output matrix featuring sizes for gradient operators.
+  mtk::DenseMatrix out(dd_num_rows, dd_num_cols);
+
+  /// 1. Insert mimetic boundary at the west.
+
+  auto ee_index = 0;
+  for (auto ii = 1; ii < num_extra_rows + 1; ii++) {
+    auto cc = 0;
+    for(auto jj = 0 ; jj < dd_num_rows; jj++) {
+      if( cc >= elements_per_row) {
+        out.SetValue(ii, jj, mtk::kZero);
+      } else {
+        out.SetValue(ii,jj, mim_bndy_[ee_index++]);
+        cc++;
+      }
+    }
+  }
+
+  /// 2. Insert coefficients for the interior of the grid.
+
+  for (auto ii = num_extra_rows + 1;
+       ii < dd_num_rows - num_extra_rows - 1; ii++) {
+    auto jj = ii - num_extra_rows - 1;
+    for (auto cc = 0; cc < order_accuracy_; cc++, jj++) {
+      out.SetValue(ii, jj, coeffs_interior_[cc]);
+    }
+  }
+
+  /// 3. Impose center-skew symmetry by permuting the mimetic boundaries.
+
+  ee_index = 0;
+  for (auto ii = dd_num_rows - 2; ii >= dd_num_rows - num_extra_rows - 1; ii--)
+  {
+    auto cc = 0;
+    for (auto jj = dd_num_cols - 1; jj >= 0; jj--) {
+      if( cc >= elements_per_row) {
+        out.SetValue(ii,jj,0.0);
+      } else {
+        out.SetValue(ii,jj,-mim_bndy_[ee_index++]);
         cc++;
       }
      }
@@ -910,7 +984,7 @@ std::endl;
 
 bool mtk::Div1D::ComputeWeights(void) {
 
-  // Matrix to copmpute the weights as in the CRSA.
+  // Matrix to compute the weights as in the CRSA.
   mtk::DenseMatrix pi(num_bndy_coeffs_, num_bndy_coeffs_ - 1);
 
   /// 1. Construct the \f$ \mathbf{\Pi}\f$ matrix.
@@ -1070,11 +1144,6 @@ bool mtk::Div1D::ComputeWeights(void) {
 
   if (order_accuracy_ >= mtk::kCriticalOrderAccuracyDiv) {
 
-    int minrow_{std::numeric_limits<int>::infinity()};
-
-    mtk::Real norm_{mtk::BLASAdapter::RealNRM2(weights_cbs_,order_accuracy_)};
-    mtk::Real minnorm_{std::numeric_limits<mtk::Real>::infinity()};
-
     /// 6. Create \f$ \mathbf{\Phi} \f$ matrix from \f$ \mathbf{\Pi} \f$.
 
     mtk::DenseMatrix phi(order_accuracy_ + 1, order_accuracy_);
@@ -1162,11 +1231,35 @@ bool mtk::Div1D::ComputeWeights(void) {
     std::cout << std::endl;
     #endif
 
+    #ifdef MTK_VERBOSE_WEIGHTS
+    int copy_result{1};
+    #else
     int copy_result{};
+    #endif
 
     mtk::Real normerr_; // Norm of the error for the solution on each row.
 
     /// 8. Brute force search through all the rows of the \f$\Phi\f$ matrix.
+
+    int minrow_{std::numeric_limits<int>::infinity()};
+
+    mtk::Real norm_{mtk::BLASAdapter::RealNRM2(weights_crs_,order_accuracy_)};
+    mtk::Real minnorm_{std::numeric_limits<mtk::Real>::infinity()};
+
+    #ifdef MTK_VERBOSE_WEIGHTS
+    std::ofstream table("div_1d_" + std::to_string(order_accuracy_) +
+      "_weights.tex");
+
+    table << "\\begin{tabular}[c]{c";
+    for (int ii = 1; ii <= order_accuracy_; ++ii) {
+      table << 'c';
+    }
+    table << ":c}\n\\toprule\nRow & ";
+    for (int ii = 1; ii <= order_accuracy_; ++ii) {
+      table << "$ q_{" + std::to_string(ii) + "}$ &";
+    }
+    table << " Relative error \\\\\n\\midrule\n";
+    #endif
 
     for(auto row_= 0; row_ < order_accuracy_ + 1; ++row_) {
       normerr_ = mtk::GLPKAdapter::SolveSimplexAndCompare(phi.data(),
@@ -1189,7 +1282,31 @@ bool mtk::Div1D::ComputeWeights(void) {
         minnorm_ = aux;
         minrow_= row_;
       }
+
+      #ifdef MTK_VERBOSE_WEIGHTS
+      table << std::to_string(row_ + 1) << " & ";
+      if (normerr_ != std::numeric_limits<mtk::Real>::infinity()) {
+        for (int ii = 1; ii <= order_accuracy_; ++ii) {
+          table << std::to_string(weights_cbs_[ii - 1]) + " & ";
+        }
+        table << std::to_string(aux) << " \\\\" << std::endl;
+      } else {
+        table << "\\multicolumn{" << std::to_string(order_accuracy_) <<
+          "}{c}{$\\emptyset$} & ";
+        table << " - \\\\" << std::endl;
+      }
+      #endif
     }
+
+    #ifdef MTK_VERBOSE_WEIGHTS
+    table << "\\midrule" << std::endl;
+    table << "CRS weights:";
+    for (int ii = 1; ii <= order_accuracy_; ++ii) {
+      table << " & " << std::to_string(weights_crs_[ii - 1]);
+    }
+    table << " & - \\\\\n\\bottomrule\n\\end{tabular}" << std::endl;
+    table.close();
+    #endif
 
     #if MTK_VERBOSE_LEVEL > 3
     std::cout << "weights_CBSA + lambda (after brute force search):" <<

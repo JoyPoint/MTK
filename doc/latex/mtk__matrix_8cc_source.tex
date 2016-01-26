@@ -62,8 +62,8 @@
 00065 \textcolor{preprocessor}{#include "\hyperlink{mtk__matrix_8h}{mtk\_matrix.h}"}
 00066 
 \hypertarget{mtk__matrix_8cc_source_l00067}{}\hyperlink{classmtk_1_1Matrix_a04b8575764d3a649f21950c794f4cc02}{00067} \hyperlink{classmtk_1_1Matrix_a04b8575764d3a649f21950c794f4cc02}{mtk::Matrix::Matrix}():
-00068   storage\_(\hyperlink{namespacemtk}{mtk}::\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{DENSE}),
-00069   ordering\_(\hyperlink{namespacemtk}{mtk}::\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{ROW\_MAJOR}),
+00068   storage\_(\hyperlink{namespacemtk}{mtk}::\hyperlink{group__c02-enums_ga25b67ec6a2afeee69f9bb196a9c66619}{MatrixStorage}::\hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a0706fbbd929bd8abc4de386c53d439ff}{DENSE}),
+00069   ordering\_(\hyperlink{namespacemtk}{mtk}::\hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{MatrixOrdering}::\hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648}{ROW\_MAJOR}),
 00070   num\_rows\_(),
 00071   num\_cols\_(),
 00072   num\_values\_(),
@@ -185,9 +185,9 @@
       noexcept \{
 00188 
 00189 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00190   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(!(ss == \hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87}{mtk::DENSE} ||
-00191                         ss == \hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619aef1d4271d5005282978a3a40a8a52c9b}{mtk::BANDED} ||
-00192                         ss == \hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a87619d374775e937bca967402b988b8b}{mtk::CRS}),
+00190   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(!(ss == \hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a0706fbbd929bd8abc4de386c53d439ff}{mtk::MatrixStorage::DENSE} ||
+00191                         ss == \hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a710800eb2f07821684373493be7fee14}{mtk::MatrixStorage::BANDED} ||
+00192                         ss == \hyperlink{namespacemtk_ga25b67ec6a2afeee69f9bb196a9c66619a22d51ee0c812123c541f2a1bdf794fd1}{mtk::MatrixStorage::CRS}),
 00193                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
 00194 \textcolor{preprocessor}{  #endif}
 00195 
@@ -198,82 +198,82 @@
       \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{mtk::MatrixOrdering} &oo) noexcept \{
 00200 
 00201 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00202   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(!(oo == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR} || oo == 
-      \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13}{mtk::COL\_MAJOR}),
-00203                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00204 \textcolor{preprocessor}{  #endif}
-00205 
-00206   ordering\_ = oo;
-00207 
-00208   ld\_ = (ordering\_ == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR})?
-00209     std::max(1,num\_cols\_): std::max(1,num\_rows\_);
-00210 \}
-00211 
-\hypertarget{mtk__matrix_8cc_source_l00212}{}\hyperlink{classmtk_1_1Matrix_aa4aee0281421c22d9af273b7beb84306}{00212} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_aa4aee0281421c22d9af273b7beb84306}{mtk::Matrix::set\_num\_rows}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &in) noexcept \{
-00213 
-00214 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00215   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(in < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00216 \textcolor{preprocessor}{  #endif}
-00217 
-00218   num\_rows\_ = in;
-00219   num\_values\_ = num\_rows\_*num\_cols\_;
-00220   ld\_ = (ordering\_ == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR})?
-00221     std::max(1,num\_cols\_): std::max(1,num\_rows\_);
-00222 \}
-00223 
-\hypertarget{mtk__matrix_8cc_source_l00224}{}\hyperlink{classmtk_1_1Matrix_aad6b4ced4a0447cc7bf2347fe86fd722}{00224} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_aad6b4ced4a0447cc7bf2347fe86fd722}{mtk::Matrix::set\_num\_cols}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &in) noexcept \{
-00225 
-00226 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00227   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(in < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00228 \textcolor{preprocessor}{  #endif}
-00229 
-00230   num\_cols\_ = in;
-00231   num\_values\_ = num\_rows\_*num\_cols\_;
-00232   ld\_ = (ordering\_ == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3}{mtk::ROW\_MAJOR})?
-00233     std::max(1,num\_cols\_): std::max(1,num\_rows\_);
-00234 \}
-00235 
-\hypertarget{mtk__matrix_8cc_source_l00236}{}\hyperlink{classmtk_1_1Matrix_a6eb14709692df59573548ffd8cf67198}{00236} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a6eb14709692df59573548ffd8cf67198}{mtk::Matrix::set\_num\_zero}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &in) noexcept \{
-00237 
-00238 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00239   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(in < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00240 \textcolor{preprocessor}{  #endif}
-00241 
-00242   num\_zero\_ = in;
-00243   num\_non\_zero\_ = num\_values\_ - num\_zero\_;
-00244 
-00246   rel\_density\_ = (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_non\_zero\_/num\_values\_;
-00247   rel\_sparsity\_ = 1.0 - rel\_density\_;
-00248 \}
-00249 
-\hypertarget{mtk__matrix_8cc_source_l00250}{}\hyperlink{classmtk_1_1Matrix_a61dba12c767f98cda5343b4b16bbbe77}{00250} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a61dba12c767f98cda5343b4b16bbbe77}{mtk::Matrix::set\_num\_null}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &in) noexcept \{
-00251 
-00252 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00253   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(in < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00254 \textcolor{preprocessor}{  #endif}
-00255 
-00256   num\_null\_ = in;
-00257   num\_non\_null\_ = num\_values\_ - num\_null\_;
-00258 
-00260   abs\_density\_ = (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_non\_null\_/num\_values\_;
-00261   abs\_sparsity\_ = 1.0 - abs\_density\_;
-00262 \}
-00263 
-\hypertarget{mtk__matrix_8cc_source_l00264}{}\hyperlink{classmtk_1_1Matrix_ace7cb5c31d0de66b8f9c63cd542c9e63}{00264} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_ace7cb5c31d0de66b8f9c63cd542c9e63}{mtk::Matrix::IncreaseNumZero}() noexcept \{
-00265 
-00267 
-00268   num\_zero\_++;
-00269   num\_non\_zero\_ = num\_values\_ - num\_zero\_;
-00270   rel\_density\_ = (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_non\_zero\_/num\_values\_;
-00271   rel\_sparsity\_ = 1.0 - rel\_density\_;
-00272 \}
-00273 
-\hypertarget{mtk__matrix_8cc_source_l00274}{}\hyperlink{classmtk_1_1Matrix_af4bba5c43d1f09f5059a04298ba24568}{00274} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_af4bba5c43d1f09f5059a04298ba24568}{mtk::Matrix::IncreaseNumNull}() noexcept \{
-00275 
-00277 
-00278   num\_null\_++;
-00279   num\_non\_null\_ = num\_values\_ - num\_null\_;
-00280   abs\_density\_ = (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_non\_null\_/num\_values\_;
-00281   abs\_sparsity\_ = 1.0 - abs\_density\_;
-00282 \}
+00202   \textcolor{keywordtype}{bool} aux\{oo == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648}{mtk::MatrixOrdering::ROW\_MAJOR} ||
+00203            oo == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca34d2765ffc490951febdcca04bc4f7cd}{mtk::MatrixOrdering::COL\_MAJOR}\};
+00204   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(!aux, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00205 \textcolor{preprocessor}{  #endif}
+00206 
+00207   ordering\_ = oo;
+00208 
+00209   ld\_ = (ordering\_ == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648}{mtk::MatrixOrdering::ROW\_MAJOR})?
+00210     std::max(1,num\_cols\_): std::max(1,num\_rows\_);
+00211 \}
+00212 
+\hypertarget{mtk__matrix_8cc_source_l00213}{}\hyperlink{classmtk_1_1Matrix_aa4aee0281421c22d9af273b7beb84306}{00213} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_aa4aee0281421c22d9af273b7beb84306}{mtk::Matrix::set\_num\_rows}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &in) noexcept \{
+00214 
+00215 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00216   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(in < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00217 \textcolor{preprocessor}{  #endif}
+00218 
+00219   num\_rows\_ = in;
+00220   num\_values\_ = num\_rows\_*num\_cols\_;
+00221   ld\_ = (ordering\_ == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648}{mtk::MatrixOrdering::ROW\_MAJOR})?
+00222     std::max(1,num\_cols\_): std::max(1,num\_rows\_);
+00223 \}
+00224 
+\hypertarget{mtk__matrix_8cc_source_l00225}{}\hyperlink{classmtk_1_1Matrix_aad6b4ced4a0447cc7bf2347fe86fd722}{00225} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_aad6b4ced4a0447cc7bf2347fe86fd722}{mtk::Matrix::set\_num\_cols}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &in) noexcept \{
+00226 
+00227 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00228   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(in < 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00229 \textcolor{preprocessor}{  #endif}
+00230 
+00231   num\_cols\_ = in;
+00232   num\_values\_ = num\_rows\_*num\_cols\_;
+00233   ld\_ = (ordering\_ == \hyperlink{namespacemtk_ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648}{mtk::MatrixOrdering::ROW\_MAJOR})?
+00234     std::max(1,num\_cols\_): std::max(1,num\_rows\_);
+00235 \}
+00236 
+\hypertarget{mtk__matrix_8cc_source_l00237}{}\hyperlink{classmtk_1_1Matrix_a6eb14709692df59573548ffd8cf67198}{00237} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a6eb14709692df59573548ffd8cf67198}{mtk::Matrix::set\_num\_zero}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &in) noexcept \{
+00238 
+00239 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00240   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(in < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00241 \textcolor{preprocessor}{  #endif}
+00242 
+00243   num\_zero\_ = in;
+00244   num\_non\_zero\_ = num\_values\_ - num\_zero\_;
+00245 
+00247   rel\_density\_ = (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_non\_zero\_/num\_values\_;
+00248   rel\_sparsity\_ = 1.0 - rel\_density\_;
+00249 \}
+00250 
+\hypertarget{mtk__matrix_8cc_source_l00251}{}\hyperlink{classmtk_1_1Matrix_a61dba12c767f98cda5343b4b16bbbe77}{00251} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_a61dba12c767f98cda5343b4b16bbbe77}{mtk::Matrix::set\_num\_null}(\textcolor{keyword}{const} \textcolor{keywordtype}{int} &in) noexcept \{
+00252 
+00253 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00254   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(in < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00255 \textcolor{preprocessor}{  #endif}
+00256 
+00257   num\_null\_ = in;
+00258   num\_non\_null\_ = num\_values\_ - num\_null\_;
+00259 
+00261   abs\_density\_ = (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_non\_null\_/num\_values\_;
+00262   abs\_sparsity\_ = 1.0 - abs\_density\_;
+00263 \}
+00264 
+\hypertarget{mtk__matrix_8cc_source_l00265}{}\hyperlink{classmtk_1_1Matrix_ace7cb5c31d0de66b8f9c63cd542c9e63}{00265} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_ace7cb5c31d0de66b8f9c63cd542c9e63}{mtk::Matrix::IncreaseNumZero}() noexcept \{
+00266 
+00268 
+00269   num\_zero\_++;
+00270   num\_non\_zero\_ = num\_values\_ - num\_zero\_;
+00271   rel\_density\_ = (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_non\_zero\_/num\_values\_;
+00272   rel\_sparsity\_ = 1.0 - rel\_density\_;
+00273 \}
+00274 
+\hypertarget{mtk__matrix_8cc_source_l00275}{}\hyperlink{classmtk_1_1Matrix_af4bba5c43d1f09f5059a04298ba24568}{00275} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1Matrix_af4bba5c43d1f09f5059a04298ba24568}{mtk::Matrix::IncreaseNumNull}() noexcept \{
+00276 
+00278 
+00279   num\_null\_++;
+00280   num\_non\_null\_ = num\_values\_ - num\_null\_;
+00281   abs\_density\_ = (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_non\_null\_/num\_values\_;
+00282   abs\_sparsity\_ = 1.0 - abs\_density\_;
+00283 \}
 \end{DoxyCode}

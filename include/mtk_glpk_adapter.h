@@ -3,9 +3,10 @@
 
 \brief Adapter class for the GLPK API.
 
-This class contains a collection of static classes, that posses direct access
-to the underlying structure of the matrices, thus allowing programmers to
-exploit some of the numerical methods implemented in the GLPK.
+Definition of a class that contains a collection of static member functions,
+that posses direct access to the underlying structure of the matrices, thus
+allowing programmers to exploit some of the numerical methods implemented in
+the GLPK.
 
 The **GLPK (GNU Linear Programming Kit)** package is intended for solving
 large-scale linear programming (LP), mixed integer programming (MIP), and other
@@ -82,8 +83,8 @@ namespace mtk {
 
 \brief Adapter class for the GLPK API.
 
-This class contains a collection of static classes, that posses direct access
-to the underlying structure of the matrices, thus allowing programmers to
+This class contains a collection of static member functions, that posses direct
+access to the underlying structure of the matrices, thus allowing programmers to
 exploit some of the numerical methods implemented in the GLPK.
 
 The **GLPK (GNU Linear Programming Kit)** package is intended for solving

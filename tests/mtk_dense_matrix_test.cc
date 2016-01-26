@@ -105,7 +105,7 @@ void TestConstructAsIdentity() {
   mtk::Tools::Assert(m3 == rr);
 }
 
-  void TestConstructAsVandermonde() {
+void TestConstructAsVandermonde() {
 
   mtk::Tools::BeginUnitTestNo(4);
 

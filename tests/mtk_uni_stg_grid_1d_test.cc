@@ -135,7 +135,7 @@ void TestBindVectorField() {
 
   int nn = 20;
 
-  mtk::UniStgGrid1D gg(aa, bb, nn, mtk::VECTOR);
+  mtk::UniStgGrid1D gg(aa, bb, nn, mtk::FieldNature::VECTOR);
 
   bool assertion{true};
 

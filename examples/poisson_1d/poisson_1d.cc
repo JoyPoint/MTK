@@ -142,7 +142,7 @@ int main () {
   /// 1. Discretize space.
   mtk::Real west_bndy_x{0.0};
   mtk::Real east_bndy_x{1.0};
-  int num_cells_x{5};
+  int num_cells_x{50};
 
   mtk::UniStgGrid1D comp_sol(west_bndy_x, east_bndy_x, num_cells_x);
 

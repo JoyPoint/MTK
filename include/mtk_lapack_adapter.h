@@ -3,9 +3,10 @@
 
 \brief Adapter class for the LAPACK API.
 
-This class contains a collection of static classes, that posses direct access
-to the underlying structure of the matrices, thus allowing programmers to
-exploit some of the numerical methods implemented in the LAPACK.
+Definition of a class that contains a collection of static member functions,
+that posses direct access to the underlying structure of the matrices, thus
+allowing programmers to exploit some of the numerical methods implemented in
+the LAPACK.
 
 The **LAPACK (Linear Algebra PACKage)** is written in Fortran 90 and provides
 routines for solving systems of simultaneous linear equations, least-squares
@@ -79,8 +80,8 @@ namespace mtk {
 
 \brief Adapter class for the LAPACK API
 
-This class contains a collection of static classes, that posses direct access
-to the underlying structure of the matrices, thus allowing programmers to
+This class contains a collection of static member functions, that posses direct
+access to the underlying structure of the matrices, thus allowing programmers to
 exploit the numerical methods implemented in the LAPACK.
 
 The **LAPACK (Linear Algebra PACKage)** is written in Fortran 90 and provides
@@ -138,7 +139,7 @@ class LAPACKAdapter {
   Adapts the MTK to LAPACK's dgesv_ routine.
 
   \param[in] matrix Input matrix.
-  \param[in] rhs     Input right-hand side from info on a grid.
+  \param[in] rhs    Input right-hand side from info on a grid.
 
   \exception std::bad_alloc
   */
@@ -174,4 +175,4 @@ class LAPACKAdapter {
   static mtk::DenseMatrix QRFactorDenseMatrix(DenseMatrix &matrix);
 };
 }
-#endif	// End of: MTK_INCLUDE_LAPACK_ADAPTER_H_
+#endif  // End of: MTK_INCLUDE_LAPACK_ADAPTER_H_

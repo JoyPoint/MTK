@@ -3,9 +3,10 @@
 
 \brief Adapter class for the BLAS API.
 
-This class contains a collection of static classes, that posses direct access
-to the underlying structure of the matrices, thus allowing programmers to
-exploit some of the numerical methods implemented in the BLAS.
+Definition of a class that contains a collection of static member functions,
+that posses direct access to the underlying structure of the matrices, thus
+allowing programmers to exploit some of the numerical methods implemented in
+the BLAS.
 
 The **BLAS (Basic Linear Algebra Subprograms)** are routines that provide
 standard building blocks for performing basic vector and matrix operations. The
@@ -81,8 +82,8 @@ namespace mtk {
 
 \brief Adapter class for the BLAS API.
 
-This class contains a collection of static classes, that posses direct access
-to the underlying structure of the matrices, thus allowing programmers to
+This class contains a collection of static member functions, that posses direct
+access to the underlying structure of the matrices, thus allowing programmers to
 exploit some of the numerical methods implemented in the BLAS.
 
 The **BLAS (Basic Linear Algebra Subprograms)** are routines that provide
@@ -92,6 +93,8 @@ BLAS perform matrix-vector operations, and the Level 3 BLAS perform
 matrix-matrix operations.
 
 \sa http://www.netlib.org/blas/
+
+\sa https://software.intel.com/en-us/non-commercial-software-development
 */
 class BLASAdapter {
  public:

@@ -3,8 +3,8 @@
 
 \brief Includes the definition of the class Div1D.
 
-This class implements a 1D divergence operator, constructed using the
-Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
+Definition of a class that implements a 1D divergence operator, constructed
+using the Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -59,6 +59,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <iostream>
 #include <iomanip>
+
+#include <vector>
 
 #include "glpk.h"
 
@@ -146,6 +148,13 @@ class Div1D {
   */
   DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid) const;
 
+/*!
+  \brief Returns the operator as a dimensionless dense matrix.
+
+  \return The operator as a dimensionless dense matrix.
+  */
+  DenseMatrix ReturnAsDimensionlessDenseMatrix(int num_cells_x) const;
+
  private:
   /*!
   \brief Stage 1 of the CBS Algorithm.
@@ -205,6 +214,8 @@ class Div1D {
   Real *weights_cbs_;     ///< Array containing weights from CBSA.
   Real *mim_bndy_;        ///< Array containing mimetic boundary approximations.
   Real *divergence_;      ///< Output array containing the operator and weights.
+
+  std::vector<Real> sum_rows_mim_bndy_; ///< Sum of the boundary rows.
 
   Real mimetic_threshold_;  ///<< Mimetic threshold.
 };

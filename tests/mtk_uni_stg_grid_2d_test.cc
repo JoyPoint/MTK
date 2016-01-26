@@ -171,7 +171,7 @@ void TestBindVectorField() {
   int nn = 5;
   int mm = 5;
 
-  mtk::UniStgGrid2D gg(aa, bb, nn, cc, dd, mm, mtk::VECTOR);
+  mtk::UniStgGrid2D gg(aa, bb, nn, cc, dd, mm, mtk::FieldNature::VECTOR);
 
   gg.BindVectorField(VectorFieldPComponent, VectorFieldQComponent);
 

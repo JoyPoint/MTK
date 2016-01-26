@@ -108,122 +108,121 @@ $(document).ready(function(){initNavTree('mtk__tools_8cc_source.html','');});
 </div><!--header-->
 <div class="contents">
 <a href="mtk__tools_8cc.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment">/*</span></div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">Copyright (C) 2015, Computational Science Research Center, San Diego State</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">University. All rights reserved.</span></div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">Redistribution and use in source and binary forms, with or without modification,</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">are permitted provided that the following conditions are met:</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment">1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">and a copy of the modified files should be reported once modifications are</span></div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">completed, unless these modifications are made through the project&#39;s GitHub</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications</span></div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">should be developed and included in any deliverable.</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment">2. Redistributions of source code must be done through direct</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">downloads from the project&#39;s GitHub page: http://www.csrc.sdsu.edu/mtk</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">3. Redistributions in binary form must reproduce the above copyright notice,</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">this list of conditions and the following disclaimer in the documentation and/or</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">other materials provided with the distribution.</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">4. Usage of the binary form on proprietary applications shall require explicit</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">prior written permission from the the copyright holders, and due credit should</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">be given to the copyright holders.</span></div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">5. Neither the name of the copyright holder nor the names of its contributors</span></div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">may be used to endorse or promote products derived from this software without</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">specific prior written permission.</span></div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">The copyright holders provide no reassurances that the source code provided does</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">not infringe any patent, copyright, or any other intellectual property rights of</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">third parties. The copyright holders disclaim any liability to any recipient for</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">claims brought against recipient by any third party for infringement of that</span></div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">parties intellectual property rights.</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"></span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment">THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">*/</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__roots_8h.html">mtk_roots.h</a>&quot;</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__tools_8h.html">mtk_tools.h</a>&quot;</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">   61</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span> condition,</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;                         <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> fname,</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                         <span class="keywordtype">int</span> lineno,</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                         <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> fxname) noexcept {</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="keywordflow">if</span> (lineno &lt; 1) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    std::cerr &lt;&lt; __FILE__ &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; <span class="stringliteral">&quot;Incorrect parameter at line &quot;</span> &lt;&lt;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    __LINE__ - 2 &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; __func__ &lt;&lt; <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    exit(EXIT_FAILURE);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  }</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">if</span> (condition) {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    std::cerr &lt;&lt; fname &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; <span class="stringliteral">&quot;Incorrect parameter at line &quot;</span> &lt;&lt;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    lineno &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; fxname &lt;&lt; <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    exit(EXIT_FAILURE);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  }</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;}</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;<span class="keywordtype">int</span> <a class="code" href="classmtk_1_1Tools.html#a04a60458594336ee1badff79b8a9a77f">mtk::Tools::test_number_</a>;  <span class="comment">// Used to control the correctness of the test.</span></div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;<a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> <a class="code" href="classmtk_1_1Tools.html#aba9d3d2952a3de9e7b46faa86d28d692">mtk::Tools::duration_</a>;  <span class="comment">// Duration of the current test.</span></div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;clock_t <a class="code" href="classmtk_1_1Tools.html#a4bd58d08397db42271ed9e2d3ecc9963">mtk::Tools::begin_time_</a>;  <span class="comment">// Used to time tests.</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
-<div class="line"><a name="l00088"></a><span class="lineno"><a class="line" href="classmtk_1_1Tools.html#afc29ecaf337a13ed2e817d3890a5a441">   88</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1Tools.html#afc29ecaf337a13ed2e817d3890a5a441">mtk::Tools::BeginUnitTestNo</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;nn) noexcept {</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="preprocessor">  #if MTK_PERFORM_PREVENTIONS</span></div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(nn &lt;= 0, __FILE__, __LINE__, __func__);</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  test_number_ = nn;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Beginning test &quot;</span> &lt;&lt; nn &lt;&lt; <span class="stringliteral">&quot;.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  begin_time_ = clock();</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;}</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classmtk_1_1Tools.html#aba67d9dc35c9c1c49430fcc9ea035e03">  100</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1Tools.html#aba67d9dc35c9c1c49430fcc9ea035e03">mtk::Tools::EndUnitTestNo</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;nn) noexcept {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;<span class="preprocessor">  #if MTK_PERFORM_PREVENTIONS</span></div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(test_number_ != nn, __FILE__, __LINE__, __func__);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  duration_ = <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a>(clock() - begin_time_)/CLOCKS_PER_SEC;</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="classmtk_1_1Tools.html#ac6804df469c94ab6a796fb64f1e44a89">  109</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1Tools.html#ac6804df469c94ab6a796fb64f1e44a89">mtk::Tools::Assert</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span> &amp;condition) noexcept {</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  <span class="keywordflow">if</span> (condition) {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Test &quot;</span> &lt;&lt; test_number_ &lt;&lt; <span class="stringliteral">&quot;: PASSED in &quot;</span> &lt;&lt; duration_ &lt;&lt;</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;      <span class="stringliteral">&quot; s.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Test &quot;</span> &lt;&lt; test_number_ &lt;&lt; <span class="stringliteral">&quot;: FAILED in &quot;</span> &lt;&lt; duration_ &lt;&lt;</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;      <span class="stringliteral">&quot; s.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  }</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;}</div>
-<div class="ttc" id="classmtk_1_1Tools_html_aba67d9dc35c9c1c49430fcc9ea035e03"><div class="ttname"><a href="classmtk_1_1Tools.html#aba67d9dc35c9c1c49430fcc9ea035e03">mtk::Tools::EndUnitTestNo</a></div><div class="ttdeci">static void EndUnitTestNo(const int &amp;nn) noexcept</div><div class="ttdoc">Ends the execution of a unit test. Stops and reports wall-clock time. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8cc_source.html#l00100">mtk_tools.cc:100</a></div></div>
-<div class="ttc" id="classmtk_1_1Tools_html_a332324c6f25e66be9dff48c5987a3b9f"><div class="ttname"><a href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a></div><div class="ttdeci">static void Prevent(const bool complement, const char *const fname, int lineno, const char *const fxname) noexcept</div><div class="ttdoc">Enforces preconditions by preventing their complements from occur. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8cc_source.html#l00061">mtk_tools.cc:61</a></div></div>
-<div class="ttc" id="group__c01-roots_html_gac080bbbf5cbb5502c9f00405f894857d"><div class="ttname"><a href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a></div><div class="ttdeci">float Real</div><div class="ttdoc">Users can simply change this to build a double- or single-precision MTK. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00083">mtk_roots.h:83</a></div></div>
-<div class="ttc" id="classmtk_1_1Tools_html_a04a60458594336ee1badff79b8a9a77f"><div class="ttname"><a href="classmtk_1_1Tools.html#a04a60458594336ee1badff79b8a9a77f">mtk::Tools::test_number_</a></div><div class="ttdeci">static int test_number_</div><div class="ttdoc">Current test being executed. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8h_source.html#l00117">mtk_tools.h:117</a></div></div>
-<div class="ttc" id="classmtk_1_1Tools_html_aba9d3d2952a3de9e7b46faa86d28d692"><div class="ttname"><a href="classmtk_1_1Tools.html#aba9d3d2952a3de9e7b46faa86d28d692">mtk::Tools::duration_</a></div><div class="ttdeci">static Real duration_</div><div class="ttdoc">Duration of the current test. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8h_source.html#l00119">mtk_tools.h:119</a></div></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="comment">Copyright (C) 2015, Computational Science Research Center, San Diego State</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment">University. All rights reserved.</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment">Redistribution and use in source and binary forms, with or without modification,</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">are permitted provided that the following conditions are met:</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment">1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment">and a copy of the modified files should be reported once modifications are</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">completed, unless these modifications are made through the project&#39;s GitHub</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment">page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">should be developed and included in any deliverable.</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">2. Redistributions of source code must be done through direct</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">downloads from the project&#39;s GitHub page: http://www.csrc.sdsu.edu/mtk</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">3. Redistributions in binary form must reproduce the above copyright notice,</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">this list of conditions and the following disclaimer in the documentation and/or</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">other materials provided with the distribution.</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">4. Usage of the binary form on proprietary applications shall require explicit</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment">prior written permission from the the copyright holders, and due credit should</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">be given to the copyright holders.</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">5. Neither the name of the copyright holder nor the names of its contributors</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">may be used to endorse or promote products derived from this software without</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">specific prior written permission.</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">The copyright holders provide no reassurances that the source code provided does</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">not infringe any patent, copyright, or any other intellectual property rights of</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">third parties. The copyright holders disclaim any liability to any recipient for</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">claims brought against recipient by any third party for infringement of that</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">parties intellectual property rights.</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"></span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment">THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;<span class="comment">(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="comment">SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;<span class="comment">*/</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__roots_8h.html">mtk_roots.h</a>&quot;</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__tools_8h.html">mtk_tools.h</a>&quot;</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">   62</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span> condition,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                         <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> fname,</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                         <span class="keywordtype">int</span> lineno,</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                         <span class="keyword">const</span> <span class="keywordtype">char</span> *<span class="keyword">const</span> fxname) noexcept {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordflow">if</span> (lineno &lt; 1) {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    std::cerr &lt;&lt; __FILE__ &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; <span class="stringliteral">&quot;Incorrect parameter at line &quot;</span> &lt;&lt;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    __LINE__ - 2 &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; __func__ &lt;&lt; <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    exit(EXIT_FAILURE);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;  <span class="keywordflow">if</span> (condition) {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    std::cerr &lt;&lt; fname &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt; <span class="stringliteral">&quot;Incorrect parameter at line &quot;</span> &lt;&lt;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    lineno &lt;&lt; <span class="stringliteral">&quot; (&quot;</span> &lt;&lt; fxname &lt;&lt; <span class="stringliteral">&quot;)&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    exit(EXIT_FAILURE);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="keywordtype">int</span> <a class="code" href="classmtk_1_1Tools.html#a04a60458594336ee1badff79b8a9a77f">mtk::Tools::test_number_</a>{};   <span class="comment">// Current test being executed.</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;<a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> <a class="code" href="classmtk_1_1Tools.html#aba9d3d2952a3de9e7b46faa86d28d692">mtk::Tools::duration_</a>{};    <span class="comment">// Duration of the current test.</span></div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;clock_t <a class="code" href="classmtk_1_1Tools.html#a4bd58d08397db42271ed9e2d3ecc9963">mtk::Tools::begin_time_</a>{};  <span class="comment">// Elapsed time on current test.</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;</div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classmtk_1_1Tools.html#afc29ecaf337a13ed2e817d3890a5a441">   87</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1Tools.html#afc29ecaf337a13ed2e817d3890a5a441">mtk::Tools::BeginUnitTestNo</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;nn) noexcept {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;<span class="preprocessor">  #if MTK_PERFORM_PREVENTIONS</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(nn &lt;= 0, __FILE__, __LINE__, __func__);</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  test_number_ = nn;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Beginning test &quot;</span> &lt;&lt; nn &lt;&lt; <span class="stringliteral">&quot;.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  begin_time_ = clock();</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="classmtk_1_1Tools.html#aba67d9dc35c9c1c49430fcc9ea035e03">   99</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1Tools.html#aba67d9dc35c9c1c49430fcc9ea035e03">mtk::Tools::EndUnitTestNo</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> &amp;nn) noexcept {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">  #if MTK_PERFORM_PREVENTIONS</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(test_number_ != nn, __FILE__, __LINE__, __func__);</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  duration_ = <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a>(clock() - begin_time_)/CLOCKS_PER_SEC;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;}</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
+<div class="line"><a name="l00108"></a><span class="lineno"><a class="line" href="classmtk_1_1Tools.html#ac6804df469c94ab6a796fb64f1e44a89">  108</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1Tools.html#ac6804df469c94ab6a796fb64f1e44a89">mtk::Tools::Assert</a>(<span class="keyword">const</span> <span class="keywordtype">bool</span> &amp;condition) noexcept {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keywordflow">if</span> (condition) {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Test &quot;</span> &lt;&lt; test_number_ &lt;&lt; <span class="stringliteral">&quot;: PASSED in &quot;</span> &lt;&lt; duration_ &lt;&lt;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;      <span class="stringliteral">&quot; s.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;Test &quot;</span> &lt;&lt; test_number_ &lt;&lt; <span class="stringliteral">&quot;: FAILED in &quot;</span> &lt;&lt; duration_ &lt;&lt;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;      <span class="stringliteral">&quot; s.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;}</div>
+<div class="ttc" id="classmtk_1_1Tools_html_aba67d9dc35c9c1c49430fcc9ea035e03"><div class="ttname"><a href="classmtk_1_1Tools.html#aba67d9dc35c9c1c49430fcc9ea035e03">mtk::Tools::EndUnitTestNo</a></div><div class="ttdeci">static void EndUnitTestNo(const int &amp;nn) noexcept</div><div class="ttdoc">Ends the execution of a unit test. Stops and reports wall-clock time. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8cc_source.html#l00099">mtk_tools.cc:99</a></div></div>
+<div class="ttc" id="classmtk_1_1Tools_html_a332324c6f25e66be9dff48c5987a3b9f"><div class="ttname"><a href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a></div><div class="ttdeci">static void Prevent(const bool complement, const char *const fname, int lineno, const char *const fxname) noexcept</div><div class="ttdoc">Enforces preconditions by preventing their complements from occur. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8cc_source.html#l00062">mtk_tools.cc:62</a></div></div>
+<div class="ttc" id="group__c01-roots_html_gac080bbbf5cbb5502c9f00405f894857d"><div class="ttname"><a href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a></div><div class="ttdeci">float Real</div><div class="ttdoc">Users can simply change this to build a double- or single-precision MTK. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00093">mtk_roots.h:93</a></div></div>
+<div class="ttc" id="classmtk_1_1Tools_html_a04a60458594336ee1badff79b8a9a77f"><div class="ttname"><a href="classmtk_1_1Tools.html#a04a60458594336ee1badff79b8a9a77f">mtk::Tools::test_number_</a></div><div class="ttdeci">static int test_number_</div><div class="ttdoc">Current test being executed. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8h_source.html#l00119">mtk_tools.h:119</a></div></div>
+<div class="ttc" id="classmtk_1_1Tools_html_aba9d3d2952a3de9e7b46faa86d28d692"><div class="ttname"><a href="classmtk_1_1Tools.html#aba9d3d2952a3de9e7b46faa86d28d692">mtk::Tools::duration_</a></div><div class="ttdeci">static Real duration_</div><div class="ttdoc">Duration of the current test. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8h_source.html#l00121">mtk_tools.h:121</a></div></div>
 <div class="ttc" id="mtk__tools_8h_html"><div class="ttname"><a href="mtk__tools_8h.html">mtk_tools.h</a></div><div class="ttdoc">Tool manager class. </div></div>
-<div class="ttc" id="classmtk_1_1Tools_html_a4bd58d08397db42271ed9e2d3ecc9963"><div class="ttname"><a href="classmtk_1_1Tools.html#a4bd58d08397db42271ed9e2d3ecc9963">mtk::Tools::begin_time_</a></div><div class="ttdeci">static clock_t begin_time_</div><div class="ttdoc">Elapsed time on current test. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8h_source.html#l00121">mtk_tools.h:121</a></div></div>
-<div class="ttc" id="classmtk_1_1Tools_html_ac6804df469c94ab6a796fb64f1e44a89"><div class="ttname"><a href="classmtk_1_1Tools.html#ac6804df469c94ab6a796fb64f1e44a89">mtk::Tools::Assert</a></div><div class="ttdeci">static void Assert(const bool &amp;condition) noexcept</div><div class="ttdoc">Asserts if the condition required to pass the unit test occurs. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8cc_source.html#l00109">mtk_tools.cc:109</a></div></div>
-<div class="ttc" id="classmtk_1_1Tools_html_afc29ecaf337a13ed2e817d3890a5a441"><div class="ttname"><a href="classmtk_1_1Tools.html#afc29ecaf337a13ed2e817d3890a5a441">mtk::Tools::BeginUnitTestNo</a></div><div class="ttdeci">static void BeginUnitTestNo(const int &amp;nn) noexcept</div><div class="ttdoc">Begins the execution of a unit test. Starts a timer. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8cc_source.html#l00088">mtk_tools.cc:88</a></div></div>
+<div class="ttc" id="classmtk_1_1Tools_html_a4bd58d08397db42271ed9e2d3ecc9963"><div class="ttname"><a href="classmtk_1_1Tools.html#a4bd58d08397db42271ed9e2d3ecc9963">mtk::Tools::begin_time_</a></div><div class="ttdeci">static clock_t begin_time_</div><div class="ttdoc">Elapsed time on current test. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8h_source.html#l00123">mtk_tools.h:123</a></div></div>
+<div class="ttc" id="classmtk_1_1Tools_html_ac6804df469c94ab6a796fb64f1e44a89"><div class="ttname"><a href="classmtk_1_1Tools.html#ac6804df469c94ab6a796fb64f1e44a89">mtk::Tools::Assert</a></div><div class="ttdeci">static void Assert(const bool &amp;condition) noexcept</div><div class="ttdoc">Asserts if the condition required to pass the unit test occurs. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8cc_source.html#l00108">mtk_tools.cc:108</a></div></div>
+<div class="ttc" id="classmtk_1_1Tools_html_afc29ecaf337a13ed2e817d3890a5a441"><div class="ttname"><a href="classmtk_1_1Tools.html#afc29ecaf337a13ed2e817d3890a5a441">mtk::Tools::BeginUnitTestNo</a></div><div class="ttdeci">static void BeginUnitTestNo(const int &amp;nn) noexcept</div><div class="ttdoc">Begins the execution of a unit test. Starts a timer. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8cc_source.html#l00087">mtk_tools.cc:87</a></div></div>
 <div class="ttc" id="mtk__roots_8h_html"><div class="ttname"><a href="mtk__roots_8h.html">mtk_roots.h</a></div><div class="ttdoc">Fundamental definitions to be used across all classes of the MTK. </div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
@@ -231,7 +230,7 @@ $(document).ready(function(){initNavTree('mtk__tools_8cc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="mtk__tools_8cc.html">mtk_tools.cc</a></li>
-    <li class="footer">Generated on Thu Dec 17 2015 13:00:49 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Tue Jan 26 2016 16:42:31 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

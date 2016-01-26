@@ -1,9 +1,9 @@
 /*!
 \file mtk_uni_stg_grid_3d.cc
 
-\brief Implementation of a 2D uniform staggered grid.
+\brief Implementation of a 3D uniform staggered grid.
 
-Implementation of a 2D uniform staggered grid.
+Implementation of a 3D uniform staggered grid.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -97,7 +97,7 @@ std::ostream& operator <<(std::ostream &stream, mtk::UniStgGrid3D &in) {
 
   /// 2. Print scalar field.
 
-  if (in.nature_ == mtk::SCALAR) {
+  if (in.nature_ == mtk::FieldNature::SCALAR) {
     stream << "u(x,y,z):" << std::endl;
     if (in.discrete_field_.size() > 0) {
 
@@ -321,7 +321,8 @@ void mtk::UniStgGrid3D::BindScalarField(
                              const mtk::Real &zz)) {
 
   #ifdef MTK_PERFORM_PREVENTIONS
-  mtk::Tools::Prevent(nature_ != mtk::SCALAR, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nature_ != mtk::FieldNature::SCALAR, __FILE__, __LINE__,
+__func__);
   #endif
 
   /// 1. Create collection of spatial coordinates for \f$ x \f$.
@@ -423,7 +424,8 @@ void mtk::UniStgGrid3D::BindVectorField(
                                      const mtk::Real &zz)) {
 
   #ifdef MTK_PERFORM_PREVENTIONS
-  mtk::Tools::Prevent(nature_ != mtk::VECTOR, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nature_ != mtk::FieldNature::VECTOR, __FILE__, __LINE__,
+__func__);
   #endif
 
   BindVectorFieldPComponent(VectorFieldPComponent);
@@ -444,7 +446,7 @@ bool mtk::UniStgGrid3D::WriteToFile(std::string filename,
     return false;
   }
 
-  if (nature_ == mtk::SCALAR) {
+  if (nature_ == mtk::FieldNature::SCALAR) {
     output_dat_file << "# " << space_name_x <<  ' ' << space_name_y << ' ' <<
       space_name_z << ' ' << field_name << std::endl;
 

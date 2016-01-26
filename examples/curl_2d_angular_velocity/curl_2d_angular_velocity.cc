@@ -89,7 +89,7 @@ int main () {
   int nn = 10;
   int mm = 10;
 
-  mtk::UniStgGrid2D gg(aa, bb, nn, cc, dd, mm, mtk::VECTOR);
+  mtk::UniStgGrid2D gg(aa, bb, nn, cc, dd, mm, mtk::FieldNature::VECTOR);
 
   gg.BindVectorField(VectorFieldPComponent, VectorFieldQComponent);
 

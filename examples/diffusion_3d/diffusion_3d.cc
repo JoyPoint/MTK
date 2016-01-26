@@ -110,6 +110,7 @@ int main () {
                      "z",
                      "Initial u(x,y,z)")) {
     std::cerr << "Error writing to file." << std::endl;
+    return EXIT_FAILURE;
   }
 
   /// \todo Time discretization...

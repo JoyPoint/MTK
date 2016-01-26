@@ -55,1128 +55,1127 @@
 00063 
 00064 \textcolor{preprocessor}{#include <iostream>}
 00065 \textcolor{preprocessor}{#include <iomanip>}
-00066 \textcolor{preprocessor}{#include <limits>}
-00067 \textcolor{preprocessor}{#include <algorithm>}
-00068 
-00069 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
+00066 
+00067 \textcolor{preprocessor}{#ifdef MTK\_VERBOSE\_WEIGHTS}
+00068 \textcolor{preprocessor}{#include <fstream>}
+00069 \textcolor{preprocessor}{#endif}
 00070 
-00071 \textcolor{preprocessor}{#include "\hyperlink{mtk__blas__adapter_8h}{mtk\_blas\_adapter.h}"}
-00072 \textcolor{preprocessor}{#include "\hyperlink{mtk__lapack__adapter_8h}{mtk\_lapack\_adapter.h}"}
-00073 \textcolor{preprocessor}{#include "\hyperlink{mtk__glpk__adapter_8h}{mtk\_glpk\_adapter.h}"}
-00074 
-00075 \textcolor{preprocessor}{#include "\hyperlink{mtk__grad__1d_8h}{mtk\_grad\_1d.h}"}
-00076 
-00077 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk} \{
-00078 
-\hypertarget{mtk__grad__1d_8cc_source_l00079}{}\hyperlink{namespacemtk_a3f546b8a3743b8719db17e33f2d7ef7f}{00079} std::ostream& \hyperlink{namespacemtk_ad3bcf52cda59ddb5fc7b4bdce76c46dc}{operator <<}(std::ostream &stream, \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} &in) \{
-00080 
-00082 
-00083   stream << \textcolor{stringliteral}{"gradient\_[0] = "} << std::setw(9) << in.\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_}[0] << std::endl;
-00084 
-00086 
-00087   stream << \textcolor{stringliteral}{"gradient\_[1:"} << in.\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_} << \textcolor{stringliteral}{"] = "};
-00088   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii <= in.\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_}; ++ii) \{
-00089     stream << std::setw(9) << in.\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_}[ii] << \textcolor{stringliteral}{" "};
-00090   \}
-00091   stream << std::endl;
-00092 
-00094 
-00095   stream << \textcolor{stringliteral}{"gradient\_["} << in.\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_} + 1 << \textcolor{stringliteral}{":"} <<
-00096     2*in.\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_} << \textcolor{stringliteral}{"] = "};
-00097   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = in.\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_} + 1; ii <= 2*in.
+00071 \textcolor{preprocessor}{#include <limits>}
+00072 \textcolor{preprocessor}{#include <algorithm>}
+00073 
+00074 \textcolor{preprocessor}{#include "\hyperlink{mtk__tools_8h}{mtk\_tools.h}"}
+00075 
+00076 \textcolor{preprocessor}{#include "\hyperlink{mtk__blas__adapter_8h}{mtk\_blas\_adapter.h}"}
+00077 \textcolor{preprocessor}{#include "\hyperlink{mtk__lapack__adapter_8h}{mtk\_lapack\_adapter.h}"}
+00078 \textcolor{preprocessor}{#include "\hyperlink{mtk__glpk__adapter_8h}{mtk\_glpk\_adapter.h}"}
+00079 
+00080 \textcolor{preprocessor}{#include "\hyperlink{mtk__grad__1d_8h}{mtk\_grad\_1d.h}"}
+00081 
+00082 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk} \{
+00083 
+\hypertarget{mtk__grad__1d_8cc_source_l00084}{}\hyperlink{namespacemtk_a3f546b8a3743b8719db17e33f2d7ef7f}{00084} std::ostream& \hyperlink{namespacemtk_ad3bcf52cda59ddb5fc7b4bdce76c46dc}{operator <<}(std::ostream &stream, \hyperlink{classmtk_1_1Grad1D}{mtk::Grad1D} &in) \{
+00085 
+00087 
+00088   stream << \textcolor{stringliteral}{"gradient\_[0] = "} << std::setw(9) << in.\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_}[0] << std::endl;
+00089 
+00091 
+00092   stream << \textcolor{stringliteral}{"gradient\_[1:"} << in.\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_} << \textcolor{stringliteral}{"] = "};
+00093   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii <= in.\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_}; ++ii) \{
+00094     stream << std::setw(9) << in.\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_}[ii] << \textcolor{stringliteral}{" "};
+00095   \}
+00096   stream << std::endl;
+00097 
+00099 
+00100   stream << \textcolor{stringliteral}{"gradient\_["} << in.\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_} + 1 << \textcolor{stringliteral}{":"} <<
+00101     2*in.\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_} << \textcolor{stringliteral}{"] = "};
+00102   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = in.\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_} + 1; ii <= 2*in.
       \hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_}; ++ii) \{
-00098     stream << std::setw(9) << in.\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_}[ii] << \textcolor{stringliteral}{" "};
-00099   \}
-00100   stream << std::endl;
-00101 
-00103 
-00104   \textcolor{keywordtype}{int} offset\{2*in.\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_} + 1\};
-00105   \textcolor{keywordtype}{int} mm \{\};
+00103     stream << std::setw(9) << in.\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_}[ii] << \textcolor{stringliteral}{" "};
+00104   \}
+00105   stream << std::endl;
 00106 
-00107   stream << \textcolor{stringliteral}{"gradient\_["} << offset + mm << \textcolor{stringliteral}{":"} <<
-00108     offset + mm + in.\hyperlink{classmtk_1_1Grad1D_a60c560882bc601f9ab1d4cd5331e55ef}{num\_bndy\_coeffs\_} - 1 << \textcolor{stringliteral}{"] = "};
-00109 
-00110   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_} > \hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{mtk::kDefaultOrderAccuracy}) \{
-00111     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < in.\hyperlink{classmtk_1_1Grad1D_abe15c1ffd9dfaba1a65f4f0e096287ce}{num\_bndy\_approxs\_} ; ++ii) \{
-00112       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < in.\hyperlink{classmtk_1_1Grad1D_a60c560882bc601f9ab1d4cd5331e55ef}{num\_bndy\_coeffs\_}; jj++) \{
-00113         \textcolor{keyword}{auto} value = in.\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_}[offset + (mm)];
-00114         stream << std::setw(9) << value << \textcolor{stringliteral}{" "};
-00115         mm++;
-00116       \}
-00117     \}
-00118   \} \textcolor{keywordflow}{else} \{
-00119     stream << std::setw(9) << in.\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_}[offset + 0] << \textcolor{charliteral}{' '};
-00120     stream << std::setw(9) << in.\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_}[offset + 1] << \textcolor{charliteral}{' '};
-00121     stream << std::setw(9) << in.\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_}[offset + 2] << \textcolor{charliteral}{' '};
-00122   \}
-00123   stream << std::endl;
-00124 
-00125   \textcolor{keywordflow}{return} stream;
-00126 \}
-00127 \}
-00128 
-\hypertarget{mtk__grad__1d_8cc_source_l00129}{}\hyperlink{classmtk_1_1Grad1D_ae21e6ac2652e653c48f15b304ee83a75}{00129} \hyperlink{classmtk_1_1Grad1D_ae21e6ac2652e653c48f15b304ee83a75}{mtk::Grad1D::Grad1D}():
-00130   order\_accuracy\_(\hyperlink{namespacemtk}{mtk}::\hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{kDefaultOrderAccuracy}),
-00131   dim\_null\_(),
-00132   num\_bndy\_approxs\_(),
-00133   num\_bndy\_coeffs\_(),
-00134   gradient\_length\_(),
-00135   minrow\_(),
-00136   row\_(),
-00137   coeffs\_interior\_(),
-00138   prem\_apps\_(),
-00139   weights\_crs\_(),
-00140   weights\_cbs\_(),
-00141   mim\_bndy\_(),
-00142   gradient\_(),
-00143   mimetic\_threshold\_(\hyperlink{namespacemtk}{mtk}::\hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{kDefaultMimeticThreshold}) \{\}
-00144 
-\hypertarget{mtk__grad__1d_8cc_source_l00145}{}\hyperlink{classmtk_1_1Grad1D_a5708bcb61bde3f7f3a4ddede191d82a4}{00145} \hyperlink{classmtk_1_1Grad1D_ae21e6ac2652e653c48f15b304ee83a75}{mtk::Grad1D::Grad1D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Grad1D}{Grad1D} &grad):
-00146   order\_accuracy\_(grad.order\_accuracy\_),
-00147   dim\_null\_(grad.dim\_null\_),
-00148   num\_bndy\_approxs\_(grad.num\_bndy\_approxs\_),
-00149   num\_bndy\_coeffs\_(grad.num\_bndy\_coeffs\_),
-00150   gradient\_length\_(grad.gradient\_length\_),
-00151   minrow\_(grad.minrow\_),
-00152   row\_(grad.row\_),
-00153   coeffs\_interior\_(grad.coeffs\_interior\_),
-00154   prem\_apps\_(grad.prem\_apps\_),
-00155   weights\_crs\_(grad.weights\_crs\_),
-00156   weights\_cbs\_(grad.weights\_cbs\_),
-00157   mim\_bndy\_(grad.mim\_bndy\_),
-00158   gradient\_(grad.gradient\_),
-00159   mimetic\_threshold\_(grad.mimetic\_threshold\_) \{\}
-00160 
-\hypertarget{mtk__grad__1d_8cc_source_l00161}{}\hyperlink{classmtk_1_1Grad1D_a2f9b1d306c0f09f36145bb1e7e486b54}{00161} \hyperlink{classmtk_1_1Grad1D_a2f9b1d306c0f09f36145bb1e7e486b54}{mtk::Grad1D::~Grad1D}() \{
-00162 
-00163   \textcolor{keyword}{delete}[] coeffs\_interior\_;
-00164   coeffs\_interior\_ = \textcolor{keyword}{nullptr};
+00108 
+00109   \textcolor{keywordtype}{int} offset\{2*in.\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_} + 1\};
+00110   \textcolor{keywordtype}{int} mm \{\};
+00111 
+00112   stream << \textcolor{stringliteral}{"gradient\_["} << offset + mm << \textcolor{stringliteral}{":"} <<
+00113     offset + mm + in.\hyperlink{classmtk_1_1Grad1D_a60c560882bc601f9ab1d4cd5331e55ef}{num\_bndy\_coeffs\_} - 1 << \textcolor{stringliteral}{"] = "};
+00114 
+00115   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{order\_accuracy\_} > \hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{mtk::kDefaultOrderAccuracy}) \{
+00116     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < in.\hyperlink{classmtk_1_1Grad1D_abe15c1ffd9dfaba1a65f4f0e096287ce}{num\_bndy\_approxs\_} ; ++ii) \{
+00117       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < in.\hyperlink{classmtk_1_1Grad1D_a60c560882bc601f9ab1d4cd5331e55ef}{num\_bndy\_coeffs\_}; jj++) \{
+00118         \textcolor{keyword}{auto} value = in.\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_}[offset + (mm)];
+00119         stream << std::setw(9) << value << \textcolor{stringliteral}{" "};
+00120         mm++;
+00121       \}
+00122     \}
+00123   \} \textcolor{keywordflow}{else} \{
+00124     stream << std::setw(9) << in.\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_}[offset + 0] << \textcolor{charliteral}{' '};
+00125     stream << std::setw(9) << in.\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_}[offset + 1] << \textcolor{charliteral}{' '};
+00126     stream << std::setw(9) << in.\hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\_}[offset + 2] << \textcolor{charliteral}{' '};
+00127   \}
+00128   stream << std::endl;
+00129 
+00130   \textcolor{keywordflow}{return} stream;
+00131 \}
+00132 \}
+00133 
+\hypertarget{mtk__grad__1d_8cc_source_l00134}{}\hyperlink{classmtk_1_1Grad1D_ae21e6ac2652e653c48f15b304ee83a75}{00134} \hyperlink{classmtk_1_1Grad1D_ae21e6ac2652e653c48f15b304ee83a75}{mtk::Grad1D::Grad1D}():
+00135   order\_accuracy\_(\hyperlink{namespacemtk}{mtk}::\hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{kDefaultOrderAccuracy}),
+00136   dim\_null\_(),
+00137   num\_bndy\_approxs\_(),
+00138   num\_bndy\_coeffs\_(),
+00139   gradient\_length\_(),
+00140   minrow\_(),
+00141   row\_(),
+00142   coeffs\_interior\_(),
+00143   prem\_apps\_(),
+00144   weights\_crs\_(),
+00145   weights\_cbs\_(),
+00146   mim\_bndy\_(),
+00147   gradient\_(),
+00148   mimetic\_threshold\_(\hyperlink{namespacemtk}{mtk}::\hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{kDefaultMimeticThreshold}) \{\}
+00149 
+\hypertarget{mtk__grad__1d_8cc_source_l00150}{}\hyperlink{classmtk_1_1Grad1D_a5708bcb61bde3f7f3a4ddede191d82a4}{00150} \hyperlink{classmtk_1_1Grad1D_ae21e6ac2652e653c48f15b304ee83a75}{mtk::Grad1D::Grad1D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Grad1D}{Grad1D} &grad):
+00151   order\_accuracy\_(grad.order\_accuracy\_),
+00152   dim\_null\_(grad.dim\_null\_),
+00153   num\_bndy\_approxs\_(grad.num\_bndy\_approxs\_),
+00154   num\_bndy\_coeffs\_(grad.num\_bndy\_coeffs\_),
+00155   gradient\_length\_(grad.gradient\_length\_),
+00156   minrow\_(grad.minrow\_),
+00157   row\_(grad.row\_),
+00158   coeffs\_interior\_(grad.coeffs\_interior\_),
+00159   prem\_apps\_(grad.prem\_apps\_),
+00160   weights\_crs\_(grad.weights\_crs\_),
+00161   weights\_cbs\_(grad.weights\_cbs\_),
+00162   mim\_bndy\_(grad.mim\_bndy\_),
+00163   gradient\_(grad.gradient\_),
+00164   mimetic\_threshold\_(grad.mimetic\_threshold\_) \{\}
 00165 
-00166   \textcolor{keyword}{delete}[] prem\_apps\_;
-00167   prem\_apps\_ = \textcolor{keyword}{nullptr};
-00168 
-00169   \textcolor{keyword}{delete}[] weights\_crs\_;
-00170   weights\_crs\_ = \textcolor{keyword}{nullptr};
-00171 
-00172   \textcolor{keyword}{delete}[] weights\_cbs\_;
-00173   weights\_cbs\_ = \textcolor{keyword}{nullptr};
-00174 
-00175   \textcolor{keyword}{delete}[] mim\_bndy\_;
-00176   mim\_bndy\_ = \textcolor{keyword}{nullptr};
-00177 
-00178   \textcolor{keyword}{delete}[] gradient\_;
-00179   gradient\_ = \textcolor{keyword}{nullptr};
-00180 \}
-00181 
-\hypertarget{mtk__grad__1d_8cc_source_l00182}{}\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{00182} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{mtk::Grad1D::ConstructGrad1D}(\textcolor{keywordtype}{int} order\_accuracy, 
+\hypertarget{mtk__grad__1d_8cc_source_l00166}{}\hyperlink{classmtk_1_1Grad1D_a2f9b1d306c0f09f36145bb1e7e486b54}{00166} \hyperlink{classmtk_1_1Grad1D_a2f9b1d306c0f09f36145bb1e7e486b54}{mtk::Grad1D::~Grad1D}() \{
+00167 
+00168   \textcolor{keyword}{delete}[] coeffs\_interior\_;
+00169   coeffs\_interior\_ = \textcolor{keyword}{nullptr};
+00170 
+00171   \textcolor{keyword}{delete}[] prem\_apps\_;
+00172   prem\_apps\_ = \textcolor{keyword}{nullptr};
+00173 
+00174   \textcolor{keyword}{delete}[] weights\_crs\_;
+00175   weights\_crs\_ = \textcolor{keyword}{nullptr};
+00176 
+00177   \textcolor{keyword}{delete}[] weights\_cbs\_;
+00178   weights\_cbs\_ = \textcolor{keyword}{nullptr};
+00179 
+00180   \textcolor{keyword}{delete}[] mim\_bndy\_;
+00181   mim\_bndy\_ = \textcolor{keyword}{nullptr};
+00182 
+00183   \textcolor{keyword}{delete}[] gradient\_;
+00184   gradient\_ = \textcolor{keyword}{nullptr};
+00185 \}
+00186 
+\hypertarget{mtk__grad__1d_8cc_source_l00187}{}\hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{00187} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a74ef5245cfae6fd158bd7f563a0c2e52}{mtk::Grad1D::ConstructGrad1D}(\textcolor{keywordtype}{int} order\_accuracy, 
       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} mimetic\_threshold) \{
-00183 
-00184 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00185   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(order\_accuracy < 2, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00186   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}((order\_accuracy%2) != 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00187   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(mimetic\_threshold <= \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
-00188                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00189 
-00190   \textcolor{keywordflow}{if} (order\_accuracy >= \hyperlink{group__c01-roots_ga295dd2f403c775ecd942c22b5a777496}{mtk::kCriticalOrderAccuracyGrad}) \{
-00191     std::cout << \textcolor{stringliteral}{"WARNING: Numerical accuracy is high."} << std::endl;
-00192   \}
-00193 
-00194   std::cout << \textcolor{stringliteral}{"order\_accuracy\_ = "} << order\_accuracy << std::endl;
-00195   std::cout << \textcolor{stringliteral}{"mimetic\_threshold\_ = "} << mimetic\_threshold << std::endl;
-00196 \textcolor{preprocessor}{  #endif}
-00197 
-00198   order\_accuracy\_ = order\_accuracy;
-00199   mimetic\_threshold\_ = mimetic\_threshold;
-00200 
-00202   \textcolor{keywordtype}{bool} abort\_construction = ComputeStencilInteriorGrid();
-00203 
-00204 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00205   \textcolor{keywordflow}{if} (!abort\_construction) \{
-00206     std::cerr << \textcolor{stringliteral}{"Could NOT complete stage 1."} << std::endl;
-00207     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
-00208     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-00209   \}
-00210 \textcolor{preprocessor}{  #endif}
-00211 
-00212   \textcolor{comment}{// At this point, we already have the values for the interior stencil stored}
-00213   \textcolor{comment}{// in the coeffs\_interior\_ array.}
-00214 
-00215   dim\_null\_ = order\_accuracy\_/2 - 1;
+00188 
+00189 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00190   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(order\_accuracy < 2, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00191   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}((order\_accuracy%2) != 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00192   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(mimetic\_threshold <= \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
+00193                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00194 
+00195   \textcolor{keywordflow}{if} (order\_accuracy >= \hyperlink{group__c01-roots_ga295dd2f403c775ecd942c22b5a777496}{mtk::kCriticalOrderAccuracyGrad}) \{
+00196     std::cout << \textcolor{stringliteral}{"WARNING: Numerical accuracy is high."} << std::endl;
+00197   \}
+00198 
+00199   std::cout << \textcolor{stringliteral}{"order\_accuracy\_ = "} << order\_accuracy << std::endl;
+00200   std::cout << \textcolor{stringliteral}{"mimetic\_threshold\_ = "} << mimetic\_threshold << std::endl;
+00201 \textcolor{preprocessor}{  #endif}
+00202 
+00203   order\_accuracy\_ = order\_accuracy;
+00204   mimetic\_threshold\_ = mimetic\_threshold;
+00205 
+00207   \textcolor{keywordtype}{bool} abort\_construction = ComputeStencilInteriorGrid();
+00208 
+00209 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00210   \textcolor{keywordflow}{if} (!abort\_construction) \{
+00211     std::cerr << \textcolor{stringliteral}{"Could NOT complete stage 1."} << std::endl;
+00212     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
+00213     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00214   \}
+00215 \textcolor{preprocessor}{  #endif}
 00216 
-00217   num\_bndy\_approxs\_ = dim\_null\_ + 1;
-00218 
-00219 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00220   num\_bndy\_coeffs\_ = (int) (3.0*((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) order\_accuracy\_)/2.0);
-00221 \textcolor{preprocessor}{  #else}
-00222   num\_bndy\_coeffs\_ = (int) (3.0f*((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) order\_accuracy\_)/2.0f);
-00223 \textcolor{preprocessor}{  #endif}
-00224 
-00226 
-00227   \textcolor{comment}{// For this we will follow recommendations given in:}
-00228   \textcolor{comment}{//}
-00229   \textcolor{comment}{// http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=5&t=4506}
-00230   \textcolor{comment}{//}
-00231   \textcolor{comment}{// We will compute the QR Factorization of the transpose, as in the}
-00232   \textcolor{comment}{// following (MATLAB) pseudo-code:}
+00217   \textcolor{comment}{// At this point, we already have the values for the interior stencil stored}
+00218   \textcolor{comment}{// in the coeffs\_interior\_ array.}
+00219 
+00220   dim\_null\_ = order\_accuracy\_/2 - 1;
+00221 
+00222   num\_bndy\_approxs\_ = dim\_null\_ + 1;
+00223 
+00224 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00225   num\_bndy\_coeffs\_ = (int) (3.0*((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) order\_accuracy\_)/2.0);
+00226 \textcolor{preprocessor}{  #else}
+00227   num\_bndy\_coeffs\_ = (int) (3.0f*((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) order\_accuracy\_)/2.0f);
+00228 \textcolor{preprocessor}{  #endif}
+00229 
+00231 
+00232   \textcolor{comment}{// For this we will follow recommendations given in:}
 00233   \textcolor{comment}{//}
-00234   \textcolor{comment}{// [Q,R] = qr(V'); % Full QR as defined in}
-00235   \textcolor{comment}{// % http://www.stanford.edu/class/ee263/notes/qr\_matlab.pdf}
-00236   \textcolor{comment}{//}
-00237   \textcolor{comment}{// null-space = Q(:, last (order\_accuracy\_/2 - 1) columns of Q );}
+00234   \textcolor{comment}{// http://icl.cs.utk.edu/lapack-forum/viewtopic.php?f=5&t=4506}
+00235   \textcolor{comment}{//}
+00236   \textcolor{comment}{// We will compute the QR Factorization of the transpose, as in the}
+00237   \textcolor{comment}{// following (MATLAB) pseudo-code:}
 00238   \textcolor{comment}{//}
-00239   \textcolor{comment}{// However, given the nature of the Vandermonde matrices we've just}
-00240   \textcolor{comment}{// computed, they all posses the same null-space. Therefore, we impose the}
-00241   \textcolor{comment}{// convention of computing the null-space of the first Vandermonde matrix}
-00242   \textcolor{comment}{// (west boundary).}
-00243 
-00244   \textcolor{comment}{// In the case of the gradient, the first Vandermonde system has a unique}
-00245   \textcolor{comment}{// solution for the case of second-order-accuracy. Ergo, the Vandermonde}
-00246   \textcolor{comment}{// matrix used to assemble said system, will have an empty null-space.}
-00247 
-00248   \textcolor{comment}{// Therefore, we only compute a rational basis for the case of order higher}
-00249   \textcolor{comment}{// than second.}
-00250 
-00251   \textcolor{keywordflow}{if} (dim\_null\_ > 0) \{
+00239   \textcolor{comment}{// [Q,R] = qr(V'); % Full QR as defined in}
+00240   \textcolor{comment}{// % http://www.stanford.edu/class/ee263/notes/qr\_matlab.pdf}
+00241   \textcolor{comment}{//}
+00242   \textcolor{comment}{// null-space = Q(:, last (order\_accuracy\_/2 - 1) columns of Q );}
+00243   \textcolor{comment}{//}
+00244   \textcolor{comment}{// However, given the nature of the Vandermonde matrices we've just}
+00245   \textcolor{comment}{// computed, they all posses the same null-space. Therefore, we impose the}
+00246   \textcolor{comment}{// convention of computing the null-space of the first Vandermonde matrix}
+00247   \textcolor{comment}{// (west boundary).}
+00248 
+00249   \textcolor{comment}{// In the case of the gradient, the first Vandermonde system has a unique}
+00250   \textcolor{comment}{// solution for the case of second-order-accuracy. Ergo, the Vandermonde}
+00251   \textcolor{comment}{// matrix used to assemble said system, will have an empty null-space.}
 00252 
-00253     abort\_construction = ComputeRationalBasisNullSpace();
-00254 
-00255 \textcolor{preprocessor}{    #ifdef MTK\_PERFORM\_PREVENTIONS}
-00256     \textcolor{keywordflow}{if} (!abort\_construction) \{
-00257       std::cerr << \textcolor{stringliteral}{"Could NOT complete stage 2.1."} << std::endl;
-00258       std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
-00259       \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-00260     \}
-00261 \textcolor{preprocessor}{    #endif}
-00262   \}
-00263 
-00265   abort\_construction = ComputePreliminaryApproximations();
-00266 
-00267 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00268   \textcolor{keywordflow}{if} (!abort\_construction) \{
-00269     std::cerr << \textcolor{stringliteral}{"Could NOT complete stage 2.2."} << std::endl;
-00270     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
-00271     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-00272   \}
-00273 \textcolor{preprocessor}{  #endif}
-00274 
-00276   abort\_construction = ComputeWeights();
-00277 
-00278 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00279   \textcolor{keywordflow}{if} (!abort\_construction) \{
-00280     std::cerr << \textcolor{stringliteral}{"Could NOT complete stage 2.3."} << std::endl;
-00281     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
-00282     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-00283   \}
-00284 \textcolor{preprocessor}{  #endif}
-00285 
-00287   \textcolor{keywordflow}{if} (dim\_null\_ > 0) \{
-00288 
-00289     abort\_construction = ComputeStencilBoundaryGrid();
+00253   \textcolor{comment}{// Therefore, we only compute a rational basis for the case of order higher}
+00254   \textcolor{comment}{// than second.}
+00255 
+00256   \textcolor{keywordflow}{if} (dim\_null\_ > 0) \{
+00257 
+00258     abort\_construction = ComputeRationalBasisNullSpace();
+00259 
+00260 \textcolor{preprocessor}{    #ifdef MTK\_PERFORM\_PREVENTIONS}
+00261     \textcolor{keywordflow}{if} (!abort\_construction) \{
+00262       std::cerr << \textcolor{stringliteral}{"Could NOT complete stage 2.1."} << std::endl;
+00263       std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
+00264       \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00265     \}
+00266 \textcolor{preprocessor}{    #endif}
+00267   \}
+00268 
+00270   abort\_construction = ComputePreliminaryApproximations();
+00271 
+00272 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00273   \textcolor{keywordflow}{if} (!abort\_construction) \{
+00274     std::cerr << \textcolor{stringliteral}{"Could NOT complete stage 2.2."} << std::endl;
+00275     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
+00276     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00277   \}
+00278 \textcolor{preprocessor}{  #endif}
+00279 
+00281   abort\_construction = ComputeWeights();
+00282 
+00283 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00284   \textcolor{keywordflow}{if} (!abort\_construction) \{
+00285     std::cerr << \textcolor{stringliteral}{"Could NOT complete stage 2.3."} << std::endl;
+00286     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
+00287     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00288   \}
+00289 \textcolor{preprocessor}{  #endif}
 00290 
-00291 \textcolor{preprocessor}{    #ifdef MTK\_PERFORM\_PREVENTIONS}
-00292     \textcolor{keywordflow}{if} (!abort\_construction) \{
-00293       std::cerr << \textcolor{stringliteral}{"Could NOT complete stage 2.4."} << std::endl;
-00294       std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
-00295       \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-00296     \}
-00297 \textcolor{preprocessor}{    #endif}
-00298   \}
-00299 
-00301 
-00302   \textcolor{comment}{// Once we have the following three collections of data:}
-00303   \textcolor{comment}{//   (a) the coefficients for the interior,}
-00304   \textcolor{comment}{//   (b) the coefficients for the boundary (if it applies),}
-00305   \textcolor{comment}{//   (c) and the weights (if it applies),}
-00306   \textcolor{comment}{// we will store everything in the output array:}
-00307 
-00308   abort\_construction = AssembleOperator();
-00309 
-00310 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00311   \textcolor{keywordflow}{if} (!abort\_construction) \{
-00312     std::cerr << \textcolor{stringliteral}{"Could NOT complete stage 3."} << std::endl;
-00313     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
-00314     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-00315   \}
-00316 \textcolor{preprocessor}{  #endif}
-00317 
-00318   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-00319 \}
-00320 
-\hypertarget{mtk__grad__1d_8cc_source_l00321}{}\hyperlink{classmtk_1_1Grad1D_a7168205c21ba00012558f8bba069c119}{00321} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_a7168205c21ba00012558f8bba069c119}{mtk::Grad1D::num\_bndy\_coeffs}()\textcolor{keyword}{ const }\{
+00292   \textcolor{keywordflow}{if} (dim\_null\_ > 0) \{
+00293 
+00294     abort\_construction = ComputeStencilBoundaryGrid();
+00295 
+00296 \textcolor{preprocessor}{    #ifdef MTK\_PERFORM\_PREVENTIONS}
+00297     \textcolor{keywordflow}{if} (!abort\_construction) \{
+00298       std::cerr << \textcolor{stringliteral}{"Could NOT complete stage 2.4."} << std::endl;
+00299       std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
+00300       \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00301     \}
+00302 \textcolor{preprocessor}{    #endif}
+00303   \}
+00304 
+00306 
+00307   \textcolor{comment}{// Once we have the following three collections of data:}
+00308   \textcolor{comment}{//   (a) the coefficients for the interior,}
+00309   \textcolor{comment}{//   (b) the coefficients for the boundary (if it applies),}
+00310   \textcolor{comment}{//   (c) and the weights (if it applies),}
+00311   \textcolor{comment}{// we will store everything in the output array:}
+00312 
+00313   abort\_construction = AssembleOperator();
+00314 
+00315 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00316   \textcolor{keywordflow}{if} (!abort\_construction) \{
+00317     std::cerr << \textcolor{stringliteral}{"Could NOT complete stage 3."} << std::endl;
+00318     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
+00319     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00320   \}
+00321 \textcolor{preprocessor}{  #endif}
 00322 
-00323   \textcolor{keywordflow}{return} num\_bndy\_coeffs\_;
+00323   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
 00324 \}
 00325 
-\hypertarget{mtk__grad__1d_8cc_source_l00326}{}\hyperlink{classmtk_1_1Grad1D_a88735f8d2a6ed986370dc3caeb84959b}{00326} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *\hyperlink{classmtk_1_1Grad1D_a88735f8d2a6ed986370dc3caeb84959b}{mtk::Grad1D::coeffs\_interior}()\textcolor{keyword}{ const }\{
+\hypertarget{mtk__grad__1d_8cc_source_l00326}{}\hyperlink{classmtk_1_1Grad1D_a7168205c21ba00012558f8bba069c119}{00326} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Grad1D_a7168205c21ba00012558f8bba069c119}{mtk::Grad1D::num\_bndy\_coeffs}()\textcolor{keyword}{ const }\{
 00327 
-00328   \textcolor{keywordflow}{return} coeffs\_interior\_;
+00328   \textcolor{keywordflow}{return} num\_bndy\_coeffs\_;
 00329 \}
 00330 
-\hypertarget{mtk__grad__1d_8cc_source_l00331}{}\hyperlink{classmtk_1_1Grad1D_ae5f15d8986a5680b6a1c120283c6cc5e}{00331} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *\hyperlink{classmtk_1_1Grad1D_ae5f15d8986a5680b6a1c120283c6cc5e}{mtk::Grad1D::weights\_crs}()\textcolor{keyword}{ const }\{
+\hypertarget{mtk__grad__1d_8cc_source_l00331}{}\hyperlink{classmtk_1_1Grad1D_a88735f8d2a6ed986370dc3caeb84959b}{00331} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *\hyperlink{classmtk_1_1Grad1D_a88735f8d2a6ed986370dc3caeb84959b}{mtk::Grad1D::coeffs\_interior}()\textcolor{keyword}{ const }\{
 00332 
-00333   \textcolor{keywordflow}{return} weights\_crs\_;
+00333   \textcolor{keywordflow}{return} coeffs\_interior\_;
 00334 \}
 00335 
-\hypertarget{mtk__grad__1d_8cc_source_l00336}{}\hyperlink{classmtk_1_1Grad1D_ad11927d8f9f1ca0089aaa2be7094f7f3}{00336} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *\hyperlink{classmtk_1_1Grad1D_ad11927d8f9f1ca0089aaa2be7094f7f3}{mtk::Grad1D::weights\_cbs}()\textcolor{keyword}{ const }\{
+\hypertarget{mtk__grad__1d_8cc_source_l00336}{}\hyperlink{classmtk_1_1Grad1D_ae5f15d8986a5680b6a1c120283c6cc5e}{00336} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *\hyperlink{classmtk_1_1Grad1D_ae5f15d8986a5680b6a1c120283c6cc5e}{mtk::Grad1D::weights\_crs}()\textcolor{keyword}{ const }\{
 00337 
-00338   \textcolor{keywordflow}{return} weights\_cbs\_;
+00338   \textcolor{keywordflow}{return} weights\_crs\_;
 00339 \}
 00340 
-\hypertarget{mtk__grad__1d_8cc_source_l00341}{}\hyperlink{classmtk_1_1Grad1D_ab25e1d064a5a00fbe3777e65fd5750c0}{00341} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Grad1D_ab25e1d064a5a00fbe3777e65fd5750c0}{mtk::Grad1D::mim\_bndy}()\textcolor{keyword}{ const }\{
+\hypertarget{mtk__grad__1d_8cc_source_l00341}{}\hyperlink{classmtk_1_1Grad1D_ad11927d8f9f1ca0089aaa2be7094f7f3}{00341} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *\hyperlink{classmtk_1_1Grad1D_ad11927d8f9f1ca0089aaa2be7094f7f3}{mtk::Grad1D::weights\_cbs}()\textcolor{keyword}{ const }\{
 00342 
-00343   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} xx(dim\_null\_ + 1, 3*order\_accuracy\_/2);
-00344 
-00345   \textcolor{keyword}{auto} counter = 0;
-00346   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_ + 1; ++ii) \{
-00347     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = 0; jj < 3*order\_accuracy\_/2; ++jj) \{
-00348       xx.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj, gradient\_[2*order\_accuracy\_ + 1 + counter]);
-00349       counter++;
-00350     \}
-00351   \}
-00352 
-00353   \textcolor{keywordflow}{return} xx;
-00354 \}
-00355 
-\hypertarget{mtk__grad__1d_8cc_source_l00356}{}\hyperlink{classmtk_1_1Grad1D_a77b2eddbe4ab03f469306c604d505b1a}{00356} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Grad1D_a77b2eddbe4ab03f469306c604d505b1a}{mtk::Grad1D::ReturnAsDenseMatrix}(
+00343   \textcolor{keywordflow}{return} weights\_cbs\_;
+00344 \}
+00345 
+\hypertarget{mtk__grad__1d_8cc_source_l00346}{}\hyperlink{classmtk_1_1Grad1D_ab25e1d064a5a00fbe3777e65fd5750c0}{00346} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Grad1D_ab25e1d064a5a00fbe3777e65fd5750c0}{mtk::Grad1D::mim\_bndy}()\textcolor{keyword}{ const }\{
+00347 
+00348   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} xx(dim\_null\_ + 1, 3*order\_accuracy\_/2);
+00349 
+00350   \textcolor{keyword}{auto} counter = 0;
+00351   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_ + 1; ++ii) \{
+00352     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = 0; jj < 3*order\_accuracy\_/2; ++jj) \{
+00353       xx.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj, gradient\_[2*order\_accuracy\_ + 1 + counter]);
+00354       counter++;
+00355     \}
+00356   \}
+00357 
+00358   \textcolor{keywordflow}{return} xx;
+00359 \}
+00360 
+\hypertarget{mtk__grad__1d_8cc_source_l00361}{}\hyperlink{classmtk_1_1Grad1D_a77b2eddbe4ab03f469306c604d505b1a}{00361} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Grad1D_a77b2eddbe4ab03f469306c604d505b1a}{mtk::Grad1D::ReturnAsDenseMatrix}(
       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} west,
-00357                                                   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} east,
-00358                                                   \textcolor{keywordtype}{int} num\_cells\_x)\textcolor{keyword}{ const }\{
-00359 
-00360   \textcolor{keywordtype}{int} nn\{num\_cells\_x\}; \textcolor{comment}{// Number of cells on the grid.}
-00361 
-00362 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00363   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(east < west, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00364   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn < 3*order\_accuracy\_ - 2, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00365   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00366 \textcolor{preprocessor}{  #endif}
-00367 
-00368   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} delta\_x = (east - west)/((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_cells\_x);
-00369 
-00370   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} inv\_delta\_x\{\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/delta\_x\};
-00371 
-00372   \textcolor{keywordtype}{int} gg\_num\_rows = nn + 1;
-00373   \textcolor{keywordtype}{int} gg\_num\_cols = nn + 2;
-00374   \textcolor{keywordtype}{int} elements\_per\_row = num\_bndy\_coeffs\_;
-00375   \textcolor{keywordtype}{int} num\_extra\_rows = order\_accuracy\_/2;
+00362                                                   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} east,
+00363                                                   \textcolor{keywordtype}{int} num\_cells\_x)\textcolor{keyword}{ const }\{
+00364 
+00365   \textcolor{keywordtype}{int} nn\{num\_cells\_x\}; \textcolor{comment}{// Number of cells on the grid.}
+00366 
+00367 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00368   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(east < west, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00369   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn < 3*order\_accuracy\_ - 2, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00370   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00371 \textcolor{preprocessor}{  #endif}
+00372 
+00373   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} delta\_x = (east - west)/((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_cells\_x);
+00374 
+00375   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} inv\_delta\_x\{\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/delta\_x\};
 00376 
-00377   \textcolor{comment}{// Output matrix featuring sizes for gradient operators.}
-00378   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} out(gg\_num\_rows, gg\_num\_cols);
-00379 
+00377   \textcolor{keywordtype}{int} gg\_num\_rows = nn + 1;
+00378   \textcolor{keywordtype}{int} gg\_num\_cols = nn + 2;
+00379   \textcolor{keywordtype}{int} elements\_per\_row = num\_bndy\_coeffs\_;
+00380   \textcolor{keywordtype}{int} num\_extra\_rows = order\_accuracy\_/2;
 00381 
-00382   \textcolor{keyword}{auto} ee\_index = 0;
-00383   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_extra\_rows; ii++) \{
-00384     \textcolor{keyword}{auto} cc = 0;
-00385     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = 0 ; jj < gg\_num\_cols; jj++) \{
-00386       \textcolor{keywordflow}{if}(cc >= elements\_per\_row) \{
-00387         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
-00388       \} \textcolor{keywordflow}{else} \{
-00389         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,
-00390                      gradient\_[2*order\_accuracy\_ + 1 + ee\_index++]*inv\_delta\_x);
-00391         cc++;
-00392       \}
-00393     \}
-00394   \}
-00395 
-00397 
-00398   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = num\_extra\_rows; ii < gg\_num\_rows - num\_extra\_rows; ii++) \{
-00399     \textcolor{keyword}{auto} jj = ii - num\_extra\_rows + 1;
-00400     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} cc = 0; cc < order\_accuracy\_; cc++, jj++) \{
-00401       out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, coeffs\_interior\_[cc]*inv\_delta\_x);
-00402     \}
-00403   \}
-00404 
-00406 
-00407   ee\_index = 0;
-00408   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = gg\_num\_rows - 1; ii >= gg\_num\_rows - num\_extra\_rows; ii--) \{
-00409     \textcolor{keyword}{auto} cc = 0;
-00410     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = gg\_num\_cols - 1; jj >= 0; jj--) \{
-00411       \textcolor{keywordflow}{if}(cc >= elements\_per\_row) \{
-00412         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,\hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
-00413       \} \textcolor{keywordflow}{else} \{
-00414         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,
-00415                      -gradient\_[2*order\_accuracy\_ + 1 +
-00416 ee\_index++]*inv\_delta\_x);
-00417         cc++;
-00418       \}
-00419      \}
-00420   \}
-00421 
-00422   \textcolor{keywordflow}{return} out;
-00423 \}
-00424 
-\hypertarget{mtk__grad__1d_8cc_source_l00425}{}\hyperlink{classmtk_1_1Grad1D_a871a3b31e257b04d5e303b3211df3a73}{00425} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Grad1D_a77b2eddbe4ab03f469306c604d505b1a}{mtk::Grad1D::ReturnAsDenseMatrix}(
-00426   \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid)\textcolor{keyword}{ const }\{
-00427 
-00428   \textcolor{keywordtype}{int} nn\{grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}()\}; \textcolor{comment}{// Number of cells on the grid.}
+00382   \textcolor{comment}{// Output matrix featuring sizes for gradient operators.}
+00383   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} out(gg\_num\_rows, gg\_num\_cols);
+00384 
+00386 
+00387   \textcolor{keyword}{auto} ee\_index = 0;
+00388   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_extra\_rows; ii++) \{
+00389     \textcolor{keyword}{auto} cc = 0;
+00390     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = 0 ; jj < gg\_num\_cols; jj++) \{
+00391       \textcolor{keywordflow}{if}(cc >= elements\_per\_row) \{
+00392         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
+00393       \} \textcolor{keywordflow}{else} \{
+00394         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,
+00395                      gradient\_[2*order\_accuracy\_ + 1 + ee\_index++]*inv\_delta\_x);
+00396         cc++;
+00397       \}
+00398     \}
+00399   \}
+00400 
+00402 
+00403   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = num\_extra\_rows; ii < gg\_num\_rows - num\_extra\_rows; ii++) \{
+00404     \textcolor{keyword}{auto} jj = ii - num\_extra\_rows + 1;
+00405     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} cc = 0; cc < order\_accuracy\_; cc++, jj++) \{
+00406       out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, coeffs\_interior\_[cc]*inv\_delta\_x);
+00407     \}
+00408   \}
+00409 
+00411 
+00412   ee\_index = 0;
+00413   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = gg\_num\_rows - 1; ii >= gg\_num\_rows - num\_extra\_rows; ii--) \{
+00414     \textcolor{keyword}{auto} cc = 0;
+00415     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = gg\_num\_cols - 1; jj >= 0; jj--) \{
+00416       \textcolor{keywordflow}{if}(cc >= elements\_per\_row) \{
+00417         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,\hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
+00418       \} \textcolor{keywordflow}{else} \{
+00419         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,
+00420                      -gradient\_[2*order\_accuracy\_ + 1 +
+00421 ee\_index++]*inv\_delta\_x);
+00422         cc++;
+00423       \}
+00424      \}
+00425   \}
+00426 
+00427   \textcolor{keywordflow}{return} out;
+00428 \}
 00429 
-00430 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00431   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00432   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn < 3*order\_accuracy\_ - 2, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00433 \textcolor{preprocessor}{  #endif}
+\hypertarget{mtk__grad__1d_8cc_source_l00430}{}\hyperlink{classmtk_1_1Grad1D_a871a3b31e257b04d5e303b3211df3a73}{00430} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Grad1D_a77b2eddbe4ab03f469306c604d505b1a}{mtk::Grad1D::ReturnAsDenseMatrix}(
+00431   \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid)\textcolor{keyword}{ const }\{
+00432 
+00433   \textcolor{keywordtype}{int} nn\{grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}()\}; \textcolor{comment}{// Number of cells on the grid.}
 00434 
-00435   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} inv\_delta\_x\{\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/grid.\hyperlink{classmtk_1_1UniStgGrid1D_a6e7173b01241632cf509496d66b9f74c}{delta\_x}()\};
-00436 
-00437   \textcolor{keywordtype}{int} gg\_num\_rows = nn + 1;
-00438   \textcolor{keywordtype}{int} gg\_num\_cols = nn + 2;
-00439   \textcolor{keywordtype}{int} elements\_per\_row = num\_bndy\_coeffs\_;
-00440   \textcolor{keywordtype}{int} num\_extra\_rows = order\_accuracy\_/2;
+00435 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00436   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00437   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn < 3*order\_accuracy\_ - 2, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00438 \textcolor{preprocessor}{  #endif}
+00439 
+00440   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} inv\_delta\_x\{\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/grid.\hyperlink{classmtk_1_1UniStgGrid1D_a6e7173b01241632cf509496d66b9f74c}{delta\_x}()\};
 00441 
-00442   \textcolor{comment}{// Output matrix featuring sizes for gradient operators.}
-00443   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} out(gg\_num\_rows, gg\_num\_cols);
-00444 
+00442   \textcolor{keywordtype}{int} gg\_num\_rows = nn + 1;
+00443   \textcolor{keywordtype}{int} gg\_num\_cols = nn + 2;
+00444   \textcolor{keywordtype}{int} elements\_per\_row = num\_bndy\_coeffs\_;
+00445   \textcolor{keywordtype}{int} num\_extra\_rows = order\_accuracy\_/2;
 00446 
-00447   \textcolor{keyword}{auto} ee\_index = 0;
-00448   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_extra\_rows; ii++) \{
-00449     \textcolor{keyword}{auto} cc = 0;
-00450     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = 0 ; jj < gg\_num\_cols; jj++) \{
-00451       \textcolor{keywordflow}{if}(cc >= elements\_per\_row) \{
-00452         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
-00453       \} \textcolor{keywordflow}{else} \{
-00454         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,
-00455                      gradient\_[2*order\_accuracy\_ + 1 + ee\_index++]*inv\_delta\_x);
-00456         cc++;
-00457       \}
-00458     \}
-00459   \}
-00460 
-00462 
-00463   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = num\_extra\_rows; ii < gg\_num\_rows - num\_extra\_rows; ii++) \{
-00464     \textcolor{keyword}{auto} jj = ii - num\_extra\_rows + 1;
-00465     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} cc = 0; cc < order\_accuracy\_; cc++, jj++) \{
-00466       out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, coeffs\_interior\_[cc]*inv\_delta\_x);
-00467     \}
-00468   \}
-00469 
-00471 
-00472   ee\_index = 0;
-00473   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = gg\_num\_rows - 1; ii >= gg\_num\_rows - num\_extra\_rows; ii--) \{
-00474     \textcolor{keyword}{auto} cc = 0;
-00475     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = gg\_num\_cols - 1; jj >= 0; jj--) \{
-00476       \textcolor{keywordflow}{if}(cc >= elements\_per\_row) \{
-00477         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,\hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
-00478       \} \textcolor{keywordflow}{else} \{
-00479         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,
-00480                     -gradient\_[2*order\_accuracy\_ + 1 + ee\_index++]*inv\_delta\_x);
-00481         cc++;
-00482       \}
-00483      \}
-00484   \}
-00485 
-00486   \textcolor{keywordflow}{return} out;
-00487 \}
-00488 
-\hypertarget{mtk__grad__1d_8cc_source_l00489}{}\hyperlink{classmtk_1_1Grad1D_ab07e6a15edca32534ae3d1a8ccaf1c42}{00489} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Grad1D_ab07e6a15edca32534ae3d1a8ccaf1c42}{mtk::Grad1D::ReturnAsDimensionlessDenseMatrix}
-      (
-00490   \textcolor{keywordtype}{int} num\_cells\_x)\textcolor{keyword}{ const }\{
-00491 
-00492   \textcolor{keywordtype}{int} nn\{num\_cells\_x\}; \textcolor{comment}{// Number of cells on the grid.}
+00447   \textcolor{comment}{// Output matrix featuring sizes for gradient operators.}
+00448   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} out(gg\_num\_rows, gg\_num\_cols);
+00449 
+00451 
+00452   \textcolor{keyword}{auto} ee\_index = 0;
+00453   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_extra\_rows; ii++) \{
+00454     \textcolor{keyword}{auto} cc = 0;
+00455     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = 0 ; jj < gg\_num\_cols; jj++) \{
+00456       \textcolor{keywordflow}{if}(cc >= elements\_per\_row) \{
+00457         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
+00458       \} \textcolor{keywordflow}{else} \{
+00459         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,
+00460                      gradient\_[2*order\_accuracy\_ + 1 + ee\_index++]*inv\_delta\_x);
+00461         cc++;
+00462       \}
+00463     \}
+00464   \}
+00465 
+00467 
+00468   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = num\_extra\_rows; ii < gg\_num\_rows - num\_extra\_rows; ii++) \{
+00469     \textcolor{keyword}{auto} jj = ii - num\_extra\_rows + 1;
+00470     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} cc = 0; cc < order\_accuracy\_; cc++, jj++) \{
+00471       out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, coeffs\_interior\_[cc]*inv\_delta\_x);
+00472     \}
+00473   \}
+00474 
+00476 
+00477   ee\_index = 0;
+00478   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = gg\_num\_rows - 1; ii >= gg\_num\_rows - num\_extra\_rows; ii--) \{
+00479     \textcolor{keyword}{auto} cc = 0;
+00480     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = gg\_num\_cols - 1; jj >= 0; jj--) \{
+00481       \textcolor{keywordflow}{if}(cc >= elements\_per\_row) \{
+00482         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,\hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
+00483       \} \textcolor{keywordflow}{else} \{
+00484         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,
+00485                     -gradient\_[2*order\_accuracy\_ + 1 + ee\_index++]*inv\_delta\_x);
+00486         cc++;
+00487       \}
+00488      \}
+00489   \}
+00490 
+00491   \textcolor{keywordflow}{return} out;
+00492 \}
 00493 
-00494 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00495   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00496   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn < 3*order\_accuracy\_ - 2, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00497 \textcolor{preprocessor}{  #endif}
+\hypertarget{mtk__grad__1d_8cc_source_l00494}{}\hyperlink{classmtk_1_1Grad1D_ab07e6a15edca32534ae3d1a8ccaf1c42}{00494} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Grad1D_ab07e6a15edca32534ae3d1a8ccaf1c42}{mtk::Grad1D::ReturnAsDimensionlessDenseMatrix}
+      (
+00495   \textcolor{keywordtype}{int} num\_cells\_x)\textcolor{keyword}{ const }\{
+00496 
+00497   \textcolor{keywordtype}{int} nn\{num\_cells\_x\}; \textcolor{comment}{// Number of cells on the grid.}
 00498 
-00499   \textcolor{keywordtype}{int} gg\_num\_rows = nn + 1;
-00500   \textcolor{keywordtype}{int} gg\_num\_cols = nn + 2;
-00501   \textcolor{keywordtype}{int} elements\_per\_row = num\_bndy\_coeffs\_;
-00502   \textcolor{keywordtype}{int} num\_extra\_rows = order\_accuracy\_/2;
+00499 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00500   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00501   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn < 3*order\_accuracy\_ - 2, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00502 \textcolor{preprocessor}{  #endif}
 00503 
-00504   \textcolor{comment}{// Output matrix featuring sizes for gradient operators.}
-00505   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} out(gg\_num\_rows, gg\_num\_cols);
-00506 
+00504   \textcolor{keywordtype}{int} gg\_num\_rows = nn + 1;
+00505   \textcolor{keywordtype}{int} gg\_num\_cols = nn + 2;
+00506   \textcolor{keywordtype}{int} elements\_per\_row = num\_bndy\_coeffs\_;
+00507   \textcolor{keywordtype}{int} num\_extra\_rows = order\_accuracy\_/2;
 00508 
-00509   \textcolor{keyword}{auto} ee\_index = 0;
-00510   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_extra\_rows; ii++) \{
-00511     \textcolor{keyword}{auto} cc = 0;
-00512     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = 0 ; jj < gg\_num\_cols; jj++) \{
-00513       \textcolor{keywordflow}{if}(cc >= elements\_per\_row) \{
-00514         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
-00515       \} \textcolor{keywordflow}{else} \{
-00516         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,
-00517                      gradient\_[2*order\_accuracy\_ + 1 + ee\_index++]);
-00518         cc++;
-00519       \}
-00520     \}
-00521   \}
-00522 
-00524 
-00525   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = num\_extra\_rows; ii < gg\_num\_rows - num\_extra\_rows; ii++) \{
-00526     \textcolor{keyword}{auto} jj = ii - num\_extra\_rows + 1;
-00527     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} cc = 0; cc < order\_accuracy\_; cc++, jj++) \{
-00528       out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, coeffs\_interior\_[cc]);
-00529     \}
-00530   \}
-00531 
-00533 
-00534   ee\_index = 0;
-00535   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = gg\_num\_rows - 1; ii >= gg\_num\_rows - num\_extra\_rows; ii--) \{
-00536     \textcolor{keyword}{auto} cc = 0;
-00537     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = gg\_num\_cols - 1; jj >= 0; jj--) \{
-00538       \textcolor{keywordflow}{if}(cc >= elements\_per\_row) \{
-00539         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,\hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
-00540       \} \textcolor{keywordflow}{else} \{
-00541         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,
-00542                      -gradient\_[2*order\_accuracy\_ + 1 + ee\_index++]);
-00543         cc++;
-00544       \}
-00545      \}
-00546   \}
-00547 
-00548   \textcolor{keywordflow}{return} out;
-00549 \}
-00550 
-\hypertarget{mtk__grad__1d_8cc_source_l00551}{}\hyperlink{classmtk_1_1Grad1D_ad6df25cc9dfc85ff8562ae3605486976}{00551} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_ad6df25cc9dfc85ff8562ae3605486976}{mtk::Grad1D::ComputeStencilInteriorGrid}() \{
+00509   \textcolor{comment}{// Output matrix featuring sizes for gradient operators.}
+00510   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} out(gg\_num\_rows, gg\_num\_cols);
+00511 
+00513 
+00514   \textcolor{keyword}{auto} ee\_index = 0;
+00515   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_extra\_rows; ii++) \{
+00516     \textcolor{keyword}{auto} cc = 0;
+00517     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = 0 ; jj < gg\_num\_cols; jj++) \{
+00518       \textcolor{keywordflow}{if}(cc >= elements\_per\_row) \{
+00519         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
+00520       \} \textcolor{keywordflow}{else} \{
+00521         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,
+00522                      gradient\_[2*order\_accuracy\_ + 1 + ee\_index++]);
+00523         cc++;
+00524       \}
+00525     \}
+00526   \}
+00527 
+00529 
+00530   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = num\_extra\_rows; ii < gg\_num\_rows - num\_extra\_rows; ii++) \{
+00531     \textcolor{keyword}{auto} jj = ii - num\_extra\_rows + 1;
+00532     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} cc = 0; cc < order\_accuracy\_; cc++, jj++) \{
+00533       out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, coeffs\_interior\_[cc]);
+00534     \}
+00535   \}
+00536 
+00538 
+00539   ee\_index = 0;
+00540   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = gg\_num\_rows - 1; ii >= gg\_num\_rows - num\_extra\_rows; ii--) \{
+00541     \textcolor{keyword}{auto} cc = 0;
+00542     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = gg\_num\_cols - 1; jj >= 0; jj--) \{
+00543       \textcolor{keywordflow}{if}(cc >= elements\_per\_row) \{
+00544         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,\hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
+00545       \} \textcolor{keywordflow}{else} \{
+00546         out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii,jj,
+00547                      -gradient\_[2*order\_accuracy\_ + 1 + ee\_index++]);
+00548         cc++;
+00549       \}
+00550      \}
+00551   \}
 00552 
-00554 
-00555   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}* pp\{\}; \textcolor{comment}{// Spatial coordinates to create interior stencil.}
-00556 
-00557   \textcolor{keywordflow}{try} \{
-00558     pp = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[order\_accuracy\_];
-00559   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00560     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00561       std::endl;
-00562     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00563   \}
-00564   memset(pp, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(pp[0])*order\_accuracy\_);
-00565 
-00566 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00567   pp[0] = 1.0/2.0 - ((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) order\_accuracy\_)/2.0;
-00568 \textcolor{preprocessor}{  #else}
-00569   pp[0] = 1.0f/2.0f - ((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) order\_accuracy\_)/2.0f;
-00570 \textcolor{preprocessor}{  #endif}
-00571 
-00572   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < order\_accuracy\_; ++ii) \{
-00573     pp[ii] = pp[ii - 1] + \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne};
-00574   \}
-00575 
-00576 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
-00577   std::cout << \textcolor{stringliteral}{"pp ="} << std::endl;
-00578   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
-00579     std::cout << std::setw(12) << pp[ii];
-00580   \}
-00581   std::cout << std::endl << std::endl;
-00582 \textcolor{preprocessor}{  #endif}
-00583 
-00585 
-00586   \textcolor{keywordtype}{bool} transpose\{\textcolor{keyword}{false}\};
-00587 
-00588   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} vander\_matrix(pp,order\_accuracy\_,order\_accuracy\_,transpose);
-00589 
-00590 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
-00591   std::cout << \textcolor{stringliteral}{"vander\_matrix = "} << std::endl;
-00592   std::cout << vander\_matrix << std::endl << std::endl;
-00593 \textcolor{preprocessor}{  #endif}
+00553   \textcolor{keywordflow}{return} out;
+00554 \}
+00555 
+\hypertarget{mtk__grad__1d_8cc_source_l00556}{}\hyperlink{classmtk_1_1Grad1D_ad6df25cc9dfc85ff8562ae3605486976}{00556} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_ad6df25cc9dfc85ff8562ae3605486976}{mtk::Grad1D::ComputeStencilInteriorGrid}() \{
+00557 
+00559 
+00560   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}* pp\{\}; \textcolor{comment}{// Spatial coordinates to create interior stencil.}
+00561 
+00562   \textcolor{keywordflow}{try} \{
+00563     pp = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[order\_accuracy\_];
+00564   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00565     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00566       std::endl;
+00567     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00568   \}
+00569   memset(pp, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(pp[0])*order\_accuracy\_);
+00570 
+00571 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00572   pp[0] = 1.0/2.0 - ((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) order\_accuracy\_)/2.0;
+00573 \textcolor{preprocessor}{  #else}
+00574   pp[0] = 1.0f/2.0f - ((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) order\_accuracy\_)/2.0f;
+00575 \textcolor{preprocessor}{  #endif}
+00576 
+00577   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < order\_accuracy\_; ++ii) \{
+00578     pp[ii] = pp[ii - 1] + \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne};
+00579   \}
+00580 
+00581 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
+00582   std::cout << \textcolor{stringliteral}{"pp ="} << std::endl;
+00583   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
+00584     std::cout << std::setw(12) << pp[ii];
+00585   \}
+00586   std::cout << std::endl << std::endl;
+00587 \textcolor{preprocessor}{  #endif}
+00588 
+00590 
+00591   \textcolor{keywordtype}{bool} transpose\{\textcolor{keyword}{false}\};
+00592 
+00593   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} vander\_matrix(pp,order\_accuracy\_,order\_accuracy\_,transpose);
 00594 
-00596 
-00597   \textcolor{keywordflow}{try} \{
-00598     coeffs\_interior\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[order\_accuracy\_];
-00599   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00600     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00601       std::endl;
-00602     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00603   \}
-00604   memset(coeffs\_interior\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
-00605 \textcolor{keyword}{sizeof}(coeffs\_interior\_[0])*order\_accuracy\_);
-00606 
-00607   coeffs\_interior\_[1] = \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne};
-00608 
-00609 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
-00610   std::cout << \textcolor{stringliteral}{"oo ="} << std::endl;
-00611   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
-00612     std::cout << std::setw(12) << coeffs\_interior\_[ii] << std::endl;
-00613   \}
-00614   std::cout << std::endl;
-00615 \textcolor{preprocessor}{  #endif}
-00616 
-00618 
-00619   \textcolor{keywordtype}{int} info\{\hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{mtk::LAPACKAdapter::SolveDenseSystem}(vander\_matrix,
-00620                                                 coeffs\_interior\_)\};
+00595 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
+00596   std::cout << \textcolor{stringliteral}{"vander\_matrix = "} << std::endl;
+00597   std::cout << vander\_matrix << std::endl << std::endl;
+00598 \textcolor{preprocessor}{  #endif}
+00599 
+00601 
+00602   \textcolor{keywordflow}{try} \{
+00603     coeffs\_interior\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[order\_accuracy\_];
+00604   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00605     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00606       std::endl;
+00607     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00608   \}
+00609   memset(coeffs\_interior\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
+00610 \textcolor{keyword}{sizeof}(coeffs\_interior\_[0])*order\_accuracy\_);
+00611 
+00612   coeffs\_interior\_[1] = \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne};
+00613 
+00614 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
+00615   std::cout << \textcolor{stringliteral}{"oo ="} << std::endl;
+00616   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
+00617     std::cout << std::setw(12) << coeffs\_interior\_[ii] << std::endl;
+00618   \}
+00619   std::cout << std::endl;
+00620 \textcolor{preprocessor}{  #endif}
 00621 
-00622 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00623   \textcolor{keywordflow}{if} (!info) \{
-00624     std::cout << \textcolor{stringliteral}{"System solved! Interior stencil attained!"} << std::endl;
-00625     std::cout << std::endl;
-00626   \}
-00627   \textcolor{keywordflow}{else} \{
-00628     std::cerr << \textcolor{stringliteral}{"Something wrong solving system! info = "} << info << std::endl;
-00629     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
-00630     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00623 
+00624   \textcolor{keywordtype}{int} info\{\hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{mtk::LAPACKAdapter::SolveDenseSystem}(vander\_matrix,
+00625                                                 coeffs\_interior\_)\};
+00626 
+00627 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00628   \textcolor{keywordflow}{if} (!info) \{
+00629     std::cout << \textcolor{stringliteral}{"System solved! Interior stencil attained!"} << std::endl;
+00630     std::cout << std::endl;
 00631   \}
-00632 \textcolor{preprocessor}{  #endif}
-00633 
-00634 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
-00635   std::cout << \textcolor{stringliteral}{"coeffs\_interior\_ ="} << std::endl;
-00636   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
-00637     std::cout << std::setw(12) << coeffs\_interior\_[ii];
-00638   \}
-00639   std::cout << std::endl << std::endl;
-00640 \textcolor{preprocessor}{  #endif}
-00641 
-00642   \textcolor{keyword}{delete} [] pp;
-00643   pp = \textcolor{keyword}{nullptr};
-00644 
-00645   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-00646 \}
-00647 
-\hypertarget{mtk__grad__1d_8cc_source_l00648}{}\hyperlink{classmtk_1_1Grad1D_a2d03e6a3961bee558f575ec4099782a9}{00648} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a2d03e6a3961bee558f575ec4099782a9}{mtk::Grad1D::ComputeRationalBasisNullSpace}(\textcolor{keywordtype}{void}) \{
+00632   \textcolor{keywordflow}{else} \{
+00633     std::cerr << \textcolor{stringliteral}{"Something wrong solving system! info = "} << info << std::endl;
+00634     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
+00635     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00636   \}
+00637 \textcolor{preprocessor}{  #endif}
+00638 
+00639 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
+00640   std::cout << \textcolor{stringliteral}{"coeffs\_interior\_ ="} << std::endl;
+00641   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
+00642     std::cout << std::setw(12) << coeffs\_interior\_[ii];
+00643   \}
+00644   std::cout << std::endl << std::endl;
+00645 \textcolor{preprocessor}{  #endif}
+00646 
+00647   \textcolor{keyword}{delete} [] pp;
+00648   pp = \textcolor{keyword}{nullptr};
 00649 
-00651 
-00652   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}* gg\{\}; \textcolor{comment}{// Generator vector for the first Vandermonde matrix.}
-00653 
-00654   \textcolor{keywordflow}{try} \{
-00655     gg = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_bndy\_coeffs\_];
-00656   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00657     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00658       std::endl;
-00659     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00660   \}
-00661   memset(gg, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(gg[0])*num\_bndy\_coeffs\_);
-00662 
-00663 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00664   gg[1] = 1.0/2.0;
-00665 \textcolor{preprocessor}{  #else}
-00666   gg[1] = 1.0f/2.0f;
-00667 \textcolor{preprocessor}{  #endif}
-00668   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 2; ii < num\_bndy\_coeffs\_; ++ii) \{
-00669     gg[ii] = gg[ii - 1] + \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne};
-00670   \}
-00671 
-00672 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
-00673   std::cout << \textcolor{stringliteral}{"gg ="} << std::endl;
-00674   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
-00675     std::cout << std::setw(12) << gg[ii];
-00676   \}
-00677   std::cout << std::endl << std::endl;
-00678 \textcolor{preprocessor}{  #endif}
-00679 
-00681 
-00682   \textcolor{keywordtype}{bool} tran\{\textcolor{keyword}{true}\}; \textcolor{comment}{// Should I transpose the Vandermonde matrix.}
-00683 
-00684   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} aa\_west\_t(gg, num\_bndy\_coeffs\_, order\_accuracy\_ + 1, tran);
-00685 
-00686 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
-00687   std::cout << \textcolor{stringliteral}{"aa\_west\_t ="} << std::endl;
-00688   std::cout << aa\_west\_t << std::endl;
-00689 \textcolor{preprocessor}{  #endif}
+00650   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00651 \}
+00652 
+\hypertarget{mtk__grad__1d_8cc_source_l00653}{}\hyperlink{classmtk_1_1Grad1D_a2d03e6a3961bee558f575ec4099782a9}{00653} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a2d03e6a3961bee558f575ec4099782a9}{mtk::Grad1D::ComputeRationalBasisNullSpace}(\textcolor{keywordtype}{void}) \{
+00654 
+00656 
+00657   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}* gg\{\}; \textcolor{comment}{// Generator vector for the first Vandermonde matrix.}
+00658 
+00659   \textcolor{keywordflow}{try} \{
+00660     gg = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_bndy\_coeffs\_];
+00661   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00662     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00663       std::endl;
+00664     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00665   \}
+00666   memset(gg, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(gg[0])*num\_bndy\_coeffs\_);
+00667 
+00668 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00669   gg[1] = 1.0/2.0;
+00670 \textcolor{preprocessor}{  #else}
+00671   gg[1] = 1.0f/2.0f;
+00672 \textcolor{preprocessor}{  #endif}
+00673   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 2; ii < num\_bndy\_coeffs\_; ++ii) \{
+00674     gg[ii] = gg[ii - 1] + \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne};
+00675   \}
+00676 
+00677 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
+00678   std::cout << \textcolor{stringliteral}{"gg ="} << std::endl;
+00679   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
+00680     std::cout << std::setw(12) << gg[ii];
+00681   \}
+00682   std::cout << std::endl << std::endl;
+00683 \textcolor{preprocessor}{  #endif}
+00684 
+00686 
+00687   \textcolor{keywordtype}{bool} tran\{\textcolor{keyword}{true}\}; \textcolor{comment}{// Should I transpose the Vandermonde matrix.}
+00688 
+00689   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} aa\_west\_t(gg, num\_bndy\_coeffs\_, order\_accuracy\_ + 1, tran);
 00690 
-00692 
-00693   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} qq\_t(\hyperlink{classmtk_1_1LAPACKAdapter_ae5c6e78c9c819c9ac7a6f31bfd011d7a}{mtk::LAPACKAdapter::QRFactorDenseMatrix}
+00691 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
+00692   std::cout << \textcolor{stringliteral}{"aa\_west\_t ="} << std::endl;
+00693   std::cout << aa\_west\_t << std::endl;
+00694 \textcolor{preprocessor}{  #endif}
+00695 
+00697 
+00698   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} qq\_t(\hyperlink{classmtk_1_1LAPACKAdapter_ae5c6e78c9c819c9ac7a6f31bfd011d7a}{mtk::LAPACKAdapter::QRFactorDenseMatrix}
       (aa\_west\_t));
-00694 
-00695 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
-00696   std::cout << \textcolor{stringliteral}{"qq\_t = "} << std::endl;
-00697   std::cout << qq\_t << std::endl;
-00698 \textcolor{preprocessor}{  #endif}
 00699 
-00701 
-00702   \textcolor{keywordtype}{int} kk\_num\_rows\{num\_bndy\_coeffs\_\};
-00703   \textcolor{keywordtype}{int} kk\_num\_cols\{dim\_null\_\};
+00700 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
+00701   std::cout << \textcolor{stringliteral}{"qq\_t = "} << std::endl;
+00702   std::cout << qq\_t << std::endl;
+00703 \textcolor{preprocessor}{  #endif}
 00704 
-00705   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} kk(kk\_num\_rows, kk\_num\_cols);
 00706 
-00707   \textcolor{comment}{// In the case of the gradient, even though we must solve for a null-space}
-00708   \textcolor{comment}{// of dimension 2, we must only extract ONE basis for the kernel.}
-00709   \textcolor{comment}{// We perform this extraction here:}
-00710 
-00711   \textcolor{keywordtype}{int} aux\_\{kk\_num\_rows - kk\_num\_cols\};
-00712   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = kk\_num\_rows - kk\_num\_cols; ii < kk\_num\_rows; ii++) \{
-00713     aux\_--;
-00714     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < kk\_num\_rows; jj++) \{
-00715       kk.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[jj*kk\_num\_cols + (kk\_num\_rows - kk\_num\_cols - aux\_ - 1)] =
-00716         qq\_t.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[ii*num\_bndy\_coeffs\_ + jj];
-00717     \}
-00718   \}
-00719 
-00720 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 2}
-00721   std::cout << \textcolor{stringliteral}{"kk ="} << std::endl;
-00722   std::cout << kk << std::endl;
-00723   std::cout << \textcolor{stringliteral}{"kk.num\_rows() = "} << kk.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}() << std::endl;
-00724   std::cout << \textcolor{stringliteral}{"kk.num\_cols() = "} << kk.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}() << std::endl;
-00725   std::cout << std::endl;
-00726 \textcolor{preprocessor}{  #endif}
-00727 
-00729 
-00730   \textcolor{comment}{// Scale thus requesting that the last entries of the attained basis for the}
-00731   \textcolor{comment}{// null-space, adopt the pattern we require.}
-00732   \textcolor{comment}{// Essentially we will implement the following MATLAB pseudo-code:}
-00733   \textcolor{comment}{//  scalers = kk(num\_bndy\_approxs - (dim\_null - 1):num\_bndy\_approxs,:)\(\backslash\)B}
-00734   \textcolor{comment}{//  SK = kk*scalers}
-00735   \textcolor{comment}{// where SK is the scaled null-space.}
-00736 
-00737   \textcolor{comment}{// In this point, we almost have all the data we need correctly allocated}
-00738   \textcolor{comment}{// in memory. We will create the matrix iden\_, and elements we wish to scale}
-00739   \textcolor{comment}{// in the kk array. Using the concept of the leading dimension, we could just}
-00740   \textcolor{comment}{// use kk, with the correct leading dimension and that is it. BUT I DO NOT}
-00741   \textcolor{comment}{// GET how does it work. So I will just create a matrix with the content of}
-00742   \textcolor{comment}{// this array that we need, solve for the scalers and then scale the}
-00743   \textcolor{comment}{// whole kk:}
-00744 
-00745   \textcolor{comment}{// We will then create memory for that sub-matrix of kk (subk).}
-00746 
-00747   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} subk(dim\_null\_, dim\_null\_);
-00748 
-00749   \textcolor{keyword}{auto} zz = 0;
-00750   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = order\_accuracy\_ + 1; ii < num\_bndy\_coeffs\_; ii++) \{
-00751     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < dim\_null\_; jj++) \{
-00752       subk.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[zz*(dim\_null\_) + jj] = kk.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[ii*(dim\_null\_) + jj];
-00753     \}
-00754     zz++;
-00755   \}
-00756 
-00757 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
-00758   std::cout << \textcolor{stringliteral}{"subk ="} << std::endl;
-00759   std::cout << subk << std::endl;
-00760 \textcolor{preprocessor}{  #endif}
+00707   \textcolor{keywordtype}{int} kk\_num\_rows\{num\_bndy\_coeffs\_\};
+00708   \textcolor{keywordtype}{int} kk\_num\_cols\{dim\_null\_\};
+00709 
+00710   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} kk(kk\_num\_rows, kk\_num\_cols);
+00711 
+00712   \textcolor{comment}{// In the case of the gradient, even though we must solve for a null-space}
+00713   \textcolor{comment}{// of dimension 2, we must only extract ONE basis for the kernel.}
+00714   \textcolor{comment}{// We perform this extraction here:}
+00715 
+00716   \textcolor{keywordtype}{int} aux\_\{kk\_num\_rows - kk\_num\_cols\};
+00717   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = kk\_num\_rows - kk\_num\_cols; ii < kk\_num\_rows; ii++) \{
+00718     aux\_--;
+00719     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < kk\_num\_rows; jj++) \{
+00720       kk.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[jj*kk\_num\_cols + (kk\_num\_rows - kk\_num\_cols - aux\_ - 1)] =
+00721         qq\_t.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[ii*num\_bndy\_coeffs\_ + jj];
+00722     \}
+00723   \}
+00724 
+00725 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 2}
+00726   std::cout << \textcolor{stringliteral}{"kk ="} << std::endl;
+00727   std::cout << kk << std::endl;
+00728   std::cout << \textcolor{stringliteral}{"kk.num\_rows() = "} << kk.\hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\_rows}() << std::endl;
+00729   std::cout << \textcolor{stringliteral}{"kk.num\_cols() = "} << kk.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}() << std::endl;
+00730   std::cout << std::endl;
+00731 \textcolor{preprocessor}{  #endif}
+00732 
+00734 
+00735   \textcolor{comment}{// Scale thus requesting that the last entries of the attained basis for the}
+00736   \textcolor{comment}{// null-space, adopt the pattern we require.}
+00737   \textcolor{comment}{// Essentially we will implement the following MATLAB pseudo-code:}
+00738   \textcolor{comment}{//  scalers = kk(num\_bndy\_approxs - (dim\_null - 1):num\_bndy\_approxs,:)\(\backslash\)B}
+00739   \textcolor{comment}{//  SK = kk*scalers}
+00740   \textcolor{comment}{// where SK is the scaled null-space.}
+00741 
+00742   \textcolor{comment}{// In this point, we almost have all the data we need correctly allocated}
+00743   \textcolor{comment}{// in memory. We will create the matrix iden\_, and elements we wish to scale}
+00744   \textcolor{comment}{// in the kk array. Using the concept of the leading dimension, we could just}
+00745   \textcolor{comment}{// use kk, with the correct leading dimension and that is it. BUT I DO NOT}
+00746   \textcolor{comment}{// GET how does it work. So I will just create a matrix with the content of}
+00747   \textcolor{comment}{// this array that we need, solve for the scalers and then scale the}
+00748   \textcolor{comment}{// whole kk:}
+00749 
+00750   \textcolor{comment}{// We will then create memory for that sub-matrix of kk (subk).}
+00751 
+00752   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} subk(dim\_null\_, dim\_null\_);
+00753 
+00754   \textcolor{keyword}{auto} zz = 0;
+00755   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = order\_accuracy\_ + 1; ii < num\_bndy\_coeffs\_; ii++) \{
+00756     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < dim\_null\_; jj++) \{
+00757       subk.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[zz*(dim\_null\_) + jj] = kk.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[ii*(dim\_null\_) + jj];
+00758     \}
+00759     zz++;
+00760   \}
 00761 
-00762   subk.\hyperlink{classmtk_1_1DenseMatrix_a71d9c07ca66e88d97d1fd5012f43138b}{Transpose}();
-00763 
-00764 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
-00765   std::cout << \textcolor{stringliteral}{"subk\_t ="} << std::endl;
-00766   std::cout << subk << std::endl;
-00767 \textcolor{preprocessor}{  #endif}
+00762 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
+00763   std::cout << \textcolor{stringliteral}{"subk ="} << std::endl;
+00764   std::cout << subk << std::endl;
+00765 \textcolor{preprocessor}{  #endif}
+00766 
+00767   subk.\hyperlink{classmtk_1_1DenseMatrix_a71d9c07ca66e88d97d1fd5012f43138b}{Transpose}();
 00768 
-00769   \textcolor{keywordtype}{bool} padded\{\textcolor{keyword}{false}\};
-00770   tran = \textcolor{keyword}{false};
-00771 
-00772   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} iden(dim\_null\_, padded, tran);
+00769 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
+00770   std::cout << \textcolor{stringliteral}{"subk\_t ="} << std::endl;
+00771   std::cout << subk << std::endl;
+00772 \textcolor{preprocessor}{  #endif}
 00773 
-00774 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
-00775   std::cout << \textcolor{stringliteral}{"iden ="} << std::endl;
-00776   std::cout << iden << std::endl;
-00777 \textcolor{preprocessor}{  #endif}
+00774   \textcolor{keywordtype}{bool} padded\{\textcolor{keyword}{false}\};
+00775   tran = \textcolor{keyword}{false};
+00776 
+00777   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} iden(dim\_null\_, padded, tran);
 00778 
-00779   \textcolor{comment}{// Solve the system to compute the scalers.}
-00780   \textcolor{comment}{// An example of the system to solve, for k = 8, is:}
-00781   \textcolor{comment}{//}
-00782   \textcolor{comment}{// subk*scalers = iden or}
-00783   \textcolor{comment}{//}
-00784   \textcolor{comment}{// |  0.386018  -0.0339244   -0.129478 |           | 1 0 0 |}
-00785   \textcolor{comment}{// | -0.119774   0.0199423   0.0558632 |*scalers = | 0 1 0 |}
-00786   \textcolor{comment}{// | 0.0155708 -0.00349546 -0.00853182 |           | 0 0 1 |}
-00787   \textcolor{comment}{//}
-00788   \textcolor{comment}{// Notice this is a nrhs = 3 system.}
-00789   \textcolor{comment}{// Noteworthy: we do NOT ACTUALLY ALLOCATE space for the scalers... they}
-00790   \textcolor{comment}{// will be stored in the created identity matrix.}
-00791   \textcolor{comment}{// Let us first transpose subk (because of LAPACK):}
-00792 
-00793   \textcolor{keywordtype}{int} info\{\hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{mtk::LAPACKAdapter::SolveDenseSystem}(subk, iden)\};
-00794 
-00795 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00796   \textcolor{keywordflow}{if} (!info) \{
-00797     std::cout << \textcolor{stringliteral}{"System successfully solved!"} <<
-00798       std::endl;
-00799   \} \textcolor{keywordflow}{else} \{
-00800     std::cerr << \textcolor{stringliteral}{"Something went wrong solving system! info = "} << info <<
-00801       std::endl;
-00802     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
-00803     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-00804   \}
-00805   std::cout << std::endl;
-00806 \textcolor{preprocessor}{  #endif}
-00807 
-00808 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
-00809   std::cout << \textcolor{stringliteral}{"Computed scalers:"} << std::endl;
-00810   std::cout << iden << std::endl;
+00779 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
+00780   std::cout << \textcolor{stringliteral}{"iden ="} << std::endl;
+00781   std::cout << iden << std::endl;
+00782 \textcolor{preprocessor}{  #endif}
+00783 
+00784   \textcolor{comment}{// Solve the system to compute the scalers.}
+00785   \textcolor{comment}{// An example of the system to solve, for k = 8, is:}
+00786   \textcolor{comment}{//}
+00787   \textcolor{comment}{// subk*scalers = iden or}
+00788   \textcolor{comment}{//}
+00789   \textcolor{comment}{// |  0.386018  -0.0339244   -0.129478 |           | 1 0 0 |}
+00790   \textcolor{comment}{// | -0.119774   0.0199423   0.0558632 |*scalers = | 0 1 0 |}
+00791   \textcolor{comment}{// | 0.0155708 -0.00349546 -0.00853182 |           | 0 0 1 |}
+00792   \textcolor{comment}{//}
+00793   \textcolor{comment}{// Notice this is a nrhs = 3 system.}
+00794   \textcolor{comment}{// Noteworthy: we do NOT ACTUALLY ALLOCATE space for the scalers... they}
+00795   \textcolor{comment}{// will be stored in the created identity matrix.}
+00796   \textcolor{comment}{// Let us first transpose subk (because of LAPACK):}
+00797 
+00798   \textcolor{keywordtype}{int} info\{\hyperlink{classmtk_1_1LAPACKAdapter_a7428bccf74fd4a4af68fb7233846da22}{mtk::LAPACKAdapter::SolveDenseSystem}(subk, iden)\};
+00799 
+00800 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00801   \textcolor{keywordflow}{if} (!info) \{
+00802     std::cout << \textcolor{stringliteral}{"System successfully solved!"} <<
+00803       std::endl;
+00804   \} \textcolor{keywordflow}{else} \{
+00805     std::cerr << \textcolor{stringliteral}{"Something went wrong solving system! info = "} << info <<
+00806       std::endl;
+00807     std::cerr << \textcolor{stringliteral}{"Exiting..."} << std::endl;
+00808     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00809   \}
+00810   std::cout << std::endl;
 00811 \textcolor{preprocessor}{  #endif}
 00812 
-00813   \textcolor{comment}{// Multiply the two matrices to attain a scaled basis for null-space.}
-00814 
-00815   rat\_basis\_null\_space\_ = \hyperlink{classmtk_1_1BLASAdapter_acebd0e9bfe0bdd609c7fbea98ccfd3b5}{mtk::BLASAdapter::RealDenseMM}(kk, iden);
-00816 
-00817 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
-00818   std::cout << \textcolor{stringliteral}{"Rational basis for the null-space:"} << std::endl;
-00819   std::cout << rat\_basis\_null\_space\_ << std::endl;
-00820 \textcolor{preprocessor}{  #endif}
+00813 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
+00814   std::cout << \textcolor{stringliteral}{"Computed scalers:"} << std::endl;
+00815   std::cout << iden << std::endl;
+00816 \textcolor{preprocessor}{  #endif}
+00817 
+00818   \textcolor{comment}{// Multiply the two matrices to attain a scaled basis for null-space.}
+00819 
+00820   rat\_basis\_null\_space\_ = \hyperlink{classmtk_1_1BLASAdapter_acebd0e9bfe0bdd609c7fbea98ccfd3b5}{mtk::BLASAdapter::RealDenseMM}(kk, iden);
 00821 
-00822   \textcolor{comment}{// At this point, we have a rational basis for the null-space, with the}
-00823   \textcolor{comment}{// pattern we need! :)}
-00824 
-00825   \textcolor{keyword}{delete} [] gg;
-00826   gg = \textcolor{keyword}{nullptr};
-00827 
-00828   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-00829 \}
-00830 
-\hypertarget{mtk__grad__1d_8cc_source_l00831}{}\hyperlink{classmtk_1_1Grad1D_add4c68a6e78d8b9c2b800b3f96f4757d}{00831} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_add4c68a6e78d8b9c2b800b3f96f4757d}{mtk::Grad1D::ComputePreliminaryApproximations}() \{
+00822 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
+00823   std::cout << \textcolor{stringliteral}{"Rational basis for the null-space:"} << std::endl;
+00824   std::cout << rat\_basis\_null\_space\_ << std::endl;
+00825 \textcolor{preprocessor}{  #endif}
+00826 
+00827   \textcolor{comment}{// At this point, we have a rational basis for the null-space, with the}
+00828   \textcolor{comment}{// pattern we need! :)}
+00829 
+00830   \textcolor{keyword}{delete} [] gg;
+00831   gg = \textcolor{keyword}{nullptr};
 00832 
-00834 
-00835   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *gg\{\}; \textcolor{comment}{// Generator vector for the first approximation.}
-00836 
-00837   \textcolor{keywordflow}{try} \{
-00838     gg = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_bndy\_coeffs\_];
-00839   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00840     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00841       std::endl;
-00842     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00843   \}
-00844   memset(gg, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(gg[0])*num\_bndy\_coeffs\_);
-00845 
-00846 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00847   gg[1] = 1.0/2.0;
-00848 \textcolor{preprocessor}{  #else}
-00849   gg[1] = 1.0f/2.0f;
-00850 \textcolor{preprocessor}{  #endif}
-00851   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 2; ii < num\_bndy\_coeffs\_; ++ii) \{
-00852     gg[ii] = gg[ii - 1] + \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne};
-00853   \}
-00854 
-00855 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
-00856   std::cout << \textcolor{stringliteral}{"gg0 ="} << std::endl;
-00857   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
-00858     std::cout << std::setw(12) << gg[ii];
-00859   \}
-00860   std::cout << std::endl << std::endl;
-00861 \textcolor{preprocessor}{  #endif}
-00862 
-00863   \textcolor{comment}{// Allocate 2D array to store the collection of preliminary approximations.}
-00864   \textcolor{keywordflow}{try} \{
-00865     prem\_apps\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_bndy\_coeffs\_*num\_bndy\_approxs\_];
-00866   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00867     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00868 std::endl;
-00869     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00870   \}
-00871   memset(prem\_apps\_,
-00872          \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
-00873          \textcolor{keyword}{sizeof}(prem\_apps\_[0])*num\_bndy\_coeffs\_*num\_bndy\_approxs\_);
-00874 
-00876 
-00877   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ll = 0; ll < num\_bndy\_approxs\_; ++ll) \{
-00878 
-00879     \textcolor{comment}{// Re-check new generator vector for every iteration except for the first.}
-00880 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 3}
-00881     \textcolor{keywordflow}{if} (ll > 0) \{
-00882       std::cout << \textcolor{stringliteral}{"gg\_"} << ll << \textcolor{stringliteral}{" ="} << std::endl;
-00883       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
-00884         std::cout << std::setw(12) << gg[ii];
-00885       \}
-00886       std::cout << std::endl << std::endl;
-00887     \}
-00888 \textcolor{preprocessor}{    #endif}
-00889 
-00891 
-00892     \textcolor{keywordtype}{bool} transpose\{\textcolor{keyword}{false}\};
-00893 
-00894     \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} aa(gg,
-00895                          num\_bndy\_coeffs\_, order\_accuracy\_ + 1,
-00896                          transpose);
-00897 
-00898 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 4}
-00899     std::cout << \textcolor{stringliteral}{"aa\_"} << ll << \textcolor{stringliteral}{" ="} << std::endl;
-00900     std::cout << aa << std::endl;
-00901 \textcolor{preprocessor}{    #endif}
+00833   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00834 \}
+00835 
+\hypertarget{mtk__grad__1d_8cc_source_l00836}{}\hyperlink{classmtk_1_1Grad1D_add4c68a6e78d8b9c2b800b3f96f4757d}{00836} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_add4c68a6e78d8b9c2b800b3f96f4757d}{mtk::Grad1D::ComputePreliminaryApproximations}() \{
+00837 
+00839 
+00840   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *gg\{\}; \textcolor{comment}{// Generator vector for the first approximation.}
+00841 
+00842   \textcolor{keywordflow}{try} \{
+00843     gg = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_bndy\_coeffs\_];
+00844   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00845     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00846       std::endl;
+00847     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00848   \}
+00849   memset(gg, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(gg[0])*num\_bndy\_coeffs\_);
+00850 
+00851 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00852   gg[1] = 1.0/2.0;
+00853 \textcolor{preprocessor}{  #else}
+00854   gg[1] = 1.0f/2.0f;
+00855 \textcolor{preprocessor}{  #endif}
+00856   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 2; ii < num\_bndy\_coeffs\_; ++ii) \{
+00857     gg[ii] = gg[ii - 1] + \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne};
+00858   \}
+00859 
+00860 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
+00861   std::cout << \textcolor{stringliteral}{"gg0 ="} << std::endl;
+00862   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
+00863     std::cout << std::setw(12) << gg[ii];
+00864   \}
+00865   std::cout << std::endl << std::endl;
+00866 \textcolor{preprocessor}{  #endif}
+00867 
+00868   \textcolor{comment}{// Allocate 2D array to store the collection of preliminary approximations.}
+00869   \textcolor{keywordflow}{try} \{
+00870     prem\_apps\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_bndy\_coeffs\_*num\_bndy\_approxs\_];
+00871   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00872     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00873 std::endl;
+00874     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00875   \}
+00876   memset(prem\_apps\_,
+00877          \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
+00878          \textcolor{keyword}{sizeof}(prem\_apps\_[0])*num\_bndy\_coeffs\_*num\_bndy\_approxs\_);
+00879 
+00881 
+00882   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ll = 0; ll < num\_bndy\_approxs\_; ++ll) \{
+00883 
+00884     \textcolor{comment}{// Re-check new generator vector for every iteration except for the first.}
+00885 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 3}
+00886     \textcolor{keywordflow}{if} (ll > 0) \{
+00887       std::cout << \textcolor{stringliteral}{"gg\_"} << ll << \textcolor{stringliteral}{" ="} << std::endl;
+00888       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
+00889         std::cout << std::setw(12) << gg[ii];
+00890       \}
+00891       std::cout << std::endl << std::endl;
+00892     \}
+00893 \textcolor{preprocessor}{    #endif}
+00894 
+00896 
+00897     \textcolor{keywordtype}{bool} transpose\{\textcolor{keyword}{false}\};
+00898 
+00899     \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} aa(gg,
+00900                          num\_bndy\_coeffs\_, order\_accuracy\_ + 1,
+00901                          transpose);
 00902 
-00904 
-00905     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *ob\{\};
-00906 
-00907     \textcolor{keyword}{auto} ob\_ld = num\_bndy\_coeffs\_;
-00908 
-00909     \textcolor{keywordflow}{try} \{
-00910       ob = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[ob\_ld];
-00911     \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00912       std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00913         std::endl;
-00914       std::cerr << memory\_allocation\_exception.what() << std::endl;
-00915     \}
-00916     memset(ob, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(ob[0])*ob\_ld);
-00917 
-00918     ob[1] = \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne};
-00919 
-00920 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 3}
-00921     std::cout << \textcolor{stringliteral}{"ob = "} << std::endl << std::endl;
-00922     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < ob\_ld; ++ii) \{
-00923       std::cout << std::setw(12) << ob[ii] << std::endl;
-00924     \}
-00925     std::cout << std::endl;
-00926 \textcolor{preprocessor}{    #endif}
-00927 
-00929 
-00930     \textcolor{comment}{// However, this is an under-determined system of equations. So we can not}
-00931     \textcolor{comment}{// use the same LAPACK routine (dgesv\_). We will instead use dgels\_, through}
-00932     \textcolor{comment}{// our LAPACKAdapter class.}
-00933 
-00934     \textcolor{keywordtype}{int} info\_\{
-00935       \hyperlink{classmtk_1_1LAPACKAdapter_a380f148ffdf96bae2f79ae28f1a6560c}{mtk::LAPACKAdapter::SolveRectangularDenseSystem}(aa, ob
+00903 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 4}
+00904     std::cout << \textcolor{stringliteral}{"aa\_"} << ll << \textcolor{stringliteral}{" ="} << std::endl;
+00905     std::cout << aa << std::endl;
+00906 \textcolor{preprocessor}{    #endif}
+00907 
+00909 
+00910     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *ob\{\};
+00911 
+00912     \textcolor{keyword}{auto} ob\_ld = num\_bndy\_coeffs\_;
+00913 
+00914     \textcolor{keywordflow}{try} \{
+00915       ob = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[ob\_ld];
+00916     \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00917       std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00918         std::endl;
+00919       std::cerr << memory\_allocation\_exception.what() << std::endl;
+00920     \}
+00921     memset(ob, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(ob[0])*ob\_ld);
+00922 
+00923     ob[1] = \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne};
+00924 
+00925 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 3}
+00926     std::cout << \textcolor{stringliteral}{"ob = "} << std::endl << std::endl;
+00927     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < ob\_ld; ++ii) \{
+00928       std::cout << std::setw(12) << ob[ii] << std::endl;
+00929     \}
+00930     std::cout << std::endl;
+00931 \textcolor{preprocessor}{    #endif}
+00932 
+00934 
+00935     \textcolor{comment}{// However, this is an under-determined system of equations. So we can not}
+00936     \textcolor{comment}{// use the same LAPACK routine (dgesv\_). We will instead use dgels\_, through}
+00937     \textcolor{comment}{// our LAPACKAdapter class.}
+00938 
+00939     \textcolor{keywordtype}{int} info\_\{
+00940       \hyperlink{classmtk_1_1LAPACKAdapter_a380f148ffdf96bae2f79ae28f1a6560c}{mtk::LAPACKAdapter::SolveRectangularDenseSystem}(aa, ob
       , ob\_ld)\};
-00936 
-00937 \textcolor{preprocessor}{    #ifdef MTK\_PERFORM\_PREVENTIONS}
-00938     \textcolor{keywordflow}{if} (!info\_) \{
-00939       std::cout << \textcolor{stringliteral}{"System successfully solved!"} << std::endl << std::endl;
-00940     \} \textcolor{keywordflow}{else} \{
-00941       std::cerr << \textcolor{stringliteral}{"Error solving system! info = "} << info\_ << std::endl;
-00942       \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-00943     \}
-00944 \textcolor{preprocessor}{    #endif}
-00945 
-00946 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 3}
-00947     std::cout << \textcolor{stringliteral}{"ob ="} << std::endl;
-00948     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < ob\_ld; ++ii) \{
-00949       std::cout << std::setw(12) << ob[ii] << std::endl;
-00950     \}
-00951     std::cout << std::endl;
-00952 \textcolor{preprocessor}{    #endif}
-00953 
-00955 
-00956     \textcolor{comment}{// This implies a DAXPY operation. However, we must construct the arguments}
-00957     \textcolor{comment}{// for this operation.}
+00941 
+00942 \textcolor{preprocessor}{    #ifdef MTK\_PERFORM\_PREVENTIONS}
+00943     \textcolor{keywordflow}{if} (!info\_) \{
+00944       std::cout << \textcolor{stringliteral}{"System successfully solved!"} << std::endl << std::endl;
+00945     \} \textcolor{keywordflow}{else} \{
+00946       std::cerr << \textcolor{stringliteral}{"Error solving system! info = "} << info\_ << std::endl;
+00947       \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00948     \}
+00949 \textcolor{preprocessor}{    #endif}
+00950 
+00951 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 3}
+00952     std::cout << \textcolor{stringliteral}{"ob ="} << std::endl;
+00953     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < ob\_ld; ++ii) \{
+00954       std::cout << std::setw(12) << ob[ii] << std::endl;
+00955     \}
+00956     std::cout << std::endl;
+00957 \textcolor{preprocessor}{    #endif}
 00958 
-00960     \textcolor{comment}{// Save them into the ob\_bottom array:}
-00961 
-00962     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *ob\_bottom\{\}; \textcolor{comment}{// Bottom part of the attained kernel used to scale it.}
+00960 
+00961     \textcolor{comment}{// This implies a DAXPY operation. However, we must construct the arguments}
+00962     \textcolor{comment}{// for this operation.}
 00963 
-00964     \textcolor{keywordflow}{try} \{
-00965       ob\_bottom = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[dim\_null\_];
-00966     \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00967       std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00968         std::endl;
-00969       std::cerr << memory\_allocation\_exception.what() << std::endl;
-00970     \}
-00971     memset(ob\_bottom, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(ob\_bottom[0])*dim\_null\_);
-00972 
-00973     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_; ++ii) \{
-00974       ob\_bottom[(dim\_null\_ - 1) - ii] = ob[num\_bndy\_coeffs\_ - ii - 1];
+00965     \textcolor{comment}{// Save them into the ob\_bottom array:}
+00966 
+00967     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *ob\_bottom\{\}; \textcolor{comment}{// Bottom part of the attained kernel used to scale it.}
+00968 
+00969     \textcolor{keywordflow}{try} \{
+00970       ob\_bottom = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[dim\_null\_];
+00971     \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00972       std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00973         std::endl;
+00974       std::cerr << memory\_allocation\_exception.what() << std::endl;
 00975     \}
-00976 
-00977 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 3}
-00978     std::cout << \textcolor{stringliteral}{"ob\_bottom ="} << std::endl;
-00979     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_; ++ii) \{
-00980       std::cout << std::setw(12) << ob\_bottom[ii] << std::endl;
-00981     \}
-00982     std::cout << std::endl;
-00983 \textcolor{preprocessor}{    #endif}
-00984 
-00986 
-00987     \textcolor{comment}{// We must computed an scaled ob, sob, using the scaled null-space in}
-00988     \textcolor{comment}{// rat\_basis\_null\_space\_.}
-00989     \textcolor{comment}{// Such operation is: sob = ob - rat\_basis\_null\_space\_*ob\_bottom}
-00990     \textcolor{comment}{// or:                 ob = -1.0*rat\_basis\_null\_space\_*ob\_bottom + 1.0*ob}
-00991     \textcolor{comment}{// thus:                Y =    a*A    *x         +   b*Y (DAXPY).}
-00992 
-00993 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 4}
-00994     std::cout << \textcolor{stringliteral}{"Rational basis for the null-space:"} << std::endl;
-00995     std::cout << rat\_basis\_null\_space\_ << std::endl;
-00996 \textcolor{preprocessor}{    #endif}
+00976     memset(ob\_bottom, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(ob\_bottom[0])*dim\_null\_);
+00977 
+00978     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_; ++ii) \{
+00979       ob\_bottom[(dim\_null\_ - 1) - ii] = ob[num\_bndy\_coeffs\_ - ii - 1];
+00980     \}
+00981 
+00982 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 3}
+00983     std::cout << \textcolor{stringliteral}{"ob\_bottom ="} << std::endl;
+00984     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_; ++ii) \{
+00985       std::cout << std::setw(12) << ob\_bottom[ii] << std::endl;
+00986     \}
+00987     std::cout << std::endl;
+00988 \textcolor{preprocessor}{    #endif}
+00989 
+00991 
+00992     \textcolor{comment}{// We must computed an scaled ob, sob, using the scaled null-space in}
+00993     \textcolor{comment}{// rat\_basis\_null\_space\_.}
+00994     \textcolor{comment}{// Such operation is: sob = ob - rat\_basis\_null\_space\_*ob\_bottom}
+00995     \textcolor{comment}{// or:                 ob = -1.0*rat\_basis\_null\_space\_*ob\_bottom + 1.0*ob}
+00996     \textcolor{comment}{// thus:                Y =    a*A    *x         +   b*Y (DAXPY).}
 00997 
-00998     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} alpha\{-\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}\};
-00999     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} beta\{\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}\};
-01000 
-01001     \hyperlink{classmtk_1_1BLASAdapter_afdcac059a4294287cb55638221220646}{mtk::BLASAdapter::RealDenseMV}(alpha, rat\_basis\_null\_space\_,
-01002                                   ob\_bottom, beta, ob);
-01003 
-01004 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 3}
-01005     std::cout << \textcolor{stringliteral}{"scaled ob:"} << std::endl;
-01006     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
-01007       std::cout << std::setw(12) << ob[ii] << std::endl;
-01008     \}
-01009     std::cout << std::endl;
-01010 \textcolor{preprocessor}{    #endif}
-01011 
-01012     \textcolor{comment}{// We save the recently scaled solution, into an array containing these.}
-01013     \textcolor{comment}{// We can NOT start building the pi matrix, simply because I want that part}
-01014     \textcolor{comment}{// to be separated since its construction depends on the algorithm we want}
-01015     \textcolor{comment}{// to implement.}
+00998 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 4}
+00999     std::cout << \textcolor{stringliteral}{"Rational basis for the null-space:"} << std::endl;
+01000     std::cout << rat\_basis\_null\_space\_ << std::endl;
+01001 \textcolor{preprocessor}{    #endif}
+01002 
+01003     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} alpha\{-\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}\};
+01004     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} beta\{\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}\};
+01005 
+01006     \hyperlink{classmtk_1_1BLASAdapter_afdcac059a4294287cb55638221220646}{mtk::BLASAdapter::RealDenseMV}(alpha, rat\_basis\_null\_space\_,
+01007                                   ob\_bottom, beta, ob);
+01008 
+01009 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 3}
+01010     std::cout << \textcolor{stringliteral}{"scaled ob:"} << std::endl;
+01011     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
+01012       std::cout << std::setw(12) << ob[ii] << std::endl;
+01013     \}
+01014     std::cout << std::endl;
+01015 \textcolor{preprocessor}{    #endif}
 01016 
-01017     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
-01018       prem\_apps\_[ii*num\_bndy\_approxs\_ + ll] = ob[ii];
-01019     \}
-01020 
-01021     \textcolor{comment}{// After the first iteration, simply shift the entries of the last}
-01022     \textcolor{comment}{// generator vector used:}
-01023     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
-01024       gg[ii]--;
-01025     \}
-01026 
-01027     \textcolor{comment}{// Garbage collection for this loop:}
-01028     \textcolor{keyword}{delete}[] ob;
-01029     ob = \textcolor{keyword}{nullptr};
-01030 
-01031     \textcolor{keyword}{delete}[] ob\_bottom;
-01032     ob\_bottom = \textcolor{keyword}{nullptr};
-01033   \} \textcolor{comment}{// End of: for (ll = 0; ll < dim\_null; ll++);}
-01034 
-01035 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
-01036   std::cout << \textcolor{stringliteral}{"Matrix post-scaled preliminary apps: "} << std::endl;
-01037   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
-01038     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < num\_bndy\_approxs\_; ++jj) \{
-01039       std::cout << std::setw(12) << prem\_apps\_[ii*num\_bndy\_approxs\_ + jj];
-01040     \}
-01041     std::cout << std::endl;
-01042   \}
-01043   std::cout << std::endl;
-01044 \textcolor{preprocessor}{  #endif}
-01045 
-01046   \textcolor{keyword}{delete}[] gg;
-01047   gg = \textcolor{keyword}{nullptr};
-01048 
-01049   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-01050 \}
-01051 
-\hypertarget{mtk__grad__1d_8cc_source_l01052}{}\hyperlink{classmtk_1_1Grad1D_a224082617751864bffca9bfe494c36d5}{01052} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a224082617751864bffca9bfe494c36d5}{mtk::Grad1D::ComputeWeights}() \{
+01017     \textcolor{comment}{// We save the recently scaled solution, into an array containing these.}
+01018     \textcolor{comment}{// We can NOT start building the pi matrix, simply because I want that part}
+01019     \textcolor{comment}{// to be separated since its construction depends on the algorithm we want}
+01020     \textcolor{comment}{// to implement.}
+01021 
+01022     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
+01023       prem\_apps\_[ii*num\_bndy\_approxs\_ + ll] = ob[ii];
+01024     \}
+01025 
+01026     \textcolor{comment}{// After the first iteration, simply shift the entries of the last}
+01027     \textcolor{comment}{// generator vector used:}
+01028     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
+01029       gg[ii]--;
+01030     \}
+01031 
+01032     \textcolor{comment}{// Garbage collection for this loop:}
+01033     \textcolor{keyword}{delete}[] ob;
+01034     ob = \textcolor{keyword}{nullptr};
+01035 
+01036     \textcolor{keyword}{delete}[] ob\_bottom;
+01037     ob\_bottom = \textcolor{keyword}{nullptr};
+01038   \} \textcolor{comment}{// End of: for (ll = 0; ll < dim\_null; ll++);}
+01039 
+01040 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
+01041   std::cout << \textcolor{stringliteral}{"Matrix post-scaled preliminary apps: "} << std::endl;
+01042   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
+01043     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < num\_bndy\_approxs\_; ++jj) \{
+01044       std::cout << std::setw(12) << prem\_apps\_[ii*num\_bndy\_approxs\_ + jj];
+01045     \}
+01046     std::cout << std::endl;
+01047   \}
+01048   std::cout << std::endl;
+01049 \textcolor{preprocessor}{  #endif}
+01050 
+01051   \textcolor{keyword}{delete}[] gg;
+01052   gg = \textcolor{keyword}{nullptr};
 01053 
-01054   \textcolor{comment}{// Matrix to compute the weights as in the CRSA.}
-01055   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} pi(num\_bndy\_coeffs\_, num\_bndy\_coeffs\_ - 1);
+01054   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+01055 \}
 01056 
+\hypertarget{mtk__grad__1d_8cc_source_l01057}{}\hyperlink{classmtk_1_1Grad1D_a224082617751864bffca9bfe494c36d5}{01057} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a224082617751864bffca9bfe494c36d5}{mtk::Grad1D::ComputeWeights}() \{
 01058 
-01059   \textcolor{comment}{// Assemble the pi matrix using:}
-01060   \textcolor{comment}{// 1. The collection of scaled preliminary approximations.}
-01061   \textcolor{comment}{// 2. The collection of coefficients approximating at the interior.}
-01062   \textcolor{comment}{// 3. The scaled basis for the null-space.}
+01059   \textcolor{comment}{// Matrix to compute the weights as in the CRSA.}
+01060   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} pi(num\_bndy\_coeffs\_, num\_bndy\_coeffs\_ - 1);
+01061 
 01063 
-01064   \textcolor{comment}{// 1.1. Process array of scaled preliminary approximations.}
-01065 
-01066   \textcolor{comment}{// These are queued in scaled\_solutions. Each one of these, will be a column}
-01067   \textcolor{comment}{// of the pi matrix:}
-01068   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
-01069     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < num\_bndy\_approxs\_; ++jj) \{
-01070       pi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[ii*(2*(num\_bndy\_approxs\_ - 1) + (order\_accuracy\_/2 + 1)) + jj] =
-01071         prem\_apps\_[ii*num\_bndy\_approxs\_ + jj];
-01072     \}
-01073   \}
-01074 
-01075   \textcolor{comment}{// 1.2. Add columns from known stencil approximating at the interior.}
-01076 
-01077   \textcolor{comment}{// However, these must be padded by zeros, according to their position in the}
-01078   \textcolor{comment}{// final pi matrix:}
-01079   \textcolor{keyword}{auto} mm = 1;
-01080   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = num\_bndy\_approxs\_; jj < order\_accuracy\_; ++jj) \{
-01081     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
-01082       \textcolor{keyword}{auto} de = (ii + mm)*(2*(num\_bndy\_approxs\_ - 1) +
-01083         (order\_accuracy\_/2 + 1)) + jj;
-01084       pi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[de] = coeffs\_interior\_[ii];
-01085     \}
-01086     ++mm;
-01087   \}
-01088 
-01089   rat\_basis\_null\_space\_.OrderColMajor();
-01090 
-01091 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
-01092   std::cout << \textcolor{stringliteral}{"Rational basis for the null-space (col. major):"} << std::endl;
-01093   std::cout << rat\_basis\_null\_space\_ << std::endl;
-01094 \textcolor{preprocessor}{  #endif}
+01064   \textcolor{comment}{// Assemble the pi matrix using:}
+01065   \textcolor{comment}{// 1. The collection of scaled preliminary approximations.}
+01066   \textcolor{comment}{// 2. The collection of coefficients approximating at the interior.}
+01067   \textcolor{comment}{// 3. The scaled basis for the null-space.}
+01068 
+01069   \textcolor{comment}{// 1.1. Process array of scaled preliminary approximations.}
+01070 
+01071   \textcolor{comment}{// These are queued in scaled\_solutions. Each one of these, will be a column}
+01072   \textcolor{comment}{// of the pi matrix:}
+01073   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
+01074     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < num\_bndy\_approxs\_; ++jj) \{
+01075       pi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[ii*(2*(num\_bndy\_approxs\_ - 1) + (order\_accuracy\_/2 + 1)) + jj] =
+01076         prem\_apps\_[ii*num\_bndy\_approxs\_ + jj];
+01077     \}
+01078   \}
+01079 
+01080   \textcolor{comment}{// 1.2. Add columns from known stencil approximating at the interior.}
+01081 
+01082   \textcolor{comment}{// However, these must be padded by zeros, according to their position in the}
+01083   \textcolor{comment}{// final pi matrix:}
+01084   \textcolor{keyword}{auto} mm = 1;
+01085   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = num\_bndy\_approxs\_; jj < order\_accuracy\_; ++jj) \{
+01086     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
+01087       \textcolor{keyword}{auto} de = (ii + mm)*(2*(num\_bndy\_approxs\_ - 1) +
+01088         (order\_accuracy\_/2 + 1)) + jj;
+01089       pi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[de] = coeffs\_interior\_[ii];
+01090     \}
+01091     ++mm;
+01092   \}
+01093 
+01094   rat\_basis\_null\_space\_.OrderColMajor();
 01095 
-01096   \textcolor{comment}{// 1.3. Add final set of columns: rational basis for null-space.}
-01097 
-01098   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = dim\_null\_ + (order\_accuracy\_/2 + 1);
-01099        jj < num\_bndy\_coeffs\_ - 1; ++jj) \{
-01100     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
-01101       \textcolor{keyword}{auto} og =
-01102         (jj - (dim\_null\_ + (order\_accuracy\_/2 + 1)))*num\_bndy\_coeffs\_ + ii;
-01103       \textcolor{keyword}{auto} de = ii*(2*dim\_null\_ + (order\_accuracy\_/2 + 1)) + jj;
-01104       pi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[de] = rat\_basis\_null\_space\_.data()[og];
-01105     \}
-01106   \}
-01107 
-01108 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
-01109   std::cout << \textcolor{stringliteral}{"coeffs\_interior\_ ="} << std::endl;
-01110   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
-01111     std::cout << std::setw(12) << coeffs\_interior\_[ii];
-01112   \}
-01113   std::cout << std::endl << std::endl;
-01114 \textcolor{preprocessor}{  #endif}
-01115 
-01116 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
-01117   std::cout << \textcolor{stringliteral}{"Constructed pi matrix for CRS Algorithm: "} << std::endl;
-01118   std::cout << pi << std::endl;
+01096 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
+01097   std::cout << \textcolor{stringliteral}{"Rational basis for the null-space (col. major):"} << std::endl;
+01098   std::cout << rat\_basis\_null\_space\_ << std::endl;
+01099 \textcolor{preprocessor}{  #endif}
+01100 
+01101   \textcolor{comment}{// 1.3. Add final set of columns: rational basis for null-space.}
+01102 
+01103   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = dim\_null\_ + (order\_accuracy\_/2 + 1);
+01104        jj < num\_bndy\_coeffs\_ - 1; ++jj) \{
+01105     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
+01106       \textcolor{keyword}{auto} og =
+01107         (jj - (dim\_null\_ + (order\_accuracy\_/2 + 1)))*num\_bndy\_coeffs\_ + ii;
+01108       \textcolor{keyword}{auto} de = ii*(2*dim\_null\_ + (order\_accuracy\_/2 + 1)) + jj;
+01109       pi.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}()[de] = rat\_basis\_null\_space\_.data()[og];
+01110     \}
+01111   \}
+01112 
+01113 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
+01114   std::cout << \textcolor{stringliteral}{"coeffs\_interior\_ ="} << std::endl;
+01115   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
+01116     std::cout << std::setw(12) << coeffs\_interior\_[ii];
+01117   \}
+01118   std::cout << std::endl << std::endl;
 01119 \textcolor{preprocessor}{  #endif}
 01120 
-01122 
-01123   \textcolor{comment}{// This imposes the mimetic condition.}
-01124 
-01125   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *hh\{\};  \textcolor{comment}{// Right-hand side to compute weights in the C\{R,B\}SA.}
-01126 
-01127   \textcolor{keywordflow}{try} \{
-01128     hh = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_bndy\_coeffs\_];
-01129   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-01130     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-01131       std::endl;
-01132     std::cerr << memory\_allocation\_exception.what() << std::endl;
-01133   \}
-01134   memset(hh, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(hh[0])*num\_bndy\_coeffs\_);
-01135 
-01136   hh[0] = -\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne};
-01137   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = (order\_accuracy\_/2 + 2 - 1); ii < num\_bndy\_coeffs\_; ++ii) \{
-01138     \textcolor{keyword}{auto} aux\_xx = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero};
-01139     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < ((ii - (order\_accuracy\_/2 - 1)) - 1); ++jj) \{
-01140       aux\_xx += coeffs\_interior\_[jj];
-01141     \}
-01142     hh[ii] = -\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}*aux\_xx;
-01143   \}
-01144 
-01146 
-01147   \textcolor{comment}{// That is, we construct a system, to solve for the weights.}
-01148 
-01149   \textcolor{comment}{// Once again we face the challenge of solving with LAPACK. However, for the}
-01150   \textcolor{comment}{// CRSA, this matrix PI is over-determined, since it has more rows than}
-01151   \textcolor{comment}{// unknowns. However, according to the theory, the solution to this system is}
-01152   \textcolor{comment}{// unique. We will use dgels\_.}
+01121 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
+01122   std::cout << \textcolor{stringliteral}{"Constructed pi matrix for CRS Algorithm: "} << std::endl;
+01123   std::cout << pi << std::endl;
+01124 \textcolor{preprocessor}{  #endif}
+01125 
+01127 
+01128   \textcolor{comment}{// This imposes the mimetic condition.}
+01129 
+01130   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *hh\{\};  \textcolor{comment}{// Right-hand side to compute weights in the C\{R,B\}SA.}
+01131 
+01132   \textcolor{keywordflow}{try} \{
+01133     hh = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_bndy\_coeffs\_];
+01134   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+01135     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+01136       std::endl;
+01137     std::cerr << memory\_allocation\_exception.what() << std::endl;
+01138   \}
+01139   memset(hh, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(hh[0])*num\_bndy\_coeffs\_);
+01140 
+01141   hh[0] = -\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne};
+01142   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = (order\_accuracy\_/2 + 2 - 1); ii < num\_bndy\_coeffs\_; ++ii) \{
+01143     \textcolor{keyword}{auto} aux\_xx = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero};
+01144     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < ((ii - (order\_accuracy\_/2 - 1)) - 1); ++jj) \{
+01145       aux\_xx += coeffs\_interior\_[jj];
+01146     \}
+01147     hh[ii] = -\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}*aux\_xx;
+01148   \}
+01149 
+01151 
+01152   \textcolor{comment}{// That is, we construct a system, to solve for the weights.}
 01153 
-01154   \textcolor{keywordflow}{try} \{
-01155     weights\_cbs\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_bndy\_coeffs\_];
-01156   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-01157     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-01158       std::endl;
-01159     std::cerr << memory\_allocation\_exception.what() << std::endl;
-01160   \}
-01161   memset(weights\_cbs\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(weights\_cbs\_[0])*num\_bndy\_coeffs\_);
-01162 
-01163   \textcolor{keywordtype}{int} weights\_ld\{pi.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}() + 1\};
-01164 
-01165   \textcolor{comment}{// Preserve hh.}
-01166   std::copy(hh, hh + weights\_ld, weights\_cbs\_);
+01154   \textcolor{comment}{// Once again we face the challenge of solving with LAPACK. However, for the}
+01155   \textcolor{comment}{// CRSA, this matrix PI is over-determined, since it has more rows than}
+01156   \textcolor{comment}{// unknowns. However, according to the theory, the solution to this system is}
+01157   \textcolor{comment}{// unique. We will use dgels\_.}
+01158 
+01159   \textcolor{keywordflow}{try} \{
+01160     weights\_cbs\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_bndy\_coeffs\_];
+01161   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+01162     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+01163       std::endl;
+01164     std::cerr << memory\_allocation\_exception.what() << std::endl;
+01165   \}
+01166   memset(weights\_cbs\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(weights\_cbs\_[0])*num\_bndy\_coeffs\_);
 01167 
-01168   pi.\hyperlink{classmtk_1_1DenseMatrix_a71d9c07ca66e88d97d1fd5012f43138b}{Transpose}();
+01168   \textcolor{keywordtype}{int} weights\_ld\{pi.\hyperlink{classmtk_1_1DenseMatrix_a41747502d468c6728a4be31501b16e0e}{num\_cols}() + 1\};
 01169 
-01170   \textcolor{keywordtype}{int} info\{
-01171     \hyperlink{classmtk_1_1LAPACKAdapter_a380f148ffdf96bae2f79ae28f1a6560c}{mtk::LAPACKAdapter::SolveRectangularDenseSystem}(pi,
-01172                                                     weights\_cbs\_, weights\_ld)
-01173   \};
+01170   \textcolor{comment}{// Preserve hh.}
+01171   std::copy(hh, hh + weights\_ld, weights\_cbs\_);
+01172 
+01173   pi.\hyperlink{classmtk_1_1DenseMatrix_a71d9c07ca66e88d97d1fd5012f43138b}{Transpose}();
 01174 
-01175 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-01176   \textcolor{keywordflow}{if} (!info) \{
-01177     std::cout << \textcolor{stringliteral}{"System successfully solved!"} << std::endl << std::endl;
-01178   \} \textcolor{keywordflow}{else} \{
-01179     std::cerr << \textcolor{stringliteral}{"Error solving system! info = "} << info << std::endl;
-01180     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-01181   \}
-01182 \textcolor{preprocessor}{  #endif}
-01183 
-01184 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
-01185   std::cout << \textcolor{stringliteral}{"hh ="} << std::endl;
-01186   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
-01187     std::cout << std::setw(11) << hh[ii] << std::endl;
-01188   \}
-01189   std::cout << std::endl;
-01190 \textcolor{preprocessor}{  #endif}
-01191 
-01192   \textcolor{comment}{// Preserve the original weights for research.}
-01193 
-01194   \textcolor{keywordflow}{try} \{
-01195     weights\_crs\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_bndy\_coeffs\_];
-01196   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-01197     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-01198       std::endl;
-01199     std::cerr << memory\_allocation\_exception.what() << std::endl;
-01200   \}
-01201   memset(weights\_crs\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(weights\_crs\_[0])*num\_bndy\_coeffs\_);
-01202 
-01203   std::copy(weights\_cbs\_, weights\_cbs\_ + (weights\_ld - 1), weights\_crs\_);
-01204 
-01205 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
-01206   std::cout << \textcolor{stringliteral}{"weights\_CRSA + lambda ="} << std::endl;
-01207   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < weights\_ld - 1; ++ii) \{
-01208     std::cout << std::setw(12) << weights\_crs\_[ii] << std::endl;
-01209   \}
-01210   std::cout << std::endl;
-01211 \textcolor{preprocessor}{  #endif}
-01212 
-01214 
-01215   \textcolor{keywordflow}{if} (order\_accuracy\_ >= \hyperlink{group__c01-roots_ga295dd2f403c775ecd942c22b5a777496}{mtk::kCriticalOrderAccuracyGrad}) \{
-01216 
-01217     \textcolor{keywordtype}{int} minrow\_\{std::numeric\_limits<int>::infinity()\};
-01218 
-01219     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} norm\{\hyperlink{classmtk_1_1BLASAdapter_ab92440888b730863244c5d9479c11aca}{mtk::BLASAdapter::RealNRM2}(weights\_cbs\_,
-      order\_accuracy\_)\};
-01220     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} minnorm\{std::numeric\_limits<mtk::Real>::infinity()\};
+01175   \textcolor{keywordtype}{int} info\{
+01176     \hyperlink{classmtk_1_1LAPACKAdapter_a380f148ffdf96bae2f79ae28f1a6560c}{mtk::LAPACKAdapter::SolveRectangularDenseSystem}(pi,
+01177                                                     weights\_cbs\_, weights\_ld)
+01178   \};
+01179 
+01180 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+01181   \textcolor{keywordflow}{if} (!info) \{
+01182     std::cout << \textcolor{stringliteral}{"System successfully solved!"} << std::endl << std::endl;
+01183   \} \textcolor{keywordflow}{else} \{
+01184     std::cerr << \textcolor{stringliteral}{"Error solving system! info = "} << info << std::endl;
+01185     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+01186   \}
+01187 \textcolor{preprocessor}{  #endif}
+01188 
+01189 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
+01190   std::cout << \textcolor{stringliteral}{"hh ="} << std::endl;
+01191   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
+01192     std::cout << std::setw(11) << hh[ii] << std::endl;
+01193   \}
+01194   std::cout << std::endl;
+01195 \textcolor{preprocessor}{  #endif}
+01196 
+01197   \textcolor{comment}{// Preserve the original weights for research.}
+01198 
+01199   \textcolor{keywordflow}{try} \{
+01200     weights\_crs\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_bndy\_coeffs\_];
+01201   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+01202     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+01203       std::endl;
+01204     std::cerr << memory\_allocation\_exception.what() << std::endl;
+01205   \}
+01206   memset(weights\_crs\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(weights\_crs\_[0])*num\_bndy\_coeffs\_);
+01207 
+01208   std::copy(weights\_cbs\_, weights\_cbs\_ + (weights\_ld - 1), weights\_crs\_);
+01209 
+01210 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
+01211   std::cout << \textcolor{stringliteral}{"weights\_CRSA + lambda ="} << std::endl;
+01212   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < weights\_ld - 1; ++ii) \{
+01213     std::cout << std::setw(12) << weights\_crs\_[ii] << std::endl;
+01214   \}
+01215   std::cout << std::endl;
+01216 \textcolor{preprocessor}{  #endif}
+01217 
+01219 
+01220   \textcolor{keywordflow}{if} (order\_accuracy\_ >= \hyperlink{group__c01-roots_ga295dd2f403c775ecd942c22b5a777496}{mtk::kCriticalOrderAccuracyGrad}) \{
 01221 
 01223 
 01224     \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} phi(order\_accuracy\_ + 1, order\_accuracy\_);
@@ -1272,246 +1271,295 @@
 01315 \textcolor{preprocessor}{    #endif}
 01316 
 01318 
-01319     \textcolor{keywordtype}{int} copy\_result\{\};  \textcolor{comment}{// Should I replace the solution... not for now.}
-01320 
-01321     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} normerr\_; \textcolor{comment}{// Norm of the error for the solution on each row.}
-01322 
-01323     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} row\_= 0; row\_ < order\_accuracy\_ + 1; ++row\_) \{
-01324       normerr\_ = \hyperlink{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f}{mtk::GLPKAdapter::SolveSimplexAndCompare}(phi.
+01319 \textcolor{preprocessor}{    #ifdef MTK\_VERBOSE\_WEIGHTS}
+01320     \textcolor{keywordtype}{int} copy\_result\{1\};
+01321 \textcolor{preprocessor}{    #else}
+01322     \textcolor{keywordtype}{int} copy\_result\{\};
+01323 \textcolor{preprocessor}{    #endif}
+01324 
+01325     \textcolor{keywordtype}{int} minrow\_\{std::numeric\_limits<int>::infinity()\};
+01326 
+01327     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} norm\{\hyperlink{classmtk_1_1BLASAdapter_ab92440888b730863244c5d9479c11aca}{mtk::BLASAdapter::RealNRM2}(weights\_cbs\_,
+      order\_accuracy\_)\};
+01328     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} minnorm\{std::numeric\_limits<mtk::Real>::infinity()\};
+01329 
+01330     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} normerr\_; \textcolor{comment}{// Norm of the error for the solution on each row.}
+01331 
+01332 \textcolor{preprocessor}{    #ifdef MTK\_VERBOSE\_WEIGHTS}
+01333     std::ofstream table(\textcolor{stringliteral}{"grad\_1d\_"} + std::to\_string(order\_accuracy\_) +
+01334       \textcolor{stringliteral}{"\_weights.tex"});
+01335 
+01336     table << \textcolor{stringliteral}{"\(\backslash\)\(\backslash\)begin\{tabular\}[c]\{c"};
+01337     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii <= order\_accuracy\_; ++ii) \{
+01338       table << \textcolor{charliteral}{'c'};
+01339     \}
+01340     table << \textcolor{stringliteral}{":c\}\(\backslash\)n\(\backslash\)\(\backslash\)toprule\(\backslash\)nRow & "};
+01341     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii <= order\_accuracy\_; ++ii) \{
+01342       table << \textcolor{stringliteral}{"$ q\_\{"} + std::to\_string(ii) + \textcolor{stringliteral}{"\}$ &"};
+01343     \}
+01344     table << \textcolor{stringliteral}{" Relative error \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)n\(\backslash\)\(\backslash\)midrule\(\backslash\)n"};
+01345 \textcolor{preprocessor}{    #endif}
+01346 
+01347     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} row\_= 0; row\_ < order\_accuracy\_ + 1; ++row\_) \{
+01348       normerr\_ = \hyperlink{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f}{mtk::GLPKAdapter::SolveSimplexAndCompare}(phi.
       \hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(),
-01325                                                           order\_accuracy\_ + 1,
-01326                                                           order\_accuracy\_,
-01327                                                           order\_accuracy\_,
-01328                                                           hh,
-01329                                                           weights\_cbs\_,
-01330                                                           row\_,
-01331                                                           mimetic\_threshold\_,
-01332                                                           copy\_result);
-01333       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aux\{normerr\_/norm\};
-01334 
-01335 \textcolor{preprocessor}{      #if MTK\_VERBOSE\_LEVEL > 2}
-01336       std::cout << \textcolor{stringliteral}{"Relative norm: "} << aux << \textcolor{stringliteral}{" "} << std::endl;
-01337       std::cout << std::endl;
-01338 \textcolor{preprocessor}{      #endif}
-01339 
-01340       \textcolor{keywordflow}{if} (aux < minnorm) \{
-01341         minnorm = aux;
-01342         minrow\_= row\_;
-01343       \}
-01344     \}
-01345 
-01346 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 3}
-01347     std::cout << \textcolor{stringliteral}{"weights\_CBSA + lambda (after brute force search):"} <<
-01348       std::endl;
-01349     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_ - 1; ++ii) \{
-01350       std::cout << std::setw(12) << weights\_cbs\_[ii] << std::endl;
-01351     \}
-01352     std::cout << std::endl;
-01353 \textcolor{preprocessor}{    #endif}
-01354 
-01356 
-01357     \textcolor{comment}{// After we know which row yields the smallest relative norm that row is}
-01358     \textcolor{comment}{// chosen to be the objective function and the result of the optimizer is}
-01359     \textcolor{comment}{// chosen to be the new weights\_.}
-01360 
-01361 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 2}
-01362     std::cout << \textcolor{stringliteral}{"Minimum Relative Norm "} << minnorm << \textcolor{stringliteral}{" found at row "} <<
-01363       minrow\_ + 1 << std::endl;
-01364     std::cout << std::endl;
-01365 \textcolor{preprocessor}{    #endif}
-01366 
-01367     copy\_result = 1;
-01368     normerr\_ = \hyperlink{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f}{mtk::GLPKAdapter::SolveSimplexAndCompare}(phi.
-      \hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(),
-01369                                                         order\_accuracy\_ + 1,
-01370                                                         order\_accuracy\_,
-01371                                                         order\_accuracy\_,
-01372                                                         hh,
-01373                                                         weights\_cbs\_,
-01374                                                         minrow\_,
-01375                                                         mimetic\_threshold\_,
-01376                                                         copy\_result);
-01377     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aux\_\{normerr\_/norm\};
-01378 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 2}
-01379     std::cout << \textcolor{stringliteral}{"Relative norm: "} << aux\_ << std::endl;
-01380     std::cout << std::endl;
-01381 \textcolor{preprocessor}{    #endif}
-01382 
-01383     \textcolor{keyword}{delete} [] lamed;
-01384     lamed = \textcolor{keyword}{nullptr};
-01385   \}
-01386 
-01387   \textcolor{keyword}{delete} [] hh;
-01388   hh = \textcolor{keyword}{nullptr};
-01389 
-01390   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-01391 \}
-01392 
-\hypertarget{mtk__grad__1d_8cc_source_l01393}{}\hyperlink{classmtk_1_1Grad1D_a7ad1cecf6b52647263208ffaea0ee1e5}{01393} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a7ad1cecf6b52647263208ffaea0ee1e5}{mtk::Grad1D::ComputeStencilBoundaryGrid}(\textcolor{keywordtype}{void}) \{
-01394 
-01395 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
-01396   std::cout << \textcolor{stringliteral}{"weights\_* + lambda ="} << std::endl;
-01397   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_ - 1; ++ii) \{
-01398     std::cout << std::setw(12) << weights\_cbs\_[ii] << std::endl;
-01399   \}
-01400   std::cout << std::endl;
-01401 \textcolor{preprocessor}{  #endif}
+01349                                                           order\_accuracy\_ + 1,
+01350                                                           order\_accuracy\_,
+01351                                                           order\_accuracy\_,
+01352                                                           hh,
+01353                                                           weights\_cbs\_,
+01354                                                           row\_,
+01355                                                           mimetic\_threshold\_,
+01356                                                           copy\_result);
+01357       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aux\{normerr\_/norm\};
+01358 
+01359 \textcolor{preprocessor}{      #if MTK\_VERBOSE\_LEVEL > 2}
+01360       std::cout << \textcolor{stringliteral}{"Relative norm: "} << aux << \textcolor{stringliteral}{" "} << std::endl;
+01361       std::cout << std::endl;
+01362 \textcolor{preprocessor}{      #endif}
+01363 
+01364       \textcolor{keywordflow}{if} (aux < minnorm) \{
+01365         minnorm = aux;
+01366         minrow\_= row\_;
+01367       \}
+01368 
+01369 \textcolor{preprocessor}{      #ifdef MTK\_VERBOSE\_WEIGHTS}
+01370       table << std::to\_string(row\_ + 1) << \textcolor{stringliteral}{" & "};
+01371       \textcolor{keywordflow}{if} (normerr\_ != std::numeric\_limits<mtk::Real>::infinity()) \{
+01372         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii <= order\_accuracy\_; ++ii) \{
+01373           table << std::to\_string(weights\_cbs\_[ii - 1]) + \textcolor{stringliteral}{" & "};
+01374         \}
+01375         table << std::to\_string(aux) << \textcolor{stringliteral}{" \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)"} << std::endl;
+01376       \} \textcolor{keywordflow}{else} \{
+01377         table << \textcolor{stringliteral}{"\(\backslash\)\(\backslash\)multicolumn\{"} << std::to\_string(order\_accuracy\_) <<
+01378           \textcolor{stringliteral}{"\}\{c\}\{$\(\backslash\)\(\backslash\)emptyset$\} & "};
+01379         table << \textcolor{stringliteral}{" - \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)"} << std::endl;
+01380       \}
+01381 \textcolor{preprocessor}{      #endif}
+01382     \}
+01383 
+01384 \textcolor{preprocessor}{    #ifdef MTK\_VERBOSE\_WEIGHTS}
+01385     table << \textcolor{stringliteral}{"\(\backslash\)\(\backslash\)midrule"} << std::endl;
+01386     table << \textcolor{stringliteral}{"CRS weights:"};
+01387     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 1; ii <= order\_accuracy\_; ++ii) \{
+01388       table << \textcolor{stringliteral}{" & "} << std::to\_string(weights\_crs\_[ii - 1]);
+01389     \}
+01390     table << \textcolor{stringliteral}{" & - \(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)\(\backslash\)n\(\backslash\)\(\backslash\)bottomrule\(\backslash\)n\(\backslash\)\(\backslash\)end\{tabular\}"} << std::endl;
+01391     table.close();
+01392 \textcolor{preprocessor}{    #endif}
+01393 
+01394 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 3}
+01395     std::cout << \textcolor{stringliteral}{"weights\_CBSA + lambda (after brute force search):"} <<
+01396       std::endl;
+01397     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_ - 1; ++ii) \{
+01398       std::cout << std::setw(12) << weights\_cbs\_[ii] << std::endl;
+01399     \}
+01400     std::cout << std::endl;
+01401 \textcolor{preprocessor}{    #endif}
 01402 
 01404 
-01405   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *lambda\{\}; \textcolor{comment}{// Collection of bottom values from weights\_.}
-01406 
-01407   \textcolor{keywordflow}{try} \{
-01408     lambda = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[dim\_null\_];
-01409   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-01410     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-01411       std::endl;
-01412     std::cerr << memory\_allocation\_exception.what() << std::endl;
-01413   \}
-01414   memset(lambda, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(lambda[0])*dim\_null\_);
-01415 
-01416   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_; ++ii) \{
-01417     lambda[ii] = weights\_cbs\_[order\_accuracy\_ + ii];
-01418   \}
-01419 
-01420 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
-01421   std::cout << \textcolor{stringliteral}{"lambda ="} << std::endl;
-01422   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_; ++ii) \{
-01423     std::cout << std::setw(12) << lambda[ii] << std::endl;
-01424   \}
-01425   std::cout << std::endl;
-01426 \textcolor{preprocessor}{  #endif}
-01427 
-01429 
-01430   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *alpha\{\}; \textcolor{comment}{// Collection of alpha values.}
-01431 
-01432   \textcolor{keywordflow}{try} \{
-01433     alpha = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[dim\_null\_];
-01434   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-01435     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-01436       std::endl;
-01437     std::cerr << memory\_allocation\_exception.what() << std::endl;
-01438   \}
-01439   memset(alpha, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(alpha[0])*dim\_null\_);
+01405     \textcolor{comment}{// After we know which row yields the smallest relative norm that row is}
+01406     \textcolor{comment}{// chosen to be the objective function and the result of the optimizer is}
+01407     \textcolor{comment}{// chosen to be the new weights\_.}
+01408 
+01409 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 2}
+01410     std::cout << \textcolor{stringliteral}{"Minimum Relative Norm "} << minnorm << \textcolor{stringliteral}{" found at row "} <<
+01411       minrow\_ + 1 << std::endl;
+01412     std::cout << std::endl;
+01413 \textcolor{preprocessor}{    #endif}
+01414 
+01415     copy\_result = 1;
+01416     normerr\_ = \hyperlink{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f}{mtk::GLPKAdapter::SolveSimplexAndCompare}(phi.
+      \hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}(),
+01417                                                         order\_accuracy\_ + 1,
+01418                                                         order\_accuracy\_,
+01419                                                         order\_accuracy\_,
+01420                                                         hh,
+01421                                                         weights\_cbs\_,
+01422                                                         minrow\_,
+01423                                                         mimetic\_threshold\_,
+01424                                                         copy\_result);
+01425     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aux\_\{normerr\_/norm\};
+01426 \textcolor{preprocessor}{    #if MTK\_VERBOSE\_LEVEL > 2}
+01427     std::cout << \textcolor{stringliteral}{"Relative norm: "} << aux\_ << std::endl;
+01428     std::cout << std::endl;
+01429 \textcolor{preprocessor}{    #endif}
+01430 
+01431     \textcolor{keyword}{delete} [] lamed;
+01432     lamed = \textcolor{keyword}{nullptr};
+01433   \}
+01434 
+01435   \textcolor{keyword}{delete} [] hh;
+01436   hh = \textcolor{keyword}{nullptr};
+01437 
+01438   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+01439 \}
 01440 
-01441   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_; ++ii) \{
-01442     alpha[ii] = lambda[ii]/weights\_cbs\_[ii] ;
-01443   \}
-01444 
-01445 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
-01446   std::cout << \textcolor{stringliteral}{"alpha ="} << std::endl;
-01447   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_; ++ii) \{
-01448     std::cout << std::setw(12) << alpha[ii] << std::endl;
-01449   \}
-01450   std::cout << std::endl;
-01451 \textcolor{preprocessor}{  #endif}
+\hypertarget{mtk__grad__1d_8cc_source_l01441}{}\hyperlink{classmtk_1_1Grad1D_a7ad1cecf6b52647263208ffaea0ee1e5}{01441} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a7ad1cecf6b52647263208ffaea0ee1e5}{mtk::Grad1D::ComputeStencilBoundaryGrid}(\textcolor{keywordtype}{void}) \{
+01442 
+01443 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
+01444   std::cout << \textcolor{stringliteral}{"weights\_* + lambda ="} << std::endl;
+01445   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_ - 1; ++ii) \{
+01446     std::cout << std::setw(12) << weights\_cbs\_[ii] << std::endl;
+01447   \}
+01448   std::cout << std::endl;
+01449 \textcolor{preprocessor}{  #endif}
+01450 
 01452 
+01453   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *lambda\{\}; \textcolor{comment}{// Collection of bottom values from weights\_.}
 01454 
 01455   \textcolor{keywordflow}{try} \{
-01456     mim\_bndy\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_bndy\_coeffs\_*num\_bndy\_approxs\_];
+01456     lambda = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[dim\_null\_];
 01457   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
 01458     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
 01459       std::endl;
 01460     std::cerr << memory\_allocation\_exception.what() << std::endl;
 01461   \}
-01462   memset(mim\_bndy\_,
-01463          \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
-01464          \textcolor{keyword}{sizeof}(mim\_bndy\_[0])*num\_bndy\_coeffs\_*num\_bndy\_approxs\_);
-01465 
-01466   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
-01467     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < (num\_bndy\_approxs\_ - 1); ++jj) \{
-01468       mim\_bndy\_[ii*num\_bndy\_approxs\_ + jj] =
-01469         prem\_apps\_[ii*num\_bndy\_approxs\_ + jj] +
-01470         alpha[jj]*rat\_basis\_null\_space\_.data()[jj*num\_bndy\_coeffs\_ + ii];
-01471     \}
+01462   memset(lambda, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(lambda[0])*dim\_null\_);
+01463 
+01464   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_; ++ii) \{
+01465     lambda[ii] = weights\_cbs\_[order\_accuracy\_ + ii];
+01466   \}
+01467 
+01468 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
+01469   std::cout << \textcolor{stringliteral}{"lambda ="} << std::endl;
+01470   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_; ++ii) \{
+01471     std::cout << std::setw(12) << lambda[ii] << std::endl;
 01472   \}
-01473 
-01474   \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
-01475     mim\_bndy\_[ii*num\_bndy\_approxs\_ + (num\_bndy\_approxs\_ - 1)] =
-01476       prem\_apps\_[ii*num\_bndy\_approxs\_ + (num\_bndy\_approxs\_ - 1)];
-01477   \}
-01478 
-01479 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
-01480   std::cout << \textcolor{stringliteral}{"Collection of mimetic approximations:"} << std::endl;
-01481   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
-01482     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < num\_bndy\_approxs\_; ++jj) \{
-01483       std::cout << std::setw(13) << mim\_bndy\_[ii*num\_bndy\_approxs\_ + jj];
-01484     \}
-01485     std::cout << std::endl;
+01473   std::cout << std::endl;
+01474 \textcolor{preprocessor}{  #endif}
+01475 
+01477 
+01478   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *alpha\{\}; \textcolor{comment}{// Collection of alpha values.}
+01479 
+01480   \textcolor{keywordflow}{try} \{
+01481     alpha = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[dim\_null\_];
+01482   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+01483     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+01484       std::endl;
+01485     std::cerr << memory\_allocation\_exception.what() << std::endl;
 01486   \}
-01487   std::cout << std::endl;
-01488 \textcolor{preprocessor}{  #endif}
-01489 
-01490   \textcolor{keyword}{delete}[] lambda;
-01491   lambda = \textcolor{keyword}{nullptr};
+01487   memset(alpha, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(alpha[0])*dim\_null\_);
+01488 
+01489   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_; ++ii) \{
+01490     alpha[ii] = lambda[ii]/weights\_cbs\_[ii] ;
+01491   \}
 01492 
-01493   \textcolor{keyword}{delete}[] alpha;
-01494   alpha = \textcolor{keyword}{nullptr};
-01495 
-01496   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-01497 \}
-01498 
-\hypertarget{mtk__grad__1d_8cc_source_l01499}{}\hyperlink{classmtk_1_1Grad1D_a4eb4d363506b8c64b2bb18a318bbd259}{01499} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a4eb4d363506b8c64b2bb18a318bbd259}{mtk::Grad1D::AssembleOperator}(\textcolor{keywordtype}{void}) \{
+01493 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 3}
+01494   std::cout << \textcolor{stringliteral}{"alpha ="} << std::endl;
+01495   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < dim\_null\_; ++ii) \{
+01496     std::cout << std::setw(12) << alpha[ii] << std::endl;
+01497   \}
+01498   std::cout << std::endl;
+01499 \textcolor{preprocessor}{  #endif}
 01500 
-01501   \textcolor{comment}{// The output array will have this form:}
-01502   \textcolor{comment}{// 1. The first entry of the array will contain the used order kk.}
-01503   \textcolor{comment}{// 2. The second entry of the array will contain the collection of}
-01504   \textcolor{comment}{// approximating coefficients for the interior of the grid.}
-01505   \textcolor{comment}{// 3. The third entry will contain a collection of weights.}
-01506   \textcolor{comment}{// 4. The next dim\_null - 1 entries will contain the collections of}
-01507   \textcolor{comment}{// approximating coefficients for the west boundary of the grid.}
-01508 
-01509   gradient\_length\_ = 1 + order\_accuracy\_ + order\_accuracy\_ +
-01510     num\_bndy\_approxs\_*num\_bndy\_coeffs\_;
-01511 
-01512 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 2}
-01513   std::cout << \textcolor{stringliteral}{"gradient\_length\_ = "} << gradient\_length\_ << std::endl;
-01514 \textcolor{preprocessor}{  #endif}
-01515 
-01516   \textcolor{keywordflow}{try} \{
-01517     gradient\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[gradient\_length\_];
-01518   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-01519     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-01520       std::endl;
-01521     std::cerr << memory\_allocation\_exception.what() << std::endl;
-01522   \}
-01523   memset(gradient\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(gradient\_[0])*gradient\_length\_);
-01524 
+01502 
+01503   \textcolor{keywordflow}{try} \{
+01504     mim\_bndy\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[num\_bndy\_coeffs\_*num\_bndy\_approxs\_];
+01505   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+01506     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+01507       std::endl;
+01508     std::cerr << memory\_allocation\_exception.what() << std::endl;
+01509   \}
+01510   memset(mim\_bndy\_,
+01511          \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero},
+01512          \textcolor{keyword}{sizeof}(mim\_bndy\_[0])*num\_bndy\_coeffs\_*num\_bndy\_approxs\_);
+01513 
+01514   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
+01515     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < (num\_bndy\_approxs\_ - 1); ++jj) \{
+01516       mim\_bndy\_[ii*num\_bndy\_approxs\_ + jj] =
+01517         prem\_apps\_[ii*num\_bndy\_approxs\_ + jj] +
+01518         alpha[jj]*rat\_basis\_null\_space\_.data()[jj*num\_bndy\_coeffs\_ + ii];
+01519     \}
+01520   \}
+01521 
+01522   \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
+01523     mim\_bndy\_[ii*num\_bndy\_approxs\_ + (num\_bndy\_approxs\_ - 1)] =
+01524       prem\_apps\_[ii*num\_bndy\_approxs\_ + (num\_bndy\_approxs\_ - 1)];
+01525   \}
 01526 
-01527   gradient\_[0] = order\_accuracy\_;
-01528 
-01531 
-01532   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
-01533     gradient\_[ii + 1] = coeffs\_interior\_[ii];
+01527 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
+01528   std::cout << \textcolor{stringliteral}{"Collection of mimetic approximations:"} << std::endl;
+01529   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_coeffs\_; ++ii) \{
+01530     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < num\_bndy\_approxs\_; ++jj) \{
+01531       std::cout << std::setw(13) << mim\_bndy\_[ii*num\_bndy\_approxs\_ + jj];
+01532     \}
+01533     std::cout << std::endl;
 01534   \}
-01535 
+01535   std::cout << std::endl;
+01536 \textcolor{preprocessor}{  #endif}
 01537 
-01538   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
-01539     gradient\_[(order\_accuracy\_ + 1) + ii] = weights\_cbs\_[ii];
-01540   \}
-01541 
-01544 
-01545   \textcolor{keywordtype}{int} offset\{2*order\_accuracy\_ + 1\};
+01538   \textcolor{keyword}{delete}[] lambda;
+01539   lambda = \textcolor{keyword}{nullptr};
+01540 
+01541   \textcolor{keyword}{delete}[] alpha;
+01542   alpha = \textcolor{keyword}{nullptr};
+01543 
+01544   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+01545 \}
 01546 
-01547   \textcolor{keywordtype}{int} aux \{\}; \textcolor{comment}{// Auxiliary variable.}
+\hypertarget{mtk__grad__1d_8cc_source_l01547}{}\hyperlink{classmtk_1_1Grad1D_a4eb4d363506b8c64b2bb18a318bbd259}{01547} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Grad1D_a4eb4d363506b8c64b2bb18a318bbd259}{mtk::Grad1D::AssembleOperator}(\textcolor{keywordtype}{void}) \{
 01548 
-01549   \textcolor{keywordflow}{if} (order\_accuracy\_ > \hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{mtk::kDefaultOrderAccuracy}) \{
-01550     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_approxs\_ ; ii++) \{
-01551       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < num\_bndy\_coeffs\_; jj++) \{
-01552         gradient\_[offset + aux] = mim\_bndy\_[jj*num\_bndy\_approxs\_ + ii];
-01553         aux++;
-01554       \}
-01555     \}
-01556   \} \textcolor{keywordflow}{else} \{
-01557     gradient\_[offset + 0] = prem\_apps\_[0];
-01558     gradient\_[offset + 1] = prem\_apps\_[1];
-01559     gradient\_[offset + 2] = prem\_apps\_[2];
-01560   \}
-01561 
-01562 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 1}
-01563   std::cout << \textcolor{stringliteral}{"1D "} << order\_accuracy\_ << \textcolor{stringliteral}{"-order grad built!"} << std::endl;
-01564   std::cout << std::endl;
-01565 \textcolor{preprocessor}{  #endif}
-01566 
-01567   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-01568 \}
+01549   \textcolor{comment}{// The output array will have this form:}
+01550   \textcolor{comment}{// 1. The first entry of the array will contain the used order kk.}
+01551   \textcolor{comment}{// 2. The second entry of the array will contain the collection of}
+01552   \textcolor{comment}{// approximating coefficients for the interior of the grid.}
+01553   \textcolor{comment}{// 3. The third entry will contain a collection of weights.}
+01554   \textcolor{comment}{// 4. The next dim\_null - 1 entries will contain the collections of}
+01555   \textcolor{comment}{// approximating coefficients for the west boundary of the grid.}
+01556 
+01557   gradient\_length\_ = 1 + order\_accuracy\_ + order\_accuracy\_ +
+01558     num\_bndy\_approxs\_*num\_bndy\_coeffs\_;
+01559 
+01560 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 2}
+01561   std::cout << \textcolor{stringliteral}{"gradient\_length\_ = "} << gradient\_length\_ << std::endl;
+01562 \textcolor{preprocessor}{  #endif}
+01563 
+01564   \textcolor{keywordflow}{try} \{
+01565     gradient\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[gradient\_length\_];
+01566   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+01567     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+01568       std::endl;
+01569     std::cerr << memory\_allocation\_exception.what() << std::endl;
+01570   \}
+01571   memset(gradient\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(gradient\_[0])*gradient\_length\_);
+01572 
+01574 
+01575   gradient\_[0] = order\_accuracy\_;
+01576 
+01579 
+01580   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
+01581     gradient\_[ii + 1] = coeffs\_interior\_[ii];
+01582   \}
+01583 
+01585 
+01586   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_; ++ii) \{
+01587     gradient\_[(order\_accuracy\_ + 1) + ii] = weights\_cbs\_[ii];
+01588   \}
+01589 
+01592 
+01593   \textcolor{keywordtype}{int} offset\{2*order\_accuracy\_ + 1\};
+01594 
+01595   \textcolor{keywordtype}{int} aux \{\}; \textcolor{comment}{// Auxiliary variable.}
+01596 
+01597   \textcolor{keywordflow}{if} (order\_accuracy\_ > \hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{mtk::kDefaultOrderAccuracy}) \{
+01598     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < num\_bndy\_approxs\_ ; ii++) \{
+01599       \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < num\_bndy\_coeffs\_; jj++) \{
+01600         gradient\_[offset + aux] = mim\_bndy\_[jj*num\_bndy\_approxs\_ + ii];
+01601         aux++;
+01602       \}
+01603     \}
+01604   \} \textcolor{keywordflow}{else} \{
+01605     gradient\_[offset + 0] = prem\_apps\_[0];
+01606     gradient\_[offset + 1] = prem\_apps\_[1];
+01607     gradient\_[offset + 2] = prem\_apps\_[2];
+01608   \}
+01609 
+01610 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 1}
+01611   std::cout << \textcolor{stringliteral}{"1D "} << order\_accuracy\_ << \textcolor{stringliteral}{"-order grad built!"} << std::endl;
+01612   std::cout << std::endl;
+01613 \textcolor{preprocessor}{  #endif}
+01614 
+01615   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+01616 \}
 \end{DoxyCode}

@@ -56,71 +56,78 @@
 00060 \textcolor{preprocessor}{#include <iostream>}
 00061 \textcolor{preprocessor}{#include <iomanip>}
 00062 
-00063 \textcolor{preprocessor}{#include "glpk.h"}
+00063 \textcolor{preprocessor}{#include <vector>}
 00064 
-00065 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
-00066 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
-00067 \textcolor{preprocessor}{#include "\hyperlink{mtk__uni__stg__grid__1d_8h}{mtk\_uni\_stg\_grid\_1d.h}"}
-00068 
-00069 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk} \{
+00065 \textcolor{preprocessor}{#include "glpk.h"}
+00066 
+00067 \textcolor{preprocessor}{#include "\hyperlink{mtk__roots_8h}{mtk\_roots.h}"}
+00068 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
+00069 \textcolor{preprocessor}{#include "\hyperlink{mtk__uni__stg__grid__1d_8h}{mtk\_uni\_stg\_grid\_1d.h}"}
 00070 
-\hypertarget{mtk__div__1d_8h_source_l00081}{}\hyperlink{classmtk_1_1Div1D}{00081} \textcolor{keyword}{class }\hyperlink{classmtk_1_1Div1D}{Div1D} \{
-00082  \textcolor{keyword}{public}:
-00084   \textcolor{keyword}{friend} std::ostream& \hyperlink{classmtk_1_1Div1D_af3b80aac338975509618e593089e1ed9}{operator <<}(std::ostream& stream, \hyperlink{classmtk_1_1Div1D}{Div1D} &in);
-00085 
-00087   \hyperlink{classmtk_1_1Div1D_a339c66dd4ed8f50cbeda3645de18e5ab}{Div1D}();
-00088 
-00094   \hyperlink{classmtk_1_1Div1D_a339c66dd4ed8f50cbeda3645de18e5ab}{Div1D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Div1D}{Div1D} &div);
-00095 
-00097   \hyperlink{classmtk_1_1Div1D_ac2c215f42b8da513df2a4ee477b5fa1f}{~Div1D}();
-00098 
-00104   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Div1D_a52fcd1542f11e606e36bd188e48bfdf7}{ConstructDiv1D}(\textcolor{keywordtype}{int} order\_accuracy = \hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{kDefaultOrderAccuracy},
-00105                       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} mimetic\_threshold = \hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{kDefaultMimeticThreshold});
-00106 
-00112   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Div1D_a975cb2a91ed6806f6fc0a3a5b01b01b1}{num\_bndy\_coeffs}() \textcolor{keyword}{const};
-00113 
-00119   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_a0916b5e84b019b4b6a33d0a45d829513}{coeffs\_interior}() \textcolor{keyword}{const};
-00120 
-00126   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_ab5c791285e7e51a85b8c62a1b0ab9126}{weights\_crs}(\textcolor{keywordtype}{void}) \textcolor{keyword}{const};
-00127 
-00133   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_a5d4fe8c61ce41cb1134a3f9cb16deb59}{weights\_cbs}(\textcolor{keywordtype}{void}) \textcolor{keyword}{const};
-00134 
-00140   \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} \hyperlink{classmtk_1_1Div1D_a2c844ef39825e73e4024d35fcdd42b12}{mim\_bndy}() \textcolor{keyword}{const};
-00141 
-00147   \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} \hyperlink{classmtk_1_1Div1D_a213fddbaaf86e4840c6a9649b69c2d49}{ReturnAsDenseMatrix}(\textcolor{keyword}{const} 
+00071 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk} \{
+00072 
+\hypertarget{mtk__div__1d_8h_source_l00083}{}\hyperlink{classmtk_1_1Div1D}{00083} \textcolor{keyword}{class }\hyperlink{classmtk_1_1Div1D}{Div1D} \{
+00084  \textcolor{keyword}{public}:
+00086   \textcolor{keyword}{friend} std::ostream& \hyperlink{classmtk_1_1Div1D_af3b80aac338975509618e593089e1ed9}{operator <<}(std::ostream& stream, \hyperlink{classmtk_1_1Div1D}{Div1D} &in);
+00087 
+00089   \hyperlink{classmtk_1_1Div1D_a339c66dd4ed8f50cbeda3645de18e5ab}{Div1D}();
+00090 
+00096   \hyperlink{classmtk_1_1Div1D_a339c66dd4ed8f50cbeda3645de18e5ab}{Div1D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Div1D}{Div1D} &div);
+00097 
+00099   \hyperlink{classmtk_1_1Div1D_ac2c215f42b8da513df2a4ee477b5fa1f}{~Div1D}();
+00100 
+00106   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Div1D_a52fcd1542f11e606e36bd188e48bfdf7}{ConstructDiv1D}(\textcolor{keywordtype}{int} order\_accuracy = \hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{kDefaultOrderAccuracy},
+00107                       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} mimetic\_threshold = \hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{kDefaultMimeticThreshold});
+00108 
+00114   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Div1D_a975cb2a91ed6806f6fc0a3a5b01b01b1}{num\_bndy\_coeffs}() \textcolor{keyword}{const};
+00115 
+00121   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_a0916b5e84b019b4b6a33d0a45d829513}{coeffs\_interior}() \textcolor{keyword}{const};
+00122 
+00128   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_ab5c791285e7e51a85b8c62a1b0ab9126}{weights\_crs}(\textcolor{keywordtype}{void}) \textcolor{keyword}{const};
+00129 
+00135   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_a5d4fe8c61ce41cb1134a3f9cb16deb59}{weights\_cbs}(\textcolor{keywordtype}{void}) \textcolor{keyword}{const};
+00136 
+00142   \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} \hyperlink{classmtk_1_1Div1D_a2c844ef39825e73e4024d35fcdd42b12}{mim\_bndy}() \textcolor{keyword}{const};
+00143 
+00149   \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} \hyperlink{classmtk_1_1Div1D_a213fddbaaf86e4840c6a9649b69c2d49}{ReturnAsDenseMatrix}(\textcolor{keyword}{const} 
       \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid) \textcolor{keyword}{const};
-00148 
-00149  \textcolor{keyword}{private}:
-00155   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Div1D_a3eb3a32862a6b066cd583cbbd00a6509}{ComputeStencilInteriorGrid}(\textcolor{keywordtype}{void});
-00156 
-00163   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Div1D_aa0c0c278b2c00a29c1ceaa70d31aebab}{ComputeRationalBasisNullSpace}(\textcolor{keywordtype}{void});
-00164 
-00170   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Div1D_a4be0534a4e22d44a7aedde326cc3f3b6}{ComputePreliminaryApproximations}(\textcolor{keywordtype}{void});
-00171 
-00177   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Div1D_aaadd6a6e6836bb94841c4c35dffab828}{ComputeWeights}(\textcolor{keywordtype}{void});
-00178 
-00184   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Div1D_a29bb417c76286414dce9258a0bcb5aab}{ComputeStencilBoundaryGrid}(\textcolor{keywordtype}{void});
-00185 
-00191   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Div1D_a5a12482e1ceac232339dd8f647af886b}{AssembleOperator}(\textcolor{keywordtype}{void});
-00192 
-\hypertarget{mtk__div__1d_8h_source_l00193}{}\hyperlink{classmtk_1_1Div1D_a9c8a8d7cd08a72dbd1daa8deee06f9c6}{00193}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Div1D_a9c8a8d7cd08a72dbd1daa8deee06f9c6}{order\_accuracy\_};    
-\hypertarget{mtk__div__1d_8h_source_l00194}{}\hyperlink{classmtk_1_1Div1D_a264027144def76d802778391f55381a0}{00194}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Div1D_a264027144def76d802778391f55381a0}{dim\_null\_};          
-\hypertarget{mtk__div__1d_8h_source_l00195}{}\hyperlink{classmtk_1_1Div1D_a717240b41eaa2adde858630b9e3d3042}{00195}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Div1D_a717240b41eaa2adde858630b9e3d3042}{num\_bndy\_coeffs\_};   
-\hypertarget{mtk__div__1d_8h_source_l00196}{}\hyperlink{classmtk_1_1Div1D_ac0f152190cd2fbff62deb07f96284f86}{00196}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Div1D_ac0f152190cd2fbff62deb07f96284f86}{divergence\_length\_}; 
-\hypertarget{mtk__div__1d_8h_source_l00197}{}\hyperlink{classmtk_1_1Div1D_a0ba7a75cca6cf3646deb7a030cbbf3f3}{00197}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Div1D_a0ba7a75cca6cf3646deb7a030cbbf3f3}{minrow\_};            
-\hypertarget{mtk__div__1d_8h_source_l00198}{}\hyperlink{classmtk_1_1Div1D_a86d99df0e9b1e5d2943a2dcf58975556}{00198}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Div1D_a86d99df0e9b1e5d2943a2dcf58975556}{row\_};               
-00199 
-\hypertarget{mtk__div__1d_8h_source_l00200}{}\hyperlink{classmtk_1_1Div1D_a4f0f5589f13024b7e0edc2ac19649f9b}{00200}   \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} \hyperlink{classmtk_1_1Div1D_a4f0f5589f13024b7e0edc2ac19649f9b}{rat\_basis\_null\_space\_};  
+00150 
+00156   \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} \hyperlink{classmtk_1_1Div1D_af2546ad1568ef39a6075f03bb395719e}{ReturnAsDimensionlessDenseMatrix}(\textcolor{keywordtype}{int} num\_cells\_x) \textcolor{keyword}{
+      const};
+00157 
+00158  \textcolor{keyword}{private}:
+00164   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Div1D_a3eb3a32862a6b066cd583cbbd00a6509}{ComputeStencilInteriorGrid}(\textcolor{keywordtype}{void});
+00165 
+00172   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Div1D_aa0c0c278b2c00a29c1ceaa70d31aebab}{ComputeRationalBasisNullSpace}(\textcolor{keywordtype}{void});
+00173 
+00179   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Div1D_a4be0534a4e22d44a7aedde326cc3f3b6}{ComputePreliminaryApproximations}(\textcolor{keywordtype}{void});
+00180 
+00186   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Div1D_aaadd6a6e6836bb94841c4c35dffab828}{ComputeWeights}(\textcolor{keywordtype}{void});
+00187 
+00193   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Div1D_a29bb417c76286414dce9258a0bcb5aab}{ComputeStencilBoundaryGrid}(\textcolor{keywordtype}{void});
+00194 
+00200   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Div1D_a5a12482e1ceac232339dd8f647af886b}{AssembleOperator}(\textcolor{keywordtype}{void});
 00201 
-\hypertarget{mtk__div__1d_8h_source_l00202}{}\hyperlink{classmtk_1_1Div1D_a7c7688d8ac25120587353ece4e93a13a}{00202}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_a7c7688d8ac25120587353ece4e93a13a}{coeffs\_interior\_}; 
-\hypertarget{mtk__div__1d_8h_source_l00203}{}\hyperlink{classmtk_1_1Div1D_ab51ff3db86a874604d6c756ab6770950}{00203}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_ab51ff3db86a874604d6c756ab6770950}{prem\_apps\_};       
-\hypertarget{mtk__div__1d_8h_source_l00204}{}\hyperlink{classmtk_1_1Div1D_ad36dcfade921f0488fe3edaecc17bd75}{00204}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_ad36dcfade921f0488fe3edaecc17bd75}{weights\_crs\_};     
-\hypertarget{mtk__div__1d_8h_source_l00205}{}\hyperlink{classmtk_1_1Div1D_a631dad42a0ec0f5d5ac767abdfd8949c}{00205}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_a631dad42a0ec0f5d5ac767abdfd8949c}{weights\_cbs\_};     
-\hypertarget{mtk__div__1d_8h_source_l00206}{}\hyperlink{classmtk_1_1Div1D_a6d6c600117fdb583f061da0c9d5f28f7}{00206}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_a6d6c600117fdb583f061da0c9d5f28f7}{mim\_bndy\_};        
-\hypertarget{mtk__div__1d_8h_source_l00207}{}\hyperlink{classmtk_1_1Div1D_a0f96410051ba1fa6d91dfa7b7eacead9}{00207}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_a0f96410051ba1fa6d91dfa7b7eacead9}{divergence\_};      
+\hypertarget{mtk__div__1d_8h_source_l00202}{}\hyperlink{classmtk_1_1Div1D_a9c8a8d7cd08a72dbd1daa8deee06f9c6}{00202}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Div1D_a9c8a8d7cd08a72dbd1daa8deee06f9c6}{order\_accuracy\_};    
+\hypertarget{mtk__div__1d_8h_source_l00203}{}\hyperlink{classmtk_1_1Div1D_a264027144def76d802778391f55381a0}{00203}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Div1D_a264027144def76d802778391f55381a0}{dim\_null\_};          
+\hypertarget{mtk__div__1d_8h_source_l00204}{}\hyperlink{classmtk_1_1Div1D_a717240b41eaa2adde858630b9e3d3042}{00204}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Div1D_a717240b41eaa2adde858630b9e3d3042}{num\_bndy\_coeffs\_};   
+\hypertarget{mtk__div__1d_8h_source_l00205}{}\hyperlink{classmtk_1_1Div1D_ac0f152190cd2fbff62deb07f96284f86}{00205}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Div1D_ac0f152190cd2fbff62deb07f96284f86}{divergence\_length\_}; 
+\hypertarget{mtk__div__1d_8h_source_l00206}{}\hyperlink{classmtk_1_1Div1D_a0ba7a75cca6cf3646deb7a030cbbf3f3}{00206}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Div1D_a0ba7a75cca6cf3646deb7a030cbbf3f3}{minrow\_};            
+\hypertarget{mtk__div__1d_8h_source_l00207}{}\hyperlink{classmtk_1_1Div1D_a86d99df0e9b1e5d2943a2dcf58975556}{00207}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Div1D_a86d99df0e9b1e5d2943a2dcf58975556}{row\_};               
 00208 
-\hypertarget{mtk__div__1d_8h_source_l00209}{}\hyperlink{classmtk_1_1Div1D_a40ed629199b38133f5652b71e8b1cd06}{00209}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Div1D_a40ed629199b38133f5652b71e8b1cd06}{mimetic\_threshold\_};  
-00210 \};
-00211 \}
-00212 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_DIV\_1D\_H\_}
+\hypertarget{mtk__div__1d_8h_source_l00209}{}\hyperlink{classmtk_1_1Div1D_a4f0f5589f13024b7e0edc2ac19649f9b}{00209}   \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} \hyperlink{classmtk_1_1Div1D_a4f0f5589f13024b7e0edc2ac19649f9b}{rat\_basis\_null\_space\_};  
+00210 
+\hypertarget{mtk__div__1d_8h_source_l00211}{}\hyperlink{classmtk_1_1Div1D_a7c7688d8ac25120587353ece4e93a13a}{00211}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_a7c7688d8ac25120587353ece4e93a13a}{coeffs\_interior\_}; 
+\hypertarget{mtk__div__1d_8h_source_l00212}{}\hyperlink{classmtk_1_1Div1D_ab51ff3db86a874604d6c756ab6770950}{00212}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_ab51ff3db86a874604d6c756ab6770950}{prem\_apps\_};       
+\hypertarget{mtk__div__1d_8h_source_l00213}{}\hyperlink{classmtk_1_1Div1D_ad36dcfade921f0488fe3edaecc17bd75}{00213}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_ad36dcfade921f0488fe3edaecc17bd75}{weights\_crs\_};     
+\hypertarget{mtk__div__1d_8h_source_l00214}{}\hyperlink{classmtk_1_1Div1D_a631dad42a0ec0f5d5ac767abdfd8949c}{00214}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_a631dad42a0ec0f5d5ac767abdfd8949c}{weights\_cbs\_};     
+\hypertarget{mtk__div__1d_8h_source_l00215}{}\hyperlink{classmtk_1_1Div1D_a6d6c600117fdb583f061da0c9d5f28f7}{00215}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_a6d6c600117fdb583f061da0c9d5f28f7}{mim\_bndy\_};        
+\hypertarget{mtk__div__1d_8h_source_l00216}{}\hyperlink{classmtk_1_1Div1D_a0f96410051ba1fa6d91dfa7b7eacead9}{00216}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Div1D_a0f96410051ba1fa6d91dfa7b7eacead9}{divergence\_};      
+00217 
+\hypertarget{mtk__div__1d_8h_source_l00218}{}\hyperlink{classmtk_1_1Div1D_a1df70645f34490a70b3437c0122f5646}{00218}   std::vector<Real> \hyperlink{classmtk_1_1Div1D_a1df70645f34490a70b3437c0122f5646}{sum\_rows\_mim\_bndy\_}; 
+00219 
+\hypertarget{mtk__div__1d_8h_source_l00220}{}\hyperlink{classmtk_1_1Div1D_a40ed629199b38133f5652b71e8b1cd06}{00220}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Div1D_a40ed629199b38133f5652b71e8b1cd06}{mimetic\_threshold\_};  
+00221 \};
+00222 \}
+00223 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_DIV\_1D\_H\_}
 \end{DoxyCode}

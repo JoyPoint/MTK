@@ -125,7 +125,7 @@ class UniStgGrid3D {
                const Real &bottom_bndy_z,
                const Real &top_bndy_z,
                const int &num_cells_z,
-               const mtk::FieldNature &nature = mtk::SCALAR);
+               const mtk::FieldNature &nature = mtk::FieldNature::SCALAR);
 
   /// \brief Destructor.
   ~UniStgGrid3D();
@@ -368,7 +368,7 @@ class UniStgGrid3D {
       q(x, y, z)\hat{\mathbf{j}} + r(x, y, z)\hat{\mathbf{k}}
   \f]
 
-  \param[in] BindVectorFieldQComponent Pointer to the function implementing the
+  \param[in] BindVectorFieldRComponent Pointer to the function implementing the
   \$ r \$ component of the vector field.
   */
   void BindVectorFieldRComponent(

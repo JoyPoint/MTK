@@ -603,7 +603,7 @@ bool mtk::RobinBCDescriptor2D::ImposeOnLaplacianMatrix(
                       __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(highest_order_diff_east_ == -1,
                       __FILE__, __LINE__, __func__);
-  mtk::Tools::Prevent(grid.nature() != mtk::SCALAR,
+  mtk::Tools::Prevent(grid.nature() != mtk::FieldNature::SCALAR,
                       __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(grid.num_cells_x() == 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(grid.num_cells_y() == 0, __FILE__, __LINE__, __func__);
@@ -687,7 +687,7 @@ void mtk::RobinBCDescriptor2D::ImposeOnGrid(
   #endif
 
   /// 1. Impose assuming an scalar grid.
-  if (grid.nature() == mtk::SCALAR) {
+  if (grid.nature() == mtk::FieldNature::SCALAR) {
 
     /// 1.1. Impose south condition.
 

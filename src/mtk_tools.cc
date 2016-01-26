@@ -1,9 +1,10 @@
 /*!
 \file mtk_tools.cc
 
-\brief Implements a execution tool manager class.
+\brief Tool manager class.
 
-Basic tools to ensure execution correctness.
+Implementation of a class providing basic tools to ensure execution correctness,
+and to assists with unitary testing.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -77,13 +78,11 @@ void mtk::Tools::Prevent(const bool condition,
   }
 }
 
-/// \todo Check usage of static methods and private members.
+int mtk::Tools::test_number_{};   // Current test being executed.
 
-int mtk::Tools::test_number_;  // Used to control the correctness of the test.
+mtk::Real mtk::Tools::duration_{};    // Duration of the current test.
 
-mtk::Real mtk::Tools::duration_;  // Duration of the current test.
-
-clock_t mtk::Tools::begin_time_;  // Used to time tests.
+clock_t mtk::Tools::begin_time_{};  // Elapsed time on current test.
 
 void mtk::Tools::BeginUnitTestNo(const int &nn) noexcept {
 

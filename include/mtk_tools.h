@@ -3,7 +3,8 @@
 
 \brief Tool manager class.
 
-Basic utilities.
+Definition of a class providing basic tools to ensure execution correctness,
+and to assists with unitary testing.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 
@@ -73,7 +74,8 @@ namespace mtk {
 
 \brief Tool manager class.
 
-Basic tools to ensure execution correctness.
+Basic tools to ensure execution correctness, and to assists with unitary
+testing.
 */
 class Tools {
  public:
@@ -116,9 +118,9 @@ class Tools {
  private:
   static int test_number_;  ///< Current test being executed.
 
-  static Real duration_;  ///< Duration of the current test.
+  static Real duration_;    ///< Duration of the current test.
 
-  static clock_t begin_time_; ///< Elapsed time on current test.
+  static clock_t begin_time_;   ///< Elapsed time on current test.
 };
 }
 #endif  // End of: MTK_INCLUDE_TOOLS_H_

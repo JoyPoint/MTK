@@ -74,7 +74,7 @@ with some of the most used mathematical APIs, as follows: DENSE and BANDED for
 <a href="http://www.netlib.org/scalapack/">ScaLAPACK</a>. Finally, CRS for
 <a href="http://crd.lbl.gov/~xiaoye/SuperLU/">SuperLU</a>.
 */
-enum MatrixStorage {
+enum class MatrixStorage {
   DENSE,    ///< Dense matrices, implemented as a 1D array: DenseMatrix.
   BANDED,   ///< Banded matrices ala LAPACK and ScaLAPACK: Must be implemented.
   CRS       ///< Compressed-Rows Storage: Must be implemented.
@@ -92,7 +92,7 @@ the matrices must be listed in a column-major ordering.
 
 \sa https://en.wikipedia.org/wiki/Row-major_order
 */
-enum MatrixOrdering {
+enum class MatrixOrdering {
   ROW_MAJOR,  ///< Row-major ordering (C/C++).
   COL_MAJOR   ///< Column-major ordering (Fortran).
 };
@@ -110,7 +110,7 @@ Fields can be **scalar** or **vector** in nature.
 
 \sa https://en.wikipedia.org/wiki/Vector_field
 */
-enum FieldNature {
+enum class FieldNature {
   SCALAR,  ///< Scalar-valued field.
   VECTOR   ///< Vector-valued field.
 };
@@ -124,7 +124,7 @@ enum FieldNature {
 
 Used to tag different directions of interpolation supported.
 */
-enum DirInterp {
+enum class DirInterp {
   SCALAR_TO_VECTOR, ///< Interpolations places scalar on vectors' location.
   VECTOR_TO_SCALAR  ///< Interpolations places vectors on scalars' location.
 };

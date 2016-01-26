@@ -4,90 +4,90 @@
 
 \begin{DoxyCode}
 00001 
-00017 \textcolor{comment}{/*}
-00018 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
-00019 \textcolor{comment}{University. All rights reserved.}
-00020 \textcolor{comment}{}
-00021 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
-00022 \textcolor{comment}{are permitted provided that the following conditions are met:}
-00023 \textcolor{comment}{}
-00024 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
-00025 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
-00026 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
-00027 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
-00028 \textcolor{comment}{should be developed and included in any deliverable.}
-00029 \textcolor{comment}{}
-00030 \textcolor{comment}{2. Redistributions of source code must be done through direct}
-00031 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
-00032 \textcolor{comment}{}
-00033 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
-00034 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
-00035 \textcolor{comment}{other materials provided with the distribution.}
-00036 \textcolor{comment}{}
-00037 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
-00038 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
-00039 \textcolor{comment}{be given to the copyright holders.}
-00040 \textcolor{comment}{}
-00041 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
-00042 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
-00043 \textcolor{comment}{specific prior written permission.}
-00044 \textcolor{comment}{}
-00045 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
-00046 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
-00047 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
-00048 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
-00049 \textcolor{comment}{parties intellectual property rights.}
-00050 \textcolor{comment}{}
-00051 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
-00052 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
-00053 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
-00054 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
-00055 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
-00056 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
-00057 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
-00058 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
-00059 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
-00060 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
-00061 \textcolor{comment}{*/}
-00062 
-00063 \textcolor{preprocessor}{#ifndef MTK\_INCLUDE\_ROOTS\_H\_}
-00064 \textcolor{preprocessor}{#define MTK\_INCLUDE\_ROOTS\_H\_}
-00065 
-00071 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk} \{
-00072 
-00080 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
-00081 \textcolor{keyword}{typedef} \textcolor{keywordtype}{double} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real};
-00082 \textcolor{preprocessor}{#else}
-\hypertarget{mtk__roots_8h_source_l00083}{}\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{00083} \textcolor{keyword}{typedef} \textcolor{keywordtype}{float} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real};
-00084 \textcolor{preprocessor}{#endif}
-00085 
-00111 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
-00112 \textcolor{keyword}{const} \textcolor{keywordtype}{double} \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{kZero}\{0.0\};
-00113 \textcolor{keyword}{const} \textcolor{keywordtype}{double} \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{kOne}\{1.0\};
-00114 \textcolor{keyword}{const} \textcolor{keywordtype}{double} \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{kTwo}\{2.0\};
-00115 \textcolor{preprocessor}{#else}
-\hypertarget{mtk__roots_8h_source_l00116}{}\hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{00116} \textcolor{keyword}{const} \textcolor{keywordtype}{float} \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{kZero}\{0.0f\};
-\hypertarget{mtk__roots_8h_source_l00117}{}\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{00117} \textcolor{keyword}{const} \textcolor{keywordtype}{float} \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{kOne}\{1.0f\};
-\hypertarget{mtk__roots_8h_source_l00118}{}\hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{00118} \textcolor{keyword}{const} \textcolor{keywordtype}{float} \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{kTwo}\{2.0f\};
-00119 \textcolor{preprocessor}{#endif}
-00120 
-00128 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
-00129 \textcolor{keyword}{const} \textcolor{keywordtype}{double} \hyperlink{group__c01-roots_gae914b125d81d1b97e0aee7bbc7739786}{kDefaultTolerance}\{1e-7\};
-00130 \textcolor{preprocessor}{#else}
-\hypertarget{mtk__roots_8h_source_l00131}{}\hyperlink{group__c01-roots_gae914b125d81d1b97e0aee7bbc7739786}{00131} \textcolor{keyword}{const} \textcolor{keywordtype}{float} \hyperlink{group__c01-roots_gae914b125d81d1b97e0aee7bbc7739786}{kDefaultTolerance}\{1e-7f\};
-00132 \textcolor{preprocessor}{#endif}
-00133 
-\hypertarget{mtk__roots_8h_source_l00143}{}\hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{00143} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{kDefaultOrderAccuracy}\{2\};
-00144 
-00154 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
-00155 \textcolor{keyword}{const} \textcolor{keywordtype}{double} \hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{kDefaultMimeticThreshold}\{1e-6\};
-00156 \textcolor{preprocessor}{#else}
-\hypertarget{mtk__roots_8h_source_l00157}{}\hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{00157} \textcolor{keyword}{const} \textcolor{keywordtype}{float} \hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{kDefaultMimeticThreshold}\{1e-6f\};
-00158 \textcolor{preprocessor}{#endif}
-00159 
-\hypertarget{mtk__roots_8h_source_l00167}{}\hyperlink{group__c01-roots_ga0898eef2108473e44a5223932d571c31}{00167} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{group__c01-roots_ga0898eef2108473e44a5223932d571c31}{kCriticalOrderAccuracyDiv}\{8\};
-00168 
-\hypertarget{mtk__roots_8h_source_l00176}{}\hyperlink{group__c01-roots_ga295dd2f403c775ecd942c22b5a777496}{00176} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{group__c01-roots_ga295dd2f403c775ecd942c22b5a777496}{kCriticalOrderAccuracyGrad}\{10\};
-00177 \}
-00178 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_ROOTS\_H\_}
+00015 \textcolor{comment}{/*}
+00016 \textcolor{comment}{Copyright (C) 2015, Computational Science Research Center, San Diego State}
+00017 \textcolor{comment}{University. All rights reserved.}
+00018 \textcolor{comment}{}
+00019 \textcolor{comment}{Redistribution and use in source and binary forms, with or without modification,}
+00020 \textcolor{comment}{are permitted provided that the following conditions are met:}
+00021 \textcolor{comment}{}
+00022 \textcolor{comment}{1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu}
+00023 \textcolor{comment}{and a copy of the modified files should be reported once modifications are}
+00024 \textcolor{comment}{completed, unless these modifications are made through the project's GitHub}
+00025 \textcolor{comment}{page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications}
+00026 \textcolor{comment}{should be developed and included in any deliverable.}
+00027 \textcolor{comment}{}
+00028 \textcolor{comment}{2. Redistributions of source code must be done through direct}
+00029 \textcolor{comment}{downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk}
+00030 \textcolor{comment}{}
+00031 \textcolor{comment}{3. Redistributions in binary form must reproduce the above copyright notice,}
+00032 \textcolor{comment}{this list of conditions and the following disclaimer in the documentation and/or}
+00033 \textcolor{comment}{other materials provided with the distribution.}
+00034 \textcolor{comment}{}
+00035 \textcolor{comment}{4. Usage of the binary form on proprietary applications shall require explicit}
+00036 \textcolor{comment}{prior written permission from the the copyright holders, and due credit should}
+00037 \textcolor{comment}{be given to the copyright holders.}
+00038 \textcolor{comment}{}
+00039 \textcolor{comment}{5. Neither the name of the copyright holder nor the names of its contributors}
+00040 \textcolor{comment}{may be used to endorse or promote products derived from this software without}
+00041 \textcolor{comment}{specific prior written permission.}
+00042 \textcolor{comment}{}
+00043 \textcolor{comment}{The copyright holders provide no reassurances that the source code provided does}
+00044 \textcolor{comment}{not infringe any patent, copyright, or any other intellectual property rights of}
+00045 \textcolor{comment}{third parties. The copyright holders disclaim any liability to any recipient for}
+00046 \textcolor{comment}{claims brought against recipient by any third party for infringement of that}
+00047 \textcolor{comment}{parties intellectual property rights.}
+00048 \textcolor{comment}{}
+00049 \textcolor{comment}{THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND}
+00050 \textcolor{comment}{ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED}
+00051 \textcolor{comment}{WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE}
+00052 \textcolor{comment}{DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR}
+00053 \textcolor{comment}{ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES}
+00054 \textcolor{comment}{(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;}
+00055 \textcolor{comment}{LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON}
+00056 \textcolor{comment}{ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}
+00057 \textcolor{comment}{(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS}
+00058 \textcolor{comment}{SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}
+00059 \textcolor{comment}{*/}
+00060 
+00061 \textcolor{preprocessor}{#ifndef MTK\_INCLUDE\_ROOTS\_H\_}
+00062 \textcolor{preprocessor}{#define MTK\_INCLUDE\_ROOTS\_H\_}
+00063 
+00069 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk} \{
+00070 
+00090 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
+00091 \textcolor{keyword}{typedef} \textcolor{keywordtype}{double} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real};
+00092 \textcolor{preprocessor}{#else}
+\hypertarget{mtk__roots_8h_source_l00093}{}\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{00093} \textcolor{keyword}{typedef} \textcolor{keywordtype}{float} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real};
+00094 \textcolor{preprocessor}{#endif}
+00095 
+00121 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
+00122 \textcolor{keyword}{const} \textcolor{keywordtype}{double} \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{kZero}\{0.0\};
+00123 \textcolor{keyword}{const} \textcolor{keywordtype}{double} \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{kOne}\{1.0\};
+00124 \textcolor{keyword}{const} \textcolor{keywordtype}{double} \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{kTwo}\{2.0\};
+00125 \textcolor{preprocessor}{#else}
+\hypertarget{mtk__roots_8h_source_l00126}{}\hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{00126} \textcolor{keyword}{const} \textcolor{keywordtype}{float} \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{kZero}\{0.0f\};
+\hypertarget{mtk__roots_8h_source_l00127}{}\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{00127} \textcolor{keyword}{const} \textcolor{keywordtype}{float} \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{kOne}\{1.0f\};
+\hypertarget{mtk__roots_8h_source_l00128}{}\hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{00128} \textcolor{keyword}{const} \textcolor{keywordtype}{float} \hyperlink{group__c01-roots_gaf39c2d851a2db744f4feb1c5ab3ec2cf}{kTwo}\{2.0f\};
+00129 \textcolor{preprocessor}{#endif}
+00130 
+00140 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
+00141 \textcolor{keyword}{const} \textcolor{keywordtype}{double} \hyperlink{group__c01-roots_gae914b125d81d1b97e0aee7bbc7739786}{kDefaultTolerance}\{1e-7\};
+00142 \textcolor{preprocessor}{#else}
+\hypertarget{mtk__roots_8h_source_l00143}{}\hyperlink{group__c01-roots_gae914b125d81d1b97e0aee7bbc7739786}{00143} \textcolor{keyword}{const} \textcolor{keywordtype}{float} \hyperlink{group__c01-roots_gae914b125d81d1b97e0aee7bbc7739786}{kDefaultTolerance}\{1e-7f\};
+00144 \textcolor{preprocessor}{#endif}
+00145 
+00155 \textcolor{preprocessor}{#ifdef MTK\_PRECISION\_DOUBLE}
+00156 \textcolor{keyword}{const} \textcolor{keywordtype}{double} \hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{kDefaultMimeticThreshold}\{1e-6\};
+00157 \textcolor{preprocessor}{#else}
+\hypertarget{mtk__roots_8h_source_l00158}{}\hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{00158} \textcolor{keyword}{const} \textcolor{keywordtype}{float} \hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{kDefaultMimeticThreshold}\{1e-6f\};
+00159 \textcolor{preprocessor}{#endif}
+00160 
+\hypertarget{mtk__roots_8h_source_l00168}{}\hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{00168} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{kDefaultOrderAccuracy}\{2\};
+00169 
+\hypertarget{mtk__roots_8h_source_l00177}{}\hyperlink{group__c01-roots_ga295dd2f403c775ecd942c22b5a777496}{00177} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{group__c01-roots_ga295dd2f403c775ecd942c22b5a777496}{kCriticalOrderAccuracyGrad}\{10\};
+00178 
+\hypertarget{mtk__roots_8h_source_l00186}{}\hyperlink{group__c01-roots_ga0898eef2108473e44a5223932d571c31}{00186} \textcolor{keyword}{const} \textcolor{keywordtype}{int} \hyperlink{group__c01-roots_ga0898eef2108473e44a5223932d571c31}{kCriticalOrderAccuracyDiv}\{8\};
+00187 \}
+00188 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_ROOTS\_H\_}
 \end{DoxyCode}

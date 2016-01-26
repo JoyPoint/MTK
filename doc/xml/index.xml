@@ -58,6 +58,7 @@
     <member refid="classmtk_1_1Div1D_1a631dad42a0ec0f5d5ac767abdfd8949c" kind="variable"><name>weights_cbs_</name></member>
     <member refid="classmtk_1_1Div1D_1a6d6c600117fdb583f061da0c9d5f28f7" kind="variable"><name>mim_bndy_</name></member>
     <member refid="classmtk_1_1Div1D_1a0f96410051ba1fa6d91dfa7b7eacead9" kind="variable"><name>divergence_</name></member>
+    <member refid="classmtk_1_1Div1D_1a1df70645f34490a70b3437c0122f5646" kind="variable"><name>sum_rows_mim_bndy_</name></member>
     <member refid="classmtk_1_1Div1D_1a40ed629199b38133f5652b71e8b1cd06" kind="variable"><name>mimetic_threshold_</name></member>
     <member refid="classmtk_1_1Div1D_1af3b80aac338975509618e593089e1ed9" kind="friend"><name>operator&lt;&lt;</name></member>
     <member refid="classmtk_1_1Div1D_1a339c66dd4ed8f50cbeda3645de18e5ab" kind="function"><name>Div1D</name></member>
@@ -70,6 +71,7 @@
     <member refid="classmtk_1_1Div1D_1a5d4fe8c61ce41cb1134a3f9cb16deb59" kind="function"><name>weights_cbs</name></member>
     <member refid="classmtk_1_1Div1D_1a2c844ef39825e73e4024d35fcdd42b12" kind="function"><name>mim_bndy</name></member>
     <member refid="classmtk_1_1Div1D_1a213fddbaaf86e4840c6a9649b69c2d49" kind="function"><name>ReturnAsDenseMatrix</name></member>
+    <member refid="classmtk_1_1Div1D_1af2546ad1568ef39a6075f03bb395719e" kind="function"><name>ReturnAsDimensionlessDenseMatrix</name></member>
     <member refid="classmtk_1_1Div1D_1a3eb3a32862a6b066cd583cbbd00a6509" kind="function"><name>ComputeStencilInteriorGrid</name></member>
     <member refid="classmtk_1_1Div1D_1aa0c0c278b2c00a29c1ceaa70d31aebab" kind="function"><name>ComputeRationalBasisNullSpace</name></member>
     <member refid="classmtk_1_1Div1D_1a4be0534a4e22d44a7aedde326cc3f3b6" kind="function"><name>ComputePreliminaryApproximations</name></member>
@@ -500,18 +502,18 @@
   </compound>
   <compound refid="namespacemtk" kind="namespace"><name>mtk</name>
     <member refid="group__c02-enums_1ga25b67ec6a2afeee69f9bb196a9c66619" kind="enum"><name>MatrixStorage</name></member>
-    <member refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87" kind="enumvalue"><name>DENSE</name></member>
-    <member refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619aef1d4271d5005282978a3a40a8a52c9b" kind="enumvalue"><name>BANDED</name></member>
-    <member refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a87619d374775e937bca967402b988b8b" kind="enumvalue"><name>CRS</name></member>
+    <member refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a0706fbbd929bd8abc4de386c53d439ff" kind="enumvalue"><name>DENSE</name></member>
+    <member refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a710800eb2f07821684373493be7fee14" kind="enumvalue"><name>BANDED</name></member>
+    <member refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a22d51ee0c812123c541f2a1bdf794fd1" kind="enumvalue"><name>CRS</name></member>
     <member refid="group__c02-enums_1ga622801bd9f912d0f976c3e383f5f581c" kind="enum"><name>MatrixOrdering</name></member>
-    <member refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3" kind="enumvalue"><name>ROW_MAJOR</name></member>
-    <member refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13" kind="enumvalue"><name>COL_MAJOR</name></member>
+    <member refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648" kind="enumvalue"><name>ROW_MAJOR</name></member>
+    <member refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca34d2765ffc490951febdcca04bc4f7cd" kind="enumvalue"><name>COL_MAJOR</name></member>
     <member refid="group__c02-enums_1ga4c54f2a329cfb4e56213b02a259d19e2" kind="enum"><name>FieldNature</name></member>
-    <member refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205" kind="enumvalue"><name>SCALAR</name></member>
-    <member refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a3d8cb27a993651a74d67fb8c98ae91b2" kind="enumvalue"><name>VECTOR</name></member>
+    <member refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9" kind="enumvalue"><name>SCALAR</name></member>
+    <member refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e" kind="enumvalue"><name>VECTOR</name></member>
     <member refid="group__c02-enums_1ga674ec67bd1baa04e5dc06c2bcc351972" kind="enum"><name>DirInterp</name></member>
-    <member refid="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139" kind="enumvalue"><name>SCALAR_TO_VECTOR</name></member>
-    <member refid="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972a122cf2e24aef105e9214698206af6904" kind="enumvalue"><name>VECTOR_TO_SCALAR</name></member>
+    <member refid="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972a53facfbeb6725b2bd220c8d9811a0673" kind="enumvalue"><name>SCALAR_TO_VECTOR</name></member>
+    <member refid="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972a6b389c8391a900c481d8c96c6045f468" kind="enumvalue"><name>VECTOR_TO_SCALAR</name></member>
     <member refid="group__c07-mim__ops_1ga04276745b4d511f0f3c636d6e0df7c2d" kind="typedef"><name>CoefficientFunction0D</name></member>
     <member refid="group__c07-mim__ops_1gaa79593eeb6676d6011db339e01983909" kind="typedef"><name>CoefficientFunction1D</name></member>
     <member refid="group__c07-mim__ops_1ga0ff293d1fd754006d64a3588971dc5c4" kind="typedef"><name>CoefficientFunction2D</name></member>
@@ -520,10 +522,10 @@
     <member refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kind="variable"><name>kOne</name></member>
     <member refid="group__c01-roots_1gaf39c2d851a2db744f4feb1c5ab3ec2cf" kind="variable"><name>kTwo</name></member>
     <member refid="group__c01-roots_1gae914b125d81d1b97e0aee7bbc7739786" kind="variable"><name>kDefaultTolerance</name></member>
-    <member refid="group__c01-roots_1ga0d95560098eb36420511103637b6952f" kind="variable"><name>kDefaultOrderAccuracy</name></member>
     <member refid="group__c01-roots_1ga35718d949bdc81a08a9cc8ebbe3478a2" kind="variable"><name>kDefaultMimeticThreshold</name></member>
-    <member refid="group__c01-roots_1ga0898eef2108473e44a5223932d571c31" kind="variable"><name>kCriticalOrderAccuracyDiv</name></member>
+    <member refid="group__c01-roots_1ga0d95560098eb36420511103637b6952f" kind="variable"><name>kDefaultOrderAccuracy</name></member>
     <member refid="group__c01-roots_1ga295dd2f403c775ecd942c22b5a777496" kind="variable"><name>kCriticalOrderAccuracyGrad</name></member>
+    <member refid="group__c01-roots_1ga0898eef2108473e44a5223932d571c31" kind="variable"><name>kCriticalOrderAccuracyDiv</name></member>
     <member refid="namespacemtk_1a508e99fcb14d526bc43aa0a80aa4b658" kind="function"><name>snrm2_</name></member>
     <member refid="namespacemtk_1a81a2d7d1ea9eff65ae13646c93dad5e9" kind="function"><name>saxpy_</name></member>
     <member refid="namespacemtk_1a88daff7ad6f251a58b94aa2d0c94d069" kind="function"><name>sgemv_</name></member>
@@ -549,6 +551,12 @@
   <compound refid="diffusion__3d_8cc" kind="file"><name>diffusion_3d.cc</name>
     <member refid="diffusion__3d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
   </compound>
+  <compound refid="divergence__operators__1d_8cc" kind="file"><name>divergence_operators_1d.cc</name>
+    <member refid="divergence__operators__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="divergence__operators__1d__mimetic__test_8cc" kind="file"><name>divergence_operators_1d_mimetic_test.cc</name>
+    <member refid="divergence__operators__1d__mimetic__test_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
   <compound refid="minimalistic__poisson__1d_8cc" kind="file"><name>minimalistic_poisson_1d.cc</name>
     <member refid="minimalistic__poisson__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
   </compound>
@@ -557,6 +565,9 @@
   </compound>
   <compound refid="poisson__2d_8cc" kind="file"><name>poisson_2d.cc</name>
     <member refid="poisson__2d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
+  </compound>
+  <compound refid="pos__def__weights__1d_8cc" kind="file"><name>pos_def_weights_1d.cc</name>
+    <member refid="pos__def__weights__1d_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" kind="function"><name>main</name></member>
   </compound>
   <compound refid="mtk_8h" kind="file"><name>mtk.h</name>
   </compound>
@@ -722,25 +733,25 @@
     <member refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kind="variable"><name>kOne</name></member>
     <member refid="group__c01-roots_1gaf39c2d851a2db744f4feb1c5ab3ec2cf" kind="variable"><name>kTwo</name></member>
     <member refid="group__c01-roots_1gae914b125d81d1b97e0aee7bbc7739786" kind="variable"><name>kDefaultTolerance</name></member>
-    <member refid="group__c01-roots_1ga0d95560098eb36420511103637b6952f" kind="variable"><name>kDefaultOrderAccuracy</name></member>
     <member refid="group__c01-roots_1ga35718d949bdc81a08a9cc8ebbe3478a2" kind="variable"><name>kDefaultMimeticThreshold</name></member>
-    <member refid="group__c01-roots_1ga0898eef2108473e44a5223932d571c31" kind="variable"><name>kCriticalOrderAccuracyDiv</name></member>
+    <member refid="group__c01-roots_1ga0d95560098eb36420511103637b6952f" kind="variable"><name>kDefaultOrderAccuracy</name></member>
     <member refid="group__c01-roots_1ga295dd2f403c775ecd942c22b5a777496" kind="variable"><name>kCriticalOrderAccuracyGrad</name></member>
+    <member refid="group__c01-roots_1ga0898eef2108473e44a5223932d571c31" kind="variable"><name>kCriticalOrderAccuracyDiv</name></member>
   </compound>
   <compound refid="group__c02-enums" kind="group"><name>c02-enums</name>
     <member refid="group__c02-enums_1ga25b67ec6a2afeee69f9bb196a9c66619" kind="enum"><name>MatrixStorage</name></member>
-    <member refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a00a806d43a7d74e9ccca47a2134e9c87" kind="enumvalue"><name>DENSE</name></member>
-    <member refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619aef1d4271d5005282978a3a40a8a52c9b" kind="enumvalue"><name>BANDED</name></member>
-    <member refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a87619d374775e937bca967402b988b8b" kind="enumvalue"><name>CRS</name></member>
+    <member refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a0706fbbd929bd8abc4de386c53d439ff" kind="enumvalue"><name>DENSE</name></member>
+    <member refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a710800eb2f07821684373493be7fee14" kind="enumvalue"><name>BANDED</name></member>
+    <member refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a22d51ee0c812123c541f2a1bdf794fd1" kind="enumvalue"><name>CRS</name></member>
     <member refid="group__c02-enums_1ga622801bd9f912d0f976c3e383f5f581c" kind="enum"><name>MatrixOrdering</name></member>
-    <member refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581cabc55178ac16eb1ce89b5f3ab915a91f3" kind="enumvalue"><name>ROW_MAJOR</name></member>
-    <member refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca7c11989c132253fb76b8f6b1314f7e13" kind="enumvalue"><name>COL_MAJOR</name></member>
+    <member refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648" kind="enumvalue"><name>ROW_MAJOR</name></member>
+    <member refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca34d2765ffc490951febdcca04bc4f7cd" kind="enumvalue"><name>COL_MAJOR</name></member>
     <member refid="group__c02-enums_1ga4c54f2a329cfb4e56213b02a259d19e2" kind="enum"><name>FieldNature</name></member>
-    <member refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2af481d45bd70d41381c7d72e200889205" kind="enumvalue"><name>SCALAR</name></member>
-    <member refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a3d8cb27a993651a74d67fb8c98ae91b2" kind="enumvalue"><name>VECTOR</name></member>
+    <member refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9" kind="enumvalue"><name>SCALAR</name></member>
+    <member refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e" kind="enumvalue"><name>VECTOR</name></member>
     <member refid="group__c02-enums_1ga674ec67bd1baa04e5dc06c2bcc351972" kind="enum"><name>DirInterp</name></member>
-    <member refid="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972abc9e2b8cd5a497c9f3252a792e356139" kind="enumvalue"><name>SCALAR_TO_VECTOR</name></member>
-    <member refid="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972a122cf2e24aef105e9214698206af6904" kind="enumvalue"><name>VECTOR_TO_SCALAR</name></member>
+    <member refid="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972a53facfbeb6725b2bd220c8d9811a0673" kind="enumvalue"><name>SCALAR_TO_VECTOR</name></member>
+    <member refid="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972a6b389c8391a900c481d8c96c6045f468" kind="enumvalue"><name>VECTOR_TO_SCALAR</name></member>
   </compound>
   <compound refid="group__c03-execution__tools" kind="group"><name>c03-execution_tools</name>
   </compound>
@@ -755,17 +766,19 @@
     <member refid="group__c07-mim__ops_1gaa79593eeb6676d6011db339e01983909" kind="typedef"><name>CoefficientFunction1D</name></member>
     <member refid="group__c07-mim__ops_1ga0ff293d1fd754006d64a3588971dc5c4" kind="typedef"><name>CoefficientFunction2D</name></member>
   </compound>
-  <compound refid="section_prog_tools" kind="page"><name>section_prog_tools</name>
-  </compound>
-  <compound refid="section_license_mod" kind="page"><name>section_license_mod</name>
+  <compound refid="page_referencing" kind="page"><name>page_referencing</name>
   </compound>
   <compound refid="page_readme" kind="page"><name>page_readme</name>
   </compound>
+  <compound refid="section_prog_tools" kind="page"><name>section_prog_tools</name>
+  </compound>
   <compound refid="page_architectures" kind="page"><name>page_architectures</name>
+  </compound>
+  <compound refid="page_ref_the" kind="page"><name>page_ref_the</name>
   </compound>
   <compound refid="page_examples" kind="page"><name>page_examples</name>
   </compound>
-  <compound refid="page_ref_the" kind="page"><name>page_ref_the</name>
+  <compound refid="section_license_mod" kind="page"><name>section_license_mod</name>
   </compound>
   <compound refid="todo" kind="page"><name>todo</name>
   </compound>
@@ -774,6 +787,10 @@
   <compound refid="dir_0a8eae61114d46352b8777dbe55cfb4e" kind="dir"><name>examples/curl_2d_angular_velocity</name>
   </compound>
   <compound refid="dir_3fff2bce4bcc3e1e06f222195119e4ee" kind="dir"><name>examples/diffusion_3d</name>
+  </compound>
+  <compound refid="dir_eb25ca143824d6c7c24561063db28875" kind="dir"><name>examples/divergence_operators_1d</name>
+  </compound>
+  <compound refid="dir_541b74d51055142faeed67d08697c689" kind="dir"><name>examples/divergence_operators_1d_mimetic_test</name>
   </compound>
   <compound refid="dir_d28a4824dc47e487b107a5db32ef43c4" kind="dir"><name>examples</name>
   </compound>
@@ -784,6 +801,8 @@
   <compound refid="dir_1ba2571371527cc1af6e502e10a68fad" kind="dir"><name>examples/poisson_1d</name>
   </compound>
   <compound refid="dir_f75d176e50705990aa7d8ee803f5bee2" kind="dir"><name>examples/poisson_2d</name>
+  </compound>
+  <compound refid="dir_f7290e6706af94f8e1da73d1b4f920b4" kind="dir"><name>examples/pos_def_weights_1d</name>
   </compound>
   <compound refid="dir_68267d1309a1af8e8297ef4c3efbcdba" kind="dir"><name>src</name>
   </compound>

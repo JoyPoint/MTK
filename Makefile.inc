@@ -2,8 +2,6 @@
 
 SHELL := /bin/bash
 
-# Please set the following variables up:
-
 #   1. Absolute path to base directory of the MTK.
 #   __________________________________________________________________
 
@@ -107,13 +105,13 @@ VERBOSE_LEVEL = 16
 
 PERFORM_PREVENTIONS = YES
 
-# Enables creation of LaTeX table verbosing the computation of mimetic weights.
+# Enables creation of LaTeX tables verbosing the computation of mimetic weights.
 
 VERBOSE_WEIGHTS = YES
 
 # Flags recommended for release code:
 
-CCFLAGS = -Wall -Werror -O3
+CCFLAGS = -Wall -Werror -O2
 
 # Flags recommended for debugging code:
 

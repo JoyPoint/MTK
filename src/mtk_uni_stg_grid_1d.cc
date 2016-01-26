@@ -80,7 +80,7 @@ std::ostream& operator <<(std::ostream &stream, mtk::UniStgGrid1D &in) {
 
   /// 2. Print scalar field.
 
-  if (in.nature_ == mtk::SCALAR) {
+  if (in.nature_ == mtk::FieldNature::SCALAR) {
     stream << "u:";
   }
   else {
@@ -177,7 +177,8 @@ void mtk::UniStgGrid1D::BindScalarField(
     mtk::Real (*ScalarField)(const mtk::Real &xx)) {
 
   #ifdef MTK_PERFORM_PREVENTIONS
-  mtk::Tools::Prevent(nature_ == mtk::VECTOR, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nature_ == mtk::FieldNature::VECTOR,
+                      __FILE__, __LINE__, __func__);
   #endif
 
   /// 1. Create collection of spatial coordinates.
@@ -213,7 +214,8 @@ void mtk::UniStgGrid1D::BindVectorField(
     mtk::Real (*VectorField)(mtk::Real xx)) {
 
   #ifdef MTK_PERFORM_PREVENTIONS
-  mtk::Tools::Prevent(nature_ == mtk::SCALAR, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nature_ == mtk::FieldNature::SCALAR, __FILE__, __LINE__,
+__func__);
   #endif
 
   /// 1. Create collection of spatial coordinates.

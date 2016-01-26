@@ -74,7 +74,7 @@ void TestDefaultConstructorFactory() {
   int nn = 5;
   int mm = 5;
 
-  mtk::UniStgGrid2D ggg(aa, bb, nn, cc, dd, mm, mtk::VECTOR);
+  mtk::UniStgGrid2D ggg(aa, bb, nn, cc, dd, mm, mtk::FieldNature::VECTOR);
 
   bool assertion = gg.ConstructGrad2D(ggg);
 
@@ -100,7 +100,7 @@ void TestReturnAsDenseMatrixWriteToFile() {
   int nn = 5;
   int mm = 5;
 
-  mtk::UniStgGrid2D ggg(aa, bb, nn, cc, dd, mm, mtk::VECTOR);
+  mtk::UniStgGrid2D ggg(aa, bb, nn, cc, dd, mm, mtk::FieldNature::VECTOR);
 
   bool assertion = gg.ConstructGrad2D(ggg);
 

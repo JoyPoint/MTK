@@ -88,12 +88,13 @@ std::ostream& operator <<(std::ostream &stream, mtk::UniStgGrid2D &in) {
 
   /// 2. Print scalar field.
 
-  if (in.nature_ == mtk::SCALAR) {
+  if (in.nature_ == mtk::FieldNature::SCALAR) {
     stream << "u:" << std::endl;
     if (in.discrete_field_.size() > 0) {
       for (int ii = 0; ii < in.num_cells_x_ + 2; ++ii) {
         for (int jj = 0; jj < in.num_cells_y_ + 2; ++jj) {
-          stream << std::setw(10) << in.discrete_field_[ii*in.num_cells_y_ + jj];
+          stream << std::setw(10) << in.discrete_field_[ii*in.num_cells_y_ +
+jj];
         }
         stream << std::endl;
       }
@@ -276,7 +277,8 @@ void mtk::UniStgGrid2D::BindScalarField(
     Real (*ScalarField)(const Real &xx, const Real &yy)) {
 
   #ifdef MTK_PERFORM_PREVENTIONS
-  mtk::Tools::Prevent(nature_ != mtk::SCALAR, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nature_ != mtk::FieldNature::SCALAR, __FILE__, __LINE__,
+__func__);
   #endif
 
   /// 1. Create collection of spatial coordinates for \f$ x \f$.
@@ -425,7 +427,8 @@ void mtk::UniStgGrid2D::BindVectorField(
   Real (*VectorFieldQComponent)(const Real &xx, const Real &yy)) {
 
   #ifdef MTK_PERFORM_PREVENTIONS
-  mtk::Tools::Prevent(nature_ != mtk::VECTOR, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nature_ != mtk::FieldNature::VECTOR, __FILE__, __LINE__,
+__func__);
   #endif
 
   BindVectorFieldPComponent(VectorFieldPComponent);
@@ -445,7 +448,7 @@ bool mtk::UniStgGrid2D::WriteToFile(std::string filename,
     return false;
   }
 
-  if (nature_ == mtk::SCALAR) {
+  if (nature_ == mtk::FieldNature::SCALAR) {
     output_dat_file << "# " << space_name_x <<  ' ' << space_name_y << ' ' <<
       field_name << std::endl;
 

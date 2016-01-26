@@ -10,8 +10,6 @@ mimetic operators, among others.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at sciences dot sdsu dot edu
 
-\todo Documentation should (better?) capture effects from selective compilation.
-
 \todo Test selective precision mechanisms.
 */
 /*
@@ -71,11 +69,23 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 namespace mtk {
 
 /*!
+\def MTK_PRECISION_DOUBLE
+
+\ingroup c01-roots
+
+\brief Defined from Makefile, decides between a single- or double-precision MTK.
+
+\warning Not defined anywhere in the source code, but on file Makefile.inc.
+*/
+
+/*!
 \typedef Real
 
 \ingroup c01-roots
 
 \brief Users can simply change this to build a double- or single-precision MTK.
+
+\warning Defined as double if MTK_PRECISION_DOUBLE is defined on Makefile.inc.
 */
 #ifdef MTK_PRECISION_DOUBLE
 typedef double Real;
@@ -90,7 +100,7 @@ typedef float Real;
 
 \brief MTK's zero defined according to selective compilation.
 
-\warning Declared as double if MTK_PRECISION_DOUBLE is defined.
+\warning Declared as double if MTK_PRECISION_DOUBLE is defined on Makefile.inc.
 
 \var kOne
 
@@ -98,7 +108,7 @@ typedef float Real;
 
 \ingroup c01-roots
 
-\warning Declared as double if MTK_PRECISION_DOUBLE is defined.
+\warning Declared as double if MTK_PRECISION_DOUBLE is defined on Makefile.inc.
 
 \var kTwo
 
@@ -106,7 +116,7 @@ typedef float Real;
 
 \ingroup c01-roots
 
-\warning Declared as double if MTK_PRECISION_DOUBLE is defined.
+\warning Declared as double if MTK_PRECISION_DOUBLE is defined on Makefile.inc.
 */
 #ifdef MTK_PRECISION_DOUBLE
 const double kZero{0.0};
@@ -124,6 +134,8 @@ const float kTwo{2.0f};
 \ingroup c01-roots
 
 \brief Considered tolerance for comparisons in numerical methods.
+
+\warning Declared as double if MTK_PRECISION_DOUBLE is defined on Makefile.inc.
 */
 #ifdef MTK_PRECISION_DOUBLE
 const double kDefaultTolerance{1e-7};
@@ -132,24 +144,13 @@ const float kDefaultTolerance{1e-7f};
 #endif
 
 /*!
-\var kDefaultOrderAccuracy
-
-\ingroup c01-roots
-
-\brief Default order of accuracy for mimetic operators.
-
-\warning Declared as double if MTK_PRECISION_DOUBLE is defined.
-*/
-const int kDefaultOrderAccuracy{2};
-
-/*!
 \var kDefaultMimeticThreshold
 
 \ingroup c01-roots
 
 \brief Default tolerance for higher-order mimetic operators.
 
-\warning Declared as double if MTK_PRECISION_DOUBLE is defined.
+\warning Declared as double if MTK_PRECISION_DOUBLE is defined on Makefile.inc.
 */
 #ifdef MTK_PRECISION_DOUBLE
 const double kDefaultMimeticThreshold{1e-6};
@@ -158,21 +159,30 @@ const float kDefaultMimeticThreshold{1e-6f};
 #endif
 
 /*!
-\var kCriticalOrderAccuracyDiv
+\var kDefaultOrderAccuracy
 
 \ingroup c01-roots
 
-\brief At this order (and higher) we must use the CBSA to construct.
+\brief Default order of accuracy for mimetic operators.
 */
-const int kCriticalOrderAccuracyDiv{8};
+const int kDefaultOrderAccuracy{2};
 
 /*!
 \var kCriticalOrderAccuracyGrad
 
 \ingroup c01-roots
 
-\brief At this order (and higher) we must use the CBSA to construct.
+\brief At this order (and higher) we must use the CBSA to construct gradients.
 */
 const int kCriticalOrderAccuracyGrad{10};
+
+/*!
+\var kCriticalOrderAccuracyDiv
+
+\ingroup c01-roots
+
+\brief At this order (and higher) we must use the CBSA to construct divergences.
+*/
+const int kCriticalOrderAccuracyDiv{8};
 }
 #endif  // End of: MTK_INCLUDE_ROOTS_H_

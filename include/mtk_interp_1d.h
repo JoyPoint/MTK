@@ -3,7 +3,7 @@
 
 \brief Includes the definition of the class Interp1D.
 
-This class implements a 1D interpolation operator.
+Definition of a class that implements a 1D interpolation operator.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 
@@ -103,7 +103,7 @@ class Interp1D {
   \return Success of the solution.
   */
   bool ConstructInterp1D(int order_accuracy = kDefaultOrderAccuracy,
-                         mtk::DirInterp dir = SCALAR_TO_VECTOR);
+                         mtk::DirInterp dir = mtk::DirInterp::SCALAR_TO_VECTOR);
 
   /*!
   \brief Returns coefficients for the interior of the grid.

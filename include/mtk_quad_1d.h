@@ -3,8 +3,8 @@
 
 \brief Includes the definition of the class Quad1D.
 
-This class implements a 1D quadrature solver based on the mimetic discretization
-of the gradient operator.
+Definition of a class that implements a 1D quadrature solver based on the
+mimetic discretization of the gradient operator.
 
 \sa mtk::Grad1D
 

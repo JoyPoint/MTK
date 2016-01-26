@@ -26,6 +26,7 @@ var group__c07_mim__ops =
       [ "mim_bndy", "classmtk_1_1Div1D.html#a2c844ef39825e73e4024d35fcdd42b12", null ],
       [ "num_bndy_coeffs", "classmtk_1_1Div1D.html#a975cb2a91ed6806f6fc0a3a5b01b01b1", null ],
       [ "ReturnAsDenseMatrix", "classmtk_1_1Div1D.html#a213fddbaaf86e4840c6a9649b69c2d49", null ],
+      [ "ReturnAsDimensionlessDenseMatrix", "classmtk_1_1Div1D.html#af2546ad1568ef39a6075f03bb395719e", null ],
       [ "weights_cbs", "classmtk_1_1Div1D.html#a5d4fe8c61ce41cb1134a3f9cb16deb59", null ],
       [ "weights_crs", "classmtk_1_1Div1D.html#ab5c791285e7e51a85b8c62a1b0ab9126", null ],
       [ "operator<<", "classmtk_1_1Div1D.html#af3b80aac338975509618e593089e1ed9", null ],
@@ -41,6 +42,7 @@ var group__c07_mim__ops =
       [ "prem_apps_", "classmtk_1_1Div1D.html#ab51ff3db86a874604d6c756ab6770950", null ],
       [ "rat_basis_null_space_", "classmtk_1_1Div1D.html#a4f0f5589f13024b7e0edc2ac19649f9b", null ],
       [ "row_", "classmtk_1_1Div1D.html#a86d99df0e9b1e5d2943a2dcf58975556", null ],
+      [ "sum_rows_mim_bndy_", "classmtk_1_1Div1D.html#a1df70645f34490a70b3437c0122f5646", null ],
       [ "weights_cbs_", "classmtk_1_1Div1D.html#a631dad42a0ec0f5d5ac767abdfd8949c", null ],
       [ "weights_crs_", "classmtk_1_1Div1D.html#ad36dcfade921f0488fe3edaecc17bd75", null ]
     ] ],

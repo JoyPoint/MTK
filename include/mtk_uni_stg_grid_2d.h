@@ -110,7 +110,7 @@ class UniStgGrid2D {
                const Real &south_bndy_y,
                const Real &north_bndy_y,
                const int &num_cells_y,
-               const mtk::FieldNature &nature = mtk::SCALAR);
+               const mtk::FieldNature &nature = mtk::FieldNature::SCALAR);
 
   /// \brief Destructor.
   ~UniStgGrid2D();

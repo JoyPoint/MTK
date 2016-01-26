@@ -3,9 +3,10 @@
 
 \brief Adapter class for the LAPACK API.
 
-This class contains a collection of static classes, that posses direct access
-to the underlying structure of the matrices, thus allowing programmers to
-exploit some of the numerical methods implemented in the LAPACK.
+Implementation of a class that contains a collection of static member
+functions, that posses direct access to the underlying structure of the
+matrices, thus allowing programmers to exploit some of the numerical methods
+implemented in the LAPACK.
 
 The **LAPACK (Linear Algebra PACKage)** is written in Fortran 90 and provides
 routines for solving systems of simultaneous linear equations, least-squares
@@ -497,7 +498,7 @@ int mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &mm,
 
   // After output, the data in the matrix will be column-major ordered.
 
-  bb.SetOrdering(mtk::COL_MAJOR);
+  bb.SetOrdering(mtk::MatrixOrdering::COL_MAJOR);
 
   #if MTK_VERBOSE_LEVEL > 12
   std::cout << "bb_col_maj_ord =" << std::endl;
@@ -688,7 +689,7 @@ mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
 
   // We now generate the real matrix Q with orthonormal columns. This has to
   // be done separately since the actual output of dgeqrf_ (AA_) represents
-  // the orthogonal matrix Q as a product of min(aa_num_rows,aa_num_cols)
+  // the orthogonal matrix Q as a product of min(aa_num_rows, aa_num_cols)
   // elementary Householder reflectors. Notice that we must re-inquire the new
   // value for lwork that is used.
 

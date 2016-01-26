@@ -3,9 +3,10 @@
 
 \brief Adapter class for the BLAS API.
 
-This class contains a collection of static classes, that posses direct access
-to the underlying structure of the matrices, thus allowing programmers to
-exploit some of the numerical methods implemented in the BLAS.
+Implementation of a class that contains a collection of static member
+functions, that posses direct access to the underlying structure of the
+matrices, thus allowing programmers to exploit some of the numerical methods
+implemented in the BLAS.
 
 The **BLAS (Basic Linear Algebra Subprograms)** are routines that provide
 standard building blocks for performing basic vector and matrix operations. The
@@ -18,6 +19,8 @@ The BLAS can be installed from links given in the See Also section of this page.
 \sa http://www.netlib.org/blas/
 
 \sa https://software.intel.com/en-us/non-commercial-software-development
+
+\todo Write documentation using LaTeX.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -383,7 +386,7 @@ void mtk::BLASAdapter::RealDenseMV(mtk::Real &alpha,
 
   // Make sure input matrices are row-major ordered.
 
-  if (aa.matrix_properties().ordering() == mtk::COL_MAJOR) {
+  if (aa.matrix_properties().ordering() == mtk::MatrixOrdering::COL_MAJOR) {
     aa.OrderRowMajor();
   }
 
@@ -415,10 +418,10 @@ mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM(mtk::DenseMatrix &aa,
   #endif
 
   /// 1. Make sure input matrices are row-major ordered.
-  if (aa.matrix_properties().ordering() == mtk::COL_MAJOR) {
+  if (aa.matrix_properties().ordering() == mtk::MatrixOrdering::COL_MAJOR) {
     aa.OrderRowMajor();
   }
-  if (bb.matrix_properties().ordering() == mtk::COL_MAJOR) {
+  if (bb.matrix_properties().ordering() == mtk::MatrixOrdering::COL_MAJOR) {
     bb.OrderRowMajor();
   }
 
@@ -442,7 +445,7 @@ mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM(mtk::DenseMatrix &aa,
 
   mtk::DenseMatrix cc_col_maj_ord(cc_num_rows,cc_num_cols); // Output matrix.
 
-  cc_col_maj_ord.SetOrdering(mtk::COL_MAJOR);
+  cc_col_maj_ord.SetOrdering(mtk::MatrixOrdering::COL_MAJOR);
 
   /// 3. Perform multiplication.
   #ifdef MTK_PRECISION_DOUBLE
@@ -472,7 +475,7 @@ mtk::DenseMatrix mtk::BLASAdapter::RealDenseSM(mtk::Real alpha,
   #endif
 
   /// 1. Make sure input matrices are row-major ordered.
-  if (aa.matrix_properties().ordering() == mtk::COL_MAJOR) {
+  if (aa.matrix_properties().ordering() == mtk::MatrixOrdering::COL_MAJOR) {
     aa.OrderRowMajor();
   }
 

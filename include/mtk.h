@@ -61,12 +61,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 \mainpage Introduction
 
 We define numerical methods that are based on discretizations preserving the
-properties of their continuum counterparts to be **mimetic**.
+properties of their continuous counterparts to be **mimetic**.
 
-The **Mimetic Methods Toolkit (MTK)** is a C++ library for mimetic numerical
-methods. It is arranged as a set of classes for **mimetic quadratures**,
- **mimetic interpolation**, and **mimetic finite differences** methods for the
-numerical solution of ordinary and partial differential equations.
+The **Mimetic Methods Toolkit (MTK)** is a C++11 library for mimetic numerical
+methods. It is a set of classes for **mimetic interpolation**, **mimetic
+quadratures**, and **mimetic finite difference** methods for the **numerical
+solution of ordinary and partial differential equations**.
 
 \section section_mtk_concerns MTK Concerns
 
@@ -80,7 +80,6 @@ One concern is said to depend on another one, if the classes the first concern
 includes, rely on the classes the second concern includes.
 
 In order of dependence these are:
-
 -# Roots.
 -# Enumerations.
 -# Tools.
@@ -89,7 +88,7 @@ In order of dependence these are:
 -# Grids.
 -# Mimetic Operators.
 
-\section section_flavors MTK Flavors
+\section section_wrappers MTK Wrappers
 
 The MTK collection of wrappers is:
 
@@ -100,28 +99,23 @@ Others are being strongly considered.
 
 \section section_authors Contact, Support and Credits
 
+The GitHub repository is: https://github.com/ejspeiro/MTK
+
 The MTK is developed by researchers and adjuncts to the
 [Computational Science Research Center (CSRC)](http://www.csrc.sdsu.edu/)
 at [San Diego State University (SDSU)](http://www.sdsu.edu/).
 
-Developers are members of:
-
-1. Mimetic Numerical Methods Research and Development Group.
-2. Computational Geoscience Research and Development Group.
-3. Ocean Modeling Research and Development Group.
-
 Currently the developers are:
 
--# **Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu** - ejspeiro
--# Jose E. Castillo, Ph.D. - jcastillo at mail dot sdsu dot edu
--# Guillermo F. Miranda, Ph.D. - unigrav at hotmail dot com
--# Christopher P. Paolini, Ph.D. - paolini at engineering dot sdsu dot edu
+- **Eduardo J. Sanchez, PhD - esanchez at mail dot sdsu dot edu** - ejspeiro
+- Jose E. Castillo, PhD - jcastillo at mail dot sdsu dot edu
+- Guillermo F. Miranda, PhD - unigrav at hotmail dot com
+- Christopher P. Paolini, PhD - paolini at engineering dot sdsu dot edu
+- Angel Boada.
+- Johnny Corbino.
+- Raul Vargas-Navarro.
 
--# Angel Boada.
--# Johnny Corbino.
--# Raul Vargas--Navarro.
-
-\section subsection_acknowledgements Acknowledgements and Contributions
+\subsection subsection_acknowledgements Acknowledgements and Contributions
 
 The authors would like to acknowledge valuable advising, contributions and
 feedback, from research personnel at the Computational Science Research Center
@@ -132,6 +126,52 @@ Specifically, our thanks go to (alphabetical order):
 -# Dany De Cecchis, Ph.D.
 -# Otilio Rojas, Ph.D.
 -# Julia Rossi.
+
+\page page_referencing Referencing This Work
+
+Please reference this work as follows:
+\verbatim
+@article{Sanchez2014308,
+  title = "The Mimetic Methods Toolkit: An object-oriented \{API\} for Mimetic
+Finite Differences ",
+  journal = "Journal of Computational and Applied Mathematics ",
+  volume = "270",
+  number = "",
+  pages = "308 - 322",
+  year = "2014",
+  note = "Fourth International Conference on Finite Element Methods in
+Engineering and Sciences (FEMTEC 2013) ",
+  issn = "0377-0427",
+  doi = "http://dx.doi.org/10.1016/j.cam.2013.12.046",
+  url = "http://www.sciencedirect.com/science/article/pii/S037704271300719X",
+  author = "Eduardo J. Sanchez and Christopher P. Paolini and Jose E. Castillo",
+  keywords = "Object-oriented development",
+  keywords = "Partial differential equations",
+  keywords = "Application programming interfaces",
+  keywords = "Mimetic Finite Differences "
+}
+
+@Inbook{Sanchez2015,
+  author="Sanchez, Eduardo and Paolini, Christopher and Blomgren, Peter
+and Castillo, Jose",
+  editor="Kirby, M. Robert and Berzins, Martin and Hesthaven, S. Jan",
+  chapter="Algorithms for Higher-Order Mimetic Operators",
+  title="Spectral and High Order Methods for Partial Differential Equations
+ICOSAHOM 2014: Selected papers from the ICOSAHOM conference, June 23-27, 2014,
+Salt Lake City, Utah, USA",
+  year="2015",
+  publisher="Springer International Publishing",
+  address="Cham",
+  pages="425--434",
+  isbn="978-3-319-19800-2",
+  doi="10.1007/978-3-319-19800-2_39",
+  url="http://dx.doi.org/10.1007/978-3-319-19800-2_39"
+}
+\endverbatim
+
+\page page_readme Read Me File and Installation Instructions
+
+\verbinclude ../README.md
 
 \page section_prog_tools Programming Tools
 
@@ -145,6 +185,47 @@ Free Software Foundation, Inc.
 
 See the section on test architectures for information about operating systems
 and compilers used.
+
+\page page_architectures Tests and Test Architectures
+
+Tests are given in the <a href="files.html">files list</a> section. They are
+provided in the /tests/ folder within the distributed software.
+
+In this page we intend to make a summary of all of the architectures in where
+the MTK has been tested. The MTK is intended to be as portable as possible
+throughout architectures. The following architectures have provided flawless
+installations of the API and correct execution of the tests and the examples:
+
+\verbatim
+1. Intel(R) Pentium(R) M CPU 1.73 GHz 2048 KB of cache and stepping of 8.
+   Linux 3.2.0-23-generic-pae #36-Ubuntu SMP i386 GNU/Linux
+   gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5)
+
+2. Intel(R) Core(TM) i7-4700MQ CPU 2.40 GHz 6144 KB of cache and stepping of 3.
+   Linux 3.13.0-67-generic #110-Ubuntu SMP x86_64 GNU/Linux
+   gcc version 4.8.4 (Ubuntu 4.4.4-2ubuntu1~14.04)
+
+3. Intel(R) Core(TM) i7-4600U CPU 2.10 GHz 4096 KB of cache and a stepping of 1.
+   Linux 3.16.7-29-desktop #1 SMP PREEMPT (6be6a97) x86_64 GNU/Linux
+   openSUSE 13.2 (Harlequin) (x86_64)
+   gcc (SUSE Linux) 4.8.3 20140627 [gcc-4_8-branch revision 212064]
+\endverbatim
+
+Further architectures will be tested!
+
+\page page_ref_the User Manual, References and Theory
+
+The main source of references for this work can be found in:
+
+http://www.csrc.sdsu.edu/mimetic-book/
+
+However, a .PDF copy of this manual can be found
+<a href="../latex/refman.pdf">here</a>.
+
+\page page_examples Examples
+
+Examples are given in the <a href="files.html">files list</a> section. They are
+provided in the /examples/ folder within the distributed software.
 
 \page section_license_mod Licensing and Modifications
 
@@ -191,191 +272,6 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
 ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-\page page_readme Read Me File and Installation Instructions
-
-<pre>
-# README File for the Mimetic Methods Toolkit (MTK)
-
-By: **Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu**
-
-## 1. Description
-
-We define numerical methods that are based on discretizations preserving the
-properties of their continuum counterparts to be **mimetic**.
-
-The **Mimetic Methods Toolkit (MTK)** is a C++ library for mimetic numerical
-methods. It is arranged as a set of classes for **mimetic quadratures**,
-**mimetic interpolation**, and **mimetic finite differences** methods for the
-numerical solution of ordinary and partial differential equations.
-
-## 2. Dependencies
-
-This README assumes all of these dependencies are installed in the following
-folder:
-
-\verbatim
-$(HOME)/Libraries/
-\endverbatim
-
-In this version, the MTK optionally uses ATLAS-optimized BLAS and LAPACK
-routines for the internal computation on some of the layers. However, ATLAS
-requires both BLAS and LAPACK in order to create their optimized distributions.
-Therefore, the following dependencies tree arises:
-
-### For Linux:
-
-1. LAPACK - Available from: http://www.netlib.org/lapack/
-  1. BLAS - Available from: http://www.netlib.org/blas/
-
-2. GLPK - Available from: https://www.gnu.org/software/glpk/
-
-3. (Optional) ATLAS - Available from: http://math-atlas.sourceforge.net/
-  1. LAPACK - Available from: http://www.netlib.org/lapack/
-    1. BLAS - Available from: http://www.netlib.org/blas
-
-4. (Optional) Valgrind - Available from: http://valgrind.org/
-
-5. (Optional) Doxygen - Available from http://www.stack.nl/~dimitri/doxygen/
-
-### For OS X:
-
-1. GLPK - Available from: https://www.gnu.org/software/glpk/
-
-## 3. Installation
-
-### PART 1. CONFIGURATION OF THE MAKEFILE.
-
-The following steps are required the build and test the MTK. Please use the
-accompanying Makefile.inc file, which should provide a solid template to start
-with. The following command provides help on the options for make:
-
-\verbatim
-$ make help
------
-Makefile for the MTK.
-
-Options are:
-- all: builds the library, the tests, and examples.
-- mtklib: builds the library.
-- test: builds the test files.
-- example: builds the examples.
-
-- testall: runs all the tests.
-
-- gendoc: generates the documentation for the library.
-
-- clean: cleans all the generated files.
-- cleanlib: cleans the generated archive and object files.
-- cleantest: cleans the generated tests executables.
-- cleanexample: cleans the generated examples executables.
------
-\endverbatim
-
-### PART 2. BUILD THE LIBRARY.
-
-\verbatim
-$ make
-\endverbatim
-
-If successful you'll read (before building the examples):
-
-\verbatim
------ Library created! Check in /home/ejspeiro/Dropbox/MTK/lib
-\endverbatim
-
-## 4. Contact, Support, and Credits
-
-The MTK is developed by researchers and adjuncts to the
-[Computational Science Research Center (CSRC)](http://www.csrc.sdsu.edu/)
-at [San Diego State University (SDSU)](http://www.sdsu.edu/).
-
-Developers are members of:
-
-1. Mimetic Numerical Methods Research and Development Group.
-2. Computational Geoscience Research and Development Group.
-3. Ocean Modeling Research and Development Group.
-
-Currently the developers are:
-
--# **Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu** - ejspeiro
--# Jose E. Castillo, Ph.D. - jcastillo at mail dot sdsu dot edu
--# Guillermo F. Miranda, Ph.D. - unigrav at hotmail dot com
--# Christopher P. Paolini, Ph.D. - paolini at engineering dot sdsu dot edu
--# Angel Boada.
--# Johnny Corbino.
--# Raul Vargas-Navarro.
-
-Finally, please feel free to contact me with suggestions or corrections:
-
-Please reference this work as follows:
-\verbatim
-@article{Sanchez2014308,
-  title = "The Mimetic Methods Toolkit: An object-oriented \{API\} for Mimetic
-Finite Differences ",
-  journal = "Journal of Computational and Applied Mathematics ",
-  volume = "270",
-  number = "",
-  pages = "308 - 322",
-  year = "2014",
-  note = "Fourth International Conference on Finite Element Methods in
-Engineering and Sciences (FEMTEC 2013) ",
-  issn = "0377-0427",
-  doi = "http://dx.doi.org/10.1016/j.cam.2013.12.046",
-  url = "http://www.sciencedirect.com/science/article/pii/S037704271300719X",
-  author = "Eduardo J. Sanchez and Christopher P. Paolini and Jose E. Castillo",
-  keywords = "Object-oriented development",
-  keywords = "Partial differential equations",
-  keywords = "Application programming interfaces",
-  keywords = "Mimetic Finite Differences "
-}
-\endverbatim
-
-**Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu** - ejspeiro
-
-Thanks and happy coding!
-</pre>
-
-\page page_architectures Tests and Test Architectures
-
-Tests are given in the <a href="files.html">files list</a> section. They are
-provided in the /tests/ folder within the distributed software.
-
-In this page we intend to make a summary of all of the architectures in where
-the MTK has been tested. The MTK is intended to be as portable as possible
-throughout architectures. The following architectures have provided flawless
-installations of the API and correct execution of the examples:
-
-<pre>
-1. Intel(R) Pentium(R) M CPU 1.73 GHz 2048 KB of cache and stepping of 8.
-   Linux 3.2.0-23-generic-pae #36-Ubuntu SMP i386 GNU/Linux
-   gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5)
-
-2. Intel(R) Core(TM) i7-4700MQ CPU 2.40 GHz 6144 KB of cache and stepping of 3.
-   Linux 3.13.0-67-generic #110-Ubuntu SMP x86_64 GNU/Linux
-   gcc version 4.8.4 (Ubuntu 4.4.4-2ubuntu1~14.04)
-
-3. Intel(R) Core(TM) i7-4600U CPU 2.10 GHz 4096 KB of cache and a stepping of 1.
-   Linux 3.16.7-29-desktop #1 SMP PREEMPT (6be6a97) x86_64 GNU/Linux
-   openSUSE 13.2 (Harlequin) (x86_64)
-   gcc (SUSE Linux) 4.8.3 20140627 [gcc-4_8-branch revision 212064]
-</pre>
-
-Further architectures will be tested!
-
-\page page_examples Examples
-
-Examples are given in the <a href="files.html">files list</a> section. They are
-provided in the /examples/ folder within the distributed software.
-
-\page page_ref_the User Manual, References and Theory
-
-The main source of references for this work can be found in:
-
-http://www.csrc.sdsu.edu/mimetic-book/
-
-However, a .PDF copy of this manual can be found
-<a href="../latex/refman.pdf">here</a>.
 */
 
 #ifndef MTK_INCLUDE_MTK_H_
