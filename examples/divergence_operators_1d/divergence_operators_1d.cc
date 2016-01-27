@@ -70,7 +70,7 @@ int main () {
 
   std::ofstream output_tex_file;
 
-  int max_order{6};
+  int max_order{8};
 
   for (int order = 2; order <= max_order; order += 2) {
 

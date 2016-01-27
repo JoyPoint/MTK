@@ -142,6 +142,13 @@ class Div1D {
   DenseMatrix mim_bndy() const;
 
   /*!
+  \brief Return collection of row-sums mimetic approximations at the boundary.
+
+  \return Collection of row-sums mimetic approximations at the boundary.
+  */
+  std::vector<Real> sums_rows_mim_bndy() const;
+
+  /*!
   \brief Return the operator as a dense matrix.
 
   \return The operator as a dense matrix.
@@ -215,7 +222,7 @@ class Div1D {
   Real *mim_bndy_;        ///< Array containing mimetic boundary approximations.
   Real *divergence_;      ///< Output array containing the operator and weights.
 
-  std::vector<Real> sum_rows_mim_bndy_; ///< Sum of the boundary rows.
+  std::vector<Real> sums_rows_mim_bndy_; ///< Sum of each mimetic boundary row.
 
   Real mimetic_threshold_;  ///<< Mimetic threshold.
 };

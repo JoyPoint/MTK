@@ -60,6 +60,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iostream>
 #include <iomanip>
 
+#include <vector>
+
 #include "glpk.h"
 
 #include "mtk_roots.h"
@@ -138,6 +140,13 @@ class Grad1D {
   \return Collection of mimetic approximations at the boundary.
   */
   DenseMatrix mim_bndy() const;
+
+  /*!
+  \brief Return collection of row-sums mimetic approximations at the boundary.
+
+  \return Collection of row-sums mimetic approximations at the boundary.
+  */
+  std::vector<Real> sums_rows_mim_bndy() const;
 
   /*!
   \brief Returns the operator as a dense matrix.
@@ -220,6 +229,8 @@ class Grad1D {
   Real *weights_cbs_;     ///< Array containing weights from CBSA.
   Real *mim_bndy_;        ///< Array containing mimetic boundary approximations.
   Real *gradient_;        ///< Output array containing the operator and weights.
+
+  std::vector<Real> sums_rows_mim_bndy_; ///< Sum of each mimetic boundary row.
 
   Real mimetic_threshold_;  ///<< Mimetic threshold.
 };

@@ -83,21 +83,19 @@ namespace mtk {
 
 std::ostream& operator <<(std::ostream &stream, mtk::Div1D &in) {
 
-  int output_precision{5};
+  int output_precision{4};
   int output_width{8};
 
   /// 1. Print order of accuracy.
 
-  stream << "divergence_[0] = " << std::setprecision(output_precision) <<
-        std::setw(output_width) << in.divergence_[0] <<
-    std::endl;
+  stream << "Order of accuracy: " << in.divergence_[0] << std::endl;
 
   /// 2. Print approximating coefficients for the interior.
 
-  stream << "divergence_[1:" << in.order_accuracy_ << "] = ";
+  stream << "Interior stencil: " << std::endl;
   for (auto ii = 1; ii <= in.order_accuracy_; ++ii) {
-    stream << std::setprecision(output_precision) <<
-      std::setw(output_width) << in.divergence_[ii] << " ";
+    stream << std::setprecision(output_precision) << std::setw(output_width) <<
+      in.divergence_[ii] << ' ';
   }
   stream << std::endl;
 
@@ -105,11 +103,10 @@ std::ostream& operator <<(std::ostream &stream, mtk::Div1D &in) {
 
     /// 3. Print mimetic weights.
 
-    stream << "divergence_[" << in.order_accuracy_ + 1 << ":" <<
-      2*in.order_accuracy_ << "] = ";
+    stream << "Weights:" << std::endl;
     for (auto ii = in.order_accuracy_ + 1; ii <= 2*in.order_accuracy_; ++ii) {
       stream << std::setprecision(output_precision) <<
-        std::setw(output_width) << in.divergence_[ii] << " ";
+        std::setw(output_width) << in.divergence_[ii] << ' ';
     }
     stream << std::endl;
 
@@ -118,14 +115,16 @@ std::ostream& operator <<(std::ostream &stream, mtk::Div1D &in) {
     auto offset = (2*in.order_accuracy_ + 1);
     int mm{};
     for (auto ii = 0; ii < in.dim_null_; ++ii) {
-      stream << "divergence_[" << offset + mm << ":" <<
-        offset + mm + in.num_bndy_coeffs_ - 1 << "] = ";
+      stream << "Mimetic boundary row " << ii + 1 << ":" << std::endl;
       for (auto jj = 0; jj < in.num_bndy_coeffs_; ++jj) {
         auto value = in.divergence_[offset + mm];
         stream << std::setprecision(output_precision) <<
-        std::setw(output_width) << value << " ";
+          std::setw(output_width) << value << ' ';
         ++mm;
       }
+      stream << std::endl;
+      stream << "Sum of elements in row " << ii + 1 << ": " <<
+        in.sums_rows_mim_bndy_[ii];
       stream << std::endl;
     }
   }
@@ -147,6 +146,7 @@ mtk::Div1D::Div1D():
   weights_cbs_(),
   mim_bndy_(),
   divergence_(),
+  sums_rows_mim_bndy_(),
   mimetic_threshold_(mtk::kDefaultMimeticThreshold) {}
 
 mtk::Div1D::Div1D(const Div1D &div):
@@ -162,6 +162,7 @@ mtk::Div1D::Div1D(const Div1D &div):
   weights_cbs_(div.weights_cbs_),
   mim_bndy_(div.mim_bndy_),
   divergence_(div.divergence_),
+  sums_rows_mim_bndy_(div.sums_rows_mim_bndy_),
   mimetic_threshold_(div.mimetic_threshold_) {}
 
 mtk::Div1D::~Div1D() {
@@ -357,6 +358,11 @@ mtk::DenseMatrix mtk::Div1D::mim_bndy() const {
   }
 
   return xx;
+}
+
+std::vector<mtk::Real> mtk::Div1D::sums_rows_mim_bndy() const {
+
+  return sums_rows_mim_bndy_;
 }
 
 mtk::DenseMatrix mtk::Div1D::ReturnAsDenseMatrix(
@@ -1447,6 +1453,24 @@ bool mtk::Div1D::ComputeStencilBoundaryGrid(void) {
   std::cout << std::endl;
   #endif
 
+  /// 4. Compute the row-wise sum to double-check the operator is mimetic.
+  
+  for (auto ii = 0; ii < dim_null_; ++ii) {
+    sums_rows_mim_bndy_.push_back(mtk::kZero);
+    for (auto jj = 0; jj < num_bndy_coeffs_; ++jj) {
+      sums_rows_mim_bndy_[ii] += mim_bndy_[jj*dim_null_ + ii];
+    }
+  }
+
+  #if MTK_VERBOSE_LEVEL > 3
+  std::cout << "Row-wise sum of mimetic approximations:" << std::endl;
+  for (auto ii = 0; ii < dim_null_; ++ii) {
+    std::cout << std::setw(13) << sums_rows_mim_bndy_[ii];
+  }
+  std::cout << std::endl;
+  std::cout << std::endl;
+  #endif
+
   delete[] lambda;
   lambda = nullptr;
 
@@ -1477,6 +1501,7 @@ bool mtk::Div1D::AssembleOperator(void) {
 
   #if MTK_VERBOSE_LEVEL > 2
   std::cout << "divergence_length_ = " << divergence_length_ << std::endl;
+  std::cout << std::endl;
   #endif
 
   try {

@@ -57,6 +57,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef MTK_INCLUDE_LAP_1D_H_
 #define MTK_INCLUDE_LAP_1D_H_
 
+#include <vector>
+
 #include "mtk_dense_matrix.h"
 
 #include "mtk_uni_stg_grid_1d.h"
@@ -119,6 +121,13 @@ class Lap1D {
   */
   bool ConstructLap1D(int order_accuracy = kDefaultOrderAccuracy,
                       Real mimetic_threshold = kDefaultMimeticThreshold);
+
+  /*!
+  \brief Return collection of row-sums mimetic approximations at the boundary.
+
+  \return Collection of row-sums mimetic approximations at the boundary.
+  */
+  std::vector<Real> sums_rows_mim_bndy() const;
 
   /*!
   \brief Return the operator as a dense matrix.
