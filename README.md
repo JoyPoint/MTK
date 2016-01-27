@@ -112,10 +112,10 @@ Research Center (CSRC) at San Diego State University (SDSU). Their input was
 important to the fruition of this work. Specifically, our thanks go to
 (alphabetical order):
 
--# Mohammad Abouali, PhD
--# Dany De Cecchis, PhD
--# Otilio Rojas, PhD
--# Julia Rossi.
+- Mohammad Abouali, PhD
+- Dany De Cecchis, PhD
+- Otilio Rojas, PhD
+- Julia Rossi.
 
 ## 5. Referencing This Work
 
