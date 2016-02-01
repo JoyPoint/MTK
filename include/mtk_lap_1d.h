@@ -152,6 +152,8 @@ class Lap1D {
   mutable Real delta_;     ///<< If 0.0, then this Laplacian is dimensionless.
 
   Real mimetic_threshold_;  ///<< Mimetic threshold.
+
+  std::vector<Real> sums_rows_mim_bndy_; ///< Sum of each mimetic boundary row.
 };
 }
 #endif  // End of: MTK_INCLUDE_LAP_1D_H_

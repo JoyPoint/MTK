@@ -83,24 +83,28 @@ namespace mtk {
 
 std::ostream& operator <<(std::ostream &stream, mtk::Grad1D &in) {
 
+  int output_precision{4};
+  int output_width{8};
+
   /// 1. Print order of accuracy.
 
-  stream << "gradient_[0] = " << std::setw(9) << in.gradient_[0] << std::endl;
+  stream << "Order of accuracy: " << in.gradient_[0] << std::endl;
 
   /// 2. Print approximating coefficients for the interior.
 
-  stream << "gradient_[1:" << in.order_accuracy_ << "] = ";
+  stream << "Interior stencil: " << std::endl;
   for (auto ii = 1; ii <= in.order_accuracy_; ++ii) {
-    stream << std::setw(9) << in.gradient_[ii] << " ";
+    stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << in.gradient_[ii] << ' ';
   }
   stream << std::endl;
 
   /// 3. Print mimetic weights.
 
-  stream << "gradient_[" << in.order_accuracy_ + 1 << ":" <<
-    2*in.order_accuracy_ << "] = ";
+  stream << "Weights:" << std::endl;
   for (auto ii = in.order_accuracy_ + 1; ii <= 2*in.order_accuracy_; ++ii) {
-    stream << std::setw(9) << in.gradient_[ii] << " ";
+    stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << in.gradient_[ii] << ' ';
   }
   stream << std::endl;
 
@@ -108,24 +112,29 @@ std::ostream& operator <<(std::ostream &stream, mtk::Grad1D &in) {
 
   int offset{2*in.order_accuracy_ + 1};
   int mm {};
-
-  stream << "gradient_[" << offset + mm << ":" <<
-    offset + mm + in.num_bndy_coeffs_ - 1 << "] = ";
-
   if (in.order_accuracy_ > mtk::kDefaultOrderAccuracy) {
     for (auto ii = 0; ii < in.num_bndy_approxs_ ; ++ii) {
+      stream << "Mimetic boundary row " << ii + 1 << ":" << std::endl;
       for (auto jj = 0; jj < in.num_bndy_coeffs_; jj++) {
         auto value = in.gradient_[offset + (mm)];
-        stream << std::setw(9) << value << " ";
+        stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << value << ' ';
         mm++;
       }
+      stream << std::endl;
+      stream << "Sum of elements in row " << ii + 1 << ": " <<
+        in.sums_rows_mim_bndy_[ii];
+      stream << std::endl;
     }
   } else {
-    stream << std::setw(9) << in.gradient_[offset + 0] << ' ';
-    stream << std::setw(9) << in.gradient_[offset + 1] << ' ';
-    stream << std::setw(9) << in.gradient_[offset + 2] << ' ';
+    stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << in.gradient_[offset + 0] << ' ';
+    stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << in.gradient_[offset + 1] << ' ';
+    stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << in.gradient_[offset + 2] << ' ';
+    stream << std::endl;
   }
-  stream << std::endl;
 
   return stream;
 }
@@ -145,6 +154,7 @@ mtk::Grad1D::Grad1D():
   weights_cbs_(),
   mim_bndy_(),
   gradient_(),
+  sums_rows_mim_bndy_(),
   mimetic_threshold_(mtk::kDefaultMimeticThreshold) {}
 
 mtk::Grad1D::Grad1D(const Grad1D &grad):
@@ -161,6 +171,7 @@ mtk::Grad1D::Grad1D(const Grad1D &grad):
   weights_cbs_(grad.weights_cbs_),
   mim_bndy_(grad.mim_bndy_),
   gradient_(grad.gradient_),
+  sums_rows_mim_bndy_(grad.sums_rows_mim_bndy_),
   mimetic_threshold_(grad.mimetic_threshold_) {}
 
 mtk::Grad1D::~Grad1D() {
@@ -356,6 +367,11 @@ mtk::DenseMatrix mtk::Grad1D::mim_bndy() const {
   }
 
   return xx;
+}
+
+std::vector<mtk::Real> mtk::Grad1D::sums_rows_mim_bndy() const {
+
+  return sums_rows_mim_bndy_;
 }
 
 mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(mtk::Real west,
@@ -1532,6 +1548,24 @@ bool mtk::Grad1D::ComputeStencilBoundaryGrid(void) {
     }
     std::cout << std::endl;
   }
+  std::cout << std::endl;
+  #endif
+
+  /// 4. Compute the row-wise sum to double-check the operator is mimetic.
+
+  for (auto ii = 0; ii < num_bndy_approxs_; ++ii) {
+    sums_rows_mim_bndy_.push_back(mtk::kZero);
+    for (auto jj = 0; jj < num_bndy_coeffs_; ++jj) {
+      sums_rows_mim_bndy_[ii] += mim_bndy_[jj*num_bndy_approxs_ + ii];
+    }
+  }
+
+  #if MTK_VERBOSE_LEVEL > 3
+  std::cout << "Row-wise sum of mimetic approximations:" << std::endl;
+  for (auto ii = 0; ii < num_bndy_approxs_; ++ii) {
+    std::cout << std::setw(13) << sums_rows_mim_bndy_[ii];
+  }
+  std::cout << std::endl;
   std::cout << std::endl;
   #endif
 

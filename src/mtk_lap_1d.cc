@@ -72,32 +72,36 @@ namespace mtk {
 
 std::ostream& operator <<(std::ostream &stream, mtk::Lap1D &in) {
 
+  int output_precision{4};
+  int output_width{8};
+
   /// 1. Print order of accuracy.
 
-  stream << "laplacian_[0] = " << in.laplacian_[0] << std::endl << std::endl;
+  stream << "Order of accuracy: " << in.laplacian_[0] << std::endl;
 
   /// 2. Print approximating coefficients for the interior.
 
-  stream << "laplacian_[1:" << 2*in.order_accuracy_ - 1 << "] = " <<
-    std::endl << std::endl;
+  stream << "Interior stencil: " << std::endl;
   for (auto ii = 1; ii <= (2*in.order_accuracy_ - 1); ++ii) {
-    stream << std::setw(13) << in.laplacian_[ii] << " ";
+    stream << std::setprecision(output_precision) << std::setw(output_width) <<
+      in.laplacian_[ii] << ' ';
   }
-  stream << std::endl << std::endl;
+  stream << std::endl;
 
   /// 3. No weights, thus print the mimetic boundary coefficients.
 
   auto offset = 1 + (2*in.order_accuracy_ - 1);
 
-  stream << "laplacian_[" << offset << ":" << offset +
-    (in.order_accuracy_ - 1)*(2*in.order_accuracy_) - 1 << "] = " <<
-    std::endl << std::endl;
-
   for (auto ii = 0; ii < in.order_accuracy_ - 1; ++ii) {
+    stream << "Mimetic boundary row " << ii + 1 << ":" << std::endl;
     for (auto jj = 0; jj < 2*in.order_accuracy_; ++jj) {
-      stream << std::setw(13) <<
-        in.laplacian_[offset + ii*(2*in.order_accuracy_) + jj];
+      stream << std::setprecision(output_precision) <<
+        std::setw(output_width) <<
+          in.laplacian_[offset + ii*(2*in.order_accuracy_) + jj] << ' ';
     }
+    stream << std::endl;
+    stream << "Sum of elements in row " << ii + 1 << ": " <<
+      in.sums_rows_mim_bndy_[ii];
     stream << std::endl;
   }
 
@@ -267,20 +271,27 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
     laplacian_[ii + 1] = lap.GetValue(1 + (order_accuracy_ - 1), ii + 1);
   }
 
-  /// 3. We DO NOT have weights in this operator. Copy mimetic bndy coeffs.
+  /// 3. We DO NOT have weights in this operator. Copy and sum mim. bndy coeffs.
 
   auto offset = 1 + (2*order_accuracy_ - 1);
 
   for (auto ii = 0; ii < order_accuracy_ - 1; ++ii) {
+    sums_rows_mim_bndy_.push_back(mtk::kZero);
     for (auto jj = 0; jj < 2*order_accuracy_; ++jj) {
-      laplacian_[offset + ii*(2*order_accuracy_) + jj] =
-        lap.GetValue(1 + ii,jj);
+      register mtk::Real aux{lap.GetValue(1 + ii,jj)};
+      laplacian_[offset + ii*(2*order_accuracy_) + jj] = aux;
+      sums_rows_mim_bndy_[ii] += aux;
     }
   }
 
   delta_ = mtk::kZero;
 
   return true;
+}
+
+std::vector<mtk::Real> mtk::Lap1D::sums_rows_mim_bndy() const {
+
+  return sums_rows_mim_bndy_;
 }
 
 mtk::DenseMatrix mtk::Lap1D::ReturnAsDenseMatrix(

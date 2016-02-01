@@ -1454,7 +1454,7 @@ bool mtk::Div1D::ComputeStencilBoundaryGrid(void) {
   #endif
 
   /// 4. Compute the row-wise sum to double-check the operator is mimetic.
-  
+
   for (auto ii = 0; ii < dim_null_; ++ii) {
     sums_rows_mim_bndy_.push_back(mtk::kZero);
     for (auto jj = 0; jj < num_bndy_coeffs_; ++jj) {
