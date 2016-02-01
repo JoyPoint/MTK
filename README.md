@@ -120,8 +120,6 @@ important to the fruition of this work. Specifically, our thanks go to
 ## 5. Referencing This Work
 
 Please reference this work as follows:
-
-Please reference this work as follows:
 ```
 @article{Sanchez2014308,
   title = "The Mimetic Methods Toolkit: An object-oriented \{API\} for Mimetic
