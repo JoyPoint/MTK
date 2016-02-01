@@ -307,47 +307,28 @@
 00308   \hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{mtk::Tools::Assert}(m13 == m14);
 00309 \}
 00310 
-00311 \textcolor{keywordtype}{void} TestMaxFromSumsOfRowElements() \{
+00311 \textcolor{keywordtype}{int} \hyperlink{mtk__dense__matrix__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
 00312 
-00313   \hyperlink{classmtk_1_1Tools_afc29ecaf337a13ed2e817d3890a5a441}{mtk::Tools::BeginUnitTestNo}(10);
+00313   std::cout << \textcolor{stringliteral}{"Testing mtk::DenseMatrix class."} << std::endl;
 00314 
-00315   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} mm(3, 4);
-00316 
-00317   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} ii = 0; ii < mm.num\_rows(); ++ii) \{
-00318     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} jj = 0; jj < mm.num\_cols(); ++jj) \{
-00319       mm.SetValue(ii, jj, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
-00320     \}
-00321   \}
-00322 
-00323   \textcolor{keywordtype}{bool} assertion\{mm.MaxFromSumsOfRowElements() == 4\};
-00324 
-00325   \hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{mtk::Tools::EndUnitTestNo}(10);
-00326   \hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{mtk::Tools::Assert}(assertion);
-00327 \}
-00328 
-00329 \textcolor{keywordtype}{int} \hyperlink{mtk__dense__matrix__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
-00330 
-00331   std::cout << \textcolor{stringliteral}{"Testing mtk::DenseMatrix class."} << std::endl;
-00332 
-00333   TestDefaultConstructor();
-00334   TestConstructorWithNumRowsNumCols();
-00335   TestConstructAsIdentity();
-00336   TestConstructAsVandermonde();
-00337   TestSetValueGetValue();
-00338   TestConstructAsVandermondeTranspose();
-00339   TestKron();
-00340   TestConstructWithNumRowsNumColsAssignmentOperator();
-00341   TestConstructAsVandermondeTransposeAssignmentOperator();
-00342   TestMaxFromSumsOfRowElements();
-00343 \}
-00344 
-00345 \textcolor{preprocessor}{#else}
-00346 \textcolor{preprocessor}{#include <iostream>}
-00347 \textcolor{keyword}{using} std::cout;
-00348 \textcolor{keyword}{using} std::endl;
-\hypertarget{mtk__dense__matrix__test_8cc_source_l00349}{}\hyperlink{mtk__dense__matrix__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00349} \textcolor{keywordtype}{int} \hyperlink{mtk__dense__matrix__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
-00350   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
-00351   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
-00352 \}
-00353 \textcolor{preprocessor}{#endif}
+00315   TestDefaultConstructor();
+00316   TestConstructorWithNumRowsNumCols();
+00317   TestConstructAsIdentity();
+00318   TestConstructAsVandermonde();
+00319   TestSetValueGetValue();
+00320   TestConstructAsVandermondeTranspose();
+00321   TestKron();
+00322   TestConstructWithNumRowsNumColsAssignmentOperator();
+00323   TestConstructAsVandermondeTransposeAssignmentOperator();
+00324 \}
+00325 
+00326 \textcolor{preprocessor}{#else}
+00327 \textcolor{preprocessor}{#include <iostream>}
+00328 \textcolor{keyword}{using} std::cout;
+00329 \textcolor{keyword}{using} std::endl;
+\hypertarget{mtk__dense__matrix__test_8cc_source_l00330}{}\hyperlink{mtk__dense__matrix__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00330} \textcolor{keywordtype}{int} \hyperlink{mtk__dense__matrix__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00331   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
+00332   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
+00333 \}
+00334 \textcolor{preprocessor}{#endif}
 \end{DoxyCode}

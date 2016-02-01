@@ -1,4 +1,4 @@
-.TH "mtk::UniStgGrid3D" 3 "Tue Jan 26 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::UniStgGrid3D" 3 "Mon Feb 1 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -27,7 +27,7 @@ Uniform 3D Staggered Grid\&.
 .br
 .RI "\fICopy constructor\&. \fP"
 .ti -1c
-.RI "\fBUniStgGrid3D\fP (const \fBReal\fP &west_bndy_x, const \fBReal\fP &east_bndy_x, const int &\fBnum_cells_x\fP, const \fBReal\fP &south_bndy_y, const \fBReal\fP &north_bndy_y, const int &\fBnum_cells_y\fP, const \fBReal\fP &bottom_bndy_z, const \fBReal\fP &top_bndy_z, const int &\fBnum_cells_z\fP, const \fBmtk::FieldNature\fP &\fBnature\fP=\fBmtk::SCALAR\fP)"
+.RI "\fBUniStgGrid3D\fP (const \fBReal\fP &west_bndy_x, const \fBReal\fP &east_bndy_x, const int &\fBnum_cells_x\fP, const \fBReal\fP &south_bndy_y, const \fBReal\fP &north_bndy_y, const int &\fBnum_cells_y\fP, const \fBReal\fP &bottom_bndy_z, const \fBReal\fP &top_bndy_z, const int &\fBnum_cells_z\fP, const \fBmtk::FieldNature\fP &\fBnature\fP=\fBmtk::FieldNature::SCALAR\fP)"
 .br
 .RI "\fIConstruct a grid based on spatial discretization parameters\&. \fP"
 .ti -1c
@@ -241,7 +241,7 @@ Definition at line 123 of file mtk_uni_stg_grid_3d\&.cc\&.
 
 .PP
 Definition at line 142 of file mtk_uni_stg_grid_3d\&.cc\&.
-.SS "mtk::UniStgGrid3D::UniStgGrid3D (const \fBReal\fP &west_bndy_x, const \fBReal\fP &east_bndy_x, const int &num_cells_x, const \fBReal\fP &south_bndy_y, const \fBReal\fP &north_bndy_y, const int &num_cells_y, const \fBReal\fP &bottom_bndy_z, const \fBReal\fP &top_bndy_z, const int &num_cells_z, const \fBmtk::FieldNature\fP &nature = \fC\fBmtk::SCALAR\fP\fP)"
+.SS "mtk::UniStgGrid3D::UniStgGrid3D (const \fBReal\fP &west_bndy_x, const \fBReal\fP &east_bndy_x, const int &num_cells_x, const \fBReal\fP &south_bndy_y, const \fBReal\fP &north_bndy_y, const int &num_cells_y, const \fBReal\fP &bottom_bndy_z, const \fBReal\fP &top_bndy_z, const int &num_cells_z, const \fBmtk::FieldNature\fP &nature = \fC\fBmtk::FieldNature::SCALAR\fP\fP)"
 
 .PP
 \fBParameters:\fP
@@ -316,7 +316,7 @@ We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = p(x, y, z)\ha
 .PP
 
 .PP
-Definition at line 414 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 415 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "void mtk::UniStgGrid3D::BindVectorFieldPComponent (\fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &yy, const \fBReal\fP &zz)VectorFieldPComponent)\fC [private]\fP"
 We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = p(x, y, z)\hat{\mathbf{i}} + q(x, y, z)\hat{\mathbf{j}} + r(x, y, z)\hat{\mathbf{k}} \]
 .PP
@@ -327,7 +327,7 @@ We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = p(x, y, z)\ha
 .PP
 
 .PP
-Definition at line 393 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 394 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "void mtk::UniStgGrid3D::BindVectorFieldQComponent (\fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &yy, const \fBReal\fP &zz)VectorFieldQComponent)\fC [private]\fP"
 We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = p(x, y, z)\hat{\mathbf{i}} + q(x, y, z)\hat{\mathbf{j}} + r(x, y, z)\hat{\mathbf{k}} \]
 .PP
@@ -338,18 +338,18 @@ We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = p(x, y, z)\ha
 .PP
 
 .PP
-Definition at line 400 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 401 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "void mtk::UniStgGrid3D::BindVectorFieldRComponent (\fBReal\fP(*)(const \fBReal\fP &xx, const \fBReal\fP &yy, const \fBReal\fP &zz)VectorFieldRComponent)\fC [private]\fP"
 We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = p(x, y, z)\hat{\mathbf{i}} + q(x, y, z)\hat{\mathbf{j}} + r(x, y, z)\hat{\mathbf{k}} \]
 .PP
 \fBParameters:\fP
 .RS 4
-\fIBindVectorFieldQComponent\fP Pointer to the function implementing the $ r $ component of the vector field\&. 
+\fIBindVectorFieldRComponent\fP Pointer to the function implementing the $ r $ component of the vector field\&. 
 .RE
 .PP
 
 .PP
-Definition at line 407 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 408 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::UniStgGrid3D::bottom_bndy () const"
 
 .PP
@@ -623,7 +623,7 @@ http://www.gnuplot.info/
 .PP
 
 .PP
-Definition at line 433 of file mtk_uni_stg_grid_3d\&.cc\&.
+Definition at line 435 of file mtk_uni_stg_grid_3d\&.cc\&.
 .SH "Friends And Related Function Documentation"
 .PP 
 .SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::UniStgGrid3D\fP &in)\fC [friend]\fP"

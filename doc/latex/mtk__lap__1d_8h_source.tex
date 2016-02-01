@@ -53,46 +53,52 @@
 00057 \textcolor{preprocessor}{#ifndef MTK\_INCLUDE\_LAP\_1D\_H\_}
 00058 \textcolor{preprocessor}{#define MTK\_INCLUDE\_LAP\_1D\_H\_}
 00059 
-00060 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
+00060 \textcolor{preprocessor}{#include <vector>}
 00061 
-00062 \textcolor{preprocessor}{#include "\hyperlink{mtk__uni__stg__grid__1d_8h}{mtk\_uni\_stg\_grid\_1d.h}"}
+00062 \textcolor{preprocessor}{#include "\hyperlink{mtk__dense__matrix_8h}{mtk\_dense\_matrix.h}"}
 00063 
-00064 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk} \{
+00064 \textcolor{preprocessor}{#include "\hyperlink{mtk__uni__stg__grid__1d_8h}{mtk\_uni\_stg\_grid\_1d.h}"}
 00065 
-\hypertarget{mtk__lap__1d_8h_source_l00076}{}\hyperlink{classmtk_1_1Lap1D}{00076} \textcolor{keyword}{class }\hyperlink{classmtk_1_1Lap1D}{Lap1D} \{
-00077  \textcolor{keyword}{public}:
-00079   \textcolor{keyword}{friend} std::ostream& \hyperlink{classmtk_1_1Lap1D_a235390479381d4e95163674968a1ca7c}{operator <<}(std::ostream& stream, \hyperlink{classmtk_1_1Lap1D}{Lap1D} &in);
-00080 
-00082   \hyperlink{classmtk_1_1Lap1D_a6fc2aeea35d4dfa49f17e625411f5a70}{Lap1D}();
-00083 
-00089   \hyperlink{classmtk_1_1Lap1D_a6fc2aeea35d4dfa49f17e625411f5a70}{Lap1D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Lap1D}{Lap1D} &lap);
-00090 
-00092   \hyperlink{classmtk_1_1Lap1D_ac0cb868243a66658cc46de5b818fa4e8}{~Lap1D}();
-00093 
-00099   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Lap1D_ae3490534a9e950df3f81b3840c31b13a}{order\_accuracy}() \textcolor{keyword}{const};
-00100 
-00106   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Lap1D_a957ae4ff6053d605ac7b93650ad6f188}{mimetic\_threshold}() \textcolor{keyword}{const};
-00107 
-00113   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Lap1D_a4e16e80c6dd845ac42bda23385a1c56e}{delta}() \textcolor{keyword}{const};
-00114 
-00120   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Lap1D_a685dcba88c08cf5b7b6c2aa4669a472c}{ConstructLap1D}(\textcolor{keywordtype}{int} order\_accuracy = \hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{kDefaultOrderAccuracy},
-00121                       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} mimetic\_threshold = \hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{kDefaultMimeticThreshold});
-00122 
-00128   \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} \hyperlink{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4}{ReturnAsDenseMatrix}(\textcolor{keyword}{const} 
+00066 \textcolor{keyword}{namespace }\hyperlink{namespacemtk}{mtk} \{
+00067 
+\hypertarget{mtk__lap__1d_8h_source_l00078}{}\hyperlink{classmtk_1_1Lap1D}{00078} \textcolor{keyword}{class }\hyperlink{classmtk_1_1Lap1D}{Lap1D} \{
+00079  \textcolor{keyword}{public}:
+00081   \textcolor{keyword}{friend} std::ostream& \hyperlink{classmtk_1_1Lap1D_a235390479381d4e95163674968a1ca7c}{operator <<}(std::ostream& stream, \hyperlink{classmtk_1_1Lap1D}{Lap1D} &in);
+00082 
+00084   \hyperlink{classmtk_1_1Lap1D_a6fc2aeea35d4dfa49f17e625411f5a70}{Lap1D}();
+00085 
+00091   \hyperlink{classmtk_1_1Lap1D_a6fc2aeea35d4dfa49f17e625411f5a70}{Lap1D}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1Lap1D}{Lap1D} &lap);
+00092 
+00094   \hyperlink{classmtk_1_1Lap1D_ac0cb868243a66658cc46de5b818fa4e8}{~Lap1D}();
+00095 
+00101   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Lap1D_ae3490534a9e950df3f81b3840c31b13a}{order\_accuracy}() \textcolor{keyword}{const};
+00102 
+00108   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Lap1D_a957ae4ff6053d605ac7b93650ad6f188}{mimetic\_threshold}() \textcolor{keyword}{const};
+00109 
+00115   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Lap1D_a4e16e80c6dd845ac42bda23385a1c56e}{delta}() \textcolor{keyword}{const};
+00116 
+00122   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1Lap1D_a685dcba88c08cf5b7b6c2aa4669a472c}{ConstructLap1D}(\textcolor{keywordtype}{int} order\_accuracy = \hyperlink{group__c01-roots_ga0d95560098eb36420511103637b6952f}{kDefaultOrderAccuracy},
+00123                       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} mimetic\_threshold = \hyperlink{group__c01-roots_ga35718d949bdc81a08a9cc8ebbe3478a2}{kDefaultMimeticThreshold});
+00124 
+00130   std::vector<Real> \hyperlink{classmtk_1_1Lap1D_ad0f976d32700cd8b46aa99f5a8d9e38b}{sums\_rows\_mim\_bndy}() \textcolor{keyword}{const};
+00131 
+00137   \hyperlink{classmtk_1_1DenseMatrix}{DenseMatrix} \hyperlink{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4}{ReturnAsDenseMatrix}(\textcolor{keyword}{const} 
       \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid) \textcolor{keyword}{const};
-00129 
-00135   \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}* \hyperlink{classmtk_1_1Lap1D_ab2652725a8407c79247680c7bbd073b8}{data}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid) \textcolor{keyword}{const};
-00136 
-00137  \textcolor{keyword}{private}:
-\hypertarget{mtk__lap__1d_8h_source_l00138}{}\hyperlink{classmtk_1_1Lap1D_a35d34c085b9cf6f9961a699dfb02fea6}{00138}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Lap1D_a35d34c085b9cf6f9961a699dfb02fea6}{order\_accuracy\_};    
-\hypertarget{mtk__lap__1d_8h_source_l00139}{}\hyperlink{classmtk_1_1Lap1D_a05578b0729f2bb4fe8bb442fc555fa80}{00139}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Lap1D_a05578b0729f2bb4fe8bb442fc555fa80}{laplacian\_length\_};  
-00140 
-\hypertarget{mtk__lap__1d_8h_source_l00141}{}\hyperlink{classmtk_1_1Lap1D_a64a3977527c00b4ef994d1bd549f82fd}{00141}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Lap1D_a64a3977527c00b4ef994d1bd549f82fd}{laplacian\_};      
-00142 
-\hypertarget{mtk__lap__1d_8h_source_l00143}{}\hyperlink{classmtk_1_1Lap1D_a0feafd7b78e62be8644503d14c0204d9}{00143}   \textcolor{keyword}{mutable} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Lap1D_a0feafd7b78e62be8644503d14c0204d9}{delta\_};     
-00144 
-\hypertarget{mtk__lap__1d_8h_source_l00145}{}\hyperlink{classmtk_1_1Lap1D_a20dce13067774c64dff892323d9c586e}{00145}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Lap1D_a20dce13067774c64dff892323d9c586e}{mimetic\_threshold\_};  
-00146 \};
-00147 \}
-00148 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_LAP\_1D\_H\_}
+00138 
+00144   \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}* \hyperlink{classmtk_1_1Lap1D_ab2652725a8407c79247680c7bbd073b8}{data}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid) \textcolor{keyword}{const};
+00145 
+00146  \textcolor{keyword}{private}:
+\hypertarget{mtk__lap__1d_8h_source_l00147}{}\hyperlink{classmtk_1_1Lap1D_a35d34c085b9cf6f9961a699dfb02fea6}{00147}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Lap1D_a35d34c085b9cf6f9961a699dfb02fea6}{order\_accuracy\_};    
+\hypertarget{mtk__lap__1d_8h_source_l00148}{}\hyperlink{classmtk_1_1Lap1D_a05578b0729f2bb4fe8bb442fc555fa80}{00148}   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1Lap1D_a05578b0729f2bb4fe8bb442fc555fa80}{laplacian\_length\_};  
+00149 
+\hypertarget{mtk__lap__1d_8h_source_l00150}{}\hyperlink{classmtk_1_1Lap1D_a64a3977527c00b4ef994d1bd549f82fd}{00150}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} *\hyperlink{classmtk_1_1Lap1D_a64a3977527c00b4ef994d1bd549f82fd}{laplacian\_};      
+00151 
+\hypertarget{mtk__lap__1d_8h_source_l00152}{}\hyperlink{classmtk_1_1Lap1D_a0feafd7b78e62be8644503d14c0204d9}{00152}   \textcolor{keyword}{mutable} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Lap1D_a0feafd7b78e62be8644503d14c0204d9}{delta\_};     
+00153 
+\hypertarget{mtk__lap__1d_8h_source_l00154}{}\hyperlink{classmtk_1_1Lap1D_a20dce13067774c64dff892323d9c586e}{00154}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Lap1D_a20dce13067774c64dff892323d9c586e}{mimetic\_threshold\_};  
+00155 
+\hypertarget{mtk__lap__1d_8h_source_l00156}{}\hyperlink{classmtk_1_1Lap1D_a81d34a48cead4d5a2358581b1ff44252}{00156}   std::vector<Real> \hyperlink{classmtk_1_1Lap1D_a81d34a48cead4d5a2358581b1ff44252}{sums\_rows\_mim\_bndy\_}; 
+00157 \};
+00158 \}
+00159 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_LAP\_1D\_H\_}
 \end{DoxyCode}

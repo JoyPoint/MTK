@@ -4,13 +4,13 @@
     <compoundname>poisson_1d.cc</compoundname>
     <includes local="no">iostream</includes>
     <incdepgraph>
-      <node id="1021">
+      <node id="1027">
         <label>iostream</label>
       </node>
-      <node id="1020">
+      <node id="1026">
         <label>examples/poisson_1d/poisson_1d.cc</label>
         <link refid="poisson_1d.cc"/>
-        <childnode refid="1021" relation="include">
+        <childnode refid="1027" relation="include">
         </childnode>
       </node>
     </incdepgraph>
@@ -32,7 +32,7 @@
     <briefdescription>
 <para>Poisson Equation on a 1D Uniform Staggered Grid with Robin BCs. </para>    </briefdescription>
     <detaileddescription>
-<para>We solve: <formula id="105">\[ -\nabla^2 p(x) = s(x), \]</formula> for <formula id="1">$ x \in \Omega = [a,b] = [0,1] $</formula>.</para><para>The source term function is defined as: <formula id="106">\[ s(x) = -\frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1}, \]</formula> where <formula id="3">$ \lambda = -1 $</formula> is a real-valued parameter.</para><para>We consider Robin&apos;s boundary conditions of the form: <formula id="4">\[ \alpha p(a) - \beta p&apos;(a) = \omega, \]</formula> <formula id="87">\[ \alpha p(b) + \beta p&apos;(b) = \epsilon, \]</formula> where <formula id="88">$ \alpha = -\exp(\lambda) $</formula>, <formula id="89">$ \beta = (\exp(\lambda) - 1.0)/\lambda $</formula>, <formula id="90">$ \omega = -1 $</formula>, and <formula id="91">$ \epsilon = 0 $</formula>.</para><para>The analytical solution for this problem is given by: <formula id="6">\[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \]</formula></para><para>The mimetic counterpart of this equation is: <formula id="92">\[ -\breve{\mathbf{L}}^k_x \tilde{p} = \tilde{s}. \]</formula></para><para>Finally, we will solve this problem considering <formula id="93">$ k = 2 $</formula>.</para><para><simplesect kind="author"><para>: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu </para></simplesect>
+<para>We solve: <formula id="105">\[ -\nabla^2 p(x) = s(x), \]</formula> for <formula id="1">$ x \in \Omega = [a,b] = [0,1] $</formula>.</para><para>The source term function is defined as: <formula id="106">\[ s(x) = -\frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1}, \]</formula> where <formula id="3">$ \lambda = -1 $</formula> is a real-valued parameter.</para><para>We consider Robin&apos;s boundary conditions of the form: <formula id="4">\[ \alpha p(a) - \beta p&apos;(a) = \omega, \]</formula> <formula id="87">\[ \alpha p(b) + \beta p&apos;(b) = \epsilon, \]</formula> where <formula id="88">$ \alpha = -\exp(\lambda) $</formula>, <formula id="142">$ \beta = \lambda^{-1}(\exp(\lambda) - 1.0) $</formula>, <formula id="90">$ \omega = -1 $</formula>, and <formula id="91">$ \epsilon = 0 $</formula>.</para><para>The analytical solution for this problem is given by: <formula id="6">\[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \]</formula></para><para>The mimetic counterpart of this equation is: <formula id="92">\[ -\breve{\mathbf{L}}^k_x \tilde{p} = \tilde{s}. \]</formula></para><para>Finally, we will solve this problem considering <formula id="93">$ k = 2 $</formula>.</para><para><simplesect kind="author"><para>: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu </para></simplesect>
 </para>    </detaileddescription>
     <programlisting>
 <codeline lineno="1"></codeline>

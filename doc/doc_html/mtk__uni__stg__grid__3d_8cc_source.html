@@ -196,7 +196,7 @@ $(document).ready(function(){initNavTree('mtk__uni__stg__grid__3d_8cc_source.htm
 <div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  stream &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordflow">if</span> (in.<a class="code" href="classmtk_1_1UniStgGrid3D.html#a04f7ad8ef5ea51ef0442fdbf0592a14c">nature_</a> == mtk::SCALAR) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordflow">if</span> (in.<a class="code" href="classmtk_1_1UniStgGrid3D.html#a04f7ad8ef5ea51ef0442fdbf0592a14c">nature_</a> == <a class="code" href="namespacemtk.html#ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9">mtk::FieldNature::SCALAR</a>) {</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;u(x,y,z):&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">if</span> (in.<a class="code" href="classmtk_1_1UniStgGrid3D.html#acbd2e19beffc89f87e6ef7b39f98bfe2">discrete_field_</a>.size() &gt; 0) {</div>
 <div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div>
@@ -270,7 +270,7 @@ $(document).ready(function(){initNavTree('mtk__uni__stg__grid__3d_8cc_source.htm
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;              <a class="code" href="classmtk_1_1UniStgGrid3D.html#acbd2e19beffc89f87e6ef7b39f98bfe2">discrete_field_</a>.begin());</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;}</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
-<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="classmtk_1_1UniStgGrid3D.html#ad5b06964b6697d40222f0f5cbec39464">  174</a></span>&#160;<a class="code" href="classmtk_1_1UniStgGrid3D.html#ae79bd6515268bbac22b081168558923c">mtk::UniStgGrid3D::UniStgGrid3D</a>(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;west_bndy,</div>
+<div class="line"><a name="l00174"></a><span class="lineno"><a class="line" href="classmtk_1_1UniStgGrid3D.html#aa5a902b9b0236a81c4b12198d6e97534">  174</a></span>&#160;<a class="code" href="classmtk_1_1UniStgGrid3D.html#ae79bd6515268bbac22b081168558923c">mtk::UniStgGrid3D::UniStgGrid3D</a>(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;west_bndy,</div>
 <div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;                                <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;east_bndy,</div>
 <div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;                                <span class="keyword">const</span> <span class="keywordtype">int</span> &amp;num_cells_x,</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;                                <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;south_bndy,</div>
@@ -420,154 +420,157 @@ $(document).ready(function(){initNavTree('mtk__uni__stg__grid__3d_8cc_source.htm
 <div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                             <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;zz)) {</div>
 <div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;</div>
 <div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(nature_ != mtk::SCALAR, __FILE__, __LINE__, __func__);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  discrete_domain_x_.reserve(num_cells_x_ + 2);</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  discrete_domain_x_.push_back(west_bndy_);</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;<span class="preprocessor">  #ifdef MTK_PRECISION_DOUBLE</span></div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;  <span class="keyword">auto</span> first_center = west_bndy_ + delta_x_/2.0;</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;<span class="preprocessor">  #else</span></div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  <span class="keyword">auto</span> first_center = west_bndy_ + delta_x_/2.0f;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  discrete_domain_x_.push_back(first_center);</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 1; ii &lt; num_cells_x_; ++ii) {</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    discrete_domain_x_.push_back(first_center + ii*delta_x_);</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;  }</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  discrete_domain_x_.push_back(east_bndy_);</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  discrete_domain_y_.reserve(num_cells_y_ + 2);</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  discrete_domain_y_.push_back(south_bndy_);</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;<span class="preprocessor">  #ifdef MTK_PRECISION_DOUBLE</span></div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  first_center = south_bndy_ + delta_x_/2.0;</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;<span class="preprocessor">  #else</span></div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;  first_center = south_bndy_ + delta_x_/2.0f;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;  discrete_domain_y_.push_back(first_center);</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 1; ii &lt; num_cells_y_; ++ii) {</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    discrete_domain_y_.push_back(first_center + ii*delta_y_);</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  }</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  discrete_domain_y_.push_back(north_bndy_);</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;</div>
-<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;  discrete_domain_z_.reserve(num_cells_z_ + 2);</div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  discrete_domain_z_.push_back(bottom_bndy_);</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  first_center = bottom_bndy_ + delta_z_/<a class="code" href="group__c01-roots.html#gaf39c2d851a2db744f4feb1c5ab3ec2cf">mtk::kTwo</a>;</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  discrete_domain_z_.push_back(first_center);</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 1; ii &lt; num_cells_z_; ++ii) {</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;    discrete_domain_z_.push_back(first_center + ii*delta_z_);</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;  }</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  discrete_domain_z_.push_back(top_bndy_);</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;  <span class="keywordtype">int</span> aux{(num_cells_x_ + 2)*(num_cells_y_ + 2)*(num_cells_z_ + 2)};</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;  discrete_field_.reserve(aux);</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> kk = 0; kk &lt; num_cells_z_ + 2; ++kk) {</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ii = 0; ii &lt; num_cells_y_ + 2; ++ii) {</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> jj = 0; jj &lt; num_cells_x_ + 2; ++jj) {</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;<span class="preprocessor">        #if MTK_VERBOSE_LEVEL &gt; 6</span></div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;At z = &quot;</span> &lt;&lt; discrete_domain_z_[kk] &lt;&lt; <span class="stringliteral">&quot;: Pushing value&quot;</span></div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;          <span class="stringliteral">&quot; for x = &quot;</span> &lt;&lt; discrete_domain_x_[jj] &lt;&lt; <span class="stringliteral">&quot; y = &quot;</span> &lt;&lt;</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;          discrete_domain_y_[ii] &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;<span class="preprocessor">        #endif</span></div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;        discrete_field_.push_back(ScalarField(discrete_domain_x_[jj],</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;                                              discrete_domain_y_[ii],</div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                                              discrete_domain_z_[kk]));</div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;      }</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;    }</div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;  }</div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;}</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
-<div class="line"><a name="l00393"></a><span class="lineno"><a class="line" href="classmtk_1_1UniStgGrid3D.html#adafd3eae199b31b18aceb659ae0ea19d">  393</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1UniStgGrid3D.html#adafd3eae199b31b18aceb659ae0ea19d">mtk::UniStgGrid3D::BindVectorFieldPComponent</a>(</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> (*VectorField)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx,</div>
-<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;                           <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;yy,</div>
-<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                           <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;zz)) {</div>
-<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;</div>
-<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;}</div>
-<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;</div>
-<div class="line"><a name="l00400"></a><span class="lineno"><a class="line" href="classmtk_1_1UniStgGrid3D.html#aa7a8a5b137889f4ad7d6d0553ab4ebe3">  400</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1UniStgGrid3D.html#aa7a8a5b137889f4ad7d6d0553ab4ebe3">mtk::UniStgGrid3D::BindVectorFieldQComponent</a>(</div>
-<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> (*VectorField)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx,</div>
-<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;                           <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;yy,</div>
-<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                           <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;zz)) {</div>
-<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;</div>
-<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;}</div>
-<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;</div>
-<div class="line"><a name="l00407"></a><span class="lineno"><a class="line" href="classmtk_1_1UniStgGrid3D.html#af84a128a5f42f9a5f571f0a6b1803646">  407</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1UniStgGrid3D.html#af84a128a5f42f9a5f571f0a6b1803646">mtk::UniStgGrid3D::BindVectorFieldRComponent</a>(</div>
-<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> (*VectorField)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx,</div>
-<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;                           <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;yy,</div>
-<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                           <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;zz)) {</div>
-<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;</div>
-<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;}</div>
-<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;</div>
-<div class="line"><a name="l00414"></a><span class="lineno"><a class="line" href="classmtk_1_1UniStgGrid3D.html#a7b7f6b162dec10dfb55c8e492e456287">  414</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1UniStgGrid3D.html#a7b7f6b162dec10dfb55c8e492e456287">mtk::UniStgGrid3D::BindVectorField</a>(</div>
-<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> (*VectorFieldPComponent)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx,</div>
-<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;yy,</div>
-<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;zz),</div>
-<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> (*VectorFieldQComponent)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx,</div>
-<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;yy,</div>
-<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;zz),</div>
-<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> (*VectorFieldRComponent)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx,</div>
-<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;yy,</div>
-<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;zz)) {</div>
-<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;</div>
-<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
-<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(nature_ != mtk::VECTOR, __FILE__, __LINE__, __func__);</div>
-<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;</div>
-<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;  BindVectorFieldPComponent(VectorFieldPComponent);</div>
-<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;  BindVectorFieldQComponent(VectorFieldQComponent);</div>
-<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;}</div>
-<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;</div>
-<div class="line"><a name="l00433"></a><span class="lineno"><a class="line" href="classmtk_1_1UniStgGrid3D.html#a0f01c453f6517d7d0bfe63e4bddd0dd0">  433</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classmtk_1_1UniStgGrid3D.html#a0f01c453f6517d7d0bfe63e4bddd0dd0">mtk::UniStgGrid3D::WriteToFile</a>(std::string filename,</div>
-<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;                                    std::string space_name_x,</div>
-<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;                                    std::string space_name_y,</div>
-<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                                    std::string space_name_z,</div>
-<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                                    std::string field_name)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;</div>
-<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;  std::ofstream output_dat_file;  <span class="comment">// Output file.</span></div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(nature_ != <a class="code" href="namespacemtk.html#ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9">mtk::FieldNature::SCALAR</a>, __FILE__, __LINE__,</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;__func__);</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  discrete_domain_x_.reserve(num_cells_x_ + 2);</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;  discrete_domain_x_.push_back(west_bndy_);</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;<span class="preprocessor">  #ifdef MTK_PRECISION_DOUBLE</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;  <span class="keyword">auto</span> first_center = west_bndy_ + delta_x_/2.0;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;<span class="preprocessor">  #else</span></div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  <span class="keyword">auto</span> first_center = west_bndy_ + delta_x_/2.0f;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;  discrete_domain_x_.push_back(first_center);</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 1; ii &lt; num_cells_x_; ++ii) {</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    discrete_domain_x_.push_back(first_center + ii*delta_x_);</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  }</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;  discrete_domain_x_.push_back(east_bndy_);</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  discrete_domain_y_.reserve(num_cells_y_ + 2);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  discrete_domain_y_.push_back(south_bndy_);</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;<span class="preprocessor">  #ifdef MTK_PRECISION_DOUBLE</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;  first_center = south_bndy_ + delta_x_/2.0;</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;<span class="preprocessor">  #else</span></div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;  first_center = south_bndy_ + delta_x_/2.0f;</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;  discrete_domain_y_.push_back(first_center);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 1; ii &lt; num_cells_y_; ++ii) {</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    discrete_domain_y_.push_back(first_center + ii*delta_y_);</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  }</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  discrete_domain_y_.push_back(north_bndy_);</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  discrete_domain_z_.reserve(num_cells_z_ + 2);</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  discrete_domain_z_.push_back(bottom_bndy_);</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  first_center = bottom_bndy_ + delta_z_/<a class="code" href="group__c01-roots.html#gaf39c2d851a2db744f4feb1c5ab3ec2cf">mtk::kTwo</a>;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  discrete_domain_z_.push_back(first_center);</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 1; ii &lt; num_cells_z_; ++ii) {</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    discrete_domain_z_.push_back(first_center + ii*delta_z_);</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  }</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;  discrete_domain_z_.push_back(top_bndy_);</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;  <span class="keywordtype">int</span> aux{(num_cells_x_ + 2)*(num_cells_y_ + 2)*(num_cells_z_ + 2)};</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;  discrete_field_.reserve(aux);</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> kk = 0; kk &lt; num_cells_z_ + 2; ++kk) {</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ii = 0; ii &lt; num_cells_y_ + 2; ++ii) {</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> jj = 0; jj &lt; num_cells_x_ + 2; ++jj) {</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;<span class="preprocessor">        #if MTK_VERBOSE_LEVEL &gt; 6</span></div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;At z = &quot;</span> &lt;&lt; discrete_domain_z_[kk] &lt;&lt; <span class="stringliteral">&quot;: Pushing value&quot;</span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;          <span class="stringliteral">&quot; for x = &quot;</span> &lt;&lt; discrete_domain_x_[jj] &lt;&lt; <span class="stringliteral">&quot; y = &quot;</span> &lt;&lt;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;          discrete_domain_y_[ii] &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;<span class="preprocessor">        #endif</span></div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;        discrete_field_.push_back(ScalarField(discrete_domain_x_[jj],</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;                                              discrete_domain_y_[ii],</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;                                              discrete_domain_z_[kk]));</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;      }</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;    }</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  }</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;}</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;</div>
+<div class="line"><a name="l00394"></a><span class="lineno"><a class="line" href="classmtk_1_1UniStgGrid3D.html#adafd3eae199b31b18aceb659ae0ea19d">  394</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1UniStgGrid3D.html#adafd3eae199b31b18aceb659ae0ea19d">mtk::UniStgGrid3D::BindVectorFieldPComponent</a>(</div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> (*VectorField)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx,</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;                           <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;yy,</div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;                           <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;zz)) {</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;</div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;}</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;</div>
+<div class="line"><a name="l00401"></a><span class="lineno"><a class="line" href="classmtk_1_1UniStgGrid3D.html#aa7a8a5b137889f4ad7d6d0553ab4ebe3">  401</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1UniStgGrid3D.html#aa7a8a5b137889f4ad7d6d0553ab4ebe3">mtk::UniStgGrid3D::BindVectorFieldQComponent</a>(</div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> (*VectorField)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx,</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;                           <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;yy,</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;                           <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;zz)) {</div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;}</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;</div>
+<div class="line"><a name="l00408"></a><span class="lineno"><a class="line" href="classmtk_1_1UniStgGrid3D.html#af84a128a5f42f9a5f571f0a6b1803646">  408</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1UniStgGrid3D.html#af84a128a5f42f9a5f571f0a6b1803646">mtk::UniStgGrid3D::BindVectorFieldRComponent</a>(</div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> (*VectorField)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx,</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;                           <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;yy,</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;                           <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;zz)) {</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;</div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;}</div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;</div>
+<div class="line"><a name="l00415"></a><span class="lineno"><a class="line" href="classmtk_1_1UniStgGrid3D.html#a7b7f6b162dec10dfb55c8e492e456287">  415</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classmtk_1_1UniStgGrid3D.html#a7b7f6b162dec10dfb55c8e492e456287">mtk::UniStgGrid3D::BindVectorField</a>(</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> (*VectorFieldPComponent)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx,</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;yy,</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;zz),</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> (*VectorFieldQComponent)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx,</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;yy,</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;zz),</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> (*VectorFieldRComponent)(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx,</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;yy,</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;                                     <span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;zz)) {</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;</div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(nature_ != <a class="code" href="namespacemtk.html#ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e">mtk::FieldNature::VECTOR</a>, __FILE__, __LINE__,</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;__func__);</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;  BindVectorFieldPComponent(VectorFieldPComponent);</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;  BindVectorFieldQComponent(VectorFieldQComponent);</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;}</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;</div>
+<div class="line"><a name="l00435"></a><span class="lineno"><a class="line" href="classmtk_1_1UniStgGrid3D.html#a0f01c453f6517d7d0bfe63e4bddd0dd0">  435</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classmtk_1_1UniStgGrid3D.html#a0f01c453f6517d7d0bfe63e4bddd0dd0">mtk::UniStgGrid3D::WriteToFile</a>(std::string filename,</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;                                    std::string space_name_x,</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;                                    std::string space_name_y,</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;                                    std::string space_name_z,</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;                                    std::string field_name)<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;</div>
-<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;  output_dat_file.open(filename);</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;  std::ofstream output_dat_file;  <span class="comment">// Output file.</span></div>
 <div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;</div>
-<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;  <span class="keywordflow">if</span> (!output_dat_file.is_open()) {</div>
-<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;  }</div>
-<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;</div>
-<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;  <span class="keywordflow">if</span> (nature_ == mtk::SCALAR) {</div>
-<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;    output_dat_file &lt;&lt; <span class="stringliteral">&quot;# &quot;</span> &lt;&lt; space_name_x &lt;&lt;  <span class="charliteral">&#39; &#39;</span> &lt;&lt; space_name_y &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt;</div>
-<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;      space_name_z &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; field_name &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;</div>
-<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;  <span class="keywordtype">int</span> idx{};</div>
-<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> kk = 0; kk &lt; num_cells_z_ + 2; ++kk) {</div>
-<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ii = 0; ii &lt; num_cells_y_ + 2; ++ii) {</div>
-<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> jj = 0; jj &lt; num_cells_x_ + 2; ++jj) {</div>
-<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;        output_dat_file &lt;&lt; discrete_domain_x_[jj] &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt;</div>
-<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;          discrete_domain_y_[ii] &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; discrete_domain_z_[kk] &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt;</div>
-<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;          discrete_field_[idx] &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;        idx++;</div>
-<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;      }</div>
-<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;    }</div>
-<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;  }</div>
-<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;</div>
-<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;    output_dat_file &lt;&lt; <span class="stringliteral">&quot;# &quot;</span> &lt;&lt; space_name_x &lt;&lt;  <span class="charliteral">&#39; &#39;</span> &lt;&lt; space_name_y &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt;</div>
-<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;      space_name_z &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; field_name &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;</div>
-<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;  }</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;  output_dat_file.open(filename);</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;  <span class="keywordflow">if</span> (!output_dat_file.is_open()) {</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;  }</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;  <span class="keywordflow">if</span> (nature_ == <a class="code" href="namespacemtk.html#ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9">mtk::FieldNature::SCALAR</a>) {</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;    output_dat_file &lt;&lt; <span class="stringliteral">&quot;# &quot;</span> &lt;&lt; space_name_x &lt;&lt;  <span class="charliteral">&#39; &#39;</span> &lt;&lt; space_name_y &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt;</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160;      space_name_z &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; field_name &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00452"></a><span class="lineno">  452</span>&#160;</div>
+<div class="line"><a name="l00453"></a><span class="lineno">  453</span>&#160;  <span class="keywordtype">int</span> idx{};</div>
+<div class="line"><a name="l00454"></a><span class="lineno">  454</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> kk = 0; kk &lt; num_cells_z_ + 2; ++kk) {</div>
+<div class="line"><a name="l00455"></a><span class="lineno">  455</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> ii = 0; ii &lt; num_cells_y_ + 2; ++ii) {</div>
+<div class="line"><a name="l00456"></a><span class="lineno">  456</span>&#160;      <span class="keywordflow">for</span> (<span class="keywordtype">int</span> jj = 0; jj &lt; num_cells_x_ + 2; ++jj) {</div>
+<div class="line"><a name="l00457"></a><span class="lineno">  457</span>&#160;        output_dat_file &lt;&lt; discrete_domain_x_[jj] &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt;</div>
+<div class="line"><a name="l00458"></a><span class="lineno">  458</span>&#160;          discrete_domain_y_[ii] &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; discrete_domain_z_[kk] &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt;</div>
+<div class="line"><a name="l00459"></a><span class="lineno">  459</span>&#160;          discrete_field_[idx] &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00460"></a><span class="lineno">  460</span>&#160;        idx++;</div>
+<div class="line"><a name="l00461"></a><span class="lineno">  461</span>&#160;      }</div>
+<div class="line"><a name="l00462"></a><span class="lineno">  462</span>&#160;    }</div>
+<div class="line"><a name="l00463"></a><span class="lineno">  463</span>&#160;  }</div>
+<div class="line"><a name="l00464"></a><span class="lineno">  464</span>&#160;</div>
+<div class="line"><a name="l00465"></a><span class="lineno">  465</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00466"></a><span class="lineno">  466</span>&#160;    output_dat_file &lt;&lt; <span class="stringliteral">&quot;# &quot;</span> &lt;&lt; space_name_x &lt;&lt;  <span class="charliteral">&#39; &#39;</span> &lt;&lt; space_name_y &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt;</div>
+<div class="line"><a name="l00467"></a><span class="lineno">  467</span>&#160;      space_name_z &lt;&lt; <span class="charliteral">&#39; &#39;</span> &lt;&lt; field_name &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00468"></a><span class="lineno">  468</span>&#160;</div>
-<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;  output_dat_file.close();</div>
+<div class="line"><a name="l00469"></a><span class="lineno">  469</span>&#160;  }</div>
 <div class="line"><a name="l00470"></a><span class="lineno">  470</span>&#160;</div>
-<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;}</div>
+<div class="line"><a name="l00471"></a><span class="lineno">  471</span>&#160;  output_dat_file.close();</div>
+<div class="line"><a name="l00472"></a><span class="lineno">  472</span>&#160;</div>
+<div class="line"><a name="l00473"></a><span class="lineno">  473</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00474"></a><span class="lineno">  474</span>&#160;}</div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_ac61f8810468d2a802d8a5ba11b0409c9"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#ac61f8810468d2a802d8a5ba11b0409c9">mtk::UniStgGrid3D::west_bndy_</a></div><div class="ttdeci">Real west_bndy_</div><div class="ttdoc">West boundary spatial coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8h_source.html#l00386">mtk_uni_stg_grid_3d.h:386</a></div></div>
+<div class="ttc" id="namespacemtk_html_ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9"><div class="ttname"><a href="namespacemtk.html#ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9">mtk::FieldNature::SCALAR</a></div><div class="ttdoc">Scalar-valued field. </div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_a5a47f1ad666f38e5ac0cca660c82d417"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#a5a47f1ad666f38e5ac0cca660c82d417">mtk::UniStgGrid3D::north_bndy</a></div><div class="ttdeci">Real north_bndy() const </div><div class="ttdoc">Provides access to north boundary spatial coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00258">mtk_uni_stg_grid_3d.cc:258</a></div></div>
-<div class="ttc" id="classmtk_1_1UniStgGrid3D_html_aa7a8a5b137889f4ad7d6d0553ab4ebe3"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#aa7a8a5b137889f4ad7d6d0553ab4ebe3">mtk::UniStgGrid3D::BindVectorFieldQComponent</a></div><div class="ttdeci">void BindVectorFieldQComponent(Real(*VectorFieldQComponent)(const Real &amp;xx, const Real &amp;yy, const Real &amp;zz))</div><div class="ttdoc">Binds a given component of a vector field to the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00400">mtk_uni_stg_grid_3d.cc:400</a></div></div>
+<div class="ttc" id="classmtk_1_1UniStgGrid3D_html_aa7a8a5b137889f4ad7d6d0553ab4ebe3"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#aa7a8a5b137889f4ad7d6d0553ab4ebe3">mtk::UniStgGrid3D::BindVectorFieldQComponent</a></div><div class="ttdeci">void BindVectorFieldQComponent(Real(*VectorFieldQComponent)(const Real &amp;xx, const Real &amp;yy, const Real &amp;zz))</div><div class="ttdoc">Binds a given component of a vector field to the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00401">mtk_uni_stg_grid_3d.cc:401</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_a04f7ad8ef5ea51ef0442fdbf0592a14c"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#a04f7ad8ef5ea51ef0442fdbf0592a14c">mtk::UniStgGrid3D::nature_</a></div><div class="ttdeci">FieldNature nature_</div><div class="ttdoc">Nature of the discrete field. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8h_source.html#l00384">mtk_uni_stg_grid_3d.h:384</a></div></div>
 <div class="ttc" id="classmtk_1_1Tools_html_a332324c6f25e66be9dff48c5987a3b9f"><div class="ttname"><a href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a></div><div class="ttdeci">static void Prevent(const bool complement, const char *const fname, int lineno, const char *const fxname) noexcept</div><div class="ttdoc">Enforces preconditions by preventing their complements from occur. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8cc_source.html#l00062">mtk_tools.cc:62</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_aa93094a89a30b21bd4c37073a449d2d1"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#aa93094a89a30b21bd4c37073a449d2d1">mtk::UniStgGrid3D::delta_z</a></div><div class="ttdeci">Real delta_z() const </div><div class="ttdoc">Provides access to the computed $  z $. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00293">mtk_uni_stg_grid_3d.cc:293</a></div></div>
@@ -579,7 +582,7 @@ $(document).ready(function(){initNavTree('mtk__uni__stg__grid__3d_8cc_source.htm
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_aafe32f2f7eb2660f06a8b9ef30c3cc0c"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#aafe32f2f7eb2660f06a8b9ef30c3cc0c">mtk::UniStgGrid3D::east_bndy_</a></div><div class="ttdeci">Real east_bndy_</div><div class="ttdoc">East boundary spatial coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8h_source.html#l00387">mtk_uni_stg_grid_3d.h:387</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_a9882a34289ee09954f2958666fb48dd2"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#a9882a34289ee09954f2958666fb48dd2">mtk::UniStgGrid3D::delta_x</a></div><div class="ttdeci">Real delta_x() const </div><div class="ttdoc">Provides access to the computed $  x $. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00243">mtk_uni_stg_grid_3d.cc:243</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_a9f7f6ab34586f8d7fb54f0ad6c47c834"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#a9f7f6ab34586f8d7fb54f0ad6c47c834">mtk::UniStgGrid3D::Size</a></div><div class="ttdeci">int Size() const </div><div class="ttdoc">Total number of samples in the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00313">mtk_uni_stg_grid_3d.cc:313</a></div></div>
-<div class="ttc" id="classmtk_1_1UniStgGrid3D_html_a7b7f6b162dec10dfb55c8e492e456287"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#a7b7f6b162dec10dfb55c8e492e456287">mtk::UniStgGrid3D::BindVectorField</a></div><div class="ttdeci">void BindVectorField(Real(*VectorFieldPComponent)(const Real &amp;xx, const Real &amp;yy, const Real &amp;zz), Real(*VectorFieldQComponent)(const Real &amp;xx, const Real &amp;yy, const Real &amp;zz), Real(*VectorFieldRComponent)(const Real &amp;xx, const Real &amp;yy, const Real &amp;zz))</div><div class="ttdoc">Binds a given vector field to the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00414">mtk_uni_stg_grid_3d.cc:414</a></div></div>
+<div class="ttc" id="classmtk_1_1UniStgGrid3D_html_a7b7f6b162dec10dfb55c8e492e456287"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#a7b7f6b162dec10dfb55c8e492e456287">mtk::UniStgGrid3D::BindVectorField</a></div><div class="ttdeci">void BindVectorField(Real(*VectorFieldPComponent)(const Real &amp;xx, const Real &amp;yy, const Real &amp;zz), Real(*VectorFieldQComponent)(const Real &amp;xx, const Real &amp;yy, const Real &amp;zz), Real(*VectorFieldRComponent)(const Real &amp;xx, const Real &amp;yy, const Real &amp;zz))</div><div class="ttdoc">Binds a given vector field to the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00415">mtk_uni_stg_grid_3d.cc:415</a></div></div>
 <div class="ttc" id="namespacemtk_html"><div class="ttname"><a href="namespacemtk.html">mtk</a></div><div class="ttdoc">Mimetic Methods Toolkit namespace. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__blas__adapter_8h_source.html#l00076">mtk_blas_adapter.h:76</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html">mtk::UniStgGrid3D</a></div><div class="ttdoc">Uniform 3D Staggered Grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8h_source.html#l00079">mtk_uni_stg_grid_3d.h:79</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_aa20f1775772e144dd1b116ec82b88174"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#aa20f1775772e144dd1b116ec82b88174">mtk::UniStgGrid3D::east_bndy</a></div><div class="ttdeci">Real east_bndy() const </div><div class="ttdoc">Provides access to east boundary spatial coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00233">mtk_uni_stg_grid_3d.cc:233</a></div></div>
@@ -587,8 +590,9 @@ $(document).ready(function(){initNavTree('mtk__uni__stg__grid__3d_8cc_source.htm
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_a1758dfb9c97287f69662e77388f3dfc9"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#a1758dfb9c97287f69662e77388f3dfc9">mtk::UniStgGrid3D::num_cells_z_</a></div><div class="ttdeci">int num_cells_z_</div><div class="ttdoc">Number of cells discretizing the domain. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8h_source.html#l00398">mtk_uni_stg_grid_3d.h:398</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_a9863aad800bf00d17f478ec511dd25fe"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#a9863aad800bf00d17f478ec511dd25fe">mtk::UniStgGrid3D::discrete_domain_z_</a></div><div class="ttdeci">std::vector&lt; Real &gt; discrete_domain_z_</div><div class="ttdoc">Array of spatial data. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8h_source.html#l00381">mtk_uni_stg_grid_3d.h:381</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_af2cc6416dfd1c3afb3b9db5d1c846128"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#af2cc6416dfd1c3afb3b9db5d1c846128">mtk::UniStgGrid3D::top_bndy_</a></div><div class="ttdeci">Real top_bndy_</div><div class="ttdoc">Top boundary spatial coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8h_source.html#l00397">mtk_uni_stg_grid_3d.h:397</a></div></div>
-<div class="ttc" id="classmtk_1_1UniStgGrid3D_html_af84a128a5f42f9a5f571f0a6b1803646"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#af84a128a5f42f9a5f571f0a6b1803646">mtk::UniStgGrid3D::BindVectorFieldRComponent</a></div><div class="ttdeci">void BindVectorFieldRComponent(Real(*VectorFieldRComponent)(const Real &amp;xx, const Real &amp;yy, const Real &amp;zz))</div><div class="ttdoc">Binds a given component of a vector field to the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00407">mtk_uni_stg_grid_3d.cc:407</a></div></div>
+<div class="ttc" id="classmtk_1_1UniStgGrid3D_html_af84a128a5f42f9a5f571f0a6b1803646"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#af84a128a5f42f9a5f571f0a6b1803646">mtk::UniStgGrid3D::BindVectorFieldRComponent</a></div><div class="ttdeci">void BindVectorFieldRComponent(Real(*VectorFieldRComponent)(const Real &amp;xx, const Real &amp;yy, const Real &amp;zz))</div><div class="ttdoc">Binds a given component of a vector field to the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00408">mtk_uni_stg_grid_3d.cc:408</a></div></div>
 <div class="ttc" id="mtk__tools_8h_html"><div class="ttname"><a href="mtk__tools_8h.html">mtk_tools.h</a></div><div class="ttdoc">Tool manager class. </div></div>
+<div class="ttc" id="namespacemtk_html_ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e"><div class="ttname"><a href="namespacemtk.html#ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e">mtk::FieldNature::VECTOR</a></div><div class="ttdoc">Vector-valued field. </div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_a3be112ac8a4b7f8b5152b48e9de8756f"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#a3be112ac8a4b7f8b5152b48e9de8756f">mtk::UniStgGrid3D::operator=</a></div><div class="ttdeci">UniStgGrid3D operator=(const UniStgGrid3D &amp;in)</div><div class="ttdoc">Overloaded assignment operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00116">mtk_uni_stg_grid_3d.cc:116</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_aa123abdd43dddd27a8206e99eb496c05"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#aa123abdd43dddd27a8206e99eb496c05">mtk::UniStgGrid3D::north_bndy_</a></div><div class="ttdeci">Real north_bndy_</div><div class="ttdoc">East boundary spatial coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8h_source.html#l00392">mtk_uni_stg_grid_3d.h:392</a></div></div>
 <div class="ttc" id="group__c01-roots_html_ga59a451a5fae30d59649bcda274fea271"><div class="ttname"><a href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a></div><div class="ttdeci">const float kZero</div><div class="ttdoc">MTK&#39;s zero defined according to selective compilation. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00126">mtk_roots.h:126</a></div></div>
@@ -603,7 +607,7 @@ $(document).ready(function(){initNavTree('mtk__uni__stg__grid__3d_8cc_source.htm
 <div class="ttc" id="group__c02-enums_html_ga4c54f2a329cfb4e56213b02a259d19e2"><div class="ttname"><a href="group__c02-enums.html#ga4c54f2a329cfb4e56213b02a259d19e2">mtk::FieldNature</a></div><div class="ttdeci">FieldNature</div><div class="ttdoc">Nature of the field discretized in a given grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__enums_8h_source.html#l00113">mtk_enums.h:113</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_a37f1a32f36475be050461e4283e2ec43"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#a37f1a32f36475be050461e4283e2ec43">mtk::UniStgGrid3D::delta_y</a></div><div class="ttdeci">Real delta_y() const </div><div class="ttdoc">Provides access to the computed $  y $. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00268">mtk_uni_stg_grid_3d.cc:268</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_ac98305ff4a6f6d9c8cc49b4c0377547f"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#ac98305ff4a6f6d9c8cc49b4c0377547f">mtk::UniStgGrid3D::discrete_domain_z</a></div><div class="ttdeci">const Real * discrete_domain_z() const </div><div class="ttdoc">Provides access to the grid spatial data. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00298">mtk_uni_stg_grid_3d.cc:298</a></div></div>
-<div class="ttc" id="classmtk_1_1UniStgGrid3D_html_adafd3eae199b31b18aceb659ae0ea19d"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#adafd3eae199b31b18aceb659ae0ea19d">mtk::UniStgGrid3D::BindVectorFieldPComponent</a></div><div class="ttdeci">void BindVectorFieldPComponent(Real(*VectorFieldPComponent)(const Real &amp;xx, const Real &amp;yy, const Real &amp;zz))</div><div class="ttdoc">Binds a given component of a vector field to the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00393">mtk_uni_stg_grid_3d.cc:393</a></div></div>
+<div class="ttc" id="classmtk_1_1UniStgGrid3D_html_adafd3eae199b31b18aceb659ae0ea19d"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#adafd3eae199b31b18aceb659ae0ea19d">mtk::UniStgGrid3D::BindVectorFieldPComponent</a></div><div class="ttdeci">void BindVectorFieldPComponent(Real(*VectorFieldPComponent)(const Real &amp;xx, const Real &amp;yy, const Real &amp;zz))</div><div class="ttdoc">Binds a given component of a vector field to the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00394">mtk_uni_stg_grid_3d.cc:394</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_acd896b210eac3434fb51b26bef3c3ce0"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#acd896b210eac3434fb51b26bef3c3ce0">mtk::UniStgGrid3D::num_cells_z</a></div><div class="ttdeci">int num_cells_z() const </div><div class="ttdoc">Provides access to the number of cells of the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00288">mtk_uni_stg_grid_3d.cc:288</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_abf4aba911a3f0654e1852cdc9deb7fd7"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#abf4aba911a3f0654e1852cdc9deb7fd7">mtk::UniStgGrid3D::discrete_domain_y</a></div><div class="ttdeci">const Real * discrete_domain_y() const </div><div class="ttdoc">Provides access to the grid spatial data. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00273">mtk_uni_stg_grid_3d.cc:273</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_ad3064a12921a11823dbd8fe253867898"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#ad3064a12921a11823dbd8fe253867898">mtk::UniStgGrid3D::discrete_domain_x_</a></div><div class="ttdeci">std::vector&lt; Real &gt; discrete_domain_x_</div><div class="ttdoc">Array of spatial data. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8h_source.html#l00379">mtk_uni_stg_grid_3d.h:379</a></div></div>
@@ -613,7 +617,7 @@ $(document).ready(function(){initNavTree('mtk__uni__stg__grid__3d_8cc_source.htm
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_a716f5f02f4cdae0e596f4fe43a2c3359"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#a716f5f02f4cdae0e596f4fe43a2c3359">mtk::UniStgGrid3D::num_cells_x</a></div><div class="ttdeci">int num_cells_x() const </div><div class="ttdoc">Provides access to the number of cells of the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00238">mtk_uni_stg_grid_3d.cc:238</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_abb0fc143b06048f69ac05e33c40f85db"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#abb0fc143b06048f69ac05e33c40f85db">mtk::UniStgGrid3D::num_cells_y</a></div><div class="ttdeci">int num_cells_y() const </div><div class="ttdoc">Provides access to the number of cells of the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00263">mtk_uni_stg_grid_3d.cc:263</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_acbd2e19beffc89f87e6ef7b39f98bfe2"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#acbd2e19beffc89f87e6ef7b39f98bfe2">mtk::UniStgGrid3D::discrete_field_</a></div><div class="ttdeci">std::vector&lt; Real &gt; discrete_field_</div><div class="ttdoc">Array of field&#39;s data. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8h_source.html#l00382">mtk_uni_stg_grid_3d.h:382</a></div></div>
-<div class="ttc" id="classmtk_1_1UniStgGrid3D_html_a0f01c453f6517d7d0bfe63e4bddd0dd0"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#a0f01c453f6517d7d0bfe63e4bddd0dd0">mtk::UniStgGrid3D::WriteToFile</a></div><div class="ttdeci">bool WriteToFile(std::string filename, std::string space_name_x, std::string space_name_y, std::string space_name_z, std::string field_name) const </div><div class="ttdoc">Writes grid to a file compatible with Gnuplot 4.6. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00433">mtk_uni_stg_grid_3d.cc:433</a></div></div>
+<div class="ttc" id="classmtk_1_1UniStgGrid3D_html_a0f01c453f6517d7d0bfe63e4bddd0dd0"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#a0f01c453f6517d7d0bfe63e4bddd0dd0">mtk::UniStgGrid3D::WriteToFile</a></div><div class="ttdeci">bool WriteToFile(std::string filename, std::string space_name_x, std::string space_name_y, std::string space_name_z, std::string field_name) const </div><div class="ttdoc">Writes grid to a file compatible with Gnuplot 4.6. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00435">mtk_uni_stg_grid_3d.cc:435</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_a1abb2b9fb57e36b81fd8ffc879f552d4"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#a1abb2b9fb57e36b81fd8ffc879f552d4">mtk::UniStgGrid3D::west_bndy</a></div><div class="ttdeci">Real west_bndy() const </div><div class="ttdoc">Provides access to west boundary spatial coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00228">mtk_uni_stg_grid_3d.cc:228</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_aae37910fbf5466a711bf290041839a75"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#aae37910fbf5466a711bf290041839a75">mtk::UniStgGrid3D::bottom_bndy_</a></div><div class="ttdeci">Real bottom_bndy_</div><div class="ttdoc">Bottom boundary spatial coordinate. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8h_source.html#l00396">mtk_uni_stg_grid_3d.h:396</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid3D_html_a02fb1ea08f81e733ab3c8ac244b78371"><div class="ttname"><a href="classmtk_1_1UniStgGrid3D.html#a02fb1ea08f81e733ab3c8ac244b78371">mtk::UniStgGrid3D::BindScalarField</a></div><div class="ttdeci">void BindScalarField(Real(*ScalarField)(const Real &amp;xx, const Real &amp;yy, const Real &amp;zz))</div><div class="ttdoc">Binds a given scalar field to the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__3d_8cc_source.html#l00318">mtk_uni_stg_grid_3d.cc:318</a></div></div>
@@ -623,7 +627,7 @@ $(document).ready(function(){initNavTree('mtk__uni__stg__grid__3d_8cc_source.htm
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="mtk__uni__stg__grid__3d_8cc.html">mtk_uni_stg_grid_3d.cc</a></li>
-    <li class="footer">Generated on Tue Jan 26 2016 16:42:31 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Mon Feb 1 2016 17:07:16 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

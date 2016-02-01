@@ -1,4 +1,4 @@
-.TH "examples/poisson_1d/poisson_1d.cc" 3 "Tue Jan 26 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "examples/poisson_1d/poisson_1d.cc" 3 "Mon Feb 1 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -25,7 +25,7 @@ We solve: \[ -\nabla^2 p(x) = s(x), \] for $ x \in \Omega = [a,b] = [0,1] $\&.
 .PP
 The source term function is defined as: \[ s(x) = -\frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1}, \] where $ \lambda = -1 $ is a real-valued parameter\&.
 .PP
-We consider Robin's boundary conditions of the form: \[ \alpha p(a) - \beta p'(a) = \omega, \] \[ \alpha p(b) + \beta p'(b) = \epsilon, \] where $ \alpha = -\exp(\lambda) $, $ \beta = (\exp(\lambda) - 1.0)/\lambda $, $ \omega = -1 $, and $ \epsilon = 0 $\&.
+We consider Robin's boundary conditions of the form: \[ \alpha p(a) - \beta p'(a) = \omega, \] \[ \alpha p(b) + \beta p'(b) = \epsilon, \] where $ \alpha = -\exp(\lambda) $, $ \beta = \lambda^{-1}(\exp(\lambda) - 1.0) $, $ \omega = -1 $, and $ \epsilon = 0 $\&.
 .PP
 The analytical solution for this problem is given by: \[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \]
 .PP

@@ -25,5 +25,6 @@ var searchData=
   ['solvesimplexandcompare',['SolveSimplexAndCompare',['../classmtk_1_1GLPKAdapter.html#a834480aca83e3c0d09fdab7fdb7e8a3f',1,'mtk::GLPKAdapter']]],
   ['sormqr_5f',['sormqr_',['../namespacemtk.html#a59c58408e1c0a9837b67a417be986b82',1,'mtk']]],
   ['south_5fbndy',['south_bndy',['../classmtk_1_1UniStgGrid2D.html#a1442eaf219f099d0ebf46a170fdebf92',1,'mtk::UniStgGrid2D::south_bndy()'],['../classmtk_1_1UniStgGrid3D.html#a0d36500dff853d7c7a63cdd89abe9b8d',1,'mtk::UniStgGrid3D::south_bndy()']]],
-  ['storage',['storage',['../classmtk_1_1Matrix.html#a9ffaa665a9cf7371b3be568415a08a3b',1,'mtk::Matrix']]]
+  ['storage',['storage',['../classmtk_1_1Matrix.html#a9ffaa665a9cf7371b3be568415a08a3b',1,'mtk::Matrix']]],
+  ['sums_5frows_5fmim_5fbndy',['sums_rows_mim_bndy',['../classmtk_1_1Div1D.html#a8c611354217cb15cdb41c23b067fb398',1,'mtk::Div1D::sums_rows_mim_bndy()'],['../classmtk_1_1Grad1D.html#ab1c580e5e7f6fad9a0f643b48d3e0e55',1,'mtk::Grad1D::sums_rows_mim_bndy()'],['../classmtk_1_1Lap1D.html#ad0f976d32700cd8b46aa99f5a8d9e38b',1,'mtk::Lap1D::sums_rows_mim_bndy()']]]
 ];

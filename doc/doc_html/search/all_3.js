@@ -14,8 +14,8 @@ var searchData=
   ['delta_5fz',['delta_z',['../classmtk_1_1UniStgGrid3D.html#aa93094a89a30b21bd4c37073a449d2d1',1,'mtk::UniStgGrid3D']]],
   ['delta_5fz_5f',['delta_z_',['../classmtk_1_1UniStgGrid3D.html#aa98b382ac5b8ce638f6838a9891b4535',1,'mtk::UniStgGrid3D']]],
   ['dense',['DENSE',['../namespacemtk.html#ga25b67ec6a2afeee69f9bb196a9c66619a0706fbbd929bd8abc4de386c53d439ff',1,'mtk']]],
-  ['densematrix',['DenseMatrix',['../classmtk_1_1DenseMatrix.html',1,'mtk']]],
   ['densematrix',['DenseMatrix',['../classmtk_1_1DenseMatrix.html#a0c75ee704707983f935b02835eab0933',1,'mtk::DenseMatrix::DenseMatrix()'],['../classmtk_1_1DenseMatrix.html#a90102d605a668bf7ecf0d766cc4c10db',1,'mtk::DenseMatrix::DenseMatrix(const DenseMatrix &amp;in)'],['../classmtk_1_1DenseMatrix.html#abe26c623467fc1b293cf4f22a3a47cc8',1,'mtk::DenseMatrix::DenseMatrix(const int &amp;num_rows, const int &amp;num_cols)'],['../classmtk_1_1DenseMatrix.html#a4ef0dec1b5558fcf00719bfac059ec68',1,'mtk::DenseMatrix::DenseMatrix(const int &amp;rank, const bool &amp;padded, const bool &amp;transpose)'],['../classmtk_1_1DenseMatrix.html#acedaf4058916614d66a18381e624a21d',1,'mtk::DenseMatrix::DenseMatrix(const Real *const gen, const int &amp;gen_length, const int &amp;pro_length, const bool &amp;transpose)']]],
+  ['densematrix',['DenseMatrix',['../classmtk_1_1DenseMatrix.html',1,'mtk']]],
   ['diffusion_5f3d_2ecc',['diffusion_3d.cc',['../diffusion__3d_8cc.html',1,'']]],
   ['dim_5fnull_5f',['dim_null_',['../classmtk_1_1Div1D.html#a264027144def76d802778391f55381a0',1,'mtk::Div1D::dim_null_()'],['../classmtk_1_1Grad1D.html#abe8eaf4f5c451f82c062daaef31e9e6a',1,'mtk::Grad1D::dim_null_()']]],
   ['dir_5finterp_5f',['dir_interp_',['../classmtk_1_1Interp1D.html#a854e2c72f07c9fca4bbe32bfad2e0792',1,'mtk::Interp1D']]],
@@ -32,11 +32,10 @@ var searchData=
   ['div1d',['Div1D',['../classmtk_1_1Div1D.html',1,'mtk']]],
   ['div2d',['Div2D',['../classmtk_1_1Div2D.html#a124b888d5889538977e1a47d2fec78ff',1,'mtk::Div2D::Div2D()'],['../classmtk_1_1Div2D.html#a0f5214b5099f17940d6643f39c53332e',1,'mtk::Div2D::Div2D(const Div2D &amp;div)']]],
   ['div2d',['Div2D',['../classmtk_1_1Div2D.html',1,'mtk']]],
-  ['div3d',['Div3D',['../classmtk_1_1Div3D.html#ad82b33b9406dd8086e601a4775da45eb',1,'mtk::Div3D::Div3D()'],['../classmtk_1_1Div3D.html#a3e0857769414f48db68bf08b6282cfdd',1,'mtk::Div3D::Div3D(const Div3D &amp;div)']]],
   ['div3d',['Div3D',['../classmtk_1_1Div3D.html',1,'mtk']]],
+  ['div3d',['Div3D',['../classmtk_1_1Div3D.html#ad82b33b9406dd8086e601a4775da45eb',1,'mtk::Div3D::Div3D()'],['../classmtk_1_1Div3D.html#a3e0857769414f48db68bf08b6282cfdd',1,'mtk::Div3D::Div3D(const Div3D &amp;div)']]],
   ['divergence_5f',['divergence_',['../classmtk_1_1Div1D.html#a0f96410051ba1fa6d91dfa7b7eacead9',1,'mtk::Div1D::divergence_()'],['../classmtk_1_1Div2D.html#a354633b23820bc2dbdd643cd5f8d7561',1,'mtk::Div2D::divergence_()'],['../classmtk_1_1Div3D.html#a6844b090b97d2f1442fcd78ca1918344',1,'mtk::Div3D::divergence_()']]],
   ['divergence_5flength_5f',['divergence_length_',['../classmtk_1_1Div1D.html#ac0f152190cd2fbff62deb07f96284f86',1,'mtk::Div1D']]],
   ['divergence_5foperators_5f1d_2ecc',['divergence_operators_1d.cc',['../divergence__operators__1d_8cc.html',1,'']]],
-  ['divergence_5foperators_5f1d_5fmimetic_5ftest_2ecc',['divergence_operators_1d_mimetic_test.cc',['../divergence__operators__1d__mimetic__test_8cc.html',1,'']]],
   ['duration_5f',['duration_',['../classmtk_1_1Tools.html#aba9d3d2952a3de9e7b46faa86d28d692',1,'mtk::Tools']]]
 ];

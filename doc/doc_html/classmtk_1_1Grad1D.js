@@ -16,6 +16,7 @@ var classmtk_1_1Grad1D =
     [ "ReturnAsDenseMatrix", "classmtk_1_1Grad1D.html#a77b2eddbe4ab03f469306c604d505b1a", null ],
     [ "ReturnAsDenseMatrix", "classmtk_1_1Grad1D.html#a871a3b31e257b04d5e303b3211df3a73", null ],
     [ "ReturnAsDimensionlessDenseMatrix", "classmtk_1_1Grad1D.html#ab07e6a15edca32534ae3d1a8ccaf1c42", null ],
+    [ "sums_rows_mim_bndy", "classmtk_1_1Grad1D.html#ab1c580e5e7f6fad9a0f643b48d3e0e55", null ],
     [ "weights_cbs", "classmtk_1_1Grad1D.html#ad11927d8f9f1ca0089aaa2be7094f7f3", null ],
     [ "weights_crs", "classmtk_1_1Grad1D.html#ae5f15d8986a5680b6a1c120283c6cc5e", null ],
     [ "operator<<", "classmtk_1_1Grad1D.html#aeba97883d95c0b4546a98bebe8ef3106", null ],
@@ -32,6 +33,7 @@ var classmtk_1_1Grad1D =
     [ "prem_apps_", "classmtk_1_1Grad1D.html#aee092221dd2a496e0d51883168035551", null ],
     [ "rat_basis_null_space_", "classmtk_1_1Grad1D.html#a21a2941a03ae8fbf24d880660acf3db5", null ],
     [ "row_", "classmtk_1_1Grad1D.html#a7947235d61d0dd27c5b81a81ca78d9a8", null ],
+    [ "sums_rows_mim_bndy_", "classmtk_1_1Grad1D.html#ab8858a35339ed7036083d25b23293737", null ],
     [ "weights_cbs_", "classmtk_1_1Grad1D.html#ae6b0a908748923b2acd97e5bf7acc000", null ],
     [ "weights_crs_", "classmtk_1_1Grad1D.html#a96914abea78528b32499963ce9bbe4a6", null ]
 ];

@@ -41,6 +41,8 @@ int \hyperlink{classmtk_1_1Grad1D_a7168205c21ba00012558f8bba069c119}{num\+\_\+bn
 \begin{DoxyCompactList}\small\item\em Returns collection of weights as computed by the C\+B\+S\+A. \end{DoxyCompactList}\item 
 \hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix} \hyperlink{classmtk_1_1Grad1D_ab25e1d064a5a00fbe3777e65fd5750c0}{mim\+\_\+bndy} () const 
 \begin{DoxyCompactList}\small\item\em Return collection of mimetic approximations at the boundary. \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $>$ \hyperlink{classmtk_1_1Grad1D_ab1c580e5e7f6fad9a0f643b48d3e0e55}{sums\+\_\+rows\+\_\+mim\+\_\+bndy} () const 
+\begin{DoxyCompactList}\small\item\em Return collection of row-\/sums mimetic approximations at the boundary. \end{DoxyCompactList}\item 
 \hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix} \hyperlink{classmtk_1_1Grad1D_a77b2eddbe4ab03f469306c604d505b1a}{Return\+As\+Dense\+Matrix} (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} west, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} east, int num\+\_\+cells\+\_\+x) const 
 \begin{DoxyCompactList}\small\item\em Returns the operator as a dense matrix. \end{DoxyCompactList}\item 
 \hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix} \hyperlink{classmtk_1_1Grad1D_a871a3b31e257b04d5e303b3211df3a73}{Return\+As\+Dense\+Matrix} (const \hyperlink{classmtk_1_1UniStgGrid1D}{Uni\+Stg\+Grid1\+D} \&grid) const 
@@ -93,6 +95,8 @@ int \hyperlink{classmtk_1_1Grad1D_a7947235d61d0dd27c5b81a81ca78d9a8}{row\+\_\+}
 \begin{DoxyCompactList}\small\item\em Array containing mimetic boundary approximations. \end{DoxyCompactList}\item 
 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$ \hyperlink{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{gradient\+\_\+}
 \begin{DoxyCompactList}\small\item\em Output array containing the operator and weights. \end{DoxyCompactList}\item 
+std\+::vector$<$ \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $>$ \hyperlink{classmtk_1_1Grad1D_ab8858a35339ed7036083d25b23293737}{sums\+\_\+rows\+\_\+mim\+\_\+bndy\+\_\+}
+\begin{DoxyCompactList}\small\item\em Sum of each mimetic boundary row. \end{DoxyCompactList}\item 
 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1Grad1D_aa944a99bcd2daab1af11da4c3c6b5504}{mimetic\+\_\+threshold\+\_\+}
 \begin{DoxyCompactList}\small\item\em $<$ Mimetic threshold. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Friends}
@@ -105,7 +109,7 @@ std\+::ostream \& \hyperlink{classmtk_1_1Grad1D_aeba97883d95c0b4546a98bebe8ef310
 \subsection{Detailed Description}
 This class implements a 1\+D gradient operator, constructed using the Castillo-\/\+Blomgren-\/\+Sanchez (C\+B\+S) Algorithm (C\+B\+S\+A). 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00081}{81} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00083}{83} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 
 
@@ -119,7 +123,7 @@ Definition at line \hyperlink{mtk__grad__1d_8h_source_l00081}{81} of file \hyper
 )}}\label{classmtk_1_1Grad1D_ae21e6ac2652e653c48f15b304ee83a75}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00134}{134} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00143}{143} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 \hypertarget{classmtk_1_1Grad1D_a5708bcb61bde3f7f3a4ddede191d82a4}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!Grad1\+D@{Grad1\+D}}
 \index{Grad1\+D@{Grad1\+D}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
@@ -135,7 +139,7 @@ Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00134}{134} of file \hyp
 \end{DoxyParams}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00150}{150} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00160}{160} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 \hypertarget{classmtk_1_1Grad1D_a2f9b1d306c0f09f36145bb1e7e486b54}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!````~Grad1\+D@{$\sim$\+Grad1\+D}}
 \index{````~Grad1\+D@{$\sim$\+Grad1\+D}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
@@ -146,7 +150,7 @@ Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00150}{150} of file \hyp
 )}}\label{classmtk_1_1Grad1D_a2f9b1d306c0f09f36145bb1e7e486b54}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00166}{166} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00177}{177} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 
 
@@ -166,7 +170,7 @@ Construct the output array with the operator and its weights.
 \item The next dim\+\_\+null + 1 entries will contain the collections of approximating coefficients for the west boundary of the grid. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l01547}{1547} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l01581}{1581} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 \hypertarget{classmtk_1_1Grad1D_a88735f8d2a6ed986370dc3caeb84959b}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!coeffs\+\_\+interior@{coeffs\+\_\+interior}}
 \index{coeffs\+\_\+interior@{coeffs\+\_\+interior}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
@@ -180,7 +184,7 @@ Coefficients for the interior of the grid.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00331}{331} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00342}{342} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 \hypertarget{classmtk_1_1Grad1D_add4c68a6e78d8b9c2b800b3f96f4757d}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!Compute\+Preliminary\+Approximations@{Compute\+Preliminary\+Approximations}}
 \index{Compute\+Preliminary\+Approximations@{Compute\+Preliminary\+Approximations}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
@@ -201,7 +205,7 @@ Compute the set of preliminary approximations on the boundary neighborhood.
 \item Once we posses the bottom elements, we proceed with the scaling. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00836}{836} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00852}{852} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 
 
@@ -230,7 +234,7 @@ Compute a rational basis for the null-\/space of the Vandermonde matrix approxim
 \item Scale null-\/space to make it rational. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00653}{653} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00669}{669} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 
 
@@ -254,10 +258,11 @@ Compute mimetic stencil approximating at boundary.
 \begin{DoxyEnumerate}
 \item Collect lambda values.
 \item Compute alpha values.
-\item Compute the mimetic boundary approximations. 
+\item Compute the mimetic boundary approximations.
+\item Compute the row-\/wise sum to double-\/check the operator is mimetic. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l01441}{1441} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l01457}{1457} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 \hypertarget{classmtk_1_1Grad1D_ad6df25cc9dfc85ff8562ae3605486976}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!Compute\+Stencil\+Interior\+Grid@{Compute\+Stencil\+Interior\+Grid}}
 \index{Compute\+Stencil\+Interior\+Grid@{Compute\+Stencil\+Interior\+Grid}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
@@ -274,7 +279,7 @@ Compute the stencil approximating the interior of the staggered grid.
 \item Solve dense Vandermonde system to attain the interior coefficients. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00556}{556} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00572}{572} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 
 
@@ -306,7 +311,7 @@ Compute the set of mimetic weights to impose the mimetic condition.
 \item Apply solution found from brute force search. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l01057}{1057} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l01073}{1073} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 
 
@@ -340,7 +345,7 @@ Success of the solution.
 \item Assemble operator. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00187}{187} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00198}{198} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 
 
@@ -376,7 +381,7 @@ Collection of mimetic approximations at the boundary.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00346}{346} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00357}{357} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 
 
@@ -412,7 +417,7 @@ How many coefficients are approximating at the boundary.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00326}{326} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00337}{337} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 \hypertarget{classmtk_1_1Grad1D_a77b2eddbe4ab03f469306c604d505b1a}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!Return\+As\+Dense\+Matrix@{Return\+As\+Dense\+Matrix}}
 \index{Return\+As\+Dense\+Matrix@{Return\+As\+Dense\+Matrix}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
@@ -433,7 +438,7 @@ The operator as a dense matrix.
 \item Impose center-\/skew symmetry by permuting the mimetic boundaries. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00361}{361} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00377}{377} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 
 
@@ -474,7 +479,7 @@ The operator as a dense matrix.
 \item Impose center-\/skew symmetry by permuting the mimetic boundaries. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00430}{430} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00446}{446} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 
 
@@ -504,7 +509,7 @@ The operator as a dimensionless dense matrix.
 \item Impose center-\/skew symmetry by permuting the mimetic boundaries. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00494}{494} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00510}{510} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 
 
@@ -516,6 +521,20 @@ Here is the call graph for this function\+:\nopagebreak
 \end{center}
 \end{figure}
 
+
+\hypertarget{classmtk_1_1Grad1D_ab1c580e5e7f6fad9a0f643b48d3e0e55}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!sums\+\_\+rows\+\_\+mim\+\_\+bndy@{sums\+\_\+rows\+\_\+mim\+\_\+bndy}}
+\index{sums\+\_\+rows\+\_\+mim\+\_\+bndy@{sums\+\_\+rows\+\_\+mim\+\_\+bndy}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
+\subsubsection[{sums\+\_\+rows\+\_\+mim\+\_\+bndy}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<$ {\bf mtk\+::\+Real} $>$ mtk\+::\+Grad1\+D\+::sums\+\_\+rows\+\_\+mim\+\_\+bndy (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1Grad1D_ab1c580e5e7f6fad9a0f643b48d3e0e55}
+\begin{DoxyReturn}{Returns}
+Collection of row-\/sums mimetic approximations at the boundary. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00372}{372} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 \hypertarget{classmtk_1_1Grad1D_ad11927d8f9f1ca0089aaa2be7094f7f3}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!weights\+\_\+cbs@{weights\+\_\+cbs}}
 \index{weights\+\_\+cbs@{weights\+\_\+cbs}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
@@ -529,7 +548,7 @@ Collection of weights as computed by the C\+B\+S\+A.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00341}{341} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00352}{352} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 \hypertarget{classmtk_1_1Grad1D_ae5f15d8986a5680b6a1c120283c6cc5e}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!weights\+\_\+crs@{weights\+\_\+crs}}
 \index{weights\+\_\+crs@{weights\+\_\+crs}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
@@ -543,7 +562,7 @@ Success of the solution.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00336}{336} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00347}{347} of file \hyperlink{mtk__grad__1d_8cc_source}{mtk\+\_\+grad\+\_\+1d.\+cc}.
 
 
 
@@ -574,105 +593,112 @@ Definition at line \hyperlink{mtk__grad__1d_8cc_source_l00084}{84} of file \hype
 \subsubsection[{coeffs\+\_\+interior\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}$\ast$ mtk\+::\+Grad1\+D\+::coeffs\+\_\+interior\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_a2395861161c26f237e892aacebcc1909}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00217}{217} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00226}{226} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Grad1D_abe8eaf4f5c451f82c062daaef31e9e6a}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!dim\+\_\+null\+\_\+@{dim\+\_\+null\+\_\+}}
 \index{dim\+\_\+null\+\_\+@{dim\+\_\+null\+\_\+}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
 \subsubsection[{dim\+\_\+null\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+Grad1\+D\+::dim\+\_\+null\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_abe8eaf4f5c451f82c062daaef31e9e6a}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00208}{208} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00217}{217} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!gradient\+\_\+@{gradient\+\_\+}}
 \index{gradient\+\_\+@{gradient\+\_\+}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
 \subsubsection[{gradient\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}$\ast$ mtk\+::\+Grad1\+D\+::gradient\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_a024b84b1ea285c0c590eb42d40ff4469}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00222}{222} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00231}{231} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Grad1D_a98a444d0833fec92fb9908e3ea71a511}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!gradient\+\_\+length\+\_\+@{gradient\+\_\+length\+\_\+}}
 \index{gradient\+\_\+length\+\_\+@{gradient\+\_\+length\+\_\+}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
 \subsubsection[{gradient\+\_\+length\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+Grad1\+D\+::gradient\+\_\+length\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_a98a444d0833fec92fb9908e3ea71a511}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00211}{211} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00220}{220} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Grad1D_afcd61d362ba7b0f588645ab09c773432}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!mim\+\_\+bndy\+\_\+@{mim\+\_\+bndy\+\_\+}}
 \index{mim\+\_\+bndy\+\_\+@{mim\+\_\+bndy\+\_\+}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
 \subsubsection[{mim\+\_\+bndy\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}$\ast$ mtk\+::\+Grad1\+D\+::mim\+\_\+bndy\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_afcd61d362ba7b0f588645ab09c773432}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00221}{221} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00230}{230} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Grad1D_aa944a99bcd2daab1af11da4c3c6b5504}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!mimetic\+\_\+threshold\+\_\+@{mimetic\+\_\+threshold\+\_\+}}
 \index{mimetic\+\_\+threshold\+\_\+@{mimetic\+\_\+threshold\+\_\+}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
 \subsubsection[{mimetic\+\_\+threshold\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real} mtk\+::\+Grad1\+D\+::mimetic\+\_\+threshold\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_aa944a99bcd2daab1af11da4c3c6b5504}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00224}{224} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00235}{235} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Grad1D_a27b8a20e163ad803546592cc3736c12a}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!minrow\+\_\+@{minrow\+\_\+}}
 \index{minrow\+\_\+@{minrow\+\_\+}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
 \subsubsection[{minrow\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+Grad1\+D\+::minrow\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_a27b8a20e163ad803546592cc3736c12a}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00212}{212} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00221}{221} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Grad1D_abe15c1ffd9dfaba1a65f4f0e096287ce}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!num\+\_\+bndy\+\_\+approxs\+\_\+@{num\+\_\+bndy\+\_\+approxs\+\_\+}}
 \index{num\+\_\+bndy\+\_\+approxs\+\_\+@{num\+\_\+bndy\+\_\+approxs\+\_\+}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
 \subsubsection[{num\+\_\+bndy\+\_\+approxs\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+Grad1\+D\+::num\+\_\+bndy\+\_\+approxs\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_abe15c1ffd9dfaba1a65f4f0e096287ce}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00209}{209} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00218}{218} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Grad1D_a60c560882bc601f9ab1d4cd5331e55ef}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!num\+\_\+bndy\+\_\+coeffs\+\_\+@{num\+\_\+bndy\+\_\+coeffs\+\_\+}}
 \index{num\+\_\+bndy\+\_\+coeffs\+\_\+@{num\+\_\+bndy\+\_\+coeffs\+\_\+}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
 \subsubsection[{num\+\_\+bndy\+\_\+coeffs\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+Grad1\+D\+::num\+\_\+bndy\+\_\+coeffs\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_a60c560882bc601f9ab1d4cd5331e55ef}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00210}{210} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00219}{219} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!order\+\_\+accuracy\+\_\+@{order\+\_\+accuracy\+\_\+}}
 \index{order\+\_\+accuracy\+\_\+@{order\+\_\+accuracy\+\_\+}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
 \subsubsection[{order\+\_\+accuracy\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+Grad1\+D\+::order\+\_\+accuracy\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_a545e9c865e5d4716f2684a64f744c78c}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00207}{207} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00216}{216} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Grad1D_aee092221dd2a496e0d51883168035551}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!prem\+\_\+apps\+\_\+@{prem\+\_\+apps\+\_\+}}
 \index{prem\+\_\+apps\+\_\+@{prem\+\_\+apps\+\_\+}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
 \subsubsection[{prem\+\_\+apps\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}$\ast$ mtk\+::\+Grad1\+D\+::prem\+\_\+apps\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_aee092221dd2a496e0d51883168035551}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00218}{218} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00227}{227} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Grad1D_a21a2941a03ae8fbf24d880660acf3db5}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!rat\+\_\+basis\+\_\+null\+\_\+space\+\_\+@{rat\+\_\+basis\+\_\+null\+\_\+space\+\_\+}}
 \index{rat\+\_\+basis\+\_\+null\+\_\+space\+\_\+@{rat\+\_\+basis\+\_\+null\+\_\+space\+\_\+}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
 \subsubsection[{rat\+\_\+basis\+\_\+null\+\_\+space\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Dense\+Matrix} mtk\+::\+Grad1\+D\+::rat\+\_\+basis\+\_\+null\+\_\+space\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_a21a2941a03ae8fbf24d880660acf3db5}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00215}{215} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00224}{224} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Grad1D_a7947235d61d0dd27c5b81a81ca78d9a8}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!row\+\_\+@{row\+\_\+}}
 \index{row\+\_\+@{row\+\_\+}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
 \subsubsection[{row\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+Grad1\+D\+::row\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_a7947235d61d0dd27c5b81a81ca78d9a8}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00213}{213} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00222}{222} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+
+\hypertarget{classmtk_1_1Grad1D_ab8858a35339ed7036083d25b23293737}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!sums\+\_\+rows\+\_\+mim\+\_\+bndy\+\_\+@{sums\+\_\+rows\+\_\+mim\+\_\+bndy\+\_\+}}
+\index{sums\+\_\+rows\+\_\+mim\+\_\+bndy\+\_\+@{sums\+\_\+rows\+\_\+mim\+\_\+bndy\+\_\+}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
+\subsubsection[{sums\+\_\+rows\+\_\+mim\+\_\+bndy\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Real}$>$ mtk\+::\+Grad1\+D\+::sums\+\_\+rows\+\_\+mim\+\_\+bndy\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_ab8858a35339ed7036083d25b23293737}
+
+
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00233}{233} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Grad1D_ae6b0a908748923b2acd97e5bf7acc000}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!weights\+\_\+cbs\+\_\+@{weights\+\_\+cbs\+\_\+}}
 \index{weights\+\_\+cbs\+\_\+@{weights\+\_\+cbs\+\_\+}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
 \subsubsection[{weights\+\_\+cbs\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}$\ast$ mtk\+::\+Grad1\+D\+::weights\+\_\+cbs\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_ae6b0a908748923b2acd97e5bf7acc000}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00220}{220} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00229}{229} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1Grad1D_a96914abea78528b32499963ce9bbe4a6}{\index{mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}!weights\+\_\+crs\+\_\+@{weights\+\_\+crs\+\_\+}}
 \index{weights\+\_\+crs\+\_\+@{weights\+\_\+crs\+\_\+}!mtk\+::\+Grad1\+D@{mtk\+::\+Grad1\+D}}
 \subsubsection[{weights\+\_\+crs\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}$\ast$ mtk\+::\+Grad1\+D\+::weights\+\_\+crs\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1Grad1D_a96914abea78528b32499963ce9bbe4a6}
 
 
-Definition at line \hyperlink{mtk__grad__1d_8h_source_l00219}{219} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__grad__1d_8h_source_l00228}{228} of file \hyperlink{mtk__grad__1d_8h_source}{mtk\+\_\+grad\+\_\+1d.\+h}.
 
 
 
