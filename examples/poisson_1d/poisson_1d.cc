@@ -23,7 +23,7 @@ We consider Robin's boundary conditions of the form:
 \alpha p(b) + \beta p'(b) = \epsilon,
 \f]
 where \f$ \alpha = -\exp(\lambda) \f$,
-\f$ \beta = (\exp(\lambda) - 1.0)/\lambda \f$,
+\f$ \beta = \lambda^{-1}(\exp(\lambda) - 1.0) \f$,
 \f$ \omega = -1 \f$, and \f$ \epsilon = 0 \f$.
 
 The analytical solution for this problem is given by:

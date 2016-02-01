@@ -1,7 +1,7 @@
 /*!
-\file divergence_operators_1d.cc
+\file laplacian_operators_1d.cc
 
-\brief Creates instances of a 1D divergence  as computed by the CBS algorithm.
+\brief Creates instances of a 1D Laplacian as computed by the CBS algorithm.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -63,10 +63,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 int main () {
 
-  std::cout << "Example: Instances of a 1D divergence as computed by the CBS "
+  std::cout << "Example: Instances of a 1D Laplacian as computed by the CBS "
     "algorithm." << std::endl;
 
-  /// 1. Create a second-order divergence operator.
+  /// 1. Create a several-order Laplacian operators.
 
   std::ofstream output_tex_file;
 
@@ -74,22 +74,22 @@ int main () {
 
   for (int order = 2; order <= max_order; order += 2) {
 
-    std::string output_tex_file_name{"div_1d_" + std::to_string(order) +
+    std::string output_tex_file_name{"lap_1d_" + std::to_string(order) +
       ".tex"};
 
     output_tex_file.open(output_tex_file_name);
 
-    mtk::Div1D div;
+    mtk::Lap1D lap;
 
-    bool assertion = div.ConstructDiv1D(order);
+    bool assertion = lap.ConstructLap1D(order);
     if (!assertion) {
-      std::cerr << "Mimetic div (order" + std::to_string(order) +
+      std::cerr << "Mimetic lap (order" + std::to_string(order) +
         ") could not be built." <<        std::endl;
       return EXIT_FAILURE;
     }
 
     output_tex_file << "\\begin{verbatim}" << std::endl;
-    output_tex_file << div << std::endl;
+    output_tex_file << lap << std::endl;
     output_tex_file << "\\end{verbatim}" << std::endl;
     output_tex_file.close();
   }

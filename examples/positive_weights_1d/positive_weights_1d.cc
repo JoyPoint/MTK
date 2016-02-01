@@ -1,7 +1,7 @@
 /*!
-\file divergence_operators_1d.cc
+\file positive_weights_1d.cc
 
-\brief Creates instances of a 1D divergence  as computed by the CBS algorithm.
+\brief The CBS algorithm computes positive-definite weights, for 1D operators.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -57,41 +57,57 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <fstream>
 #include <cmath>
 
-#include <string>
+#include <vector>
 
 #include "mtk.h"
 
 int main () {
 
-  std::cout << "Example: Instances of a 1D divergence as computed by the CBS "
-    "algorithm." << std::endl;
+  std::cout << "Example: Positive-Definite Weights for 1D Mimetic"
+    "Operators." << std::endl;
 
-  /// 1. Create a second-order divergence operator.
+  /// 1. Create all critical-order divergence operators.
 
-  std::ofstream output_tex_file;
+  mtk::Grad1D grad10;
 
-  int max_order{14};
+  bool assertion = grad10.ConstructGrad1D(10);
+  if (!assertion) {
+    std::cerr << "Mimetic grad (10th order) could not be built." << std::endl;
+    return EXIT_FAILURE;
+  }
 
-  for (int order = 2; order <= max_order; order += 2) {
+  mtk::Grad1D grad12;
 
-    std::string output_tex_file_name{"div_1d_" + std::to_string(order) +
-      ".tex"};
+  assertion = grad12.ConstructGrad1D(12);
+  if (!assertion) {
+    std::cerr << "Mimetic grad (12th order) could not be built." << std::endl;
+    return EXIT_FAILURE;
+  }
 
-    output_tex_file.open(output_tex_file_name);
+  /// 2. Create all critical-order divergence operators.
 
-    mtk::Div1D div;
+  mtk::Div1D div8;
 
-    bool assertion = div.ConstructDiv1D(order);
-    if (!assertion) {
-      std::cerr << "Mimetic div (order" + std::to_string(order) +
-        ") could not be built." <<        std::endl;
-      return EXIT_FAILURE;
-    }
+  assertion = div8.ConstructDiv1D(8);
+  if (!assertion) {
+    std::cerr << "Mimetic div (8th order) could not be built." << std::endl;
+    return EXIT_FAILURE;
+  }
 
-    output_tex_file << "\\begin{verbatim}" << std::endl;
-    output_tex_file << div << std::endl;
-    output_tex_file << "\\end{verbatim}" << std::endl;
-    output_tex_file.close();
+  mtk::Div1D div10;
+
+  assertion = div10.ConstructDiv1D(10);
+  if (!assertion) {
+    std::cerr << "Mimetic div (10th order) could not be built." << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  mtk::Div1D div12;
+
+  assertion = div12.ConstructDiv1D(12);
+  if (!assertion) {
+    std::cerr << "Mimetic div (12th order) could not be built." << std::endl;
+    return EXIT_FAILURE;
   }
 }
 
