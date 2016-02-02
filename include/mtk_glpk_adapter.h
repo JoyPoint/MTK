@@ -109,27 +109,30 @@ class GLPKAdapter {
   reference solution. This comparison is done computing the norm-2 relative
   error.
 
-  \param[in] alpha First scalar.
   \param[in] AA Given matrix.
-  \param[in] xx First vector.
-  \param[in] beta Second scalar.
-  \param[in] beta Second scalar.
-  \param[in,out] yy Second vector (output).
-  \param[in] xx First vector.
-  \param[in] beta Second scalar.
-  \param[in] beta Second scalar.
+  \param[in] nrows Number of rows of the matrix.
+  \param[in] ncols Number of rows of the matrix.
+  \param[in] kk Length of the RHS vector of constraints.
+  \param[in] hh RHS vector of constraints.
+  \param[in,out] qq Output decision vector.
+  \param[in] robjective Row of the system to be chosen as objective function.
+  \param[in] mimetic_threshold Mimetic threshold.
+  \param[in] copy Should we actually copy the results to the output?
 
   \return Relative error computed between attained solution and provided ref.
   */
-  static mtk::Real SolveSimplexAndCompare(mtk::Real *A,
+  static mtk::Real SolveSimplexAndCompare(mtk::Real *AA,
                                           int nrows,
                                           int ncols,
                                           int kk,
                                           mtk::Real *hh,
                                           mtk::Real *qq,
                                           int robjective,
-                                          mtk::Real mimetic_tol,
-                                          int copy);
+                                          mtk::Real mimetic_threshold,
+                                          int copy) noexcept;
+
+ private:
+  static int num_feasible_solutions_;   ///< Number of feasible solutions.
 };
 }
 #endif  // End of: MTK_INCLUDE_MTK_GLPK_ADAPTER_H_
