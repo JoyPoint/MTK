@@ -102,13 +102,6 @@ removed due to potential licensing issues.
 class GLPKAdapter {
  public:
   /*!
-  \brief Getter for the number of feasible solutions.
-
-  \return Number of feasible solutions.
-  */
-  static int num_feasible_solutions() noexcept;
-
-  /*!
   \brief Solves a CLO problem and compares the solution to a reference solution.
 
   This routine is the pivot of the CBSA. It solves a Constrained Linear
@@ -137,9 +130,6 @@ class GLPKAdapter {
                                           int robjective,
                                           mtk::Real mimetic_threshold,
                                           int copy) noexcept;
-
- private:
-  static int num_feasible_solutions_;   ///< Number of feasible solutions.
 };
 }
 #endif  // End of: MTK_INCLUDE_MTK_GLPK_ADAPTER_H_
