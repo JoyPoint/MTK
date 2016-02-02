@@ -293,7 +293,7 @@ mtk::Real mtk::GLPKAdapter::SolveSimplexAndCompare(mtk::Real *A,
 
   glp_simplex (lp, nullptr);
 
-  // Check status of the solution.
+  // Check status of the solution, determining if this was a feasible solution.
 
   if (glp_get_status(lp) == GLP_OPT) {
 
