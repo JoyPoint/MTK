@@ -220,6 +220,7 @@ class Grad1D {
   int gradient_length_;   ///< Length of the output array.
   int minrow_;            ///< Row from the optimizer with the minimum rel. nor.
   int row_;               ///< Row currently processed by the optimizer.
+  int num_feasible_sols_; ///< Number of feasible solutions for weights.
 
   DenseMatrix rat_basis_null_space_;  ///< Rational b. null-space w. bndy.
 

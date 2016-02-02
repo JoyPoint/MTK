@@ -1032,6 +1032,7 @@ bool mtk::Div1D::ComputeWeights(void) {
   #endif
 
   // 1.3. Add final set of columns: rational basis for null-space.
+
   for (auto jj = dim_null_ + (order_accuracy_/2 + 1);
        jj < num_bndy_coeffs_ - 1;
        ++jj) {
