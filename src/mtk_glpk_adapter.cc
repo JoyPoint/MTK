@@ -74,6 +74,13 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "mtk_blas_adapter.h"
 #include "mtk_glpk_adapter.h"
 
+int mtk::GLPKAdapter::num_feasible_solutions_{};
+
+int mtk::GLPKAdapter::num_feasible_solutions() noexcept {
+
+  return num_feasible_solutions_;
+}
+
 mtk::Real mtk::GLPKAdapter::SolveSimplexAndCompare(mtk::Real *A,
                                                    int nrows,
                                                    int ncols,
@@ -82,7 +89,7 @@ mtk::Real mtk::GLPKAdapter::SolveSimplexAndCompare(mtk::Real *A,
                                                    mtk::Real *qq,
                                                    int robjective,
                                                    mtk::Real mimetic_threshold,
-                                                   int copy) {
+                                                   int copy) noexcept {
 
   #if MTK_DEBUG_LEVEL > 0
   char mps_file_name[18]; // File name for the MPS files.
@@ -122,6 +129,7 @@ mtk::Real mtk::GLPKAdapter::SolveSimplexAndCompare(mtk::Real *A,
   /// \warning GLPK indexes in [1,n], so we must get the extra space needed.
 
   /// 1. Memory allocation.
+
   problem_size = lp_nrows*lp_ncols + 1;
 
   try {
@@ -312,6 +320,8 @@ mtk::Real mtk::GLPKAdapter::SolveSimplexAndCompare(mtk::Real *A,
     }
 
     x1 = mtk::BLASAdapter::RealNRM2(err,lp_ncols);
+
+    num_feasible_solutions_++;
 
   } else {
     x1 = std::numeric_limits<mtk::Real>::infinity();

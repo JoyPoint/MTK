@@ -102,6 +102,13 @@ removed due to potential licensing issues.
 class GLPKAdapter {
  public:
   /*!
+  \brief Getter for the number of feasible solutions.
+
+  \return Number of feasible solutions.
+  */
+  static int num_feasible_solutions() noexcept;
+
+  /*!
   \brief Solves a CLO problem and compares the solution to a reference solution.
 
   This routine is the pivot of the CBSA. It solves a Constrained Linear
