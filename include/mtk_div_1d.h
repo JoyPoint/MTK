@@ -135,6 +135,13 @@ class Div1D {
   Real *weights_cbs(void) const;
 
   /*!
+  \brief Return number of feasible solutions when using the CBSA for weights.
+
+  \return Return number of feasible solutions when using the CBSA for weights.
+  */
+  int num_feasible_sols() const;
+
+  /*!
   \brief Return collection of mimetic approximations at the boundary.
 
   \return Collection of mimetic approximations at the boundary.

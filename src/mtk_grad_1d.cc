@@ -127,12 +127,16 @@ std::ostream& operator <<(std::ostream &stream, mtk::Grad1D &in) {
       stream << std::endl;
     }
   } else {
+    stream << "Mimetic boundary row 1:" << std::endl;
     stream << std::setprecision(output_precision) <<
         std::setw(output_width) << in.gradient_[offset + 0] << ' ';
     stream << std::setprecision(output_precision) <<
         std::setw(output_width) << in.gradient_[offset + 1] << ' ';
     stream << std::setprecision(output_precision) <<
         std::setw(output_width) << in.gradient_[offset + 2] << ' ';
+    stream << std::endl;
+    stream << "Sum of elements in row 1: " << in.gradient_[offset + 0] +
+      in.gradient_[offset + 1] + in.gradient_[offset + 2];
     stream << std::endl;
   }
 
@@ -148,6 +152,7 @@ mtk::Grad1D::Grad1D():
   gradient_length_(),
   minrow_(),
   row_(),
+  num_feasible_sols_(),
   coeffs_interior_(),
   prem_apps_(),
   weights_crs_(),
@@ -165,6 +170,7 @@ mtk::Grad1D::Grad1D(const Grad1D &grad):
   gradient_length_(grad.gradient_length_),
   minrow_(grad.minrow_),
   row_(grad.row_),
+  num_feasible_sols_(grad.num_feasible_sols_),
   coeffs_interior_(grad.coeffs_interior_),
   prem_apps_(grad.prem_apps_),
   weights_crs_(grad.weights_crs_),
@@ -352,6 +358,11 @@ mtk::Real *mtk::Grad1D::weights_crs() const {
 mtk::Real *mtk::Grad1D::weights_cbs() const {
 
   return weights_cbs_;
+}
+
+int mtk::Grad1D::num_feasible_sols() const {
+
+  return num_feasible_sols_;
 }
 
 mtk::DenseMatrix mtk::Grad1D::mim_bndy() const {
@@ -1376,6 +1387,9 @@ bool mtk::Grad1D::ComputeWeights() {
       std::cout << "Relative norm: " << aux << " " << std::endl;
       std::cout << std::endl;
       #endif
+
+      num_feasible_sols_ = num_feasible_sols_ +
+        (int) (normerr_ != std::numeric_limits<mtk::Real>::infinity());
 
       if (aux < minnorm) {
         minnorm = aux;

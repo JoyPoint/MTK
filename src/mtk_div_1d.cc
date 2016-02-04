@@ -140,6 +140,7 @@ mtk::Div1D::Div1D():
   divergence_length_(),
   minrow_(),
   row_(),
+  num_feasible_sols_(),
   coeffs_interior_(),
   prem_apps_(),
   weights_crs_(),
@@ -156,6 +157,7 @@ mtk::Div1D::Div1D(const Div1D &div):
   divergence_length_(div.divergence_length_),
   minrow_(div.minrow_),
   row_(div.row_),
+  num_feasible_sols_(div.num_feasible_sols_),
   coeffs_interior_(div.coeffs_interior_),
   prem_apps_(div.prem_apps_),
   weights_crs_(div.weights_crs_),
@@ -343,6 +345,11 @@ mtk::Real *mtk::Div1D::weights_crs() const {
 mtk::Real *mtk::Div1D::weights_cbs() const {
 
   return weights_cbs_;
+}
+
+int mtk::Div1D::num_feasible_sols() const {
+
+  return num_feasible_sols_;
 }
 
 mtk::DenseMatrix mtk::Div1D::mim_bndy() const {
@@ -1284,6 +1291,9 @@ bool mtk::Div1D::ComputeWeights(void) {
       std::cout << "Relative norm: " << aux << " " << std::endl;
       std::cout << std::endl;
       #endif
+
+      num_feasible_sols_ = num_feasible_sols_ +
+        (int) (normerr_ != std::numeric_limits<mtk::Real>::infinity());
 
       if (aux < minnorm_) {
         minnorm_ = aux;

@@ -154,6 +154,11 @@ class UniStgGrid1D {
   int num_cells_x() const;
 
   /*!
+  \brief Generate the actual set of spatial coordinates.
+  */
+  void GenerateDiscreteDomainX();
+
+  /*!
   \brief Binds a given scalar field to the grid.
 
   \param[in] ScalarField Pointer to the function implementing the scalar field.

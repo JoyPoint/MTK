@@ -173,6 +173,41 @@ int mtk::UniStgGrid1D::num_cells_x() const {
   return num_cells_x_;
 }
 
+void mtk::UniStgGrid1D::GenerateDiscreteDomainX() {
+
+  #ifdef MTK_PERFORM_PREVENTIONS
+  mtk::Tools::Prevent(discrete_domain_x_.size() != 0,
+                      __FILE__, __LINE__, __func__);
+  #endif
+
+  if (nature_ == mtk::FieldNature::SCALAR) {
+
+    discrete_domain_x_.reserve(num_cells_x_ + 2);
+
+    discrete_domain_x_.push_back(west_bndy_x_);
+    #ifdef MTK_PRECISION_DOUBLE
+    auto first_center = west_bndy_x_ + delta_x_/2.0;
+    #else
+    auto first_center = west_bndy_x_ + delta_x_/2.0f;
+    #endif
+    discrete_domain_x_.push_back(first_center);
+    for (auto ii = 1; ii < num_cells_x_; ++ii) {
+      discrete_domain_x_.push_back(first_center + ii*delta_x_);
+    }
+    discrete_domain_x_.push_back(east_bndy_x_);
+
+  } else {
+
+    discrete_domain_x_.reserve(num_cells_x_ + 1);
+
+    discrete_domain_x_.push_back(west_bndy_x_);
+    for (auto ii = 1; ii < num_cells_x_; ++ii) {
+      discrete_domain_x_.push_back(west_bndy_x_ + ii*delta_x_);
+    }
+    discrete_domain_x_.push_back(east_bndy_x_);
+  }
+}
+
 void mtk::UniStgGrid1D::BindScalarField(
     mtk::Real (*ScalarField)(const mtk::Real &xx)) {
 
@@ -214,8 +249,8 @@ void mtk::UniStgGrid1D::BindVectorField(
     mtk::Real (*VectorField)(mtk::Real xx)) {
 
   #ifdef MTK_PERFORM_PREVENTIONS
-  mtk::Tools::Prevent(nature_ == mtk::FieldNature::SCALAR, __FILE__, __LINE__,
-__func__);
+  mtk::Tools::Prevent(nature_ == mtk::FieldNature::SCALAR,
+                      __FILE__, __LINE__, __func__);
   #endif
 
   /// 1. Create collection of spatial coordinates.
