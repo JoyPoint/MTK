@@ -1,12 +1,6 @@
 var searchData=
 [
-  ['tests_20and_20test_20architectures',['Tests and Test Architectures',['../page_architectures.html',1,'']]],
-  ['test_5fnumber_5f',['test_number_',['../classmtk_1_1Tools.html#a04a60458594336ee1badff79b8a9a77f',1,'mtk::Tools']]],
-  ['todo_20list',['Todo List',['../todo.html',1,'']]],
-  ['tools',['Tools',['../classmtk_1_1Tools.html',1,'mtk']]],
-  ['top_5fbndy',['top_bndy',['../classmtk_1_1UniStgGrid3D.html#a835df71a84dbcbe3860ad86cd7133027',1,'mtk::UniStgGrid3D']]],
-  ['top_5fbndy_5f',['top_bndy_',['../classmtk_1_1UniStgGrid3D.html#af2cc6416dfd1c3afb3b9db5d1c846128',1,'mtk::UniStgGrid3D']]],
-  ['top_5fcoefficients_5f',['top_coefficients_',['../classmtk_1_1RobinBCDescriptor3D.html#a387a7fc02fbd4c8fae0899a86a969dc1',1,'mtk::RobinBCDescriptor3D']]],
-  ['top_5fcondition_5f',['top_condition_',['../classmtk_1_1RobinBCDescriptor3D.html#abacf93ef6dab58254cea35101e24dbe2',1,'mtk::RobinBCDescriptor3D']]],
-  ['transpose',['Transpose',['../classmtk_1_1DenseMatrix.html#a71d9c07ca66e88d97d1fd5012f43138b',1,'mtk::DenseMatrix']]]
+  ['qrfactordensematrix',['QRFactorDenseMatrix',['../classmtk_1_1LAPACKAdapter.html#ae5c6e78c9c819c9ac7a6f31bfd011d7a',1,'mtk::LAPACKAdapter']]],
+  ['quad1d',['Quad1D',['../classmtk_1_1Quad1D.html#ada5a2f1e7c92dbf1f85c61ecd0d173ec',1,'mtk::Quad1D::Quad1D()'],['../classmtk_1_1Quad1D.html#ac4334daf0614bd4c789600c885b6116d',1,'mtk::Quad1D::Quad1D(const Quad1D &amp;quad)']]],
+  ['quad1d',['Quad1D',['../classmtk_1_1Quad1D.html',1,'mtk']]]
 ];

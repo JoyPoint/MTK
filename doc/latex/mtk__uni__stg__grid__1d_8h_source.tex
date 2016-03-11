@@ -88,25 +88,27 @@
 00148 
 00154   \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}() \textcolor{keyword}{const};
 00155 
-00161   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid1D_ab49f0009b66b0a58ae7f70a538f4d12b}{BindScalarField}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*ScalarField)(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &xx));
-00162 
-00173   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid1D_a5703f1f875f52f6de8f7db5a6250fafa}{BindVectorField}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorField)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx));
-00174 
-00186   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1UniStgGrid1D_a6d2c10aa9468a037829f0eb043b898dc}{WriteToFile}(std::string filename,
-00187                    std::string space\_name,
-00188                    std::string field\_name) \textcolor{keyword}{const};
-00189 
-00190  \textcolor{keyword}{private}:
-\hypertarget{mtk__uni__stg__grid__1d_8h_source_l00191}{}\hyperlink{classmtk_1_1UniStgGrid1D_a061b66c92532b1498ce0e15418754911}{00191}   \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{FieldNature} \hyperlink{classmtk_1_1UniStgGrid1D_a061b66c92532b1498ce0e15418754911}{nature\_};  
-00192 
-\hypertarget{mtk__uni__stg__grid__1d_8h_source_l00193}{}\hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{00193}   std::vector<Real> \hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{discrete\_domain\_x\_}; 
-\hypertarget{mtk__uni__stg__grid__1d_8h_source_l00194}{}\hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{00194}   std::vector<Real> \hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{discrete\_field\_};  
-00195 
-\hypertarget{mtk__uni__stg__grid__1d_8h_source_l00196}{}\hyperlink{classmtk_1_1UniStgGrid1D_a6910438d3396d0b9a130d11d16979c46}{00196}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid1D_a6910438d3396d0b9a130d11d16979c46}{west\_bndy\_x\_};  
-\hypertarget{mtk__uni__stg__grid__1d_8h_source_l00197}{}\hyperlink{classmtk_1_1UniStgGrid1D_a69a7d6be3171e53177e476348d04f4ae}{00197}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid1D_a69a7d6be3171e53177e476348d04f4ae}{east\_bndy\_x\_};  
-\hypertarget{mtk__uni__stg__grid__1d_8h_source_l00198}{}\hyperlink{classmtk_1_1UniStgGrid1D_afa43750db0029b7454aef343759e7097}{00198}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid1D_afa43750db0029b7454aef343759e7097}{num\_cells\_x\_};  
-\hypertarget{mtk__uni__stg__grid__1d_8h_source_l00199}{}\hyperlink{classmtk_1_1UniStgGrid1D_a12577bbe0b88e9a0ac9b2267f2fcc48c}{00199}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid1D_a12577bbe0b88e9a0ac9b2267f2fcc48c}{delta\_x\_};      
-00200 \};
-00201 \}
-00202 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_UNI\_STG\_GRID\_1D\_H\_}
+00159   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid1D_a36a7a85e237a4f85c603eac8cf67a704}{GenerateDiscreteDomainX}();
+00160 
+00166   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid1D_ab49f0009b66b0a58ae7f70a538f4d12b}{BindScalarField}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*ScalarField)(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &xx));
+00167 
+00178   \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid1D_a5703f1f875f52f6de8f7db5a6250fafa}{BindVectorField}(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} (*VectorField)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} xx));
+00179 
+00191   \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1UniStgGrid1D_a6d2c10aa9468a037829f0eb043b898dc}{WriteToFile}(std::string filename,
+00192                    std::string space\_name,
+00193                    std::string field\_name) \textcolor{keyword}{const};
+00194 
+00195  \textcolor{keyword}{private}:
+\hypertarget{mtk__uni__stg__grid__1d_8h_source_l00196}{}\hyperlink{classmtk_1_1UniStgGrid1D_a061b66c92532b1498ce0e15418754911}{00196}   \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{FieldNature} \hyperlink{classmtk_1_1UniStgGrid1D_a061b66c92532b1498ce0e15418754911}{nature\_};  
+00197 
+\hypertarget{mtk__uni__stg__grid__1d_8h_source_l00198}{}\hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{00198}   std::vector<Real> \hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{discrete\_domain\_x\_}; 
+\hypertarget{mtk__uni__stg__grid__1d_8h_source_l00199}{}\hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{00199}   std::vector<Real> \hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{discrete\_field\_};  
+00200 
+\hypertarget{mtk__uni__stg__grid__1d_8h_source_l00201}{}\hyperlink{classmtk_1_1UniStgGrid1D_a6910438d3396d0b9a130d11d16979c46}{00201}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid1D_a6910438d3396d0b9a130d11d16979c46}{west\_bndy\_x\_};  
+\hypertarget{mtk__uni__stg__grid__1d_8h_source_l00202}{}\hyperlink{classmtk_1_1UniStgGrid1D_a69a7d6be3171e53177e476348d04f4ae}{00202}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid1D_a69a7d6be3171e53177e476348d04f4ae}{east\_bndy\_x\_};  
+\hypertarget{mtk__uni__stg__grid__1d_8h_source_l00203}{}\hyperlink{classmtk_1_1UniStgGrid1D_afa43750db0029b7454aef343759e7097}{00203}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid1D_afa43750db0029b7454aef343759e7097}{num\_cells\_x\_};  
+\hypertarget{mtk__uni__stg__grid__1d_8h_source_l00204}{}\hyperlink{classmtk_1_1UniStgGrid1D_a12577bbe0b88e9a0ac9b2267f2fcc48c}{00204}   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1UniStgGrid1D_a12577bbe0b88e9a0ac9b2267f2fcc48c}{delta\_x\_};      
+00205 \};
+00206 \}
+00207 \textcolor{preprocessor}{#endif  // End of: MTK\_INCLUDE\_UNI\_STG\_GRID\_1D\_H\_}
 \end{DoxyCode}

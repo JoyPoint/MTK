@@ -61,7 +61,7 @@
 00074 \textcolor{preprocessor}{#include "\hyperlink{mtk__blas__adapter_8h}{mtk\_blas\_adapter.h}"}
 00075 \textcolor{preprocessor}{#include "\hyperlink{mtk__glpk__adapter_8h}{mtk\_glpk\_adapter.h}"}
 00076 
-\hypertarget{mtk__glpk__adapter_8cc_source_l00077}{}\hyperlink{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f}{00077} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f}{mtk::GLPKAdapter::SolveSimplexAndCompare}(
+\hypertarget{mtk__glpk__adapter_8cc_source_l00077}{}\hyperlink{classmtk_1_1GLPKAdapter_a0c9ebb125445bc5af752bf4fb47f44b2}{00077} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1GLPKAdapter_a0c9ebb125445bc5af752bf4fb47f44b2}{mtk::GLPKAdapter::SolveSimplexAndCompare}(
       \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *A,
 00078                                                    \textcolor{keywordtype}{int} nrows,
 00079                                                    \textcolor{keywordtype}{int} ncols,
@@ -70,7 +70,7 @@
 00082                                                    \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *qq,
 00083                                                    \textcolor{keywordtype}{int} robjective,
 00084                                                    \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} mimetic\_threshold,
-00085                                                    \textcolor{keywordtype}{int} copy) \{
+00085                                                    \textcolor{keywordtype}{int} copy) noexcept \{
 00086 
 00087 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
 00088   \textcolor{keywordtype}{char} mps\_file\_name[18]; \textcolor{comment}{// File name for the MPS files.}
@@ -108,204 +108,205 @@
 00120   matsize = lp\_nrows*lp\_ncols;
 00121 
 00123 
-00125   problem\_size = lp\_nrows*lp\_ncols + 1;
-00126 
-00127   \textcolor{keywordflow}{try} \{
-00128     ia = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[problem\_size];
-00129   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00130     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00131       std::endl;
-00132     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00133   \}
-00134   memset(ia, 0, \textcolor{keyword}{sizeof}(ia[0])*problem\_size);
-00135 
-00136   \textcolor{keywordflow}{try} \{
-00137     ja = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[problem\_size];
-00138   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00139     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00140       std::endl;
-00141     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00142   \}
-00143   memset(ja, 0, \textcolor{keyword}{sizeof}(ja[0])*problem\_size);
-00144 
-00145   \textcolor{keywordflow}{try} \{
-00146     ar = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[problem\_size];
-00147   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00148     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00149       std::endl;
-00150     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00151   \}
-00152   memset(ar, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(ar[0])*problem\_size);
-00153 
-00154   \textcolor{keywordflow}{try} \{
-00155     objective = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[lp\_ncols + 1];
-00156   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00157     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00158       std::endl;
-00159     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00160   \}
-00161   memset(objective, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(objective[0])*(lp\_ncols + 1));
-00162 
-00163   \textcolor{keywordflow}{try} \{
-00164     rhs = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[lp\_nrows + 1];
-00165   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00166     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00167       std::endl;
-00168     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00169   \}
-00170   memset(rhs, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(rhs[0])*(lp\_nrows + 1));
-00171 
-00172   \textcolor{keywordflow}{try} \{
-00173     err = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[lp\_nrows];
-00174   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00175     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00176       std::endl;
-00177     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00178   \}
-00179   memset(err, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(err[0])*(lp\_nrows));
-00180 
-00181 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00182   std::cout << \textcolor{stringliteral}{"Problem size: "} << problem\_size << std::endl;
-00183   std::cout << \textcolor{stringliteral}{"lp\_nrows = "} << lp\_nrows << std::endl;
-00184   std::cout << \textcolor{stringliteral}{"lp\_ncols = "} << lp\_ncols << std::endl;
-00185   std::cout << std::endl;
-00186 \textcolor{preprocessor}{  #endif}
-00187 
-00188   lp = glp\_create\_prob();
-00189 
-00190   glp\_set\_prob\_name (lp, \textcolor{stringliteral}{"mtk::GLPKAdapter::Simplex"});
-00191 
-00192   glp\_set\_obj\_dir (lp, GLP\_MIN);
-00193 
-00195 
-00196   glp\_add\_rows(lp, lp\_nrows);
-00197 
-00198   \textcolor{keywordflow}{for} (ii = 1; ii <= lp\_nrows; ++ii) \{
-00199     sprintf(rname, \textcolor{stringliteral}{"R%02d"},ii);
-00200     glp\_set\_row\_name(lp, ii, rname);
-00201   \}
-00202 
-00203   glp\_add\_cols(lp, lp\_ncols);
-00204 
-00205   \textcolor{keywordflow}{for} (ii = 1; ii <= lp\_ncols; ++ii) \{
-00206     sprintf(cname, \textcolor{stringliteral}{"Q%02d"},ii);
-00207     glp\_set\_col\_name (lp, ii, cname);
-00208   \}
-00209 
-00211 
-00212 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL>0}
-00213   std::cout << \textcolor{stringliteral}{"Using row "} << robjective + 1 << \textcolor{stringliteral}{" as objective."} << std::endl;
-00214 \textcolor{preprocessor}{  #endif}
-00215   \textcolor{keywordflow}{for} (jj = 0; jj < kk; ++jj) \{
-00216     objective[glp\_index] = A[jj + robjective * ncols];
-00217     glp\_index++;
-00218   \}
-00219 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL >0}
-00220   std::cout << std::endl;
-00221 \textcolor{preprocessor}{  #endif}
-00222 
-00224 
-00225   glp\_index = 1;
-00226   rhs[0] = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero};
-00227   \textcolor{keywordflow}{for} (ii = 0; ii <= lp\_nrows; ++ii) \{
-00228     \textcolor{keywordflow}{if} (ii != robjective) \{
-00229       rhs[glp\_index] = hh[ii];
-00230       glp\_set\_row\_bnds(lp, glp\_index, GLP\_UP, 0.0, rhs[glp\_index]);
-00231       glp\_index++;
-00232     \}
-00233   \}
-00234 
-00235 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00236   std::cout << \textcolor{stringliteral}{"rhs ="} << std::endl;
-00237   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < lp\_nrows; ++ii) \{
-00238     std::cout << std::setw(15) << rhs[ii] << std::endl;
-00239   \}
-00240   std::cout << std::endl;
-00241 \textcolor{preprocessor}{  #endif}
-00242 
-00244 
-00245   \textcolor{keywordflow}{for} (ii = 1; ii <= lp\_ncols; ++ii) \{
-00246     glp\_set\_obj\_coef (lp, ii, objective[ii]);
-00247   \}
-00248 
-00250 
-00251   \textcolor{keywordflow}{for} (ii = 1; ii <= lp\_ncols; ++ii) \{
-00252     glp\_set\_col\_bnds (lp, ii, GLP\_LO, mimetic\_threshold, 0.0);
-00253   \}
-00254 
-00256 
-00257   glp\_index = 1;
-00258   \textcolor{keywordflow}{for} (ii = 0; ii <= kk; ++ii) \{
-00259     \textcolor{keywordflow}{for} (jj = 0; jj < kk; ++jj) \{
-00260       \textcolor{keywordflow}{if} (ii != robjective) \{
-00261         ar[glp\_index] = A[jj + ii * ncols];
-00262         glp\_index++;
-00263       \}
-00264     \}
-00265   \}
-00266 
-00267   glp\_index = 0;
-00268 
-00269   \textcolor{keywordflow}{for} (ii = 1; ii < problem\_size; ++ii) \{
-00270     \textcolor{keywordflow}{if} (((ii - 1) % lp\_ncols) == 0) \{
-00271       glp\_index++;
-00272     \}
-00273     ia[ii] = glp\_index;
-00274     ja[ii] = (ii - 1) % lp\_ncols + 1;
-00275   \}
-00276 
-00277   glp\_load\_matrix (lp, matsize, ia, ja, ar);
-00278 
-00279 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
-00280   sprintf(mps\_file\_name, \textcolor{stringliteral}{"LP\_MPS\_row\_%02d.mps"}, robjective);
-00281   glp\_write\_mps(lp, GLP\_MPS\_FILE, \textcolor{keyword}{nullptr}, mps\_file\_name);
-00282 \textcolor{preprocessor}{  #endif}
-00283 
-00285 
-00286   glp\_simplex (lp, \textcolor{keyword}{nullptr});
-00287 
-00288   \textcolor{comment}{// Check status of the solution.}
-00289 
-00290   \textcolor{keywordflow}{if} (glp\_get\_status(lp) == GLP\_OPT) \{
-00291 
-00292     \textcolor{keywordflow}{for}(ii = 1; ii <= lp\_ncols; ++ii) \{
-00293       err[ii - 1] = qq[ii - 1] - glp\_get\_col\_prim(lp,ii);
-00294     \}
-00295 
-00296 \textcolor{preprocessor}{    #if MTK\_DEBUG\_LEVEL > 0}
-00297     obj\_value = glp\_get\_obj\_val (lp);
-00298     std::cout << std::setw(12) << \textcolor{stringliteral}{"CBS"} << std::setw(12) << \textcolor{stringliteral}{"CRS"} << std::endl;
-00299     \textcolor{keywordflow}{for} (ii = 0; ii < lp\_ncols; ++ii) \{
-00300       std::cout << \textcolor{stringliteral}{"q\_"} << ii + 1 << \textcolor{stringliteral}{" = "} << std::setw(12) <<
-00301         glp\_get\_col\_prim(lp,ii + 1) << std::setw(12) << qq[ii] << std::endl;
-00302     \}
-00303     std::cout << \textcolor{stringliteral}{"Objective function value (row "} << robjective + 1 << \textcolor{stringliteral}{") = "} <<
-00304       obj\_value << std::endl;
-00305 \textcolor{preprocessor}{    #endif}
-00306 
-00307     \textcolor{keywordflow}{if} (copy) \{
-00308       \textcolor{keywordflow}{for}(ii = 0; ii < lp\_ncols; ++ii) \{
-00309         qq[ii] = glp\_get\_col\_prim(lp,ii + 1);
-00310       \}
-00311       \textcolor{comment}{// Preserve the bottom values of qq.}
-00312     \}
-00313 
-00314     x1 = \hyperlink{classmtk_1_1BLASAdapter_ab92440888b730863244c5d9479c11aca}{mtk::BLASAdapter::RealNRM2}(err,lp\_ncols);
-00315 
-00316   \} \textcolor{keywordflow}{else} \{
-00317     x1 = std::numeric\_limits<mtk::Real>::infinity();
-00318   \}
-00319 
-00320   glp\_delete\_prob (lp);
-00321   glp\_free\_env ();
-00322 
-00323   \textcolor{keyword}{delete} [] ia;
-00324   \textcolor{keyword}{delete} [] ja;
-00325   \textcolor{keyword}{delete} [] ar;
-00326   \textcolor{keyword}{delete} [] objective;
-00327   \textcolor{keyword}{delete} [] rhs;
-00328   \textcolor{keyword}{delete} [] err;
-00329 
-00330   \textcolor{keywordflow}{return} x1;
-00331 \}
+00125 
+00126   problem\_size = lp\_nrows*lp\_ncols + 1;
+00127 
+00128   \textcolor{keywordflow}{try} \{
+00129     ia = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[problem\_size];
+00130   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00131     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00132       std::endl;
+00133     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00134   \}
+00135   memset(ia, 0, \textcolor{keyword}{sizeof}(ia[0])*problem\_size);
+00136 
+00137   \textcolor{keywordflow}{try} \{
+00138     ja = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[problem\_size];
+00139   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00140     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00141       std::endl;
+00142     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00143   \}
+00144   memset(ja, 0, \textcolor{keyword}{sizeof}(ja[0])*problem\_size);
+00145 
+00146   \textcolor{keywordflow}{try} \{
+00147     ar = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[problem\_size];
+00148   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00149     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00150       std::endl;
+00151     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00152   \}
+00153   memset(ar, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(ar[0])*problem\_size);
+00154 
+00155   \textcolor{keywordflow}{try} \{
+00156     objective = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[lp\_ncols + 1];
+00157   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00158     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00159       std::endl;
+00160     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00161   \}
+00162   memset(objective, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(objective[0])*(lp\_ncols + 1));
+00163 
+00164   \textcolor{keywordflow}{try} \{
+00165     rhs = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[lp\_nrows + 1];
+00166   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00167     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00168       std::endl;
+00169     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00170   \}
+00171   memset(rhs, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(rhs[0])*(lp\_nrows + 1));
+00172 
+00173   \textcolor{keywordflow}{try} \{
+00174     err = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[lp\_nrows];
+00175   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00176     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00177       std::endl;
+00178     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00179   \}
+00180   memset(err, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(err[0])*(lp\_nrows));
+00181 
+00182 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00183   std::cout << \textcolor{stringliteral}{"Problem size: "} << problem\_size << std::endl;
+00184   std::cout << \textcolor{stringliteral}{"lp\_nrows = "} << lp\_nrows << std::endl;
+00185   std::cout << \textcolor{stringliteral}{"lp\_ncols = "} << lp\_ncols << std::endl;
+00186   std::cout << std::endl;
+00187 \textcolor{preprocessor}{  #endif}
+00188 
+00189   lp = glp\_create\_prob();
+00190 
+00191   glp\_set\_prob\_name (lp, \textcolor{stringliteral}{"mtk::GLPKAdapter::Simplex"});
+00192 
+00193   glp\_set\_obj\_dir (lp, GLP\_MIN);
+00194 
+00196 
+00197   glp\_add\_rows(lp, lp\_nrows);
+00198 
+00199   \textcolor{keywordflow}{for} (ii = 1; ii <= lp\_nrows; ++ii) \{
+00200     sprintf(rname, \textcolor{stringliteral}{"R%02d"},ii);
+00201     glp\_set\_row\_name(lp, ii, rname);
+00202   \}
+00203 
+00204   glp\_add\_cols(lp, lp\_ncols);
+00205 
+00206   \textcolor{keywordflow}{for} (ii = 1; ii <= lp\_ncols; ++ii) \{
+00207     sprintf(cname, \textcolor{stringliteral}{"Q%02d"},ii);
+00208     glp\_set\_col\_name (lp, ii, cname);
+00209   \}
+00210 
+00212 
+00213 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL>0}
+00214   std::cout << \textcolor{stringliteral}{"Using row "} << robjective + 1 << \textcolor{stringliteral}{" as objective."} << std::endl;
+00215 \textcolor{preprocessor}{  #endif}
+00216   \textcolor{keywordflow}{for} (jj = 0; jj < kk; ++jj) \{
+00217     objective[glp\_index] = A[jj + robjective * ncols];
+00218     glp\_index++;
+00219   \}
+00220 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL >0}
+00221   std::cout << std::endl;
+00222 \textcolor{preprocessor}{  #endif}
+00223 
+00225 
+00226   glp\_index = 1;
+00227   rhs[0] = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero};
+00228   \textcolor{keywordflow}{for} (ii = 0; ii <= lp\_nrows; ++ii) \{
+00229     \textcolor{keywordflow}{if} (ii != robjective) \{
+00230       rhs[glp\_index] = hh[ii];
+00231       glp\_set\_row\_bnds(lp, glp\_index, GLP\_UP, 0.0, rhs[glp\_index]);
+00232       glp\_index++;
+00233     \}
+00234   \}
+00235 
+00236 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00237   std::cout << \textcolor{stringliteral}{"rhs ="} << std::endl;
+00238   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < lp\_nrows; ++ii) \{
+00239     std::cout << std::setw(15) << rhs[ii] << std::endl;
+00240   \}
+00241   std::cout << std::endl;
+00242 \textcolor{preprocessor}{  #endif}
+00243 
+00245 
+00246   \textcolor{keywordflow}{for} (ii = 1; ii <= lp\_ncols; ++ii) \{
+00247     glp\_set\_obj\_coef (lp, ii, objective[ii]);
+00248   \}
+00249 
+00251 
+00252   \textcolor{keywordflow}{for} (ii = 1; ii <= lp\_ncols; ++ii) \{
+00253     glp\_set\_col\_bnds (lp, ii, GLP\_LO, mimetic\_threshold, 0.0);
+00254   \}
+00255 
+00257 
+00258   glp\_index = 1;
+00259   \textcolor{keywordflow}{for} (ii = 0; ii <= kk; ++ii) \{
+00260     \textcolor{keywordflow}{for} (jj = 0; jj < kk; ++jj) \{
+00261       \textcolor{keywordflow}{if} (ii != robjective) \{
+00262         ar[glp\_index] = A[jj + ii * ncols];
+00263         glp\_index++;
+00264       \}
+00265     \}
+00266   \}
+00267 
+00268   glp\_index = 0;
+00269 
+00270   \textcolor{keywordflow}{for} (ii = 1; ii < problem\_size; ++ii) \{
+00271     \textcolor{keywordflow}{if} (((ii - 1) % lp\_ncols) == 0) \{
+00272       glp\_index++;
+00273     \}
+00274     ia[ii] = glp\_index;
+00275     ja[ii] = (ii - 1) % lp\_ncols + 1;
+00276   \}
+00277 
+00278   glp\_load\_matrix (lp, matsize, ia, ja, ar);
+00279 
+00280 \textcolor{preprocessor}{  #if MTK\_DEBUG\_LEVEL > 0}
+00281   sprintf(mps\_file\_name, \textcolor{stringliteral}{"LP\_MPS\_row\_%02d.mps"}, robjective);
+00282   glp\_write\_mps(lp, GLP\_MPS\_FILE, \textcolor{keyword}{nullptr}, mps\_file\_name);
+00283 \textcolor{preprocessor}{  #endif}
+00284 
+00286 
+00287   glp\_simplex (lp, \textcolor{keyword}{nullptr});
+00288 
+00289   \textcolor{comment}{// Check status of the solution, determining if this was a feasible solution.}
+00290 
+00291   \textcolor{keywordflow}{if} (glp\_get\_status(lp) == GLP\_OPT) \{
+00292 
+00293     \textcolor{keywordflow}{for}(ii = 1; ii <= lp\_ncols; ++ii) \{
+00294       err[ii - 1] = qq[ii - 1] - glp\_get\_col\_prim(lp,ii);
+00295     \}
+00296 
+00297 \textcolor{preprocessor}{    #if MTK\_DEBUG\_LEVEL > 0}
+00298     obj\_value = glp\_get\_obj\_val (lp);
+00299     std::cout << std::setw(12) << \textcolor{stringliteral}{"CBS"} << std::setw(12) << \textcolor{stringliteral}{"CRS"} << std::endl;
+00300     \textcolor{keywordflow}{for} (ii = 0; ii < lp\_ncols; ++ii) \{
+00301       std::cout << \textcolor{stringliteral}{"q\_"} << ii + 1 << \textcolor{stringliteral}{" = "} << std::setw(12) <<
+00302         glp\_get\_col\_prim(lp,ii + 1) << std::setw(12) << qq[ii] << std::endl;
+00303     \}
+00304     std::cout << \textcolor{stringliteral}{"Objective function value (row "} << robjective + 1 << \textcolor{stringliteral}{") = "} <<
+00305       obj\_value << std::endl;
+00306 \textcolor{preprocessor}{    #endif}
+00307 
+00308     \textcolor{keywordflow}{if} (copy) \{
+00309       \textcolor{keywordflow}{for}(ii = 0; ii < lp\_ncols; ++ii) \{
+00310         qq[ii] = glp\_get\_col\_prim(lp,ii + 1);
+00311       \}
+00312       \textcolor{comment}{// Preserve the bottom values of qq.}
+00313     \}
+00314 
+00315     x1 = \hyperlink{classmtk_1_1BLASAdapter_ab92440888b730863244c5d9479c11aca}{mtk::BLASAdapter::RealNRM2}(err,lp\_ncols);
+00316 
+00317   \} \textcolor{keywordflow}{else} \{
+00318     x1 = std::numeric\_limits<mtk::Real>::infinity();
+00319   \}
+00320 
+00321   glp\_delete\_prob (lp);
+00322   glp\_free\_env ();
+00323 
+00324   \textcolor{keyword}{delete} [] ia;
+00325   \textcolor{keyword}{delete} [] ja;
+00326   \textcolor{keyword}{delete} [] ar;
+00327   \textcolor{keyword}{delete} [] objective;
+00328   \textcolor{keyword}{delete} [] rhs;
+00329   \textcolor{keyword}{delete} [] err;
+00330 
+00331   \textcolor{keywordflow}{return} x1;
+00332 \}
 \end{DoxyCode}

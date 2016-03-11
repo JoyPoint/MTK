@@ -22,7 +22,7 @@ Collaboration diagram for mtk\+:\+:G\+L\+P\+K\+Adapter\+:\nopagebreak
 \subsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-static \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\+::\+Real} \hyperlink{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f}{Solve\+Simplex\+And\+Compare} (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\+::\+Real} $\ast$A, int nrows, int ncols, int kk, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\+::\+Real} $\ast$hh, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\+::\+Real} $\ast$qq, int robjective, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\+::\+Real} mimetic\+\_\+tol, int copy)
+static \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\+::\+Real} \hyperlink{classmtk_1_1GLPKAdapter_a0c9ebb125445bc5af752bf4fb47f44b2}{Solve\+Simplex\+And\+Compare} (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\+::\+Real} $\ast$A\+A, int nrows, int ncols, int kk, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\+::\+Real} $\ast$hh, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\+::\+Real} $\ast$qq, int robjective, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk\+::\+Real} mimetic\+\_\+threshold, int copy) noexcept
 \begin{DoxyCompactList}\small\item\em Solves a C\+L\+O problem and compares the solution to a reference solution. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -46,42 +46,42 @@ Definition at line \hyperlink{mtk__glpk__adapter_8h_source_l00102}{102} of file 
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f}{\index{mtk\+::\+G\+L\+P\+K\+Adapter@{mtk\+::\+G\+L\+P\+K\+Adapter}!Solve\+Simplex\+And\+Compare@{Solve\+Simplex\+And\+Compare}}
+\hypertarget{classmtk_1_1GLPKAdapter_a0c9ebb125445bc5af752bf4fb47f44b2}{\index{mtk\+::\+G\+L\+P\+K\+Adapter@{mtk\+::\+G\+L\+P\+K\+Adapter}!Solve\+Simplex\+And\+Compare@{Solve\+Simplex\+And\+Compare}}
 \index{Solve\+Simplex\+And\+Compare@{Solve\+Simplex\+And\+Compare}!mtk\+::\+G\+L\+P\+K\+Adapter@{mtk\+::\+G\+L\+P\+K\+Adapter}}
 \subsubsection[{Solve\+Simplex\+And\+Compare}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\+::\+Real} mtk\+::\+G\+L\+P\+K\+Adapter\+::\+Solve\+Simplex\+And\+Compare (
 \begin{DoxyParamCaption}
-\item[{{\bf mtk\+::\+Real} $\ast$}]{A, }
+\item[{{\bf mtk\+::\+Real} $\ast$}]{A\+A, }
 \item[{int}]{nrows, }
 \item[{int}]{ncols, }
 \item[{int}]{kk, }
 \item[{{\bf mtk\+::\+Real} $\ast$}]{hh, }
 \item[{{\bf mtk\+::\+Real} $\ast$}]{qq, }
 \item[{int}]{robjective, }
-\item[{{\bf mtk\+::\+Real}}]{mimetic\+\_\+tol, }
+\item[{{\bf mtk\+::\+Real}}]{mimetic\+\_\+threshold, }
 \item[{int}]{copy}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [noexcept]}}}\label{classmtk_1_1GLPKAdapter_a0c9ebb125445bc5af752bf4fb47f44b2}
 This routine is the pivot of the C\+B\+S\+A. It solves a Constrained Linear Optimization (C\+L\+O) problem, and it compares the attained solution to a given reference solution. This comparison is done computing the norm-\/2 relative error.
 
 
 \begin{DoxyParams}[1]{Parameters}
-\mbox{\tt in}  & {\em alpha} & First scalar. \\
-\hline
 \mbox{\tt in}  & {\em A\+A} & Given matrix. \\
 \hline
-\mbox{\tt in}  & {\em xx} & First vector. \\
+\mbox{\tt in}  & {\em nrows} & Number of rows of the matrix. \\
 \hline
-\mbox{\tt in}  & {\em beta} & Second scalar. \\
+\mbox{\tt in}  & {\em ncols} & Number of rows of the matrix. \\
 \hline
-\mbox{\tt in}  & {\em beta} & Second scalar. \\
+\mbox{\tt in}  & {\em kk} & Length of the R\+H\+S vector of constraints. \\
 \hline
-\mbox{\tt in,out}  & {\em yy} & Second vector (output). \\
+\mbox{\tt in}  & {\em hh} & R\+H\+S vector of constraints. \\
 \hline
-\mbox{\tt in}  & {\em xx} & First vector. \\
+\mbox{\tt in,out}  & {\em qq} & Output decision vector. \\
 \hline
-\mbox{\tt in}  & {\em beta} & Second scalar. \\
+\mbox{\tt in}  & {\em robjective} & Row of the system to be chosen as objective function. \\
 \hline
-\mbox{\tt in}  & {\em beta} & Second scalar.\\
+\mbox{\tt in}  & {\em mimetic\+\_\+threshold} & Mimetic threshold. \\
+\hline
+\mbox{\tt in}  & {\em copy} & Should we actually copy the results to the output?\\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -106,22 +106,24 @@ Definition at line \hyperlink{mtk__glpk__adapter_8cc_source_l00077}{77} of file 
 
 
 
-Here is the call graph for this function\+:\nopagebreak
+Here is the call graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f_cgraph}
+\includegraphics[width=350pt]{classmtk_1_1GLPKAdapter_a0c9ebb125445bc5af752bf4fb47f44b2_cgraph}
 \end{center}
 \end{figure}
 
 
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f_icgraph}
+\includegraphics[width=350pt]{classmtk_1_1GLPKAdapter_a0c9ebb125445bc5af752bf4fb47f44b2_icgraph}
 \end{center}
 \end{figure}
 

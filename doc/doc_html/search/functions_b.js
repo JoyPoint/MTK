@@ -7,6 +7,7 @@ var searchData=
   ['num_5fcells_5fy',['num_cells_y',['../classmtk_1_1UniStgGrid2D.html#aed05a801cc9a76dba0ff203cea58a61a',1,'mtk::UniStgGrid2D::num_cells_y()'],['../classmtk_1_1UniStgGrid3D.html#abb0fc143b06048f69ac05e33c40f85db',1,'mtk::UniStgGrid3D::num_cells_y()']]],
   ['num_5fcells_5fz',['num_cells_z',['../classmtk_1_1UniStgGrid3D.html#acd896b210eac3434fb51b26bef3c3ce0',1,'mtk::UniStgGrid3D']]],
   ['num_5fcols',['num_cols',['../classmtk_1_1DenseMatrix.html#a41747502d468c6728a4be31501b16e0e',1,'mtk::DenseMatrix::num_cols()'],['../classmtk_1_1Matrix.html#a2160118d0edf51cf2aaa806ee1b915f8',1,'mtk::Matrix::num_cols()']]],
+  ['num_5ffeasible_5fsols',['num_feasible_sols',['../classmtk_1_1Div1D.html#a033d486957071e6addf1d2d4d5dc95cc',1,'mtk::Div1D::num_feasible_sols()'],['../classmtk_1_1Grad1D.html#a3ee5504c8fedaae9e58f00d3698f7986',1,'mtk::Grad1D::num_feasible_sols()']]],
   ['num_5fnon_5fnull',['num_non_null',['../classmtk_1_1Matrix.html#ac3223d10accd4948807f58fc924f043f',1,'mtk::Matrix']]],
   ['num_5fnon_5fzero',['num_non_zero',['../classmtk_1_1Matrix.html#a40b4dc068683b2a5024692d9cc62f221',1,'mtk::Matrix']]],
   ['num_5fnull',['num_null',['../classmtk_1_1Matrix.html#a79ac4c1b31cef05b41a123917b0ad32f',1,'mtk::Matrix']]],

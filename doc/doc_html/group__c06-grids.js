@@ -11,6 +11,7 @@ var group__c06_grids =
       [ "discrete_domain_x", "classmtk_1_1UniStgGrid1D.html#aa1999580cb98c19950e951510871cc90", null ],
       [ "discrete_field", "classmtk_1_1UniStgGrid1D.html#ab9c3f9ee2ac76a351b01e4abfede4d19", null ],
       [ "east_bndy_x", "classmtk_1_1UniStgGrid1D.html#a3b413aeadcc3d3263f6817f3af1dee95", null ],
+      [ "GenerateDiscreteDomainX", "classmtk_1_1UniStgGrid1D.html#a36a7a85e237a4f85c603eac8cf67a704", null ],
       [ "num_cells_x", "classmtk_1_1UniStgGrid1D.html#af1b3729d8afa07be5b2775ed68015b80", null ],
       [ "west_bndy_x", "classmtk_1_1UniStgGrid1D.html#afab51be12598704d2dd6d760f826669b", null ],
       [ "WriteToFile", "classmtk_1_1UniStgGrid1D.html#a6d2c10aa9468a037829f0eb043b898dc", null ],

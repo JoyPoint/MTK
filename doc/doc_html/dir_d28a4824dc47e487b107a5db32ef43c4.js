@@ -1,12 +1,14 @@
 var dir_d28a4824dc47e487b107a5db32ef43c4 =
 [
-    [ "curl_2d_angular_velocity", "dir_0a8eae61114d46352b8777dbe55cfb4e.html", "dir_0a8eae61114d46352b8777dbe55cfb4e" ],
-    [ "diffusion_3d", "dir_3fff2bce4bcc3e1e06f222195119e4ee.html", "dir_3fff2bce4bcc3e1e06f222195119e4ee" ],
-    [ "divergence_operators_1d", "dir_eb25ca143824d6c7c24561063db28875.html", "dir_eb25ca143824d6c7c24561063db28875" ],
-    [ "gradient_operators_1d", "dir_96aee8c18202d4f6b25c77388d0f6032.html", "dir_96aee8c18202d4f6b25c77388d0f6032" ],
-    [ "laplacian_operators_1d", "dir_2c137e22b0c203b4eb54ba0af8b0ed53.html", "dir_2c137e22b0c203b4eb54ba0af8b0ed53" ],
-    [ "minimalistic_poisson_1d", "dir_393c18441c0f1ef343a0be23b827d53c.html", "dir_393c18441c0f1ef343a0be23b827d53c" ],
-    [ "poisson_1d", "dir_1ba2571371527cc1af6e502e10a68fad.html", "dir_1ba2571371527cc1af6e502e10a68fad" ],
-    [ "poisson_2d", "dir_f75d176e50705990aa7d8ee803f5bee2.html", "dir_f75d176e50705990aa7d8ee803f5bee2" ],
-    [ "positive_weights_1d", "dir_aad6f4cc789d10031ad6fd7ba8c356eb.html", "dir_aad6f4cc789d10031ad6fd7ba8c356eb" ]
+    [ "1d_divergence", "dir_b2a6d1cf945ce14f10e16dd9588d8269.html", "dir_b2a6d1cf945ce14f10e16dd9588d8269" ],
+    [ "1d_gradient", "dir_ad7b1abbe5ad2b32d7d17cc3c3a8582e.html", "dir_ad7b1abbe5ad2b32d7d17cc3c3a8582e" ],
+    [ "1d_laplacian", "dir_a0670ca72b8d9d0ea396d0b5c8995fe9.html", "dir_a0670ca72b8d9d0ea396d0b5c8995fe9" ],
+    [ "1d_mimetic_measure", "dir_1bdb63b35d271ca9934f53ff1abf1d0c.html", "dir_1bdb63b35d271ca9934f53ff1abf1d0c" ],
+    [ "1d_mimetic_threshold", "dir_47a91491f470102b2f610512fc5d3325.html", "dir_47a91491f470102b2f610512fc5d3325" ],
+    [ "1d_poisson", "dir_80a27601cf792e150f3423ec25702dc9.html", "dir_80a27601cf792e150f3423ec25702dc9" ],
+    [ "1d_poisson_minimal", "dir_f6b3d8c1b0f3a7cc8e9ec569928bd168.html", "dir_f6b3d8c1b0f3a7cc8e9ec569928bd168" ],
+    [ "1d_positive_weights", "dir_93f0a1d879f319c3fe1915b0a0482750.html", "dir_93f0a1d879f319c3fe1915b0a0482750" ],
+    [ "2d_angular_velocity", "dir_0335b1417efc9f0f4f34ab1e7f85101c.html", "dir_0335b1417efc9f0f4f34ab1e7f85101c" ],
+    [ "2d_poisson", "dir_33a5d961d0eb7472f65ca1ec425c0adf.html", "dir_33a5d961d0eb7472f65ca1ec425c0adf" ],
+    [ "3d_diffusion", "dir_5ccb2d00c98625dd317a3ab8f211f98a.html", "dir_5ccb2d00c98625dd317a3ab8f211f98a" ]
 ];

@@ -9,7 +9,7 @@ var group__c05_num__methods =
       [ "RelNorm2Error", "classmtk_1_1BLASAdapter.html#af2ac5691f45e67d6e26186b071119ec4", null ]
     ] ],
     [ "GLPKAdapter", "classmtk_1_1GLPKAdapter.html", [
-      [ "SolveSimplexAndCompare", "classmtk_1_1GLPKAdapter.html#a834480aca83e3c0d09fdab7fdb7e8a3f", null ]
+      [ "SolveSimplexAndCompare", "classmtk_1_1GLPKAdapter.html#a0c9ebb125445bc5af752bf4fb47f44b2", null ]
     ] ],
     [ "LAPACKAdapter", "classmtk_1_1LAPACKAdapter.html", [
       [ "QRFactorDenseMatrix", "classmtk_1_1LAPACKAdapter.html#ae5c6e78c9c819c9ac7a6f31bfd011d7a", null ],

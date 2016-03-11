@@ -161,333 +161,354 @@ $(document).ready(function(){initNavTree('mtk__lap__1d_8cc_source.html','');});
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="preprocessor">#include &lt;iomanip&gt;</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__roots_8h.html">mtk_roots.h</a>&quot;</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__tools_8h.html">mtk_tools.h</a>&quot;</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__blas__adapter_8h.html">mtk_blas_adapter.h</a>&quot;</span></div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__grad__1d_8h.html">mtk_grad_1d.h</a>&quot;</span></div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__div__1d_8h.html">mtk_div_1d.h</a>&quot;</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__lap__1d_8h.html">mtk_lap_1d.h</a>&quot;</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemtk.html">mtk</a> {</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__roots_8h.html">mtk_roots.h</a>&quot;</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__tools_8h.html">mtk_tools.h</a>&quot;</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__blas__adapter_8h.html">mtk_blas_adapter.h</a>&quot;</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__grad__1d_8h.html">mtk_grad_1d.h</a>&quot;</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__div__1d_8h.html">mtk_div_1d.h</a>&quot;</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="mtk__lap__1d_8h.html">mtk_lap_1d.h</a>&quot;</span></div>
 <div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="namespacemtk.html#af667c01a388ef1815d549b09b2d76bcc">   73</a></span>&#160;std::ostream&amp; <a class="code" href="namespacemtk.html#ad3bcf52cda59ddb5fc7b4bdce76c46dc">operator &lt;&lt;</a>(std::ostream &amp;stream, <a class="code" href="classmtk_1_1Lap1D.html">mtk::Lap1D</a> &amp;in) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacemtk.html">mtk</a> {</div>
 <div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  <span class="keywordtype">int</span> output_precision{4};</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordtype">int</span> output_width{8};</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="namespacemtk.html#af667c01a388ef1815d549b09b2d76bcc">   75</a></span>&#160;std::ostream&amp; <a class="code" href="namespacemtk.html#ad3bcf52cda59ddb5fc7b4bdce76c46dc">operator &lt;&lt;</a>(std::ostream &amp;stream, <a class="code" href="classmtk_1_1Lap1D.html">mtk::Lap1D</a> &amp;in) {</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  <span class="keywordtype">int</span> output_precision{4};</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordtype">int</span> output_width{8};</div>
 <div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  stream &lt;&lt; <span class="stringliteral">&quot;Order of accuracy: &quot;</span> &lt;&lt; in.<a class="code" href="classmtk_1_1Lap1D.html#a64a3977527c00b4ef994d1bd549f82fd">laplacian_</a>[0] &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  stream &lt;&lt; <span class="stringliteral">&quot;Order of accuracy: &quot;</span> &lt;&lt; in.<a class="code" href="classmtk_1_1Lap1D.html#a64a3977527c00b4ef994d1bd549f82fd">laplacian_</a>[0] &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;  stream &lt;&lt; <span class="stringliteral">&quot;Interior stencil: &quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 1; ii &lt;= (2*in.<a class="code" href="classmtk_1_1Lap1D.html#a35d34c085b9cf6f9961a699dfb02fea6">order_accuracy_</a> - 1); ++ii) {</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    stream &lt;&lt; std::setprecision(output_precision) &lt;&lt; std::setw(output_width) &lt;&lt;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;      in.<a class="code" href="classmtk_1_1Lap1D.html#a64a3977527c00b4ef994d1bd549f82fd">laplacian_</a>[ii] &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  stream &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  stream &lt;&lt; <span class="stringliteral">&quot;Interior stencil: &quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 1; ii &lt;= (2*in.<a class="code" href="classmtk_1_1Lap1D.html#a35d34c085b9cf6f9961a699dfb02fea6">order_accuracy_</a> - 1); ++ii) {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    stream &lt;&lt; std::setprecision(output_precision) &lt;&lt; std::setw(output_width) &lt;&lt;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;      in.<a class="code" href="classmtk_1_1Lap1D.html#a64a3977527c00b4ef994d1bd549f82fd">laplacian_</a>[ii] &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  stream &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keyword">auto</span> offset = 1 + (2*in.<a class="code" href="classmtk_1_1Lap1D.html#a35d34c085b9cf6f9961a699dfb02fea6">order_accuracy_</a> - 1);</div>
 <div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 0; ii &lt; in.<a class="code" href="classmtk_1_1Lap1D.html#a35d34c085b9cf6f9961a699dfb02fea6">order_accuracy_</a> - 1; ++ii) {</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;Mimetic boundary row &quot;</span> &lt;&lt; ii + 1 &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> jj = 0; jj &lt; 2*in.<a class="code" href="classmtk_1_1Lap1D.html#a35d34c085b9cf6f9961a699dfb02fea6">order_accuracy_</a>; ++jj) {</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;      stream &lt;&lt; std::setprecision(output_precision) &lt;&lt;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        std::setw(output_width) &lt;&lt;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;          in.<a class="code" href="classmtk_1_1Lap1D.html#a64a3977527c00b4ef994d1bd549f82fd">laplacian_</a>[offset + ii*(2*in.<a class="code" href="classmtk_1_1Lap1D.html#a35d34c085b9cf6f9961a699dfb02fea6">order_accuracy_</a>) + jj] &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    stream &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;Sum of elements in row &quot;</span> &lt;&lt; ii + 1 &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt;</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;      in.<a class="code" href="classmtk_1_1Lap1D.html#a81d34a48cead4d5a2358581b1ff44252">sums_rows_mim_bndy_</a>[ii];</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    stream &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">return</span> stream;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#a6fc2aeea35d4dfa49f17e625411f5a70">  112</a></span>&#160;<a class="code" href="classmtk_1_1Lap1D.html#a6fc2aeea35d4dfa49f17e625411f5a70">mtk::Lap1D::Lap1D</a>():</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  order_accuracy_(<a class="code" href="namespacemtk.html">mtk</a>::<a class="code" href="group__c01-roots.html#ga0d95560098eb36420511103637b6952f">kDefaultOrderAccuracy</a>),</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  laplacian_length_(),</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  delta_(<a class="code" href="namespacemtk.html">mtk</a>::<a class="code" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">kZero</a>),</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  mimetic_threshold_(<a class="code" href="namespacemtk.html">mtk</a>::<a class="code" href="group__c01-roots.html#ga35718d949bdc81a08a9cc8ebbe3478a2">kDefaultMimeticThreshold</a>) {}</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;</div>
-<div class="line"><a name="l00118"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#ac0cb868243a66658cc46de5b818fa4e8">  118</a></span>&#160;<a class="code" href="classmtk_1_1Lap1D.html#ac0cb868243a66658cc46de5b818fa4e8">mtk::Lap1D::~Lap1D</a>() {</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keyword">delete</span> [] laplacian_;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  laplacian_ = <span class="keyword">nullptr</span>;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;}</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;</div>
-<div class="line"><a name="l00124"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#ae3490534a9e950df3f81b3840c31b13a">  124</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classmtk_1_1Lap1D.html#ae3490534a9e950df3f81b3840c31b13a">mtk::Lap1D::order_accuracy</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  <span class="keywordflow">return</span> order_accuracy_;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;}</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div>
-<div class="line"><a name="l00129"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#a957ae4ff6053d605ac7b93650ad6f188">  129</a></span>&#160;<a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> <a class="code" href="classmtk_1_1Lap1D.html#a957ae4ff6053d605ac7b93650ad6f188">mtk::Lap1D::mimetic_threshold</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <span class="keywordflow">return</span> mimetic_threshold_;</div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;}</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
-<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#a4e16e80c6dd845ac42bda23385a1c56e">  134</a></span>&#160;<a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> <a class="code" href="classmtk_1_1Lap1D.html#a4e16e80c6dd845ac42bda23385a1c56e">mtk::Lap1D::delta</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  <span class="keyword">auto</span> offset = 1 + (2*in.<a class="code" href="classmtk_1_1Lap1D.html#a35d34c085b9cf6f9961a699dfb02fea6">order_accuracy_</a> - 1);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 0; ii &lt; in.<a class="code" href="classmtk_1_1Lap1D.html#a35d34c085b9cf6f9961a699dfb02fea6">order_accuracy_</a> - 1; ++ii) {</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;Boundary row &quot;</span> &lt;&lt; ii + 1 &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> jj = 0; jj &lt; 2*in.<a class="code" href="classmtk_1_1Lap1D.html#a35d34c085b9cf6f9961a699dfb02fea6">order_accuracy_</a>; ++jj) {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;      stream &lt;&lt; std::setprecision(output_precision) &lt;&lt;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        std::setw(output_width) &lt;&lt;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;          in.<a class="code" href="classmtk_1_1Lap1D.html#a64a3977527c00b4ef994d1bd549f82fd">laplacian_</a>[offset + ii*(2*in.<a class="code" href="classmtk_1_1Lap1D.html#a35d34c085b9cf6f9961a699dfb02fea6">order_accuracy_</a>) + jj] &lt;&lt; <span class="charliteral">&#39; &#39;</span>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    }</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    stream &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    stream &lt;&lt; <span class="stringliteral">&quot;Sum of elements in boundary row &quot;</span> &lt;&lt; ii + 1 &lt;&lt; <span class="stringliteral">&quot;: &quot;</span> &lt;&lt;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;      in.<a class="code" href="classmtk_1_1Lap1D.html#a81d34a48cead4d5a2358581b1ff44252">sums_rows_mim_bndy_</a>[ii];</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    stream &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  }</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  <span class="keywordflow">return</span> stream;</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;}</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;</div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#a6fc2aeea35d4dfa49f17e625411f5a70">  114</a></span>&#160;<a class="code" href="classmtk_1_1Lap1D.html#a6fc2aeea35d4dfa49f17e625411f5a70">mtk::Lap1D::Lap1D</a>():</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  order_accuracy_(<a class="code" href="namespacemtk.html">mtk</a>::<a class="code" href="group__c01-roots.html#ga0d95560098eb36420511103637b6952f">kDefaultOrderAccuracy</a>),</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;  laplacian_length_(),</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  delta_(<a class="code" href="namespacemtk.html">mtk</a>::<a class="code" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">kZero</a>),</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  mimetic_threshold_(<a class="code" href="namespacemtk.html">mtk</a>::<a class="code" href="group__c01-roots.html#ga35718d949bdc81a08a9cc8ebbe3478a2">kDefaultMimeticThreshold</a>),</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  mimetic_measure_(<a class="code" href="namespacemtk.html">mtk</a>::<a class="code" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">kZero</a>),</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  sums_rows_mim_bndy_() {}</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;</div>
+<div class="line"><a name="l00122"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#a95c3fdcd0c9e4c56e775a2a20a2fac42">  122</a></span>&#160;<a class="code" href="classmtk_1_1Lap1D.html#a6fc2aeea35d4dfa49f17e625411f5a70">mtk::Lap1D::Lap1D</a>(<span class="keyword">const</span> <a class="code" href="classmtk_1_1Lap1D.html">Lap1D</a> &amp;lap):</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  order_accuracy_(lap.order_accuracy_),</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  laplacian_length_(lap.laplacian_length_),</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  delta_(lap.delta_),</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  mimetic_threshold_(lap.mimetic_threshold_),</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  mimetic_measure_(lap.mimetic_measure_),</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  sums_rows_mim_bndy_(lap.sums_rows_mim_bndy_) {}</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
+<div class="line"><a name="l00130"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#ac0cb868243a66658cc46de5b818fa4e8">  130</a></span>&#160;<a class="code" href="classmtk_1_1Lap1D.html#ac0cb868243a66658cc46de5b818fa4e8">mtk::Lap1D::~Lap1D</a>() {</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <span class="keyword">delete</span> [] laplacian_;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  laplacian_ = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
 <div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keywordflow">return</span> delta_;</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div>
-<div class="line"><a name="l00139"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#a685dcba88c08cf5b7b6c2aa4669a472c">  139</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classmtk_1_1Lap1D.html#a685dcba88c08cf5b7b6c2aa4669a472c">mtk::Lap1D::ConstructLap1D</a>(<span class="keywordtype">int</span> order_accuracy,</div>
-<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;                                <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> mimetic_threshold) {</div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(order_accuracy &lt; 2, __FILE__, __LINE__, __func__);</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>((order_accuracy%2) != 0, __FILE__, __LINE__, __func__);</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(mimetic_threshold &lt;= <a class="code" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a>,</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;                      __FILE__, __LINE__, __func__);</div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#ae3490534a9e950df3f81b3840c31b13a">  136</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="classmtk_1_1Lap1D.html#ae3490534a9e950df3f81b3840c31b13a">mtk::Lap1D::order_accuracy</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  <span class="keywordflow">return</span> order_accuracy_;</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#a957ae4ff6053d605ac7b93650ad6f188">  141</a></span>&#160;<a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> <a class="code" href="classmtk_1_1Lap1D.html#a957ae4ff6053d605ac7b93650ad6f188">mtk::Lap1D::mimetic_threshold</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="keywordflow">return</span> mimetic_threshold_;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;}</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#a4e16e80c6dd845ac42bda23385a1c56e">  146</a></span>&#160;<a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> <a class="code" href="classmtk_1_1Lap1D.html#a4e16e80c6dd845ac42bda23385a1c56e">mtk::Lap1D::delta</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordflow">if</span> (order_accuracy &gt;= <a class="code" href="group__c01-roots.html#ga0898eef2108473e44a5223932d571c31">mtk::kCriticalOrderAccuracyDiv</a>) {</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;WARNING: Numerical accuracy is high.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  }</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;order_accuracy_ = &quot;</span> &lt;&lt; order_accuracy &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;mimetic_threshold_ = &quot;</span> &lt;&lt; mimetic_threshold &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  order_accuracy_ = order_accuracy;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  mimetic_threshold_ = mimetic_threshold;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <a class="code" href="classmtk_1_1Grad1D.html">mtk::Grad1D</a> grad; <span class="comment">// Mimetic gradient.</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <span class="keywordtype">bool</span> info = grad.<a class="code" href="classmtk_1_1Grad1D.html#a74ef5245cfae6fd158bd7f563a0c2e52">ConstructGrad1D</a>(order_accuracy_, mimetic_threshold_);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordflow">return</span> delta_;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;</div>
+<div class="line"><a name="l00151"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#a685dcba88c08cf5b7b6c2aa4669a472c">  151</a></span>&#160;<span class="keywordtype">bool</span> <a class="code" href="classmtk_1_1Lap1D.html#a685dcba88c08cf5b7b6c2aa4669a472c">mtk::Lap1D::ConstructLap1D</a>(<span class="keywordtype">int</span> order_accuracy,</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;                                <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> mimetic_threshold) {</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(order_accuracy &lt; 2, __FILE__, __LINE__, __func__);</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>((order_accuracy%2) != 0, __FILE__, __LINE__, __func__);</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(mimetic_threshold &lt;= <a class="code" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a>,</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;                      __FILE__, __LINE__, __func__);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordflow">if</span> (order_accuracy &gt;= <a class="code" href="group__c01-roots.html#ga0898eef2108473e44a5223932d571c31">mtk::kCriticalOrderAccuracyDiv</a>) {</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;WARNING: Numerical accuracy is high.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  }</div>
 <div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keywordflow">if</span> (!info) {</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Mimetic grad could not be built.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  }</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;order_accuracy_ = &quot;</span> &lt;&lt; order_accuracy &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;mimetic_threshold_ = &quot;</span> &lt;&lt; mimetic_threshold &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  order_accuracy_ = order_accuracy;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  mimetic_threshold_ = mimetic_threshold;</div>
 <div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <a class="code" href="classmtk_1_1Div1D.html">mtk::Div1D</a> div; <span class="comment">// Mimetic divergence.</span></div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  info = div.<a class="code" href="classmtk_1_1Div1D.html#a52fcd1542f11e606e36bd188e48bfdf7">ConstructDiv1D</a>(order_accuracy_, mimetic_threshold_);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <span class="keywordflow">if</span> (!info) {</div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Mimetic div could not be built.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  }</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  <span class="comment">// Since these are mimetic operator, we must multiply the matrices arising</span></div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <span class="comment">// from both the divergence and the Laplacian, in order to get the</span></div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  <span class="comment">// approximating coefficients for the Laplacian operator.</span></div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  <span class="comment">// However, we must choose a grid that implied a step size of 1, so to get</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  <span class="comment">// the approximating coefficients, without being affected from the</span></div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  <span class="comment">// normalization with respect to the grid (dimensionless).</span></div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  <span class="comment">// Also, the grid must be of the minimum size to support the requested order</span></div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <span class="comment">// of accuracy. We must please the divergence for this!</span></div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <a class="code" href="classmtk_1_1UniStgGrid1D.html">mtk::UniStgGrid1D</a> aux(<a class="code" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a>,</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                        (<a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a>) 3*order_accuracy_ - 1,</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                        3*order_accuracy_ - 1);</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;<span class="preprocessor">  #if MTK_VERBOSE_LEVEL &gt; 2</span></div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;aux =&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  std::cout &lt;&lt; aux &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;aux.delta_x() = &quot;</span> &lt;&lt; aux.<a class="code" href="classmtk_1_1UniStgGrid1D.html#a6e7173b01241632cf509496d66b9f74c">delta_x</a>() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  std::cout &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> grad_m(grad.<a class="code" href="classmtk_1_1Grad1D.html#a77b2eddbe4ab03f469306c604d505b1a">ReturnAsDenseMatrix</a>(aux));</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;<span class="preprocessor">  #if MTK_VERBOSE_LEVEL &gt; 4</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;grad_m =&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  std::cout &lt;&lt; grad_m &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> div_m(div.<a class="code" href="classmtk_1_1Div1D.html#a213fddbaaf86e4840c6a9649b69c2d49">ReturnAsDenseMatrix</a>(aux));</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;<span class="preprocessor">  #if MTK_VERBOSE_LEVEL &gt; 4</span></div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;div_m =&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  std::cout &lt;&lt; div_m &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  <a class="code" href="classmtk_1_1Grad1D.html">mtk::Grad1D</a> grad; <span class="comment">// Mimetic gradient.</span></div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  <span class="keywordtype">bool</span> info = grad.<a class="code" href="classmtk_1_1Grad1D.html#a74ef5245cfae6fd158bd7f563a0c2e52">ConstructGrad1D</a>(order_accuracy_, mimetic_threshold_);</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  <span class="keywordflow">if</span> (!info) {</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Mimetic grad could not be built.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  }</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  <a class="code" href="classmtk_1_1Div1D.html">mtk::Div1D</a> div; <span class="comment">// Mimetic divergence.</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  info = div.<a class="code" href="classmtk_1_1Div1D.html#a52fcd1542f11e606e36bd188e48bfdf7">ConstructDiv1D</a>(order_accuracy_, mimetic_threshold_);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  <span class="keywordflow">if</span> (!info) {</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Mimetic div could not be built.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  }</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="comment">// Since these are mimetic operator, we must multiply the matrices arising</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="comment">// from both the divergence and the Laplacian, in order to get the</span></div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="comment">// approximating coefficients for the Laplacian operator.</span></div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  <span class="comment">// However, we must choose a grid that implied a step size of 1, so to get</span></div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  <span class="comment">// the approximating coefficients, without being affected from the</span></div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="comment">// normalization with respect to the grid (dimensionless).</span></div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  <span class="comment">// Also, the grid must be of the minimum size to support the requested order</span></div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  <span class="comment">// of accuracy. We must please the divergence for this!</span></div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  <a class="code" href="classmtk_1_1UniStgGrid1D.html">mtk::UniStgGrid1D</a> aux(<a class="code" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a>,</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                        (<a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a>) 3*order_accuracy_ - 1,</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                        3*order_accuracy_ - 1);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;<span class="preprocessor">  #if MTK_VERBOSE_LEVEL &gt; 2</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;aux =&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;  std::cout &lt;&lt; aux &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;aux.delta_x() = &quot;</span> &lt;&lt; aux.<a class="code" href="classmtk_1_1UniStgGrid1D.html#a6e7173b01241632cf509496d66b9f74c">delta_x</a>() &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> grad_m(grad.<a class="code" href="classmtk_1_1Grad1D.html#a77b2eddbe4ab03f469306c604d505b1a">ReturnAsDenseMatrix</a>(aux));</div>
 <div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> lap; <span class="comment">// Laplacian matrix to hold to computed coefficients.</span></div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  lap = <a class="code" href="classmtk_1_1BLASAdapter.html#acebd0e9bfe0bdd609c7fbea98ccfd3b5">mtk::BLASAdapter::RealDenseMM</a>(div_m, grad_m);</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;<span class="preprocessor">  #if MTK_VERBOSE_LEVEL &gt; 4</span></div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;lap =&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  std::cout &lt;&lt; lap &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  <span class="comment">// The output array will have this form:</span></div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <span class="comment">// 1. The first entry of the array will contain the used order kk.</span></div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  <span class="comment">// 2. The second entry of the array will contain the collection of</span></div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  <span class="comment">// approximating coefficients for the interior of the grid.</span></div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  <span class="comment">// 3. The next entries will contain the collections of approximating</span></div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <span class="comment">// coefficients for the west boundary of the grid.</span></div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  laplacian_length_ = 1 + (2*order_accuracy_ - 1) +</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;    (order_accuracy_ - 1)*(2*order_accuracy_);</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;<span class="preprocessor">  #if MTK_VERBOSE_LEVEL &gt; 4</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;grad_m =&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;  std::cout &lt;&lt; grad_m &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> div_m(div.<a class="code" href="classmtk_1_1Div1D.html#a213fddbaaf86e4840c6a9649b69c2d49">ReturnAsDenseMatrix</a>(aux));</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;<span class="preprocessor">  #if MTK_VERBOSE_LEVEL &gt; 4</span></div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;div_m =&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  std::cout &lt;&lt; div_m &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> lap; <span class="comment">// Laplacian matrix to hold to computed coefficients.</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  lap = <a class="code" href="classmtk_1_1BLASAdapter.html#acebd0e9bfe0bdd609c7fbea98ccfd3b5">mtk::BLASAdapter::RealDenseMM</a>(div_m, grad_m);</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;<span class="preprocessor">  #if MTK_VERBOSE_LEVEL &gt; 4</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;lap =&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  std::cout &lt;&lt; lap &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;</div>
 <div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;<span class="preprocessor">  #if MTK_VERBOSE_LEVEL &gt; 2</span></div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;laplacian_length_ = &quot;</span> &lt;&lt; laplacian_length_ &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  std::cout &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;<span class="preprocessor">  #endif</span></div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  <span class="keywordflow">try</span> {</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    laplacian_ = <span class="keyword">new</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a>[laplacian_length_];</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  } <span class="keywordflow">catch</span> (std::bad_alloc &amp;memory_allocation_exception) {</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Memory allocation exception on line &quot;</span> &lt;&lt; __LINE__ - 3 &lt;&lt;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;      std::endl;</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    std::cerr &lt;&lt; memory_allocation_exception.what() &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  }</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  memset(laplacian_, <a class="code" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a>, <span class="keyword">sizeof</span>(laplacian_[0])*laplacian_length_);</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  laplacian_[0] = order_accuracy_;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;</div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 0; ii &lt; 2*order_accuracy_ - 1; ++ii) {</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    laplacian_[ii + 1] = lap.<a class="code" href="classmtk_1_1DenseMatrix.html#a4b23ecbebd970b5eea915dbb50691024">GetValue</a>(1 + (order_accuracy_ - 1), ii + 1);</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  <span class="comment">// The output array will have this form:</span></div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  <span class="comment">// 1. The first entry of the array will contain the used order kk.</span></div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <span class="comment">// 2. The second entry of the array will contain the collection of</span></div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  <span class="comment">// approximating coefficients for the interior of the grid.</span></div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  <span class="comment">// 3. The next entries will contain the collections of approximating</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  <span class="comment">// coefficients for the west boundary of the grid.</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  laplacian_length_ = 1 + (2*order_accuracy_ - 1) +</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    (order_accuracy_ - 1)*(2*order_accuracy_);</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="preprocessor">  #if MTK_VERBOSE_LEVEL &gt; 2</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;laplacian_length_ = &quot;</span> &lt;&lt; laplacian_length_ &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  <span class="keywordflow">try</span> {</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    laplacian_ = <span class="keyword">new</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a>[laplacian_length_];</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  } <span class="keywordflow">catch</span> (std::bad_alloc &amp;memory_allocation_exception) {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Memory allocation exception on line &quot;</span> &lt;&lt; __LINE__ - 3 &lt;&lt;</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;      std::endl;</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;    std::cerr &lt;&lt; memory_allocation_exception.what() &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  }</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;</div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  <span class="keyword">auto</span> offset = 1 + (2*order_accuracy_ - 1);</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 0; ii &lt; order_accuracy_ - 1; ++ii) {</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;    sums_rows_mim_bndy_.push_back(<a class="code" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a>);</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> jj = 0; jj &lt; 2*order_accuracy_; ++jj) {</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;      <span class="keyword">register</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> aux{lap.<a class="code" href="classmtk_1_1DenseMatrix.html#a4b23ecbebd970b5eea915dbb50691024">GetValue</a>(1 + ii,jj)};</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;      laplacian_[offset + ii*(2*order_accuracy_) + jj] = aux;</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;      sums_rows_mim_bndy_[ii] += aux;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;    }</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;  }</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  delta_ = <a class="code" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a>;</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;}</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
-<div class="line"><a name="l00292"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#ad0f976d32700cd8b46aa99f5a8d9e38b">  292</a></span>&#160;std::vector&lt;mtk::Real&gt; <a class="code" href="classmtk_1_1Lap1D.html#ad0f976d32700cd8b46aa99f5a8d9e38b">mtk::Lap1D::sums_rows_mim_bndy</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  <span class="keywordflow">return</span> sums_rows_mim_bndy_;</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;}</div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;</div>
-<div class="line"><a name="l00297"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#aaea34a17b0879e05eb4109645a2ba8f4">  297</a></span>&#160;<a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> <a class="code" href="classmtk_1_1Lap1D.html#aaea34a17b0879e05eb4109645a2ba8f4">mtk::Lap1D::ReturnAsDenseMatrix</a>(</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  <span class="keyword">const</span> <a class="code" href="classmtk_1_1UniStgGrid1D.html">UniStgGrid1D</a> &amp;grid)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <span class="keywordtype">int</span> nn{grid.<a class="code" href="classmtk_1_1UniStgGrid1D.html#af1b3729d8afa07be5b2775ed68015b80">num_cells_x</a>()};  <span class="comment">// Number of cells on the grid.</span></div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  memset(laplacian_, <a class="code" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a>, <span class="keyword">sizeof</span>(laplacian_[0])*laplacian_length_);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  laplacian_[0] = order_accuracy_;</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 0; ii &lt; 2*order_accuracy_ - 1; ++ii) {</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    laplacian_[ii + 1] = lap.<a class="code" href="classmtk_1_1DenseMatrix.html#a4b23ecbebd970b5eea915dbb50691024">GetValue</a>(1 + (order_accuracy_ - 1), ii + 1);</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  }</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;</div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  <span class="keyword">auto</span> offset = 1 + (2*order_accuracy_ - 1);</div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 0; ii &lt; order_accuracy_ - 1; ++ii) {</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    sums_rows_mim_bndy_.push_back(<a class="code" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a>);</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> jj = 0; jj &lt; 2*order_accuracy_; ++jj) {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;      <span class="keyword">register</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> aux{lap.<a class="code" href="classmtk_1_1DenseMatrix.html#a4b23ecbebd970b5eea915dbb50691024">GetValue</a>(1 + ii,jj)};</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;      laplacian_[offset + ii*(2*order_accuracy_) + jj] = aux;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;      sums_rows_mim_bndy_[ii] += aux;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    }</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  }</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;    mimetic_measure_ = *std::max_element(sums_rows_mim_bndy_.begin(),</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;                                      sums_rows_mim_bndy_.end());</div>
 <div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(nn &lt;= 0, __FILE__, __LINE__, __func__);</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(nn &lt; 3*order_accuracy_ - 1, __FILE__, __LINE__, __func__);</div>
-<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;<span class="preprocessor">  #endif</span></div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  delta_ = <a class="code" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a>;</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;}</div>
 <div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;</div>
-<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> lap(nn + 2, nn + 2); <span class="comment">// Laplacian matrix to be returned.</span></div>
+<div class="line"><a name="l00307"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#ad0f976d32700cd8b46aa99f5a8d9e38b">  307</a></span>&#160;std::vector&lt;mtk::Real&gt; <a class="code" href="classmtk_1_1Lap1D.html#ad0f976d32700cd8b46aa99f5a8d9e38b">mtk::Lap1D::sums_rows_mim_bndy</a>()<span class="keyword"> const </span>{</div>
 <div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;</div>
-<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  delta_ = grid.<a class="code" href="classmtk_1_1UniStgGrid1D.html#a6e7173b01241632cf509496d66b9f74c">delta_x</a>();</div>
-<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;</div>
-<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> idx{<a class="code" href="group__c01-roots.html#ga26407c24d43b6b95480943340d285c71">mtk::kOne</a>/(grid.<a class="code" href="classmtk_1_1UniStgGrid1D.html#a6e7173b01241632cf509496d66b9f74c">delta_x</a>()*grid.<a class="code" href="classmtk_1_1UniStgGrid1D.html#a6e7173b01241632cf509496d66b9f74c">delta_x</a>())}; <span class="comment">// Inverse of dx^2.</span></div>
-<div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  <span class="keyword">auto</span> offset = (1 + 2*order_accuracy_ - 1);</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  <span class="keywordflow">return</span> sums_rows_mim_bndy_;</div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;}</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;</div>
+<div class="line"><a name="l00312"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#a10a426657cccd1d6b25fbb58ed472d6f">  312</a></span>&#160;<a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> <a class="code" href="classmtk_1_1Lap1D.html#a10a426657cccd1d6b25fbb58ed472d6f">mtk::Lap1D::mimetic_measure</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;</div>
+<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <span class="keywordflow">return</span> mimetic_measure_;</div>
+<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;}</div>
 <div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 0; ii &lt; order_accuracy_ - 1; ++ii) {</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> jj = 0; jj &lt; 2*order_accuracy_; ++jj) {</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;      lap.<a class="code" href="classmtk_1_1DenseMatrix.html#a784ce5784109ac86bfb9d8562b334b13">SetValue</a>(1 + ii,</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;                   jj,</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;                   idx*laplacian_[offset + ii*2*order_accuracy_ + jj]);</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    }</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  }</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;</div>
+<div class="line"><a name="l00317"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#aaea34a17b0879e05eb4109645a2ba8f4">  317</a></span>&#160;<a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> <a class="code" href="classmtk_1_1Lap1D.html#aaea34a17b0879e05eb4109645a2ba8f4">mtk::Lap1D::ReturnAsDenseMatrix</a>(</div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;  <span class="keyword">const</span> <a class="code" href="classmtk_1_1UniStgGrid1D.html">UniStgGrid1D</a> &amp;grid)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  <span class="keywordtype">int</span> nn{grid.<a class="code" href="classmtk_1_1UniStgGrid1D.html#af1b3729d8afa07be5b2775ed68015b80">num_cells_x</a>()};  <span class="comment">// Number of cells on the grid.</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;<span class="preprocessor">  #ifdef MTK_PERFORM_PREVENTIONS</span></div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(nn &lt;= 0, __FILE__, __LINE__, __func__);</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <a class="code" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a>(nn &lt; 3*order_accuracy_ - 1, __FILE__, __LINE__, __func__);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;<span class="preprocessor">  #endif</span></div>
 <div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  offset = 1 + (order_accuracy_ - 1);</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> lap(nn + 2, nn + 2); <span class="comment">// Laplacian matrix to be returned.</span></div>
 <div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  <span class="keywordtype">int</span> kk{1};</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = order_accuracy_; ii &lt;= nn - (order_accuracy_ - 1); ++ii) {</div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;    <span class="keywordtype">int</span> mm{1};</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> jj = 0; jj &lt; 2*order_accuracy_ - 1; ++jj) {</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;      lap.<a class="code" href="classmtk_1_1DenseMatrix.html#a784ce5784109ac86bfb9d8562b334b13">SetValue</a>(ii, jj + kk, idx*laplacian_[mm]);</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;      mm = mm + 1;</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;    }</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;    kk = kk + 1;</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  }</div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;  offset = (1 + 2*order_accuracy_ - 1);</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  <span class="keyword">auto</span> aux = order_accuracy_ + (nn - 2*(order_accuracy_ - 1));</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;  delta_ = grid.<a class="code" href="classmtk_1_1UniStgGrid1D.html#a6e7173b01241632cf509496d66b9f74c">delta_x</a>();</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> idx{<a class="code" href="group__c01-roots.html#ga26407c24d43b6b95480943340d285c71">mtk::kOne</a>/(grid.<a class="code" href="classmtk_1_1UniStgGrid1D.html#a6e7173b01241632cf509496d66b9f74c">delta_x</a>()*grid.<a class="code" href="classmtk_1_1UniStgGrid1D.html#a6e7173b01241632cf509496d66b9f74c">delta_x</a>())}; <span class="comment">// Inverse of dx^2.</span></div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;</div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  <span class="keyword">auto</span> offset = (1 + 2*order_accuracy_ - 1);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = 0; ii &lt; order_accuracy_ - 1; ++ii) {</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> jj = 0; jj &lt; 2*order_accuracy_; ++jj) {</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;      lap.<a class="code" href="classmtk_1_1DenseMatrix.html#a784ce5784109ac86bfb9d8562b334b13">SetValue</a>(1 + ii,</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;                   jj,</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;                   idx*laplacian_[offset + ii*2*order_accuracy_ + jj]);</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;    }</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;  }</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  <span class="keyword">auto</span> ll = 1;</div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  <span class="keyword">auto</span> rr = 1;</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = nn; ii &gt; aux - 1; --ii) {</div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;    <span class="keyword">auto</span> cc = 0;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> jj = nn + 2 - 1; jj &gt;= (nn + 2) - 2*order_accuracy_; --jj) {</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;      lap.<a class="code" href="classmtk_1_1DenseMatrix.html#a784ce5784109ac86bfb9d8562b334b13">SetValue</a>(ii, jj, lap.<a class="code" href="classmtk_1_1DenseMatrix.html#a4b23ecbebd970b5eea915dbb50691024">GetValue</a>(rr,cc));</div>
-<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;      ++ll;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;      ++cc;</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;    }</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;    rr++;</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;  }</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;</div>
-<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  <span class="keywordflow">return</span> lap;</div>
-<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;}</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;</div>
-<div class="line"><a name="l00367"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#ab2652725a8407c79247680c7bbd073b8">  367</a></span>&#160;<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a>* <a class="code" href="classmtk_1_1Lap1D.html#ab2652725a8407c79247680c7bbd073b8">mtk::Lap1D::data</a>(<span class="keyword">const</span> <a class="code" href="classmtk_1_1UniStgGrid1D.html">UniStgGrid1D</a> &amp;grid)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;</div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> tmp;</div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;  tmp = ReturnAsDenseMatrix(grid);</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;  <span class="keywordflow">return</span> tmp.<a class="code" href="classmtk_1_1DenseMatrix.html#a0c33b8a9e01d157c61ddbdf807c25d84">data</a>();</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;}</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;  offset = 1 + (order_accuracy_ - 1);</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  <span class="keywordtype">int</span> kk{1};</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = order_accuracy_; ii &lt;= nn - (order_accuracy_ - 1); ++ii) {</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;    <span class="keywordtype">int</span> mm{1};</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> jj = 0; jj &lt; 2*order_accuracy_ - 1; ++jj) {</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;      lap.<a class="code" href="classmtk_1_1DenseMatrix.html#a784ce5784109ac86bfb9d8562b334b13">SetValue</a>(ii, jj + kk, idx*laplacian_[mm]);</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;      mm = mm + 1;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;    }</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;    kk = kk + 1;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  }</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;  offset = (1 + 2*order_accuracy_ - 1);</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  <span class="keyword">auto</span> aux = order_accuracy_ + (nn - 2*(order_accuracy_ - 1));</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  <span class="keyword">auto</span> ll = 1;</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  <span class="keyword">auto</span> rr = 1;</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;  <span class="keywordflow">for</span> (<span class="keyword">auto</span> ii = nn; ii &gt; aux - 1; --ii) {</div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;    <span class="keyword">auto</span> cc = 0;</div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> jj = nn + 2 - 1; jj &gt;= (nn + 2) - 2*order_accuracy_; --jj) {</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;      lap.<a class="code" href="classmtk_1_1DenseMatrix.html#a784ce5784109ac86bfb9d8562b334b13">SetValue</a>(ii, jj, lap.<a class="code" href="classmtk_1_1DenseMatrix.html#a4b23ecbebd970b5eea915dbb50691024">GetValue</a>(rr,cc));</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;      ++ll;</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;      ++cc;</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;    }</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;    rr++;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;  }</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  <span class="keywordflow">return</span> lap;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;}</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;</div>
+<div class="line"><a name="l00387"></a><span class="lineno"><a class="line" href="classmtk_1_1Lap1D.html#ab2652725a8407c79247680c7bbd073b8">  387</a></span>&#160;<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a>* <a class="code" href="classmtk_1_1Lap1D.html#ab2652725a8407c79247680c7bbd073b8">mtk::Lap1D::data</a>(<span class="keyword">const</span> <a class="code" href="classmtk_1_1UniStgGrid1D.html">UniStgGrid1D</a> &amp;grid)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;</div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> tmp;</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;</div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  tmp = ReturnAsDenseMatrix(grid);</div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;  <span class="keywordflow">return</span> tmp.<a class="code" href="classmtk_1_1DenseMatrix.html#a0c33b8a9e01d157c61ddbdf807c25d84">data</a>();</div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;}</div>
 <div class="ttc" id="mtk__lap__1d_8h_html"><div class="ttname"><a href="mtk__lap__1d_8h.html">mtk_lap_1d.h</a></div><div class="ttdoc">Includes the definition of the class Lap1D. </div></div>
-<div class="ttc" id="classmtk_1_1Lap1D_html_ad0f976d32700cd8b46aa99f5a8d9e38b"><div class="ttname"><a href="classmtk_1_1Lap1D.html#ad0f976d32700cd8b46aa99f5a8d9e38b">mtk::Lap1D::sums_rows_mim_bndy</a></div><div class="ttdeci">std::vector&lt; Real &gt; sums_rows_mim_bndy() const </div><div class="ttdoc">Return collection of row-sums mimetic approximations at the boundary. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00292">mtk_lap_1d.cc:292</a></div></div>
+<div class="ttc" id="classmtk_1_1Lap1D_html_ad0f976d32700cd8b46aa99f5a8d9e38b"><div class="ttname"><a href="classmtk_1_1Lap1D.html#ad0f976d32700cd8b46aa99f5a8d9e38b">mtk::Lap1D::sums_rows_mim_bndy</a></div><div class="ttdeci">std::vector&lt; Real &gt; sums_rows_mim_bndy() const </div><div class="ttdoc">Return collection of row-sums mimetic approximations at the boundary. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00307">mtk_lap_1d.cc:307</a></div></div>
 <div class="ttc" id="group__c01-roots_html_ga0898eef2108473e44a5223932d571c31"><div class="ttname"><a href="group__c01-roots.html#ga0898eef2108473e44a5223932d571c31">mtk::kCriticalOrderAccuracyDiv</a></div><div class="ttdeci">const int kCriticalOrderAccuracyDiv</div><div class="ttdoc">At this order (and higher) we must use the CBSA to construct divergences. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00186">mtk_roots.h:186</a></div></div>
 <div class="ttc" id="classmtk_1_1Lap1D_html"><div class="ttname"><a href="classmtk_1_1Lap1D.html">mtk::Lap1D</a></div><div class="ttdoc">Implements a 1D mimetic Laplacian operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8h_source.html#l00078">mtk_lap_1d.h:78</a></div></div>
 <div class="ttc" id="classmtk_1_1Tools_html_a332324c6f25e66be9dff48c5987a3b9f"><div class="ttname"><a href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f">mtk::Tools::Prevent</a></div><div class="ttdeci">static void Prevent(const bool complement, const char *const fname, int lineno, const char *const fxname) noexcept</div><div class="ttdoc">Enforces preconditions by preventing their complements from occur. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__tools_8cc_source.html#l00062">mtk_tools.cc:62</a></div></div>
-<div class="ttc" id="classmtk_1_1Lap1D_html_a957ae4ff6053d605ac7b93650ad6f188"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a957ae4ff6053d605ac7b93650ad6f188">mtk::Lap1D::mimetic_threshold</a></div><div class="ttdeci">Real mimetic_threshold() const </div><div class="ttdoc">Mimetic threshold used in the CBS algorithm to construct this operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00129">mtk_lap_1d.cc:129</a></div></div>
+<div class="ttc" id="classmtk_1_1Lap1D_html_a957ae4ff6053d605ac7b93650ad6f188"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a957ae4ff6053d605ac7b93650ad6f188">mtk::Lap1D::mimetic_threshold</a></div><div class="ttdeci">Real mimetic_threshold() const </div><div class="ttdoc">Mimetic threshold used in the CBS algorithm to construct this operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00141">mtk_lap_1d.cc:141</a></div></div>
 <div class="ttc" id="mtk__div__1d_8h_html"><div class="ttname"><a href="mtk__div__1d_8h.html">mtk_div_1d.h</a></div><div class="ttdoc">Includes the definition of the class Div1D. </div></div>
 <div class="ttc" id="group__c01-roots_html_gac080bbbf5cbb5502c9f00405f894857d"><div class="ttname"><a href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a></div><div class="ttdeci">float Real</div><div class="ttdoc">Users can simply change this to build a double- or single-precision MTK. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00093">mtk_roots.h:93</a></div></div>
-<div class="ttc" id="classmtk_1_1Lap1D_html_a685dcba88c08cf5b7b6c2aa4669a472c"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a685dcba88c08cf5b7b6c2aa4669a472c">mtk::Lap1D::ConstructLap1D</a></div><div class="ttdeci">bool ConstructLap1D(int order_accuracy=kDefaultOrderAccuracy, Real mimetic_threshold=kDefaultMimeticThreshold)</div><div class="ttdoc">Factory method implementing the CBS Algorithm to build operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00139">mtk_lap_1d.cc:139</a></div></div>
+<div class="ttc" id="classmtk_1_1Lap1D_html_a685dcba88c08cf5b7b6c2aa4669a472c"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a685dcba88c08cf5b7b6c2aa4669a472c">mtk::Lap1D::ConstructLap1D</a></div><div class="ttdeci">bool ConstructLap1D(int order_accuracy=kDefaultOrderAccuracy, Real mimetic_threshold=kDefaultMimeticThreshold)</div><div class="ttdoc">Factory method implementing the CBS Algorithm to build operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00151">mtk_lap_1d.cc:151</a></div></div>
 <div class="ttc" id="classmtk_1_1Grad1D_html"><div class="ttname"><a href="classmtk_1_1Grad1D.html">mtk::Grad1D</a></div><div class="ttdoc">Implements a 1D mimetic gradient operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__1d_8h_source.html#l00083">mtk_grad_1d.h:83</a></div></div>
 <div class="ttc" id="mtk__grad__1d_8h_html"><div class="ttname"><a href="mtk__grad__1d_8h.html">mtk_grad_1d.h</a></div><div class="ttdoc">Includes the definition of the class Grad1D. </div></div>
 <div class="ttc" id="namespacemtk_html"><div class="ttname"><a href="namespacemtk.html">mtk</a></div><div class="ttdoc">Mimetic Methods Toolkit namespace. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__blas__adapter_8h_source.html#l00076">mtk_blas_adapter.h:76</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid1D_html_a6e7173b01241632cf509496d66b9f74c"><div class="ttname"><a href="classmtk_1_1UniStgGrid1D.html#a6e7173b01241632cf509496d66b9f74c">mtk::UniStgGrid1D::delta_x</a></div><div class="ttdeci">Real delta_x() const </div><div class="ttdoc">Provides access to the computed $  x $. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__1d_8cc_source.html#l00156">mtk_uni_stg_grid_1d.cc:156</a></div></div>
-<div class="ttc" id="classmtk_1_1Lap1D_html_a4e16e80c6dd845ac42bda23385a1c56e"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a4e16e80c6dd845ac42bda23385a1c56e">mtk::Lap1D::delta</a></div><div class="ttdeci">Real delta() const </div><div class="ttdoc">Value of  used be scaled. If 0, then dimensionless. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00134">mtk_lap_1d.cc:134</a></div></div>
-<div class="ttc" id="classmtk_1_1Lap1D_html_aaea34a17b0879e05eb4109645a2ba8f4"><div class="ttname"><a href="classmtk_1_1Lap1D.html#aaea34a17b0879e05eb4109645a2ba8f4">mtk::Lap1D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &amp;grid) const </div><div class="ttdoc">Return the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00297">mtk_lap_1d.cc:297</a></div></div>
+<div class="ttc" id="classmtk_1_1Lap1D_html_a4e16e80c6dd845ac42bda23385a1c56e"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a4e16e80c6dd845ac42bda23385a1c56e">mtk::Lap1D::delta</a></div><div class="ttdeci">Real delta() const </div><div class="ttdoc">Value of  used be scaled. If 0, then dimensionless. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00146">mtk_lap_1d.cc:146</a></div></div>
+<div class="ttc" id="classmtk_1_1Lap1D_html_aaea34a17b0879e05eb4109645a2ba8f4"><div class="ttname"><a href="classmtk_1_1Lap1D.html#aaea34a17b0879e05eb4109645a2ba8f4">mtk::Lap1D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &amp;grid) const </div><div class="ttdoc">Return the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00317">mtk_lap_1d.cc:317</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid1D_html_af1b3729d8afa07be5b2775ed68015b80"><div class="ttname"><a href="classmtk_1_1UniStgGrid1D.html#af1b3729d8afa07be5b2775ed68015b80">mtk::UniStgGrid1D::num_cells_x</a></div><div class="ttdeci">int num_cells_x() const </div><div class="ttdoc">Provides access to the number of cells of the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__1d_8cc_source.html#l00171">mtk_uni_stg_grid_1d.cc:171</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid1D_html"><div class="ttname"><a href="classmtk_1_1UniStgGrid1D.html">mtk::UniStgGrid1D</a></div><div class="ttdoc">Uniform 1D Staggered Grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__1d_8h_source.html#l00077">mtk_uni_stg_grid_1d.h:77</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_a0c33b8a9e01d157c61ddbdf807c25d84"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#a0c33b8a9e01d157c61ddbdf807c25d84">mtk::DenseMatrix::data</a></div><div class="ttdeci">Real * data() const noexcept</div><div class="ttdoc">Provides access to the matrix value array. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00349">mtk_dense_matrix.cc:349</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a></div><div class="ttdoc">Defines a common dense matrix, using a 1D array. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8h_source.html#l00092">mtk_dense_matrix.h:92</a></div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_a4b23ecbebd970b5eea915dbb50691024"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#a4b23ecbebd970b5eea915dbb50691024">mtk::DenseMatrix::GetValue</a></div><div class="ttdeci">Real GetValue(const int &amp;row_coord, const int &amp;col_coord) const noexcept</div><div class="ttdoc">Gets a value on the given coordinates. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00354">mtk_dense_matrix.cc:354</a></div></div>
-<div class="ttc" id="classmtk_1_1Lap1D_html_ac0cb868243a66658cc46de5b818fa4e8"><div class="ttname"><a href="classmtk_1_1Lap1D.html#ac0cb868243a66658cc46de5b818fa4e8">mtk::Lap1D::~Lap1D</a></div><div class="ttdeci">~Lap1D()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00118">mtk_lap_1d.cc:118</a></div></div>
+<div class="ttc" id="classmtk_1_1Lap1D_html_ac0cb868243a66658cc46de5b818fa4e8"><div class="ttname"><a href="classmtk_1_1Lap1D.html#ac0cb868243a66658cc46de5b818fa4e8">mtk::Lap1D::~Lap1D</a></div><div class="ttdeci">~Lap1D()</div><div class="ttdoc">Destructor. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00130">mtk_lap_1d.cc:130</a></div></div>
 <div class="ttc" id="classmtk_1_1BLASAdapter_html_acebd0e9bfe0bdd609c7fbea98ccfd3b5"><div class="ttname"><a href="classmtk_1_1BLASAdapter.html#acebd0e9bfe0bdd609c7fbea98ccfd3b5">mtk::BLASAdapter::RealDenseMM</a></div><div class="ttdeci">static DenseMatrix RealDenseMM(DenseMatrix &amp;aa, DenseMatrix &amp;bb)</div><div class="ttdoc">Real-Arithmetic General (Dense matrices) Matrix-Matrix multiplier. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__blas__adapter_8cc_source.html#l00412">mtk_blas_adapter.cc:412</a></div></div>
-<div class="ttc" id="classmtk_1_1Div1D_html_a213fddbaaf86e4840c6a9649b69c2d49"><div class="ttname"><a href="classmtk_1_1Div1D.html#a213fddbaaf86e4840c6a9649b69c2d49">mtk::Div1D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &amp;grid) const </div><div class="ttdoc">Return the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__div__1d_8cc_source.html#l00368">mtk_div_1d.cc:368</a></div></div>
-<div class="ttc" id="classmtk_1_1Lap1D_html_a81d34a48cead4d5a2358581b1ff44252"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a81d34a48cead4d5a2358581b1ff44252">mtk::Lap1D::sums_rows_mim_bndy_</a></div><div class="ttdeci">std::vector&lt; Real &gt; sums_rows_mim_bndy_</div><div class="ttdoc">Sum of each mimetic boundary row. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8h_source.html#l00156">mtk_lap_1d.h:156</a></div></div>
+<div class="ttc" id="classmtk_1_1Div1D_html_a213fddbaaf86e4840c6a9649b69c2d49"><div class="ttname"><a href="classmtk_1_1Div1D.html#a213fddbaaf86e4840c6a9649b69c2d49">mtk::Div1D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &amp;grid) const </div><div class="ttdoc">Return the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__div__1d_8cc_source.html#l00382">mtk_div_1d.cc:382</a></div></div>
+<div class="ttc" id="classmtk_1_1Lap1D_html_a81d34a48cead4d5a2358581b1ff44252"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a81d34a48cead4d5a2358581b1ff44252">mtk::Lap1D::sums_rows_mim_bndy_</a></div><div class="ttdeci">std::vector&lt; Real &gt; sums_rows_mim_bndy_</div><div class="ttdoc">Sum of each mimetic boundary row. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8h_source.html#l00164">mtk_lap_1d.h:164</a></div></div>
 <div class="ttc" id="mtk__tools_8h_html"><div class="ttname"><a href="mtk__tools_8h.html">mtk_tools.h</a></div><div class="ttdoc">Tool manager class. </div></div>
 <div class="ttc" id="group__c01-roots_html_ga35718d949bdc81a08a9cc8ebbe3478a2"><div class="ttname"><a href="group__c01-roots.html#ga35718d949bdc81a08a9cc8ebbe3478a2">mtk::kDefaultMimeticThreshold</a></div><div class="ttdeci">const float kDefaultMimeticThreshold</div><div class="ttdoc">Default tolerance for higher-order mimetic operators. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00158">mtk_roots.h:158</a></div></div>
 <div class="ttc" id="classmtk_1_1Div1D_html"><div class="ttname"><a href="classmtk_1_1Div1D.html">mtk::Div1D</a></div><div class="ttdoc">Implements a 1D mimetic divergence operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__div__1d_8h_source.html#l00083">mtk_div_1d.h:83</a></div></div>
+<div class="ttc" id="classmtk_1_1Lap1D_html_a10a426657cccd1d6b25fbb58ed472d6f"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a10a426657cccd1d6b25fbb58ed472d6f">mtk::Lap1D::mimetic_measure</a></div><div class="ttdeci">Real mimetic_measure() const </div><div class="ttdoc">Returns mimetic measure of the operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00312">mtk_lap_1d.cc:312</a></div></div>
 <div class="ttc" id="group__c01-roots_html_ga59a451a5fae30d59649bcda274fea271"><div class="ttname"><a href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a></div><div class="ttdeci">const float kZero</div><div class="ttdoc">MTK&#39;s zero defined according to selective compilation. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00126">mtk_roots.h:126</a></div></div>
-<div class="ttc" id="classmtk_1_1Div1D_html_a52fcd1542f11e606e36bd188e48bfdf7"><div class="ttname"><a href="classmtk_1_1Div1D.html#a52fcd1542f11e606e36bd188e48bfdf7">mtk::Div1D::ConstructDiv1D</a></div><div class="ttdeci">bool ConstructDiv1D(int order_accuracy=kDefaultOrderAccuracy, Real mimetic_threshold=kDefaultMimeticThreshold)</div><div class="ttdoc">Factory method implementing the CBS Algorithm to build operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__div__1d_8cc_source.html#l00189">mtk_div_1d.cc:189</a></div></div>
-<div class="ttc" id="classmtk_1_1Grad1D_html_a77b2eddbe4ab03f469306c604d505b1a"><div class="ttname"><a href="classmtk_1_1Grad1D.html#a77b2eddbe4ab03f469306c604d505b1a">mtk::Grad1D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix(Real west, Real east, int num_cells_x) const </div><div class="ttdoc">Returns the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__1d_8cc_source.html#l00377">mtk_grad_1d.cc:377</a></div></div>
-<div class="ttc" id="classmtk_1_1Lap1D_html_a35d34c085b9cf6f9961a699dfb02fea6"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a35d34c085b9cf6f9961a699dfb02fea6">mtk::Lap1D::order_accuracy_</a></div><div class="ttdeci">int order_accuracy_</div><div class="ttdoc">Order of numerical accuracy of the operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8h_source.html#l00147">mtk_lap_1d.h:147</a></div></div>
+<div class="ttc" id="classmtk_1_1Div1D_html_a52fcd1542f11e606e36bd188e48bfdf7"><div class="ttname"><a href="classmtk_1_1Div1D.html#a52fcd1542f11e606e36bd188e48bfdf7">mtk::Div1D::ConstructDiv1D</a></div><div class="ttdeci">bool ConstructDiv1D(int order_accuracy=kDefaultOrderAccuracy, Real mimetic_threshold=kDefaultMimeticThreshold)</div><div class="ttdoc">Factory method implementing the CBS Algorithm to build operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__div__1d_8cc_source.html#l00193">mtk_div_1d.cc:193</a></div></div>
+<div class="ttc" id="classmtk_1_1Grad1D_html_a77b2eddbe4ab03f469306c604d505b1a"><div class="ttname"><a href="classmtk_1_1Grad1D.html#a77b2eddbe4ab03f469306c604d505b1a">mtk::Grad1D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix(Real west, Real east, int num_cells_x) const </div><div class="ttdoc">Returns the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__1d_8cc_source.html#l00396">mtk_grad_1d.cc:396</a></div></div>
+<div class="ttc" id="classmtk_1_1Lap1D_html_a35d34c085b9cf6f9961a699dfb02fea6"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a35d34c085b9cf6f9961a699dfb02fea6">mtk::Lap1D::order_accuracy_</a></div><div class="ttdeci">int order_accuracy_</div><div class="ttdoc">Order of numerical accuracy of the operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8h_source.html#l00154">mtk_lap_1d.h:154</a></div></div>
 <div class="ttc" id="group__c01-roots_html_ga0d95560098eb36420511103637b6952f"><div class="ttname"><a href="group__c01-roots.html#ga0d95560098eb36420511103637b6952f">mtk::kDefaultOrderAccuracy</a></div><div class="ttdeci">const int kDefaultOrderAccuracy</div><div class="ttdoc">Default order of accuracy for mimetic operators. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00168">mtk_roots.h:168</a></div></div>
 <div class="ttc" id="namespacemtk_html_ad3bcf52cda59ddb5fc7b4bdce76c46dc"><div class="ttname"><a href="namespacemtk.html#ad3bcf52cda59ddb5fc7b4bdce76c46dc">mtk::operator&lt;&lt;</a></div><div class="ttdeci">std::ostream &amp; operator&lt;&lt;(std::ostream &amp;stream, mtk::DenseMatrix &amp;in)</div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00079">mtk_dense_matrix.cc:79</a></div></div>
-<div class="ttc" id="classmtk_1_1Lap1D_html_a6fc2aeea35d4dfa49f17e625411f5a70"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a6fc2aeea35d4dfa49f17e625411f5a70">mtk::Lap1D::Lap1D</a></div><div class="ttdeci">Lap1D()</div><div class="ttdoc">Default constructor. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00112">mtk_lap_1d.cc:112</a></div></div>
-<div class="ttc" id="classmtk_1_1Grad1D_html_a74ef5245cfae6fd158bd7f563a0c2e52"><div class="ttname"><a href="classmtk_1_1Grad1D.html#a74ef5245cfae6fd158bd7f563a0c2e52">mtk::Grad1D::ConstructGrad1D</a></div><div class="ttdeci">bool ConstructGrad1D(int order_accuracy=kDefaultOrderAccuracy, Real mimetic_threshold=kDefaultMimeticThreshold)</div><div class="ttdoc">Factory method implementing the CBS Algorithm to build operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__1d_8cc_source.html#l00198">mtk_grad_1d.cc:198</a></div></div>
+<div class="ttc" id="classmtk_1_1Lap1D_html_a6fc2aeea35d4dfa49f17e625411f5a70"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a6fc2aeea35d4dfa49f17e625411f5a70">mtk::Lap1D::Lap1D</a></div><div class="ttdeci">Lap1D()</div><div class="ttdoc">Default constructor. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00114">mtk_lap_1d.cc:114</a></div></div>
+<div class="ttc" id="classmtk_1_1Grad1D_html_a74ef5245cfae6fd158bd7f563a0c2e52"><div class="ttname"><a href="classmtk_1_1Grad1D.html#a74ef5245cfae6fd158bd7f563a0c2e52">mtk::Grad1D::ConstructGrad1D</a></div><div class="ttdeci">bool ConstructGrad1D(int order_accuracy=kDefaultOrderAccuracy, Real mimetic_threshold=kDefaultMimeticThreshold)</div><div class="ttdoc">Factory method implementing the CBS Algorithm to build operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__grad__1d_8cc_source.html#l00207">mtk_grad_1d.cc:207</a></div></div>
 <div class="ttc" id="group__c01-roots_html_ga26407c24d43b6b95480943340d285c71"><div class="ttname"><a href="group__c01-roots.html#ga26407c24d43b6b95480943340d285c71">mtk::kOne</a></div><div class="ttdeci">const float kOne</div><div class="ttdoc">MTK&#39;s one defined according to selective compilation. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00127">mtk_roots.h:127</a></div></div>
 <div class="ttc" id="mtk__roots_8h_html"><div class="ttname"><a href="mtk__roots_8h.html">mtk_roots.h</a></div><div class="ttdoc">Fundamental definitions to be used across all classes of the MTK. </div></div>
-<div class="ttc" id="classmtk_1_1Lap1D_html_a64a3977527c00b4ef994d1bd549f82fd"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a64a3977527c00b4ef994d1bd549f82fd">mtk::Lap1D::laplacian_</a></div><div class="ttdeci">Real * laplacian_</div><div class="ttdoc">Output array containing the operator and weights. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8h_source.html#l00150">mtk_lap_1d.h:150</a></div></div>
-<div class="ttc" id="classmtk_1_1Lap1D_html_ae3490534a9e950df3f81b3840c31b13a"><div class="ttname"><a href="classmtk_1_1Lap1D.html#ae3490534a9e950df3f81b3840c31b13a">mtk::Lap1D::order_accuracy</a></div><div class="ttdeci">int order_accuracy() const </div><div class="ttdoc">Order of accuracy of the operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00124">mtk_lap_1d.cc:124</a></div></div>
-<div class="ttc" id="classmtk_1_1Lap1D_html_ab2652725a8407c79247680c7bbd073b8"><div class="ttname"><a href="classmtk_1_1Lap1D.html#ab2652725a8407c79247680c7bbd073b8">mtk::Lap1D::data</a></div><div class="ttdeci">const mtk::Real * data(const UniStgGrid1D &amp;grid) const </div><div class="ttdoc">Return the operator as a dense array. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00367">mtk_lap_1d.cc:367</a></div></div>
+<div class="ttc" id="classmtk_1_1Lap1D_html_a64a3977527c00b4ef994d1bd549f82fd"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a64a3977527c00b4ef994d1bd549f82fd">mtk::Lap1D::laplacian_</a></div><div class="ttdeci">Real * laplacian_</div><div class="ttdoc">Output array containing the operator and weights. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8h_source.html#l00157">mtk_lap_1d.h:157</a></div></div>
+<div class="ttc" id="classmtk_1_1Lap1D_html_ae3490534a9e950df3f81b3840c31b13a"><div class="ttname"><a href="classmtk_1_1Lap1D.html#ae3490534a9e950df3f81b3840c31b13a">mtk::Lap1D::order_accuracy</a></div><div class="ttdeci">int order_accuracy() const </div><div class="ttdoc">Order of accuracy of the operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00136">mtk_lap_1d.cc:136</a></div></div>
+<div class="ttc" id="classmtk_1_1Lap1D_html_ab2652725a8407c79247680c7bbd073b8"><div class="ttname"><a href="classmtk_1_1Lap1D.html#ab2652725a8407c79247680c7bbd073b8">mtk::Lap1D::data</a></div><div class="ttdeci">const mtk::Real * data(const UniStgGrid1D &amp;grid) const </div><div class="ttdoc">Return the operator as a dense array. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00387">mtk_lap_1d.cc:387</a></div></div>
 <div class="ttc" id="mtk__blas__adapter_8h_html"><div class="ttname"><a href="mtk__blas__adapter_8h.html">mtk_blas_adapter.h</a></div><div class="ttdoc">Adapter class for the BLAS API. </div></div>
 <div class="ttc" id="classmtk_1_1DenseMatrix_html_a784ce5784109ac86bfb9d8562b334b13"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html#a784ce5784109ac86bfb9d8562b334b13">mtk::DenseMatrix::SetValue</a></div><div class="ttdeci">void SetValue(const int &amp;row_coord, const int &amp;col_coord, const Real &amp;val) noexcept</div><div class="ttdoc">Sets a value on the given coordinates. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8cc_source.html#l00366">mtk_dense_matrix.cc:366</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -496,7 +517,7 @@ $(document).ready(function(){initNavTree('mtk__lap__1d_8cc_source.html','');});
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="mtk__lap__1d_8cc.html">mtk_lap_1d.cc</a></li>
-    <li class="footer">Generated on Mon Feb 1 2016 17:07:16 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Fri Mar 11 2016 11:50:55 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

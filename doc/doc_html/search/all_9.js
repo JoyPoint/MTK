@@ -1,16 +1,15 @@
 var searchData=
 [
-  ['kcriticalorderaccuracydiv',['kCriticalOrderAccuracyDiv',['../group__c01-roots.html#ga0898eef2108473e44a5223932d571c31',1,'mtk']]],
-  ['kcriticalorderaccuracygrad',['kCriticalOrderAccuracyGrad',['../group__c01-roots.html#ga295dd2f403c775ecd942c22b5a777496',1,'mtk']]],
-  ['kdefaultmimeticthreshold',['kDefaultMimeticThreshold',['../group__c01-roots.html#ga35718d949bdc81a08a9cc8ebbe3478a2',1,'mtk']]],
-  ['kdefaultorderaccuracy',['kDefaultOrderAccuracy',['../group__c01-roots.html#ga0d95560098eb36420511103637b6952f',1,'mtk']]],
-  ['kdefaulttolerance',['kDefaultTolerance',['../group__c01-roots.html#gae914b125d81d1b97e0aee7bbc7739786',1,'mtk']]],
-  ['kl',['kl',['../classmtk_1_1Matrix.html#ae6400690d7e9fe2fd00cb678a4033f3c',1,'mtk::Matrix']]],
-  ['kl_5f',['kl_',['../classmtk_1_1Matrix.html#a45c2498d0b6d515c72c2e631508acd7d',1,'mtk::Matrix']]],
-  ['kone',['kOne',['../group__c01-roots.html#ga26407c24d43b6b95480943340d285c71',1,'mtk']]],
-  ['kron',['Kron',['../classmtk_1_1DenseMatrix.html#a01d3d8bd502870f93bf3a88a0cc5fb49',1,'mtk::DenseMatrix']]],
-  ['ktwo',['kTwo',['../group__c01-roots.html#gaf39c2d851a2db744f4feb1c5ab3ec2cf',1,'mtk']]],
-  ['ku',['ku',['../classmtk_1_1Matrix.html#ab129068deb2892b194d2cda9aca989eb',1,'mtk::Matrix']]],
-  ['ku_5f',['ku_',['../classmtk_1_1Matrix.html#afdb4436c4c4c6deaed608a06026179c9',1,'mtk::Matrix']]],
-  ['kzero',['kZero',['../group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271',1,'mtk']]]
+  ['grids_2e',['Grids.',['../group__c06-grids.html',1,'']]],
+  ['generatediscretedomainx',['GenerateDiscreteDomainX',['../classmtk_1_1UniStgGrid1D.html#a36a7a85e237a4f85c603eac8cf67a704',1,'mtk::UniStgGrid1D']]],
+  ['getvalue',['GetValue',['../classmtk_1_1DenseMatrix.html#a4b23ecbebd970b5eea915dbb50691024',1,'mtk::DenseMatrix']]],
+  ['glpkadapter',['GLPKAdapter',['../classmtk_1_1GLPKAdapter.html',1,'mtk']]],
+  ['grad1d',['Grad1D',['../classmtk_1_1Grad1D.html',1,'mtk']]],
+  ['grad1d',['Grad1D',['../classmtk_1_1Grad1D.html#ae21e6ac2652e653c48f15b304ee83a75',1,'mtk::Grad1D::Grad1D()'],['../classmtk_1_1Grad1D.html#a5708bcb61bde3f7f3a4ddede191d82a4',1,'mtk::Grad1D::Grad1D(const Grad1D &amp;grad)']]],
+  ['grad2d',['Grad2D',['../classmtk_1_1Grad2D.html#a15bdca254b7bf662913b34c7afb8d4c9',1,'mtk::Grad2D::Grad2D()'],['../classmtk_1_1Grad2D.html#a31ccf118edb128c85f28b579bd9394a8',1,'mtk::Grad2D::Grad2D(const Grad2D &amp;grad)']]],
+  ['grad2d',['Grad2D',['../classmtk_1_1Grad2D.html',1,'mtk']]],
+  ['grad3d',['Grad3D',['../classmtk_1_1Grad3D.html#a035b360199d58fed7a2436375951e10d',1,'mtk::Grad3D::Grad3D()'],['../classmtk_1_1Grad3D.html#ab65fd99ad56efd41d9a76f25a531d85c',1,'mtk::Grad3D::Grad3D(const Grad3D &amp;grad)']]],
+  ['grad3d',['Grad3D',['../classmtk_1_1Grad3D.html',1,'mtk']]],
+  ['gradient_5f',['gradient_',['../classmtk_1_1Grad1D.html#a024b84b1ea285c0c590eb42d40ff4469',1,'mtk::Grad1D::gradient_()'],['../classmtk_1_1Grad2D.html#a22b5ad8454b013e365257dcae04d87a4',1,'mtk::Grad2D::gradient_()'],['../classmtk_1_1Grad3D.html#ad3c0ade3555aa72f7d392b3d5f218f43',1,'mtk::Grad3D::gradient_()']]],
+  ['gradient_5flength_5f',['gradient_length_',['../classmtk_1_1Grad1D.html#a98a444d0833fec92fb9908e3ea71a511',1,'mtk::Grad1D']]]
 ];

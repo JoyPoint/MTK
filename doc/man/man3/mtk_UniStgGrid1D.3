@@ -1,4 +1,4 @@
-.TH "mtk::UniStgGrid1D" 3 "Mon Feb 1 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::UniStgGrid1D" 3 "Fri Mar 11 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -54,6 +54,10 @@ Uniform 1D Staggered Grid\&.
 .RI "int \fBnum_cells_x\fP () const "
 .br
 .RI "\fIProvides access to the number of cells of the grid\&. \fP"
+.ti -1c
+.RI "void \fBGenerateDiscreteDomainX\fP ()"
+.br
+.RI "\fIGenerate the actual set of spatial coordinates\&. \fP"
 .ti -1c
 .RI "void \fBBindScalarField\fP (\fBReal\fP(*ScalarField)(const \fBReal\fP &xx))"
 .br
@@ -173,7 +177,7 @@ Create collection of field samples\&.
 .PP
 
 .PP
-Definition at line 176 of file mtk_uni_stg_grid_1d\&.cc\&.
+Definition at line 211 of file mtk_uni_stg_grid_1d\&.cc\&.
 .SS "void mtk::UniStgGrid1D::BindVectorField (\fBReal\fP(*)(\fBReal\fP xx)VectorField)"
 We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = v(x)\hat{\mathbf{i}} \]
 .PP
@@ -190,7 +194,7 @@ Create collection of field samples\&.
 .PP
 
 .PP
-Definition at line 213 of file mtk_uni_stg_grid_1d\&.cc\&.
+Definition at line 248 of file mtk_uni_stg_grid_1d\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::UniStgGrid1D::delta_x () const"
 
 .PP
@@ -245,6 +249,10 @@ East boundary spatial coordinate\&.
 
 .PP
 Definition at line 151 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "void mtk::UniStgGrid1D::GenerateDiscreteDomainX ()"
+
+.PP
+Definition at line 176 of file mtk_uni_stg_grid_1d\&.cc\&.
 .SS "int mtk::UniStgGrid1D::num_cells_x () const"
 
 .PP
@@ -291,7 +299,7 @@ http://www.gnuplot.info/
 .PP
 
 .PP
-Definition at line 242 of file mtk_uni_stg_grid_1d\&.cc\&.
+Definition at line 277 of file mtk_uni_stg_grid_1d\&.cc\&.
 .SH "Friends And Related Function Documentation"
 .PP 
 .SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::UniStgGrid1D\fP &in)\fC [friend]\fP"
@@ -309,31 +317,31 @@ Definition at line 68 of file mtk_uni_stg_grid_1d\&.cc\&.
 .SS "\fBReal\fP mtk::UniStgGrid1D::delta_x_\fC [private]\fP"
 
 .PP
-Definition at line 199 of file mtk_uni_stg_grid_1d\&.h\&.
+Definition at line 204 of file mtk_uni_stg_grid_1d\&.h\&.
 .SS "std::vector<\fBReal\fP> mtk::UniStgGrid1D::discrete_domain_x_\fC [private]\fP"
 
 .PP
-Definition at line 193 of file mtk_uni_stg_grid_1d\&.h\&.
+Definition at line 198 of file mtk_uni_stg_grid_1d\&.h\&.
 .SS "std::vector<\fBReal\fP> mtk::UniStgGrid1D::discrete_field_\fC [private]\fP"
 
 .PP
-Definition at line 194 of file mtk_uni_stg_grid_1d\&.h\&.
+Definition at line 199 of file mtk_uni_stg_grid_1d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid1D::east_bndy_x_\fC [private]\fP"
 
 .PP
-Definition at line 197 of file mtk_uni_stg_grid_1d\&.h\&.
+Definition at line 202 of file mtk_uni_stg_grid_1d\&.h\&.
 .SS "\fBFieldNature\fP mtk::UniStgGrid1D::nature_\fC [private]\fP"
 
 .PP
-Definition at line 191 of file mtk_uni_stg_grid_1d\&.h\&.
+Definition at line 196 of file mtk_uni_stg_grid_1d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid1D::num_cells_x_\fC [private]\fP"
 
 .PP
-Definition at line 198 of file mtk_uni_stg_grid_1d\&.h\&.
+Definition at line 203 of file mtk_uni_stg_grid_1d\&.h\&.
 .SS "\fBReal\fP mtk::UniStgGrid1D::west_bndy_x_\fC [private]\fP"
 
 .PP
-Definition at line 196 of file mtk_uni_stg_grid_1d\&.h\&.
+Definition at line 201 of file mtk_uni_stg_grid_1d\&.h\&.
 
 .SH "Author"
 .PP 

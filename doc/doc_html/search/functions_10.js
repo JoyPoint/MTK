@@ -22,7 +22,7 @@ var searchData=
   ['snrm2_5f',['snrm2_',['../namespacemtk.html#a508e99fcb14d526bc43aa0a80aa4b658',1,'mtk']]],
   ['solvedensesystem',['SolveDenseSystem',['../classmtk_1_1LAPACKAdapter.html#a7428bccf74fd4a4af68fb7233846da22',1,'mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &amp;mm, mtk::Real *rhs)'],['../classmtk_1_1LAPACKAdapter.html#af0723bba1d73450119d093b9cf1ff6f0',1,'mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &amp;mm, mtk::DenseMatrix &amp;rr)'],['../classmtk_1_1LAPACKAdapter.html#ac38be1e30a2456b2a14c8a81f47c4ba1',1,'mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &amp;mm, mtk::UniStgGrid1D &amp;rhs)'],['../classmtk_1_1LAPACKAdapter.html#a6c040471a1e9256bafa74e3603ff7bf5',1,'mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &amp;mm, mtk::UniStgGrid2D &amp;rhs)']]],
   ['solverectangulardensesystem',['SolveRectangularDenseSystem',['../classmtk_1_1LAPACKAdapter.html#a380f148ffdf96bae2f79ae28f1a6560c',1,'mtk::LAPACKAdapter']]],
-  ['solvesimplexandcompare',['SolveSimplexAndCompare',['../classmtk_1_1GLPKAdapter.html#a834480aca83e3c0d09fdab7fdb7e8a3f',1,'mtk::GLPKAdapter']]],
+  ['solvesimplexandcompare',['SolveSimplexAndCompare',['../classmtk_1_1GLPKAdapter.html#a0c9ebb125445bc5af752bf4fb47f44b2',1,'mtk::GLPKAdapter']]],
   ['sormqr_5f',['sormqr_',['../namespacemtk.html#a59c58408e1c0a9837b67a417be986b82',1,'mtk']]],
   ['south_5fbndy',['south_bndy',['../classmtk_1_1UniStgGrid2D.html#a1442eaf219f099d0ebf46a170fdebf92',1,'mtk::UniStgGrid2D::south_bndy()'],['../classmtk_1_1UniStgGrid3D.html#a0d36500dff853d7c7a63cdd89abe9b8d',1,'mtk::UniStgGrid3D::south_bndy()']]],
   ['storage',['storage',['../classmtk_1_1Matrix.html#a9ffaa665a9cf7371b3be568415a08a3b',1,'mtk::Matrix']]],

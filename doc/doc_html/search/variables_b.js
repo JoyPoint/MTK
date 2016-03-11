@@ -10,6 +10,7 @@ var searchData=
   ['num_5fcells_5fy_5f',['num_cells_y_',['../classmtk_1_1UniStgGrid2D.html#a3e4f61d781212ad57c34e9446c4074b6',1,'mtk::UniStgGrid2D::num_cells_y_()'],['../classmtk_1_1UniStgGrid3D.html#ae944d431e0228fad3a807fbefb21fe62',1,'mtk::UniStgGrid3D::num_cells_y_()']]],
   ['num_5fcells_5fz_5f',['num_cells_z_',['../classmtk_1_1UniStgGrid3D.html#a1758dfb9c97287f69662e77388f3dfc9',1,'mtk::UniStgGrid3D']]],
   ['num_5fcols_5f',['num_cols_',['../classmtk_1_1Matrix.html#a3d11a942d6dda7ca16e162c12e854b74',1,'mtk::Matrix']]],
+  ['num_5ffeasible_5fsols_5f',['num_feasible_sols_',['../classmtk_1_1Div1D.html#aa5939920aee1ffccd2185822ca853b3d',1,'mtk::Div1D::num_feasible_sols_()'],['../classmtk_1_1Grad1D.html#a3561b0197c2b058bdbca39a656471299',1,'mtk::Grad1D::num_feasible_sols_()']]],
   ['num_5fnon_5fnull_5f',['num_non_null_',['../classmtk_1_1Matrix.html#a32d782bd784bea3bb3e5fd55a583b4b7',1,'mtk::Matrix']]],
   ['num_5fnon_5fzero_5f',['num_non_zero_',['../classmtk_1_1Matrix.html#a064d611ebb949858441180d6ff2acaee',1,'mtk::Matrix']]],
   ['num_5fnull_5f',['num_null_',['../classmtk_1_1Matrix.html#aec5bf3cd2e62d7a38412e1dca35cf822',1,'mtk::Matrix']]],

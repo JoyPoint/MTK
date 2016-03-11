@@ -1,4 +1,4 @@
-.TH "mtk::Div1D" 3 "Mon Feb 1 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::Div1D" 3 "Fri Mar 11 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -47,6 +47,10 @@ Implements a 1D mimetic divergence operator\&.
 .br
 .RI "\fIReturn collection of weights as computed by the CBSA\&. \fP"
 .ti -1c
+.RI "int \fBnum_feasible_sols\fP () const "
+.br
+.RI "\fIReturn number of feasible solutions when using the CBSA for weights\&. \fP"
+.ti -1c
 .RI "\fBDenseMatrix\fP \fBmim_bndy\fP () const "
 .br
 .RI "\fIReturn collection of mimetic approximations at the boundary\&. \fP"
@@ -54,6 +58,10 @@ Implements a 1D mimetic divergence operator\&.
 .RI "std::vector< \fBReal\fP > \fBsums_rows_mim_bndy\fP () const "
 .br
 .RI "\fIReturn collection of row-sums mimetic approximations at the boundary\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBmimetic_measure\fP () const "
+.br
+.RI "\fIReturns mimetic measure of the operator\&. \fP"
 .ti -1c
 .RI "\fBDenseMatrix\fP \fBReturnAsDenseMatrix\fP (const \fBUniStgGrid1D\fP &grid) const "
 .br
@@ -119,6 +127,10 @@ Implements a 1D mimetic divergence operator\&.
 .br
 .RI "\fIRow currently processed by the optimizer\&. \fP"
 .ti -1c
+.RI "int \fBnum_feasible_sols_\fP"
+.br
+.RI "\fINumber of feasible solutions for weights\&. \fP"
+.ti -1c
 .RI "\fBDenseMatrix\fP \fBrat_basis_null_space_\fP"
 .br
 .RI "\fIRational b\&. null-space w\&. bndy\&. \fP"
@@ -147,13 +159,17 @@ Implements a 1D mimetic divergence operator\&.
 .br
 .RI "\fIOutput array containing the operator and weights\&. \fP"
 .ti -1c
-.RI "std::vector< \fBReal\fP > \fBsums_rows_mim_bndy_\fP"
-.br
-.RI "\fISum of each mimetic boundary row\&. \fP"
-.ti -1c
 .RI "\fBReal\fP \fBmimetic_threshold_\fP"
 .br
 .RI "\fI< Mimetic threshold\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBmimetic_measure_\fP"
+.br
+.RI "\fI< Mimetic measure\&. \fP"
+.ti -1c
+.RI "std::vector< \fBReal\fP > \fBsums_rows_mim_bndy_\fP"
+.br
+.RI "\fISum of each mimetic boundary row\&. \fP"
 .in -1c
 .SS "Friends"
 
@@ -184,11 +200,11 @@ Definition at line 136 of file mtk_div_1d\&.cc\&.
 .PP
 
 .PP
-Definition at line 152 of file mtk_div_1d\&.cc\&.
+Definition at line 154 of file mtk_div_1d\&.cc\&.
 .SS "mtk::Div1D::~Div1D ()"
 
 .PP
-Definition at line 168 of file mtk_div_1d\&.cc\&.
+Definition at line 172 of file mtk_div_1d\&.cc\&.
 .SH "Member Function Documentation"
 .PP 
 .SS "bool mtk::Div1D::AssembleOperator (void)\fC [private]\fP"
@@ -204,7 +220,7 @@ If order_accuracy_ > 2, next dim_null_ entries is approximating coefficients for
 .PP
 
 .PP
-Definition at line 1483 of file mtk_div_1d\&.cc\&.
+Definition at line 1504 of file mtk_div_1d\&.cc\&.
 .SS "\fBmtk::Real\fP * mtk::Div1D::coeffs_interior () const"
 
 .PP
@@ -215,7 +231,7 @@ Coefficients for the interior of the grid\&.
 .PP
 
 .PP
-Definition at line 333 of file mtk_div_1d\&.cc\&.
+Definition at line 337 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ComputePreliminaryApproximations (void)\fC [private]\fP"
 Compute the set of preliminary approximations on the boundary neighborhood\&. 
 .IP "1." 4
@@ -237,7 +253,7 @@ Once we posses the bottom elements, we proceed with the scaling\&.
 .PP
 
 .PP
-Definition at line 771 of file mtk_div_1d\&.cc\&.
+Definition at line 785 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ComputeRationalBasisNullSpace (void)\fC [private]\fP"
 Compute a rational basis for the null-space of the Vandermonde matrix approximating at the west boundary\&. 
 .IP "1." 4
@@ -253,7 +269,7 @@ Scale null-space to make it rational\&.
 .PP
 
 .PP
-Definition at line 595 of file mtk_div_1d\&.cc\&.
+Definition at line 609 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ComputeStencilBoundaryGrid (void)\fC [private]\fP"
 Compute mimetic stencil approximating at boundary\&. 
 .IP "1." 4
@@ -267,7 +283,7 @@ Compute the row-wise sum to double-check the operator is mimetic\&.
 .PP
 
 .PP
-Definition at line 1364 of file mtk_div_1d\&.cc\&.
+Definition at line 1382 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ComputeStencilInteriorGrid (void)\fC [private]\fP"
 Compute the stencil approximating the interior of the staggered grid\&. 
 .IP "1." 4
@@ -281,7 +297,7 @@ Solve dense Vandermonde system to attain the interior coefficients\&.
 .PP
 
 .PP
-Definition at line 494 of file mtk_div_1d\&.cc\&.
+Definition at line 508 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ComputeWeights (void)\fC [private]\fP"
 Compute the set of mimetic weights to impose the mimetic condition\&. 
 .IP "1." 4
@@ -303,7 +319,7 @@ Apply solution found from brute force search\&.
 .PP
 
 .PP
-Definition at line 991 of file mtk_div_1d\&.cc\&.
+Definition at line 1005 of file mtk_div_1d\&.cc\&.
 .SS "bool mtk::Div1D::ConstructDiv1D (intorder_accuracy = \fC\fBkDefaultOrderAccuracy\fP\fP, \fBmtk::Real\fPmimetic_threshold = \fC\fBkDefaultMimeticThreshold\fP\fP)"
 
 .PP
@@ -328,7 +344,7 @@ Assemble operator\&.
 .PP
 
 .PP
-Definition at line 189 of file mtk_div_1d\&.cc\&.
+Definition at line 193 of file mtk_div_1d\&.cc\&.
 .SS "\fBmtk::DenseMatrix\fP mtk::Div1D::mim_bndy () const"
 
 .PP
@@ -339,7 +355,18 @@ Collection of mimetic approximations at the boundary\&.
 .PP
 
 .PP
-Definition at line 348 of file mtk_div_1d\&.cc\&.
+Definition at line 357 of file mtk_div_1d\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::Div1D::mimetic_measure () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Real number which is the mimetic measure of the operator\&. 
+.RE
+.PP
+
+.PP
+Definition at line 377 of file mtk_div_1d\&.cc\&.
 .SS "int mtk::Div1D::num_bndy_coeffs () const"
 
 .PP
@@ -350,7 +377,18 @@ How many coefficients are approximating at the boundary\&.
 .PP
 
 .PP
-Definition at line 328 of file mtk_div_1d\&.cc\&.
+Definition at line 332 of file mtk_div_1d\&.cc\&.
+.SS "int mtk::Div1D::num_feasible_sols () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Return number of feasible solutions when using the CBSA for weights\&. 
+.RE
+.PP
+
+.PP
+Definition at line 352 of file mtk_div_1d\&.cc\&.
 .SS "\fBmtk::DenseMatrix\fP mtk::Div1D::ReturnAsDenseMatrix (const \fBUniStgGrid1D\fP &grid) const"
 
 .PP
@@ -369,7 +407,7 @@ Impose center-skew symmetry by permuting the mimetic boundaries\&.
 .PP
 
 .PP
-Definition at line 368 of file mtk_div_1d\&.cc\&.
+Definition at line 382 of file mtk_div_1d\&.cc\&.
 .SS "\fBmtk::DenseMatrix\fP mtk::Div1D::ReturnAsDimensionlessDenseMatrix (intnum_cells_x) const"
 
 .PP
@@ -388,7 +426,7 @@ Impose center-skew symmetry by permuting the mimetic boundaries\&.
 .PP
 
 .PP
-Definition at line 432 of file mtk_div_1d\&.cc\&.
+Definition at line 446 of file mtk_div_1d\&.cc\&.
 .SS "std::vector< \fBmtk::Real\fP > mtk::Div1D::sums_rows_mim_bndy () const"
 
 .PP
@@ -399,7 +437,7 @@ Collection of row-sums mimetic approximations at the boundary\&.
 .PP
 
 .PP
-Definition at line 363 of file mtk_div_1d\&.cc\&.
+Definition at line 372 of file mtk_div_1d\&.cc\&.
 .SS "\fBmtk::Real\fP * mtk::Div1D::weights_cbs (void) const"
 
 .PP
@@ -410,7 +448,7 @@ Collection of weights as computed by the CBSA\&.
 .PP
 
 .PP
-Definition at line 343 of file mtk_div_1d\&.cc\&.
+Definition at line 347 of file mtk_div_1d\&.cc\&.
 .SS "\fBmtk::Real\fP * mtk::Div1D::weights_crs (void) const"
 
 .PP
@@ -421,7 +459,7 @@ Collection of weights as computed by the CRSA\&.
 .PP
 
 .PP
-Definition at line 338 of file mtk_div_1d\&.cc\&.
+Definition at line 342 of file mtk_div_1d\&.cc\&.
 .SH "Friends And Related Function Documentation"
 .PP 
 .SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::Div1D\fP &in)\fC [friend]\fP"
@@ -443,63 +481,71 @@ Definition at line 84 of file mtk_div_1d\&.cc\&.
 .SS "\fBReal\fP* mtk::Div1D::coeffs_interior_\fC [private]\fP"
 
 .PP
-Definition at line 218 of file mtk_div_1d\&.h\&.
+Definition at line 233 of file mtk_div_1d\&.h\&.
 .SS "int mtk::Div1D::dim_null_\fC [private]\fP"
 
 .PP
-Definition at line 210 of file mtk_div_1d\&.h\&.
+Definition at line 224 of file mtk_div_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Div1D::divergence_\fC [private]\fP"
 
 .PP
-Definition at line 223 of file mtk_div_1d\&.h\&.
+Definition at line 238 of file mtk_div_1d\&.h\&.
 .SS "int mtk::Div1D::divergence_length_\fC [private]\fP"
 
 .PP
-Definition at line 212 of file mtk_div_1d\&.h\&.
+Definition at line 226 of file mtk_div_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Div1D::mim_bndy_\fC [private]\fP"
 
 .PP
-Definition at line 222 of file mtk_div_1d\&.h\&.
+Definition at line 237 of file mtk_div_1d\&.h\&.
+.SS "\fBReal\fP mtk::Div1D::mimetic_measure_\fC [private]\fP"
+
+.PP
+Definition at line 241 of file mtk_div_1d\&.h\&.
 .SS "\fBReal\fP mtk::Div1D::mimetic_threshold_\fC [private]\fP"
 
 .PP
-Definition at line 227 of file mtk_div_1d\&.h\&.
+Definition at line 240 of file mtk_div_1d\&.h\&.
 .SS "int mtk::Div1D::minrow_\fC [private]\fP"
 
 .PP
-Definition at line 213 of file mtk_div_1d\&.h\&.
+Definition at line 227 of file mtk_div_1d\&.h\&.
 .SS "int mtk::Div1D::num_bndy_coeffs_\fC [private]\fP"
 
 .PP
-Definition at line 211 of file mtk_div_1d\&.h\&.
+Definition at line 225 of file mtk_div_1d\&.h\&.
+.SS "int mtk::Div1D::num_feasible_sols_\fC [private]\fP"
+
+.PP
+Definition at line 229 of file mtk_div_1d\&.h\&.
 .SS "int mtk::Div1D::order_accuracy_\fC [private]\fP"
 
 .PP
-Definition at line 209 of file mtk_div_1d\&.h\&.
+Definition at line 223 of file mtk_div_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Div1D::prem_apps_\fC [private]\fP"
 
 .PP
-Definition at line 219 of file mtk_div_1d\&.h\&.
+Definition at line 234 of file mtk_div_1d\&.h\&.
 .SS "\fBDenseMatrix\fP mtk::Div1D::rat_basis_null_space_\fC [private]\fP"
 
 .PP
-Definition at line 216 of file mtk_div_1d\&.h\&.
+Definition at line 231 of file mtk_div_1d\&.h\&.
 .SS "int mtk::Div1D::row_\fC [private]\fP"
 
 .PP
-Definition at line 214 of file mtk_div_1d\&.h\&.
+Definition at line 228 of file mtk_div_1d\&.h\&.
 .SS "std::vector<\fBReal\fP> mtk::Div1D::sums_rows_mim_bndy_\fC [private]\fP"
 
 .PP
-Definition at line 225 of file mtk_div_1d\&.h\&.
+Definition at line 243 of file mtk_div_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Div1D::weights_cbs_\fC [private]\fP"
 
 .PP
-Definition at line 221 of file mtk_div_1d\&.h\&.
+Definition at line 236 of file mtk_div_1d\&.h\&.
 .SS "\fBReal\fP* mtk::Div1D::weights_crs_\fC [private]\fP"
 
 .PP
-Definition at line 220 of file mtk_div_1d\&.h\&.
+Definition at line 235 of file mtk_div_1d\&.h\&.
 
 .SH "Author"
 .PP 

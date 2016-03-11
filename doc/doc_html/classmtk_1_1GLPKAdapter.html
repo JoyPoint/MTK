@@ -124,9 +124,9 @@ Collaboration diagram for mtk::GLPKAdapter:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a834480aca83e3c0d09fdab7fdb7e8a3f"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmtk_1_1GLPKAdapter.html#a834480aca83e3c0d09fdab7fdb7e8a3f">SolveSimplexAndCompare</a> (<a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> *A, int nrows, int ncols, int kk, <a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> *hh, <a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> *qq, int robjective, <a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> mimetic_tol, int copy)</td></tr>
-<tr class="memdesc:a834480aca83e3c0d09fdab7fdb7e8a3f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a CLO problem and compares the solution to a reference solution.  <a href="#a834480aca83e3c0d09fdab7fdb7e8a3f">More...</a><br /></td></tr>
-<tr class="separator:a834480aca83e3c0d09fdab7fdb7e8a3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c9ebb125445bc5af752bf4fb47f44b2"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmtk_1_1GLPKAdapter.html#a0c9ebb125445bc5af752bf4fb47f44b2">SolveSimplexAndCompare</a> (<a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> *AA, int nrows, int ncols, int kk, <a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> *hh, <a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> *qq, int robjective, <a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> mimetic_threshold, int copy) noexcept</td></tr>
+<tr class="memdesc:a0c9ebb125445bc5af752bf4fb47f44b2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Solves a CLO problem and compares the solution to a reference solution.  <a href="#a0c9ebb125445bc5af752bf4fb47f44b2">More...</a><br /></td></tr>
+<tr class="separator:a0c9ebb125445bc5af752bf4fb47f44b2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>This class contains a collection of static member functions, that posses direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the GLPK.</p>
@@ -137,7 +137,7 @@ Static Public Member Functions</h2></td></tr>
 
 <p>Definition at line <a class="el" href="mtk__glpk__adapter_8h_source.html#l00102">102</a> of file <a class="el" href="mtk__glpk__adapter_8h_source.html">mtk_glpk_adapter.h</a>.</p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a834480aca83e3c0d09fdab7fdb7e8a3f"></a>
+<a class="anchor" id="a0c9ebb125445bc5af752bf4fb47f44b2"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -148,7 +148,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="memname"><a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> mtk::GLPKAdapter::SolveSimplexAndCompare </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> *&#160;</td>
-          <td class="paramname"><em>A</em>, </td>
+          <td class="paramname"><em>AA</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -190,7 +190,7 @@ Static Public Member Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a>&#160;</td>
-          <td class="paramname"><em>mimetic_tol</em>, </td>
+          <td class="paramname"><em>mimetic_threshold</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -206,22 +206,22 @@ Static Public Member Functions</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">noexcept</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 <p>This routine is the pivot of the CBSA. It solves a Constrained Linear Optimization (CLO) problem, and it compares the attained solution to a given reference solution. This comparison is done computing the norm-2 relative error.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">alpha</td><td>First scalar. </td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">AA</td><td>Given matrix. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">xx</td><td>First vector. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">beta</td><td>Second scalar. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">beta</td><td>Second scalar. </td></tr>
-    <tr><td class="paramdir">[in,out]</td><td class="paramname">yy</td><td>Second vector (output). </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">xx</td><td>First vector. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">beta</td><td>Second scalar. </td></tr>
-    <tr><td class="paramdir">[in]</td><td class="paramname">beta</td><td>Second scalar.</td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">nrows</td><td>Number of rows of the matrix. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">ncols</td><td>Number of rows of the matrix. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">kk</td><td>Length of the RHS vector of constraints. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">hh</td><td>RHS vector of constraints. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">qq</td><td>Output decision vector. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">robjective</td><td>Row of the system to be chosen as objective function. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">mimetic_threshold</td><td>Mimetic threshold. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">copy</td><td>Should we actually copy the results to the output?</td></tr>
   </table>
   </dd>
 </dl>
@@ -243,8 +243,8 @@ Static Public Member Functions</h2></td></tr>
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f_cgraph.gif" border="0" usemap="#classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f_cgraph" alt=""/></div>
-<map name="classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f_cgraph" id="classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f_cgraph">
+<div class="center"><img src="classmtk_1_1GLPKAdapter_a0c9ebb125445bc5af752bf4fb47f44b2_cgraph.gif" border="0" usemap="#classmtk_1_1GLPKAdapter_a0c9ebb125445bc5af752bf4fb47f44b2_cgraph" alt=""/></div>
+<map name="classmtk_1_1GLPKAdapter_a0c9ebb125445bc5af752bf4fb47f44b2_cgraph" id="classmtk_1_1GLPKAdapter_a0c9ebb125445bc5af752bf4fb47f44b2_cgraph">
 <area shape="rect" id="node2" href="classmtk_1_1BLASAdapter.html#ab92440888b730863244c5d9479c11aca" title="Compute the &#160;of given array . " alt="" coords="287,31,497,57"/><area shape="rect" id="node3" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f" title="Enforces preconditions by preventing their complements from occur. " alt="" coords="545,5,688,32"/><area shape="rect" id="node4" href="namespacemtk.html#a508e99fcb14d526bc43aa0a80aa4b658" title="mtk::snrm2_" alt="" coords="565,56,668,83"/></map>
 </div>
 </p>
@@ -252,8 +252,8 @@ Here is the call graph for this function:</div>
 <p><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><img src="classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f_icgraph.gif" border="0" usemap="#classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f_icgraph" alt=""/></div>
-<map name="classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f_icgraph" id="classmtk_1_1GLPKAdapter_a834480aca83e3c0d09fdab7fdb7e8a3f_icgraph">
+<div class="center"><img src="classmtk_1_1GLPKAdapter_a0c9ebb125445bc5af752bf4fb47f44b2_icgraph.gif" border="0" usemap="#classmtk_1_1GLPKAdapter_a0c9ebb125445bc5af752bf4fb47f44b2_icgraph" alt=""/></div>
+<map name="classmtk_1_1GLPKAdapter_a0c9ebb125445bc5af752bf4fb47f44b2_icgraph" id="classmtk_1_1GLPKAdapter_a0c9ebb125445bc5af752bf4fb47f44b2_icgraph">
 <area shape="rect" id="node2" href="classmtk_1_1Div1D.html#aaadd6a6e6836bb94841c4c35dffab828" title="Stage 2.3 of the CBS Algorithm. " alt="" coords="292,5,501,32"/><area shape="rect" id="node3" href="classmtk_1_1Grad1D.html#a224082617751864bffca9bfe494c36d5" title="Stage 2.3 of the CBS Algorithm. " alt="" coords="287,56,507,83"/></map>
 </div>
 </p>
@@ -270,7 +270,7 @@ Here is the caller graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemtk.html">mtk</a></li><li class="navelem"><a class="el" href="classmtk_1_1GLPKAdapter.html">GLPKAdapter</a></li>
-    <li class="footer">Generated on Mon Feb 1 2016 17:07:17 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Fri Mar 11 2016 11:50:56 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

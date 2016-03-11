@@ -4,14 +4,14 @@
     <compoundname>mtk::GLPKAdapter</compoundname>
     <includes refid="mtk__glpk__adapter_8h" local="no">mtk_glpk_adapter.h</includes>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classmtk_1_1GLPKAdapter_1a834480aca83e3c0d09fdab7fdb7e8a3f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classmtk_1_1GLPKAdapter_1a0c9ebb125445bc5af752bf4fb47f44b2" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref></type>
         <definition>mtk::Real mtk::GLPKAdapter::SolveSimplexAndCompare</definition>
-        <argsstring>(mtk::Real *A, int nrows, int ncols, int kk, mtk::Real *hh, mtk::Real *qq, int robjective, mtk::Real mimetic_tol, int copy)</argsstring>
+        <argsstring>(mtk::Real *AA, int nrows, int ncols, int kk, mtk::Real *hh, mtk::Real *qq, int robjective, mtk::Real mimetic_threshold, int copy) noexcept</argsstring>
         <name>SolveSimplexAndCompare</name>
         <param>
           <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref> *</type>
-          <declname>A</declname>
+          <declname>AA</declname>
         </param>
         <param>
           <type>int</type>
@@ -39,7 +39,7 @@
         </param>
         <param>
           <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref></type>
-          <declname>mimetic_tol</declname>
+          <declname>mimetic_threshold</declname>
         </param>
         <param>
           <type>int</type>
@@ -50,13 +50,6 @@
         <detaileddescription>
 <para>This routine is the pivot of the CBSA. It solves a Constrained Linear Optimization (CLO) problem, and it compares the attained solution to a given reference solution. This comparison is done computing the norm-2 relative error.</para><para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername direction="in">alpha</parametername>
-</parameternamelist>
-<parameterdescription>
-<para>First scalar. </para></parameterdescription>
-</parameteritem>
-<parameteritem>
-<parameternamelist>
 <parametername direction="in">AA</parametername>
 </parameternamelist>
 <parameterdescription>
@@ -64,52 +57,59 @@
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">xx</parametername>
+<parametername direction="in">nrows</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>First vector. </para></parameterdescription>
+<para>Number of rows of the matrix. </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">beta</parametername>
+<parametername direction="in">ncols</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Second scalar. </para></parameterdescription>
+<para>Number of rows of the matrix. </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">beta</parametername>
+<parametername direction="in">kk</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Second scalar. </para></parameterdescription>
+<para>Length of the RHS vector of constraints. </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="inout">yy</parametername>
+<parametername direction="in">hh</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Second vector (output). </para></parameterdescription>
+<para>RHS vector of constraints. </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">xx</parametername>
+<parametername direction="inout">qq</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>First vector. </para></parameterdescription>
+<para>Output decision vector. </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">beta</parametername>
+<parametername direction="in">robjective</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Second scalar. </para></parameterdescription>
+<para>Row of the system to be chosen as objective function. </para></parameterdescription>
 </parameteritem>
 <parameteritem>
 <parameternamelist>
-<parametername direction="in">beta</parametername>
+<parametername direction="in">mimetic_threshold</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Second scalar.</para></parameterdescription>
+<para>Mimetic threshold. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">copy</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Should we actually copy the results to the output?</para></parameterdescription>
 </parameteritem>
 </parameterlist>
 <simplesect kind="return"><para>Relative error computed between attained solution and provided ref. </para></simplesect>
@@ -119,11 +119,11 @@
 <orderedlist>
 <listitem><para>Memory allocation.</para></listitem><listitem><para>Fill the problem.</para></listitem><listitem><para>Copy the row to the vector objective.</para></listitem><listitem><para>Forming the RHS.</para></listitem><listitem><para>Setting up the objective function.</para></listitem><listitem><para>Setting up constraints.</para></listitem><listitem><para>Copy the matrix minus the row objective to the glpk problem.</para></listitem><listitem><para>Solve problem. </para></listitem></orderedlist>
 </para>        </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/include/mtk_glpk_adapter.h" line="124" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_glpk_adapter.cc" bodystart="77" bodyend="331"/>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_glpk_adapter.h" line="124" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_glpk_adapter.cc" bodystart="77" bodyend="332"/>
         <references refid="group__c01-roots_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__roots_8h" startline="126">mtk::kZero</references>
         <references refid="classmtk_1_1BLASAdapter_1ab92440888b730863244c5d9479c11aca" compoundref="mtk__blas__adapter_8cc" startline="327" endline="340">mtk::BLASAdapter::RealNRM2</references>
-        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="991" endline="1362">mtk::Div1D::ComputeWeights</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="1073" endline="1455">mtk::Grad1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="1005" endline="1380">mtk::Div1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="1092" endline="1477">mtk::Grad1D::ComputeWeights</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
@@ -140,7 +140,7 @@
     </collaborationgraph>
     <location file="/home/esanchez/Dropbox/MTK/include/mtk_glpk_adapter.h" line="102" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_glpk_adapter.h" bodystart="102" bodyend="133"/>
     <listofallmembers>
-      <member refid="classmtk_1_1GLPKAdapter_1a834480aca83e3c0d09fdab7fdb7e8a3f" prot="public" virt="non-virtual"><scope>mtk::GLPKAdapter</scope><name>SolveSimplexAndCompare</name></member>
+      <member refid="classmtk_1_1GLPKAdapter_1a0c9ebb125445bc5af752bf4fb47f44b2" prot="public" virt="non-virtual"><scope>mtk::GLPKAdapter</scope><name>SolveSimplexAndCompare</name></member>
     </listofallmembers>
   </compounddef>
 </doxygen>

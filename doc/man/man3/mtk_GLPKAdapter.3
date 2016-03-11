@@ -1,4 +1,4 @@
-.TH "mtk::GLPKAdapter" 3 "Mon Feb 1 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::GLPKAdapter" 3 "Fri Mar 11 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -15,7 +15,7 @@ Adapter class for the GLPK API\&.
 
 .in +1c
 .ti -1c
-.RI "static \fBmtk::Real\fP \fBSolveSimplexAndCompare\fP (\fBmtk::Real\fP *A, int nrows, int ncols, int kk, \fBmtk::Real\fP *hh, \fBmtk::Real\fP *qq, int robjective, \fBmtk::Real\fP mimetic_tol, int copy)"
+.RI "static \fBmtk::Real\fP \fBSolveSimplexAndCompare\fP (\fBmtk::Real\fP *AA, int nrows, int ncols, int kk, \fBmtk::Real\fP *hh, \fBmtk::Real\fP *qq, int robjective, \fBmtk::Real\fP mimetic_threshold, int copy) noexcept"
 .br
 .RI "\fISolves a CLO problem and compares the solution to a reference solution\&. \fP"
 .in -1c
@@ -45,28 +45,28 @@ Rescind from the GLPK as the numerical core for CLO problems\&.
 Definition at line 102 of file mtk_glpk_adapter\&.h\&.
 .SH "Member Function Documentation"
 .PP 
-.SS "\fBmtk::Real\fP mtk::GLPKAdapter::SolveSimplexAndCompare (\fBmtk::Real\fP *A, intnrows, intncols, intkk, \fBmtk::Real\fP *hh, \fBmtk::Real\fP *qq, introbjective, \fBmtk::Real\fPmimetic_tol, intcopy)\fC [static]\fP"
+.SS "\fBmtk::Real\fP mtk::GLPKAdapter::SolveSimplexAndCompare (\fBmtk::Real\fP *AA, intnrows, intncols, intkk, \fBmtk::Real\fP *hh, \fBmtk::Real\fP *qq, introbjective, \fBmtk::Real\fPmimetic_threshold, intcopy)\fC [static]\fP, \fC [noexcept]\fP"
 This routine is the pivot of the CBSA\&. It solves a Constrained Linear Optimization (CLO) problem, and it compares the attained solution to a given reference solution\&. This comparison is done computing the norm-2 relative error\&.
 .PP
 \fBParameters:\fP
 .RS 4
-\fIalpha\fP First scalar\&. 
-.br
 \fIAA\fP Given matrix\&. 
 .br
-\fIxx\fP First vector\&. 
+\fInrows\fP Number of rows of the matrix\&. 
 .br
-\fIbeta\fP Second scalar\&. 
+\fIncols\fP Number of rows of the matrix\&. 
 .br
-\fIbeta\fP Second scalar\&. 
+\fIkk\fP Length of the RHS vector of constraints\&. 
 .br
-\fIyy\fP Second vector (output)\&. 
+\fIhh\fP RHS vector of constraints\&. 
 .br
-\fIxx\fP First vector\&. 
+\fIqq\fP Output decision vector\&. 
 .br
-\fIbeta\fP Second scalar\&. 
+\fIrobjective\fP Row of the system to be chosen as objective function\&. 
 .br
-\fIbeta\fP Second scalar\&.
+\fImimetic_threshold\fP Mimetic threshold\&. 
+.br
+\fIcopy\fP Should we actually copy the results to the output?
 .RE
 .PP
 \fBReturns:\fP
