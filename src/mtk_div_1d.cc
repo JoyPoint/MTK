@@ -115,7 +115,7 @@ std::ostream& operator <<(std::ostream &stream, mtk::Div1D &in) {
     auto offset = (2*in.order_accuracy_ + 1);
     int mm{};
     for (auto ii = 0; ii < in.dim_null_; ++ii) {
-      stream << "Mimetic boundary row " << ii + 1 << ":" << std::endl;
+      stream << "Boundary row " << ii + 1 << ":" << std::endl;
       for (auto jj = 0; jj < in.num_bndy_coeffs_; ++jj) {
         auto value = in.divergence_[offset + mm];
         stream << std::setprecision(output_precision) <<
@@ -123,7 +123,7 @@ std::ostream& operator <<(std::ostream &stream, mtk::Div1D &in) {
         ++mm;
       }
       stream << std::endl;
-      stream << "Sum of elements in row " << ii + 1 << ": " <<
+      stream << "Sum of elements in boundary row " << ii + 1 << ": " <<
         in.sums_rows_mim_bndy_[ii];
       stream << std::endl;
     }
@@ -147,8 +147,9 @@ mtk::Div1D::Div1D():
   weights_cbs_(),
   mim_bndy_(),
   divergence_(),
-  sums_rows_mim_bndy_(),
-  mimetic_threshold_(mtk::kDefaultMimeticThreshold) {}
+  mimetic_threshold_(mtk::kDefaultMimeticThreshold),
+  mimetic_measure_(mtk::kZero),
+  sums_rows_mim_bndy_() {}
 
 mtk::Div1D::Div1D(const Div1D &div):
   order_accuracy_(div.order_accuracy_),
@@ -164,8 +165,9 @@ mtk::Div1D::Div1D(const Div1D &div):
   weights_cbs_(div.weights_cbs_),
   mim_bndy_(div.mim_bndy_),
   divergence_(div.divergence_),
-  sums_rows_mim_bndy_(div.sums_rows_mim_bndy_),
-  mimetic_threshold_(div.mimetic_threshold_) {}
+  mimetic_threshold_(div.mimetic_threshold_),
+  mimetic_measure_(div.mimetic_measure_),
+  sums_rows_mim_bndy_(div.sums_rows_mim_bndy_) {}
 
 mtk::Div1D::~Div1D() {
 
@@ -370,6 +372,11 @@ mtk::DenseMatrix mtk::Div1D::mim_bndy() const {
 std::vector<mtk::Real> mtk::Div1D::sums_rows_mim_bndy() const {
 
   return sums_rows_mim_bndy_;
+}
+
+mtk::Real mtk::Div1D::mimetic_measure() const {
+
+  return mimetic_measure_;
 }
 
 mtk::DenseMatrix mtk::Div1D::ReturnAsDenseMatrix(
@@ -1472,6 +1479,9 @@ bool mtk::Div1D::ComputeStencilBoundaryGrid(void) {
       sums_rows_mim_bndy_[ii] += mim_bndy_[jj*dim_null_ + ii];
     }
   }
+
+    mimetic_measure_ = *std::max_element(sums_rows_mim_bndy_.begin(),
+                                      sums_rows_mim_bndy_.end());
 
   #if MTK_VERBOSE_LEVEL > 3
   std::cout << "Row-wise sum of mimetic approximations:" << std::endl;

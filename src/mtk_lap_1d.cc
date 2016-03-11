@@ -61,6 +61,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iostream>
 #include <iomanip>
 
+#include <algorithm>
+
 #include "mtk_roots.h"
 #include "mtk_tools.h"
 #include "mtk_blas_adapter.h"
@@ -93,14 +95,14 @@ std::ostream& operator <<(std::ostream &stream, mtk::Lap1D &in) {
   auto offset = 1 + (2*in.order_accuracy_ - 1);
 
   for (auto ii = 0; ii < in.order_accuracy_ - 1; ++ii) {
-    stream << "Mimetic boundary row " << ii + 1 << ":" << std::endl;
+    stream << "Boundary row " << ii + 1 << ":" << std::endl;
     for (auto jj = 0; jj < 2*in.order_accuracy_; ++jj) {
       stream << std::setprecision(output_precision) <<
         std::setw(output_width) <<
           in.laplacian_[offset + ii*(2*in.order_accuracy_) + jj] << ' ';
     }
     stream << std::endl;
-    stream << "Sum of elements in row " << ii + 1 << ": " <<
+    stream << "Sum of elements in boundary row " << ii + 1 << ": " <<
       in.sums_rows_mim_bndy_[ii];
     stream << std::endl;
   }
@@ -113,7 +115,17 @@ mtk::Lap1D::Lap1D():
   order_accuracy_(mtk::kDefaultOrderAccuracy),
   laplacian_length_(),
   delta_(mtk::kZero),
-  mimetic_threshold_(mtk::kDefaultMimeticThreshold) {}
+  mimetic_threshold_(mtk::kDefaultMimeticThreshold),
+  mimetic_measure_(mtk::kZero),
+  sums_rows_mim_bndy_() {}
+
+mtk::Lap1D::Lap1D(const Lap1D &lap):
+  order_accuracy_(lap.order_accuracy_),
+  laplacian_length_(lap.laplacian_length_),
+  delta_(lap.delta_),
+  mimetic_threshold_(lap.mimetic_threshold_),
+  mimetic_measure_(lap.mimetic_measure_),
+  sums_rows_mim_bndy_(lap.sums_rows_mim_bndy_) {}
 
 mtk::Lap1D::~Lap1D() {
 
@@ -284,6 +296,9 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
     }
   }
 
+    mimetic_measure_ = *std::max_element(sums_rows_mim_bndy_.begin(),
+                                      sums_rows_mim_bndy_.end());
+
   delta_ = mtk::kZero;
 
   return true;
@@ -292,6 +307,11 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
 std::vector<mtk::Real> mtk::Lap1D::sums_rows_mim_bndy() const {
 
   return sums_rows_mim_bndy_;
+}
+
+mtk::Real mtk::Lap1D::mimetic_measure() const {
+
+  return mimetic_measure_;
 }
 
 mtk::DenseMatrix mtk::Lap1D::ReturnAsDenseMatrix(

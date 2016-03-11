@@ -114,7 +114,7 @@ std::ostream& operator <<(std::ostream &stream, mtk::Grad1D &in) {
   int mm {};
   if (in.order_accuracy_ > mtk::kDefaultOrderAccuracy) {
     for (auto ii = 0; ii < in.num_bndy_approxs_ ; ++ii) {
-      stream << "Mimetic boundary row " << ii + 1 << ":" << std::endl;
+      stream << "Boundary row " << ii + 1 << ":" << std::endl;
       for (auto jj = 0; jj < in.num_bndy_coeffs_; jj++) {
         auto value = in.gradient_[offset + (mm)];
         stream << std::setprecision(output_precision) <<
@@ -122,12 +122,12 @@ std::ostream& operator <<(std::ostream &stream, mtk::Grad1D &in) {
         mm++;
       }
       stream << std::endl;
-      stream << "Sum of elements in row " << ii + 1 << ": " <<
+      stream << "Sum of elements in boundary row " << ii + 1 << ": " <<
         in.sums_rows_mim_bndy_[ii];
       stream << std::endl;
     }
   } else {
-    stream << "Mimetic boundary row 1:" << std::endl;
+    stream << "Boundary row 1:" << std::endl;
     stream << std::setprecision(output_precision) <<
         std::setw(output_width) << in.gradient_[offset + 0] << ' ';
     stream << std::setprecision(output_precision) <<
@@ -135,8 +135,9 @@ std::ostream& operator <<(std::ostream &stream, mtk::Grad1D &in) {
     stream << std::setprecision(output_precision) <<
         std::setw(output_width) << in.gradient_[offset + 2] << ' ';
     stream << std::endl;
-    stream << "Sum of elements in row 1: " << in.gradient_[offset + 0] +
-      in.gradient_[offset + 1] + in.gradient_[offset + 2];
+    stream << "Sum of elements in boundary row 1: " <<
+      in.gradient_[offset + 0] + in.gradient_[offset + 1] +
+        in.gradient_[offset + 2];
     stream << std::endl;
   }
 
@@ -159,8 +160,9 @@ mtk::Grad1D::Grad1D():
   weights_cbs_(),
   mim_bndy_(),
   gradient_(),
-  sums_rows_mim_bndy_(),
-  mimetic_threshold_(mtk::kDefaultMimeticThreshold) {}
+  mimetic_threshold_(mtk::kDefaultMimeticThreshold),
+  mimetic_measure_(mtk::kZero),
+  sums_rows_mim_bndy_() {}
 
 mtk::Grad1D::Grad1D(const Grad1D &grad):
   order_accuracy_(grad.order_accuracy_),
@@ -177,8 +179,9 @@ mtk::Grad1D::Grad1D(const Grad1D &grad):
   weights_cbs_(grad.weights_cbs_),
   mim_bndy_(grad.mim_bndy_),
   gradient_(grad.gradient_),
-  sums_rows_mim_bndy_(grad.sums_rows_mim_bndy_),
-  mimetic_threshold_(grad.mimetic_threshold_) {}
+  mimetic_threshold_(grad.mimetic_threshold_),
+  mimetic_measure_(grad.mimetic_measure_),
+  sums_rows_mim_bndy_(grad.sums_rows_mim_bndy_) {}
 
 mtk::Grad1D::~Grad1D() {
 
@@ -383,6 +386,11 @@ mtk::DenseMatrix mtk::Grad1D::mim_bndy() const {
 std::vector<mtk::Real> mtk::Grad1D::sums_rows_mim_bndy() const {
 
   return sums_rows_mim_bndy_;
+}
+
+mtk::Real mtk::Grad1D::mimetic_measure() const {
+
+  return mimetic_measure_;
 }
 
 mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(mtk::Real west,
@@ -1565,14 +1573,21 @@ bool mtk::Grad1D::ComputeStencilBoundaryGrid(void) {
   std::cout << std::endl;
   #endif
 
-  /// 4. Compute the row-wise sum to double-check the operator is mimetic.
+  /// 4. Compute the row-wise sum to double-check that the operator is mimetic.
 
   for (auto ii = 0; ii < num_bndy_approxs_; ++ii) {
     sums_rows_mim_bndy_.push_back(mtk::kZero);
+
+
+
+
     for (auto jj = 0; jj < num_bndy_coeffs_; ++jj) {
       sums_rows_mim_bndy_[ii] += mim_bndy_[jj*num_bndy_approxs_ + ii];
     }
   }
+
+    mimetic_measure_ = *std::max_element(sums_rows_mim_bndy_.begin(),
+                                      sums_rows_mim_bndy_.end());
 
   #if MTK_VERBOSE_LEVEL > 3
   std::cout << "Row-wise sum of mimetic approximations:" << std::endl;

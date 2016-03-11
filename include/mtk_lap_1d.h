@@ -130,6 +130,13 @@ class Lap1D {
   std::vector<Real> sums_rows_mim_bndy() const;
 
   /*!
+  \brief Returns mimetic measure of the operator.
+
+  \return Real number which is the mimetic measure of the operator.
+  */
+  Real mimetic_measure() const;
+
+  /*!
   \brief Return the operator as a dense matrix.
 
   \return The operator as a dense matrix.
@@ -152,6 +159,7 @@ class Lap1D {
   mutable Real delta_;     ///<< If 0.0, then this Laplacian is dimensionless.
 
   Real mimetic_threshold_;  ///<< Mimetic threshold.
+  Real mimetic_measure_;    ///<< Mimetic measure.
 
   std::vector<Real> sums_rows_mim_bndy_; ///< Sum of each mimetic boundary row.
 };

@@ -156,6 +156,13 @@ class Div1D {
   std::vector<Real> sums_rows_mim_bndy() const;
 
   /*!
+  \brief Returns mimetic measure of the operator.
+
+  \return Real number which is the mimetic measure of the operator.
+  */
+  Real mimetic_measure() const;
+
+  /*!
   \brief Return the operator as a dense matrix.
 
   \return The operator as a dense matrix.
@@ -230,9 +237,10 @@ class Div1D {
   Real *mim_bndy_;        ///< Array containing mimetic boundary approximations.
   Real *divergence_;      ///< Output array containing the operator and weights.
 
-  std::vector<Real> sums_rows_mim_bndy_; ///< Sum of each mimetic boundary row.
-
   Real mimetic_threshold_;  ///<< Mimetic threshold.
+  Real mimetic_measure_;    ///<< Mimetic measure.
+
+  std::vector<Real> sums_rows_mim_bndy_; ///< Sum of each mimetic boundary row.
 };
 }
 #endif  // End of: MTK_INCLUDE_DIV_1D_H_
