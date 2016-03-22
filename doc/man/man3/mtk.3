@@ -1,4 +1,4 @@
-.TH "mtk" 3 "Fri Mar 11 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk" 3 "Tue Mar 22 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -81,6 +81,10 @@ Mimetic Methods Toolkit namespace\&.
 .br
 .RI "\fIDefinition of the representation of a matrix in the MTK\&. \fP"
 .ti -1c
+.RI "class \fBOperatorApplicator\fP"
+.br
+.RI "\fIControls the process of applying a mimetic operator to a grid\&. \fP"
+.ti -1c
 .RI "class \fBQuad1D\fP"
 .br
 .RI "\fIImplements a 1D mimetic quadrature\&. \fP"
@@ -152,6 +156,10 @@ Mimetic Methods Toolkit namespace\&.
 .RI "enum \fBDirInterp\fP { \fBDirInterp::SCALAR_TO_VECTOR\fP, \fBDirInterp::VECTOR_TO_SCALAR\fP }"
 .br
 .RI "\fIInterpolation operator\&. \fP"
+.ti -1c
+.RI "enum \fBEncodedOperator\fP { \fBEncodedOperator::NOOP\fP, \fBEncodedOperator::GRADIENT\fP, \fBEncodedOperator::DIVERGENCE\fP, \fBEncodedOperator::INTERPOLATION\fP, \fBEncodedOperator::CURL\fP, \fBEncodedOperator::LAPLACIAN\fP }"
+.br
+.RI "\fIOperators matrices can encode\&. \fP"
 .in -1c
 .SS "Functions"
 
@@ -299,7 +307,7 @@ Definition at line 75 of file mtk_lap_1d\&.cc\&.
 .SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::DenseMatrix\fP &in)"
 
 .PP
-Definition at line 79 of file mtk_dense_matrix\&.cc\&.
+Definition at line 80 of file mtk_dense_matrix\&.cc\&.
 .SS "std::ostream& mtk::operator<< (std::ostream &stream, \fBmtk::Grad1D\fP &in)"
 
 .IP "1." 4

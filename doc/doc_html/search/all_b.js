@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['imposeondivergencematrix',['ImposeOnDivergenceMatrix',['../classmtk_1_1RobinBCDescriptor1D.html#a09b026a79dde6e8dc14e981a45320863',1,'mtk::RobinBCDescriptor1D']]],
   ['imposeoneastboundarynospace',['ImposeOnEastBoundaryNoSpace',['../classmtk_1_1RobinBCDescriptor2D.html#ae1df82802d541d3566f3d2659e4aaf05',1,'mtk::RobinBCDescriptor2D::ImposeOnEastBoundaryNoSpace()'],['../classmtk_1_1RobinBCDescriptor3D.html#a3f577cce7b2b76f5f0c11e92b999f28f',1,'mtk::RobinBCDescriptor3D::ImposeOnEastBoundaryNoSpace()']]],
   ['imposeoneastboundarywithspace',['ImposeOnEastBoundaryWithSpace',['../classmtk_1_1RobinBCDescriptor2D.html#a37efc8077bf5ea4f28539da248dc2a41',1,'mtk::RobinBCDescriptor2D::ImposeOnEastBoundaryWithSpace()'],['../classmtk_1_1RobinBCDescriptor3D.html#ab25d98adaeaacc94e2654792958e9a2a',1,'mtk::RobinBCDescriptor3D::ImposeOnEastBoundaryWithSpace()']]],
   ['imposeongrid',['ImposeOnGrid',['../classmtk_1_1RobinBCDescriptor1D.html#ab0daec1d6c5c9c6768bea08281a3831d',1,'mtk::RobinBCDescriptor1D::ImposeOnGrid()'],['../classmtk_1_1RobinBCDescriptor2D.html#ac9564bc46c196cbf4720a0e4b93da8b0',1,'mtk::RobinBCDescriptor2D::ImposeOnGrid()'],['../classmtk_1_1RobinBCDescriptor3D.html#a252064c6d71ea8e0a8d9ea76c1dedb6f',1,'mtk::RobinBCDescriptor3D::ImposeOnGrid()']]],
@@ -16,7 +17,8 @@ var searchData=
   ['integrate',['Integrate',['../classmtk_1_1Quad1D.html#a2d253b9ba8e05b06dc40a6a38bb0272d',1,'mtk::Quad1D']]],
   ['interp1d',['Interp1D',['../classmtk_1_1Interp1D.html#ae56f90c53579c91c1dbe715f7e7361be',1,'mtk::Interp1D::Interp1D()'],['../classmtk_1_1Interp1D.html#a92a5ed77144b3824d201a586f4072fd0',1,'mtk::Interp1D::Interp1D(const Interp1D &amp;interp)']]],
   ['interp1d',['Interp1D',['../classmtk_1_1Interp1D.html',1,'mtk']]],
-  ['interp2d',['Interp2D',['../classmtk_1_1Interp2D.html',1,'mtk']]],
   ['interp2d',['Interp2D',['../classmtk_1_1Interp2D.html#a1ced84c0dbafdbe1cd3732d5a4848e10',1,'mtk::Interp2D::Interp2D()'],['../classmtk_1_1Interp2D.html#a86af209e6045050e4ebc205dd43b8279',1,'mtk::Interp2D::Interp2D(const Interp2D &amp;interp)']]],
+  ['interp2d',['Interp2D',['../classmtk_1_1Interp2D.html',1,'mtk']]],
+  ['interpolation',['INTERPOLATION',['../namespacemtk.html#ga9b50023bfb2692219d2915feade94f80a6a9b19b26cdeae14c1102cd40345d568',1,'mtk']]],
   ['interpolator_5f',['interpolator_',['../classmtk_1_1Interp2D.html#aa30fa30d96c8b0a37adac36c4e344329',1,'mtk::Interp2D']]]
 ];

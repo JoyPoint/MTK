@@ -12,7 +12,8 @@ Impose Robin boundary conditions on the operators and on the grids.
 
 
 
-Collaboration diagram for mtk\+:\+:Robin\+B\+C\+Descriptor1\+D\+:\nopagebreak
+Collaboration diagram for mtk\+:\+:Robin\+B\+C\+Descriptor1\+D\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -40,6 +41,8 @@ void \hyperlink{classmtk_1_1RobinBCDescriptor1D_a06bfaf0126d528247c3c76fdd19f4b8
 \begin{DoxyCompactList}\small\item\em Set boundary condition at west. \end{DoxyCompactList}\item 
 void \hyperlink{classmtk_1_1RobinBCDescriptor1D_a4edc92eeaaaa3f1e7f2cedfea3d35681}{set\+\_\+east\+\_\+condition} (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real}($\ast$east\+\_\+condition)(const \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&tt)) noexcept
 \begin{DoxyCompactList}\small\item\em Set boundary condition at east. \end{DoxyCompactList}\item 
+bool \hyperlink{classmtk_1_1RobinBCDescriptor1D_a09b026a79dde6e8dc14e981a45320863}{Impose\+On\+Divergence\+Matrix} (const \hyperlink{classmtk_1_1Div1D}{Div1\+D} \&div, \hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix} \&matrix, const \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&time=\hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk\+::k\+Zero}) const 
+\begin{DoxyCompactList}\small\item\em Imposes the condition on the operator represented as matrix. \end{DoxyCompactList}\item 
 bool \hyperlink{classmtk_1_1RobinBCDescriptor1D_ab8446428df923c27f388a85bd3f2c6d4}{Impose\+On\+Laplacian\+Matrix} (const \hyperlink{classmtk_1_1Lap1D}{Lap1\+D} \&lap, \hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix} \&matrix, const \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&time=\hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk\+::k\+Zero}) const 
 \begin{DoxyCompactList}\small\item\em Imposes the condition on the operator represented as matrix. \end{DoxyCompactList}\item 
 void \hyperlink{classmtk_1_1RobinBCDescriptor1D_ab0daec1d6c5c9c6768bea08281a3831d}{Impose\+On\+Grid} (\hyperlink{classmtk_1_1UniStgGrid1D}{Uni\+Stg\+Grid1\+D} \&grid, const \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&time=\hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk\+::k\+Zero}) const 
@@ -79,7 +82,7 @@ Instances of this class receive information about the coefficient functions and 
 \end{DoxySeeAlso}
 
 
-Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8h_source_l00155}{155} of file \hyperlink{mtk__robin__bc__descriptor__1d_8h_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8h_source_l00156}{156} of file \hyperlink{mtk__robin__bc__descriptor__1d_8h_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h}.
 
 
 
@@ -153,6 +156,55 @@ Integer highest order of differentiation in the west boundary.
 
 Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8cc_source_l00108}{108} of file \hyperlink{mtk__robin__bc__descriptor__1d_8cc_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+cc}.
 
+\hypertarget{classmtk_1_1RobinBCDescriptor1D_a09b026a79dde6e8dc14e981a45320863}{\index{mtk\+::\+Robin\+B\+C\+Descriptor1\+D@{mtk\+::\+Robin\+B\+C\+Descriptor1\+D}!Impose\+On\+Divergence\+Matrix@{Impose\+On\+Divergence\+Matrix}}
+\index{Impose\+On\+Divergence\+Matrix@{Impose\+On\+Divergence\+Matrix}!mtk\+::\+Robin\+B\+C\+Descriptor1\+D@{mtk\+::\+Robin\+B\+C\+Descriptor1\+D}}
+\subsubsection[{Impose\+On\+Divergence\+Matrix}]{\setlength{\rightskip}{0pt plus 5cm}bool mtk\+::\+Robin\+B\+C\+Descriptor1\+D\+::\+Impose\+On\+Divergence\+Matrix (
+\begin{DoxyParamCaption}
+\item[{const {\bf Div1\+D} \&}]{div, }
+\item[{{\bf mtk\+::\+Dense\+Matrix} \&}]{matrix, }
+\item[{const {\bf Real} \&}]{time = {\ttfamily {\bf mtk\+::k\+Zero}}}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1RobinBCDescriptor1D_a09b026a79dde6e8dc14e981a45320863}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em div} & Operator in the \hyperlink{classmtk_1_1Matrix}{Matrix}. \\
+\hline
+\mbox{\tt in,out}  & {\em matrix} & Input Divergence operator. \\
+\hline
+\mbox{\tt in}  & {\em time} & Current time snapshot. Default is k\+Zero.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Success of the imposition. 
+\end{DoxyReturn}
+
+\begin{DoxyEnumerate}
+\item Impose Dirichlet coefficients.
+\end{DoxyEnumerate}
+
+1.\+1. Impose Dirichlet condition at the west.
+
+1.\+2. Impose Dirichlet condition at the east.
+
+
+\begin{DoxyEnumerate}
+\item Impose Neumann coefficients. 
+\end{DoxyEnumerate}
+
+Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8cc_source_l00166}{166} of file \hyperlink{mtk__robin__bc__descriptor__1d_8cc_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+cc}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1RobinBCDescriptor1D_a09b026a79dde6e8dc14e981a45320863_cgraph}
+\end{center}
+\end{figure}
+
+
 \hypertarget{classmtk_1_1RobinBCDescriptor1D_ab0daec1d6c5c9c6768bea08281a3831d}{\index{mtk\+::\+Robin\+B\+C\+Descriptor1\+D@{mtk\+::\+Robin\+B\+C\+Descriptor1\+D}!Impose\+On\+Grid@{Impose\+On\+Grid}}
 \index{Impose\+On\+Grid@{Impose\+On\+Grid}!mtk\+::\+Robin\+B\+C\+Descriptor1\+D@{mtk\+::\+Robin\+B\+C\+Descriptor1\+D}}
 \subsubsection[{Impose\+On\+Grid}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+Robin\+B\+C\+Descriptor1\+D\+::\+Impose\+On\+Grid (
@@ -170,7 +222,7 @@ Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8cc_source_l00108}{
 \end{DoxyParams}
 
 
-Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8cc_source_l00246}{246} of file \hyperlink{mtk__robin__bc__descriptor__1d_8cc_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8cc_source_l00279}{279} of file \hyperlink{mtk__robin__bc__descriptor__1d_8cc_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+cc}.
 
 
 
@@ -206,8 +258,10 @@ Success of the imposition.
 \end{DoxyReturn}
 
 \begin{DoxyEnumerate}
-\item Impose Dirichlet coefficients. 1.\+1. Impose Dirichlet condition at the west.
+\item Impose Dirichlet coefficients.
 \end{DoxyEnumerate}
+
+1.\+1. Impose Dirichlet condition at the west.
 
 1.\+2. Impose Dirichlet condition at the east.
 
@@ -242,7 +296,7 @@ The Coefficients returned by the mim\+\_\+bndy getter are those intended for the
 
 2.\+4.\+3. Set the final value summing it with what is on the matrix. 
 
-Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8cc_source_l00166}{166} of file \hyperlink{mtk__robin__bc__descriptor__1d_8cc_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+cc}.
+Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8cc_source_l00197}{197} of file \hyperlink{mtk__robin__bc__descriptor__1d_8cc_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+cc}.
 
 
 
@@ -371,42 +425,42 @@ Here is the call graph for this function\+:\nopagebreak
 \subsubsection[{east\+\_\+coefficients\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Coefficient\+Function0\+D}$>$ mtk\+::\+Robin\+B\+C\+Descriptor1\+D\+::east\+\_\+coefficients\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1RobinBCDescriptor1D_aa8f5350e1767174f92fda449b44d1b04}
 
 
-Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8h_source_l00237}{237} of file \hyperlink{mtk__robin__bc__descriptor__1d_8h_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8h_source_l00251}{251} of file \hyperlink{mtk__robin__bc__descriptor__1d_8h_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1RobinBCDescriptor1D_adecf9da4390869d2aa49ccb1307320d6}{\index{mtk\+::\+Robin\+B\+C\+Descriptor1\+D@{mtk\+::\+Robin\+B\+C\+Descriptor1\+D}!east\+\_\+condition\+\_\+@{east\+\_\+condition\+\_\+}}
 \index{east\+\_\+condition\+\_\+@{east\+\_\+condition\+\_\+}!mtk\+::\+Robin\+B\+C\+Descriptor1\+D@{mtk\+::\+Robin\+B\+C\+Descriptor1\+D}}
 \subsubsection[{east\+\_\+condition\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}($\ast$ mtk\+::\+Robin\+B\+C\+Descriptor1\+D\+::east\+\_\+condition\+\_\+)(const {\bf Real} \&tt)\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1RobinBCDescriptor1D_adecf9da4390869d2aa49ccb1307320d6}
 
 
-Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8h_source_l00240}{240} of file \hyperlink{mtk__robin__bc__descriptor__1d_8h_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8h_source_l00254}{254} of file \hyperlink{mtk__robin__bc__descriptor__1d_8h_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1RobinBCDescriptor1D_a7a1e3660c59b132ddf576c36adf7dd37}{\index{mtk\+::\+Robin\+B\+C\+Descriptor1\+D@{mtk\+::\+Robin\+B\+C\+Descriptor1\+D}!highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+}}
 \index{highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+}!mtk\+::\+Robin\+B\+C\+Descriptor1\+D@{mtk\+::\+Robin\+B\+C\+Descriptor1\+D}}
 \subsubsection[{highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+Robin\+B\+C\+Descriptor1\+D\+::highest\+\_\+order\+\_\+diff\+\_\+east\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1RobinBCDescriptor1D_a7a1e3660c59b132ddf576c36adf7dd37}
 
 
-Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8h_source_l00234}{234} of file \hyperlink{mtk__robin__bc__descriptor__1d_8h_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8h_source_l00248}{248} of file \hyperlink{mtk__robin__bc__descriptor__1d_8h_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1RobinBCDescriptor1D_ab8d5accf2e2c2fae79865a5b8d11c3c5}{\index{mtk\+::\+Robin\+B\+C\+Descriptor1\+D@{mtk\+::\+Robin\+B\+C\+Descriptor1\+D}!highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+}}
 \index{highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+@{highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+}!mtk\+::\+Robin\+B\+C\+Descriptor1\+D@{mtk\+::\+Robin\+B\+C\+Descriptor1\+D}}
 \subsubsection[{highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}int mtk\+::\+Robin\+B\+C\+Descriptor1\+D\+::highest\+\_\+order\+\_\+diff\+\_\+west\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1RobinBCDescriptor1D_ab8d5accf2e2c2fae79865a5b8d11c3c5}
 
 
-Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8h_source_l00233}{233} of file \hyperlink{mtk__robin__bc__descriptor__1d_8h_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8h_source_l00247}{247} of file \hyperlink{mtk__robin__bc__descriptor__1d_8h_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1RobinBCDescriptor1D_a0a8a0dc4fa2dab02a9992094a3f5d0d6}{\index{mtk\+::\+Robin\+B\+C\+Descriptor1\+D@{mtk\+::\+Robin\+B\+C\+Descriptor1\+D}!west\+\_\+coefficients\+\_\+@{west\+\_\+coefficients\+\_\+}}
 \index{west\+\_\+coefficients\+\_\+@{west\+\_\+coefficients\+\_\+}!mtk\+::\+Robin\+B\+C\+Descriptor1\+D@{mtk\+::\+Robin\+B\+C\+Descriptor1\+D}}
 \subsubsection[{west\+\_\+coefficients\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}std\+::vector$<${\bf Coefficient\+Function0\+D}$>$ mtk\+::\+Robin\+B\+C\+Descriptor1\+D\+::west\+\_\+coefficients\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1RobinBCDescriptor1D_a0a8a0dc4fa2dab02a9992094a3f5d0d6}
 
 
-Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8h_source_l00236}{236} of file \hyperlink{mtk__robin__bc__descriptor__1d_8h_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8h_source_l00250}{250} of file \hyperlink{mtk__robin__bc__descriptor__1d_8h_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h}.
 
 \hypertarget{classmtk_1_1RobinBCDescriptor1D_ab4e2dd2c68d33d8fc82ba697d515ebd2}{\index{mtk\+::\+Robin\+B\+C\+Descriptor1\+D@{mtk\+::\+Robin\+B\+C\+Descriptor1\+D}!west\+\_\+condition\+\_\+@{west\+\_\+condition\+\_\+}}
 \index{west\+\_\+condition\+\_\+@{west\+\_\+condition\+\_\+}!mtk\+::\+Robin\+B\+C\+Descriptor1\+D@{mtk\+::\+Robin\+B\+C\+Descriptor1\+D}}
 \subsubsection[{west\+\_\+condition\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}($\ast$ mtk\+::\+Robin\+B\+C\+Descriptor1\+D\+::west\+\_\+condition\+\_\+)(const {\bf Real} \&tt)\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1RobinBCDescriptor1D_ab4e2dd2c68d33d8fc82ba697d515ebd2}
 
 
-Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8h_source_l00239}{239} of file \hyperlink{mtk__robin__bc__descriptor__1d_8h_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h}.
+Definition at line \hyperlink{mtk__robin__bc__descriptor__1d_8h_source_l00253}{253} of file \hyperlink{mtk__robin__bc__descriptor__1d_8h_source}{mtk\+\_\+robin\+\_\+bc\+\_\+descriptor\+\_\+1d.\+h}.
 
 
 

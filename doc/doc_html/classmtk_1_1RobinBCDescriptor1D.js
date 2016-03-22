@@ -5,6 +5,7 @@ var classmtk_1_1RobinBCDescriptor1D =
     [ "~RobinBCDescriptor1D", "classmtk_1_1RobinBCDescriptor1D.html#a247cdbba1ae673d576b71829f2b82736", null ],
     [ "highest_order_diff_east", "classmtk_1_1RobinBCDescriptor1D.html#a2e7419a5cd02721104bf9c1e52b6fb61", null ],
     [ "highest_order_diff_west", "classmtk_1_1RobinBCDescriptor1D.html#a1935b9e2e560ea5f176ac6e0a3823d50", null ],
+    [ "ImposeOnDivergenceMatrix", "classmtk_1_1RobinBCDescriptor1D.html#a09b026a79dde6e8dc14e981a45320863", null ],
     [ "ImposeOnGrid", "classmtk_1_1RobinBCDescriptor1D.html#ab0daec1d6c5c9c6768bea08281a3831d", null ],
     [ "ImposeOnLaplacianMatrix", "classmtk_1_1RobinBCDescriptor1D.html#ab8446428df923c27f388a85bd3f2c6d4", null ],
     [ "PushBackEastCoeff", "classmtk_1_1RobinBCDescriptor1D.html#a7791c11e0950656cb5608a77918c28d4", null ],

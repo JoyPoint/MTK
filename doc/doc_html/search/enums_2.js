@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['matrixordering',['MatrixOrdering',['../group__c02-enums.html#ga622801bd9f912d0f976c3e383f5f581c',1,'mtk']]],
-  ['matrixstorage',['MatrixStorage',['../group__c02-enums.html#ga25b67ec6a2afeee69f9bb196a9c66619',1,'mtk']]]
+  ['fieldnature',['FieldNature',['../group__c02-enums.html#ga4c54f2a329cfb4e56213b02a259d19e2',1,'mtk']]]
 ];

@@ -12,7 +12,8 @@ Defines a common dense matrix, using a 1\+D array.
 
 
 
-Collaboration diagram for mtk\+:\+:Dense\+Matrix\+:\nopagebreak
+Collaboration diagram for mtk\+:\+:Dense\+Matrix\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -38,6 +39,10 @@ bool \hyperlink{classmtk_1_1DenseMatrix_a94ab5a02d9cf81c17b6f68f4c41cb797}{opera
 \begin{DoxyCompactList}\small\item\em Construct a dense Vandermonde matrix. \end{DoxyCompactList}\item 
 \hyperlink{classmtk_1_1DenseMatrix_a8d4a0df33bd4e4edf5d2fe5539885b85}{$\sim$\+Dense\+Matrix} ()
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
+\hyperlink{group__c02-enums_ga9b50023bfb2692219d2915feade94f80}{Encoded\+Operator} \hyperlink{classmtk_1_1DenseMatrix_ab4ba807bef5282875d2136c456794f11}{encoded\+\_\+operator} () const 
+\begin{DoxyCompactList}\small\item\em Return operator encoded by this matrix. \end{DoxyCompactList}\item 
+void \hyperlink{classmtk_1_1DenseMatrix_ac0f824b0fec88c4fb42e77b7550fb0d3}{set\+\_\+encoded\+\_\+operator} (const \hyperlink{group__c02-enums_ga9b50023bfb2692219d2915feade94f80}{Encoded\+Operator} \&op)
+\begin{DoxyCompactList}\small\item\em Sets the encoded operator. \end{DoxyCompactList}\item 
 \hyperlink{classmtk_1_1Matrix}{Matrix} \hyperlink{classmtk_1_1DenseMatrix_a5aa83a0643f27a4652ea97630edf7143}{matrix\+\_\+properties} () const noexcept
 \begin{DoxyCompactList}\small\item\em Provides access to the matrix data. \end{DoxyCompactList}\item 
 int \hyperlink{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74}{num\+\_\+rows} () const noexcept
@@ -68,6 +73,8 @@ static \hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix} \hyperlink{classmtk_1_
 \subsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
+\hyperlink{group__c02-enums_ga9b50023bfb2692219d2915feade94f80}{Encoded\+Operator} \hyperlink{classmtk_1_1DenseMatrix_ad1633ffc35da862b5284d3907ab5175a}{encoded\+\_\+operator\+\_\+}
+\begin{DoxyCompactList}\small\item\em Operator this matrix is encoding. \end{DoxyCompactList}\item 
 \hyperlink{classmtk_1_1Matrix}{Matrix} \hyperlink{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{matrix\+\_\+properties\+\_\+}
 \begin{DoxyCompactList}\small\item\em Data related to the matrix nature. \end{DoxyCompactList}\item 
 \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$ \hyperlink{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}{data\+\_\+}
@@ -82,7 +89,7 @@ std\+::ostream \& \hyperlink{classmtk_1_1DenseMatrix_adbcc850ef373550f634f563573
 \subsection{Detailed Description}
 For developing purposes, it is better to have a not-\/so-\/intrincated data structure implementing matrices. This is the purpose of this class\+: to be used for prototypes of new code for small test cases. In every other instance, this should be replaced by the most appropriate sparse matrix. 
 
-Definition at line \hyperlink{mtk__dense__matrix_8h_source_l00092}{92} of file \hyperlink{mtk__dense__matrix_8h_source}{mtk\+\_\+dense\+\_\+matrix.\+h}.
+Definition at line \hyperlink{mtk__dense__matrix_8h_source_l00095}{95} of file \hyperlink{mtk__dense__matrix_8h_source}{mtk\+\_\+dense\+\_\+matrix.\+h}.
 
 
 
@@ -96,7 +103,7 @@ Definition at line \hyperlink{mtk__dense__matrix_8h_source_l00092}{92} of file \
 )}}\label{classmtk_1_1DenseMatrix_a0c75ee704707983f935b02835eab0933}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00167}{167} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00172}{172} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -123,7 +130,7 @@ Here is the call graph for this function\+:\nopagebreak
 \end{DoxyParams}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00173}{173} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00180}{180} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -158,7 +165,7 @@ Here is the call graph for this function\+:\nopagebreak
 \end{DoxyExceptions}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00206}{206} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00215}{215} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -202,7 +209,7 @@ Def$\ast$$\ast$. A {\bfseries padded matrix} is a matrix with its first and last
 \end{DoxyExceptions}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00228}{228} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00239}{239} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -251,7 +258,7 @@ Obs$\ast$$\ast$. It in important to understand that the generator vectors to be 
 \end{DoxyExceptions}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00269}{269} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00282}{282} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -273,7 +280,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}}\label{classmtk_1_1DenseMatrix_a8d4a0df33bd4e4edf5d2fe5539885b85}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00317}{317} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00332}{332} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -290,15 +297,42 @@ Pointer to an array of \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f89
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00349}{349} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00364}{364} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_ab4ba807bef5282875d2136c456794f11}{\index{mtk\+::\+Dense\+Matrix@{mtk\+::\+Dense\+Matrix}!encoded\+\_\+operator@{encoded\+\_\+operator}}
+\index{encoded\+\_\+operator@{encoded\+\_\+operator}!mtk\+::\+Dense\+Matrix@{mtk\+::\+Dense\+Matrix}}
+\subsubsection[{encoded\+\_\+operator}]{\setlength{\rightskip}{0pt plus 5cm}{\bf mtk\+::\+Encoded\+Operator} mtk\+::\+Dense\+Matrix\+::encoded\+\_\+operator (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{classmtk_1_1DenseMatrix_ab4ba807bef5282875d2136c456794f11}
+\begin{DoxyReturn}{Returns}
+Operator encoded by this matrix. 
+\end{DoxyReturn}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00369}{369} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_ab4ba807bef5282875d2136c456794f11_icgraph}
 \end{center}
 \end{figure}
 
@@ -323,7 +357,7 @@ The required value at the specified coordinates.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00354}{354} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00390}{390} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -370,10 +404,10 @@ Here is the caller graph for this function\+:\nopagebreak
 \begin{DoxyRefDesc}{Todo}
 \item[\hyperlink{todo__todo000001}{Todo}]Implement Kronecker product using the B\+L\+A\+S. \end{DoxyRefDesc}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000019}{Todo}]Implement Kron using the B\+L\+A\+S. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000021}{Todo}]Implement Kron using the B\+L\+A\+S. \end{DoxyRefDesc}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00496}{496} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00532}{532} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -409,11 +443,12 @@ Pointer to a \hyperlink{classmtk_1_1Matrix}{Matrix}.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00323}{323} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00338}{338} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -434,11 +469,12 @@ Number of columns of the matrix.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00344}{344} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00359}{359} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -459,15 +495,16 @@ Number of rows of the matrix.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00339}{339} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00354}{354} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74_icgraph}
+\includegraphics[height=550pt]{classmtk_1_1DenseMatrix_a53f3afb3b6a8d21854458aaa9663cc74_icgraph}
 \end{center}
 \end{figure}
 
@@ -489,7 +526,7 @@ Copy of the given matrix.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00105}{105} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00106}{106} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -511,7 +548,7 @@ Here is the call graph for this function\+:\nopagebreak
 )}}\label{classmtk_1_1DenseMatrix_a94ab5a02d9cf81c17b6f68f4c41cb797}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00146}{146} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00149}{149} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -532,10 +569,10 @@ Here is the call graph for this function\+:\nopagebreak
 \end{DoxyParamCaption}
 )}}\label{classmtk_1_1DenseMatrix_a59b9bea24acf39dca64e8549b3527463}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000018}{Todo}]Improve this so that no new arrays have to be created. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000020}{Todo}]Improve this so that no new arrays have to be created. \end{DoxyRefDesc}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00457}{457} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00493}{493} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -556,18 +593,59 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{DoxyParamCaption}
 )}}\label{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000017}{Todo}]Improve this so that no new arrays have to be created. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000019}{Todo}]Improve this so that no new arrays have to be created. \end{DoxyRefDesc}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00416}{416} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00452}{452} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classmtk_1_1DenseMatrix_ac2949efba3e8278335d45418c85433e4_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1DenseMatrix_ac0f824b0fec88c4fb42e77b7550fb0d3}{\index{mtk\+::\+Dense\+Matrix@{mtk\+::\+Dense\+Matrix}!set\+\_\+encoded\+\_\+operator@{set\+\_\+encoded\+\_\+operator}}
+\index{set\+\_\+encoded\+\_\+operator@{set\+\_\+encoded\+\_\+operator}!mtk\+::\+Dense\+Matrix@{mtk\+::\+Dense\+Matrix}}
+\subsubsection[{set\+\_\+encoded\+\_\+operator}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+Dense\+Matrix\+::set\+\_\+encoded\+\_\+operator (
+\begin{DoxyParamCaption}
+\item[{const {\bf Encoded\+Operator} \&}]{op}
+\end{DoxyParamCaption}
+)}}\label{classmtk_1_1DenseMatrix_ac0f824b0fec88c4fb42e77b7550fb0d3}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em op} & Encoded operator. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00374}{374} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=345pt]{classmtk_1_1DenseMatrix_ac0f824b0fec88c4fb42e77b7550fb0d3_cgraph}
+\end{center}
+\end{figure}
+
+
+
+
+Here is the caller graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1DenseMatrix_ac0f824b0fec88c4fb42e77b7550fb0d3_icgraph}
 \end{center}
 \end{figure}
 
@@ -589,7 +667,7 @@ The required value at the specified coordinates.
 \end{DoxyReturn}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00328}{328} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00343}{343} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -633,7 +711,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{DoxyParams}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00366}{366} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00402}{402} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -648,7 +726,8 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -665,10 +744,10 @@ Here is the caller graph for this function\+:\nopagebreak
 \end{DoxyParamCaption}
 )}}\label{classmtk_1_1DenseMatrix_a71d9c07ca66e88d97d1fd5012f43138b}
 \begin{DoxyRefDesc}{Todo}
-\item[\hyperlink{todo__todo000016}{Todo}]Improve this so that no extra arrays have to be created. \end{DoxyRefDesc}
+\item[\hyperlink{todo__todo000018}{Todo}]Improve this so that no extra arrays have to be created. \end{DoxyRefDesc}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00379}{379} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00415}{415} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -701,7 +780,7 @@ Success of the file writing process.
 \end{DoxySeeAlso}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00539}{539} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00575}{575} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -716,7 +795,7 @@ Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00539}{539} of file
 )\hspace{0.3cm}{\ttfamily [friend]}}}\label{classmtk_1_1DenseMatrix_adbcc850ef373550f634f563573a31d28}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00079}{79} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00080}{80} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -726,14 +805,21 @@ Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00079}{79} of file 
 \subsubsection[{data\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Real}$\ast$ mtk\+::\+Dense\+Matrix\+::data\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1DenseMatrix_a7893e4e5c8d2e2de32b156177e78cb6f}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8h_source_l00291}{291} of file \hyperlink{mtk__dense__matrix_8h_source}{mtk\+\_\+dense\+\_\+matrix.\+h}.
+Definition at line \hyperlink{mtk__dense__matrix_8h_source_l00310}{310} of file \hyperlink{mtk__dense__matrix_8h_source}{mtk\+\_\+dense\+\_\+matrix.\+h}.
+
+\hypertarget{classmtk_1_1DenseMatrix_ad1633ffc35da862b5284d3907ab5175a}{\index{mtk\+::\+Dense\+Matrix@{mtk\+::\+Dense\+Matrix}!encoded\+\_\+operator\+\_\+@{encoded\+\_\+operator\+\_\+}}
+\index{encoded\+\_\+operator\+\_\+@{encoded\+\_\+operator\+\_\+}!mtk\+::\+Dense\+Matrix@{mtk\+::\+Dense\+Matrix}}
+\subsubsection[{encoded\+\_\+operator\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Encoded\+Operator} mtk\+::\+Dense\+Matrix\+::encoded\+\_\+operator\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1DenseMatrix_ad1633ffc35da862b5284d3907ab5175a}
+
+
+Definition at line \hyperlink{mtk__dense__matrix_8h_source_l00306}{306} of file \hyperlink{mtk__dense__matrix_8h_source}{mtk\+\_\+dense\+\_\+matrix.\+h}.
 
 \hypertarget{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}{\index{mtk\+::\+Dense\+Matrix@{mtk\+::\+Dense\+Matrix}!matrix\+\_\+properties\+\_\+@{matrix\+\_\+properties\+\_\+}}
 \index{matrix\+\_\+properties\+\_\+@{matrix\+\_\+properties\+\_\+}!mtk\+::\+Dense\+Matrix@{mtk\+::\+Dense\+Matrix}}
 \subsubsection[{matrix\+\_\+properties\+\_\+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix} mtk\+::\+Dense\+Matrix\+::matrix\+\_\+properties\+\_\+\hspace{0.3cm}{\ttfamily [private]}}}\label{classmtk_1_1DenseMatrix_a481c8d09af685a5ba67acefdcaa810cc}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8h_source_l00289}{289} of file \hyperlink{mtk__dense__matrix_8h_source}{mtk\+\_\+dense\+\_\+matrix.\+h}.
+Definition at line \hyperlink{mtk__dense__matrix_8h_source_l00308}{308} of file \hyperlink{mtk__dense__matrix_8h_source}{mtk\+\_\+dense\+\_\+matrix.\+h}.
 
 
 

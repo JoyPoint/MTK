@@ -153,19 +153,22 @@
 00158 
 00159   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} out(gg\_num\_rows, gg\_num\_cols);
 00160 
+00161   out.\hyperlink{classmtk_1_1DenseMatrix_ac0f824b0fec88c4fb42e77b7550fb0d3}{set\_encoded\_operator}(
+      \hyperlink{namespacemtk_ga9b50023bfb2692219d2915feade94f80a6a9b19b26cdeae14c1102cd40345d568}{mtk::EncodedOperator::INTERPOLATION});
 00162 
-00163   out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(0, 0, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
 00164 
+00165   out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(0, 0, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
 00166 
-00167   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < gg\_num\_rows - 1; ++ii) \{
-00168     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = ii ; jj < order\_accuracy\_ + ii; ++jj) \{
-00169       out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/order\_accuracy\_);
-00170     \}
-00171   \}
-00172 
+00168 
+00169   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < gg\_num\_rows - 1; ++ii) \{
+00170     \textcolor{keywordflow}{for}(\textcolor{keyword}{auto} jj = ii ; jj < order\_accuracy\_ + ii; ++jj) \{
+00171       out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/order\_accuracy\_);
+00172     \}
+00173   \}
 00174 
-00175   out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(gg\_num\_rows - 1, gg\_num\_cols - 1, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
 00176 
-00177   \textcolor{keywordflow}{return} out;
-00178 \}
+00177   out.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(gg\_num\_rows - 1, gg\_num\_cols - 1, \hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne});
+00178 
+00179   \textcolor{keywordflow}{return} out;
+00180 \}
 \end{DoxyCode}

@@ -17,6 +17,7 @@ var namespacemtk =
     [ "Lap3D", "classmtk_1_1Lap3D.html", "classmtk_1_1Lap3D" ],
     [ "LAPACKAdapter", "classmtk_1_1LAPACKAdapter.html", "classmtk_1_1LAPACKAdapter" ],
     [ "Matrix", "classmtk_1_1Matrix.html", "classmtk_1_1Matrix" ],
+    [ "OperatorApplicator", "classmtk_1_1OperatorApplicator.html", "classmtk_1_1OperatorApplicator" ],
     [ "Quad1D", "classmtk_1_1Quad1D.html", "classmtk_1_1Quad1D" ],
     [ "RobinBCDescriptor1D", "classmtk_1_1RobinBCDescriptor1D.html", "classmtk_1_1RobinBCDescriptor1D" ],
     [ "RobinBCDescriptor2D", "classmtk_1_1RobinBCDescriptor2D.html", "classmtk_1_1RobinBCDescriptor2D" ],

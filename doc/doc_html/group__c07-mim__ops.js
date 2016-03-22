@@ -199,6 +199,11 @@ var group__c07_mim__ops =
       [ "mimetic_threshold_", "classmtk_1_1Lap3D.html#a5160ec862d571437acf9ac3146474b25", null ],
       [ "order_accuracy_", "classmtk_1_1Lap3D.html#a59c97571ab548c16d7e500ed411837d2", null ]
     ] ],
+    [ "OperatorApplicator", "classmtk_1_1OperatorApplicator.html", [
+      [ "ApplyDenseMatrixDivergenceOn1DGrid", "classmtk_1_1OperatorApplicator.html#a895a4650ad0d07074e69f971ff9321b9", null ],
+      [ "ApplyDenseMatrixGradientOn1DGrid", "classmtk_1_1OperatorApplicator.html#ac19a5cad4c6600caa75250945ffca63e", null ],
+      [ "ApplyDenseMatrixLaplacianOn1DGrid", "classmtk_1_1OperatorApplicator.html#a142ef3e84c7547ca05216ccd69d5210e", null ]
+    ] ],
     [ "Quad1D", "classmtk_1_1Quad1D.html", [
       [ "Quad1D", "classmtk_1_1Quad1D.html#ada5a2f1e7c92dbf1f85c61ecd0d173ec", null ],
       [ "Quad1D", "classmtk_1_1Quad1D.html#ac4334daf0614bd4c789600c885b6116d", null ],
@@ -216,6 +221,7 @@ var group__c07_mim__ops =
       [ "~RobinBCDescriptor1D", "classmtk_1_1RobinBCDescriptor1D.html#a247cdbba1ae673d576b71829f2b82736", null ],
       [ "highest_order_diff_east", "classmtk_1_1RobinBCDescriptor1D.html#a2e7419a5cd02721104bf9c1e52b6fb61", null ],
       [ "highest_order_diff_west", "classmtk_1_1RobinBCDescriptor1D.html#a1935b9e2e560ea5f176ac6e0a3823d50", null ],
+      [ "ImposeOnDivergenceMatrix", "classmtk_1_1RobinBCDescriptor1D.html#a09b026a79dde6e8dc14e981a45320863", null ],
       [ "ImposeOnGrid", "classmtk_1_1RobinBCDescriptor1D.html#ab0daec1d6c5c9c6768bea08281a3831d", null ],
       [ "ImposeOnLaplacianMatrix", "classmtk_1_1RobinBCDescriptor1D.html#ab8446428df923c27f388a85bd3f2c6d4", null ],
       [ "PushBackEastCoeff", "classmtk_1_1RobinBCDescriptor1D.html#a7791c11e0950656cb5608a77918c28d4", null ],

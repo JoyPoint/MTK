@@ -19,6 +19,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "mtk_lap_3d.h", "mtk__lap__3d_8h.html", null ],
     [ "mtk_lapack_adapter.h", "mtk__lapack__adapter_8h.html", null ],
     [ "mtk_matrix.h", "mtk__matrix_8h.html", null ],
+    [ "mtk_operator_applicator.h", "mtk__operator__applicator_8h.html", null ],
     [ "mtk_quad_1d.h", "mtk__quad__1d_8h.html", null ],
     [ "mtk_robin_bc_descriptor_1d.h", "mtk__robin__bc__descriptor__1d_8h.html", "mtk__robin__bc__descriptor__1d_8h" ],
     [ "mtk_robin_bc_descriptor_2d.h", "mtk__robin__bc__descriptor__2d_8h.html", "mtk__robin__bc__descriptor__2d_8h" ],

@@ -50,6 +50,8 @@ var searchData=
   ['mtk_5flapack_5fadapter_5ftest_2ecc',['mtk_lapack_adapter_test.cc',['../mtk__lapack__adapter__test_8cc.html',1,'']]],
   ['mtk_5fmatrix_2ecc',['mtk_matrix.cc',['../mtk__matrix_8cc.html',1,'']]],
   ['mtk_5fmatrix_2eh',['mtk_matrix.h',['../mtk__matrix_8h.html',1,'']]],
+  ['mtk_5foperator_5fapplicator_2ecc',['mtk_operator_applicator.cc',['../mtk__operator__applicator_8cc.html',1,'']]],
+  ['mtk_5foperator_5fapplicator_2eh',['mtk_operator_applicator.h',['../mtk__operator__applicator_8h.html',1,'']]],
   ['mtk_5fquad_5f1d_2eh',['mtk_quad_1d.h',['../mtk__quad__1d_8h.html',1,'']]],
   ['mtk_5frobin_5fbc_5fdescriptor_5f1d_2ecc',['mtk_robin_bc_descriptor_1d.cc',['../mtk__robin__bc__descriptor__1d_8cc.html',1,'']]],
   ['mtk_5frobin_5fbc_5fdescriptor_5f1d_2eh',['mtk_robin_bc_descriptor_1d.h',['../mtk__robin__bc__descriptor__1d_8h.html',1,'']]],

@@ -4,6 +4,7 @@ var searchData=
   ['scalar',['SCALAR',['../namespacemtk.html#ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9',1,'mtk']]],
   ['scalar_5fto_5fvector',['SCALAR_TO_VECTOR',['../namespacemtk.html#ga674ec67bd1baa04e5dc06c2bcc351972a53facfbeb6725b2bd220c8d9811a0673',1,'mtk']]],
   ['set_5feast_5fcondition',['set_east_condition',['../classmtk_1_1RobinBCDescriptor1D.html#a4edc92eeaaaa3f1e7f2cedfea3d35681',1,'mtk::RobinBCDescriptor1D::set_east_condition()'],['../classmtk_1_1RobinBCDescriptor2D.html#a94570f6e741bb00038c4bf81842d226c',1,'mtk::RobinBCDescriptor2D::set_east_condition()']]],
+  ['set_5fencoded_5foperator',['set_encoded_operator',['../classmtk_1_1DenseMatrix.html#ac0f824b0fec88c4fb42e77b7550fb0d3',1,'mtk::DenseMatrix']]],
   ['set_5fnorth_5fcondition',['set_north_condition',['../classmtk_1_1RobinBCDescriptor2D.html#ade17884e6a2636a7c6f989602a0052e0',1,'mtk::RobinBCDescriptor2D']]],
   ['set_5fnum_5fcols',['set_num_cols',['../classmtk_1_1Matrix.html#aad6b4ced4a0447cc7bf2347fe86fd722',1,'mtk::Matrix']]],
   ['set_5fnum_5fnull',['set_num_null',['../classmtk_1_1Matrix.html#a61dba12c767f98cda5343b4b16bbbe77',1,'mtk::Matrix']]],

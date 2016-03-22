@@ -43,6 +43,8 @@ class \hyperlink{classmtk_1_1LAPACKAdapter}{L\+A\+P\+A\+C\+K\+Adapter}
 \begin{DoxyCompactList}\small\item\em Adapter class for the L\+A\+P\+A\+C\+K A\+P\+I. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Matrix}{Matrix}
 \begin{DoxyCompactList}\small\item\em Definition of the representation of a matrix in the M\+T\+K. \end{DoxyCompactList}\item 
+class \hyperlink{classmtk_1_1OperatorApplicator}{Operator\+Applicator}
+\begin{DoxyCompactList}\small\item\em Controls the process of applying a mimetic operator to a grid. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1Quad1D}{Quad1\+D}
 \begin{DoxyCompactList}\small\item\em Implements a 1\+D mimetic quadrature. \end{DoxyCompactList}\item 
 class \hyperlink{classmtk_1_1RobinBCDescriptor1D}{Robin\+B\+C\+Descriptor1\+D}
@@ -89,7 +91,17 @@ enum \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{Field\+Natu
 enum \hyperlink{group__c02-enums_ga674ec67bd1baa04e5dc06c2bcc351972}{Dir\+Interp} \{ \hyperlink{group__c02-enums_ga674ec67bd1baa04e5dc06c2bcc351972a53facfbeb6725b2bd220c8d9811a0673}{Dir\+Interp\+::\+S\+C\+A\+L\+A\+R\+\_\+\+T\+O\+\_\+\+V\+E\+C\+T\+O\+R}, 
 \hyperlink{group__c02-enums_ga674ec67bd1baa04e5dc06c2bcc351972a6b389c8391a900c481d8c96c6045f468}{Dir\+Interp\+::\+V\+E\+C\+T\+O\+R\+\_\+\+T\+O\+\_\+\+S\+C\+A\+L\+A\+R}
  \}
-\begin{DoxyCompactList}\small\item\em Interpolation operator. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Interpolation operator. \end{DoxyCompactList}\item 
+enum \hyperlink{group__c02-enums_ga9b50023bfb2692219d2915feade94f80}{Encoded\+Operator} \{ \\*
+\hyperlink{group__c02-enums_ga9b50023bfb2692219d2915feade94f80a722d122e81cbbe543bd5520bb8678c0e}{Encoded\+Operator\+::\+N\+O\+O\+P}, 
+\hyperlink{group__c02-enums_ga9b50023bfb2692219d2915feade94f80a90f70ea2675c36bd9b0b44a79f37a41f}{Encoded\+Operator\+::\+G\+R\+A\+D\+I\+E\+N\+T}, 
+\hyperlink{group__c02-enums_ga9b50023bfb2692219d2915feade94f80a4e4e9e6d004c642e33d6f823b57bd60e}{Encoded\+Operator\+::\+D\+I\+V\+E\+R\+G\+E\+N\+C\+E}, 
+\hyperlink{group__c02-enums_ga9b50023bfb2692219d2915feade94f80a6a9b19b26cdeae14c1102cd40345d568}{Encoded\+Operator\+::\+I\+N\+T\+E\+R\+P\+O\+L\+A\+T\+I\+O\+N}, 
+\\*
+\hyperlink{group__c02-enums_ga9b50023bfb2692219d2915feade94f80aa8bc924d0898064a538c557848f7ab48}{Encoded\+Operator\+::\+C\+U\+R\+L}, 
+\hyperlink{group__c02-enums_ga9b50023bfb2692219d2915feade94f80a1c2d5f3f8e6cbb0c7b033c388c905d22}{Encoded\+Operator\+::\+L\+A\+P\+L\+A\+C\+I\+A\+N}
+ \}
+\begin{DoxyCompactList}\small\item\em Operators matrices can encode. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -237,7 +249,7 @@ Definition at line \hyperlink{mtk__lap__1d_8cc_source_l00075}{75} of file \hyper
 )}}\label{namespacemtk_ad3bcf52cda59ddb5fc7b4bdce76c46dc}
 
 
-Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00079}{79} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
+Definition at line \hyperlink{mtk__dense__matrix_8cc_source_l00080}{80} of file \hyperlink{mtk__dense__matrix_8cc_source}{mtk\+\_\+dense\+\_\+matrix.\+cc}.
 
 
 
@@ -432,7 +444,8 @@ Here is the caller graph for this function\+:\nopagebreak
 )}}\label{namespacemtk_a88daff7ad6f251a58b94aa2d0c94d069}
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -512,8 +525,7 @@ as returned by S\+G\+E\+Q\+R\+F. Q is of order M if S\+I\+D\+E = 'L' and of orde
 )}}\label{namespacemtk_a508e99fcb14d526bc43aa0a80aa4b658}
 
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

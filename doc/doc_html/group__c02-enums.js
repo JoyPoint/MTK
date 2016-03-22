@@ -4,6 +4,14 @@ var group__c02_enums =
       [ "SCALAR_TO_VECTOR", "namespacemtk.html#ga674ec67bd1baa04e5dc06c2bcc351972a53facfbeb6725b2bd220c8d9811a0673", null ],
       [ "VECTOR_TO_SCALAR", "namespacemtk.html#ga674ec67bd1baa04e5dc06c2bcc351972a6b389c8391a900c481d8c96c6045f468", null ]
     ] ],
+    [ "EncodedOperator", "group__c02-enums.html#ga9b50023bfb2692219d2915feade94f80", [
+      [ "NOOP", "namespacemtk.html#ga9b50023bfb2692219d2915feade94f80a722d122e81cbbe543bd5520bb8678c0e", null ],
+      [ "GRADIENT", "namespacemtk.html#ga9b50023bfb2692219d2915feade94f80a90f70ea2675c36bd9b0b44a79f37a41f", null ],
+      [ "DIVERGENCE", "namespacemtk.html#ga9b50023bfb2692219d2915feade94f80a4e4e9e6d004c642e33d6f823b57bd60e", null ],
+      [ "INTERPOLATION", "namespacemtk.html#ga9b50023bfb2692219d2915feade94f80a6a9b19b26cdeae14c1102cd40345d568", null ],
+      [ "CURL", "namespacemtk.html#ga9b50023bfb2692219d2915feade94f80aa8bc924d0898064a538c557848f7ab48", null ],
+      [ "LAPLACIAN", "namespacemtk.html#ga9b50023bfb2692219d2915feade94f80a1c2d5f3f8e6cbb0c7b033c388c905d22", null ]
+    ] ],
     [ "FieldNature", "group__c02-enums.html#ga4c54f2a329cfb4e56213b02a259d19e2", [
       [ "SCALAR", "namespacemtk.html#ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9", null ],
       [ "VECTOR", "namespacemtk.html#ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e", null ]

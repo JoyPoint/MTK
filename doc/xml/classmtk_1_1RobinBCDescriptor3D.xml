@@ -932,10 +932,10 @@
 <para>This class presents an interface for the user to specify Robin boundary conditions on 3D mimetic operators and the grids they are acting on.</para><para><bold>Def.</bold> Let <formula id="72">$ u(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} $</formula> be the solution to an ordinary or partial differential equation of interest. We say that <formula id="76">$ u $</formula> satisfies a <bold>Robin boundary condition on</bold> <formula id="77">$ \partial\Omega $</formula> if and only if there exists <formula id="71">$ \beta(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} $</formula> so that: <formula id="78">\[ \forall t \in [t_0,t_n]\; \forall \mathbf{x} \in \partial\Omega: \delta(\mathbf{x},t)u(\mathbf{x},t) + \eta(\mathbf{x},t)(\hat{\mathbf{n}}\cdot\nabla u) = \beta(\mathbf{x},t). \]</formula></para><para>Intuitively, a <bold>Robin boundary condition</bold> is a constraint that must be satisfied by any linear combination of any scalar field <formula id="76">$ u $</formula> and its first normal derivative, in order for <formula id="76">$ u $</formula> to represent a unique solution to a given ordinary or partial differential equation of interest.</para><para>Instances of this class receive information about the coefficient functions and each condition for any subset of the boundary. These instances then handle the complexity of placing the coefficients in the differentiation matrices and the conditions in the grids.</para><para><simplesect kind="see"><para><ulink url="http://mathworld.wolfram.com/NormalVector.html">http://mathworld.wolfram.com/NormalVector.html</ulink> </para></simplesect>
 </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="181">
+      <node id="185">
         <label>mtk::RobinBCDescriptor3D</label>
         <link refid="classmtk_1_1RobinBCDescriptor3D"/>
-        <childnode refid="182" relation="usage">
+        <childnode refid="186" relation="usage">
           <edgelabel>-east_coefficients_</edgelabel>
           <edgelabel>-west_coefficients_</edgelabel>
           <edgelabel>-south_coefficients_</edgelabel>
@@ -944,18 +944,18 @@
           <edgelabel>-north_coefficients_</edgelabel>
         </childnode>
       </node>
-      <node id="184">
+      <node id="188">
         <label>T</label>
       </node>
-      <node id="183">
+      <node id="187">
         <label>std::vector&lt; T &gt;</label>
-        <childnode refid="184" relation="usage">
+        <childnode refid="188" relation="usage">
           <edgelabel>+elements</edgelabel>
         </childnode>
       </node>
-      <node id="182">
+      <node id="186">
         <label>std::vector&lt; CoefficientFunction2D &gt;</label>
-        <childnode refid="183" relation="template-instance">
+        <childnode refid="187" relation="template-instance">
           <edgelabel>&lt; CoefficientFunction2D &gt;</edgelabel>
         </childnode>
       </node>

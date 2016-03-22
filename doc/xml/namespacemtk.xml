@@ -19,6 +19,7 @@
     <innerclass refid="classmtk_1_1Lap3D" prot="public">mtk::Lap3D</innerclass>
     <innerclass refid="classmtk_1_1LAPACKAdapter" prot="public">mtk::LAPACKAdapter</innerclass>
     <innerclass refid="classmtk_1_1Matrix" prot="public">mtk::Matrix</innerclass>
+    <innerclass refid="classmtk_1_1OperatorApplicator" prot="public">mtk::OperatorApplicator</innerclass>
     <innerclass refid="classmtk_1_1Quad1D" prot="public">mtk::Quad1D</innerclass>
     <innerclass refid="classmtk_1_1RobinBCDescriptor1D" prot="public">mtk::RobinBCDescriptor1D</innerclass>
     <innerclass refid="classmtk_1_1RobinBCDescriptor2D" prot="public">mtk::RobinBCDescriptor2D</innerclass>
@@ -134,6 +135,58 @@
         </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/include/mtk_enums.h" line="127" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_enums.h" bodystart="127" bodyend="130"/>
       </memberdef>
+      <memberdef kind="enum" id="group__c02-enums_1ga9b50023bfb2692219d2915feade94f80" prot="public" static="no">
+        <name>EncodedOperator</name>
+        <enumvalue id="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a722d122e81cbbe543bd5520bb8678c0e" prot="public">
+          <name>NOOP</name>
+          <briefdescription>
+<para>No operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a90f70ea2675c36bd9b0b44a79f37a41f" prot="public">
+          <name>GRADIENT</name>
+          <briefdescription>
+<para>Gradient operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a4e4e9e6d004c642e33d6f823b57bd60e" prot="public">
+          <name>DIVERGENCE</name>
+          <briefdescription>
+<para>Divergence operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a6a9b19b26cdeae14c1102cd40345d568" prot="public">
+          <name>INTERPOLATION</name>
+          <briefdescription>
+<para>Interpolation operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga9b50023bfb2692219d2915feade94f80aa8bc924d0898064a538c557848f7ab48" prot="public">
+          <name>CURL</name>
+          <briefdescription>
+<para>Curl operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a1c2d5f3f8e6cbb0c7b033c388c905d22" prot="public">
+          <name>LAPLACIAN</name>
+          <briefdescription>
+<para>Laplacian operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Operators matrices can encode. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used to tag different different operators a matrix can encode. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_enums.h" line="141" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_enums.h" bodystart="141" bodyend="148"/>
+      </memberdef>
       </sectiondef>
       <sectiondef kind="typedef">
       <memberdef kind="typedef" id="group__c07-mim__ops_1ga04276745b4d511f0f3c636d6e0df7c2d" prot="public" static="no">
@@ -148,7 +201,7 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/include/mtk_robin_bc_descriptor_1d.h" line="111" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_robin_bc_descriptor_1d.h" bodystart="111" bodyend="-1"/>
+        <location file="/home/esanchez/Dropbox/MTK/include/mtk_robin_bc_descriptor_1d.h" line="112" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_robin_bc_descriptor_1d.h" bodystart="112" bodyend="-1"/>
       </memberdef>
       <memberdef kind="typedef" id="group__c07-mim__ops_1gaa79593eeb6676d6011db339e01983909" prot="public" static="no">
         <type><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref>(*</type>
@@ -206,37 +259,38 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/include/mtk_roots.h" line="126" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_roots.h" bodystart="126" bodyend="-1"/>
-        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="412" endline="467">mtk::BLASAdapter::RealDenseMM</referencedby>
-        <referencedby refid="classmtk_1_1BLASAdapter_1a0dd80d043615a95f11b7341ce69b44d3" compoundref="mtk__blas__adapter_8cc" startline="469" endline="515">mtk::BLASAdapter::RealDenseSM</referencedby>
-        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="105" endline="144">mtk::DenseMatrix::operator=</referencedby>
-        <referencedby refid="classmtk_1_1DenseMatrix_1a90102d605a668bf7ecf0d766cc4c10db" compoundref="mtk__dense__matrix_8cc" startline="173" endline="204">mtk::DenseMatrix::DenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1DenseMatrix_1a71d9c07ca66e88d97d1fd5012f43138b" compoundref="mtk__dense__matrix_8cc" startline="379" endline="414">mtk::DenseMatrix::Transpose</referencedby>
-        <referencedby refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" compoundref="mtk__dense__matrix_8cc" startline="416" endline="455">mtk::DenseMatrix::OrderRowMajor</referencedby>
-        <referencedby refid="classmtk_1_1DenseMatrix_1a59b9bea24acf39dca64e8549b3527463" compoundref="mtk__dense__matrix_8cc" startline="457" endline="494">mtk::DenseMatrix::OrderColMajor</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="446" endline="501">mtk::BLASAdapter::RealDenseMM</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1a0dd80d043615a95f11b7341ce69b44d3" compoundref="mtk__blas__adapter_8cc" startline="503" endline="549">mtk::BLASAdapter::RealDenseSM</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="106" endline="147">mtk::DenseMatrix::operator=</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a90102d605a668bf7ecf0d766cc4c10db" compoundref="mtk__dense__matrix_8cc" startline="180" endline="213">mtk::DenseMatrix::DenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a71d9c07ca66e88d97d1fd5012f43138b" compoundref="mtk__dense__matrix_8cc" startline="415" endline="450">mtk::DenseMatrix::Transpose</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" compoundref="mtk__dense__matrix_8cc" startline="452" endline="491">mtk::DenseMatrix::OrderRowMajor</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a59b9bea24acf39dca64e8549b3527463" compoundref="mtk__dense__matrix_8cc" startline="493" endline="530">mtk::DenseMatrix::OrderColMajor</referencedby>
         <referencedby refid="classmtk_1_1Div1D_1a52fcd1542f11e606e36bd188e48bfdf7" compoundref="mtk__div__1d_8cc" startline="193" endline="330">mtk::Div1D::ConstructDiv1D</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1a213fddbaaf86e4840c6a9649b69c2d49" compoundref="mtk__div__1d_8cc" startline="382" endline="444">mtk::Div1D::ReturnAsDenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1af2546ad1568ef39a6075f03bb395719e" compoundref="mtk__div__1d_8cc" startline="446" endline="506">mtk::Div1D::ReturnAsDimensionlessDenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1a3eb3a32862a6b066cd583cbbd00a6509" compoundref="mtk__div__1d_8cc" startline="508" endline="607">mtk::Div1D::ComputeStencilInteriorGrid</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1aa0c0c278b2c00a29c1ceaa70d31aebab" compoundref="mtk__div__1d_8cc" startline="609" endline="783">mtk::Div1D::ComputeRationalBasisNullSpace</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1a4be0534a4e22d44a7aedde326cc3f3b6" compoundref="mtk__div__1d_8cc" startline="785" endline="1003">mtk::Div1D::ComputePreliminaryApproximations</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="1005" endline="1380">mtk::Div1D::ComputeWeights</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1a29bb417c76286414dce9258a0bcb5aab" compoundref="mtk__div__1d_8cc" startline="1382" endline="1502">mtk::Div1D::ComputeStencilBoundaryGrid</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1a5a12482e1ceac232339dd8f647af886b" compoundref="mtk__div__1d_8cc" startline="1504" endline="1575">mtk::Div1D::AssembleOperator</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a3eb3a32862a6b066cd583cbbd00a6509" compoundref="mtk__div__1d_8cc" startline="498" endline="597">mtk::Div1D::ComputeStencilInteriorGrid</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aa0c0c278b2c00a29c1ceaa70d31aebab" compoundref="mtk__div__1d_8cc" startline="599" endline="773">mtk::Div1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a4be0534a4e22d44a7aedde326cc3f3b6" compoundref="mtk__div__1d_8cc" startline="775" endline="993">mtk::Div1D::ComputePreliminaryApproximations</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="995" endline="1370">mtk::Div1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a29bb417c76286414dce9258a0bcb5aab" compoundref="mtk__div__1d_8cc" startline="1372" endline="1492">mtk::Div1D::ComputeStencilBoundaryGrid</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a5a12482e1ceac232339dd8f647af886b" compoundref="mtk__div__1d_8cc" startline="1494" endline="1565">mtk::Div1D::AssembleOperator</referencedby>
         <referencedby refid="classmtk_1_1GLPKAdapter_1a0c9ebb125445bc5af752bf4fb47f44b2" compoundref="mtk__glpk__adapter_8cc" startline="77" endline="332">mtk::GLPKAdapter::SolveSimplexAndCompare</referencedby>
         <referencedby refid="classmtk_1_1Grad1D_1a74ef5245cfae6fd158bd7f563a0c2e52" compoundref="mtk__grad__1d_8cc" startline="207" endline="344">mtk::Grad1D::ConstructGrad1D</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1a77b2eddbe4ab03f469306c604d505b1a" compoundref="mtk__grad__1d_8cc" startline="396" endline="463">mtk::Grad1D::ReturnAsDenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1ab07e6a15edca32534ae3d1a8ccaf1c42" compoundref="mtk__grad__1d_8cc" startline="529" endline="589">mtk::Grad1D::ReturnAsDimensionlessDenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1ad6df25cc9dfc85ff8562ae3605486976" compoundref="mtk__grad__1d_8cc" startline="591" endline="686">mtk::Grad1D::ComputeStencilInteriorGrid</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1a2d03e6a3961bee558f575ec4099782a9" compoundref="mtk__grad__1d_8cc" startline="688" endline="869">mtk::Grad1D::ComputeRationalBasisNullSpace</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1add4c68a6e78d8b9c2b800b3f96f4757d" compoundref="mtk__grad__1d_8cc" startline="871" endline="1090">mtk::Grad1D::ComputePreliminaryApproximations</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="1092" endline="1477">mtk::Grad1D::ComputeWeights</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1a7ad1cecf6b52647263208ffaea0ee1e5" compoundref="mtk__grad__1d_8cc" startline="1479" endline="1608">mtk::Grad1D::ComputeStencilBoundaryGrid</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1a4eb4d363506b8c64b2bb18a318bbd259" compoundref="mtk__grad__1d_8cc" startline="1610" endline="1679">mtk::Grad1D::AssembleOperator</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a77b2eddbe4ab03f469306c604d505b1a" compoundref="mtk__grad__1d_8cc" startline="396" endline="465">mtk::Grad1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1ab07e6a15edca32534ae3d1a8ccaf1c42" compoundref="mtk__grad__1d_8cc" startline="535" endline="597">mtk::Grad1D::ReturnAsDimensionlessDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1ad6df25cc9dfc85ff8562ae3605486976" compoundref="mtk__grad__1d_8cc" startline="599" endline="694">mtk::Grad1D::ComputeStencilInteriorGrid</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a2d03e6a3961bee558f575ec4099782a9" compoundref="mtk__grad__1d_8cc" startline="696" endline="877">mtk::Grad1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1add4c68a6e78d8b9c2b800b3f96f4757d" compoundref="mtk__grad__1d_8cc" startline="879" endline="1098">mtk::Grad1D::ComputePreliminaryApproximations</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="1100" endline="1485">mtk::Grad1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a7ad1cecf6b52647263208ffaea0ee1e5" compoundref="mtk__grad__1d_8cc" startline="1487" endline="1616">mtk::Grad1D::ComputeStencilBoundaryGrid</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a4eb4d363506b8c64b2bb18a318bbd259" compoundref="mtk__grad__1d_8cc" startline="1618" endline="1687">mtk::Grad1D::AssembleOperator</referencedby>
         <referencedby refid="classmtk_1_1Interp1D_1ace09ceeb508afde5d95f20a8e73d5315" compoundref="mtk__interp__1d_8cc" startline="96" endline="130">mtk::Interp1D::ConstructInterp1D</referencedby>
-        <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="151" endline="305">mtk::Lap1D::ConstructLap1D</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="151" endline="307">mtk::Lap1D::ConstructLap1D</referencedby>
         <referencedby refid="classmtk_1_1LAPACKAdapter_1ae5c6e78c9c819c9ac7a6f31bfd011d7a" compoundref="mtk__lapack__adapter_8cc" startline="594" endline="789">mtk::LAPACKAdapter::QRFactorDenseMatrix</referencedby>
         <referencedby refid="classmtk_1_1LAPACKAdapter_1a380f148ffdf96bae2f79ae28f1a6560c" compoundref="mtk__lapack__adapter_8cc" startline="791" endline="875">mtk::LAPACKAdapter::SolveRectangularDenseSystem</referencedby>
-        <referencedby refid="classmtk_1_1UniStgGrid1D_1aa9b9db169c6e052e6fd6ffd6fca36646" compoundref="mtk__uni__stg__grid__1d_8cc" startline="124" endline="142">mtk::UniStgGrid1D::UniStgGrid1D</referencedby>
+        <referencedby refid="classmtk_1_1OperatorApplicator_1ac19a5cad4c6600caa75250945ffca63e" compoundref="mtk__operator__applicator_8cc" startline="64" endline="86">mtk::OperatorApplicator::ApplyDenseMatrixGradientOn1DGrid</referencedby>
+        <referencedby refid="classmtk_1_1OperatorApplicator_1a895a4650ad0d07074e69f971ff9321b9" compoundref="mtk__operator__applicator_8cc" startline="88" endline="111">mtk::OperatorApplicator::ApplyDenseMatrixDivergenceOn1DGrid</referencedby>
+        <referencedby refid="classmtk_1_1OperatorApplicator_1a142ef3e84c7547ca05216ccd69d5210e" compoundref="mtk__operator__applicator_8cc" startline="113" endline="135">mtk::OperatorApplicator::ApplyDenseMatrixLaplacianOn1DGrid</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid1D_1a02a40f5c15b0ff4249c1497221dd41ea" compoundref="mtk__uni__stg__grid__1d_8cc" startline="151" endline="169">mtk::UniStgGrid1D::UniStgGrid1D</referencedby>
         <referencedby refid="classmtk_1_1UniStgGrid2D_1a9d96b31002c1deb3a90954bbb112487e" compoundref="mtk__uni__stg__grid__2d_8cc" startline="170" endline="202">mtk::UniStgGrid2D::UniStgGrid2D</referencedby>
         <referencedby refid="classmtk_1_1UniStgGrid2D_1a1787a79e4bcee6b89c681dc7e5e2d7bc" compoundref="mtk__uni__stg__grid__2d_8cc" startline="438" endline="512">mtk::UniStgGrid2D::WriteToFile</referencedby>
         <referencedby refid="classmtk_1_1UniStgGrid3D_1aa5a902b9b0236a81c4b12198d6e97534" compoundref="mtk__uni__stg__grid__3d_8cc" startline="174" endline="219">mtk::UniStgGrid3D::UniStgGrid3D</referencedby>
@@ -256,22 +310,25 @@
         </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/include/mtk_roots.h" line="127" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_roots.h" bodystart="127" bodyend="-1"/>
         <referencedby refid="classmtk_1_1BLASAdapter_1af2ac5691f45e67d6e26186b071119ec4" compoundref="mtk__blas__adapter_8cc" startline="361" endline="379">mtk::BLASAdapter::RelNorm2Error</referencedby>
-        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="412" endline="467">mtk::BLASAdapter::RealDenseMM</referencedby>
-        <referencedby refid="classmtk_1_1DenseMatrix_1a4ef0dec1b5558fcf00719bfac059ec68" compoundref="mtk__dense__matrix_8cc" startline="228" endline="267">mtk::DenseMatrix::DenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1a213fddbaaf86e4840c6a9649b69c2d49" compoundref="mtk__div__1d_8cc" startline="382" endline="444">mtk::Div1D::ReturnAsDenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1a3eb3a32862a6b066cd583cbbd00a6509" compoundref="mtk__div__1d_8cc" startline="508" endline="607">mtk::Div1D::ComputeStencilInteriorGrid</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1aa0c0c278b2c00a29c1ceaa70d31aebab" compoundref="mtk__div__1d_8cc" startline="609" endline="783">mtk::Div1D::ComputeRationalBasisNullSpace</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1a4be0534a4e22d44a7aedde326cc3f3b6" compoundref="mtk__div__1d_8cc" startline="785" endline="1003">mtk::Div1D::ComputePreliminaryApproximations</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="1005" endline="1380">mtk::Div1D::ComputeWeights</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1a77b2eddbe4ab03f469306c604d505b1a" compoundref="mtk__grad__1d_8cc" startline="396" endline="463">mtk::Grad1D::ReturnAsDenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1ad6df25cc9dfc85ff8562ae3605486976" compoundref="mtk__grad__1d_8cc" startline="591" endline="686">mtk::Grad1D::ComputeStencilInteriorGrid</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1a2d03e6a3961bee558f575ec4099782a9" compoundref="mtk__grad__1d_8cc" startline="688" endline="869">mtk::Grad1D::ComputeRationalBasisNullSpace</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1add4c68a6e78d8b9c2b800b3f96f4757d" compoundref="mtk__grad__1d_8cc" startline="871" endline="1090">mtk::Grad1D::ComputePreliminaryApproximations</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="1092" endline="1477">mtk::Grad1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="446" endline="501">mtk::BLASAdapter::RealDenseMM</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a4ef0dec1b5558fcf00719bfac059ec68" compoundref="mtk__dense__matrix_8cc" startline="239" endline="280">mtk::DenseMatrix::DenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a213fddbaaf86e4840c6a9649b69c2d49" compoundref="mtk__div__1d_8cc" startline="382" endline="440">mtk::Div1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a3eb3a32862a6b066cd583cbbd00a6509" compoundref="mtk__div__1d_8cc" startline="498" endline="597">mtk::Div1D::ComputeStencilInteriorGrid</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aa0c0c278b2c00a29c1ceaa70d31aebab" compoundref="mtk__div__1d_8cc" startline="599" endline="773">mtk::Div1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a4be0534a4e22d44a7aedde326cc3f3b6" compoundref="mtk__div__1d_8cc" startline="775" endline="993">mtk::Div1D::ComputePreliminaryApproximations</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="995" endline="1370">mtk::Div1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a77b2eddbe4ab03f469306c604d505b1a" compoundref="mtk__grad__1d_8cc" startline="396" endline="465">mtk::Grad1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1ad6df25cc9dfc85ff8562ae3605486976" compoundref="mtk__grad__1d_8cc" startline="599" endline="694">mtk::Grad1D::ComputeStencilInteriorGrid</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a2d03e6a3961bee558f575ec4099782a9" compoundref="mtk__grad__1d_8cc" startline="696" endline="877">mtk::Grad1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1add4c68a6e78d8b9c2b800b3f96f4757d" compoundref="mtk__grad__1d_8cc" startline="879" endline="1098">mtk::Grad1D::ComputePreliminaryApproximations</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="1100" endline="1485">mtk::Grad1D::ComputeWeights</referencedby>
         <referencedby refid="classmtk_1_1Interp1D_1ace09ceeb508afde5d95f20a8e73d5315" compoundref="mtk__interp__1d_8cc" startline="96" endline="130">mtk::Interp1D::ConstructInterp1D</referencedby>
-        <referencedby refid="classmtk_1_1Interp1D_1aee8126b8a4be378a30be4d95b43b384b" compoundref="mtk__interp__1d_8cc" startline="137" endline="178">mtk::Interp1D::ReturnAsDenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1Lap1D_1aaea34a17b0879e05eb4109645a2ba8f4" compoundref="mtk__lap__1d_8cc" startline="317" endline="385">mtk::Lap1D::ReturnAsDenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1ab8446428df923c27f388a85bd3f2c6d4" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="166" endline="244">mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Interp1D_1aee8126b8a4be378a30be4d95b43b384b" compoundref="mtk__interp__1d_8cc" startline="137" endline="180">mtk::Interp1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1aaea34a17b0879e05eb4109645a2ba8f4" compoundref="mtk__lap__1d_8cc" startline="319" endline="389">mtk::Lap1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1OperatorApplicator_1ac19a5cad4c6600caa75250945ffca63e" compoundref="mtk__operator__applicator_8cc" startline="64" endline="86">mtk::OperatorApplicator::ApplyDenseMatrixGradientOn1DGrid</referencedby>
+        <referencedby refid="classmtk_1_1OperatorApplicator_1a895a4650ad0d07074e69f971ff9321b9" compoundref="mtk__operator__applicator_8cc" startline="88" endline="111">mtk::OperatorApplicator::ApplyDenseMatrixDivergenceOn1DGrid</referencedby>
+        <referencedby refid="classmtk_1_1OperatorApplicator_1a142ef3e84c7547ca05216ccd69d5210e" compoundref="mtk__operator__applicator_8cc" startline="113" endline="135">mtk::OperatorApplicator::ApplyDenseMatrixLaplacianOn1DGrid</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1ab8446428df923c27f388a85bd3f2c6d4" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="197" endline="277">mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix</referencedby>
         <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1af5dd24444e7eb14592a3c3feaf30d561" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="399" endline="466">mtk::RobinBCDescriptor2D::ImposeOnWestBoundaryNoSpace</referencedby>
         <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1ae1df82802d541d3566f3d2659e4aaf05" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="495" endline="562">mtk::RobinBCDescriptor2D::ImposeOnEastBoundaryNoSpace</referencedby>
       </memberdef>
@@ -310,7 +367,7 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/include/mtk_roots.h" line="143" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_roots.h" bodystart="143" bodyend="-1"/>
-        <referencedby refid="classmtk_1_1DenseMatrix_1a94ab5a02d9cf81c17b6f68f4c41cb797" compoundref="mtk__dense__matrix_8cc" startline="146" endline="165">mtk::DenseMatrix::operator==</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a94ab5a02d9cf81c17b6f68f4c41cb797" compoundref="mtk__dense__matrix_8cc" startline="149" endline="170">mtk::DenseMatrix::operator==</referencedby>
       </memberdef>
       <memberdef kind="variable" id="group__c01-roots_1ga35718d949bdc81a08a9cc8ebbe3478a2" prot="public" static="no" mutable="no">
         <type>const float</type>
@@ -340,9 +397,9 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/include/mtk_roots.h" line="168" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_roots.h" bodystart="168" bodyend="-1"/>
-        <referencedby refid="classmtk_1_1Div1D_1a5a12482e1ceac232339dd8f647af886b" compoundref="mtk__div__1d_8cc" startline="1504" endline="1575">mtk::Div1D::AssembleOperator</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a5a12482e1ceac232339dd8f647af886b" compoundref="mtk__div__1d_8cc" startline="1494" endline="1565">mtk::Div1D::AssembleOperator</referencedby>
         <referencedby refid="namespacemtk_1a3f546b8a3743b8719db17e33f2d7ef7f" compoundref="mtk__grad__1d_8cc" startline="84" endline="145">operator&lt;&lt;</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1a4eb4d363506b8c64b2bb18a318bbd259" compoundref="mtk__grad__1d_8cc" startline="1610" endline="1679">mtk::Grad1D::AssembleOperator</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a4eb4d363506b8c64b2bb18a318bbd259" compoundref="mtk__grad__1d_8cc" startline="1618" endline="1687">mtk::Grad1D::AssembleOperator</referencedby>
       </memberdef>
       <memberdef kind="variable" id="group__c01-roots_1ga295dd2f403c775ecd942c22b5a777496" prot="public" static="no" mutable="no">
         <type>const int</type>
@@ -358,7 +415,7 @@
         </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/include/mtk_roots.h" line="177" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_roots.h" bodystart="177" bodyend="-1"/>
         <referencedby refid="classmtk_1_1Grad1D_1a74ef5245cfae6fd158bd7f563a0c2e52" compoundref="mtk__grad__1d_8cc" startline="207" endline="344">mtk::Grad1D::ConstructGrad1D</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="1092" endline="1477">mtk::Grad1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="1100" endline="1485">mtk::Grad1D::ComputeWeights</referencedby>
       </memberdef>
       <memberdef kind="variable" id="group__c01-roots_1ga0898eef2108473e44a5223932d571c31" prot="public" static="no" mutable="no">
         <type>const int</type>
@@ -374,8 +431,8 @@
         </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/include/mtk_roots.h" line="186" column="1" bodyfile="/home/esanchez/Dropbox/MTK/include/mtk_roots.h" bodystart="186" bodyend="-1"/>
         <referencedby refid="classmtk_1_1Div1D_1a52fcd1542f11e606e36bd188e48bfdf7" compoundref="mtk__div__1d_8cc" startline="193" endline="330">mtk::Div1D::ConstructDiv1D</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="1005" endline="1380">mtk::Div1D::ComputeWeights</referencedby>
-        <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="151" endline="305">mtk::Lap1D::ConstructLap1D</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="995" endline="1370">mtk::Div1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="151" endline="307">mtk::Lap1D::ConstructLap1D</referencedby>
       </memberdef>
       </sectiondef>
       <sectiondef kind="func">
@@ -565,8 +622,8 @@
         <inbodydescription>
         </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/src/mtk_blas_adapter.cc" line="310" column="1"/>
-        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="412" endline="467">mtk::BLASAdapter::RealDenseMM</referencedby>
-        <referencedby refid="classmtk_1_1BLASAdapter_1a0dd80d043615a95f11b7341ce69b44d3" compoundref="mtk__blas__adapter_8cc" startline="469" endline="515">mtk::BLASAdapter::RealDenseSM</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="446" endline="501">mtk::BLASAdapter::RealDenseMM</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1a0dd80d043615a95f11b7341ce69b44d3" compoundref="mtk__blas__adapter_8cc" startline="503" endline="549">mtk::BLASAdapter::RealDenseSM</referencedby>
       </memberdef>
       <memberdef kind="function" id="namespacemtk_1ad3bcf52cda59ddb5fc7b4bdce76c46dc" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -587,13 +644,13 @@
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/esanchez/Dropbox/MTK/src/mtk_dense_matrix.cc" line="79" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_dense_matrix.cc" bodystart="79" bodyend="102"/>
-        <references refid="classmtk_1_1DenseMatrix_1a481c8d09af685a5ba67acefdcaa810cc" compoundref="mtk__dense__matrix_8h" startline="289">mtk::DenseMatrix::matrix_properties_</references>
+        <location file="/home/esanchez/Dropbox/MTK/src/mtk_dense_matrix.cc" line="80" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_dense_matrix.cc" bodystart="80" bodyend="103"/>
+        <references refid="classmtk_1_1DenseMatrix_1a481c8d09af685a5ba67acefdcaa810cc" compoundref="mtk__dense__matrix_8h" startline="308">mtk::DenseMatrix::matrix_properties_</references>
         <references refid="classmtk_1_1Matrix_1ab308b25b48e4fcd39fc60e0c3fc66dea" compoundref="mtk__matrix_8cc" startline="117" endline="120">mtk::Matrix::num_rows</references>
         <references refid="classmtk_1_1Matrix_1a2160118d0edf51cf2aaa806ee1b915f8" compoundref="mtk__matrix_8cc" startline="122" endline="125">mtk::Matrix::num_cols</references>
         <references refid="classmtk_1_1Matrix_1a13cd17621652cd5551ff98549bd94df7" compoundref="mtk__matrix_8cc" startline="112" endline="115">mtk::Matrix::ordering</references>
         <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca34d2765ffc490951febdcca04bc4f7cd">COL_MAJOR</references>
-        <references refid="classmtk_1_1DenseMatrix_1a7893e4e5c8d2e2de32b156177e78cb6f" compoundref="mtk__dense__matrix_8h" startline="291">mtk::DenseMatrix::data_</references>
+        <references refid="classmtk_1_1DenseMatrix_1a7893e4e5c8d2e2de32b156177e78cb6f" compoundref="mtk__dense__matrix_8h" startline="310">mtk::DenseMatrix::data_</references>
       </memberdef>
       <memberdef kind="function" id="namespacemtk_1a12db5e6fff3788f728819a60d5c28d01" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -645,12 +702,12 @@
 <listitem><para>Print order of accuracy.</para></listitem><listitem><para>Print approximating coefficients for the interior.</para></listitem><listitem><para>Print mimetic weights.</para></listitem><listitem><para>Print mimetic approximations at the boundary. </para></listitem></orderedlist>
 </para>        </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/src/mtk_grad_1d.cc" line="84" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_grad_1d.cc" bodystart="84" bodyend="145"/>
-        <references refid="classmtk_1_1Grad1D_1a024b84b1ea285c0c590eb42d40ff4469" compoundref="mtk__grad__1d_8h" startline="246">mtk::Grad1D::gradient_</references>
-        <references refid="classmtk_1_1Grad1D_1a545e9c865e5d4716f2684a64f744c78c" compoundref="mtk__grad__1d_8h" startline="230">mtk::Grad1D::order_accuracy_</references>
+        <references refid="classmtk_1_1Grad1D_1a024b84b1ea285c0c590eb42d40ff4469" compoundref="mtk__grad__1d_8h" startline="247">mtk::Grad1D::gradient_</references>
+        <references refid="classmtk_1_1Grad1D_1a545e9c865e5d4716f2684a64f744c78c" compoundref="mtk__grad__1d_8h" startline="231">mtk::Grad1D::order_accuracy_</references>
         <references refid="group__c01-roots_1ga0d95560098eb36420511103637b6952f" compoundref="mtk__roots_8h" startline="168">kDefaultOrderAccuracy</references>
-        <references refid="classmtk_1_1Grad1D_1abe15c1ffd9dfaba1a65f4f0e096287ce" compoundref="mtk__grad__1d_8h" startline="232">mtk::Grad1D::num_bndy_approxs_</references>
-        <references refid="classmtk_1_1Grad1D_1a60c560882bc601f9ab1d4cd5331e55ef" compoundref="mtk__grad__1d_8h" startline="233">mtk::Grad1D::num_bndy_coeffs_</references>
-        <references refid="classmtk_1_1Grad1D_1ab8858a35339ed7036083d25b23293737" compoundref="mtk__grad__1d_8h" startline="251">mtk::Grad1D::sums_rows_mim_bndy_</references>
+        <references refid="classmtk_1_1Grad1D_1abe15c1ffd9dfaba1a65f4f0e096287ce" compoundref="mtk__grad__1d_8h" startline="233">mtk::Grad1D::num_bndy_approxs_</references>
+        <references refid="classmtk_1_1Grad1D_1a60c560882bc601f9ab1d4cd5331e55ef" compoundref="mtk__grad__1d_8h" startline="234">mtk::Grad1D::num_bndy_coeffs_</references>
+        <references refid="classmtk_1_1Grad1D_1ab8858a35339ed7036083d25b23293737" compoundref="mtk__grad__1d_8h" startline="252">mtk::Grad1D::sums_rows_mim_bndy_</references>
       </memberdef>
       <memberdef kind="function" id="namespacemtk_1a1defe4e644a8c7d89bcceb0b1bc2372f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -1176,13 +1233,13 @@
 <listitem><para>Print spatial coordinates.</para></listitem><listitem><para>Print scalar field. </para></listitem></orderedlist>
 </para>        </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/src/mtk_uni_stg_grid_1d.cc" line="68" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_uni_stg_grid_1d.cc" bodystart="68" bodyend="96"/>
-        <references refid="classmtk_1_1UniStgGrid1D_1a6910438d3396d0b9a130d11d16979c46" compoundref="mtk__uni__stg__grid__1d_8h" startline="201">mtk::UniStgGrid1D::west_bndy_x_</references>
-        <references refid="classmtk_1_1UniStgGrid1D_1afa43750db0029b7454aef343759e7097" compoundref="mtk__uni__stg__grid__1d_8h" startline="203">mtk::UniStgGrid1D::num_cells_x_</references>
-        <references refid="classmtk_1_1UniStgGrid1D_1a69a7d6be3171e53177e476348d04f4ae" compoundref="mtk__uni__stg__grid__1d_8h" startline="202">mtk::UniStgGrid1D::east_bndy_x_</references>
-        <references refid="classmtk_1_1UniStgGrid1D_1a0a1f9c00e21659e05f414dd97e2a52e3" compoundref="mtk__uni__stg__grid__1d_8h" startline="198">mtk::UniStgGrid1D::discrete_domain_x_</references>
-        <references refid="classmtk_1_1UniStgGrid1D_1a061b66c92532b1498ce0e15418754911" compoundref="mtk__uni__stg__grid__1d_8h" startline="196">mtk::UniStgGrid1D::nature_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a6910438d3396d0b9a130d11d16979c46" compoundref="mtk__uni__stg__grid__1d_8h" startline="235">mtk::UniStgGrid1D::west_bndy_x_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1afa43750db0029b7454aef343759e7097" compoundref="mtk__uni__stg__grid__1d_8h" startline="237">mtk::UniStgGrid1D::num_cells_x_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a69a7d6be3171e53177e476348d04f4ae" compoundref="mtk__uni__stg__grid__1d_8h" startline="236">mtk::UniStgGrid1D::east_bndy_x_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a0a1f9c00e21659e05f414dd97e2a52e3" compoundref="mtk__uni__stg__grid__1d_8h" startline="232">mtk::UniStgGrid1D::discrete_domain_x_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a5eb70ff8b7dfa204f7f1338ad689e802" compoundref="mtk__uni__stg__grid__1d_8h" startline="230">mtk::UniStgGrid1D::field_nature_</references>
         <references refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9">SCALAR</references>
-        <references refid="classmtk_1_1UniStgGrid1D_1a7379a5c6d16210cdd61ffa731bc47edc" compoundref="mtk__uni__stg__grid__1d_8h" startline="199">mtk::UniStgGrid1D::discrete_field_</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a7379a5c6d16210cdd61ffa731bc47edc" compoundref="mtk__uni__stg__grid__1d_8h" startline="233">mtk::UniStgGrid1D::discrete_field_</references>
       </memberdef>
       <memberdef kind="function" id="namespacemtk_1a82cd99c0c7e695e4eccfbe7380525959" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -1206,17 +1263,17 @@
 <listitem><para>Print spatial coordinates.</para></listitem><listitem><para>Print scalar field. </para></listitem></orderedlist>
 </para>        </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/src/mtk_uni_stg_grid_2d.cc" line="67" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_uni_stg_grid_2d.cc" bodystart="67" bodyend="129"/>
-        <references refid="classmtk_1_1UniStgGrid2D_1a59c42d8099a017bc8a082fddc1e5606c" compoundref="mtk__uni__stg__grid__2d_8h" startline="299">mtk::UniStgGrid2D::west_bndy_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1ac03a0f4840ee6ae1bc853e5d9c0df8d1" compoundref="mtk__uni__stg__grid__2d_8h" startline="301">mtk::UniStgGrid2D::num_cells_x_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1ae24f3d5bf5ed3a6d066cdf48aa1fb307" compoundref="mtk__uni__stg__grid__2d_8h" startline="300">mtk::UniStgGrid2D::east_bndy_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1ac228c81fad7f4feeae93fb3c09d7e175" compoundref="mtk__uni__stg__grid__2d_8h" startline="304">mtk::UniStgGrid2D::south_bndy_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1a3e4f61d781212ad57c34e9446c4074b6" compoundref="mtk__uni__stg__grid__2d_8h" startline="306">mtk::UniStgGrid2D::num_cells_y_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1a3f904091b6e74aa78d8543e5cba26afb" compoundref="mtk__uni__stg__grid__2d_8h" startline="305">mtk::UniStgGrid2D::north_bndy_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1ab15979865852583a46662ea592f27a4f" compoundref="mtk__uni__stg__grid__2d_8h" startline="293">mtk::UniStgGrid2D::discrete_domain_x_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1ad69f93d4b27707d97f209b907383a7a2" compoundref="mtk__uni__stg__grid__2d_8h" startline="294">mtk::UniStgGrid2D::discrete_domain_y_</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1ac8b66740d328803f7fbabd1c42c775b2" compoundref="mtk__uni__stg__grid__2d_8h" startline="297">mtk::UniStgGrid2D::nature_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1a59c42d8099a017bc8a082fddc1e5606c" compoundref="mtk__uni__stg__grid__2d_8h" startline="300">mtk::UniStgGrid2D::west_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1ac03a0f4840ee6ae1bc853e5d9c0df8d1" compoundref="mtk__uni__stg__grid__2d_8h" startline="302">mtk::UniStgGrid2D::num_cells_x_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1ae24f3d5bf5ed3a6d066cdf48aa1fb307" compoundref="mtk__uni__stg__grid__2d_8h" startline="301">mtk::UniStgGrid2D::east_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1ac228c81fad7f4feeae93fb3c09d7e175" compoundref="mtk__uni__stg__grid__2d_8h" startline="305">mtk::UniStgGrid2D::south_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1a3e4f61d781212ad57c34e9446c4074b6" compoundref="mtk__uni__stg__grid__2d_8h" startline="307">mtk::UniStgGrid2D::num_cells_y_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1a3f904091b6e74aa78d8543e5cba26afb" compoundref="mtk__uni__stg__grid__2d_8h" startline="306">mtk::UniStgGrid2D::north_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1ab15979865852583a46662ea592f27a4f" compoundref="mtk__uni__stg__grid__2d_8h" startline="294">mtk::UniStgGrid2D::discrete_domain_x_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1ad69f93d4b27707d97f209b907383a7a2" compoundref="mtk__uni__stg__grid__2d_8h" startline="295">mtk::UniStgGrid2D::discrete_domain_y_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1ac8b66740d328803f7fbabd1c42c775b2" compoundref="mtk__uni__stg__grid__2d_8h" startline="298">mtk::UniStgGrid2D::nature_</references>
         <references refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9">SCALAR</references>
-        <references refid="classmtk_1_1UniStgGrid2D_1ad7474b2669ee988b84aed20b7f5dc7be" compoundref="mtk__uni__stg__grid__2d_8h" startline="295">mtk::UniStgGrid2D::discrete_field_</references>
+        <references refid="classmtk_1_1UniStgGrid2D_1ad7474b2669ee988b84aed20b7f5dc7be" compoundref="mtk__uni__stg__grid__2d_8h" startline="296">mtk::UniStgGrid2D::discrete_field_</references>
       </memberdef>
       <memberdef kind="function" id="namespacemtk_1a50ce3dc63af019c21e15e1b09465d334" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>std::ostream &amp;</type>
@@ -1240,27 +1297,27 @@
 <listitem><para>Print spatial coordinates.</para></listitem><listitem><para>Print scalar field. </para></listitem></orderedlist>
 </para>        </inbodydescription>
         <location file="/home/esanchez/Dropbox/MTK/src/mtk_uni_stg_grid_3d.cc" line="67" column="1" bodyfile="/home/esanchez/Dropbox/MTK/src/mtk_uni_stg_grid_3d.cc" bodystart="67" bodyend="113"/>
-        <references refid="classmtk_1_1UniStgGrid3D_1ac61f8810468d2a802d8a5ba11b0409c9" compoundref="mtk__uni__stg__grid__3d_8h" startline="386">mtk::UniStgGrid3D::west_bndy_</references>
-        <references refid="classmtk_1_1UniStgGrid3D_1a44c1a51843b37aee9b714c8bb9016262" compoundref="mtk__uni__stg__grid__3d_8h" startline="388">mtk::UniStgGrid3D::num_cells_x_</references>
-        <references refid="classmtk_1_1UniStgGrid3D_1aafe32f2f7eb2660f06a8b9ef30c3cc0c" compoundref="mtk__uni__stg__grid__3d_8h" startline="387">mtk::UniStgGrid3D::east_bndy_</references>
-        <references refid="classmtk_1_1UniStgGrid3D_1a30b52c42ba39f2be09df1a5dd140cba1" compoundref="mtk__uni__stg__grid__3d_8h" startline="391">mtk::UniStgGrid3D::south_bndy_</references>
-        <references refid="classmtk_1_1UniStgGrid3D_1ae944d431e0228fad3a807fbefb21fe62" compoundref="mtk__uni__stg__grid__3d_8h" startline="393">mtk::UniStgGrid3D::num_cells_y_</references>
-        <references refid="classmtk_1_1UniStgGrid3D_1aa123abdd43dddd27a8206e99eb496c05" compoundref="mtk__uni__stg__grid__3d_8h" startline="392">mtk::UniStgGrid3D::north_bndy_</references>
-        <references refid="classmtk_1_1UniStgGrid3D_1aae37910fbf5466a711bf290041839a75" compoundref="mtk__uni__stg__grid__3d_8h" startline="396">mtk::UniStgGrid3D::bottom_bndy_</references>
-        <references refid="classmtk_1_1UniStgGrid3D_1a1758dfb9c97287f69662e77388f3dfc9" compoundref="mtk__uni__stg__grid__3d_8h" startline="398">mtk::UniStgGrid3D::num_cells_z_</references>
-        <references refid="classmtk_1_1UniStgGrid3D_1af2cc6416dfd1c3afb3b9db5d1c846128" compoundref="mtk__uni__stg__grid__3d_8h" startline="397">mtk::UniStgGrid3D::top_bndy_</references>
-        <references refid="classmtk_1_1UniStgGrid3D_1ad3064a12921a11823dbd8fe253867898" compoundref="mtk__uni__stg__grid__3d_8h" startline="379">mtk::UniStgGrid3D::discrete_domain_x_</references>
-        <references refid="classmtk_1_1UniStgGrid3D_1aea0e7ee9e363c850e3ec466966cd7a9a" compoundref="mtk__uni__stg__grid__3d_8h" startline="380">mtk::UniStgGrid3D::discrete_domain_y_</references>
-        <references refid="classmtk_1_1UniStgGrid3D_1a9863aad800bf00d17f478ec511dd25fe" compoundref="mtk__uni__stg__grid__3d_8h" startline="381">mtk::UniStgGrid3D::discrete_domain_z_</references>
-        <references refid="classmtk_1_1UniStgGrid3D_1a04f7ad8ef5ea51ef0442fdbf0592a14c" compoundref="mtk__uni__stg__grid__3d_8h" startline="384">mtk::UniStgGrid3D::nature_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1ac61f8810468d2a802d8a5ba11b0409c9" compoundref="mtk__uni__stg__grid__3d_8h" startline="387">mtk::UniStgGrid3D::west_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1a44c1a51843b37aee9b714c8bb9016262" compoundref="mtk__uni__stg__grid__3d_8h" startline="389">mtk::UniStgGrid3D::num_cells_x_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1aafe32f2f7eb2660f06a8b9ef30c3cc0c" compoundref="mtk__uni__stg__grid__3d_8h" startline="388">mtk::UniStgGrid3D::east_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1a30b52c42ba39f2be09df1a5dd140cba1" compoundref="mtk__uni__stg__grid__3d_8h" startline="392">mtk::UniStgGrid3D::south_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1ae944d431e0228fad3a807fbefb21fe62" compoundref="mtk__uni__stg__grid__3d_8h" startline="394">mtk::UniStgGrid3D::num_cells_y_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1aa123abdd43dddd27a8206e99eb496c05" compoundref="mtk__uni__stg__grid__3d_8h" startline="393">mtk::UniStgGrid3D::north_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1aae37910fbf5466a711bf290041839a75" compoundref="mtk__uni__stg__grid__3d_8h" startline="397">mtk::UniStgGrid3D::bottom_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1a1758dfb9c97287f69662e77388f3dfc9" compoundref="mtk__uni__stg__grid__3d_8h" startline="399">mtk::UniStgGrid3D::num_cells_z_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1af2cc6416dfd1c3afb3b9db5d1c846128" compoundref="mtk__uni__stg__grid__3d_8h" startline="398">mtk::UniStgGrid3D::top_bndy_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1ad3064a12921a11823dbd8fe253867898" compoundref="mtk__uni__stg__grid__3d_8h" startline="380">mtk::UniStgGrid3D::discrete_domain_x_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1aea0e7ee9e363c850e3ec466966cd7a9a" compoundref="mtk__uni__stg__grid__3d_8h" startline="381">mtk::UniStgGrid3D::discrete_domain_y_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1a9863aad800bf00d17f478ec511dd25fe" compoundref="mtk__uni__stg__grid__3d_8h" startline="382">mtk::UniStgGrid3D::discrete_domain_z_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1a04f7ad8ef5ea51ef0442fdbf0592a14c" compoundref="mtk__uni__stg__grid__3d_8h" startline="385">mtk::UniStgGrid3D::nature_</references>
         <references refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9">SCALAR</references>
-        <references refid="classmtk_1_1UniStgGrid3D_1acbd2e19beffc89f87e6ef7b39f98bfe2" compoundref="mtk__uni__stg__grid__3d_8h" startline="382">mtk::UniStgGrid3D::discrete_field_</references>
+        <references refid="classmtk_1_1UniStgGrid3D_1acbd2e19beffc89f87e6ef7b39f98bfe2" compoundref="mtk__uni__stg__grid__3d_8h" startline="383">mtk::UniStgGrid3D::discrete_field_</references>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Mimetic Methods Toolkit namespace. </para>    </briefdescription>
     <detaileddescription>
     </detaileddescription>
-    <location file="/home/esanchez/Dropbox/MTK/include/mtk_blas_adapter.h" line="76" column="1"/>
+    <location file="/home/esanchez/Dropbox/MTK/include/mtk_blas_adapter.h" line="77" column="1"/>
   </compounddef>
 </doxygen>

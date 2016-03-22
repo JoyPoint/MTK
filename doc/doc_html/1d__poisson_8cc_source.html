@@ -188,14 +188,14 @@ $(document).ready(function(){initNavTree('1d__poisson_8cc_source.html','');});
 <div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordflow">return</span> 0.0;</div>
 <div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;};</div>
 <div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> Source(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx) {</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> Source(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx, <span class="keyword">const</span> std::vector&lt;mtk::Real&gt; &amp;pp) {</div>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> lambda{-1.0};</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div>
 <div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keywordflow">return</span> -lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);</div>
 <div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
 <div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> KnownSolution(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx) {</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;<a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> KnownSolution(<span class="keyword">const</span> <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> &amp;xx, <span class="keyword">const</span> std::vector&lt;mtk::Real&gt; &amp;pp) {</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> lambda{-1.0};</div>
 <div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div>
@@ -207,150 +207,157 @@ $(document).ready(function(){initNavTree('1d__poisson_8cc_source.html','');});
 <div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Example: Poisson Equation with Robin BCs on a&quot;</span>;</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;1D Uniform Staggered Grid.&quot;</span> &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> west_bndy_x{0.0};</div>
-<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> east_bndy_x{1.0};</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordtype">int</span> num_cells_x{10};</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;</div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <a class="code" href="classmtk_1_1UniStgGrid1D.html">mtk::UniStgGrid1D</a> comp_sol(west_bndy_x, east_bndy_x, num_cells_x);</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
-<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <a class="code" href="classmtk_1_1Lap1D.html">mtk::Lap1D</a> lap;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> west_bndy_x{0.0};</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> east_bndy_x{1.0};</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="keywordtype">int</span> num_cells_x{10};</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <a class="code" href="classmtk_1_1UniStgGrid1D.html">mtk::UniStgGrid1D</a> comp_sol(west_bndy_x, east_bndy_x, num_cells_x);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;</div>
 <div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordflow">if</span> (!lap.<a class="code" href="classmtk_1_1Lap1D.html#a685dcba88c08cf5b7b6c2aa4669a472c">ConstructLap1D</a>()) {</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Mimetic Laplacian could not be built.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  }</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;lap=&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  std::cout &lt;&lt; lap &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> lapm(lap.<a class="code" href="classmtk_1_1Lap1D.html#aaea34a17b0879e05eb4109645a2ba8f4">ReturnAsDenseMatrix</a>(comp_sol));</div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <a class="code" href="classmtk_1_1Lap1D.html">mtk::Lap1D</a> lap;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;  <span class="keywordflow">if</span> (!lap.<a class="code" href="classmtk_1_1Lap1D.html#a685dcba88c08cf5b7b6c2aa4669a472c">ConstructLap1D</a>()) {</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Mimetic Laplacian could not be built.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  }</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;lap=&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  std::cout &lt;&lt; lap &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;lapm =&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  std::cout &lt;&lt; lapm &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  <a class="code" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> lapm(lap.<a class="code" href="classmtk_1_1Lap1D.html#aaea34a17b0879e05eb4109645a2ba8f4">ReturnAsDenseMatrix</a>(comp_sol));</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;lapm =&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  std::cout &lt;&lt; lapm &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  lapm = <a class="code" href="classmtk_1_1BLASAdapter.html#a0dd80d043615a95f11b7341ce69b44d3">mtk::BLASAdapter::RealDenseSM</a>(-1.0, lapm);</div>
 <div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;-lapm =&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  std::cout &lt;&lt; lapm &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;</div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  <a class="code" href="classmtk_1_1UniStgGrid1D.html">mtk::UniStgGrid1D</a> source(west_bndy_x, east_bndy_x, num_cells_x);</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  source.BindScalarField(Source);</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;source =&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  std::cout &lt;&lt; source &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;  lapm = <a class="code" href="classmtk_1_1BLASAdapter.html#a0dd80d043615a95f11b7341ce69b44d3">mtk::BLASAdapter::RealDenseSM</a>(-1.0, lapm);</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;-lapm =&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  std::cout &lt;&lt; lapm &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  <a class="code" href="classmtk_1_1UniStgGrid1D.html">mtk::UniStgGrid1D</a> source(west_bndy_x, east_bndy_x, num_cells_x);</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  source.BindScalarField(Source, std::vector&lt;mtk::Real&gt;());</div>
 <div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  <a class="code" href="classmtk_1_1RobinBCDescriptor1D.html">mtk::RobinBCDescriptor1D</a> robin_bc_desc_1d;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;source =&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;  std::cout &lt;&lt; source &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;  robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#acdf8a75f8c39b3b8a032af81e0fd2e89">PushBackWestCoeff</a>(Alpha);</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#acdf8a75f8c39b3b8a032af81e0fd2e89">PushBackWestCoeff</a>(Beta);</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;  robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#a7791c11e0950656cb5608a77918c28d4">PushBackEastCoeff</a>(Alpha);</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#a7791c11e0950656cb5608a77918c28d4">PushBackEastCoeff</a>(Beta);</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;  robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#a06bfaf0126d528247c3c76fdd19f4b85">set_west_condition</a>(Omega);</div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#a4edc92eeaaaa3f1e7f2cedfea3d35681">set_east_condition</a>(Epsilon);</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;  <span class="keywordflow">if</span> (!robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#ab8446428df923c27f388a85bd3f2c6d4">ImposeOnLaplacianMatrix</a>(lap, lapm)) {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;BCs  could not be bound to the matrix.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  }</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Mimetic Laplacian operator with imposed BCs:&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  std::cout &lt;&lt; lapm &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;  <span class="keywordflow">if</span> (!lapm.WriteToFile(<span class="stringliteral">&quot;1d_poisson_lapm.dat&quot;</span>)) {</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Laplacian matrix could not be written to disk.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;  }</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#ab0daec1d6c5c9c6768bea08281a3831d">ImposeOnGrid</a>(source);</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;source =&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  std::cout &lt;&lt; source &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;  <a class="code" href="classmtk_1_1RobinBCDescriptor1D.html">mtk::RobinBCDescriptor1D</a> robin_bc_desc_1d;</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#acdf8a75f8c39b3b8a032af81e0fd2e89">PushBackWestCoeff</a>(Alpha);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#acdf8a75f8c39b3b8a032af81e0fd2e89">PushBackWestCoeff</a>(Beta);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;  robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#a7791c11e0950656cb5608a77918c28d4">PushBackEastCoeff</a>(Alpha);</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;  robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#a7791c11e0950656cb5608a77918c28d4">PushBackEastCoeff</a>(Beta);</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#a06bfaf0126d528247c3c76fdd19f4b85">set_west_condition</a>(Omega);</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#a4edc92eeaaaa3f1e7f2cedfea3d35681">set_east_condition</a>(Epsilon);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  <span class="keywordflow">if</span> (!robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#ab8446428df923c27f388a85bd3f2c6d4">ImposeOnLaplacianMatrix</a>(lap, lapm)) {</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;BCs  could not be bound to the matrix.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  }</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Mimetic Laplacian operator with imposed BCs:&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;  std::cout &lt;&lt; lapm &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="keywordflow">if</span> (!lapm.WriteToFile(<span class="stringliteral">&quot;1d_poisson_lapm.dat&quot;</span>)) {</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Laplacian matrix could not be written to disk.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  }</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;</div>
 <div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  <span class="keywordflow">if</span> (!source.WriteToFile(<span class="stringliteral">&quot;1d_poisson_source.dat&quot;</span>, <span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;s(x)&quot;</span>)) {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Source term could not be written to disk.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  }</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  robin_bc_desc_1d.<a class="code" href="classmtk_1_1RobinBCDescriptor1D.html#ab0daec1d6c5c9c6768bea08281a3831d">ImposeOnGrid</a>(source);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;source =&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  std::cout &lt;&lt; source &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  <span class="keywordtype">int</span> info{<a class="code" href="classmtk_1_1LAPACKAdapter.html#a7428bccf74fd4a4af68fb7233846da22">mtk::LAPACKAdapter::SolveDenseSystem</a>(lapm, source)};</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  <span class="keywordflow">if</span> (!info) {</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;System solved.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;    std::cout &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Something wrong solving system! info = &quot;</span> &lt;&lt; info &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Exiting...&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  }</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Computed solution:&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;  std::cout &lt;&lt; source &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;  <span class="keywordflow">if</span> (!source.WriteToFile(<span class="stringliteral">&quot;1d_poisson_comp_sol.dat&quot;</span>, <span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;~u(x)&quot;</span>)) {</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Solution could not be written to file.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  }</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <a class="code" href="classmtk_1_1UniStgGrid1D.html">mtk::UniStgGrid1D</a> known_sol(west_bndy_x, east_bndy_x, num_cells_x);</div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;  known_sol.BindScalarField(KnownSolution);</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;known_sol =&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;  std::cout &lt;&lt; known_sol &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  <span class="keywordflow">if</span> (!source.WriteToFile(<span class="stringliteral">&quot;1d_poisson_source.dat&quot;</span>, <span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;s(x)&quot;</span>)) {</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Source term could not be written to disk.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  }</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;  <span class="keywordtype">int</span> info{<a class="code" href="classmtk_1_1LAPACKAdapter.html#a7428bccf74fd4a4af68fb7233846da22">mtk::LAPACKAdapter::SolveDenseSystem</a>(lapm, source)};</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  <span class="keywordflow">if</span> (!info) {</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;    std::cout &lt;&lt; <span class="stringliteral">&quot;System solved.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    std::cout &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Something wrong solving system! info = &quot;</span> &lt;&lt; info &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Exiting...&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;  }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;Computed solution:&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  std::cout &lt;&lt; source &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <span class="keywordflow">if</span> (!source.WriteToFile(<span class="stringliteral">&quot;1d_poisson_comp_sol.dat&quot;</span>, <span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;~u(x)&quot;</span>)) {</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Solution could not be written to file.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  }</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;</div>
 <div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <span class="keywordflow">if</span> (!known_sol.WriteToFile(<span class="stringliteral">&quot;1d_poisson_known_sol.dat&quot;</span>, <span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;u(x)&quot;</span>)) {</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Known solution could not be written to file.&quot;</span> &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;  }</div>
-<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
-<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> relative_norm_2_error{};</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;  <a class="code" href="classmtk_1_1UniStgGrid1D.html">mtk::UniStgGrid1D</a> known_sol(west_bndy_x, east_bndy_x, num_cells_x);</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  known_sol.BindScalarField(KnownSolution, std::vector&lt;mtk::Real&gt;());</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;</div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;known_sol =&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;  std::cout &lt;&lt; known_sol &lt;&lt; std::endl;</div>
 <div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  relative_norm_2_error =</div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    <a class="code" href="classmtk_1_1BLASAdapter.html#af2ac5691f45e67d6e26186b071119ec4">mtk::BLASAdapter::RelNorm2Error</a>(source.discrete_field(),</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                                    known_sol.discrete_field(),</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                                    known_sol.num_cells_x());</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  <span class="keywordflow">if</span> (!known_sol.WriteToFile(<span class="stringliteral">&quot;1d_poisson_known_sol.dat&quot;</span>, <span class="stringliteral">&quot;x&quot;</span>, <span class="stringliteral">&quot;u(x)&quot;</span>)) {</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;    std::cerr &lt;&lt; <span class="stringliteral">&quot;Known solution could not be written to file.&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;    <span class="keywordflow">return</span> EXIT_FAILURE;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  }</div>
 <div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;relative_norm_2_error = &quot;</span>;</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  std::cout &lt;&lt; relative_norm_2_error &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;}</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;<span class="preprocessor">#else</span></div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;<span class="keyword">using</span> std::cout;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;<span class="keyword">using</span> std::endl;</div>
-<div class="line"><a name="l00263"></a><span class="lineno"><a class="line" href="1d__poisson_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">  263</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="1d__poisson_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> () {</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;This code HAS to be compiled with support for C++11.&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;Exiting...&quot;</span> &lt;&lt; endl;</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;}</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  <a class="code" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a> relative_norm_2_error{};</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  relative_norm_2_error =</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    <a class="code" href="classmtk_1_1BLASAdapter.html#af2ac5691f45e67d6e26186b071119ec4">mtk::BLASAdapter::RelNorm2Error</a>(source.discrete_field(),</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                                    known_sol.discrete_field(),</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                                    known_sol.num_cells_x());</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  std::cout &lt;&lt; <span class="stringliteral">&quot;relative_norm_2_error = &quot;</span>;</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  std::cout &lt;&lt; relative_norm_2_error &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;}</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;<span class="preprocessor">#else</span></div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;<span class="keyword">using</span> std::cout;</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;<span class="keyword">using</span> std::endl;</div>
+<div class="line"><a name="l00270"></a><span class="lineno"><a class="line" href="1d__poisson_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">  270</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="1d__poisson_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> () {</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;This code HAS to be compiled with support for C++11.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  cout &lt;&lt; <span class="stringliteral">&quot;Exiting...&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  <span class="keywordflow">return</span> EXIT_SUCCESS;</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;}</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;<span class="preprocessor">#endif</span></div>
 <div class="ttc" id="classmtk_1_1LAPACKAdapter_html_a7428bccf74fd4a4af68fb7233846da22"><div class="ttname"><a href="classmtk_1_1LAPACKAdapter.html#a7428bccf74fd4a4af68fb7233846da22">mtk::LAPACKAdapter::SolveDenseSystem</a></div><div class="ttdeci">static int SolveDenseSystem(mtk::DenseMatrix &amp;mm, mtk::Real *rhs)</div><div class="ttdoc">Solves a dense system of linear equations. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lapack__adapter_8cc_source.html#l00431">mtk_lapack_adapter.cc:431</a></div></div>
 <div class="ttc" id="classmtk_1_1Lap1D_html"><div class="ttname"><a href="classmtk_1_1Lap1D.html">mtk::Lap1D</a></div><div class="ttdoc">Implements a 1D mimetic Laplacian operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8h_source.html#l00078">mtk_lap_1d.h:78</a></div></div>
 <div class="ttc" id="group__c01-roots_html_gac080bbbf5cbb5502c9f00405f894857d"><div class="ttname"><a href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">mtk::Real</a></div><div class="ttdeci">float Real</div><div class="ttdoc">Users can simply change this to build a double- or single-precision MTK. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__roots_8h_source.html#l00093">mtk_roots.h:93</a></div></div>
 <div class="ttc" id="classmtk_1_1Lap1D_html_a685dcba88c08cf5b7b6c2aa4669a472c"><div class="ttname"><a href="classmtk_1_1Lap1D.html#a685dcba88c08cf5b7b6c2aa4669a472c">mtk::Lap1D::ConstructLap1D</a></div><div class="ttdeci">bool ConstructLap1D(int order_accuracy=kDefaultOrderAccuracy, Real mimetic_threshold=kDefaultMimeticThreshold)</div><div class="ttdoc">Factory method implementing the CBS Algorithm to build operator. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00151">mtk_lap_1d.cc:151</a></div></div>
-<div class="ttc" id="classmtk_1_1Lap1D_html_aaea34a17b0879e05eb4109645a2ba8f4"><div class="ttname"><a href="classmtk_1_1Lap1D.html#aaea34a17b0879e05eb4109645a2ba8f4">mtk::Lap1D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &amp;grid) const </div><div class="ttdoc">Return the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00317">mtk_lap_1d.cc:317</a></div></div>
+<div class="ttc" id="classmtk_1_1Lap1D_html_aaea34a17b0879e05eb4109645a2ba8f4"><div class="ttname"><a href="classmtk_1_1Lap1D.html#aaea34a17b0879e05eb4109645a2ba8f4">mtk::Lap1D::ReturnAsDenseMatrix</a></div><div class="ttdeci">DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &amp;grid) const </div><div class="ttdoc">Return the operator as a dense matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__lap__1d_8cc_source.html#l00319">mtk_lap_1d.cc:319</a></div></div>
 <div class="ttc" id="classmtk_1_1UniStgGrid1D_html"><div class="ttname"><a href="classmtk_1_1UniStgGrid1D.html">mtk::UniStgGrid1D</a></div><div class="ttdoc">Uniform 1D Staggered Grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__uni__stg__grid__1d_8h_source.html#l00077">mtk_uni_stg_grid_1d.h:77</a></div></div>
-<div class="ttc" id="classmtk_1_1DenseMatrix_html"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a></div><div class="ttdoc">Defines a common dense matrix, using a 1D array. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8h_source.html#l00092">mtk_dense_matrix.h:92</a></div></div>
-<div class="ttc" id="classmtk_1_1RobinBCDescriptor1D_html_ab8446428df923c27f388a85bd3f2c6d4"><div class="ttname"><a href="classmtk_1_1RobinBCDescriptor1D.html#ab8446428df923c27f388a85bd3f2c6d4">mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix</a></div><div class="ttdeci">bool ImposeOnLaplacianMatrix(const Lap1D &amp;lap, DenseMatrix &amp;matrix, const Real &amp;time=mtk::kZero) const </div><div class="ttdoc">Imposes the condition on the operator represented as matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__robin__bc__descriptor__1d_8cc_source.html#l00166">mtk_robin_bc_descriptor_1d.cc:166</a></div></div>
-<div class="ttc" id="classmtk_1_1RobinBCDescriptor1D_html_ab0daec1d6c5c9c6768bea08281a3831d"><div class="ttname"><a href="classmtk_1_1RobinBCDescriptor1D.html#ab0daec1d6c5c9c6768bea08281a3831d">mtk::RobinBCDescriptor1D::ImposeOnGrid</a></div><div class="ttdeci">void ImposeOnGrid(UniStgGrid1D &amp;grid, const Real &amp;time=mtk::kZero) const </div><div class="ttdoc">Imposes the condition on the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__robin__bc__descriptor__1d_8cc_source.html#l00246">mtk_robin_bc_descriptor_1d.cc:246</a></div></div>
+<div class="ttc" id="classmtk_1_1DenseMatrix_html"><div class="ttname"><a href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a></div><div class="ttdoc">Defines a common dense matrix, using a 1D array. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__dense__matrix_8h_source.html#l00095">mtk_dense_matrix.h:95</a></div></div>
+<div class="ttc" id="classmtk_1_1RobinBCDescriptor1D_html_ab8446428df923c27f388a85bd3f2c6d4"><div class="ttname"><a href="classmtk_1_1RobinBCDescriptor1D.html#ab8446428df923c27f388a85bd3f2c6d4">mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix</a></div><div class="ttdeci">bool ImposeOnLaplacianMatrix(const Lap1D &amp;lap, DenseMatrix &amp;matrix, const Real &amp;time=mtk::kZero) const </div><div class="ttdoc">Imposes the condition on the operator represented as matrix. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__robin__bc__descriptor__1d_8cc_source.html#l00197">mtk_robin_bc_descriptor_1d.cc:197</a></div></div>
+<div class="ttc" id="classmtk_1_1RobinBCDescriptor1D_html_ab0daec1d6c5c9c6768bea08281a3831d"><div class="ttname"><a href="classmtk_1_1RobinBCDescriptor1D.html#ab0daec1d6c5c9c6768bea08281a3831d">mtk::RobinBCDescriptor1D::ImposeOnGrid</a></div><div class="ttdeci">void ImposeOnGrid(UniStgGrid1D &amp;grid, const Real &amp;time=mtk::kZero) const </div><div class="ttdoc">Imposes the condition on the grid. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__robin__bc__descriptor__1d_8cc_source.html#l00279">mtk_robin_bc_descriptor_1d.cc:279</a></div></div>
 <div class="ttc" id="classmtk_1_1RobinBCDescriptor1D_html_a4edc92eeaaaa3f1e7f2cedfea3d35681"><div class="ttname"><a href="classmtk_1_1RobinBCDescriptor1D.html#a4edc92eeaaaa3f1e7f2cedfea3d35681">mtk::RobinBCDescriptor1D::set_east_condition</a></div><div class="ttdeci">void set_east_condition(Real(*east_condition)(const Real &amp;tt)) noexcept</div><div class="ttdoc">Set boundary condition at east. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__robin__bc__descriptor__1d_8cc_source.html#l00156">mtk_robin_bc_descriptor_1d.cc:156</a></div></div>
-<div class="ttc" id="classmtk_1_1RobinBCDescriptor1D_html"><div class="ttname"><a href="classmtk_1_1RobinBCDescriptor1D.html">mtk::RobinBCDescriptor1D</a></div><div class="ttdoc">Impose Robin boundary conditions on the operators and on the grids. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__robin__bc__descriptor__1d_8h_source.html#l00155">mtk_robin_bc_descriptor_1d.h:155</a></div></div>
+<div class="ttc" id="classmtk_1_1RobinBCDescriptor1D_html"><div class="ttname"><a href="classmtk_1_1RobinBCDescriptor1D.html">mtk::RobinBCDescriptor1D</a></div><div class="ttdoc">Impose Robin boundary conditions on the operators and on the grids. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__robin__bc__descriptor__1d_8h_source.html#l00156">mtk_robin_bc_descriptor_1d.h:156</a></div></div>
 <div class="ttc" id="classmtk_1_1BLASAdapter_html_af2ac5691f45e67d6e26186b071119ec4"><div class="ttname"><a href="classmtk_1_1BLASAdapter.html#af2ac5691f45e67d6e26186b071119ec4">mtk::BLASAdapter::RelNorm2Error</a></div><div class="ttdeci">static Real RelNorm2Error(Real *computed, Real *known, int length)</div><div class="ttdoc">Computes the relative norm-2 of the error. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__blas__adapter_8cc_source.html#l00361">mtk_blas_adapter.cc:361</a></div></div>
 <div class="ttc" id="classmtk_1_1RobinBCDescriptor1D_html_a7791c11e0950656cb5608a77918c28d4"><div class="ttname"><a href="classmtk_1_1RobinBCDescriptor1D.html#a7791c11e0950656cb5608a77918c28d4">mtk::RobinBCDescriptor1D::PushBackEastCoeff</a></div><div class="ttdeci">void PushBackEastCoeff(CoefficientFunction0D ce)</div><div class="ttdoc">Push back coefficient function at east of lowest order diff. available. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__robin__bc__descriptor__1d_8cc_source.html#l00132">mtk_robin_bc_descriptor_1d.cc:132</a></div></div>
 <div class="ttc" id="mtk_8h_html"><div class="ttname"><a href="mtk_8h.html">mtk.h</a></div><div class="ttdoc">Includes the entire API. </div></div>
-<div class="ttc" id="classmtk_1_1BLASAdapter_html_a0dd80d043615a95f11b7341ce69b44d3"><div class="ttname"><a href="classmtk_1_1BLASAdapter.html#a0dd80d043615a95f11b7341ce69b44d3">mtk::BLASAdapter::RealDenseSM</a></div><div class="ttdeci">static DenseMatrix RealDenseSM(Real alpha, DenseMatrix &amp;aa)</div><div class="ttdoc">Real-Arithmetic General (Dense matrices) Scalar-Matrix multiplier. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__blas__adapter_8cc_source.html#l00469">mtk_blas_adapter.cc:469</a></div></div>
+<div class="ttc" id="classmtk_1_1BLASAdapter_html_a0dd80d043615a95f11b7341ce69b44d3"><div class="ttname"><a href="classmtk_1_1BLASAdapter.html#a0dd80d043615a95f11b7341ce69b44d3">mtk::BLASAdapter::RealDenseSM</a></div><div class="ttdeci">static DenseMatrix RealDenseSM(Real alpha, DenseMatrix &amp;aa)</div><div class="ttdoc">Real-Arithmetic General (Dense matrices) Scalar-Matrix multiplier. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__blas__adapter_8cc_source.html#l00503">mtk_blas_adapter.cc:503</a></div></div>
 <div class="ttc" id="classmtk_1_1RobinBCDescriptor1D_html_a06bfaf0126d528247c3c76fdd19f4b85"><div class="ttname"><a href="classmtk_1_1RobinBCDescriptor1D.html#a06bfaf0126d528247c3c76fdd19f4b85">mtk::RobinBCDescriptor1D::set_west_condition</a></div><div class="ttdeci">void set_west_condition(Real(*west_condition)(const Real &amp;tt)) noexcept</div><div class="ttdoc">Set boundary condition at west. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__robin__bc__descriptor__1d_8cc_source.html#l00146">mtk_robin_bc_descriptor_1d.cc:146</a></div></div>
 <div class="ttc" id="classmtk_1_1RobinBCDescriptor1D_html_acdf8a75f8c39b3b8a032af81e0fd2e89"><div class="ttname"><a href="classmtk_1_1RobinBCDescriptor1D.html#acdf8a75f8c39b3b8a032af81e0fd2e89">mtk::RobinBCDescriptor1D::PushBackWestCoeff</a></div><div class="ttdeci">void PushBackWestCoeff(CoefficientFunction0D cw)</div><div class="ttdoc">Push back coefficient function at west of lowest order diff. available. </div><div class="ttdef"><b>Definition:</b> <a href="mtk__robin__bc__descriptor__1d_8cc_source.html#l00118">mtk_robin_bc_descriptor_1d.cc:118</a></div></div>
-<div class="ttc" id="1d__poisson_8cc_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="1d__poisson_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="1d__poisson_8cc_source.html#l00263">1d_poisson.cc:263</a></div></div>
+<div class="ttc" id="1d__poisson_8cc_html_ae66f6b31b5ad750f1fe042a706a4e3d4"><div class="ttname"><a href="1d__poisson_8cc.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a></div><div class="ttdeci">int main()</div><div class="ttdef"><b>Definition:</b> <a href="1d__poisson_8cc_source.html#l00270">1d_poisson.cc:270</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d28a4824dc47e487b107a5db32ef43c4.html">examples</a></li><li class="navelem"><a class="el" href="dir_80a27601cf792e150f3423ec25702dc9.html">1d_poisson</a></li><li class="navelem"><a class="el" href="1d__poisson_8cc.html">1d_poisson.cc</a></li>
-    <li class="footer">Generated on Fri Mar 11 2016 11:50:54 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Tue Mar 22 2016 12:15:32 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>

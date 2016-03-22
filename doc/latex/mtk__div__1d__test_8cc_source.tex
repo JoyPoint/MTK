@@ -180,7 +180,7 @@
 00181     std::cerr << \textcolor{stringliteral}{"Mimetic div (2nd order) could not be built."} << std::endl;
 00182   \}
 00183 
-00184   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid(0.0, 1.0, 5);
+00184   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid(0.0, 1.0, 5, \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e}{mtk::FieldNature::VECTOR});
 00185 
 00186   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} div2m(div2.\hyperlink{classmtk_1_1Div1D_a213fddbaaf86e4840c6a9649b69c2d49}{ReturnAsDenseMatrix}(grid));
 00187 
@@ -189,104 +189,134 @@
 00190 
 00191   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} ref(rr, cc);
 00192 
-00193   \textcolor{comment}{// Row 2.}
-00194   ref.SetValue(1,0,-5.0);
-00195   ref.SetValue(1,1,5.0);
-00196   ref.SetValue(1,2,0.0);
-00197   ref.SetValue(1,3,0.0);
-00198   ref.SetValue(1,4,0.0);
-00199   ref.SetValue(1,5,0.0);
-00200   ref.SetValue(1,6,0.0);
-00201 
-00202   \textcolor{comment}{// Row 3.}
-00203   ref.SetValue(2,0,0.0);
-00204   ref.SetValue(2,1,-5.0);
-00205   ref.SetValue(2,2,5.0);
-00206   ref.SetValue(2,3,0.0);
-00207   ref.SetValue(2,4,0.0);
-00208   ref.SetValue(2,5,0.0);
-00209   ref.SetValue(2,6,0.0);
-00210 
-00211   \textcolor{comment}{// Row 4.}
-00212   ref.SetValue(3,0,0.0);
-00213   ref.SetValue(3,1,0.0);
-00214   ref.SetValue(3,2,-5.0);
-00215   ref.SetValue(3,3,5.0);
-00216   ref.SetValue(3,4,0.0);
-00217   ref.SetValue(3,5,0.0);
-00218   ref.SetValue(3,6,0.0);
-00219 
-00220   \textcolor{comment}{// Row 5.}
-00221   ref.SetValue(4,0,0.0);
-00222   ref.SetValue(4,1,0.0);
-00223   ref.SetValue(4,2,0.0);
-00224   ref.SetValue(4,3,-5.0);
-00225   ref.SetValue(4,4,5.0);
-00226   ref.SetValue(4,5,0.0);
-00227   ref.SetValue(4,6,0.0);
-00228 
-00229   \textcolor{comment}{// Row 6.}
-00230   ref.SetValue(5,0,0.0);
-00231   ref.SetValue(5,1,0.0);
-00232   ref.SetValue(5,2,0.0);
-00233   ref.SetValue(5,3,0.0);
-00234   ref.SetValue(5,4,-5.0);
-00235   ref.SetValue(5,5,5.0);
-00236   ref.SetValue(5,6,0.0);
-00237 
-00238   assertion = assertion && (div2m == ref);
+00193   ref.set\_encoded\_operator(\hyperlink{namespacemtk_ga9b50023bfb2692219d2915feade94f80a4e4e9e6d004c642e33d6f823b57bd60e}{mtk::EncodedOperator::DIVERGENCE});
+00194 
+00195   \textcolor{comment}{// Row 2.}
+00196   ref.SetValue(1,0,-5.0);
+00197   ref.SetValue(1,1,5.0);
+00198   ref.SetValue(1,2,0.0);
+00199   ref.SetValue(1,3,0.0);
+00200   ref.SetValue(1,4,0.0);
+00201   ref.SetValue(1,5,0.0);
+00202   ref.SetValue(1,6,0.0);
+00203 
+00204   \textcolor{comment}{// Row 3.}
+00205   ref.SetValue(2,0,0.0);
+00206   ref.SetValue(2,1,-5.0);
+00207   ref.SetValue(2,2,5.0);
+00208   ref.SetValue(2,3,0.0);
+00209   ref.SetValue(2,4,0.0);
+00210   ref.SetValue(2,5,0.0);
+00211   ref.SetValue(2,6,0.0);
+00212 
+00213   \textcolor{comment}{// Row 4.}
+00214   ref.SetValue(3,0,0.0);
+00215   ref.SetValue(3,1,0.0);
+00216   ref.SetValue(3,2,-5.0);
+00217   ref.SetValue(3,3,5.0);
+00218   ref.SetValue(3,4,0.0);
+00219   ref.SetValue(3,5,0.0);
+00220   ref.SetValue(3,6,0.0);
+00221 
+00222   \textcolor{comment}{// Row 5.}
+00223   ref.SetValue(4,0,0.0);
+00224   ref.SetValue(4,1,0.0);
+00225   ref.SetValue(4,2,0.0);
+00226   ref.SetValue(4,3,-5.0);
+00227   ref.SetValue(4,4,5.0);
+00228   ref.SetValue(4,5,0.0);
+00229   ref.SetValue(4,6,0.0);
+00230 
+00231   \textcolor{comment}{// Row 6.}
+00232   ref.SetValue(5,0,0.0);
+00233   ref.SetValue(5,1,0.0);
+00234   ref.SetValue(5,2,0.0);
+00235   ref.SetValue(5,3,0.0);
+00236   ref.SetValue(5,4,-5.0);
+00237   ref.SetValue(5,5,5.0);
+00238   ref.SetValue(5,6,0.0);
 00239 
-00240   \hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{mtk::Tools::EndUnitTestNo}(8);
-00241   \hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{mtk::Tools::Assert}(assertion);
-00242 \}
-00243 
-00244 \textcolor{keywordtype}{void} TestFourthOrderReturnAsDenseMatrixWithGrid() \{
+00240   assertion = assertion && (div2m == ref);
+00241 
+00242   \hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{mtk::Tools::EndUnitTestNo}(8);
+00243   \hyperlink{classmtk_1_1Tools_ac6804df469c94ab6a796fb64f1e44a89}{mtk::Tools::Assert}(assertion);
+00244 \}
 00245 
-00246   \hyperlink{classmtk_1_1Tools_afc29ecaf337a13ed2e817d3890a5a441}{mtk::Tools::BeginUnitTestNo}(9);
+00246 \textcolor{keywordtype}{void} TestFourthOrderReturnAsDenseMatrixWithGrid() \{
 00247 
-00248   \hyperlink{classmtk_1_1Div1D}{mtk::Div1D} div4;
+00248   \hyperlink{classmtk_1_1Tools_afc29ecaf337a13ed2e817d3890a5a441}{mtk::Tools::BeginUnitTestNo}(9);
 00249 
-00250   \textcolor{keywordtype}{bool} assertion = div4.\hyperlink{classmtk_1_1Div1D_a52fcd1542f11e606e36bd188e48bfdf7}{ConstructDiv1D}(4);
+00250   \hyperlink{classmtk_1_1Div1D}{mtk::Div1D} div4;
 00251 
-00252   \textcolor{keywordflow}{if} (!assertion) \{
-00253     std::cerr << \textcolor{stringliteral}{"Mimetic div (4th order) could not be built."} << std::endl;
-00254   \}
-00255 
-00256   std::cout << div4 << std::endl;
+00252   \textcolor{keywordtype}{bool} assertion = div4.\hyperlink{classmtk_1_1Div1D_a52fcd1542f11e606e36bd188e48bfdf7}{ConstructDiv1D}(4);
+00253 
+00254   \textcolor{keywordflow}{if} (!assertion) \{
+00255     std::cerr << \textcolor{stringliteral}{"Mimetic div (4th order) could not be built."} << std::endl;
+00256   \}
 00257 
-00258   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid(0.0, 1.0, 11);
+00258   std::cout << div4 << std::endl;
 00259 
-00260   std::cout << grid << std::endl;
+00260   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid(0.0, 1.0, 12, \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e}{mtk::FieldNature::VECTOR});
 00261 
-00262   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} div4m(div4.\hyperlink{classmtk_1_1Div1D_a213fddbaaf86e4840c6a9649b69c2d49}{ReturnAsDenseMatrix}(grid));
+00262   std::cout << grid << std::endl;
 00263 
-00264   std::cout << div4m << std::endl;
+00264   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} div4m(div4.\hyperlink{classmtk_1_1Div1D_af2546ad1568ef39a6075f03bb395719e}{ReturnAsDimensionlessDenseMatrix}
+      (12));
 00265 
-00266   \hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{mtk::Tools::EndUnitTestNo}(9);
-00267 \}
-00268 
-00269 \textcolor{keywordtype}{int} \hyperlink{mtk__div__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00266   std::cout << div4m << std::endl;
+00267 
+00268   \hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{mtk::Tools::EndUnitTestNo}(9);
+00269 \}
 00270 
-00271   std::cout << \textcolor{stringliteral}{"Testing mtk::Div1D class."} << std::endl;
+00271 \textcolor{keywordtype}{void} TestSixthOrderReturnAsDenseMatrixWithGrid() \{
 00272 
-00273   TestDefaultConstructorFactoryMethodDefault();
-00274   TestDefaultConstructorFactoryMethodFourthOrder();
-00275   TestDefaultConstructorFactoryMethodSixthOrder();
-00276   TestDefaultConstructorFactoryMethodEightOrderDefThreshold();
-00277   TestDefaultConstructorFactoryMethodTenthOrderDefThreshold();
-00278   TestDefaultConstructorFactoryMethodTwelfthOrderDefThreshold();
-00279   TestDefaultConstructorFactoryMethodFourteenthOrderDefThreshold();
-00280   TestSecondOrderReturnAsDenseMatrixWithGrid();
-00281   TestFourthOrderReturnAsDenseMatrixWithGrid();
-00282 \}
-00283 
-00284 \textcolor{preprocessor}{#else}
-00285 \textcolor{preprocessor}{#include <iostream>}
-00286 \textcolor{keyword}{using} std::cout;
-00287 \textcolor{keyword}{using} std::endl;
-\hypertarget{mtk__div__1d__test_8cc_source_l00288}{}\hyperlink{mtk__div__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00288} \textcolor{keywordtype}{int} \hyperlink{mtk__div__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
-00289   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
-00290   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
-00291 \}
-00292 \textcolor{preprocessor}{#endif}
+00273   \hyperlink{classmtk_1_1Tools_afc29ecaf337a13ed2e817d3890a5a441}{mtk::Tools::BeginUnitTestNo}(10);
+00274 
+00275   \hyperlink{classmtk_1_1Div1D}{mtk::Div1D} div6;
+00276 
+00277   \textcolor{keywordtype}{bool} assertion = div6.\hyperlink{classmtk_1_1Div1D_a52fcd1542f11e606e36bd188e48bfdf7}{ConstructDiv1D}(6);
+00278 
+00279   \textcolor{keywordflow}{if} (!assertion) \{
+00280     std::cerr << \textcolor{stringliteral}{"Mimetic div (6th order) could not be built."} << std::endl;
+00281   \}
+00282 
+00283   std::cout << div6 << std::endl;
+00284 
+00285   \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} grid(0.0, 1.0, 20, \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e}{mtk::FieldNature::VECTOR});
+00286 
+00287   std::cout << grid << std::endl;
+00288 
+00289   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} div6m(div6.\hyperlink{classmtk_1_1Div1D_af2546ad1568ef39a6075f03bb395719e}{ReturnAsDimensionlessDenseMatrix}
+      (20));
+00290 
+00291   std::cout << div6m << std::endl;
+00292 
+00293   \hyperlink{classmtk_1_1Tools_aba67d9dc35c9c1c49430fcc9ea035e03}{mtk::Tools::EndUnitTestNo}(10);
+00294 \}
+00295 
+00296 \textcolor{keywordtype}{int} \hyperlink{mtk__div__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00297 
+00298   std::cout << \textcolor{stringliteral}{"Testing mtk::Div1D class."} << std::endl;
+00299 
+00300   TestDefaultConstructorFactoryMethodDefault();
+00301   TestDefaultConstructorFactoryMethodFourthOrder();
+00302   TestDefaultConstructorFactoryMethodSixthOrder();
+00303   TestDefaultConstructorFactoryMethodEightOrderDefThreshold();
+00304   TestDefaultConstructorFactoryMethodTenthOrderDefThreshold();
+00305   TestDefaultConstructorFactoryMethodTwelfthOrderDefThreshold();
+00306   TestDefaultConstructorFactoryMethodFourteenthOrderDefThreshold();
+00307   TestSecondOrderReturnAsDenseMatrixWithGrid();
+00308   TestFourthOrderReturnAsDenseMatrixWithGrid();
+00309   TestSixthOrderReturnAsDenseMatrixWithGrid();
+00310 \}
+00311 
+00312 \textcolor{preprocessor}{#else}
+00313 \textcolor{preprocessor}{#include <iostream>}
+00314 \textcolor{keyword}{using} std::cout;
+00315 \textcolor{keyword}{using} std::endl;
+\hypertarget{mtk__div__1d__test_8cc_source_l00316}{}\hyperlink{mtk__div__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{00316} \textcolor{keywordtype}{int} \hyperlink{mtk__div__1d__test_8cc_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} () \{
+00317   cout << \textcolor{stringliteral}{"This code HAS to be compiled with support for C++11."} << endl;
+00318   cout << \textcolor{stringliteral}{"Exiting..."} << endl;
+00319 \}
+00320 \textcolor{preprocessor}{#endif}
 \end{DoxyCode}

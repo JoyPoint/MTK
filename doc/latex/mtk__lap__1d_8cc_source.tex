@@ -224,145 +224,151 @@
 00237 
 00238   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} lap; \textcolor{comment}{// Laplacian matrix to hold to computed coefficients.}
 00239 
-00240   lap = \hyperlink{classmtk_1_1BLASAdapter_acebd0e9bfe0bdd609c7fbea98ccfd3b5}{mtk::BLASAdapter::RealDenseMM}(div\_m, grad\_m);
+00240   lap.\hyperlink{classmtk_1_1DenseMatrix_ac0f824b0fec88c4fb42e77b7550fb0d3}{set\_encoded\_operator}(\hyperlink{namespacemtk_ga9b50023bfb2692219d2915feade94f80a1c2d5f3f8e6cbb0c7b033c388c905d22}{mtk::EncodedOperator::LAPLACIAN}
+      );
 00241 
-00242 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
-00243   std::cout << \textcolor{stringliteral}{"lap ="} << std::endl;
-00244   std::cout << lap << std::endl;
-00245 \textcolor{preprocessor}{  #endif}
-00246 
+00242   lap = \hyperlink{classmtk_1_1BLASAdapter_acebd0e9bfe0bdd609c7fbea98ccfd3b5}{mtk::BLASAdapter::RealDenseMM}(div\_m, grad\_m);
+00243 
+00244 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 4}
+00245   std::cout << \textcolor{stringliteral}{"lap ="} << std::endl;
+00246   std::cout << lap << std::endl;
+00247 \textcolor{preprocessor}{  #endif}
 00248 
 00250 
-00251   \textcolor{comment}{// The output array will have this form:}
-00252   \textcolor{comment}{// 1. The first entry of the array will contain the used order kk.}
-00253   \textcolor{comment}{// 2. The second entry of the array will contain the collection of}
-00254   \textcolor{comment}{// approximating coefficients for the interior of the grid.}
-00255   \textcolor{comment}{// 3. The next entries will contain the collections of approximating}
-00256   \textcolor{comment}{// coefficients for the west boundary of the grid.}
-00257 
-00258   laplacian\_length\_ = 1 + (2*order\_accuracy\_ - 1) +
-00259     (order\_accuracy\_ - 1)*(2*order\_accuracy\_);
-00260 
-00261 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 2}
-00262   std::cout << \textcolor{stringliteral}{"laplacian\_length\_ = "} << laplacian\_length\_ << std::endl;
-00263   std::cout << std::endl;
-00264 \textcolor{preprocessor}{  #endif}
-00265 
-00266   \textcolor{keywordflow}{try} \{
-00267     laplacian\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[laplacian\_length\_];
-00268   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
-00269     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
-00270       std::endl;
-00271     std::cerr << memory\_allocation\_exception.what() << std::endl;
-00272   \}
-00273   memset(laplacian\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(laplacian\_[0])*laplacian\_length\_);
-00274 
+00252 
+00253   \textcolor{comment}{// The output array will have this form:}
+00254   \textcolor{comment}{// 1. The first entry of the array will contain the used order kk.}
+00255   \textcolor{comment}{// 2. The second entry of the array will contain the collection of}
+00256   \textcolor{comment}{// approximating coefficients for the interior of the grid.}
+00257   \textcolor{comment}{// 3. The next entries will contain the collections of approximating}
+00258   \textcolor{comment}{// coefficients for the west boundary of the grid.}
+00259 
+00260   laplacian\_length\_ = 1 + (2*order\_accuracy\_ - 1) +
+00261     (order\_accuracy\_ - 1)*(2*order\_accuracy\_);
+00262 
+00263 \textcolor{preprocessor}{  #if MTK\_VERBOSE\_LEVEL > 2}
+00264   std::cout << \textcolor{stringliteral}{"laplacian\_length\_ = "} << laplacian\_length\_ << std::endl;
+00265   std::cout << std::endl;
+00266 \textcolor{preprocessor}{  #endif}
+00267 
+00268   \textcolor{keywordflow}{try} \{
+00269     laplacian\_ = \textcolor{keyword}{new} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}[laplacian\_length\_];
+00270   \} \textcolor{keywordflow}{catch} (std::bad\_alloc &memory\_allocation\_exception) \{
+00271     std::cerr << \textcolor{stringliteral}{"Memory allocation exception on line "} << \_\_LINE\_\_ - 3 <<
+00272       std::endl;
+00273     std::cerr << memory\_allocation\_exception.what() << std::endl;
+00274   \}
+00275   memset(laplacian\_, \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \textcolor{keyword}{sizeof}(laplacian\_[0])*laplacian\_length\_);
 00276 
-00277   laplacian\_[0] = order\_accuracy\_;
 00278 
-00281 
-00282   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < 2*order\_accuracy\_ - 1; ++ii) \{
-00283     laplacian\_[ii + 1] = lap.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(1 + (order\_accuracy\_ - 1), ii + 1);
-00284   \}
-00285 
+00279   laplacian\_[0] = order\_accuracy\_;
+00280 
+00283 
+00284   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < 2*order\_accuracy\_ - 1; ++ii) \{
+00285     laplacian\_[ii + 1] = lap.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(1 + (order\_accuracy\_ - 1), ii + 1);
+00286   \}
 00287 
-00288   \textcolor{keyword}{auto} offset = 1 + (2*order\_accuracy\_ - 1);
 00289 
-00290   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_ - 1; ++ii) \{
-00291     sums\_rows\_mim\_bndy\_.push\_back(\hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
-00292     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < 2*order\_accuracy\_; ++jj) \{
-00293       \textcolor{keyword}{register} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aux\{lap.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(1 + ii,jj)\};
-00294       laplacian\_[offset + ii*(2*order\_accuracy\_) + jj] = aux;
-00295       sums\_rows\_mim\_bndy\_[ii] += aux;
-00296     \}
-00297   \}
-00298 
-00299     mimetic\_measure\_ = *std::max\_element(sums\_rows\_mim\_bndy\_.begin(),
-00300                                       sums\_rows\_mim\_bndy\_.end());
-00301 
-00302   delta\_ = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero};
+00290   \textcolor{keyword}{auto} offset = 1 + (2*order\_accuracy\_ - 1);
+00291 
+00292   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_ - 1; ++ii) \{
+00293     sums\_rows\_mim\_bndy\_.push\_back(\hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero});
+00294     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < 2*order\_accuracy\_; ++jj) \{
+00295       \textcolor{keyword}{register} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} aux\{lap.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(1 + ii,jj)\};
+00296       laplacian\_[offset + ii*(2*order\_accuracy\_) + jj] = aux;
+00297       sums\_rows\_mim\_bndy\_[ii] += aux;
+00298     \}
+00299   \}
+00300 
+00301     mimetic\_measure\_ = *std::max\_element(sums\_rows\_mim\_bndy\_.begin(),
+00302                                       sums\_rows\_mim\_bndy\_.end());
 00303 
-00304   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-00305 \}
-00306 
-\hypertarget{mtk__lap__1d_8cc_source_l00307}{}\hyperlink{classmtk_1_1Lap1D_ad0f976d32700cd8b46aa99f5a8d9e38b}{00307} std::vector<mtk::Real> \hyperlink{classmtk_1_1Lap1D_ad0f976d32700cd8b46aa99f5a8d9e38b}{mtk::Lap1D::sums\_rows\_mim\_bndy}()\textcolor{keyword}{ const }\{
+00304   delta\_ = \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero};
+00305 
+00306   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00307 \}
 00308 
-00309   \textcolor{keywordflow}{return} sums\_rows\_mim\_bndy\_;
-00310 \}
-00311 
-\hypertarget{mtk__lap__1d_8cc_source_l00312}{}\hyperlink{classmtk_1_1Lap1D_a10a426657cccd1d6b25fbb58ed472d6f}{00312} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1Lap1D_a10a426657cccd1d6b25fbb58ed472d6f}{mtk::Lap1D::mimetic\_measure}()\textcolor{keyword}{ const }\{
+\hypertarget{mtk__lap__1d_8cc_source_l00309}{}\hyperlink{classmtk_1_1Lap1D_ad0f976d32700cd8b46aa99f5a8d9e38b}{00309} std::vector<mtk::Real> \hyperlink{classmtk_1_1Lap1D_ad0f976d32700cd8b46aa99f5a8d9e38b}{mtk::Lap1D::sums\_rows\_mim\_bndy}()\textcolor{keyword}{ const }\{
+00310 
+00311   \textcolor{keywordflow}{return} sums\_rows\_mim\_bndy\_;
+00312 \}
 00313 
-00314   \textcolor{keywordflow}{return} mimetic\_measure\_;
-00315 \}
-00316 
-\hypertarget{mtk__lap__1d_8cc_source_l00317}{}\hyperlink{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4}{00317} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4}{mtk::Lap1D::ReturnAsDenseMatrix}(
-00318   \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid)\textcolor{keyword}{ const }\{
-00319 
-00320   \textcolor{keywordtype}{int} nn\{grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}()\};  \textcolor{comment}{// Number of cells on the grid.}
+\hypertarget{mtk__lap__1d_8cc_source_l00314}{}\hyperlink{classmtk_1_1Lap1D_a10a426657cccd1d6b25fbb58ed472d6f}{00314} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1Lap1D_a10a426657cccd1d6b25fbb58ed472d6f}{mtk::Lap1D::mimetic\_measure}()\textcolor{keyword}{ const }\{
+00315 
+00316   \textcolor{keywordflow}{return} mimetic\_measure\_;
+00317 \}
+00318 
+\hypertarget{mtk__lap__1d_8cc_source_l00319}{}\hyperlink{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4}{00319} \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} \hyperlink{classmtk_1_1Lap1D_aaea34a17b0879e05eb4109645a2ba8f4}{mtk::Lap1D::ReturnAsDenseMatrix}(
+00320   \textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid)\textcolor{keyword}{ const }\{
 00321 
-00322 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00323   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00324   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn < 3*order\_accuracy\_ - 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00325 \textcolor{preprocessor}{  #endif}
-00326 
-00327   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} lap(nn + 2, nn + 2); \textcolor{comment}{// Laplacian matrix to be returned.}
+00322   \textcolor{keywordtype}{int} nn\{grid.\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{num\_cells\_x}()\};  \textcolor{comment}{// Number of cells on the grid.}
+00323 
+00324 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00325   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn <= 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00326   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nn < 3*order\_accuracy\_ - 1, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00327 \textcolor{preprocessor}{  #endif}
 00328 
-00329   delta\_ = grid.\hyperlink{classmtk_1_1UniStgGrid1D_a6e7173b01241632cf509496d66b9f74c}{delta\_x}();
+00329   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} lap(nn + 2, nn + 2); \textcolor{comment}{// Laplacian matrix to be returned.}
 00330 
-00331   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} idx\{\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/(grid.\hyperlink{classmtk_1_1UniStgGrid1D_a6e7173b01241632cf509496d66b9f74c}{delta\_x}()*grid.\hyperlink{classmtk_1_1UniStgGrid1D_a6e7173b01241632cf509496d66b9f74c}{delta\_x}())\}; \textcolor{comment}{// Inverse of
-       dx^2.}
+00331   lap.\hyperlink{classmtk_1_1DenseMatrix_ac0f824b0fec88c4fb42e77b7550fb0d3}{set\_encoded\_operator}(\hyperlink{namespacemtk_ga9b50023bfb2692219d2915feade94f80a1c2d5f3f8e6cbb0c7b033c388c905d22}{mtk::EncodedOperator::LAPLACIAN}
+      );
 00332 
+00333   delta\_ = grid.\hyperlink{classmtk_1_1UniStgGrid1D_a6e7173b01241632cf509496d66b9f74c}{delta\_x}();
 00334 
-00335   \textcolor{keyword}{auto} offset = (1 + 2*order\_accuracy\_ - 1);
+00335   \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} idx\{\hyperlink{group__c01-roots_ga26407c24d43b6b95480943340d285c71}{mtk::kOne}/(grid.\hyperlink{classmtk_1_1UniStgGrid1D_a6e7173b01241632cf509496d66b9f74c}{delta\_x}()*grid.\hyperlink{classmtk_1_1UniStgGrid1D_a6e7173b01241632cf509496d66b9f74c}{delta\_x}())\}; \textcolor{comment}{// Inverse of
+       dx^2.}
 00336 
-00337   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_ - 1; ++ii) \{
-00338     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < 2*order\_accuracy\_; ++jj) \{
-00339       lap.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(1 + ii,
-00340                    jj,
-00341                    idx*laplacian\_[offset + ii*2*order\_accuracy\_ + jj]);
-00342     \}
-00343   \}
-00344 
-00346 
-00347   offset = 1 + (order\_accuracy\_ - 1);
+00338 
+00339   \textcolor{keyword}{auto} offset = (1 + 2*order\_accuracy\_ - 1);
+00340 
+00341   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 0; ii < order\_accuracy\_ - 1; ++ii) \{
+00342     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < 2*order\_accuracy\_; ++jj) \{
+00343       lap.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(1 + ii,
+00344                    jj,
+00345                    idx*laplacian\_[offset + ii*2*order\_accuracy\_ + jj]);
+00346     \}
+00347   \}
 00348 
-00349   \textcolor{keywordtype}{int} kk\{1\};
-00350   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = order\_accuracy\_; ii <= nn - (order\_accuracy\_ - 1); ++ii) \{
-00351     \textcolor{keywordtype}{int} mm\{1\};
-00352     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < 2*order\_accuracy\_ - 1; ++jj) \{
-00353       lap.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj + kk, idx*laplacian\_[mm]);
-00354       mm = mm + 1;
-00355     \}
-00356     kk = kk + 1;
-00357   \}
-00358 
-00360 
-00361   offset = (1 + 2*order\_accuracy\_ - 1);
+00350 
+00351   offset = 1 + (order\_accuracy\_ - 1);
+00352 
+00353   \textcolor{keywordtype}{int} kk\{1\};
+00354   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = order\_accuracy\_; ii <= nn - (order\_accuracy\_ - 1); ++ii) \{
+00355     \textcolor{keywordtype}{int} mm\{1\};
+00356     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = 0; jj < 2*order\_accuracy\_ - 1; ++jj) \{
+00357       lap.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj + kk, idx*laplacian\_[mm]);
+00358       mm = mm + 1;
+00359     \}
+00360     kk = kk + 1;
+00361   \}
 00362 
-00363   \textcolor{keyword}{auto} aux = order\_accuracy\_ + (nn - 2*(order\_accuracy\_ - 1));
 00364 
-00365   \textcolor{keyword}{auto} ll = 1;
-00366   \textcolor{keyword}{auto} rr = 1;
-00367   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = nn; ii > aux - 1; --ii) \{
-00368     \textcolor{keyword}{auto} cc = 0;
-00369     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = nn + 2 - 1; jj >= (nn + 2) - 2*order\_accuracy\_; --jj) \{
-00370       lap.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, lap.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(rr,cc));
-00371       ++ll;
-00372       ++cc;
-00373     \}
-00374     rr++;
-00375   \}
-00376 
-00383 
-00384   \textcolor{keywordflow}{return} lap;
-00385 \}
-00386 
-\hypertarget{mtk__lap__1d_8cc_source_l00387}{}\hyperlink{classmtk_1_1Lap1D_ab2652725a8407c79247680c7bbd073b8}{00387} \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}* \hyperlink{classmtk_1_1Lap1D_ab2652725a8407c79247680c7bbd073b8}{mtk::Lap1D::data}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid)\textcolor{keyword}{ const }\{
-00388 
-00389   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} tmp;
+00365   offset = (1 + 2*order\_accuracy\_ - 1);
+00366 
+00367   \textcolor{keyword}{auto} aux = order\_accuracy\_ + (nn - 2*(order\_accuracy\_ - 1));
+00368 
+00369   \textcolor{keyword}{auto} ll = 1;
+00370   \textcolor{keyword}{auto} rr = 1;
+00371   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = nn; ii > aux - 1; --ii) \{
+00372     \textcolor{keyword}{auto} cc = 0;
+00373     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} jj = nn + 2 - 1; jj >= (nn + 2) - 2*order\_accuracy\_; --jj) \{
+00374       lap.\hyperlink{classmtk_1_1DenseMatrix_a784ce5784109ac86bfb9d8562b334b13}{SetValue}(ii, jj, lap.\hyperlink{classmtk_1_1DenseMatrix_a4b23ecbebd970b5eea915dbb50691024}{GetValue}(rr,cc));
+00375       ++ll;
+00376       ++cc;
+00377     \}
+00378     rr++;
+00379   \}
+00380 
+00387 
+00388   \textcolor{keywordflow}{return} lap;
+00389 \}
 00390 
-00391   tmp = ReturnAsDenseMatrix(grid);
+\hypertarget{mtk__lap__1d_8cc_source_l00391}{}\hyperlink{classmtk_1_1Lap1D_ab2652725a8407c79247680c7bbd073b8}{00391} \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}* \hyperlink{classmtk_1_1Lap1D_ab2652725a8407c79247680c7bbd073b8}{mtk::Lap1D::data}(\textcolor{keyword}{const} \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid)\textcolor{keyword}{ const }\{
 00392 
-00393   \textcolor{keywordflow}{return} tmp.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}();
-00394 \}
+00393   \hyperlink{classmtk_1_1DenseMatrix}{mtk::DenseMatrix} tmp;
+00394 
+00395   tmp = ReturnAsDenseMatrix(grid);
+00396 
+00397   \textcolor{keywordflow}{return} tmp.\hyperlink{classmtk_1_1DenseMatrix_a0c33b8a9e01d157c61ddbdf807c25d84}{data}();
+00398 \}
 \end{DoxyCode}

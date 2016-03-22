@@ -1,4 +1,4 @@
-.TH "mtk::RobinBCDescriptor1D" 3 "Fri Mar 11 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::RobinBCDescriptor1D" 3 "Tue Mar 22 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -50,6 +50,10 @@ Impose Robin boundary conditions on the operators and on the grids\&.
 .RI "void \fBset_east_condition\fP (\fBReal\fP(*east_condition)(const \fBReal\fP &tt)) noexcept"
 .br
 .RI "\fISet boundary condition at east\&. \fP"
+.ti -1c
+.RI "bool \fBImposeOnDivergenceMatrix\fP (const \fBDiv1D\fP &div, \fBDenseMatrix\fP &matrix, const \fBReal\fP &time=\fBmtk::kZero\fP) const "
+.br
+.RI "\fIImposes the condition on the operator represented as matrix\&. \fP"
 .ti -1c
 .RI "bool \fBImposeOnLaplacianMatrix\fP (const \fBLap1D\fP &lap, \fBDenseMatrix\fP &matrix, const \fBReal\fP &time=\fBmtk::kZero\fP) const "
 .br
@@ -110,7 +114,7 @@ http://mathworld.wolfram.com/NormalVector.html
 .PP
 
 .PP
-Definition at line 155 of file mtk_robin_bc_descriptor_1d\&.h\&.
+Definition at line 156 of file mtk_robin_bc_descriptor_1d\&.h\&.
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "mtk::RobinBCDescriptor1D::RobinBCDescriptor1D ()"
@@ -156,6 +160,38 @@ Integer highest order of differentiation in the west boundary\&.
 
 .PP
 Definition at line 108 of file mtk_robin_bc_descriptor_1d\&.cc\&.
+.SS "bool mtk::RobinBCDescriptor1D::ImposeOnDivergenceMatrix (const \fBDiv1D\fP &div, \fBmtk::DenseMatrix\fP &matrix, const \fBReal\fP &time = \fC\fBmtk::kZero\fP\fP) const"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIdiv\fP Operator in the \fBMatrix\fP\&. 
+.br
+\fImatrix\fP Input Divergence operator\&. 
+.br
+\fItime\fP Current time snapshot\&. Default is kZero\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Success of the imposition\&. 
+.RE
+.PP
+
+.IP "1." 4
+Impose Dirichlet coefficients\&.
+.PP
+.PP
+1\&.1\&. Impose Dirichlet condition at the west\&.
+.PP
+1\&.2\&. Impose Dirichlet condition at the east\&.
+.PP
+.IP "2." 4
+Impose Neumann coefficients\&. 
+.PP
+
+.PP
+Definition at line 166 of file mtk_robin_bc_descriptor_1d\&.cc\&.
 .SS "void mtk::RobinBCDescriptor1D::ImposeOnGrid (\fBUniStgGrid1D\fP &grid, const \fBReal\fP &time = \fC\fBmtk::kZero\fP\fP) const"
 
 .PP
@@ -168,7 +204,7 @@ Definition at line 108 of file mtk_robin_bc_descriptor_1d\&.cc\&.
 .PP
 
 .PP
-Definition at line 246 of file mtk_robin_bc_descriptor_1d\&.cc\&.
+Definition at line 279 of file mtk_robin_bc_descriptor_1d\&.cc\&.
 .SS "bool mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix (const \fBLap1D\fP &lap, \fBmtk::DenseMatrix\fP &matrix, const \fBReal\fP &time = \fC\fBmtk::kZero\fP\fP) const"
 
 .PP
@@ -188,8 +224,10 @@ Success of the imposition\&.
 .PP
 
 .IP "1." 4
-Impose Dirichlet coefficients\&. 1\&.1\&. Impose Dirichlet condition at the west\&.
+Impose Dirichlet coefficients\&.
 .PP
+.PP
+1\&.1\&. Impose Dirichlet condition at the west\&.
 .PP
 1\&.2\&. Impose Dirichlet condition at the east\&.
 .PP
@@ -227,7 +265,7 @@ The Coefficients returned by the mim_bndy getter are those intended for the west
 .PP
 2\&.4\&.3\&. Set the final value summing it with what is on the matrix\&. 
 .PP
-Definition at line 166 of file mtk_robin_bc_descriptor_1d\&.cc\&.
+Definition at line 197 of file mtk_robin_bc_descriptor_1d\&.cc\&.
 .SS "void mtk::RobinBCDescriptor1D::PushBackEastCoeff (\fBmtk::CoefficientFunction0D\fPce)"
 
 .PP
@@ -277,27 +315,27 @@ Definition at line 146 of file mtk_robin_bc_descriptor_1d\&.cc\&.
 .SS "std::vector<\fBCoefficientFunction0D\fP> mtk::RobinBCDescriptor1D::east_coefficients_\fC [private]\fP"
 
 .PP
-Definition at line 237 of file mtk_robin_bc_descriptor_1d\&.h\&.
+Definition at line 251 of file mtk_robin_bc_descriptor_1d\&.h\&.
 .SS "\fBReal\fP(* mtk::RobinBCDescriptor1D::east_condition_)(const \fBReal\fP &tt)\fC [private]\fP"
 
 .PP
-Definition at line 240 of file mtk_robin_bc_descriptor_1d\&.h\&.
+Definition at line 254 of file mtk_robin_bc_descriptor_1d\&.h\&.
 .SS "int mtk::RobinBCDescriptor1D::highest_order_diff_east_\fC [private]\fP"
 
 .PP
-Definition at line 234 of file mtk_robin_bc_descriptor_1d\&.h\&.
+Definition at line 248 of file mtk_robin_bc_descriptor_1d\&.h\&.
 .SS "int mtk::RobinBCDescriptor1D::highest_order_diff_west_\fC [private]\fP"
 
 .PP
-Definition at line 233 of file mtk_robin_bc_descriptor_1d\&.h\&.
+Definition at line 247 of file mtk_robin_bc_descriptor_1d\&.h\&.
 .SS "std::vector<\fBCoefficientFunction0D\fP> mtk::RobinBCDescriptor1D::west_coefficients_\fC [private]\fP"
 
 .PP
-Definition at line 236 of file mtk_robin_bc_descriptor_1d\&.h\&.
+Definition at line 250 of file mtk_robin_bc_descriptor_1d\&.h\&.
 .SS "\fBReal\fP(* mtk::RobinBCDescriptor1D::west_condition_)(const \fBReal\fP &tt)\fC [private]\fP"
 
 .PP
-Definition at line 239 of file mtk_robin_bc_descriptor_1d\&.h\&.
+Definition at line 253 of file mtk_robin_bc_descriptor_1d\&.h\&.
 
 .SH "Author"
 .PP 

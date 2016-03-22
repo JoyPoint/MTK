@@ -12,7 +12,8 @@ Adapter class for the B\+L\+A\+S A\+P\+I.
 
 
 
-Collaboration diagram for mtk\+:\+:B\+L\+A\+S\+Adapter\+:\nopagebreak
+Collaboration diagram for mtk\+:\+:B\+L\+A\+S\+Adapter\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -29,6 +30,8 @@ static void \hyperlink{classmtk_1_1BLASAdapter_a081cd092ae65e730f44eae8643edd539
 static \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \hyperlink{classmtk_1_1BLASAdapter_af2ac5691f45e67d6e26186b071119ec4}{Rel\+Norm2\+Error} (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$computed, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$known, int length)
 \begin{DoxyCompactList}\small\item\em Computes the relative norm-\/2 of the error. \end{DoxyCompactList}\item 
 static void \hyperlink{classmtk_1_1BLASAdapter_afdcac059a4294287cb55638221220646}{Real\+Dense\+M\+V} (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&alpha, \hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix} \&aa, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&beta, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$yy)
+\begin{DoxyCompactList}\small\item\em Real-\/\+Arithmetic General (Dense matrices) Matrix-\/\+Vector Multiplier. \end{DoxyCompactList}\item 
+static void \hyperlink{classmtk_1_1BLASAdapter_a368b0d9871129d5139f18d46e14e4ccb}{Real\+Dense\+M\+V} (\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&alpha, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$aa, \hyperlink{group__c02-enums_ga622801bd9f912d0f976c3e383f5f581c}{Matrix\+Ordering} \&ordering, int num\+\_\+rows, int num\+\_\+cols, int lda, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$xx, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} \&beta, \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} $\ast$yy)
 \begin{DoxyCompactList}\small\item\em Real-\/\+Arithmetic General (Dense matrices) Matrix-\/\+Vector Multiplier. \end{DoxyCompactList}\item 
 static \hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix} \hyperlink{classmtk_1_1BLASAdapter_acebd0e9bfe0bdd609c7fbea98ccfd3b5}{Real\+Dense\+M\+M} (\hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix} \&aa, \hyperlink{classmtk_1_1DenseMatrix}{Dense\+Matrix} \&bb)
 \begin{DoxyCompactList}\small\item\em Real-\/\+Arithmetic General (Dense matrices) Matrix-\/\+Matrix multiplier. \end{DoxyCompactList}\item 
@@ -48,7 +51,7 @@ The {\bfseries B\+L\+A\+S (Basic Linear Algebra Subprograms)} are routines that 
 \end{DoxySeeAlso}
 
 
-Definition at line \hyperlink{mtk__blas__adapter_8h_source_l00099}{99} of file \hyperlink{mtk__blas__adapter_8h_source}{mtk\+\_\+blas\+\_\+adapter.\+h}.
+Definition at line \hyperlink{mtk__blas__adapter_8h_source_l00100}{100} of file \hyperlink{mtk__blas__adapter_8h_source}{mtk\+\_\+blas\+\_\+adapter.\+h}.
 
 
 
@@ -136,7 +139,7 @@ Performs\+:
 \item Perform multiplication. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__blas__adapter_8cc_source_l00412}{412} of file \hyperlink{mtk__blas__adapter_8cc_source}{mtk\+\_\+blas\+\_\+adapter.\+cc}.
+Definition at line \hyperlink{mtk__blas__adapter_8cc_source_l00446}{446} of file \hyperlink{mtk__blas__adapter_8cc_source}{mtk\+\_\+blas\+\_\+adapter.\+cc}.
 
 
 
@@ -171,9 +174,7 @@ Here is the caller graph for this function\+:\nopagebreak
 \item[{{\bf mtk\+::\+Real} $\ast$}]{yy}
 \end{DoxyParamCaption}
 )\hspace{0.3cm}{\ttfamily [static]}}}\label{classmtk_1_1BLASAdapter_afdcac059a4294287cb55638221220646}
-Performs
-
-\[ \mathbf{y} := \alpha\mathbf{A}\mathbf{x} + \beta\mathbf{y} \]
+Performs \[ \mathbf{y} := \alpha\mathbf{A}\mathbf{x} + \beta\mathbf{y} \]
 
 
 \begin{DoxyParams}[1]{Parameters}
@@ -208,11 +209,69 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
-Here is the caller graph for this function\+:\nopagebreak
+Here is the caller graph for this function\+:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=350pt]{classmtk_1_1BLASAdapter_afdcac059a4294287cb55638221220646_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{classmtk_1_1BLASAdapter_a368b0d9871129d5139f18d46e14e4ccb}{\index{mtk\+::\+B\+L\+A\+S\+Adapter@{mtk\+::\+B\+L\+A\+S\+Adapter}!Real\+Dense\+M\+V@{Real\+Dense\+M\+V}}
+\index{Real\+Dense\+M\+V@{Real\+Dense\+M\+V}!mtk\+::\+B\+L\+A\+S\+Adapter@{mtk\+::\+B\+L\+A\+S\+Adapter}}
+\subsubsection[{Real\+Dense\+M\+V}]{\setlength{\rightskip}{0pt plus 5cm}void mtk\+::\+B\+L\+A\+S\+Adapter\+::\+Real\+Dense\+M\+V (
+\begin{DoxyParamCaption}
+\item[{{\bf mtk\+::\+Real} \&}]{alpha, }
+\item[{{\bf mtk\+::\+Real} $\ast$}]{aa, }
+\item[{{\bf mtk\+::\+Matrix\+Ordering} \&}]{ordering, }
+\item[{int}]{num\+\_\+rows, }
+\item[{int}]{num\+\_\+cols, }
+\item[{int}]{lda, }
+\item[{{\bf mtk\+::\+Real} $\ast$}]{xx, }
+\item[{{\bf mtk\+::\+Real} \&}]{beta, }
+\item[{{\bf mtk\+::\+Real} $\ast$}]{yy}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{classmtk_1_1BLASAdapter_a368b0d9871129d5139f18d46e14e4ccb}
+Performs \[ \mathbf{y} := \alpha\mathbf{A}\mathbf{x} + \beta\mathbf{y} \]
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em alpha} & First scalar. \\
+\hline
+\mbox{\tt in}  & {\em aa} & Given matrix. \\
+\hline
+\mbox{\tt in}  & {\em ordering} & Ordering of the matrix. \\
+\hline
+\mbox{\tt in}  & {\em num\+\_\+rows} & Number of rows. \\
+\hline
+\mbox{\tt in}  & {\em num\+\_\+cols} & Number of columns. \\
+\hline
+\mbox{\tt in}  & {\em lda} & Leading dimension. \\
+\hline
+\mbox{\tt in}  & {\em xx} & First vector. \\
+\hline
+\mbox{\tt in}  & {\em beta} & Second scalar. \\
+\hline
+\mbox{\tt in,out}  & {\em yy} & Second vector (output).\\
+\hline
+\end{DoxyParams}
+\begin{DoxySeeAlso}{See also}
+\href{http://ejspeiro.github.io/Netlib-and-CPP/}{\tt http\+://ejspeiro.\+github.\+io/\+Netlib-\/and-\/\+C\+P\+P/} 
+\end{DoxySeeAlso}
+
+
+Definition at line \hyperlink{mtk__blas__adapter_8cc_source_l00412}{412} of file \hyperlink{mtk__blas__adapter_8cc_source}{mtk\+\_\+blas\+\_\+adapter.\+cc}.
+
+
+
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classmtk_1_1BLASAdapter_a368b0d9871129d5139f18d46e14e4ccb_cgraph}
 \end{center}
 \end{figure}
 
@@ -246,7 +305,7 @@ Performs\+:
 \item Perform multiplication. 
 \end{DoxyEnumerate}
 
-Definition at line \hyperlink{mtk__blas__adapter_8cc_source_l00469}{469} of file \hyperlink{mtk__blas__adapter_8cc_source}{mtk\+\_\+blas\+\_\+adapter.\+cc}.
+Definition at line \hyperlink{mtk__blas__adapter_8cc_source_l00503}{503} of file \hyperlink{mtk__blas__adapter_8cc_source}{mtk\+\_\+blas\+\_\+adapter.\+cc}.
 
 
 
@@ -294,8 +353,7 @@ Here is the call graph for this function\+:\nopagebreak
 
 
 
-Here is the caller graph for this function\+:
-\nopagebreak
+Here is the caller graph for this function\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode

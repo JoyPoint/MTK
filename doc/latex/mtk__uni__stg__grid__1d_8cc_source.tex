@@ -75,7 +75,7 @@
 00079   stream << std::endl;
 00080 
 00082 
-00083   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1UniStgGrid1D_a061b66c92532b1498ce0e15418754911}{nature\_} == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9}{mtk::FieldNature::SCALAR}) \{
+00083   \textcolor{keywordflow}{if} (in.\hyperlink{classmtk_1_1UniStgGrid1D_a5eb70ff8b7dfa204f7f1338ad689e802}{field\_nature\_} == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9}{mtk::FieldNature::SCALAR}) \{
 00084     stream << \textcolor{stringliteral}{"u:"};
 00085   \}
 00086   \textcolor{keywordflow}{else} \{
@@ -91,203 +91,279 @@
 00096 \}
 00097 \}
 00098 
-\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00099}{}\hyperlink{classmtk_1_1UniStgGrid1D_ab0c1bb8afad2420fdb4434eb21bdec82}{00099} \hyperlink{classmtk_1_1UniStgGrid1D_ab0c1bb8afad2420fdb4434eb21bdec82}{mtk::UniStgGrid1D::UniStgGrid1D}():
-00100     nature\_(),
-00101     discrete\_domain\_x\_(),
-00102     discrete\_field\_(),
-00103     west\_bndy\_x\_(),
-00104     east\_bndy\_x\_(),
-00105     num\_cells\_x\_(),
-00106     delta\_x\_() \{\}
-00107 
-\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00108}{}\hyperlink{classmtk_1_1UniStgGrid1D_a56d698e803070d96601b46f470bfef0b}{00108} \hyperlink{classmtk_1_1UniStgGrid1D_ab0c1bb8afad2420fdb4434eb21bdec82}{mtk::UniStgGrid1D::UniStgGrid1D}(\textcolor{keyword}{const} 
-      \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &grid):
-00109     nature\_(grid.nature\_),
-00110     west\_bndy\_x\_(grid.west\_bndy\_x\_),
-00111     east\_bndy\_x\_(grid.east\_bndy\_x\_),
-00112     num\_cells\_x\_(grid.num\_cells\_x\_),
-00113     delta\_x\_(grid.delta\_x\_) \{
-00114 
-00115     std::copy(grid.\hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{discrete\_domain\_x\_}.begin(),
-00116               grid.\hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{discrete\_domain\_x\_}.begin() + grid.
-      \hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{discrete\_domain\_x\_}.size(),
-00117               \hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{discrete\_domain\_x\_}.begin());
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00099}{}\hyperlink{classmtk_1_1UniStgGrid1D_aca4208d5e49e2c5c7c88e8919772fb2a}{00099} \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D}& \hyperlink{classmtk_1_1UniStgGrid1D_aca4208d5e49e2c5c7c88e8919772fb2a}{mtk::UniStgGrid1D::operator =}(\textcolor{keyword}{const} 
+      \hyperlink{classmtk_1_1UniStgGrid1D}{mtk::UniStgGrid1D} &in) \{
+00100 
+00101   \textcolor{keywordflow}{if}(\textcolor{keyword}{this} == &in) \{
+00102     \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+00103   \}
+00104 
+00105   \hyperlink{classmtk_1_1UniStgGrid1D_a5eb70ff8b7dfa204f7f1338ad689e802}{field\_nature\_} = in.\hyperlink{classmtk_1_1UniStgGrid1D_a5eb70ff8b7dfa204f7f1338ad689e802}{field\_nature\_};
+00106   \hyperlink{classmtk_1_1UniStgGrid1D_a6910438d3396d0b9a130d11d16979c46}{west\_bndy\_x\_} = in.\hyperlink{classmtk_1_1UniStgGrid1D_a6910438d3396d0b9a130d11d16979c46}{west\_bndy\_x\_};
+00107   \hyperlink{classmtk_1_1UniStgGrid1D_a69a7d6be3171e53177e476348d04f4ae}{east\_bndy\_x\_} = in.\hyperlink{classmtk_1_1UniStgGrid1D_a69a7d6be3171e53177e476348d04f4ae}{east\_bndy\_x\_};
+00108   \hyperlink{classmtk_1_1UniStgGrid1D_afa43750db0029b7454aef343759e7097}{num\_cells\_x\_} = in.\hyperlink{classmtk_1_1UniStgGrid1D_afa43750db0029b7454aef343759e7097}{num\_cells\_x\_};
+00109   \hyperlink{classmtk_1_1UniStgGrid1D_a12577bbe0b88e9a0ac9b2267f2fcc48c}{delta\_x\_} = in.\hyperlink{classmtk_1_1UniStgGrid1D_a12577bbe0b88e9a0ac9b2267f2fcc48c}{delta\_x\_};
+00110 
+00111   \hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{discrete\_domain\_x\_}.clear();
+00112 
+00113   std::copy(in.\hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{discrete\_domain\_x\_}.begin(),
+00114             in.\hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{discrete\_domain\_x\_}.end(),
+00115             \hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{discrete\_domain\_x\_}.begin());
+00116 
+00117   \hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{discrete\_field\_}.clear();
 00118 
-00119     std::copy(grid.\hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{discrete\_field\_}.begin(),
-00120               grid.\hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{discrete\_field\_}.begin() + grid.\hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{discrete\_field\_}.size(),
-00121               \hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{discrete\_field\_}.begin());
-00122 \}
-00123 
-\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00124}{}\hyperlink{classmtk_1_1UniStgGrid1D_aa9b9db169c6e052e6fd6ffd6fca36646}{00124} \hyperlink{classmtk_1_1UniStgGrid1D_ab0c1bb8afad2420fdb4434eb21bdec82}{mtk::UniStgGrid1D::UniStgGrid1D}(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &west\_bndy\_x,
-00125                                 \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &east\_bndy\_x,
-00126                                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_cells\_x,
-00127                                 \textcolor{keyword}{const} \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{mtk::FieldNature} &nature) \{
-00128 
-00129 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00130   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(west\_bndy\_x < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00131   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(east\_bndy\_x < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00132   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(east\_bndy\_x <= west\_bndy\_x, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00133   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(num\_cells\_x < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00134 \textcolor{preprocessor}{  #endif}
-00135 
-00136   nature\_ = nature;
-00137   west\_bndy\_x\_ = west\_bndy\_x;
-00138   east\_bndy\_x\_ = east\_bndy\_x;
-00139   num\_cells\_x\_ = num\_cells\_x;
-00140 
-00141   delta\_x\_ = (east\_bndy\_x - west\_bndy\_x)/((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_cells\_x);
-00142 \}
-00143 
-\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00144}{}\hyperlink{classmtk_1_1UniStgGrid1D_a609a8793d238d241f9b11c3afed8d24d}{00144} \hyperlink{classmtk_1_1UniStgGrid1D_a609a8793d238d241f9b11c3afed8d24d}{mtk::UniStgGrid1D::~UniStgGrid1D}() \{\}
+00119   std::copy(in.\hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{discrete\_field\_}.begin(),
+00120             in.\hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{discrete\_field\_}.end(),
+00121             \hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{discrete\_field\_}.begin());
+00122 
+00123   \textcolor{keywordflow}{return} *\textcolor{keyword}{this};
+00124 \}
+00125 
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00126}{}\hyperlink{classmtk_1_1UniStgGrid1D_ab0c1bb8afad2420fdb4434eb21bdec82}{00126} \hyperlink{classmtk_1_1UniStgGrid1D_ab0c1bb8afad2420fdb4434eb21bdec82}{mtk::UniStgGrid1D::UniStgGrid1D}():
+00127     field\_nature\_(),
+00128     discrete\_domain\_x\_(),
+00129     discrete\_field\_(),
+00130     west\_bndy\_x\_(),
+00131     east\_bndy\_x\_(),
+00132     num\_cells\_x\_(),
+00133     delta\_x\_() \{\}
+00134 
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00135}{}\hyperlink{classmtk_1_1UniStgGrid1D_a56d698e803070d96601b46f470bfef0b}{00135} \hyperlink{classmtk_1_1UniStgGrid1D_ab0c1bb8afad2420fdb4434eb21bdec82}{mtk::UniStgGrid1D::UniStgGrid1D}(\textcolor{keyword}{const} 
+      \hyperlink{classmtk_1_1UniStgGrid1D}{UniStgGrid1D} &in):
+00136     field\_nature\_(in.field\_nature\_),
+00137     west\_bndy\_x\_(in.west\_bndy\_x\_),
+00138     east\_bndy\_x\_(in.east\_bndy\_x\_),
+00139     num\_cells\_x\_(in.num\_cells\_x\_),
+00140     delta\_x\_(in.delta\_x\_) \{
+00141 
+00142     std::copy(in.\hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{discrete\_domain\_x\_}.begin(),
+00143               in.\hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{discrete\_domain\_x\_}.begin() + in.
+      \hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{discrete\_domain\_x\_}.size(),
+00144               \hyperlink{classmtk_1_1UniStgGrid1D_a0a1f9c00e21659e05f414dd97e2a52e3}{discrete\_domain\_x\_}.begin());
 00145 
-\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00146}{}\hyperlink{classmtk_1_1UniStgGrid1D_afab51be12598704d2dd6d760f826669b}{00146} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid1D_afab51be12598704d2dd6d760f826669b}{mtk::UniStgGrid1D::west\_bndy\_x}()\textcolor{keyword}{ const }\{
-00147 
-00148   \textcolor{keywordflow}{return} west\_bndy\_x\_;
+00146     std::copy(in.\hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{discrete\_field\_}.begin(),
+00147               in.\hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{discrete\_field\_}.begin() + in.\hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{discrete\_field\_}.size(),
+00148               \hyperlink{classmtk_1_1UniStgGrid1D_a7379a5c6d16210cdd61ffa731bc47edc}{discrete\_field\_}.begin());
 00149 \}
 00150 
-\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00151}{}\hyperlink{classmtk_1_1UniStgGrid1D_a3b413aeadcc3d3263f6817f3af1dee95}{00151} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid1D_a3b413aeadcc3d3263f6817f3af1dee95}{mtk::UniStgGrid1D::east\_bndy\_x}()\textcolor{keyword}{ const }\{
-00152 
-00153   \textcolor{keywordflow}{return} east\_bndy\_x\_;
-00154 \}
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00151}{}\hyperlink{classmtk_1_1UniStgGrid1D_a02a40f5c15b0ff4249c1497221dd41ea}{00151} \hyperlink{classmtk_1_1UniStgGrid1D_ab0c1bb8afad2420fdb4434eb21bdec82}{mtk::UniStgGrid1D::UniStgGrid1D}(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &west\_bndy\_x,
+00152                                 \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{Real} &east\_bndy\_x,
+00153                                 \textcolor{keyword}{const} \textcolor{keywordtype}{int} &num\_cells\_x,
+00154                                 \textcolor{keyword}{const} \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{mtk::FieldNature} &field\_nature) \{
 00155 
-\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00156}{}\hyperlink{classmtk_1_1UniStgGrid1D_a6e7173b01241632cf509496d66b9f74c}{00156} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid1D_a6e7173b01241632cf509496d66b9f74c}{mtk::UniStgGrid1D::delta\_x}()\textcolor{keyword}{ const }\{
-00157 
-00158   \textcolor{keywordflow}{return} delta\_x\_;
-00159 \}
-00160 
-\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00161}{}\hyperlink{classmtk_1_1UniStgGrid1D_aa1999580cb98c19950e951510871cc90}{00161} \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *\hyperlink{classmtk_1_1UniStgGrid1D_aa1999580cb98c19950e951510871cc90}{mtk::UniStgGrid1D::discrete\_domain\_x}()\textcolor{keyword}{ const }
-      \{
+00156 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00157   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(west\_bndy\_x < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00158   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(east\_bndy\_x < \hyperlink{group__c01-roots_ga59a451a5fae30d59649bcda274fea271}{mtk::kZero}, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00159   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(east\_bndy\_x <= west\_bndy\_x, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00160   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(num\_cells\_x < 0, \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00161 \textcolor{preprocessor}{  #endif}
 00162 
-00163   \textcolor{keywordflow}{return} discrete\_domain\_x\_.data();
-00164 \}
-00165 
-\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00166}{}\hyperlink{classmtk_1_1UniStgGrid1D_ab9c3f9ee2ac76a351b01e4abfede4d19}{00166} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *\hyperlink{classmtk_1_1UniStgGrid1D_ab9c3f9ee2ac76a351b01e4abfede4d19}{mtk::UniStgGrid1D::discrete\_field}() \{
+00163   field\_nature\_ = field\_nature;
+00164   west\_bndy\_x\_ = west\_bndy\_x;
+00165   east\_bndy\_x\_ = east\_bndy\_x;
+00166   num\_cells\_x\_ = num\_cells\_x;
 00167 
-00168   \textcolor{keywordflow}{return} discrete\_field\_.data();
+00168   delta\_x\_ = (east\_bndy\_x - west\_bndy\_x)/((\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real}) num\_cells\_x);
 00169 \}
 00170 
-\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00171}{}\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{00171} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{mtk::UniStgGrid1D::num\_cells\_x}()\textcolor{keyword}{ const }\{
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00171}{}\hyperlink{classmtk_1_1UniStgGrid1D_a609a8793d238d241f9b11c3afed8d24d}{00171} \hyperlink{classmtk_1_1UniStgGrid1D_a609a8793d238d241f9b11c3afed8d24d}{mtk::UniStgGrid1D::~UniStgGrid1D}() \{\}
 00172 
-00173   \textcolor{keywordflow}{return} num\_cells\_x\_;
-00174 \}
-00175 
-\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00176}{}\hyperlink{classmtk_1_1UniStgGrid1D_a36a7a85e237a4f85c603eac8cf67a704}{00176} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid1D_a36a7a85e237a4f85c603eac8cf67a704}{mtk::UniStgGrid1D::GenerateDiscreteDomainX}() \{
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00173}{}\hyperlink{classmtk_1_1UniStgGrid1D_afab51be12598704d2dd6d760f826669b}{00173} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid1D_afab51be12598704d2dd6d760f826669b}{mtk::UniStgGrid1D::west\_bndy\_x}()\textcolor{keyword}{ const }\{
+00174 
+00175   \textcolor{keywordflow}{return} west\_bndy\_x\_;
+00176 \}
 00177 
-00178 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00179   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(discrete\_domain\_x\_.size() != 0,
-00180                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00181 \textcolor{preprocessor}{  #endif}
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00178}{}\hyperlink{classmtk_1_1UniStgGrid1D_a3b413aeadcc3d3263f6817f3af1dee95}{00178} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid1D_a3b413aeadcc3d3263f6817f3af1dee95}{mtk::UniStgGrid1D::east\_bndy\_x}()\textcolor{keyword}{ const }\{
+00179 
+00180   \textcolor{keywordflow}{return} east\_bndy\_x\_;
+00181 \}
 00182 
-00183   \textcolor{keywordflow}{if} (nature\_ == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9}{mtk::FieldNature::SCALAR}) \{
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00183}{}\hyperlink{classmtk_1_1UniStgGrid1D_a6e7173b01241632cf509496d66b9f74c}{00183} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} \hyperlink{classmtk_1_1UniStgGrid1D_a6e7173b01241632cf509496d66b9f74c}{mtk::UniStgGrid1D::delta\_x}()\textcolor{keyword}{ const }\{
 00184 
-00185     discrete\_domain\_x\_.reserve(num\_cells\_x\_ + 2);
-00186 
-00187     discrete\_domain\_x\_.push\_back(west\_bndy\_x\_);
-00188 \textcolor{preprocessor}{    #ifdef MTK\_PRECISION\_DOUBLE}
-00189     \textcolor{keyword}{auto} first\_center = west\_bndy\_x\_ + delta\_x\_/2.0;
-00190 \textcolor{preprocessor}{    #else}
-00191     \textcolor{keyword}{auto} first\_center = west\_bndy\_x\_ + delta\_x\_/2.0f;
-00192 \textcolor{preprocessor}{    #endif}
-00193     discrete\_domain\_x\_.push\_back(first\_center);
-00194     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < num\_cells\_x\_; ++ii) \{
-00195       discrete\_domain\_x\_.push\_back(first\_center + ii*delta\_x\_);
-00196     \}
-00197     discrete\_domain\_x\_.push\_back(east\_bndy\_x\_);
-00198 
-00199   \} \textcolor{keywordflow}{else} \{
-00200 
-00201     discrete\_domain\_x\_.reserve(num\_cells\_x\_ + 1);
+00185   \textcolor{keywordflow}{return} delta\_x\_;
+00186 \}
+00187 
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00188}{}\hyperlink{classmtk_1_1UniStgGrid1D_aa1999580cb98c19950e951510871cc90}{00188} \textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *\hyperlink{classmtk_1_1UniStgGrid1D_aa1999580cb98c19950e951510871cc90}{mtk::UniStgGrid1D::discrete\_domain\_x}()\textcolor{keyword}{ const }
+      \{
+00189 
+00190   \textcolor{keywordflow}{return} discrete\_domain\_x\_.data();
+00191 \}
+00192 
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00193}{}\hyperlink{classmtk_1_1UniStgGrid1D_ab9c3f9ee2ac76a351b01e4abfede4d19}{00193} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} *\hyperlink{classmtk_1_1UniStgGrid1D_ab9c3f9ee2ac76a351b01e4abfede4d19}{mtk::UniStgGrid1D::discrete\_field}() \{
+00194 
+00195   \textcolor{keywordflow}{return} discrete\_field\_.data();
+00196 \}
+00197 
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00198}{}\hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{00198} \textcolor{keywordtype}{int} \hyperlink{classmtk_1_1UniStgGrid1D_af1b3729d8afa07be5b2775ed68015b80}{mtk::UniStgGrid1D::num\_cells\_x}()\textcolor{keyword}{ const }\{
+00199 
+00200   \textcolor{keywordflow}{return} num\_cells\_x\_;
+00201 \}
 00202 
-00203     discrete\_domain\_x\_.push\_back(west\_bndy\_x\_);
-00204     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < num\_cells\_x\_; ++ii) \{
-00205       discrete\_domain\_x\_.push\_back(west\_bndy\_x\_ + ii*delta\_x\_);
-00206     \}
-00207     discrete\_domain\_x\_.push\_back(east\_bndy\_x\_);
-00208   \}
-00209 \}
-00210 
-\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00211}{}\hyperlink{classmtk_1_1UniStgGrid1D_ab49f0009b66b0a58ae7f70a538f4d12b}{00211} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid1D_ab49f0009b66b0a58ae7f70a538f4d12b}{mtk::UniStgGrid1D::BindScalarField}(
-00212     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*ScalarField)(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx)) \{
-00213 
-00214 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00215   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nature\_ == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e}{mtk::FieldNature::VECTOR},
-00216                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00217 \textcolor{preprocessor}{  #endif}
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00203}{}\hyperlink{classmtk_1_1UniStgGrid1D_a6f6a5a23011fe90971ed6b8f5f640cd2}{00203} \hyperlink{group__c02-enums_ga4c54f2a329cfb4e56213b02a259d19e2}{mtk::FieldNature} \hyperlink{classmtk_1_1UniStgGrid1D_a6f6a5a23011fe90971ed6b8f5f640cd2}{mtk::UniStgGrid1D::field\_nature}()\textcolor{keyword}{ const }\{
+00204 
+00205   \textcolor{keywordflow}{return} field\_nature\_;
+00206 \}
+00207 
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00208}{}\hyperlink{classmtk_1_1UniStgGrid1D_a36a7a85e237a4f85c603eac8cf67a704}{00208} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid1D_a36a7a85e237a4f85c603eac8cf67a704}{mtk::UniStgGrid1D::GenerateDiscreteDomainX}() \{
+00209 
+00210 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00211   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(discrete\_domain\_x\_.size() != 0,
+00212                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00213 \textcolor{preprocessor}{  #endif}
+00214 
+00215   \textcolor{keywordflow}{if} (field\_nature\_ == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9}{mtk::FieldNature::SCALAR}) \{
+00216 
+00217     discrete\_domain\_x\_.reserve(num\_cells\_x\_ + 2);
 00218 
-00220 
-00221   discrete\_domain\_x\_.reserve(num\_cells\_x\_ + 2);
-00222 
-00223   discrete\_domain\_x\_.push\_back(west\_bndy\_x\_);
-00224 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
-00225   \textcolor{keyword}{auto} first\_center = west\_bndy\_x\_ + delta\_x\_/2.0;
-00226 \textcolor{preprocessor}{  #else}
-00227   \textcolor{keyword}{auto} first\_center = west\_bndy\_x\_ + delta\_x\_/2.0f;
-00228 \textcolor{preprocessor}{  #endif}
-00229   discrete\_domain\_x\_.push\_back(first\_center);
-00230   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < num\_cells\_x\_; ++ii) \{
-00231     discrete\_domain\_x\_.push\_back(first\_center + ii*delta\_x\_);
-00232   \}
-00233   discrete\_domain\_x\_.push\_back(east\_bndy\_x\_);
+00219     discrete\_domain\_x\_.push\_back(west\_bndy\_x\_);
+00220 \textcolor{preprocessor}{    #ifdef MTK\_PRECISION\_DOUBLE}
+00221     \textcolor{keyword}{auto} first\_center = west\_bndy\_x\_ + delta\_x\_/2.0;
+00222 \textcolor{preprocessor}{    #else}
+00223     \textcolor{keyword}{auto} first\_center = west\_bndy\_x\_ + delta\_x\_/2.0f;
+00224 \textcolor{preprocessor}{    #endif}
+00225     discrete\_domain\_x\_.push\_back(first\_center);
+00226     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < num\_cells\_x\_; ++ii) \{
+00227       discrete\_domain\_x\_.push\_back(first\_center + ii*delta\_x\_);
+00228     \}
+00229     discrete\_domain\_x\_.push\_back(east\_bndy\_x\_);
+00230 
+00231   \} \textcolor{keywordflow}{else} \{
+00232 
+00233     discrete\_domain\_x\_.reserve(num\_cells\_x\_ + 1);
 00234 
-00236 
-00237   discrete\_field\_.reserve(num\_cells\_x\_ + 2);
-00238 
-00239   discrete\_field\_.push\_back(ScalarField(west\_bndy\_x\_));
-00240 
-00241   discrete\_field\_.push\_back(ScalarField(first\_center));
-00242   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < num\_cells\_x\_; ++ii) \{
-00243     discrete\_field\_.push\_back(ScalarField(first\_center + ii*delta\_x\_));
-00244   \}
-00245   discrete\_field\_.push\_back(ScalarField(east\_bndy\_x\_));
-00246 \}
-00247 
-\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00248}{}\hyperlink{classmtk_1_1UniStgGrid1D_a5703f1f875f52f6de8f7db5a6250fafa}{00248} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid1D_a5703f1f875f52f6de8f7db5a6250fafa}{mtk::UniStgGrid1D::BindVectorField}(
-00249     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*VectorField)(\hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} xx)) \{
-00250 
-00251 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
-00252   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(nature\_ == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9}{mtk::FieldNature::SCALAR},
-00253                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
-00254 \textcolor{preprocessor}{  #endif}
+00235     discrete\_domain\_x\_.push\_back(west\_bndy\_x\_);
+00236     \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < num\_cells\_x\_; ++ii) \{
+00237       discrete\_domain\_x\_.push\_back(west\_bndy\_x\_ + ii*delta\_x\_);
+00238     \}
+00239     discrete\_domain\_x\_.push\_back(east\_bndy\_x\_);
+00240   \}
+00241 \}
+00242 
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00243}{}\hyperlink{classmtk_1_1UniStgGrid1D_a43ce8a21fa723ac444b92d02ef6782e7}{00243} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid1D_a43ce8a21fa723ac444b92d02ef6782e7}{mtk::UniStgGrid1D::ReserveDiscreteField}() \{
+00244 
+00245 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00246   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(discrete\_field\_.size() != 0,
+00247                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00248 \textcolor{preprocessor}{  #endif}
+00249 
+00250   \textcolor{keywordflow}{if} (field\_nature\_ == \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9}{mtk::FieldNature::SCALAR}) \{
+00251 
+00252     discrete\_field\_.reserve(num\_cells\_x\_ + 2);
+00253 
+00254   \} \textcolor{keywordflow}{else} \{
 00255 
-00257 
-00258   discrete\_domain\_x\_.reserve(num\_cells\_x\_ + 1);
+00256     discrete\_field\_.reserve(num\_cells\_x\_ + 1);
+00257   \}
+00258 \}
 00259 
-00260   discrete\_domain\_x\_.push\_back(west\_bndy\_x\_);
-00261   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < num\_cells\_x\_; ++ii) \{
-00262     discrete\_domain\_x\_.push\_back(west\_bndy\_x\_ + ii*delta\_x\_);
-00263   \}
-00264   discrete\_domain\_x\_.push\_back(east\_bndy\_x\_);
-00265 
-00267 
-00268   discrete\_field\_.reserve(num\_cells\_x\_ + 1);
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00260}{}\hyperlink{classmtk_1_1UniStgGrid1D_a6ad3040de719dff71d934f0062e9860f}{00260} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid1D_a6ad3040de719dff71d934f0062e9860f}{mtk::UniStgGrid1D::BindScalarField}(
+00261     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*ScalarField)(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx,
+00262                              \textcolor{keyword}{const} std::vector<mtk::Real> &pp),
+00263     \textcolor{keyword}{const} std::vector<Real> &parameters) \{
+00264 
+00265 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00266   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(field\_nature\_ == 
+      \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e}{mtk::FieldNature::VECTOR},
+00267                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00268 \textcolor{preprocessor}{  #endif}
 00269 
-00270   discrete\_field\_.push\_back(VectorField(west\_bndy\_x\_));
-00271   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < num\_cells\_x\_; ++ii) \{
-00272     discrete\_field\_.push\_back(VectorField(west\_bndy\_x\_ + ii*delta\_x\_));
-00273   \}
-00274   discrete\_field\_.push\_back(VectorField(east\_bndy\_x\_));
-00275 \}
-00276 
-\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00277}{}\hyperlink{classmtk_1_1UniStgGrid1D_a6d2c10aa9468a037829f0eb043b898dc}{00277} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1UniStgGrid1D_a6d2c10aa9468a037829f0eb043b898dc}{mtk::UniStgGrid1D::WriteToFile}(std::string filename,
-00278                                     std::string space\_name,
-00279                                     std::string field\_name)\textcolor{keyword}{ const }\{
-00280 
-00281   std::ofstream output\_dat\_file;  \textcolor{comment}{// Output file.}
-00282 
-00283   output\_dat\_file.open(filename);
-00284 
-00285   \textcolor{keywordflow}{if} (!output\_dat\_file.is\_open()) \{
-00286     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
-00287   \}
-00288 
-00289   output\_dat\_file << \textcolor{stringliteral}{"# "} << space\_name <<  \textcolor{charliteral}{' '} << field\_name << std::endl;
-00290   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < discrete\_domain\_x\_.size(); ++ii) \{
-00291     output\_dat\_file << discrete\_domain\_x\_[ii] << \textcolor{charliteral}{' '} << discrete\_field\_[ii] <<
-00292       std::endl;
-00293   \}
-00294 
-00295   output\_dat\_file.close();
-00296 
-00297   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
-00298 \}
+00271 
+00272   discrete\_domain\_x\_.reserve(num\_cells\_x\_ + 2);
+00273 
+00274   discrete\_domain\_x\_.push\_back(west\_bndy\_x\_);
+00275 \textcolor{preprocessor}{  #ifdef MTK\_PRECISION\_DOUBLE}
+00276   \textcolor{keyword}{auto} first\_center = west\_bndy\_x\_ + delta\_x\_/2.0;
+00277 \textcolor{preprocessor}{  #else}
+00278   \textcolor{keyword}{auto} first\_center = west\_bndy\_x\_ + delta\_x\_/2.0f;
+00279 \textcolor{preprocessor}{  #endif}
+00280   discrete\_domain\_x\_.push\_back(first\_center);
+00281   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < num\_cells\_x\_; ++ii) \{
+00282     discrete\_domain\_x\_.push\_back(first\_center + ii*delta\_x\_);
+00283   \}
+00284   discrete\_domain\_x\_.push\_back(east\_bndy\_x\_);
+00285 
+00287 
+00288   std::vector<mtk::Real> aux(parameters);
+00289 
+00290   discrete\_field\_.reserve(num\_cells\_x\_ + 2);
+00291 
+00292   discrete\_field\_.push\_back(ScalarField(west\_bndy\_x\_, aux));
+00293 
+00294   discrete\_field\_.push\_back(ScalarField(first\_center, aux));
+00295   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < num\_cells\_x\_; ++ii) \{
+00296     discrete\_field\_.push\_back(ScalarField(first\_center + ii*delta\_x\_,
+00297                                           aux));
+00298   \}
+00299   discrete\_field\_.push\_back(ScalarField(east\_bndy\_x\_, aux));
+00300 \}
+00301 
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00302}{}\hyperlink{classmtk_1_1UniStgGrid1D_af267608747876c776905679f548982e3}{00302} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid1D_a6ad3040de719dff71d934f0062e9860f}{mtk::UniStgGrid1D::BindScalarField}(\textcolor{keyword}{const} std::vector<Real> &samples)
+       \{
+00303 
+00304 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00305   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(field\_nature\_ == 
+      \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e}{mtk::FieldNature::VECTOR},
+00306                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00307   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(samples.size() != num\_cells\_x\_,
+00308                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00309 \textcolor{preprocessor}{  #endif}
+00310 
+00311   discrete\_field\_ = samples;
+00312 \}
+00313 
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00314}{}\hyperlink{classmtk_1_1UniStgGrid1D_ac6f8c592636dfa5a92217ac82405976d}{00314} \textcolor{keywordtype}{void} \hyperlink{classmtk_1_1UniStgGrid1D_ac6f8c592636dfa5a92217ac82405976d}{mtk::UniStgGrid1D::BindVectorField}(
+00315     \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} (*VectorField)(\textcolor{keyword}{const} \hyperlink{group__c01-roots_gac080bbbf5cbb5502c9f00405f894857d}{mtk::Real} &xx,
+00316                              \textcolor{keyword}{const} std::vector<mtk::Real> &pp),
+00317     \textcolor{keyword}{const} std::vector<Real> &parameters) \{
+00318 
+00319 \textcolor{preprocessor}{  #ifdef MTK\_PERFORM\_PREVENTIONS}
+00320   \hyperlink{classmtk_1_1Tools_a332324c6f25e66be9dff48c5987a3b9f}{mtk::Tools::Prevent}(field\_nature\_ == 
+      \hyperlink{namespacemtk_ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9}{mtk::FieldNature::SCALAR},
+00321                       \_\_FILE\_\_, \_\_LINE\_\_, \_\_func\_\_);
+00322 \textcolor{preprocessor}{  #endif}
+00323 
+00325 
+00326   discrete\_domain\_x\_.reserve(num\_cells\_x\_ + 1);
+00327 
+00328   discrete\_domain\_x\_.push\_back(west\_bndy\_x\_);
+00329   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < num\_cells\_x\_; ++ii) \{
+00330     discrete\_domain\_x\_.push\_back(west\_bndy\_x\_ + ii*delta\_x\_);
+00331   \}
+00332   discrete\_domain\_x\_.push\_back(east\_bndy\_x\_);
+00333 
+00335 
+00336   std::vector<mtk::Real> aux(parameters);
+00337 
+00338   discrete\_field\_.reserve(num\_cells\_x\_ + 1);
+00339 
+00340   discrete\_field\_.push\_back(VectorField(west\_bndy\_x\_, aux));
+00341   \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} ii = 1; ii < num\_cells\_x\_; ++ii) \{
+00342     discrete\_field\_.push\_back(VectorField(
+00343       west\_bndy\_x\_ + ii*delta\_x\_, aux));
+00344   \}
+00345   discrete\_field\_.push\_back(VectorField(east\_bndy\_x\_, aux));
+00346 \}
+00347 
+\hypertarget{mtk__uni__stg__grid__1d_8cc_source_l00348}{}\hyperlink{classmtk_1_1UniStgGrid1D_a6d2c10aa9468a037829f0eb043b898dc}{00348} \textcolor{keywordtype}{bool} \hyperlink{classmtk_1_1UniStgGrid1D_a6d2c10aa9468a037829f0eb043b898dc}{mtk::UniStgGrid1D::WriteToFile}(std::string filename,
+00349                                     std::string space\_name,
+00350                                     std::string field\_name)\textcolor{keyword}{ const }\{
+00351 
+00352   std::ofstream output\_dat\_file;  \textcolor{comment}{// Output file.}
+00353 
+00354   output\_dat\_file.open(filename);
+00355 
+00356   \textcolor{keywordflow}{if} (!output\_dat\_file.is\_open()) \{
+00357     \textcolor{keywordflow}{return} \textcolor{keyword}{false};
+00358   \}
+00359 
+00360   output\_dat\_file << \textcolor{stringliteral}{"# "} << space\_name <<  \textcolor{charliteral}{' '} << field\_name << std::endl;
+00361   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{unsigned} \textcolor{keywordtype}{int} ii = 0; ii < discrete\_domain\_x\_.size(); ++ii) \{
+00362     output\_dat\_file << discrete\_domain\_x\_[ii] << \textcolor{charliteral}{' '} << discrete\_field\_[ii] <<
+00363       std::endl;
+00364   \}
+00365 
+00366   output\_dat\_file.close();
+00367 
+00368   \textcolor{keywordflow}{return} \textcolor{keyword}{true};
+00369 \}
 \end{DoxyCode}

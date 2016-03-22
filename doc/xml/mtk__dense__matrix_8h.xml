@@ -6,12 +6,13 @@
     <includes refid="mtk__roots_8h" local="yes">mtk_roots.h</includes>
     <includes refid="mtk__enums_8h" local="yes">mtk_enums.h</includes>
     <includes refid="mtk__matrix_8h" local="yes">mtk_matrix.h</includes>
+    <includes refid="mtk__uni__stg__grid__1d_8h" local="yes">mtk_uni_stg_grid_1d.h</includes>
+    <includes refid="mtk__uni__stg__grid__2d_8h" local="yes">mtk_uni_stg_grid_2d.h</includes>
+    <includes refid="mtk__uni__stg__grid__3d_8h" local="yes">mtk_uni_stg_grid_3d.h</includes>
     <includedby refid="mtk_8h" local="yes">include/mtk.h</includedby>
     <includedby refid="mtk__blas__adapter_8h" local="yes">include/mtk_blas_adapter.h</includedby>
     <includedby refid="mtk__lapack__adapter_8h" local="yes">include/mtk_lapack_adapter.h</includedby>
-    <includedby refid="mtk__uni__stg__grid__2d_8h" local="yes">include/mtk_uni_stg_grid_2d.h</includedby>
     <includedby refid="mtk__glpk__adapter_8h" local="yes">include/mtk_glpk_adapter.h</includedby>
-    <includedby refid="mtk__uni__stg__grid__3d_8h" local="yes">include/mtk_uni_stg_grid_3d.h</includedby>
     <includedby refid="mtk__grad__1d_8h" local="yes">include/mtk_grad_1d.h</includedby>
     <includedby refid="mtk__div__1d_8h" local="yes">include/mtk_div_1d.h</includedby>
     <includedby refid="mtk__lap__1d_8h" local="yes">include/mtk_lap_1d.h</includedby>
@@ -26,403 +27,418 @@
     <includedby refid="mtk__div__3d_8h" local="yes">include/mtk_div_3d.h</includedby>
     <includedby refid="mtk__lap__3d_8h" local="yes">include/mtk_lap_3d.h</includedby>
     <includedby refid="mtk__robin__bc__descriptor__3d_8h" local="yes">include/mtk_robin_bc_descriptor_3d.h</includedby>
+    <includedby refid="mtk__operator__applicator_8h" local="yes">include/mtk_operator_applicator.h</includedby>
     <includedby refid="mtk__interp__2d_8h" local="yes">include/mtk_interp_2d.h</includedby>
     <includedby refid="mtk__dense__matrix_8cc" local="yes">src/mtk_dense_matrix.cc</includedby>
     <includedby refid="mtk__lapack__adapter_8cc" local="yes">src/mtk_lapack_adapter.cc</includedby>
     <incdepgraph>
-      <node id="1110">
+      <node id="1307">
         <label>include/mtk_dense_matrix.h</label>
         <link refid="mtk_dense_matrix.h"/>
-        <childnode refid="1111" relation="include">
+        <childnode refid="1308" relation="include">
         </childnode>
-        <childnode refid="1112" relation="include">
+        <childnode refid="1309" relation="include">
         </childnode>
-        <childnode refid="1113" relation="include">
+        <childnode refid="1310" relation="include">
         </childnode>
-        <childnode refid="1114" relation="include">
+        <childnode refid="1311" relation="include">
+        </childnode>
+        <childnode refid="1312" relation="include">
+        </childnode>
+        <childnode refid="1315" relation="include">
+        </childnode>
+        <childnode refid="1316" relation="include">
         </childnode>
       </node>
-      <node id="1114">
+      <node id="1311">
         <label>mtk_matrix.h</label>
         <link refid="mtk__matrix_8h"/>
-        <childnode refid="1111" relation="include">
+        <childnode refid="1308" relation="include">
         </childnode>
-        <childnode refid="1112" relation="include">
+        <childnode refid="1309" relation="include">
         </childnode>
-        <childnode refid="1113" relation="include">
+        <childnode refid="1310" relation="include">
         </childnode>
       </node>
-      <node id="1112">
+      <node id="1309">
         <label>mtk_roots.h</label>
         <link refid="mtk__roots_8h"/>
       </node>
-      <node id="1111">
+      <node id="1314">
+        <label>string</label>
+      </node>
+      <node id="1313">
+        <label>vector</label>
+      </node>
+      <node id="1316">
+        <label>mtk_uni_stg_grid_3d.h</label>
+        <link refid="mtk__uni__stg__grid__3d_8h"/>
+        <childnode refid="1313" relation="include">
+        </childnode>
+        <childnode refid="1314" relation="include">
+        </childnode>
+        <childnode refid="1309" relation="include">
+        </childnode>
+        <childnode refid="1310" relation="include">
+        </childnode>
+      </node>
+      <node id="1315">
+        <label>mtk_uni_stg_grid_2d.h</label>
+        <link refid="mtk__uni__stg__grid__2d_8h"/>
+        <childnode refid="1313" relation="include">
+        </childnode>
+        <childnode refid="1314" relation="include">
+        </childnode>
+        <childnode refid="1309" relation="include">
+        </childnode>
+        <childnode refid="1310" relation="include">
+        </childnode>
+      </node>
+      <node id="1308">
         <label>iostream</label>
       </node>
-      <node id="1113">
+      <node id="1310">
         <label>mtk_enums.h</label>
         <link refid="mtk__enums_8h"/>
       </node>
+      <node id="1312">
+        <label>mtk_uni_stg_grid_1d.h</label>
+        <link refid="mtk__uni__stg__grid__1d_8h"/>
+        <childnode refid="1313" relation="include">
+        </childnode>
+        <childnode refid="1314" relation="include">
+        </childnode>
+        <childnode refid="1309" relation="include">
+        </childnode>
+      </node>
     </incdepgraph>
     <invincdepgraph>
-      <node id="1121">
+      <node id="1324">
         <label>src/mtk_grad_1d.cc</label>
         <link refid="mtk__grad__1d_8cc"/>
       </node>
-      <node id="1134">
+      <node id="1347">
         <label>include/mtk_lap_2d.h</label>
         <link refid="mtk__lap__2d_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1135" relation="include">
+        <childnode refid="1348" relation="include">
         </childnode>
-        <childnode refid="1137" relation="include">
+        <childnode refid="1350" relation="include">
         </childnode>
-        <childnode refid="1123" relation="include">
+        <childnode refid="1326" relation="include">
         </childnode>
       </node>
-      <node id="1138">
+      <node id="1353">
         <label>include/mtk_lap_3d.h</label>
         <link refid="mtk__lap__3d_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1124" relation="include">
+        <childnode refid="1327" relation="include">
         </childnode>
       </node>
-      <node id="1137">
+      <node id="1350">
         <label>include/mtk_robin_bc_descriptor_3d.h</label>
         <link refid="mtk__robin__bc__descriptor__3d_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
       </node>
-      <node id="1126">
+      <node id="1330">
         <label>src/mtk_lapack_adapter.cc</label>
         <link refid="mtk__lapack__adapter_8cc"/>
       </node>
-      <node id="1115">
+      <node id="1317">
         <label>include/mtk_dense_matrix.h</label>
         <link refid="mtk_dense_matrix.h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1117" relation="include">
+        <childnode refid="1319" relation="include">
         </childnode>
-        <childnode refid="1125" relation="include">
+        <childnode refid="1329" relation="include">
         </childnode>
-        <childnode refid="1127" relation="include">
+        <childnode refid="1331" relation="include">
         </childnode>
-        <childnode refid="1141" relation="include">
+        <childnode refid="1332" relation="include">
         </childnode>
-        <childnode refid="1142" relation="include">
+        <childnode refid="1336" relation="include">
         </childnode>
-        <childnode refid="1148" relation="include">
+        <childnode refid="1341" relation="include">
         </childnode>
-        <childnode refid="1150" relation="include">
+        <childnode refid="1337" relation="include">
         </childnode>
-        <childnode refid="1151" relation="include">
+        <childnode refid="1342" relation="include">
         </childnode>
-        <childnode refid="1152" relation="include">
+        <childnode refid="1344" relation="include">
         </childnode>
-        <childnode refid="1153" relation="include">
+        <childnode refid="1345" relation="include">
         </childnode>
-        <childnode refid="1128" relation="include">
+        <childnode refid="1346" relation="include">
         </childnode>
-        <childnode refid="1130" relation="include">
+        <childnode refid="1347" relation="include">
         </childnode>
-        <childnode refid="1133" relation="include">
+        <childnode refid="1348" relation="include">
         </childnode>
-        <childnode refid="1134" relation="include">
+        <childnode refid="1351" relation="include">
         </childnode>
-        <childnode refid="1135" relation="include">
+        <childnode refid="1352" relation="include">
         </childnode>
-        <childnode refid="1143" relation="include">
+        <childnode refid="1353" relation="include">
         </childnode>
-        <childnode refid="1145" relation="include">
+        <childnode refid="1350" relation="include">
         </childnode>
-        <childnode refid="1138" relation="include">
+        <childnode refid="1354" relation="include">
         </childnode>
-        <childnode refid="1137" relation="include">
+        <childnode refid="1355" relation="include">
         </childnode>
-        <childnode refid="1139" relation="include">
+        <childnode refid="1321" relation="include">
         </childnode>
-        <childnode refid="1155" relation="include">
-        </childnode>
-        <childnode refid="1126" relation="include">
+        <childnode refid="1330" relation="include">
         </childnode>
       </node>
-      <node id="1139">
+      <node id="1355">
         <label>include/mtk_interp_2d.h</label>
         <link refid="mtk__interp__2d_8h"/>
       </node>
-      <node id="1135">
+      <node id="1348">
         <label>include/mtk_robin_bc_descriptor_2d.h</label>
         <link refid="mtk__robin__bc__descriptor__2d_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1136" relation="include">
+        <childnode refid="1349" relation="include">
         </childnode>
       </node>
-      <node id="1120">
+      <node id="1323">
         <label>src/mtk_glpk_adapter.cc</label>
         <link refid="mtk__glpk__adapter_8cc"/>
       </node>
-      <node id="1152">
+      <node id="1337">
         <label>include/mtk_robin_bc_descriptor_1d.h</label>
         <link refid="mtk__robin__bc__descriptor__1d_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1149" relation="include">
+        <childnode refid="1335" relation="include">
         </childnode>
       </node>
-      <node id="1147">
-        <label>src/mtk_uni_stg_grid_3d.cc</label>
-        <link refid="mtk__uni__stg__grid__3d_8cc"/>
-      </node>
-      <node id="1149">
+      <node id="1335">
         <label>src/mtk_robin_bc_descriptor_1d.cc</label>
         <link refid="mtk__robin__bc__descriptor__1d_8cc"/>
       </node>
-      <node id="1129">
+      <node id="1333">
         <label>src/mtk_grad_2d.cc</label>
         <link refid="mtk__grad__2d_8cc"/>
       </node>
-      <node id="1133">
+      <node id="1346">
         <label>include/mtk_curl_2d.h</label>
         <link refid="mtk__curl__2d_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1131" relation="include">
+        <childnode refid="1338" relation="include">
         </childnode>
       </node>
-      <node id="1140">
-        <label>src/mtk_uni_stg_grid_2d.cc</label>
-        <link refid="mtk__uni__stg__grid__2d_8cc"/>
-      </node>
-      <node id="1131">
+      <node id="1338">
         <label>src/mtk_curl_2d.cc</label>
         <link refid="mtk__curl__2d_8cc"/>
       </node>
-      <node id="1155">
+      <node id="1321">
         <label>src/mtk_dense_matrix.cc</label>
         <link refid="mtk__dense__matrix_8cc"/>
       </node>
-      <node id="1144">
+      <node id="1334">
         <label>src/mtk_grad_3d.cc</label>
         <link refid="mtk__grad__3d_8cc"/>
       </node>
-      <node id="1118">
+      <node id="1320">
         <label>src/mtk_blas_adapter.cc</label>
         <link refid="mtk__blas__adapter_8cc"/>
       </node>
-      <node id="1150">
+      <node id="1336">
         <label>include/mtk_div_1d.h</label>
         <link refid="mtk__div__1d_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1131" relation="include">
+        <childnode refid="1337" relation="include">
         </childnode>
-        <childnode refid="1119" relation="include">
+        <childnode refid="1338" relation="include">
         </childnode>
-        <childnode refid="1132" relation="include">
+        <childnode refid="1322" relation="include">
         </childnode>
-        <childnode refid="1146" relation="include">
+        <childnode refid="1339" relation="include">
         </childnode>
-        <childnode refid="1122" relation="include">
+        <childnode refid="1340" relation="include">
+        </childnode>
+        <childnode refid="1325" relation="include">
         </childnode>
       </node>
-      <node id="1154">
+      <node id="1343">
         <label>src/mtk_interp_1d.cc</label>
         <link refid="mtk__interp__1d_8cc"/>
       </node>
-      <node id="1141">
+      <node id="1331">
         <label>include/mtk_glpk_adapter.h</label>
         <link refid="mtk__glpk__adapter_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1119" relation="include">
+        <childnode refid="1322" relation="include">
         </childnode>
-        <childnode refid="1120" relation="include">
+        <childnode refid="1323" relation="include">
         </childnode>
-        <childnode refid="1121" relation="include">
+        <childnode refid="1324" relation="include">
         </childnode>
       </node>
-      <node id="1125">
+      <node id="1329">
         <label>include/mtk_lapack_adapter.h</label>
         <link refid="mtk__lapack__adapter_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1119" relation="include">
+        <childnode refid="1322" relation="include">
         </childnode>
-        <childnode refid="1121" relation="include">
+        <childnode refid="1324" relation="include">
         </childnode>
-        <childnode refid="1126" relation="include">
+        <childnode refid="1330" relation="include">
         </childnode>
       </node>
-      <node id="1143">
+      <node id="1351">
         <label>include/mtk_grad_3d.h</label>
         <link refid="mtk__grad__3d_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1144" relation="include">
+        <childnode refid="1334" relation="include">
         </childnode>
-        <childnode refid="1124" relation="include">
+        <childnode refid="1327" relation="include">
         </childnode>
       </node>
-      <node id="1119">
+      <node id="1322">
         <label>src/mtk_div_1d.cc</label>
         <link refid="mtk__div__1d_8cc"/>
       </node>
-      <node id="1117">
+      <node id="1319">
         <label>include/mtk_blas_adapter.h</label>
         <link refid="mtk__blas__adapter_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1118" relation="include">
+        <childnode refid="1320" relation="include">
         </childnode>
-        <childnode refid="1119" relation="include">
+        <childnode refid="1321" relation="include">
         </childnode>
-        <childnode refid="1120" relation="include">
+        <childnode refid="1322" relation="include">
         </childnode>
-        <childnode refid="1121" relation="include">
+        <childnode refid="1323" relation="include">
         </childnode>
-        <childnode refid="1122" relation="include">
+        <childnode refid="1324" relation="include">
         </childnode>
-        <childnode refid="1123" relation="include">
+        <childnode refid="1325" relation="include">
         </childnode>
-        <childnode refid="1124" relation="include">
+        <childnode refid="1326" relation="include">
         </childnode>
-      </node>
-      <node id="1142">
-        <label>include/mtk_uni_stg_grid_3d.h</label>
-        <link refid="mtk__uni__stg__grid__3d_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1327" relation="include">
         </childnode>
-        <childnode refid="1133" relation="include">
-        </childnode>
-        <childnode refid="1143" relation="include">
-        </childnode>
-        <childnode refid="1145" relation="include">
-        </childnode>
-        <childnode refid="1147" relation="include">
+        <childnode refid="1328" relation="include">
         </childnode>
       </node>
-      <node id="1128">
+      <node id="1344">
         <label>include/mtk_grad_2d.h</label>
         <link refid="mtk__grad__2d_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1129" relation="include">
+        <childnode refid="1333" relation="include">
         </childnode>
-        <childnode refid="1123" relation="include">
+        <childnode refid="1326" relation="include">
         </childnode>
       </node>
-      <node id="1122">
+      <node id="1325">
         <label>src/mtk_lap_1d.cc</label>
         <link refid="mtk__lap__1d_8cc"/>
       </node>
-      <node id="1146">
+      <node id="1345">
+        <label>include/mtk_div_2d.h</label>
+        <link refid="mtk__div__2d_8h"/>
+        <childnode refid="1318" relation="include">
+        </childnode>
+        <childnode refid="1338" relation="include">
+        </childnode>
+        <childnode refid="1339" relation="include">
+        </childnode>
+        <childnode refid="1326" relation="include">
+        </childnode>
+      </node>
+      <node id="1340">
         <label>src/mtk_div_3d.cc</label>
         <link refid="mtk__div__3d_8cc"/>
       </node>
-      <node id="1130">
-        <label>include/mtk_div_2d.h</label>
-        <link refid="mtk__div__2d_8h"/>
-        <childnode refid="1116" relation="include">
-        </childnode>
-        <childnode refid="1131" relation="include">
-        </childnode>
-        <childnode refid="1132" relation="include">
-        </childnode>
-        <childnode refid="1123" relation="include">
-        </childnode>
-      </node>
-      <node id="1127">
-        <label>include/mtk_uni_stg_grid_2d.h</label>
-        <link refid="mtk__uni__stg__grid__2d_8h"/>
-        <childnode refid="1125" relation="include">
-        </childnode>
-        <childnode refid="1116" relation="include">
-        </childnode>
-        <childnode refid="1128" relation="include">
-        </childnode>
-        <childnode refid="1130" relation="include">
-        </childnode>
-        <childnode refid="1133" relation="include">
-        </childnode>
-        <childnode refid="1134" relation="include">
-        </childnode>
-        <childnode refid="1135" relation="include">
-        </childnode>
-        <childnode refid="1138" relation="include">
-        </childnode>
-        <childnode refid="1137" relation="include">
-        </childnode>
-        <childnode refid="1139" relation="include">
-        </childnode>
-        <childnode refid="1140" relation="include">
-        </childnode>
-      </node>
-      <node id="1116">
+      <node id="1318">
         <label>include/mtk.h</label>
         <link refid="mtk_8h"/>
       </node>
-      <node id="1132">
+      <node id="1339">
         <label>src/mtk_div_2d.cc</label>
         <link refid="mtk__div__2d_8cc"/>
       </node>
-      <node id="1145">
+      <node id="1352">
         <label>include/mtk_div_3d.h</label>
         <link refid="mtk__div__3d_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1146" relation="include">
+        <childnode refid="1340" relation="include">
         </childnode>
-        <childnode refid="1124" relation="include">
+        <childnode refid="1327" relation="include">
         </childnode>
       </node>
-      <node id="1151">
+      <node id="1341">
         <label>include/mtk_lap_1d.h</label>
         <link refid="mtk__lap__1d_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1152" relation="include">
+        <childnode refid="1337" relation="include">
         </childnode>
-        <childnode refid="1122" relation="include">
+        <childnode refid="1325" relation="include">
         </childnode>
       </node>
-      <node id="1124">
+      <node id="1327">
         <label>src/mtk_lap_3d.cc</label>
         <link refid="mtk__lap__3d_8cc"/>
       </node>
-      <node id="1123">
+      <node id="1326">
         <label>src/mtk_lap_2d.cc</label>
         <link refid="mtk__lap__2d_8cc"/>
       </node>
-      <node id="1148">
+      <node id="1328">
+        <label>src/mtk_operator_applicator.cc</label>
+        <link refid="mtk__operator__applicator_8cc"/>
+      </node>
+      <node id="1332">
         <label>include/mtk_grad_1d.h</label>
         <link refid="mtk__grad__1d_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1121" relation="include">
+        <childnode refid="1324" relation="include">
         </childnode>
-        <childnode refid="1129" relation="include">
+        <childnode refid="1333" relation="include">
         </childnode>
-        <childnode refid="1144" relation="include">
+        <childnode refid="1334" relation="include">
         </childnode>
-        <childnode refid="1122" relation="include">
+        <childnode refid="1325" relation="include">
         </childnode>
-        <childnode refid="1149" relation="include">
+        <childnode refid="1335" relation="include">
         </childnode>
       </node>
-      <node id="1136">
+      <node id="1349">
         <label>src/mtk_robin_bc_descriptor_2d.cc</label>
         <link refid="mtk__robin__bc__descriptor__2d_8cc"/>
       </node>
-      <node id="1153">
+      <node id="1342">
         <label>include/mtk_interp_1d.h</label>
         <link refid="mtk__interp__1d_8h"/>
-        <childnode refid="1116" relation="include">
+        <childnode refid="1318" relation="include">
         </childnode>
-        <childnode refid="1154" relation="include">
+        <childnode refid="1343" relation="include">
+        </childnode>
+      </node>
+      <node id="1354">
+        <label>include/mtk_operator_applicator.h</label>
+        <link refid="mtk__operator__applicator_8h"/>
+        <childnode refid="1318" relation="include">
+        </childnode>
+        <childnode refid="1328" relation="include">
         </childnode>
       </node>
     </invincdepgraph>
@@ -490,66 +506,75 @@
 <codeline lineno="74"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk__roots_8h" kindref="compound">mtk_roots.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="75"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk__enums_8h" kindref="compound">mtk_enums.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
 <codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk__matrix_8h" kindref="compound">mtk_matrix.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
-<codeline lineno="77"><highlight class="normal"></highlight></codeline>
-<codeline lineno="78"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacemtk" kindref="compound">mtk</ref><sp/>{</highlight></codeline>
-<codeline lineno="79"><highlight class="normal"></highlight></codeline>
-<codeline lineno="92" refid="classmtk_1_1DenseMatrix" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>{</highlight></codeline>
-<codeline lineno="93"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="95"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/><ref refid="classmtk_1_1DenseMatrix_1adbcc850ef373550f634f563573a31d28" kindref="member">operator &lt;&lt;</ref>(std::ostream<sp/>&amp;stream,<sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;in);</highlight></codeline>
-<codeline lineno="96"><highlight class="normal"></highlight></codeline>
-<codeline lineno="104"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref>&amp;<sp/><ref refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" kindref="member">operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;in);</highlight></codeline>
-<codeline lineno="105"><highlight class="normal"></highlight></codeline>
-<codeline lineno="107"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1a94ab5a02d9cf81c17b6f68f4c41cb797" kindref="member">operator ==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;in);</highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk__uni__stg__grid__1d_8h" kindref="compound">mtk_uni_stg_grid_1d.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk__uni__stg__grid__2d_8h" kindref="compound">mtk_uni_stg_grid_2d.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="79"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk__uni__stg__grid__3d_8h" kindref="compound">mtk_uni_stg_grid_3d.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"></highlight><highlight class="keyword">namespace<sp/></highlight><highlight class="normal"><ref refid="namespacemtk" kindref="compound">mtk</ref><sp/>{</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"></highlight></codeline>
+<codeline lineno="95" refid="classmtk_1_1DenseMatrix" refkind="compound"><highlight class="keyword">class<sp/></highlight><highlight class="normal"><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>{</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/></highlight><highlight class="keyword">public</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">friend</highlight><highlight class="normal"><sp/>std::ostream&amp;<sp/><ref refid="classmtk_1_1DenseMatrix_1adbcc850ef373550f634f563573a31d28" kindref="member">operator &lt;&lt;</ref>(std::ostream<sp/>&amp;stream,<sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;in);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"></highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref>&amp;<sp/><ref refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" kindref="member">operator =</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;in);</highlight></codeline>
 <codeline lineno="108"><highlight class="normal"></highlight></codeline>
-<codeline lineno="110"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix_1a0c75ee704707983f935b02835eab0933" kindref="member">DenseMatrix</ref>();</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1a94ab5a02d9cf81c17b6f68f4c41cb797" kindref="member">operator ==</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;in);</highlight></codeline>
 <codeline lineno="111"><highlight class="normal"></highlight></codeline>
-<codeline lineno="117"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix_1a0c75ee704707983f935b02835eab0933" kindref="member">DenseMatrix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;in);</highlight></codeline>
-<codeline lineno="118"><highlight class="normal"></highlight></codeline>
-<codeline lineno="127"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix_1a0c75ee704707983f935b02835eab0933" kindref="member">DenseMatrix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;<ref refid="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" kindref="member">num_rows</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;<ref refid="classmtk_1_1DenseMatrix_1a41747502d468c6728a4be31501b16e0e" kindref="member">num_cols</ref>);</highlight></codeline>
-<codeline lineno="128"><highlight class="normal"></highlight></codeline>
-<codeline lineno="154"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix_1a0c75ee704707983f935b02835eab0933" kindref="member">DenseMatrix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;rank,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>&amp;padded,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>&amp;transpose);</highlight></codeline>
-<codeline lineno="155"><highlight class="normal"></highlight></codeline>
-<codeline lineno="189"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix_1a0c75ee704707983f935b02835eab0933" kindref="member">DenseMatrix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gen,</highlight></codeline>
-<codeline lineno="190"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;gen_length,</highlight></codeline>
-<codeline lineno="191"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;pro_length,</highlight></codeline>
-<codeline lineno="192"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>&amp;transpose);</highlight></codeline>
-<codeline lineno="193"><highlight class="normal"></highlight></codeline>
-<codeline lineno="195"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix_1a8d4a0df33bd4e4edf5d2fe5539885b85" kindref="member">~DenseMatrix</ref>();</highlight></codeline>
+<codeline lineno="113"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix_1a0c75ee704707983f935b02835eab0933" kindref="member">DenseMatrix</ref>();</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"></highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix_1a0c75ee704707983f935b02835eab0933" kindref="member">DenseMatrix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;in);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix_1a0c75ee704707983f935b02835eab0933" kindref="member">DenseMatrix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;<ref refid="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" kindref="member">num_rows</ref>,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;<ref refid="classmtk_1_1DenseMatrix_1a41747502d468c6728a4be31501b16e0e" kindref="member">num_cols</ref>);</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"></highlight></codeline>
+<codeline lineno="157"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix_1a0c75ee704707983f935b02835eab0933" kindref="member">DenseMatrix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;rank,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>&amp;padded,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>&amp;transpose);</highlight></codeline>
+<codeline lineno="158"><highlight class="normal"></highlight></codeline>
+<codeline lineno="192"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix_1a0c75ee704707983f935b02835eab0933" kindref="member">DenseMatrix</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>*</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>gen,</highlight></codeline>
+<codeline lineno="193"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;gen_length,</highlight></codeline>
+<codeline lineno="194"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;pro_length,</highlight></codeline>
+<codeline lineno="195"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/>&amp;transpose);</highlight></codeline>
 <codeline lineno="196"><highlight class="normal"></highlight></codeline>
-<codeline lineno="202"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Matrix" kindref="compound">Matrix</ref><sp/><ref refid="classmtk_1_1DenseMatrix_1a5aa83a0643f27a4652ea97630edf7143" kindref="member">matrix_properties</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept;</highlight></codeline>
-<codeline lineno="203"><highlight class="normal"></highlight></codeline>
-<codeline lineno="209"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" kindref="member">num_rows</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept;</highlight></codeline>
-<codeline lineno="210"><highlight class="normal"></highlight></codeline>
-<codeline lineno="216"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1a41747502d468c6728a4be31501b16e0e" kindref="member">num_cols</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept;</highlight></codeline>
-<codeline lineno="217"><highlight class="normal"></highlight></codeline>
-<codeline lineno="223"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref>*<sp/><ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept;</highlight></codeline>
-<codeline lineno="224"><highlight class="normal"></highlight></codeline>
-<codeline lineno="232"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1a178e63f365cf8c547dc5020c60357f5e" kindref="member">SetOrdering</ref>(<ref refid="group__c02-enums_1ga622801bd9f912d0f976c3e383f5f581c" kindref="member">mtk::MatrixOrdering</ref><sp/>oo)<sp/>noexcept;</highlight></codeline>
-<codeline lineno="233"><highlight class="normal"></highlight></codeline>
-<codeline lineno="242"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/><ref refid="classmtk_1_1DenseMatrix_1a4b23ecbebd970b5eea915dbb50691024" kindref="member">GetValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;row_coord,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;col_coord)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept;</highlight></codeline>
-<codeline lineno="243"><highlight class="normal"></highlight></codeline>
-<codeline lineno="251"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1a784ce5784109ac86bfb9d8562b334b13" kindref="member">SetValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;row_coord,</highlight></codeline>
-<codeline lineno="252"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;col_coord,</highlight></codeline>
-<codeline lineno="253"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>&amp;val)<sp/>noexcept;</highlight></codeline>
-<codeline lineno="254"><highlight class="normal"></highlight></codeline>
-<codeline lineno="256"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1a71d9c07ca66e88d97d1fd5012f43138b" kindref="member">Transpose</ref>();</highlight></codeline>
-<codeline lineno="257"><highlight class="normal"></highlight></codeline>
-<codeline lineno="259"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" kindref="member">OrderRowMajor</ref>();</highlight></codeline>
+<codeline lineno="198"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1DenseMatrix_1a8d4a0df33bd4e4edf5d2fe5539885b85" kindref="member">~DenseMatrix</ref>();</highlight></codeline>
+<codeline lineno="199"><highlight class="normal"></highlight></codeline>
+<codeline lineno="205"><highlight class="normal"><sp/><sp/><ref refid="group__c02-enums_1ga9b50023bfb2692219d2915feade94f80" kindref="member">EncodedOperator</ref><sp/><ref refid="classmtk_1_1DenseMatrix_1ab4ba807bef5282875d2136c456794f11" kindref="member">encoded_operator</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="206"><highlight class="normal"></highlight></codeline>
+<codeline lineno="212"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1ac0f824b0fec88c4fb42e77b7550fb0d3" kindref="member">set_encoded_operator</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c02-enums_1ga9b50023bfb2692219d2915feade94f80" kindref="member">EncodedOperator</ref><sp/>&amp;op);</highlight></codeline>
+<codeline lineno="213"><highlight class="normal"></highlight></codeline>
+<codeline lineno="219"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Matrix" kindref="compound">Matrix</ref><sp/><ref refid="classmtk_1_1DenseMatrix_1a5aa83a0643f27a4652ea97630edf7143" kindref="member">matrix_properties</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept;</highlight></codeline>
+<codeline lineno="220"><highlight class="normal"></highlight></codeline>
+<codeline lineno="226"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" kindref="member">num_rows</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept;</highlight></codeline>
+<codeline lineno="227"><highlight class="normal"></highlight></codeline>
+<codeline lineno="233"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1a41747502d468c6728a4be31501b16e0e" kindref="member">num_cols</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept;</highlight></codeline>
+<codeline lineno="234"><highlight class="normal"></highlight></codeline>
+<codeline lineno="240"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref>*<sp/><ref refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" kindref="member">data</ref>()<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept;</highlight></codeline>
+<codeline lineno="241"><highlight class="normal"></highlight></codeline>
+<codeline lineno="249"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1a178e63f365cf8c547dc5020c60357f5e" kindref="member">SetOrdering</ref>(<ref refid="group__c02-enums_1ga622801bd9f912d0f976c3e383f5f581c" kindref="member">mtk::MatrixOrdering</ref><sp/>oo)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="250"><highlight class="normal"></highlight></codeline>
+<codeline lineno="259"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/><ref refid="classmtk_1_1DenseMatrix_1a4b23ecbebd970b5eea915dbb50691024" kindref="member">GetValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;row_coord,<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;col_coord)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>noexcept;</highlight></codeline>
 <codeline lineno="260"><highlight class="normal"></highlight></codeline>
-<codeline lineno="262"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1a59b9bea24acf39dca64e8549b3527463" kindref="member">OrderColMajor</ref>();</highlight></codeline>
-<codeline lineno="263"><highlight class="normal"></highlight></codeline>
-<codeline lineno="274"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/><ref refid="classmtk_1_1DenseMatrix_1a01d3d8bd502870f93bf3a88a0cc5fb49" kindref="member">Kron</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;aa,</highlight></codeline>
-<codeline lineno="275"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;bb);</highlight></codeline>
-<codeline lineno="276"><highlight class="normal"></highlight></codeline>
-<codeline lineno="286"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1ab396804fb5f188e1eaa8578c738c59fc" kindref="member">WriteToFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filename)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
-<codeline lineno="287"><highlight class="normal"></highlight></codeline>
-<codeline lineno="288"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
-<codeline lineno="289" refid="classmtk_1_1DenseMatrix_1a481c8d09af685a5ba67acefdcaa810cc" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Matrix" kindref="compound">Matrix</ref><sp/><ref refid="classmtk_1_1DenseMatrix_1a481c8d09af685a5ba67acefdcaa810cc" kindref="member">matrix_properties_</ref>;<sp/><sp/></highlight></codeline>
-<codeline lineno="290"><highlight class="normal"></highlight></codeline>
-<codeline lineno="291" refid="classmtk_1_1DenseMatrix_1a7893e4e5c8d2e2de32b156177e78cb6f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>*<ref refid="classmtk_1_1DenseMatrix_1a7893e4e5c8d2e2de32b156177e78cb6f" kindref="member">data_</ref>;<sp/></highlight></codeline>
-<codeline lineno="292"><highlight class="normal">};</highlight></codeline>
-<codeline lineno="293"><highlight class="normal">}</highlight></codeline>
-<codeline lineno="294"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>End<sp/>of:<sp/>MTK_INCLUDE_MTK_DENSE_MATRIX_H_</highlight></codeline>
+<codeline lineno="268"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1a784ce5784109ac86bfb9d8562b334b13" kindref="member">SetValue</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;row_coord,</highlight></codeline>
+<codeline lineno="269"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/></highlight><highlight class="keywordtype">int</highlight><highlight class="normal"><sp/>&amp;col_coord,</highlight></codeline>
+<codeline lineno="270"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>&amp;val)<sp/>noexcept;</highlight></codeline>
+<codeline lineno="271"><highlight class="normal"></highlight></codeline>
+<codeline lineno="273"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1a71d9c07ca66e88d97d1fd5012f43138b" kindref="member">Transpose</ref>();</highlight></codeline>
+<codeline lineno="274"><highlight class="normal"></highlight></codeline>
+<codeline lineno="276"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" kindref="member">OrderRowMajor</ref>();</highlight></codeline>
+<codeline lineno="277"><highlight class="normal"></highlight></codeline>
+<codeline lineno="279"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1a59b9bea24acf39dca64e8549b3527463" kindref="member">OrderColMajor</ref>();</highlight></codeline>
+<codeline lineno="280"><highlight class="normal"></highlight></codeline>
+<codeline lineno="291"><highlight class="normal"><sp/><sp/></highlight><highlight class="keyword">static</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/><ref refid="classmtk_1_1DenseMatrix_1a01d3d8bd502870f93bf3a88a0cc5fb49" kindref="member">Kron</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;aa,</highlight></codeline>
+<codeline lineno="292"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;bb);</highlight></codeline>
+<codeline lineno="293"><highlight class="normal"></highlight></codeline>
+<codeline lineno="303"><highlight class="normal"><sp/><sp/></highlight><highlight class="keywordtype">bool</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1DenseMatrix_1ab396804fb5f188e1eaa8578c738c59fc" kindref="member">WriteToFile</ref>(</highlight><highlight class="keyword">const</highlight><highlight class="normal"><sp/>std::string<sp/>&amp;filename)<sp/></highlight><highlight class="keyword">const</highlight><highlight class="normal">;</highlight></codeline>
+<codeline lineno="304"><highlight class="normal"></highlight></codeline>
+<codeline lineno="305"><highlight class="normal"><sp/></highlight><highlight class="keyword">private</highlight><highlight class="normal">:</highlight></codeline>
+<codeline lineno="306" refid="classmtk_1_1DenseMatrix_1ad1633ffc35da862b5284d3907ab5175a" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__c02-enums_1ga9b50023bfb2692219d2915feade94f80" kindref="member">EncodedOperator</ref><sp/><ref refid="classmtk_1_1DenseMatrix_1ad1633ffc35da862b5284d3907ab5175a" kindref="member">encoded_operator_</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="307"><highlight class="normal"></highlight></codeline>
+<codeline lineno="308" refid="classmtk_1_1DenseMatrix_1a481c8d09af685a5ba67acefdcaa810cc" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Matrix" kindref="compound">Matrix</ref><sp/><ref refid="classmtk_1_1DenseMatrix_1a481c8d09af685a5ba67acefdcaa810cc" kindref="member">matrix_properties_</ref>;<sp/><sp/></highlight></codeline>
+<codeline lineno="309"><highlight class="normal"></highlight></codeline>
+<codeline lineno="310" refid="classmtk_1_1DenseMatrix_1a7893e4e5c8d2e2de32b156177e78cb6f" refkind="member"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref><sp/>*<ref refid="classmtk_1_1DenseMatrix_1a7893e4e5c8d2e2de32b156177e78cb6f" kindref="member">data_</ref>;<sp/></highlight></codeline>
+<codeline lineno="311"><highlight class="normal">};</highlight></codeline>
+<codeline lineno="312"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="313"><highlight class="normal"></highlight><highlight class="preprocessor">#endif<sp/><sp/>//<sp/>End<sp/>of:<sp/>MTK_INCLUDE_DENSE_MATRIX_H_</highlight></codeline>
     </programlisting>
     <location file="/home/esanchez/Dropbox/MTK/include/mtk_dense_matrix.h"/>
   </compounddef>

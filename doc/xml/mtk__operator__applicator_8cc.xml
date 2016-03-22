@@ -1,0 +1,295 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="mtk__operator__applicator_8cc" kind="file">
+    <compoundname>mtk_operator_applicator.cc</compoundname>
+    <includes local="no">cstdlib</includes>
+    <includes local="no">cstdio</includes>
+    <includes local="no">iostream</includes>
+    <includes local="no">iomanip</includes>
+    <includes refid="mtk__tools_8h" local="yes">mtk_tools.h</includes>
+    <includes refid="mtk__blas__adapter_8h" local="yes">mtk_blas_adapter.h</includes>
+    <includes refid="mtk__operator__applicator_8h" local="yes">mtk_operator_applicator.h</includes>
+    <incdepgraph>
+      <node id="2251">
+        <label>iomanip</label>
+      </node>
+      <node id="2256">
+        <label>mtk_dense_matrix.h</label>
+        <link refid="mtk__dense__matrix_8h"/>
+        <childnode refid="2250" relation="include">
+        </childnode>
+        <childnode refid="2254" relation="include">
+        </childnode>
+        <childnode refid="2257" relation="include">
+        </childnode>
+        <childnode refid="2258" relation="include">
+        </childnode>
+        <childnode refid="2259" relation="include">
+        </childnode>
+        <childnode refid="2262" relation="include">
+        </childnode>
+        <childnode refid="2263" relation="include">
+        </childnode>
+      </node>
+      <node id="2258">
+        <label>mtk_matrix.h</label>
+        <link refid="mtk__matrix_8h"/>
+        <childnode refid="2250" relation="include">
+        </childnode>
+        <childnode refid="2254" relation="include">
+        </childnode>
+        <childnode refid="2257" relation="include">
+        </childnode>
+      </node>
+      <node id="2254">
+        <label>mtk_roots.h</label>
+        <link refid="mtk__roots_8h"/>
+      </node>
+      <node id="2261">
+        <label>string</label>
+      </node>
+      <node id="2252">
+        <label>mtk_tools.h</label>
+        <link refid="mtk__tools_8h"/>
+        <childnode refid="2253" relation="include">
+        </childnode>
+        <childnode refid="2254" relation="include">
+        </childnode>
+      </node>
+      <node id="2249">
+        <label>cstdio</label>
+      </node>
+      <node id="2253">
+        <label>ctime</label>
+      </node>
+      <node id="2255">
+        <label>mtk_blas_adapter.h</label>
+        <link refid="mtk__blas__adapter_8h"/>
+        <childnode refid="2256" relation="include">
+        </childnode>
+        <childnode refid="2259" relation="include">
+        </childnode>
+      </node>
+      <node id="2260">
+        <label>vector</label>
+      </node>
+      <node id="2263">
+        <label>mtk_uni_stg_grid_3d.h</label>
+        <link refid="mtk__uni__stg__grid__3d_8h"/>
+        <childnode refid="2260" relation="include">
+        </childnode>
+        <childnode refid="2261" relation="include">
+        </childnode>
+        <childnode refid="2254" relation="include">
+        </childnode>
+        <childnode refid="2257" relation="include">
+        </childnode>
+      </node>
+      <node id="2262">
+        <label>mtk_uni_stg_grid_2d.h</label>
+        <link refid="mtk__uni__stg__grid__2d_8h"/>
+        <childnode refid="2260" relation="include">
+        </childnode>
+        <childnode refid="2261" relation="include">
+        </childnode>
+        <childnode refid="2254" relation="include">
+        </childnode>
+        <childnode refid="2257" relation="include">
+        </childnode>
+      </node>
+      <node id="2248">
+        <label>cstdlib</label>
+      </node>
+      <node id="2250">
+        <label>iostream</label>
+      </node>
+      <node id="2247">
+        <label>src/mtk_operator_applicator.cc</label>
+        <link refid="mtk_operator_applicator.cc"/>
+        <childnode refid="2248" relation="include">
+        </childnode>
+        <childnode refid="2249" relation="include">
+        </childnode>
+        <childnode refid="2250" relation="include">
+        </childnode>
+        <childnode refid="2251" relation="include">
+        </childnode>
+        <childnode refid="2252" relation="include">
+        </childnode>
+        <childnode refid="2255" relation="include">
+        </childnode>
+        <childnode refid="2264" relation="include">
+        </childnode>
+      </node>
+      <node id="2264">
+        <label>mtk_operator_applicator.h</label>
+        <link refid="mtk__operator__applicator_8h"/>
+        <childnode refid="2250" relation="include">
+        </childnode>
+        <childnode refid="2254" relation="include">
+        </childnode>
+        <childnode refid="2257" relation="include">
+        </childnode>
+        <childnode refid="2256" relation="include">
+        </childnode>
+        <childnode refid="2259" relation="include">
+        </childnode>
+        <childnode refid="2262" relation="include">
+        </childnode>
+        <childnode refid="2263" relation="include">
+        </childnode>
+      </node>
+      <node id="2257">
+        <label>mtk_enums.h</label>
+        <link refid="mtk__enums_8h"/>
+      </node>
+      <node id="2259">
+        <label>mtk_uni_stg_grid_1d.h</label>
+        <link refid="mtk__uni__stg__grid__1d_8h"/>
+        <childnode refid="2260" relation="include">
+        </childnode>
+        <childnode refid="2261" relation="include">
+        </childnode>
+        <childnode refid="2254" relation="include">
+        </childnode>
+      </node>
+    </incdepgraph>
+    <briefdescription>
+<para>Implements the class OperatorApplicator. </para>    </briefdescription>
+    <detaileddescription>
+<para><simplesect kind="author"><para>: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu </para></simplesect>
+</para>    </detaileddescription>
+    <programlisting>
+<codeline lineno="1"></codeline>
+<codeline lineno="8"><highlight class="comment">/*</highlight></codeline>
+<codeline lineno="9"><highlight class="comment">Copyright<sp/>(C)<sp/>2015,<sp/>Computational<sp/>Science<sp/>Research<sp/>Center,<sp/>San<sp/>Diego<sp/>State</highlight></codeline>
+<codeline lineno="10"><highlight class="comment">University.<sp/>All<sp/>rights<sp/>reserved.</highlight></codeline>
+<codeline lineno="11"><highlight class="comment"></highlight></codeline>
+<codeline lineno="12"><highlight class="comment">Redistribution<sp/>and<sp/>use<sp/>in<sp/>source<sp/>and<sp/>binary<sp/>forms,<sp/>with<sp/>or<sp/>without<sp/>modification,</highlight></codeline>
+<codeline lineno="13"><highlight class="comment">are<sp/>permitted<sp/>provided<sp/>that<sp/>the<sp/>following<sp/>conditions<sp/>are<sp/>met:</highlight></codeline>
+<codeline lineno="14"><highlight class="comment"></highlight></codeline>
+<codeline lineno="15"><highlight class="comment">1.<sp/>Modifications<sp/>to<sp/>source<sp/>code<sp/>should<sp/>be<sp/>reported<sp/>to:<sp/>esanchez@mail.sdsu.edu</highlight></codeline>
+<codeline lineno="16"><highlight class="comment">and<sp/>a<sp/>copy<sp/>of<sp/>the<sp/>modified<sp/>files<sp/>should<sp/>be<sp/>reported<sp/>once<sp/>modifications<sp/>are</highlight></codeline>
+<codeline lineno="17"><highlight class="comment">completed,<sp/>unless<sp/>these<sp/>modifications<sp/>are<sp/>made<sp/>through<sp/>the<sp/>project&apos;s<sp/>GitHub</highlight></codeline>
+<codeline lineno="18"><highlight class="comment">page:<sp/>http://www.csrc.sdsu.edu/mtk.<sp/>Documentation<sp/>related<sp/>to<sp/>said<sp/>modifications</highlight></codeline>
+<codeline lineno="19"><highlight class="comment">should<sp/>be<sp/>developed<sp/>and<sp/>included<sp/>in<sp/>any<sp/>deliverable.</highlight></codeline>
+<codeline lineno="20"><highlight class="comment"></highlight></codeline>
+<codeline lineno="21"><highlight class="comment">2.<sp/>Redistributions<sp/>of<sp/>source<sp/>code<sp/>must<sp/>be<sp/>done<sp/>through<sp/>direct</highlight></codeline>
+<codeline lineno="22"><highlight class="comment">downloads<sp/>from<sp/>the<sp/>project&apos;s<sp/>GitHub<sp/>page:<sp/>http://www.csrc.sdsu.edu/mtk</highlight></codeline>
+<codeline lineno="23"><highlight class="comment"></highlight></codeline>
+<codeline lineno="24"><highlight class="comment">3.<sp/>Redistributions<sp/>in<sp/>binary<sp/>form<sp/>must<sp/>reproduce<sp/>the<sp/>above<sp/>copyright<sp/>notice,</highlight></codeline>
+<codeline lineno="25"><highlight class="comment">this<sp/>list<sp/>of<sp/>conditions<sp/>and<sp/>the<sp/>following<sp/>disclaimer<sp/>in<sp/>the<sp/>documentation<sp/>and/or</highlight></codeline>
+<codeline lineno="26"><highlight class="comment">other<sp/>materials<sp/>provided<sp/>with<sp/>the<sp/>distribution.</highlight></codeline>
+<codeline lineno="27"><highlight class="comment"></highlight></codeline>
+<codeline lineno="28"><highlight class="comment">4.<sp/>Usage<sp/>of<sp/>the<sp/>binary<sp/>form<sp/>on<sp/>proprietary<sp/>applications<sp/>shall<sp/>require<sp/>explicit</highlight></codeline>
+<codeline lineno="29"><highlight class="comment">prior<sp/>written<sp/>permission<sp/>from<sp/>the<sp/>the<sp/>copyright<sp/>holders,<sp/>and<sp/>due<sp/>credit<sp/>should</highlight></codeline>
+<codeline lineno="30"><highlight class="comment">be<sp/>given<sp/>to<sp/>the<sp/>copyright<sp/>holders.</highlight></codeline>
+<codeline lineno="31"><highlight class="comment"></highlight></codeline>
+<codeline lineno="32"><highlight class="comment">5.<sp/>Neither<sp/>the<sp/>name<sp/>of<sp/>the<sp/>copyright<sp/>holder<sp/>nor<sp/>the<sp/>names<sp/>of<sp/>its<sp/>contributors</highlight></codeline>
+<codeline lineno="33"><highlight class="comment">may<sp/>be<sp/>used<sp/>to<sp/>endorse<sp/>or<sp/>promote<sp/>products<sp/>derived<sp/>from<sp/>this<sp/>software<sp/>without</highlight></codeline>
+<codeline lineno="34"><highlight class="comment">specific<sp/>prior<sp/>written<sp/>permission.</highlight></codeline>
+<codeline lineno="35"><highlight class="comment"></highlight></codeline>
+<codeline lineno="36"><highlight class="comment">The<sp/>copyright<sp/>holders<sp/>provide<sp/>no<sp/>reassurances<sp/>that<sp/>the<sp/>source<sp/>code<sp/>provided<sp/>does</highlight></codeline>
+<codeline lineno="37"><highlight class="comment">not<sp/>infringe<sp/>any<sp/>patent,<sp/>copyright,<sp/>or<sp/>any<sp/>other<sp/>intellectual<sp/>property<sp/>rights<sp/>of</highlight></codeline>
+<codeline lineno="38"><highlight class="comment">third<sp/>parties.<sp/>The<sp/>copyright<sp/>holders<sp/>disclaim<sp/>any<sp/>liability<sp/>to<sp/>any<sp/>recipient<sp/>for</highlight></codeline>
+<codeline lineno="39"><highlight class="comment">claims<sp/>brought<sp/>against<sp/>recipient<sp/>by<sp/>any<sp/>third<sp/>party<sp/>for<sp/>infringement<sp/>of<sp/>that</highlight></codeline>
+<codeline lineno="40"><highlight class="comment">parties<sp/>intellectual<sp/>property<sp/>rights.</highlight></codeline>
+<codeline lineno="41"><highlight class="comment"></highlight></codeline>
+<codeline lineno="42"><highlight class="comment">THIS<sp/>SOFTWARE<sp/>IS<sp/>PROVIDED<sp/>BY<sp/>THE<sp/>COPYRIGHT<sp/>HOLDERS<sp/>AND<sp/>CONTRIBUTORS<sp/>&quot;AS<sp/>IS&quot;<sp/>AND</highlight></codeline>
+<codeline lineno="43"><highlight class="comment">ANY<sp/>EXPRESS<sp/>OR<sp/>IMPLIED<sp/>WARRANTIES,<sp/>INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>THE<sp/>IMPLIED</highlight></codeline>
+<codeline lineno="44"><highlight class="comment">WARRANTIES<sp/>OF<sp/>MERCHANTABILITY<sp/>AND<sp/>FITNESS<sp/>FOR<sp/>A<sp/>PARTICULAR<sp/>PURPOSE<sp/>ARE</highlight></codeline>
+<codeline lineno="45"><highlight class="comment">DISCLAIMED.<sp/>IN<sp/>NO<sp/>EVENT<sp/>SHALL<sp/>THE<sp/>COPYRIGHT<sp/>HOLDER<sp/>OR<sp/>CONTRIBUTORS<sp/>BE<sp/>LIABLE<sp/>FOR</highlight></codeline>
+<codeline lineno="46"><highlight class="comment">ANY<sp/>DIRECT,<sp/>INDIRECT,<sp/>INCIDENTAL,<sp/>SPECIAL,<sp/>EXEMPLARY,<sp/>OR<sp/>CONSEQUENTIAL<sp/>DAMAGES</highlight></codeline>
+<codeline lineno="47"><highlight class="comment">(INCLUDING,<sp/>BUT<sp/>NOT<sp/>LIMITED<sp/>TO,<sp/>PROCUREMENT<sp/>OF<sp/>SUBSTITUTE<sp/>GOODS<sp/>OR<sp/>SERVICES;</highlight></codeline>
+<codeline lineno="48"><highlight class="comment">LOSS<sp/>OF<sp/>USE,<sp/>DATA,<sp/>OR<sp/>PROFITS;<sp/>OR<sp/>BUSINESS<sp/>INTERRUPTION)<sp/>HOWEVER<sp/>CAUSED<sp/>AND<sp/>ON</highlight></codeline>
+<codeline lineno="49"><highlight class="comment">ANY<sp/>THEORY<sp/>OF<sp/>LIABILITY,<sp/>WHETHER<sp/>IN<sp/>CONTRACT,<sp/>STRICT<sp/>LIABILITY,<sp/>OR<sp/>TORT</highlight></codeline>
+<codeline lineno="50"><highlight class="comment">(INCLUDING<sp/>NEGLIGENCE<sp/>OR<sp/>OTHERWISE)<sp/>ARISING<sp/>IN<sp/>ANY<sp/>WAY<sp/>OUT<sp/>OF<sp/>THE<sp/>USE<sp/>OF<sp/>THIS</highlight></codeline>
+<codeline lineno="51"><highlight class="comment">SOFTWARE,<sp/>EVEN<sp/>IF<sp/>ADVISED<sp/>OF<sp/>THE<sp/>POSSIBILITY<sp/>OF<sp/>SUCH<sp/>DAMAGE.</highlight></codeline>
+<codeline lineno="52"><highlight class="comment">*/</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="53"><highlight class="normal"></highlight></codeline>
+<codeline lineno="54"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdlib&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="55"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;cstdio&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="56"><highlight class="normal"></highlight></codeline>
+<codeline lineno="57"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iostream&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="58"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&lt;iomanip&gt;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="59"><highlight class="normal"></highlight></codeline>
+<codeline lineno="60"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk__tools_8h" kindref="compound">mtk_tools.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="61"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk__blas__adapter_8h" kindref="compound">mtk_blas_adapter.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="62"><highlight class="normal"></highlight><highlight class="preprocessor">#include<sp/>&quot;<ref refid="mtk__operator__applicator_8h" kindref="compound">mtk_operator_applicator.h</ref>&quot;</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="63"><highlight class="normal"></highlight></codeline>
+<codeline lineno="64" refid="classmtk_1_1OperatorApplicator_1ac19a5cad4c6600caa75250945ffca63e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1OperatorApplicator_1ac19a5cad4c6600caa75250945ffca63e" kindref="member">mtk::OperatorApplicator::ApplyDenseMatrixGradientOn1DGrid</ref>(</highlight></codeline>
+<codeline lineno="65"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;grad,</highlight></codeline>
+<codeline lineno="66"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;grid,</highlight></codeline>
+<codeline lineno="67"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;out)<sp/>{</highlight></codeline>
+<codeline lineno="68"><highlight class="normal"></highlight></codeline>
+<codeline lineno="69"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#if<sp/>MTK_PERFORM_PREVENTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="70"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" kindref="member">mtk::Tools::Prevent</ref>(grad.<ref refid="classmtk_1_1DenseMatrix_1ab4ba807bef5282875d2136c456794f11" kindref="member">encoded_operator</ref>()<sp/>!=<sp/><ref refid="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a90f70ea2675c36bd9b0b44a79f37a41f" kindref="member">mtk::EncodedOperator::GRADIENT</ref>,</highlight></codeline>
+<codeline lineno="71"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="72"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" kindref="member">mtk::Tools::Prevent</ref>(grid.<ref refid="classmtk_1_1UniStgGrid1D_1a6f6a5a23011fe90971ed6b8f5f640cd2" kindref="member">field_nature</ref>()<sp/>!=<sp/><ref refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9" kindref="member">mtk::FieldNature::SCALAR</ref>,</highlight></codeline>
+<codeline lineno="73"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="74"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" kindref="member">mtk::Tools::Prevent</ref>(out.<ref refid="classmtk_1_1UniStgGrid1D_1a6f6a5a23011fe90971ed6b8f5f640cd2" kindref="member">field_nature</ref>()<sp/>!=<sp/><ref refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e" kindref="member">mtk::FieldNature::VECTOR</ref>,</highlight></codeline>
+<codeline lineno="75"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="76"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="77"><highlight class="normal"></highlight></codeline>
+<codeline lineno="78"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>alpha{<ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>};</highlight></codeline>
+<codeline lineno="79"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>beta{<ref refid="group__c01-roots_1ga59a451a5fae30d59649bcda274fea271" kindref="member">mtk::kZero</ref>};</highlight></codeline>
+<codeline lineno="80"><highlight class="normal"></highlight></codeline>
+<codeline lineno="81"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1BLASAdapter_1afdcac059a4294287cb55638221220646" kindref="member">mtk::BLASAdapter::RealDenseMV</ref>(alpha,</highlight></codeline>
+<codeline lineno="82"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>grad,</highlight></codeline>
+<codeline lineno="83"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>grid.<ref refid="classmtk_1_1UniStgGrid1D_1ab9c3f9ee2ac76a351b01e4abfede4d19" kindref="member">discrete_field</ref>(),</highlight></codeline>
+<codeline lineno="84"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>beta,</highlight></codeline>
+<codeline lineno="85"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out.<ref refid="classmtk_1_1UniStgGrid1D_1ab9c3f9ee2ac76a351b01e4abfede4d19" kindref="member">discrete_field</ref>());</highlight></codeline>
+<codeline lineno="86"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="87"><highlight class="normal"></highlight></codeline>
+<codeline lineno="88" refid="classmtk_1_1OperatorApplicator_1a895a4650ad0d07074e69f971ff9321b9" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1OperatorApplicator_1a895a4650ad0d07074e69f971ff9321b9" kindref="member">mtk::OperatorApplicator::ApplyDenseMatrixDivergenceOn1DGrid</ref>(</highlight></codeline>
+<codeline lineno="89"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;div,</highlight></codeline>
+<codeline lineno="90"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;grid,</highlight></codeline>
+<codeline lineno="91"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;out)<sp/>{</highlight></codeline>
+<codeline lineno="92"><highlight class="normal"></highlight></codeline>
+<codeline lineno="93"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#if<sp/>MTK_PERFORM_PREVENTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="94"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" kindref="member">mtk::Tools::Prevent</ref>(div.<ref refid="classmtk_1_1DenseMatrix_1ab4ba807bef5282875d2136c456794f11" kindref="member">encoded_operator</ref>()<sp/>!=</highlight></codeline>
+<codeline lineno="95"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><ref refid="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a4e4e9e6d004c642e33d6f823b57bd60e" kindref="member">mtk::EncodedOperator::DIVERGENCE</ref>,</highlight></codeline>
+<codeline lineno="96"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="97"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" kindref="member">mtk::Tools::Prevent</ref>(grid.<ref refid="classmtk_1_1UniStgGrid1D_1a6f6a5a23011fe90971ed6b8f5f640cd2" kindref="member">field_nature</ref>()<sp/>!=<sp/><ref refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e" kindref="member">mtk::FieldNature::VECTOR</ref>,</highlight></codeline>
+<codeline lineno="98"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="99"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" kindref="member">mtk::Tools::Prevent</ref>(out.<ref refid="classmtk_1_1UniStgGrid1D_1a6f6a5a23011fe90971ed6b8f5f640cd2" kindref="member">field_nature</ref>()<sp/>!=<sp/><ref refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9" kindref="member">mtk::FieldNature::SCALAR</ref>,</highlight></codeline>
+<codeline lineno="100"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="101"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="102"><highlight class="normal"></highlight></codeline>
+<codeline lineno="103"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>alpha{<ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>};</highlight></codeline>
+<codeline lineno="104"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>beta{<ref refid="group__c01-roots_1ga59a451a5fae30d59649bcda274fea271" kindref="member">mtk::kZero</ref>};</highlight></codeline>
+<codeline lineno="105"><highlight class="normal"></highlight></codeline>
+<codeline lineno="106"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1BLASAdapter_1afdcac059a4294287cb55638221220646" kindref="member">mtk::BLASAdapter::RealDenseMV</ref>(alpha,</highlight></codeline>
+<codeline lineno="107"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>div,</highlight></codeline>
+<codeline lineno="108"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>grid.<ref refid="classmtk_1_1UniStgGrid1D_1ab9c3f9ee2ac76a351b01e4abfede4d19" kindref="member">discrete_field</ref>(),</highlight></codeline>
+<codeline lineno="109"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>beta,</highlight></codeline>
+<codeline lineno="110"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out.<ref refid="classmtk_1_1UniStgGrid1D_1ab9c3f9ee2ac76a351b01e4abfede4d19" kindref="member">discrete_field</ref>());</highlight></codeline>
+<codeline lineno="111"><highlight class="normal">}</highlight></codeline>
+<codeline lineno="112"><highlight class="normal"></highlight></codeline>
+<codeline lineno="113" refid="classmtk_1_1OperatorApplicator_1a142ef3e84c7547ca05216ccd69d5210e" refkind="member"><highlight class="normal"></highlight><highlight class="keywordtype">void</highlight><highlight class="normal"><sp/><ref refid="classmtk_1_1OperatorApplicator_1a142ef3e84c7547ca05216ccd69d5210e" kindref="member">mtk::OperatorApplicator::ApplyDenseMatrixLaplacianOn1DGrid</ref>(</highlight></codeline>
+<codeline lineno="114"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref><sp/>&amp;lap,</highlight></codeline>
+<codeline lineno="115"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;grid,</highlight></codeline>
+<codeline lineno="116"><highlight class="normal"><sp/><sp/><sp/><sp/><ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref><sp/>&amp;out)<sp/>{</highlight></codeline>
+<codeline lineno="117"><highlight class="normal"></highlight></codeline>
+<codeline lineno="118"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#if<sp/>MTK_PERFORM_PREVENTIONS</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="119"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" kindref="member">mtk::Tools::Prevent</ref>(lap.<ref refid="classmtk_1_1DenseMatrix_1ab4ba807bef5282875d2136c456794f11" kindref="member">encoded_operator</ref>()<sp/>!=<sp/><ref refid="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a1c2d5f3f8e6cbb0c7b033c388c905d22" kindref="member">mtk::EncodedOperator::LAPLACIAN</ref>,</highlight></codeline>
+<codeline lineno="120"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="121"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" kindref="member">mtk::Tools::Prevent</ref>(grid.<ref refid="classmtk_1_1UniStgGrid1D_1a6f6a5a23011fe90971ed6b8f5f640cd2" kindref="member">field_nature</ref>()<sp/>!=<sp/><ref refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9" kindref="member">mtk::FieldNature::SCALAR</ref>,</highlight></codeline>
+<codeline lineno="122"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="123"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" kindref="member">mtk::Tools::Prevent</ref>(out.<ref refid="classmtk_1_1UniStgGrid1D_1a6f6a5a23011fe90971ed6b8f5f640cd2" kindref="member">field_nature</ref>()<sp/>!=<sp/><ref refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9" kindref="member">mtk::FieldNature::SCALAR</ref>,</highlight></codeline>
+<codeline lineno="124"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>__FILE__,<sp/>__LINE__,<sp/>__func__);</highlight></codeline>
+<codeline lineno="125"><highlight class="normal"></highlight><highlight class="preprocessor"><sp/><sp/>#endif</highlight><highlight class="normal"></highlight></codeline>
+<codeline lineno="126"><highlight class="normal"></highlight></codeline>
+<codeline lineno="127"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>alpha{<ref refid="group__c01-roots_1ga26407c24d43b6b95480943340d285c71" kindref="member">mtk::kOne</ref>};</highlight></codeline>
+<codeline lineno="128"><highlight class="normal"><sp/><sp/><ref refid="group__c01-roots_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref><sp/>beta{<ref refid="group__c01-roots_1ga59a451a5fae30d59649bcda274fea271" kindref="member">mtk::kZero</ref>};</highlight></codeline>
+<codeline lineno="129"><highlight class="normal"></highlight></codeline>
+<codeline lineno="130"><highlight class="normal"><sp/><sp/><ref refid="classmtk_1_1BLASAdapter_1afdcac059a4294287cb55638221220646" kindref="member">mtk::BLASAdapter::RealDenseMV</ref>(alpha,</highlight></codeline>
+<codeline lineno="131"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>lap,</highlight></codeline>
+<codeline lineno="132"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>grid.<ref refid="classmtk_1_1UniStgGrid1D_1ab9c3f9ee2ac76a351b01e4abfede4d19" kindref="member">discrete_field</ref>(),</highlight></codeline>
+<codeline lineno="133"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>beta,</highlight></codeline>
+<codeline lineno="134"><highlight class="normal"><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/><sp/>out.<ref refid="classmtk_1_1UniStgGrid1D_1ab9c3f9ee2ac76a351b01e4abfede4d19" kindref="member">discrete_field</ref>());</highlight></codeline>
+<codeline lineno="135"><highlight class="normal">}</highlight></codeline>
+    </programlisting>
+    <location file="/home/esanchez/Dropbox/MTK/src/mtk_operator_applicator.cc"/>
+  </compounddef>
+</doxygen>

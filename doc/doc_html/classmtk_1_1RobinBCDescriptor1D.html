@@ -122,7 +122,7 @@ Collaboration diagram for mtk::RobinBCDescriptor1D:</div>
 <div class="dyncontent">
 <div class="center"><img src="classmtk_1_1RobinBCDescriptor1D__coll__graph.gif" border="0" usemap="#mtk_1_1RobinBCDescriptor1D_coll__map" alt="Collaboration graph"/></div>
 <map name="mtk_1_1RobinBCDescriptor1D_coll__map" id="mtk_1_1RobinBCDescriptor1D_coll__map">
-<area shape="rect" id="node3" title="STL class. " alt="" coords="47,145,174,223"/></map>
+<area shape="rect" id="node3" title="STL class. " alt="" coords="53,145,180,223"/></map>
 </div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -154,6 +154,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4edc92eeaaaa3f1e7f2cedfea3d35681"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmtk_1_1RobinBCDescriptor1D.html#a4edc92eeaaaa3f1e7f2cedfea3d35681">set_east_condition</a> (<a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a>(*east_condition)(const <a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;tt)) noexcept</td></tr>
 <tr class="memdesc:a4edc92eeaaaa3f1e7f2cedfea3d35681"><td class="mdescLeft">&#160;</td><td class="mdescRight">Set boundary condition at east.  <a href="#a4edc92eeaaaa3f1e7f2cedfea3d35681">More...</a><br /></td></tr>
 <tr class="separator:a4edc92eeaaaa3f1e7f2cedfea3d35681"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09b026a79dde6e8dc14e981a45320863"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmtk_1_1RobinBCDescriptor1D.html#a09b026a79dde6e8dc14e981a45320863">ImposeOnDivergenceMatrix</a> (const <a class="el" href="classmtk_1_1Div1D.html">Div1D</a> &amp;div, <a class="el" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> &amp;matrix, const <a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;time=<a class="el" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a>) const </td></tr>
+<tr class="memdesc:a09b026a79dde6e8dc14e981a45320863"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposes the condition on the operator represented as matrix.  <a href="#a09b026a79dde6e8dc14e981a45320863">More...</a><br /></td></tr>
+<tr class="separator:a09b026a79dde6e8dc14e981a45320863"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8446428df923c27f388a85bd3f2c6d4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classmtk_1_1RobinBCDescriptor1D.html#ab8446428df923c27f388a85bd3f2c6d4">ImposeOnLaplacianMatrix</a> (const <a class="el" href="classmtk_1_1Lap1D.html">Lap1D</a> &amp;lap, <a class="el" href="classmtk_1_1DenseMatrix.html">DenseMatrix</a> &amp;matrix, const <a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;time=<a class="el" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a>) const </td></tr>
 <tr class="memdesc:ab8446428df923c27f388a85bd3f2c6d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Imposes the condition on the operator represented as matrix.  <a href="#ab8446428df923c27f388a85bd3f2c6d4">More...</a><br /></td></tr>
 <tr class="separator:ab8446428df923c27f388a85bd3f2c6d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -199,7 +202,7 @@ Private Attributes</h2></td></tr>
 <p>Instances of this class receive information about the coefficient functions and each condition for any subset of the boundary (west and east, in 1D). These instances then handle the complexity of placing the coefficients in the differentiation matrices and the conditions in the grids.</p>
 <dl class="section see"><dt>See also</dt><dd><a href="http://mathworld.wolfram.com/NormalVector.html">http://mathworld.wolfram.com/NormalVector.html</a> </dd></dl>
 
-<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html#l00155">155</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html">mtk_robin_bc_descriptor_1d.h</a>.</p>
+<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html#l00156">156</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html">mtk_robin_bc_descriptor_1d.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a49ae1e976c1a6d8aa227d3dc16090127"></a>
 <div class="memitem">
@@ -320,6 +323,66 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a09b026a79dde6e8dc14e981a45320863"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool mtk::RobinBCDescriptor1D::ImposeOnDivergenceMatrix </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classmtk_1_1Div1D.html">Div1D</a> &amp;&#160;</td>
+          <td class="paramname"><em>div</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classmtk_1_1DenseMatrix.html">mtk::DenseMatrix</a> &amp;&#160;</td>
+          <td class="paramname"><em>matrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const <a class="el" href="group__c01-roots.html#gac080bbbf5cbb5502c9f00405f894857d">Real</a> &amp;&#160;</td>
+          <td class="paramname"><em>time</em> = <code><a class="el" href="group__c01-roots.html#ga59a451a5fae30d59649bcda274fea271">mtk::kZero</a></code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">div</td><td>Operator in the <a class="el" href="classmtk_1_1Matrix.html" title="Definition of the representation of a matrix in the MTK. ">Matrix</a>. </td></tr>
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">matrix</td><td>Input Divergence operator. </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">time</td><td>Current time snapshot. Default is kZero.</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Success of the imposition. </dd></dl>
+<ol type="1">
+<li>Impose Dirichlet coefficients.</li>
+</ol>
+<p>1.1. Impose Dirichlet condition at the west.</p>
+<p>1.2. Impose Dirichlet condition at the east.</p>
+<ol type="1">
+<li>Impose Neumann coefficients. </li>
+</ol>
+
+<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8cc_source.html#l00166">166</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8cc_source.html">mtk_robin_bc_descriptor_1d.cc</a>.</p>
+
+<p><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="classmtk_1_1RobinBCDescriptor1D_a09b026a79dde6e8dc14e981a45320863_cgraph.gif" border="0" usemap="#classmtk_1_1RobinBCDescriptor1D_a09b026a79dde6e8dc14e981a45320863_cgraph" alt=""/></div>
+<map name="classmtk_1_1RobinBCDescriptor1D_a09b026a79dde6e8dc14e981a45320863_cgraph" id="classmtk_1_1RobinBCDescriptor1D_a09b026a79dde6e8dc14e981a45320863_cgraph">
+<area shape="rect" id="node2" href="classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f" title="Enforces preconditions by preventing their complements from occur. " alt="" coords="516,55,659,82"/><area shape="rect" id="node3" href="classmtk_1_1DenseMatrix.html#a53f3afb3b6a8d21854458aaa9663cc74" title="Gets the number of rows. " alt="" coords="260,30,468,57"/><area shape="rect" id="node4" href="classmtk_1_1DenseMatrix.html#a41747502d468c6728a4be31501b16e0e" title="Gets the number of columns. " alt="" coords="262,81,466,107"/><area shape="rect" id="node5" href="classmtk_1_1DenseMatrix.html#a784ce5784109ac86bfb9d8562b334b13" title="Sets a value on the given coordinates. " alt="" coords="264,131,464,158"/></map>
+</div>
+</p>
+
+</div>
+</div>
 <a class="anchor" id="ab0daec1d6c5c9c6768bea08281a3831d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -351,7 +414,7 @@ Private Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8cc_source.html#l00246">246</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8cc_source.html">mtk_robin_bc_descriptor_1d.cc</a>.</p>
+<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8cc_source.html#l00279">279</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8cc_source.html">mtk_robin_bc_descriptor_1d.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -403,8 +466,9 @@ Here is the call graph for this function:</div>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Success of the imposition. </dd></dl>
 <ol type="1">
-<li>Impose Dirichlet coefficients. 1.1. Impose Dirichlet condition at the west.</li>
+<li>Impose Dirichlet coefficients.</li>
 </ol>
+<p>1.1. Impose Dirichlet condition at the west.</p>
 <p>1.2. Impose Dirichlet condition at the east.</p>
 <ol type="1">
 <li>Impose Neumann coefficients.</li>
@@ -422,7 +486,7 @@ Here is the call graph for this function:</div>
 <p>2.4.2. Multiply times the coefficient for this boundary, times the unit normal for this boundary, and change the sign to enforce center-skew-symmetry.</p>
 <p>2.4.3. Set the final value summing it with what is on the matrix. </p>
 
-<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8cc_source.html#l00166">166</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8cc_source.html">mtk_robin_bc_descriptor_1d.cc</a>.</p>
+<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8cc_source.html#l00197">197</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8cc_source.html">mtk_robin_bc_descriptor_1d.cc</a>.</p>
 
 <p><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -602,7 +666,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html#l00237">237</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html">mtk_robin_bc_descriptor_1d.h</a>.</p>
+<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html#l00251">251</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html">mtk_robin_bc_descriptor_1d.h</a>.</p>
 
 </div>
 </div>
@@ -624,7 +688,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html#l00240">240</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html">mtk_robin_bc_descriptor_1d.h</a>.</p>
+<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html#l00254">254</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html">mtk_robin_bc_descriptor_1d.h</a>.</p>
 
 </div>
 </div>
@@ -646,7 +710,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html#l00234">234</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html">mtk_robin_bc_descriptor_1d.h</a>.</p>
+<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html#l00248">248</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html">mtk_robin_bc_descriptor_1d.h</a>.</p>
 
 </div>
 </div>
@@ -668,7 +732,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html#l00233">233</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html">mtk_robin_bc_descriptor_1d.h</a>.</p>
+<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html#l00247">247</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html">mtk_robin_bc_descriptor_1d.h</a>.</p>
 
 </div>
 </div>
@@ -690,7 +754,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html#l00236">236</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html">mtk_robin_bc_descriptor_1d.h</a>.</p>
+<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html#l00250">250</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html">mtk_robin_bc_descriptor_1d.h</a>.</p>
 
 </div>
 </div>
@@ -712,7 +776,7 @@ Here is the call graph for this function:</div>
 </table>
 </div><div class="memdoc">
 
-<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html#l00239">239</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html">mtk_robin_bc_descriptor_1d.h</a>.</p>
+<p>Definition at line <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html#l00253">253</a> of file <a class="el" href="mtk__robin__bc__descriptor__1d_8h_source.html">mtk_robin_bc_descriptor_1d.h</a>.</p>
 
 </div>
 </div>
@@ -726,7 +790,7 @@ Here is the call graph for this function:</div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="namespacemtk.html">mtk</a></li><li class="navelem"><a class="el" href="classmtk_1_1RobinBCDescriptor1D.html">RobinBCDescriptor1D</a></li>
-    <li class="footer">Generated on Fri Mar 11 2016 11:50:56 for MTK: Mimetic Methods Toolkit by
+    <li class="footer">Generated on Tue Mar 22 2016 12:15:34 for MTK: Mimetic Methods Toolkit by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.8 </li>
   </ul>
