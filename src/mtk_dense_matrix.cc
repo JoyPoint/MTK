@@ -71,8 +71,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <algorithm>
 
 #include "mtk_roots.h"
-#include "mtk_dense_matrix.h"
 #include "mtk_tools.h"
+#include "mtk_dense_matrix.h"
+#include "mtk_blas_adapter.h"
 
 namespace mtk {
 
@@ -107,6 +108,8 @@ mtk::DenseMatrix& mtk::DenseMatrix::operator =(const mtk::DenseMatrix &in) {
   if(this == &in) {
     return *this;
   }
+
+  encoded_operator_ = in.encoded_operator_;
 
   matrix_properties_.set_storage(in.matrix_properties_.storage());
 
@@ -147,6 +150,8 @@ bool mtk::DenseMatrix::operator ==(const DenseMatrix &in) {
 
   bool ans{true};
 
+  ans = ans && (encoded_operator_ == in.encoded_operator_);
+
   auto mm = in.num_rows();
   auto nn = in.num_cols();
 
@@ -166,11 +171,15 @@ bool mtk::DenseMatrix::operator ==(const DenseMatrix &in) {
 
 mtk::DenseMatrix::DenseMatrix(): data_(nullptr) {
 
+  encoded_operator_ = mtk::EncodedOperator::NOOP;
+
   matrix_properties_.set_storage(mtk::MatrixStorage::DENSE);
   matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
 }
 
 mtk::DenseMatrix::DenseMatrix(const mtk::DenseMatrix &in) {
+
+  encoded_operator_ = in.encoded_operator_;
 
   matrix_properties_.set_storage(in.matrix_properties_.storage());
 
@@ -210,6 +219,8 @@ mtk::DenseMatrix::DenseMatrix(const int &num_rows, const int &num_cols) {
   mtk::Tools::Prevent(num_cols < 1, __FILE__, __LINE__, __func__);
   #endif
 
+  encoded_operator_ = mtk::EncodedOperator::NOOP;
+
   matrix_properties_.set_storage(mtk::MatrixStorage::DENSE);
   matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
   matrix_properties_.set_num_rows(num_rows);
@@ -238,6 +249,8 @@ mtk::DenseMatrix::DenseMatrix(const int &rank,
   if (padded) {
     aux = 1;
   }
+
+  encoded_operator_ = mtk::EncodedOperator::NOOP;
 
   matrix_properties_.set_storage(mtk::MatrixStorage::DENSE);
   matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
@@ -276,6 +289,8 @@ mtk::DenseMatrix::DenseMatrix(const mtk::Real *const gen,
   mtk::Tools::Prevent(gen_length < 1, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(pro_length < 1, __FILE__, __LINE__, __func__);
   #endif
+
+  encoded_operator_ = mtk::EncodedOperator::NOOP;
 
   matrix_properties_.set_storage(mtk::MatrixStorage::DENSE);
   matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
@@ -349,6 +364,27 @@ int mtk::DenseMatrix::num_cols() const noexcept {
 mtk::Real* mtk::DenseMatrix::data() const noexcept {
 
   return data_;
+}
+
+mtk::EncodedOperator mtk::DenseMatrix::encoded_operator() const {
+
+  return encoded_operator_;
+}
+
+void mtk::DenseMatrix::set_encoded_operator(const EncodedOperator &op) {
+
+  #ifdef MTK_PERFORM_PREVENTIONS
+  bool aux = (op != mtk::EncodedOperator::NOOP) &&
+    (op != mtk::EncodedOperator::GRADIENT) &&
+    (op != mtk::EncodedOperator::DIVERGENCE) &&
+    (op != mtk::EncodedOperator::INTERPOLATION) &&
+    (op != mtk::EncodedOperator::CURL) &&
+    (op != mtk::EncodedOperator::LAPLACIAN);
+
+  mtk::Tools::Prevent(aux, __FILE__, __LINE__, __func__);
+  #endif
+
+  encoded_operator_ = op;
 }
 
 mtk::Real mtk::DenseMatrix::GetValue(

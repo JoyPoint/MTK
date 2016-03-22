@@ -158,6 +158,8 @@ mtk::DenseMatrix mtk::Interp1D::ReturnAsDenseMatrix(
 
   mtk::DenseMatrix out(gg_num_rows, gg_num_cols);
 
+  out.set_encoded_operator(mtk::EncodedOperator::INTERPOLATION);
+
   /// 1. Preserve values at the boundary.
 
   out.SetValue(0, 0, mtk::kOne);

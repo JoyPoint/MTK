@@ -34,7 +34,8 @@ MIMOPS = \
 	mtk_lap_2d.o \
 	mtk_lap_3d.o \
 	mtk_robin_bc_descriptor_2d.o \
-	mtk_grad_3d.o
+	mtk_grad_3d.o \
+	mtk_operator_applicator.o
 
 exetools: $(EXETOOLS)
 

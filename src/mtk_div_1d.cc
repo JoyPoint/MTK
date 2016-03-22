@@ -387,6 +387,8 @@ mtk::DenseMatrix mtk::Div1D::ReturnAsDenseMatrix(
   #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(nn < 3*order_accuracy_ - 1, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(grid.field_nature() != mtk::FieldNature::VECTOR,
+                      __FILE__, __LINE__, __func__);
   #endif
 
   mtk::Real inv_delta_x{mtk::kOne/grid.delta_x()};
@@ -399,18 +401,16 @@ mtk::DenseMatrix mtk::Div1D::ReturnAsDenseMatrix(
   // Output matrix featuring sizes for divergence operators.
   mtk::DenseMatrix out(dd_num_rows, dd_num_cols);
 
+  out.set_encoded_operator(mtk::EncodedOperator::DIVERGENCE);
+
   /// 1. Insert mimetic boundary at the west.
 
-  auto ee_index = 0;
-  for (auto ii = 1; ii < num_extra_rows + 1; ii++) {
-    auto cc = 0;
-    for(auto jj = 0 ; jj < dd_num_rows; jj++) {
-      if( cc >= elements_per_row) {
-        out.SetValue(ii, jj, mtk::kZero);
-      } else {
-        out.SetValue(ii,jj, mim_bndy_[ee_index++]*inv_delta_x);
-        cc++;
-      }
+  for (int ii = 0; ii < num_extra_rows; ++ii) {
+    int ee{ii};
+    for (int jj = 0; jj < elements_per_row; ++jj) {
+      // We index at ii + 1 to secure a padded divergence matrix.
+      out.SetValue(ii + 1, jj, mim_bndy_[ee]*inv_delta_x);
+      ee += num_extra_rows;
     }
   }
 
@@ -426,18 +426,14 @@ mtk::DenseMatrix mtk::Div1D::ReturnAsDenseMatrix(
 
   /// 3. Impose center-skew symmetry by permuting the mimetic boundaries.
 
-  ee_index = 0;
-  for (auto ii = dd_num_rows - 2; ii >= dd_num_rows - num_extra_rows - 1; ii--)
-{
-    auto cc = 0;
-    for (auto jj = dd_num_cols - 1; jj >= 0; jj--) {
-      if( cc >= elements_per_row) {
-        out.SetValue(ii,jj,0.0);
-      } else {
-        out.SetValue(ii,jj,-mim_bndy_[ee_index++]*inv_delta_x);
-        cc++;
-      }
-     }
+  for (int ii = 0; ii < num_extra_rows; ++ii) {
+    int ee{ii};
+    for (int jj = 0; jj < elements_per_row; ++jj) {
+      int rr{dd_num_rows - 2 - ii};
+      int cc{dd_num_cols - 1 - jj};
+      out.SetValue(rr, cc, -mim_bndy_[ee]*inv_delta_x);
+      ee += num_extra_rows;
+    }
   }
 
   return out;
@@ -461,18 +457,16 @@ mtk::DenseMatrix mtk::Div1D::ReturnAsDimensionlessDenseMatrix(
   // Output matrix featuring sizes for gradient operators.
   mtk::DenseMatrix out(dd_num_rows, dd_num_cols);
 
+  out.set_encoded_operator(mtk::EncodedOperator::DIVERGENCE);
+
   /// 1. Insert mimetic boundary at the west.
 
-  auto ee_index = 0;
-  for (auto ii = 1; ii < num_extra_rows + 1; ii++) {
-    auto cc = 0;
-    for(auto jj = 0 ; jj < dd_num_rows; jj++) {
-      if( cc >= elements_per_row) {
-        out.SetValue(ii, jj, mtk::kZero);
-      } else {
-        out.SetValue(ii,jj, mim_bndy_[ee_index++]);
-        cc++;
-      }
+  for (int ii = 0; ii < num_extra_rows; ++ii) {
+    int ee{ii};
+    for (int jj = 0; jj < elements_per_row; ++jj) {
+      // We index at ii + 1 to secure a padded divergence matrix.
+      out.SetValue(ii + 1, jj, mim_bndy_[ee]);
+      ee += num_extra_rows;
     }
   }
 
@@ -488,18 +482,14 @@ mtk::DenseMatrix mtk::Div1D::ReturnAsDimensionlessDenseMatrix(
 
   /// 3. Impose center-skew symmetry by permuting the mimetic boundaries.
 
-  ee_index = 0;
-  for (auto ii = dd_num_rows - 2; ii >= dd_num_rows - num_extra_rows - 1; ii--)
-  {
-    auto cc = 0;
-    for (auto jj = dd_num_cols - 1; jj >= 0; jj--) {
-      if( cc >= elements_per_row) {
-        out.SetValue(ii,jj,0.0);
-      } else {
-        out.SetValue(ii,jj,-mim_bndy_[ee_index++]);
-        cc++;
-      }
-     }
+  for (int ii = 0; ii < num_extra_rows; ++ii) {
+    int ee{ii};
+    for (int jj = 0; jj < elements_per_row; ++jj) {
+      int rr{dd_num_rows - 2 - ii};
+      int cc{dd_num_cols - 1 - jj};
+      out.SetValue(rr, cc, -mim_bndy_[ee]);
+      ee += num_extra_rows;
+    }
   }
 
   return out;

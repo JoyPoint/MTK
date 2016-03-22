@@ -8,6 +8,8 @@ Definition of an 3D uniform staggered grid.
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 
 \todo Create overloaded binding routines that read data from files.
+
+\todo Create overloaded binding routines that read data from arrays.
 */
 /*
 Copyright (C) 2015, Computational Science Research Center, San Diego State
@@ -63,7 +65,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk_roots.h"
 #include "mtk_enums.h"
-#include "mtk_dense_matrix.h"
 
 namespace mtk {
 

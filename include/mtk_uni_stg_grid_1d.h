@@ -79,6 +79,15 @@ class UniStgGrid1D {
   /// \brief Prints the grid as a tuple of arrays.
   friend std::ostream& operator <<(std::ostream& stream, UniStgGrid1D &in);
 
+  /*!
+  \brief Overloaded assignment operator.
+
+  \param [in] in Given grid.
+
+  \return Copy of the given grid.
+  */
+  UniStgGrid1D& operator =(const UniStgGrid1D &in);
+
   /// \brief Default constructor.
   UniStgGrid1D();
 
@@ -95,14 +104,14 @@ class UniStgGrid1D {
   \param[in] west_bndy_x Coordinate for the west boundary.
   \param[in] east_bndy_x Coordinate for the east boundary.
   \param[in] num_cells_x Number of cells of the required grid.
-  \param[in] nature Nature of the discrete field to hold.
+  \param[in] field_nature Nature of the discrete field to hold.
 
   \sa mtk::FieldNature
   */
   UniStgGrid1D(const Real &west_bndy_x,
                const Real &east_bndy_x,
                const int &num_cells_x,
-               const mtk::FieldNature &nature = mtk::FieldNature::SCALAR);
+               const mtk::FieldNature &field_nature = mtk::FieldNature::SCALAR);
 
   /// \brief Destructor.
   ~UniStgGrid1D();
@@ -154,16 +163,38 @@ class UniStgGrid1D {
   int num_cells_x() const;
 
   /*!
-  \brief Generate the actual set of spatial coordinates.
+  \brief Provides access to the field nature.
+
+  \return Nature of the filed on the grid.
+  */
+  FieldNature field_nature() const;
+
+  /*!
+  \brief Generates the actual set of spatial coordinates.
   */
   void GenerateDiscreteDomainX();
+
+/*!
+  \brief Allocates memory for the discrete set of field samples.
+  */
+  void ReserveDiscreteField();
 
   /*!
   \brief Binds a given scalar field to the grid.
 
   \param[in] ScalarField Pointer to the function implementing the scalar field.
+  \param[in] parameters Array of parameters for the field to be evaluated.
   */
-  void BindScalarField(Real (*ScalarField)(const Real &xx));
+  void BindScalarField(
+    Real (*ScalarField)(const Real &xx, const std::vector<Real> &pp),
+    const std::vector<Real> &parameters = std::vector<Real>());
+
+  /*!
+  \brief Binds a given scalar field (as an array) to the grid.
+
+  \param[in] samples Array of samples.
+  */
+  void BindScalarField(const std::vector<Real> &samples);
 
   /*!
   \brief Binds a given vector field to the grid.
@@ -174,8 +205,11 @@ class UniStgGrid1D {
   \f]
 
   \param[in] VectorField Pointer to the function implementing the vector field.
+  \param[in] parameters Array of parameters for the field to be evaluated.
   */
-  void BindVectorField(Real (*VectorField)(Real xx));
+  void BindVectorField(
+    Real (*VectorField)(const Real &xx, const std::vector<Real> &pp),
+    const std::vector<Real> &parameters = std::vector<Real>());
 
   /*!
   \brief Writes grid to a file compatible with gnuplot 4.6.
@@ -193,7 +227,7 @@ class UniStgGrid1D {
                    std::string field_name) const;
 
  private:
-  FieldNature nature_;  ///< Nature of the discrete field.
+  FieldNature field_nature_;    ///< Nature of the discrete field.
 
   std::vector<Real> discrete_domain_x_; ///< Array of spatial data.
   std::vector<Real> discrete_field_;  ///< Array of field's data.

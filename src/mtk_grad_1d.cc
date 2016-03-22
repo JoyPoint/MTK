@@ -401,8 +401,8 @@ mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(mtk::Real west,
 
   #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(east < west, __FILE__, __LINE__, __func__);
-  mtk::Tools::Prevent(nn < 3*order_accuracy_ - 2, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nn < 3*order_accuracy_ - 2, __FILE__, __LINE__, __func__);
   #endif
 
   mtk::Real delta_x = (east - west)/((mtk::Real) num_cells_x);
@@ -411,11 +411,13 @@ mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(mtk::Real west,
 
   int gg_num_rows = nn + 1;
   int gg_num_cols = nn + 2;
-  int elements_per_row = num_bndy_coeffs_;
   int num_extra_rows = order_accuracy_/2;
+  int elements_per_extra_row = num_bndy_coeffs_;
 
   // Output matrix featuring sizes for gradient operators.
   mtk::DenseMatrix out(gg_num_rows, gg_num_cols);
+
+  out.set_encoded_operator(mtk::EncodedOperator::GRADIENT);
 
   /// 1. Insert mimetic boundary at the west.
 
@@ -423,7 +425,7 @@ mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(mtk::Real west,
   for (auto ii = 0; ii < num_extra_rows; ii++) {
     auto cc = 0;
     for(auto jj = 0 ; jj < gg_num_cols; jj++) {
-      if(cc >= elements_per_row) {
+      if(cc >= elements_per_extra_row) {
         out.SetValue(ii, jj, mtk::kZero);
       } else {
         out.SetValue(ii,jj,
@@ -448,7 +450,7 @@ mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(mtk::Real west,
   for (auto ii = gg_num_rows - 1; ii >= gg_num_rows - num_extra_rows; ii--) {
     auto cc = 0;
     for (auto jj = gg_num_cols - 1; jj >= 0; jj--) {
-      if(cc >= elements_per_row) {
+      if(cc >= elements_per_extra_row) {
         out.SetValue(ii,jj,mtk::kZero);
       } else {
         out.SetValue(ii,jj,
@@ -470,17 +472,21 @@ mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(
   #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(nn < 3*order_accuracy_ - 2, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(grid.field_nature() != mtk::FieldNature::SCALAR,
+                      __FILE__, __LINE__, __func__);
   #endif
 
   mtk::Real inv_delta_x{mtk::kOne/grid.delta_x()};
 
   int gg_num_rows = nn + 1;
   int gg_num_cols = nn + 2;
-  int elements_per_row = num_bndy_coeffs_;
   int num_extra_rows = order_accuracy_/2;
+  int elements_per_row = num_bndy_coeffs_;
 
   // Output matrix featuring sizes for gradient operators.
   mtk::DenseMatrix out(gg_num_rows, gg_num_cols);
+
+  out.set_encoded_operator(mtk::EncodedOperator::GRADIENT);
 
   /// 1. Insert mimetic boundary at the west.
 
@@ -538,11 +544,13 @@ mtk::DenseMatrix mtk::Grad1D::ReturnAsDimensionlessDenseMatrix(
 
   int gg_num_rows = nn + 1;
   int gg_num_cols = nn + 2;
-  int elements_per_row = num_bndy_coeffs_;
+  int elements_per_extra_row = num_bndy_coeffs_;
   int num_extra_rows = order_accuracy_/2;
 
   // Output matrix featuring sizes for gradient operators.
   mtk::DenseMatrix out(gg_num_rows, gg_num_cols);
+
+  out.set_encoded_operator(mtk::EncodedOperator::GRADIENT);
 
   /// 1. Insert mimetic boundary at the west.
 
@@ -550,7 +558,7 @@ mtk::DenseMatrix mtk::Grad1D::ReturnAsDimensionlessDenseMatrix(
   for (auto ii = 0; ii < num_extra_rows; ii++) {
     auto cc = 0;
     for(auto jj = 0 ; jj < gg_num_cols; jj++) {
-      if(cc >= elements_per_row) {
+      if(cc >= elements_per_extra_row) {
         out.SetValue(ii, jj, mtk::kZero);
       } else {
         out.SetValue(ii,jj,
@@ -575,7 +583,7 @@ mtk::DenseMatrix mtk::Grad1D::ReturnAsDimensionlessDenseMatrix(
   for (auto ii = gg_num_rows - 1; ii >= gg_num_rows - num_extra_rows; ii--) {
     auto cc = 0;
     for (auto jj = gg_num_cols - 1; jj >= 0; jj--) {
-      if(cc >= elements_per_row) {
+      if(cc >= elements_per_extra_row) {
         out.SetValue(ii,jj,mtk::kZero);
       } else {
         out.SetValue(ii,jj,

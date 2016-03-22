@@ -237,6 +237,8 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
 
   mtk::DenseMatrix lap; // Laplacian matrix to hold to computed coefficients.
 
+  lap.set_encoded_operator(mtk::EncodedOperator::LAPLACIAN);
+
   lap = mtk::BLASAdapter::RealDenseMM(div_m, grad_m);
 
   #if MTK_VERBOSE_LEVEL > 4
@@ -325,6 +327,8 @@ mtk::DenseMatrix mtk::Lap1D::ReturnAsDenseMatrix(
   #endif
 
   mtk::DenseMatrix lap(nn + 2, nn + 2); // Laplacian matrix to be returned.
+
+  lap.set_encoded_operator(mtk::EncodedOperator::LAPLACIAN);
 
   delta_ = grid.delta_x();
 

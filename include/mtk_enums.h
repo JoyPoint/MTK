@@ -128,5 +128,23 @@ enum class DirInterp {
   SCALAR_TO_VECTOR, ///< Interpolations places scalar on vectors' location.
   VECTOR_TO_SCALAR  ///< Interpolations places vectors on scalars' location.
 };
+
+/*!
+\enum EncodedOperator
+
+\ingroup c02-enums
+
+\brief Operators matrices can encode.
+
+Used to tag different different operators a matrix can encode.
+*/
+enum class EncodedOperator {
+  NOOP,             ///< No operator.
+  GRADIENT,         ///< Gradient operator.
+  DIVERGENCE,       ///< Divergence operator.
+  INTERPOLATION,    ///< Interpolation operator.
+  CURL,             ///< Curl operator.
+  LAPLACIAN         ///< Laplacian operator.
+};
 }
 #endif  // End of: MTK_INCLUDE_ENUMS_H_

@@ -72,6 +72,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define	MTK_INCLUDE_BLAS_ADAPTER_H_
 
 #include "mtk_dense_matrix.h"
+#include "mtk_uni_stg_grid_1d.h"
 
 namespace mtk {
 
@@ -146,7 +147,6 @@ class BLASAdapter {
   \brief Real-Arithmetic General (Dense matrices) Matrix-Vector Multiplier.
 
   Performs
-
   \f[
     \mathbf{y} := \alpha\mathbf{A}\mathbf{x} + \beta\mathbf{y}
   \f]
@@ -161,6 +161,36 @@ class BLASAdapter {
   */
   static void RealDenseMV(Real &alpha,
                           DenseMatrix &aa,
+                          Real *xx,
+                          Real &beta,
+                          Real *yy);
+
+  /*!
+  \brief Real-Arithmetic General (Dense matrices) Matrix-Vector Multiplier.
+
+  Performs
+  \f[
+    \mathbf{y} := \alpha\mathbf{A}\mathbf{x} + \beta\mathbf{y}
+  \f]
+
+  \param[in] alpha First scalar.
+  \param[in] aa Given matrix.
+  \param[in] ordering Ordering of the matrix.
+  \param[in] num_rows Number of rows.
+  \param[in] num_cols Number of columns.
+  \param[in] lda Leading dimension.
+  \param[in] xx First vector.
+  \param[in] beta Second scalar.
+  \param[in,out] yy Second vector (output).
+
+  \sa http://ejspeiro.github.io/Netlib-and-CPP/
+  */
+  static void RealDenseMV(Real &alpha,
+                          Real *aa,
+                          MatrixOrdering &ordering,
+                          int num_rows,
+                          int num_cols,
+                          int lda,
                           Real *xx,
                           Real &beta,
                           Real *yy);

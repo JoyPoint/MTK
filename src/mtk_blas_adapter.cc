@@ -409,6 +409,40 @@ void mtk::BLASAdapter::RealDenseMV(mtk::Real &alpha,
   std::swap(mm,nn);
 }
 
+void mtk::BLASAdapter::RealDenseMV(mtk::Real &alpha,
+                                   mtk::Real *aa,
+                                   mtk::MatrixOrdering &ordering,
+                                   int num_rows,
+                                   int num_cols,
+                                   int lda,
+                                   mtk::Real *xx,
+                                   mtk::Real &beta,
+                                   mtk::Real *yy) {
+
+  // Make sure input matrices are row-major ordered.
+
+  #ifdef MTK_PERFORM_PREVENTIONS
+  mtk::Tools::Prevent(ordering != mtk::MatrixOrdering::ROW_MAJOR,
+                      __FILE__, __LINE__, __func__);
+  #endif
+
+
+  char transa{'T'}; // State that now, the input WILL be in row-major ordering.
+
+  int mm{num_rows}; // Rows of aa.
+  int nn{num_cols}; // Columns of aa.
+  int incx{1};      // Increment of values in x.
+  int incy{1};      // Increment of values in y.
+
+  std::swap(mm,nn);
+  #ifdef MTK_PRECISION_DOUBLE
+  dgemv_(&transa, &mm, &nn, &alpha, aa, &lda, xx, &incx, &beta, yy, &incy);
+  #else
+  sgemv_(&transa, &mm, &nn, &alpha, aa, &lda, xx, &incx, &beta, yy, &incy);
+  #endif
+  std::swap(mm,nn);
+}
+
 mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM(mtk::DenseMatrix &aa,
                                                mtk::DenseMatrix &bb) {
 

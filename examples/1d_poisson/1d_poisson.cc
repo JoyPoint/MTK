@@ -120,14 +120,14 @@ mtk::Real Epsilon(const mtk::Real &tt) {
   return 0.0;
 };
 
-mtk::Real Source(const mtk::Real &xx) {
+mtk::Real Source(const mtk::Real &xx, const std::vector<mtk::Real> &pp) {
 
   mtk::Real lambda{-1.0};
 
   return -lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
 }
 
-mtk::Real KnownSolution(const mtk::Real &xx) {
+mtk::Real KnownSolution(const mtk::Real &xx, const std::vector<mtk::Real> &pp) {
 
   mtk::Real lambda{-1.0};
 
@@ -140,6 +140,7 @@ int main () {
   std::cout << "1D Uniform Staggered Grid." << std::endl;
 
   /// 1. Discretize space.
+
   mtk::Real west_bndy_x{0.0};
   mtk::Real east_bndy_x{1.0};
   int num_cells_x{10};
@@ -147,6 +148,7 @@ int main () {
   mtk::UniStgGrid1D comp_sol(west_bndy_x, east_bndy_x, num_cells_x);
 
   /// 2. Create mimetic operator as a matrix.
+
   mtk::Lap1D lap;
 
   if (!lap.ConstructLap1D()) {
@@ -170,14 +172,16 @@ int main () {
   std::cout << lapm << std::endl;
 
   /// 3. Create grid for source term.
+
   mtk::UniStgGrid1D source(west_bndy_x, east_bndy_x, num_cells_x);
 
-  source.BindScalarField(Source);
+  source.BindScalarField(Source, std::vector<mtk::Real>());
 
   std::cout << "source =" << std::endl;
   std::cout << source << std::endl;
 
   /// 4. Apply Boundary Conditions to operator.
+
   mtk::RobinBCDescriptor1D robin_bc_desc_1d;
 
   robin_bc_desc_1d.PushBackWestCoeff(Alpha);
@@ -203,6 +207,7 @@ int main () {
   }
 
   /// 5. Apply Boundary Conditions to source term's grid.
+
   robin_bc_desc_1d.ImposeOnGrid(source);
 
   std::cout << "source =" << std::endl;
@@ -214,6 +219,7 @@ int main () {
   }
 
   /// 6. Solve the problem.
+
   int info{mtk::LAPACKAdapter::SolveDenseSystem(lapm, source)};
 
   if (!info) {
@@ -234,9 +240,10 @@ int main () {
   }
 
   /// 7. Compare computed solution against known solution.
+
   mtk::UniStgGrid1D known_sol(west_bndy_x, east_bndy_x, num_cells_x);
 
-  known_sol.BindScalarField(KnownSolution);
+  known_sol.BindScalarField(KnownSolution, std::vector<mtk::Real>());
 
   std::cout << "known_sol =" << std::endl;
   std::cout << known_sol << std::endl;

@@ -151,10 +151,13 @@ bool mtk::Curl2D::ConstructCurl2D(const mtk::UniStgGrid2D &grid,
 
   curl_ = d2d;
 
+  curl_.set_encoded_operator(mtk::EncodedOperator::CURL);
+
   return info;
 }
 
 mtk::DenseMatrix mtk::Curl2D::ReturnAsDenseMatrix() const {
+
 
   return curl_;
 }

@@ -163,6 +163,37 @@ void mtk::RobinBCDescriptor1D::set_east_condition(
   east_condition_ = east_condition;
 }
 
+bool mtk::RobinBCDescriptor1D::ImposeOnDivergenceMatrix(
+    const mtk::Div1D &div,
+    mtk::DenseMatrix &matrix,
+    const mtk::Real &time) const {
+
+  #ifdef MTK_PERFORM_PREVENTIONS
+  mtk::Tools::Prevent(highest_order_diff_west_ == -1,
+                      __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(highest_order_diff_east_ == -1,
+                      __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(matrix.num_rows() == 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(matrix.num_cols() == 0, __FILE__, __LINE__, __func__);
+  #endif
+
+  /// 1. Impose Dirichlet coefficients.
+
+  /// 1.1. Impose Dirichlet condition at the west.
+  matrix.SetValue(0, 0, (west_coefficients_[0])(time));
+
+  /// 1.2. Impose Dirichlet condition at the east.
+  matrix.SetValue(matrix.num_rows() - 1,
+                  matrix.num_cols() - 1,
+                  (east_coefficients_[0])(time));
+
+  /// 2. Impose Neumann coefficients.
+
+  if (highest_order_diff_west_ > 0) {}
+
+  return true;
+}
+
 bool mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix(
     const mtk::Lap1D &lap,
     mtk::DenseMatrix &matrix,
@@ -178,6 +209,7 @@ bool mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix(
   #endif
 
   /// 1. Impose Dirichlet coefficients.
+
   /// 1.1. Impose Dirichlet condition at the west.
   matrix.SetValue(0, 0, (west_coefficients_[0])(time));
 
@@ -187,6 +219,7 @@ bool mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix(
                   (east_coefficients_[0])(time));
 
   /// 2. Impose Neumann coefficients.
+
   if (highest_order_diff_west_ > 0) {
 
     /// 2.1. Create a mimetic gradient to approximate the first derivative.

@@ -65,6 +65,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "glpk.h"
 
 #include "mtk_roots.h"
+#include "mtk_enums.h"
 #include "mtk_dense_matrix.h"
 #include "mtk_uni_stg_grid_1d.h"
 

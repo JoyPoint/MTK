@@ -53,8 +53,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #if __cplusplus == 201103L
 
-#include <iostream>
 #include <ctime>
+
+#include <iostream>
+
+#include <vector>
 
 #include "mtk.h"
 
@@ -68,7 +71,7 @@ void TestDefaultConstructor() {
   mtk::Tools::Assert(gg.delta_x() == mtk::kZero);
 }
 
-mtk::Real ScalarField(const mtk::Real &xx) {
+mtk::Real ScalarField(const mtk::Real &xx, const std::vector<mtk::Real> &pp) {
 
   return 2.0*xx;
 }
@@ -84,7 +87,7 @@ void TestConstructWithWestBndyEastBndyNumCellsOStreamOperatorBindScalarField() {
 
   mtk::UniStgGrid1D gg(aa, bb, nn);
 
-  gg.BindScalarField(ScalarField);
+  gg.BindScalarField(ScalarField, std::vector<mtk::Real>());
 
   std::cout << gg << std::endl;
 
@@ -105,7 +108,7 @@ void TestBindScalarFieldWriteToFile() {
 
   bool assertion{true};
 
-  gg.BindScalarField(ScalarField);
+  gg.BindScalarField(ScalarField, std::vector<mtk::Real>());
 
   assertion =
     assertion &&
@@ -121,7 +124,8 @@ void TestBindScalarFieldWriteToFile() {
   mtk::Tools::Assert(assertion);
 }
 
-mtk::Real VectorFieldPComponent(mtk::Real xx) {
+mtk::Real VectorFieldPComponent(const mtk::Real &xx,
+                                const std::vector<mtk::Real> &pp) {
 
   return xx*xx;
 }
@@ -139,7 +143,7 @@ void TestBindVectorField() {
 
   bool assertion{true};
 
-  gg.BindVectorField(VectorFieldPComponent);
+  gg.BindVectorField(VectorFieldPComponent, std::vector<mtk::Real>());
 
   assertion =
     assertion &&

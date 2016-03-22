@@ -169,6 +169,8 @@ void TestReturnAsDenseMatrixWithGrid() {
 
   mtk::DenseMatrix ref(rr, cc);
 
+  ref.set_encoded_operator(mtk::EncodedOperator::GRADIENT);
+
   // Row 1.
   ref.SetValue(0,0,-13.3333);
   ref.SetValue(0,1,15);
@@ -222,6 +224,9 @@ void TestReturnAsDenseMatrixWithGrid() {
   ref.SetValue(5,4,1.66667);
   ref.SetValue(5,5,-15.0);
   ref.SetValue(5,6,13.3333);
+
+  std::cout << grad2m << std::endl;
+  std::cout << ref << std::endl;
 
   mtk::Tools::EndUnitTestNo(6);
   mtk::Tools::Assert(grad2m == ref);

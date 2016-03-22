@@ -1,6 +1,7 @@
 # Makefile for the examples folder.
 
 examples:
+	@( cd 1d_accuracy; $(MAKE))
 	@( cd 1d_divergence; $(MAKE))
 	@( cd 1d_gradient; $(MAKE))
 	@( cd 1d_laplacian; $(MAKE))
@@ -14,6 +15,7 @@ examples:
 	@( cd 3d_diffusion; $(MAKE))
 
 clean:
+	@( cd 1d_accuracy; $(MAKE) clean )
 	@( cd 1d_divergence; $(MAKE) clean )
 	@( cd 1d_gradient; $(MAKE) clean )
 	@( cd 1d_laplacian; $(MAKE) clean )

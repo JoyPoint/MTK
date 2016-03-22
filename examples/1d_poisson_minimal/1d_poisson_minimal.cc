@@ -109,12 +109,12 @@ mtk::Real Omega(const mtk::Real &tt) { return -1.0; };
 
 mtk::Real Epsilon(const mtk::Real &tt) { return 0.0; };
 
-mtk::Real Source(const mtk::Real &xx) {
+mtk::Real Source(const mtk::Real &xx, const std::vector<mtk::Real> &pp) {
   mtk::Real lambda = -1.0;
   return lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
 }
 
-mtk::Real KnownSolution(const mtk::Real &xx) {
+mtk::Real KnownSolution(const mtk::Real &xx, const std::vector<mtk::Real> &pp) {
   mtk::Real lambda = -1.0;
   return (exp(lambda*xx) - 1.0)/(exp(lambda) - 1.0);
 }
@@ -132,7 +132,7 @@ int main () {
   mtk::UniStgGrid1D comp_sol(west_bndy_x, east_bndy_x, num_cells_x);
   mtk::UniStgGrid1D known_sol(west_bndy_x, east_bndy_x, num_cells_x);
   mtk::DenseMatrix lapm(lap.ReturnAsDenseMatrix(comp_sol));
-  source.BindScalarField(Source);
+  source.BindScalarField(Source, std::vector<mtk::Real>());
   mtk::RobinBCDescriptor1D bcs;
   bcs.PushBackWestCoeff(Alpha);
   bcs.PushBackWestCoeff(Beta);
@@ -149,7 +149,7 @@ int main () {
     return EXIT_FAILURE;
   }
   source.WriteToFile("1d_poisson_minimal_comp_sol.dat", "x", "~u(x)");
-  known_sol.BindScalarField(KnownSolution);
+  known_sol.BindScalarField(KnownSolution, std::vector<mtk::Real>());
   known_sol.WriteToFile("1d_poisson_minimal_known_sol.dat", "x", "u(x)");
   mtk::Real relative_norm_2_error =
     mtk::BLASAdapter::RelNorm2Error(source.discrete_field(),

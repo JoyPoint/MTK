@@ -91,6 +91,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "mtk_roots.h"
 #include "mtk_dense_matrix.h"
 #include "mtk_uni_stg_grid_1d.h"
+#include "mtk_div_1d.h"
 #include "mtk_lap_1d.h"
 
 #ifndef MTK_INCLUDE_ROBIN_BC_DESCRIPTOR_1D_H_
@@ -208,6 +209,19 @@ class RobinBCDescriptor1D {
   \param [in] east_condition \f$ \beta_e(y,t):\Omega\mapsto\mathbb{R} \f$.
   */
   void set_east_condition(Real (*east_condition)(const Real &tt)) noexcept;
+
+  /*!
+  \brief Imposes the condition on the operator represented as matrix.
+
+  \param[in] div Operator in the Matrix.
+  \param[in,out] matrix Input Divergence operator.
+  \param[in] time Current time snapshot. Default is kZero.
+
+  \return Success of the imposition.
+  */
+  bool ImposeOnDivergenceMatrix(const Div1D &div,
+                                DenseMatrix &matrix,
+                                const Real &time = mtk::kZero) const;
 
   /*!
   \brief Imposes the condition on the operator represented as matrix.

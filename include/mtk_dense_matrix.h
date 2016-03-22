@@ -74,6 +74,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "mtk_roots.h"
 #include "mtk_enums.h"
 #include "mtk_matrix.h"
+#include "mtk_uni_stg_grid_1d.h"
+#include "mtk_uni_stg_grid_2d.h"
+#include "mtk_uni_stg_grid_3d.h"
 
 namespace mtk {
 
@@ -195,6 +198,20 @@ class DenseMatrix {
   ~DenseMatrix();
 
   /*!
+  \brief Return operator encoded by this matrix.
+
+  \return Operator encoded by this matrix.
+  */
+  EncodedOperator encoded_operator() const;
+
+  /*!
+  \brief Sets the encoded operator.
+
+  \param[in] op Encoded operator.
+  */
+  void set_encoded_operator(const EncodedOperator &op);
+
+  /*!
   \brief Provides access to the matrix data.
 
   \return Pointer to a Matrix.
@@ -286,9 +303,11 @@ class DenseMatrix {
   bool WriteToFile(const std::string &filename) const;
 
  private:
+  EncodedOperator encoded_operator_;  ///< Operator this matrix is encoding.
+
   Matrix matrix_properties_;  ///< Data related to the matrix nature.
 
   Real *data_; ///< Array holding the data in contiguous position in memory.
 };
 }
-#endif  // End of: MTK_INCLUDE_MTK_DENSE_MATRIX_H_
+#endif  // End of: MTK_INCLUDE_DENSE_MATRIX_H_

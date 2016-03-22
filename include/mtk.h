@@ -361,4 +361,6 @@ Mimetic operators.
 #include "mtk_lap_3d.h"
 #include "mtk_robin_bc_descriptor_3d.h"
 
+#include "mtk_operator_applicator.h"
+
 #endif // End of: MTK_INCLUDE_MTK_H_

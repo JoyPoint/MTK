@@ -181,7 +181,7 @@ void TestSecondOrderReturnAsDenseMatrixWithGrid() {
     std::cerr << "Mimetic div (2nd order) could not be built." << std::endl;
   }
 
-  mtk::UniStgGrid1D grid(0.0, 1.0, 5);
+  mtk::UniStgGrid1D grid(0.0, 1.0, 5, mtk::FieldNature::VECTOR);
 
   mtk::DenseMatrix div2m(div2.ReturnAsDenseMatrix(grid));
 
@@ -189,6 +189,8 @@ void TestSecondOrderReturnAsDenseMatrixWithGrid() {
   int cc{6};
 
   mtk::DenseMatrix ref(rr, cc);
+
+  ref.set_encoded_operator(mtk::EncodedOperator::DIVERGENCE);
 
   // Row 2.
   ref.SetValue(1,0,-5.0);
@@ -255,15 +257,40 @@ void TestFourthOrderReturnAsDenseMatrixWithGrid() {
 
   std::cout << div4 << std::endl;
 
-  mtk::UniStgGrid1D grid(0.0, 1.0, 11);
+  mtk::UniStgGrid1D grid(0.0, 1.0, 12, mtk::FieldNature::VECTOR);
 
   std::cout << grid << std::endl;
 
-  mtk::DenseMatrix div4m(div4.ReturnAsDenseMatrix(grid));
+  mtk::DenseMatrix div4m(div4.ReturnAsDimensionlessDenseMatrix(12));
 
   std::cout << div4m << std::endl;
 
   mtk::Tools::EndUnitTestNo(9);
+}
+
+void TestSixthOrderReturnAsDenseMatrixWithGrid() {
+
+  mtk::Tools::BeginUnitTestNo(10);
+
+  mtk::Div1D div6;
+
+  bool assertion = div6.ConstructDiv1D(6);
+
+  if (!assertion) {
+    std::cerr << "Mimetic div (6th order) could not be built." << std::endl;
+  }
+
+  std::cout << div6 << std::endl;
+
+  mtk::UniStgGrid1D grid(0.0, 1.0, 20, mtk::FieldNature::VECTOR);
+
+  std::cout << grid << std::endl;
+
+  mtk::DenseMatrix div6m(div6.ReturnAsDimensionlessDenseMatrix(20));
+
+  std::cout << div6m << std::endl;
+
+  mtk::Tools::EndUnitTestNo(10);
 }
 
 int main () {
@@ -279,6 +306,7 @@ int main () {
   TestDefaultConstructorFactoryMethodFourteenthOrderDefThreshold();
   TestSecondOrderReturnAsDenseMatrixWithGrid();
   TestFourthOrderReturnAsDenseMatrixWithGrid();
+  TestSixthOrderReturnAsDenseMatrixWithGrid();
 }
 
 #else
