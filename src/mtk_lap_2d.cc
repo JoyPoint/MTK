@@ -61,6 +61,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iomanip>
 
 #include "mtk_roots.h"
+#include "mtk_enums.h"
 #include "mtk_blas_adapter.h"
 #include "mtk_grad_2d.h"
 #include "mtk_div_2d.h"

@@ -145,13 +145,14 @@ int main () {
   mtk::Real east_bndy_x{1.0};
   mtk::Real south_bndy_y{0.0};
   mtk::Real north_bndy_y{1.0};
-  int num_cells_x{5};
-  int num_cells_y{5};
+  int num_cells_x{10};
+  int num_cells_y{10};
 
   mtk::UniStgGrid2D comp_sol(west_bndy_x, east_bndy_x, num_cells_x,
                              south_bndy_y, north_bndy_y, num_cells_y);
 
   /// 2. Create mimetic operator as a matrix.
+
   mtk::Lap2D lap;
 
   if (!lap.ConstructLap2D(comp_sol)) {
@@ -162,12 +163,14 @@ int main () {
   mtk::DenseMatrix lapm(lap.ReturnAsDenseMatrix());
 
   /// 3. Create grid for source term.
+
   mtk::UniStgGrid2D source(west_bndy_x, east_bndy_x, num_cells_x,
                            south_bndy_y, north_bndy_y, num_cells_y);
 
   source.BindScalarField(Source);
 
   /// 4. Apply Boundary Conditions to operator.
+
   mtk::RobinBCDescriptor2D bcd;
 
   bcd.PushBackWestCoeff(BCCoeff);
@@ -183,6 +186,7 @@ int main () {
   }
 
   /// 5. Apply Boundary Conditions to source term's grid.
+
   bcd.set_west_condition(WestBC);
   bcd.set_east_condition(EastBC);
   bcd.set_south_condition(SouthBC);
@@ -196,6 +200,7 @@ int main () {
   }
 
   /// 6. Solve the problem.
+
   int info{mtk::LAPACKAdapter::SolveDenseSystem(lapm, source)};
 
   if (!info) {
@@ -213,6 +218,7 @@ int main () {
   }
 
   /// 7. Compare computed solution against known solution.
+
   mtk::UniStgGrid2D known_sol(west_bndy_x, east_bndy_x, num_cells_x,
                               south_bndy_y, north_bndy_y, num_cells_y);
 

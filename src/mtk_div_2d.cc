@@ -104,8 +104,8 @@ bool mtk::Div2D::ConstructDiv2D(const mtk::UniStgGrid2D &grid,
   auto south = grid.south_bndy();
   auto north = grid.east_bndy();
 
-  mtk::UniStgGrid1D grid_x(west, east, num_cells_x);
-  mtk::UniStgGrid1D grid_y(south, north, num_cells_y);
+  mtk::UniStgGrid1D grid_x(west, east, num_cells_x, mtk::FieldNature::VECTOR);
+  mtk::UniStgGrid1D grid_y(south, north, num_cells_y, mtk::FieldNature::VECTOR);
 
   mtk::DenseMatrix dx(div.ReturnAsDenseMatrix(grid_x));
   mtk::DenseMatrix dy(div.ReturnAsDenseMatrix(grid_y));
