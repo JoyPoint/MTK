@@ -41,7 +41,7 @@ Finally, we will solve this problem considering \f$ k = 2 \f$.
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
