@@ -9,7 +9,7 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -60,7 +60,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iostream>
 #include <iomanip>
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_grad_1d.h"
 #include "mtk_grad_3d.h"
 
@@ -103,7 +103,7 @@ bool mtk::Grad3D::ConstructGrad3D(const mtk::UniStgGrid3D &grid,
   auto west = grid.west_bndy();
   auto east = grid.east_bndy();
   auto south = grid.south_bndy();
-  auto north = grid.east_bndy();
+  auto north = grid.north_bndy();
   auto bottom = grid.bottom_bndy();
   auto top = grid.top_bndy();
 

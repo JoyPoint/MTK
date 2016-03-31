@@ -13,7 +13,7 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm.
 \todo Implement creation of \f$ \mathbf{\Lambda}\f$ w. mtk::BLASAdapter.
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -72,11 +72,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <algorithm>
 
 #include "mtk_tools.h"
-
 #include "mtk_blas_adapter.h"
 #include "mtk_lapack_adapter.h"
 #include "mtk_glpk_adapter.h"
-
 #include "mtk_div_1d.h"
 
 namespace mtk {

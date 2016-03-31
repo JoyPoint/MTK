@@ -13,7 +13,7 @@ mimetic discretization of the gradient operator.
 \todo Implement this class.
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -80,10 +80,14 @@ of the gradient operator.
 */
 class Quad1D {
  public:
-  /// \brief Output stream operator for printing.
+  /*!
+	\brief Output stream operator for printing.
+	*/
   friend std::ostream& operator <<(std::ostream& stream, Quad1D &in);
 
-  /// \brief Default constructor.
+  /*!
+  \brief Default constructor.
+  */
   Quad1D();
 
   /*!
@@ -93,7 +97,9 @@ class Quad1D {
   */
   Quad1D(const Quad1D &quad);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~Quad1D();
 
   /*!

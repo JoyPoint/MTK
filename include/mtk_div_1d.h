@@ -9,7 +9,7 @@ using the Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -64,7 +64,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "glpk.h"
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_dense_matrix.h"
 #include "mtk_uni_stg_grid_1d.h"
 
@@ -82,10 +82,14 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 */
 class Div1D {
  public:
-  /// \brief Output stream operator for printing.
+  /*!
+	\brief Output stream operator for printing.
+	*/
   friend std::ostream& operator <<(std::ostream& stream, Div1D &in);
 
-  /// \brief Default constructor.
+  /*!
+  \brief Default constructor.
+  */
   Div1D();
 
   /*!
@@ -95,7 +99,9 @@ class Div1D {
   */
   Div1D(const Div1D &div);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~Div1D();
 
   /*!
@@ -169,7 +175,7 @@ class Div1D {
   */
   DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid) const;
 
-/*!
+  /*!
   \brief Returns the operator as a dimensionless dense matrix.
 
   \return The operator as a dimensionless dense matrix.

@@ -10,7 +10,7 @@ Definition of an 1D uniform staggered grid.
 \todo Create overloaded binding routines that read data from files.
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -61,7 +61,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vector>
 #include <string>
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 
 namespace mtk {
 
@@ -76,7 +76,9 @@ Uniform 1D Staggered Grid.
 */
 class UniStgGrid1D {
  public:
-  /// \brief Prints the grid as a tuple of arrays.
+  /*!
+	\brief Prints the grid as a tuple of arrays.
+	*/
   friend std::ostream& operator <<(std::ostream& stream, UniStgGrid1D &in);
 
   /*!
@@ -88,7 +90,9 @@ class UniStgGrid1D {
   */
   UniStgGrid1D& operator =(const UniStgGrid1D &in);
 
-  /// \brief Default constructor.
+  /*!
+  \brief Default constructor.
+  */
   UniStgGrid1D();
 
   /*!
@@ -113,7 +117,9 @@ class UniStgGrid1D {
                const int &num_cells_x,
                const mtk::FieldNature &field_nature = mtk::FieldNature::SCALAR);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~UniStgGrid1D();
 
   /*!
@@ -174,7 +180,7 @@ class UniStgGrid1D {
   */
   void GenerateDiscreteDomainX();
 
-/*!
+  /*!
   \brief Allocates memory for the discrete set of field samples.
   */
   void ReserveDiscreteField();

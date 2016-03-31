@@ -86,6 +86,7 @@ int main () {
     "with Dirichlet BCs." << std::endl;
 
   /// 1. Discretize space.
+
   mtk::Real west_bndy_x{0.0};
   mtk::Real east_bndy_x{1.0};
   mtk::Real south_bndy_y{0.0};
@@ -93,15 +94,16 @@ int main () {
   mtk::Real bottom_bndy_z{0.0};
   mtk::Real top_bndy_z{1.0};
 
-  int num_cells_x{50};
-  int num_cells_y{50};
-  int num_cells_z{50};
+  int num_cells_x{10};
+  int num_cells_y{10};
+  int num_cells_z{10};
 
   mtk::UniStgGrid3D comp_sol(west_bndy_x, east_bndy_x, num_cells_x,
                              south_bndy_y, north_bndy_y, num_cells_y,
                              bottom_bndy_z, top_bndy_z, num_cells_z);
 
   /// 2. Bind initial condition to the grid.
+
   comp_sol.BindScalarField(InitialCondition);
 
   if(!comp_sol.WriteToFile("3d_diffusion_comp_sol.dat",
@@ -113,7 +115,21 @@ int main () {
     return EXIT_FAILURE;
   }
 
-  /// \todo Time discretization...
+  /// 3. Create mimetic operator as a matrix.
+
+  mtk::Lap3D lap;
+
+  if (!lap.ConstructLap3D(comp_sol)) {
+    std::cerr << "Mimetic Laplacian could not be built." << std::endl;
+    return EXIT_FAILURE;
+  }
+
+  mtk::DenseMatrix lapm(lap.ReturnAsDenseMatrix());
+
+  if (!lapm.WriteToFile("3d_diffusion_lapm.dat")) {
+    std::cerr << "Laplacian matrix could not be written to disk." << std::endl;
+    return EXIT_FAILURE;
+  }
 }
 
 #else

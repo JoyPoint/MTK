@@ -1,6 +1,6 @@
 # Makefile for example: 1d_mimetic_measure.exe
 
-include ../../Makefile.inc
+include ../../Makefile.conf
 
 #   Linking statements.
 #   __________________________________________________________________

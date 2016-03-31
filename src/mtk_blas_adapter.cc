@@ -25,7 +25,7 @@ The BLAS can be installed from links given in the See Also section of this page.
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -75,7 +75,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <vector>
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_tools.h"
 #include "mtk_blas_adapter.h"
 
@@ -308,18 +308,18 @@ C := alpha*op(a)*op(b) + beta*c
 \param[in]      ldc     The leading dimension of c.
 */
 void sgemm_(char *transa,
-            char* transb,
-            int *m,
-            int *n,
-            int *k,
-            double *alpha,
-            double *a,
-            int *lda,
-            double *b,aamm
-            int *ldb,
-            double *beta,
-            double *c,
-            int *ldc);
+		        char* transb,
+		        int *m,
+		        int *n,
+		        int *k,
+		        double *alpha,
+		        double *a,
+		        int *lda,
+		        double *b,
+		        int *ldb,
+		        double *beta,
+		        double *c,
+		        int *ldc);
 }
 #endif
 }
@@ -392,11 +392,11 @@ void mtk::BLASAdapter::RealDenseMV(mtk::Real &alpha,
 
   char transa{'T'}; // State that now, the input WILL be in row-major ordering.
 
-  int mm{aa.num_rows()};                  // Rows of aa.
-  int nn{aa.num_cols()};                  // Columns of aa.
-  int lda{(aa.matrix_properties()).ld()}; // Leading dimension.
-  int incx{1};                            // Increment of values in x.
-  int incy{1};                            // Increment of values in y.
+  int mm{aa.num_rows()};                  								// Rows of aa.
+  int nn{aa.num_cols()};                  								// Columns of aa.
+  int lda{(aa.matrix_properties()).leading_dimension()};	// Leading dimension.
+  int incx{1};                            								// Increment x vals.
+  int incy{1};                            								// Increment y vals.
 
   std::swap(mm,nn);
   #ifdef MTK_PRECISION_DOUBLE

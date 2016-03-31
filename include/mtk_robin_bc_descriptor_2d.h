@@ -32,7 +32,7 @@ in the differentiation matrices and the conditions in the grids.
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -80,7 +80,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef MTK_INCLUDE_ROBIN_BC_DESCRIPTOR_2D_H_
 #define MTK_INCLUDE_ROBIN_BC_DESCRIPTOR_2D_H_
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_dense_matrix.h"
 #include "mtk_lap_2d.h"
 #include "mtk_uni_stg_grid_2d.h"
@@ -131,7 +131,9 @@ in the differentiation matrices and the conditions in the grids.
 */
 class RobinBCDescriptor2D {
  public:
-  /// \brief Default constructor.
+  /*!
+	\brief Default constructor.
+	*/
   RobinBCDescriptor2D();
 
   /*!
@@ -141,7 +143,9 @@ class RobinBCDescriptor2D {
   */
   RobinBCDescriptor2D(const RobinBCDescriptor2D &desc);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~RobinBCDescriptor2D() noexcept;
 
   /*!

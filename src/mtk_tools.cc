@@ -9,7 +9,7 @@ and to assists with unitary testing.
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -54,9 +54,11 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#include <cstdlib>
+
 #include <iostream>
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_tools.h"
 
 void mtk::Tools::Prevent(const bool condition,
@@ -65,6 +67,7 @@ void mtk::Tools::Prevent(const bool condition,
                          const char *const fxname) noexcept {
 
   /// \todo Check if this is the best way of stalling execution.
+
   if (lineno < 1) {
     std::cerr << __FILE__ << ": " << "Incorrect parameter at line " <<
     __LINE__ - 2 << " (" << __func__ << ")" << std::endl;
@@ -78,9 +81,9 @@ void mtk::Tools::Prevent(const bool condition,
   }
 }
 
-int mtk::Tools::test_number_{};   // Current test being executed.
+int mtk::Tools::test_number_{};	// Current test being executed.
 
-mtk::Real mtk::Tools::duration_{};    // Duration of the current test.
+mtk::Real mtk::Tools::duration_{};	// Duration of the current test.
 
 clock_t mtk::Tools::begin_time_{};  // Elapsed time on current test.
 

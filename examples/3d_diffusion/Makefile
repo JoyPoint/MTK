@@ -1,6 +1,6 @@
 # Makefile for example: 3d_diffusion.exe
 
-include ../../Makefile.inc
+include ../../Makefile.conf
 
 #   Linking statements.
 #   __________________________________________________________________

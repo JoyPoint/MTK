@@ -9,7 +9,7 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm.
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -60,7 +60,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iostream>
 #include <iomanip>
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_enums.h"
 #include "mtk_uni_stg_grid_1d.h"
 #include "mtk_div_1d.h"
@@ -157,7 +157,6 @@ bool mtk::Curl2D::ConstructCurl2D(const mtk::UniStgGrid2D &grid,
 }
 
 mtk::DenseMatrix mtk::Curl2D::ReturnAsDenseMatrix() const {
-
 
   return curl_;
 }

@@ -8,12 +8,12 @@ In this way, client codes only have to instruct #include "mtk.h".
 
 \warning It is extremely important that the headers are added to this file in a
 specific order; that is, considering the dependence between the classes these
-contain.
+define.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -229,7 +229,7 @@ provided in the /examples/ folder within the distributed software.
 
 \page section_license_mod Licensing and Modifications
 
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -278,20 +278,20 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define MTK_INCLUDE_MTK_H_
 
 /*!
-\defgroup c01-roots Roots.
+\defgroup c01-foundations Foundations.
 
 \brief Fundamental execution parameters and defined types.
 
 Fundamental execution parameters and defined types.
 */
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 
 /*!
 \defgroup c02-enums Enumerations.
 
-\brief Enumerations.
+\brief Fundamental execution parameters and defined types.
 
-Enumerations.
+Fundamental execution parameters and defined types.
 */
 #include "mtk_enums.h"
 
@@ -358,6 +358,7 @@ Mimetic operators.
 
 #include "mtk_grad_3d.h"
 #include "mtk_div_3d.h"
+#include "mtk_foundations.h"
 #include "mtk_lap_3d.h"
 #include "mtk_robin_bc_descriptor_3d.h"
 

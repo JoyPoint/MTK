@@ -4,7 +4,7 @@
 \brief Tool manager class.
 
 Definition of a class providing basic tools to ensure execution correctness,
-and to assists with unitary testing.
+and to assists with unit testing.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 
@@ -13,7 +13,7 @@ function, pass large objects using pointers to constant data or references to
 constant data, to obtain the performance benefits of pass-by-reference.
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -63,7 +63,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <ctime>
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 
 namespace mtk {
 

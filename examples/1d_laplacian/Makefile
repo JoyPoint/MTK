@@ -1,6 +1,6 @@
 # Makefile for example: 1d_laplacian.exe
 
-include ../../Makefile.inc
+include ../../Makefile.conf
 
 #   Linking statements.
 #   __________________________________________________________________

@@ -9,7 +9,7 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -57,7 +57,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef MTK_INCLUDE_MTK_DIV_2D_H_
 #define MTK_INCLUDE_MTK_DIV_2D_H_
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_dense_matrix.h"
 #include "mtk_uni_stg_grid_2d.h"
 
@@ -75,7 +75,9 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 */
 class Div2D {
  public:
-  /// \brief Default constructor.
+	/*!
+  \brief Default constructor.
+  */
   Div2D();
 
   /*!
@@ -85,7 +87,9 @@ class Div2D {
   */
   Div2D(const Div2D &div);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~Div2D();
 
   /*!

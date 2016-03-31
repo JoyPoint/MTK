@@ -57,7 +57,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef MTK_INCLUDE_MTK_CURL_2D_H_
 #define MTK_INCLUDE_MTK_CURL_2D_H_
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_dense_matrix.h"
 #include "mtk_uni_stg_grid_2d.h"
 #include "mtk_uni_stg_grid_3d.h"
@@ -76,10 +76,14 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 */
 class Curl2D {
  public:
-  /// \brief Operator application operator on a grid.
+  /*!
+	\brief Operator application operator on a grid.
+	*/
   UniStgGrid3D operator*(const UniStgGrid2D &grid) const;
 
-  /// \brief Default constructor.
+  /*!
+  \brief Default constructor.
+  */
   Curl2D();
 
   /*!
@@ -89,7 +93,9 @@ class Curl2D {
   */
   Curl2D(const Curl2D &curl);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~Curl2D();
 
   /*!

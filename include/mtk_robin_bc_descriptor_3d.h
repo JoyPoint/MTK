@@ -32,7 +32,7 @@ the conditions in the grids.
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -80,7 +80,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef MTK_INCLUDE_ROBIN_BC_DESCRIPTOR_3D_H_
 #define MTK_INCLUDE_ROBIN_BC_DESCRIPTOR_3D_H_
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_dense_matrix.h"
 #include "mtk_lap_2d.h"
 #include "mtk_uni_stg_grid_2d.h"
@@ -133,7 +133,9 @@ the conditions in the grids.
 */
 class RobinBCDescriptor3D {
  public:
-  /// \brief Default constructor.
+  /*!
+	\brief Default constructor.
+	*/
   RobinBCDescriptor3D();
 
   /*!
@@ -143,7 +145,9 @@ class RobinBCDescriptor3D {
   */
   RobinBCDescriptor3D(const RobinBCDescriptor3D &desc);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~RobinBCDescriptor3D() noexcept;
 
   /*!
@@ -153,8 +157,6 @@ class RobinBCDescriptor3D {
   */
   int highest_order_diff_west() const noexcept;
 
-  // ...
-
   /*!
   \brief Push back coefficient function at west lowest order diff. available.
 
@@ -162,8 +164,6 @@ class RobinBCDescriptor3D {
     \f$ c_w(x,y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} \f$.
   */
   void PushBackWestCoeff(CoefficientFunction2D cw);
-
-  // ...
 
   /*!
   \brief Set boundary condition at west.
@@ -174,8 +174,6 @@ class RobinBCDescriptor3D {
   void set_west_condition(Real (*west_condition)(const Real &xx,
                                                  const Real &yy,
                                                  const Real &tt)) noexcept;
-
-  // ...
 
   /*!
   \brief Imposes the condition on the operator represented as matrix.

@@ -1,6 +1,6 @@
 ## Main makefile.
 
-include Makefile.inc
+include Makefile.conf
 
 all: mtklib test example
 
@@ -20,7 +20,7 @@ gendoc:
 	@( $(DOCGEN) $(DOCFILE) )
 	@( cd $(DOC)/latex; $(MAKE) )
 
-clean: cleanroot cleanlib cleantest cleanexample
+clean: cleanroot cleanlib cleantest # cleanexample
 
 cleanroot:
 	@(rm -f *~)

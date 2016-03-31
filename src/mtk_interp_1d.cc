@@ -10,7 +10,7 @@ This class implements a 1D interpolation operator.
 \author: Johnny Corbino - jcorbino at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,

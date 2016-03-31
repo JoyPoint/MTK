@@ -9,7 +9,7 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -60,7 +60,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iostream>
 #include <iomanip>
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_div_1d.h"
 #include "mtk_div_3d.h"
 
@@ -107,9 +107,9 @@ bool mtk::Div3D::ConstructDiv3D(const mtk::UniStgGrid3D &grid,
   auto bottom = grid.bottom_bndy();
   auto top = grid.top_bndy();
 
-  mtk::UniStgGrid1D grid_x(west, east, num_cells_x);
-  mtk::UniStgGrid1D grid_y(south, north, num_cells_y);
-  mtk::UniStgGrid1D grid_z(bottom, top, num_cells_z);
+  mtk::UniStgGrid1D grid_x(west, east, num_cells_x, mtk::FieldNature::VECTOR);
+  mtk::UniStgGrid1D grid_y(south, north, num_cells_y, mtk::FieldNature::VECTOR);
+  mtk::UniStgGrid1D grid_z(bottom, top, num_cells_z, mtk::FieldNature::VECTOR);
 
   mtk::DenseMatrix Dx(div.ReturnAsDenseMatrix(grid_x));
   mtk::DenseMatrix Dy(div.ReturnAsDenseMatrix(grid_y));

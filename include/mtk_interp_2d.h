@@ -10,7 +10,7 @@ This class implements a 2D interpolation operator.
 \author: Johnny Corbino - jcorbino at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -58,7 +58,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef MTK_INCLUDE_MTK_INTERP_2D_H_
 #define MTK_INCLUDE_MTK_INTERP_2D_H_
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_dense_matrix.h"
 #include "mtk_uni_stg_grid_2d.h"
 
@@ -75,7 +75,9 @@ This class implements a 2D interpolation operator.
 */
 class Interp2D {
  public:
-  /// \brief Default constructor.
+  /*!
+	\brief Default constructor.
+	*/
   Interp2D();
 
   /*!
@@ -85,7 +87,9 @@ class Interp2D {
   */
   Interp2D(const Interp2D &interp);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~Interp2D();
 
   /*!

@@ -40,11 +40,11 @@ dat_file_name = "2d_poisson_lapm"
 
 # Terminals.
 # wxt terminal (wxWidgets library) for live rendering.
-set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
+# set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
 
 # png terminal for disk storage.
-# set terminal png
-# set output dat_file_name.".png"
+set terminal png
+set output dat_file_name.".png"
 
 # epslatex terminal for publication.
 # set terminal epslatex standalone size 13cm,9.75cm color colortext 10

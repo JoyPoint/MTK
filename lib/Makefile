@@ -1,6 +1,6 @@
 # Makefile for the lib folder.
 
-include ../Makefile.inc
+include ../Makefile.conf
 
 clean:
 	rm -f *~ libmtk.a

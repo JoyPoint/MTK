@@ -1,6 +1,6 @@
 # Makefile for example: 2d_poisson.exe
 
-include ../../Makefile.inc
+include ../../Makefile.conf
 
 #   Linking statements.
 #   __________________________________________________________________

@@ -9,7 +9,7 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -77,10 +77,14 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 */
 class Lap1D {
  public:
-  /// \brief Output stream operator for printing.
+  /*!
+	\brief Output stream operator for printing.
+	*/
   friend std::ostream& operator <<(std::ostream& stream, Lap1D &in);
 
-  /// \brief Default constructor.
+  /*!
+  \brief Default constructor.
+  */
   Lap1D();
 
   /*!
@@ -90,7 +94,9 @@ class Lap1D {
   */
   Lap1D(const Lap1D &lap);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~Lap1D();
 
   /*!

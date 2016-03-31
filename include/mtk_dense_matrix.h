@@ -21,7 +21,7 @@ than #include its full definition. This results in greater compile-time
 insulation and improves the time it takes to compile your code.
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -71,7 +71,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <iostream>
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_enums.h"
 #include "mtk_matrix.h"
 #include "mtk_uni_stg_grid_1d.h"
@@ -94,7 +94,9 @@ should be replaced by the most appropriate sparse matrix.
 */
 class DenseMatrix {
  public:
-  /// \brief Prints the matrix as a block of numbers (standard way).
+	/*!
+  \brief Prints the matrix as a block of numbers (standard way).
+  */
   friend std::ostream& operator <<(std::ostream &stream, DenseMatrix &in);
 
   /*!
@@ -106,10 +108,14 @@ class DenseMatrix {
   */
   DenseMatrix& operator =(const DenseMatrix &in);
 
-  /// \brief Am I equal to the in matrix?
+  /*!
+  \brief Overloaded comparison operator.
+  */
   bool operator ==(const DenseMatrix &in);
 
-  /// \brief Default constructor.
+  /*!
+  \brief Default constructor.
+  */
   DenseMatrix();
 
   /*!
@@ -194,7 +200,9 @@ class DenseMatrix {
               const int &pro_length,
               const bool &transpose);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~DenseMatrix();
 
   /*!
@@ -269,13 +277,19 @@ class DenseMatrix {
                 const int &col_coord,
                 const Real &val) noexcept;
 
-  /// \brief Transpose this matrix.
+  /*!
+  \brief Transpose this matrix.
+  */
   void Transpose();
 
-  /// \brief Make the matrix row-wise ordered.
+  /*!
+  \brief Make the matrix row-wise ordered.
+  */
   void OrderRowMajor();
 
-  /// \brief Make the matrix column-wise ordered.
+  /*!
+  \brief Make the matrix column-wise ordered.
+  */
   void OrderColMajor();
 
   /*!
@@ -303,8 +317,6 @@ class DenseMatrix {
   bool WriteToFile(const std::string &filename) const;
 
  private:
-  EncodedOperator encoded_operator_;  ///< Operator this matrix is encoding.
-
   Matrix matrix_properties_;  ///< Data related to the matrix nature.
 
   Real *data_; ///< Array holding the data in contiguous position in memory.

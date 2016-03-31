@@ -12,7 +12,7 @@ Definition of an 3D uniform staggered grid.
 \todo Create overloaded binding routines that read data from arrays.
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -63,7 +63,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vector>
 #include <string>
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_enums.h"
 
 namespace mtk {
@@ -79,7 +79,9 @@ Uniform 3D Staggered Grid.
 */
 class UniStgGrid3D {
  public:
-  /// \brief Prints the grid as a tuple of arrays.
+	/*!
+  \brief Prints the grid as a tuple of arrays.
+  */
   friend std::ostream& operator <<(std::ostream& stream, UniStgGrid3D &in);
 
   /*!
@@ -91,7 +93,9 @@ class UniStgGrid3D {
   */
   UniStgGrid3D operator=(const UniStgGrid3D &in);
 
-  /// \brief Default constructor.
+  /*!
+  \brief Default constructor.
+  */
   UniStgGrid3D();
 
   /*!
@@ -128,7 +132,9 @@ class UniStgGrid3D {
                const int &num_cells_z,
                const mtk::FieldNature &nature = mtk::FieldNature::SCALAR);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~UniStgGrid3D();
 
   /*!

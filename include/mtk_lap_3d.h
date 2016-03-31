@@ -9,7 +9,7 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -57,7 +57,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef MTK_INCLUDE_MTK_LAP_3D_H_
 #define MTK_INCLUDE_MTK_LAP_3D_H_
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_dense_matrix.h"
 #include "mtk_uni_stg_grid_2d.h"
 
@@ -75,10 +75,14 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 */
 class Lap3D {
  public:
-  /// \brief Operator application operator on a grid.
+  /*!
+	\brief Operator application operator on a grid.
+	*/
   UniStgGrid3D operator*(const UniStgGrid3D &grid) const;
 
-  /// \brief Default constructor.
+  /*!
+  \brief Default constructor.
+  */
   Lap3D();
 
   /*!
@@ -88,7 +92,9 @@ class Lap3D {
   */
   Lap3D(const Lap3D &lap);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~Lap3D();
 
   /*!

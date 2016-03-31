@@ -1,12 +1,12 @@
 # Makefile for the src folder.
 
-include ../Makefile.inc
+include ../Makefile.conf
 
 all: exetools datastructs nummethods grids mimops archive
 
 EXETOOLS = \
 	mtk_tools.o
-
+	
 DATASTRUCTS  = \
 	mtk_matrix.o \
 	mtk_dense_matrix.o
@@ -55,8 +55,6 @@ mimops: $(MIMOPS)
 
 #   Archiving statements.
 #   __________________________________________________________________
-
-# Create the library directory with "-p" so no prob if it exists:
 
 archive: $(EXETOOLS) $(DATASTRUCTS) $(NUMMETHODS) $(GRIDS) $(MIMOPS)
 	@(mkdir -p $(LIB))
