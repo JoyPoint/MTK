@@ -224,7 +224,12 @@ bool mtk::Lap1D::ConstructLap1D(int order_accuracy,
   std::cout << grad_m << std::endl;
   #endif
 
-  mtk::DenseMatrix div_m(div.ReturnAsDenseMatrix(aux));
+  mtk::UniStgGrid1D aux2(mtk::kZero,
+                        (mtk::Real) 3*order_accuracy_ - 1,
+                        3*order_accuracy_ - 1,
+                        mtk::FieldNature::VECTOR);
+
+  mtk::DenseMatrix div_m(div.ReturnAsDenseMatrix(aux2));
 
   #if MTK_VERBOSE_LEVEL > 4
   std::cout << "div_m =" << std::endl;

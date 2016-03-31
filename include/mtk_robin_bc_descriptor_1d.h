@@ -167,7 +167,9 @@ class RobinBCDescriptor1D {
   */
   RobinBCDescriptor1D(const RobinBCDescriptor1D &desc);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~RobinBCDescriptor1D() noexcept;
 
   /*!
@@ -246,8 +248,8 @@ class RobinBCDescriptor1D {
   void ImposeOnGrid(UniStgGrid1D &grid, const Real &time = mtk::kZero) const;
 
  private:
-  int highest_order_diff_west_; ///< Highest order of differentiation for west.
-  int highest_order_diff_east_; ///< Highest order of differentiation for east.
+  int highest_order_diff_west_; 		///< Highest order of differentiation west.
+  int highest_order_diff_east_; 		///< Highest order of differentiation east.
 
   std::vector<CoefficientFunction0D> west_coefficients_;  ///< Coeffs. west.
   std::vector<CoefficientFunction0D> east_coefficients_;  ///< Coeffs. east.
