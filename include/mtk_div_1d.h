@@ -1,7 +1,7 @@
 /*!
 \file mtk_div_1d.h
 
-\brief Includes the definition of the class Div1D.
+\brief Declaration the definition of the class Div1D.
 
 Definition of a class that implements a 1D divergence operator, constructed
 using the Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).

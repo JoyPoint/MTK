@@ -1,7 +1,7 @@
 /*!
 \file mtk_grad_2d.cc
 
-\brief Implements the class Grad2D.
+\brief Definition of the class Grad2D.
 
 This class implements a 2D gradient operator, constructed using the
 Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).

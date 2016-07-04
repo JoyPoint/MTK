@@ -1,9 +1,9 @@
 /*!
 \file mtk_quad_1d.h
 
-\brief Includes the definition of the class Quad1D.
+\brief Declaration of the definition of the class Quad1D.
 
-Definition of a class that implements a 1D quadrature solver based on the
+Declaration of a class that implements a 1D quadrature solver based on the
 mimetic discretization of the gradient operator.
 
 \sa mtk::Grad1D

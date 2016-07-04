@@ -1,9 +1,9 @@
 /*!
 \file mtk_uni_stg_grid_2d.h
 
-\brief Definition of an 2D uniform staggered grid.
+\brief Declaration of a 2D uniform staggered grid.
 
-Definition of an 2D uniform staggered grid.
+Declaration of a 2D uniform staggered grid.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 

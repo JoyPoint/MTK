@@ -1,7 +1,7 @@
 /*!
 \file mtk_interp_2d.h
 
-\brief Includes the definition of the class Interp2D.
+\brief Declaration of the definition of the class Interp2D.
 
 This class implements a 2D interpolation operator.
 

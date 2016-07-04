@@ -1,7 +1,7 @@
 /*!
 \file mtk_grad_3d.cc
 
-\brief Implements the class Grad3D.
+\brief Definition the class Grad3D.
 
 This class implements a 3D gradient operator, constructed using the
 Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).

@@ -1,7 +1,7 @@
 /*!
 \file mtk_div_1d.cc
 
-\brief Implements the class Div1D.
+\brief Definition of the class Div1D.
 
 This class implements a 1D divergence matrix operator, constructed using the
 Castillo-Blomgren-Sanchez (CBS) Algorithm.

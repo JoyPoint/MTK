@@ -1,9 +1,9 @@
 /*!
 \file mtk_uni_stg_grid_2d.cc
 
-\brief Implementation of a 2D uniform staggered grid.
+\brief Definition of a 2D uniform staggered grid.
 
-Implementation of a 2D uniform staggered grid.
+Definition of a 2D uniform staggered grid.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */

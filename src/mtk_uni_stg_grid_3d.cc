@@ -1,9 +1,9 @@
 /*!
 \file mtk_uni_stg_grid_3d.cc
 
-\brief Implementation of a 3D uniform staggered grid.
+\brief Definition of a 3D uniform staggered grid.
 
-Implementation of a 3D uniform staggered grid.
+Definition of a 3D uniform staggered grid.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */

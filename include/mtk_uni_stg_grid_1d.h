@@ -1,9 +1,9 @@
 /*!
 \file mtk_uni_stg_grid_1d.h
 
-\brief Definition of an 1D uniform staggered grid.
+\brief Declaration of an 1D uniform staggered grid.
 
-Definition of an 1D uniform staggered grid.
+Declaration of an 1D uniform staggered grid.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 

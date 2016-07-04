@@ -1,9 +1,9 @@
 /*!
 \file mtk_uni_stg_grid_1d.cc
 
-\brief Implementation of an 1D uniform staggered grid.
+\brief Definition of an 1D uniform staggered grid.
 
-Implementation of an 1D uniform staggered grid.
+Definition of an 1D uniform staggered grid.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -248,11 +248,8 @@ void mtk::UniStgGrid1D::ReserveDiscreteField() {
   #endif
 
   if (field_nature_ == mtk::FieldNature::SCALAR) {
-
     discrete_field_.reserve(num_cells_x_ + 2);
-
   } else {
-
     discrete_field_.reserve(num_cells_x_ + 1);
   }
 }

@@ -1,7 +1,7 @@
 /*!
 \file mtk_div_3d.cc
 
-\brief Implements the class Div3D.
+\brief Definition of the class Div3D.
 
 This class implements a 3D divergence operator, constructed using the
 Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
