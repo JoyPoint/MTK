@@ -1,5 +1,5 @@
 /*!
-\file mtk_dense_matrix.nn
+\file mtk_dense_matrix.cc
 
 \brief Definition of a class dense matrix implemented using a 1D array.
 
