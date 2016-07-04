@@ -1,0 +1,905 @@
+.TH "mtk::Matrix" 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk::Matrix \- 
+.PP
+Definition of the representation of a matrix in the MTK\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mtk_matrix\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBMatrix\fP ()"
+.br
+.RI "\fIDefault constructor\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP (const \fBMatrix\fP &in)"
+.br
+.RI "\fICopy constructor\&. \fP"
+.ti -1c
+.RI "\fB~Matrix\fP () noexcept"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "\fBEncodedOperator\fP \fBencoded_operator\fP () const noexcept"
+.br
+.RI "\fIGets the type of mimetic operator encoded by this matrix\&. \fP"
+.ti -1c
+.RI "\fBMatrixStorage\fP \fBstorage\fP () const noexcept"
+.br
+.RI "\fIGets the type of storage of this matrix\&. \fP"
+.ti -1c
+.RI "\fBMatrixOrdering\fP \fBordering\fP () const noexcept"
+.br
+.RI "\fIGets the type of ordering of this matrix\&. \fP"
+.ti -1c
+.RI "int \fBnum_rows\fP () const noexcept"
+.br
+.RI "\fIGets the number of rows\&. \fP"
+.ti -1c
+.RI "int \fBnum_cols\fP () const noexcept"
+.br
+.RI "\fIGets the number of rows\&. \fP"
+.ti -1c
+.RI "int \fBnum_values\fP () const noexcept"
+.br
+.RI "\fIGets the number of values\&. \fP"
+.ti -1c
+.RI "int \fBleading_dimension\fP () const noexcept"
+.br
+.RI "\fIGets the matrix' leading dimension\&. \fP"
+.ti -1c
+.RI "int \fBnum_zero\fP () const noexcept"
+.br
+.RI "\fIGets the number of zeros\&. \fP"
+.ti -1c
+.RI "int \fBnum_non_zero\fP () const noexcept"
+.br
+.RI "\fIGets the number of non-zero values\&. \fP"
+.ti -1c
+.RI "int \fBnum_null\fP () const noexcept"
+.br
+.RI "\fIGets the number of null values\&. \fP"
+.ti -1c
+.RI "int \fBnum_non_null\fP () const noexcept"
+.br
+.RI "\fIGets the number of non-null values\&. \fP"
+.ti -1c
+.RI "int \fBnum_low_diags\fP () const noexcept"
+.br
+.RI "\fIGets the number of lower diagonals\&. \fP"
+.ti -1c
+.RI "int \fBnum_upp_diags\fP () const noexcept"
+.br
+.RI "\fIGets the number of upper diagonals\&. \fP"
+.ti -1c
+.RI "int \fBbandwidth\fP () const noexcept"
+.br
+.RI "\fIGets the bandwidth\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBabs_density\fP () const noexcept"
+.br
+.RI "\fIGets the absolute density\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBrel_density\fP () const noexcept"
+.br
+.RI "\fIGets the relative density\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBabs_sparsity\fP () const noexcept"
+.br
+.RI "\fIGets the Absolute sparsity\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBrel_sparsity\fP () const noexcept"
+.br
+.RI "\fIGets the Relative sparsity\&. \fP"
+.ti -1c
+.RI "void \fBset_encoded_operator\fP (const \fBEncodedOperator\fP &in) noexcept"
+.br
+.RI "\fISets the type of encoded operator of the matrix\&. \fP"
+.ti -1c
+.RI "void \fBset_storage\fP (const \fBMatrixStorage\fP &tt) noexcept"
+.br
+.RI "\fISets the storage type of the matrix\&. \fP"
+.ti -1c
+.RI "void \fBset_ordering\fP (const \fBMatrixOrdering\fP &oo) noexcept"
+.br
+.RI "\fISets the ordering of the matrix\&. \fP"
+.ti -1c
+.RI "void \fBset_num_rows\fP (const int &\fBnum_rows\fP) noexcept"
+.br
+.RI "\fISets the number of rows of the matrix\&. \fP"
+.ti -1c
+.RI "void \fBset_num_cols\fP (const int &\fBnum_cols\fP) noexcept"
+.br
+.RI "\fISets the number of columns of the matrix\&. \fP"
+.ti -1c
+.RI "void \fBset_num_low_diags\fP (const int &\fBnum_low_diags\fP) noexcept"
+.br
+.RI "\fISets the number of lower diagonals of the matrix\&. \fP"
+.ti -1c
+.RI "void \fBset_num_upp_diags\fP (const int &\fBnum_upp_diags\fP) noexcept"
+.br
+.RI "\fISets the number of upper diagonals of the matrix\&. \fP"
+.ti -1c
+.RI "void \fBset_num_null\fP (const int &\fBnum_null\fP) noexcept"
+.br
+.RI "\fISets the number of null elements of the matrix\&. \fP"
+.ti -1c
+.RI "void \fBset_num_zero\fP (const int &\fBnum_zero\fP) noexcept"
+.br
+.RI "\fISets the number of zeros of the matrix\&. \fP"
+.ti -1c
+.RI "void \fBIncreaseNumNull\fP () noexcept"
+.br
+.RI "\fIDecreases the number of values that equal zero but with no meaning\&. \fP"
+.ti -1c
+.RI "void \fBDecreaseNumNull\fP () noexcept"
+.br
+.RI "\fIDecreases the number of values that equal zero but with no meaning\&. \fP"
+.ti -1c
+.RI "void \fBIncreaseNumZero\fP () noexcept"
+.br
+.RI "\fIIncreases the number of values that equal zero but with meaning\&. \fP"
+.ti -1c
+.RI "void \fBDecreaseNumZero\fP () noexcept"
+.br
+.RI "\fIDecreases the number of values that equal zero but with meaning\&. \fP"
+.in -1c
+.SS "Private Member Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBComputeNumValues\fP (const int &\fBnum_rows\fP, const int &\fBnum_cols\fP) const noexcept"
+.br
+.RI "\fIComputes the leading dimension of the matrix\&. \fP"
+.ti -1c
+.RI "int \fBComputeLeadingDimension\fP (const int &\fBnum_rows\fP, const int &\fBnum_cols\fP) const noexcept"
+.br
+.RI "\fIComputes the leading dimension of the matrix\&. \fP"
+.ti -1c
+.RI "int \fBComputeBandwidth\fP (const int &\fBnum_low_diags\fP, const int &\fBnum_upp_diags\fP) const noexcept"
+.br
+.RI "\fIComputes the bandwidth of the matrix\&. \fP"
+.ti -1c
+.RI "int \fBComputeNumNonNull\fP (const int &\fBnum_values\fP, const int &\fBnum_null\fP) const noexcept"
+.br
+.RI "\fIComputes the number of non-null values of the matrix\&. \fP"
+.ti -1c
+.RI "\fBmtk::Real\fP \fBComputeAbsDensity\fP (const int &\fBnum_non_null\fP, const int &\fBnum_values\fP) const noexcept"
+.br
+.RI "\fIComputes the absolute density of the matrix\&. \fP"
+.ti -1c
+.RI "\fBmtk::Real\fP \fBComputeAbsSparsity\fP (const \fBmtk::Real\fP &absolute_density) const noexcept"
+.br
+.RI "\fIComputes the absolute sparsity of the matrix\&. \fP"
+.ti -1c
+.RI "int \fBComputeNumNonZero\fP (const int &\fBnum_values\fP, const int &\fBnum_zero\fP) const noexcept"
+.br
+.RI "\fIComputes the number of non-zero values of the matrix\&. \fP"
+.ti -1c
+.RI "\fBmtk::Real\fP \fBComputeRelDensity\fP (const int &\fBnum_non_zero\fP, const int &\fBnum_values\fP) const noexcept"
+.br
+.RI "\fIComputes the relative density of the matrix\&. \fP"
+.ti -1c
+.RI "\fBmtk::Real\fP \fBComputeRelSparsity\fP (const \fBmtk::Real\fP &relative_density) const noexcept"
+.br
+.RI "\fIComputes the relative sparsity of the matrix\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBEncodedOperator\fP \fBencoded_operator_\fP"
+.br
+.ti -1c
+.RI "\fBMatrixStorage\fP \fBstorage_\fP"
+.br
+.RI "\fIType of mimetic operator encoded\&. \fP"
+.ti -1c
+.RI "\fBMatrixOrdering\fP \fBordering_\fP"
+.br
+.RI "\fIWhat kind of ordering is it following? \fP"
+.ti -1c
+.RI "int \fBnum_rows_\fP"
+.br
+.RI "\fINumber of rows\&. \fP"
+.ti -1c
+.RI "int \fBnum_cols_\fP"
+.br
+.RI "\fINumber of columns\&. \fP"
+.ti -1c
+.RI "int \fBnum_values_\fP"
+.br
+.RI "\fINumber of total values in matrix\&. \fP"
+.ti -1c
+.RI "int \fBleading_dimension_\fP"
+.br
+.RI "\fIElements between successive rows when row-major\&. \fP"
+.ti -1c
+.RI "int \fBnum_low_diags_\fP"
+.br
+.RI "\fINumber of lower diagonals on a banded matrix\&. \fP"
+.ti -1c
+.RI "int \fBnum_upp_diags_\fP"
+.br
+.RI "\fINumber of upper diagonals on a banded matrix\&. \fP"
+.ti -1c
+.RI "int \fBbandwidth_\fP"
+.br
+.RI "\fIBandwidth of the matrix\&. \fP"
+.ti -1c
+.RI "int \fBnum_null_\fP"
+.br
+.RI "\fINumber of null (no meaning) values\&. \fP"
+.ti -1c
+.RI "int \fBnum_non_null_\fP"
+.br
+.RI "\fINumber of null values\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBabs_density_\fP"
+.br
+.RI "\fIAbsolute density of matrix\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBabs_sparsity_\fP"
+.br
+.RI "\fIAbsolute sparsity of matrix\&. \fP"
+.ti -1c
+.RI "int \fBnum_zero_\fP"
+.br
+.RI "\fINumber of zeros (with meaning)\&. \fP"
+.ti -1c
+.RI "int \fBnum_non_zero_\fP"
+.br
+.RI "\fINumber of non-zero values\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBrel_density_\fP"
+.br
+.RI "\fIRelative density of matrix\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBrel_sparsity_\fP"
+.br
+.RI "\fIRelative sparsity of matrix\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition of the representation for the matrices implemented in the MTK\&. 
+.PP
+Definition at line 75 of file mtk_matrix\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mtk::Matrix::Matrix ()"
+
+.PP
+Definition at line 67 of file mtk_matrix\&.cc\&.
+.SS "mtk::Matrix::Matrix (const \fBMatrix\fP &in)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIin\fP Given matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 87 of file mtk_matrix\&.cc\&.
+.SS "mtk::Matrix::~Matrix ()\fC [noexcept]\fP"
+
+.PP
+Definition at line 107 of file mtk_matrix\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBmtk::Real\fP mtk::Matrix::abs_density () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Absolute density of the matrix\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf 
+.RE
+.PP
+
+.PP
+Definition at line 179 of file mtk_matrix\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::Matrix::abs_sparsity () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Absolute sparsity of the matrix\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf 
+.RE
+.PP
+
+.PP
+Definition at line 189 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::bandwidth () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Bandwidth of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 174 of file mtk_matrix\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::Matrix::ComputeAbsDensity (const int &num_non_null, const int &num_values) const\fC [private]\fP, \fC [noexcept]\fP"
+Defined as \[ \frac{\textrm{num\_non\_null}}{\textrm{num\_values}}. \]
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum_non_null\fP Number of non-null values of the matrix\&. 
+.br
+\fInum_values\fP Number of total values of the matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Absolute density of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 434 of file mtk_matrix\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::Matrix::ComputeAbsSparsity (const \fBmtk::Real\fP &absolute_density) const\fC [private]\fP, \fC [noexcept]\fP"
+Defined as \[ 1 - \frac{\textrm{num\_non\_null}}{\textrm{num\_values}}. \]
+.PP
+\fBParameters:\fP
+.RS 4
+\fIabsolute_density\fP Absolute density of the matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Absolute sparsity of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 446 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::ComputeBandwidth (const int &num_low_diags, const int &num_upp_diags) const\fC [private]\fP, \fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum_low_diags\fP Number of lower diagonals\&. 
+.br
+\fInum_upp_diags\fP Number of upper diagonals\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Bandwidth of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 412 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::ComputeLeadingDimension (const int &num_rows, const int &num_cols) const\fC [private]\fP, \fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum_rows\fP Number of rows\&. 
+.br
+\fInum_cols\fP Number of columns\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Leading dimension of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 400 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::ComputeNumNonNull (const int &num_values, const int &num_null) const\fC [private]\fP, \fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum_values\fP Number of values of the matrix\&. 
+.br
+\fInum_null\fP Number of null values of the matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of non-null values of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 423 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::ComputeNumNonZero (const int &num_values, const int &num_zero) const\fC [private]\fP, \fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum_values\fP Number of values of the matrix\&. 
+.br
+\fInum_zero\fP Number of zero values of the matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of non-zero values of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 456 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::ComputeNumValues (const int &num_rows, const int &num_cols) const\fC [private]\fP, \fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum_rows\fP Number of rows\&. 
+.br
+\fInum_cols\fP Number of columns\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Number of values of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 389 of file mtk_matrix\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::Matrix::ComputeRelDensity (const int &num_non_zero, const int &num_values) const\fC [private]\fP, \fC [noexcept]\fP"
+Defined as \[ \frac{\textrm{num\_non\_zero}}{\textrm{num\_values}}. \]
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum_non_zero\fP Number of non-zero values of the matrix\&. 
+.br
+\fInum_values\fP Number of total values of the matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Relative density of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 467 of file mtk_matrix\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::Matrix::ComputeRelSparsity (const \fBmtk::Real\fP &relative_density) const\fC [private]\fP, \fC [noexcept]\fP"
+Defined as \[ 1 - \frac{\textrm{num\_non\_zero}}{\textrm{num\_values}}. \]
+.PP
+\fBParameters:\fP
+.RS 4
+\fIrelative_density\fP Relative density of the matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Relative sparsity of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 479 of file mtk_matrix\&.cc\&.
+.SS "void mtk::Matrix::DecreaseNumNull ()\fC [noexcept]\fP"
+
+.PP
+Definition at line 346 of file mtk_matrix\&.cc\&.
+.SS "void mtk::Matrix::DecreaseNumZero ()\fC [noexcept]\fP"
+
+.PP
+Definition at line 374 of file mtk_matrix\&.cc\&.
+.SS "\fBmtk::EncodedOperator\fP mtk::Matrix::encoded_operator () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Type of mimetic operator encoded by this matrix\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBmtk::EncodedOperator\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 109 of file mtk_matrix\&.cc\&.
+.SS "void mtk::Matrix::IncreaseNumNull ()\fC [noexcept]\fP"
+
+.PP
+Definition at line 333 of file mtk_matrix\&.cc\&.
+.SS "void mtk::Matrix::IncreaseNumZero ()\fC [noexcept]\fP"
+
+.PP
+Definition at line 359 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::leading_dimension () const\fC [noexcept]\fP"
+Leading dimension of the data array is the number of elements between successive rows (for row major storage) in memory\&. Most of the cases, the leading dimension is the same as the number of columns\&.
+.PP
+\fBReturns:\fP
+.RS 4
+Leading dimension of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 139 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::num_cols () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Number of rows of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 129 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::num_low_diags () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Number of lower diagonals\&. 
+.RE
+.PP
+
+.PP
+Definition at line 164 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::num_non_null () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Number of non-null values of the matrix\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf 
+.RE
+.PP
+
+.PP
+Definition at line 159 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::num_non_zero () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Number of non-zero values of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 149 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::num_null () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Number of null values of the matrix\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf 
+.RE
+.PP
+
+.PP
+Definition at line 154 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::num_rows () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Number of rows of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 124 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::num_upp_diags () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Number of upper diagonals\&. 
+.RE
+.PP
+
+.PP
+Definition at line 169 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::num_values () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Number of values of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 134 of file mtk_matrix\&.cc\&.
+.SS "int mtk::Matrix::num_zero () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Number of zeros of the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 144 of file mtk_matrix\&.cc\&.
+.SS "\fBmtk::MatrixOrdering\fP mtk::Matrix::ordering () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Type of ordering of this matrix\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBmtk::MatrixOrdering\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 119 of file mtk_matrix\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::Matrix::rel_density () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Relative density of the matrix\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf 
+.RE
+.PP
+
+.PP
+Definition at line 184 of file mtk_matrix\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::Matrix::rel_sparsity () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Relative sparsity of the matrix\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+http://www.csrc.sdsu.edu/research_reports/CSRCR2013-01.pdf 
+.RE
+.PP
+
+.PP
+Definition at line 194 of file mtk_matrix\&.cc\&.
+.SS "void mtk::Matrix::set_encoded_operator (const \fBEncodedOperator\fP &in)\fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIin\fP Type of encoded operator\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBmtk::EncodedOperator\fP 
+.RE
+.PP
+
+.PP
+Definition at line 199 of file mtk_matrix\&.cc\&.
+.SS "void mtk::Matrix::set_num_cols (const int &num_cols)\fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum_cols\fP Number of columns\&. 
+.RE
+.PP
+
+.PP
+Definition at line 262 of file mtk_matrix\&.cc\&.
+.SS "void mtk::Matrix::set_num_low_diags (const int &num_low_diags)\fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum_low_diags\fP Number of lower diagonals\&. 
+.RE
+.PP
+
+.PP
+Definition at line 283 of file mtk_matrix\&.cc\&.
+.SS "void mtk::Matrix::set_num_null (const int &num_null)\fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum_null\fP Number of null elements\&. 
+.RE
+.PP
+
+.PP
+Definition at line 303 of file mtk_matrix\&.cc\&.
+.SS "void mtk::Matrix::set_num_rows (const int &num_rows)\fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum_rows\fP Number of rows\&. 
+.RE
+.PP
+
+.PP
+Definition at line 241 of file mtk_matrix\&.cc\&.
+.SS "void mtk::Matrix::set_num_upp_diags (const int &num_upp_diags)\fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum_upp_diags\fP Number of upper diagonals\&. 
+.RE
+.PP
+
+.PP
+Definition at line 293 of file mtk_matrix\&.cc\&.
+.SS "void mtk::Matrix::set_num_zero (const int &num_zero)\fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fInum_zero\fP Number of zeros on the matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 316 of file mtk_matrix\&.cc\&.
+.SS "void mtk::Matrix::set_ordering (const \fBMatrixOrdering\fP &oo)\fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIoo\fP Ordering of the matrix\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBmtk::MatrixOrdering\fP 
+.RE
+.PP
+
+.PP
+Definition at line 228 of file mtk_matrix\&.cc\&.
+.SS "void mtk::Matrix::set_storage (const \fBMatrixStorage\fP &tt)\fC [noexcept]\fP"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fItt\fP Type of the matrix storage\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBmtk::MatrixStorage\fP 
+.RE
+.PP
+
+.PP
+Definition at line 216 of file mtk_matrix\&.cc\&.
+.SS "\fBmtk::MatrixStorage\fP mtk::Matrix::storage () const\fC [noexcept]\fP"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Type of storage of this matrix\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBmtk::MatrixStorage\fP\&. 
+.RE
+.PP
+
+.PP
+Definition at line 114 of file mtk_matrix\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBReal\fP mtk::Matrix::abs_density_\fC [private]\fP"
+
+.PP
+Definition at line 466 of file mtk_matrix\&.h\&.
+.SS "\fBReal\fP mtk::Matrix::abs_sparsity_\fC [private]\fP"
+
+.PP
+Definition at line 467 of file mtk_matrix\&.h\&.
+.SS "int mtk::Matrix::bandwidth_\fC [private]\fP"
+
+.PP
+Definition at line 461 of file mtk_matrix\&.h\&.
+.SS "\fBEncodedOperator\fP mtk::Matrix::encoded_operator_\fC [private]\fP"
+
+.PP
+Definition at line 448 of file mtk_matrix\&.h\&.
+.SS "int mtk::Matrix::leading_dimension_\fC [private]\fP"
+
+.PP
+Definition at line 457 of file mtk_matrix\&.h\&.
+.SS "int mtk::Matrix::num_cols_\fC [private]\fP"
+
+.PP
+Definition at line 455 of file mtk_matrix\&.h\&.
+.SS "int mtk::Matrix::num_low_diags_\fC [private]\fP"
+
+.PP
+Definition at line 459 of file mtk_matrix\&.h\&.
+.SS "int mtk::Matrix::num_non_null_\fC [private]\fP"
+
+.PP
+Definition at line 464 of file mtk_matrix\&.h\&.
+.SS "int mtk::Matrix::num_non_zero_\fC [private]\fP"
+
+.PP
+Definition at line 470 of file mtk_matrix\&.h\&.
+.SS "int mtk::Matrix::num_null_\fC [private]\fP"
+
+.PP
+Definition at line 463 of file mtk_matrix\&.h\&.
+.SS "int mtk::Matrix::num_rows_\fC [private]\fP"
+
+.PP
+Definition at line 454 of file mtk_matrix\&.h\&.
+.SS "int mtk::Matrix::num_upp_diags_\fC [private]\fP"
+
+.PP
+Definition at line 460 of file mtk_matrix\&.h\&.
+.SS "int mtk::Matrix::num_values_\fC [private]\fP"
+
+.PP
+Definition at line 456 of file mtk_matrix\&.h\&.
+.SS "int mtk::Matrix::num_zero_\fC [private]\fP"
+
+.PP
+Definition at line 469 of file mtk_matrix\&.h\&.
+.SS "\fBMatrixOrdering\fP mtk::Matrix::ordering_\fC [private]\fP"
+
+.PP
+Definition at line 452 of file mtk_matrix\&.h\&.
+.SS "\fBReal\fP mtk::Matrix::rel_density_\fC [private]\fP"
+
+.PP
+Definition at line 472 of file mtk_matrix\&.h\&.
+.SS "\fBReal\fP mtk::Matrix::rel_sparsity_\fC [private]\fP"
+
+.PP
+Definition at line 473 of file mtk_matrix\&.h\&.
+.SS "\fBMatrixStorage\fP mtk::Matrix::storage_\fC [private]\fP"
+What type of matrix is this? 
+.PP
+Definition at line 450 of file mtk_matrix\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

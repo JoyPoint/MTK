@@ -1,0 +1,83 @@
+.TH "src/mtk_lapack_adapter.cc" 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+src/mtk_lapack_adapter.cc \- 
+.PP
+Definition of an adapter class for the LAPACK API\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <cstring>\fP
+.br
+\fC#include <iostream>\fP
+.br
+\fC#include <iomanip>\fP
+.br
+\fC#include <algorithm>\fP
+.br
+\fC#include 'mtk_foundations\&.h'\fP
+.br
+\fC#include 'mtk_tools\&.h'\fP
+.br
+\fC#include 'mtk_dense_matrix\&.h'\fP
+.br
+\fC#include 'mtk_lapack_adapter\&.h'\fP
+.br
+
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBmtk\fP"
+.br
+.RI "\fIMimetic Methods Toolkit namespace\&. \fP"
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBmtk::sgesv_\fP (int *n, int *nrhs, Real *a, int *lda, int *ipiv, Real *b, int *ldb, int *info)"
+.br
+.ti -1c
+.RI "void \fBmtk::sgels_\fP (char *trans, int *m, int *n, int *nrhs, Real *a, int *lda, Real *b, int *ldb, Real *work, int *lwork, int *info)"
+.br
+.RI "\fISingle-precision GEneral matrix Least Squares solver\&. \fP"
+.ti -1c
+.RI "void \fBmtk::sgeqrf_\fP (int *m, int *n, Real *a, int *lda, Real *tau, Real *work, int *lwork, int *info)"
+.br
+.RI "\fISingle-precision GEneral matrix QR Factorization\&. \fP"
+.ti -1c
+.RI "void \fBmtk::sormqr_\fP (char *side, char *trans, int *m, int *n, int *k, Real *a, int *lda, Real *tau, Real *c, int *ldc, Real *work, int *lwork, int *info)"
+.br
+.RI "\fISingle-precision Orthogonal \fBMatrix\fP from QR factorization\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Definition of a class that contains a collection of static member functions that possess direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the LAPACK\&.
+.PP
+The \fBLAPACK (Linear Algebra PACKage)\fP is written in Fortran 90 and provides routines for solving systems of simultaneous linear equations, least-squares solutions of linear systems of equations, eigenvalue problems, and singular value problems\&.
+.PP
+\fBSee also:\fP
+.RS 4
+http://www.netlib.org/lapack/
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+Write documentation using LaTeX\&.
+.RE
+.PP
+.PP
+\fBAuthor:\fP
+.RS 4
+: Eduardo J\&. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu 
+.RE
+.PP
+
+.PP
+Definition in file \fBmtk_lapack_adapter\&.cc\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

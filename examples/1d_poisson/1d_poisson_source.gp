@@ -62,15 +62,15 @@ name = "1d_poisson_source"
 
 # Terminals.
 # wxt terminal (wxWidgets library) for live rendering.
-# set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
+set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
 
 # png terminal for disk storage.
 # set terminal png
 # set output name.".png"
 
 # epslatex terminal for publication.
-set terminal epslatex standalone size 13cm,9.75cm color colortext 10
-set output name.".tex"
+# set terminal epslatex standalone size 13cm,9.75cm color colortext 10
+# set output name.".tex"
 
 set termoption dash
 

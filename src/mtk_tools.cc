@@ -1,9 +1,9 @@
 /*!
 \file mtk_tools.cc
 
-\brief Tool manager class.
+\brief Definition of a class to manage run-time tools.
 
-Implementation of a class providing basic tools to ensure execution correctness,
+Definition of a class providing basic tools to ensure execution correctness,
 and to assists with unitary testing.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
@@ -66,7 +66,18 @@ void mtk::Tools::Prevent(const bool condition,
                          int lineno,
                          const char *const fxname) noexcept {
 
-  /// \todo Check if this is the best way of stalling execution.
+  /// \todo Check if this is the best way of stalling execution in C++11.
+
+	// From: https://www.gnu.org/software/libc/manual/html_node/Normal-Termination.html#Normal-Termination
+	// A process terminates normally when its program signals it is done by
+	// calling exit. Returning from main is equivalent to calling exit, and the
+	// value that main returns is used as the argument to exit.
+
+	// From: https://www.gnu.org/software/libc/manual/html_node/Exit-Status.html#Exit-Status
+	// Portability note: Some non-POSIX systems use different conventions for exit
+	// status values. For greater portability, you can use the macros EXIT_SUCCESS
+	// and EXIT_FAILURE for the conventional status value for success and failure,
+	// respectively. They are declared in the file stdlib.h.
 
   if (lineno < 1) {
     std::cerr << __FILE__ << ": " << "Incorrect parameter at line " <<
@@ -88,6 +99,8 @@ mtk::Real mtk::Tools::duration_{};	// Duration of the current test.
 clock_t mtk::Tools::begin_time_{};  // Elapsed time on current test.
 
 void mtk::Tools::BeginUnitTestNo(const int &nn) noexcept {
+
+	/// \todo Compute time using C++11 mechanisms.
 
   #if MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);

@@ -41,7 +41,7 @@ Therefore, the following dependencies tree arises:
 
 5. (Optional) Doxygen - Available from http://www.stack.nl/~dimitri/doxygen/
 
-### For OS X:
+### For OSX:
 
 1. GLPK - Available from: https://www.gnu.org/software/glpk/
 
@@ -99,10 +99,6 @@ Currently the developers are:
 - **Eduardo J. Sanchez, PhD - esanchez at mail dot sdsu dot edu** - @ejspeiro
 - Jose E. Castillo, PhD - jcastillo at mail dot sdsu dot edu
 - Guillermo F. Miranda, PhD - unigrav at hotmail dot com
-- Christopher P. Paolini, PhD - paolini at engineering dot sdsu dot edu
-- Angel Boada.
-- Johnny Corbino.
-- Raul Vargas-Navarro.
 
 ### 4.1. Acknowledgements and Contributions
 
@@ -115,7 +111,10 @@ important to the fruition of this work. Specifically, our thanks go to
 - Mohammad Abouali, PhD
 - Dany De Cecchis, PhD
 - Otilio Rojas, PhD
-- Julia Rossi.
+- Julia Rossi, PhD
+- Christopher P. Paolini, PhD - paolini at engineering dot sdsu dot edu
+- Johnny Corbino.
+- Raul Vargas-Navarro.
 
 ## 5. Referencing This Work
 

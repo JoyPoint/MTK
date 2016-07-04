@@ -1,0 +1,28 @@
+var classmtk_1_1DenseMatrix =
+[
+    [ "DenseMatrix", "classmtk_1_1DenseMatrix.html#a0c75ee704707983f935b02835eab0933", null ],
+    [ "DenseMatrix", "classmtk_1_1DenseMatrix.html#a90102d605a668bf7ecf0d766cc4c10db", null ],
+    [ "DenseMatrix", "classmtk_1_1DenseMatrix.html#abe26c623467fc1b293cf4f22a3a47cc8", null ],
+    [ "DenseMatrix", "classmtk_1_1DenseMatrix.html#a4ef0dec1b5558fcf00719bfac059ec68", null ],
+    [ "DenseMatrix", "classmtk_1_1DenseMatrix.html#acedaf4058916614d66a18381e624a21d", null ],
+    [ "~DenseMatrix", "classmtk_1_1DenseMatrix.html#a8d4a0df33bd4e4edf5d2fe5539885b85", null ],
+    [ "data", "classmtk_1_1DenseMatrix.html#a0c33b8a9e01d157c61ddbdf807c25d84", null ],
+    [ "encoded_operator", "classmtk_1_1DenseMatrix.html#ab4ba807bef5282875d2136c456794f11", null ],
+    [ "GetValue", "classmtk_1_1DenseMatrix.html#a4b23ecbebd970b5eea915dbb50691024", null ],
+    [ "Kron", "classmtk_1_1DenseMatrix.html#a01d3d8bd502870f93bf3a88a0cc5fb49", null ],
+    [ "matrix_properties", "classmtk_1_1DenseMatrix.html#a5aa83a0643f27a4652ea97630edf7143", null ],
+    [ "num_cols", "classmtk_1_1DenseMatrix.html#a41747502d468c6728a4be31501b16e0e", null ],
+    [ "num_rows", "classmtk_1_1DenseMatrix.html#a53f3afb3b6a8d21854458aaa9663cc74", null ],
+    [ "operator=", "classmtk_1_1DenseMatrix.html#a0d27dc7c4d2c49f391017e392345ced0", null ],
+    [ "operator==", "classmtk_1_1DenseMatrix.html#a94ab5a02d9cf81c17b6f68f4c41cb797", null ],
+    [ "OrderColMajor", "classmtk_1_1DenseMatrix.html#a59b9bea24acf39dca64e8549b3527463", null ],
+    [ "OrderRowMajor", "classmtk_1_1DenseMatrix.html#ac2949efba3e8278335d45418c85433e4", null ],
+    [ "set_encoded_operator", "classmtk_1_1DenseMatrix.html#ac0f824b0fec88c4fb42e77b7550fb0d3", null ],
+    [ "SetOrdering", "classmtk_1_1DenseMatrix.html#a178e63f365cf8c547dc5020c60357f5e", null ],
+    [ "SetValue", "classmtk_1_1DenseMatrix.html#a784ce5784109ac86bfb9d8562b334b13", null ],
+    [ "Transpose", "classmtk_1_1DenseMatrix.html#a71d9c07ca66e88d97d1fd5012f43138b", null ],
+    [ "WriteToFile", "classmtk_1_1DenseMatrix.html#ab396804fb5f188e1eaa8578c738c59fc", null ],
+    [ "operator<<", "classmtk_1_1DenseMatrix.html#adbcc850ef373550f634f563573a31d28", null ],
+    [ "data_", "classmtk_1_1DenseMatrix.html#a7893e4e5c8d2e2de32b156177e78cb6f", null ],
+    [ "matrix_properties_", "classmtk_1_1DenseMatrix.html#a481c8d09af685a5ba67acefdcaa810cc", null ]
+];

@@ -64,15 +64,15 @@ dat_file_name = "1d_poisson_known_sol"
 
 # Terminals.
 # wxt terminal (wxWidgets library) for live rendering.
-# set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
+set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
 
 # png terminal for disk storage.
 # set terminal png
 # set output dat_file_name.".png"
 
 # epslatex terminal for publication. (Proportions: 1024/768).
-set terminal epslatex standalone size 13cm,9.75cm color colortext 10
-set output dat_file_name.".tex"
+# set terminal epslatex standalone size 13cm,9.75cm color colortext 10
+# set output dat_file_name.".tex"
 
 set termoption dash
 

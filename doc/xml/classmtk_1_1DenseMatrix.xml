@@ -1,0 +1,909 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classmtk_1_1DenseMatrix" kind="class" prot="public">
+    <compoundname>mtk::DenseMatrix</compoundname>
+    <includes refid="mtk__dense__matrix_8h" local="no">mtk_dense_matrix.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmtk_1_1DenseMatrix_1a481c8d09af685a5ba67acefdcaa810cc" prot="private" static="no" mutable="no">
+        <type><ref refid="classmtk_1_1Matrix" kindref="compound">Matrix</ref></type>
+        <definition>Matrix mtk::DenseMatrix::matrix_properties_</definition>
+        <argsstring></argsstring>
+        <name>matrix_properties_</name>
+        <briefdescription>
+<para>Data related to the matrix nature. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="318" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" bodystart="318" bodyend="-1"/>
+        <referencedby refid="namespacemtk_1ad3bcf52cda59ddb5fc7b4bdce76c46dc" compoundref="mtk__dense__matrix_8cc" startline="78" endline="101">mtk::operator&lt;&lt;</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="104" endline="146">operator=</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0c75ee704707983f935b02835eab0933" compoundref="mtk__dense__matrix_8cc" startline="173" endline="179">DenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a01d3d8bd502870f93bf3a88a0cc5fb49" compoundref="mtk__dense__matrix_8cc" startline="534" endline="575">Kron</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1DenseMatrix_1a7893e4e5c8d2e2de32b156177e78cb6f" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+        <definition>Real* mtk::DenseMatrix::data_</definition>
+        <argsstring></argsstring>
+        <name>data_</name>
+        <briefdescription>
+<para>Array holding the data in contiguous position in memory. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="320" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" bodystart="320" bodyend="-1"/>
+        <referencedby refid="namespacemtk_1ad3bcf52cda59ddb5fc7b4bdce76c46dc" compoundref="mtk__dense__matrix_8cc" startline="78" endline="101">mtk::operator&lt;&lt;</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="104" endline="146">operator=</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a90102d605a668bf7ecf0d766cc4c10db" compoundref="mtk__dense__matrix_8cc" startline="181" endline="215">DenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a01d3d8bd502870f93bf3a88a0cc5fb49" compoundref="mtk__dense__matrix_8cc" startline="534" endline="575">Kron</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classmtk_1_1DenseMatrix_1adbcc850ef373550f634f563573a31d28" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;stream, DenseMatrix &amp;in)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+<para>Prints the matrix as a block of numbers (standard way). </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="98" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="78" bodyend="101"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref> &amp;</type>
+        <definition>mtk::DenseMatrix &amp; mtk::DenseMatrix::operator=</definition>
+        <argsstring>(const DenseMatrix &amp;in)</argsstring>
+        <name>operator=</name>
+        <param>
+          <type>const <ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+<para>Overloaded assignment operator. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Given matrix.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Copy of the given matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="107" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="104" bodyend="146"/>
+        <references refid="classmtk_1_1DenseMatrix_1a481c8d09af685a5ba67acefdcaa810cc" compoundref="mtk__dense__matrix_8h" startline="318">matrix_properties_</references>
+        <references refid="classmtk_1_1Matrix_1a7f576621d30aa8c5d82904d721c803d3" compoundref="mtk__matrix_8cc" startline="199" endline="214">mtk::Matrix::set_encoded_operator</references>
+        <references refid="classmtk_1_1Matrix_1adfa02c1ed7e336e5ec7e4a57b7c0d0fe" compoundref="mtk__matrix_8cc" startline="109" endline="112">mtk::Matrix::encoded_operator</references>
+        <references refid="classmtk_1_1Matrix_1a111b89f2f21d06a59b8d043123bec625" compoundref="mtk__matrix_8cc" startline="216" endline="226">mtk::Matrix::set_storage</references>
+        <references refid="classmtk_1_1Matrix_1a9ffaa665a9cf7371b3be568415a08a3b" compoundref="mtk__matrix_8cc" startline="114" endline="117">mtk::Matrix::storage</references>
+        <references refid="classmtk_1_1Matrix_1a8bdaf3f8307b00a36843359f165e1f17" compoundref="mtk__matrix_8cc" startline="228" endline="239">mtk::Matrix::set_ordering</references>
+        <references refid="classmtk_1_1Matrix_1a13cd17621652cd5551ff98549bd94df7" compoundref="mtk__matrix_8cc" startline="119" endline="122">mtk::Matrix::ordering</references>
+        <references refid="classmtk_1_1Matrix_1ab308b25b48e4fcd39fc60e0c3fc66dea" compoundref="mtk__matrix_8cc" startline="124" endline="127">mtk::Matrix::num_rows</references>
+        <references refid="classmtk_1_1Matrix_1aa4aee0281421c22d9af273b7beb84306" compoundref="mtk__matrix_8cc" startline="241" endline="260">mtk::Matrix::set_num_rows</references>
+        <references refid="classmtk_1_1DenseMatrix_1a5aa83a0643f27a4652ea97630edf7143" compoundref="mtk__dense__matrix_8cc" startline="340" endline="343">matrix_properties</references>
+        <references refid="classmtk_1_1Matrix_1a2160118d0edf51cf2aaa806ee1b915f8" compoundref="mtk__matrix_8cc" startline="129" endline="132">mtk::Matrix::num_cols</references>
+        <references refid="classmtk_1_1Matrix_1aad6b4ced4a0447cc7bf2347fe86fd722" compoundref="mtk__matrix_8cc" startline="262" endline="281">mtk::Matrix::set_num_cols</references>
+        <references refid="classmtk_1_1Matrix_1a17f99bfdf7b8071962c37550028c22b5" compoundref="mtk__matrix_8cc" startline="144" endline="147">mtk::Matrix::num_zero</references>
+        <references refid="classmtk_1_1Matrix_1a8cdfa4f35133668ae0b4b90ef110fbae" compoundref="mtk__matrix_8cc" startline="316" endline="331">mtk::Matrix::set_num_zero</references>
+        <references refid="classmtk_1_1Matrix_1a79ac4c1b31cef05b41a123917b0ad32f" compoundref="mtk__matrix_8cc" startline="154" endline="157">mtk::Matrix::num_null</references>
+        <references refid="classmtk_1_1Matrix_1a3e96d68d781f32d1daa223f47c760c6b" compoundref="mtk__matrix_8cc" startline="303" endline="314">mtk::Matrix::set_num_null</references>
+        <references refid="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" compoundref="mtk__dense__matrix_8cc" startline="356" endline="359">num_rows</references>
+        <references refid="classmtk_1_1DenseMatrix_1a41747502d468c6728a4be31501b16e0e" compoundref="mtk__dense__matrix_8cc" startline="361" endline="364">num_cols</references>
+        <references refid="classmtk_1_1DenseMatrix_1a7893e4e5c8d2e2de32b156177e78cb6f" compoundref="mtk__dense__matrix_8h" startline="320">data_</references>
+        <references refid="group__c01-foundations_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__foundations_8h" startline="126">mtk::kZero</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a94ab5a02d9cf81c17b6f68f4c41cb797" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mtk::DenseMatrix::operator==</definition>
+        <argsstring>(const DenseMatrix &amp;in)</argsstring>
+        <name>operator==</name>
+        <param>
+          <type>const <ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+<para>Overloaded comparison operator. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="112" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="148" bodyend="171"/>
+        <references refid="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" compoundref="mtk__dense__matrix_8cc" startline="356" endline="359">num_rows</references>
+        <references refid="classmtk_1_1DenseMatrix_1a41747502d468c6728a4be31501b16e0e" compoundref="mtk__dense__matrix_8cc" startline="361" endline="364">num_cols</references>
+        <references refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" compoundref="mtk__dense__matrix_8cc" startline="366" endline="369">data</references>
+        <references refid="group__c01-foundations_1gae914b125d81d1b97e0aee7bbc7739786" compoundref="mtk__foundations_8h" startline="143">mtk::kDefaultTolerance</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a0c75ee704707983f935b02835eab0933" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::DenseMatrix::DenseMatrix</definition>
+        <argsstring>()</argsstring>
+        <name>DenseMatrix</name>
+        <briefdescription>
+<para>Default constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="117" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="173" bodyend="179"/>
+        <references refid="classmtk_1_1DenseMatrix_1a481c8d09af685a5ba67acefdcaa810cc" compoundref="mtk__dense__matrix_8h" startline="318">matrix_properties_</references>
+        <references refid="classmtk_1_1Matrix_1a7f576621d30aa8c5d82904d721c803d3" compoundref="mtk__matrix_8cc" startline="199" endline="214">mtk::Matrix::set_encoded_operator</references>
+        <references refid="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a722d122e81cbbe543bd5520bb8678c0e">mtk::NOOP</references>
+        <references refid="classmtk_1_1Matrix_1a111b89f2f21d06a59b8d043123bec625" compoundref="mtk__matrix_8cc" startline="216" endline="226">mtk::Matrix::set_storage</references>
+        <references refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a0706fbbd929bd8abc4de386c53d439ff">mtk::DENSE</references>
+        <references refid="classmtk_1_1Matrix_1a8bdaf3f8307b00a36843359f165e1f17" compoundref="mtk__matrix_8cc" startline="228" endline="239">mtk::Matrix::set_ordering</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648">mtk::ROW_MAJOR</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a90102d605a668bf7ecf0d766cc4c10db" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::DenseMatrix::DenseMatrix</definition>
+        <argsstring>(const DenseMatrix &amp;in)</argsstring>
+        <name>DenseMatrix</name>
+        <param>
+          <type>const <ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">in</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Given matrix. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="124" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="181" bodyend="215"/>
+        <references refid="classmtk_1_1DenseMatrix_1a481c8d09af685a5ba67acefdcaa810cc" compoundref="mtk__dense__matrix_8h" startline="318">matrix_properties_</references>
+        <references refid="classmtk_1_1Matrix_1adfa02c1ed7e336e5ec7e4a57b7c0d0fe" compoundref="mtk__matrix_8cc" startline="109" endline="112">mtk::Matrix::encoded_operator</references>
+        <references refid="classmtk_1_1Matrix_1a9ffaa665a9cf7371b3be568415a08a3b" compoundref="mtk__matrix_8cc" startline="114" endline="117">mtk::Matrix::storage</references>
+        <references refid="classmtk_1_1Matrix_1a13cd17621652cd5551ff98549bd94df7" compoundref="mtk__matrix_8cc" startline="119" endline="122">mtk::Matrix::ordering</references>
+        <references refid="classmtk_1_1Matrix_1ab308b25b48e4fcd39fc60e0c3fc66dea" compoundref="mtk__matrix_8cc" startline="124" endline="127">mtk::Matrix::num_rows</references>
+        <references refid="classmtk_1_1DenseMatrix_1a5aa83a0643f27a4652ea97630edf7143" compoundref="mtk__dense__matrix_8cc" startline="340" endline="343">matrix_properties</references>
+        <references refid="classmtk_1_1Matrix_1a2160118d0edf51cf2aaa806ee1b915f8" compoundref="mtk__matrix_8cc" startline="129" endline="132">mtk::Matrix::num_cols</references>
+        <references refid="classmtk_1_1Matrix_1a17f99bfdf7b8071962c37550028c22b5" compoundref="mtk__matrix_8cc" startline="144" endline="147">mtk::Matrix::num_zero</references>
+        <references refid="classmtk_1_1Matrix_1a79ac4c1b31cef05b41a123917b0ad32f" compoundref="mtk__matrix_8cc" startline="154" endline="157">mtk::Matrix::num_null</references>
+        <references refid="group__c01-foundations_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__foundations_8h" startline="126">mtk::kZero</references>
+        <references refid="classmtk_1_1DenseMatrix_1a7893e4e5c8d2e2de32b156177e78cb6f" compoundref="mtk__dense__matrix_8h" startline="320">data_</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1abe26c623467fc1b293cf4f22a3a47cc8" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::DenseMatrix::DenseMatrix</definition>
+        <argsstring>(const int &amp;num_rows, const int &amp;num_cols)</argsstring>
+        <name>DenseMatrix</name>
+        <param>
+          <type>const int &amp;</type>
+          <declname>num_rows</declname>
+        </param>
+        <param>
+          <type>const int &amp;</type>
+          <declname>num_cols</declname>
+        </param>
+        <briefdescription>
+<para>Construct a dense matrix based on the given dimensions. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">num_rows</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of rows of the required matrix. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">num_cols</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of rows of the required matrix.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::bad_alloc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="134" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="217" bodyend="239"/>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="64" endline="93">mtk::Tools::Prevent</references>
+        <references refid="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a722d122e81cbbe543bd5520bb8678c0e">mtk::NOOP</references>
+        <references refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a0706fbbd929bd8abc4de386c53d439ff">mtk::DENSE</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648">mtk::ROW_MAJOR</references>
+        <references refid="group__c01-foundations_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__foundations_8h" startline="126">mtk::kZero</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a4ef0dec1b5558fcf00719bfac059ec68" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::DenseMatrix::DenseMatrix</definition>
+        <argsstring>(const int &amp;rank, const bool &amp;padded, const bool &amp;transpose)</argsstring>
+        <name>DenseMatrix</name>
+        <param>
+          <type>const int &amp;</type>
+          <declname>rank</declname>
+        </param>
+        <param>
+          <type>const bool &amp;</type>
+          <declname>padded</declname>
+        </param>
+        <param>
+          <type>const bool &amp;</type>
+          <declname>transpose</declname>
+        </param>
+        <briefdescription>
+<para>Construct a zero-rows-padded identity matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used in the construction of the mimetic operators.</para><para>Def**. A <bold>padded matrix</bold> is a matrix with its first and last rows initialized to only zero values:</para><para><formula id="33">\[ \bar{\mathbf{I}} = \left(\begin{array}{ccccc} 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\ 1 &amp; 0 &amp; 0 &amp; \dots &amp; 0 \\ 0 &amp; 1 &amp; 0 &amp; \dots &amp; 0 \\ \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\ 0 &amp; 0 &amp; 0 &amp; \dots &amp; 1 \\ 0 &amp; 0 &amp; 0 &amp; \dots &amp; 0 \end{array}\right) \]</formula></para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">rank</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Rank or number of rows/cols in square matrix. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">padded</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Should it be padded? </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">transpose</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Should I return the transpose of the requested matrix?</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::bad_alloc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="161" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="241" bodyend="282"/>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="64" endline="93">mtk::Tools::Prevent</references>
+        <references refid="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a722d122e81cbbe543bd5520bb8678c0e">mtk::NOOP</references>
+        <references refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a0706fbbd929bd8abc4de386c53d439ff">mtk::DENSE</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648">mtk::ROW_MAJOR</references>
+        <references refid="group__c01-foundations_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__foundations_8h" startline="126">mtk::kZero</references>
+        <references refid="group__c01-foundations_1ga26407c24d43b6b95480943340d285c71" compoundref="mtk__foundations_8h" startline="127">mtk::kOne</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1acedaf4058916614d66a18381e624a21d" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::DenseMatrix::DenseMatrix</definition>
+        <argsstring>(const Real *const gen, const int &amp;gen_length, const int &amp;pro_length, const bool &amp;transpose)</argsstring>
+        <name>DenseMatrix</name>
+        <param>
+          <type>const <ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *const</type>
+          <declname>gen</declname>
+        </param>
+        <param>
+          <type>const int &amp;</type>
+          <declname>gen_length</declname>
+        </param>
+        <param>
+          <type>const int &amp;</type>
+          <declname>pro_length</declname>
+        </param>
+        <param>
+          <type>const bool &amp;</type>
+          <declname>transpose</declname>
+        </param>
+        <briefdescription>
+<para>Construct a dense Vandermonde matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para>Def**. In linear algebra, a <bold>Vandermonde matrix</bold> is a matrix with terms of a geometric progression in each row. This progression uses the terms of a given <bold>generator vector</bold>:</para><para><formula id="34">\[ \mathbf{V} = \left(\begin{array}{ccccc} 1 &amp; \alpha_1 &amp; \alpha_1^2 &amp; \dots &amp; \alpha_1^{n-1}\\ 1 &amp; \alpha_2 &amp; \alpha_2^2 &amp; \dots &amp; \alpha_2^{n-1}\\ 1 &amp; \alpha_3 &amp; \alpha_3^2 &amp; \dots &amp; \alpha_3^{n-1}\\ \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp;\vdots \\ 1 &amp; \alpha_m &amp; \alpha_m^2 &amp; \dots &amp; \alpha_m^{n-1} \end{array}\right) \]</formula></para><para>This constructor generates a Vandermonde matrix, as defined above.</para><para>Obs**. It in important to understand that the generator vectors to be used are nothing but a very particular instance of a grid. These are little chunks, little samples, if you will, of a grid which is rectangular and uniform. So the selected samples, on the <ref refid="classmtk_1_1Div1D" kindref="compound">mtk::Div1D</ref> and <ref refid="classmtk_1_1Grad1D" kindref="compound">mtk::Grad1D</ref>, basically represent the entire space, the entire grid. This is why nor the CRS nor the CBS algorithms may work for irregular geometries, such as curvilinear grids.</para><para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">gen</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Given generator vector. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">gen_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Length generator vector. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">pro_length</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Length the progression. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">transpose</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Should the transpose be created instead?</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::bad_alloc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="196" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="284" bodyend="332"/>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="64" endline="93">mtk::Tools::Prevent</references>
+        <references refid="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a722d122e81cbbe543bd5520bb8678c0e">mtk::NOOP</references>
+        <references refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a0706fbbd929bd8abc4de386c53d439ff">mtk::DENSE</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648">mtk::ROW_MAJOR</references>
+        <references refid="group__c01-foundations_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__foundations_8h" startline="126">mtk::kZero</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a8d4a0df33bd4e4edf5d2fe5539885b85" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::DenseMatrix::~DenseMatrix</definition>
+        <argsstring>()</argsstring>
+        <name>~DenseMatrix</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="204" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="334" bodyend="338"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1ab4ba807bef5282875d2136c456794f11" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c02-enums_1ga9b50023bfb2692219d2915feade94f80" kindref="member">EncodedOperator</ref></type>
+        <definition>mtk::EncodedOperator mtk::DenseMatrix::encoded_operator</definition>
+        <argsstring>() const </argsstring>
+        <name>encoded_operator</name>
+        <briefdescription>
+<para>Return operator encoded by this matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Operator encoded by this matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="211" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="371" bodyend="374"/>
+        <referencedby refid="classmtk_1_1OperatorApplicator_1ac19a5cad4c6600caa75250945ffca63e" compoundref="mtk__operator__applicator_8cc" startline="64" endline="86">mtk::OperatorApplicator::ApplyDenseMatrixGradientOn1DGrid</referencedby>
+        <referencedby refid="classmtk_1_1OperatorApplicator_1a895a4650ad0d07074e69f971ff9321b9" compoundref="mtk__operator__applicator_8cc" startline="88" endline="111">mtk::OperatorApplicator::ApplyDenseMatrixDivergenceOn1DGrid</referencedby>
+        <referencedby refid="classmtk_1_1OperatorApplicator_1a142ef3e84c7547ca05216ccd69d5210e" compoundref="mtk__operator__applicator_8cc" startline="113" endline="135">mtk::OperatorApplicator::ApplyDenseMatrixLaplacianOn1DGrid</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1ac0f824b0fec88c4fb42e77b7550fb0d3" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::DenseMatrix::set_encoded_operator</definition>
+        <argsstring>(const EncodedOperator &amp;op)</argsstring>
+        <name>set_encoded_operator</name>
+        <param>
+          <type>const <ref refid="group__c02-enums_1ga9b50023bfb2692219d2915feade94f80" kindref="member">EncodedOperator</ref> &amp;</type>
+          <declname>op</declname>
+        </param>
+        <briefdescription>
+<para>Sets the encoded operator. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">op</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Encoded operator. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="218" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="376" bodyend="390"/>
+        <references refid="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a722d122e81cbbe543bd5520bb8678c0e">mtk::NOOP</references>
+        <references refid="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a90f70ea2675c36bd9b0b44a79f37a41f">mtk::GRADIENT</references>
+        <references refid="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a4e4e9e6d004c642e33d6f823b57bd60e">mtk::DIVERGENCE</references>
+        <references refid="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a6a9b19b26cdeae14c1102cd40345d568">mtk::INTERPOLATION</references>
+        <references refid="namespacemtk_1ga9b50023bfb2692219d2915feade94f80aa8bc924d0898064a538c557848f7ab48">mtk::CURL</references>
+        <references refid="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a1c2d5f3f8e6cbb0c7b033c388c905d22">mtk::LAPLACIAN</references>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="64" endline="93">mtk::Tools::Prevent</references>
+        <referencedby refid="classmtk_1_1Curl2D_1af0aa6fbf54a75538f50279c97c97010c" compoundref="mtk__curl__2d_8cc" startline="89" endline="157">mtk::Curl2D::ConstructCurl2D</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a213fddbaaf86e4840c6a9649b69c2d49" compoundref="mtk__div__1d_8cc" startline="380" endline="438">mtk::Div1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1af2546ad1568ef39a6075f03bb395719e" compoundref="mtk__div__1d_8cc" startline="440" endline="494">mtk::Div1D::ReturnAsDimensionlessDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a77b2eddbe4ab03f469306c604d505b1a" compoundref="mtk__grad__1d_8cc" startline="394" endline="463">mtk::Grad1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1ab07e6a15edca32534ae3d1a8ccaf1c42" compoundref="mtk__grad__1d_8cc" startline="533" endline="595">mtk::Grad1D::ReturnAsDimensionlessDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Interp1D_1aee8126b8a4be378a30be4d95b43b384b" compoundref="mtk__interp__1d_8cc" startline="137" endline="180">mtk::Interp1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="151" endline="312">mtk::Lap1D::ConstructLap1D</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1aaea34a17b0879e05eb4109645a2ba8f4" compoundref="mtk__lap__1d_8cc" startline="324" endline="394">mtk::Lap1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1ae59deb4e19b59a84fbf2bb0ea86a7e36" compoundref="mtk__div__1d__test_8cc" startline="170" endline="242">TestSecondOrderReturnAsDenseMatrixWithGrid</referencedby>
+        <referencedby refid="mtk__grad__1d__test_8cc_1a82c00a99d7cc081462417ffbad9388bf" compoundref="mtk__grad__1d__test_8cc" startline="149" endline="231">TestReturnAsDenseMatrixWithGrid</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a5aa83a0643f27a4652ea97630edf7143" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classmtk_1_1Matrix" kindref="compound">Matrix</ref></type>
+        <definition>mtk::Matrix mtk::DenseMatrix::matrix_properties</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>matrix_properties</name>
+        <briefdescription>
+<para>Provides access to the matrix data. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to a <ref refid="classmtk_1_1Matrix" kindref="compound">Matrix</ref>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="225" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="340" bodyend="343"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1afdcac059a4294287cb55638221220646" compoundref="mtk__blas__adapter_8cc" startline="381" endline="410">mtk::BLASAdapter::RealDenseMV</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="446" endline="501">mtk::BLASAdapter::RealDenseMM</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1a0dd80d043615a95f11b7341ce69b44d3" compoundref="mtk__blas__adapter_8cc" startline="503" endline="549">mtk::BLASAdapter::RealDenseSM</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="104" endline="146">operator=</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a90102d605a668bf7ecf0d766cc4c10db" compoundref="mtk__dense__matrix_8cc" startline="181" endline="215">DenseMatrix</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::DenseMatrix::num_rows</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>num_rows</name>
+        <briefdescription>
+<para>Gets the number of rows. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of rows of the matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="232" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="356" bodyend="359"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1afdcac059a4294287cb55638221220646" compoundref="mtk__blas__adapter_8cc" startline="381" endline="410">mtk::BLASAdapter::RealDenseMV</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="446" endline="501">mtk::BLASAdapter::RealDenseMM</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1a0dd80d043615a95f11b7341ce69b44d3" compoundref="mtk__blas__adapter_8cc" startline="503" endline="549">mtk::BLASAdapter::RealDenseSM</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="104" endline="146">operator=</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a94ab5a02d9cf81c17b6f68f4c41cb797" compoundref="mtk__dense__matrix_8cc" startline="148" endline="171">operator==</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aa0c0c278b2c00a29c1ceaa70d31aebab" compoundref="mtk__div__1d_8cc" startline="597" endline="771">mtk::Div1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a2d03e6a3961bee558f575ec4099782a9" compoundref="mtk__grad__1d_8cc" startline="694" endline="875">mtk::Grad1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1a7428bccf74fd4a4af68fb7233846da22" compoundref="mtk__lapack__adapter_8cc" startline="432" endline="465">mtk::LAPACKAdapter::SolveDenseSystem</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1ae5c6e78c9c819c9ac7a6f31bfd011d7a" compoundref="mtk__lapack__adapter_8cc" startline="595" endline="790">mtk::LAPACKAdapter::QRFactorDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1a380f148ffdf96bae2f79ae28f1a6560c" compoundref="mtk__lapack__adapter_8cc" startline="792" endline="876">mtk::LAPACKAdapter::SolveRectangularDenseSystem</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1aab2a560324b90eeaa11a75aef1d72fe0" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="166" endline="198">mtk::RobinBCDescriptor1D::ImposeOnDivergenceMatrix</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1adfe4c8c95ea8ed96bc0c8f9a90101409" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="200" endline="283">mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1a82159bcca93555114532c5fa4d0fb3db" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="229" endline="282">mtk::RobinBCDescriptor2D::ImposeOnSouthBoundaryNoSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1a3bc22c1d5a7a4d7c2130351cbfa35135" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="312" endline="370">mtk::RobinBCDescriptor2D::ImposeOnNorthBoundaryNoSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1af5dd24444e7eb14592a3c3feaf30d561" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="399" endline="466">mtk::RobinBCDescriptor2D::ImposeOnWestBoundaryNoSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1ae1df82802d541d3566f3d2659e4aaf05" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="495" endline="562">mtk::RobinBCDescriptor2D::ImposeOnEastBoundaryNoSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1a0a26693f5265fcad978e7ba84e01ed69" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="591" endline="672">mtk::RobinBCDescriptor2D::ImposeOnLaplacianMatrix</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a9e6e44523ba0df5196edcc06d0b910fb" compoundref="mtk__dense__matrix__test_8cc" startline="69" endline="84">TestConstructorWithNumRowsNumCols</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a41747502d468c6728a4be31501b16e0e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::DenseMatrix::num_cols</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>num_cols</name>
+        <briefdescription>
+<para>Gets the number of columns. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Number of columns of the matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="239" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="361" bodyend="364"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1afdcac059a4294287cb55638221220646" compoundref="mtk__blas__adapter_8cc" startline="381" endline="410">mtk::BLASAdapter::RealDenseMV</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="446" endline="501">mtk::BLASAdapter::RealDenseMM</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1a0dd80d043615a95f11b7341ce69b44d3" compoundref="mtk__blas__adapter_8cc" startline="503" endline="549">mtk::BLASAdapter::RealDenseSM</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" compoundref="mtk__dense__matrix_8cc" startline="104" endline="146">operator=</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a94ab5a02d9cf81c17b6f68f4c41cb797" compoundref="mtk__dense__matrix_8cc" startline="148" endline="171">operator==</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aa0c0c278b2c00a29c1ceaa70d31aebab" compoundref="mtk__div__1d_8cc" startline="597" endline="771">mtk::Div1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="993" endline="1368">mtk::Div1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a2d03e6a3961bee558f575ec4099782a9" compoundref="mtk__grad__1d_8cc" startline="694" endline="875">mtk::Grad1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="1098" endline="1483">mtk::Grad1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1ae5c6e78c9c819c9ac7a6f31bfd011d7a" compoundref="mtk__lapack__adapter_8cc" startline="595" endline="790">mtk::LAPACKAdapter::QRFactorDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1a380f148ffdf96bae2f79ae28f1a6560c" compoundref="mtk__lapack__adapter_8cc" startline="792" endline="876">mtk::LAPACKAdapter::SolveRectangularDenseSystem</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1aab2a560324b90eeaa11a75aef1d72fe0" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="166" endline="198">mtk::RobinBCDescriptor1D::ImposeOnDivergenceMatrix</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1adfe4c8c95ea8ed96bc0c8f9a90101409" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="200" endline="283">mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1a82159bcca93555114532c5fa4d0fb3db" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="229" endline="282">mtk::RobinBCDescriptor2D::ImposeOnSouthBoundaryNoSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1a3bc22c1d5a7a4d7c2130351cbfa35135" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="312" endline="370">mtk::RobinBCDescriptor2D::ImposeOnNorthBoundaryNoSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1af5dd24444e7eb14592a3c3feaf30d561" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="399" endline="466">mtk::RobinBCDescriptor2D::ImposeOnWestBoundaryNoSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1ae1df82802d541d3566f3d2659e4aaf05" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="495" endline="562">mtk::RobinBCDescriptor2D::ImposeOnEastBoundaryNoSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1a0a26693f5265fcad978e7ba84e01ed69" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="591" endline="672">mtk::RobinBCDescriptor2D::ImposeOnLaplacianMatrix</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a9e6e44523ba0df5196edcc06d0b910fb" compoundref="mtk__dense__matrix__test_8cc" startline="69" endline="84">TestConstructorWithNumRowsNumCols</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+        <definition>mtk::Real * mtk::DenseMatrix::data</definition>
+        <argsstring>() const noexcept</argsstring>
+        <name>data</name>
+        <briefdescription>
+<para>Provides access to the matrix value array. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Pointer to an array of <ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">mtk::Real</ref>. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="246" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="366" bodyend="369"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1afdcac059a4294287cb55638221220646" compoundref="mtk__blas__adapter_8cc" startline="381" endline="410">mtk::BLASAdapter::RealDenseMV</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="446" endline="501">mtk::BLASAdapter::RealDenseMM</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1a0dd80d043615a95f11b7341ce69b44d3" compoundref="mtk__blas__adapter_8cc" startline="503" endline="549">mtk::BLASAdapter::RealDenseSM</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a94ab5a02d9cf81c17b6f68f4c41cb797" compoundref="mtk__dense__matrix_8cc" startline="148" endline="171">operator==</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aa0c0c278b2c00a29c1ceaa70d31aebab" compoundref="mtk__div__1d_8cc" startline="597" endline="771">mtk::Div1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="993" endline="1368">mtk::Div1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a2d03e6a3961bee558f575ec4099782a9" compoundref="mtk__grad__1d_8cc" startline="694" endline="875">mtk::Grad1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="1098" endline="1483">mtk::Grad1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1ab2652725a8407c79247680c7bbd073b8" compoundref="mtk__lap__1d_8cc" startline="396" endline="403">mtk::Lap1D::data</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1a7428bccf74fd4a4af68fb7233846da22" compoundref="mtk__lapack__adapter_8cc" startline="432" endline="465">mtk::LAPACKAdapter::SolveDenseSystem</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1ae5c6e78c9c819c9ac7a6f31bfd011d7a" compoundref="mtk__lapack__adapter_8cc" startline="595" endline="790">mtk::LAPACKAdapter::QRFactorDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1a380f148ffdf96bae2f79ae28f1a6560c" compoundref="mtk__lapack__adapter_8cc" startline="792" endline="876">mtk::LAPACKAdapter::SolveRectangularDenseSystem</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a6e2a732a95a4c8992e72bf4268521e3c" compoundref="mtk__dense__matrix__test_8cc" startline="59" endline="67">TestDefaultConstructor</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a9e6e44523ba0df5196edcc06d0b910fb" compoundref="mtk__dense__matrix__test_8cc" startline="69" endline="84">TestConstructorWithNumRowsNumCols</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1aacb5cb7b5460d0a8bb5db9fd9e2bf6bc" compoundref="mtk__dense__matrix__test_8cc" startline="126" endline="153">TestSetValueGetValue</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a178e63f365cf8c547dc5020c60357f5e" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::DenseMatrix::SetOrdering</definition>
+        <argsstring>(mtk::MatrixOrdering oo) noexcept</argsstring>
+        <name>SetOrdering</name>
+        <param>
+          <type><ref refid="group__c02-enums_1ga622801bd9f912d0f976c3e383f5f581c" kindref="member">mtk::MatrixOrdering</ref></type>
+          <declname>oo</declname>
+        </param>
+        <briefdescription>
+<para>Sets the ordering of the matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">oo</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Ordering.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The required value at the specified coordinates. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="255" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="345" bodyend="354"/>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="64" endline="93">mtk::Tools::Prevent</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648">mtk::ROW_MAJOR</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca34d2765ffc490951febdcca04bc4f7cd">mtk::COL_MAJOR</references>
+        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="446" endline="501">mtk::BLASAdapter::RealDenseMM</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1af0723bba1d73450119d093b9cf1ff6f0" compoundref="mtk__lapack__adapter_8cc" startline="467" endline="517">mtk::LAPACKAdapter::SolveDenseSystem</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a4b23ecbebd970b5eea915dbb50691024" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>mtk::Real mtk::DenseMatrix::GetValue</definition>
+        <argsstring>(const int &amp;row_coord, const int &amp;col_coord) const noexcept</argsstring>
+        <name>GetValue</name>
+        <param>
+          <type>const int &amp;</type>
+          <declname>row_coord</declname>
+        </param>
+        <param>
+          <type>const int &amp;</type>
+          <declname>col_coord</declname>
+        </param>
+        <briefdescription>
+<para>Gets a value on the given coordinates. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">row_coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Row coordinate. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">col_coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Column coordinate.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>The required value at the specified coordinates. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="265" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="392" bodyend="402"/>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="64" endline="93">mtk::Tools::Prevent</references>
+        <referencedby refid="classmtk_1_1Curl2D_1af0aa6fbf54a75538f50279c97c97010c" compoundref="mtk__curl__2d_8cc" startline="89" endline="157">mtk::Curl2D::ConstructCurl2D</referencedby>
+        <referencedby refid="classmtk_1_1Div2D_1a4214055909a6b94fcb9d657cc839055f" compoundref="mtk__div__2d_8cc" startline="79" endline="145">mtk::Div2D::ConstructDiv2D</referencedby>
+        <referencedby refid="classmtk_1_1Div3D_1aa386efd096a548fd1a47f72f1020f42f" compoundref="mtk__div__3d_8cc" startline="77" endline="184">mtk::Div3D::ConstructDiv3D</referencedby>
+        <referencedby refid="classmtk_1_1Grad2D_1a9771be954c59880e3d83f4d645378c00" compoundref="mtk__grad__2d_8cc" startline="77" endline="143">mtk::Grad2D::ConstructGrad2D</referencedby>
+        <referencedby refid="classmtk_1_1Grad3D_1a56c77fd4eb2d929fc83c063534aba479" compoundref="mtk__grad__3d_8cc" startline="77" endline="183">mtk::Grad3D::ConstructGrad3D</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="151" endline="312">mtk::Lap1D::ConstructLap1D</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1aaea34a17b0879e05eb4109645a2ba8f4" compoundref="mtk__lap__1d_8cc" startline="324" endline="394">mtk::Lap1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1adfe4c8c95ea8ed96bc0c8f9a90101409" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="200" endline="283">mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1af5dd24444e7eb14592a3c3feaf30d561" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="399" endline="466">mtk::RobinBCDescriptor2D::ImposeOnWestBoundaryNoSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1ae1df82802d541d3566f3d2659e4aaf05" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="495" endline="562">mtk::RobinBCDescriptor2D::ImposeOnEastBoundaryNoSpace</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1aacb5cb7b5460d0a8bb5db9fd9e2bf6bc" compoundref="mtk__dense__matrix__test_8cc" startline="126" endline="153">TestSetValueGetValue</referencedby>
+        <referencedby refid="mtk__interp__1d__test_8cc_1a82c00a99d7cc081462417ffbad9388bf" compoundref="mtk__interp__1d__test_8cc" startline="76" endline="97">TestReturnAsDenseMatrixWithGrid</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a784ce5784109ac86bfb9d8562b334b13" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::DenseMatrix::SetValue</definition>
+        <argsstring>(const int &amp;row_coord, const int &amp;col_coord, const Real &amp;val) noexcept</argsstring>
+        <name>SetValue</name>
+        <param>
+          <type>const int &amp;</type>
+          <declname>row_coord</declname>
+        </param>
+        <param>
+          <type>const int &amp;</type>
+          <declname>col_coord</declname>
+        </param>
+        <param>
+          <type>const <ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> &amp;</type>
+          <declname>val</declname>
+        </param>
+        <briefdescription>
+<para>Sets a value on the given coordinates. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">row_coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Row coordinate. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">col_coord</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Column coordinate. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">val</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Row Actual value to be inserted. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="274" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="404" bodyend="415"/>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="64" endline="93">mtk::Tools::Prevent</references>
+        <referencedby refid="classmtk_1_1Curl2D_1af0aa6fbf54a75538f50279c97c97010c" compoundref="mtk__curl__2d_8cc" startline="89" endline="157">mtk::Curl2D::ConstructCurl2D</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a2c844ef39825e73e4024d35fcdd42b12" compoundref="mtk__div__1d_8cc" startline="355" endline="368">mtk::Div1D::mim_bndy</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a213fddbaaf86e4840c6a9649b69c2d49" compoundref="mtk__div__1d_8cc" startline="380" endline="438">mtk::Div1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1af2546ad1568ef39a6075f03bb395719e" compoundref="mtk__div__1d_8cc" startline="440" endline="494">mtk::Div1D::ReturnAsDimensionlessDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Div2D_1a4214055909a6b94fcb9d657cc839055f" compoundref="mtk__div__2d_8cc" startline="79" endline="145">mtk::Div2D::ConstructDiv2D</referencedby>
+        <referencedby refid="classmtk_1_1Div3D_1aa386efd096a548fd1a47f72f1020f42f" compoundref="mtk__div__3d_8cc" startline="77" endline="184">mtk::Div3D::ConstructDiv3D</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1ab25e1d064a5a00fbe3777e65fd5750c0" compoundref="mtk__grad__1d_8cc" startline="369" endline="382">mtk::Grad1D::mim_bndy</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a77b2eddbe4ab03f469306c604d505b1a" compoundref="mtk__grad__1d_8cc" startline="394" endline="463">mtk::Grad1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1ab07e6a15edca32534ae3d1a8ccaf1c42" compoundref="mtk__grad__1d_8cc" startline="533" endline="595">mtk::Grad1D::ReturnAsDimensionlessDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Grad2D_1a9771be954c59880e3d83f4d645378c00" compoundref="mtk__grad__2d_8cc" startline="77" endline="143">mtk::Grad2D::ConstructGrad2D</referencedby>
+        <referencedby refid="classmtk_1_1Grad3D_1a56c77fd4eb2d929fc83c063534aba479" compoundref="mtk__grad__3d_8cc" startline="77" endline="183">mtk::Grad3D::ConstructGrad3D</referencedby>
+        <referencedby refid="classmtk_1_1Interp1D_1aee8126b8a4be378a30be4d95b43b384b" compoundref="mtk__interp__1d_8cc" startline="137" endline="180">mtk::Interp1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1aaea34a17b0879e05eb4109645a2ba8f4" compoundref="mtk__lap__1d_8cc" startline="324" endline="394">mtk::Lap1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1aab2a560324b90eeaa11a75aef1d72fe0" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="166" endline="198">mtk::RobinBCDescriptor1D::ImposeOnDivergenceMatrix</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1adfe4c8c95ea8ed96bc0c8f9a90101409" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="200" endline="283">mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1a82159bcca93555114532c5fa4d0fb3db" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="229" endline="282">mtk::RobinBCDescriptor2D::ImposeOnSouthBoundaryNoSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1a2f99cdd8bda2bc46cf259bb96ef4bd49" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="284" endline="310">mtk::RobinBCDescriptor2D::ImposeOnSouthBoundaryWithSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1a3bc22c1d5a7a4d7c2130351cbfa35135" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="312" endline="370">mtk::RobinBCDescriptor2D::ImposeOnNorthBoundaryNoSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1afdf9cc19481303564a17c8c7157d57cb" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="372" endline="397">mtk::RobinBCDescriptor2D::ImposeOnNorthBoundaryWithSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1af5dd24444e7eb14592a3c3feaf30d561" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="399" endline="466">mtk::RobinBCDescriptor2D::ImposeOnWestBoundaryNoSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1adbfdfa9c6b93df8d23c50686b5b356ef" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="468" endline="493">mtk::RobinBCDescriptor2D::ImposeOnWestBoundaryWithSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1ae1df82802d541d3566f3d2659e4aaf05" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="495" endline="562">mtk::RobinBCDescriptor2D::ImposeOnEastBoundaryNoSpace</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1a37efc8077bf5ea4f28539da248dc2a41" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="564" endline="589">mtk::RobinBCDescriptor2D::ImposeOnEastBoundaryWithSpace</referencedby>
+        <referencedby refid="mtk__blas__adapter__test_8cc_1ac717e602841eac4e34e7c3b38259f05e" compoundref="mtk__blas__adapter__test_8cc" startline="58" endline="94">TestRealDenseMM</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a73c40c10eca3d4d5c9163b9a987ae5ff" compoundref="mtk__dense__matrix__test_8cc" startline="86" endline="104">TestConstructAsIdentity</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a5dd7d787ca03d0eb47c9ac438fd613f7" compoundref="mtk__dense__matrix__test_8cc" startline="106" endline="124">TestConstructAsVandermonde</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1aacb5cb7b5460d0a8bb5db9fd9e2bf6bc" compoundref="mtk__dense__matrix__test_8cc" startline="126" endline="153">TestSetValueGetValue</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a83e04c23e591c07c140b421c2770ed82" compoundref="mtk__dense__matrix__test_8cc" startline="155" endline="190">TestConstructAsVandermondeTranspose</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a4cfd40c6bb3c6f95d01ada7407f7ae64" compoundref="mtk__dense__matrix__test_8cc" startline="192" endline="260">TestKron</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1afb53e3a143458f6c3ef9eebf34e99cea" compoundref="mtk__dense__matrix__test_8cc" startline="262" endline="284">TestConstructWithNumRowsNumColsAssignmentOperator</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1ae59deb4e19b59a84fbf2bb0ea86a7e36" compoundref="mtk__div__1d__test_8cc" startline="170" endline="242">TestSecondOrderReturnAsDenseMatrixWithGrid</referencedby>
+        <referencedby refid="mtk__grad__1d__test_8cc_1a82c00a99d7cc081462417ffbad9388bf" compoundref="mtk__grad__1d__test_8cc" startline="149" endline="231">TestReturnAsDenseMatrixWithGrid</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a71d9c07ca66e88d97d1fd5012f43138b" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::DenseMatrix::Transpose</definition>
+        <argsstring>()</argsstring>
+        <name>Transpose</name>
+        <briefdescription>
+<para>Transpose this matrix. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="todo_1_todo000017"><xreftitle>Todo</xreftitle><xrefdescription><para>Improve this so that no extra arrays have to be created. </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="281" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="417" bodyend="452"/>
+        <references refid="group__c01-foundations_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__foundations_8h" startline="126">mtk::kZero</references>
+        <referencedby refid="classmtk_1_1Div1D_1aa0c0c278b2c00a29c1ceaa70d31aebab" compoundref="mtk__div__1d_8cc" startline="597" endline="771">mtk::Div1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" compoundref="mtk__div__1d_8cc" startline="993" endline="1368">mtk::Div1D::ComputeWeights</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a2d03e6a3961bee558f575ec4099782a9" compoundref="mtk__grad__1d_8cc" startline="694" endline="875">mtk::Grad1D::ComputeRationalBasisNullSpace</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a224082617751864bffca9bfe494c36d5" compoundref="mtk__grad__1d_8cc" startline="1098" endline="1483">mtk::Grad1D::ComputeWeights</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1afb53e3a143458f6c3ef9eebf34e99cea" compoundref="mtk__dense__matrix__test_8cc" startline="262" endline="284">TestConstructWithNumRowsNumColsAssignmentOperator</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a5b34332324b47adf015c6ffd02c81403" compoundref="mtk__dense__matrix__test_8cc" startline="286" endline="307">TestConstructAsVandermondeTransposeAssignmentOperator</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::DenseMatrix::OrderRowMajor</definition>
+        <argsstring>()</argsstring>
+        <name>OrderRowMajor</name>
+        <briefdescription>
+<para>Make the matrix row-wise ordered. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="todo_1_todo000018"><xreftitle>Todo</xreftitle><xrefdescription><para>Improve this so that no new arrays have to be created. </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="286" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="454" bodyend="493"/>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca34d2765ffc490951febdcca04bc4f7cd">mtk::COL_MAJOR</references>
+        <references refid="group__c01-foundations_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__foundations_8h" startline="126">mtk::kZero</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648">mtk::ROW_MAJOR</references>
+        <referencedby refid="classmtk_1_1BLASAdapter_1afdcac059a4294287cb55638221220646" compoundref="mtk__blas__adapter_8cc" startline="381" endline="410">mtk::BLASAdapter::RealDenseMV</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="446" endline="501">mtk::BLASAdapter::RealDenseMM</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1a0dd80d043615a95f11b7341ce69b44d3" compoundref="mtk__blas__adapter_8cc" startline="503" endline="549">mtk::BLASAdapter::RealDenseSM</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1af0723bba1d73450119d093b9cf1ff6f0" compoundref="mtk__lapack__adapter_8cc" startline="467" endline="517">mtk::LAPACKAdapter::SolveDenseSystem</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a59b9bea24acf39dca64e8549b3527463" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::DenseMatrix::OrderColMajor</definition>
+        <argsstring>()</argsstring>
+        <name>OrderColMajor</name>
+        <briefdescription>
+<para>Make the matrix column-wise ordered. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="todo_1_todo000019"><xreftitle>Todo</xreftitle><xrefdescription><para>Improve this so that no new arrays have to be created. </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="291" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="495" bodyend="532"/>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648">mtk::ROW_MAJOR</references>
+        <references refid="group__c01-foundations_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__foundations_8h" startline="126">mtk::kZero</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca34d2765ffc490951febdcca04bc4f7cd">mtk::COL_MAJOR</references>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1ac38be1e30a2456b2a14c8a81f47c4ba1" compoundref="mtk__lapack__adapter_8cc" startline="519" endline="555">mtk::LAPACKAdapter::SolveDenseSystem</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1ab396804fb5f188e1eaa8578c738c59fc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mtk::DenseMatrix::WriteToFile</definition>
+        <argsstring>(const std::string &amp;filename) const </argsstring>
+        <name>WriteToFile</name>
+        <param>
+          <type>const std::string &amp;</type>
+          <declname>filename</declname>
+        </param>
+        <briefdescription>
+<para>Writes matrix to a file compatible with Gnuplot 4.6. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">filename</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Name of the output file.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<simplesect kind="return"><para>Success of the file writing process.</para></simplesect>
+<simplesect kind="see"><para><ulink url="http://www.gnuplot.info/">http://www.gnuplot.info/</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="315" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="577" bodyend="601"/>
+        <referencedby refid="mtk__div__2d__test_8cc_1a9181f8638ee3a27345cb2b516b57ef7b" compoundref="mtk__div__2d__test_8cc" startline="87" endline="123">TestReturnAsDenseMatrixWriteToFile</referencedby>
+        <referencedby refid="mtk__grad__1d__test_8cc_1a6151c23cb8b3a5e29cf4ee85a671674c" compoundref="mtk__grad__1d__test_8cc" startline="253" endline="279">TestWriteToFile</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-static-func">
+      <memberdef kind="function" id="classmtk_1_1DenseMatrix_1a01d3d8bd502870f93bf3a88a0cc5fb49" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref></type>
+        <definition>mtk::DenseMatrix mtk::DenseMatrix::Kron</definition>
+        <argsstring>(const DenseMatrix &amp;aa, const DenseMatrix &amp;bb)</argsstring>
+        <name>Kron</name>
+        <param>
+          <type>const <ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref> &amp;</type>
+          <declname>aa</declname>
+        </param>
+        <param>
+          <type>const <ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref> &amp;</type>
+          <declname>bb</declname>
+        </param>
+        <briefdescription>
+<para>Construct a dense matrix based on the Kronecker product of arguments. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">aa</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>First matrix. </para></parameterdescription>
+</parameteritem>
+<parameteritem>
+<parameternamelist>
+<parametername direction="in">bb</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Second matrix.</para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<parameterlist kind="exception"><parameteritem>
+<parameternamelist>
+<parametername>std::bad_alloc</parametername>
+</parameternamelist>
+<parameterdescription>
+<para></para></parameterdescription>
+</parameteritem>
+</parameterlist>
+<xrefsect id="todo_1_todo000001"><xreftitle>Todo</xreftitle><xrefdescription><para>Implement Kronecker product using the BLAS. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="todo_1_todo000020"><xreftitle>Todo</xreftitle><xrefdescription><para>Implement Kron using the BLAS. </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="303" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_dense_matrix.cc" bodystart="534" bodyend="575"/>
+        <references refid="classmtk_1_1DenseMatrix_1a481c8d09af685a5ba67acefdcaa810cc" compoundref="mtk__dense__matrix_8h" startline="318">matrix_properties_</references>
+        <references refid="classmtk_1_1Matrix_1ab308b25b48e4fcd39fc60e0c3fc66dea" compoundref="mtk__matrix_8cc" startline="124" endline="127">mtk::Matrix::num_rows</references>
+        <references refid="classmtk_1_1Matrix_1a2160118d0edf51cf2aaa806ee1b915f8" compoundref="mtk__matrix_8cc" startline="129" endline="132">mtk::Matrix::num_cols</references>
+        <references refid="classmtk_1_1DenseMatrix_1a7893e4e5c8d2e2de32b156177e78cb6f" compoundref="mtk__dense__matrix_8h" startline="320">data_</references>
+        <references refid="classmtk_1_1Matrix_1a111b89f2f21d06a59b8d043123bec625" compoundref="mtk__matrix_8cc" startline="216" endline="226">mtk::Matrix::set_storage</references>
+        <references refid="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a0706fbbd929bd8abc4de386c53d439ff">mtk::DENSE</references>
+        <references refid="classmtk_1_1Matrix_1a8bdaf3f8307b00a36843359f165e1f17" compoundref="mtk__matrix_8cc" startline="228" endline="239">mtk::Matrix::set_ordering</references>
+        <references refid="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648">mtk::ROW_MAJOR</references>
+        <referencedby refid="classmtk_1_1Curl2D_1af0aa6fbf54a75538f50279c97c97010c" compoundref="mtk__curl__2d_8cc" startline="89" endline="157">mtk::Curl2D::ConstructCurl2D</referencedby>
+        <referencedby refid="classmtk_1_1Div2D_1a4214055909a6b94fcb9d657cc839055f" compoundref="mtk__div__2d_8cc" startline="79" endline="145">mtk::Div2D::ConstructDiv2D</referencedby>
+        <referencedby refid="classmtk_1_1Div3D_1aa386efd096a548fd1a47f72f1020f42f" compoundref="mtk__div__3d_8cc" startline="77" endline="184">mtk::Div3D::ConstructDiv3D</referencedby>
+        <referencedby refid="classmtk_1_1Grad2D_1a9771be954c59880e3d83f4d645378c00" compoundref="mtk__grad__2d_8cc" startline="77" endline="143">mtk::Grad2D::ConstructGrad2D</referencedby>
+        <referencedby refid="classmtk_1_1Grad3D_1a56c77fd4eb2d929fc83c063534aba479" compoundref="mtk__grad__3d_8cc" startline="77" endline="183">mtk::Grad3D::ConstructGrad3D</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a4cfd40c6bb3c6f95d01ada7407f7ae64" compoundref="mtk__dense__matrix__test_8cc" startline="192" endline="260">TestKron</referencedby>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Defines a common dense matrix, using a 1D array. </para>    </briefdescription>
+    <detaileddescription>
+<para>For developing purposes, it is better to have a not-so-intrincated data structure implementing matrices. This is the purpose of this class: to be used for prototypes of new code for small test cases. In every other instance, this should be replaced by the most appropriate sparse matrix. </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="110">
+        <label>mtk::DenseMatrix</label>
+        <link refid="classmtk_1_1DenseMatrix"/>
+        <childnode refid="111" relation="usage">
+          <edgelabel>-matrix_properties_</edgelabel>
+        </childnode>
+      </node>
+      <node id="111">
+        <label>mtk::Matrix</label>
+        <link refid="classmtk_1_1Matrix"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" line="93" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_dense_matrix.h" bodystart="93" bodyend="321"/>
+    <listofallmembers>
+      <member refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>data</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a7893e4e5c8d2e2de32b156177e78cb6f" prot="private" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>data_</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a0c75ee704707983f935b02835eab0933" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>DenseMatrix</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a90102d605a668bf7ecf0d766cc4c10db" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>DenseMatrix</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1abe26c623467fc1b293cf4f22a3a47cc8" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>DenseMatrix</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a4ef0dec1b5558fcf00719bfac059ec68" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>DenseMatrix</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1acedaf4058916614d66a18381e624a21d" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>DenseMatrix</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1ab4ba807bef5282875d2136c456794f11" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>encoded_operator</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a4b23ecbebd970b5eea915dbb50691024" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>GetValue</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a01d3d8bd502870f93bf3a88a0cc5fb49" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>Kron</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a5aa83a0643f27a4652ea97630edf7143" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>matrix_properties</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a481c8d09af685a5ba67acefdcaa810cc" prot="private" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>matrix_properties_</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a41747502d468c6728a4be31501b16e0e" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>num_cols</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>num_rows</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1adbcc850ef373550f634f563573a31d28" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a0d27dc7c4d2c49f391017e392345ced0" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>operator=</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a94ab5a02d9cf81c17b6f68f4c41cb797" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>operator==</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a59b9bea24acf39dca64e8549b3527463" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>OrderColMajor</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1ac2949efba3e8278335d45418c85433e4" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>OrderRowMajor</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1ac0f824b0fec88c4fb42e77b7550fb0d3" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>set_encoded_operator</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a178e63f365cf8c547dc5020c60357f5e" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>SetOrdering</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a784ce5784109ac86bfb9d8562b334b13" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>SetValue</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a71d9c07ca66e88d97d1fd5012f43138b" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>Transpose</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1ab396804fb5f188e1eaa8578c738c59fc" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>WriteToFile</name></member>
+      <member refid="classmtk_1_1DenseMatrix_1a8d4a0df33bd4e4edf5d2fe5539885b85" prot="public" virt="non-virtual"><scope>mtk::DenseMatrix</scope><name>~DenseMatrix</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

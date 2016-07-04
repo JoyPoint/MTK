@@ -86,24 +86,24 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#if __cplusplus == 201103L
+#include <cstdlib>
+#include <cmath>
 
 #include <iostream>
 #include <fstream>
-#include <cmath>
 
 #include <vector>
 
 #include "mtk.h"
 
-mtk::Real Alpha(const mtk::Real &tt) {
+mtk::Real Alpha(const mtk::Real &tt, const std::vector<mtk::Real> &pp) {
 
   mtk::Real lambda{-1.0};
 
   return -exp(lambda);
 }
 
-mtk::Real Beta(const mtk::Real &tt) {
+mtk::Real Beta(const mtk::Real &tt, const std::vector<mtk::Real> &pp) {
 
   mtk::Real lambda{-1.0};
 
@@ -175,7 +175,9 @@ int main () {
 
   mtk::UniStgGrid1D source(west_bndy_x, east_bndy_x, num_cells_x);
 
-  source.BindScalarField(Source, std::vector<mtk::Real>());
+  const std::vector<mtk::Real> lambda{ {-mtk::kOne} };
+
+  source.BindScalarField(Source, lambda);
 
   std::cout << "source =" << std::endl;
   std::cout << source << std::endl;
@@ -193,7 +195,7 @@ int main () {
   robin_bc_desc_1d.set_west_condition(Omega);
   robin_bc_desc_1d.set_east_condition(Epsilon);
 
-  if (!robin_bc_desc_1d.ImposeOnLaplacianMatrix(lap, lapm)) {
+  if (!robin_bc_desc_1d.ImposeOnLaplacianMatrix(lap, lapm, lambda)) {
     std::cerr << "BCs  could not be bound to the matrix." << std::endl;
     return EXIT_FAILURE;
   }
@@ -263,13 +265,3 @@ int main () {
   std::cout << "relative_norm_2_error = ";
   std::cout << relative_norm_2_error << std::endl;
 }
-#else
-#include <iostream>
-using std::cout;
-using std::endl;
-int main () {
-  cout << "This code HAS to be compiled with support for C++11." << endl;
-  cout << "Exiting..." << endl;
-  return EXIT_SUCCESS;
-}
-#endif

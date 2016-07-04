@@ -1,0 +1,760 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="classmtk_1_1Div1D" kind="class" prot="public">
+    <compoundname>mtk::Div1D</compoundname>
+    <includes refid="mtk__div__1d_8h" local="no">mtk_div_1d.h</includes>
+      <sectiondef kind="private-attrib">
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1a9c8a8d7cd08a72dbd1daa8deee06f9c6" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Div1D::order_accuracy_</definition>
+        <argsstring></argsstring>
+        <name>order_accuracy_</name>
+        <briefdescription>
+<para>Order of numerical accuracy of the operator. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="229" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="229" bodyend="-1"/>
+        <referencedby refid="namespacemtk_1a12db5e6fff3788f728819a60d5c28d01" compoundref="mtk__div__1d_8cc" startline="82" endline="131">mtk::operator&lt;&lt;</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1a264027144def76d802778391f55381a0" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Div1D::dim_null_</definition>
+        <argsstring></argsstring>
+        <name>dim_null_</name>
+        <briefdescription>
+<para>Dim. null-space for boundary approximations. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="230" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="230" bodyend="-1"/>
+        <referencedby refid="namespacemtk_1a12db5e6fff3788f728819a60d5c28d01" compoundref="mtk__div__1d_8cc" startline="82" endline="131">mtk::operator&lt;&lt;</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1a717240b41eaa2adde858630b9e3d3042" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Div1D::num_bndy_coeffs_</definition>
+        <argsstring></argsstring>
+        <name>num_bndy_coeffs_</name>
+        <briefdescription>
+<para>Req. coeffs. per bndy pt. uni. order accuracy. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="231" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="231" bodyend="-1"/>
+        <referencedby refid="namespacemtk_1a12db5e6fff3788f728819a60d5c28d01" compoundref="mtk__div__1d_8cc" startline="82" endline="131">mtk::operator&lt;&lt;</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1ac0f152190cd2fbff62deb07f96284f86" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Div1D::divergence_length_</definition>
+        <argsstring></argsstring>
+        <name>divergence_length_</name>
+        <briefdescription>
+<para>Length of the output array. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="232" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="232" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1a0ba7a75cca6cf3646deb7a030cbbf3f3" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Div1D::minrow_</definition>
+        <argsstring></argsstring>
+        <name>minrow_</name>
+        <briefdescription>
+<para>Row from the optimizer with the minimum rel. nor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="233" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="233" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1a86d99df0e9b1e5d2943a2dcf58975556" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Div1D::row_</definition>
+        <argsstring></argsstring>
+        <name>row_</name>
+        <briefdescription>
+<para>Row currently processed by the optimizer. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="234" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="234" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1aa5939920aee1ffccd2185822ca853b3d" prot="private" static="no" mutable="no">
+        <type>int</type>
+        <definition>int mtk::Div1D::num_feasible_sols_</definition>
+        <argsstring></argsstring>
+        <name>num_feasible_sols_</name>
+        <briefdescription>
+<para>Number of feasible solutions for weights. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="235" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="235" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1a4f0f5589f13024b7e0edc2ac19649f9b" prot="private" static="no" mutable="no">
+        <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref></type>
+        <definition>DenseMatrix mtk::Div1D::rat_basis_null_space_</definition>
+        <argsstring></argsstring>
+        <name>rat_basis_null_space_</name>
+        <briefdescription>
+<para>Rational b. null-space w. bndy. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="237" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="237" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1a7c7688d8ac25120587353ece4e93a13a" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+        <definition>Real* mtk::Div1D::coeffs_interior_</definition>
+        <argsstring></argsstring>
+        <name>coeffs_interior_</name>
+        <briefdescription>
+<para>Interior stencil. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="239" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="239" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1ab51ff3db86a874604d6c756ab6770950" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+        <definition>Real* mtk::Div1D::prem_apps_</definition>
+        <argsstring></argsstring>
+        <name>prem_apps_</name>
+        <briefdescription>
+<para>2D array of boundary preliminary approximations. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="240" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="240" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1ad36dcfade921f0488fe3edaecc17bd75" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+        <definition>Real* mtk::Div1D::weights_crs_</definition>
+        <argsstring></argsstring>
+        <name>weights_crs_</name>
+        <briefdescription>
+<para>Array containing weights from CRSA. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="241" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="241" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1a631dad42a0ec0f5d5ac767abdfd8949c" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+        <definition>Real* mtk::Div1D::weights_cbs_</definition>
+        <argsstring></argsstring>
+        <name>weights_cbs_</name>
+        <briefdescription>
+<para>Array containing weights from CBSA. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="242" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="242" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1a6d6c600117fdb583f061da0c9d5f28f7" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+        <definition>Real* mtk::Div1D::mim_bndy_</definition>
+        <argsstring></argsstring>
+        <name>mim_bndy_</name>
+        <briefdescription>
+<para>Array containing mimetic boundary approximations. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="243" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="243" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1a0f96410051ba1fa6d91dfa7b7eacead9" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+        <definition>Real* mtk::Div1D::divergence_</definition>
+        <argsstring></argsstring>
+        <name>divergence_</name>
+        <briefdescription>
+<para>Output array containing the operator and weights. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="244" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="244" bodyend="-1"/>
+        <referencedby refid="namespacemtk_1a12db5e6fff3788f728819a60d5c28d01" compoundref="mtk__div__1d_8cc" startline="82" endline="131">mtk::operator&lt;&lt;</referencedby>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1a40ed629199b38133f5652b71e8b1cd06" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>Real mtk::Div1D::mimetic_threshold_</definition>
+        <argsstring></argsstring>
+        <name>mimetic_threshold_</name>
+        <briefdescription>
+<para>&lt; Mimetic threshold. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="246" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="246" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1a3163cc1c40588b2e6628b64ebc47413f" prot="private" static="no" mutable="no">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>Real mtk::Div1D::mimetic_measure_</definition>
+        <argsstring></argsstring>
+        <name>mimetic_measure_</name>
+        <briefdescription>
+<para>&lt; Mimetic measure. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="247" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="247" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Div1D_1aab7f0333d4156efa92e2089295decebc" prot="private" static="no" mutable="no">
+        <type>std::vector&lt; <ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt;Real&gt; mtk::Div1D::sums_rows_mim_bndy_</definition>
+        <argsstring></argsstring>
+        <name>sums_rows_mim_bndy_</name>
+        <briefdescription>
+<para>Sum of each mimetic boundary row. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="249" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="249" bodyend="-1"/>
+        <referencedby refid="namespacemtk_1a12db5e6fff3788f728819a60d5c28d01" compoundref="mtk__div__1d_8cc" startline="82" endline="131">mtk::operator&lt;&lt;</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="friend">
+      <memberdef kind="friend" id="classmtk_1_1Div1D_1af3b80aac338975509618e593089e1ed9" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>friend std::ostream &amp;</type>
+        <definition>std::ostream&amp; operator&lt;&lt;</definition>
+        <argsstring>(std::ostream &amp;stream, Div1D &amp;in)</argsstring>
+        <name>operator&lt;&lt;</name>
+        <param>
+          <type>std::ostream &amp;</type>
+          <declname>stream</declname>
+        </param>
+        <param>
+          <type><ref refid="classmtk_1_1Div1D" kindref="compound">Div1D</ref> &amp;</type>
+          <declname>in</declname>
+        </param>
+        <briefdescription>
+<para>Output stream operator for printing. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>Print order of accuracy.</para></listitem><listitem><para>Print approximating coefficients for the interior.</para></listitem><listitem><para>Print mimetic weights.</para></listitem><listitem><para>Print mimetic approximations at the boundary. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="88" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="82" bodyend="131"/>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="public-func">
+      <memberdef kind="function" id="classmtk_1_1Div1D_1a339c66dd4ed8f50cbeda3645de18e5ab" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::Div1D::Div1D</definition>
+        <argsstring>()</argsstring>
+        <name>Div1D</name>
+        <briefdescription>
+<para>Default constructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="93" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="134" bodyend="150"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1a25376152cf97aa27f6b61bcb62b4ea7a" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::Div1D::Div1D</definition>
+        <argsstring>(const Div1D &amp;div)</argsstring>
+        <name>Div1D</name>
+        <param>
+          <type>const <ref refid="classmtk_1_1Div1D" kindref="compound">Div1D</ref> &amp;</type>
+          <declname>div</declname>
+        </param>
+        <briefdescription>
+<para>Copy constructor. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">div</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Given divergence. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="100" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="152" bodyend="168"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1ac2c215f42b8da513df2a4ee477b5fa1f" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type></type>
+        <definition>mtk::Div1D::~Div1D</definition>
+        <argsstring>()</argsstring>
+        <name>~Div1D</name>
+        <briefdescription>
+<para>Destructor. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="105" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="170" bodyend="189"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1a52fcd1542f11e606e36bd188e48bfdf7" prot="public" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mtk::Div1D::ConstructDiv1D</definition>
+        <argsstring>(int order_accuracy=kDefaultOrderAccuracy, Real mimetic_threshold=kDefaultMimeticThreshold)</argsstring>
+        <name>ConstructDiv1D</name>
+        <param>
+          <type>int</type>
+          <declname>order_accuracy</declname>
+          <defval><ref refid="group__c01-foundations_1ga0d95560098eb36420511103637b6952f" kindref="member">kDefaultOrderAccuracy</ref></defval>
+        </param>
+        <param>
+          <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+          <declname>mimetic_threshold</declname>
+          <defval><ref refid="group__c01-foundations_1ga35718d949bdc81a08a9cc8ebbe3478a2" kindref="member">kDefaultMimeticThreshold</ref></defval>
+        </param>
+        <briefdescription>
+<para>Factory method implementing the CBS Algorithm to build operator. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Success of the construction. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>Compute stencil for the interior cells.</para></listitem><listitem><para>Compute a rational basis for the null-space for the first matrix.</para></listitem><listitem><para>Compute preliminary approximation (non-mimetic) on the boundaries.</para></listitem><listitem><para>Compute quadrature weights to impose the mimetic conditions.</para></listitem><listitem><para>Compute real approximation (mimetic) on the boundaries.</para></listitem><listitem><para>Assemble operator. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="112" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="191" bodyend="328"/>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="64" endline="93">mtk::Tools::Prevent</references>
+        <references refid="group__c01-foundations_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__foundations_8h" startline="126">mtk::kZero</references>
+        <references refid="group__c01-foundations_1ga0898eef2108473e44a5223932d571c31" compoundref="mtk__foundations_8h" startline="186">mtk::kCriticalOrderAccuracyDiv</references>
+        <referencedby refid="1d__mimetic__threshold_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" compoundref="1d__mimetic__threshold_8cc" startline="65" endline="152">main</referencedby>
+        <referencedby refid="classmtk_1_1Curl2D_1af0aa6fbf54a75538f50279c97c97010c" compoundref="mtk__curl__2d_8cc" startline="89" endline="157">mtk::Curl2D::ConstructCurl2D</referencedby>
+        <referencedby refid="classmtk_1_1Div2D_1a4214055909a6b94fcb9d657cc839055f" compoundref="mtk__div__2d_8cc" startline="79" endline="145">mtk::Div2D::ConstructDiv2D</referencedby>
+        <referencedby refid="classmtk_1_1Div3D_1aa386efd096a548fd1a47f72f1020f42f" compoundref="mtk__div__3d_8cc" startline="77" endline="184">mtk::Div3D::ConstructDiv3D</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="151" endline="312">mtk::Lap1D::ConstructLap1D</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1ae9ce7598f6f4b229d425768e12d98c7d" compoundref="mtk__div__1d__test_8cc" startline="58" endline="72">TestDefaultConstructorFactoryMethodDefault</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1a15cd0d7062ef8575bb60f92a92e13999" compoundref="mtk__div__1d__test_8cc" startline="74" endline="88">TestDefaultConstructorFactoryMethodFourthOrder</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1af4c440fcaef3e71e3e018c1a6ff66be0" compoundref="mtk__div__1d__test_8cc" startline="90" endline="104">TestDefaultConstructorFactoryMethodSixthOrder</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1adc2121ca547528bd0dd7dae2ebe9aa14" compoundref="mtk__div__1d__test_8cc" startline="106" endline="120">TestDefaultConstructorFactoryMethodEightOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1a1a4a22f08dec9d4d1266fce7bb594e6b" compoundref="mtk__div__1d__test_8cc" startline="122" endline="136">TestDefaultConstructorFactoryMethodTenthOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1aaa9f376406418e4b960814916e224f3b" compoundref="mtk__div__1d__test_8cc" startline="138" endline="152">TestDefaultConstructorFactoryMethodTwelfthOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1a1465edf65e6566e9a88c16179312d86a" compoundref="mtk__div__1d__test_8cc" startline="154" endline="168">TestDefaultConstructorFactoryMethodFourteenthOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1ae59deb4e19b59a84fbf2bb0ea86a7e36" compoundref="mtk__div__1d__test_8cc" startline="170" endline="242">TestSecondOrderReturnAsDenseMatrixWithGrid</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1aebadd24a6a18d60726296e6937301a12" compoundref="mtk__div__1d__test_8cc" startline="244" endline="267">TestFourthOrderReturnAsDenseMatrixWithGrid</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1ac670f0449af5c0da14d8b04c96c54665" compoundref="mtk__div__1d__test_8cc" startline="269" endline="292">TestSixthOrderReturnAsDenseMatrixWithGrid</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1a975cb2a91ed6806f6fc0a3a5b01b01b1" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::Div1D::num_bndy_coeffs</definition>
+        <argsstring>() const </argsstring>
+        <name>num_bndy_coeffs</name>
+        <briefdescription>
+<para>Returns how many coefficients are approximating at the boundary. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>How many coefficients are approximating at the boundary. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="120" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="330" bodyend="333"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1a0916b5e84b019b4b6a33d0a45d829513" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+        <definition>mtk::Real * mtk::Div1D::coeffs_interior</definition>
+        <argsstring>() const </argsstring>
+        <name>coeffs_interior</name>
+        <briefdescription>
+<para>Returns coefficients for the interior of the grid. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Coefficients for the interior of the grid. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="127" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="335" bodyend="338"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1ab5c791285e7e51a85b8c62a1b0ab9126" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+        <definition>mtk::Real * mtk::Div1D::weights_crs</definition>
+        <argsstring>(void) const </argsstring>
+        <name>weights_crs</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Return collection of weights as computed by the CRSA. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Collection of weights as computed by the CRSA. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="134" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="340" bodyend="343"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1a5d4fe8c61ce41cb1134a3f9cb16deb59" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> *</type>
+        <definition>mtk::Real * mtk::Div1D::weights_cbs</definition>
+        <argsstring>(void) const </argsstring>
+        <name>weights_cbs</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Return collection of weights as computed by the CBSA. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Collection of weights as computed by the CBSA. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="141" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="345" bodyend="348"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1a033d486957071e6addf1d2d4d5dc95cc" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>int</type>
+        <definition>int mtk::Div1D::num_feasible_sols</definition>
+        <argsstring>() const </argsstring>
+        <name>num_feasible_sols</name>
+        <briefdescription>
+<para>Return number of feasible solutions when using the CBSA for weights. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Return number of feasible solutions when using the CBSA for weights. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="148" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="350" bodyend="353"/>
+        <referencedby refid="1d__mimetic__threshold_8cc_1ae66f6b31b5ad750f1fe042a706a4e3d4" compoundref="1d__mimetic__threshold_8cc" startline="65" endline="152">main</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1a2c844ef39825e73e4024d35fcdd42b12" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref></type>
+        <definition>mtk::DenseMatrix mtk::Div1D::mim_bndy</definition>
+        <argsstring>() const </argsstring>
+        <name>mim_bndy</name>
+        <briefdescription>
+<para>Return collection of mimetic approximations at the boundary. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Collection of mimetic approximations at the boundary. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="155" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="355" bodyend="368"/>
+        <references refid="classmtk_1_1DenseMatrix_1a784ce5784109ac86bfb9d8562b334b13" compoundref="mtk__dense__matrix_8cc" startline="404" endline="415">mtk::DenseMatrix::SetValue</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1a8c611354217cb15cdb41c23b067fb398" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type>std::vector&lt; <ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref> &gt;</type>
+        <definition>std::vector&lt; mtk::Real &gt; mtk::Div1D::sums_rows_mim_bndy</definition>
+        <argsstring>() const </argsstring>
+        <name>sums_rows_mim_bndy</name>
+        <briefdescription>
+<para>Return collection of row-sums mimetic approximations at the boundary. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Collection of row-sums mimetic approximations at the boundary. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="162" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="370" bodyend="373"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1a00caf61168e7b4b14b488eab0fe08ee4" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>mtk::Real mtk::Div1D::mimetic_measure</definition>
+        <argsstring>() const </argsstring>
+        <name>mimetic_measure</name>
+        <briefdescription>
+<para>Returns mimetic measure of the operator. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>Real number which is the mimetic measure of the operator. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="169" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="375" bodyend="378"/>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1a213fddbaaf86e4840c6a9649b69c2d49" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref></type>
+        <definition>mtk::DenseMatrix mtk::Div1D::ReturnAsDenseMatrix</definition>
+        <argsstring>(const UniStgGrid1D &amp;grid) const </argsstring>
+        <name>ReturnAsDenseMatrix</name>
+        <param>
+          <type>const <ref refid="classmtk_1_1UniStgGrid1D" kindref="compound">UniStgGrid1D</ref> &amp;</type>
+          <declname>grid</declname>
+        </param>
+        <briefdescription>
+<para>Return the operator as a dense matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The operator as a dense matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>Insert mimetic boundary at the west.</para></listitem><listitem><para>Insert coefficients for the interior of the grid.</para></listitem><listitem><para>Impose center-skew symmetry by permuting the mimetic boundaries. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="176" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="380" bodyend="438"/>
+        <references refid="classmtk_1_1UniStgGrid1D_1af1b3729d8afa07be5b2775ed68015b80" compoundref="mtk__uni__stg__grid__1d_8cc" startline="198" endline="201">mtk::UniStgGrid1D::num_cells_x</references>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="64" endline="93">mtk::Tools::Prevent</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a6f6a5a23011fe90971ed6b8f5f640cd2" compoundref="mtk__uni__stg__grid__1d_8cc" startline="203" endline="206">mtk::UniStgGrid1D::field_nature</references>
+        <references refid="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e">mtk::VECTOR</references>
+        <references refid="group__c01-foundations_1ga26407c24d43b6b95480943340d285c71" compoundref="mtk__foundations_8h" startline="127">mtk::kOne</references>
+        <references refid="classmtk_1_1UniStgGrid1D_1a6e7173b01241632cf509496d66b9f74c" compoundref="mtk__uni__stg__grid__1d_8cc" startline="183" endline="186">mtk::UniStgGrid1D::delta_x</references>
+        <references refid="classmtk_1_1DenseMatrix_1ac0f824b0fec88c4fb42e77b7550fb0d3" compoundref="mtk__dense__matrix_8cc" startline="376" endline="390">mtk::DenseMatrix::set_encoded_operator</references>
+        <references refid="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a4e4e9e6d004c642e33d6f823b57bd60e">mtk::DIVERGENCE</references>
+        <references refid="classmtk_1_1DenseMatrix_1a784ce5784109ac86bfb9d8562b334b13" compoundref="mtk__dense__matrix_8cc" startline="404" endline="415">mtk::DenseMatrix::SetValue</references>
+        <references refid="mtk__robin__bc__descriptor__2d__test_8cc_1add9f5d498a286de027288269f2102d95" compoundref="mtk__robin__bc__descriptor__2d__test_8cc" startline="78" endline="81">cc</references>
+        <referencedby refid="classmtk_1_1Curl2D_1af0aa6fbf54a75538f50279c97c97010c" compoundref="mtk__curl__2d_8cc" startline="89" endline="157">mtk::Curl2D::ConstructCurl2D</referencedby>
+        <referencedby refid="classmtk_1_1Div2D_1a4214055909a6b94fcb9d657cc839055f" compoundref="mtk__div__2d_8cc" startline="79" endline="145">mtk::Div2D::ConstructDiv2D</referencedby>
+        <referencedby refid="classmtk_1_1Div3D_1aa386efd096a548fd1a47f72f1020f42f" compoundref="mtk__div__3d_8cc" startline="77" endline="184">mtk::Div3D::ConstructDiv3D</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="151" endline="312">mtk::Lap1D::ConstructLap1D</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1ae59deb4e19b59a84fbf2bb0ea86a7e36" compoundref="mtk__div__1d__test_8cc" startline="170" endline="242">TestSecondOrderReturnAsDenseMatrixWithGrid</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1af2546ad1568ef39a6075f03bb395719e" prot="public" static="no" const="yes" explicit="no" inline="no" virt="non-virtual">
+        <type><ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref></type>
+        <definition>mtk::DenseMatrix mtk::Div1D::ReturnAsDimensionlessDenseMatrix</definition>
+        <argsstring>(int num_cells_x) const </argsstring>
+        <name>ReturnAsDimensionlessDenseMatrix</name>
+        <param>
+          <type>int</type>
+          <declname>num_cells_x</declname>
+        </param>
+        <briefdescription>
+<para>Returns the operator as a dimensionless dense matrix. </para>        </briefdescription>
+        <detaileddescription>
+<para><simplesect kind="return"><para>The operator as a dimensionless dense matrix. </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>Insert mimetic boundary at the west.</para></listitem><listitem><para>Insert coefficients for the interior of the grid.</para></listitem><listitem><para>Impose center-skew symmetry by permuting the mimetic boundaries. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="183" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="440" bodyend="494"/>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="64" endline="93">mtk::Tools::Prevent</references>
+        <references refid="classmtk_1_1DenseMatrix_1ac0f824b0fec88c4fb42e77b7550fb0d3" compoundref="mtk__dense__matrix_8cc" startline="376" endline="390">mtk::DenseMatrix::set_encoded_operator</references>
+        <references refid="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a4e4e9e6d004c642e33d6f823b57bd60e">mtk::DIVERGENCE</references>
+        <references refid="classmtk_1_1DenseMatrix_1a784ce5784109ac86bfb9d8562b334b13" compoundref="mtk__dense__matrix_8cc" startline="404" endline="415">mtk::DenseMatrix::SetValue</references>
+        <references refid="mtk__robin__bc__descriptor__2d__test_8cc_1add9f5d498a286de027288269f2102d95" compoundref="mtk__robin__bc__descriptor__2d__test_8cc" startline="78" endline="81">cc</references>
+        <referencedby refid="mtk__div__1d__test_8cc_1aebadd24a6a18d60726296e6937301a12" compoundref="mtk__div__1d__test_8cc" startline="244" endline="267">TestFourthOrderReturnAsDenseMatrixWithGrid</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1ac670f0449af5c0da14d8b04c96c54665" compoundref="mtk__div__1d__test_8cc" startline="269" endline="292">TestSixthOrderReturnAsDenseMatrixWithGrid</referencedby>
+      </memberdef>
+      </sectiondef>
+      <sectiondef kind="private-func">
+      <memberdef kind="function" id="classmtk_1_1Div1D_1a3eb3a32862a6b066cd583cbbd00a6509" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mtk::Div1D::ComputeStencilInteriorGrid</definition>
+        <argsstring>(void)</argsstring>
+        <name>ComputeStencilInteriorGrid</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Stage 1 of the CBS Algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>Compute the stencil approximating the interior of the staggered grid. </para>        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>Create vector for interior spatial coordinates.</para></listitem><listitem><para>Create Vandermonde matrix (using interior coordinates as generator).</para></listitem><listitem><para>Create order-selector vector.</para></listitem><listitem><para>Solve dense Vandermonde system to attain the interior coefficients. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="191" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="496" bodyend="595"/>
+        <references refid="group__c01-foundations_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__foundations_8h" startline="126">mtk::kZero</references>
+        <references refid="group__c01-foundations_1ga26407c24d43b6b95480943340d285c71" compoundref="mtk__foundations_8h" startline="127">mtk::kOne</references>
+        <references refid="classmtk_1_1LAPACKAdapter_1a7428bccf74fd4a4af68fb7233846da22" compoundref="mtk__lapack__adapter_8cc" startline="432" endline="465">mtk::LAPACKAdapter::SolveDenseSystem</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1aa0c0c278b2c00a29c1ceaa70d31aebab" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mtk::Div1D::ComputeRationalBasisNullSpace</definition>
+        <argsstring>(void)</argsstring>
+        <name>ComputeRationalBasisNullSpace</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Stage 2.1 of the CBS Algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>Compute a rational basis for the null-space of the Vandermonde matrix approximating at the west boundary. </para>        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>Create generator vector for the first approximation.</para></listitem><listitem><para>Create Vandermonde matrix.</para></listitem><listitem><para>QR-factorize the Vandermonde matrix.</para></listitem><listitem><para>Extract the basis for the null-space from Q matrix.</para></listitem><listitem><para>Scale null-space to make it rational. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="199" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="597" bodyend="771"/>
+        <references refid="group__c01-foundations_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__foundations_8h" startline="126">mtk::kZero</references>
+        <references refid="group__c01-foundations_1ga26407c24d43b6b95480943340d285c71" compoundref="mtk__foundations_8h" startline="127">mtk::kOne</references>
+        <references refid="classmtk_1_1LAPACKAdapter_1ae5c6e78c9c819c9ac7a6f31bfd011d7a" compoundref="mtk__lapack__adapter_8cc" startline="595" endline="790">mtk::LAPACKAdapter::QRFactorDenseMatrix</references>
+        <references refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" compoundref="mtk__dense__matrix_8cc" startline="366" endline="369">mtk::DenseMatrix::data</references>
+        <references refid="classmtk_1_1DenseMatrix_1a53f3afb3b6a8d21854458aaa9663cc74" compoundref="mtk__dense__matrix_8cc" startline="356" endline="359">mtk::DenseMatrix::num_rows</references>
+        <references refid="classmtk_1_1DenseMatrix_1a41747502d468c6728a4be31501b16e0e" compoundref="mtk__dense__matrix_8cc" startline="361" endline="364">mtk::DenseMatrix::num_cols</references>
+        <references refid="classmtk_1_1DenseMatrix_1a71d9c07ca66e88d97d1fd5012f43138b" compoundref="mtk__dense__matrix_8cc" startline="417" endline="452">mtk::DenseMatrix::Transpose</references>
+        <references refid="classmtk_1_1LAPACKAdapter_1a7428bccf74fd4a4af68fb7233846da22" compoundref="mtk__lapack__adapter_8cc" startline="432" endline="465">mtk::LAPACKAdapter::SolveDenseSystem</references>
+        <references refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="446" endline="501">mtk::BLASAdapter::RealDenseMM</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1a4be0534a4e22d44a7aedde326cc3f3b6" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mtk::Div1D::ComputePreliminaryApproximations</definition>
+        <argsstring>(void)</argsstring>
+        <name>ComputePreliminaryApproximations</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Stage 2.2 of the CBS Algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>Compute the set of preliminary approximations on the boundary neighborhood. </para>        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>Create generator vector for the first approximation.</para></listitem><listitem><para>Compute the dim_null near-the-boundary columns of the pi matrix.</para></listitem><listitem><para>Create the Vandermonde matrix for this iteration.</para></listitem><listitem><para>New order-selector vector (gets re-written with LAPACK solutions).</para></listitem><listitem><para>Solving TT*rr = ob yields the columns rr of the KK matrix.</para></listitem><listitem><para>Scale the KK matrix to make it a rational basis for null-space.</para></listitem><listitem><para>Extract the last dim_null values of the pre-scaled ob.</para></listitem><listitem><para>Once we posses the bottom elements, we proceed with the scaling. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="206" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="773" bodyend="991"/>
+        <references refid="group__c01-foundations_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__foundations_8h" startline="126">mtk::kZero</references>
+        <references refid="group__c01-foundations_1ga26407c24d43b6b95480943340d285c71" compoundref="mtk__foundations_8h" startline="127">mtk::kOne</references>
+        <references refid="classmtk_1_1LAPACKAdapter_1a380f148ffdf96bae2f79ae28f1a6560c" compoundref="mtk__lapack__adapter_8cc" startline="792" endline="876">mtk::LAPACKAdapter::SolveRectangularDenseSystem</references>
+        <references refid="classmtk_1_1BLASAdapter_1afdcac059a4294287cb55638221220646" compoundref="mtk__blas__adapter_8cc" startline="381" endline="410">mtk::BLASAdapter::RealDenseMV</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mtk::Div1D::ComputeWeights</definition>
+        <argsstring>(void)</argsstring>
+        <name>ComputeWeights</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Stage 2.3 of the CBS Algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>Compute the set of mimetic weights to impose the mimetic condition. </para>        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>Construct the <formula id="69">$ \mathbf{\Pi}$</formula> matrix.</para></listitem><listitem><para>Use interior stencil to build proper RHS vector <formula id="70">$ \mathbf{h} $</formula>.</para></listitem><listitem><para>Get weights (as <bold>CRSA</bold>): <formula id="71">$ \mathbf{\Pi}\mathbf{q} = \mathbf{h} $</formula>.</para></listitem><listitem><para>If required order is greater than critical order, start the <bold>CBSA</bold>.</para></listitem><listitem><para>Create <formula id="72">$ \mathbf{\Phi} $</formula> matrix from <formula id="73">$ \mathbf{\Pi} $</formula>.</para></listitem><listitem><para>Prepare constraint vector as in the CBSA: <formula id="68">$ \mathbf{\Lambda}$</formula>.</para></listitem><listitem><para>Brute force search through all the rows of the <formula id="74">$\Phi$</formula> matrix.</para></listitem><listitem><para>Apply solution found from brute force search. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="213" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="993" bodyend="1368"/>
+        <references refid="classmtk_1_1DenseMatrix_1a0c33b8a9e01d157c61ddbdf807c25d84" compoundref="mtk__dense__matrix_8cc" startline="366" endline="369">mtk::DenseMatrix::data</references>
+        <references refid="group__c01-foundations_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__foundations_8h" startline="126">mtk::kZero</references>
+        <references refid="group__c01-foundations_1ga26407c24d43b6b95480943340d285c71" compoundref="mtk__foundations_8h" startline="127">mtk::kOne</references>
+        <references refid="classmtk_1_1DenseMatrix_1a41747502d468c6728a4be31501b16e0e" compoundref="mtk__dense__matrix_8cc" startline="361" endline="364">mtk::DenseMatrix::num_cols</references>
+        <references refid="classmtk_1_1DenseMatrix_1a71d9c07ca66e88d97d1fd5012f43138b" compoundref="mtk__dense__matrix_8cc" startline="417" endline="452">mtk::DenseMatrix::Transpose</references>
+        <references refid="classmtk_1_1LAPACKAdapter_1a380f148ffdf96bae2f79ae28f1a6560c" compoundref="mtk__lapack__adapter_8cc" startline="792" endline="876">mtk::LAPACKAdapter::SolveRectangularDenseSystem</references>
+        <references refid="group__c01-foundations_1ga0898eef2108473e44a5223932d571c31" compoundref="mtk__foundations_8h" startline="186">mtk::kCriticalOrderAccuracyDiv</references>
+        <references refid="classmtk_1_1BLASAdapter_1ab92440888b730863244c5d9479c11aca" compoundref="mtk__blas__adapter_8cc" startline="327" endline="340">mtk::BLASAdapter::RealNRM2</references>
+        <references refid="classmtk_1_1GLPKAdapter_1a0c9ebb125445bc5af752bf4fb47f44b2" compoundref="mtk__glpk__adapter_8cc" startline="77" endline="332">mtk::GLPKAdapter::SolveSimplexAndCompare</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1a29bb417c76286414dce9258a0bcb5aab" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mtk::Div1D::ComputeStencilBoundaryGrid</definition>
+        <argsstring>(void)</argsstring>
+        <name>ComputeStencilBoundaryGrid</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Stage 2.4 of the CBS Algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>Compute mimetic stencil approximating at boundary. </para>        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>Collect lambda values.</para></listitem><listitem><para>Compute alpha values.</para></listitem><listitem><para>Compute the mimetic boundary approximations.</para></listitem><listitem><para>Compute the row-wise sum to double-check the operator is mimetic. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="220" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="1370" bodyend="1490"/>
+        <references refid="group__c01-foundations_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__foundations_8h" startline="126">mtk::kZero</references>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Div1D_1a5a12482e1ceac232339dd8f647af886b" prot="private" static="no" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>bool</type>
+        <definition>bool mtk::Div1D::AssembleOperator</definition>
+        <argsstring>(void)</argsstring>
+        <name>AssembleOperator</name>
+        <param>
+          <type>void</type>
+        </param>
+        <briefdescription>
+<para>Stage 3 of the CBS Algorithm. </para>        </briefdescription>
+        <detaileddescription>
+<para>Construct the output array with the operator and its weights. </para>        </detaileddescription>
+        <inbodydescription>
+<para><orderedlist>
+<listitem><para>The first entry of the array will contain the order of accuracy.</para></listitem><listitem><para>The second entry the collection of coefficients for interior of grid.</para></listitem><listitem><para>If order_accuracy_ &gt; 2, then third entry is the collection of weights.</para></listitem><listitem><para>If order_accuracy_ &gt; 2, next dim_null_ entries is approximating coefficients for the west boundary of the grid. </para></listitem></orderedlist>
+</para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="227" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_div_1d.cc" bodystart="1492" bodyend="1563"/>
+        <references refid="group__c01-foundations_1ga0d95560098eb36420511103637b6952f" compoundref="mtk__foundations_8h" startline="168">mtk::kDefaultOrderAccuracy</references>
+        <references refid="group__c01-foundations_1ga59a451a5fae30d59649bcda274fea271" compoundref="mtk__foundations_8h" startline="126">mtk::kZero</references>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Implements a 1D mimetic divergence operator. </para>    </briefdescription>
+    <detaileddescription>
+<para>This class implements a 1D divergence operator, constructed using the Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA). </para>    </detaileddescription>
+    <collaborationgraph>
+      <node id="113">
+        <label>mtk::Div1D</label>
+        <link refid="classmtk_1_1Div1D"/>
+        <childnode refid="114" relation="usage">
+          <edgelabel>-sums_rows_mim_bndy_</edgelabel>
+        </childnode>
+        <childnode refid="117" relation="usage">
+          <edgelabel>-rat_basis_null_space_</edgelabel>
+        </childnode>
+      </node>
+      <node id="116">
+        <label>T</label>
+      </node>
+      <node id="115">
+        <label>std::vector&lt; T &gt;</label>
+        <childnode refid="116" relation="usage">
+          <edgelabel>+elements</edgelabel>
+        </childnode>
+      </node>
+      <node id="117">
+        <label>mtk::DenseMatrix</label>
+        <link refid="classmtk_1_1DenseMatrix"/>
+        <childnode refid="118" relation="usage">
+          <edgelabel>-matrix_properties_</edgelabel>
+        </childnode>
+      </node>
+      <node id="114">
+        <label>std::vector&lt; Real &gt;</label>
+        <childnode refid="115" relation="template-instance">
+          <edgelabel>&lt; Real &gt;</edgelabel>
+        </childnode>
+      </node>
+      <node id="118">
+        <label>mtk::Matrix</label>
+        <link refid="classmtk_1_1Matrix"/>
+      </node>
+    </collaborationgraph>
+    <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" line="83" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_div_1d.h" bodystart="83" bodyend="250"/>
+    <listofallmembers>
+      <member refid="classmtk_1_1Div1D_1a5a12482e1ceac232339dd8f647af886b" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>AssembleOperator</name></member>
+      <member refid="classmtk_1_1Div1D_1a0916b5e84b019b4b6a33d0a45d829513" prot="public" virt="non-virtual"><scope>mtk::Div1D</scope><name>coeffs_interior</name></member>
+      <member refid="classmtk_1_1Div1D_1a7c7688d8ac25120587353ece4e93a13a" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>coeffs_interior_</name></member>
+      <member refid="classmtk_1_1Div1D_1a4be0534a4e22d44a7aedde326cc3f3b6" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>ComputePreliminaryApproximations</name></member>
+      <member refid="classmtk_1_1Div1D_1aa0c0c278b2c00a29c1ceaa70d31aebab" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>ComputeRationalBasisNullSpace</name></member>
+      <member refid="classmtk_1_1Div1D_1a29bb417c76286414dce9258a0bcb5aab" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>ComputeStencilBoundaryGrid</name></member>
+      <member refid="classmtk_1_1Div1D_1a3eb3a32862a6b066cd583cbbd00a6509" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>ComputeStencilInteriorGrid</name></member>
+      <member refid="classmtk_1_1Div1D_1aaadd6a6e6836bb94841c4c35dffab828" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>ComputeWeights</name></member>
+      <member refid="classmtk_1_1Div1D_1a52fcd1542f11e606e36bd188e48bfdf7" prot="public" virt="non-virtual"><scope>mtk::Div1D</scope><name>ConstructDiv1D</name></member>
+      <member refid="classmtk_1_1Div1D_1a264027144def76d802778391f55381a0" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>dim_null_</name></member>
+      <member refid="classmtk_1_1Div1D_1a339c66dd4ed8f50cbeda3645de18e5ab" prot="public" virt="non-virtual"><scope>mtk::Div1D</scope><name>Div1D</name></member>
+      <member refid="classmtk_1_1Div1D_1a25376152cf97aa27f6b61bcb62b4ea7a" prot="public" virt="non-virtual"><scope>mtk::Div1D</scope><name>Div1D</name></member>
+      <member refid="classmtk_1_1Div1D_1a0f96410051ba1fa6d91dfa7b7eacead9" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>divergence_</name></member>
+      <member refid="classmtk_1_1Div1D_1ac0f152190cd2fbff62deb07f96284f86" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>divergence_length_</name></member>
+      <member refid="classmtk_1_1Div1D_1a2c844ef39825e73e4024d35fcdd42b12" prot="public" virt="non-virtual"><scope>mtk::Div1D</scope><name>mim_bndy</name></member>
+      <member refid="classmtk_1_1Div1D_1a6d6c600117fdb583f061da0c9d5f28f7" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>mim_bndy_</name></member>
+      <member refid="classmtk_1_1Div1D_1a00caf61168e7b4b14b488eab0fe08ee4" prot="public" virt="non-virtual"><scope>mtk::Div1D</scope><name>mimetic_measure</name></member>
+      <member refid="classmtk_1_1Div1D_1a3163cc1c40588b2e6628b64ebc47413f" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>mimetic_measure_</name></member>
+      <member refid="classmtk_1_1Div1D_1a40ed629199b38133f5652b71e8b1cd06" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>mimetic_threshold_</name></member>
+      <member refid="classmtk_1_1Div1D_1a0ba7a75cca6cf3646deb7a030cbbf3f3" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>minrow_</name></member>
+      <member refid="classmtk_1_1Div1D_1a975cb2a91ed6806f6fc0a3a5b01b01b1" prot="public" virt="non-virtual"><scope>mtk::Div1D</scope><name>num_bndy_coeffs</name></member>
+      <member refid="classmtk_1_1Div1D_1a717240b41eaa2adde858630b9e3d3042" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>num_bndy_coeffs_</name></member>
+      <member refid="classmtk_1_1Div1D_1a033d486957071e6addf1d2d4d5dc95cc" prot="public" virt="non-virtual"><scope>mtk::Div1D</scope><name>num_feasible_sols</name></member>
+      <member refid="classmtk_1_1Div1D_1aa5939920aee1ffccd2185822ca853b3d" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>num_feasible_sols_</name></member>
+      <member refid="classmtk_1_1Div1D_1af3b80aac338975509618e593089e1ed9" prot="public" virt="non-virtual"><scope>mtk::Div1D</scope><name>operator&lt;&lt;</name></member>
+      <member refid="classmtk_1_1Div1D_1a9c8a8d7cd08a72dbd1daa8deee06f9c6" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>order_accuracy_</name></member>
+      <member refid="classmtk_1_1Div1D_1ab51ff3db86a874604d6c756ab6770950" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>prem_apps_</name></member>
+      <member refid="classmtk_1_1Div1D_1a4f0f5589f13024b7e0edc2ac19649f9b" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>rat_basis_null_space_</name></member>
+      <member refid="classmtk_1_1Div1D_1a213fddbaaf86e4840c6a9649b69c2d49" prot="public" virt="non-virtual"><scope>mtk::Div1D</scope><name>ReturnAsDenseMatrix</name></member>
+      <member refid="classmtk_1_1Div1D_1af2546ad1568ef39a6075f03bb395719e" prot="public" virt="non-virtual"><scope>mtk::Div1D</scope><name>ReturnAsDimensionlessDenseMatrix</name></member>
+      <member refid="classmtk_1_1Div1D_1a86d99df0e9b1e5d2943a2dcf58975556" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>row_</name></member>
+      <member refid="classmtk_1_1Div1D_1a8c611354217cb15cdb41c23b067fb398" prot="public" virt="non-virtual"><scope>mtk::Div1D</scope><name>sums_rows_mim_bndy</name></member>
+      <member refid="classmtk_1_1Div1D_1aab7f0333d4156efa92e2089295decebc" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>sums_rows_mim_bndy_</name></member>
+      <member refid="classmtk_1_1Div1D_1a5d4fe8c61ce41cb1134a3f9cb16deb59" prot="public" virt="non-virtual"><scope>mtk::Div1D</scope><name>weights_cbs</name></member>
+      <member refid="classmtk_1_1Div1D_1a631dad42a0ec0f5d5ac767abdfd8949c" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>weights_cbs_</name></member>
+      <member refid="classmtk_1_1Div1D_1ab5c791285e7e51a85b8c62a1b0ab9126" prot="public" virt="non-virtual"><scope>mtk::Div1D</scope><name>weights_crs</name></member>
+      <member refid="classmtk_1_1Div1D_1ad36dcfade921f0488fe3edaecc17bd75" prot="private" virt="non-virtual"><scope>mtk::Div1D</scope><name>weights_crs_</name></member>
+      <member refid="classmtk_1_1Div1D_1ac2c215f42b8da513df2a4ee477b5fa1f" prot="public" virt="non-virtual"><scope>mtk::Div1D</scope><name>~Div1D</name></member>
+    </listofallmembers>
+  </compounddef>
+</doxygen>

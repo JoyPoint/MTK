@@ -104,12 +104,9 @@ namespace mtk {
 \ingroup c07-mim_ops
 
 \brief A function of a BC coefficient evaluated on a 0D domain and time.
-
-\warning This definition implies that, for now, coefficients will depend on
-space and time, thus no extra parameters can influence their behavior. We will
-fix this soon enough.
 */
-typedef Real (*CoefficientFunction0D)(const Real &tt);
+typedef Real (*CoefficientFunction0D)(const Real &tt,
+																	    const std::vector<Real> &pp);
 
 /*!
 \class RobinBCDescriptor1D
@@ -223,9 +220,11 @@ class RobinBCDescriptor1D {
 
   \return Success of the imposition.
   */
-  bool ImposeOnDivergenceMatrix(const Div1D &div,
-                                DenseMatrix &matrix,
-                                const Real &time = mtk::kZero) const;
+  bool ImposeOnDivergenceMatrix(
+  		const Div1D &div,
+      DenseMatrix &matrix,
+      const std::vector<Real> &parameters = std::vector<Real>(),
+      const Real &time = mtk::kZero) const;
 
   /*!
   \brief Imposes the condition on the operator represented as matrix.
@@ -236,9 +235,11 @@ class RobinBCDescriptor1D {
 
   \return Success of the imposition.
   */
-  bool ImposeOnLaplacianMatrix(const Lap1D &lap,
-                               DenseMatrix &matrix,
-                               const Real &time = mtk::kZero) const;
+  bool ImposeOnLaplacianMatrix(
+  		const Lap1D &lap,
+      DenseMatrix &matrix,
+      const std::vector<Real> &parameters = std::vector<Real>(),
+      const Real &time = mtk::kZero) const;
   /*!
   \brief Imposes the condition on the grid.
 

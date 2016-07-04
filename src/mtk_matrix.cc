@@ -1,9 +1,9 @@
 /*!
 \file mtk_matrix.cc
 
-\brief Implementing the representation of a matrix in the MTK.
+\brief Definition of the representation of a matrix in the MTK.
 
-Implementation of the representation for the matrices implemented in the MTK.
+Definition of the representation for the matrices implemented in the MTK.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */

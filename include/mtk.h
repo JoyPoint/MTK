@@ -70,19 +70,15 @@ solution of ordinary and partial differential equations**.
 
 \section section_mtk_concerns MTK Concerns
 
-Since collaborative development efforts are definitely important in achieving
-the level of generality we intend the library to possess, we have divided the
-library's source code according to the designated purpose the classes possess
-within the library. These divisions (or **concerns**) are grouped by layers,
-and are hierarchically related by the dependence they have among them.
-
-One concern is said to depend on another one, if the classes the first concern
-includes, rely on the classes the second concern includes.
-
-In order of dependence these are:
--# Roots.
+Since collaborative development efforts are very important, we have divided the
+library's source code according to the purpose the classes possess. These
+divisions (or **concerns**) are grouped by layers, and are hierarchically
+related by the dependencies they have among them. One concern is said to depend
+on another one, if the classes the first concern includes, rely on the classes
+the second concern includes. In order of dependence these are:
+-# Foundations.
 -# Enumerations.
--# Tools.
+-# Execution Tools.
 -# Data Structures.
 -# Numerical Methods.
 -# Grids.
@@ -95,7 +91,7 @@ The MTK collection of wrappers is:
 -# MMTK: MATLAB wrappers collection for MTK; intended for sequential
 computations.
 
-Others are being strongly considered.
+Others are being considered.
 
 \section section_authors Contact, Support and Credits
 
@@ -110,10 +106,6 @@ Currently the developers are:
 - **Eduardo J. Sanchez, PhD - esanchez at mail dot sdsu dot edu** - ejspeiro
 - Jose E. Castillo, PhD - jcastillo at mail dot sdsu dot edu
 - Guillermo F. Miranda, PhD - unigrav at hotmail dot com
-- Christopher P. Paolini, PhD - paolini at engineering dot sdsu dot edu
-- Angel Boada.
-- Johnny Corbino.
-- Raul Vargas-Navarro.
 
 \subsection subsection_acknowledgements Acknowledgements and Contributions
 
@@ -125,7 +117,10 @@ Specifically, our thanks go to (alphabetical order):
 -# Mohammad Abouali, Ph.D.
 -# Dany De Cecchis, Ph.D.
 -# Otilio Rojas, Ph.D.
--# Julia Rossi.
+-# Julia Rossi, Ph.D.
+-# Christopher P. Paolini, PhD - paolini at engineering dot sdsu dot edu
+-# Johnny Corbino.
+-# Raul Vargas-Navarro.
 
 \page page_referencing Referencing This Work
 
@@ -191,10 +186,9 @@ and compilers used.
 Tests are given in the <a href="files.html">files list</a> section. They are
 provided in the /tests/ folder within the distributed software.
 
-In this page we intend to make a summary of all of the architectures in where
-the MTK has been tested. The MTK is intended to be as portable as possible
-throughout architectures. The following architectures have provided flawless
-installations of the API and correct execution of the tests and the examples:
+The MTK is intended to be as portable as possible throughout different
+architectures. The following architectures have provided flawless installations
+of the library and correct execution of the tests and the examples:
 
 \verbatim
 1. Intel(R) Pentium(R) M CPU 1.73 GHz 2048 KB of cache and stepping of 8.
@@ -211,7 +205,7 @@ installations of the API and correct execution of the tests and the examples:
    gcc (SUSE Linux) 4.8.3 20140627 [gcc-4_8-branch revision 212064]
 \endverbatim
 
-Further architectures will be tested!
+Further architectures will be tested.
 
 \page page_ref_the User Manual, References and Theory
 
@@ -226,6 +220,19 @@ However, a .PDF copy of this manual can be found
 
 Examples are given in the <a href="files.html">files list</a> section. They are
 provided in the /examples/ folder within the distributed software.
+
+\page page_def_decs Definitions and Declarations
+
+Throughout the library, we emphasize the difference between definitions and
+declarations as explained in: http://www.lurklurk.org/linkers/linkers.html#cfile
+
+A definition associates a name with an implementation of that name, which could
+be either data or code (...)
+
+A declaration tells the C compiler that a definition of something (with a
+particular name) exists elsewhere in the program, probably in a different C
+file. (Note that a definition also counts as a declaration—it's a declaration
+that also happens to fill in the particular "elsewhere").
 
 \page section_license_mod Licensing and Modifications
 
@@ -296,7 +303,7 @@ Fundamental execution parameters and defined types.
 #include "mtk_enums.h"
 
 /*!
-\defgroup c03-execution_tools Execution tools.
+\defgroup c03-execution_tools Execution Tools.
 
 \brief Tools to ensure execution correctness.
 
@@ -305,7 +312,7 @@ Tools to ensure execution correctness.
 #include "mtk_tools.h"
 
 /*!
-\defgroup c04-data_structures Data structures.
+\defgroup c04-data_structures Data Structures.
 
 \brief Fundamental data structures.
 
@@ -315,7 +322,7 @@ Fundamental data structures.
 #include "mtk_dense_matrix.h"
 
 /*!
-\defgroup c05-num_methods Numerical methods.
+\defgroup c05-num_methods Numerical Methods.
 
 \brief Adapter classes and auxiliary numerical methods.
 
@@ -337,7 +344,7 @@ Uniform rectangular staggered grids.
 #include "mtk_uni_stg_grid_3d.h"
 
 /*!
-\defgroup c07-mim_ops Mimetic operators.
+\defgroup c07-mim_ops Mimetic Operators.
 
 \brief Mimetic operators.
 

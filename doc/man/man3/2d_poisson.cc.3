@@ -1,0 +1,48 @@
+.TH "examples/2d_poisson/2d_poisson.cc" 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+examples/2d_poisson/2d_poisson.cc \- 
+.PP
+Poisson Equation on a 2D Uniform Staggered Grid with Robin BCs\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <iostream>\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBmain\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+We solve: \[ \nabla^2 u(\mathbf{x}) = s(\mathbf{x}), \] for $ \mathbf{x} \in \Omega = [0,1]^2 $\&.
+.PP
+The source term function is defined as \[ s(x,y) = xye^{-0.5(x^2 + y^2)}(x^2 + y^2 - 6). \]
+.PP
+Let $ \partial\Omega = S \cup N \cup W \cup E$\&. We consider Dirichlet boundary conditions of the following form: \[ \forall\mathbf{x}\in W: u(\mathbf{x}) = 0. \] \[ \forall\mathbf{x}\in E: u(1,y) = -e^{-0.5(1 - y^2)}(1 - y^2). \] \[ \forall\mathbf{x}\in S: u(\mathbf{x}) = 0. \] \[ \forall\mathbf{x}\in N: u(x,1) = -e^{-0.5(x^2 - 1)}(x^2 - 1). \]
+.PP
+The analytical solution for this problem is given by \[ u(x,y) = xye^{-0.5(x^2 + y^2)}. \]
+.PP
+\fBAuthor:\fP
+.RS 4
+: Eduardo J\&. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu 
+.RE
+.PP
+
+.PP
+Definition in file \fB2d_poisson\&.cc\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "int main ()"
+
+.PP
+Definition at line 247 of file 2d_poisson\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

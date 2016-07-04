@@ -1,0 +1,102 @@
+.TH "mtk::GLPKAdapter" 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk::GLPKAdapter \- 
+.PP
+Adapter class for the GLPK API\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mtk_glpk_adapter\&.h>\fP
+.SS "Static Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "static \fBmtk::Real\fP \fBSolveSimplexAndCompare\fP (\fBmtk::Real\fP *AA, int nrows, int ncols, int kk, \fBmtk::Real\fP *hh, \fBmtk::Real\fP *qq, int robjective, \fBmtk::Real\fP mimetic_threshold, int copy) noexcept"
+.br
+.RI "\fISolves a CLO problem and compares the solution to a reference solution\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class contains a collection of static member functions, that possess direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the GLPK\&.
+.PP
+The \fBGLPK (GNU Linear Programming Kit)\fP package is intended for solving large-scale linear programming (LP), mixed integer programming (MIP), and other related problems\&. It is a set of routines written in ANSI C and organized in the form of a callable library\&.
+.PP
+\fBWarning:\fP
+.RS 4
+We use the GLPK temporarily in order to test the CBSA, but it will be removed due to potential licensing issues\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+http://www.gnu.org/software/glpk/ 
+.RE
+.PP
+
+.PP
+Definition at line 100 of file mtk_glpk_adapter\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "\fBmtk::Real\fP mtk::GLPKAdapter::SolveSimplexAndCompare (\fBmtk::Real\fP *AA, intnrows, intncols, intkk, \fBmtk::Real\fP *hh, \fBmtk::Real\fP *qq, introbjective, \fBmtk::Real\fPmimetic_threshold, intcopy)\fC [static]\fP, \fC [noexcept]\fP"
+This routine is the pivot of the CBSA\&. It solves a Constrained Linear Optimization (CLO) problem, and it compares the attained solution to a given reference solution\&. This comparison is done computing the norm-2 relative error\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fIAA\fP Given matrix\&. 
+.br
+\fInrows\fP Number of rows of the matrix\&. 
+.br
+\fIncols\fP Number of rows of the matrix\&. 
+.br
+\fIkk\fP Length of the RHS vector of constraints\&. 
+.br
+\fIhh\fP RHS vector of constraints\&. 
+.br
+\fIqq\fP Output decision vector\&. 
+.br
+\fIrobjective\fP Row of the system to be chosen as objective function\&. 
+.br
+\fImimetic_threshold\fP Mimetic threshold\&. 
+.br
+\fIcopy\fP Should we actually copy the results to the output?
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Relative error computed between attained solution and provided ref\&. 
+.RE
+.PP
+
+.PP
+\fBWarning:\fP
+.RS 4
+GLPK indexes in [1,n], so we must get the extra space needed\&.
+.RE
+.PP
+.IP "1." 4
+Memory allocation\&.
+.IP "2." 4
+Fill the problem\&.
+.IP "3." 4
+Copy the row to the vector objective\&.
+.IP "4." 4
+Forming the RHS\&.
+.IP "5." 4
+Setting up the objective function\&.
+.IP "6." 4
+Setting up constraints\&.
+.IP "7." 4
+Copy the matrix minus the row objective to the glpk problem\&.
+.IP "8." 4
+Solve problem\&. 
+.PP
+
+.PP
+Definition at line 77 of file mtk_glpk_adapter\&.cc\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

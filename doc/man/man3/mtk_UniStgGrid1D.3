@@ -1,0 +1,410 @@
+.TH "mtk::UniStgGrid1D" 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+mtk::UniStgGrid1D \- 
+.PP
+Uniform 1D Staggered Grid\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <mtk_uni_stg_grid_1d\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBUniStgGrid1D\fP & \fBoperator=\fP (const \fBUniStgGrid1D\fP &in)"
+.br
+.RI "\fIOverloaded assignment operator\&. \fP"
+.ti -1c
+.RI "\fBUniStgGrid1D\fP ()"
+.br
+.RI "\fIDefault constructor\&. \fP"
+.ti -1c
+.RI "\fBUniStgGrid1D\fP (const \fBUniStgGrid1D\fP &grid)"
+.br
+.RI "\fICopy constructor\&. \fP"
+.ti -1c
+.RI "\fBUniStgGrid1D\fP (const \fBReal\fP &\fBwest_bndy_x\fP, const \fBReal\fP &\fBeast_bndy_x\fP, const int &\fBnum_cells_x\fP, const \fBmtk::FieldNature\fP &\fBfield_nature\fP=\fBmtk::FieldNature::SCALAR\fP)"
+.br
+.RI "\fIConstruct a grid based on spatial discretization parameters\&. \fP"
+.ti -1c
+.RI "\fB~UniStgGrid1D\fP ()"
+.br
+.RI "\fIDestructor\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBwest_bndy_x\fP () const "
+.br
+.RI "\fIProvides access to west boundary spatial coordinate\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBeast_bndy_x\fP () const "
+.br
+.RI "\fIProvides access to east boundary spatial coordinate\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBdelta_x\fP () const "
+.br
+.RI "\fIProvides access to the computed $  x $\&. \fP"
+.ti -1c
+.RI "const \fBReal\fP * \fBdiscrete_domain_x\fP () const "
+.br
+.RI "\fIProvides access to the grid spatial data\&. \fP"
+.ti -1c
+.RI "\fBReal\fP * \fBdiscrete_field\fP ()"
+.br
+.RI "\fIProvides access to the grid field data\&. \fP"
+.ti -1c
+.RI "int \fBnum_cells_x\fP () const "
+.br
+.RI "\fIProvides access to the number of cells of the grid\&. \fP"
+.ti -1c
+.RI "\fBFieldNature\fP \fBfield_nature\fP () const "
+.br
+.RI "\fIProvides access to the field nature\&. \fP"
+.ti -1c
+.RI "void \fBGenerateDiscreteDomainX\fP ()"
+.br
+.RI "\fIGenerates the actual set of spatial coordinates\&. \fP"
+.ti -1c
+.RI "void \fBReserveDiscreteField\fP ()"
+.br
+.RI "\fIAllocates memory for the discrete set of field samples\&. \fP"
+.ti -1c
+.RI "void \fBBindScalarField\fP (\fBReal\fP(*\fBScalarField\fP)(const \fBReal\fP &xx, const std::vector< \fBReal\fP > &pp), const std::vector< \fBReal\fP > &parameters=std::vector< \fBReal\fP >())"
+.br
+.RI "\fIBinds a given scalar field to the grid\&. \fP"
+.ti -1c
+.RI "void \fBBindScalarField\fP (const std::vector< \fBReal\fP > &samples)"
+.br
+.RI "\fIBinds a given scalar field (as an array) to the grid\&. \fP"
+.ti -1c
+.RI "void \fBBindVectorField\fP (\fBReal\fP(*VectorField)(const \fBReal\fP &xx, const std::vector< \fBReal\fP > &pp), const std::vector< \fBReal\fP > &parameters=std::vector< \fBReal\fP >())"
+.br
+.RI "\fIBinds a given vector field to the grid\&. \fP"
+.ti -1c
+.RI "bool \fBWriteToFile\fP (std::string filename, std::string space_name, std::string field_name) const "
+.br
+.RI "\fIWrites grid to a file compatible with gnuplot 4\&.6\&. \fP"
+.in -1c
+.SS "Private Attributes"
+
+.in +1c
+.ti -1c
+.RI "\fBFieldNature\fP \fBfield_nature_\fP"
+.br
+.RI "\fINature of the discrete field\&. \fP"
+.ti -1c
+.RI "std::vector< \fBReal\fP > \fBdiscrete_domain_x_\fP"
+.br
+.RI "\fIArray of spatial data\&. \fP"
+.ti -1c
+.RI "std::vector< \fBReal\fP > \fBdiscrete_field_\fP"
+.br
+.RI "\fIArray of field's data\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBwest_bndy_x_\fP"
+.br
+.RI "\fIWest boundary spatial coordinate\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBeast_bndy_x_\fP"
+.br
+.RI "\fIEast boundary spatial coordinate\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBnum_cells_x_\fP"
+.br
+.RI "\fINumber of cells discretizing the domain\&. \fP"
+.ti -1c
+.RI "\fBReal\fP \fBdelta_x_\fP"
+.br
+.RI "\fIProduced $ \Delta x $\&. \fP"
+.in -1c
+.SS "Friends"
+
+.in +1c
+.ti -1c
+.RI "std::ostream & \fBoperator<<\fP (std::ostream &stream, \fBUniStgGrid1D\fP &in)"
+.br
+.RI "\fIPrints the grid as a tuple of arrays\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+Uniform 1D Staggered Grid\&. 
+.PP
+Definition at line 77 of file mtk_uni_stg_grid_1d\&.h\&.
+.SH "Constructor & Destructor Documentation"
+.PP 
+.SS "mtk::UniStgGrid1D::UniStgGrid1D ()"
+
+.PP
+Definition at line 126 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "mtk::UniStgGrid1D::UniStgGrid1D (const \fBUniStgGrid1D\fP &grid)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIgrid\fP Given grid\&. 
+.RE
+.PP
+
+.PP
+Definition at line 135 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "mtk::UniStgGrid1D::UniStgGrid1D (const \fBReal\fP &west_bndy_x, const \fBReal\fP &east_bndy_x, const int &num_cells_x, const \fBmtk::FieldNature\fP &field_nature = \fC\fBmtk::FieldNature::SCALAR\fP\fP)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIwest_bndy_x\fP Coordinate for the west boundary\&. 
+.br
+\fIeast_bndy_x\fP Coordinate for the east boundary\&. 
+.br
+\fInum_cells_x\fP Number of cells of the required grid\&. 
+.br
+\fIfield_nature\fP Nature of the discrete field to hold\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+\fBmtk::FieldNature\fP 
+.RE
+.PP
+
+.PP
+Definition at line 151 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "mtk::UniStgGrid1D::~UniStgGrid1D ()"
+
+.PP
+Definition at line 171 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void mtk::UniStgGrid1D::BindScalarField (\fBReal\fP(*)(const \fBReal\fP &xx, const std::vector< \fBReal\fP > &pp)ScalarField, const std::vector< \fBReal\fP > &parameters = \fCstd::vector<\fBReal\fP>()\fP)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIScalarField\fP Pointer to the function implementing the scalar field\&. 
+.br
+\fIparameters\fP Array of parameters for the field to be evaluated\&. 
+.RE
+.PP
+
+.IP "1." 4
+Create collection of spatial coordinates\&.
+.IP "2." 4
+Create collection of field samples\&. 
+.PP
+
+.PP
+Definition at line 260 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "void mtk::UniStgGrid1D::BindScalarField (const std::vector< \fBReal\fP > &samples)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIsamples\fP Array of samples\&. 
+.RE
+.PP
+
+.PP
+Definition at line 302 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "void mtk::UniStgGrid1D::BindVectorField (\fBReal\fP(*)(const \fBReal\fP &xx, const std::vector< \fBReal\fP > &pp)VectorField, const std::vector< \fBReal\fP > &parameters = \fCstd::vector<\fBReal\fP>()\fP)"
+We assume the field to be of the form: \[ \mathbf{v}(\mathbf{x}) = v(x)\hat{\mathbf{i}} \]
+.PP
+\fBParameters:\fP
+.RS 4
+\fIVectorField\fP Pointer to the function implementing the vector field\&. 
+.br
+\fIparameters\fP Array of parameters for the field to be evaluated\&. 
+.RE
+.PP
+
+.IP "1." 4
+Create collection of spatial coordinates\&.
+.IP "2." 4
+Create collection of field samples\&. 
+.PP
+
+.PP
+Definition at line 314 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::UniStgGrid1D::delta_x () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Computed $  x $\&. 
+.RE
+.PP
+
+.PP
+Definition at line 183 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "const \fBmtk::Real\fP * mtk::UniStgGrid1D::discrete_domain_x () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the spatial data\&.
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+Review const-correctness of the pointer we return\&. 
+.RE
+.PP
+
+.PP
+Definition at line 188 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "\fBmtk::Real\fP * mtk::UniStgGrid1D::discrete_field ()"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Pointer to the field data\&.
+.RE
+.PP
+\fBTodo\fP
+.RS 4
+Review const-correctness of the pointer we return\&. Look at the STL! 
+.RE
+.PP
+
+.PP
+Definition at line 193 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::UniStgGrid1D::east_bndy_x () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+East boundary spatial coordinate\&. 
+.RE
+.PP
+
+.PP
+Definition at line 178 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "\fBmtk::FieldNature\fP mtk::UniStgGrid1D::field_nature () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Nature of the filed on the grid\&. 
+.RE
+.PP
+
+.PP
+Definition at line 203 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "void mtk::UniStgGrid1D::GenerateDiscreteDomainX ()"
+
+.PP
+Definition at line 208 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "int mtk::UniStgGrid1D::num_cells_x () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Number of cells of the grid\&. 
+.RE
+.PP
+
+.PP
+Definition at line 198 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "\fBmtk::UniStgGrid1D\fP & mtk::UniStgGrid1D::operator= (const \fBUniStgGrid1D\fP &in)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIin\fP Given grid\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the given grid\&. 
+.RE
+.PP
+
+.PP
+Definition at line 99 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "void mtk::UniStgGrid1D::ReserveDiscreteField ()"
+
+.PP
+Definition at line 243 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::UniStgGrid1D::west_bndy_x () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+West boundary spatial coordinate\&. 
+.RE
+.PP
+
+.PP
+Definition at line 173 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SS "bool mtk::UniStgGrid1D::WriteToFile (std::stringfilename, std::stringspace_name, std::stringfield_name) const"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP Name of the output file\&. 
+.br
+\fIspace_name\fP Name for the first column of the data\&. 
+.br
+\fIfield_name\fP Name for the second column of the data\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Success of the file writing process\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+http://www.gnuplot.info/ 
+.RE
+.PP
+
+.PP
+Definition at line 348 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SH "Friends And Related Function Documentation"
+.PP 
+.SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::UniStgGrid1D\fP &in)\fC [friend]\fP"
+
+.IP "1." 4
+Print spatial coordinates\&.
+.IP "2." 4
+Print scalar field\&. 
+.PP
+
+.PP
+Definition at line 68 of file mtk_uni_stg_grid_1d\&.cc\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "\fBReal\fP mtk::UniStgGrid1D::delta_x_\fC [private]\fP"
+
+.PP
+Definition at line 244 of file mtk_uni_stg_grid_1d\&.h\&.
+.SS "std::vector<\fBReal\fP> mtk::UniStgGrid1D::discrete_domain_x_\fC [private]\fP"
+
+.PP
+Definition at line 238 of file mtk_uni_stg_grid_1d\&.h\&.
+.SS "std::vector<\fBReal\fP> mtk::UniStgGrid1D::discrete_field_\fC [private]\fP"
+
+.PP
+Definition at line 239 of file mtk_uni_stg_grid_1d\&.h\&.
+.SS "\fBReal\fP mtk::UniStgGrid1D::east_bndy_x_\fC [private]\fP"
+
+.PP
+Definition at line 242 of file mtk_uni_stg_grid_1d\&.h\&.
+.SS "\fBFieldNature\fP mtk::UniStgGrid1D::field_nature_\fC [private]\fP"
+
+.PP
+Definition at line 236 of file mtk_uni_stg_grid_1d\&.h\&.
+.SS "\fBReal\fP mtk::UniStgGrid1D::num_cells_x_\fC [private]\fP"
+
+.PP
+Definition at line 243 of file mtk_uni_stg_grid_1d\&.h\&.
+.SS "\fBReal\fP mtk::UniStgGrid1D::west_bndy_x_\fC [private]\fP"
+
+.PP
+Definition at line 241 of file mtk_uni_stg_grid_1d\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

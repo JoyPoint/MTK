@@ -97,16 +97,16 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "mtk.h"
 
-mtk::Real Alpha(const mtk::Real &tt) {
+mtk::Real Alpha(const mtk::Real &tt, const std::vector<mtk::Real> &pp) {
 
-  mtk::Real lambda{-1.0};
+  mtk::Real lambda{pp.at(0)};
 
   return -exp(lambda);
 }
 
-mtk::Real Beta(const mtk::Real &tt) {
+mtk::Real Beta(const mtk::Real &tt, const std::vector<mtk::Real> &pp) {
 
-  mtk::Real lambda{-1.0};
+  mtk::Real lambda{pp.at(0)};
 
   return (exp(lambda) - 1.0)/lambda;
 };
@@ -123,14 +123,14 @@ mtk::Real Epsilon(const mtk::Real &tt) {
 
 mtk::Real Source(const mtk::Real &xx, const std::vector<mtk::Real> &pp) {
 
-  mtk::Real lambda{-1.0};
+  mtk::Real lambda{pp.at(0)};
 
   return -lambda*lambda*exp(lambda*xx)/(exp(lambda) - 1.0);
 }
 
 mtk::Real KnownSolution(const mtk::Real &xx, const std::vector<mtk::Real> &pp) {
 
-  mtk::Real lambda{-1.0};
+  mtk::Real lambda{pp.at(0)};
 
   return (exp(lambda*xx) - 1.0)/(exp(lambda) - 1.0);
 }
@@ -143,6 +143,7 @@ int main () {
   mtk::Real west_bndy_x{0.0};
   mtk::Real east_bndy_x{1.0};
   std::array<int, 7> orders_accuracy{ {2, 4, 6, 8, 10, 12, 14} };
+  std::array<mtk::Real, 4> lambda{ {-1.0, -3.0, -5.0, -7.0} };
   const int max_order{14};
   const int num_cells_x{3*max_order - 1};
 
@@ -157,146 +158,146 @@ int main () {
     return EXIT_FAILURE;
   }
 
-  output_dat_file << "\\begin{tabular}[c]{c:c}" << std::endl;
+  output_dat_file << "\\begin{tabular}[c]{c:cccc}" << std::endl;
   output_dat_file << "\\toprule" << std::endl;
-  output_dat_file << "$k$ & Relative error \\\\" <<
+  output_dat_file << "$k$ & \\multicolumn{4}{c}{Relative error} \\\\" <<
     std::endl;
+  output_dat_file << " & $\\lambda = -1$ & $\\lambda = -3$"
+  		" & $\\lambda = -5$ & $\\lambda = -7$ \\\\" <<
+      std::endl;
   output_dat_file << "\\midrule" << std::endl;
 
   for (const int &order: orders_accuracy) {
 
-  	/// 1. Discretize space.
+  	output_dat_file << order;
 
-  	mtk::UniStgGrid1D comp_sol(west_bndy_x, east_bndy_x, num_cells_x);
+		for (const mtk::Real &ll: lambda) {
 
-  	/// 2. Create mimetic operator as a matrix.
+			/// 1. Discretize space.
 
-    mtk::Lap1D lap;
+			mtk::UniStgGrid1D comp_sol(west_bndy_x, east_bndy_x, num_cells_x);
 
-    if (!lap.ConstructLap1D(order)) {
-      std::cerr << "Mimetic Laplacian could not be built." << std::endl;
-      return EXIT_FAILURE;
-    }
+			/// 2. Create mimetic operator as a matrix.
 
-    std::cout << "lap=" << std::endl;
-    std::cout << lap << std::endl;
+			mtk::Lap1D lap;
 
-    mtk::DenseMatrix lapm(lap.ReturnAsDenseMatrix(comp_sol));
+			if (!lap.ConstructLap1D(order)) {
+				std::cerr << "Mimetic Laplacian could not be built." << std::endl;
+				return EXIT_FAILURE;
+			}
 
-    std::cout << "lapm =" << std::endl;
-    std::cout << lapm << std::endl;
+			mtk::DenseMatrix lapm(lap.ReturnAsDenseMatrix(comp_sol));
 
-    /// 2.1. Multiply times -1 to mimic the problem.
+			/// 2.1. Multiply times -1 to mimic the problem.
 
-    lapm = mtk::BLASAdapter::RealDenseSM(-1.0, lapm);
+			lapm = mtk::BLASAdapter::RealDenseSM(-1.0, lapm);
 
-    std::cout << "-lapm =" << std::endl;
-    std::cout << lapm << std::endl;
+			/// 3. Create grid for source term.
 
-    /// 3. Create grid for source term.
+			mtk::UniStgGrid1D source(west_bndy_x, east_bndy_x, num_cells_x);
 
-    mtk::UniStgGrid1D source(west_bndy_x, east_bndy_x, num_cells_x);
+			std::vector<mtk::Real> param{ {ll} };
 
-    source.BindScalarField(Source, std::vector<mtk::Real>());
+			source.BindScalarField(Source, param);
 
-    std::cout << "source =" << std::endl;
-    std::cout << source << std::endl;
+			/// 4. Apply Boundary Conditions to operator.
 
-    /// 4. Apply Boundary Conditions to operator.
+			mtk::RobinBCDescriptor1D robin_bc_desc_1d;
 
-    mtk::RobinBCDescriptor1D robin_bc_desc_1d;
+			robin_bc_desc_1d.PushBackWestCoeff(Alpha);
+			robin_bc_desc_1d.PushBackWestCoeff(Beta);
 
-    robin_bc_desc_1d.PushBackWestCoeff(Alpha);
-    robin_bc_desc_1d.PushBackWestCoeff(Beta);
+			robin_bc_desc_1d.PushBackEastCoeff(Alpha);
+			robin_bc_desc_1d.PushBackEastCoeff(Beta);
 
-    robin_bc_desc_1d.PushBackEastCoeff(Alpha);
-    robin_bc_desc_1d.PushBackEastCoeff(Beta);
+			robin_bc_desc_1d.set_west_condition(Omega);
+			robin_bc_desc_1d.set_east_condition(Epsilon);
 
-    robin_bc_desc_1d.set_west_condition(Omega);
-    robin_bc_desc_1d.set_east_condition(Epsilon);
+			if (!robin_bc_desc_1d.ImposeOnLaplacianMatrix(lap, lapm, param)) {
+				std::cerr << "BCs  could not be bound to the matrix." << std::endl;
+				return EXIT_FAILURE;
+			}
 
-    if (!robin_bc_desc_1d.ImposeOnLaplacianMatrix(lap, lapm)) {
-      std::cerr << "BCs  could not be bound to the matrix." << std::endl;
-      return EXIT_FAILURE;
-    }
+			if (!lapm.WriteToFile(
+					"1d_poisson_lapm_" +
+					std::to_string(order) +
+					std::to_string(ll) + ".dat")) {
+				std::cerr << "Laplacian matrix could not be written to disk." <<
+					std::endl;
+				return EXIT_FAILURE;
+			}
 
-    std::cout << "Mimetic Laplacian operator with imposed BCs:" << std::endl;
-    std::cout << lapm << std::endl;
+			/// 5. Apply Boundary Conditions to source term's grid.
 
-    if (!lapm.WriteToFile(
-    		"1d_poisson_lapm_" + std::to_string(order) + ".dat")) {
-      std::cerr << "Laplacian matrix could not be written to disk." << std::endl;
-      return EXIT_FAILURE;
-    }
+			robin_bc_desc_1d.ImposeOnGrid(source);
 
-    /// 5. Apply Boundary Conditions to source term's grid.
+			std::cout << "source =" << std::endl;
+			std::cout << source << std::endl;
 
-    robin_bc_desc_1d.ImposeOnGrid(source);
+			if (!source.WriteToFile("1d_poisson_source_" +
+															std::to_string(order) +
+															std::to_string(ll) + ".dat", "x", "s(x)")) {
+				std::cerr << "Source term could not be written to disk." << std::endl;
+				return EXIT_FAILURE;
+			}
 
-    std::cout << "source =" << std::endl;
-    std::cout << source << std::endl;
+			/// 6. Solve the problem.
 
-    if (!source.WriteToFile("1d_poisson_source_" +
-    		                    std::to_string(order) + ".dat", "x", "s(x)")) {
-      std::cerr << "Source term could not be written to disk." << std::endl;
-      return EXIT_FAILURE;
-    }
+			int info{mtk::LAPACKAdapter::SolveDenseSystem(lapm, source)};
 
-    /// 6. Solve the problem.
+			if (!info) {
+				std::cout << "System solved." << std::endl;
+				std::cout << std::endl;
+			} else {
+				std::cerr << "Something wrong solving system! info = " << info <<
+					std::endl;
+				std::cerr << "Exiting..." << std::endl;
+				return EXIT_FAILURE;
+			}
 
-    int info{mtk::LAPACKAdapter::SolveDenseSystem(lapm, source)};
+			if (!source.WriteToFile(
+					"1d_poisson_comp_sol_" +
+					std::to_string(order) +
+					std::to_string(ll) +
+					".dat",
+					"x",
+					"~u(x)")) {
+				std::cerr << "Solution could not be written to file." << std::endl;
+				return EXIT_FAILURE;
+			}
 
-    if (!info) {
-      std::cout << "System solved." << std::endl;
-      std::cout << std::endl;
-    } else {
-      std::cerr << "Something wrong solving system! info = " << info << std::endl;
-      std::cerr << "Exiting..." << std::endl;
-      return EXIT_FAILURE;
-    }
+			/// 7. Compare computed solution against known solution.
 
-    std::cout << "Computed solution:" << std::endl;
-    std::cout << source << std::endl;
+			mtk::UniStgGrid1D known_sol(west_bndy_x, east_bndy_x, num_cells_x);
 
-    if (!source.WriteToFile(
-    		"1d_poisson_comp_sol_" + std::to_string(order) + ".dat",
-    		"x",
-    		"~u(x)")) {
-      std::cerr << "Solution could not be written to file." << std::endl;
-      return EXIT_FAILURE;
-    }
+			known_sol.BindScalarField(KnownSolution, param);
 
-    /// 7. Compare computed solution against known solution.
+			if (!known_sol.WriteToFile(
+					"1d_poisson_known_sol_" + std::to_string(order) +
+					std::to_string(ll) +
+					".dat",
+					"x",
+					"u(x)")) {
+				std::cerr << "Known solution could not be written to file." <<
+					std::endl;
+				return EXIT_FAILURE;
+			}
 
-    mtk::UniStgGrid1D known_sol(west_bndy_x, east_bndy_x, num_cells_x);
+			mtk::Real relative_norm_2_error{};
 
-    known_sol.BindScalarField(KnownSolution, std::vector<mtk::Real>());
+			relative_norm_2_error =
+				mtk::BLASAdapter::RelNorm2Error(source.discrete_field(),
+																				known_sol.discrete_field(),
+																				known_sol.num_cells_x());
 
-    std::cout << "known_sol =" << std::endl;
-    std::cout << known_sol << std::endl;
+			std::cout << "order = ";
+			std::cout << order << std::endl;
+			std::cout << "relative_norm_2_error = ";
+			std::cout << relative_norm_2_error << std::endl;
 
-    if (!known_sol.WriteToFile(
-    		"1d_poisson_known_sol_" + std::to_string(order) + ".dat",
-    		"x",
-    		"u(x)")) {
-      std::cerr << "Known solution could not be written to file." << std::endl;
-      return EXIT_FAILURE;
-    }
-
-    mtk::Real relative_norm_2_error{};
-
-    relative_norm_2_error =
-      mtk::BLASAdapter::RelNorm2Error(source.discrete_field(),
-                                      known_sol.discrete_field(),
-                                      known_sol.num_cells_x());
-
-    std::cout << "order = ";
-    std::cout << order << std::endl;
-    std::cout << "relative_norm_2_error = ";
-    std::cout << relative_norm_2_error << std::endl;
-
-    output_dat_file << order << " & " << relative_norm_2_error << "\\\\" <<
-    	std::endl;
+			output_dat_file << " & " << relative_norm_2_error;
+		}
+		output_dat_file << "\\\\" << std::endl;
   }
 
   output_dat_file << "\\bottomrule" << std::endl;

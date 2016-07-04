@@ -1,10 +1,10 @@
 /*!
 \file mtk_glpk_adapter.cc
 
-\brief Adapter class for the GLPK API.
+\brief Definition of an adapter class for the GLPK API.
 
-Implementation of a class that contains a collection of static member
-functions, that posses direct access to the underlying structure of the
+Definition of a class that contains a collection of static member
+functions, that possess direct access to the underlying structure of the
 matrices, thus allowing programmers to exploit some of the numerical methods
 implemented in the GLPK.
 
@@ -275,7 +275,7 @@ mtk::Real mtk::GLPKAdapter::SolveSimplexAndCompare(mtk::Real *A,
     ja[ii] = (ii - 1) % lp_ncols + 1;
   }
 
-  glp_load_matrix (lp, matsize, ia, ja, ar);
+  glp_load_matrix(lp, matsize, ia, ja, ar);
 
   #if MTK_DEBUG_LEVEL > 0
   sprintf(mps_file_name, "LP_MPS_row_%02d.mps", robjective);

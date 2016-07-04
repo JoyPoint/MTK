@@ -1,16 +1,12 @@
 /*!
 \file mtk_tools.h
 
-\brief Tool manager class.
+\brief Declaration of a class to manage run-time tools.
 
-Definition of a class providing basic tools to ensure execution correctness,
+Declaration of a class providing basic tools to ensure execution correctness,
 and to assists with unit testing.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
-
-\note Performance Tip 8.1. If they do not need to be modified by the called
-function, pass large objects using pointers to constant data or references to
-constant data, to obtain the performance benefits of pass-by-reference.
 */
 /*
 Copyright (C) 2016, Computational Science Research Center, San Diego State
@@ -74,7 +70,7 @@ namespace mtk {
 
 \brief Tool manager class.
 
-Basic tools to ensure execution correctness, and to assists with unitary
+Basic tools to ensure execution correctness, and to assists with unit
 testing.
 */
 class Tools {

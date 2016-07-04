@@ -166,6 +166,7 @@ void mtk::RobinBCDescriptor1D::set_east_condition(
 bool mtk::RobinBCDescriptor1D::ImposeOnDivergenceMatrix(
     const mtk::Div1D &div,
     mtk::DenseMatrix &matrix,
+    const std::vector<Real> &parameters,
     const mtk::Real &time) const {
 
   #ifdef MTK_PERFORM_PREVENTIONS
@@ -179,13 +180,15 @@ bool mtk::RobinBCDescriptor1D::ImposeOnDivergenceMatrix(
 
   /// 1. Impose Dirichlet coefficients.
 
+  std::vector<mtk::Real> aux_pp(parameters);
+
   /// 1.1. Impose Dirichlet condition at the west.
-  matrix.SetValue(0, 0, (west_coefficients_[0])(time));
+  matrix.SetValue(0, 0, (west_coefficients_[0])(time, aux_pp));
 
   /// 1.2. Impose Dirichlet condition at the east.
   matrix.SetValue(matrix.num_rows() - 1,
                   matrix.num_cols() - 1,
-                  (east_coefficients_[0])(time));
+                  (east_coefficients_[0])(time, aux_pp));
 
   /// 2. Impose Neumann coefficients.
 
@@ -197,6 +200,7 @@ bool mtk::RobinBCDescriptor1D::ImposeOnDivergenceMatrix(
 bool mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix(
     const mtk::Lap1D &lap,
     mtk::DenseMatrix &matrix,
+    const std::vector<Real> &parameters,
     const mtk::Real &time) const {
 
   #ifdef MTK_PERFORM_PREVENTIONS
@@ -210,13 +214,15 @@ bool mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix(
 
   /// 1. Impose Dirichlet coefficients.
 
+  std::vector<mtk::Real> aux_pp(parameters);
+
   /// 1.1. Impose Dirichlet condition at the west.
-  matrix.SetValue(0, 0, (west_coefficients_[0])(time));
+  matrix.SetValue(0, 0, (west_coefficients_[0])(time, aux_pp));
 
   /// 1.2. Impose Dirichlet condition at the east.
   matrix.SetValue(matrix.num_rows() - 1,
                   matrix.num_cols() - 1,
-                  (east_coefficients_[0])(time));
+                  (east_coefficients_[0])(time, aux_pp));
 
   /// 2. Impose Neumann coefficients.
 
@@ -245,7 +251,7 @@ bool mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix(
       /// 2.3.2. Multiply times the coefficient for this boundary, times the
       /// unit normal for this boundary.
       mtk::Real unit_normal{-mtk::kOne};
-      aux *= unit_normal*(west_coefficients_[1])(time);
+      aux *= unit_normal*(west_coefficients_[1])(time, aux_pp);
       /// 2.3.3. Set the final value summing it with what is on the matrix.
       matrix.SetValue(0, ii, matrix.GetValue(0, ii) + aux);
     }
@@ -264,7 +270,7 @@ bool mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix(
       /// unit normal for this boundary, and change the sign to enforce
       /// center-skew-symmetry.
       mtk::Real unit_normal{mtk::kOne};
-      aux *= -unit_normal*(east_coefficients_[1])(time);
+      aux *= -unit_normal*(east_coefficients_[1])(time, aux_pp);
       /// 2.4.3. Set the final value summing it with what is on the matrix.
       matrix.SetValue(matrix.num_rows() - 1,
                       matrix.num_rows() - 1 - ii,

@@ -1,16 +1,16 @@
 /*!
 \file mtk_enums.h
 
-\brief Considered enumeration types in the MTK.
+\brief Definitions of the enumeration types in the MTK.
 
 Enumeration types are used throughout the MTK to differentiate instances of
-derived classes, as well as for mnemonic purposes. In this file, the enumeration
-types are listed alphabetically.
+derived classes, as well as for mnemonic purposes. In this file, definitions for
+the enumeration types are listed alphabetically.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,

@@ -1,9 +1,9 @@
 /*!
 \file mtk_matrix.h
 
-\brief Definition of the representation of a matrix in the MTK.
+\brief Declaration of the representation of a matrix in the MTK.
 
-Definition of the representation for the matrices implemented in the MTK.
+Declaration of the representation for the matrices implemented in the MTK.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
@@ -377,7 +377,7 @@ class Matrix {
 
 	Defined as
 	\f[
-		\frac{\textrm{num_non_null}}{\textrm{num_values}}.
+		\frac{\textrm{num\_non\_null}}{\textrm{num\_values}}.
 	\f]
 
 	\param[in] num_non_null Number of non-null values of the matrix.
@@ -393,7 +393,7 @@ class Matrix {
 
 	Defined as
 	\f[
-		1 - \frac{\textrm{num_non_null}}{\textrm{num_values}}.
+		1 - \frac{\textrm{num\_non\_null}}{\textrm{num\_values}}.
 	\f]
 
 	\param[in] absolute_density Absolute density of the matrix.
@@ -419,7 +419,7 @@ class Matrix {
 
 	Defined as
 	\f[
-		\frac{\textrm{num_non_zero}}{\textrm{num_values}}.
+		\frac{\textrm{num\_non\_zero}}{\textrm{num\_values}}.
 	\f]
 
 	\param[in] num_non_zero Number of non-zero values of the matrix.
@@ -435,7 +435,7 @@ class Matrix {
 
 	Defined as
 	\f[
-		1 - \frac{\textrm{num_non_zero}}{\textrm{num_values}}.
+		1 - \frac{\textrm{num\_non\_zero}}{\textrm{num\_values}}.
 	\f]
 
 	\param[in] relative_density Relative density of the matrix.

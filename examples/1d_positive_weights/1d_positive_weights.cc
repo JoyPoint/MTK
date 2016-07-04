@@ -51,11 +51,11 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#if __cplusplus == 201103L
+#include <cstdlib>
+#include <cmath>
 
 #include <iostream>
 #include <fstream>
-#include <cmath>
 
 #include <vector>
 
@@ -126,14 +126,3 @@ int main () {
     return EXIT_FAILURE;
   }
 }
-
-#else
-#include <iostream>
-using std::cout;
-using std::endl;
-int main () {
-  cout << "This code HAS to be compiled with support for C++11." << endl;
-  cout << "Exiting..." << endl;
-  return EXIT_SUCCESS;
-}
-#endif

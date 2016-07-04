@@ -86,21 +86,20 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#if __cplusplus == 201103L
-
+#include <cstdlib>
+#include <cmath>
 #include <iostream>
 #include <fstream>
-#include <cmath>
 #include <vector>
 
 #include "mtk.h"
 
-mtk::Real Alpha(const mtk::Real &tt) {
+mtk::Real Alpha(const mtk::Real &tt, const std::vector<mtk::Real> &pp) {
   mtk::Real lambda = -1.0;
   return -exp(lambda);
 }
 
-mtk::Real Beta(const mtk::Real &tt) {
+mtk::Real Beta(const mtk::Real &tt, const std::vector<mtk::Real> &pp) {
   mtk::Real lambda = -1.0;
   return (exp(lambda) - 1.0)/lambda;
 };
@@ -140,7 +139,8 @@ int main () {
   bcs.PushBackEastCoeff(Beta);
   bcs.set_west_condition(Omega);
   bcs.set_east_condition(Epsilon);
-  if (!bcs.ImposeOnLaplacianMatrix(lap, lapm)) {
+  const std::vector<mtk::Real> lambda{{-mtk::kOne}};
+  if (!bcs.ImposeOnLaplacianMatrix(lap, lapm, lambda)) {
     return EXIT_FAILURE;
   }
   bcs.ImposeOnGrid(source);
@@ -157,13 +157,3 @@ int main () {
                                     known_sol.num_cells_x());
   std::cout << relative_norm_2_error << std::endl;
 }
-#else
-#include <iostream>
-using std::cout;
-using std::endl;
-int main () {
-  cout << "This code HAS to be compiled with support for C++11." << endl;
-  cout << "Exiting..." << endl;
-  return EXIT_SUCCESS;
-}
-#endif

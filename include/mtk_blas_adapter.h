@@ -1,10 +1,10 @@
 /*!
 \file mtk_blas_adapter.h
 
-\brief Adapter class for the BLAS API.
+\brief Declaration of an adapter class for the BLAS API.
 
-Definition of a class that contains a collection of static member functions,
-that posses direct access to the underlying structure of the matrices, thus
+Declaration of a class that contains a collection of static member functions,
+that possess direct access to the underlying structure of the matrices, thus
 allowing programmers to exploit some of the numerical methods implemented in
 the BLAS.
 
@@ -83,7 +83,7 @@ namespace mtk {
 
 \brief Adapter class for the BLAS API.
 
-This class contains a collection of static member functions, that posses direct
+This class contains a collection of static member functions, that possess direct
 access to the underlying structure of the matrices, thus allowing programmers to
 exploit some of the numerical methods implemented in the BLAS.
 

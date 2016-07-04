@@ -13,7 +13,7 @@ mimetic operators, among others.
 \todo Test selective precision mechanisms.
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -71,7 +71,7 @@ namespace mtk {
 /*!
 \def MTK_PRECISION_DOUBLE
 
-\ingroup c01-roots
+\ingroup c01-foundations
 
 \brief Defined from Makefile, decides between a single- or double-precision MTK.
 
@@ -81,7 +81,7 @@ namespace mtk {
 /*!
 \typedef Real
 
-\ingroup c01-roots
+\ingroup c01-foundations
 
 \brief Users can simply change this to build a double- or single-precision MTK.
 
@@ -96,7 +96,7 @@ typedef float Real;
 /*!
 \var kZero
 
-\ingroup c01-roots
+\ingroup c01-foundations
 
 \brief MTK's zero defined according to selective compilation.
 
@@ -106,7 +106,7 @@ typedef float Real;
 
 \brief MTK's one defined according to selective compilation.
 
-\ingroup c01-roots
+\ingroup c01-foundations
 
 \warning Declared as double if MTK_PRECISION_DOUBLE is defined on Makefile.inc.
 
@@ -114,7 +114,7 @@ typedef float Real;
 
 \brief MTK's two defined according to selective compilation.
 
-\ingroup c01-roots
+\ingroup c01-foundations
 
 \warning Declared as double if MTK_PRECISION_DOUBLE is defined on Makefile.inc.
 */
@@ -131,7 +131,7 @@ const float kTwo{2.0f};
 /*!
 \var kDefaultTolerance
 
-\ingroup c01-roots
+\ingroup c01-foundations
 
 \brief Considered tolerance for comparisons in numerical methods.
 
@@ -146,9 +146,9 @@ const float kDefaultTolerance{1e-7f};
 /*!
 \var kDefaultMimeticThreshold
 
-\ingroup c01-roots
+\ingroup c01-foundations
 
-\brief Default tolerance for higher-order mimetic operators.
+\brief Default threshold for higher-order mimetic operators.
 
 \warning Declared as double if MTK_PRECISION_DOUBLE is defined on Makefile.inc.
 */
@@ -161,7 +161,7 @@ const float kDefaultMimeticThreshold{1e-6f};
 /*!
 \var kDefaultOrderAccuracy
 
-\ingroup c01-roots
+\ingroup c01-foundations
 
 \brief Default order of accuracy for mimetic operators.
 */
@@ -170,7 +170,7 @@ const int kDefaultOrderAccuracy{2};
 /*!
 \var kCriticalOrderAccuracyGrad
 
-\ingroup c01-roots
+\ingroup c01-foundations
 
 \brief At this order (and higher) we must use the CBSA to construct gradients.
 */
@@ -179,7 +179,7 @@ const int kCriticalOrderAccuracyGrad{10};
 /*!
 \var kCriticalOrderAccuracyDiv
 
-\ingroup c01-roots
+\ingroup c01-foundations
 
 \brief At this order (and higher) we must use the CBSA to construct divergences.
 */

@@ -1,0 +1,70 @@
+.TH "include/mtk_robin_bc_descriptor_3d.h" 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+include/mtk_robin_bc_descriptor_3d.h \- 
+.PP
+Impose Robin boundary conditions on the operators and on the grids\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'mtk_foundations\&.h'\fP
+.br
+\fC#include 'mtk_dense_matrix\&.h'\fP
+.br
+\fC#include 'mtk_lap_2d\&.h'\fP
+.br
+\fC#include 'mtk_uni_stg_grid_2d\&.h'\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "class \fBmtk::RobinBCDescriptor3D\fP"
+.br
+.RI "\fIImpose Robin boundary conditions on the operators and on the grids\&. \fP"
+.in -1c
+.SS "Namespaces"
+
+.in +1c
+.ti -1c
+.RI " \fBmtk\fP"
+.br
+.RI "\fIMimetic Methods Toolkit namespace\&. \fP"
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef Real(* \fBmtk::CoefficientFunction2D\fP )(const Real &xx, const Real &yy, const Real &tt)"
+.br
+.RI "\fIA function of a BC coefficient evaluated on a 2D domain and time\&. \fP"
+.in -1c
+.SH "Detailed Description"
+.PP 
+This class presents an interface for the user to specify Robin boundary conditions on 3D mimetic operators and the grids they are acting on\&.
+.PP
+\fBDef\&.\fP Let $ u(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} $ be the solution to an ordinary or partial differential equation of interest\&. We say that $ u $ satisfies a \fBRobin boundary condition on\fP $ \partial\Omega $ if and only if there exists $ \beta(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} $ so that: \[ \forall t \in [t_0,t_n]\; \forall \mathbf{x} \in \partial\Omega: \delta(\mathbf{x},t)u(\mathbf{x},t) + \eta(\mathbf{x},t)(\hat{\mathbf{n}}\cdot\nabla u) = \beta(\mathbf{x},t). \]
+.PP
+Intuitively, a \fBRobin boundary condition\fP is a constraint that must be satisfied by any linear combination of any scalar field $ u $ and its first normal derivative, in order for $ u $ to represent a unique solution to a given ordinary or partial differential equation of interest\&.
+.PP
+Instances of this class receive information about the coefficient functions and each condition for any subset of the boundary\&. These instances then handle the complexity of placing the coefficients in the differentiation matrices and the conditions in the grids\&.
+.PP
+\fBSee also:\fP
+.RS 4
+http://mathworld.wolfram.com/NormalVector.html
+.RE
+.PP
+\fBAuthor:\fP
+.RS 4
+: Eduardo J\&. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu 
+.RE
+.PP
+
+.PP
+Definition in file \fBmtk_robin_bc_descriptor_3d\&.h\fP\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

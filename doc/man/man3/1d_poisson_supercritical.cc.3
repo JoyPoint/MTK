@@ -1,0 +1,129 @@
+.TH "examples/1d_poisson_supercritical/1d_poisson_supercritical.cc" 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+examples/1d_poisson_supercritical/1d_poisson_supercritical.cc \- 
+.PP
+Poisson Equation on a 1D Uniform Staggered Grid with Robin BCs\&.  
+
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <cstdlib>\fP
+.br
+\fC#include <cmath>\fP
+.br
+\fC#include <iostream>\fP
+.br
+\fC#include <fstream>\fP
+.br
+\fC#include <array>\fP
+.br
+\fC#include <vector>\fP
+.br
+\fC#include 'mtk\&.h'\fP
+.br
+
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "\fBmtk::Real\fP \fBAlpha\fP (const \fBmtk::Real\fP &tt, const std::vector< \fBmtk::Real\fP > &pp)"
+.br
+.ti -1c
+.RI "\fBmtk::Real\fP \fBBeta\fP (const \fBmtk::Real\fP &tt, const std::vector< \fBmtk::Real\fP > &pp)"
+.br
+.ti -1c
+.RI "\fBmtk::Real\fP \fBOmega\fP (const \fBmtk::Real\fP &tt)"
+.br
+.ti -1c
+.RI "\fBmtk::Real\fP \fBEpsilon\fP (const \fBmtk::Real\fP &tt)"
+.br
+.ti -1c
+.RI "\fBmtk::Real\fP \fBSource\fP (const \fBmtk::Real\fP &xx, const std::vector< \fBmtk::Real\fP > &pp)"
+.br
+.ti -1c
+.RI "\fBmtk::Real\fP \fBKnownSolution\fP (const \fBmtk::Real\fP &xx, const std::vector< \fBmtk::Real\fP > &pp)"
+.br
+.ti -1c
+.RI "int \fBmain\fP ()"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+We solve: \[ -\nabla^2 p(x) = s(x), \] for $ x \in \Omega = [a,b] = [0,1] $\&.
+.PP
+The source term function is defined as: \[ s(x) = -\frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1}, \] where $ \lambda = -1 $ is a real-valued parameter\&.
+.PP
+We consider Robin's boundary conditions of the form: \[ \alpha p(a) - \beta p'(a) = \omega, \] \[ \alpha p(b) + \beta p'(b) = \epsilon, \] where $ \alpha = -\exp(\lambda) $, $ \beta = \lambda^{-1}(\exp(\lambda) - 1.0) $, $ \omega = -1 $, and $ \epsilon = 0 $\&.
+.PP
+The analytical solution for this problem is given by: \[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \]
+.PP
+The mimetic counterpart of this equation is: \[ -\breve{\mathbf{L}}^k_x \tilde{p} = \tilde{s}. \]
+.PP
+Finally, we will solve this problem considering $ k = 2 $\&.
+.PP
+\fBAuthor:\fP
+.RS 4
+: Eduardo J\&. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu 
+.RE
+.PP
+
+.PP
+Definition in file \fB1d_poisson_supercritical\&.cc\fP\&.
+.SH "Function Documentation"
+.PP 
+.SS "\fBmtk::Real\fP Alpha (const \fBmtk::Real\fP &tt, const std::vector< \fBmtk::Real\fP > &pp)"
+
+.PP
+Definition at line 100 of file 1d_poisson_supercritical\&.cc\&.
+.SS "\fBmtk::Real\fP Beta (const \fBmtk::Real\fP &tt, const std::vector< \fBmtk::Real\fP > &pp)"
+
+.PP
+Definition at line 107 of file 1d_poisson_supercritical\&.cc\&.
+.SS "\fBmtk::Real\fP Epsilon (const \fBmtk::Real\fP &tt)"
+
+.PP
+Definition at line 119 of file 1d_poisson_supercritical\&.cc\&.
+.SS "\fBmtk::Real\fP KnownSolution (const \fBmtk::Real\fP &xx, const std::vector< \fBmtk::Real\fP > &pp)"
+
+.PP
+Definition at line 131 of file 1d_poisson_supercritical\&.cc\&.
+.SS "int main ()"
+
+.IP "1." 4
+Perform experiment for the gradient operator\&.
+.PP
+.IP "1." 4
+Discretize space\&.
+.IP "2." 4
+Create mimetic operator as a matrix\&.
+.PP
+.PP
+2\&.1\&. Multiply times -1 to mimic the problem\&.
+.PP
+.IP "3." 4
+Create grid for source term\&.
+.IP "4." 4
+Apply Boundary Conditions to operator\&.
+.IP "5." 4
+Apply Boundary Conditions to source term's grid\&.
+.IP "6." 4
+Solve the problem\&.
+.IP "7." 4
+Compare computed solution against known solution\&. 
+.PP
+
+.PP
+Definition at line 138 of file 1d_poisson_supercritical\&.cc\&.
+.SS "\fBmtk::Real\fP Omega (const \fBmtk::Real\fP &tt)"
+
+.PP
+Definition at line 114 of file 1d_poisson_supercritical\&.cc\&.
+.SS "\fBmtk::Real\fP Source (const \fBmtk::Real\fP &xx, const std::vector< \fBmtk::Real\fP > &pp)"
+
+.PP
+Definition at line 124 of file 1d_poisson_supercritical\&.cc\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

@@ -1,0 +1,174 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="page_readme" kind="page">
+    <compoundname>page_readme</compoundname>
+    <title>Read Me File and Installation Instructions</title>
+    <detaileddescription>
+<para><verbatim># The Mimetic Methods Toolkit (MTK)
+
+By: **Eduardo J. Sanchez, PhD - esanchez at mail dot sdsu dot edu**
+
+## 1. Description
+
+We define numerical methods that are based on discretizations preserving the
+properties of their continuous counterparts to be **mimetic**.
+
+The **Mimetic Methods Toolkit (MTK)** is a C++11 library for mimetic numerical
+methods. It is a set of classes for **mimetic interpolation**, **mimetic
+quadratures**, and **mimetic finite difference** methods for the **numerical
+solution of ordinary and partial differential equations**.
+
+## 2. Dependencies
+
+This README file assumes all of these dependencies are installed in the
+following folder:
+
+```
+$(HOME)/Libraries/
+```
+
+In this version, the MTK optionally uses ATLAS-optimized BLAS and LAPACK
+routines for the internal computation on some of the layers. However, ATLAS
+requires both BLAS and LAPACK in order to create their optimized distributions.
+Therefore, the following dependencies tree arises:
+
+### For Linux:
+
+1. LAPACK - Available from: http://www.netlib.org/lapack/
+  1. BLAS - Available from: http://www.netlib.org/blas/
+
+2. GLPK - Available from: https://www.gnu.org/software/glpk/
+
+3. (Optional) ATLAS - Available from: http://math-atlas.sourceforge.net/
+  1. LAPACK - Available from: http://www.netlib.org/lapack/
+    1. BLAS - Available from: http://www.netlib.org/blas
+
+4. (Optional) Valgrind - Available from: http://valgrind.org/
+
+5. (Optional) Doxygen - Available from http://www.stack.nl/~dimitri/doxygen/
+
+### For OSX:
+
+1. GLPK - Available from: https://www.gnu.org/software/glpk/
+
+## 3. Installation
+
+### PART 1. CONFIGURATION OF THE MAKEFILE.
+
+The following steps are required to build and test the MTK. Please use the
+accompanying `Makefile.inc` file, which should provide a solid template to
+start with. The following command provides help on the options for make:
+
+```
+$ make help
+-----
+Makefile for the MTK.
+
+Options are:
+- all: builds the library, the tests, and examples.
+- mtklib: builds the library.
+- test: builds the test files.
+- example: builds the examples.
+
+- testall: runs all the tests.
+
+- gendoc: generates the documentation for the library.
+
+- clean: cleans all the generated files.
+- cleanlib: cleans the generated archive and object files.
+- cleantest: cleans the generated tests executables.
+- cleanexample: cleans the generated examples executables.
+-----
+```
+
+### PART 2. BUILD THE LIBRARY.
+
+```
+$ make
+```
+
+If successful you&apos;ll read (before building the tests and examples):
+```
+----- Library created! Check in /home/ejspeiro/Dropbox/MTK/lib
+```
+
+## 4. Contact, Support, and Credits
+
+The GitHub repository is: https://github.com/ejspeiro/MTK
+
+The MTK is developed by researchers and adjuncts to the
+[Computational Science Research Center (CSRC)](http://www.csrc.sdsu.edu/)
+at [San Diego State University (SDSU)](http://www.sdsu.edu/).
+
+Currently the developers are:
+
+- **Eduardo J. Sanchez, PhD - esanchez at mail dot sdsu dot edu** - @ejspeiro
+- Jose E. Castillo, PhD - jcastillo at mail dot sdsu dot edu
+- Guillermo F. Miranda, PhD - unigrav at hotmail dot com
+
+### 4.1. Acknowledgements and Contributions
+
+The authors would like to acknowledge valuable advising, feedback,
+and actual contributions from research personnel at the Computational Science
+Research Center (CSRC) at San Diego State University (SDSU). Their input was
+important to the fruition of this work. Specifically, our thanks go to
+(alphabetical order):
+
+- Mohammad Abouali, PhD
+- Dany De Cecchis, PhD
+- Otilio Rojas, PhD
+- Julia Rossi, PhD
+- Christopher P. Paolini, PhD - paolini at engineering dot sdsu dot edu
+- Johnny Corbino.
+- Raul Vargas-Navarro.
+
+## 5. Referencing This Work
+
+Please reference this work as follows:
+```
+@article{Sanchez2014308,
+  title = &quot;The Mimetic Methods Toolkit: An object-oriented \{API\} for Mimetic
+Finite Differences &quot;,
+  journal = &quot;Journal of Computational and Applied Mathematics &quot;,
+  volume = &quot;270&quot;,
+  number = &quot;&quot;,
+  pages = &quot;308 - 322&quot;,
+  year = &quot;2014&quot;,
+  note = &quot;Fourth International Conference on Finite Element Methods in
+Engineering and Sciences (FEMTEC 2013) &quot;,
+  issn = &quot;0377-0427&quot;,
+  doi = &quot;http://dx.doi.org/10.1016/j.cam.2013.12.046&quot;,
+  url = &quot;http://www.sciencedirect.com/science/article/pii/S037704271300719X&quot;,
+  author = &quot;Eduardo J. Sanchez and Christopher P. Paolini and Jose E. Castillo&quot;,
+  keywords = &quot;Object-oriented development&quot;,
+  keywords = &quot;Partial differential equations&quot;,
+  keywords = &quot;Application programming interfaces&quot;,
+  keywords = &quot;Mimetic Finite Differences &quot;
+}
+
+@Inbook{Sanchez2015,
+  author=&quot;Sanchez, Eduardo and Paolini, Christopher and Blomgren, Peter
+and Castillo, Jose&quot;,
+  editor=&quot;Kirby, M. Robert and Berzins, Martin and Hesthaven, S. Jan&quot;,
+  chapter=&quot;Algorithms for Higher-Order Mimetic Operators&quot;,
+  title=&quot;Spectral and High Order Methods for Partial Differential Equations
+ICOSAHOM 2014: Selected papers from the ICOSAHOM conference, June 23-27, 2014,
+Salt Lake City, Utah, USA&quot;,
+  year=&quot;2015&quot;,
+  publisher=&quot;Springer International Publishing&quot;,
+  address=&quot;Cham&quot;,
+  pages=&quot;425--434&quot;,
+  isbn=&quot;978-3-319-19800-2&quot;,
+  doi=&quot;10.1007/978-3-319-19800-2_39&quot;,
+  url=&quot;http://dx.doi.org/10.1007/978-3-319-19800-2_39&quot;
+}
+```
+
+Finally, please feel free to contact me with suggestions or corrections:
+
+**Eduardo J. Sanchez, PhD - esanchez at mail dot sdsu dot edu** - @ejspeiro
+
+Thanks and happy coding!
+</verbatim> </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

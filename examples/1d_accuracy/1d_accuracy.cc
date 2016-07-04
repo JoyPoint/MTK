@@ -93,7 +93,8 @@ mtk::Real PolynomialDerivative1(const mtk::Real &xx,
   return sum;
 }
 
-mtk::Real HomogeneousDirichlet(const mtk::Real &tt) {
+mtk::Real HomogeneousDirichlet(const mtk::Real &tt,
+		                           const std::vector<mtk::Real> &pp) {
 
   return mtk::kOne;
 }

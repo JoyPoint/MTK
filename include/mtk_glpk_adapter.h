@@ -1,10 +1,10 @@
 /*!
 \file mtk_glpk_adapter.h
 
-\brief Adapter class for the GLPK API.
+\brief Declaration of an adapter class for the GLPK API.
 
-Definition of a class that contains a collection of static member functions,
-that posses direct access to the underlying structure of the matrices, thus
+Declaration of a class that contains a collection of static member functions,
+that possess direct access to the underlying structure of the matrices, thus
 allowing programmers to exploit some of the numerical methods implemented in
 the GLPK.
 
@@ -83,7 +83,7 @@ namespace mtk {
 
 \brief Adapter class for the GLPK API.
 
-This class contains a collection of static member functions, that posses direct
+This class contains a collection of static member functions, that possess direct
 access to the underlying structure of the matrices, thus allowing programmers to
 exploit some of the numerical methods implemented in the GLPK.
 
@@ -96,8 +96,6 @@ form of a callable library.
 removed due to potential licensing issues.
 
 \sa http://www.gnu.org/software/glpk/
-
-\todo Rescind from the GLPK as the numerical core for CLO problems.
 */
 class GLPKAdapter {
  public:

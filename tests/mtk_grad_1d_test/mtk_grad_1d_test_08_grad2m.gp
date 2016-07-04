@@ -64,8 +64,8 @@ name = "mtk_grad_1d_test_08_grad2m"
 set terminal wxt size 1024,768 enhanced font 'Verdana,10' persist
 
 # png terminal for disk storage.
-set terminal png
-set output name.".png"
+#set terminal png
+#set output name.".png"
 
 # Data manipulation.
 tol = 0.0000001

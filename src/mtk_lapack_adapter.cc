@@ -1,10 +1,10 @@
 /*!
 \file mtk_lapack_adapter.cc
 
-\brief Adapter class for the LAPACK API.
+\brief Definition of an adapter class for the LAPACK API.
 
-Implementation of a class that contains a collection of static member
-functions, that posses direct access to the underlying structure of the
+Definition of a class that contains a collection of static member functions
+that possess direct access to the underlying structure of the
 matrices, thus allowing programmers to exploit some of the numerical methods
 implemented in the LAPACK.
 

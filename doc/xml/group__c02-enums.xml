@@ -1,0 +1,171 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
+  <compounddef id="group__c02-enums" kind="group">
+    <compoundname>c02-enums</compoundname>
+    <title>Enumerations.</title>
+      <sectiondef kind="enum">
+      <memberdef kind="enum" id="group__c02-enums_1ga25b67ec6a2afeee69f9bb196a9c66619" prot="public" static="no">
+        <name>MatrixStorage</name>
+        <enumvalue id="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a0706fbbd929bd8abc4de386c53d439ff" prot="public">
+          <name>DENSE</name>
+          <briefdescription>
+<para>Dense matrices, implemented as a 1D array: <ref refid="classmtk_1_1DenseMatrix" kindref="compound">DenseMatrix</ref>. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a710800eb2f07821684373493be7fee14" prot="public">
+          <name>BANDED</name>
+          <briefdescription>
+<para>Banded matrices ala LAPACK and ScaLAPACK: Must be implemented. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga25b67ec6a2afeee69f9bb196a9c66619a22d51ee0c812123c541f2a1bdf794fd1" prot="public">
+          <name>CRS</name>
+          <briefdescription>
+<para>Compressed-Rows Storage: Must be implemented. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Considered matrix storage schemes to implement sparse matrices. </para>        </briefdescription>
+        <detaileddescription>
+<para>The considered sparse storage schemes are selected so that these are compatible with some of the most used mathematical APIs, as follows: DENSE and BANDED for <ulink url="http://www.netlib.org/blas/">BLAS</ulink>, <ulink url="http://www.netlib.org/lapack/">LAPACK</ulink>, and <ulink url="http://www.netlib.org/scalapack/">ScaLAPACK</ulink>. Finally, CRS for <ulink url="http://crd.lbl.gov/~xiaoye/SuperLU/">SuperLU</ulink>. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_enums.h" line="77" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_enums.h" bodystart="77" bodyend="81"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__c02-enums_1ga622801bd9f912d0f976c3e383f5f581c" prot="public" static="no">
+        <name>MatrixOrdering</name>
+        <enumvalue id="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca21541962976d7709c26e9cd8385bd648" prot="public">
+          <name>ROW_MAJOR</name>
+          <briefdescription>
+<para>Row-major ordering (C/C++). </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga622801bd9f912d0f976c3e383f5f581ca34d2765ffc490951febdcca04bc4f7cd" prot="public">
+          <name>COL_MAJOR</name>
+          <briefdescription>
+<para>Column-major ordering (Fortran). </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Considered matrix ordering (for Fortran purposes). </para>        </briefdescription>
+        <detaileddescription>
+<para>Row-major ordering is used for most application in C/C++. For Fortran purposes, the matrices must be listed in a column-major ordering.</para><para><simplesect kind="see"><para><ulink url="https://en.wikipedia.org/wiki/Row-major_order">https://en.wikipedia.org/wiki/Row-major_order</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_enums.h" line="95" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_enums.h" bodystart="95" bodyend="98"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__c02-enums_1ga4c54f2a329cfb4e56213b02a259d19e2" prot="public" static="no">
+        <name>FieldNature</name>
+        <enumvalue id="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a8f3d9a4b6a7b7f2c7afa61ca113d0db9" prot="public">
+          <name>SCALAR</name>
+          <briefdescription>
+<para>Scalar-valued field. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga4c54f2a329cfb4e56213b02a259d19e2a87752381b583740610f1dfeb07fdad7e" prot="public">
+          <name>VECTOR</name>
+          <briefdescription>
+<para>Vector-valued field. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Nature of the field discretized in a given grid. </para>        </briefdescription>
+        <detaileddescription>
+<para>Fields can be <bold>scalar</bold> or <bold>vector</bold> in nature.</para><para><simplesect kind="see"><para><ulink url="https://en.wikipedia.org/wiki/Scalar_field">https://en.wikipedia.org/wiki/Scalar_field</ulink></para></simplesect>
+<simplesect kind="see"><para><ulink url="https://en.wikipedia.org/wiki/Vector_field">https://en.wikipedia.org/wiki/Vector_field</ulink> </para></simplesect>
+</para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_enums.h" line="113" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_enums.h" bodystart="113" bodyend="116"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__c02-enums_1ga674ec67bd1baa04e5dc06c2bcc351972" prot="public" static="no">
+        <name>DirInterp</name>
+        <enumvalue id="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972a53facfbeb6725b2bd220c8d9811a0673" prot="public">
+          <name>SCALAR_TO_VECTOR</name>
+          <briefdescription>
+<para>Interpolations places scalar on vectors&apos; location. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga674ec67bd1baa04e5dc06c2bcc351972a6b389c8391a900c481d8c96c6045f468" prot="public">
+          <name>VECTOR_TO_SCALAR</name>
+          <briefdescription>
+<para>Interpolations places vectors on scalars&apos; location. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Interpolation operator. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used to tag different directions of interpolation supported. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_enums.h" line="127" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_enums.h" bodystart="127" bodyend="130"/>
+      </memberdef>
+      <memberdef kind="enum" id="group__c02-enums_1ga9b50023bfb2692219d2915feade94f80" prot="public" static="no">
+        <name>EncodedOperator</name>
+        <enumvalue id="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a722d122e81cbbe543bd5520bb8678c0e" prot="public">
+          <name>NOOP</name>
+          <briefdescription>
+<para>No operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a90f70ea2675c36bd9b0b44a79f37a41f" prot="public">
+          <name>GRADIENT</name>
+          <briefdescription>
+<para>Gradient operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a4e4e9e6d004c642e33d6f823b57bd60e" prot="public">
+          <name>DIVERGENCE</name>
+          <briefdescription>
+<para>Divergence operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a6a9b19b26cdeae14c1102cd40345d568" prot="public">
+          <name>INTERPOLATION</name>
+          <briefdescription>
+<para>Interpolation operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga9b50023bfb2692219d2915feade94f80aa8bc924d0898064a538c557848f7ab48" prot="public">
+          <name>CURL</name>
+          <briefdescription>
+<para>Curl operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <enumvalue id="namespacemtk_1ga9b50023bfb2692219d2915feade94f80a1c2d5f3f8e6cbb0c7b033c388c905d22" prot="public">
+          <name>LAPLACIAN</name>
+          <briefdescription>
+<para>Laplacian operator. </para>          </briefdescription>
+          <detaileddescription>
+          </detaileddescription>
+        </enumvalue>
+        <briefdescription>
+<para>Operators matrices can encode. </para>        </briefdescription>
+        <detaileddescription>
+<para>Used to tag different different operators a matrix can encode. </para>        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_enums.h" line="141" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_enums.h" bodystart="141" bodyend="148"/>
+      </memberdef>
+      </sectiondef>
+    <briefdescription>
+<para>Fundamental execution parameters and defined types. </para>    </briefdescription>
+    <detaileddescription>
+<para>Fundamental execution parameters and defined types. </para>    </detaileddescription>
+  </compounddef>
+</doxygen>

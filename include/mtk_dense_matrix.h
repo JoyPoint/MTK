@@ -1,12 +1,10 @@
 /*!
 \file mtk_dense_matrix.h
 
-\brief Defines a common dense matrix, using a 1D array.
+\brief Declaration of a class dense matrix implemented using a 1D array.
 
-For developing purposes, it is better to have a not-so-intrincated data
-structure implementing matrices. This is the purpose of this class: to be used
-for prototypes of new code for small test cases. In every other instance, this
-should be replaced by the most appropriate sparse matrix.
+The construction of 1D mimetic operators exclusively involves dense matrix
+arithmetic. We encapsulate the complexity of a dense matrix in this class.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 
