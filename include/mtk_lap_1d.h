@@ -9,7 +9,7 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -17,22 +17,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -57,6 +57,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #ifndef MTK_INCLUDE_LAP_1D_H_
 #define MTK_INCLUDE_LAP_1D_H_
 
+#include <vector>
+
 #include "mtk_dense_matrix.h"
 
 #include "mtk_uni_stg_grid_1d.h"
@@ -75,10 +77,14 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 */
 class Lap1D {
  public:
-  /// \brief Output stream operator for printing.
+  /*!
+	\brief Output stream operator for printing.
+	*/
   friend std::ostream& operator <<(std::ostream& stream, Lap1D &in);
 
-  /// \brief Default constructor.
+  /*!
+  \brief Default constructor.
+  */
   Lap1D();
 
   /*!
@@ -88,8 +94,31 @@ class Lap1D {
   */
   Lap1D(const Lap1D &lap);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~Lap1D();
+
+  /*!
+  \brief Order of accuracy of the operator.
+
+  \return Order of accuracy of the operator.
+  */
+  int order_accuracy() const;
+
+  /*!
+  \brief Mimetic threshold used in the CBS algorithm to construct this operator.
+
+  \return Mimetic threshold used in the CBS algorithm to construct operator.
+  */
+  Real mimetic_threshold() const;
+
+  /*!
+  \brief Value of \f$ \Delta x \f$ used be scaled. If 0, then dimensionless.
+
+  \return Value of \f$ \Delta x \f$ used be scaled. If 0, then dimensionless.
+  */
+  Real delta() const;
 
   /*!
   \brief Factory method implementing the CBS Algorithm to build operator.
@@ -100,18 +129,32 @@ class Lap1D {
                       Real mimetic_threshold = kDefaultMimeticThreshold);
 
   /*!
+  \brief Return collection of row-sums mimetic approximations at the boundary.
+
+  \return Collection of row-sums mimetic approximations at the boundary.
+  */
+  std::vector<Real> sums_rows_mim_bndy() const;
+
+  /*!
+  \brief Returns mimetic measure of the operator.
+
+  \return Real number which is the mimetic measure of the operator.
+  */
+  Real mimetic_measure() const;
+
+  /*!
   \brief Return the operator as a dense matrix.
 
   \return The operator as a dense matrix.
   */
-  DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid);
+  DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid) const;
 
   /*!
   \brief Return the operator as a dense array.
 
   \return The operator as a dense array.
   */
-  mtk::Real* Data(const UniStgGrid1D &grid);
+  const mtk::Real* data(const UniStgGrid1D &grid) const;
 
  private:
   int order_accuracy_;    ///< Order of numerical accuracy of the operator.
@@ -119,7 +162,12 @@ class Lap1D {
 
   Real *laplacian_;      ///< Output array containing the operator and weights.
 
+  mutable Real delta_;     ///<< If 0.0, then this Laplacian is dimensionless.
+
   Real mimetic_threshold_;  ///<< Mimetic threshold.
+  Real mimetic_measure_;    ///<< Mimetic measure.
+
+  std::vector<Real> sums_rows_mim_bndy_; ///< Sum of each mimetic boundary row.
 };
 }
 #endif  // End of: MTK_INCLUDE_LAP_1D_H_

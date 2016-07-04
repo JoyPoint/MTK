@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['glpkadapter',['GLPKAdapter',['../classmtk_1_1GLPKAdapter.html',1,'mtk']]],
-  ['grad1d',['Grad1D',['../classmtk_1_1Grad1D.html',1,'mtk']]]
+  ['densematrix',['DenseMatrix',['../classmtk_1_1DenseMatrix.html',1,'mtk']]],
+  ['div1d',['Div1D',['../classmtk_1_1Div1D.html',1,'mtk']]],
+  ['div2d',['Div2D',['../classmtk_1_1Div2D.html',1,'mtk']]],
+  ['div3d',['Div3D',['../classmtk_1_1Div3D.html',1,'mtk']]]
 ];

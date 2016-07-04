@@ -1,4 +1,4 @@
-.TH "mtk::BLASAdapter" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::BLASAdapter" 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -31,24 +31,34 @@ Adapter class for the BLAS API\&.
 .br
 .RI "\fIReal-Arithmetic General (Dense matrices) Matrix-Vector Multiplier\&. \fP"
 .ti -1c
+.RI "static void \fBRealDenseMV\fP (\fBReal\fP &alpha, \fBReal\fP *aa, \fBMatrixOrdering\fP &ordering, int num_rows, int num_cols, int lda, \fBReal\fP *xx, \fBReal\fP &beta, \fBReal\fP *yy)"
+.br
+.RI "\fIReal-Arithmetic General (Dense matrices) Matrix-Vector Multiplier\&. \fP"
+.ti -1c
 .RI "static \fBDenseMatrix\fP \fBRealDenseMM\fP (\fBDenseMatrix\fP &aa, \fBDenseMatrix\fP &bb)"
 .br
 .RI "\fIReal-Arithmetic General (Dense matrices) Matrix-Matrix multiplier\&. \fP"
+.ti -1c
+.RI "static \fBDenseMatrix\fP \fBRealDenseSM\fP (\fBReal\fP alpha, \fBDenseMatrix\fP &aa)"
+.br
+.RI "\fIReal-Arithmetic General (Dense matrices) Scalar-Matrix multiplier\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
-This class contains a collection of static classes, that posses direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the BLAS\&.
+This class contains a collection of static member functions, that possess direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the BLAS\&.
 .PP
 The \fBBLAS (Basic Linear Algebra Subprograms)\fP are routines that provide standard building blocks for performing basic vector and matrix operations\&. The Level 1 BLAS perform scalar, vector and vector-vector operations, the Level 2 BLAS perform matrix-vector operations, and the Level 3 BLAS perform matrix-matrix operations\&.
 .PP
-\fBSee Also:\fP
+\fBSee also:\fP
 .RS 4
-http://www.netlib.org/blas/ 
+http://www.netlib.org/blas/
+.PP
+https://software.intel.com/en-us/non-commercial-software-development 
 .RE
 .PP
 
 .PP
-Definition at line 96 of file mtk_blas_adapter\&.h\&.
+Definition at line 100 of file mtk_blas_adapter\&.h\&.
 .SH "Member Function Documentation"
 .PP 
 .SS "void mtk::BLASAdapter::RealAXPY (\fBmtk::Real\fPalpha, \fBmtk::Real\fP *xx, \fBmtk::Real\fP *yy, int &in_length)\fC [static]\fP"
@@ -73,11 +83,10 @@ Norm-2 of the given array\&.
 .PP
 
 .PP
-Definition at line 339 of file mtk_blas_adapter\&.cc\&.
+Definition at line 342 of file mtk_blas_adapter\&.cc\&.
 .SS "\fBmtk::DenseMatrix\fP mtk::BLASAdapter::RealDenseMM (\fBmtk::DenseMatrix\fP &aa, \fBmtk::DenseMatrix\fP &bb)\fC [static]\fP"
-Performs:
+Performs: \[ \mathbf{C} := \mathbf{A}\mathbf{B} \]
 .PP
-\[ \mathbf{C} := \mathbf{A}\mathbf{B} \].PP
 \fBParameters:\fP
 .RS 4
 \fIaa\fP First matrix\&. 
@@ -85,18 +94,25 @@ Performs:
 \fIbb\fP Second matrix\&.
 .RE
 .PP
-\fBSee Also:\fP
+\fBSee also:\fP
 .RS 4
 http://ejspeiro.github.io/Netlib-and-CPP/ 
 .RE
 .PP
 
+.IP "1." 4
+Make sure input matrices are row-major ordered\&.
+.IP "2." 4
+Setup the problem\&.
+.IP "3." 4
+Perform multiplication\&. 
 .PP
-Definition at line 409 of file mtk_blas_adapter\&.cc\&.
+
+.PP
+Definition at line 446 of file mtk_blas_adapter\&.cc\&.
 .SS "void mtk::BLASAdapter::RealDenseMV (\fBmtk::Real\fP &alpha, \fBmtk::DenseMatrix\fP &aa, \fBmtk::Real\fP *xx, \fBmtk::Real\fP &beta, \fBmtk::Real\fP *yy)\fC [static]\fP"
-Performs
+Performs \[ \mathbf{y} := \alpha\mathbf{A}\mathbf{x} + \beta\mathbf{y} \]
 .PP
-\[ \mathbf{y} := \alpha\mathbf{A}\mathbf{x} + \beta\mathbf{y} \].PP
 \fBParameters:\fP
 .RS 4
 \fIalpha\fP First scalar\&. 
@@ -110,14 +126,73 @@ Performs
 \fIyy\fP Second vector (output)\&.
 .RE
 .PP
-\fBSee Also:\fP
+\fBSee also:\fP
 .RS 4
 http://ejspeiro.github.io/Netlib-and-CPP/ 
 .RE
 .PP
 
 .PP
-Definition at line 378 of file mtk_blas_adapter\&.cc\&.
+Definition at line 381 of file mtk_blas_adapter\&.cc\&.
+.SS "void mtk::BLASAdapter::RealDenseMV (\fBmtk::Real\fP &alpha, \fBmtk::Real\fP *aa, \fBmtk::MatrixOrdering\fP &ordering, intnum_rows, intnum_cols, intlda, \fBmtk::Real\fP *xx, \fBmtk::Real\fP &beta, \fBmtk::Real\fP *yy)\fC [static]\fP"
+Performs \[ \mathbf{y} := \alpha\mathbf{A}\mathbf{x} + \beta\mathbf{y} \]
+.PP
+\fBParameters:\fP
+.RS 4
+\fIalpha\fP First scalar\&. 
+.br
+\fIaa\fP Given matrix\&. 
+.br
+\fIordering\fP Ordering of the matrix\&. 
+.br
+\fInum_rows\fP Number of rows\&. 
+.br
+\fInum_cols\fP Number of columns\&. 
+.br
+\fIlda\fP Leading dimension\&. 
+.br
+\fIxx\fP First vector\&. 
+.br
+\fIbeta\fP Second scalar\&. 
+.br
+\fIyy\fP Second vector (output)\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+http://ejspeiro.github.io/Netlib-and-CPP/ 
+.RE
+.PP
+
+.PP
+Definition at line 412 of file mtk_blas_adapter\&.cc\&.
+.SS "\fBmtk::DenseMatrix\fP mtk::BLASAdapter::RealDenseSM (\fBmtk::Real\fPalpha, \fBmtk::DenseMatrix\fP &aa)\fC [static]\fP"
+Performs:
+.PP
+\[ \mathbf{B} := \alpha\mathbf{A} \].PP
+\fBParameters:\fP
+.RS 4
+\fIalpha\fP Input scalar\&. 
+.br
+\fIaa\fP Input matrix\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+http://ejspeiro.github.io/Netlib-and-CPP/ 
+.RE
+.PP
+
+.IP "1." 4
+Make sure input matrices are row-major ordered\&.
+.IP "2." 4
+Setup the problem\&.
+.IP "3." 4
+Perform multiplication\&. 
+.PP
+
+.PP
+Definition at line 503 of file mtk_blas_adapter\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::BLASAdapter::RealNRM2 (\fBReal\fP *in, int &in_length)\fC [static]\fP"
 
 .PP
@@ -135,7 +210,7 @@ Norm-2 of the given array\&.
 .PP
 
 .PP
-Definition at line 324 of file mtk_blas_adapter\&.cc\&.
+Definition at line 327 of file mtk_blas_adapter\&.cc\&.
 .SS "\fBmtk::Real\fP mtk::BLASAdapter::RelNorm2Error (\fBmtk::Real\fP *computed, \fBmtk::Real\fP *known, intlength)\fC [static]\fP"
 We compute
 .PP
@@ -154,7 +229,7 @@ Relative norm-2 of the error, aka, the difference between the arrays\&.
 .PP
 
 .PP
-Definition at line 358 of file mtk_blas_adapter\&.cc\&.
+Definition at line 361 of file mtk_blas_adapter\&.cc\&.
 
 .SH "Author"
 .PP 

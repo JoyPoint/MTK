@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['imposeongrid',['ImposeOnGrid',['../classmtk_1_1BCDesc1D.html#a79a659c6a6333af8e51c463cf1ecb0b7',1,'mtk::BCDesc1D']]],
-  ['imposeonoperator',['ImposeOnOperator',['../classmtk_1_1BCDesc1D.html#a4dcf1ac4198402113591fde97dfa3260',1,'mtk::BCDesc1D']]],
-  ['increasenumnull',['IncreaseNumNull',['../classmtk_1_1Matrix.html#ac96dd5f31ebcd4388352577487cd6f11',1,'mtk::Matrix']]],
-  ['increasenumzero',['IncreaseNumZero',['../classmtk_1_1Matrix.html#a2e7c4b84d0cbf9b0122b5dc906ad1eae',1,'mtk::Matrix']]],
-  ['integrate',['Integrate',['../classmtk_1_1Quad1D.html#a89b5340ed484e5d36a569b1d17300cc8',1,'mtk::Quad1D']]]
+  ['generatediscretedomainx',['GenerateDiscreteDomainX',['../classmtk_1_1UniStgGrid1D.html#a36a7a85e237a4f85c603eac8cf67a704',1,'mtk::UniStgGrid1D']]],
+  ['getvalue',['GetValue',['../classmtk_1_1DenseMatrix.html#a4b23ecbebd970b5eea915dbb50691024',1,'mtk::DenseMatrix']]],
+  ['grad1d',['Grad1D',['../classmtk_1_1Grad1D.html#ae21e6ac2652e653c48f15b304ee83a75',1,'mtk::Grad1D::Grad1D()'],['../classmtk_1_1Grad1D.html#a5708bcb61bde3f7f3a4ddede191d82a4',1,'mtk::Grad1D::Grad1D(const Grad1D &amp;grad)']]],
+  ['grad2d',['Grad2D',['../classmtk_1_1Grad2D.html#a15bdca254b7bf662913b34c7afb8d4c9',1,'mtk::Grad2D::Grad2D()'],['../classmtk_1_1Grad2D.html#a31ccf118edb128c85f28b579bd9394a8',1,'mtk::Grad2D::Grad2D(const Grad2D &amp;grad)']]],
+  ['grad3d',['Grad3D',['../classmtk_1_1Grad3D.html#a035b360199d58fed7a2436375951e10d',1,'mtk::Grad3D::Grad3D()'],['../classmtk_1_1Grad3D.html#ab65fd99ad56efd41d9a76f25a531d85c',1,'mtk::Grad3D::Grad3D(const Grad3D &amp;grad)']]]
 ];

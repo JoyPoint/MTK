@@ -1,33 +1,79 @@
-\form#0:$ |\mathbf{x}|_2 $
-\form#1:$ \mathbf{x} $
-\form#2:\[ \mathbf{y} := \alpha\mathbf{A}\mathbf{x} + \beta\mathbf{y} \]
-\form#3:\[ \mathbf{C} := \mathbf{A}\mathbf{B} \]
-\form#4:\[ \bar{\mathbf{I}} = \left(\begin{array}{ccccc} 0 & 0 & 0 & \dots & 0 \\ 1 & 0 & 0 & \dots & 0 \\ 0 & 1 & 0 & \dots & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & 0 & \dots & 1 \\ 0 & 0 & 0 & \dots & 0 \end{array}\right) \]
-\form#5:\[ \mathbf{V} = \left(\begin{array}{ccccc} 1 & \alpha_1 & \alpha_1^2 & \dots & \alpha_1^{n-1}\\ 1 & \alpha_2 & \alpha_2^2 & \dots & \alpha_2^{n-1}\\ 1 & \alpha_3 & \alpha_3^2 & \dots & \alpha_3^{n-1}\\ \vdots & \vdots & \vdots & \ddots &\vdots \\ 1 & \alpha_m & \alpha_m^2 & \dots & \alpha_m^{n-1} \end{array}\right) \]
-\form#6:$ \mathbf{Q}$
-\form#7:\[ \mathbf{v}(x) = v(x)\hat{\mathbf{i}} \]
-\form#8:$ \Delta x$
-\form#9:$ \mathbf{\Lambda}$
-\form#10:$ \mathbf{\Pi}$
-\form#11:$ \mathbf{h} $
-\form#12:$ \mathbf{\Pi}\mathbf{q} = \mathbf{h} $
-\form#13:$ \mathbf{\Phi} $
-\form#14:$ \mathbf{\Pi} $
-\form#15:$\Phi$
-\form#16:$ \breve{\mathbf{L}}^k_x = \breve{\mathbf{D}}^k_x\breve{\mathbf{G}}^k_x $
-\form#17:\[ -\nabla^2u(x) = s(x), \]
-\form#18:$ x \in \Omega = [0,1] $
-\form#19:\[ s(x) = \frac{-\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1} \]
-\form#20:$ \lambda = -1 $
-\form#21:\[ \alpha u(a) - \beta u'(a) = \textrm{west\_bndy\_cond\_val}, \]
-\form#22:\[ \alpha u(b) + \beta u'(b) = \textrm{east\_bndy\_cond\_val}. \]
-\form#23:\[ u(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \]
-\form#24:\[ \nabla^2p(x) = -s(x), \]
-\form#25:$ x \in \Omega = [a,b] = [0,1] $
-\form#26:\[ s(x) = \frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1} \]
-\form#27:\[ \alpha p(a) - \beta p'(a) = \omega, \]
-\form#28:\[ \alpha p(b) + \beta p'(b) = \epsilon. \]
-\form#29:\[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \]
-\form#30:$ ||\mathbf{x}||_2 $
-\form#31:\[ \mathbf{y} := \alpha\mathbf{A}mathbf{x} + \mathbf{y} \]
-\form#32:\[ \frac{||\mathbf{\tilde{x}} - \mathbf{x}||_2}{||\mathbf{x}||_2}. \]
+\form#0:\[ -\nabla^2 p(x) = s(x), \]
+\form#1:$ x \in \Omega = [a,b] = [0,1] $
+\form#2:\[ s(x) = -\frac{\lambda^2\exp(\lambda x)}{\exp(\lambda) - 1}, \]
+\form#3:$ \lambda = -1 $
+\form#4:\[ \alpha p(a) - \beta p'(a) = \omega, \]
+\form#5:\[ \alpha p(b) + \beta p'(b) = \epsilon, \]
+\form#6:$ \alpha = -\exp(\lambda) $
+\form#7:$ \beta = \lambda^{-1}(\exp(\lambda) - 1.0) $
+\form#8:$ \omega = -1 $
+\form#9:$ \epsilon = 0 $
+\form#10:\[ p(x) = \frac{\exp(\lambda x) - 1}{\exp(\lambda) - 1}. \]
+\form#11:\[ -\breve{\mathbf{L}}^k_x \tilde{p} = \tilde{s}. \]
+\form#12:$ k = 2 $
+\form#13:$ \beta = (\exp(\lambda) - 1.0)/\lambda $
+\form#14:\[ \mathbf{v}(x,y) = -y\hat{\mathbf{i}} + x\hat{\mathbf{j}}. \]
+\form#15:\[ \nabla^2 u(\mathbf{x}) = s(\mathbf{x}), \]
+\form#16:$ \mathbf{x} \in \Omega = [0,1]^2 $
+\form#17:\[ s(x,y) = xye^{-0.5(x^2 + y^2)}(x^2 + y^2 - 6). \]
+\form#18:$ \partial\Omega = S \cup N \cup W \cup E$
+\form#19:\[ \forall\mathbf{x}\in W: u(\mathbf{x}) = 0. \]
+\form#20:\[ \forall\mathbf{x}\in E: u(1,y) = -e^{-0.5(1 - y^2)}(1 - y^2). \]
+\form#21:\[ \forall\mathbf{x}\in S: u(\mathbf{x}) = 0. \]
+\form#22:\[ \forall\mathbf{x}\in N: u(x,1) = -e^{-0.5(x^2 - 1)}(x^2 - 1). \]
+\form#23:\[ u(x,y) = xye^{-0.5(x^2 + y^2)}. \]
+\form#24:\[ \frac{\partial u}{\partial t} = \nabla^2 u(\mathbf{x}), \]
+\form#25:$ \mathbf{x} \in \Omega = [0,1]^3 $
+\form#26:$ ||\mathbf{x}||_2 $
+\form#27:$ \mathbf{x} $
+\form#28:\[ \mathbf{y} := \alpha\mathbf{A}mathbf{x} + \mathbf{y} \]
+\form#29:\[ \frac{||\mathbf{\tilde{x}} - \mathbf{x}||_2}{||\mathbf{x}||_2}. \]
+\form#30:\[ \mathbf{y} := \alpha\mathbf{A}\mathbf{x} + \beta\mathbf{y} \]
+\form#31:\[ \mathbf{C} := \mathbf{A}\mathbf{B} \]
+\form#32:\[ \mathbf{B} := \alpha\mathbf{A} \]
+\form#33:\[ \bar{\mathbf{I}} = \left(\begin{array}{ccccc} 0 & 0 & 0 & \dots & 0 \\ 1 & 0 & 0 & \dots & 0 \\ 0 & 1 & 0 & \dots & 0 \\ \vdots & \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & 0 & \dots & 1 \\ 0 & 0 & 0 & \dots & 0 \end{array}\right) \]
+\form#34:\[ \mathbf{V} = \left(\begin{array}{ccccc} 1 & \alpha_1 & \alpha_1^2 & \dots & \alpha_1^{n-1}\\ 1 & \alpha_2 & \alpha_2^2 & \dots & \alpha_2^{n-1}\\ 1 & \alpha_3 & \alpha_3^2 & \dots & \alpha_3^{n-1}\\ \vdots & \vdots & \vdots & \ddots &\vdots \\ 1 & \alpha_m & \alpha_m^2 & \dots & \alpha_m^{n-1} \end{array}\right) \]
+\form#35:$ \Delta x $
+\form#36:$ \mathbf{Q}$
+\form#37:\[ \frac{\textrm{num\_non\_null}}{\textrm{num\_values}}. \]
+\form#38:\[ 1 - \frac{\textrm{num\_non\_null}}{\textrm{num\_values}}. \]
+\form#39:\[ \frac{\textrm{num\_non\_zero}}{\textrm{num\_values}}. \]
+\form#40:\[ 1 - \frac{\textrm{num\_non\_zero}}{\textrm{num\_values}}. \]
+\form#41:$ u(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} $
+\form#42:$ u $
+\form#43:$ \partial\Omega $
+\form#44:$ \beta(\mathbf{x},t):\Omega\times [t_0, t_n]\mapsto\mathbb{R} $
+\form#45:\[ \forall t \in [t_0,t_n]\; \forall \mathbf{x} \in \partial\Omega: \delta(\mathbf{x},t)u(\mathbf{x},t) + \eta(\mathbf{x},t)(\hat{\mathbf{n}}\cdot\nabla u) = \beta(\mathbf{x},t). \]
+\form#46:$ \partial\Omega = \{a,b\}\subset\mathbb{R} $
+\form#47:\[ \delta_a(a,t)u(a,t) - \eta_a(a,t)u^\prime(a,t) = \beta_a(a,t), \]
+\form#48:\[ \delta_b(b,t)u(b,t) + \eta_b(b,t)u^\prime(b,t) = \beta_b(b,t). \]
+\form#49:$ c_w(x,y):\Omega\mapsto\mathbb{R} $
+\form#50:$ c_e(x,y):\Omega\mapsto\mathbb{R} $
+\form#51:$ \beta_w(y,t):\Omega\mapsto\mathbb{R} $
+\form#52:$ \beta_e(y,t):\Omega\mapsto\mathbb{R} $
+\form#53:$ c_w(y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $
+\form#54:$ c_e(y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $
+\form#55:$ c_s(x,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $
+\form#56:$ c_n(x,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $
+\form#57:$ \beta_w(y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $
+\form#58:$ \beta_e(y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $
+\form#59:$ \beta_s(x,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $
+\form#60:$ \beta_n(x,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $
+\form#61:$ c_w(x,y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $
+\form#62:$ \beta_w(x,y,t):\partial\Omega\times[t_0,t_n]\mapsto\mathbb{R} $
+\form#63:\[ \mathbf{v}(\mathbf{x}) = v(x)\hat{\mathbf{i}} \]
+\form#64:\[ \mathbf{v}(\mathbf{x}) = p(x, y)\hat{\mathbf{i}} + q(x, y)\hat{\mathbf{j}} \]
+\form#65:$ \Delta y $
+\form#66:\[ \mathbf{v}(\mathbf{x}) = p(x, y, z)\hat{\mathbf{i}} + q(x, y, z)\hat{\mathbf{j}} + r(x, y, z)\hat{\mathbf{k}} \]
+\form#67:$ \Delta z $
+\form#68:$ \mathbf{\Lambda}$
+\form#69:$ \mathbf{\Pi}$
+\form#70:$ \mathbf{h} $
+\form#71:$ \mathbf{\Pi}\mathbf{q} = \mathbf{h} $
+\form#72:$ \mathbf{\Phi} $
+\form#73:$ \mathbf{\Pi} $
+\form#74:$\Phi$
+\form#75:$ \breve{\mathbf{L}}^k_x = \breve{\mathbf{D}}^k_x\breve{\mathbf{G}}^k_x $
+\form#76:$ x $
+\form#77:$ y $
+\form#78:$ z $

@@ -10,7 +10,7 @@ This class implements a 1D interpolation operator.
 \author: Johnny Corbino - jcorbino at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -18,22 +18,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -78,7 +78,7 @@ std::ostream& operator <<(std::ostream &stream, mtk::Interp1D &in) {
 }
 
 mtk::Interp1D::Interp1D():
-  dir_interp_(mtk::SCALAR_TO_VECTOR),
+  dir_interp_(mtk::DirInterp::SCALAR_TO_VECTOR),
   order_accuracy_(mtk::kDefaultOrderAccuracy),
   coeffs_interior_(nullptr) {}
 
@@ -95,13 +95,15 @@ mtk::Interp1D::~Interp1D() {
 
 bool mtk::Interp1D::ConstructInterp1D(int order_accuracy, mtk::DirInterp dir) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(order_accuracy < 2, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent((order_accuracy%2) != 0, __FILE__, __LINE__, __func__);
-  mtk::Tools::Prevent(dir < mtk::SCALAR_TO_VECTOR &&
-                      dir > mtk::VECTOR_TO_SCALAR,
+  mtk::Tools::Prevent(dir < mtk::DirInterp::SCALAR_TO_VECTOR &&
+                      dir > mtk::DirInterp::VECTOR_TO_SCALAR,
                       __FILE__, __LINE__, __func__);
+  #endif
 
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "order_accuracy_ = " << order_accuracy << std::endl;
   #endif
 
@@ -132,18 +134,19 @@ mtk::Real *mtk::Interp1D::coeffs_interior() const {
   return coeffs_interior_;
 }
 
-mtk::DenseMatrix mtk::Interp1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
+mtk::DenseMatrix mtk::Interp1D::ReturnAsDenseMatrix(
+  const UniStgGrid1D &grid) const {
 
   int nn{grid.num_cells_x()}; // Number of cells on the grid.
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
   #endif
 
   int gg_num_rows{};  // Number of rows.
   int gg_num_cols{};  // Number of columns.
 
-  if (dir_interp_ == mtk::SCALAR_TO_VECTOR) {
+  if (dir_interp_ == mtk::DirInterp::SCALAR_TO_VECTOR) {
     gg_num_rows = nn + 1;
     gg_num_cols = nn + 2;
   } else {
@@ -152,7 +155,10 @@ mtk::DenseMatrix mtk::Interp1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
   }
 
   // Output matrix featuring sizes for gradient operators.
+
   mtk::DenseMatrix out(gg_num_rows, gg_num_cols);
+
+  out.set_encoded_operator(mtk::EncodedOperator::INTERPOLATION);
 
   /// 1. Preserve values at the boundary.
 

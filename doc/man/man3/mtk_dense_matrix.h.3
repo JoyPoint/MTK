@@ -1,21 +1,27 @@
-.TH "include/mtk_dense_matrix.h" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "include/mtk_dense_matrix.h" 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 include/mtk_dense_matrix.h \- 
 .PP
-Defines a common dense matrix, using a 1D array\&.  
+Declaration of a class dense matrix implemented using a 1D array\&.  
 
 .SH SYNOPSIS
 .br
 .PP
 \fC#include <iostream>\fP
 .br
-\fC#include 'mtk_roots\&.h'\fP
+\fC#include 'mtk_foundations\&.h'\fP
 .br
 \fC#include 'mtk_enums\&.h'\fP
 .br
 \fC#include 'mtk_matrix\&.h'\fP
+.br
+\fC#include 'mtk_uni_stg_grid_1d\&.h'\fP
+.br
+\fC#include 'mtk_uni_stg_grid_2d\&.h'\fP
+.br
+\fC#include 'mtk_uni_stg_grid_3d\&.h'\fP
 .br
 
 .SS "Classes"
@@ -30,36 +36,18 @@ Defines a common dense matrix, using a 1D array\&.
 
 .in +1c
 .ti -1c
-.RI "\fBmtk\fP"
+.RI " \fBmtk\fP"
 .br
 .RI "\fIMimetic Methods Toolkit namespace\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
-For developing purposes, it is better to have a not-so-intrincated data structure implementing matrices\&. This is the purpose of this class: to be used for prototypes of new code for small test cases\&. In every other instance, this should be replaced by the most appropriate sparse matrix\&.
+The construction of 1D mimetic operators exclusively involves dense matrix arithmetic\&. We encapsulate the complexity of a dense matrix in this class\&.
 .PP
 \fBAuthor:\fP
 .RS 4
 : Eduardo J\&. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 .RE
-.PP
-\fBTodo\fP
-.RS 4
-Add sparse matrices support: BANDED and CRS\&.
-.RE
-.PP
-.PP
-\fBTodo\fP
-.RS 4
-Contemplate manipulation of sparse metrics\&.
-.RE
-.PP
-.PP
-\fBTodo\fP
-.RS 4
-Implement Kronecker product using the BLAS\&.
-.RE
-.PP
 .PP
 \fBNote:\fP
 .RS 4

@@ -1,17 +1,15 @@
 /*!
-\file mtk_dense_matrix.cc
+\file mtk_dense_matrix.nn
 
-\brief Implements a common dense matrix, using a 1D array.
+\brief Definition of a class dense matrix implemented using a 1D array.
 
-For developing purposes, it is better to have a not-so-intrincated data
-structure implementing matrices. This is the purpose of this class: to be used
-for prototypes of new code for small test cases. In every other instance, this
-should be replaced by the most appropriate sparse matrix.
+The construction of 1D mimetic operators exclusively involves dense matrix
+arithmetic. We encapsulate the complexity of a dense matrix in this class.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -19,22 +17,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -62,13 +60,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <iostream>
 #include <iomanip>
+#include <fstream>
+
 #include <typeinfo>
+
+#include <vector>
 
 #include <algorithm>
 
-#include "mtk_roots.h"
-#include "mtk_dense_matrix.h"
+#include "mtk_foundations.h"
 #include "mtk_tools.h"
+#include "mtk_dense_matrix.h"
+#include "mtk_blas_adapter.h"
 
 namespace mtk {
 
@@ -76,18 +79,22 @@ std::ostream& operator <<(std::ostream &stream, mtk::DenseMatrix &in) {
 
   int mm{in.matrix_properties_.num_rows()};  // Auxiliary.
   int nn{in.matrix_properties_.num_cols()};  // Auxiliary.
+  int output_precision{4};
+  int output_width{10};
 
-  if (in.matrix_properties_.ordering() == mtk::COL_MAJOR) {
+  if (in.matrix_properties_.ordering() == mtk::MatrixOrdering::COL_MAJOR) {
     std::swap(mm, nn);
   }
-  for (auto ii = 0; ii < mm; ii++) {
-    for (auto jj = 0; jj < nn; jj++) {
-      mtk::Real value = in.data_[ii*nn + jj];
-      stream << std::setw(13) << value;
+  for (int ii = 0; ii < mm; ii++) {
+    int offset{ii*nn};
+    for (int jj = 0; jj < nn; jj++) {
+      mtk::Real value = in.data_[offset + jj];
+      stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << value;
     }
     stream << std::endl;
   }
-  if (in.matrix_properties_.ordering() == mtk::COL_MAJOR) {
+  if (in.matrix_properties_.ordering() == mtk::MatrixOrdering::COL_MAJOR) {
     std::swap(mm, nn);
   }
   return stream;
@@ -99,6 +106,9 @@ mtk::DenseMatrix& mtk::DenseMatrix::operator =(const mtk::DenseMatrix &in) {
   if(this == &in) {
     return *this;
   }
+
+  matrix_properties_.set_encoded_operator(
+  	in.matrix_properties_.encoded_operator());
 
   matrix_properties_.set_storage(in.matrix_properties_.storage());
 
@@ -135,13 +145,43 @@ mtk::DenseMatrix& mtk::DenseMatrix::operator =(const mtk::DenseMatrix &in) {
   return *this;
 }
 
+bool mtk::DenseMatrix::operator ==(const DenseMatrix &in) {
+
+  bool ans{true};
+
+  ans = ans &&
+  	(matrix_properties_.encoded_operator() ==
+  	 matrix_properties_.encoded_operator());
+
+  auto mm = in.num_rows();
+  auto nn = in.num_cols();
+
+  if (mm != matrix_properties_.num_rows() ||
+      nn != matrix_properties_.num_cols()) {
+    return false;
+  }
+
+  for (int ii = 0; ii < mm && ans; ++ii) {
+    for (int jj = 0; jj < nn && ans; ++jj) {
+      ans = ans &&
+        abs(data_[ii*nn + jj] - in.data()[ii*nn + jj]) < mtk::kDefaultTolerance;
+    }
+  }
+  return ans;
+}
+
 mtk::DenseMatrix::DenseMatrix(): data_(nullptr) {
 
-  matrix_properties_.set_storage(mtk::DENSE);
-  matrix_properties_.set_ordering(mtk::ROW_MAJOR);
+	matrix_properties_.set_encoded_operator(mtk::EncodedOperator::NOOP);
+
+  matrix_properties_.set_storage(mtk::MatrixStorage::DENSE);
+  matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
 }
 
 mtk::DenseMatrix::DenseMatrix(const mtk::DenseMatrix &in) {
+
+	matrix_properties_.set_encoded_operator(
+		in.matrix_properties_.encoded_operator());
 
   matrix_properties_.set_storage(in.matrix_properties_.storage());
 
@@ -176,13 +216,15 @@ mtk::DenseMatrix::DenseMatrix(const mtk::DenseMatrix &in) {
 
 mtk::DenseMatrix::DenseMatrix(const int &num_rows, const int &num_cols) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(num_rows < 1, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(num_cols < 1, __FILE__, __LINE__, __func__);
   #endif
 
-  matrix_properties_.set_storage(mtk::DENSE);
-  matrix_properties_.set_ordering(mtk::ROW_MAJOR);
+  matrix_properties_.set_encoded_operator(mtk::EncodedOperator::NOOP);
+
+  matrix_properties_.set_storage(mtk::MatrixStorage::DENSE);
+  matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
   matrix_properties_.set_num_rows(num_rows);
   matrix_properties_.set_num_cols(num_cols);
 
@@ -200,7 +242,7 @@ mtk::DenseMatrix::DenseMatrix(const int &rank,
                               const bool &padded,
                               const bool &transpose) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(rank < 1, __FILE__, __LINE__, __func__);
   #endif
 
@@ -210,8 +252,10 @@ mtk::DenseMatrix::DenseMatrix(const int &rank,
     aux = 1;
   }
 
-  matrix_properties_.set_storage(mtk::DENSE);
-  matrix_properties_.set_ordering(mtk::ROW_MAJOR);
+  matrix_properties_.set_encoded_operator(mtk::EncodedOperator::NOOP);
+
+  matrix_properties_.set_storage(mtk::MatrixStorage::DENSE);
+  matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
   matrix_properties_.set_num_rows(aux + rank + aux);
   matrix_properties_.set_num_cols(rank);
 
@@ -232,21 +276,26 @@ mtk::DenseMatrix::DenseMatrix(const int &rank,
         (ii == jj + aux)? mtk::kOne: mtk::kZero;
     }
   }
+  if (transpose) {
+    Transpose();
+  }
 }
 
-mtk::DenseMatrix::DenseMatrix(const mtk::Real *gen,
+mtk::DenseMatrix::DenseMatrix(const mtk::Real *const gen,
                               const int &gen_length,
                               const int &pro_length,
                               const bool &transpose) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(gen == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(gen_length < 1, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(pro_length < 1, __FILE__, __LINE__, __func__);
   #endif
 
-  matrix_properties_.set_storage(mtk::DENSE);
-  matrix_properties_.set_ordering(mtk::ROW_MAJOR);
+  matrix_properties_.set_encoded_operator(mtk::EncodedOperator::NOOP);
+
+  matrix_properties_.set_storage(mtk::MatrixStorage::DENSE);
+  matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
   if (!transpose) {
     matrix_properties_.set_num_rows(gen_length);
     matrix_properties_.set_num_cols(pro_length);
@@ -255,28 +304,28 @@ mtk::DenseMatrix::DenseMatrix(const mtk::Real *gen,
     matrix_properties_.set_num_cols(gen_length);
   }
 
-  int rr = matrix_properties_.num_rows(); // Used to construct this matrix.
-  int cc = matrix_properties_.num_cols(); // Used to construct this matrix.
+  int mm = matrix_properties_.num_rows(); // Used to construct this matrix.
+  int nn = matrix_properties_.num_cols(); // Used to construct this matrix.
 
   try {
-    data_ = new mtk::Real[rr*cc];
+    data_ = new mtk::Real[mm*nn];
   } catch (std::bad_alloc &memory_allocation_exception) {
     std::cerr << "Memory allocation exception on line " << __LINE__ - 3 <<
       std::endl;
     std::cerr << memory_allocation_exception.what() << std::endl;
   }
-  memset(data_, mtk::kZero, sizeof(data_[0])*rr*cc);
+  memset(data_, mtk::kZero, sizeof(data_[0])*mm*nn);
 
   if (!transpose) {
-    for (auto ii = 0; ii < rr; ii++) {
-      for (auto jj = 0; jj < cc; jj++) {
-        data_[ii*cc + jj] = pow(gen[ii], (double) jj);
+    for (auto ii = 0; ii < mm; ii++) {
+      for (auto jj = 0; jj < nn; jj++) {
+        data_[ii*nn + jj] = pow(gen[ii], (double) jj);
       }
     }
   } else {
-    for (auto ii = 0; ii < rr; ii++) {
-      for (auto jj = 0; jj < cc; jj++) {
-        data_[ii*cc + jj] = pow(gen[jj], (double) ii);
+    for (auto ii = 0; ii < mm; ii++) {
+      for (auto jj = 0; jj < nn; jj++) {
+        data_[ii*nn + jj] = pow(gen[jj], (double) ii);
       }
     }
   }
@@ -284,63 +333,85 @@ mtk::DenseMatrix::DenseMatrix(const mtk::Real *gen,
 
 mtk::DenseMatrix::~DenseMatrix() {
 
-  delete[] data_;
+  delete [] data_;
   data_ = nullptr;
 }
 
-mtk::Matrix mtk::DenseMatrix::matrix_properties() const {
+mtk::Matrix mtk::DenseMatrix::matrix_properties() const noexcept {
 
   return matrix_properties_;
 }
 
-void mtk::DenseMatrix::SetOrdering(mtk::MatrixOrdering oo) {
+void mtk::DenseMatrix::SetOrdering(mtk::MatrixOrdering oo) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
-  mtk::Tools::Prevent(!(oo == mtk::ROW_MAJOR || oo == mtk::COL_MAJOR),
+  #ifdef MTK_PERFORM_PREVENTIONS
+  mtk::Tools::Prevent(!(oo == mtk::MatrixOrdering::ROW_MAJOR || oo ==
+mtk::MatrixOrdering::COL_MAJOR),
                       __FILE__, __LINE__, __func__);
   #endif
 
   matrix_properties_.set_ordering(oo);
 }
 
-int mtk::DenseMatrix::num_rows() const {
+int mtk::DenseMatrix::num_rows() const noexcept {
 
   return matrix_properties_.num_rows();
 }
 
-int mtk::DenseMatrix::num_cols() const {
+int mtk::DenseMatrix::num_cols() const noexcept {
 
   return matrix_properties_.num_cols();
 }
 
-mtk::Real* mtk::DenseMatrix::data() const {
+mtk::Real* mtk::DenseMatrix::data() const noexcept {
 
   return data_;
 }
 
-mtk::Real mtk::DenseMatrix::GetValue(
-    const int &rr,
-    const int &cc) const {
+mtk::EncodedOperator mtk::DenseMatrix::encoded_operator() const {
 
-  #if MTK_DEBUG_LEVEL > 0
-  mtk::Tools::Prevent(rr < 0, __FILE__, __LINE__, __func__);
-  mtk::Tools::Prevent(cc < 0, __FILE__, __LINE__, __func__);
+  return matrix_properties_.encoded_operator();
+}
+
+void mtk::DenseMatrix::set_encoded_operator(const EncodedOperator &op) {
+
+  #ifdef MTK_PERFORM_PREVENTIONS
+  bool aux = (op != mtk::EncodedOperator::NOOP) &&
+    (op != mtk::EncodedOperator::GRADIENT) &&
+    (op != mtk::EncodedOperator::DIVERGENCE) &&
+    (op != mtk::EncodedOperator::INTERPOLATION) &&
+    (op != mtk::EncodedOperator::CURL) &&
+    (op != mtk::EncodedOperator::LAPLACIAN);
+
+  mtk::Tools::Prevent(aux, __FILE__, __LINE__, __func__);
   #endif
 
-  return data_[rr*matrix_properties_.num_cols() + cc];
+  matrix_properties_.set_encoded_operator(op);
+}
+
+mtk::Real mtk::DenseMatrix::GetValue(
+    const int &mm,
+    const int &nn) const noexcept {
+
+  #ifdef MTK_PERFORM_PREVENTIONS
+  mtk::Tools::Prevent(mm < 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nn < 0, __FILE__, __LINE__, __func__);
+  #endif
+
+  return data_[mm*matrix_properties_.num_cols() + nn];
 }
 
 void  mtk::DenseMatrix::SetValue(
-    const int &rr,
-    const int &cc,
-    const mtk::Real &val) {
+    const int &mm,
+    const int &nn,
+    const mtk::Real &val) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
-  mtk::Tools::Prevent(rr < 0, __FILE__, __LINE__, __func__);
-  mtk::Tools::Prevent(cc < 0, __FILE__, __LINE__, __func__);
+  #ifdef MTK_PERFORM_PREVENTIONS
+  mtk::Tools::Prevent(mm < 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nn < 0, __FILE__, __LINE__, __func__);
   #endif
 
-  data_[rr*matrix_properties_.num_cols() + cc] = val;
+  data_[mm*matrix_properties_.num_cols() + nn] = val;
 }
 
 void mtk::DenseMatrix::Transpose() {
@@ -349,11 +420,11 @@ void mtk::DenseMatrix::Transpose() {
 
   mtk::Real *data_transposed{}; // Buffer.
 
-  int rr = matrix_properties_.num_rows(); // Used to construct this matrix.
-  int cc = matrix_properties_.num_cols(); // Used to construct this matrix.
+  int mm = matrix_properties_.num_rows(); // Used to construct this matrix.
+  int nn = matrix_properties_.num_cols(); // Used to construct this matrix.
 
   try {
-    data_transposed = new mtk::Real[rr*cc];
+    data_transposed = new mtk::Real[mm*nn];
   } catch (std::bad_alloc &memory_allocation_exception) {
     std::cerr << "Memory allocation exception on line " << __LINE__ - 3 <<
       std::endl;
@@ -361,12 +432,12 @@ void mtk::DenseMatrix::Transpose() {
   }
   memset(data_transposed,
          mtk::kZero,
-         sizeof(data_transposed[0])*rr*cc);
+         sizeof(data_transposed[0])*mm*nn);
 
   // Assign the values to their transposed position.
-  for (auto ii = 0; ii < rr; ++ii) {
-    for (auto jj = 0; jj < cc; ++jj) {
-      data_transposed[jj*rr + ii] = data_[ii*cc + jj];
+  for (auto ii = 0; ii < mm; ++ii) {
+    for (auto jj = 0; jj < nn; ++jj) {
+      data_transposed[jj*mm + ii] = data_[ii*nn + jj];
     }
   }
 
@@ -376,23 +447,23 @@ void mtk::DenseMatrix::Transpose() {
   delete [] tmp;
   tmp = nullptr;
 
-  matrix_properties_.set_num_rows(cc);
-  matrix_properties_.set_num_cols(rr);
+  matrix_properties_.set_num_rows(nn);
+  matrix_properties_.set_num_cols(mm);
 }
 
 void mtk::DenseMatrix::OrderRowMajor() {
 
-  if (matrix_properties_.ordering() == mtk::COL_MAJOR) {
+  if (matrix_properties_.ordering() == mtk::MatrixOrdering::COL_MAJOR) {
 
     /// \todo Improve this so that no new arrays have to be created.
 
     mtk::Real *data_transposed{}; // Buffer.
 
-    int rr = matrix_properties_.num_rows(); // Used to construct this matrix.
-    int cc = matrix_properties_.num_cols(); // Used to construct this matrix.
+    int mm = matrix_properties_.num_rows(); // Used to construct this matrix.
+    int nn = matrix_properties_.num_cols(); // Used to construct this matrix.
 
     try {
-      data_transposed = new mtk::Real[rr*cc];
+      data_transposed = new mtk::Real[mm*nn];
     } catch (std::bad_alloc &memory_allocation_exception) {
       std::cerr << "Memory allocation exception on line " << __LINE__ - 3 <<
         std::endl;
@@ -400,16 +471,16 @@ void mtk::DenseMatrix::OrderRowMajor() {
     }
     memset(data_transposed,
           mtk::kZero,
-          sizeof(data_transposed[0])*rr*cc);
+          sizeof(data_transposed[0])*mm*nn);
 
     // Assign the values to their transposed position.
-    std::swap(rr, cc);
-    for (auto ii = 0; ii < rr; ++ii) {
-      for (auto jj = 0; jj < cc; ++jj) {
-        data_transposed[jj*rr + ii] = data_[ii*cc + jj];
+    std::swap(mm, nn);
+    for (auto ii = 0; ii < mm; ++ii) {
+      for (auto jj = 0; jj < nn; ++jj) {
+        data_transposed[jj*mm + ii] = data_[ii*nn + jj];
       }
     }
-    std::swap(rr, cc);
+    std::swap(mm, nn);
 
     // Swap pointers.
     auto tmp = data_; // Temporal holder.
@@ -417,23 +488,23 @@ void mtk::DenseMatrix::OrderRowMajor() {
     delete [] tmp;
     tmp = nullptr;
 
-    matrix_properties_.set_ordering(mtk::ROW_MAJOR);
+    matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
   }
 }
 
 void mtk::DenseMatrix::OrderColMajor() {
 
-  if (matrix_properties_.ordering() == ROW_MAJOR) {
+  if (matrix_properties_.ordering() == mtk::MatrixOrdering::ROW_MAJOR) {
 
     /// \todo Improve this so that no new arrays have to be created.
 
     mtk::Real *data_transposed{}; // Buffer.
 
-    int rr = matrix_properties_.num_rows(); // Used to construct this matrix.
-    int cc = matrix_properties_.num_cols(); // Used to construct this matrix.
+    int mm = matrix_properties_.num_rows(); // Used to construct this matrix.
+    int nn = matrix_properties_.num_cols(); // Used to construct this matrix.
 
     try {
-      data_transposed = new mtk::Real[rr*cc];
+      data_transposed = new mtk::Real[mm*nn];
     } catch (std::bad_alloc &memory_allocation_exception) {
       std::cerr << "Memory allocation exception on line " << __LINE__ - 3 <<
         std::endl;
@@ -441,12 +512,12 @@ void mtk::DenseMatrix::OrderColMajor() {
     }
     memset(data_transposed,
           mtk::kZero,
-          sizeof(data_transposed[0])*rr*cc);
+          sizeof(data_transposed[0])*mm*nn);
 
     // Assign the values to their transposed position.
-    for (auto ii = 0; ii < rr; ++ii) {
-      for (auto jj = 0; jj < cc; ++jj) {
-        data_transposed[jj*rr + ii] = data_[ii*cc + jj];
+    for (auto ii = 0; ii < mm; ++ii) {
+      for (auto jj = 0; jj < nn; ++jj) {
+        data_transposed[jj*mm + ii] = data_[ii*nn + jj];
       }
     }
 
@@ -456,17 +527,19 @@ void mtk::DenseMatrix::OrderColMajor() {
     delete [] tmp;
     tmp = nullptr;
 
-    matrix_properties_.set_ordering(mtk::COL_MAJOR);
+    matrix_properties_.set_ordering(mtk::MatrixOrdering::COL_MAJOR);
   }
 }
 
 mtk::DenseMatrix mtk::DenseMatrix::Kron(const mtk::DenseMatrix &aa,
                                         const mtk::DenseMatrix &bb) {
 
-  int row_offset{};	// Offset for rows.
-  int col_offset{};	// Offset for rows.
-  
-  mtk::Real aa_factor{};	// Used in computation.
+  /// \todo Implement Kron using the BLAS.
+
+  int row_offset{}; // Offset for rows.
+  int col_offset{}; // Offset for rows.
+
+  mtk::Real aa_factor{};    // Used in computation.
 
   // Auxiliary variables:
   auto aux1 = aa.matrix_properties_.num_rows()*bb.matrix_properties_.num_rows();
@@ -495,9 +568,34 @@ mtk::DenseMatrix mtk::DenseMatrix::Kron(const mtk::DenseMatrix &aa,
     }
   }
 
-  output.matrix_properties_.set_storage(mtk::DENSE);
-  output.matrix_properties_.set_ordering(mtk::ROW_MAJOR);
+  output.matrix_properties_.set_storage(mtk::MatrixStorage::DENSE);
+  output.matrix_properties_.set_ordering(mtk::MatrixOrdering::ROW_MAJOR);
 
   return output;
 }
 
+bool mtk::DenseMatrix::WriteToFile(const std::string &filename) const {
+
+  std::ofstream output_dat_file;  // Output file.
+
+  output_dat_file.open(filename);
+
+  if (!output_dat_file.is_open()) {
+    return false;
+  }
+
+  int mm{matrix_properties_.num_rows()};
+  int nn{matrix_properties_.num_cols()};
+
+  for (int ii = 0; ii < mm; ++ii) {
+    int offset{ii*nn};
+    for (int jj = 0; jj < nn; ++jj) {
+      output_dat_file << ii << ' ' << jj << ' ' << data_[offset + jj] <<
+        std::endl;
+    }
+  }
+
+  output_dat_file.close();
+
+  return true;
+}

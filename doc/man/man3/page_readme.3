@@ -1,4 +1,4 @@
-.TH "page_readme" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "page_readme" 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -6,352 +6,172 @@ page_readme \- Read Me File and Installation Instructions
 
 .PP
 .nf
+# The Mimetic Methods Toolkit (MTK)
 
-.SH "README File for the Mimetic Methods Toolkit (MTK)"
-.PP
-.fi
-.PP
-.PP
-.PP
-.nf
-.fi
-.PP
-.PP
-.PP
-.nf
-By: \fBEduardo J\&. Sanchez, Ph\&.D\&. - esanchez at mail dot sdsu dot edu\fP
-.PP
-.fi
-.PP
-.PP
-.PP
-.nf
-.SS "1\&. Description"
-.fi
-.PP
-.PP
-.PP
-.nf
-.fi
-.PP
-.PP
-.PP
-.nf
+By: **Eduardo J. Sanchez, PhD - esanchez at mail dot sdsu dot edu**
+
+## 1. Description
+
 We define numerical methods that are based on discretizations preserving the
-properties of their continuum counterparts to be \fBmimetic\fP\&.
-.fi
-.PP
-.PP
-.PP
-.nf
-The \fBMimetic Methods Toolkit (MTK)\fP is a C++ library for mimetic numerical
-methods\&. It is arranged as a set of classes for \fBmimetic quadratures\fP,
-\fBmimetic interpolation\fP, and \fBmimetic discretization\fP methods for the
-numerical solution of ordinary and partial differential equations\&.
-.PP
-.fi
-.PP
-.PP
-.PP
-.nf
-.SS "2\&. Dependencies"
-.fi
-.PP
-.PP
-.PP
-.nf
-.fi
-.PP
-.PP
-.PP
-.nf
-This README assumes all of these dependencies are installed in the following
-folder:
-.fi
-.PP
-.PP
-.PP
-.nf
-.PP
-.nf
+properties of their continuous counterparts to be **mimetic**.
+
+The **Mimetic Methods Toolkit (MTK)** is a C++11 library for mimetic numerical
+methods. It is a set of classes for **mimetic interpolation**, **mimetic
+quadratures**, and **mimetic finite difference** methods for the **numerical
+solution of ordinary and partial differential equations**.
+
+## 2. Dependencies
+
+This README file assumes all of these dependencies are installed in the
+following folder:
+
+```
 $(HOME)/Libraries/
-.fi
-.PP
-.fi
-.PP
-.PP
-.PP
-.nf
+```
+
 In this version, the MTK optionally uses ATLAS-optimized BLAS and LAPACK
-routines for the internal computation on some of the layers\&. However, ATLAS
-requires both BLAS and LAPACK in order to create their optimized distributions\&.
+routines for the internal computation on some of the layers. However, ATLAS
+requires both BLAS and LAPACK in order to create their optimized distributions.
 Therefore, the following dependencies tree arises:
-.fi
-.PP
-.PP
-.PP
-.nf
-.SS "For Linux:"
-.fi
-.PP
-.PP
-.PP
-.nf
-.fi
-.PP
-.PP
-.PP
-.nf
-1\&. LAPACK - Available from: http://www.netlib.org/lapack/
-  1\&. BLAS - Available from: http://www.netlib.org/blas/
-.fi
-.PP
-.PP
-.PP
-.nf
-2\&. (Optional) ATLAS - Available from: http://math-atlas.sourceforge.net/
-  1\&. BLAS - Available from: http://www.netlib.org/blas/
-  2\&. LAPACK - Available from: http://www.netlib.org/lapack/
-.fi
-.PP
-.PP
-.PP
-.nf
-3\&. (Optional) Valgrind - Available from: http://valgrind.org/
-.fi
-.PP
-.PP
-.PP
-.nf
-4\&. (Optional) Doxygen - Available from http://www.stack.nl/~dimitri/doxygen/
-.fi
-.PP
-.PP
-.PP
-.nf
-.SS "For OS X:"
-.fi
-.PP
-.PP
-.PP
-.nf
-.fi
-.PP
-.PP
-.PP
-.nf
-There are no dependences for OS X\&.
-.PP
-.fi
-.PP
-.PP
-.PP
-.nf
-.SS "3\&. Installation"
-.fi
-.PP
-.PP
-.PP
-.nf
-.fi
-.PP
-.PP
-.PP
-.nf
-.SS "PART 1\&. CONFIGURATION OF THE MAKEFILE\&."
-.fi
-.PP
-.PP
-.PP
-.nf
-.fi
-.PP
-.PP
-.PP
-.nf
-The following steps are required the build and test the MTK\&. Please use the
-accompanying \fBMakefile\&.inc\fP file, which should provide a solid template to start
-with\&. The following command provides help on the options for make:
-.fi
-.PP
-.PP
-.PP
-.nf
-.PP
-.nf
+
+### For Linux:
+
+1. LAPACK - Available from: http://www.netlib.org/lapack/
+  1. BLAS - Available from: http://www.netlib.org/blas/
+
+2. GLPK - Available from: https://www.gnu.org/software/glpk/
+
+3. (Optional) ATLAS - Available from: http://math-atlas.sourceforge.net/
+  1. LAPACK - Available from: http://www.netlib.org/lapack/
+    1. BLAS - Available from: http://www.netlib.org/blas
+
+4. (Optional) Valgrind - Available from: http://valgrind.org/
+
+5. (Optional) Doxygen - Available from http://www.stack.nl/~dimitri/doxygen/
+
+### For OSX:
+
+1. GLPK - Available from: https://www.gnu.org/software/glpk/
+
+## 3. Installation
+
+### PART 1. CONFIGURATION OF THE MAKEFILE.
+
+The following steps are required to build and test the MTK. Please use the
+accompanying `Makefile.inc` file, which should provide a solid template to
+start with. The following command provides help on the options for make:
+
+```
 $ make help
 -----
 Makefile for the MTK.
 
 Options are:
-- make: builds only the library and the examples.
-- all: builds the library, the examples and the documentation.
-- mtklib: builds the library, i.e. generates the archive files.
-- test: generates the tests.
-- example: generates the examples.
+- all: builds the library, the tests, and examples.
+- mtklib: builds the library.
+- test: builds the test files.
+- example: builds the examples.
+
+- testall: runs all the tests.
+
 - gendoc: generates the documentation for the library.
 
-- clean: cleans ALL the generated files.
+- clean: cleans all the generated files.
 - cleanlib: cleans the generated archive and object files.
 - cleantest: cleans the generated tests executables.
 - cleanexample: cleans the generated examples executables.
 -----
-.fi
-.PP
-.fi
-.PP
-.PP
-.PP
-.nf
-.SS "PART 2\&. BUILD THE LIBRARY\&."
-.fi
-.PP
-.PP
-.PP
-.nf
-.fi
-.PP
-.PP
-.PP
-.nf
-.PP
-.nf
+```
+
+### PART 2. BUILD THE LIBRARY.
+
+```
 $ make
-.fi
-.PP
-.fi
-.PP
-.PP
-.PP
-.nf
-If successful you'll read (before building the examples):
-.fi
-.PP
-.PP
-.PP
-.nf
-.PP
-.nf
+```
+
+If successful you'll read (before building the tests and examples):
+```
 ----- Library created! Check in /home/ejspeiro/Dropbox/MTK/lib
-.fi
-.PP
-.fi
-.PP
-.PP
-.PP
-.nf
-Examples and tests will also be built\&.
-.PP
-.fi
-.PP
-.PP
-.PP
-.nf
-.SS "4\&. Frequently Asked Questions"
-.fi
-.PP
-.PP
-.PP
-.nf
-.fi
-.PP
-.PP
-.PP
-.nf
-Q: Why haven't you guys implemented GBS to build the library?
-A: I'm on it as we speak! ;)
-.fi
-.PP
-.PP
-.PP
-.nf
-Q: Is there any main reference when it comes to the theory on Mimetic Methods?
-A: Yes! Check: http://www.csrc.sdsu.edu/mimetic-book
-.fi
-.PP
-.PP
-.PP
-.nf
-Q: Do I need to generate the documentation myself?
-A: You can if you want to\&.\&.\&. but if you DO NOT want to, just go to our website\&.
-.PP
-.fi
-.PP
-.PP
-.PP
-.nf
-.SS "5\&. Contact, Support, and Credits"
-.fi
-.PP
-.PP
-.PP
-.nf
-.fi
-.PP
-.PP
-.PP
-.nf
+```
+
+## 4. Contact, Support, and Credits
+
+The GitHub repository is: https://github.com/ejspeiro/MTK
+
 The MTK is developed by researchers and adjuncts to the
-\fCComputational Science Research Center (CSRC)\fP
-at \fCSan Diego State University (SDSU)\fP\&.
-.fi
-.PP
-.PP
-.PP
-.nf
-Developers are members of:
-.fi
-.PP
-.PP
-.PP
-.nf
-1\&. Mimetic Numerical Methods Research and Development Group\&.
-2\&. Computational Geoscience Research and Development Group\&.
-3\&. Ocean Modeling Research and Development Group\&.
-.fi
-.PP
-.PP
-.PP
-.nf
+[Computational Science Research Center (CSRC)](http://www.csrc.sdsu.edu/)
+at [San Diego State University (SDSU)](http://www.sdsu.edu/).
+
 Currently the developers are:
-.fi
-.PP
-.PP
-.PP
-.nf
-.IP "1." 4
-\fBEduardo J\&. Sanchez, Ph\&.D\&. - esanchez at mail dot sdsu dot edu\fP - ejspeiro
-.IP "2." 4
-Jose E\&. Castillo, Ph\&.D\&. - jcastillo at mail dot sdsu dot edu
-.IP "3." 4
-Guillermo F\&. Miranda, Ph\&.D\&. - unigrav at hotmail dot com
-.IP "4." 4
-Christopher P\&. Paolini, Ph\&.D\&. - paolini at engineering dot sdsu dot edu
-.IP "5." 4
-Angel Boada\&.
-.IP "6." 4
-Johnny Corbino\&.
-.IP "7." 4
-Raul Vargas-Navarro\&.
-.PP
-.fi
-.PP
-.PP
-.PP
-.nf
+
+- **Eduardo J. Sanchez, PhD - esanchez at mail dot sdsu dot edu** - @ejspeiro
+- Jose E. Castillo, PhD - jcastillo at mail dot sdsu dot edu
+- Guillermo F. Miranda, PhD - unigrav at hotmail dot com
+
+### 4.1. Acknowledgements and Contributions
+
+The authors would like to acknowledge valuable advising, feedback,
+and actual contributions from research personnel at the Computational Science
+Research Center (CSRC) at San Diego State University (SDSU). Their input was
+important to the fruition of this work. Specifically, our thanks go to
+(alphabetical order):
+
+- Mohammad Abouali, PhD
+- Dany De Cecchis, PhD
+- Otilio Rojas, PhD
+- Julia Rossi, PhD
+- Christopher P. Paolini, PhD - paolini at engineering dot sdsu dot edu
+- Johnny Corbino.
+- Raul Vargas-Navarro.
+
+## 5. Referencing This Work
+
+Please reference this work as follows:
+```
+@article{Sanchez2014308,
+  title = "The Mimetic Methods Toolkit: An object-oriented \{API\} for Mimetic
+Finite Differences ",
+  journal = "Journal of Computational and Applied Mathematics ",
+  volume = "270",
+  number = "",
+  pages = "308 - 322",
+  year = "2014",
+  note = "Fourth International Conference on Finite Element Methods in
+Engineering and Sciences (FEMTEC 2013) ",
+  issn = "0377-0427",
+  doi = "http://dx.doi.org/10.1016/j.cam.2013.12.046",
+  url = "http://www.sciencedirect.com/science/article/pii/S037704271300719X",
+  author = "Eduardo J. Sanchez and Christopher P. Paolini and Jose E. Castillo",
+  keywords = "Object-oriented development",
+  keywords = "Partial differential equations",
+  keywords = "Application programming interfaces",
+  keywords = "Mimetic Finite Differences "
+}
+
+@Inbook{Sanchez2015,
+  author="Sanchez, Eduardo and Paolini, Christopher and Blomgren, Peter
+and Castillo, Jose",
+  editor="Kirby, M. Robert and Berzins, Martin and Hesthaven, S. Jan",
+  chapter="Algorithms for Higher-Order Mimetic Operators",
+  title="Spectral and High Order Methods for Partial Differential Equations
+ICOSAHOM 2014: Selected papers from the ICOSAHOM conference, June 23-27, 2014,
+Salt Lake City, Utah, USA",
+  year="2015",
+  publisher="Springer International Publishing",
+  address="Cham",
+  pages="425--434",
+  isbn="978-3-319-19800-2",
+  doi="10.1007/978-3-319-19800-2_39",
+  url="http://dx.doi.org/10.1007/978-3-319-19800-2_39"
+}
+```
+
 Finally, please feel free to contact me with suggestions or corrections:
-.fi
-.PP
-.PP
-.PP
-.nf
-\fBEduardo J\&. Sanchez, Ph\&.D\&. - esanchez at mail dot sdsu dot edu\fP - ejspeiro
-.fi
-.PP
-.PP
-.PP
-.nf
+
+**Eduardo J. Sanchez, PhD - esanchez at mail dot sdsu dot edu** - @ejspeiro
+
 Thanks and happy coding!
+
 .fi
 .PP
  

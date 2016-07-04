@@ -3,13 +3,13 @@
 
 \brief Includes the definition of the class Div1D.
 
-This class implements a 1D divergence operator, constructed using the
-Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
+Definition of a class that implements a 1D divergence operator, constructed
+using the Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -17,22 +17,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -60,9 +60,11 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iostream>
 #include <iomanip>
 
+#include <vector>
+
 #include "glpk.h"
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_dense_matrix.h"
 #include "mtk_uni_stg_grid_1d.h"
 
@@ -80,10 +82,14 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).
 */
 class Div1D {
  public:
-  /// \brief Output stream operator for printing.
+  /*!
+	\brief Output stream operator for printing.
+	*/
   friend std::ostream& operator <<(std::ostream& stream, Div1D &in);
 
-  /// \brief Default constructor.
+  /*!
+  \brief Default constructor.
+  */
   Div1D();
 
   /*!
@@ -92,8 +98,10 @@ class Div1D {
   \param [in] div Given divergence.
   */
   Div1D(const Div1D &div);
-  
-  /// \brief Destructor.
+
+  /*!
+  \brief Destructor.
+  */
   ~Div1D();
 
   /*!
@@ -133,6 +141,13 @@ class Div1D {
   Real *weights_cbs(void) const;
 
   /*!
+  \brief Return number of feasible solutions when using the CBSA for weights.
+
+  \return Return number of feasible solutions when using the CBSA for weights.
+  */
+  int num_feasible_sols() const;
+
+  /*!
   \brief Return collection of mimetic approximations at the boundary.
 
   \return Collection of mimetic approximations at the boundary.
@@ -140,11 +155,32 @@ class Div1D {
   DenseMatrix mim_bndy() const;
 
   /*!
+  \brief Return collection of row-sums mimetic approximations at the boundary.
+
+  \return Collection of row-sums mimetic approximations at the boundary.
+  */
+  std::vector<Real> sums_rows_mim_bndy() const;
+
+  /*!
+  \brief Returns mimetic measure of the operator.
+
+  \return Real number which is the mimetic measure of the operator.
+  */
+  Real mimetic_measure() const;
+
+  /*!
   \brief Return the operator as a dense matrix.
 
   \return The operator as a dense matrix.
   */
-  DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid);
+  DenseMatrix ReturnAsDenseMatrix(const UniStgGrid1D &grid) const;
+
+  /*!
+  \brief Returns the operator as a dimensionless dense matrix.
+
+  \return The operator as a dimensionless dense matrix.
+  */
+  DenseMatrix ReturnAsDimensionlessDenseMatrix(int num_cells_x) const;
 
  private:
   /*!
@@ -194,11 +230,11 @@ class Div1D {
   int dim_null_;          ///< Dim. null-space for boundary approximations.
   int num_bndy_coeffs_;   ///< Req. coeffs. per bndy pt. uni. order accuracy.
   int divergence_length_; ///< Length of the output array.
-
   int minrow_;            ///< Row from the optimizer with the minimum rel. nor.
   int row_;               ///< Row currently processed by the optimizer.
+  int num_feasible_sols_; ///< Number of feasible solutions for weights.
 
-  mtk::DenseMatrix rat_basis_null_space_;  ///< Rational b. null-space w. bndy.
+  DenseMatrix rat_basis_null_space_;  ///< Rational b. null-space w. bndy.
 
   Real *coeffs_interior_; ///< Interior stencil.
   Real *prem_apps_;       ///< 2D array of boundary preliminary approximations.
@@ -208,6 +244,9 @@ class Div1D {
   Real *divergence_;      ///< Output array containing the operator and weights.
 
   Real mimetic_threshold_;  ///<< Mimetic threshold.
+  Real mimetic_measure_;    ///<< Mimetic measure.
+
+  std::vector<Real> sums_rows_mim_bndy_; ///< Sum of each mimetic boundary row.
 };
 }
 #endif  // End of: MTK_INCLUDE_DIV_1D_H_

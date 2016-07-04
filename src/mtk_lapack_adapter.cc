@@ -1,22 +1,26 @@
 /*!
 \file mtk_lapack_adapter.cc
 
-\brief Adapter class for the LAPACK API.
+\brief Definition of an adapter class for the LAPACK API.
 
-This class contains a collection of static classes, that posses direct access
-to the underlying structure of the matrices, thus allowing programmers to
-exploit some of the numerical methods implemented in the LAPACK.
+Definition of a class that contains a collection of static member functions
+that possess direct access to the underlying structure of the
+matrices, thus allowing programmers to exploit some of the numerical methods
+implemented in the LAPACK.
 
-The **LAPACK** is written in Fortran 90 and provides routines for solving
-systems of simultaneous linear equations, least-squares solutions of linear
-systems of equations, eigenvalue problems, and singular value problems.
+The **LAPACK (Linear Algebra PACKage)** is written in Fortran 90 and provides
+routines for solving systems of simultaneous linear equations, least-squares
+solutions of linear systems of equations, eigenvalue problems, and singular
+value problems.
 
 \sa http://www.netlib.org/lapack/
+
+\todo Write documentation using LaTeX.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -24,22 +28,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -68,6 +72,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <algorithm>
 
+#include "mtk_foundations.h"
 #include "mtk_tools.h"
 #include "mtk_dense_matrix.h"
 #include "mtk_lapack_adapter.h"
@@ -427,8 +432,7 @@ void sormqr_(char *side,
 int mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &mm,
                                          mtk::Real *rhs) {
 
-
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(rhs == nullptr, __FILE__, __LINE__, __func__);
   #endif
 
@@ -465,7 +469,7 @@ int mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &mm,
 
   int nrhs{bb.num_rows()};  // Number of right-hand sides.
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nrhs <= 0, __FILE__, __LINE__, __func__);
   #endif
 
@@ -495,16 +499,16 @@ int mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &mm,
 
   // After output, the data in the matrix will be column-major ordered.
 
-  bb.SetOrdering(mtk::COL_MAJOR);
+  bb.SetOrdering(mtk::MatrixOrdering::COL_MAJOR);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 12
   std::cout << "bb_col_maj_ord =" << std::endl;
   std::cout << bb << std::endl;
   #endif
 
   bb.OrderRowMajor();
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 12
   std::cout << "bb_row_maj_ord =" << std::endl;
   std::cout << bb << std::endl;
   #endif
@@ -537,10 +541,48 @@ int mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &mm,
 
   #ifdef MTK_PRECISION_DOUBLE
   dgesv_(&mm_rank, &nrhs, mm.data(), &mm_ld, ipiv,
-         rhs.discrete_field_u(), &ldbb, &info);
+         rhs.discrete_field(), &ldbb, &info);
   #else
   fgesv_(&mm_rank, &nrhs, mm.data(), &mm_ld, ipiv,
-         rhs.discrete_field_u(), &ldbb, &info);
+         rhs.discrete_field(), &ldbb, &info);
+  #endif
+
+  mm.OrderRowMajor();
+
+  delete [] ipiv;
+
+  return info;
+}
+
+int mtk::LAPACKAdapter::SolveDenseSystem(mtk::DenseMatrix &mm,
+                                         mtk::UniStgGrid2D &rhs) {
+
+  int nrhs{1};  // Number of right-hand sides.
+
+  int *ipiv{};                // Array for pivoting information.
+  int info{};                 // Status of the solution.
+  int mm_rank{mm.num_rows()}; // Rank of the matrix.
+
+  try {
+    ipiv = new int[mm_rank];
+  } catch (std::bad_alloc &memory_allocation_exception) {
+    std::cerr << "Memory allocation exception on line " << __LINE__ - 3 <<
+      std::endl;
+    std::cerr << memory_allocation_exception.what() << std::endl;
+  }
+  memset(ipiv, 0, sizeof(ipiv[0])*mm_rank);
+
+  int ldbb = mm_rank;
+  int mm_ld = mm_rank;
+
+  mm.OrderColMajor();
+
+  #ifdef MTK_PRECISION_DOUBLE
+  dgesv_(&mm_rank, &nrhs, mm.data(), &mm_ld, ipiv,
+         rhs.discrete_field(), &ldbb, &info);
+  #else
+  fgesv_(&mm_rank, &nrhs, mm.data(), &mm_ld, ipiv,
+         rhs.discrete_field(), &ldbb, &info);
   #endif
 
   mm.OrderRowMajor();
@@ -572,7 +614,7 @@ mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
   int aaT_num_rows = aa.num_cols();
   int aaT_num_cols = aa.num_rows();
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 12
   std::cout << "Input matrix BEFORE QR factorization:" << std::endl;
   std::cout << aa << std::endl;
   #endif
@@ -587,7 +629,6 @@ mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
           work, &lwork, &info);
   #endif
 
-  #if MTK_DEBUG_LEVEL > 0
   if (info == 0) {
     lwork = (int) work[0];
   } else {
@@ -595,9 +636,8 @@ mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
       std::endl;
     std::cerr << "Exiting..." << std::endl;
   }
-  #endif
 
-  #if MTK_DEBUG_LEVEL>0
+  #if MTK_VERBOSE_LEVEL > 10
   std::cout << "lwork = " << std::endl << std::setw(12) << lwork << std::endl
     << std::endl;
   #endif
@@ -634,23 +674,23 @@ mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
           tau, work, &lwork, &info);
   #endif
 
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
-    #if MTK_DEBUG_LEVEL > 0
     std::cout << "QR factorization completed!" << std::endl << std::endl;
-    #endif
   } else {
     std::cerr << "Error solving system! info = " << info << std::endl;
     std::cerr << "Exiting..." << std::endl;
   }
+  #endif
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 12
   std::cout << "Input matrix AFTER QR factorization:" << std::endl;
   std::cout << aa << std::endl;
   #endif
 
   // We now generate the real matrix Q with orthonormal columns. This has to
   // be done separately since the actual output of dgeqrf_ (AA_) represents
-  // the orthogonal matrix Q as a product of min(aa_num_rows,aa_num_cols)
+  // the orthogonal matrix Q as a product of min(aa_num_rows, aa_num_cols)
   // elementary Householder reflectors. Notice that we must re-inquire the new
   // value for lwork that is used.
 
@@ -660,7 +700,7 @@ mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
 
   mtk::DenseMatrix QQ_(aa.num_cols(),padded,transpose);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 12
   std::cout << "Initialized QQ_T: " << std::endl;
   std::cout << QQ_ << std::endl;
   #endif
@@ -696,16 +736,14 @@ mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
           QQ_.data(), &aux, work, &lwork, &info);
   #endif
 
-  #if MTK_DEBUG_LEVEL > 0
   if (info == 0) {
     lwork = (int) work[0];
   } else {
     std::cerr << "Could not get lwork on line " << __LINE__ - 5 << std::endl;
     std::cerr << "Exiting..." << std::endl;
   }
-  #endif
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 10
   std::cout << "lwork = " << std::endl << std::setw(12) << lwork <<
     std::endl << std::endl;
   #endif
@@ -732,15 +770,15 @@ mtk::DenseMatrix mtk::LAPACKAdapter::QRFactorDenseMatrix(mtk::DenseMatrix &aa) {
           QQ_.data(), &aux, work, &lwork, &info);
   #endif
 
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
-    #if MTK_DEBUG_LEVEL>0
     std::cout << "Q matrix successfully assembled!" << std::endl << std::endl;
-    #endif
   } else {
     std::cerr << "Something went wrong solving system! info = " << info <<
       std::endl;
     std::cerr << "Exiting..." << std::endl;
   }
+  #endif
 
   delete[] work;
   work = nullptr;
@@ -769,7 +807,8 @@ int mtk::LAPACKAdapter::SolveRectangularDenseSystem(const mtk::DenseMatrix &aa,
   try {
     work = new mtk::Real[1];
   } catch (std::bad_alloc &memory_allocation_exception) {
-    std::cerr << "Memory allocation exception on line " << __LINE__ - 3 << std::endl;
+    std::cerr << "Memory allocation exception on line " << __LINE__ - 3 <<
+      std::endl;
     std::cerr << memory_allocation_exception.what() << std::endl;
   }
   memset(work, mtk::kZero, sizeof(work[0])*1);
@@ -802,7 +841,7 @@ int mtk::LAPACKAdapter::SolveRectangularDenseSystem(const mtk::DenseMatrix &aa,
     return info;
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 10
   std::cout << "lwork = " << std::endl << std::setw(12)<< lwork <<
     std::endl << std::endl;
   #endif

@@ -1,0 +1,1124 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%Creator: Box::print() by Christian Lindig
+%%BoundingBox: 268 42 535 764
+%%Pages: 1
+%%EndComments
+
+gsave
+570 0 translate 90 rotate
+36 339 translate
+0.290543 -0.290543 scale
+% $Id$
+% Header for DDD PostScript Box output
+
+% Copyright (C) 1995-1998 Technische Universitaet Braunschweig, Germany.
+% Written by Christian Lindig <lindig@ips.cs.tu-bs.de>.
+% 
+% This file is part of DDD.
+% 
+% DDD is free software; you can redistribute it and/or
+% modify it under the terms of the GNU General Public
+% License as published by the Free Software Foundation; either
+% version 3 of the License, or (at your option) any later version.
+% 
+% DDD is distributed in the hope that it will be useful,
+% but WITHOUT ANY WARRANTY; without even the implied warranty of
+% MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+% See the GNU General Public License for more details.
+% 
+% You should have received a copy of the GNU General Public
+% License along with DDD -- see the file COPYING.
+% If not, see <http://www.gnu.org/licenses/>.
+% 
+% DDD is the data display debugger.
+% For details, see the DDD World-Wide-Web page, 
+% `http://www.gnu.org/software/ddd/',
+% or send a mail to the DDD developers <ddd@gnu.org>.
+
+% Make all definitions local to the ddddict dictionary
+/ddddict 25 dict def 
+
+ddddict begin		% make dict active 
+
+
+% Global variables
+/fontSize+ 12 def
+/font+ /Courier def  
+
+
+% Some small utilities
+/cm { 28.34646 mul } bind def
+
+
+% ISOLATIN1* - reencode a font to ISO Latin 1 encoding
+%
+% newfont table oldfont isolatin1*
+
+/isolatin1* {
+	findfont
+	dup maxlength dict begin
+	{
+		1 index /FID ne { def } { pop pop } ifelse
+	} forall
+	/Encoding exch def
+	dup /FontName exch def
+	currentdict end definefont pop
+} bind def
+
+
+% Define the ISO Latin 1 encoding of a font
+ 
+/isotable[
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/.notdef/.notdef/.notdef/.notdef/.notdef/space/exclam/quotedbl/numbersign
+/dollar/percent/ampersand/quoteright/parenleft/parenright/asterisk/plus/comma
+/hyphen/period/slash/zero/one/two/three/four/five/six/seven/eight/nine/colon
+/semicolon/less/equal/greater/question/at/A/B/C/D/E/F/G/H/I/J/K/L/M/N/O/P/Q/R/S
+/T/U/V/W/X/Y/Z/bracketleft/backslash/bracketright/asciicircum/underscore
+/quoteleft/a/b/c/d/e/f/g/h/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/z/braceleft/bar
+/braceright/asciitilde/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef/.notdef
+/.notdef/dotlessi/grave/acute/circumflex/tilde/macron/breve/dotaccent/dieresis
+/.notdef/ring/cedilla/.notdef/hungarumlaut/ogonek/caron/.notdef/exclamdown/cent
+/sterling/currency/yen/brokenbar/section/dieresis/copyright/ordfeminine
+/guilsinglleft/logicalnot/hyphen/registered/macron/degree/plusminus/twosuperior
+/threesuperior/acute/mu/paragraph/periodcentered/cedilla/onesuperior
+/ordmasculine/guilsinglright/onequarter/onehalf/threequarters/questiondown
+/Agrave/Aacute/Acircumflex/Atilde/Adieresis/Aring/AE/Ccedilla/Egrave/Eacute
+/Ecircumflex/Edieresis/Igrave/Iacute/Icircumflex/Idieresis/Eth/Ntilde/Ograve
+/Oacute/Ocircumflex/Otilde/Odieresis/multiply/Oslash/Ugrave/Uacute/Ucircumflex
+/Udieresis/Yacute/Thorn/germandbls/agrave/aacute/acircumflex/atilde/adieresis
+/aring/ae/ccedilla/egrave/eacute/ecircumflex/edieresis/igrave/iacute
+/icircumflex/idieresis/eth/ntilde/ograve/oacute/ocircumflex/otilde/odieresis
+/divide/oslash/ugrave/uacute/ucircumflex/udieresis/yacute/thorn/ydieresis
+] def
+
+
+% YCORRECT*
+% The reference point of a string ist NOT its lower left corner but 
+% its baseline.  Therefore, the y coordinate must be corrected.  
+% Returns the correction for the current font.
+%
+% ycorrect* y
+
+/ycorrect* {
+	currentfont /FontBBox get
+	aload pop pop pop
+	currentfont /FontMatrix get dtransform
+	exch pop
+} def 
+
+
+% TEXT*
+% print out a string and make sure not to require more space than
+% specified.
+% font xsize ysize xorigin yorigin (string) text*
+
+/text* {
+
+	/string+ exch def		% set up some variables ..
+	moveto				% move to (xorigin,yorigin)
+	/ysize+ exch def
+	/xsize+ exch def
+	/thefont+ exch def
+
+	% is the right font already selected ?
+
+	thefont+ font+ ne 
+	ysize+ fontSize+ ne
+	or {	
+		% set up the right font - reencode it	
+		
+		/Symbol thefont+ eq 
+		{
+			thefont+ findfont
+		}{
+
+			/isofont+ isotable thefont+ isolatin1*	
+			/isofont+ findfont
+		}ifelse
+
+		[ysize+ 0 0 ysize+ neg 0 0] makefont
+		setfont
+		
+		/font+ thefont+ def
+		/fontSize+ ysize+ def
+	} if
+
+	% correct current point 
+
+	0 ycorrect* neg rmoveto
+
+	% string too long?  Scale it down ...
+	% The actual font is scaled. There is a good chance,
+	% that this will not happen too often when the font is not
+	% changed during the calls of text*
+
+	xsize+ string+ stringwidth pop div dup dup
+	1 lt {
+		0 0 1 0 0 6 array astore currentfont exch 
+		makefont setfont
+		pop
+	}{ 
+		% string is too short ... scale it up
+
+		1.05 gt {
+			0 0 1 0 0 6 array astore currentfont exch 
+			makefont setfont	
+		}{
+			pop
+
+		} ifelse
+	} ifelse
+	
+	string+ show
+
+} bind def
+
+	
+% ARROWLINE*
+% Draw a line of given width with an arrow at its end
+% len gives the height of the triangle forming the head of the arrow
+% and angle the angle at its top
+%	
+% angle len  x1 y1 x2 y2 linewidth arrowline*
+
+/arrowline* {
+	setlinewidth			% angle len x1 y1 x2 y2
+	/y2 exch def
+	/x2 exch def
+	/y1 exch def
+	/x1 exch def
+	/len+ exch def			% height of triangle
+
+	/alpha+ 
+		y2 y1 sub		% define alpha+
+		x2 x1 sub
+		atan
+	def
+
+	/base+				% define half of baseline
+		exch 
+		2 div dup		% angle angle
+		sin exch cos 	 	% sin(angle) cos(angle)
+		div			% tan(angle)
+		len+
+		mul			% half of baseline
+	def  
+	
+	newpath				% draw the line
+	x1 y1 moveto 
+	x2 len+ alpha+ cos mul sub 	% shorten the line to the end  
+	y2 len+ alpha+ sin mul sub 	% of the triangle
+	lineto
+	stroke		
+
+	gsave				% set the origin to the head of
+	0 setlinewidth			% the arrow and rotate the system
+	x2 y2 
+	translate			% origin now at x2 y2
+
+	alpha+ 90 sub rotate 		% rotate the system
+
+	newpath				% draw a triangle
+	0 0 moveto
+	base+ len+ neg rlineto
+	base+ 2 mul neg 0 rlineto
+	closepath
+	fill
+	
+	grestore
+} bind def
+
+% ARROWHEAD*
+% draw an arrow head inclined by alpha at (x,y)
+%
+% angle len alpha x y
+
+/arrowhead* {
+	/y exch def
+	/x exch def
+	/alpha+ exch def
+	/len+ exch def			% height of triangle
+
+	/base+				% define half of baseline
+		exch 
+		2 div dup		% angle angle
+		sin exch cos 	 	% sin(angle) cos(angle)
+		div			% tan(angle)
+		len+
+		mul			% half of baseline
+	def
+
+	gsave				% set the origin to the head of
+	0 setlinewidth			% the arrow and rotate the system
+	x y 
+	translate			% origin now at x y
+
+	alpha+ 90 sub rotate 		% rotate the system
+
+	newpath				% draw a triangle
+	0 0 moveto
+	base+ len+ neg rlineto
+	base+ 2 mul neg 0 rlineto
+	closepath
+	fill
+	
+	grestore
+} bind def
+
+
+% LINE*
+% draw a line of given width from (x1,y1) to (x2,y2)
+%
+% x1 y1 x2 y2 width line*
+
+/line* {
+	setlinewidth	% x1 y1 x2 y2
+	newpath
+	4 2 roll 	% x2 y2 x1 y1
+	moveto		% x2 y2
+	lineto		
+	stroke
+} bind def
+
+
+% CLEAN*
+%
+% fill a box given by four points with white colour ..
+% x1 y1 x2 y2 x3 y3 x4 y4 clean*
+
+/clean* {
+	gsave
+	1 setgray
+	0 setlinewidth
+	newpath
+	moveto  lineto  lineto lineto
+	closepath
+	fill
+	grestore
+} bind def
+
+
+% BOX*
+% fill a box given by four points
+%
+% x1 y1 x2 y2 x3 y3 x4 y4 box*
+
+/box* {
+	0 setlinewidth
+	newpath
+	moveto 	lineto 	lineto lineto
+	closepath
+	fill
+} bind def
+
+
+% ARC*
+% draw an ellipse with center (cx,cy), radius dx dy, starting at start
+% and ending at end.
+%
+% start end dx dy cx cy width arc*
+
+/arc* {
+	gsave
+	setlinewidth
+	translate
+	newpath
+	dup 3 1 roll		% start end dy dx dy
+	div 1 scale		% dy dx/dy 1 scale => start end dy
+	
+	0 exch  0 exch		% start end 0 0 dy 
+	5 -2 roll 		% 0 0 dy start end
+
+	dup
+	0 eq {			% replace 0 by 360
+		pop 
+		360
+	} if
+	arc
+	stroke
+	grestore
+} bind def
+
+
+% BEGINCOLOR* / ENDCOLOR*
+% Draw something using a specific foreground color
+%
+% red green blue begincolor* SOMETHING endcolor*
+
+/begincolor* {
+        currentrgbcolor         % red green blue red' green' blue'
+        6 3 roll                % red' green' blue' red green blue
+	setrgbcolor             % red' green' blue'
+} bind def
+
+/endcolor* {
+	setrgbcolor
+} bind def
+
+
+% Set up the right font to the right size
+
+/isofont+ isotable font+ isolatin1* 	% reencode font+
+					% and make it the current font
+/isofont+ findfont
+[fontSize+ 0 0 fontSize+ neg 0 0] makefont
+setfont
+
+
+%%EndProlog
+30 10 1264 511 1264 552 1 arrowline*
+/Helvetica-Narrow 278 13 1125 529 (\).data_[0] @aa_west_t.num_cols\(\) @aa_west_t.num_rows\() text*
+883 129 1646 129 1646 511 883 511 clean*
+883 129 1645 129 1645 130 883 130 box* %(883, 129)(762, 1)
+883 130 884 130 884 509 883 509 box* %(883, 130)(1, 379)
+/Courier 10 18 886 150 (1) text*
+/Courier 20 18 896 150 (: ) text*
+/Courier-BoldOblique 90 18 916 150 (aa_west_t) text*
+886 150 1642 150 1642 151 886 151 box* %(886, 150)(756, 1)
+886 153 1642 153 1642 154 886 154 box* %(886, 153)(756, 1)
+886 154 887 154 887 506 886 506 box* %(886, 154)(1, 352)
+/Courier 180 18 901 330 (matrix_properties_) text*
+/Courier 30 18 1081 330 ( = ) text*
+1111 156 1639 156 1639 157 1111 157 box* %(1111, 156)(528, 1)
+1111 157 1112 157 1112 485 1111 485 box* %(1111, 157)(1, 328)
+/Courier 170 18 1126 177 (encoded_operator_) text*
+/Courier 30 18 1306 177 ( = ) text*
+/Courier 260 18 1336 177 (mtk::EncodedOperator::NOOP) text*
+/Courier 80 18 1126 195 (storage_) text*
+/Courier 30 18 1306 195 ( = ) text*
+/Courier 250 18 1336 195 (mtk::MatrixStorage::DENSE) text*
+/Courier 90 18 1126 213 (ordering_) text*
+/Courier 30 18 1306 213 ( = ) text*
+/Courier 300 18 1336 213 (mtk::MatrixOrdering::ROW_MAJOR) text*
+/Courier 90 18 1126 231 (num_rows_) text*
+/Courier 30 18 1306 231 ( = ) text*
+/Courier 20 18 1336 231 (15) text*
+/Courier 90 18 1126 249 (num_cols_) text*
+/Courier 30 18 1306 249 ( = ) text*
+/Courier 20 18 1336 249 (21) text*
+/Courier 110 18 1126 267 (num_values_) text*
+/Courier 30 18 1306 267 ( = ) text*
+/Courier 30 18 1336 267 (315) text*
+/Courier 180 18 1126 285 (leading_dimension_) text*
+/Courier 30 18 1306 285 ( = ) text*
+/Courier 20 18 1336 285 (21) text*
+/Courier 140 18 1126 303 (num_low_diags_) text*
+/Courier 30 18 1306 303 ( = ) text*
+/Courier 10 18 1336 303 (0) text*
+/Courier 140 18 1126 321 (num_upp_diags_) text*
+/Courier 30 18 1306 321 ( = ) text*
+/Courier 10 18 1336 321 (0) text*
+/Courier 100 18 1126 339 (bandwidth_) text*
+/Courier 30 18 1306 339 ( = ) text*
+/Courier 10 18 1336 339 (0) text*
+/Courier 90 18 1126 357 (num_null_) text*
+/Courier 30 18 1306 357 ( = ) text*
+/Courier 30 18 1336 357 (315) text*
+/Courier 130 18 1126 375 (num_non_null_) text*
+/Courier 30 18 1306 375 ( = ) text*
+/Courier 10 18 1336 375 (0) text*
+/Courier 120 18 1126 393 (abs_density_) text*
+/Courier 30 18 1306 393 ( = ) text*
+/Courier 10 18 1336 393 (0) text*
+/Courier 130 18 1126 411 (abs_sparsity_) text*
+/Courier 30 18 1306 411 ( = ) text*
+/Courier 10 18 1336 411 (1) text*
+/Courier 90 18 1126 429 (num_zero_) text*
+/Courier 30 18 1306 429 ( = ) text*
+/Courier 10 18 1336 429 (0) text*
+/Courier 130 18 1126 447 (num_non_zero_) text*
+/Courier 30 18 1306 447 ( = ) text*
+/Courier 30 18 1336 447 (315) text*
+/Courier 120 18 1126 465 (rel_density_) text*
+/Courier 30 18 1306 465 ( = ) text*
+/Courier 10 18 1336 465 (0) text*
+/Courier 130 18 1126 483 (rel_sparsity_) text*
+/Courier 30 18 1306 483 ( = ) text*
+/Courier 10 18 1336 483 (1) text*
+1638 157 1639 157 1639 485 1638 485 box* %(1638, 157)(1, 328)
+1111 485 1639 485 1639 486 1111 486 box* %(1111, 485)(528, 1)
+/Courier 50 18 901 504 (data_) text*
+/Courier 30 18 1081 504 ( = ) text*
+/Courier 80 18 1111 504 (0x702510) text*
+1641 154 1642 154 1642 506 1641 506 box* %(1641, 154)(1, 352)
+886 506 1642 506 1642 507 886 507 box* %(886, 506)(756, 1)
+1644 130 1645 130 1645 509 1644 509 box* %(1644, 130)(1, 379)
+883 509 1645 509 1645 510 883 510 box* %(883, 509)(762, 1)
+1645 130 1646 130 1646 510 1645 510 box* %(1645, 130)(1, 380)
+884 510 1646 510 1646 511 884 511 box* %(884, 510)(762, 1)
+22 552 2507 552 2507 1049 22 1049 clean*
+22 552 2506 552 2506 553 22 553 box* %(22, 552)(2484, 1)
+22 553 23 553 23 1047 22 1047 box* %(22, 553)(1, 494)
+25 555 2503 555 2503 556 25 556 box* %(25, 555)(2478, 1)
+25 556 26 556 26 1044 25 1044 box* %(25, 556)(1, 488)
+40 558 128 558 128 559 40 559 box* %(40, 558)(88, 1)
+40 559 41 559 41 581 40 581 box* %(40, 559)(1, 22)
+/Courier 10 18 55 579 (1) text*
+/Courier 20 18 65 579 ( <) text*
+/Courier 10 18 85 579 (2) text*
+/Courier 10 18 95 579 (1) text*
+/Courier 20 18 105 579 (\327>) text*
+127 559 128 559 128 581 127 581 box* %(127, 559)(1, 22)
+40 581 128 581 128 582 40 582 box* %(40, 581)(88, 1)
+130 558 131 558 131 1042 130 1042 box* %(130, 558)(1, 484)
+133 558 191 558 191 559 133 559 box* %(133, 558)(58, 1)
+133 559 134 559 134 1041 133 1041 box* %(133, 559)(1, 482)
+/Courier 10 18 178 579 (0) text*
+148 581 188 581 188 582 148 582 box* %(148, 581)(40, 1)
+/Courier 30 18 158 602 (0.5) text*
+148 604 188 604 188 605 148 605 box* %(148, 604)(40, 1)
+/Courier 30 18 158 625 (1.5) text*
+148 627 188 627 188 628 148 628 box* %(148, 627)(40, 1)
+/Courier 30 18 158 648 (2.5) text*
+148 650 188 650 188 651 148 651 box* %(148, 650)(40, 1)
+/Courier 30 18 158 671 (3.5) text*
+148 673 188 673 188 674 148 674 box* %(148, 673)(40, 1)
+/Courier 30 18 158 694 (4.5) text*
+148 696 188 696 188 697 148 697 box* %(148, 696)(40, 1)
+/Courier 30 18 158 717 (5.5) text*
+148 719 188 719 188 720 148 720 box* %(148, 719)(40, 1)
+/Courier 30 18 158 740 (6.5) text*
+148 742 188 742 188 743 148 743 box* %(148, 742)(40, 1)
+/Courier 30 18 158 763 (7.5) text*
+148 765 188 765 188 766 148 766 box* %(148, 765)(40, 1)
+/Courier 30 18 158 786 (8.5) text*
+148 788 188 788 188 789 148 789 box* %(148, 788)(40, 1)
+/Courier 30 18 158 809 (9.5) text*
+148 811 188 811 188 812 148 812 box* %(148, 811)(40, 1)
+/Courier 40 18 148 832 (10.5) text*
+148 834 188 834 188 835 148 835 box* %(148, 834)(40, 1)
+/Courier 40 18 148 855 (11.5) text*
+148 857 188 857 188 858 148 858 box* %(148, 857)(40, 1)
+/Courier 40 18 148 878 (12.5) text*
+148 880 188 880 188 881 148 881 box* %(148, 880)(40, 1)
+/Courier 40 18 148 901 (13.5) text*
+148 903 188 903 188 904 148 904 box* %(148, 903)(40, 1)
+/Courier 40 18 148 924 (14.5) text*
+148 926 188 926 188 927 148 927 box* %(148, 926)(40, 1)
+/Courier 40 18 148 947 (15.5) text*
+148 949 188 949 188 950 148 950 box* %(148, 949)(40, 1)
+/Courier 40 18 148 970 (16.5) text*
+148 972 188 972 188 973 148 973 box* %(148, 972)(40, 1)
+/Courier 40 18 148 993 (17.5) text*
+148 995 188 995 188 996 148 996 box* %(148, 995)(40, 1)
+/Courier 40 18 148 1016 (18.5) text*
+148 1018 188 1018 188 1019 148 1019 box* %(148, 1018)(40, 1)
+/Courier 40 18 148 1039 (19.5) text*
+190 559 191 559 191 1041 190 1041 box* %(190, 559)(1, 482)
+133 1041 191 1041 191 1042 133 1042 box* %(133, 1041)(58, 1)
+193 558 194 558 194 1042 193 1042 box* %(193, 558)(1, 484)
+196 558 274 558 274 559 196 559 box* %(196, 558)(78, 1)
+196 559 197 559 197 1041 196 1041 box* %(196, 559)(1, 482)
+/Courier 10 18 261 579 (0) text*
+211 581 271 581 271 582 211 582 box* %(211, 581)(60, 1)
+/Courier 40 18 231 602 (0.25) text*
+211 604 271 604 271 605 211 605 box* %(211, 604)(60, 1)
+/Courier 40 18 231 625 (2.25) text*
+211 627 271 627 271 628 211 628 box* %(211, 627)(60, 1)
+/Courier 40 18 231 648 (6.25) text*
+211 650 271 650 271 651 211 651 box* %(211, 650)(60, 1)
+/Courier 50 18 221 671 (12.25) text*
+211 673 271 673 271 674 211 674 box* %(211, 673)(60, 1)
+/Courier 50 18 221 694 (20.25) text*
+211 696 271 696 271 697 211 697 box* %(211, 696)(60, 1)
+/Courier 50 18 221 717 (30.25) text*
+211 719 271 719 271 720 211 720 box* %(211, 719)(60, 1)
+/Courier 50 18 221 740 (42.25) text*
+211 742 271 742 271 743 211 743 box* %(211, 742)(60, 1)
+/Courier 50 18 221 763 (56.25) text*
+211 765 271 765 271 766 211 766 box* %(211, 765)(60, 1)
+/Courier 50 18 221 786 (72.25) text*
+211 788 271 788 271 789 211 789 box* %(211, 788)(60, 1)
+/Courier 50 18 221 809 (90.25) text*
+211 811 271 811 271 812 211 812 box* %(211, 811)(60, 1)
+/Courier 60 18 211 832 (110.25) text*
+211 834 271 834 271 835 211 835 box* %(211, 834)(60, 1)
+/Courier 60 18 211 855 (132.25) text*
+211 857 271 857 271 858 211 858 box* %(211, 857)(60, 1)
+/Courier 60 18 211 878 (156.25) text*
+211 880 271 880 271 881 211 881 box* %(211, 880)(60, 1)
+/Courier 60 18 211 901 (182.25) text*
+211 903 271 903 271 904 211 904 box* %(211, 903)(60, 1)
+/Courier 60 18 211 924 (210.25) text*
+211 926 271 926 271 927 211 927 box* %(211, 926)(60, 1)
+/Courier 60 18 211 947 (240.25) text*
+211 949 271 949 271 950 211 950 box* %(211, 949)(60, 1)
+/Courier 60 18 211 970 (272.25) text*
+211 972 271 972 271 973 211 973 box* %(211, 972)(60, 1)
+/Courier 60 18 211 993 (306.25) text*
+211 995 271 995 271 996 211 996 box* %(211, 995)(60, 1)
+/Courier 60 18 211 1016 (342.25) text*
+211 1018 271 1018 271 1019 211 1019 box* %(211, 1018)(60, 1)
+/Courier 60 18 211 1039 (380.25) text*
+273 559 274 559 274 1041 273 1041 box* %(273, 559)(1, 482)
+196 1041 274 1041 274 1042 196 1042 box* %(196, 1041)(78, 1)
+276 558 277 558 277 1042 276 1042 box* %(276, 558)(1, 484)
+279 558 377 558 377 559 279 559 box* %(279, 558)(98, 1)
+279 559 280 559 280 1041 279 1041 box* %(279, 559)(1, 482)
+/Courier 10 18 364 579 (0) text*
+294 581 374 581 374 582 294 582 box* %(294, 581)(80, 1)
+/Courier 50 18 324 602 (0.125) text*
+294 604 374 604 374 605 294 605 box* %(294, 604)(80, 1)
+/Courier 50 18 324 625 (3.375) text*
+294 627 374 627 374 628 294 628 box* %(294, 627)(80, 1)
+/Courier 60 18 314 648 (15.625) text*
+294 650 374 650 374 651 294 651 box* %(294, 650)(80, 1)
+/Courier 60 18 314 671 (42.875) text*
+294 673 374 673 374 674 294 674 box* %(294, 673)(80, 1)
+/Courier 60 18 314 694 (91.125) text*
+294 696 374 696 374 697 294 697 box* %(294, 696)(80, 1)
+/Courier 70 18 304 717 (166.375) text*
+294 719 374 719 374 720 294 720 box* %(294, 719)(80, 1)
+/Courier 70 18 304 740 (274.625) text*
+294 742 374 742 374 743 294 743 box* %(294, 742)(80, 1)
+/Courier 70 18 304 763 (421.875) text*
+294 765 374 765 374 766 294 766 box* %(294, 765)(80, 1)
+/Courier 70 18 304 786 (614.125) text*
+294 788 374 788 374 789 294 789 box* %(294, 788)(80, 1)
+/Courier 70 18 304 809 (857.375) text*
+294 811 374 811 374 812 294 812 box* %(294, 811)(80, 1)
+/Courier 80 18 294 832 (1157.625) text*
+294 834 374 834 374 835 294 835 box* %(294, 834)(80, 1)
+/Courier 80 18 294 855 (1520.875) text*
+294 857 374 857 374 858 294 858 box* %(294, 857)(80, 1)
+/Courier 80 18 294 878 (1953.125) text*
+294 880 374 880 374 881 294 881 box* %(294, 880)(80, 1)
+/Courier 80 18 294 901 (2460.375) text*
+294 903 374 903 374 904 294 904 box* %(294, 903)(80, 1)
+/Courier 80 18 294 924 (3048.625) text*
+294 926 374 926 374 927 294 927 box* %(294, 926)(80, 1)
+/Courier 80 18 294 947 (3723.875) text*
+294 949 374 949 374 950 294 950 box* %(294, 949)(80, 1)
+/Courier 80 18 294 970 (4492.125) text*
+294 972 374 972 374 973 294 973 box* %(294, 972)(80, 1)
+/Courier 80 18 294 993 (5359.375) text*
+294 995 374 995 374 996 294 996 box* %(294, 995)(80, 1)
+/Courier 80 18 294 1016 (6331.625) text*
+294 1018 374 1018 374 1019 294 1019 box* %(294, 1018)(80, 1)
+/Courier 80 18 294 1039 (7414.875) text*
+376 559 377 559 377 1041 376 1041 box* %(376, 559)(1, 482)
+279 1041 377 1041 377 1042 279 1042 box* %(279, 1041)(98, 1)
+379 558 380 558 380 1042 379 1042 box* %(379, 558)(1, 484)
+382 558 510 558 510 559 382 559 box* %(382, 558)(128, 1)
+382 559 383 559 383 1041 382 1041 box* %(382, 559)(1, 482)
+/Courier 10 18 497 579 (0) text*
+397 581 507 581 507 582 397 582 box* %(397, 581)(110, 1)
+/Courier 60 18 447 602 (0.0625) text*
+397 604 507 604 507 605 397 605 box* %(397, 604)(110, 1)
+/Courier 60 18 447 625 (5.0625) text*
+397 627 507 627 507 628 397 628 box* %(397, 627)(110, 1)
+/Courier 70 18 437 648 (39.0625) text*
+397 650 507 650 507 651 397 651 box* %(397, 650)(110, 1)
+/Courier 80 18 427 671 (150.0625) text*
+397 673 507 673 507 674 397 674 box* %(397, 673)(110, 1)
+/Courier 80 18 427 694 (410.0625) text*
+397 696 507 696 507 697 397 697 box* %(397, 696)(110, 1)
+/Courier 80 18 427 717 (915.0625) text*
+397 719 507 719 507 720 397 720 box* %(397, 719)(110, 1)
+/Courier 90 18 417 740 (1785.0625) text*
+397 742 507 742 507 743 397 743 box* %(397, 742)(110, 1)
+/Courier 90 18 417 763 (3164.0625) text*
+397 765 507 765 507 766 397 766 box* %(397, 765)(110, 1)
+/Courier 90 18 417 786 (5220.0625) text*
+397 788 507 788 507 789 397 789 box* %(397, 788)(110, 1)
+/Courier 90 18 417 809 (8145.0625) text*
+397 811 507 811 507 812 397 812 box* %(397, 811)(110, 1)
+/Courier 100 18 407 832 (12155.0625) text*
+397 834 507 834 507 835 397 835 box* %(397, 834)(110, 1)
+/Courier 100 18 407 855 (17490.0625) text*
+397 857 507 857 507 858 397 858 box* %(397, 857)(110, 1)
+/Courier 100 18 407 878 (24414.0625) text*
+397 880 507 880 507 881 397 881 box* %(397, 880)(110, 1)
+/Courier 100 18 407 901 (33215.0625) text*
+397 903 507 903 507 904 397 904 box* %(397, 903)(110, 1)
+/Courier 100 18 407 924 (44205.0625) text*
+397 926 507 926 507 927 397 927 box* %(397, 926)(110, 1)
+/Courier 100 18 407 947 (57720.0625) text*
+397 949 507 949 507 950 397 950 box* %(397, 949)(110, 1)
+/Courier 100 18 407 970 (74120.0625) text*
+397 972 507 972 507 973 397 973 box* %(397, 972)(110, 1)
+/Courier 100 18 407 993 (93789.0625) text*
+397 995 507 995 507 996 397 996 box* %(397, 995)(110, 1)
+/Courier 110 18 397 1016 (117135.0625) text*
+397 1018 507 1018 507 1019 397 1019 box* %(397, 1018)(110, 1)
+/Courier 110 18 397 1039 (144590.0625) text*
+509 559 510 559 510 1041 509 1041 box* %(509, 559)(1, 482)
+382 1041 510 1041 510 1042 382 1042 box* %(382, 1041)(128, 1)
+512 558 513 558 513 1042 512 1042 box* %(512, 558)(1, 484)
+515 558 663 558 663 559 515 559 box* %(515, 558)(148, 1)
+515 559 516 559 516 1041 515 1041 box* %(515, 559)(1, 482)
+/Courier 10 18 650 579 (0) text*
+530 581 660 581 660 582 530 582 box* %(530, 581)(130, 1)
+/Courier 70 18 590 602 (0.03125) text*
+530 604 660 604 660 605 530 605 box* %(530, 604)(130, 1)
+/Courier 70 18 590 625 (7.59375) text*
+530 627 660 627 660 628 530 628 box* %(530, 627)(130, 1)
+/Courier 80 18 580 648 (97.65625) text*
+530 650 660 650 660 651 530 651 box* %(530, 650)(130, 1)
+/Courier 90 18 570 671 (525.21875) text*
+530 673 660 673 660 674 530 674 box* %(530, 673)(130, 1)
+/Courier 100 18 560 694 (1845.28125) text*
+530 696 660 696 660 697 530 697 box* %(530, 696)(130, 1)
+/Courier 100 18 560 717 (5032.84375) text*
+530 719 660 719 660 720 530 720 box* %(530, 719)(130, 1)
+/Courier 110 18 550 740 (11602.90625) text*
+530 742 660 742 660 743 530 743 box* %(530, 742)(130, 1)
+/Courier 110 18 550 763 (23730.46875) text*
+530 765 660 765 660 766 530 766 box* %(530, 765)(130, 1)
+/Courier 110 18 550 786 (44370.53125) text*
+530 788 660 788 660 789 530 789 box* %(530, 788)(130, 1)
+/Courier 110 18 550 809 (77378.09375) text*
+530 811 660 811 660 812 530 812 box* %(530, 811)(130, 1)
+/Courier 120 18 540 832 (127628.15625) text*
+530 834 660 834 660 835 530 835 box* %(530, 834)(130, 1)
+/Courier 120 18 540 855 (201135.71875) text*
+530 857 660 857 660 858 530 858 box* %(530, 857)(130, 1)
+/Courier 120 18 540 878 (305175.78125) text*
+530 880 660 880 660 881 530 881 box* %(530, 880)(130, 1)
+/Courier 120 18 540 901 (448403.34375) text*
+530 903 660 903 660 904 530 904 box* %(530, 903)(130, 1)
+/Courier 120 18 540 924 (640973.40625) text*
+530 926 660 926 660 927 530 927 box* %(530, 926)(130, 1)
+/Courier 120 18 540 947 (894660.96875) text*
+530 949 660 949 660 950 530 950 box* %(530, 949)(130, 1)
+/Courier 130 18 530 970 (1222981.03125) text*
+530 972 660 972 660 973 530 973 box* %(530, 972)(130, 1)
+/Courier 130 18 530 993 (1641308.59375) text*
+530 995 660 995 660 996 530 996 box* %(530, 995)(130, 1)
+/Courier 130 18 530 1016 (2166998.65625) text*
+530 1018 660 1018 660 1019 530 1019 box* %(530, 1018)(130, 1)
+/Courier 130 18 530 1039 (2819506.21875) text*
+662 559 663 559 663 1041 662 1041 box* %(662, 559)(1, 482)
+515 1041 663 1041 663 1042 515 1042 box* %(515, 1041)(148, 1)
+665 558 666 558 666 1042 665 1042 box* %(665, 558)(1, 484)
+668 558 836 558 836 559 668 559 box* %(668, 558)(168, 1)
+668 559 669 559 669 1041 668 1041 box* %(668, 559)(1, 482)
+/Courier 10 18 823 579 (0) text*
+683 581 833 581 833 582 683 582 box* %(683, 581)(150, 1)
+/Courier 80 18 753 602 (0.015625) text*
+683 604 833 604 833 605 683 605 box* %(683, 604)(150, 1)
+/Courier 90 18 743 625 (11.390625) text*
+683 627 833 627 833 628 683 628 box* %(683, 627)(150, 1)
+/Courier 100 18 733 648 (244.140625) text*
+683 650 833 650 833 651 683 651 box* %(683, 650)(150, 1)
+/Courier 110 18 723 671 (1838.265625) text*
+683 673 833 673 833 674 683 674 box* %(683, 673)(150, 1)
+/Courier 110 18 723 694 (8303.765625) text*
+683 696 833 696 833 697 683 697 box* %(683, 696)(150, 1)
+/Courier 120 18 713 717 (27680.640625) text*
+683 719 833 719 833 720 683 720 box* %(683, 719)(150, 1)
+/Courier 120 18 713 740 (75418.890625) text*
+683 742 833 742 833 743 683 743 box* %(683, 742)(150, 1)
+/Courier 130 18 703 763 (177978.515625) text*
+683 765 833 765 833 766 683 766 box* %(683, 765)(150, 1)
+/Courier 130 18 703 786 (377149.515625) text*
+683 788 833 788 833 789 683 789 box* %(683, 788)(150, 1)
+/Courier 130 18 703 809 (735091.890625) text*
+683 811 833 811 833 812 683 812 box* %(683, 811)(150, 1)
+/Courier 140 18 693 832 (1340095.640625) text*
+683 834 833 834 833 835 683 835 box* %(683, 834)(150, 1)
+/Courier 140 18 693 855 (2313060.765625) text*
+683 857 833 857 833 858 683 858 box* %(683, 857)(150, 1)
+/Courier 140 18 693 878 (3814697.265625) text*
+683 880 833 880 833 881 683 881 box* %(683, 880)(150, 1)
+/Courier 140 18 693 901 (6053445.140625) text*
+683 903 833 903 833 904 683 904 box* %(683, 903)(150, 1)
+/Courier 140 18 693 924 (9294114.390625) text*
+683 926 833 926 833 927 683 927 box* %(683, 926)(150, 1)
+/Courier 150 18 683 947 (13867245.015625) text*
+683 949 833 949 833 950 683 950 box* %(683, 949)(150, 1)
+/Courier 150 18 683 970 (20179187.015625) text*
+683 972 833 972 833 973 683 973 box* %(683, 972)(150, 1)
+/Courier 150 18 683 993 (28722900.390625) text*
+683 995 833 995 833 996 683 996 box* %(683, 995)(150, 1)
+/Courier 150 18 683 1016 (40089475.140625) text*
+683 1018 833 1018 833 1019 683 1019 box* %(683, 1018)(150, 1)
+/Courier 150 18 683 1039 (54980371.265625) text*
+835 559 836 559 836 1041 835 1041 box* %(835, 559)(1, 482)
+668 1041 836 1041 836 1042 668 1042 box* %(668, 1041)(168, 1)
+838 558 839 558 839 1042 838 1042 box* %(838, 558)(1, 484)
+841 558 1039 558 1039 559 841 559 box* %(841, 558)(198, 1)
+841 559 842 559 842 1041 841 1041 box* %(841, 559)(1, 482)
+/Courier 10 18 1026 579 (0) text*
+856 581 1036 581 1036 582 856 582 box* %(856, 581)(180, 1)
+/Courier 90 18 946 602 (0.0078125) text*
+856 604 1036 604 1036 605 856 605 box* %(856, 604)(180, 1)
+/Courier 100 18 936 625 (17.0859375) text*
+856 627 1036 627 1036 628 856 628 box* %(856, 627)(180, 1)
+/Courier 110 18 926 648 (610.3515625) text*
+856 650 1036 650 1036 651 856 651 box* %(856, 650)(180, 1)
+/Courier 120 18 916 671 (6433.9296875) text*
+856 673 1036 673 1036 674 856 674 box* %(856, 673)(180, 1)
+/Courier 130 18 906 694 (37366.9453125) text*
+856 696 1036 696 1036 697 856 697 box* %(856, 696)(180, 1)
+/Courier 140 18 896 717 (152243.5234375) text*
+856 719 1036 719 1036 720 856 720 box* %(856, 719)(180, 1)
+/Courier 140 18 896 740 (490222.7890625) text*
+856 742 1036 742 1036 743 856 743 box* %(856, 742)(180, 1)
+/Courier 150 18 886 763 (1334838.8671875) text*
+856 765 1036 765 1036 766 856 766 box* %(856, 765)(180, 1)
+/Courier 150 18 886 786 (3205770.8828125) text*
+856 788 1036 788 1036 789 856 789 box* %(856, 788)(180, 1)
+/Courier 150 18 886 809 (6983372.9609375) text*
+856 811 1036 811 1036 812 856 812 box* %(856, 811)(180, 1)
+/Courier 160 18 876 832 (14071004.2265625) text*
+856 834 1036 834 1036 835 856 835 box* %(856, 834)(180, 1)
+/Courier 160 18 876 855 (26600198.8046875) text*
+856 857 1036 857 1036 858 856 858 box* %(856, 857)(180, 1)
+/Courier 160 18 876 878 (47683715.8203125) text*
+856 880 1036 880 1036 881 856 881 box* %(856, 880)(180, 1)
+/Courier 160 18 876 901 (81721509.3984375) text*
+856 903 1036 903 1036 904 856 904 box* %(856, 903)(180, 1)
+/Courier 170 18 866 924 (134764658.6640625) text*
+856 926 1036 926 1036 927 856 927 box* %(856, 926)(180, 1)
+/Courier 170 18 866 947 (214942297.7421875) text*
+856 949 1036 949 1036 950 856 950 box* %(856, 949)(180, 1)
+/Courier 170 18 866 970 (332956585.7578125) text*
+856 972 1036 972 1036 973 856 973 box* %(856, 972)(180, 1)
+/Courier 170 18 866 993 (502650756.8359375) text*
+856 995 1036 995 1036 996 856 996 box* %(856, 995)(180, 1)
+/Courier 170 18 866 1016 (741655290.1015625) text*
+856 1018 1036 1018 1036 1019 856 1019 box* %(856, 1018)(180, 1)
+/Courier 180 18 856 1039 (1072117239.6796875) text*
+1038 559 1039 559 1039 1041 1038 1041 box* %(1038, 559)(1, 482)
+841 1041 1039 1041 1039 1042 841 1042 box* %(841, 1041)(198, 1)
+1041 558 1042 558 1042 1042 1041 1042 box* %(1041, 558)(1, 484)
+1044 558 1242 558 1242 559 1044 559 box* %(1044, 558)(198, 1)
+1044 559 1045 559 1045 1041 1044 1041 box* %(1044, 559)(1, 482)
+/Courier 10 18 1229 579 (0) text*
+1059 581 1239 581 1239 582 1059 582 box* %(1059, 581)(180, 1)
+/Courier 100 18 1139 602 (0.00390625) text*
+1059 604 1239 604 1239 605 1059 605 box* %(1059, 604)(180, 1)
+/Courier 110 18 1129 625 (25.62890625) text*
+1059 627 1239 627 1239 628 1059 628 box* %(1059, 627)(180, 1)
+/Courier 130 18 1109 648 (1525.87890625) text*
+1059 650 1239 650 1239 651 1059 651 box* %(1059, 650)(180, 1)
+/Courier 140 18 1099 671 (22518.75390625) text*
+1059 673 1239 673 1239 674 1059 674 box* %(1059, 673)(180, 1)
+/Courier 150 18 1089 694 (168151.25390625) text*
+1059 696 1239 696 1239 697 1059 697 box* %(1059, 696)(180, 1)
+/Courier 150 18 1089 717 (837339.37890625) text*
+1059 719 1239 719 1239 720 1059 720 box* %(1059, 719)(180, 1)
+/Courier 160 18 1079 740 (3186448.12890625) text*
+1059 742 1239 742 1239 743 1059 743 box* %(1059, 742)(180, 1)
+/Courier 170 18 1069 763 (10011291.50390625) text*
+1059 765 1239 765 1239 766 1059 766 box* %(1059, 765)(180, 1)
+/Courier 170 18 1069 786 (27249052.50390625) text*
+1059 788 1239 788 1239 789 1059 789 box* %(1059, 788)(180, 1)
+/Courier 170 18 1069 809 (66342043.12890625) text*
+1059 811 1239 811 1239 812 1059 812 box* %(1059, 811)(180, 1)
+/Courier 180 18 1059 832 (147745544.37890625) text*
+1059 834 1239 834 1239 835 1059 835 box* %(1059, 834)(180, 1)
+/Courier 180 18 1059 855 (305902286.25390625) text*
+1059 857 1239 857 1239 858 1059 858 box* %(1059, 857)(180, 1)
+/Courier 180 18 1059 878 (596046447.75390625) text*
+1059 880 1239 880 1239 881 1059 881 box* %(1059, 880)(180, 1)
+/Courier 180 18 1059 901 (1103240376.8789062) text*
+1059 903 1239 903 1239 904 1059 904 box* %(1059, 903)(180, 1)
+/Courier 180 18 1059 924 (1954087550.6289062) text*
+1059 926 1239 926 1239 927 1059 927 box* %(1059, 926)(180, 1)
+/Courier 180 18 1059 947 (3331605615.0039062) text*
+1059 949 1239 949 1239 950 1059 950 box* %(1059, 949)(180, 1)
+/Courier 180 18 1059 970 (5493783665.0039062) text*
+1059 972 1239 972 1239 973 1059 973 box* %(1059, 972)(180, 1)
+/Courier 180 18 1059 993 (8796388244.6289062) text*
+1059 995 1239 995 1239 996 1059 996 box* %(1059, 995)(180, 1)
+/Courier 180 18 1059 1016 (13720622866.878906) text*
+1059 1018 1239 1018 1239 1019 1059 1019 box* %(1059, 1018)(180, 1)
+/Courier 180 18 1059 1039 (20906286173.753906) text*
+1241 559 1242 559 1242 1041 1241 1041 box* %(1241, 559)(1, 482)
+1044 1041 1242 1041 1242 1042 1044 1042 box* %(1044, 1041)(198, 1)
+1244 558 1245 558 1245 1042 1244 1042 box* %(1244, 558)(1, 484)
+1247 558 1445 558 1445 559 1247 559 box* %(1247, 558)(198, 1)
+1247 559 1248 559 1248 1041 1247 1041 box* %(1247, 559)(1, 482)
+/Courier 10 18 1432 579 (0) text*
+1262 581 1442 581 1442 582 1262 582 box* %(1262, 581)(180, 1)
+/Courier 110 18 1332 602 (0.001953125) text*
+1262 604 1442 604 1442 605 1262 605 box* %(1262, 604)(180, 1)
+/Courier 120 18 1322 625 (38.443359375) text*
+1262 627 1442 627 1442 628 1262 628 box* %(1262, 627)(180, 1)
+/Courier 140 18 1302 648 (3814.697265625) text*
+1262 650 1442 650 1442 651 1262 651 box* %(1262, 650)(180, 1)
+/Courier 150 18 1292 671 (78815.638671875) text*
+1262 673 1442 673 1442 674 1262 674 box* %(1262, 673)(180, 1)
+/Courier 160 18 1282 694 (756680.642578125) text*
+1262 696 1442 696 1442 697 1262 697 box* %(1262, 696)(180, 1)
+/Courier 170 18 1272 717 (4605366.583984375) text*
+1262 719 1442 719 1442 720 1262 720 box* %(1262, 719)(180, 1)
+/Courier 180 18 1262 740 (20711912.837890625) text*
+1262 742 1442 742 1442 743 1262 743 box* %(1262, 742)(180, 1)
+/Courier 180 18 1262 763 (75084686.279296875) text*
+1262 765 1442 765 1442 766 1262 766 box* %(1262, 765)(180, 1)
+/Courier 180 18 1262 786 (231616946.28320312) text*
+1262 788 1442 788 1442 789 1262 789 box* %(1262, 788)(180, 1)
+/Courier 180 18 1262 809 (630249409.72460938) text*
+1262 811 1442 811 1442 812 1262 812 box* %(1262, 811)(180, 1)
+/Courier 180 18 1262 832 (1551328215.9785156) text*
+1262 834 1442 834 1442 835 1262 835 box* %(1262, 834)(180, 1)
+/Courier 180 18 1262 855 (3517876291.9199219) text*
+1262 857 1442 857 1442 858 1262 858 box* %(1262, 857)(180, 1)
+/Courier 180 18 1262 878 (7450580596.9238281) text*
+1262 880 1442 880 1442 881 1262 881 box* %(1262, 880)(180, 1)
+/Courier 180 18 1262 901 (14893745087.865234) text*
+1262 903 1442 903 1442 904 1262 904 box* %(1262, 903)(180, 1)
+/Courier 180 18 1262 924 (28334269484.119141) text*
+1262 926 1442 926 1442 927 1262 927 box* %(1262, 926)(180, 1)
+/Courier 180 18 1262 947 (51639887032.560547) text*
+1262 949 1442 949 1442 950 1262 950 box* %(1262, 949)(180, 1)
+/Courier 180 18 1262 970 (90647430472.564453) text*
+1262 972 1442 972 1442 973 1262 973 box* %(1262, 972)(180, 1)
+/Courier 180 18 1262 993 (153936794281.00586) text*
+1262 995 1442 995 1442 996 1262 996 box* %(1262, 995)(180, 1)
+/Courier 180 18 1262 1016 (253831523037.25977) text*
+1262 1018 1442 1018 1442 1019 1262 1019 box* %(1262, 1018)(180, 1)
+/Courier 180 18 1262 1039 (407672580388.20117) text*
+1444 559 1445 559 1445 1041 1444 1041 box* %(1444, 559)(1, 482)
+1247 1041 1445 1041 1445 1042 1247 1042 box* %(1247, 1041)(198, 1)
+1447 558 1448 558 1448 1042 1447 1042 box* %(1447, 558)(1, 484)
+1450 558 1648 558 1648 559 1450 559 box* %(1450, 558)(198, 1)
+1450 559 1451 559 1451 1041 1450 1041 box* %(1450, 559)(1, 482)
+/Courier 10 18 1635 579 (0) text*
+1465 581 1645 581 1645 582 1465 582 box* %(1465, 581)(180, 1)
+/Courier 120 18 1525 602 (0.0009765625) text*
+1465 604 1645 604 1645 605 1465 605 box* %(1465, 604)(180, 1)
+/Courier 130 18 1515 625 (57.6650390625) text*
+1465 627 1645 627 1645 628 1465 628 box* %(1465, 627)(180, 1)
+/Courier 150 18 1495 648 (9536.7431640625) text*
+1465 650 1645 650 1645 651 1465 651 box* %(1465, 650)(180, 1)
+/Courier 170 18 1475 671 (275854.7353515625) text*
+1465 673 1645 673 1645 674 1465 674 box* %(1465, 673)(180, 1)
+/Courier 180 18 1465 694 (3405062.8916015625) text*
+1465 696 1645 696 1645 697 1465 697 box* %(1465, 696)(180, 1)
+/Courier 180 18 1465 717 (25329516.211914062) text*
+1465 719 1645 719 1645 720 1465 720 box* %(1465, 719)(180, 1)
+/Courier 180 18 1465 740 (134627433.44628906) text*
+1465 742 1645 742 1645 743 1465 743 box* %(1465, 742)(180, 1)
+/Courier 180 18 1465 763 (563135147.09472656) text*
+1465 765 1645 765 1645 766 1465 766 box* %(1465, 765)(180, 1)
+/Courier 180 18 1465 786 (1968744043.4072266) text*
+1465 788 1645 788 1645 789 1465 789 box* %(1465, 788)(180, 1)
+/Courier 180 18 1465 809 (5987369392.3837891) text*
+1465 811 1645 811 1645 812 1465 812 box* %(1465, 811)(180, 1)
+/Courier 180 18 1465 832 (16288946267.774414) text*
+1465 834 1645 834 1645 835 1465 835 box* %(1465, 834)(180, 1)
+/Courier 180 18 1465 855 (40455577357.079102) text*
+1465 857 1645 857 1645 858 1465 858 box* %(1465, 857)(180, 1)
+/Courier 180 18 1465 878 (93132257461.547852) text*
+1465 880 1645 880 1645 881 1465 881 box* %(1465, 880)(180, 1)
+/Courier 180 18 1465 901 (201065558686.18066) text*
+1465 903 1645 903 1645 904 1465 904 box* %(1465, 903)(180, 1)
+/Courier 180 18 1465 924 (410846907519.72754) text*
+1465 926 1645 926 1645 927 1465 927 box* %(1465, 926)(180, 1)
+/Courier 180 18 1465 947 (800418249004.68848) text*
+1465 949 1645 949 1645 950 1465 950 box* %(1465, 949)(180, 1)
+/Courier 180 18 1465 970 (1495682602797.3135) text*
+1465 972 1645 972 1645 973 1465 973 box* %(1465, 972)(180, 1)
+/Courier 180 18 1465 993 (2693893899917.6025) text*
+1465 995 1645 995 1645 996 1465 996 box* %(1465, 995)(180, 1)
+/Courier 180 18 1465 1016 (4695883176189.3057) text*
+1465 1018 1645 1018 1645 1019 1465 1019 box* %(1465, 1018)(180, 1)
+/Courier 180 18 1465 1039 (7949615317569.9229) text*
+1647 559 1648 559 1648 1041 1647 1041 box* %(1647, 559)(1, 482)
+1450 1041 1648 1041 1648 1042 1450 1042 box* %(1450, 1041)(198, 1)
+1650 558 1651 558 1651 1042 1650 1042 box* %(1650, 558)(1, 484)
+1653 558 1851 558 1851 559 1653 559 box* %(1653, 558)(198, 1)
+1653 559 1654 559 1654 1041 1653 1041 box* %(1653, 559)(1, 482)
+/Courier 10 18 1838 579 (0) text*
+1668 581 1848 581 1848 582 1668 582 box* %(1668, 581)(180, 1)
+/Courier 130 18 1718 602 (0.00048828125) text*
+1668 604 1848 604 1848 605 1668 605 box* %(1668, 604)(180, 1)
+/Courier 140 18 1708 625 (86.49755859375) text*
+1668 627 1848 627 1848 628 1668 628 box* %(1668, 627)(180, 1)
+/Courier 170 18 1678 648 (23841.85791015625) text*
+1668 650 1848 650 1848 651 1668 651 box* %(1668, 650)(180, 1)
+/Courier 180 18 1668 671 (965491.57373046875) text*
+1668 673 1848 673 1848 674 1668 674 box* %(1668, 673)(180, 1)
+/Courier 180 18 1668 694 (15322783.012207031) text*
+1668 696 1848 696 1848 697 1668 697 box* %(1668, 696)(180, 1)
+/Courier 180 18 1668 717 (139312339.16552734) text*
+1668 719 1848 719 1848 720 1668 720 box* %(1668, 719)(180, 1)
+/Courier 180 18 1668 740 (875078317.40087891) text*
+1668 742 1848 742 1848 743 1668 743 box* %(1668, 742)(180, 1)
+/Courier 180 18 1668 763 (4223513603.2104492) text*
+1668 765 1848 765 1848 766 1668 766 box* %(1668, 765)(180, 1)
+/Courier 180 18 1668 786 (16734324368.961426) text*
+1668 788 1848 788 1848 789 1668 789 box* %(1668, 788)(180, 1)
+/Courier 180 18 1668 809 (56880009227.645996) text*
+1668 811 1848 811 1848 812 1668 812 box* %(1668, 811)(180, 1)
+/Courier 180 18 1668 832 (171033935811.63135) text*
+1668 834 1848 834 1848 835 1668 835 box* %(1668, 834)(180, 1)
+/Courier 180 18 1668 855 (465239139606.40967) text*
+1668 857 1848 857 1848 858 1668 858 box* %(1668, 857)(180, 1)
+/Courier 180 18 1668 878 (1164153218269.3481) text*
+1668 880 1848 880 1848 881 1668 881 box* %(1668, 880)(180, 1)
+/Courier 170 18 1678 901 (2714385042263.439) text*
+1668 903 1848 903 1848 904 1668 904 box* %(1668, 903)(180, 1)
+/Courier 180 18 1668 924 (5957280159036.0488) text*
+1668 926 1848 926 1848 927 1668 927 box* %(1668, 926)(180, 1)
+/Courier 180 18 1668 947 (12406482859572.672) text*
+1668 949 1848 949 1848 950 1668 950 box* %(1668, 949)(180, 1)
+/Courier 180 18 1668 970 (24678762946155.672) text*
+1668 972 1848 972 1848 973 1668 973 box* %(1668, 972)(180, 1)
+/Courier 180 18 1668 993 (47143143248558.047) text*
+1668 995 1848 995 1848 996 1668 996 box* %(1668, 995)(180, 1)
+/Courier 180 18 1668 1016 (86873838759502.156) text*
+1668 1018 1848 1018 1848 1019 1668 1019 box* %(1668, 1018)(180, 1)
+/Courier 170 18 1678 1039 (155017498692613.5) text*
+1850 559 1851 559 1851 1041 1850 1041 box* %(1850, 559)(1, 482)
+1653 1041 1851 1041 1851 1042 1653 1042 box* %(1653, 1041)(198, 1)
+1853 558 1854 558 1854 1042 1853 1042 box* %(1853, 558)(1, 484)
+1856 558 2054 558 2054 559 1856 559 box* %(1856, 558)(198, 1)
+1856 559 1857 559 1857 1041 1856 1041 box* %(1856, 559)(1, 482)
+/Courier 10 18 2041 579 (0) text*
+1871 581 2051 581 2051 582 1871 582 box* %(1871, 581)(180, 1)
+/Courier 140 18 1911 602 (0.000244140625) text*
+1871 604 2051 604 2051 605 1871 605 box* %(1871, 604)(180, 1)
+/Courier 160 18 1891 625 (129.746337890625) text*
+1871 627 2051 627 2051 628 1871 628 box* %(1871, 627)(180, 1)
+/Courier 180 18 1871 648 (59604.644775390625) text*
+1871 650 2051 650 2051 651 1871 651 box* %(1871, 650)(180, 1)
+/Courier 180 18 1871 671 (3379220.5080566406) text*
+1871 673 2051 673 2051 674 1871 674 box* %(1871, 673)(180, 1)
+/Courier 180 18 1871 694 (68952523.554931641) text*
+1871 696 2051 696 2051 697 1871 697 box* %(1871, 696)(180, 1)
+/Courier 180 18 1871 717 (766217865.41040039) text*
+1871 719 2051 719 2051 720 1871 720 box* %(1871, 719)(180, 1)
+/Courier 180 18 1871 740 (5688009063.1057129) text*
+1871 742 2051 742 2051 743 1871 743 box* %(1871, 742)(180, 1)
+/Courier 180 18 1871 763 (31676352024.078369) text*
+1871 765 2051 765 2051 766 1871 766 box* %(1871, 765)(180, 1)
+/Courier 180 18 1871 786 (142241757136.17212) text*
+1871 788 2051 788 2051 789 1871 789 box* %(1871, 788)(180, 1)
+/Courier 180 18 1871 809 (540360087662.63696) text*
+1871 811 2051 811 2051 812 1871 812 box* %(1871, 811)(180, 1)
+/Courier 180 18 1871 832 (1795856326022.1292) text*
+1871 834 2051 834 2051 835 1871 835 box* %(1871, 834)(180, 1)
+/Courier 180 18 1871 855 (5350250105473.7109) text*
+1871 857 2051 857 2051 858 1871 858 box* %(1871, 857)(180, 1)
+/Courier 180 18 1871 878 (14551915228366.852) text*
+1871 880 2051 880 2051 881 1871 881 box* %(1871, 880)(180, 1)
+/Courier 170 18 1881 901 (36644198070556.43) text*
+1871 903 2051 903 2051 904 1871 904 box* %(1871, 903)(180, 1)
+/Courier 180 18 1871 924 (86380562306022.719) text*
+1871 926 2051 926 2051 927 1871 927 box* %(1871, 926)(180, 1)
+/Courier 180 18 1871 947 (192300484323376.41) text*
+1871 949 2051 949 2051 950 1871 950 box* %(1871, 949)(180, 1)
+/Courier 180 18 1871 970 (407199588611568.62) text*
+1871 972 2051 972 2051 973 1871 973 box* %(1871, 972)(180, 1)
+/Courier 180 18 1871 993 (825005006849765.75) text*
+1871 995 2051 995 2051 996 1871 996 box* %(1871, 995)(180, 1)
+/Courier 180 18 1871 1016 (1607166017050789.8) text*
+1871 1018 2051 1018 2051 1019 1871 1019 box* %(1871, 1018)(180, 1)
+/Courier 160 18 1891 1039 (3022841224505963) text*
+2053 559 2054 559 2054 1041 2053 1041 box* %(2053, 559)(1, 482)
+1856 1041 2054 1041 2054 1042 1856 1042 box* %(1856, 1041)(198, 1)
+2056 558 2057 558 2057 1042 2056 1042 box* %(2056, 558)(1, 484)
+2059 558 2257 558 2257 559 2059 559 box* %(2059, 558)(198, 1)
+2059 559 2060 559 2060 1041 2059 1041 box* %(2059, 559)(1, 482)
+/Courier 10 18 2244 579 (0) text*
+2074 581 2254 581 2254 582 2074 582 box* %(2074, 581)(180, 1)
+/Courier 150 18 2104 602 (0.0001220703125) text*
+2074 604 2254 604 2254 605 2074 605 box* %(2074, 604)(180, 1)
+/Courier 170 18 2084 625 (194.6195068359375) text*
+2074 627 2254 627 2254 628 2074 628 box* %(2074, 627)(180, 1)
+/Courier 180 18 2074 648 (149011.61193847656) text*
+2074 650 2254 650 2254 651 2074 651 box* %(2074, 650)(180, 1)
+/Courier 180 18 2074 671 (11827271.778198242) text*
+2074 673 2254 673 2254 674 2074 674 box* %(2074, 673)(180, 1)
+/Courier 180 18 2074 694 (310286355.99719238) text*
+2074 696 2254 696 2254 697 2074 697 box* %(2074, 696)(180, 1)
+/Courier 180 18 2074 717 (4214198259.7572021) text*
+2074 719 2254 719 2254 720 2074 720 box* %(2074, 719)(180, 1)
+/Courier 180 18 2074 740 (36972058910.187134) text*
+2074 742 2254 742 2254 743 2074 743 box* %(2074, 742)(180, 1)
+/Courier 180 18 2074 763 (237572640180.58777) text*
+2074 765 2254 765 2254 766 2074 766 box* %(2074, 765)(180, 1)
+/Courier 180 18 2074 786 (1209054935657.4629) text*
+2074 788 2254 788 2254 789 2074 789 box* %(2074, 788)(180, 1)
+/Courier 180 18 2074 809 (5133420832795.0508) text*
+2074 811 2254 811 2254 812 2074 812 box* %(2074, 811)(180, 1)
+/Courier 180 18 2074 832 (18856491423232.355) text*
+2074 834 2254 834 2254 835 2074 835 box* %(2074, 834)(180, 1)
+/Courier 170 18 2084 855 (61527876212947.68) text*
+2074 857 2254 857 2254 858 2074 858 box* %(2074, 857)(180, 1)
+/Courier 180 18 2074 878 (181898940354585.66) text*
+2074 880 2254 880 2254 881 2074 881 box* %(2074, 880)(180, 1)
+/Courier 180 18 2074 901 (494696673952511.75) text*
+2074 903 2254 903 2254 904 2074 904 box* %(2074, 903)(180, 1)
+/Courier 180 18 2074 924 (1252518153437329.2) text*
+2074 926 2254 926 2254 927 2074 927 box* %(2074, 926)(180, 1)
+/Courier 180 18 2074 947 (2980657507012334.5) text*
+2074 949 2254 949 2254 950 2074 950 box* %(2074, 949)(180, 1)
+/Courier 160 18 2094 970 (6718793212090882) text*
+2074 972 2254 972 2254 973 2074 973 box* %(2074, 972)(180, 1)
+/Courier 170 18 2084 993 (14437587619870902) text*
+2074 995 2254 995 2254 996 2074 996 box* %(2074, 995)(180, 1)
+/Courier 170 18 2084 1016 (29732571315439612) text*
+2074 1018 2254 1018 2254 1019 2074 1019 box* %(2074, 1018)(180, 1)
+/Courier 170 18 2084 1039 (58945403877866280) text*
+2256 559 2257 559 2257 1041 2256 1041 box* %(2256, 559)(1, 482)
+2059 1041 2257 1041 2257 1042 2059 1042 box* %(2059, 1041)(198, 1)
+2259 558 2260 558 2260 1042 2259 1042 box* %(2259, 558)(1, 484)
+2262 558 2500 558 2500 559 2262 559 box* %(2262, 558)(238, 1)
+2262 559 2263 559 2263 1041 2262 1041 box* %(2262, 559)(1, 482)
+/Courier 10 18 2487 579 (0) text*
+2277 581 2497 581 2497 582 2277 582 box* %(2277, 581)(220, 1)
+/Courier 150 18 2347 602 (6.103515625e-05) text*
+2277 604 2497 604 2497 605 2277 605 box* %(2277, 604)(220, 1)
+/Courier 180 18 2317 625 (291.92926025390625) text*
+2277 627 2497 627 2497 628 2277 628 box* %(2277, 627)(220, 1)
+/Courier 180 18 2317 648 (372529.02984619141) text*
+2277 650 2497 650 2497 651 2277 651 box* %(2277, 650)(220, 1)
+/Courier 180 18 2317 671 (41395451.223693848) text*
+2277 673 2497 673 2497 674 2277 674 box* %(2277, 673)(220, 1)
+/Courier 180 18 2317 694 (1396288601.9873657) text*
+2277 696 2497 696 2497 697 2277 697 box* %(2277, 696)(220, 1)
+/Courier 180 18 2317 717 (23178090428.664612) text*
+2277 719 2497 719 2497 720 2277 720 box* %(2277, 719)(220, 1)
+/Courier 180 18 2317 740 (240318382916.21637) text*
+2277 742 2497 742 2497 743 2277 743 box* %(2277, 742)(220, 1)
+/Courier 180 18 2317 763 (1781794801354.4082) text*
+2277 765 2497 765 2497 766 2277 766 box* %(2277, 765)(220, 1)
+/Courier 180 18 2317 786 (10276966953088.436) text*
+2277 788 2497 788 2497 789 2277 789 box* %(2277, 788)(220, 1)
+/Courier 180 18 2317 809 (48767497911552.984) text*
+2277 811 2497 811 2497 812 2277 812 box* %(2277, 811)(220, 1)
+/Courier 180 18 2317 832 (197993159943939.75) text*
+2277 834 2497 834 2497 835 2277 835 box* %(2277, 834)(220, 1)
+/Courier 180 18 2317 855 (707570576448898.25) text*
+2277 857 2497 857 2497 858 2277 858 box* %(2277, 857)(220, 1)
+/Courier 180 18 2317 878 (2273736754432320.5) text*
+2277 880 2497 880 2497 881 2277 881 box* %(2277, 880)(220, 1)
+/Courier 160 18 2337 901 (6678405098358909) text*
+2277 903 2497 903 2497 904 2277 904 box* %(2277, 903)(220, 1)
+/Courier 170 18 2327 924 (18161513224841276) text*
+2277 926 2497 926 2497 927 2277 927 box* %(2277, 926)(220, 1)
+/Courier 170 18 2327 947 (46200191358691184) text*
+2277 949 2497 949 2497 950 2277 950 box* %(2277, 949)(220, 1)
+/Courier 220 18 2277 970 (1.1086008799949955e+17) text*
+2277 972 2497 972 2497 973 2277 973 box* %(2277, 972)(220, 1)
+/Courier 220 18 2277 993 (2.5265778334774077e+17) text*
+2277 995 2497 995 2497 996 2277 996 box* %(2277, 995)(220, 1)
+/Courier 220 18 2277 1016 (5.5005256933563283e+17) text*
+2277 1018 2497 1018 2497 1019 2277 1019 box* %(2277, 1018)(220, 1)
+/Courier 220 18 2277 1039 (1.1494353756183924e+18) text*
+2499 559 2500 559 2500 1041 2499 1041 box* %(2499, 559)(1, 482)
+2262 1041 2500 1041 2500 1042 2262 1042 box* %(2262, 1041)(238, 1)
+2502 556 2503 556 2503 1044 2502 1044 box* %(2502, 556)(1, 488)
+25 1044 2503 1044 2503 1045 25 1045 box* %(25, 1044)(2478, 1)
+2505 553 2506 553 2506 1047 2505 1047 box* %(2505, 553)(1, 494)
+22 1047 2506 1047 2506 1048 22 1048 box* %(22, 1047)(2484, 1)
+2506 553 2507 553 2507 1048 2506 1048 box* %(2506, 553)(1, 495)
+23 1048 2507 1048 2507 1049 23 1049 box* %(23, 1048)(2484, 1)
+%%Trailer
+
+% $Id$
+% Trailer for DDD PostScript Box output
+
+grestore
+showpage
+end		% of ddddict 

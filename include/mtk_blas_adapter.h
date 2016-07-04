@@ -1,17 +1,18 @@
 /*!
 \file mtk_blas_adapter.h
 
-\brief Adapter class for the BLAS API.
+\brief Declaration of an adapter class for the BLAS API.
 
-This class contains a collection of static classes, that posses direct access
-to the underlying structure of the matrices, thus allowing programmers to
-exploit some of the numerical methods implemented in the BLAS.
+Declaration of a class that contains a collection of static member functions,
+that possess direct access to the underlying structure of the matrices, thus
+allowing programmers to exploit some of the numerical methods implemented in
+the BLAS.
 
-The BLAS (Basic Linear Algebra Subprograms) are routines that provide standard
-building blocks for performing basic vector and matrix operations. The Level 1
-BLAS perform scalar, vector and vector-vector operations, the Level 2 BLAS
-perform matrix-vector operations, and the Level 3 BLAS perform matrix-matrix
-operations.
+The **BLAS (Basic Linear Algebra Subprograms)** are routines that provide
+standard building blocks for performing basic vector and matrix operations. The
+Level 1 BLAS perform scalar, vector and vector-vector operations, the Level 2
+BLAS perform matrix-vector operations, and the Level 3 BLAS perform
+matrix-matrix operations.
 
 The BLAS can be installed from links given in the See Also section of this page.
 
@@ -22,7 +23,7 @@ The BLAS can be installed from links given in the See Also section of this page.
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -30,22 +31,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -71,6 +72,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define	MTK_INCLUDE_BLAS_ADAPTER_H_
 
 #include "mtk_dense_matrix.h"
+#include "mtk_uni_stg_grid_1d.h"
 
 namespace mtk {
 
@@ -81,8 +83,8 @@ namespace mtk {
 
 \brief Adapter class for the BLAS API.
 
-This class contains a collection of static classes, that posses direct access
-to the underlying structure of the matrices, thus allowing programmers to
+This class contains a collection of static member functions, that possess direct
+access to the underlying structure of the matrices, thus allowing programmers to
 exploit some of the numerical methods implemented in the BLAS.
 
 The **BLAS (Basic Linear Algebra Subprograms)** are routines that provide
@@ -92,6 +94,8 @@ BLAS perform matrix-vector operations, and the Level 3 BLAS perform
 matrix-matrix operations.
 
 \sa http://www.netlib.org/blas/
+
+\sa https://software.intel.com/en-us/non-commercial-software-development
 */
 class BLASAdapter {
  public:
@@ -143,7 +147,6 @@ class BLASAdapter {
   \brief Real-Arithmetic General (Dense matrices) Matrix-Vector Multiplier.
 
   Performs
-
   \f[
     \mathbf{y} := \alpha\mathbf{A}\mathbf{x} + \beta\mathbf{y}
   \f]
@@ -163,10 +166,39 @@ class BLASAdapter {
                           Real *yy);
 
   /*!
+  \brief Real-Arithmetic General (Dense matrices) Matrix-Vector Multiplier.
+
+  Performs
+  \f[
+    \mathbf{y} := \alpha\mathbf{A}\mathbf{x} + \beta\mathbf{y}
+  \f]
+
+  \param[in] alpha First scalar.
+  \param[in] aa Given matrix.
+  \param[in] ordering Ordering of the matrix.
+  \param[in] num_rows Number of rows.
+  \param[in] num_cols Number of columns.
+  \param[in] lda Leading dimension.
+  \param[in] xx First vector.
+  \param[in] beta Second scalar.
+  \param[in,out] yy Second vector (output).
+
+  \sa http://ejspeiro.github.io/Netlib-and-CPP/
+  */
+  static void RealDenseMV(Real &alpha,
+                          Real *aa,
+                          MatrixOrdering &ordering,
+                          int num_rows,
+                          int num_cols,
+                          int lda,
+                          Real *xx,
+                          Real &beta,
+                          Real *yy);
+
+  /*!
   \brief Real-Arithmetic General (Dense matrices) Matrix-Matrix multiplier.
 
   Performs:
-
   \f[
   \mathbf{C} := \mathbf{A}\mathbf{B}
   \f]
@@ -177,6 +209,22 @@ class BLASAdapter {
   \sa http://ejspeiro.github.io/Netlib-and-CPP/
   */
   static DenseMatrix RealDenseMM(DenseMatrix &aa, DenseMatrix &bb);
+
+  /*!
+  \brief Real-Arithmetic General (Dense matrices) Scalar-Matrix multiplier.
+
+  Performs:
+
+  \f[
+  \mathbf{B} := \alpha\mathbf{A}
+  \f]
+
+  \param[in] alpha Input scalar.
+  \param[in] aa Input matrix.
+
+  \sa http://ejspeiro.github.io/Netlib-and-CPP/
+  */
+  static DenseMatrix RealDenseSM(Real alpha, DenseMatrix &aa);
 };
 }
 #endif	// End of: MTK_INCLUDE_BLAS_ADAPTER_H_

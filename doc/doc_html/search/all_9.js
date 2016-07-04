@@ -1,11 +1,16 @@
 var searchData=
 [
-  ['lap1d',['Lap1D',['../classmtk_1_1Lap1D.html',1,'mtk']]],
-  ['lap1d',['Lap1D',['../classmtk_1_1Lap1D.html#a6fc2aeea35d4dfa49f17e625411f5a70',1,'mtk::Lap1D::Lap1D()'],['../classmtk_1_1Lap1D.html#a95c3fdcd0c9e4c56e775a2a20a2fac42',1,'mtk::Lap1D::Lap1D(const Lap1D &amp;lap)']]],
-  ['lapackadapter',['LAPACKAdapter',['../classmtk_1_1LAPACKAdapter.html',1,'mtk']]],
-  ['laplacian_5f',['laplacian_',['../classmtk_1_1Lap1D.html#a64a3977527c00b4ef994d1bd549f82fd',1,'mtk::Lap1D']]],
-  ['laplacian_5flength_5f',['laplacian_length_',['../classmtk_1_1Lap1D.html#a05578b0729f2bb4fe8bb442fc555fa80',1,'mtk::Lap1D']]],
-  ['ld',['ld',['../classmtk_1_1Matrix.html#acdaa5281bd8f86ea4abf20292d9fd20f',1,'mtk::Matrix']]],
-  ['ld_5f',['ld_',['../classmtk_1_1Matrix.html#a8cb46a0aa1d665a9f92f14e66a307bd5',1,'mtk::Matrix']]],
-  ['licensing_20and_20modifications',['Licensing and Modifications',['../section_license_mod.html',1,'']]]
+  ['grids_2e',['Grids.',['../group__c06-grids.html',1,'']]],
+  ['generatediscretedomainx',['GenerateDiscreteDomainX',['../classmtk_1_1UniStgGrid1D.html#a36a7a85e237a4f85c603eac8cf67a704',1,'mtk::UniStgGrid1D']]],
+  ['getvalue',['GetValue',['../classmtk_1_1DenseMatrix.html#a4b23ecbebd970b5eea915dbb50691024',1,'mtk::DenseMatrix']]],
+  ['glpkadapter',['GLPKAdapter',['../classmtk_1_1GLPKAdapter.html',1,'mtk']]],
+  ['grad1d',['Grad1D',['../classmtk_1_1Grad1D.html',1,'mtk']]],
+  ['grad1d',['Grad1D',['../classmtk_1_1Grad1D.html#ae21e6ac2652e653c48f15b304ee83a75',1,'mtk::Grad1D::Grad1D()'],['../classmtk_1_1Grad1D.html#a5708bcb61bde3f7f3a4ddede191d82a4',1,'mtk::Grad1D::Grad1D(const Grad1D &amp;grad)']]],
+  ['grad2d',['Grad2D',['../classmtk_1_1Grad2D.html#a15bdca254b7bf662913b34c7afb8d4c9',1,'mtk::Grad2D::Grad2D()'],['../classmtk_1_1Grad2D.html#a31ccf118edb128c85f28b579bd9394a8',1,'mtk::Grad2D::Grad2D(const Grad2D &amp;grad)']]],
+  ['grad2d',['Grad2D',['../classmtk_1_1Grad2D.html',1,'mtk']]],
+  ['grad3d',['Grad3D',['../classmtk_1_1Grad3D.html',1,'mtk']]],
+  ['grad3d',['Grad3D',['../classmtk_1_1Grad3D.html#a035b360199d58fed7a2436375951e10d',1,'mtk::Grad3D::Grad3D()'],['../classmtk_1_1Grad3D.html#ab65fd99ad56efd41d9a76f25a531d85c',1,'mtk::Grad3D::Grad3D(const Grad3D &amp;grad)']]],
+  ['gradient',['GRADIENT',['../namespacemtk.html#ga9b50023bfb2692219d2915feade94f80a90f70ea2675c36bd9b0b44a79f37a41f',1,'mtk']]],
+  ['gradient_5f',['gradient_',['../classmtk_1_1Grad1D.html#a024b84b1ea285c0c590eb42d40ff4469',1,'mtk::Grad1D::gradient_()'],['../classmtk_1_1Grad2D.html#a22b5ad8454b013e365257dcae04d87a4',1,'mtk::Grad2D::gradient_()'],['../classmtk_1_1Grad3D.html#ad3c0ade3555aa72f7d392b3d5f218f43',1,'mtk::Grad3D::gradient_()']]],
+  ['gradient_5flength_5f',['gradient_length_',['../classmtk_1_1Grad1D.html#a98a444d0833fec92fb9908e3ea71a511',1,'mtk::Grad1D']]]
 ];

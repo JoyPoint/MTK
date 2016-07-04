@@ -1,17 +1,18 @@
 /*!
-\file mtk_blas_facade.cc
+\file mtk_blas_adapter.cc
 
-\brief Adapter class for the BLAS API.
+\brief Definition of an adapter class for the BLAS API.
 
-This class contains a collection of static classes, that posses direct access
-to the underlying structure of the matrices, thus allowing programmers to
-exploit some of the numerical methods implemented in the BLAS.
+Definition of a class that contains a collection of static member
+functions, that posses direct access to the underlying structure of the
+matrices, thus allowing programmers to exploit some of the numerical methods
+implemented in the BLAS.
 
-The BLAS (Basic Linear Algebra Subprograms) are routines that provide standard
-building blocks for performing basic vector and matrix operations. The Level 1
-BLAS perform scalar, vector and vector-vector operations, the Level 2 BLAS
-perform matrix-vector operations, and the Level 3 BLAS perform matrix-matrix
-operations.
+The **BLAS (Basic Linear Algebra Subprograms)** are routines that provide
+standard building blocks for performing basic vector and matrix operations. The
+Level 1 BLAS perform scalar, vector and vector-vector operations, the Level 2
+BLAS perform matrix-vector operations, and the Level 3 BLAS perform
+matrix-matrix operations.
 
 The BLAS can be installed from links given in the See Also section of this page.
 
@@ -19,10 +20,12 @@ The BLAS can be installed from links given in the See Also section of this page.
 
 \sa https://software.intel.com/en-us/non-commercial-software-development
 
+\todo Write documentation using LaTeX.
+
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -30,22 +33,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -72,7 +75,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <vector>
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_tools.h"
 #include "mtk_blas_adapter.h"
 
@@ -305,25 +308,25 @@ C := alpha*op(a)*op(b) + beta*c
 \param[in]      ldc     The leading dimension of c.
 */
 void sgemm_(char *transa,
-            char* transb,
-            int *m,
-            int *n,
-            int *k,
-            double *alpha,
-            double *a,
-            int *lda,
-            double *b,aamm
-            int *ldb,
-            double *beta,
-            double *c,
-            int *ldc);
+		        char* transb,
+		        int *m,
+		        int *n,
+		        int *k,
+		        double *alpha,
+		        double *a,
+		        int *lda,
+		        double *b,
+		        int *ldb,
+		        double *beta,
+		        double *c,
+		        int *ldc);
 }
 #endif
 }
 
 mtk::Real mtk::BLASAdapter::RealNRM2(Real *in, int &in_length) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(in_length <= 0, __FILE__, __LINE__, __func__);
   #endif
 
@@ -341,7 +344,7 @@ void mtk::BLASAdapter::RealAXPY(mtk::Real alpha,
                                      mtk::Real *yy,
                                      int &in_length) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(xx == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(yy == nullptr, __FILE__, __LINE__, __func__);
   #endif
@@ -359,7 +362,7 @@ mtk::Real mtk::BLASAdapter::RelNorm2Error(mtk::Real *computed,
                                           mtk::Real *known,
                                           int length) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(computed == nullptr, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(known == nullptr, __FILE__, __LINE__, __func__);
   #endif
@@ -383,17 +386,17 @@ void mtk::BLASAdapter::RealDenseMV(mtk::Real &alpha,
 
   // Make sure input matrices are row-major ordered.
 
-  if (aa.matrix_properties().ordering() == mtk::COL_MAJOR) {
+  if (aa.matrix_properties().ordering() == mtk::MatrixOrdering::COL_MAJOR) {
     aa.OrderRowMajor();
   }
 
   char transa{'T'}; // State that now, the input WILL be in row-major ordering.
 
-  int mm{aa.num_rows()};                  // Rows of aa.
-  int nn{aa.num_cols()};                  // Columns of aa.
-  int lda{(aa.matrix_properties()).ld()}; // Leading dimension.
-  int incx{1};                            // Increment of values in x.
-  int incy{1};                            // Increment of values in y.
+  int mm{aa.num_rows()};                  								// Rows of aa.
+  int nn{aa.num_cols()};                  								// Columns of aa.
+  int lda{(aa.matrix_properties()).leading_dimension()};	// Leading dimension.
+  int incx{1};                            								// Increment x vals.
+  int incy{1};                            								// Increment y vals.
 
   std::swap(mm,nn);
   #ifdef MTK_PRECISION_DOUBLE
@@ -406,23 +409,57 @@ void mtk::BLASAdapter::RealDenseMV(mtk::Real &alpha,
   std::swap(mm,nn);
 }
 
+void mtk::BLASAdapter::RealDenseMV(mtk::Real &alpha,
+                                   mtk::Real *aa,
+                                   mtk::MatrixOrdering &ordering,
+                                   int num_rows,
+                                   int num_cols,
+                                   int lda,
+                                   mtk::Real *xx,
+                                   mtk::Real &beta,
+                                   mtk::Real *yy) {
+
+  // Make sure input matrices are row-major ordered.
+
+  #ifdef MTK_PERFORM_PREVENTIONS
+  mtk::Tools::Prevent(ordering != mtk::MatrixOrdering::ROW_MAJOR,
+                      __FILE__, __LINE__, __func__);
+  #endif
+
+
+  char transa{'T'}; // State that now, the input WILL be in row-major ordering.
+
+  int mm{num_rows}; // Rows of aa.
+  int nn{num_cols}; // Columns of aa.
+  int incx{1};      // Increment of values in x.
+  int incy{1};      // Increment of values in y.
+
+  std::swap(mm,nn);
+  #ifdef MTK_PRECISION_DOUBLE
+  dgemv_(&transa, &mm, &nn, &alpha, aa, &lda, xx, &incx, &beta, yy, &incy);
+  #else
+  sgemv_(&transa, &mm, &nn, &alpha, aa, &lda, xx, &incx, &beta, yy, &incy);
+  #endif
+  std::swap(mm,nn);
+}
+
 mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM(mtk::DenseMatrix &aa,
                                                mtk::DenseMatrix &bb) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(aa.num_cols() != bb.num_rows(),
                       __FILE__, __LINE__, __func__);
   #endif
 
-  // Make sure input matrices are row-major ordered.
-
-  if (aa.matrix_properties().ordering() == mtk::COL_MAJOR) {
+  /// 1. Make sure input matrices are row-major ordered.
+  if (aa.matrix_properties().ordering() == mtk::MatrixOrdering::COL_MAJOR) {
     aa.OrderRowMajor();
   }
-  if (bb.matrix_properties().ordering() == mtk::COL_MAJOR) {
+  if (bb.matrix_properties().ordering() == mtk::MatrixOrdering::COL_MAJOR) {
     bb.OrderRowMajor();
   }
 
+  /// 2. Setup the problem.
   char ta{'T'}; // State that input matrix aa is in row-wise ordering.
   char tb{'T'}; // State that input matrix bb is in row-wise ordering.
 
@@ -437,13 +474,14 @@ mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM(mtk::DenseMatrix &aa,
   int ldb{std::max(1,nn)};  // Leading dimension of the bb matrix.
   int ldc{std::max(1,mm)};  // Leading dimension of the cc matrix.
 
-  mtk::Real alpha{1.0}; // First scalar coefficient.
-  mtk::Real beta{0.0};  // Second scalar coefficient.
+  mtk::Real alpha{mtk::kOne}; // First scalar coefficient.
+  mtk::Real beta{mtk::kZero}; // Second scalar coefficient.
 
   mtk::DenseMatrix cc_col_maj_ord(cc_num_rows,cc_num_cols); // Output matrix.
 
-  cc_col_maj_ord.SetOrdering(mtk::COL_MAJOR);
+  cc_col_maj_ord.SetOrdering(mtk::MatrixOrdering::COL_MAJOR);
 
+  /// 3. Perform multiplication.
   #ifdef MTK_PRECISION_DOUBLE
   dgemm_(&ta, &tb, &mm, &nn, &kk, &alpha, aa.data(), &lda,
          bb.data(), &ldb, &beta, cc_col_maj_ord.data(), &ldc);
@@ -452,7 +490,7 @@ mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM(mtk::DenseMatrix &aa,
          bb.data(), &ldb, &beta, cc_col_maj_ord.data(), &ldc);
   #endif
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 12
   std::cout << "cc_col_maj_ord =" << std::endl;
   std::cout << cc_col_maj_ord << std::endl;
   #endif
@@ -460,4 +498,52 @@ mtk::DenseMatrix mtk::BLASAdapter::RealDenseMM(mtk::DenseMatrix &aa,
   cc_col_maj_ord.OrderRowMajor();
 
   return cc_col_maj_ord;
+}
+
+mtk::DenseMatrix mtk::BLASAdapter::RealDenseSM(mtk::Real alpha,
+                                               mtk::DenseMatrix &aa) {
+
+  #ifdef MTK_PERFORM_PREVENTIONS
+  mtk::Tools::Prevent(aa.num_rows() == 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(aa.num_cols() == 0, __FILE__, __LINE__, __func__);
+  #endif
+
+  /// 1. Make sure input matrices are row-major ordered.
+  if (aa.matrix_properties().ordering() == mtk::MatrixOrdering::COL_MAJOR) {
+    aa.OrderRowMajor();
+  }
+
+  /// 2. Setup the problem.
+  char ta{'T'}; // State that input matrix aa is in row-wise ordering.
+  char tb{'T'}; // State that input matrix bb is in row-wise ordering.
+
+  int mm{aa.num_rows()};  // Rows of aa and rows of cc.
+  int nn{aa.num_cols()};  // Cols of bb and cols of cc.
+  int kk{aa.num_cols()};  // Cols of aa and rows of bb.
+
+  int lda{std::max(1,kk)};  // Leading dimension of the aa matrix.
+  int ldb{std::max(1,nn)};  // Leading dimension of the bb matrix.
+  int ldc{std::max(1,mm)};  // Leading dimension of the cc matrix.
+
+  mtk::Real beta{alpha}; // Second scalar coefficient.
+
+  alpha = mtk::kZero;
+
+  mtk::DenseMatrix alpha_aa(aa); // Output matrix.
+
+  /// 3. Perform multiplication.
+  #ifdef MTK_PRECISION_DOUBLE
+  dgemm_(&ta, &tb, &mm, &nn, &kk, &alpha, aa.data(), &lda,
+         aa.data(), &ldb, &beta, alpha_aa.data(), &ldc);
+  #else
+  sgemm_(&ta, &tb, &mm, &nn, &kk, &alpha, aa.data(), &lda,
+         aa.data(), &ldb, &beta, alpha_aa.data(), &ldc);
+  #endif
+
+  #if MTK_VERBOSE_LEVEL > 12
+  std::cout << "alpha_aa =" << std::endl;
+  std::cout << alpha_aa << std::endl;
+  #endif
+
+  return alpha_aa;
 }

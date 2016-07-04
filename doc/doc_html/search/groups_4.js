@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['numerical_20methods_2e',['Numerical methods.',['../group__c05-num__methods.html',1,'']]]
+  ['mimetic_20operators_2e',['Mimetic Operators.',['../group__c07-mim__ops.html',1,'']]]
 ];

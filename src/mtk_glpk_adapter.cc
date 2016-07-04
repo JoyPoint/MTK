@@ -1,11 +1,12 @@
 /*!
 \file mtk_glpk_adapter.cc
 
-\brief Adapter class for the GLPK API.
+\brief Definition of an adapter class for the GLPK API.
 
-This class contains a collection of static classes, that posses direct access
-to the underlying structure of the matrices, thus allowing programmers to
-exploit some of the numerical methods implemented in the GLPK.
+Definition of a class that contains a collection of static member
+functions, that possess direct access to the underlying structure of the
+matrices, thus allowing programmers to exploit some of the numerical methods
+implemented in the GLPK.
 
 The **GLPK (GNU Linear Programming Kit)** package is intended for solving
 large-scale linear programming (LP), mixed integer programming (MIP), and other
@@ -15,11 +16,9 @@ form of a callable library.
 \sa http://www.gnu.org/software/glpk/
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
-
-\todo Document better this file.
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -27,22 +26,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -71,7 +70,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <iomanip>
 #include <limits>
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_blas_adapter.h"
 #include "mtk_glpk_adapter.h"
 
@@ -83,35 +82,36 @@ mtk::Real mtk::GLPKAdapter::SolveSimplexAndCompare(mtk::Real *A,
                                                    mtk::Real *qq,
                                                    int robjective,
                                                    mtk::Real mimetic_threshold,
-                                                   int copy) {
+                                                   int copy) noexcept {
 
   #if MTK_DEBUG_LEVEL > 0
-  char mps_file_name[18]; //  File name for the MPS files.
+  char mps_file_name[18]; // File name for the MPS files.
   #endif
-  char rname[5];          //
-  char cname[5];          //
+  char rname[5];          // Row name.
+  char cname[5];          // Column name.
 
   glp_prob *lp; // Linear programming problem.
 
-  int *ia;  //
-  int *ja;  //
+  int *ia;  // Array for the problem.
+  int *ja;  // Array for the problem.
 
   int problem_size; // Size of the problem.
   int lp_nrows;     // Number of rows.
   int lp_ncols;     // Number of columns.
-  int matsize;      //
-  int glp_index{1};    // Index of the objective function.
-  int ii;           //
-  int jj;           //
+  int matsize;      // Size of the matrix.
+  int glp_index{1}; // Index of the objective function.
+  int ii;           // Iterator.
+  int jj;           // Iterator.
 
-  mtk::Real *ar;            //
-  mtk::Real *objective;     //
-  mtk::Real *rhs;           //
-  mtk::Real *err;           //
-  mtk::Real x1;             //
+  mtk::Real *ar;            // Array for the problem.
+  mtk::Real *objective;     // Array containing the objective function.
+  mtk::Real *rhs;           // Array containing the rhs.
+  mtk::Real *err;           // Array of errors.
+
+  mtk::Real x1;             // Norm-2 of the error.
 
   #if MTK_DEBUG_LEVEL > 0
-  mtk::Real obj_value;      //
+  mtk::Real obj_value;      // Value of the objective function.
   #endif
 
   lp_nrows = kk;
@@ -122,6 +122,7 @@ mtk::Real mtk::GLPKAdapter::SolveSimplexAndCompare(mtk::Real *A,
   /// \warning GLPK indexes in [1,n], so we must get the extra space needed.
 
   /// 1. Memory allocation.
+
   problem_size = lp_nrows*lp_ncols + 1;
 
   try {
@@ -274,7 +275,7 @@ mtk::Real mtk::GLPKAdapter::SolveSimplexAndCompare(mtk::Real *A,
     ja[ii] = (ii - 1) % lp_ncols + 1;
   }
 
-  glp_load_matrix (lp, matsize, ia, ja, ar);
+  glp_load_matrix(lp, matsize, ia, ja, ar);
 
   #if MTK_DEBUG_LEVEL > 0
   sprintf(mps_file_name, "LP_MPS_row_%02d.mps", robjective);
@@ -285,7 +286,7 @@ mtk::Real mtk::GLPKAdapter::SolveSimplexAndCompare(mtk::Real *A,
 
   glp_simplex (lp, nullptr);
 
-  // Check status of the solution.
+  // Check status of the solution, determining if this was a feasible solution.
 
   if (glp_get_status(lp) == GLP_OPT) {
 

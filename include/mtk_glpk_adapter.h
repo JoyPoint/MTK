@@ -1,11 +1,12 @@
 /*!
 \file mtk_glpk_adapter.h
 
-\brief Adapter class for the GLPK API.
+\brief Declaration of an adapter class for the GLPK API.
 
-This class contains a collection of static classes, that posses direct access
-to the underlying structure of the matrices, thus allowing programmers to
-exploit some of the numerical methods implemented in the GLPK.
+Declaration of a class that contains a collection of static member functions,
+that possess direct access to the underlying structure of the matrices, thus
+allowing programmers to exploit some of the numerical methods implemented in
+the GLPK.
 
 The **GLPK (GNU Linear Programming Kit)** package is intended for solving
 large-scale linear programming (LP), mixed integer programming (MIP), and other
@@ -17,7 +18,7 @@ form of a callable library.
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -25,22 +26,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -70,7 +71,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include "glpk.h"
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_dense_matrix.h"
 
 namespace mtk {
@@ -82,8 +83,8 @@ namespace mtk {
 
 \brief Adapter class for the GLPK API.
 
-This class contains a collection of static classes, that posses direct access
-to the underlying structure of the matrices, thus allowing programmers to
+This class contains a collection of static member functions, that possess direct
+access to the underlying structure of the matrices, thus allowing programmers to
 exploit some of the numerical methods implemented in the GLPK.
 
 The **GLPK (GNU Linear Programming Kit)** package is intended for solving
@@ -92,11 +93,9 @@ related problems. It is a set of routines written in ANSI C and organized in the
 form of a callable library.
 
 \warning We use the GLPK temporarily in order to test the CBSA, but it will be
-removed due to licensing issues.
+removed due to potential licensing issues.
 
 \sa http://www.gnu.org/software/glpk/
-
-\todo Rescind from the GLPK as the numerical core for CLO problems.
 */
 class GLPKAdapter {
  public:
@@ -108,25 +107,27 @@ class GLPKAdapter {
   reference solution. This comparison is done computing the norm-2 relative
   error.
 
-  \param[in] alpha First scalar.
   \param[in] AA Given matrix.
-  \param[in] xx First vector.
-  \param[in] beta Second scalar.
-  \param[in] beta Second scalar.
-  \param[in,out] yy Second vector (output).
-  \param[in] xx First vector.
-  \param[in] beta Second scalar.
-  \param[in] beta Second scalar.
+  \param[in] nrows Number of rows of the matrix.
+  \param[in] ncols Number of rows of the matrix.
+  \param[in] kk Length of the RHS vector of constraints.
+  \param[in] hh RHS vector of constraints.
+  \param[in,out] qq Output decision vector.
+  \param[in] robjective Row of the system to be chosen as objective function.
+  \param[in] mimetic_threshold Mimetic threshold.
+  \param[in] copy Should we actually copy the results to the output?
+
+  \return Relative error computed between attained solution and provided ref.
   */
-  static mtk::Real SolveSimplexAndCompare(mtk::Real *A,
+  static mtk::Real SolveSimplexAndCompare(mtk::Real *AA,
                                           int nrows,
                                           int ncols,
                                           int kk,
                                           mtk::Real *hh,
                                           mtk::Real *qq,
                                           int robjective,
-                                          mtk::Real mimetic_tol,
-                                          int copy);
+                                          mtk::Real mimetic_threshold,
+                                          int copy) noexcept;
 };
 }
 #endif  // End of: MTK_INCLUDE_MTK_GLPK_ADAPTER_H_

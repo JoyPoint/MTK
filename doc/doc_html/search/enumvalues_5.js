@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vector',['VECTOR',['../namespacemtk.html#ga4c54f2a329cfb4e56213b02a259d19e2a3d8cb27a993651a74d67fb8c98ae91b2',1,'mtk']]]
+  ['laplacian',['LAPLACIAN',['../namespacemtk.html#ga9b50023bfb2692219d2915feade94f80a1c2d5f3f8e6cbb0c7b033c388c905d22',1,'mtk']]]
 ];

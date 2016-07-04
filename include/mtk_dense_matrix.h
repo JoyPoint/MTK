@@ -1,20 +1,12 @@
 /*!
 \file mtk_dense_matrix.h
 
-\brief Defines a common dense matrix, using a 1D array.
+\brief Declaration of a class dense matrix implemented using a 1D array.
 
-For developing purposes, it is better to have a not-so-intrincated data
-structure implementing matrices. This is the purpose of this class: to be used
-for prototypes of new code for small test cases. In every other instance, this
-should be replaced by the most appropriate sparse matrix.
+The construction of 1D mimetic operators exclusively involves dense matrix
+arithmetic. We encapsulate the complexity of a dense matrix in this class.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
-
-\todo Add sparse matrices support: BANDED and CRS.
-
-\todo Contemplate manipulation of sparse metrics.
-
-\todo Implement Kronecker product using the BLAS.
 
 \note We prefer composition to inheritance [Reedy, 2011]. The main reason for
 this preference is that inheritance produces a more tightly coupled design. When
@@ -27,7 +19,7 @@ than #include its full definition. This results in greater compile-time
 insulation and improves the time it takes to compile your code.
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -35,22 +27,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -77,9 +69,12 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <iostream>
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_enums.h"
 #include "mtk_matrix.h"
+#include "mtk_uni_stg_grid_1d.h"
+#include "mtk_uni_stg_grid_2d.h"
+#include "mtk_uni_stg_grid_3d.h"
 
 namespace mtk {
 
@@ -97,13 +92,28 @@ should be replaced by the most appropriate sparse matrix.
 */
 class DenseMatrix {
  public:
-  /// \brief Prints the matrix as a block of numbers (standard way).
+	/*!
+  \brief Prints the matrix as a block of numbers (standard way).
+  */
   friend std::ostream& operator <<(std::ostream &stream, DenseMatrix &in);
 
-  /// \brief Overloaded assignment operator.
+  /*!
+  \brief Overloaded assignment operator.
+
+  \param [in] in Given matrix.
+
+  \return Copy of the given matrix.
+  */
   DenseMatrix& operator =(const DenseMatrix &in);
 
-  /// \brief Default constructor.
+  /*!
+  \brief Overloaded comparison operator.
+  */
+  bool operator ==(const DenseMatrix &in);
+
+  /*!
+  \brief Default constructor.
+  */
   DenseMatrix();
 
   /*!
@@ -183,41 +193,57 @@ class DenseMatrix {
 
   \exception std::bad_alloc
   */
-  DenseMatrix(const Real *gen,
+  DenseMatrix(const Real *const gen,
               const int &gen_length,
               const int &pro_length,
               const bool &transpose);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~DenseMatrix();
+
+  /*!
+  \brief Return operator encoded by this matrix.
+
+  \return Operator encoded by this matrix.
+  */
+  EncodedOperator encoded_operator() const;
+
+  /*!
+  \brief Sets the encoded operator.
+
+  \param[in] op Encoded operator.
+  */
+  void set_encoded_operator(const EncodedOperator &op);
 
   /*!
   \brief Provides access to the matrix data.
 
   \return Pointer to a Matrix.
   */
-  Matrix matrix_properties() const;
+  Matrix matrix_properties() const noexcept;
 
   /*!
   \brief Gets the number of rows.
 
   \return Number of rows of the matrix.
   */
-  int num_rows() const;
+  int num_rows() const noexcept;
 
   /*!
   \brief Gets the number of columns.
 
   \return Number of columns of the matrix.
   */
-  int num_cols() const;
+  int num_cols() const noexcept;
 
   /*!
   \brief Provides access to the matrix value array.
 
   \return Pointer to an array of mtk::Real.
   */
-  Real* data() const;
+  Real* data() const noexcept;
 
    /*!
   \brief Sets the ordering of the matrix.
@@ -226,7 +252,7 @@ class DenseMatrix {
 
   \return The required value at the specified coordinates.
   */
-  void SetOrdering(mtk::MatrixOrdering oo);
+  void SetOrdering(mtk::MatrixOrdering oo) noexcept;
 
   /*!
   \brief Gets a value on the given coordinates.
@@ -236,7 +262,7 @@ class DenseMatrix {
 
   \return The required value at the specified coordinates.
   */
-  Real GetValue(const int &row_coord, const int &col_coord) const;
+  Real GetValue(const int &row_coord, const int &col_coord) const noexcept;
 
   /*!
   \brief Sets a value on the given coordinates.
@@ -247,15 +273,21 @@ class DenseMatrix {
   */
   void SetValue(const int &row_coord,
                 const int &col_coord,
-                const Real &val);
+                const Real &val) noexcept;
 
-  /// \brief Transpose this matrix.
+  /*!
+  \brief Transpose this matrix.
+  */
   void Transpose();
 
-  /// \brief Make the matrix row-wise ordered.
+  /*!
+  \brief Make the matrix row-wise ordered.
+  */
   void OrderRowMajor();
 
-  /// \brief Make the matrix column-wise ordered.
+  /*!
+  \brief Make the matrix column-wise ordered.
+  */
   void OrderColMajor();
 
   /*!
@@ -265,13 +297,27 @@ class DenseMatrix {
   \param[in] bb Second matrix.
 
   \exception std::bad_alloc
+
+  \todo Implement Kronecker product using the BLAS.
   */
-  static DenseMatrix Kron(const DenseMatrix &aa, const DenseMatrix &bb);
+  static DenseMatrix Kron(const DenseMatrix &aa,
+                          const DenseMatrix &bb);
+
+  /*!
+  \brief Writes matrix to a file compatible with Gnuplot 4.6.
+
+  \param[in] filename Name of the output file.
+
+  \return Success of the file writing process.
+
+  \sa http://www.gnuplot.info/
+  */
+  bool WriteToFile(const std::string &filename) const;
 
  private:
   Matrix matrix_properties_;  ///< Data related to the matrix nature.
 
-  Real *data_; ///< Array holding the data in contiguouos position in memory.
+  Real *data_; ///< Array holding the data in contiguous position in memory.
 };
 }
-#endif  // End of: MTK_INCLUDE_MTK_DENSE_MATRIX_H_
+#endif  // End of: MTK_INCLUDE_DENSE_MATRIX_H_

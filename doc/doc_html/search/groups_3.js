@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['mimetic_20operators_2e',['Mimetic operators.',['../group__c07-mim__ops.html',1,'']]]
+  ['grids_2e',['Grids.',['../group__c06-grids.html',1,'']]]
 ];

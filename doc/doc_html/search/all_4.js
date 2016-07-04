@@ -1,8 +1,20 @@
 var searchData=
 [
-  ['enumerations_2e',['Enumerations.',['../group__c02-enums.html',1,'']]],
-  ['execution_20tools_2e',['Execution tools.',['../group__c03-execution__tools.html',1,'']]],
-  ['east_5fbndy_5fx_5f',['east_bndy_x_',['../classmtk_1_1UniStgGrid1D.html#a69a7d6be3171e53177e476348d04f4ae',1,'mtk::UniStgGrid1D']]],
-  ['endtestno',['EndTestNo',['../classmtk_1_1Tools.html#a5d3f78d17228fb36a73567c191f0f4ee',1,'mtk::Tools']]],
-  ['examples',['Examples',['../page_examples.html',1,'']]]
+  ['banded',['BANDED',['../namespacemtk.html#ga25b67ec6a2afeee69f9bb196a9c66619a710800eb2f07821684373493be7fee14',1,'mtk']]],
+  ['bandwidth',['bandwidth',['../classmtk_1_1Matrix.html#a6ea9d49db9b0b57617377ed962c2a7e6',1,'mtk::Matrix']]],
+  ['bandwidth_5f',['bandwidth_',['../classmtk_1_1Matrix.html#a892449ddacb81d089818967e65979786',1,'mtk::Matrix']]],
+  ['begin_5ftime_5f',['begin_time_',['../classmtk_1_1Tools.html#a4bd58d08397db42271ed9e2d3ecc9963',1,'mtk::Tools']]],
+  ['beginunittestno',['BeginUnitTestNo',['../classmtk_1_1Tools.html#afc29ecaf337a13ed2e817d3890a5a441',1,'mtk::Tools']]],
+  ['beta',['Beta',['../1d__poisson_8cc.html#a0a4c8f05b82e1ab5111b101dcc8cf4c2',1,'Beta(const mtk::Real &amp;tt, const std::vector&lt; mtk::Real &gt; &amp;pp):&#160;1d_poisson.cc'],['../1d__poisson__minimal_8cc.html#a0a4c8f05b82e1ab5111b101dcc8cf4c2',1,'Beta(const mtk::Real &amp;tt, const std::vector&lt; mtk::Real &gt; &amp;pp):&#160;1d_poisson_minimal.cc'],['../1d__poisson__sensitivity__threshold_8cc.html#a0a4c8f05b82e1ab5111b101dcc8cf4c2',1,'Beta(const mtk::Real &amp;tt, const std::vector&lt; mtk::Real &gt; &amp;pp):&#160;1d_poisson_sensitivity_threshold.cc'],['../1d__poisson__supercritical_8cc.html#a0a4c8f05b82e1ab5111b101dcc8cf4c2',1,'Beta(const mtk::Real &amp;tt, const std::vector&lt; mtk::Real &gt; &amp;pp):&#160;1d_poisson_supercritical.cc']]],
+  ['bindscalarfield',['BindScalarField',['../classmtk_1_1UniStgGrid1D.html#a6ad3040de719dff71d934f0062e9860f',1,'mtk::UniStgGrid1D::BindScalarField(Real(*ScalarField)(const Real &amp;xx, const std::vector&lt; Real &gt; &amp;pp), const std::vector&lt; Real &gt; &amp;parameters=std::vector&lt; Real &gt;())'],['../classmtk_1_1UniStgGrid1D.html#af267608747876c776905679f548982e3',1,'mtk::UniStgGrid1D::BindScalarField(const std::vector&lt; Real &gt; &amp;samples)'],['../classmtk_1_1UniStgGrid2D.html#a5f9910ffb94e0314b16c026c4b5762ee',1,'mtk::UniStgGrid2D::BindScalarField()'],['../classmtk_1_1UniStgGrid3D.html#a02fb1ea08f81e733ab3c8ac244b78371',1,'mtk::UniStgGrid3D::BindScalarField()']]],
+  ['bindvectorfield',['BindVectorField',['../classmtk_1_1UniStgGrid1D.html#ac6f8c592636dfa5a92217ac82405976d',1,'mtk::UniStgGrid1D::BindVectorField()'],['../classmtk_1_1UniStgGrid2D.html#ae274b24672e9bd6075bf38b015bd9083',1,'mtk::UniStgGrid2D::BindVectorField()'],['../classmtk_1_1UniStgGrid3D.html#a7b7f6b162dec10dfb55c8e492e456287',1,'mtk::UniStgGrid3D::BindVectorField()']]],
+  ['bindvectorfieldpcomponent',['BindVectorFieldPComponent',['../classmtk_1_1UniStgGrid2D.html#a47b92d03ef5ed2b1ed28091a424f8f52',1,'mtk::UniStgGrid2D::BindVectorFieldPComponent()'],['../classmtk_1_1UniStgGrid3D.html#adafd3eae199b31b18aceb659ae0ea19d',1,'mtk::UniStgGrid3D::BindVectorFieldPComponent()']]],
+  ['bindvectorfieldqcomponent',['BindVectorFieldQComponent',['../classmtk_1_1UniStgGrid2D.html#a9643167e149da2ea4e57fd12cb9f1a97',1,'mtk::UniStgGrid2D::BindVectorFieldQComponent()'],['../classmtk_1_1UniStgGrid3D.html#aa7a8a5b137889f4ad7d6d0553ab4ebe3',1,'mtk::UniStgGrid3D::BindVectorFieldQComponent()']]],
+  ['bindvectorfieldrcomponent',['BindVectorFieldRComponent',['../classmtk_1_1UniStgGrid3D.html#af84a128a5f42f9a5f571f0a6b1803646',1,'mtk::UniStgGrid3D']]],
+  ['blasadapter',['BLASAdapter',['../classmtk_1_1BLASAdapter.html',1,'mtk']]],
+  ['bottom_5fbndy',['bottom_bndy',['../classmtk_1_1UniStgGrid3D.html#ae060c84d98994e1dd62d75f7226e8a00',1,'mtk::UniStgGrid3D']]],
+  ['bottom_5fbndy_5f',['bottom_bndy_',['../classmtk_1_1UniStgGrid3D.html#aae37910fbf5466a711bf290041839a75',1,'mtk::UniStgGrid3D']]],
+  ['bottom_5fcoefficients_5f',['bottom_coefficients_',['../classmtk_1_1RobinBCDescriptor3D.html#a89bc7efb7b8f5947fb97c1ad5947a4f5',1,'mtk::RobinBCDescriptor3D']]],
+  ['bottom_5fcondition_5f',['bottom_condition_',['../classmtk_1_1RobinBCDescriptor3D.html#aeefbed0ba8c4dbf5e1c077d997fea3c1',1,'mtk::RobinBCDescriptor3D']]],
+  ['bound',['Bound',['../classmtk_1_1UniStgGrid2D.html#aa651194ccd0321a7c61a8f56fa5e8455',1,'mtk::UniStgGrid2D::Bound()'],['../classmtk_1_1UniStgGrid3D.html#a0b4e72db76d5406b65d092a5d31f1361',1,'mtk::UniStgGrid3D::Bound()']]]
 ];

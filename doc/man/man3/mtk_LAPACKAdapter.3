@@ -1,4 +1,4 @@
-.TH "mtk::LAPACKAdapter" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::LAPACKAdapter" 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -27,6 +27,10 @@ Adapter class for the LAPACK API\&.
 .br
 .RI "\fISolves a dense system of linear equations\&. \fP"
 .ti -1c
+.RI "static int \fBSolveDenseSystem\fP (\fBmtk::DenseMatrix\fP &mm, \fBmtk::UniStgGrid2D\fP &rhs)"
+.br
+.RI "\fISolves a dense system of linear equations\&. \fP"
+.ti -1c
 .RI "static int \fBSolveRectangularDenseSystem\fP (const \fBmtk::DenseMatrix\fP &aa, \fBmtk::Real\fP *ob_, int ob_ld_)"
 .br
 .RI "\fISolves overdetermined or underdetermined real linear systems\&. \fP"
@@ -37,18 +41,18 @@ Adapter class for the LAPACK API\&.
 .in -1c
 .SH "Detailed Description"
 .PP 
-This class contains a collection of static classes, that posses direct access to the underlying structure of the matrices, thus allowing programmers to exploit the numerical methods implemented in the LAPACK\&.
+This class contains a collection of static member functions, that possess direct access to the underlying structure of the matrices, thus allowing programmers to exploit the numerical methods implemented in the LAPACK\&.
 .PP
-The \fBLAPACK\fP is written in Fortran 90 and provides routines for solving systems of simultaneous linear equations, least-squares solutions of linear systems of equations, eigenvalue problems, and singular value problems\&.
+The \fBLAPACK (Linear Algebra PACKage)\fP is written in Fortran 90 and provides routines for solving systems of simultaneous linear equations, least-squares solutions of linear systems of equations, eigenvalue problems, and singular value problems\&.
 .PP
-\fBSee Also:\fP
+\fBSee also:\fP
 .RS 4
 http://www.netlib.org/lapack/ 
 .RE
 .PP
 
 .PP
-Definition at line 90 of file mtk_lapack_adapter\&.h\&.
+Definition at line 94 of file mtk_lapack_adapter\&.h\&.
 .SH "Member Function Documentation"
 .PP 
 .SS "\fBmtk::DenseMatrix\fP mtk::LAPACKAdapter::QRFactorDenseMatrix (\fBmtk::DenseMatrix\fP &aa)\fC [static]\fP"
@@ -71,7 +75,7 @@ Adapts the MTK to LAPACK's routine\&.
 .PP
 
 .PP
-Definition at line 553 of file mtk_lapack_adapter\&.cc\&.
+Definition at line 595 of file mtk_lapack_adapter\&.cc\&.
 .SS "int mtk::LAPACKAdapter::SolveDenseSystem (\fBmtk::DenseMatrix\fP &mm, \fBmtk::Real\fP *rhs)\fC [static]\fP"
 Adapts the MTK to LAPACK's dgesv_ routine\&.
 .PP
@@ -89,7 +93,7 @@ Adapts the MTK to LAPACK's dgesv_ routine\&.
 .PP
 
 .PP
-Definition at line 427 of file mtk_lapack_adapter\&.cc\&.
+Definition at line 432 of file mtk_lapack_adapter\&.cc\&.
 .SS "int mtk::LAPACKAdapter::SolveDenseSystem (\fBmtk::DenseMatrix\fP &mm, \fBmtk::DenseMatrix\fP &rr)\fC [static]\fP"
 Adapts the MTK to LAPACK's dgesv_ routine\&.
 .PP
@@ -107,7 +111,7 @@ Adapts the MTK to LAPACK's dgesv_ routine\&.
 .PP
 
 .PP
-Definition at line 463 of file mtk_lapack_adapter\&.cc\&.
+Definition at line 467 of file mtk_lapack_adapter\&.cc\&.
 .SS "int mtk::LAPACKAdapter::SolveDenseSystem (\fBmtk::DenseMatrix\fP &mm, \fBmtk::UniStgGrid1D\fP &rhs)\fC [static]\fP"
 Adapts the MTK to LAPACK's dgesv_ routine\&.
 .PP
@@ -115,7 +119,7 @@ Adapts the MTK to LAPACK's dgesv_ routine\&.
 .RS 4
 \fImatrix\fP Input matrix\&. 
 .br
-\fIrr\fP Input right-hand side from info on a grid\&.
+\fIrhs\fP Input right-hand side from info on a grid\&.
 .RE
 .PP
 \fBExceptions:\fP
@@ -125,7 +129,25 @@ Adapts the MTK to LAPACK's dgesv_ routine\&.
 .PP
 
 .PP
-Definition at line 515 of file mtk_lapack_adapter\&.cc\&.
+Definition at line 519 of file mtk_lapack_adapter\&.cc\&.
+.SS "int mtk::LAPACKAdapter::SolveDenseSystem (\fBmtk::DenseMatrix\fP &mm, \fBmtk::UniStgGrid2D\fP &rhs)\fC [static]\fP"
+Adapts the MTK to LAPACK's dgesv_ routine\&.
+.PP
+\fBParameters:\fP
+.RS 4
+\fImatrix\fP Input matrix\&. 
+.br
+\fIrhs\fP Input right-hand side from info on a grid\&.
+.RE
+.PP
+\fBExceptions:\fP
+.RS 4
+\fIstd::bad_alloc\fP 
+.RE
+.PP
+
+.PP
+Definition at line 557 of file mtk_lapack_adapter\&.cc\&.
 .SS "int mtk::LAPACKAdapter::SolveRectangularDenseSystem (const \fBmtk::DenseMatrix\fP &aa, \fBmtk::Real\fP *ob_, intob_ld_)\fC [static]\fP"
 Adapts the MTK to LAPACK's routine\&.
 .PP
@@ -146,7 +168,7 @@ Success of the solution\&.
 .PP
 
 .PP
-Definition at line 754 of file mtk_lapack_adapter\&.cc\&.
+Definition at line 792 of file mtk_lapack_adapter\&.cc\&.
 
 .SH "Author"
 .PP 

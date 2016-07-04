@@ -13,7 +13,7 @@ Castillo-Blomgren-Sanchez (CBS) Algorithm.
 \todo Implement creation of \f$ \mathbf{\Lambda}\f$ w. mtk::BLASAdapter.
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -21,22 +21,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -63,39 +63,46 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <iostream>
 #include <iomanip>
+
+#ifdef MTK_VERBOSE_WEIGHTS
+#include <fstream>
+#endif
+
 #include <limits>
 #include <algorithm>
 
 #include "mtk_tools.h"
-
 #include "mtk_blas_adapter.h"
 #include "mtk_lapack_adapter.h"
 #include "mtk_glpk_adapter.h"
-
 #include "mtk_grad_1d.h"
 
 namespace mtk {
 
 std::ostream& operator <<(std::ostream &stream, mtk::Grad1D &in) {
 
+  int output_precision{4};
+  int output_width{8};
+
   /// 1. Print order of accuracy.
 
-  stream << "gradient_[0] = " << std::setw(9) << in.gradient_[0] << std::endl;
+  stream << "Order of accuracy: " << in.gradient_[0] << std::endl;
 
   /// 2. Print approximating coefficients for the interior.
 
-  stream << "gradient_[1:" << in.order_accuracy_ << "] = ";
+  stream << "Interior stencil: " << std::endl;
   for (auto ii = 1; ii <= in.order_accuracy_; ++ii) {
-    stream << std::setw(9) << in.gradient_[ii] << " ";
+    stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << in.gradient_[ii] << ' ';
   }
   stream << std::endl;
 
   /// 3. Print mimetic weights.
 
-  stream << "gradient_[" << in.order_accuracy_ + 1 << ":" <<
-    2*in.order_accuracy_ << "] = ";
+  stream << "Weights:" << std::endl;
   for (auto ii = in.order_accuracy_ + 1; ii <= 2*in.order_accuracy_; ++ii) {
-    stream << std::setw(9) << in.gradient_[ii] << " ";
+    stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << in.gradient_[ii] << ' ';
   }
   stream << std::endl;
 
@@ -103,24 +110,34 @@ std::ostream& operator <<(std::ostream &stream, mtk::Grad1D &in) {
 
   int offset{2*in.order_accuracy_ + 1};
   int mm {};
-
-  stream << "gradient_[" << offset + mm << ":" <<
-    offset + mm + in.num_bndy_coeffs_ - 1 << "] = ";
-
   if (in.order_accuracy_ > mtk::kDefaultOrderAccuracy) {
     for (auto ii = 0; ii < in.num_bndy_approxs_ ; ++ii) {
+      stream << "Boundary row " << ii + 1 << ":" << std::endl;
       for (auto jj = 0; jj < in.num_bndy_coeffs_; jj++) {
         auto value = in.gradient_[offset + (mm)];
-        stream << std::setw(9) << value << " ";
+        stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << value << ' ';
         mm++;
       }
+      stream << std::endl;
+      stream << "Sum of elements in boundary row " << ii + 1 << ": " <<
+        in.sums_rows_mim_bndy_[ii];
+      stream << std::endl;
     }
   } else {
-    stream << std::setw(9) << in.gradient_[offset + 0] << ' ';
-    stream << std::setw(9) << in.gradient_[offset + 1] << ' ';
-    stream << std::setw(9) << in.gradient_[offset + 2] << ' ';
+    stream << "Boundary row 1:" << std::endl;
+    stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << in.gradient_[offset + 0] << ' ';
+    stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << in.gradient_[offset + 1] << ' ';
+    stream << std::setprecision(output_precision) <<
+        std::setw(output_width) << in.gradient_[offset + 2] << ' ';
+    stream << std::endl;
+    stream << "Sum of elements in boundary row 1: " <<
+      in.gradient_[offset + 0] + in.gradient_[offset + 1] +
+        in.gradient_[offset + 2];
+    stream << std::endl;
   }
-  stream << std::endl;
 
   return stream;
 }
@@ -134,13 +151,16 @@ mtk::Grad1D::Grad1D():
   gradient_length_(),
   minrow_(),
   row_(),
+  num_feasible_sols_(),
   coeffs_interior_(),
   prem_apps_(),
   weights_crs_(),
   weights_cbs_(),
   mim_bndy_(),
   gradient_(),
-  mimetic_threshold_(mtk::kDefaultMimeticThreshold) {}
+  mimetic_threshold_(mtk::kDefaultMimeticThreshold),
+  mimetic_measure_(mtk::kZero),
+  sums_rows_mim_bndy_() {}
 
 mtk::Grad1D::Grad1D(const Grad1D &grad):
   order_accuracy_(grad.order_accuracy_),
@@ -150,13 +170,16 @@ mtk::Grad1D::Grad1D(const Grad1D &grad):
   gradient_length_(grad.gradient_length_),
   minrow_(grad.minrow_),
   row_(grad.row_),
+  num_feasible_sols_(grad.num_feasible_sols_),
   coeffs_interior_(grad.coeffs_interior_),
   prem_apps_(grad.prem_apps_),
   weights_crs_(grad.weights_crs_),
   weights_cbs_(grad.weights_cbs_),
   mim_bndy_(grad.mim_bndy_),
   gradient_(grad.gradient_),
-  mimetic_threshold_(grad.mimetic_threshold_) {}
+  mimetic_threshold_(grad.mimetic_threshold_),
+  mimetic_measure_(grad.mimetic_measure_),
+  sums_rows_mim_bndy_(grad.sums_rows_mim_bndy_) {}
 
 mtk::Grad1D::~Grad1D() {
 
@@ -181,7 +204,7 @@ mtk::Grad1D::~Grad1D() {
 
 bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(order_accuracy < 2, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent((order_accuracy%2) != 0, __FILE__, __LINE__, __func__);
   mtk::Tools::Prevent(mimetic_threshold <= mtk::kZero,
@@ -199,10 +222,9 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
   mimetic_threshold_ = mimetic_threshold;
 
   /// 1. Compute stencil for the interior cells.
-
   bool abort_construction = ComputeStencilInteriorGrid();
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!abort_construction) {
     std::cerr << "Could NOT complete stage 1." << std::endl;
     std::cerr << "Exiting..." << std::endl;
@@ -253,7 +275,7 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
 
     abort_construction = ComputeRationalBasisNullSpace();
 
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!abort_construction) {
       std::cerr << "Could NOT complete stage 2.1." << std::endl;
       std::cerr << "Exiting..." << std::endl;
@@ -263,10 +285,9 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
   }
 
   /// 3. Compute preliminary approximation (non-mimetic) on the boundaries.
-
   abort_construction = ComputePreliminaryApproximations();
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!abort_construction) {
     std::cerr << "Could NOT complete stage 2.2." << std::endl;
     std::cerr << "Exiting..." << std::endl;
@@ -275,10 +296,9 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
   #endif
 
   /// 4. Compute quadrature weights to impose the mimetic conditions.
-
   abort_construction = ComputeWeights();
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!abort_construction) {
     std::cerr << "Could NOT complete stage 2.3." << std::endl;
     std::cerr << "Exiting..." << std::endl;
@@ -286,13 +306,12 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
   }
   #endif
 
-    /// 5. Compute real approximation (mimetic) on the boundaries.
-
+  /// 5. Compute real approximation (mimetic) on the boundaries.
   if (dim_null_ > 0) {
 
     abort_construction = ComputeStencilBoundaryGrid();
 
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!abort_construction) {
       std::cerr << "Could NOT complete stage 2.4." << std::endl;
       std::cerr << "Exiting..." << std::endl;
@@ -311,7 +330,7 @@ bool mtk::Grad1D::ConstructGrad1D(int order_accuracy, Real mimetic_threshold) {
 
   abort_construction = AssembleOperator();
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!abort_construction) {
     std::cerr << "Could NOT complete stage 3." << std::endl;
     std::cerr << "Exiting..." << std::endl;
@@ -342,12 +361,17 @@ mtk::Real *mtk::Grad1D::weights_cbs() const {
   return weights_cbs_;
 }
 
+int mtk::Grad1D::num_feasible_sols() const {
+
+  return num_feasible_sols_;
+}
+
 mtk::DenseMatrix mtk::Grad1D::mim_bndy() const {
 
-  mtk::DenseMatrix xx(dim_null_, 3*order_accuracy_/2);
+  mtk::DenseMatrix xx(dim_null_ + 1, 3*order_accuracy_/2);
 
   auto counter = 0;
-  for (auto ii = 0; ii < dim_null_; ++ii) {
+  for (auto ii = 0; ii < dim_null_ + 1; ++ii) {
     for(auto jj = 0; jj < 3*order_accuracy_/2; ++jj) {
       xx.SetValue(ii,jj, gradient_[2*order_accuracy_ + 1 + counter]);
       counter++;
@@ -357,25 +381,110 @@ mtk::DenseMatrix mtk::Grad1D::mim_bndy() const {
   return xx;
 }
 
-mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
+std::vector<mtk::Real> mtk::Grad1D::sums_rows_mim_bndy() const {
+
+  return sums_rows_mim_bndy_;
+}
+
+mtk::Real mtk::Grad1D::mimetic_measure() const {
+
+  return mimetic_measure_;
+}
+
+mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(mtk::Real west,
+                                                  mtk::Real east,
+                                                  int num_cells_x) const {
+
+  int nn{num_cells_x}; // Number of cells on the grid.
+
+  #ifdef MTK_PERFORM_PREVENTIONS
+  mtk::Tools::Prevent(east < west, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nn < 3*order_accuracy_ - 2, __FILE__, __LINE__, __func__);
+  #endif
+
+  mtk::Real delta_x = (east - west)/((mtk::Real) num_cells_x);
+
+  mtk::Real inv_delta_x{mtk::kOne/delta_x};
+
+  int gg_num_rows = nn + 1;
+  int gg_num_cols = nn + 2;
+  int num_extra_rows = order_accuracy_/2;
+  int elements_per_extra_row = num_bndy_coeffs_;
+
+  // Output matrix featuring sizes for gradient operators.
+  mtk::DenseMatrix out(gg_num_rows, gg_num_cols);
+
+  out.set_encoded_operator(mtk::EncodedOperator::GRADIENT);
+
+  /// 1. Insert mimetic boundary at the west.
+
+  auto ee_index = 0;
+  for (auto ii = 0; ii < num_extra_rows; ii++) {
+    auto cc = 0;
+    for(auto jj = 0 ; jj < gg_num_cols; jj++) {
+      if(cc >= elements_per_extra_row) {
+        out.SetValue(ii, jj, mtk::kZero);
+      } else {
+        out.SetValue(ii,jj,
+                     gradient_[2*order_accuracy_ + 1 + ee_index++]*inv_delta_x);
+        cc++;
+      }
+    }
+  }
+
+  /// 2. Insert coefficients for the interior of the grid.
+
+  for (auto ii = num_extra_rows; ii < gg_num_rows - num_extra_rows; ii++) {
+    auto jj = ii - num_extra_rows + 1;
+    for (auto cc = 0; cc < order_accuracy_; cc++, jj++) {
+      out.SetValue(ii, jj, coeffs_interior_[cc]*inv_delta_x);
+    }
+  }
+
+  /// 3. Impose center-skew symmetry by permuting the mimetic boundaries.
+
+  ee_index = 0;
+  for (auto ii = gg_num_rows - 1; ii >= gg_num_rows - num_extra_rows; ii--) {
+    auto cc = 0;
+    for (auto jj = gg_num_cols - 1; jj >= 0; jj--) {
+      if(cc >= elements_per_extra_row) {
+        out.SetValue(ii,jj,mtk::kZero);
+      } else {
+        out.SetValue(ii,jj,
+                     -gradient_[2*order_accuracy_ + 1 +
+ee_index++]*inv_delta_x);
+        cc++;
+      }
+     }
+  }
+
+  return out;
+}
+
+mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(
+  const UniStgGrid1D &grid) const {
 
   int nn{grid.num_cells_x()}; // Number of cells on the grid.
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
-
   mtk::Tools::Prevent(nn < 3*order_accuracy_ - 2, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(grid.field_nature() != mtk::FieldNature::SCALAR,
+                      __FILE__, __LINE__, __func__);
   #endif
 
   mtk::Real inv_delta_x{mtk::kOne/grid.delta_x()};
 
   int gg_num_rows = nn + 1;
   int gg_num_cols = nn + 2;
-  int elements_per_row = num_bndy_coeffs_;
   int num_extra_rows = order_accuracy_/2;
+  int elements_per_row = num_bndy_coeffs_;
 
   // Output matrix featuring sizes for gradient operators.
   mtk::DenseMatrix out(gg_num_rows, gg_num_cols);
+
+  out.set_encoded_operator(mtk::EncodedOperator::GRADIENT);
 
   /// 1. Insert mimetic boundary at the west.
 
@@ -412,7 +521,71 @@ mtk::DenseMatrix mtk::Grad1D::ReturnAsDenseMatrix(const UniStgGrid1D &grid) {
         out.SetValue(ii,jj,mtk::kZero);
       } else {
         out.SetValue(ii,jj,
-                     -gradient_[2*order_accuracy_ + 1 + ee_index++]*inv_delta_x);
+                    -gradient_[2*order_accuracy_ + 1 + ee_index++]*inv_delta_x);
+        cc++;
+      }
+     }
+  }
+
+  return out;
+}
+
+mtk::DenseMatrix mtk::Grad1D::ReturnAsDimensionlessDenseMatrix(
+  int num_cells_x) const {
+
+  int nn{num_cells_x}; // Number of cells on the grid.
+
+  #ifdef MTK_PERFORM_PREVENTIONS
+  mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
+  mtk::Tools::Prevent(nn < 3*order_accuracy_ - 2, __FILE__, __LINE__, __func__);
+  #endif
+
+  int gg_num_rows = nn + 1;
+  int gg_num_cols = nn + 2;
+  int elements_per_extra_row = num_bndy_coeffs_;
+  int num_extra_rows = order_accuracy_/2;
+
+  // Output matrix featuring sizes for gradient operators.
+  mtk::DenseMatrix out(gg_num_rows, gg_num_cols);
+
+  out.set_encoded_operator(mtk::EncodedOperator::GRADIENT);
+
+  /// 1. Insert mimetic boundary at the west.
+
+  auto ee_index = 0;
+  for (auto ii = 0; ii < num_extra_rows; ii++) {
+    auto cc = 0;
+    for(auto jj = 0 ; jj < gg_num_cols; jj++) {
+      if(cc >= elements_per_extra_row) {
+        out.SetValue(ii, jj, mtk::kZero);
+      } else {
+        out.SetValue(ii,jj,
+                     gradient_[2*order_accuracy_ + 1 + ee_index++]);
+        cc++;
+      }
+    }
+  }
+
+  /// 2. Insert coefficients for the interior of the grid.
+
+  for (auto ii = num_extra_rows; ii < gg_num_rows - num_extra_rows; ii++) {
+    auto jj = ii - num_extra_rows + 1;
+    for (auto cc = 0; cc < order_accuracy_; cc++, jj++) {
+      out.SetValue(ii, jj, coeffs_interior_[cc]);
+    }
+  }
+
+  /// 3. Impose center-skew symmetry by permuting the mimetic boundaries.
+
+  ee_index = 0;
+  for (auto ii = gg_num_rows - 1; ii >= gg_num_rows - num_extra_rows; ii--) {
+    auto cc = 0;
+    for (auto jj = gg_num_cols - 1; jj >= 0; jj--) {
+      if(cc >= elements_per_extra_row) {
+        out.SetValue(ii,jj,mtk::kZero);
+      } else {
+        out.SetValue(ii,jj,
+                     -gradient_[2*order_accuracy_ + 1 + ee_index++]);
         cc++;
       }
      }
@@ -446,7 +619,7 @@ bool mtk::Grad1D::ComputeStencilInteriorGrid() {
     pp[ii] = pp[ii - 1] + mtk::kOne;
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "pp =" << std::endl;
   for (auto ii = 0; ii < order_accuracy_; ++ii) {
     std::cout << std::setw(12) << pp[ii];
@@ -460,7 +633,7 @@ bool mtk::Grad1D::ComputeStencilInteriorGrid() {
 
   mtk::DenseMatrix vander_matrix(pp,order_accuracy_,order_accuracy_,transpose);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "vander_matrix = " << std::endl;
   std::cout << vander_matrix << std::endl << std::endl;
   #endif
@@ -474,11 +647,12 @@ bool mtk::Grad1D::ComputeStencilInteriorGrid() {
       std::endl;
     std::cerr << memory_allocation_exception.what() << std::endl;
   }
-  memset(coeffs_interior_, mtk::kZero, sizeof(coeffs_interior_[0])*order_accuracy_);
+  memset(coeffs_interior_, mtk::kZero,
+sizeof(coeffs_interior_[0])*order_accuracy_);
 
   coeffs_interior_[1] = mtk::kOne;
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "oo =" << std::endl;
   for (auto ii = 0; ii < order_accuracy_; ++ii) {
     std::cout << std::setw(12) << coeffs_interior_[ii] << std::endl;
@@ -491,7 +665,7 @@ bool mtk::Grad1D::ComputeStencilInteriorGrid() {
   int info{mtk::LAPACKAdapter::SolveDenseSystem(vander_matrix,
                                                 coeffs_interior_)};
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
     std::cout << "System solved! Interior stencil attained!" << std::endl;
     std::cout << std::endl;
@@ -503,7 +677,7 @@ bool mtk::Grad1D::ComputeStencilInteriorGrid() {
   }
   #endif
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "coeffs_interior_ =" << std::endl;
   for (auto ii = 0; ii < order_accuracy_; ++ii) {
     std::cout << std::setw(12) << coeffs_interior_[ii];
@@ -541,7 +715,7 @@ bool mtk::Grad1D::ComputeRationalBasisNullSpace(void) {
     gg[ii] = gg[ii - 1] + mtk::kOne;
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "gg =" << std::endl;
   for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
     std::cout << std::setw(12) << gg[ii];
@@ -555,7 +729,7 @@ bool mtk::Grad1D::ComputeRationalBasisNullSpace(void) {
 
   mtk::DenseMatrix aa_west_t(gg, num_bndy_coeffs_, order_accuracy_ + 1, tran);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "aa_west_t =" << std::endl;
   std::cout << aa_west_t << std::endl;
   #endif
@@ -564,7 +738,7 @@ bool mtk::Grad1D::ComputeRationalBasisNullSpace(void) {
 
   mtk::DenseMatrix qq_t(mtk::LAPACKAdapter::QRFactorDenseMatrix(aa_west_t));
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "qq_t = " << std::endl;
   std::cout << qq_t << std::endl;
   #endif
@@ -589,7 +763,7 @@ bool mtk::Grad1D::ComputeRationalBasisNullSpace(void) {
     }
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "kk =" << std::endl;
   std::cout << kk << std::endl;
   std::cout << "kk.num_rows() = " << kk.num_rows() << std::endl;
@@ -607,8 +781,8 @@ bool mtk::Grad1D::ComputeRationalBasisNullSpace(void) {
   // where SK is the scaled null-space.
 
   // In this point, we almost have all the data we need correctly allocated
-  // in memory. We will create the matrix iden_, and elements we wish to scale in
-  // the kk array. Using the concept of the leading dimension, we could just
+  // in memory. We will create the matrix iden_, and elements we wish to scale
+  // in the kk array. Using the concept of the leading dimension, we could just
   // use kk, with the correct leading dimension and that is it. BUT I DO NOT
   // GET how does it work. So I will just create a matrix with the content of
   // this array that we need, solve for the scalers and then scale the
@@ -626,14 +800,14 @@ bool mtk::Grad1D::ComputeRationalBasisNullSpace(void) {
     zz++;
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "subk =" << std::endl;
   std::cout << subk << std::endl;
   #endif
 
   subk.Transpose();
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "subk_t =" << std::endl;
   std::cout << subk << std::endl;
   #endif
@@ -643,7 +817,7 @@ bool mtk::Grad1D::ComputeRationalBasisNullSpace(void) {
 
   mtk::DenseMatrix iden(dim_null_, padded, tran);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "iden =" << std::endl;
   std::cout << iden << std::endl;
   #endif
@@ -664,7 +838,7 @@ bool mtk::Grad1D::ComputeRationalBasisNullSpace(void) {
 
   int info{mtk::LAPACKAdapter::SolveDenseSystem(subk, iden)};
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
     std::cout << "System successfully solved!" <<
       std::endl;
@@ -677,7 +851,7 @@ bool mtk::Grad1D::ComputeRationalBasisNullSpace(void) {
   std::cout << std::endl;
   #endif
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "Computed scalers:" << std::endl;
   std::cout << iden << std::endl;
   #endif
@@ -686,7 +860,7 @@ bool mtk::Grad1D::ComputeRationalBasisNullSpace(void) {
 
   rat_basis_null_space_ = mtk::BLASAdapter::RealDenseMM(kk, iden);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "Rational basis for the null-space:" << std::endl;
   std::cout << rat_basis_null_space_ << std::endl;
   #endif
@@ -724,7 +898,7 @@ bool mtk::Grad1D::ComputePreliminaryApproximations() {
     gg[ii] = gg[ii - 1] + mtk::kOne;
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "gg0 =" << std::endl;
   for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
     std::cout << std::setw(12) << gg[ii];
@@ -749,9 +923,9 @@ std::endl;
   for (auto ll = 0; ll < num_bndy_approxs_; ++ll) {
 
     // Re-check new generator vector for every iteration except for the first.
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 3
     if (ll > 0) {
-      std::cout << "gg" << ll << " =" << std::endl;
+      std::cout << "gg_" << ll << " =" << std::endl;
       for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
         std::cout << std::setw(12) << gg[ii];
       }
@@ -767,7 +941,7 @@ std::endl;
                          num_bndy_coeffs_, order_accuracy_ + 1,
                          transpose);
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 4
     std::cout << "aa_" << ll << " =" << std::endl;
     std::cout << aa << std::endl;
     #endif
@@ -789,7 +963,7 @@ std::endl;
 
     ob[1] = mtk::kOne;
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 3
     std::cout << "ob = " << std::endl << std::endl;
     for (auto ii = 0; ii < ob_ld; ++ii) {
       std::cout << std::setw(12) << ob[ii] << std::endl;
@@ -806,15 +980,16 @@ std::endl;
     int info_{
       mtk::LAPACKAdapter::SolveRectangularDenseSystem(aa, ob, ob_ld)};
 
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_PERFORM_PREVENTIONS
     if (!info_) {
       std::cout << "System successfully solved!" << std::endl << std::endl;
     } else {
       std::cerr << "Error solving system! info = " << info_ << std::endl;
+      return false;
     }
     #endif
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 3
     std::cout << "ob =" << std::endl;
     for (auto ii = 0; ii < ob_ld; ++ii) {
       std::cout << std::setw(12) << ob[ii] << std::endl;
@@ -845,7 +1020,7 @@ std::endl;
       ob_bottom[(dim_null_ - 1) - ii] = ob[num_bndy_coeffs_ - ii - 1];
     }
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 3
     std::cout << "ob_bottom =" << std::endl;
     for (auto ii = 0; ii < dim_null_; ++ii) {
       std::cout << std::setw(12) << ob_bottom[ii] << std::endl;
@@ -861,7 +1036,7 @@ std::endl;
     // or:                 ob = -1.0*rat_basis_null_space_*ob_bottom + 1.0*ob
     // thus:                Y =    a*A    *x         +   b*Y (DAXPY).
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 4
     std::cout << "Rational basis for the null-space:" << std::endl;
     std::cout << rat_basis_null_space_ << std::endl;
     #endif
@@ -872,7 +1047,7 @@ std::endl;
     mtk::BLASAdapter::RealDenseMV(alpha, rat_basis_null_space_,
                                   ob_bottom, beta, ob);
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 3
     std::cout << "scaled ob:" << std::endl;
     for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
       std::cout << std::setw(12) << ob[ii] << std::endl;
@@ -903,7 +1078,7 @@ std::endl;
     ob_bottom = nullptr;
   } // End of: for (ll = 0; ll < dim_null; ll++);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "Matrix post-scaled preliminary apps: " << std::endl;
   for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
     for (auto jj = 0; jj < num_bndy_approxs_; ++jj) {
@@ -922,7 +1097,7 @@ std::endl;
 
 bool mtk::Grad1D::ComputeWeights() {
 
-  // Matrix to copmpute the weights as in the CRSA.
+  // Matrix to compute the weights as in the CRSA.
   mtk::DenseMatrix pi(num_bndy_coeffs_, num_bndy_coeffs_ - 1);
 
   /// 1. Construct the \f$ \mathbf{\Pi}\f$ matrix.
@@ -959,12 +1134,13 @@ bool mtk::Grad1D::ComputeWeights() {
 
   rat_basis_null_space_.OrderColMajor();
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "Rational basis for the null-space (col. major):" << std::endl;
   std::cout << rat_basis_null_space_ << std::endl;
   #endif
 
   // 1.3. Add final set of columns: rational basis for null-space.
+
   for (auto jj = dim_null_ + (order_accuracy_/2 + 1);
        jj < num_bndy_coeffs_ - 1; ++jj) {
     for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
@@ -975,7 +1151,7 @@ bool mtk::Grad1D::ComputeWeights() {
     }
   }
 
-  #if MTK_DEBUG_LEVEL >0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "coeffs_interior_ =" << std::endl;
   for (auto ii = 0; ii < order_accuracy_; ++ii) {
     std::cout << std::setw(12) << coeffs_interior_[ii];
@@ -983,7 +1159,7 @@ bool mtk::Grad1D::ComputeWeights() {
   std::cout << std::endl << std::endl;
   #endif
 
-  #if MTK_DEBUG_LEVEL >0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "Constructed pi matrix for CRS Algorithm: " << std::endl;
   std::cout << pi << std::endl;
   #endif
@@ -1042,15 +1218,16 @@ bool mtk::Grad1D::ComputeWeights() {
                                                     weights_cbs_, weights_ld)
   };
 
-  #if MTK_DEBUG_LEVEL > 0
+  #ifdef MTK_PERFORM_PREVENTIONS
   if (!info) {
     std::cout << "System successfully solved!" << std::endl << std::endl;
   } else {
     std::cerr << "Error solving system! info = " << info << std::endl;
+    return false;
   }
   #endif
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "hh =" << std::endl;
   for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
     std::cout << std::setw(11) << hh[ii] << std::endl;
@@ -1071,7 +1248,7 @@ bool mtk::Grad1D::ComputeWeights() {
 
   std::copy(weights_cbs_, weights_cbs_ + (weights_ld - 1), weights_crs_);
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "weights_CRSA + lambda =" << std::endl;
   for (auto ii = 0; ii < weights_ld - 1; ++ii) {
     std::cout << std::setw(12) << weights_crs_[ii] << std::endl;
@@ -1080,12 +1257,8 @@ bool mtk::Grad1D::ComputeWeights() {
   #endif
 
   /// 5. If required order is greater than critical order, start the **CBSA**.
+
   if (order_accuracy_ >= mtk::kCriticalOrderAccuracyGrad) {
-
-    int minrow_{std::numeric_limits<int>::infinity()};
-
-    mtk::Real norm{mtk::BLASAdapter::RealNRM2(weights_cbs_,order_accuracy_)};
-    mtk::Real minnorm{std::numeric_limits<mtk::Real>::infinity()};
 
     /// 6. Create \f$ \mathbf{\Phi} \f$ matrix from \f$ \mathbf{\Pi} \f$.
 
@@ -1135,7 +1308,7 @@ bool mtk::Grad1D::ComputeWeights() {
       mm++;
     }
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 4
     std::cout << "phi =" << std::endl;
     std::cout << phi << std::endl;
     #endif
@@ -1157,7 +1330,7 @@ bool mtk::Grad1D::ComputeWeights() {
       lamed[ii] = hh[ii + order_accuracy_ + 1] ;
     }
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 3
     std::cout << "lamed =" << std::endl;
     for (auto ii = 0; ii < num_bndy_approxs_ - 1; ++ii) {
       std::cout << std::setw(12) << lamed[ii] << std::endl;
@@ -1174,7 +1347,7 @@ bool mtk::Grad1D::ComputeWeights() {
       hh[ii] = hh[ii] - temp;
     }
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 3
     std::cout << "big_lambda =" << std::endl;
     for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
       std::cout << std::setw(12) << hh[ii] << std::endl;
@@ -1184,9 +1357,33 @@ bool mtk::Grad1D::ComputeWeights() {
 
     /// 8. Brute force search through all the rows of the \f$\Phi\f$ matrix.
 
-    int copy_result{};  // Should I replace the solution... not for now.
+    #ifdef MTK_VERBOSE_WEIGHTS
+    int copy_result{1};
+    #else
+    int copy_result{};
+    #endif
+
+    int minrow_{std::numeric_limits<int>::infinity()};
+
+    mtk::Real norm{mtk::BLASAdapter::RealNRM2(weights_cbs_,order_accuracy_)};
+    mtk::Real minnorm{std::numeric_limits<mtk::Real>::infinity()};
 
     mtk::Real normerr_; // Norm of the error for the solution on each row.
+
+    #ifdef MTK_VERBOSE_WEIGHTS
+    std::ofstream table("grad_1d_" + std::to_string(order_accuracy_) +
+      "_weights.tex");
+
+    table << "\\begin{tabular}[c]{c";
+    for (int ii = 1; ii <= order_accuracy_; ++ii) {
+      table << 'c';
+    }
+    table << ":c}\n\\toprule\nRow & ";
+    for (int ii = 1; ii <= order_accuracy_; ++ii) {
+      table << "$ q_{" + std::to_string(ii) + "}$ &";
+    }
+    table << " Relative error \\\\\n\\midrule\n";
+    #endif
 
     for(auto row_= 0; row_ < order_accuracy_ + 1; ++row_) {
       normerr_ = mtk::GLPKAdapter::SolveSimplexAndCompare(phi.data(),
@@ -1200,18 +1397,45 @@ bool mtk::Grad1D::ComputeWeights() {
                                                           copy_result);
       mtk::Real aux{normerr_/norm};
 
-      #if MTK_DEBUG_LEVEL>0
+      #if MTK_VERBOSE_LEVEL > 2
       std::cout << "Relative norm: " << aux << " " << std::endl;
       std::cout << std::endl;
       #endif
+
+      num_feasible_sols_ = num_feasible_sols_ +
+        (int) (normerr_ != std::numeric_limits<mtk::Real>::infinity());
 
       if (aux < minnorm) {
         minnorm = aux;
         minrow_= row_;
       }
+
+      #ifdef MTK_VERBOSE_WEIGHTS
+      table << std::to_string(row_ + 1) << " & ";
+      if (normerr_ != std::numeric_limits<mtk::Real>::infinity()) {
+        for (int ii = 1; ii <= order_accuracy_; ++ii) {
+          table << std::to_string(weights_cbs_[ii - 1]) + " & ";
+        }
+        table << std::to_string(aux) << " \\\\" << std::endl;
+      } else {
+        table << "\\multicolumn{" << std::to_string(order_accuracy_) <<
+          "}{c}{$\\emptyset$} & ";
+        table << " - \\\\" << std::endl;
+      }
+      #endif
     }
 
-    #if MTK_DEBUG_LEVEL > 0
+    #ifdef MTK_VERBOSE_WEIGHTS
+    table << "\\midrule" << std::endl;
+    table << "CRS weights:";
+    for (int ii = 1; ii <= order_accuracy_; ++ii) {
+      table << " & " << std::to_string(weights_crs_[ii - 1]);
+    }
+    table << " & - \\\\\n\\bottomrule\n\\end{tabular}" << std::endl;
+    table.close();
+    #endif
+
+    #if MTK_VERBOSE_LEVEL > 3
     std::cout << "weights_CBSA + lambda (after brute force search):" <<
       std::endl;
     for (auto ii = 0; ii < num_bndy_coeffs_ - 1; ++ii) {
@@ -1226,7 +1450,7 @@ bool mtk::Grad1D::ComputeWeights() {
     // chosen to be the objective function and the result of the optimizer is
     // chosen to be the new weights_.
 
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 2
     std::cout << "Minimum Relative Norm " << minnorm << " found at row " <<
       minrow_ + 1 << std::endl;
     std::cout << std::endl;
@@ -1243,7 +1467,7 @@ bool mtk::Grad1D::ComputeWeights() {
                                                         mimetic_threshold_,
                                                         copy_result);
     mtk::Real aux_{normerr_/norm};
-    #if MTK_DEBUG_LEVEL > 0
+    #if MTK_VERBOSE_LEVEL > 2
     std::cout << "Relative norm: " << aux_ << std::endl;
     std::cout << std::endl;
     #endif
@@ -1260,7 +1484,7 @@ bool mtk::Grad1D::ComputeWeights() {
 
 bool mtk::Grad1D::ComputeStencilBoundaryGrid(void) {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "weights_* + lambda =" << std::endl;
   for (auto ii = 0; ii < num_bndy_coeffs_ - 1; ++ii) {
     std::cout << std::setw(12) << weights_cbs_[ii] << std::endl;
@@ -1285,7 +1509,7 @@ bool mtk::Grad1D::ComputeStencilBoundaryGrid(void) {
     lambda[ii] = weights_cbs_[order_accuracy_ + ii];
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "lambda =" << std::endl;
   for (auto ii = 0; ii < dim_null_; ++ii) {
     std::cout << std::setw(12) << lambda[ii] << std::endl;
@@ -1310,7 +1534,7 @@ bool mtk::Grad1D::ComputeStencilBoundaryGrid(void) {
     alpha[ii] = lambda[ii]/weights_cbs_[ii] ;
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 3
   std::cout << "alpha =" << std::endl;
   for (auto ii = 0; ii < dim_null_; ++ii) {
     std::cout << std::setw(12) << alpha[ii] << std::endl;
@@ -1344,7 +1568,7 @@ bool mtk::Grad1D::ComputeStencilBoundaryGrid(void) {
       prem_apps_[ii*num_bndy_approxs_ + (num_bndy_approxs_ - 1)];
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 4
   std::cout << "Collection of mimetic approximations:" << std::endl;
   for (auto ii = 0; ii < num_bndy_coeffs_; ++ii) {
     for (auto jj = 0; jj < num_bndy_approxs_; ++jj) {
@@ -1352,6 +1576,31 @@ bool mtk::Grad1D::ComputeStencilBoundaryGrid(void) {
     }
     std::cout << std::endl;
   }
+  std::cout << std::endl;
+  #endif
+
+  /// 4. Compute the row-wise sum to double-check that the operator is mimetic.
+
+  for (auto ii = 0; ii < num_bndy_approxs_; ++ii) {
+    sums_rows_mim_bndy_.push_back(mtk::kZero);
+
+
+
+
+    for (auto jj = 0; jj < num_bndy_coeffs_; ++jj) {
+      sums_rows_mim_bndy_[ii] += mim_bndy_[jj*num_bndy_approxs_ + ii];
+    }
+  }
+
+    mimetic_measure_ = *std::max_element(sums_rows_mim_bndy_.begin(),
+                                      sums_rows_mim_bndy_.end());
+
+  #if MTK_VERBOSE_LEVEL > 3
+  std::cout << "Row-wise sum of mimetic approximations:" << std::endl;
+  for (auto ii = 0; ii < num_bndy_approxs_; ++ii) {
+    std::cout << std::setw(13) << sums_rows_mim_bndy_[ii];
+  }
+  std::cout << std::endl;
   std::cout << std::endl;
   #endif
 
@@ -1377,7 +1626,7 @@ bool mtk::Grad1D::AssembleOperator(void) {
   gradient_length_ = 1 + order_accuracy_ + order_accuracy_ +
     num_bndy_approxs_*num_bndy_coeffs_;
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 2
   std::cout << "gradient_length_ = " << gradient_length_ << std::endl;
   #endif
 
@@ -1427,7 +1676,7 @@ bool mtk::Grad1D::AssembleOperator(void) {
     gradient_[offset + 2] = prem_apps_[2];
   }
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_VERBOSE_LEVEL > 1
   std::cout << "1D " << order_accuracy_ << "-order grad built!" << std::endl;
   std::cout << std::endl;
   #endif

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['roots_2e',['Roots.',['../group__c01-roots.html',1,'']]]
+  ['numerical_20methods_2e',['Numerical Methods.',['../group__c05-num__methods.html',1,'']]]
 ];

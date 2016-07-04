@@ -1,10 +1,10 @@
-.TH "src/mtk_lapack_adapter.cc" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "src/mtk_lapack_adapter.cc" 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 src/mtk_lapack_adapter.cc \- 
 .PP
-Adapter class for the LAPACK API\&.  
+Definition of an adapter class for the LAPACK API\&.  
 
 .SH SYNOPSIS
 .br
@@ -17,6 +17,8 @@ Adapter class for the LAPACK API\&.
 .br
 \fC#include <algorithm>\fP
 .br
+\fC#include 'mtk_foundations\&.h'\fP
+.br
 \fC#include 'mtk_tools\&.h'\fP
 .br
 \fC#include 'mtk_dense_matrix\&.h'\fP
@@ -28,7 +30,7 @@ Adapter class for the LAPACK API\&.
 
 .in +1c
 .ti -1c
-.RI "\fBmtk\fP"
+.RI " \fBmtk\fP"
 .br
 .RI "\fIMimetic Methods Toolkit namespace\&. \fP"
 .in -1c
@@ -53,14 +55,20 @@ Adapter class for the LAPACK API\&.
 .in -1c
 .SH "Detailed Description"
 .PP 
-This class contains a collection of static classes, that posses direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the LAPACK\&.
+Definition of a class that contains a collection of static member functions that possess direct access to the underlying structure of the matrices, thus allowing programmers to exploit some of the numerical methods implemented in the LAPACK\&.
 .PP
-The \fBLAPACK\fP is written in Fortran 90 and provides routines for solving systems of simultaneous linear equations, least-squares solutions of linear systems of equations, eigenvalue problems, and singular value problems\&.
+The \fBLAPACK (Linear Algebra PACKage)\fP is written in Fortran 90 and provides routines for solving systems of simultaneous linear equations, least-squares solutions of linear systems of equations, eigenvalue problems, and singular value problems\&.
 .PP
-\fBSee Also:\fP
+\fBSee also:\fP
 .RS 4
 http://www.netlib.org/lapack/
 .RE
+.PP
+\fBTodo\fP
+.RS 4
+Write documentation using LaTeX\&.
+.RE
+.PP
 .PP
 \fBAuthor:\fP
 .RS 4

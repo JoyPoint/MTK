@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='UTF-8' standalone='no'?>
-<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.6">
+<doxygen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="compound.xsd" version="1.8.8">
   <compounddef id="classmtk_1_1Tools" kind="class" prot="public">
     <compoundname>mtk::Tools</compoundname>
     <includes refid="mtk__tools_8h" local="no">mtk_tools.h</includes>
@@ -12,37 +12,52 @@
         <briefdescription>
 <para>Current test being executed. </para>        </briefdescription>
         <detaileddescription>
-<para><xrefsect id="todo_1_todo000020"><xreftitle>Todo</xreftitle><xrefdescription><para>Check usage of static methods and private members. </para></xrefdescription></xrefsect></para>        </detaileddescription>
+        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" line="104" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" bodystart="104" bodyend="-1"/>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_tools.h" line="115" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_tools.h" bodystart="115" bodyend="-1"/>
+      </memberdef>
+      <memberdef kind="variable" id="classmtk_1_1Tools_1aba9d3d2952a3de9e7b46faa86d28d692" prot="private" static="yes" mutable="no">
+        <type><ref refid="group__c01-foundations_1gac080bbbf5cbb5502c9f00405f894857d" kindref="member">Real</ref></type>
+        <definition>mtk::Real mtk::Tools::duration_</definition>
+        <argsstring></argsstring>
+        <name>duration_</name>
+        <initializer>{}</initializer>
+        <briefdescription>
+<para>Duration of the current test. </para>        </briefdescription>
+        <detaileddescription>
+        </detaileddescription>
+        <inbodydescription>
+        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_tools.h" line="117" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_tools.h" bodystart="117" bodyend="-1"/>
       </memberdef>
       <memberdef kind="variable" id="classmtk_1_1Tools_1a4bd58d08397db42271ed9e2d3ecc9963" prot="private" static="yes" mutable="no">
         <type>clock_t</type>
         <definition>clock_t mtk::Tools::begin_time_</definition>
         <argsstring></argsstring>
         <name>begin_time_</name>
+        <initializer>{}</initializer>
         <briefdescription>
 <para>Elapsed time on current test. </para>        </briefdescription>
         <detaileddescription>
         </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" line="106" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" bodystart="106" bodyend="-1"/>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_tools.h" line="119" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_tools.h" bodystart="119" bodyend="-1"/>
       </memberdef>
       </sectiondef>
       <sectiondef kind="public-static-func">
-      <memberdef kind="function" id="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
         <definition>void mtk::Tools::Prevent</definition>
-        <argsstring>(const bool condition, const char *fname, int lineno, const char *fxname)</argsstring>
+        <argsstring>(const bool complement, const char *const fname, int lineno, const char *const fxname) noexcept</argsstring>
         <name>Prevent</name>
         <param>
           <type>const bool</type>
-          <declname>condition</declname>
+          <declname>complement</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type>const char *const</type>
           <declname>fname</declname>
         </param>
         <param>
@@ -50,16 +65,16 @@
           <declname>lineno</declname>
         </param>
         <param>
-          <type>const char *</type>
+          <type>const char *const</type>
           <declname>fxname</declname>
         </param>
         <briefdescription>
-<para>Enforces pre-conditions by preventing their complements from occur. </para>        </briefdescription>
+<para>Enforces preconditions by preventing their complements from occur. </para>        </briefdescription>
         <detaileddescription>
 <para><simplesect kind="see"><para><ulink url="http://stackoverflow.com/questions/8884335/print-the-file-name-line-number-and-function-name-of-a-calling-function-c-pro">http://stackoverflow.com/questions/8884335/print-the-file-name-line-number-and-function-name-of-a-calling-function-c-pro</ulink></para></simplesect>
 <parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername direction="in">condition</parametername>
+<parametername direction="in">complement</parametername>
 </parameternamelist>
 <parameterdescription>
 <para>Complement of desired pre-condition. </para></parameterdescription>
@@ -88,48 +103,162 @@
 </parameterlist>
 </para>        </detaileddescription>
         <inbodydescription>
-<para><xrefsect id="todo_1_todo000019"><xreftitle>Todo</xreftitle><xrefdescription><para>Check if this is the best way of stalling execution. </para></xrefdescription></xrefsect></para>        </inbodydescription>
-        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" line="84" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_tools.cc" bodystart="61" bodyend="81"/>
-        <referencedby refid="classmtk_1_1BCDesc1D_1a4dcf1ac4198402113591fde97dfa3260" compoundref="mtk__bc__desc__1d_8cc" startline="5" endline="28">mtk::BCDesc1D::ImposeOnOperator</referencedby>
-        <referencedby refid="classmtk_1_1BCDesc1D_1a79a659c6a6333af8e51c463cf1ecb0b7" compoundref="mtk__bc__desc__1d_8cc" startline="30" endline="43">mtk::BCDesc1D::ImposeOnGrid</referencedby>
-        <referencedby refid="classmtk_1_1BLASAdapter_1ab92440888b730863244c5d9479c11aca" compoundref="mtk__blas__adapter_8cc" startline="324" endline="337">mtk::BLASAdapter::RealNRM2</referencedby>
-        <referencedby refid="classmtk_1_1BLASAdapter_1a081cd092ae65e730f44eae8643edd539" compoundref="mtk__blas__adapter_8cc" startline="339" endline="356">mtk::BLASAdapter::RealAXPY</referencedby>
-        <referencedby refid="classmtk_1_1BLASAdapter_1af2ac5691f45e67d6e26186b071119ec4" compoundref="mtk__blas__adapter_8cc" startline="358" endline="376">mtk::BLASAdapter::RelNorm2Error</referencedby>
-        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="409" endline="463">mtk::BLASAdapter::RealDenseMM</referencedby>
-        <referencedby refid="classmtk_1_1DenseMatrix_1abe26c623467fc1b293cf4f22a3a47cc8" compoundref="mtk__dense__matrix_8cc" startline="177" endline="197">mtk::DenseMatrix::DenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1DenseMatrix_1aacae136ae446cad8f0d81476e83efb39" compoundref="mtk__dense__matrix_8cc" startline="296" endline="304">mtk::DenseMatrix::SetOrdering</referencedby>
-        <referencedby refid="classmtk_1_1DenseMatrix_1a87fb785713c04b13767947cc3325ce7c" compoundref="mtk__dense__matrix_8cc" startline="321" endline="331">mtk::DenseMatrix::GetValue</referencedby>
-        <referencedby refid="classmtk_1_1DenseMatrix_1ae0f873a6d3a734da467cafb817da64ae" compoundref="mtk__dense__matrix_8cc" startline="333" endline="344">mtk::DenseMatrix::SetValue</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1a52fcd1542f11e606e36bd188e48bfdf7" compoundref="mtk__div__1d_8cc" startline="176" endline="313">mtk::Div1D::ConstructDiv1D</referencedby>
-        <referencedby refid="classmtk_1_1Div1D_1afdbb1e11f05dd77b882f36426229acf7" compoundref="mtk__div__1d_8cc" startline="330" endline="390">mtk::Div1D::ReturnAsDenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1a74ef5245cfae6fd158bd7f563a0c2e52" compoundref="mtk__grad__1d_8cc" startline="182" endline="323">mtk::Grad1D::ConstructGrad1D</referencedby>
-        <referencedby refid="classmtk_1_1Grad1D_1a75781c4455569a7934d4e0dff7e06064" compoundref="mtk__grad__1d_8cc" startline="340" endline="404">mtk::Grad1D::ReturnAsDenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="119" endline="263">mtk::Lap1D::ConstructLap1D</referencedby>
-        <referencedby refid="classmtk_1_1Lap1D_1a28672c735fa0d13e6204795b63aec4e2" compoundref="mtk__lap__1d_8cc" startline="265" endline="330">mtk::Lap1D::ReturnAsDenseMatrix</referencedby>
-        <referencedby refid="classmtk_1_1LAPACKAdapter_1a7428bccf74fd4a4af68fb7233846da22" compoundref="mtk__lapack__adapter_8cc" startline="427" endline="461">mtk::LAPACKAdapter::SolveDenseSystem</referencedby>
-        <referencedby refid="classmtk_1_1Matrix_1ac0edd0ee07853d0ef6dea9b08d15e132" compoundref="mtk__matrix_8cc" startline="192" endline="202">mtk::Matrix::set_storage</referencedby>
-        <referencedby refid="classmtk_1_1Matrix_1aa390fa8883e58e8f1df9416e5b5b7a83" compoundref="mtk__matrix_8cc" startline="204" endline="215">mtk::Matrix::set_ordering</referencedby>
-        <referencedby refid="classmtk_1_1Matrix_1a242fedf2da10a3e5c14f63c2bc60beae" compoundref="mtk__matrix_8cc" startline="217" endline="227">mtk::Matrix::set_num_rows</referencedby>
-        <referencedby refid="classmtk_1_1Matrix_1a312883d34f2e0daf5db7432ee2c4ed51" compoundref="mtk__matrix_8cc" startline="229" endline="239">mtk::Matrix::set_num_cols</referencedby>
-        <referencedby refid="classmtk_1_1Matrix_1ae529100c5c280088e9acf8e8f7994f73" compoundref="mtk__matrix_8cc" startline="241" endline="253">mtk::Matrix::set_num_zero</referencedby>
-        <referencedby refid="classmtk_1_1Matrix_1a66c2c1c127f4efefc4a407e9552e928d" compoundref="mtk__matrix_8cc" startline="255" endline="267">mtk::Matrix::set_num_null</referencedby>
-        <referencedby refid="classmtk_1_1Tools_1a35cefa938105619b731ea4fedb86becf" compoundref="mtk__tools_8cc" startline="89" endline="99">BeginTestNo</referencedby>
-        <referencedby refid="classmtk_1_1Tools_1a5d3f78d17228fb36a73567c191f0f4ee" compoundref="mtk__tools_8cc" startline="101" endline="110">EndTestNo</referencedby>
-        <referencedby refid="classmtk_1_1UniStgGrid1D_1ae19250f0cddef7a05c4a73a90991a26a" compoundref="mtk__uni__stg__grid__1d_8cc" startline="122" endline="140">mtk::UniStgGrid1D::UniStgGrid1D</referencedby>
-        <referencedby refid="classmtk_1_1UniStgGrid1D_1a438cda229830d0e2f35c615e70b59a76" compoundref="mtk__uni__stg__grid__1d_8cc" startline="164" endline="198">mtk::UniStgGrid1D::BindScalarField</referencedby>
-        <referencedby refid="classmtk_1_1UniStgGrid1D_1a5703f1f875f52f6de8f7db5a6250fafa" compoundref="mtk__uni__stg__grid__1d_8cc" startline="200" endline="226">mtk::UniStgGrid1D::BindVectorField</referencedby>
+<para><xrefsect id="todo_1_todo000029"><xreftitle>Todo</xreftitle><xrefdescription><para>Check if this is the best way of stalling execution in C++11. </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_tools.h" line="88" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_tools.cc" bodystart="64" bodyend="93"/>
+        <referencedby refid="classmtk_1_1BLASAdapter_1ab92440888b730863244c5d9479c11aca" compoundref="mtk__blas__adapter_8cc" startline="327" endline="340">mtk::BLASAdapter::RealNRM2</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1a081cd092ae65e730f44eae8643edd539" compoundref="mtk__blas__adapter_8cc" startline="342" endline="359">mtk::BLASAdapter::RealAXPY</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1af2ac5691f45e67d6e26186b071119ec4" compoundref="mtk__blas__adapter_8cc" startline="361" endline="379">mtk::BLASAdapter::RelNorm2Error</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1a368b0d9871129d5139f18d46e14e4ccb" compoundref="mtk__blas__adapter_8cc" startline="412" endline="444">mtk::BLASAdapter::RealDenseMV</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1acebd0e9bfe0bdd609c7fbea98ccfd3b5" compoundref="mtk__blas__adapter_8cc" startline="446" endline="501">mtk::BLASAdapter::RealDenseMM</referencedby>
+        <referencedby refid="classmtk_1_1BLASAdapter_1a0dd80d043615a95f11b7341ce69b44d3" compoundref="mtk__blas__adapter_8cc" startline="503" endline="549">mtk::BLASAdapter::RealDenseSM</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1abe26c623467fc1b293cf4f22a3a47cc8" compoundref="mtk__dense__matrix_8cc" startline="217" endline="239">mtk::DenseMatrix::DenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a178e63f365cf8c547dc5020c60357f5e" compoundref="mtk__dense__matrix_8cc" startline="345" endline="354">mtk::DenseMatrix::SetOrdering</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1ac0f824b0fec88c4fb42e77b7550fb0d3" compoundref="mtk__dense__matrix_8cc" startline="376" endline="390">mtk::DenseMatrix::set_encoded_operator</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a4b23ecbebd970b5eea915dbb50691024" compoundref="mtk__dense__matrix_8cc" startline="392" endline="402">mtk::DenseMatrix::GetValue</referencedby>
+        <referencedby refid="classmtk_1_1DenseMatrix_1a784ce5784109ac86bfb9d8562b334b13" compoundref="mtk__dense__matrix_8cc" startline="404" endline="415">mtk::DenseMatrix::SetValue</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a52fcd1542f11e606e36bd188e48bfdf7" compoundref="mtk__div__1d_8cc" startline="191" endline="328">mtk::Div1D::ConstructDiv1D</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1a213fddbaaf86e4840c6a9649b69c2d49" compoundref="mtk__div__1d_8cc" startline="380" endline="438">mtk::Div1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Div1D_1af2546ad1568ef39a6075f03bb395719e" compoundref="mtk__div__1d_8cc" startline="440" endline="494">mtk::Div1D::ReturnAsDimensionlessDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a74ef5245cfae6fd158bd7f563a0c2e52" compoundref="mtk__grad__1d_8cc" startline="205" endline="342">mtk::Grad1D::ConstructGrad1D</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1a77b2eddbe4ab03f469306c604d505b1a" compoundref="mtk__grad__1d_8cc" startline="394" endline="463">mtk::Grad1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Grad1D_1ab07e6a15edca32534ae3d1a8ccaf1c42" compoundref="mtk__grad__1d_8cc" startline="533" endline="595">mtk::Grad1D::ReturnAsDimensionlessDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Interp1D_1ace09ceeb508afde5d95f20a8e73d5315" compoundref="mtk__interp__1d_8cc" startline="96" endline="130">mtk::Interp1D::ConstructInterp1D</referencedby>
+        <referencedby refid="classmtk_1_1Interp1D_1aee8126b8a4be378a30be4d95b43b384b" compoundref="mtk__interp__1d_8cc" startline="137" endline="180">mtk::Interp1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1a685dcba88c08cf5b7b6c2aa4669a472c" compoundref="mtk__lap__1d_8cc" startline="151" endline="312">mtk::Lap1D::ConstructLap1D</referencedby>
+        <referencedby refid="classmtk_1_1Lap1D_1aaea34a17b0879e05eb4109645a2ba8f4" compoundref="mtk__lap__1d_8cc" startline="324" endline="394">mtk::Lap1D::ReturnAsDenseMatrix</referencedby>
+        <referencedby refid="classmtk_1_1LAPACKAdapter_1a7428bccf74fd4a4af68fb7233846da22" compoundref="mtk__lapack__adapter_8cc" startline="432" endline="465">mtk::LAPACKAdapter::SolveDenseSystem</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a7f576621d30aa8c5d82904d721c803d3" compoundref="mtk__matrix_8cc" startline="199" endline="214">mtk::Matrix::set_encoded_operator</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a111b89f2f21d06a59b8d043123bec625" compoundref="mtk__matrix_8cc" startline="216" endline="226">mtk::Matrix::set_storage</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a8bdaf3f8307b00a36843359f165e1f17" compoundref="mtk__matrix_8cc" startline="228" endline="239">mtk::Matrix::set_ordering</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1aa4aee0281421c22d9af273b7beb84306" compoundref="mtk__matrix_8cc" startline="241" endline="260">mtk::Matrix::set_num_rows</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1aad6b4ced4a0447cc7bf2347fe86fd722" compoundref="mtk__matrix_8cc" startline="262" endline="281">mtk::Matrix::set_num_cols</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a64cea371fdb75909cb16c7bd5ffcdd0e" compoundref="mtk__matrix_8cc" startline="283" endline="291">mtk::Matrix::set_num_low_diags</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a525df195d1fe4f05d8e95d92a916dfda" compoundref="mtk__matrix_8cc" startline="293" endline="301">mtk::Matrix::set_num_upp_diags</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a3e96d68d781f32d1daa223f47c760c6b" compoundref="mtk__matrix_8cc" startline="303" endline="314">mtk::Matrix::set_num_null</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a8cdfa4f35133668ae0b4b90ef110fbae" compoundref="mtk__matrix_8cc" startline="316" endline="331">mtk::Matrix::set_num_zero</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1af4bba5c43d1f09f5059a04298ba24568" compoundref="mtk__matrix_8cc" startline="333" endline="344">mtk::Matrix::IncreaseNumNull</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1af7c674a9bce25f240e195fd0aecfbf0d" compoundref="mtk__matrix_8cc" startline="346" endline="357">mtk::Matrix::DecreaseNumNull</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1ace7cb5c31d0de66b8f9c63cd542c9e63" compoundref="mtk__matrix_8cc" startline="359" endline="372">mtk::Matrix::IncreaseNumZero</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a3ad5df37cfb306ca78e19748d013b94e" compoundref="mtk__matrix_8cc" startline="374" endline="387">mtk::Matrix::DecreaseNumZero</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a0791ffab1df7ada568b06eb9e256b790" compoundref="mtk__matrix_8cc" startline="389" endline="398">mtk::Matrix::ComputeNumValues</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a4dd9ceb5b89c1d9770df2e2e41574a65" compoundref="mtk__matrix_8cc" startline="400" endline="410">mtk::Matrix::ComputeLeadingDimension</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a2c5de393e0df51d7f4cbe68ccecd676a" compoundref="mtk__matrix_8cc" startline="412" endline="421">mtk::Matrix::ComputeBandwidth</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1acef02efd98d2708a50cc80fdfd7c9423" compoundref="mtk__matrix_8cc" startline="423" endline="432">mtk::Matrix::ComputeNumNonNull</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a631df8e07c001304ae00205954314f6e" compoundref="mtk__matrix_8cc" startline="434" endline="444">mtk::Matrix::ComputeAbsDensity</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a9c0452714756648998888f6abc4600bc" compoundref="mtk__matrix_8cc" startline="446" endline="454">mtk::Matrix::ComputeAbsSparsity</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a4395502212ef26409a1075e7f8bc6dd5" compoundref="mtk__matrix_8cc" startline="456" endline="465">mtk::Matrix::ComputeNumNonZero</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1a197bef503f5e302b9befb9e4908b626c" compoundref="mtk__matrix_8cc" startline="467" endline="477">mtk::Matrix::ComputeRelDensity</referencedby>
+        <referencedby refid="classmtk_1_1Matrix_1ac50b83fe9349ba4b8920a0e03d99a2d9" compoundref="mtk__matrix_8cc" startline="479" endline="487">mtk::Matrix::ComputeRelSparsity</referencedby>
+        <referencedby refid="classmtk_1_1OperatorApplicator_1ac19a5cad4c6600caa75250945ffca63e" compoundref="mtk__operator__applicator_8cc" startline="64" endline="86">mtk::OperatorApplicator::ApplyDenseMatrixGradientOn1DGrid</referencedby>
+        <referencedby refid="classmtk_1_1OperatorApplicator_1a895a4650ad0d07074e69f971ff9321b9" compoundref="mtk__operator__applicator_8cc" startline="88" endline="111">mtk::OperatorApplicator::ApplyDenseMatrixDivergenceOn1DGrid</referencedby>
+        <referencedby refid="classmtk_1_1OperatorApplicator_1a142ef3e84c7547ca05216ccd69d5210e" compoundref="mtk__operator__applicator_8cc" startline="113" endline="135">mtk::OperatorApplicator::ApplyDenseMatrixLaplacianOn1DGrid</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1acdf8a75f8c39b3b8a032af81e0fd2e89" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="118" endline="130">mtk::RobinBCDescriptor1D::PushBackWestCoeff</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1a7791c11e0950656cb5608a77918c28d4" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="132" endline="144">mtk::RobinBCDescriptor1D::PushBackEastCoeff</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1a06bfaf0126d528247c3c76fdd19f4b85" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="146" endline="154">mtk::RobinBCDescriptor1D::set_west_condition</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1a4edc92eeaaaa3f1e7f2cedfea3d35681" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="156" endline="164">mtk::RobinBCDescriptor1D::set_east_condition</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1aab2a560324b90eeaa11a75aef1d72fe0" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="166" endline="198">mtk::RobinBCDescriptor1D::ImposeOnDivergenceMatrix</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1adfe4c8c95ea8ed96bc0c8f9a90101409" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="200" endline="283">mtk::RobinBCDescriptor1D::ImposeOnLaplacianMatrix</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor1D_1ab0daec1d6c5c9c6768bea08281a3831d" compoundref="mtk__robin__bc__descriptor__1d_8cc" startline="285" endline="297">mtk::RobinBCDescriptor1D::ImposeOnGrid</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1a671a38d5ea78be8f0a88ccf034d09987" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="127" endline="139">mtk::RobinBCDescriptor2D::PushBackWestCoeff</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1a7cc1e6ca729b8b092eb73161eb244160" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="141" endline="153">mtk::RobinBCDescriptor2D::PushBackEastCoeff</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1ad74c5d9f2c1d0359d350348ac2a7e61e" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="155" endline="167">mtk::RobinBCDescriptor2D::PushBackSouthCoeff</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1abc6e299516af5d1c5c2d04797875b446" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="169" endline="181">mtk::RobinBCDescriptor2D::PushBackNorthCoeff</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1aeaff87510dc1773effc0b5429579de23" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="183" endline="192">mtk::RobinBCDescriptor2D::set_west_condition</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1a94570f6e741bb00038c4bf81842d226c" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="194" endline="203">mtk::RobinBCDescriptor2D::set_east_condition</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1a3fbdf58ba24861011fd852f0c642a4c8" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="205" endline="215">mtk::RobinBCDescriptor2D::set_south_condition</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1ade17884e6a2636a7c6f989602a0052e0" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="217" endline="227">mtk::RobinBCDescriptor2D::set_north_condition</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1a0a26693f5265fcad978e7ba84e01ed69" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="591" endline="672">mtk::RobinBCDescriptor2D::ImposeOnLaplacianMatrix</referencedby>
+        <referencedby refid="classmtk_1_1RobinBCDescriptor2D_1ac9564bc46c196cbf4720a0e4b93da8b0" compoundref="mtk__robin__bc__descriptor__2d_8cc" startline="674" endline="790">mtk::RobinBCDescriptor2D::ImposeOnGrid</referencedby>
+        <referencedby refid="classmtk_1_1Tools_1afc29ecaf337a13ed2e817d3890a5a441" compoundref="mtk__tools_8cc" startline="101" endline="113">BeginUnitTestNo</referencedby>
+        <referencedby refid="classmtk_1_1Tools_1aba67d9dc35c9c1c49430fcc9ea035e03" compoundref="mtk__tools_8cc" startline="115" endline="122">EndUnitTestNo</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid1D_1a02a40f5c15b0ff4249c1497221dd41ea" compoundref="mtk__uni__stg__grid__1d_8cc" startline="151" endline="169">mtk::UniStgGrid1D::UniStgGrid1D</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid1D_1a36a7a85e237a4f85c603eac8cf67a704" compoundref="mtk__uni__stg__grid__1d_8cc" startline="208" endline="241">mtk::UniStgGrid1D::GenerateDiscreteDomainX</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid1D_1a43ce8a21fa723ac444b92d02ef6782e7" compoundref="mtk__uni__stg__grid__1d_8cc" startline="243" endline="258">mtk::UniStgGrid1D::ReserveDiscreteField</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid1D_1a6ad3040de719dff71d934f0062e9860f" compoundref="mtk__uni__stg__grid__1d_8cc" startline="260" endline="300">mtk::UniStgGrid1D::BindScalarField</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid1D_1ac6f8c592636dfa5a92217ac82405976d" compoundref="mtk__uni__stg__grid__1d_8cc" startline="314" endline="346">mtk::UniStgGrid1D::BindVectorField</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid2D_1a9d96b31002c1deb3a90954bbb112487e" compoundref="mtk__uni__stg__grid__2d_8cc" startline="170" endline="202">mtk::UniStgGrid2D::UniStgGrid2D</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid2D_1a5f9910ffb94e0314b16c026c4b5762ee" compoundref="mtk__uni__stg__grid__2d_8cc" startline="276" endline="330">mtk::UniStgGrid2D::BindScalarField</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid2D_1ae274b24672e9bd6075bf38b015bd9083" compoundref="mtk__uni__stg__grid__2d_8cc" startline="425" endline="436">mtk::UniStgGrid2D::BindVectorField</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid3D_1aa5a902b9b0236a81c4b12198d6e97534" compoundref="mtk__uni__stg__grid__3d_8cc" startline="174" endline="219">mtk::UniStgGrid3D::UniStgGrid3D</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid3D_1a02fb1ea08f81e733ab3c8ac244b78371" compoundref="mtk__uni__stg__grid__3d_8cc" startline="318" endline="392">mtk::UniStgGrid3D::BindScalarField</referencedby>
+        <referencedby refid="classmtk_1_1UniStgGrid3D_1a7b7f6b162dec10dfb55c8e492e456287" compoundref="mtk__uni__stg__grid__3d_8cc" startline="415" endline="433">mtk::UniStgGrid3D::BindVectorField</referencedby>
       </memberdef>
-      <memberdef kind="function" id="classmtk_1_1Tools_1a35cefa938105619b731ea4fedb86becf" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classmtk_1_1Tools_1afc29ecaf337a13ed2e817d3890a5a441" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void mtk::Tools::BeginTestNo</definition>
-        <argsstring>(const int &amp;nn)</argsstring>
-        <name>BeginTestNo</name>
+        <definition>void mtk::Tools::BeginUnitTestNo</definition>
+        <argsstring>(const int &amp;nn) noexcept</argsstring>
+        <name>BeginUnitTestNo</name>
         <param>
           <type>const int &amp;</type>
           <declname>nn</declname>
         </param>
         <briefdescription>
-<para>Begins the execution of a test. </para>        </briefdescription>
+<para>Begins the execution of a unit test. Starts a timer. </para>        </briefdescription>
+        <detaileddescription>
+<para><parameterlist kind="param"><parameteritem>
+<parameternamelist>
+<parametername direction="in">nn</parametername>
+</parameternamelist>
+<parameterdescription>
+<para>Number of the test. </para></parameterdescription>
+</parameteritem>
+</parameterlist>
+</para>        </detaileddescription>
+        <inbodydescription>
+<para><xrefsect id="todo_1_todo000030"><xreftitle>Todo</xreftitle><xrefdescription><para>Compute time using C++11 mechanisms. </para></xrefdescription></xrefsect></para>        </inbodydescription>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_tools.h" line="98" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_tools.cc" bodystart="101" bodyend="113"/>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="64" endline="93">Prevent</references>
+        <referencedby refid="mtk__blas__adapter__test_8cc_1ac717e602841eac4e34e7c3b38259f05e" compoundref="mtk__blas__adapter__test_8cc" startline="58" endline="94">TestRealDenseMM</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a6e2a732a95a4c8992e72bf4268521e3c" compoundref="mtk__dense__matrix__test_8cc" startline="59" endline="67">TestDefaultConstructor</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a9e6e44523ba0df5196edcc06d0b910fb" compoundref="mtk__dense__matrix__test_8cc" startline="69" endline="84">TestConstructorWithNumRowsNumCols</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a73c40c10eca3d4d5c9163b9a987ae5ff" compoundref="mtk__dense__matrix__test_8cc" startline="86" endline="104">TestConstructAsIdentity</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a5dd7d787ca03d0eb47c9ac438fd613f7" compoundref="mtk__dense__matrix__test_8cc" startline="106" endline="124">TestConstructAsVandermonde</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1aacb5cb7b5460d0a8bb5db9fd9e2bf6bc" compoundref="mtk__dense__matrix__test_8cc" startline="126" endline="153">TestSetValueGetValue</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a83e04c23e591c07c140b421c2770ed82" compoundref="mtk__dense__matrix__test_8cc" startline="155" endline="190">TestConstructAsVandermondeTranspose</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a4cfd40c6bb3c6f95d01ada7407f7ae64" compoundref="mtk__dense__matrix__test_8cc" startline="192" endline="260">TestKron</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1afb53e3a143458f6c3ef9eebf34e99cea" compoundref="mtk__dense__matrix__test_8cc" startline="262" endline="284">TestConstructWithNumRowsNumColsAssignmentOperator</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a5b34332324b47adf015c6ffd02c81403" compoundref="mtk__dense__matrix__test_8cc" startline="286" endline="307">TestConstructAsVandermondeTransposeAssignmentOperator</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1ae9ce7598f6f4b229d425768e12d98c7d" compoundref="mtk__div__1d__test_8cc" startline="58" endline="72">TestDefaultConstructorFactoryMethodDefault</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1a15cd0d7062ef8575bb60f92a92e13999" compoundref="mtk__div__1d__test_8cc" startline="74" endline="88">TestDefaultConstructorFactoryMethodFourthOrder</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1af4c440fcaef3e71e3e018c1a6ff66be0" compoundref="mtk__div__1d__test_8cc" startline="90" endline="104">TestDefaultConstructorFactoryMethodSixthOrder</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1adc2121ca547528bd0dd7dae2ebe9aa14" compoundref="mtk__div__1d__test_8cc" startline="106" endline="120">TestDefaultConstructorFactoryMethodEightOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1a1a4a22f08dec9d4d1266fce7bb594e6b" compoundref="mtk__div__1d__test_8cc" startline="122" endline="136">TestDefaultConstructorFactoryMethodTenthOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1aaa9f376406418e4b960814916e224f3b" compoundref="mtk__div__1d__test_8cc" startline="138" endline="152">TestDefaultConstructorFactoryMethodTwelfthOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1a1465edf65e6566e9a88c16179312d86a" compoundref="mtk__div__1d__test_8cc" startline="154" endline="168">TestDefaultConstructorFactoryMethodFourteenthOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1ae59deb4e19b59a84fbf2bb0ea86a7e36" compoundref="mtk__div__1d__test_8cc" startline="170" endline="242">TestSecondOrderReturnAsDenseMatrixWithGrid</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1aebadd24a6a18d60726296e6937301a12" compoundref="mtk__div__1d__test_8cc" startline="244" endline="267">TestFourthOrderReturnAsDenseMatrixWithGrid</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1ac670f0449af5c0da14d8b04c96c54665" compoundref="mtk__div__1d__test_8cc" startline="269" endline="292">TestSixthOrderReturnAsDenseMatrixWithGrid</referencedby>
+        <referencedby refid="mtk__div__2d__test_8cc_1a5b262691a4d7023148e0dddb7373bfba" compoundref="mtk__div__2d__test_8cc" startline="61" endline="85">TestDefaultConstructorFactory</referencedby>
+        <referencedby refid="mtk__div__2d__test_8cc_1a9181f8638ee3a27345cb2b516b57ef7b" compoundref="mtk__div__2d__test_8cc" startline="87" endline="123">TestReturnAsDenseMatrixWriteToFile</referencedby>
+        <referencedby refid="mtk__glpk__adapter__test_8cc_1aec952ea2b3a1edfb1ca930a9090174b5" compoundref="mtk__glpk__adapter__test_8cc" startline="61" endline="66">Test1</referencedby>
+        <referencedby refid="mtk__grad__1d__test_8cc_1a82c00a99d7cc081462417ffbad9388bf" compoundref="mtk__grad__1d__test_8cc" startline="149" endline="231">TestReturnAsDenseMatrixWithGrid</referencedby>
+        <referencedby refid="mtk__grad__1d__test_8cc_1abfa7b5b15ba551fe7d7a5a0fc20d92bb" compoundref="mtk__grad__1d__test_8cc" startline="233" endline="251">TestReturnAsDimensionlessDenseMatrix</referencedby>
+        <referencedby refid="mtk__grad__1d__test_8cc_1a6151c23cb8b3a5e29cf4ee85a671674c" compoundref="mtk__grad__1d__test_8cc" startline="253" endline="279">TestWriteToFile</referencedby>
+        <referencedby refid="mtk__grad__1d__test_8cc_1acd018c792c609ddbe7897c0111c0f05a" compoundref="mtk__grad__1d__test_8cc" startline="281" endline="301">TestMimBndy</referencedby>
+        <referencedby refid="mtk__lap__1d__test_8cc_1abbf112683f065aae135485119aff528b" compoundref="mtk__lap__1d__test_8cc" startline="153" endline="174">TestReturnAsDenseMatrix</referencedby>
+        <referencedby refid="mtk__matrix__test_8cc_1ac8b046066b29ba59873ecde2d6f24cb7" compoundref="mtk__matrix__test_8cc" startline="61" endline="89">TestDefaultConstructorGetters</referencedby>
+        <referencedby refid="mtk__matrix__test_8cc_1a767fbf9edba1ba58c2ef3ddd83dccc00" compoundref="mtk__matrix__test_8cc" startline="91" endline="155">TestSettersGettersCopyConstructor</referencedby>
+        <referencedby refid="mtk__matrix__test_8cc_1a96b8cce7f1f21b0237bca0728cde1729" compoundref="mtk__matrix__test_8cc" startline="157" endline="235">TestIncreaseDecreaseNumNull</referencedby>
+        <referencedby refid="mtk__matrix__test_8cc_1aa0ffa5f3e2314085c85f214be2a64966" compoundref="mtk__matrix__test_8cc" startline="237" endline="298">TestIncreaseDecreaseNumZero</referencedby>
+        <referencedby refid="mtk__robin__bc__descriptor__2d__test_8cc_1a237ccde1134fd0945f64e455c9265b3e" compoundref="mtk__robin__bc__descriptor__2d__test_8cc" startline="83" endline="130">TestPushBackImposeOnLaplacianMatrix</referencedby>
+        <referencedby refid="mtk__robin__bc__descriptor__2d__test_8cc_1a097e345e420c9d22c1286c2ac7bf8325" compoundref="mtk__robin__bc__descriptor__2d__test_8cc" startline="145" endline="181">TestImposeOnGrid</referencedby>
+        <referencedby refid="mtk__uni__stg__grid__1d__test_8cc_1a907c0a9be54c7deaceac94c7627518fc" compoundref="mtk__uni__stg__grid__1d__test_8cc" startline="77" endline="94">TestConstructWithWestBndyEastBndyNumCellsOStreamOperatorBindScalarField</referencedby>
+        <referencedby refid="mtk__uni__stg__grid__1d__test_8cc_1aff3a02c4fac060ad3663caaf679f5aad" compoundref="mtk__uni__stg__grid__1d__test_8cc" startline="96" endline="123">TestBindScalarFieldWriteToFile</referencedby>
+        <referencedby refid="mtk__uni__stg__grid__1d__test_8cc_1a21e9af30fdab48a741e6575797dcf934" compoundref="mtk__uni__stg__grid__1d__test_8cc" startline="131" endline="158">TestBindVectorField</referencedby>
+        <referencedby refid="mtk__uni__stg__grid__2d__test_8cc_1aa0de76d85c1e74a4616b42b57aae76d2" compoundref="mtk__uni__stg__grid__2d__test_8cc" startline="72" endline="91">TestConstructWithWestEastNumCellsXSouthNorthBndysNumCellsYOStreamOperator</referencedby>
+        <referencedby refid="mtk__uni__stg__grid__2d__test_8cc_1a28b16e5b929ff88f3966594d205feaac" compoundref="mtk__uni__stg__grid__2d__test_8cc" startline="93" endline="118">TestGetters</referencedby>
+      </memberdef>
+      <memberdef kind="function" id="classmtk_1_1Tools_1aba67d9dc35c9c1c49430fcc9ea035e03" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+        <type>void</type>
+        <definition>void mtk::Tools::EndUnitTestNo</definition>
+        <argsstring>(const int &amp;nn) noexcept</argsstring>
+        <name>EndUnitTestNo</name>
+        <param>
+          <type>const int &amp;</type>
+          <declname>nn</declname>
+        </param>
+        <briefdescription>
+<para>Ends the execution of a unit test. Stops and reports wall-clock time. </para>        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
@@ -142,52 +271,128 @@
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" line="94" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_tools.cc" bodystart="89" bodyend="99"/>
-        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">Prevent</references>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_tools.h" line="105" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_tools.cc" bodystart="115" bodyend="122"/>
+        <references refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" compoundref="mtk__tools_8cc" startline="64" endline="93">Prevent</references>
+        <referencedby refid="mtk__blas__adapter__test_8cc_1ac717e602841eac4e34e7c3b38259f05e" compoundref="mtk__blas__adapter__test_8cc" startline="58" endline="94">TestRealDenseMM</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a6e2a732a95a4c8992e72bf4268521e3c" compoundref="mtk__dense__matrix__test_8cc" startline="59" endline="67">TestDefaultConstructor</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a9e6e44523ba0df5196edcc06d0b910fb" compoundref="mtk__dense__matrix__test_8cc" startline="69" endline="84">TestConstructorWithNumRowsNumCols</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a73c40c10eca3d4d5c9163b9a987ae5ff" compoundref="mtk__dense__matrix__test_8cc" startline="86" endline="104">TestConstructAsIdentity</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a5dd7d787ca03d0eb47c9ac438fd613f7" compoundref="mtk__dense__matrix__test_8cc" startline="106" endline="124">TestConstructAsVandermonde</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1aacb5cb7b5460d0a8bb5db9fd9e2bf6bc" compoundref="mtk__dense__matrix__test_8cc" startline="126" endline="153">TestSetValueGetValue</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a83e04c23e591c07c140b421c2770ed82" compoundref="mtk__dense__matrix__test_8cc" startline="155" endline="190">TestConstructAsVandermondeTranspose</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a4cfd40c6bb3c6f95d01ada7407f7ae64" compoundref="mtk__dense__matrix__test_8cc" startline="192" endline="260">TestKron</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1afb53e3a143458f6c3ef9eebf34e99cea" compoundref="mtk__dense__matrix__test_8cc" startline="262" endline="284">TestConstructWithNumRowsNumColsAssignmentOperator</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a5b34332324b47adf015c6ffd02c81403" compoundref="mtk__dense__matrix__test_8cc" startline="286" endline="307">TestConstructAsVandermondeTransposeAssignmentOperator</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1ae9ce7598f6f4b229d425768e12d98c7d" compoundref="mtk__div__1d__test_8cc" startline="58" endline="72">TestDefaultConstructorFactoryMethodDefault</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1a15cd0d7062ef8575bb60f92a92e13999" compoundref="mtk__div__1d__test_8cc" startline="74" endline="88">TestDefaultConstructorFactoryMethodFourthOrder</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1af4c440fcaef3e71e3e018c1a6ff66be0" compoundref="mtk__div__1d__test_8cc" startline="90" endline="104">TestDefaultConstructorFactoryMethodSixthOrder</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1adc2121ca547528bd0dd7dae2ebe9aa14" compoundref="mtk__div__1d__test_8cc" startline="106" endline="120">TestDefaultConstructorFactoryMethodEightOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1a1a4a22f08dec9d4d1266fce7bb594e6b" compoundref="mtk__div__1d__test_8cc" startline="122" endline="136">TestDefaultConstructorFactoryMethodTenthOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1aaa9f376406418e4b960814916e224f3b" compoundref="mtk__div__1d__test_8cc" startline="138" endline="152">TestDefaultConstructorFactoryMethodTwelfthOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1a1465edf65e6566e9a88c16179312d86a" compoundref="mtk__div__1d__test_8cc" startline="154" endline="168">TestDefaultConstructorFactoryMethodFourteenthOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1ae59deb4e19b59a84fbf2bb0ea86a7e36" compoundref="mtk__div__1d__test_8cc" startline="170" endline="242">TestSecondOrderReturnAsDenseMatrixWithGrid</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1aebadd24a6a18d60726296e6937301a12" compoundref="mtk__div__1d__test_8cc" startline="244" endline="267">TestFourthOrderReturnAsDenseMatrixWithGrid</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1ac670f0449af5c0da14d8b04c96c54665" compoundref="mtk__div__1d__test_8cc" startline="269" endline="292">TestSixthOrderReturnAsDenseMatrixWithGrid</referencedby>
+        <referencedby refid="mtk__div__2d__test_8cc_1a5b262691a4d7023148e0dddb7373bfba" compoundref="mtk__div__2d__test_8cc" startline="61" endline="85">TestDefaultConstructorFactory</referencedby>
+        <referencedby refid="mtk__div__2d__test_8cc_1a9181f8638ee3a27345cb2b516b57ef7b" compoundref="mtk__div__2d__test_8cc" startline="87" endline="123">TestReturnAsDenseMatrixWriteToFile</referencedby>
+        <referencedby refid="mtk__glpk__adapter__test_8cc_1aec952ea2b3a1edfb1ca930a9090174b5" compoundref="mtk__glpk__adapter__test_8cc" startline="61" endline="66">Test1</referencedby>
+        <referencedby refid="mtk__grad__1d__test_8cc_1a82c00a99d7cc081462417ffbad9388bf" compoundref="mtk__grad__1d__test_8cc" startline="149" endline="231">TestReturnAsDenseMatrixWithGrid</referencedby>
+        <referencedby refid="mtk__grad__1d__test_8cc_1abfa7b5b15ba551fe7d7a5a0fc20d92bb" compoundref="mtk__grad__1d__test_8cc" startline="233" endline="251">TestReturnAsDimensionlessDenseMatrix</referencedby>
+        <referencedby refid="mtk__grad__1d__test_8cc_1a6151c23cb8b3a5e29cf4ee85a671674c" compoundref="mtk__grad__1d__test_8cc" startline="253" endline="279">TestWriteToFile</referencedby>
+        <referencedby refid="mtk__grad__1d__test_8cc_1acd018c792c609ddbe7897c0111c0f05a" compoundref="mtk__grad__1d__test_8cc" startline="281" endline="301">TestMimBndy</referencedby>
+        <referencedby refid="mtk__lap__1d__test_8cc_1abbf112683f065aae135485119aff528b" compoundref="mtk__lap__1d__test_8cc" startline="153" endline="174">TestReturnAsDenseMatrix</referencedby>
+        <referencedby refid="mtk__matrix__test_8cc_1ac8b046066b29ba59873ecde2d6f24cb7" compoundref="mtk__matrix__test_8cc" startline="61" endline="89">TestDefaultConstructorGetters</referencedby>
+        <referencedby refid="mtk__matrix__test_8cc_1a767fbf9edba1ba58c2ef3ddd83dccc00" compoundref="mtk__matrix__test_8cc" startline="91" endline="155">TestSettersGettersCopyConstructor</referencedby>
+        <referencedby refid="mtk__matrix__test_8cc_1a96b8cce7f1f21b0237bca0728cde1729" compoundref="mtk__matrix__test_8cc" startline="157" endline="235">TestIncreaseDecreaseNumNull</referencedby>
+        <referencedby refid="mtk__matrix__test_8cc_1aa0ffa5f3e2314085c85f214be2a64966" compoundref="mtk__matrix__test_8cc" startline="237" endline="298">TestIncreaseDecreaseNumZero</referencedby>
+        <referencedby refid="mtk__robin__bc__descriptor__2d__test_8cc_1a237ccde1134fd0945f64e455c9265b3e" compoundref="mtk__robin__bc__descriptor__2d__test_8cc" startline="83" endline="130">TestPushBackImposeOnLaplacianMatrix</referencedby>
+        <referencedby refid="mtk__robin__bc__descriptor__2d__test_8cc_1a097e345e420c9d22c1286c2ac7bf8325" compoundref="mtk__robin__bc__descriptor__2d__test_8cc" startline="145" endline="181">TestImposeOnGrid</referencedby>
+        <referencedby refid="mtk__uni__stg__grid__1d__test_8cc_1a907c0a9be54c7deaceac94c7627518fc" compoundref="mtk__uni__stg__grid__1d__test_8cc" startline="77" endline="94">TestConstructWithWestBndyEastBndyNumCellsOStreamOperatorBindScalarField</referencedby>
+        <referencedby refid="mtk__uni__stg__grid__1d__test_8cc_1aff3a02c4fac060ad3663caaf679f5aad" compoundref="mtk__uni__stg__grid__1d__test_8cc" startline="96" endline="123">TestBindScalarFieldWriteToFile</referencedby>
+        <referencedby refid="mtk__uni__stg__grid__1d__test_8cc_1a21e9af30fdab48a741e6575797dcf934" compoundref="mtk__uni__stg__grid__1d__test_8cc" startline="131" endline="158">TestBindVectorField</referencedby>
+        <referencedby refid="mtk__uni__stg__grid__2d__test_8cc_1aa0de76d85c1e74a4616b42b57aae76d2" compoundref="mtk__uni__stg__grid__2d__test_8cc" startline="72" endline="91">TestConstructWithWestEastNumCellsXSouthNorthBndysNumCellsYOStreamOperator</referencedby>
+        <referencedby refid="mtk__uni__stg__grid__2d__test_8cc_1a28b16e5b929ff88f3966594d205feaac" compoundref="mtk__uni__stg__grid__2d__test_8cc" startline="93" endline="118">TestGetters</referencedby>
       </memberdef>
-      <memberdef kind="function" id="classmtk_1_1Tools_1a5d3f78d17228fb36a73567c191f0f4ee" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
+      <memberdef kind="function" id="classmtk_1_1Tools_1ac6804df469c94ab6a796fb64f1e44a89" prot="public" static="yes" const="no" explicit="no" inline="no" virt="non-virtual">
         <type>void</type>
-        <definition>void mtk::Tools::EndTestNo</definition>
-        <argsstring>(const int &amp;nn)</argsstring>
-        <name>EndTestNo</name>
+        <definition>void mtk::Tools::Assert</definition>
+        <argsstring>(const bool &amp;condition) noexcept</argsstring>
+        <name>Assert</name>
         <param>
-          <type>const int &amp;</type>
-          <declname>nn</declname>
+          <type>const bool &amp;</type>
+          <declname>condition</declname>
         </param>
         <briefdescription>
-<para>Ends the execution of a test. </para>        </briefdescription>
+<para>Asserts if the condition required to pass the unit test occurs. </para>        </briefdescription>
         <detaileddescription>
 <para><parameterlist kind="param"><parameteritem>
 <parameternamelist>
-<parametername direction="in">nn</parametername>
+<parametername direction="in">condition</parametername>
 </parameternamelist>
 <parameterdescription>
-<para>Number of the test. </para></parameterdescription>
+<para>Condition to be asserted. </para></parameterdescription>
 </parameteritem>
 </parameterlist>
 </para>        </detaileddescription>
         <inbodydescription>
         </inbodydescription>
-        <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" line="101" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/src/mtk_tools.cc" bodystart="101" bodyend="110"/>
-        <references refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" compoundref="mtk__tools_8cc" startline="61" endline="81">Prevent</references>
+        <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_tools.h" line="112" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/src/mtk_tools.cc" bodystart="124" bodyend="133"/>
+        <referencedby refid="mtk__blas__adapter__test_8cc_1ac717e602841eac4e34e7c3b38259f05e" compoundref="mtk__blas__adapter__test_8cc" startline="58" endline="94">TestRealDenseMM</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a6e2a732a95a4c8992e72bf4268521e3c" compoundref="mtk__dense__matrix__test_8cc" startline="59" endline="67">TestDefaultConstructor</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a9e6e44523ba0df5196edcc06d0b910fb" compoundref="mtk__dense__matrix__test_8cc" startline="69" endline="84">TestConstructorWithNumRowsNumCols</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a73c40c10eca3d4d5c9163b9a987ae5ff" compoundref="mtk__dense__matrix__test_8cc" startline="86" endline="104">TestConstructAsIdentity</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a5dd7d787ca03d0eb47c9ac438fd613f7" compoundref="mtk__dense__matrix__test_8cc" startline="106" endline="124">TestConstructAsVandermonde</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1aacb5cb7b5460d0a8bb5db9fd9e2bf6bc" compoundref="mtk__dense__matrix__test_8cc" startline="126" endline="153">TestSetValueGetValue</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a83e04c23e591c07c140b421c2770ed82" compoundref="mtk__dense__matrix__test_8cc" startline="155" endline="190">TestConstructAsVandermondeTranspose</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a4cfd40c6bb3c6f95d01ada7407f7ae64" compoundref="mtk__dense__matrix__test_8cc" startline="192" endline="260">TestKron</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1afb53e3a143458f6c3ef9eebf34e99cea" compoundref="mtk__dense__matrix__test_8cc" startline="262" endline="284">TestConstructWithNumRowsNumColsAssignmentOperator</referencedby>
+        <referencedby refid="mtk__dense__matrix__test_8cc_1a5b34332324b47adf015c6ffd02c81403" compoundref="mtk__dense__matrix__test_8cc" startline="286" endline="307">TestConstructAsVandermondeTransposeAssignmentOperator</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1ae9ce7598f6f4b229d425768e12d98c7d" compoundref="mtk__div__1d__test_8cc" startline="58" endline="72">TestDefaultConstructorFactoryMethodDefault</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1a15cd0d7062ef8575bb60f92a92e13999" compoundref="mtk__div__1d__test_8cc" startline="74" endline="88">TestDefaultConstructorFactoryMethodFourthOrder</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1af4c440fcaef3e71e3e018c1a6ff66be0" compoundref="mtk__div__1d__test_8cc" startline="90" endline="104">TestDefaultConstructorFactoryMethodSixthOrder</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1adc2121ca547528bd0dd7dae2ebe9aa14" compoundref="mtk__div__1d__test_8cc" startline="106" endline="120">TestDefaultConstructorFactoryMethodEightOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1a1a4a22f08dec9d4d1266fce7bb594e6b" compoundref="mtk__div__1d__test_8cc" startline="122" endline="136">TestDefaultConstructorFactoryMethodTenthOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1aaa9f376406418e4b960814916e224f3b" compoundref="mtk__div__1d__test_8cc" startline="138" endline="152">TestDefaultConstructorFactoryMethodTwelfthOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1a1465edf65e6566e9a88c16179312d86a" compoundref="mtk__div__1d__test_8cc" startline="154" endline="168">TestDefaultConstructorFactoryMethodFourteenthOrderDefThreshold</referencedby>
+        <referencedby refid="mtk__div__1d__test_8cc_1ae59deb4e19b59a84fbf2bb0ea86a7e36" compoundref="mtk__div__1d__test_8cc" startline="170" endline="242">TestSecondOrderReturnAsDenseMatrixWithGrid</referencedby>
+        <referencedby refid="mtk__div__2d__test_8cc_1a5b262691a4d7023148e0dddb7373bfba" compoundref="mtk__div__2d__test_8cc" startline="61" endline="85">TestDefaultConstructorFactory</referencedby>
+        <referencedby refid="mtk__div__2d__test_8cc_1a9181f8638ee3a27345cb2b516b57ef7b" compoundref="mtk__div__2d__test_8cc" startline="87" endline="123">TestReturnAsDenseMatrixWriteToFile</referencedby>
+        <referencedby refid="mtk__grad__1d__test_8cc_1a82c00a99d7cc081462417ffbad9388bf" compoundref="mtk__grad__1d__test_8cc" startline="149" endline="231">TestReturnAsDenseMatrixWithGrid</referencedby>
+        <referencedby refid="mtk__grad__1d__test_8cc_1abfa7b5b15ba551fe7d7a5a0fc20d92bb" compoundref="mtk__grad__1d__test_8cc" startline="233" endline="251">TestReturnAsDimensionlessDenseMatrix</referencedby>
+        <referencedby refid="mtk__grad__1d__test_8cc_1a6151c23cb8b3a5e29cf4ee85a671674c" compoundref="mtk__grad__1d__test_8cc" startline="253" endline="279">TestWriteToFile</referencedby>
+        <referencedby refid="mtk__grad__1d__test_8cc_1acd018c792c609ddbe7897c0111c0f05a" compoundref="mtk__grad__1d__test_8cc" startline="281" endline="301">TestMimBndy</referencedby>
+        <referencedby refid="mtk__lap__1d__test_8cc_1abbf112683f065aae135485119aff528b" compoundref="mtk__lap__1d__test_8cc" startline="153" endline="174">TestReturnAsDenseMatrix</referencedby>
+        <referencedby refid="mtk__matrix__test_8cc_1ac8b046066b29ba59873ecde2d6f24cb7" compoundref="mtk__matrix__test_8cc" startline="61" endline="89">TestDefaultConstructorGetters</referencedby>
+        <referencedby refid="mtk__matrix__test_8cc_1a767fbf9edba1ba58c2ef3ddd83dccc00" compoundref="mtk__matrix__test_8cc" startline="91" endline="155">TestSettersGettersCopyConstructor</referencedby>
+        <referencedby refid="mtk__matrix__test_8cc_1a96b8cce7f1f21b0237bca0728cde1729" compoundref="mtk__matrix__test_8cc" startline="157" endline="235">TestIncreaseDecreaseNumNull</referencedby>
+        <referencedby refid="mtk__matrix__test_8cc_1aa0ffa5f3e2314085c85f214be2a64966" compoundref="mtk__matrix__test_8cc" startline="237" endline="298">TestIncreaseDecreaseNumZero</referencedby>
+        <referencedby refid="mtk__robin__bc__descriptor__2d__test_8cc_1a237ccde1134fd0945f64e455c9265b3e" compoundref="mtk__robin__bc__descriptor__2d__test_8cc" startline="83" endline="130">TestPushBackImposeOnLaplacianMatrix</referencedby>
+        <referencedby refid="mtk__robin__bc__descriptor__2d__test_8cc_1a097e345e420c9d22c1286c2ac7bf8325" compoundref="mtk__robin__bc__descriptor__2d__test_8cc" startline="145" endline="181">TestImposeOnGrid</referencedby>
+        <referencedby refid="mtk__uni__stg__grid__1d__test_8cc_1a907c0a9be54c7deaceac94c7627518fc" compoundref="mtk__uni__stg__grid__1d__test_8cc" startline="77" endline="94">TestConstructWithWestBndyEastBndyNumCellsOStreamOperatorBindScalarField</referencedby>
+        <referencedby refid="mtk__uni__stg__grid__1d__test_8cc_1aff3a02c4fac060ad3663caaf679f5aad" compoundref="mtk__uni__stg__grid__1d__test_8cc" startline="96" endline="123">TestBindScalarFieldWriteToFile</referencedby>
+        <referencedby refid="mtk__uni__stg__grid__1d__test_8cc_1a21e9af30fdab48a741e6575797dcf934" compoundref="mtk__uni__stg__grid__1d__test_8cc" startline="131" endline="158">TestBindVectorField</referencedby>
+        <referencedby refid="mtk__uni__stg__grid__2d__test_8cc_1aa0de76d85c1e74a4616b42b57aae76d2" compoundref="mtk__uni__stg__grid__2d__test_8cc" startline="72" endline="91">TestConstructWithWestEastNumCellsXSouthNorthBndysNumCellsYOStreamOperator</referencedby>
+        <referencedby refid="mtk__uni__stg__grid__2d__test_8cc_1a28b16e5b929ff88f3966594d205feaac" compoundref="mtk__uni__stg__grid__2d__test_8cc" startline="93" endline="118">TestGetters</referencedby>
       </memberdef>
       </sectiondef>
     <briefdescription>
 <para>Tool manager class. </para>    </briefdescription>
     <detaileddescription>
-<para>Basic tools to ensure execution correctness. </para>    </detaileddescription>
+<para>Basic tools to ensure execution correctness, and to assists with unit testing. </para>    </detaileddescription>
     <collaborationgraph>
-      <node id="64">
+      <node id="190">
         <label>mtk::Tools</label>
         <link refid="classmtk_1_1Tools"/>
       </node>
     </collaborationgraph>
-    <location file="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" line="72" column="1" bodyfile="/home/ejspeiro/Dropbox/MTK/include/mtk_tools.h" bodystart="72" bodyend="107"/>
+    <location file="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_tools.h" line="76" column="1" bodyfile="/home/esanchez/Dropbox/EclipseWorkspace/MTK/include/mtk_tools.h" bodystart="76" bodyend="120"/>
     <listofallmembers>
+      <member refid="classmtk_1_1Tools_1ac6804df469c94ab6a796fb64f1e44a89" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>Assert</name></member>
       <member refid="classmtk_1_1Tools_1a4bd58d08397db42271ed9e2d3ecc9963" prot="private" virt="non-virtual"><scope>mtk::Tools</scope><name>begin_time_</name></member>
-      <member refid="classmtk_1_1Tools_1a35cefa938105619b731ea4fedb86becf" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>BeginTestNo</name></member>
-      <member refid="classmtk_1_1Tools_1a5d3f78d17228fb36a73567c191f0f4ee" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>EndTestNo</name></member>
-      <member refid="classmtk_1_1Tools_1acbcff02946d3db565d53ecbcc459f0b5" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>Prevent</name></member>
+      <member refid="classmtk_1_1Tools_1afc29ecaf337a13ed2e817d3890a5a441" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>BeginUnitTestNo</name></member>
+      <member refid="classmtk_1_1Tools_1aba9d3d2952a3de9e7b46faa86d28d692" prot="private" virt="non-virtual"><scope>mtk::Tools</scope><name>duration_</name></member>
+      <member refid="classmtk_1_1Tools_1aba67d9dc35c9c1c49430fcc9ea035e03" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>EndUnitTestNo</name></member>
+      <member refid="classmtk_1_1Tools_1a332324c6f25e66be9dff48c5987a3b9f" prot="public" virt="non-virtual"><scope>mtk::Tools</scope><name>Prevent</name></member>
       <member refid="classmtk_1_1Tools_1a04a60458594336ee1badff79b8a9a77f" prot="private" virt="non-virtual"><scope>mtk::Tools</scope><name>test_number_</name></member>
     </listofallmembers>
   </compounddef>

@@ -1,8 +1,10 @@
 var searchData=
 [
-  ['tests_20and_20test_20architectures',['Tests and Test Architectures',['../page_architectures.html',1,'']]],
-  ['test_5fnumber_5f',['test_number_',['../classmtk_1_1Tools.html#a04a60458594336ee1badff79b8a9a77f',1,'mtk::Tools']]],
-  ['todo_20list',['Todo List',['../todo.html',1,'']]],
-  ['tools',['Tools',['../classmtk_1_1Tools.html',1,'mtk']]],
-  ['transpose',['Transpose',['../classmtk_1_1DenseMatrix.html#a71d9c07ca66e88d97d1fd5012f43138b',1,'mtk::DenseMatrix']]]
+  ['prem_5fapps_5f',['prem_apps_',['../classmtk_1_1Div1D.html#ab51ff3db86a874604d6c756ab6770950',1,'mtk::Div1D::prem_apps_()'],['../classmtk_1_1Grad1D.html#aee092221dd2a496e0d51883168035551',1,'mtk::Grad1D::prem_apps_()']]],
+  ['prevent',['Prevent',['../classmtk_1_1Tools.html#a332324c6f25e66be9dff48c5987a3b9f',1,'mtk::Tools']]],
+  ['pushbackeastcoeff',['PushBackEastCoeff',['../classmtk_1_1RobinBCDescriptor1D.html#a7791c11e0950656cb5608a77918c28d4',1,'mtk::RobinBCDescriptor1D::PushBackEastCoeff()'],['../classmtk_1_1RobinBCDescriptor2D.html#a7cc1e6ca729b8b092eb73161eb244160',1,'mtk::RobinBCDescriptor2D::PushBackEastCoeff()']]],
+  ['pushbacknorthcoeff',['PushBackNorthCoeff',['../classmtk_1_1RobinBCDescriptor2D.html#abc6e299516af5d1c5c2d04797875b446',1,'mtk::RobinBCDescriptor2D']]],
+  ['pushbacksouthcoeff',['PushBackSouthCoeff',['../classmtk_1_1RobinBCDescriptor2D.html#ad74c5d9f2c1d0359d350348ac2a7e61e',1,'mtk::RobinBCDescriptor2D']]],
+  ['pushbackwestcoeff',['PushBackWestCoeff',['../classmtk_1_1RobinBCDescriptor1D.html#acdf8a75f8c39b3b8a032af81e0fd2e89',1,'mtk::RobinBCDescriptor1D::PushBackWestCoeff()'],['../classmtk_1_1RobinBCDescriptor2D.html#a671a38d5ea78be8f0a88ccf034d09987',1,'mtk::RobinBCDescriptor2D::PushBackWestCoeff()'],['../classmtk_1_1RobinBCDescriptor3D.html#ac2fff3acd8b658320fbd79a31e6a4c53',1,'mtk::RobinBCDescriptor3D::PushBackWestCoeff()']]],
+  ['programming_20tools',['Programming Tools',['../section_prog_tools.html',1,'']]]
 ];

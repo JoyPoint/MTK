@@ -1,36 +1,82 @@
-.TH "Enumerations." 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "Enumerations." 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 Enumerations. \- 
 .PP
-Enumerations\&.  
+Fundamental execution parameters and defined types\&.  
 
 .SS "Enumerations"
 
 .in +1c
 .ti -1c
-.RI "enum \fBmtk::MatrixStorage\fP { \fBmtk::DENSE\fP, \fBmtk::BANDED\fP, \fBmtk::CRS\fP }"
+.RI "enum \fBmtk::MatrixStorage\fP { \fBmtk::MatrixStorage::DENSE\fP, \fBmtk::MatrixStorage::BANDED\fP, \fBmtk::MatrixStorage::CRS\fP }"
 .br
 .RI "\fIConsidered matrix storage schemes to implement sparse matrices\&. \fP"
 .ti -1c
-.RI "enum \fBmtk::MatrixOrdering\fP { \fBmtk::ROW_MAJOR\fP, \fBmtk::COL_MAJOR\fP }"
+.RI "enum \fBmtk::MatrixOrdering\fP { \fBmtk::MatrixOrdering::ROW_MAJOR\fP, \fBmtk::MatrixOrdering::COL_MAJOR\fP }"
 .br
 .RI "\fIConsidered matrix ordering (for Fortran purposes)\&. \fP"
 .ti -1c
-.RI "enum \fBmtk::FieldNature\fP { \fBmtk::SCALAR\fP, \fBmtk::VECTOR\fP }"
+.RI "enum \fBmtk::FieldNature\fP { \fBmtk::FieldNature::SCALAR\fP, \fBmtk::FieldNature::VECTOR\fP }"
 .br
 .RI "\fINature of the field discretized in a given grid\&. \fP"
+.ti -1c
+.RI "enum \fBmtk::DirInterp\fP { \fBmtk::DirInterp::SCALAR_TO_VECTOR\fP, \fBmtk::DirInterp::VECTOR_TO_SCALAR\fP }"
+.br
+.RI "\fIInterpolation operator\&. \fP"
+.ti -1c
+.RI "enum \fBmtk::EncodedOperator\fP { \fBmtk::EncodedOperator::NOOP\fP, \fBmtk::EncodedOperator::GRADIENT\fP, \fBmtk::EncodedOperator::DIVERGENCE\fP, \fBmtk::EncodedOperator::INTERPOLATION\fP, \fBmtk::EncodedOperator::CURL\fP, \fBmtk::EncodedOperator::LAPLACIAN\fP }"
+.br
+.RI "\fIOperators matrices can encode\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
-Enumerations\&. 
+Fundamental execution parameters and defined types\&. 
 .SH "Enumeration Type Documentation"
 .PP 
-.SS "enum \fBmtk::FieldNature\fP"
+.SS "enum \fBmtk::DirInterp\fP\fC [strong]\fP"
+Used to tag different directions of interpolation supported\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fISCALAR_TO_VECTOR \fP\fP
+Interpolations places scalar on vectors' location\&. 
+.TP
+\fB\fIVECTOR_TO_SCALAR \fP\fP
+Interpolations places vectors on scalars' location\&. 
+.PP
+Definition at line 127 of file mtk_enums\&.h\&.
+.SS "enum \fBmtk::EncodedOperator\fP\fC [strong]\fP"
+Used to tag different different operators a matrix can encode\&. 
+.PP
+\fBEnumerator\fP
+.in +1c
+.TP
+\fB\fINOOP \fP\fP
+No operator\&. 
+.TP
+\fB\fIGRADIENT \fP\fP
+Gradient operator\&. 
+.TP
+\fB\fIDIVERGENCE \fP\fP
+Divergence operator\&. 
+.TP
+\fB\fIINTERPOLATION \fP\fP
+Interpolation operator\&. 
+.TP
+\fB\fICURL \fP\fP
+Curl operator\&. 
+.TP
+\fB\fILAPLACIAN \fP\fP
+Laplacian operator\&. 
+.PP
+Definition at line 141 of file mtk_enums\&.h\&.
+.SS "enum \fBmtk::FieldNature\fP\fC [strong]\fP"
 Fields can be \fBscalar\fP or \fBvector\fP in nature\&.
 .PP
-\fBSee Also:\fP
+\fBSee also:\fP
 .RS 4
 https://en.wikipedia.org/wiki/Scalar_field
 .PP
@@ -49,10 +95,10 @@ Scalar-valued field\&.
 Vector-valued field\&. 
 .PP
 Definition at line 113 of file mtk_enums\&.h\&.
-.SS "enum \fBmtk::MatrixOrdering\fP"
+.SS "enum \fBmtk::MatrixOrdering\fP\fC [strong]\fP"
 Row-major ordering is used for most application in C/C++\&. For Fortran purposes, the matrices must be listed in a column-major ordering\&.
 .PP
-\fBSee Also:\fP
+\fBSee also:\fP
 .RS 4
 https://en.wikipedia.org/wiki/Row-major_order 
 .RE
@@ -69,7 +115,7 @@ Row-major ordering (C/C++)\&.
 Column-major ordering (Fortran)\&. 
 .PP
 Definition at line 95 of file mtk_enums\&.h\&.
-.SS "enum \fBmtk::MatrixStorage\fP"
+.SS "enum \fBmtk::MatrixStorage\fP\fC [strong]\fP"
 The considered sparse storage schemes are selected so that these are compatible with some of the most used mathematical APIs, as follows: DENSE and BANDED for \fCBLAS\fP, \fCLAPACK\fP, and \fCScaLAPACK\fP\&. Finally, CRS for \fCSuperLU\fP\&. 
 .PP
 \fBEnumerator\fP

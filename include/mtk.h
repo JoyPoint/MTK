@@ -6,14 +6,14 @@
 This file contains every required header file, thus containing the entire API.
 In this way, client codes only have to instruct #include "mtk.h".
 
-\warning IT IS EXTREMELY IMPORTANT THAT THE HEADERS ARE ADDED TO THIS FILE IN A
-SPECIFIC ORDER; THAT IS, CONSIDERING THE DEPENDENCE BETWEEN THE CLASSES THESE
-CONTAIN!
+\warning It is extremely important that the headers are added to this file in a
+specific order; that is, considering the dependence between the classes these
+define.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -21,22 +21,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -61,67 +61,53 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 \mainpage Introduction
 
 We define numerical methods that are based on discretizations preserving the
-properties of their continuum counterparts to be **mimetic**.
+properties of their continuous counterparts to be **mimetic**.
 
-The **Mimetic Methods Toolkit (MTK)** is a C++ library for mimetic numerical
-methods. It is a set of classes for **mimetic quadratures**, **mimetic
-interpolation**, and **mimetic discretization methods** for the numerical
-solution of ordinary and partial differential equations.
+The **Mimetic Methods Toolkit (MTK)** is a C++11 library for mimetic numerical
+methods. It is a set of classes for **mimetic interpolation**, **mimetic
+quadratures**, and **mimetic finite difference** methods for the **numerical
+solution of ordinary and partial differential equations**.
 
 \section section_mtk_concerns MTK Concerns
 
-Since collaborative development efforts are definitely important in achieving
-the level of generality we intend the library to possess, we have divided the
-library's source code according to the designated purpose the classes possess
-within the library. These divisions (or concerns) are grouped by layers, and are
-hierarchically related by the dependence they have among them.
-
-One concern is said to depend on another one, if the classes the first concern
-includes, rely on the classes the second concern includes.
-
-In order of dependence these are:
-
--# Roots.
+Since collaborative development efforts are very important, we have divided the
+library's source code according to the purpose the classes possess. These
+divisions (or **concerns**) are grouped by layers, and are hierarchically
+related by the dependencies they have among them. One concern is said to depend
+on another one, if the classes the first concern includes, rely on the classes
+the second concern includes. In order of dependence these are:
+-# Foundations.
 -# Enumerations.
--# Tools.
+-# Execution Tools.
 -# Data Structures.
 -# Numerical Methods.
 -# Grids.
 -# Mimetic Operators.
 
-\section section_flavors MTK Flavors
+\section section_wrappers MTK Wrappers
 
 The MTK collection of wrappers is:
 
 -# MMTK: MATLAB wrappers collection for MTK; intended for sequential
 computations.
 
-Others are being designed and developed.
+Others are being considered.
 
 \section section_authors Contact, Support and Credits
+
+The GitHub repository is: https://github.com/ejspeiro/MTK
 
 The MTK is developed by researchers and adjuncts to the
 [Computational Science Research Center (CSRC)](http://www.csrc.sdsu.edu/)
 at [San Diego State University (SDSU)](http://www.sdsu.edu/).
 
-Developers are members of:
-
-1. Mimetic Numerical Methods Research and Development Group.
-2. Computational Geoscience Research and Development Group.
-3. Ocean Modeling Research and Development Group.
-
 Currently the developers are:
 
--# **Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu** - ejspeiro
--# Jose E. Castillo, Ph.D. - jcastillo at mail dot sdsu dot edu
--# Guillermo F. Miranda, Ph.D. - unigrav at hotmail dot com
--# Christopher P. Paolini, Ph.D. - paolini at engineering dot sdsu dot edu
+- **Eduardo J. Sanchez, PhD - esanchez at mail dot sdsu dot edu** - ejspeiro
+- Jose E. Castillo, PhD - jcastillo at mail dot sdsu dot edu
+- Guillermo F. Miranda, PhD - unigrav at hotmail dot com
 
--# Angel Boada.
--# Johnny Corbino.
--# Raul Vargas-Navarro.
-
-\section subsection_acknowledgements Acknowledgements and Contributions
+\subsection subsection_acknowledgements Acknowledgements and Contributions
 
 The authors would like to acknowledge valuable advising, contributions and
 feedback, from research personnel at the Computational Science Research Center
@@ -130,7 +116,57 @@ Specifically, our thanks go to (alphabetical order):
 
 -# Mohammad Abouali, Ph.D.
 -# Dany De Cecchis, Ph.D.
--# Julia Rossi.
+-# Otilio Rojas, Ph.D.
+-# Julia Rossi, Ph.D.
+-# Christopher P. Paolini, PhD - paolini at engineering dot sdsu dot edu
+-# Johnny Corbino.
+-# Raul Vargas-Navarro.
+
+\page page_referencing Referencing This Work
+
+Please reference this work as follows:
+\verbatim
+@article{Sanchez2014308,
+  title = "The Mimetic Methods Toolkit: An object-oriented \{API\} for Mimetic
+Finite Differences ",
+  journal = "Journal of Computational and Applied Mathematics ",
+  volume = "270",
+  number = "",
+  pages = "308 - 322",
+  year = "2014",
+  note = "Fourth International Conference on Finite Element Methods in
+Engineering and Sciences (FEMTEC 2013) ",
+  issn = "0377-0427",
+  doi = "http://dx.doi.org/10.1016/j.cam.2013.12.046",
+  url = "http://www.sciencedirect.com/science/article/pii/S037704271300719X",
+  author = "Eduardo J. Sanchez and Christopher P. Paolini and Jose E. Castillo",
+  keywords = "Object-oriented development",
+  keywords = "Partial differential equations",
+  keywords = "Application programming interfaces",
+  keywords = "Mimetic Finite Differences "
+}
+
+@Inbook{Sanchez2015,
+  author="Sanchez, Eduardo and Paolini, Christopher and Blomgren, Peter
+and Castillo, Jose",
+  editor="Kirby, M. Robert and Berzins, Martin and Hesthaven, S. Jan",
+  chapter="Algorithms for Higher-Order Mimetic Operators",
+  title="Spectral and High Order Methods for Partial Differential Equations
+ICOSAHOM 2014: Selected papers from the ICOSAHOM conference, June 23-27, 2014,
+Salt Lake City, Utah, USA",
+  year="2015",
+  publisher="Springer International Publishing",
+  address="Cham",
+  pages="425--434",
+  isbn="978-3-319-19800-2",
+  doi="10.1007/978-3-319-19800-2_39",
+  url="http://dx.doi.org/10.1007/978-3-319-19800-2_39"
+}
+\endverbatim
+
+\page page_readme Read Me File and Installation Instructions
+
+\verbinclude ../README.md
 
 \page section_prog_tools Programming Tools
 
@@ -138,14 +174,69 @@ The development of MTK has been made possible through the use of the following
 applications:
 -# Editor: Kate - KDE Advanced Text Editor. Version 3.13.3. Using KDE
 Development Platform 4.13.3 (C) 2000-2005 The Kate Authors.
--# Compiler: gcc version 4.4.5 (Ubuntu/Linaro 4.4.4-14ubuntu5). Copyright (C)
-2013 Free Software Foundation, Inc.
 -# Debugger: GNU gdb (Ubuntu 7.7.1-0ubuntu5~14.04.2) 7.7.1. Copyright (C) 2014
 Free Software Foundation, Inc.
+-# Memory Profiler: valgrind-3.10.0.SVN.
+
+See the section on test architectures for information about operating systems
+and compilers used.
+
+\page page_architectures Tests and Test Architectures
+
+Tests are given in the <a href="files.html">files list</a> section. They are
+provided in the /tests/ folder within the distributed software.
+
+The MTK is intended to be as portable as possible throughout different
+architectures. The following architectures have provided flawless installations
+of the library and correct execution of the tests and the examples:
+
+\verbatim
+1. Intel(R) Pentium(R) M CPU 1.73 GHz 2048 KB of cache and stepping of 8.
+   Linux 3.2.0-23-generic-pae #36-Ubuntu SMP i386 GNU/Linux
+   gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5)
+
+2. Intel(R) Core(TM) i7-4700MQ CPU 2.40 GHz 6144 KB of cache and stepping of 3.
+   Linux 3.13.0-67-generic #110-Ubuntu SMP x86_64 GNU/Linux
+   gcc version 4.8.4 (Ubuntu 4.4.4-2ubuntu1~14.04)
+
+3. Intel(R) Core(TM) i7-4600U CPU 2.10 GHz 4096 KB of cache and a stepping of 1.
+   Linux 3.16.7-29-desktop #1 SMP PREEMPT (6be6a97) x86_64 GNU/Linux
+   openSUSE 13.2 (Harlequin) (x86_64)
+   gcc (SUSE Linux) 4.8.3 20140627 [gcc-4_8-branch revision 212064]
+\endverbatim
+
+Further architectures will be tested.
+
+\page page_ref_the User Manual, References and Theory
+
+The main source of references for this work can be found in:
+
+http://www.csrc.sdsu.edu/mimetic-book/
+
+However, a .PDF copy of this manual can be found
+<a href="../latex/refman.pdf">here</a>.
+
+\page page_examples Examples
+
+Examples are given in the <a href="files.html">files list</a> section. They are
+provided in the /examples/ folder within the distributed software.
+
+\page page_def_decs Definitions and Declarations
+
+Throughout the library, we emphasize the difference between definitions and
+declarations as explained in: http://www.lurklurk.org/linkers/linkers.html#cfile
+
+A definition associates a name with an implementation of that name, which could
+be either data or code (...)
+
+A declaration tells the C compiler that a definition of something (with a
+particular name) exists elsewhere in the program, probably in a different C
+file. (Note that a definition also counts as a declaration—it's a declaration
+that also happens to fill in the particular "elsewhere").
 
 \page section_license_mod Licensing and Modifications
 
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -153,22 +244,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -188,198 +279,31 @@ LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
 ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-
-\page page_readme Read Me File and Installation Instructions
-
-<pre>
-# README File for the Mimetic Methods Toolkit (MTK)
-
-By: **Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu**
-    __________________________________________________________________
-
-## 1. Description
-
-We define numerical methods that are based on discretizations preserving the
-properties of their continuum counterparts to be **mimetic**.
-
-The **Mimetic Methods Toolkit (MTK)** is a C++ library for mimetic numerical
-methods. It is arranged as a set of classes for **mimetic quadratures**,
-**mimetic interpolation**, and **mimetic discretization** methods for the
-numerical solution of ordinary and partial differential equations.
-    __________________________________________________________________
-
-## 2. Dependencies
-
-This README assumes all of these dependencies are installed in the following
-folder:
-
-\verbatim
-$(HOME)/Libraries/
-\endverbatim
-
-In this version, the MTK optionally uses ATLAS-optimized BLAS and LAPACK
-routines for the internal computation on some of the layers. However, ATLAS
-requires both BLAS and LAPACK in order to create their optimized distributions.
-Therefore, the following dependencies tree arises:
-
-### For Linux:
-
-1. LAPACK - Available from: http://www.netlib.org/lapack/
-  1. BLAS - Available from: http://www.netlib.org/blas/
-
-2. (Optional) ATLAS - Available from: http://math-atlas.sourceforge.net/
-  1. BLAS - Available from: http://www.netlib.org/blas/
-  2. LAPACK - Available from: http://www.netlib.org/lapack/
-
-3. (Optional) Valgrind - Available from: http://valgrind.org/
-
-4. (Optional) Doxygen - Available from http://www.stack.nl/~dimitri/doxygen/
-
-### For OS X:
-
-There are no dependences for OS X.
-    __________________________________________________________________
-
-## 3. Installation
-
-### PART 1. CONFIGURATION OF THE MAKEFILE.
-
-The following steps are required the build and test the MTK. Please use the
-accompanying Makefile.inc file, which should provide a solid template to start
-with. The following command provides help on the options for make:
-
-\verbatim
-$ make help
------
-Makefile for the MTK.
-
-Options are:
-- make: builds only the library and the examples.
-- all: builds the library, the examples and the documentation.
-- mtklib: builds the library, i.e. generates the archive files.
-- test: generates the tests.
-- example: generates the examples.
-- gendoc: generates the documentation for the library.
-
-- clean: cleans ALL the generated files.
-- cleanlib: cleans the generated archive and object files.
-- cleantest: cleans the generated tests executables.
-- cleanexample: cleans the generated examples executables.
------
-\endverbatim
-
-### PART 2. BUILD THE LIBRARY.
-
-\verbatim
-$ make
-\endverbatim
-
-If successful you'll read (before building the examples):
-
-\verbatim
------ Library created! Check in /home/ejspeiro/Dropbox/MTK/lib
-\endverbatim
-
-Examples and tests will also be built.
-    __________________________________________________________________
-
-## 4. Frequently Asked Questions
-
-Q: Why haven't you guys implemented GBS to build the library?
-A: I'm on it as we speak! ;)
-
-Q: Is there any main reference when it comes to the theory on Mimetic Methods?
-A: Yes! Check: http://www.csrc.sdsu.edu/mimetic-book
-
-Q: Do I need to generate the documentation myself?
-A: You can if you want to... but if you DO NOT want to, just go to our website.
-    __________________________________________________________________
-
-## 5. Contact, Support, and Credits
-
-The MTK is developed by researchers and adjuncts to the
-[Computational Science Research Center (CSRC)](http://www.csrc.sdsu.edu/)
-at [San Diego State University (SDSU)](http://www.sdsu.edu/).
-
-Developers are members of:
-
-1. Mimetic Numerical Methods Research and Development Group.
-2. Computational Geoscience Research and Development Group.
-3. Ocean Modeling Research and Development Group.
-
-Currently the developers are:
-
--# **Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu** - ejspeiro
--# Jose E. Castillo, Ph.D. - jcastillo at mail dot sdsu dot edu
--# Guillermo F. Miranda, Ph.D. - unigrav at hotmail dot com
--# Christopher P. Paolini, Ph.D. - paolini at engineering dot sdsu dot edu
--# Angel Boada.
--# Johnny Corbino.
--# Raul Vargas-Navarro.
-
-Finally, please feel free to contact me with suggestions or corrections:
-
-**Eduardo J. Sanchez, Ph.D. - esanchez at mail dot sdsu dot edu** - ejspeiro
-
-Thanks and happy coding!
-</pre>
-
-\page page_architectures Tests and Test Architectures
-
-Tests are given in the <a href="files.html">files list</a> section. They are
-provided in the /tests/ folder within the distributed software.
-
-In this page we intend to make a summary of all of the architectures in where
-the MTK has been tested. The MTK is intended to be as portable as possible
-throughout architectures. The following architectures have provided flawless
-installations of the API and correct execution of the examples:
-
-<pre>
-1. Linux 3.2.0-23-generic-pae #36-Ubuntu SMP i386 GNU/Linux
-   Intel(R) Pentium(R) M processor 1.73GHz 2048 KB of cache and stepping of 8
-   gcc version 4.6.3 (Ubuntu/Linaro 4.6.3-1ubuntu5)
-</pre>
-
-Further architectures will be tested!
-
-\page page_examples Examples
-
-Examples are given in the <a href="files.html">files list</a> section. They are
-provided in the /examples/ folder within the distributed software.
-
-\page page_ref_the User Manual, References and Theory
-
-The main source of references for this work can be found in:
-
-http://www.csrc.sdsu.edu/mimetic-book/
-
-However, a .PDF copy of this manual can be found
-<a href="../latex/refman.pdf">here</a>.
 */
 
 #ifndef MTK_INCLUDE_MTK_H_
 #define MTK_INCLUDE_MTK_H_
 
 /*!
-\defgroup c01-roots Roots.
+\defgroup c01-foundations Foundations.
 
 \brief Fundamental execution parameters and defined types.
 
 Fundamental execution parameters and defined types.
 */
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 
 /*!
 \defgroup c02-enums Enumerations.
 
-\brief Enumerations.
+\brief Fundamental execution parameters and defined types.
 
-Enumerations.
+Fundamental execution parameters and defined types.
 */
 #include "mtk_enums.h"
 
 /*!
-\defgroup c03-execution_tools Execution tools.
+\defgroup c03-execution_tools Execution Tools.
 
 \brief Tools to ensure execution correctness.
 
@@ -388,7 +312,7 @@ Tools to ensure execution correctness.
 #include "mtk_tools.h"
 
 /*!
-\defgroup c04-data_structures Data structures.
+\defgroup c04-data_structures Data Structures.
 
 \brief Fundamental data structures.
 
@@ -398,7 +322,7 @@ Fundamental data structures.
 #include "mtk_dense_matrix.h"
 
 /*!
-\defgroup c05-num_methods Numerical methods.
+\defgroup c05-num_methods Numerical Methods.
 
 \brief Adapter classes and auxiliary numerical methods.
 
@@ -416,9 +340,11 @@ Adapter classes and auxiliary numerical methods.
 Uniform rectangular staggered grids.
 */
 #include "mtk_uni_stg_grid_1d.h"
+#include "mtk_uni_stg_grid_2d.h"
+#include "mtk_uni_stg_grid_3d.h"
 
 /*!
-\defgroup c07-mim_ops Mimetic operators.
+\defgroup c07-mim_ops Mimetic Operators.
 
 \brief Mimetic operators.
 
@@ -427,9 +353,22 @@ Mimetic operators.
 #include "mtk_grad_1d.h"
 #include "mtk_div_1d.h"
 #include "mtk_lap_1d.h"
-#include "mtk_interp_1d.h"
+#include "mtk_robin_bc_descriptor_1d.h"
 #include "mtk_quad_1d.h"
+#include "mtk_interp_1d.h"
 
-#include "mtk_bc_desc_1d.h"
+#include "mtk_grad_2d.h"
+#include "mtk_div_2d.h"
+#include "mtk_curl_2d.h"
+#include "mtk_lap_2d.h"
+#include "mtk_robin_bc_descriptor_2d.h"
+
+#include "mtk_grad_3d.h"
+#include "mtk_div_3d.h"
+#include "mtk_foundations.h"
+#include "mtk_lap_3d.h"
+#include "mtk_robin_bc_descriptor_3d.h"
+
+#include "mtk_operator_applicator.h"
 
 #endif // End of: MTK_INCLUDE_MTK_H_

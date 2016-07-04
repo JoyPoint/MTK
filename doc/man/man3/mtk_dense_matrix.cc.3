@@ -1,11 +1,8 @@
-.TH "src/mtk_dense_matrix.cc" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "src/mtk_dense_matrix.cc" 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
 src/mtk_dense_matrix.cc \- 
-.PP
-Implements a common dense matrix, using a 1D array\&.  
-
 .SH SYNOPSIS
 .br
 .PP
@@ -19,22 +16,28 @@ Implements a common dense matrix, using a 1D array\&.
 .br
 \fC#include <iomanip>\fP
 .br
+\fC#include <fstream>\fP
+.br
 \fC#include <typeinfo>\fP
+.br
+\fC#include <vector>\fP
 .br
 \fC#include <algorithm>\fP
 .br
-\fC#include 'mtk_roots\&.h'\fP
+\fC#include 'mtk_foundations\&.h'\fP
+.br
+\fC#include 'mtk_tools\&.h'\fP
 .br
 \fC#include 'mtk_dense_matrix\&.h'\fP
 .br
-\fC#include 'mtk_tools\&.h'\fP
+\fC#include 'mtk_blas_adapter\&.h'\fP
 .br
 
 .SS "Namespaces"
 
 .in +1c
 .ti -1c
-.RI "\fBmtk\fP"
+.RI " \fBmtk\fP"
 .br
 .RI "\fIMimetic Methods Toolkit namespace\&. \fP"
 .in -1c
@@ -45,18 +48,6 @@ Implements a common dense matrix, using a 1D array\&.
 .RI "std::ostream & \fBmtk::operator<<\fP (std::ostream &stream, \fBmtk::DenseMatrix\fP &in)"
 .br
 .in -1c
-.SH "Detailed Description"
-.PP 
-For developing purposes, it is better to have a not-so-intrincated data structure implementing matrices\&. This is the purpose of this class: to be used for prototypes of new code for small test cases\&. In every other instance, this should be replaced by the most appropriate sparse matrix\&.
-.PP
-\fBAuthor:\fP
-.RS 4
-: Eduardo J\&. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu 
-.RE
-.PP
-
-.PP
-Definition in file \fBmtk_dense_matrix\&.cc\fP\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

@@ -1,14 +1,11 @@
 var searchData=
 [
-  ['nature_5f',['nature_',['../classmtk_1_1UniStgGrid1D.html#a061b66c92532b1498ce0e15418754911',1,'mtk::UniStgGrid1D']]],
-  ['num_5fbndy_5fapproxs_5f',['num_bndy_approxs_',['../classmtk_1_1Grad1D.html#abe15c1ffd9dfaba1a65f4f0e096287ce',1,'mtk::Grad1D']]],
-  ['num_5fbndy_5fcoeffs_5f',['num_bndy_coeffs_',['../classmtk_1_1Div1D.html#a717240b41eaa2adde858630b9e3d3042',1,'mtk::Div1D::num_bndy_coeffs_()'],['../classmtk_1_1Grad1D.html#a60c560882bc601f9ab1d4cd5331e55ef',1,'mtk::Grad1D::num_bndy_coeffs_()']]],
-  ['num_5fcells_5fx_5f',['num_cells_x_',['../classmtk_1_1UniStgGrid1D.html#afa43750db0029b7454aef343759e7097',1,'mtk::UniStgGrid1D']]],
-  ['num_5fcols_5f',['num_cols_',['../classmtk_1_1Matrix.html#a3d11a942d6dda7ca16e162c12e854b74',1,'mtk::Matrix']]],
-  ['num_5fnon_5fnull_5f',['num_non_null_',['../classmtk_1_1Matrix.html#a32d782bd784bea3bb3e5fd55a583b4b7',1,'mtk::Matrix']]],
-  ['num_5fnon_5fzero_5f',['num_non_zero_',['../classmtk_1_1Matrix.html#a064d611ebb949858441180d6ff2acaee',1,'mtk::Matrix']]],
-  ['num_5fnull_5f',['num_null_',['../classmtk_1_1Matrix.html#aec5bf3cd2e62d7a38412e1dca35cf822',1,'mtk::Matrix']]],
-  ['num_5frows_5f',['num_rows_',['../classmtk_1_1Matrix.html#ab635ce1dd96c26ee99a75b564f03f091',1,'mtk::Matrix']]],
-  ['num_5fvalues_5f',['num_values_',['../classmtk_1_1Matrix.html#ac3f64429ee2509c502ce7f0d75341da0',1,'mtk::Matrix']]],
-  ['num_5fzero_5f',['num_zero_',['../classmtk_1_1Matrix.html#a6daac2b61bed10026785c1eb0328eef9',1,'mtk::Matrix']]]
+  ['kcriticalorderaccuracydiv',['kCriticalOrderAccuracyDiv',['../group__c01-foundations.html#ga0898eef2108473e44a5223932d571c31',1,'mtk']]],
+  ['kcriticalorderaccuracygrad',['kCriticalOrderAccuracyGrad',['../group__c01-foundations.html#ga295dd2f403c775ecd942c22b5a777496',1,'mtk']]],
+  ['kdefaultmimeticthreshold',['kDefaultMimeticThreshold',['../group__c01-foundations.html#ga35718d949bdc81a08a9cc8ebbe3478a2',1,'mtk']]],
+  ['kdefaultorderaccuracy',['kDefaultOrderAccuracy',['../group__c01-foundations.html#ga0d95560098eb36420511103637b6952f',1,'mtk']]],
+  ['kdefaulttolerance',['kDefaultTolerance',['../group__c01-foundations.html#gae914b125d81d1b97e0aee7bbc7739786',1,'mtk']]],
+  ['kone',['kOne',['../group__c01-foundations.html#ga26407c24d43b6b95480943340d285c71',1,'mtk']]],
+  ['ktwo',['kTwo',['../group__c01-foundations.html#gaf39c2d851a2db744f4feb1c5ab3ec2cf',1,'mtk']]],
+  ['kzero',['kZero',['../group__c01-foundations.html#ga59a451a5fae30d59649bcda274fea271',1,'mtk']]]
 ];

@@ -1,8 +1,8 @@
-.TH "Mimetic operators." 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "Mimetic Operators." 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
-Mimetic operators. \- 
+Mimetic Operators. \- 
 .PP
 Mimetic operators\&.  
 
@@ -10,25 +10,107 @@ Mimetic operators\&.
 
 .in +1c
 .ti -1c
+.RI "class \fBmtk::Curl2D\fP"
+.br
+.RI "\fIImplements a 2D mimetic curl operator\&. \fP"
+.ti -1c
 .RI "class \fBmtk::Div1D\fP"
 .br
 .RI "\fIImplements a 1D mimetic divergence operator\&. \fP"
+.ti -1c
+.RI "class \fBmtk::Div2D\fP"
+.br
+.RI "\fIImplements a 2D mimetic divergence operator\&. \fP"
+.ti -1c
+.RI "class \fBmtk::Div3D\fP"
+.br
+.RI "\fIImplements a 3D mimetic divergence operator\&. \fP"
 .ti -1c
 .RI "class \fBmtk::Grad1D\fP"
 .br
 .RI "\fIImplements a 1D mimetic gradient operator\&. \fP"
 .ti -1c
+.RI "class \fBmtk::Grad2D\fP"
+.br
+.RI "\fIImplements a 2D mimetic gradient operator\&. \fP"
+.ti -1c
+.RI "class \fBmtk::Grad3D\fP"
+.br
+.RI "\fIImplements a 3D mimetic gradient operator\&. \fP"
+.ti -1c
+.RI "class \fBmtk::Interp1D\fP"
+.br
+.RI "\fIImplements a 1D interpolation operator\&. \fP"
+.ti -1c
+.RI "class \fBmtk::Interp2D\fP"
+.br
+.RI "\fIImplements a 2D interpolation operator\&. \fP"
+.ti -1c
 .RI "class \fBmtk::Lap1D\fP"
 .br
 .RI "\fIImplements a 1D mimetic Laplacian operator\&. \fP"
 .ti -1c
+.RI "class \fBmtk::Lap2D\fP"
+.br
+.RI "\fIImplements a 2D mimetic Laplacian operator\&. \fP"
+.ti -1c
+.RI "class \fBmtk::Lap3D\fP"
+.br
+.RI "\fIImplements a 3D mimetic Laplacian operator\&. \fP"
+.ti -1c
+.RI "class \fBmtk::OperatorApplicator\fP"
+.br
+.RI "\fIControls the process of applying a mimetic operator to a grid\&. \fP"
+.ti -1c
 .RI "class \fBmtk::Quad1D\fP"
 .br
 .RI "\fIImplements a 1D mimetic quadrature\&. \fP"
+.ti -1c
+.RI "class \fBmtk::RobinBCDescriptor1D\fP"
+.br
+.RI "\fIImpose Robin boundary conditions on the operators and on the grids\&. \fP"
+.ti -1c
+.RI "class \fBmtk::RobinBCDescriptor2D\fP"
+.br
+.RI "\fIImpose Robin boundary conditions on the operators and on the grids\&. \fP"
+.ti -1c
+.RI "class \fBmtk::RobinBCDescriptor3D\fP"
+.br
+.RI "\fIImpose Robin boundary conditions on the operators and on the grids\&. \fP"
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef Real(* \fBmtk::CoefficientFunction0D\fP )(const Real &tt, const std::vector< Real > &pp)"
+.br
+.RI "\fIA function of a BC coefficient evaluated on a 0D domain and time\&. \fP"
+.ti -1c
+.RI "typedef Real(* \fBmtk::CoefficientFunction1D\fP )(const Real &xx, const Real &tt)"
+.br
+.RI "\fIA function of a BC coefficient evaluated on a 1D domain and time\&. \fP"
+.ti -1c
+.RI "typedef Real(* \fBmtk::CoefficientFunction2D\fP )(const Real &xx, const Real &yy, const Real &tt)"
+.br
+.RI "\fIA function of a BC coefficient evaluated on a 2D domain and time\&. \fP"
 .in -1c
 .SH "Detailed Description"
 .PP 
 Mimetic operators\&. 
+.SH "Typedef Documentation"
+.PP 
+.SS "mtk::CoefficientFunction0D"
+
+.PP
+Definition at line 108 of file mtk_robin_bc_descriptor_1d\&.h\&.
+.SS "mtk::CoefficientFunction1D"
+
+.PP
+Definition at line 97 of file mtk_robin_bc_descriptor_2d\&.h\&.
+.SS "mtk::CoefficientFunction2D"
+
+.PP
+Definition at line 97 of file mtk_robin_bc_descriptor_3d\&.h\&.
 .SH "Author"
 .PP 
 Generated automatically by Doxygen for MTK: Mimetic Methods Toolkit from the source code\&.

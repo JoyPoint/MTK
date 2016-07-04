@@ -1,4 +1,4 @@
-.TH "mtk::DenseMatrix" 3 "Sun Sep 13 2015" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
+.TH "mtk::DenseMatrix" 3 "Mon Jul 4 2016" "MTK: Mimetic Methods Toolkit" \" -*- nroff -*-
 .ad l
 .nh
 .SH NAME
@@ -19,6 +19,10 @@ Defines a common dense matrix, using a 1D array\&.
 .br
 .RI "\fIOverloaded assignment operator\&. \fP"
 .ti -1c
+.RI "bool \fBoperator==\fP (const \fBDenseMatrix\fP &in)"
+.br
+.RI "\fIOverloaded comparison operator\&. \fP"
+.ti -1c
 .RI "\fBDenseMatrix\fP ()"
 .br
 .RI "\fIDefault constructor\&. \fP"
@@ -35,7 +39,7 @@ Defines a common dense matrix, using a 1D array\&.
 .br
 .RI "\fIConstruct a zero-rows-padded identity matrix\&. \fP"
 .ti -1c
-.RI "\fBDenseMatrix\fP (const \fBReal\fP *gen, const int &gen_length, const int &pro_length, const bool &transpose)"
+.RI "\fBDenseMatrix\fP (const \fBReal\fP *const gen, const int &gen_length, const int &pro_length, const bool &transpose)"
 .br
 .RI "\fIConstruct a dense Vandermonde matrix\&. \fP"
 .ti -1c
@@ -43,31 +47,39 @@ Defines a common dense matrix, using a 1D array\&.
 .br
 .RI "\fIDestructor\&. \fP"
 .ti -1c
-.RI "\fBMatrix\fP \fBmatrix_properties\fP () const "
+.RI "\fBEncodedOperator\fP \fBencoded_operator\fP () const "
+.br
+.RI "\fIReturn operator encoded by this matrix\&. \fP"
+.ti -1c
+.RI "void \fBset_encoded_operator\fP (const \fBEncodedOperator\fP &op)"
+.br
+.RI "\fISets the encoded operator\&. \fP"
+.ti -1c
+.RI "\fBMatrix\fP \fBmatrix_properties\fP () const noexcept"
 .br
 .RI "\fIProvides access to the matrix data\&. \fP"
 .ti -1c
-.RI "int \fBnum_rows\fP () const "
+.RI "int \fBnum_rows\fP () const noexcept"
 .br
 .RI "\fIGets the number of rows\&. \fP"
 .ti -1c
-.RI "int \fBnum_cols\fP () const "
+.RI "int \fBnum_cols\fP () const noexcept"
 .br
 .RI "\fIGets the number of columns\&. \fP"
 .ti -1c
-.RI "\fBReal\fP * \fBdata\fP () const "
+.RI "\fBReal\fP * \fBdata\fP () const noexcept"
 .br
 .RI "\fIProvides access to the matrix value array\&. \fP"
 .ti -1c
-.RI "void \fBSetOrdering\fP (\fBmtk::MatrixOrdering\fP oo)"
+.RI "void \fBSetOrdering\fP (\fBmtk::MatrixOrdering\fP oo) noexcept"
 .br
 .RI "\fISets the ordering of the matrix\&. \fP"
 .ti -1c
-.RI "\fBReal\fP \fBGetValue\fP (const int &row_coord, const int &col_coord) const "
+.RI "\fBReal\fP \fBGetValue\fP (const int &row_coord, const int &col_coord) const noexcept"
 .br
 .RI "\fIGets a value on the given coordinates\&. \fP"
 .ti -1c
-.RI "void \fBSetValue\fP (const int &row_coord, const int &col_coord, const \fBReal\fP &val)"
+.RI "void \fBSetValue\fP (const int &row_coord, const int &col_coord, const \fBReal\fP &val) noexcept"
 .br
 .RI "\fISets a value on the given coordinates\&. \fP"
 .ti -1c
@@ -82,6 +94,10 @@ Defines a common dense matrix, using a 1D array\&.
 .RI "void \fBOrderColMajor\fP ()"
 .br
 .RI "\fIMake the matrix column-wise ordered\&. \fP"
+.ti -1c
+.RI "bool \fBWriteToFile\fP (const std::string &filename) const "
+.br
+.RI "\fIWrites matrix to a file compatible with Gnuplot 4\&.6\&. \fP"
 .in -1c
 .SS "Static Public Member Functions"
 
@@ -101,7 +117,7 @@ Defines a common dense matrix, using a 1D array\&.
 .ti -1c
 .RI "\fBReal\fP * \fBdata_\fP"
 .br
-.RI "\fIArray holding the data in contiguouos position in memory\&. \fP"
+.RI "\fIArray holding the data in contiguous position in memory\&. \fP"
 .in -1c
 .SS "Friends"
 
@@ -115,13 +131,13 @@ Defines a common dense matrix, using a 1D array\&.
 .PP 
 For developing purposes, it is better to have a not-so-intrincated data structure implementing matrices\&. This is the purpose of this class: to be used for prototypes of new code for small test cases\&. In every other instance, this should be replaced by the most appropriate sparse matrix\&. 
 .PP
-Definition at line 98 of file mtk_dense_matrix\&.h\&.
+Definition at line 93 of file mtk_dense_matrix\&.h\&.
 .SH "Constructor & Destructor Documentation"
 .PP 
 .SS "mtk::DenseMatrix::DenseMatrix ()"
 
 .PP
-Definition at line 138 of file mtk_dense_matrix\&.cc\&.
+Definition at line 173 of file mtk_dense_matrix\&.cc\&.
 .SS "mtk::DenseMatrix::DenseMatrix (const \fBDenseMatrix\fP &in)"
 
 .PP
@@ -132,7 +148,7 @@ Definition at line 138 of file mtk_dense_matrix\&.cc\&.
 .PP
 
 .PP
-Definition at line 144 of file mtk_dense_matrix\&.cc\&.
+Definition at line 181 of file mtk_dense_matrix\&.cc\&.
 .SS "mtk::DenseMatrix::DenseMatrix (const int &num_rows, const int &num_cols)"
 
 .PP
@@ -150,7 +166,7 @@ Definition at line 144 of file mtk_dense_matrix\&.cc\&.
 .PP
 
 .PP
-Definition at line 177 of file mtk_dense_matrix\&.cc\&.
+Definition at line 217 of file mtk_dense_matrix\&.cc\&.
 .SS "mtk::DenseMatrix::DenseMatrix (const int &rank, const bool &padded, const bool &transpose)"
 Used in the construction of the mimetic operators\&.
 .PP
@@ -173,8 +189,8 @@ Def**\&. A \fBpadded matrix\fP is a matrix with its first and last rows initiali
 .PP
 
 .PP
-Definition at line 199 of file mtk_dense_matrix\&.cc\&.
-.SS "mtk::DenseMatrix::DenseMatrix (const \fBReal\fP *gen, const int &gen_length, const int &pro_length, const bool &transpose)"
+Definition at line 241 of file mtk_dense_matrix\&.cc\&.
+.SS "mtk::DenseMatrix::DenseMatrix (const \fBReal\fP *constgen, const int &gen_length, const int &pro_length, const bool &transpose)"
 Def**\&. In linear algebra, a \fBVandermonde matrix\fP is a matrix with terms of a geometric progression in each row\&. This progression uses the terms of a given \fBgenerator vector\fP:
 .PP
 \[ \mathbf{V} = \left(\begin{array}{ccccc} 1 & \alpha_1 & \alpha_1^2 & \dots & \alpha_1^{n-1}\\ 1 & \alpha_2 & \alpha_2^2 & \dots & \alpha_2^{n-1}\\ 1 & \alpha_3 & \alpha_3^2 & \dots & \alpha_3^{n-1}\\ \vdots & \vdots & \vdots & \ddots &\vdots \\ 1 & \alpha_m & \alpha_m^2 & \dots & \alpha_m^{n-1} \end{array}\right) \].PP
@@ -200,14 +216,14 @@ Obs**\&. It in important to understand that the generator vectors to be used are
 .PP
 
 .PP
-Definition at line 237 of file mtk_dense_matrix\&.cc\&.
+Definition at line 284 of file mtk_dense_matrix\&.cc\&.
 .SS "mtk::DenseMatrix::~DenseMatrix ()"
 
 .PP
-Definition at line 285 of file mtk_dense_matrix\&.cc\&.
+Definition at line 334 of file mtk_dense_matrix\&.cc\&.
 .SH "Member Function Documentation"
 .PP 
-.SS "\fBmtk::Real\fP * mtk::DenseMatrix::data () const"
+.SS "\fBmtk::Real\fP * mtk::DenseMatrix::data () const\fC [noexcept]\fP"
 
 .PP
 \fBReturns:\fP
@@ -217,8 +233,19 @@ Pointer to an array of \fBmtk::Real\fP\&.
 .PP
 
 .PP
-Definition at line 316 of file mtk_dense_matrix\&.cc\&.
-.SS "\fBmtk::Real\fP mtk::DenseMatrix::GetValue (const int &row_coord, const int &col_coord) const"
+Definition at line 366 of file mtk_dense_matrix\&.cc\&.
+.SS "\fBmtk::EncodedOperator\fP mtk::DenseMatrix::encoded_operator () const"
+
+.PP
+\fBReturns:\fP
+.RS 4
+Operator encoded by this matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 371 of file mtk_dense_matrix\&.cc\&.
+.SS "\fBmtk::Real\fP mtk::DenseMatrix::GetValue (const int &row_coord, const int &col_coord) const\fC [noexcept]\fP"
 
 .PP
 \fBParameters:\fP
@@ -235,7 +262,7 @@ The required value at the specified coordinates\&.
 .PP
 
 .PP
-Definition at line 321 of file mtk_dense_matrix\&.cc\&.
+Definition at line 392 of file mtk_dense_matrix\&.cc\&.
 .SS "\fBmtk::DenseMatrix\fP mtk::DenseMatrix::Kron (const \fBDenseMatrix\fP &aa, const \fBDenseMatrix\fP &bb)\fC [static]\fP"
 
 .PP
@@ -251,10 +278,22 @@ Definition at line 321 of file mtk_dense_matrix\&.cc\&.
 \fIstd::bad_alloc\fP 
 .RE
 .PP
+\fBTodo\fP
+.RS 4
+Implement Kronecker product using the BLAS\&. 
+.RE
+.PP
 
 .PP
-Definition at line 463 of file mtk_dense_matrix\&.cc\&.
-.SS "\fBmtk::Matrix\fP mtk::DenseMatrix::matrix_properties () const"
+\fBTodo\fP
+.RS 4
+Implement Kron using the BLAS\&. 
+.RE
+.PP
+
+.PP
+Definition at line 534 of file mtk_dense_matrix\&.cc\&.
+.SS "\fBmtk::Matrix\fP mtk::DenseMatrix::matrix_properties () const\fC [noexcept]\fP"
 
 .PP
 \fBReturns:\fP
@@ -264,8 +303,8 @@ Pointer to a \fBMatrix\fP\&.
 .PP
 
 .PP
-Definition at line 291 of file mtk_dense_matrix\&.cc\&.
-.SS "int mtk::DenseMatrix::num_cols () const"
+Definition at line 340 of file mtk_dense_matrix\&.cc\&.
+.SS "int mtk::DenseMatrix::num_cols () const\fC [noexcept]\fP"
 
 .PP
 \fBReturns:\fP
@@ -275,8 +314,8 @@ Number of columns of the matrix\&.
 .PP
 
 .PP
-Definition at line 311 of file mtk_dense_matrix\&.cc\&.
-.SS "int mtk::DenseMatrix::num_rows () const"
+Definition at line 361 of file mtk_dense_matrix\&.cc\&.
+.SS "int mtk::DenseMatrix::num_rows () const\fC [noexcept]\fP"
 
 .PP
 \fBReturns:\fP
@@ -286,11 +325,27 @@ Number of rows of the matrix\&.
 .PP
 
 .PP
-Definition at line 306 of file mtk_dense_matrix\&.cc\&.
+Definition at line 356 of file mtk_dense_matrix\&.cc\&.
 .SS "\fBmtk::DenseMatrix\fP & mtk::DenseMatrix::operator= (const \fBDenseMatrix\fP &in)"
 
 .PP
-Definition at line 97 of file mtk_dense_matrix\&.cc\&.
+\fBParameters:\fP
+.RS 4
+\fIin\fP Given matrix\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Copy of the given matrix\&. 
+.RE
+.PP
+
+.PP
+Definition at line 104 of file mtk_dense_matrix\&.cc\&.
+.SS "bool mtk::DenseMatrix::operator== (const \fBDenseMatrix\fP &in)"
+
+.PP
+Definition at line 148 of file mtk_dense_matrix\&.cc\&.
 .SS "void mtk::DenseMatrix::OrderColMajor ()"
 
 .PP
@@ -301,7 +356,7 @@ Improve this so that no new arrays have to be created\&.
 .PP
 
 .PP
-Definition at line 424 of file mtk_dense_matrix\&.cc\&.
+Definition at line 495 of file mtk_dense_matrix\&.cc\&.
 .SS "void mtk::DenseMatrix::OrderRowMajor ()"
 
 .PP
@@ -312,8 +367,19 @@ Improve this so that no new arrays have to be created\&.
 .PP
 
 .PP
-Definition at line 383 of file mtk_dense_matrix\&.cc\&.
-.SS "void mtk::DenseMatrix::SetOrdering (\fBmtk::MatrixOrdering\fPoo)"
+Definition at line 454 of file mtk_dense_matrix\&.cc\&.
+.SS "void mtk::DenseMatrix::set_encoded_operator (const \fBEncodedOperator\fP &op)"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIop\fP Encoded operator\&. 
+.RE
+.PP
+
+.PP
+Definition at line 376 of file mtk_dense_matrix\&.cc\&.
+.SS "void mtk::DenseMatrix::SetOrdering (\fBmtk::MatrixOrdering\fPoo)\fC [noexcept]\fP"
 
 .PP
 \fBParameters:\fP
@@ -328,8 +394,8 @@ The required value at the specified coordinates\&.
 .PP
 
 .PP
-Definition at line 296 of file mtk_dense_matrix\&.cc\&.
-.SS "void mtk::DenseMatrix::SetValue (const int &row_coord, const int &col_coord, const \fBReal\fP &val)"
+Definition at line 345 of file mtk_dense_matrix\&.cc\&.
+.SS "void mtk::DenseMatrix::SetValue (const int &row_coord, const int &col_coord, const \fBReal\fP &val)\fC [noexcept]\fP"
 
 .PP
 \fBParameters:\fP
@@ -343,7 +409,7 @@ Definition at line 296 of file mtk_dense_matrix\&.cc\&.
 .PP
 
 .PP
-Definition at line 333 of file mtk_dense_matrix\&.cc\&.
+Definition at line 404 of file mtk_dense_matrix\&.cc\&.
 .SS "void mtk::DenseMatrix::Transpose ()"
 
 .PP
@@ -354,23 +420,44 @@ Improve this so that no extra arrays have to be created\&.
 .PP
 
 .PP
-Definition at line 346 of file mtk_dense_matrix\&.cc\&.
+Definition at line 417 of file mtk_dense_matrix\&.cc\&.
+.SS "bool mtk::DenseMatrix::WriteToFile (const std::string &filename) const"
+
+.PP
+\fBParameters:\fP
+.RS 4
+\fIfilename\fP Name of the output file\&.
+.RE
+.PP
+\fBReturns:\fP
+.RS 4
+Success of the file writing process\&.
+.RE
+.PP
+\fBSee also:\fP
+.RS 4
+http://www.gnuplot.info/ 
+.RE
+.PP
+
+.PP
+Definition at line 577 of file mtk_dense_matrix\&.cc\&.
 .SH "Friends And Related Function Documentation"
 .PP 
 .SS "std::ostream& operator<< (std::ostream &stream, \fBmtk::DenseMatrix\fP &in)\fC [friend]\fP"
 
 .PP
-Definition at line 75 of file mtk_dense_matrix\&.cc\&.
+Definition at line 78 of file mtk_dense_matrix\&.cc\&.
 .SH "Member Data Documentation"
 .PP 
 .SS "\fBReal\fP* mtk::DenseMatrix::data_\fC [private]\fP"
 
 .PP
-Definition at line 274 of file mtk_dense_matrix\&.h\&.
+Definition at line 320 of file mtk_dense_matrix\&.h\&.
 .SS "\fBMatrix\fP mtk::DenseMatrix::matrix_properties_\fC [private]\fP"
 
 .PP
-Definition at line 272 of file mtk_dense_matrix\&.h\&.
+Definition at line 318 of file mtk_dense_matrix\&.h\&.
 
 .SH "Author"
 .PP 

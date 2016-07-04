@@ -1,16 +1,16 @@
 /*!
 \file mtk_enums.h
 
-\brief Considered enumeration types in the MTK.
+\brief Definitions of the enumeration types in the MTK.
 
 Enumeration types are used throughout the MTK to differentiate instances of
-derived classes, as well as for mnemonic purposes. In this file, the enumeration
-types are listed alphabetically.
+derived classes, as well as for mnemonic purposes. In this file, definitions for
+the enumeration types are listed alphabetically.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -18,22 +18,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -74,7 +74,7 @@ with some of the most used mathematical APIs, as follows: DENSE and BANDED for
 <a href="http://www.netlib.org/scalapack/">ScaLAPACK</a>. Finally, CRS for
 <a href="http://crd.lbl.gov/~xiaoye/SuperLU/">SuperLU</a>.
 */
-enum MatrixStorage {
+enum class MatrixStorage {
   DENSE,    ///< Dense matrices, implemented as a 1D array: DenseMatrix.
   BANDED,   ///< Banded matrices ala LAPACK and ScaLAPACK: Must be implemented.
   CRS       ///< Compressed-Rows Storage: Must be implemented.
@@ -92,7 +92,7 @@ the matrices must be listed in a column-major ordering.
 
 \sa https://en.wikipedia.org/wiki/Row-major_order
 */
-enum MatrixOrdering {
+enum class MatrixOrdering {
   ROW_MAJOR,  ///< Row-major ordering (C/C++).
   COL_MAJOR   ///< Column-major ordering (Fortran).
 };
@@ -110,7 +110,7 @@ Fields can be **scalar** or **vector** in nature.
 
 \sa https://en.wikipedia.org/wiki/Vector_field
 */
-enum FieldNature {
+enum class FieldNature {
   SCALAR,  ///< Scalar-valued field.
   VECTOR   ///< Vector-valued field.
 };
@@ -120,13 +120,31 @@ enum FieldNature {
 
 \ingroup c02-enums
 
-\brief 1D interpolation operator.
+\brief Interpolation operator.
 
-Implements an arithmetic average.
+Used to tag different directions of interpolation supported.
 */
-enum DirInterp {
-  SCALAR_TO_VECTOR,
-  VECTOR_TO_SCALAR
+enum class DirInterp {
+  SCALAR_TO_VECTOR, ///< Interpolations places scalar on vectors' location.
+  VECTOR_TO_SCALAR  ///< Interpolations places vectors on scalars' location.
+};
+
+/*!
+\enum EncodedOperator
+
+\ingroup c02-enums
+
+\brief Operators matrices can encode.
+
+Used to tag different different operators a matrix can encode.
+*/
+enum class EncodedOperator {
+  NOOP,             ///< No operator.
+  GRADIENT,         ///< Gradient operator.
+  DIVERGENCE,       ///< Divergence operator.
+  INTERPOLATION,    ///< Interpolation operator.
+  CURL,             ///< Curl operator.
+  LAPLACIAN         ///< Laplacian operator.
 };
 }
 #endif  // End of: MTK_INCLUDE_ENUMS_H_

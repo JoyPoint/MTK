@@ -1,9 +1,17 @@
 var searchData=
 [
-  ['imposeongrid',['ImposeOnGrid',['../classmtk_1_1BCDesc1D.html#a79a659c6a6333af8e51c463cf1ecb0b7',1,'mtk::BCDesc1D']]],
-  ['imposeonoperator',['ImposeOnOperator',['../classmtk_1_1BCDesc1D.html#a4dcf1ac4198402113591fde97dfa3260',1,'mtk::BCDesc1D']]],
-  ['increasenumnull',['IncreaseNumNull',['../classmtk_1_1Matrix.html#ac96dd5f31ebcd4388352577487cd6f11',1,'mtk::Matrix']]],
-  ['increasenumzero',['IncreaseNumZero',['../classmtk_1_1Matrix.html#a2e7c4b84d0cbf9b0122b5dc906ad1eae',1,'mtk::Matrix']]],
-  ['introduction',['Introduction',['../index.html',1,'']]],
-  ['integrate',['Integrate',['../classmtk_1_1Quad1D.html#a89b5340ed484e5d36a569b1d17300cc8',1,'mtk::Quad1D']]]
+  ['enumerations_2e',['Enumerations.',['../group__c02-enums.html',1,'']]],
+  ['execution_20tools_2e',['Execution Tools.',['../group__c03-execution__tools.html',1,'']]],
+  ['east_5fbndy',['east_bndy',['../classmtk_1_1UniStgGrid2D.html#a03f689eb29a6369b82ce1207c655d5ff',1,'mtk::UniStgGrid2D::east_bndy()'],['../classmtk_1_1UniStgGrid3D.html#aa20f1775772e144dd1b116ec82b88174',1,'mtk::UniStgGrid3D::east_bndy()']]],
+  ['east_5fbndy_5f',['east_bndy_',['../classmtk_1_1UniStgGrid2D.html#ae24f3d5bf5ed3a6d066cdf48aa1fb307',1,'mtk::UniStgGrid2D::east_bndy_()'],['../classmtk_1_1UniStgGrid3D.html#aafe32f2f7eb2660f06a8b9ef30c3cc0c',1,'mtk::UniStgGrid3D::east_bndy_()']]],
+  ['east_5fbndy_5fx',['east_bndy_x',['../classmtk_1_1UniStgGrid1D.html#a3b413aeadcc3d3263f6817f3af1dee95',1,'mtk::UniStgGrid1D']]],
+  ['east_5fbndy_5fx_5f',['east_bndy_x_',['../classmtk_1_1UniStgGrid1D.html#a69a7d6be3171e53177e476348d04f4ae',1,'mtk::UniStgGrid1D']]],
+  ['east_5fcoefficients_5f',['east_coefficients_',['../classmtk_1_1RobinBCDescriptor1D.html#aa8f5350e1767174f92fda449b44d1b04',1,'mtk::RobinBCDescriptor1D::east_coefficients_()'],['../classmtk_1_1RobinBCDescriptor2D.html#aacf640e8d310f53fc9b0a10b66e04ab6',1,'mtk::RobinBCDescriptor2D::east_coefficients_()'],['../classmtk_1_1RobinBCDescriptor3D.html#a68a582107843dcc03a87c0c76f82c34f',1,'mtk::RobinBCDescriptor3D::east_coefficients_()']]],
+  ['east_5fcondition_5f',['east_condition_',['../classmtk_1_1RobinBCDescriptor1D.html#adecf9da4390869d2aa49ccb1307320d6',1,'mtk::RobinBCDescriptor1D::east_condition_()'],['../classmtk_1_1RobinBCDescriptor2D.html#a9b2b901adfa258a8e05788857de31c8a',1,'mtk::RobinBCDescriptor2D::east_condition_()'],['../classmtk_1_1RobinBCDescriptor3D.html#a075e5ed5bd18b177f6a65623146db321',1,'mtk::RobinBCDescriptor3D::east_condition_()']]],
+  ['encoded_5foperator',['encoded_operator',['../classmtk_1_1DenseMatrix.html#ab4ba807bef5282875d2136c456794f11',1,'mtk::DenseMatrix::encoded_operator()'],['../classmtk_1_1Matrix.html#adfa02c1ed7e336e5ec7e4a57b7c0d0fe',1,'mtk::Matrix::encoded_operator()']]],
+  ['encoded_5foperator_5f',['encoded_operator_',['../classmtk_1_1Matrix.html#a700014a10d902acb6968f936880c2a1e',1,'mtk::Matrix']]],
+  ['encodedoperator',['EncodedOperator',['../group__c02-enums.html#ga9b50023bfb2692219d2915feade94f80',1,'mtk']]],
+  ['endunittestno',['EndUnitTestNo',['../classmtk_1_1Tools.html#aba67d9dc35c9c1c49430fcc9ea035e03',1,'mtk::Tools']]],
+  ['epsilon',['Epsilon',['../1d__poisson_8cc.html#a993d0c9f7969e832fec1dfea6bb904a8',1,'Epsilon(const mtk::Real &amp;tt):&#160;1d_poisson.cc'],['../1d__poisson__minimal_8cc.html#a993d0c9f7969e832fec1dfea6bb904a8',1,'Epsilon(const mtk::Real &amp;tt):&#160;1d_poisson_minimal.cc'],['../1d__poisson__sensitivity__threshold_8cc.html#a993d0c9f7969e832fec1dfea6bb904a8',1,'Epsilon(const mtk::Real &amp;tt):&#160;1d_poisson_sensitivity_threshold.cc'],['../1d__poisson__supercritical_8cc.html#a993d0c9f7969e832fec1dfea6bb904a8',1,'Epsilon(const mtk::Real &amp;tt):&#160;1d_poisson_supercritical.cc']]],
+  ['examples',['Examples',['../page_examples.html',1,'']]]
 ];

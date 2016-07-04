@@ -10,7 +10,7 @@ Definition of an 1D uniform staggered grid.
 \todo Create overloaded binding routines that read data from files.
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -18,22 +18,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -61,7 +61,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vector>
 #include <string>
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 
 namespace mtk {
 
@@ -76,10 +76,23 @@ Uniform 1D Staggered Grid.
 */
 class UniStgGrid1D {
  public:
-  /// \brief Prints the grid as a tuple of arrays.
+  /*!
+	\brief Prints the grid as a tuple of arrays.
+	*/
   friend std::ostream& operator <<(std::ostream& stream, UniStgGrid1D &in);
 
-  /// \brief Default constructor.
+  /*!
+  \brief Overloaded assignment operator.
+
+  \param [in] in Given grid.
+
+  \return Copy of the given grid.
+  */
+  UniStgGrid1D& operator =(const UniStgGrid1D &in);
+
+  /*!
+  \brief Default constructor.
+  */
   UniStgGrid1D();
 
   /*!
@@ -95,17 +108,33 @@ class UniStgGrid1D {
   \param[in] west_bndy_x Coordinate for the west boundary.
   \param[in] east_bndy_x Coordinate for the east boundary.
   \param[in] num_cells_x Number of cells of the required grid.
-  \param[in] nature Nature of the discrete field to hold.
+  \param[in] field_nature Nature of the discrete field to hold.
 
   \sa mtk::FieldNature
   */
   UniStgGrid1D(const Real &west_bndy_x,
                const Real &east_bndy_x,
                const int &num_cells_x,
-               const mtk::FieldNature &nature = mtk::SCALAR);
+               const mtk::FieldNature &field_nature = mtk::FieldNature::SCALAR);
 
-  /// \brief Destructor.
+  /*!
+  \brief Destructor.
+  */
   ~UniStgGrid1D();
+
+  /*!
+  \brief Provides access to west boundary spatial coordinate.
+
+  \return West boundary spatial coordinate.
+  */
+  Real west_bndy_x() const;
+
+  /*!
+  \brief Provides access to east boundary spatial coordinate.
+
+  \return East boundary spatial coordinate.
+  */
+  Real east_bndy_x() const;
 
   /*!
   \brief Provides access to the computed \$ \Delta x \$.
@@ -118,15 +147,19 @@ class UniStgGrid1D {
   \brief Provides access to the grid spatial data.
 
   \return Pointer to the spatial data.
+
+  \todo Review const-correctness of the pointer we return.
   */
-  Real *discrete_domain_x();
+  const Real *discrete_domain_x() const;
 
   /*!
   \brief Provides access to the grid field data.
 
   \return Pointer to the field data.
+
+  \todo Review const-correctness of the pointer we return. Look at the STL!
   */
-  Real *discrete_field_u();
+  Real *discrete_field();
 
   /*!
   \brief Provides access to the number of cells of the grid.
@@ -136,27 +169,56 @@ class UniStgGrid1D {
   int num_cells_x() const;
 
   /*!
+  \brief Provides access to the field nature.
+
+  \return Nature of the filed on the grid.
+  */
+  FieldNature field_nature() const;
+
+  /*!
+  \brief Generates the actual set of spatial coordinates.
+  */
+  void GenerateDiscreteDomainX();
+
+  /*!
+  \brief Allocates memory for the discrete set of field samples.
+  */
+  void ReserveDiscreteField();
+
+  /*!
   \brief Binds a given scalar field to the grid.
 
   \param[in] ScalarField Pointer to the function implementing the scalar field.
+  \param[in] parameters Array of parameters for the field to be evaluated.
   */
-  void BindScalarField(Real (*ScalarField)(Real xx));
+  void BindScalarField(
+    Real (*ScalarField)(const Real &xx, const std::vector<Real> &pp),
+    const std::vector<Real> &parameters = std::vector<Real>());
+
+  /*!
+  \brief Binds a given scalar field (as an array) to the grid.
+
+  \param[in] samples Array of samples.
+  */
+  void BindScalarField(const std::vector<Real> &samples);
 
   /*!
   \brief Binds a given vector field to the grid.
 
   We assume the field to be of the form:
-
   \f[
-    \mathbf{v}(x) = v(x)\hat{\mathbf{i}}
+    \mathbf{v}(\mathbf{x}) = v(x)\hat{\mathbf{i}}
   \f]
 
   \param[in] VectorField Pointer to the function implementing the vector field.
+  \param[in] parameters Array of parameters for the field to be evaluated.
   */
-  void BindVectorField(Real (*VectorField)(Real xx));
+  void BindVectorField(
+    Real (*VectorField)(const Real &xx, const std::vector<Real> &pp),
+    const std::vector<Real> &parameters = std::vector<Real>());
 
   /*!
-  \brief Writes grid to a file compatible with Gnuplot 4.6.
+  \brief Writes grid to a file compatible with gnuplot 4.6.
 
   \param[in] filename Name of the output file.
   \param[in] space_name Name for the first column of the data.
@@ -168,18 +230,18 @@ class UniStgGrid1D {
   */
   bool WriteToFile(std::string filename,
                    std::string space_name,
-                   std::string field_name);
+                   std::string field_name) const;
 
  private:
-  FieldNature nature_;  ///< Nature of the discrete field.
+  FieldNature field_nature_;    ///< Nature of the discrete field.
 
   std::vector<Real> discrete_domain_x_; ///< Array of spatial data.
-  std::vector<Real> discrete_field_u_;  ///< Array of field's data.
+  std::vector<Real> discrete_field_;  ///< Array of field's data.
 
   Real west_bndy_x_;  ///< West boundary spatial coordinate.
   Real east_bndy_x_;  ///< East boundary spatial coordinate.
   Real num_cells_x_;  ///< Number of cells discretizing the domain.
-  Real delta_x_;      ///< Produced \f$ \Delta x\f$.
+  Real delta_x_;      ///< Produced \f$ \Delta x \f$.
 };
 }
 #endif  // End of: MTK_INCLUDE_UNI_STG_GRID_1D_H_

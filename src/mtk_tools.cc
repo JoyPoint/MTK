@@ -1,14 +1,15 @@
 /*!
 \file mtk_tools.cc
 
-\brief Implements a execution tool manager class.
+\brief Definition of a class to manage run-time tools.
 
-Basic tools to ensure execution correctness.
+Definition of a class providing basic tools to ensure execution correctness,
+and to assists with unitary testing.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 */
 /*
-Copyright (C) 2015, Computational Science Research Center, San Diego State
+Copyright (C) 2016, Computational Science Research Center, San Diego State
 University. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without modification,
@@ -16,22 +17,22 @@ are permitted provided that the following conditions are met:
 
 1. Modifications to source code should be reported to: esanchez@mail.sdsu.edu
 and a copy of the modified files should be reported once modifications are
-completed. Documentation related to said modifications should be included.
+completed, unless these modifications are made through the project's GitHub
+page: http://www.csrc.sdsu.edu/mtk. Documentation related to said modifications
+should be developed and included in any deliverable.
 
 2. Redistributions of source code must be done through direct
 downloads from the project's GitHub page: http://www.csrc.sdsu.edu/mtk
 
-3. Redistributions of source code must retain the above copyright notice, this
-list of conditions and the following disclaimer.
-
-4. Redistributions in binary form must reproduce the above copyright notice,
+3. Redistributions in binary form must reproduce the above copyright notice,
 this list of conditions and the following disclaimer in the documentation and/or
 other materials provided with the distribution.
 
-5. Usage of the binary form on proprietary applications shall require explicit
-prior written permission from the the copyright holders.
+4. Usage of the binary form on proprietary applications shall require explicit
+prior written permission from the the copyright holders, and due credit should
+be given to the copyright holders.
 
-6. Neither the name of the copyright holder nor the names of its contributors
+5. Neither the name of the copyright holder nor the names of its contributors
 may be used to endorse or promote products derived from this software without
 specific prior written permission.
 
@@ -53,25 +54,36 @@ ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
+#include <cstdlib>
+
 #include <iostream>
 
-#include "mtk_roots.h"
+#include "mtk_foundations.h"
 #include "mtk_tools.h"
 
 void mtk::Tools::Prevent(const bool condition,
-                         const char *fname,
+                         const char *const fname,
                          int lineno,
-                         const char *fxname) {
+                         const char *const fxname) noexcept {
 
-  /// \todo Check if this is the best way of stalling execution.
+  /// \todo Check if this is the best way of stalling execution in C++11.
 
-  #if MTK_DEBUG_LEVEL > 0
+	// From: https://www.gnu.org/software/libc/manual/html_node/Normal-Termination.html#Normal-Termination
+	// A process terminates normally when its program signals it is done by
+	// calling exit. Returning from main is equivalent to calling exit, and the
+	// value that main returns is used as the argument to exit.
+
+	// From: https://www.gnu.org/software/libc/manual/html_node/Exit-Status.html#Exit-Status
+	// Portability note: Some non-POSIX systems use different conventions for exit
+	// status values. For greater portability, you can use the macros EXIT_SUCCESS
+	// and EXIT_FAILURE for the conventional status value for success and failure,
+	// respectively. They are declared in the file stdlib.h.
+
   if (lineno < 1) {
     std::cerr << __FILE__ << ": " << "Incorrect parameter at line " <<
     __LINE__ - 2 << " (" << __func__ << ")" << std::endl;
     exit(EXIT_FAILURE);
   }
-  #endif
 
   if (condition) {
     std::cerr << fname << ": " << "Incorrect parameter at line " <<
@@ -80,31 +92,42 @@ void mtk::Tools::Prevent(const bool condition,
   }
 }
 
-/// \todo Check usage of static methods and private members.
+int mtk::Tools::test_number_{};	// Current test being executed.
 
-int mtk::Tools::test_number_; // Used to control the correctness of the test.
+mtk::Real mtk::Tools::duration_{};	// Duration of the current test.
 
-clock_t mtk::Tools::begin_time_;  // Used to time tests.
+clock_t mtk::Tools::begin_time_{};  // Elapsed time on current test.
 
-void mtk::Tools::BeginTestNo(const int &nn) {
+void mtk::Tools::BeginUnitTestNo(const int &nn) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+	/// \todo Compute time using C++11 mechanisms.
+
+  #if MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(nn <= 0, __FILE__, __LINE__, __func__);
   #endif
 
   test_number_ = nn;
 
-  std::cout << "Test " << nn << "..." << std::endl << std::endl;
+  std::cout << "Beginning test " << nn << "." << std::endl;
   begin_time_ = clock();
 }
 
-void mtk::Tools::EndTestNo(const int &nn) {
+void mtk::Tools::EndUnitTestNo(const int &nn) noexcept {
 
-  #if MTK_DEBUG_LEVEL > 0
+  #if MTK_PERFORM_PREVENTIONS
   mtk::Tools::Prevent(test_number_ != nn, __FILE__, __LINE__, __func__);
   #endif
 
-  auto duration = mtk::Real(clock() - begin_time_)/CLOCKS_PER_SEC;
-  std::cout << "Test " << test_number_ << " complete! ";
-  std::cout << "Elapsed: " << duration << " seconds." << std::endl;
+  duration_ = mtk::Real(clock() - begin_time_)/CLOCKS_PER_SEC;
+}
+
+void mtk::Tools::Assert(const bool &condition) noexcept {
+
+  if (condition) {
+    std::cout << "Test " << test_number_ << ": PASSED in " << duration_ <<
+      " s." << std::endl;
+  } else {
+    std::cout << "Test " << test_number_ << ": FAILED in " << duration_ <<
+      " s." << std::endl;
+  }
 }
