@@ -1,7 +1,7 @@
 /*!
 \file mtk_div_2d.h
 
-\brief Includes the definition of the class Div2D.
+\brief Declaration of the class Div2D.
 
 This class implements a 2D divergence operator, constructed using the
 Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).

@@ -1,7 +1,7 @@
 /*!
 \file mtk_lap_2d.h
 
-\brief Includes the implementation of the class Lap2D.
+\brief Declaration of the class Lap2D.
 
 This class implements a 2D Laplacian operator, constructed using the
 Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).

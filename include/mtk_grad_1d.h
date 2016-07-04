@@ -1,7 +1,7 @@
 /*!
 \file mtk_grad_1d.h
 
-\brief Includes the definition of the class Grad1D.
+\brief Declaration the definition of the class Grad1D.
 
 This class implements a 1D gradient operator, constructed using the
 Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).

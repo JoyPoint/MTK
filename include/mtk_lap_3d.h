@@ -1,7 +1,7 @@
 /*!
 \file mtk_lap_3d.h
 
-\brief Includes the implementation of the class Lap3D.
+\brief Declaration of the class Lap3D.
 
 This class implements a 3D Laplacian operator, constructed using the
 Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).

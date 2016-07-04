@@ -1,7 +1,7 @@
 /*!
 \file mtk_div_2d.cc
 
-\brief Implements the class Div2D.
+\brief Definition of the class Div2D.
 
 This class implements a 2D divergence matrix operator, constructed using the
 Castillo-Blomgren-Sanchez (CBS) Algorithm.

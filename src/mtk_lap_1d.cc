@@ -1,7 +1,7 @@
 /*!
 \file mtk_lap_1d.cc
 
-\brief Includes the implementation of the class Lap1D.
+\brief Definition of the implementation of the class Lap1D.
 
 This class implements a 1D Laplacian operator, constructed using the
 Castillo-Blomgren-Sanchez (CBS) Algorithm (CBSA).

@@ -1,7 +1,7 @@
 /*!
 \file mtk_curl_2d.cc
 
-\brief Implements the class Curl2D.
+\brief Definition of the class Curl2D.
 
 This class implements a 2D curl matrix operator, constructed using the
 Castillo-Blomgren-Sanchez (CBS) Algorithm.

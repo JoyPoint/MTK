@@ -352,20 +352,20 @@ Mimetic operators.
 */
 #include "mtk_grad_1d.h"
 #include "mtk_div_1d.h"
-#include "mtk_lap_1d.h"
-#include "mtk_robin_bc_descriptor_1d.h"
-#include "mtk_quad_1d.h"
 #include "mtk_interp_1d.h"
+#include "mtk_lap_1d.h"
+#include "mtk_quad_1d.h"
+#include "mtk_robin_bc_descriptor_1d.h"
 
 #include "mtk_grad_2d.h"
 #include "mtk_div_2d.h"
+#include "mtk_interp_2d.h"
 #include "mtk_curl_2d.h"
 #include "mtk_lap_2d.h"
 #include "mtk_robin_bc_descriptor_2d.h"
 
 #include "mtk_grad_3d.h"
 #include "mtk_div_3d.h"
-#include "mtk_foundations.h"
 #include "mtk_lap_3d.h"
 #include "mtk_robin_bc_descriptor_3d.h"
 

@@ -1,9 +1,9 @@
 /*!
 \file mtk_interp_1d.h
 
-\brief Includes the definition of the class Interp1D.
+\brief Declaration of the definition of the class Interp1D.
 
-Definition of a class that implements a 1D interpolation operator.
+Declaration of a class that implements a 1D interpolation operator.
 
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 

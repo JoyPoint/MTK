@@ -1,7 +1,7 @@
 /*!
 \file mtk_interp_1d.cc
 
-\brief Includes the implementation of the class Interp1D.
+\brief Definition of the implementation of the class Interp1D.
 
 This class implements a 1D interpolation operator.
 

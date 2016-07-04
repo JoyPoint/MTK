@@ -1,7 +1,7 @@
 /*!
 \file mtk_grad_1d.cc
 
-\brief Implements the class Grad1D.
+\brief Definition of the class Grad1D.
 
 This class implements a 1D gradient matrix operator, constructed using the
 Castillo-Blomgren-Sanchez (CBS) Algorithm.
