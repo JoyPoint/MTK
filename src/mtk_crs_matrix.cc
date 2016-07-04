@@ -24,6 +24,7 @@ The storage savings for this approach is significant. Instead of storing
 \author: Eduardo J. Sanchez (ejspeiro) - esanchez at mail dot sdsu dot edu
 
 \todo Get rid of those pointers to std::vector<> in the member variables.
+\todo Implement copy constructor.
 */
 /*
 Copyright (C) 2016, Computational Science Research Center, San Diego State
@@ -87,7 +88,7 @@ std::ostream &operator<<(std::ostream &stream, const mtk::CRSMatrix &matrix) {
 			if (jj != 1) {
 				stream << std::setw(9);
 			}
-			stream << matrix.GetValue(ii, jj);
+			stream << matrix.Get(ii, jj);
 		}
 		if (ii < matrix.num_rows_) {
 			stream << std::endl;
@@ -161,7 +162,7 @@ mtk::CRSMatrix::~CRSMatrix(void) {
 	}
 }
 
-mtk::Real mtk::CRSMatrix::GetValue(int row, int col) const {
+mtk::Real mtk::CRSMatrix::Get(int row, int col) const {
 
 	if (row < 1 || col < 1 || row > num_rows_ || col > num_cols_) {
 		throw "Coordinates out of range.";
@@ -181,7 +182,12 @@ mtk::Real mtk::CRSMatrix::GetValue(int row, int col) const {
 	return 0.0;
 }
 
-mtk::CRSMatrix &mtk::CRSMatrix::SetValue(mtk::Real val, int row, int col) {
+mtk::Real mtk::CRSMatrix::GetValue(int row_coord, int col_coord) const {
+
+	return Get(row_coord + 1, col_coord + 1);
+}
+
+mtk::CRSMatrix &mtk::CRSMatrix::Set(mtk::Real val, int row, int col) {
 
 	if (row < 1 || col < 1 || row > num_rows_ || col > num_cols_) {
 		throw "Coordinations out of range.";
@@ -212,7 +218,17 @@ mtk::CRSMatrix &mtk::CRSMatrix::SetValue(mtk::Real val, int row, int col) {
 	return *this;
 }
 
-std::vector<mtk::Real> mtk::CRSMatrix::Multiply(const std::vector<mtk::Real> &xx) const {
+mtk::CRSMatrix &mtk::CRSMatrix::SetValue(Real val,
+		                                     int row_coord,
+		                                     int col_coord) {
+
+	Set(val, row_coord + 1, col_coord + 1);
+
+	return *this;
+}
+
+std::vector<mtk::Real> mtk::CRSMatrix::Multiply(
+		const std::vector<mtk::Real> &xx) const {
 
 	if (num_cols_ != static_cast<int>(xx.size())) {
 		throw "Cannot multiply: Matrix column count and vector size don't match.";
@@ -222,7 +238,7 @@ std::vector<mtk::Real> mtk::CRSMatrix::Multiply(const std::vector<mtk::Real> &xx
 
 	for (int ii = 1; ii <= num_rows_; ++ii) {
 		for (int jj = 1; jj <= num_cols_; ++jj) {
-			result[ii - 1] += GetValue(ii, jj)*xx[jj - 1];
+			result[ii - 1] += Get(ii, jj)*xx[jj - 1];
 		}
 	}
 	return result;
@@ -236,15 +252,15 @@ mtk::CRSMatrix mtk::CRSMatrix::Multiply(const mtk::CRSMatrix &mm) const {
 
 	mtk::CRSMatrix result(num_rows_, mm.num_cols_);
 
-	mtk::Real aa;
+	mtk::Real aa{};
 
 	for (int ii = 1; ii <= num_rows_; ++ii) {
 		for (int jj = 1; jj <= mm.num_cols_; ++jj) {
 			aa = 0.0;
 			for (int kk = 1; kk <= num_cols_; ++kk) {
-				aa += GetValue(ii, kk)*mm.GetValue(kk, jj);
+				aa += Get(ii, kk)*mm.Get(kk, jj);
 			}
-			result.SetValue(aa, ii, jj);
+			result.Set(aa, ii, jj);
 		}
 	}
 	return result;
@@ -253,9 +269,7 @@ mtk::CRSMatrix mtk::CRSMatrix::Multiply(const mtk::CRSMatrix &mm) const {
 mtk::CRSMatrix mtk::CRSMatrix::Kron(const mtk::CRSMatrix &aa,
 	                  								const mtk::CRSMatrix &bb) {
 
-	/// \todo Implement Kron using the BLAS.
-
-  // Auxiliary variables:
+	// Auxiliary variables:
   auto aux1 = aa.num_rows_*bb.num_rows_;
   auto aux2 = aa.num_cols_*bb.num_cols_;
 
@@ -269,18 +283,18 @@ mtk::CRSMatrix mtk::CRSMatrix::Kron(const mtk::CRSMatrix &aa,
   // For each element in the aa matrix...
   for (int ii = 0; ii < mm; ++ii) {
   	for (int jj = 0; jj < nn; ++jj) {
-  		mtk::Real aa_factor = aa.GetValue(ii + 1, jj + 1);
+  		mtk::Real aa_factor = aa.GetValue(ii, jj);
   		// ... provided said element is different than 0...
   		if (aa_factor != 0.0) {
-  			int oo_row_offset = ii*pp;
-  			int oo_col_offset = jj*qq;
+  			int oo_row_offset{ii*pp};
+  			int oo_col_offset{jj*qq};
   			// ... multiply the entire bb matrix times that element.
   			for (int kk = 0; kk < pp; ++kk) {
 					for (int ll = 0; ll < qq; ++ll) {
-						mtk::Real bb_factor = bb.GetValue(kk + 1, ll + 1);
-						int oo_row = oo_row_offset + kk;
-						int oo_col = oo_col_offset + ll;
-						oo.SetValue(aa_factor*bb_factor, oo_row + 1, oo_col + 1);
+						mtk::Real bb_factor = bb.GetValue(kk, ll);
+						int oo_row{oo_row_offset + kk};
+						int oo_col{oo_col_offset + ll};
+						oo.SetValue(aa_factor*bb_factor, oo_row, oo_col);
 					}
   			}
   		}
@@ -303,7 +317,7 @@ mtk::CRSMatrix mtk::CRSMatrix::Add(const mtk::CRSMatrix &mm) const {
 
 	for (int ii = 1; ii <= num_rows_; ++ii) {
 		for (int jj = 1; jj <= num_cols_; ++jj) {
-			result.SetValue(GetValue(ii, jj) + mm.GetValue(ii, jj), ii, jj);
+			result.Set(Get(ii, jj) + mm.Get(ii, jj), ii, jj);
 		}
 	}
 	return result;

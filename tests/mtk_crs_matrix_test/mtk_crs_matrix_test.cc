@@ -55,284 +55,319 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #include <vector>
 
+#include "mtk_tools.h"
 #include "mtk_crs_matrix.h"
 
-int main(int argc, char ** argv) {
+void TestMatrixVectorMultiplication1() {
 
-// [ 0 0 1 ]   [ 2 ]   [  3 ]
-// [ 2 0 3 ] × [ 0 ] = [ 13 ]
-// [ 0 4 7 ]   [ 3 ]   [ 21 ]
+	mtk::Tools::BeginUnitTestNo(1);
 
 	mtk::CRSMatrix m1(3);
 
-	m1.SetValue(1.0, 1, 3);
-	m1.SetValue(2.0, 2, 1);
-	m1.SetValue(3.0, 2, 3);
-	m1.SetValue(4.0, 3, 2);
-	m1.SetValue(7.0, 3, 3);
+	m1.SetValue(1.0, 0, 2);
+	m1.SetValue(2.0, 1, 0);
+	m1.SetValue(3.0, 1, 2);
+	m1.SetValue(4.0, 2, 1);
+	m1.SetValue(7.0, 2, 2);
 
-	std::vector<mtk::Real> x1;
+	std::vector<mtk::Real> x1{};
 
 	x1.push_back(2.0);
 	x1.push_back(0.0);
 	x1.push_back(3.0);
 
-	std::vector<mtk::Real> result1;
+	std::vector<mtk::Real> result1{};
 
 	result1.push_back(3.0);
 	result1.push_back(13.0);
 	result1.push_back(21.0);
 
-  std::vector<mtk::Real> rr;
+	std::vector<mtk::Real> rr{};
 
-  rr = m1.Multiply(x1);
+	rr = m1.Multiply(x1);
 
-	std::cout << (rr == result1) << std::endl;
+	mtk::Tools::EndUnitTestNo(1);
+	mtk::Tools::Assert(rr == result1);
+}
 
-// 	[ 0 0 0 ]   [ 1 ]   [ 0 ]
-// 	[ 0 0 0 ] × [ 1 ] = [ 0 ]
-// 	[ 0 0 0 ]   [ 1 ]   [ 0 ]
+void TestMatrixVectorMultiplication2() {
+
+	mtk::Tools::BeginUnitTestNo(2);
 
 	mtk::CRSMatrix m2(3);
 	std::vector<mtk::Real> x2(3, 1);
 	std::vector<mtk::Real> result2(3, 0);
 
-	std::cout << (m2.Multiply(x2) == result2) << std::endl;
+	mtk::Tools::EndUnitTestNo(2);
+	mtk::Tools::Assert(m2.Multiply(x2) == result2);
+}
 
-// 	[ 1 2 3 ]   [ 0 ]   [ 0 ]
-// 	[ 4 5 6 ] × [ 0 ] = [ 0 ]
-// 	[ 7 8 9 ]   [ 0 ]   [ 0 ]
+void TestMatrixVectorMultiplication3() {
+
+	mtk::Tools::BeginUnitTestNo(3);
 
 	mtk::CRSMatrix m3(3);
-	m3.SetValue(1, 1, 1)
-	.SetValue(2, 1, 2)
-	.SetValue(3, 1, 3)
-	.SetValue(4, 2, 1)
-	.SetValue(5, 2, 2)
-	.SetValue(6, 2, 3)
-	.SetValue(7, 3, 1)
-	.SetValue(8, 3, 2)
-	.SetValue(9, 3, 3);
+	m3.SetValue(1.0, 0, 0)
+		.SetValue(2.0, 0, 1)
+		.SetValue(3.0, 0, 2)
+		.SetValue(4.0, 1, 0)
+		.SetValue(5.0, 1, 1)
+		.SetValue(6.0, 1, 2)
+		.SetValue(7.0, 2, 0)
+		.SetValue(8.0, 2, 1)
+		.SetValue(9.0, 2, 2);
 
-	std::vector<mtk::Real> x3(3, 0);
-	std::vector<mtk::Real> result3(3, 0);
+	std::vector<mtk::Real> x3(3, 0.0);
+	std::vector<mtk::Real> result3(3, 0.0);
 
-	std::cout << (m3.Multiply(x3) == result3) << std::endl;
+	mtk::Tools::EndUnitTestNo(3);
+	mtk::Tools::Assert(m3.Multiply(x3) == result3);
+}
 
-// 	[ 0 0 0 ]   [ 1 2 3 ]   [ 1 2 3 ]
-// 	[ 0 0 0 ] + [ 4 5 6 ] = [ 4 5 6 ]
-// 	[ 0 0 0 ]   [ 7 8 9 ]   [ 7 8 9 ]
+void TestMatrixMatrixAdition1() {
+
+	mtk::Tools::BeginUnitTestNo(4);
 
 	mtk::CRSMatrix a4(3);
 	mtk::CRSMatrix b4(3);
-	b4.SetValue(1, 1, 1)
-	.SetValue(2, 1, 2)
-	.SetValue(3, 1, 3)
-	.SetValue(4, 2, 1)
-	.SetValue(5, 2, 2)
-	.SetValue(6, 2, 3)
-	.SetValue(7, 3, 1)
-	.SetValue(8, 3, 2)
-	.SetValue(9, 3, 3);
+	b4.SetValue(1.0, 0, 0)
+		.SetValue(2.0, 0, 1)
+		.SetValue(3.0, 0, 2)
+		.SetValue(4.0, 1, 0)
+		.SetValue(5.0, 1, 1)
+		.SetValue(6.0, 1, 2)
+		.SetValue(7.0, 2, 0)
+		.SetValue(8.0, 2, 1)
+		.SetValue(9.0, 2, 2);
 
-  std::cout << (a4.Add(b4) == b4) << std::endl;
+	mtk::Tools::EndUnitTestNo(4);
+	mtk::Tools::Assert(a4.Add(b4) == b4);
+}
 
-// 	[ -1 -2 -3 ]   [ 1 2 3 ]   [ 0 0 0 ]
-// 	[ -4 -5 -6 ] + [ 4 5 6 ] = [ 0 0 0 ]
-// 	[ -7 -8 -9 ]   [ 7 8 9 ]   [ 0 0 0 ]
+void TestMatrixMatrixAdition2() {
+
+	mtk::Tools::BeginUnitTestNo(5);
 
 	mtk::CRSMatrix a5(3);
-	a5.SetValue(-1, 1, 1)
-	.SetValue(-2, 1, 2)
-	.SetValue(-3, 1, 3)
-	.SetValue(-4, 2, 1)
-	.SetValue(-5, 2, 2)
-	.SetValue(-6, 2, 3)
-	.SetValue(-7, 3, 1)
-	.SetValue(-8, 3, 2)
-	.SetValue(-9, 3, 3);
+	a5.SetValue(-1.0, 0, 0)
+		.SetValue(-2.0, 0, 1)
+		.SetValue(-3.0, 0, 2)
+		.SetValue(-4.0, 1, 0)
+		.SetValue(-5.0, 1, 1)
+		.SetValue(-6.0, 1, 2)
+		.SetValue(-7.0, 2, 0)
+		.SetValue(-8.0, 2, 1)
+		.SetValue(-9.0, 2, 2);
 
 	mtk::CRSMatrix b5(3);
-	b5.SetValue(1, 1, 1)
-	.SetValue(2, 1, 2)
-	.SetValue(3, 1, 3)
-	.SetValue(4, 2, 1)
-	.SetValue(5, 2, 2)
-	.SetValue(6, 2, 3)
-	.SetValue(7, 3, 1)
-	.SetValue(8, 3, 2)
-	.SetValue(9, 3, 3);
+	b5.SetValue(1.0, 0, 0)
+		.SetValue(2.0, 0, 1)
+		.SetValue(3.0, 0, 2)
+		.SetValue(4.0, 1, 0)
+		.SetValue(5.0, 1, 1)
+		.SetValue(6.0, 1, 2)
+		.SetValue(7.0, 2, 0)
+		.SetValue(8.0, 2, 1)
+		.SetValue(9.0, 2, 2);
 
-	std::cout << (a5.Add(b5) == mtk::CRSMatrix(3)) << std::endl;
+	mtk::Tools::EndUnitTestNo(5);
+	mtk::Tools::Assert(a5.Add(b5) == mtk::CRSMatrix(3));
+}
 
-// 	[ 1 0 1 ]   [ 0 1 0 ]   [ 1 1 1 ]
-// 	[ 0 1 0 ] + [ 1 0 1 ] = [ 1 1 1 ]
-// 	[ 1 0 1 ]   [ 0 1 0 ]   [ 1 1 1 ]
+void TestMatrixMatrixAdition3() {
+
+	mtk::Tools::BeginUnitTestNo(6);
 
 	mtk::CRSMatrix a6(3);
-	a6.SetValue(1, 1, 1)
-	.SetValue(1, 1, 3)
-	.SetValue(1, 2, 2)
-	.SetValue(1, 3, 1)
-	.SetValue(1, 3, 3);
+	a6.SetValue(1.0, 0, 0)
+		.SetValue(1.0, 0, 2)
+		.SetValue(1.0, 1, 1)
+		.SetValue(1.0, 2, 0)
+		.SetValue(1.0, 2, 2);
 
 	mtk::CRSMatrix b6(3);
-	b6.SetValue(1, 1, 2)
-	.SetValue(1, 2, 1)
-	.SetValue(1, 2, 3)
-	.SetValue(1, 3, 2);
+	b6.SetValue(1.0, 0, 1)
+		.SetValue(1.0, 1, 0)
+		.SetValue(1.0, 1, 2)
+		.SetValue(1.0, 2, 1);
 
 	mtk::CRSMatrix result6(3);
-	result6.SetValue(1, 1, 1)
-	.SetValue(1, 1, 2)
-	.SetValue(1, 1, 3)
-	.SetValue(1, 2, 1)
-	.SetValue(1, 2, 2)
-	.SetValue(1, 2, 3)
-	.SetValue(1, 3, 1)
-	.SetValue(1, 3, 2)
-	.SetValue(1, 3, 3);
+	result6.SetValue(1.0, 0, 0)
+				 .SetValue(1.0, 0, 1)
+				 .SetValue(1.0, 0, 2)
+				 .SetValue(1.0, 1, 0)
+				 .SetValue(1.0, 1, 1)
+				 .SetValue(1.0, 1, 2)
+				 .SetValue(1.0, 2, 0)
+				 .SetValue(1.0, 2, 1)
+				 .SetValue(1.0, 2, 2);
 
-	std::cout << (a6.Add(b6) == result6) << std::endl;
+	mtk::Tools::EndUnitTestNo(6);
+	mtk::Tools::Assert(a6.Add(b6) == result6);
+}
 
-// 	[ 1 2 3 ]   [ 1 1 1 ]   [  3  6  3 ]
-// 	[ 4 5 6 ] × [ 1 1 1 ] = [  9 15  9 ]
-// 	[ 7 8 9 ]   [ 0 1 0 ]   [ 15 24 15 ]
+void TestMatrixMatrixMultiplication1() {
+
+	mtk::Tools::BeginUnitTestNo(7);
 
 	mtk::CRSMatrix a7(3);
-	a7.SetValue(1, 1, 1)
-	.SetValue(2, 1, 2)
-	.SetValue(3, 1, 3)
-	.SetValue(4, 2, 1)
-	.SetValue(5, 2, 2)
-	.SetValue(6, 2, 3)
-	.SetValue(7, 3, 1)
-	.SetValue(8, 3, 2)
-	.SetValue(9, 3, 3);
+	a7.SetValue(1.0, 0, 0)
+		.SetValue(2.0, 0, 1)
+		.SetValue(3.0, 0, 2)
+		.SetValue(4.0, 1, 0)
+		.SetValue(5.0, 1, 1)
+		.SetValue(6.0, 1, 2)
+		.SetValue(7.0, 2, 0)
+		.SetValue(8.0, 2, 1)
+		.SetValue(9.0, 2, 2);
 
 	mtk::CRSMatrix b7(3);
-	b7.SetValue(1, 1, 1)
-	.SetValue(1, 1, 2)
-	.SetValue(1, 1, 3)
-	.SetValue(1, 2, 1)
-	.SetValue(1, 2, 2)
-	.SetValue(1, 2, 3)
-	.SetValue(1, 3, 2);
+	b7.SetValue(1.0, 0, 0)
+		.SetValue(1.0, 0, 1)
+		.SetValue(1.0, 0, 2)
+		.SetValue(1.0, 1, 0)
+		.SetValue(1.0, 1, 1)
+		.SetValue(1.0, 1, 2)
+		.SetValue(1.0, 2, 1);
 
 	mtk::CRSMatrix result7(3);
-	result7.SetValue(3, 1, 1)
-	.SetValue(6, 1, 2)
-	.SetValue(3, 1, 3)
-	.SetValue(9, 2, 1)
-	.SetValue(15, 2, 2)
-	.SetValue(9, 2, 3)
-	.SetValue(15, 3, 1)
-	.SetValue(24, 3, 2)
-	.SetValue(15, 3, 3);
+	result7.SetValue(3.0, 0, 0)
+				 .SetValue(6.0, 0, 1)
+				 .SetValue(3.0, 0, 2)
+				 .SetValue(9.0, 1, 0)
+				 .SetValue(15.0, 1, 1)
+				 .SetValue(9.0, 1, 2)
+				 .SetValue(15.0, 2, 0)
+				 .SetValue(24.0, 2, 1)
+				 .SetValue(15.0, 2, 2);
 
-	std::cout << (a7.Multiply(b7) == result7) << std::endl;
+	mtk::Tools::EndUnitTestNo(7);
+	mtk::Tools::Assert(a7.Multiply(b7) == result7);
+}
 
-// 	[ 1 0 1 ]   [ 0 0 0 ]   [ 0 0 0 ]
-// 	[ 0 0 1 ] × [ 0 0 0 ] = [ 0 0 0 ]
-// 	[ 2 2 0 ]   [ 0 0 0 ]   [ 0 0 0 ]
+void TestMatrixMatrixMultiplication2() {
+
+	mtk::Tools::BeginUnitTestNo(8);
 
 	mtk::CRSMatrix a8(3);
-	a8.SetValue(1, 1, 1)
-	.SetValue(1, 1, 3)
-	.SetValue(1, 2, 3)
-	.SetValue(2, 3, 1)
-	.SetValue(2, 3, 2);
+	a8.SetValue(1.0, 0, 0)
+		.SetValue(1.0, 0, 2)
+		.SetValue(1.0, 1, 2)
+		.SetValue(2.0, 2, 0)
+		.SetValue(2.0, 2, 1);
 
 	mtk::CRSMatrix b8(3);
 	mtk::CRSMatrix result8(3);
 
-	std::cout << (a8.Multiply(b8) == result8) << std::endl;
+	mtk::Tools::EndUnitTestNo(8);
+	mtk::Tools::Assert(a8.Multiply(b8) == result8);
+}
 
-//   [ 1 0 0 ]   [ 1 2 3 ]   [ 1 2 3 ]
-//   [ 0 1 0 ] × [ 4 5 6 ] = [ 4 5 6 ]
-//   [ 0 0 1 ]   [ 7 8 9 ]   [ 7 8 9 ]
+void TestMatrixMatrixMultiplication3() {
 
-  mtk::CRSMatrix a9(3);
-  a9.SetValue(1, 1, 1)
-    .SetValue(1, 2, 2)
-    .SetValue(1, 3, 3);
+	mtk::Tools::BeginUnitTestNo(9);
 
-  mtk::CRSMatrix b9(3);
-  b9.SetValue(1, 1, 1)
-    .SetValue(2, 1, 2)
-    .SetValue(3, 1, 3)
-    .SetValue(4, 2, 1)
-    .SetValue(5, 2, 2)
-    .SetValue(6, 2, 3)
-    .SetValue(7, 3, 1)
-    .SetValue(8, 3, 2)
-    .SetValue(9, 3, 3);
+	mtk::CRSMatrix a9(3);
+	a9.SetValue(1.0, 0, 0)
+		.SetValue(1.0, 1, 1)
+		.SetValue(1.0, 2, 2);
 
-  mtk::CRSMatrix result9(3);
-  result9.SetValue(1, 1, 1)
-    .SetValue(2, 1, 2)
-    .SetValue(3, 1, 3)
-    .SetValue(4, 2, 1)
-    .SetValue(5, 2, 2)
-    .SetValue(6, 2, 3)
-    .SetValue(7, 3, 1)
-    .SetValue(8, 3, 2)
-    .SetValue(9, 3, 3);
+	mtk::CRSMatrix b9(3);
+	b9.SetValue(1.0, 0, 0)
+		.SetValue(2.0, 0, 1)
+		.SetValue(3.0, 0, 2)
+		.SetValue(4.0, 1, 0)
+		.SetValue(5.0, 1, 1)
+		.SetValue(6.0, 1, 2)
+		.SetValue(7.0, 2, 0)
+		.SetValue(8.0, 2, 1)
+		.SetValue(9.0, 2, 2);
 
-  std::cout << (a9.Multiply(b9) == result9) << std::endl;
-  std::cout << (b9.Multiply(a9) == result9) << std::endl;
+	mtk::CRSMatrix result9(3);
+	result9.SetValue(1.0, 0, 0)
+				 .SetValue(2.0, 0, 1)
+				 .SetValue(3.0, 0, 2)
+				 .SetValue(4.0, 1, 0)
+				 .SetValue(5.0, 1, 1)
+				 .SetValue(6.0, 1, 2)
+				 .SetValue(7.0, 2, 0)
+				 .SetValue(8.0, 2, 1)
+				 .SetValue(9.0, 2, 2);
+
+	mtk::Tools::EndUnitTestNo(9);
+	mtk::Tools::Assert(a9.Multiply(b9) == result9 && b9.Multiply(a9) == result9);
+}
+
+void TestKron() {
+
+	mtk::Tools::BeginUnitTestNo(10);
 
   mtk::CRSMatrix a10(6);
 
-  a10.SetValue(10, 1, 1)
-    .SetValue(-2, 1, 5)
-    .SetValue(3, 2, 1)
-    .SetValue(9, 2, 2)
-    .SetValue(3, 2, 6)
-    .SetValue(7, 3, 2)
-    .SetValue(8, 3, 3)
-    .SetValue(7, 3, 4)
-    .SetValue(3, 4, 1)
-    .SetValue(8, 4, 3)
-    .SetValue(7, 4, 4)
-    .SetValue(5, 4, 5)
-    .SetValue(8, 5, 2)
-    .SetValue(9, 5, 4)
-    .SetValue(9, 5, 5)
-    .SetValue(13, 5, 6)
-    .SetValue(4, 6, 2)
-    .SetValue(2, 6, 5)
-    .SetValue(-1, 6, 6);
-
-  std::cout << a10 << std::endl;
-  std::cout << std::endl;
+  a10.SetValue(10.0, 0, 0)
+     .SetValue(-2.0, 0, 4)
+     .SetValue(3.0, 1, 0)
+     .SetValue(9.0, 1, 1)
+     .SetValue(3.0, 1, 5)
+     .SetValue(7.0, 2, 1)
+     .SetValue(8.0, 2, 4)
+     .SetValue(7.0, 2, 3)
+     .SetValue(3.0, 3, 0)
+     .SetValue(8.0, 3, 2)
+     .SetValue(7.0, 3, 3)
+     .SetValue(5.0, 3, 4)
+     .SetValue(8.0, 4, 1)
+     .SetValue(9.0, 4, 3)
+     .SetValue(9.0, 4, 4)
+     .SetValue(13.0, 4, 5)
+     .SetValue(4.0, 5, 1)
+     .SetValue(2.0, 5, 4)
+     .SetValue(-1.0, 5, 5);
 
   mtk::CRSMatrix a11(3);
-  a11.SetValue(1, 1, 1)
-     .SetValue(1, 2, 2)
-     .SetValue(1, 3, 3);
+  a11.SetValue(1.0, 0, 0)
+     .SetValue(1.0, 1, 1)
+     .SetValue(1.0, 2, 2);
 
   mtk::CRSMatrix b11(2);
 
-  b11.SetValue(2, 1, 1)
-    .SetValue(2, 1, 2)
-    .SetValue(2, 2, 1)
-    .SetValue(2, 2, 2);
+  b11.SetValue(2.0, 0, 0)
+     .SetValue(2.0, 0, 1)
+     .SetValue(2.0, 1, 0)
+     .SetValue(2.0, 1, 1);
 
   mtk::CRSMatrix result11(6);
 
-  result11.SetValue(2, 1, 1)
-    .SetValue(2, 1, 2)
-    .SetValue(2, 2, 1)
-    .SetValue(2, 2, 2)
-    .SetValue(2, 3, 3)
-    .SetValue(2, 3, 4)
-    .SetValue(2, 4, 3)
-    .SetValue(2, 4, 4)
-    .SetValue(2, 5, 5)
-    .SetValue(2, 5, 6)
-    .SetValue(2, 6, 5)
-    .SetValue(2, 6, 6);
+  result11.SetValue(2.0, 0, 0)
+    		  .SetValue(2.0, 0, 1)
+    		  .SetValue(2.0, 1, 0)
+    		  .SetValue(2.0, 1, 1)
+    		  .SetValue(2.0, 2, 2)
+    		  .SetValue(2.0, 2, 3)
+    		  .SetValue(2.0, 3, 2)
+    		  .SetValue(2.0, 3, 3)
+    		  .SetValue(2.0, 4, 4)
+    		  .SetValue(2.0, 4, 5)
+    		  .SetValue(2.0, 5, 4)
+    		  .SetValue(2.0, 5, 5);
 
-  std::cout << (mtk::CRSMatrix::Kron(a11, b11) == result11) << std::endl;
+	mtk::Tools::EndUnitTestNo(10);
+	mtk::Tools::Assert(mtk::CRSMatrix::Kron(a11, b11) == result11);
+
+}
+
+int main(int argc, char ** argv) {
+
+	std::cout << "Testing mtk::CRSMatrix class." << std::endl;
+
+	TestMatrixVectorMultiplication1();
+	TestMatrixVectorMultiplication2();
+	TestMatrixVectorMultiplication3();
+	TestMatrixMatrixAdition1();
+	TestMatrixMatrixAdition2();
+	TestMatrixMatrixAdition3();
+	TestMatrixMatrixMultiplication1();
+	TestMatrixMatrixMultiplication2();
+	TestMatrixMatrixMultiplication3();
+	TestKron();
 }

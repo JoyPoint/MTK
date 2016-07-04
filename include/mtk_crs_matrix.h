@@ -79,6 +79,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vector>
 
 #include "mtk_foundations.h"
+#include "mtk_matrix.h"
 
 namespace mtk {
 
@@ -104,6 +105,10 @@ public:
   static CRSMatrix Kron(const CRSMatrix &aa, const CRSMatrix &bb);
 
 private:
+  Real Get(int row_coord, int col_coord) const;
+  CRSMatrix &Set(Real val, int row_coord, int col_coord);
+
+
   void Insert(int index, int row, int col, Real val);
   void Remove(int index, int row);
 
